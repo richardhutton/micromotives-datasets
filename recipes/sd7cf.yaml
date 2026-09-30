@@ -1,0 +1,155 @@
+study_id: sd7cf
+source: tess
+title: "Framing in Noisy Informational Environments"
+data_file: TESS2_114_Coronel_Client.sav
+
+notes: >
+  TESS2 114 (Coronel). A 3 x 4 between-subjects design (12 cells):
+    framing  - T1 neutral / T2 security benefit / T3 civil-liberties cost
+    position - the target article shown alone, first, in the middle, or last
+               among six unrelated distractor news stories
+
+  Respondents read 20-second news articles, then rated the Patriot Act.
+
+  Texts taken verbatim from the questionnaire's TARGETS block and the
+  "TABLE 1: Research Design - EXPERIMENTAL CONDITIONS" table in
+  TESS2 114 Coronel Survey.txt.
+
+  NOTE ON SOCSCI210: it encodes the framing correctly but DROPS the position
+  factor entirely — its twelve conditions share only three distinct stimulus
+  strings, so conditions 0/3/4/5 (all T1) are byte-identical. The study is
+  titled "Framing in Noisy Informational Environments"; the noise is the point,
+  and it is the part that was lost. Our QC rule 1 (distinct conditions must
+  render distinct text) exists because of this study.
+
+condition:
+  source_var: XTESS114
+  factors: [framing, position]
+  shared_context: >
+    You were shown a series of short newspaper articles on screen, each for twenty
+    seconds, and then asked for your view of the Patriot Act. One of the articles
+    read: "About ten years ago, the Patriot Act was enacted in the weeks after
+    September 11, 2001, to strengthen law enforcement powers and technology. Under
+    the Patriot Act, the government has access to citizens' confidential information
+    from telephone and e-mail communications."
+  arms:
+    # ---- shown alone -----------------------------------------------------
+    - raw: 1
+      condition_num: 0
+      factors: {framing: "neutral", position: "alone"}
+      text: "That article said nothing further, and it was the only news article you were shown."
+    - raw: 2
+      condition_num: 1
+      factors: {framing: "security benefit", position: "alone"}
+      text: >
+        That article added: "As a result, it enables security to identify terrorist
+        plots on American soil and to prevent attacks before they occur." It was the
+        only news article you were shown.
+    - raw: 3
+      condition_num: 2
+      factors: {framing: "civil-liberties cost", position: "alone"}
+      text: >
+        That article added: "As a result, it has sparked numerous controversies and
+        been criticized for weakening the protection of citizens' civil liberties."
+        It was the only news article you were shown.
+    # ---- neutral framing, among distractors ------------------------------
+    - raw: 4
+      condition_num: 3
+      factors: {framing: "neutral", position: "first"}
+      text: >
+        That article said nothing further, and you saw it first, followed by six
+        unrelated news stories about a zoo, diabetes research, a patent settlement,
+        a spaceflight company, a film sequel and school reform laws.
+    - raw: 5
+      condition_num: 4
+      factors: {framing: "neutral", position: "middle"}
+      text: >
+        That article said nothing further, and you saw it in the middle: after three
+        and before three unrelated news stories about a zoo, diabetes research, a
+        patent settlement, a spaceflight company, a film sequel and school reform laws.
+    - raw: 6
+      condition_num: 5
+      factors: {framing: "neutral", position: "last"}
+      text: >
+        That article said nothing further, and you saw it last, after six unrelated
+        news stories about a zoo, diabetes research, a patent settlement, a
+        spaceflight company, a film sequel and school reform laws.
+    # ---- security framing, among distractors -----------------------------
+    - raw: 7
+      condition_num: 6
+      factors: {framing: "security benefit", position: "first"}
+      text: >
+        That article added: "As a result, it enables security to identify terrorist
+        plots on American soil and to prevent attacks before they occur." You saw it
+        first, followed by six unrelated news stories.
+    - raw: 8
+      condition_num: 7
+      factors: {framing: "security benefit", position: "middle"}
+      text: >
+        That article added: "As a result, it enables security to identify terrorist
+        plots on American soil and to prevent attacks before they occur." You saw it
+        in the middle, after three and before three unrelated news stories.
+    - raw: 9
+      condition_num: 8
+      factors: {framing: "security benefit", position: "last"}
+      text: >
+        That article added: "As a result, it enables security to identify terrorist
+        plots on American soil and to prevent attacks before they occur." You saw it
+        last, after six unrelated news stories.
+    # ---- civil-liberties framing, among distractors ----------------------
+    - raw: 10
+      condition_num: 9
+      factors: {framing: "civil-liberties cost", position: "first"}
+      text: >
+        That article added: "As a result, it has sparked numerous controversies and
+        been criticized for weakening the protection of citizens' civil liberties."
+        You saw it first, followed by six unrelated news stories.
+    - raw: 11
+      condition_num: 10
+      factors: {framing: "civil-liberties cost", position: "middle"}
+      text: >
+        That article added: "As a result, it has sparked numerous controversies and
+        been criticized for weakening the protection of citizens' civil liberties."
+        You saw it in the middle, after three and before three unrelated news stories.
+    - raw: 12
+      condition_num: 11
+      factors: {framing: "civil-liberties cost", position: "last"}
+      text: >
+        That article added: "As a result, it has sparked numerous controversies and
+        been criticized for weakening the protection of citizens' civil liberties."
+        You saw it last, after six unrelated news stories.
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: "Do you oppose or support the Patriot Act?"
+    scale:
+      min: 1
+      max: 7
+      min_label: "oppose very strongly"
+      max_label: "support very strongly"
+  - var: Q2
+    task_num: 1
+    question: "How certain are you in your support for or opposition to the Patriot Act?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "slightly certain"
+      max_label: "very certain"
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_map:
+  age: ppage
+  gender: ppgender
+  education: ppeducat
+  ethnicity: ppethm
+  income: ppincimp
+  marital_status: ppmarit
+  employment: ppwork
+  region: ppreg4
+  household_size: pphhsize
+  housing_type: pphouse
+  urban_rural: ppmsacat

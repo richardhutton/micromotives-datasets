@@ -71,6 +71,17 @@ class Arm(BaseModel):
         description="Arm-specific raw->canonical answer map, for arms whose response "
         "options are presented in a different order. Overrides Recipe.response_recode.",
     )
+    outcome_question: str | None = Field(
+        default=None,
+        description="Arm-specific question wording, when arms are asked different "
+        "questions (e.g. how DISAPPOINTED under a loss framing vs how SATISFIED "
+        "under a gain framing). Overrides Outcome.question.",
+    )
+    scale: Scale | None = Field(
+        default=None,
+        description="Arm-specific response scale, when the arm's question uses "
+        "different endpoint labels. Overrides Outcome.scale.",
+    )
 
 
 class Condition(BaseModel):
@@ -192,6 +203,16 @@ class Recipe(BaseModel):
     def outcome_var_for(self, outcome: Outcome, arm: Arm) -> str | None:
         """The variable holding this arm's answer to this outcome."""
         return outcome.var or arm.outcome_var
+
+    def outcome_text_for(self, outcome: Outcome, arm: Arm) -> str:
+        """The rendered outcome: question + answer instruction, arm overrides first.
+
+        In a split-ballot the arm IS the question, so its wording and its scale
+        endpoints can both differ from the study-level outcome.
+        """
+        question = arm.outcome_question or outcome.question
+        scale = arm.scale or outcome.scale
+        return f"{question} {scale.instruction()}"
 
 
 def load(path: str | Path) -> Recipe:

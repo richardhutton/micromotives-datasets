@@ -99,7 +99,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             yield Row(
                 persona=persona,
                 condition=condition_text,
-                outcome=f"{outcome.question} {outcome.scale.instruction()}",
+                outcome=recipe.outcome_text_for(outcome, arm),
                 response=str(response),
                 response_num=float(response),
                 condition_num=arm.condition_num,

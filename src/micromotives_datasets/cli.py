@@ -19,14 +19,34 @@ from .schema import Row
 from .sources import spss
 
 
+def _resolve_data_file(study_id: str, data_file: str) -> Path:
+    """Find a study's data file under data/raw/<study_id>/.
+
+    Zips extract into a subfolder named after the archive, so the file is often
+    a level or two down rather than at the study root. The recipe names the file,
+    not the path, and this finds it wherever it landed.
+    """
+    root = RAW_DIR / study_id
+    direct = root / data_file
+    if direct.exists():
+        return direct
+    matches = [p for p in root.rglob(data_file) if p.is_file() and not p.name.startswith("._")]
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        raise SystemExit(
+            f"{data_file!r} is ambiguous under {root} — found:\n"
+            + "\n".join(f"  {m}" for m in matches)
+        )
+    raise SystemExit(
+        f"data file not found: {data_file!r} anywhere under {root}\n"
+        "Run `mmds fetch <osf_code>` first (raw data is gitignored by design)."
+    )
+
+
 def _load_and_build(recipe_path: Path) -> tuple[recipe_mod.Recipe, list[Row]]:
     rec = recipe_mod.load(recipe_path)
-    data_path = RAW_DIR / rec.study_id / rec.data_file
-    if not data_path.exists():
-        raise SystemExit(
-            f"data file not found: {data_path}\n"
-            f"Place the study's raw file there (it is gitignored by design)."
-        )
+    data_path = _resolve_data_file(rec.study_id, rec.data_file)
     rows = list(build_rows(spss.read(data_path), rec))
     return rec, rows
 

@@ -1,0 +1,97 @@
+study_id: bf8p2
+source: tess
+title: "Does Misery Love Company? Exploration of a Strategic Social Comparison"
+data_file: TESS005_FARROW_27June17.sav
+
+notes: >
+  TESS 005 (Farrow). A 2 x 2 between-subjects design (4 cells):
+    valence           - loss (a good view will be obstructed) / gain (an obstructed
+                        view will be cleared)
+    social_comparison - absent / present ("85% of the residents in your building
+                        are in the same situation")
+
+  Split-ballot: each arm is asked its own variable (SCENE k -> S k, a clean 1:1
+  mapping verified by cross-tabulation). The QUESTION also differs by arm — the
+  loss arms ask how DISAPPOINTED you would be, the gain arms how SATISFIED — so
+  both the wording and the scale endpoints are declared per arm.
+
+  Wordings taken verbatim from the S1-S4 variable labels in the data file, which
+  carry the full scenario text.
+
+  Missing codes differ from the other TESS studies built so far: 77 DON'T KNOW,
+  98 SKIPPED ON WEB, 99 REFUSED (rather than -1).
+
+condition:
+  source_var: SCENE
+  factors: [valence, social_comparison]
+  shared_context: >
+    You were asked to imagine living in an apartment, and how you would feel about
+    a change to the view from it.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {valence: "loss", social_comparison: "absent"}
+      outcome_var: S1
+      outcome_question: "How disappointed would you be?"
+      scale: {min: 1, max: 7, min_label: "not at all disappointed", max_label: "extremely disappointed"}
+      text: >
+        You live in an apartment where you enjoy a superb view of a green park. Due to
+        a new development project, your view will soon be obstructed by a roadway
+        structure and you will no longer be able to see the park.
+    - raw: 2
+      condition_num: 1
+      factors: {valence: "loss", social_comparison: "present"}
+      outcome_var: S2
+      outcome_question: "How disappointed would you be?"
+      scale: {min: 1, max: 7, min_label: "not at all disappointed", max_label: "extremely disappointed"}
+      text: >
+        You live in an apartment where you enjoy a superb view of a green park. Due to
+        a new development project, your view will soon be obstructed by a roadway
+        structure and you will no longer be able to see the park. For your information,
+        85% of the residents in your building are in the same situation.
+    - raw: 3
+      condition_num: 2
+      factors: {valence: "gain", social_comparison: "absent"}
+      outcome_var: S3
+      outcome_question: "How satisfied would you be?"
+      scale: {min: 1, max: 7, min_label: "not at all satisfied", max_label: "extremely satisfied"}
+      text: >
+        You live in an apartment where your view is obstructed by a roadway structure.
+        Due to a new development project, the roadway structure will be removed and you
+        will soon enjoy a superb view of a green park.
+    - raw: 4
+      condition_num: 3
+      factors: {valence: "gain", social_comparison: "present"}
+      outcome_var: S4
+      outcome_question: "How satisfied would you be?"
+      scale: {min: 1, max: 7, min_label: "not at all satisfied", max_label: "extremely satisfied"}
+      text: >
+        You live in an apartment where your view is obstructed by a roadway structure.
+        Due to a new development project, the roadway structure will be removed and you
+        will soon enjoy a superb view of a green park. For your information, 85% of the
+        residents in your building are in the same situation.
+
+outcomes:
+  # No `var`: each arm supplies its own. Question and scale are also overridden
+  # per arm, so these study-level values are only fallbacks.
+  - task_num: 0
+    question: "How would you feel about this change?"
+    scale: {min: 1, max: 7, min_label: "not at all", max_label: "extremely"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [77, 98, 99]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  urban_rural: METRO
+  internet_access: INTERNET
+  party_id: PartyID7
