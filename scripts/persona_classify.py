@@ -50,6 +50,9 @@ REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
 OUT = REPO / "data" / "catalog" / "persona_candidates.json"
 
+# See `pick`: narrow on purpose, and validated against 19 known answers.
+TIE_DELTA = 0.03
+
 # Deliberately wide. Precision is Jev's job; this only has to avoid MISSING a
 # variable, because a candidate never offered can never be chosen.
 PATTERNS = {
@@ -108,12 +111,22 @@ class Candidate:
         )
 
 
+# An open text box is not a coded category and cannot be harmonised as one, so
+# it must not compete. `pjneh` asked race as several checkboxes plus a free-text
+# box, and the granularity tiebreak duly preferred the text box — 21 distinct
+# typed strings beat a 2-level checkbox. Excluded by shape rather than by score,
+# because a high score there is not wrong: it IS the respondent's race.
+FREE_TEXT = re.compile(r"_OE$|\bTEXTBOX\b|\bopen.?end|\bverbatim\b|specify.*text", re.I)
+
+
 def candidates_for(ds: spss.Dataset, field: str) -> list[Candidate]:
     pat = re.compile(PATTERNS[field], re.I)
     out = []
     for col in ds.df.columns:
         label = (ds.column_labels.get(col) or "").strip()
         if not (pat.search(col) or pat.search(label)):
+            continue
+        if FREE_TEXT.search(col) or FREE_TEXT.search(label):
             continue
         labels = ds.value_labels.get(col, {})
         vals = [str(v) for _, v in sorted(labels.items())]
@@ -187,20 +200,46 @@ def pick(cands: list[Candidate]) -> Candidate:
     than judgment: take the finest-grained version, because a coarser one can
     always be derived from it and never the reverse.
 
-    So Jev decides WHICH KIND of variable each column is; this decides which of
-    the survivors to keep. Keeping those two steps apart is what stops us
-    asking a model a question that code can answer exactly.
+    But granularity is ONLY a valid tiebreak among candidates measuring the
+    same construct, and that has caught me out three times now:
+
+      zrwjp   Q3c "how much do you earn per year" (0.55, many levels) beat
+              PPINCIMP — personal earnings, not household income
+      a5v96   ppcm0160 "Occupation (detailed)" (0.86, 31 levels) beat PPWORK
+              "Current Employment Status" (0.92, 9 levels) — occupation is not
+      yv2ta   employment status, and both are genuinely respondent attributes,
+              which is why Jev rated both highly and correctly
+
+    So the window is deliberately narrow: 0.03, the value at which every known
+    answer resolves correctly with margin (0.05 is the widest that works at
+    all). It is a tuned number, not a principled one — the thing that would
+    settle these cases properly is asking Jev whether two candidates measure
+    the same construct, which is not built. Until then `SPREAD_WARN` surfaces
+    the cases where the tiebreak is doing real work rather than confirming an
+    obvious winner.
     """
     live = [c for c in cands if c.is_attribute >= 0.5] or cands
-    # Granularity only breaks a tie among candidates Jev rates EQUALLY. Ranking
-    # on levels first picked `zrwjp`'s Q3c ("How much do you earn per year
-    # before taxes", 0.55) over PPINCIMP, because Q3c has more levels — but Q3c
-    # is PERSONAL EARNINGS, a different construct from HOUSEHOLD INCOME, which
-    # is precisely why Jev scored it 0.55 and not 0.9. The confidence was
-    # carrying real information and the tiebreak was throwing it away.
     best = max(c.is_attribute for c in live)
-    contenders = [c for c in live if best - c.is_attribute <= 0.10]
+    contenders = [c for c in live if best - c.is_attribute <= TIE_DELTA]
     return max(contenders, key=lambda c: (c.n_levels, c.is_attribute))
+
+
+def tiebreak_was_load_bearing(cands: list[Candidate]) -> bool:
+    """True when the winner won on granularity rather than on score.
+
+    Those are the picks worth a human glance, because they are exactly the
+    shape of the three construct-confusions above.
+    """
+    live = [c for c in cands if c.is_attribute >= 0.5] or cands
+    if len(live) < 2:
+        return False
+    best = max(c.is_attribute for c in live)
+    contenders = [c for c in live if best - c.is_attribute <= TIE_DELTA]
+    if len(contenders) < 2:
+        return False
+    winner = pick(cands)
+    top_scorer = max(live, key=lambda c: c.is_attribute)
+    return winner.var != top_scorer.var
 
 
 def data_file_for(study_id: str) -> Path | None:
@@ -253,9 +292,12 @@ def main() -> int:
             classify(client, args.field, titles.get(code, code), cands)
             results[code] = cands
             best = pick(cands)
+            flag = (
+                "  [tiebreak decided this — check it]" if tiebreak_was_load_bearing(cands) else ""
+            )
             print(
                 f"{code}  {len(cands)} candidates -> {best.var} "
-                f"({best.is_attribute:.2f}, {best.kind})"
+                f"({best.is_attribute:.2f}, {best.kind}){flag}"
             )
         except Exception as exc:
             print(f"ERR   {code}: {type(exc).__name__}: {str(exc)[:90]}")

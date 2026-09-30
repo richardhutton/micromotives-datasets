@@ -1,0 +1,39 @@
+{
+  "canonical": {
+    "Less than high school": "Less than high school",
+    "High school": "High school",
+    "Some college to associate": "Some college to associate",
+    "Bachelors to postgraduate": "Bachelors to postgraduate"
+  },
+  "schemes": {
+    "7jt2f+9": {
+      "Less than high school": "Less than high school",
+      "High school": "High school",
+      "Some college": "Some college to associate",
+      "Bachelor's degree or higher": "Bachelors to postgraduate"
+    },
+    "b87sm_scenario1+1": {
+      "Less than HS": "Less than high school",
+      "HS graduate or equivalent": "High school",
+      "Vocational/tech school/some college/ associates": "Some college to associate",
+      "Bachelor's degree": "Bachelors to postgraduate",
+      "Post grad study/professional degree": "Bachelors to postgraduate"
+    },
+    "bf8p2+1": {
+      "No formal education": "Less than high school",
+      "1st, 2nd, 3rd, or 4th grade": "Less than high school",
+      "5th or 6th grade": "Less than high school",
+      "7th or 8th grade": "Less than high school",
+      "9th grade": "Less than high school",
+      "10th grade": "Less than high school",
+      "11th grade": "Less than high school",
+      "12th grade NO DIPLOMA": "Less than high school",
+      "HIGH SCHOOL GRADUATE - high school DIPLOMA or the equivalent (GED)": "High school",
+      "Some college, no degree": "Some college to associate",
+      "Associate degree": "Some college to associate",
+      "Bachelors degree": "Bachelors to postgraduate",
+      "Masters degree": "Bachelors to postgraduate",
+      "Professional or Doctorate degree": "Bachelors to postgraduate"
+    }
+  }
+}

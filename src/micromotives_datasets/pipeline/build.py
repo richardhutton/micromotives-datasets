@@ -15,6 +15,7 @@ import math
 from collections.abc import Iterator
 from typing import Any
 
+from ..persona.crosswalk import Crosswalk
 from ..recipe import Recipe
 from ..schema import Persona, Row
 from ..sources.spss import Dataset
@@ -51,7 +52,7 @@ def _codes_for(mapping: dict[str, Any], var: str) -> Any:
     return ()
 
 
-def _persona(ds: Dataset, row: Any, recipe: Recipe) -> Persona:
+def _persona(ds: Dataset, row: Any, recipe: Recipe, cw: Crosswalk | None = None) -> Persona:
     """Build a Persona by resolving each mapped source variable to its label."""
     fields: dict[str, Any] = {}
     extra: dict[str, str] = {}
@@ -82,6 +83,13 @@ def _persona(ds: Dataset, row: Any, recipe: Recipe) -> Persona:
         label = rewrite.get(code) if code is not None else None
         if label is None:
             label = ds.label(key, raw)
+        # Harmonise to the shared vocabulary, so rows from surveys that banded
+        # or categorised this attribute differently describe the same person the
+        # same way. An unmapped label passes through unchanged and is reported
+        # by QC rule 14 rather than silently blanked.
+        if cw is not None:
+            label = cw.apply(field, label)
+
         if field in known:
             # age / household_size are ints on the model; everything else is text.
             if field in {"age", "household_size"}:
@@ -98,6 +106,8 @@ def _persona(ds: Dataset, row: Any, recipe: Recipe) -> Persona:
 
 def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
     """Melt one study into canonical rows."""
+    # Loaded once per study: the crosswalk is small and identical for every row.
+    cw = Crosswalk.load()
     arms = recipe.condition.by_raw()
     missing = set(recipe.missing_codes)
     cvars = recipe.condition.variables
@@ -132,7 +142,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
         if arm is None:  # arm not declared in the recipe -> not part of the experiment
             continue
 
-        persona = _persona(ds, row, recipe)
+        persona = _persona(ds, row, recipe, cw)
         condition_text = recipe.condition.render(arm)
 
         for outcome in recipe.outcomes:

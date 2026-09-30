@@ -205,6 +205,22 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             "instruction contradicts the response it is attached to"
         )
 
+    # --- Rule 14: persona values must be in the canonical vocabulary --------
+    # The crosswalk passes an unmapped label through unchanged rather than
+    # blanking it, because silently thinning the corpus as new schemes arrive is
+    # the exact failure this whole layer exists to prevent. So the loudness has
+    # to live here: a sixth ethnicity scheme, or a new income banding, shows up
+    # as a warning naming the values rather than as quietly divergent personas.
+    from .._persona_vocab import unmapped_values
+
+    if stray := unmapped_values(rows):
+        shown = "; ".join(f"{f}: {sorted(v)[:3]}" for f, v in sorted(stray.items()))
+        rep.warnings.append(
+            f"persona values outside the canonical vocabulary — {shown} "
+            "— re-run scripts/persona_harmonise.py for those fields, or the corpus "
+            "will describe the same person two ways"
+        )
+
     # --- Rule 12: no persona field may render a non-answer label ------------
     # Found by sweeping built rows across the whole corpus: 5 of 14 recipes were
     # putting panel boilerplate into persona text, and `b87sm` shipped 93 rows of

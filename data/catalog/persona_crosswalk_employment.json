@@ -1,0 +1,31 @@
+{
+  "canonical": {
+    "disabled": "Disabled",
+    "employed_unspecified": "Employed unspecified",
+    "other_residual": "Other",
+    "retired": "Retired",
+    "self_employed": "Self employed",
+    "unemployed_looking": "Unemployed looking",
+    "unemployed_not_looking": "Unemployed not looking"
+  },
+  "schemes": {
+    "7jt2f+9": {
+      "Working - as a paid employee": "Employed unspecified",
+      "Working - self-employed": "Self employed",
+      "Not working - on temporary layoff from a job": "Unemployed not looking",
+      "Not working - looking for work": "Unemployed looking",
+      "Not working - retired": "Retired",
+      "Not working - disabled": "Disabled",
+      "Not working - other": "Other"
+    },
+    "b87sm_scenario1+3": {
+      "Working - as a paid employee": "Employed unspecified",
+      "Working - self-employed": "Self employed",
+      "Not working - on temporary layoff from a job": "Unemployed not looking",
+      "Not working - looking for work": "Unemployed looking",
+      "Not working - retired": "Retired",
+      "Not working - disabled": "Disabled",
+      "Not working - other": "Other"
+    }
+  }
+}
