@@ -1,0 +1,145 @@
+study_id: zrwjp
+source: tess
+title: "The Barriers of Buying Happier Time"
+data_file: TESS3_180_Whillans_Client.sav
+
+# Task 0 (cost in dollars) matches SocSci210 exactly. Task 1 (time saved) does
+# NOT, deliberately — see `notes`. Since one task diverges by design, a whole-study
+# numeric crosscheck would report a false failure.
+comparable_to_socsci210: false
+
+notes: >
+  TESS3 180 (Whillans). Simple 2-arm design: the Experimental arm is shown its own
+  computed hourly wage before estimating the cost and time of outsourcing a disliked
+  task; the Control arm is not.
+
+  Two things to know about this reconstruction:
+
+  1. CONDITION MAPPING IS REVERSED relative to the usual raw-1 convention.
+     SocSci210 uses condition_num 0 = Control (raw 2) and 1 = Experimental (raw 1).
+     The arm sizes (635 vs 640) are too close for counts to settle it; the mapping is
+     fixed by content — only their condition_num=1 text contains the wage-display
+     step, which the questionnaire restricts to XTESS180=1. We follow their indexing
+     so the crosscheck on task 0 is like-for-like.
+
+  2. WE DEVIATE FROM SOCSCI210 ON BOTH OUTCOMES, ON PURPOSE. Their numeric answers
+     for this study are wrong in three independent ways, each verified by exact
+     reproduction of their distribution:
+
+     (a) WRONG VARIABLE on task 0. Their stimulus quotes Q5 ("how much would it COST
+         to outsource this task") but their answers come from Q10 ("how much do you
+         SPEND in a typical month") — a different question, and a baseline measure
+         rather than the experimental outcome. Q10's "$0" band has n=986, exactly
+         their count of zeros. We use Q5, the actual dependent variable.
+
+     (b) COMMA-PARSING BUG. The band "$1,001-$2,500" became 1 rather than 1001, as if
+         parsed by taking the digits before the comma. Their distribution reproduces
+         only when band 16 maps to 1; three respondents spending $1,001-$2,500 a
+         month are recorded as $1.
+
+     (c) MINUTES CONFLATED WITH HOURS on task 1. Q6's bands mix units: bands 2-6 are
+         MINUTES ("1-4 minutes"), bands 7-17 are HOURS ("1-3 hours"). They took each
+         lower bound at face value, so both became 1 under a stimulus reading
+         "monthly hours saved" — a 60x error on sub-hour bands, and the two groups
+         become indistinguishable.
+
+     We express dollars as the band's lower bound, and ALL time in MINUTES, which is
+     monotonic and collision-free.
+
+condition:
+  source_var: XTESS180
+  factors: [wage_shown]
+  shared_context: >
+    You were asked how many hours you work each week, how many weeks you work each
+    year, and how much you earn per year before taxes.
+  arms:
+    - raw: 2
+      condition_num: 0
+      factors: {wage_shown: "no"}
+      text: >
+        You were then asked to name one task you dislike and would like to outsource,
+        and to estimate what outsourcing it would cost and save you.
+    - raw: 1
+      condition_num: 1
+      factors: {wage_shown: "yes"}
+      text: >
+        You were then shown your approximate hourly wage, calculated from those
+        answers and described as "the best estimate of your approximate hourly wage
+        (i.e., the amount of money you earn on average each hour)", before being asked
+        to name one task you dislike and would like to outsource, and to estimate what
+        outsourcing it would cost and save you.
+
+outcomes:
+  # Banded dollars -> the lower bound of each band (matches SocSci210).
+  - var: Q5
+    task_num: 0
+    question: "How much money per month do you think it would cost to outsource this task to others?"
+    scale:
+      min: 0
+      max: 2500
+      min_label: "$0"
+      max_label: "more than $2,500"
+    response_recode:
+      1: 0        # $0
+      2: 1        # $1-$20
+      3: 21       # $21-$40
+      4: 41       # $41-$60
+      5: 61       # $61-$80
+      6: 81       # $81-$100
+      7: 101      # $101-$200
+      8: 201      # $201-$300
+      9: 301      # $301-$400
+      10: 401     # $401-$500
+      11: 501     # $501-$600
+      12: 601     # $601-$700
+      13: 701     # $701-$800
+      14: 801     # $801-$900
+      15: 901     # $901-$1,000
+      16: 1001    # $1,001-$2,500
+      17: 2500    # more than $2,500
+
+  # Banded time -> the lower bound of each band, expressed consistently in MINUTES.
+  # This is where we deliberately differ from SocSci210 (see notes).
+  - var: Q6
+    task_num: 1
+    question: "How much time per month would outsourcing this task to others save you?"
+    scale:
+      min: 0
+      max: 3000
+      min_label: "0 minutes"
+      max_label: "50 hours or more"
+    response_recode:
+      1: 0        # 0 minutes
+      2: 1        # 1-4 minutes
+      3: 5        # 5-9 minutes
+      4: 10       # 10-19 minutes
+      5: 20       # 20-39 minutes
+      6: 40       # 40-59 minutes
+      7: 60       # 1-3 hours
+      8: 240      # 4-6 hours
+      9: 420      # 7-9 hours
+      10: 600     # 10-12 hours
+      11: 780     # 13-15 hours
+      12: 960     # 16-18 hours
+      13: 1140    # 19-21 hours
+      14: 1320    # 22-29 hours
+      15: 1800    # 30-39 hours
+      16: 2400    # 40-49 hours
+      17: 3000    # 50 hours or more
+
+# Study-level fallback; both outcomes override it.
+response_recode: {1: 1}
+missing_codes: [-1]
+
+persona_map:
+  age: ppage
+  gender: ppgender
+  education: ppeducat
+  ethnicity: ppethm
+  income: ppincimp
+  marital_status: ppmarit
+  employment: ppwork
+  region: ppreg4
+  household_size: pphhsize
+  housing_type: pphouse
+  urban_rural: ppmsacat

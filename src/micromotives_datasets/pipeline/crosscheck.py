@@ -65,25 +65,36 @@ def _connect() -> Any:
     return con
 
 
-def find_shard(study_id: str) -> str | None:
-    """Which parquet shard holds this study? Reads only the study_id column."""
+def find_shards(study_id: str) -> list[str]:
+    """Which parquet shards hold this study? Reads only the study_id column.
+
+    A study can straddle a shard boundary (rows are not grouped by study), so
+    this returns EVERY shard containing it. Reading only the largest one
+    silently truncates the reference data.
+    """
     con = _connect()
     rows = con.execute(
         f"SELECT filename, count(*) AS n FROM read_parquet({SHARD_URLS!r}, filename=true) "
-        "WHERE study_id = ? GROUP BY 1 ORDER BY n DESC",
+        "WHERE study_id = ? GROUP BY 1 ORDER BY filename",
         [study_id],
     ).fetchall()
-    return rows[0][0] if rows else None
+    return [r[0] for r in rows]
 
 
-def fetch_socsci210(study_id: str, shard: str | None = None) -> dict[str, Any]:
+def find_shard(study_id: str) -> str | None:
+    """Deprecated: the single largest shard. Use `find_shards`."""
+    shards = find_shards(study_id)
+    return shards[0] if shards else None
+
+
+def fetch_socsci210(study_id: str, shards: list[str] | None = None) -> dict[str, Any]:
     """Pull the reference study's numeric profile (and its stimulus text)."""
-    shard = shard or find_shard(study_id)
-    if shard is None:
+    shards = shards or find_shards(study_id)
+    if not shards:
         raise LookupError(f"{study_id} not found in SocSci210")
     con = _connect()
     con.execute(
-        f"CREATE TABLE s AS SELECT * FROM read_parquet('{shard}') WHERE study_id = ?", [study_id]
+        f"CREATE TABLE s AS SELECT * FROM read_parquet({shards!r}) WHERE study_id = ?", [study_id]
     )
     n_rows, n_participants = con.execute(
         "SELECT count(*), count(DISTINCT participant) FROM s"

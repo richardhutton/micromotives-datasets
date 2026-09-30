@@ -96,7 +96,15 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
         rep.warnings.append(f"declared outcomes with no rows: {sorted(missing_t)}")
 
     # --- Rule 4: responses inside the declared scale ------------------------
+    # A recode can be declared at study, outcome or arm level, so the allowed
+    # set is the union of all of them.
     allowed = set(recipe.response_recode.values())
+    for outcome in recipe.outcomes:
+        if outcome.response_recode:
+            allowed |= set(outcome.response_recode.values())
+    for arm in recipe.condition.arms:
+        if arm.response_recode:
+            allowed |= set(arm.response_recode.values())
     if bad := set(rep.response_distribution) - allowed:
         rep.failures.append(f"responses outside declared scale: {sorted(bad)}")
 

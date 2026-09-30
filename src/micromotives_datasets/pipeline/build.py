@@ -77,12 +77,12 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
         persona = _persona(ds, row, recipe)
         condition_text = recipe.condition.render(arm)
 
-        # Both the answer variable and the answer coding can differ by arm:
-        # split-ballot studies ask each arm a different question, and
-        # option-order experiments reverse the codes between arms.
-        recode = recipe.recode_for(arm)
-
         for outcome in recipe.outcomes:
+            # Both the answer variable and its coding can vary: split-ballot
+            # studies ask each arm a different question, option-order designs
+            # reverse the codes per arm, and a study's items can sit on
+            # different scales (e.g. banded dollars vs banded minutes).
+            recode = recipe.recode_for(arm, outcome)
             var = recipe.outcome_var_for(outcome, arm)
             if var is None:
                 continue

@@ -108,6 +108,12 @@ class Outcome(BaseModel):
     task_num: int = Field(description="Canonical 0-based item index.")
     question: str = Field(description="The question wording.")
     scale: Scale
+    response_recode: dict[int, int] | None = Field(
+        default=None,
+        description="Item-specific raw->canonical map, for studies whose outcomes are on "
+        "different scales (e.g. one banded in dollars, another in minutes). Overridden "
+        "by an Arm's own recode.",
+    )
 
 
 class Recipe(BaseModel):
@@ -169,9 +175,19 @@ class Recipe(BaseModel):
                 )
         return self
 
-    def recode_for(self, arm: Arm) -> dict[int, int]:
-        """The answer map for an arm — its own if it has one, else the study's."""
-        return arm.response_recode if arm.response_recode is not None else self.response_recode
+    def recode_for(self, arm: Arm, outcome: Outcome | None = None) -> dict[int, int]:
+        """The answer map to use, most specific first.
+
+        Arm beats outcome beats study. An arm-level map exists because that arm
+        *presented* the options differently (option-order experiments); an
+        outcome-level map exists because that item is on a different scale
+        (dollars vs minutes). Arm wins because it describes what was shown.
+        """
+        if arm.response_recode is not None:
+            return arm.response_recode
+        if outcome is not None and outcome.response_recode is not None:
+            return outcome.response_recode
+        return self.response_recode
 
     def outcome_var_for(self, outcome: Outcome, arm: Arm) -> str | None:
         """The variable holding this arm's answer to this outcome."""

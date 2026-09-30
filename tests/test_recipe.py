@@ -82,3 +82,35 @@ def test_7jt2f_self_introduction_factor_matches_the_questionnaire() -> None:
     for raw in (5, 6, 7, 8):
         assert by_raw[raw].factors["self_introduction"] == "absent"
         assert "only by the label" in by_raw[raw].text
+
+
+def test_recode_resolution_order_is_arm_then_outcome_then_study(fixture_recipe) -> None:
+    """Arm beats outcome beats study (recipe.recode_for)."""
+    arm = fixture_recipe.condition.arms[0]
+    outcome = fixture_recipe.outcomes[0]
+    assert fixture_recipe.recode_for(arm, outcome) == fixture_recipe.response_recode
+
+    outcome.response_recode = {1: 100}
+    assert fixture_recipe.recode_for(arm, outcome) == {1: 100}
+
+    arm.response_recode = {1: 200}
+    assert fixture_recipe.recode_for(arm, outcome) == {1: 200}
+
+
+def test_real_zrwjp_recipe_uses_per_outcome_scales() -> None:
+    rec = recipe_mod.load(REPO / "recipes" / "zrwjp.yaml")
+    dollars, minutes = rec.outcomes[0], rec.outcomes[1]
+    assert dollars.var == "Q5" and minutes.var == "Q6"
+    # Dollars: band lower bounds, including the band SocSci210 mis-parsed as 1.
+    assert dollars.response_recode is not None
+    assert dollars.response_recode[16] == 1001
+    # Time: everything in minutes, so sub-hour and hour bands cannot collide.
+    assert minutes.response_recode is not None
+    assert minutes.response_recode[2] == 1  # "1-4 minutes"
+    assert minutes.response_recode[7] == 60  # "1-3 hours"
+    assert minutes.response_recode[2] != minutes.response_recode[7]
+    # Monotonic: a higher band must never mean less time.
+    vals = [minutes.response_recode[b] for b in range(1, 18)]
+    assert vals == sorted(vals)
+    # We knowingly disagree with SocSci210 here.
+    assert rec.comparable_to_socsci210 is False

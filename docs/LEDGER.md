@@ -69,6 +69,41 @@ study; those drop to the same footing as the blind 120.
 
 ---
 
+### Study 3 — `zrwjp` (2-arm, banded quantity outcomes)
+
+Chosen as a simple 2-arm design. The design was simple; the **outcome coding** was not.
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 9 | A study's outcomes can sit on **different scales** (banded dollars vs banded time) | **method** | `Outcome.response_recode`; resolution order is arm → outcome → study |
+| 10 | QC rule 4 validated responses against the study-level recode only, so per-outcome recodes false-failed | **method** (bug in our code) | Rule 4 now unions study + outcome + arm recodes |
+| 11 | **A study can span more than one parquet shard**; `find_shard` returned only the largest, silently truncating the reference data (915 of 1,263 rows) | **method** (bug in our code) | `find_shards` returns all; `fetch_socsci210` reads them all. `7jt2f` was single-shard, so its earlier PASS was genuine |
+| 12 | Condition mapping is **reversed** here (condition_num 0 = Control = raw 2), and arm sizes 635/640 are too close for counts to settle it | one-off | Declared explicitly; fixed by content, not by counts. Reinforces finding #7 |
+
+**Three numeric defects found in SocSci210 for this study** — each verified by
+reproducing their distribution exactly:
+
+| | Defect | Proof |
+|---|---|---|
+| a | **Wrong variable**: task 0 answers come from `Q10` ("how much do you *spend*") while the stimulus quotes `Q5` ("how much would it *cost*") | `Q10`'s `$0` band n=986 = their zero count exactly |
+| b | **Comma-parsing bug**: `"$1,001-$2,500"` → `1`, not `1001` | their distribution reproduces only with band 16 → 1 |
+| c | **Minutes conflated with hours**: `"1-4 minutes"` and `"1-3 hours"` both → `1`, under a stimulus reading "monthly hours saved" | exact match under the conflated map |
+
+Outcome: **QC PASS**, 2,532 rows. Marked `comparable_to_socsci210: false` — we
+deliberately disagree on both outcomes.
+
+→ **Revises an earlier conclusion.** "Numbers correct 5/5" was wrong. The accurate
+statement: SocSci210's **arm assignment and row structure** have been correct in every
+study checked, but **response values are unreliable wherever a band→quantity
+conversion is involved**. Plain ordinals and option-order flips were handled
+correctly; all three conversions in this study were not.
+
+→ **Consequence:** a crosscheck failure is a signal to *investigate*, not evidence
+that we are wrong. Agreement is strong evidence both sides are right; disagreement
+must be adjudicated against the questionnaire.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.
