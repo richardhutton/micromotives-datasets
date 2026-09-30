@@ -132,6 +132,16 @@ def doc_to_text(path: Path) -> Path | None:
     return None
 
 
+def _is_macos_sidecar(path: Path) -> bool:
+    """AppleDouble resource forks that macOS writes into zip archives.
+
+    They mirror every real filename with a `._` prefix and sit under
+    `__MACOSX/`, so without this they get classified as data or documentation
+    and a study appears to have twice the files it has.
+    """
+    return path.name.startswith("._") or "__MACOSX" in path.parts
+
+
 def fetch(osf_code: str, dest_root: Path, study_id: str | None = None) -> FetchResult:
     """Download a study's data + documentation and make the docs readable."""
     study_id = study_id or osf_code
@@ -163,7 +173,7 @@ def fetch(osf_code: str, dest_root: Path, study_id: str | None = None) -> FetchR
 
     # Classify everything now on disk (including anything unzipped).
     for p in sorted(dest.rglob("*")):
-        if not p.is_file():
+        if not p.is_file() or _is_macos_sidecar(p):
             continue
         suffix = p.suffix.lower()
         if suffix in {".sav", ".dta", ".por"}:

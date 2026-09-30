@@ -167,6 +167,31 @@ we cannot evidence is exactly the failure we are trying not to repeat.
 
 ---
 
+## Batch 1 — first pass with Jev
+
+Five TESS studies fetched (`bf8p2`, `h6zk9`, `dh3nj`, `sd7cf`, `savkp`), all with data
+and a questionnaire. Jev ran first-pass assignment-variable identification before any
+recipe was written — the honest test, since these had not been built by hand.
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 19 | macOS zips carry AppleDouble sidecars (`._name`, `__MACOSX/`) which were being classified as data and documentation, doubling the apparent file count | **method** | `_is_macos_sidecar` filter in `osf.py` |
+| 20 | **A `Choice` is only as good as its option list.** A keyword allowlist excluded `CALARCO_VIGNETTE` (its label says "vignette", which was not a hint word), and Jev then picked a question-order variable **at 0.99** — a confident-wrong answer created entirely by the caller | **method** | Denylist, not allowlist; plus an explicit `NONE_OF_THESE` option so it can decline |
+| 21 | The same mistake again, subtler: ranking candidates by fewest distinct values filled the list with low-cardinality **demographics** and pushed the 12-arm manipulation out | **method** | Offer every plausible variable (cap 60). Narrowing the options is the caller quietly making the decision it is asking the model to make |
+| 22 | **Narrow option lists inflate confidence.** `h6zk9` scored 0.79 against ~10 options and **0.59** against ~44. Same question, same model | **method** | The calibration in `jev_calibration.py` used shortlists and is therefore optimistic. Re-measure with realistic option sets before setting a routing threshold |
+
+After the fixes, `dh3nj` returns the correct `CALARCO_VIGNETTE` at 0.80 (flagged, not
+auto-accepted) and `NONE_OF_THESE` is available as a real answer.
+
+**Revises the Jev conclusion.** The earlier "13 of 19 auto-accept at 0.85 with zero
+errors" was measured under artificially narrow choices. With honest option sets,
+confidence drops and fewer answers clear the threshold. The realistic value looks less
+like *auto-accept* and more like *a ranked shortlist that puts the right answer first* —
+still worth having, since ranking 44 variables is the tedious part, but it does not
+remove the human.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.
