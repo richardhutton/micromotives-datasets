@@ -29,8 +29,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from micromotives_datasets import recipe as recipe_mod  # noqa: E402
-from micromotives_datasets.sources import spss  # noqa: E402
+from micromotives_datasets import recipe as recipe_mod
+from micromotives_datasets.sources import spss
 
 try:
     import typesafe_sdk as ts
@@ -174,7 +174,7 @@ def build_cases() -> list[Case]:
         # Ground truth: the recipe's condition.source_var, verified against the
         # questionnaire and (where comparable) SocSci210's cell counts.
         candidates = [c for c in ds.df.columns if c != rec.condition.source_var][:9]
-        options = {rec.condition.source_var: "", **{c: "" for c in candidates}}
+        options = {rec.condition.source_var: "", **dict.fromkeys(candidates, "")}
         cases.append(
             Case(
                 case_id=f"{label}/assignment-var",
@@ -287,7 +287,7 @@ def main() -> int:
     for case in cases:
         try:
             resp = client.system_one(state=case.state, questions=case.questions)  # type: ignore[arg-type]
-        except Exception as exc:  # noqa: BLE001 - harness reports, never raises
+        except Exception as exc:
             print(f"  {case.case_id}: call failed — {type(exc).__name__}: {str(exc)[:120]}")
             continue
         for key, expected in case.expected.items():
