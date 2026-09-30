@@ -44,8 +44,8 @@ warnings.filterwarnings("ignore")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from micromotives_datasets.persona.categories import (  # noqa: E402
-    CatScheme,
     Category,
+    CatScheme,
     canonical,
     crosswalk,
 )
@@ -121,7 +121,8 @@ def schemes_for(field: str) -> dict[tuple[str, ...], list[str]]:
     for code, cs in cands.items():
         chosen = pick(cs)
         files = [
-            p for p in (RAW / code).rglob("*")
+            p
+            for p in (RAW / code).rglob("*")
             if p.suffix.lower() in {".sav", ".dta"} and not p.name.startswith("._")
         ]
         if not files:
