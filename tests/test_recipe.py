@@ -114,3 +114,49 @@ def test_real_zrwjp_recipe_uses_per_outcome_scales() -> None:
     assert vals == sorted(vals)
     # We knowingly disagree with SocSci210 here.
     assert rec.comparable_to_socsci210 is False
+
+
+def test_assignment_split_across_two_variables(fixture_recipe) -> None:
+    """A 2x2 randomised through one variable per factor, not a combined code.
+
+    z358z holds scenario in XTESS175 and consent alternative in DOV_OPTION;
+    there is no single four-level assignment variable in the file.
+    """
+    data = fixture_recipe.model_dump()
+    data["condition"]["source_var"] = None
+    data["condition"]["source_vars"] = ["A", "B"]
+    data["condition"]["factors"] = ["framing", "consent"]
+    for i, (arm, a, b) in enumerate(zip(data["condition"]["arms"], (1, 1), (1, 2), strict=False)):
+        arm["raw"] = None
+        arm["raw_values"] = {"A": a, "B": b}
+        arm["condition_num"] = i
+        arm["factors"] = {"framing": "x", "consent": f"opt{b}"}
+    rec = recipe_mod.Recipe.model_validate(data)
+    assert rec.condition.variables == ["A", "B"]
+    assert set(rec.condition.by_raw()) == {(1, 1), (1, 2)}
+
+
+def test_duplicate_composite_key_rejected(fixture_recipe) -> None:
+    data = fixture_recipe.model_dump()
+    data["condition"]["source_var"] = None
+    data["condition"]["source_vars"] = ["A", "B"]
+    data["condition"]["factors"] = []
+    for arm in data["condition"]["arms"]:
+        arm["raw"] = None
+        arm["raw_values"] = {"A": 1, "B": 1}  # identical -> must be rejected
+        arm["factors"] = {}
+    with pytest.raises(ValueError, match="duplicate"):
+        recipe_mod.Recipe.model_validate(data)
+
+
+def test_arm_missing_a_source_variable_rejected(fixture_recipe) -> None:
+    data = fixture_recipe.model_dump()
+    data["condition"]["source_var"] = None
+    data["condition"]["source_vars"] = ["A", "B"]
+    data["condition"]["factors"] = []
+    for arm in data["condition"]["arms"]:
+        arm["raw"] = None
+        arm["raw_values"] = {"A": 1}  # B missing
+        arm["factors"] = {}
+    with pytest.raises(ValueError, match="missing raw_values"):
+        recipe_mod.Recipe.model_validate(data)

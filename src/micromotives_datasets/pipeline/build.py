@@ -56,10 +56,11 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
     """Melt one study into canonical rows."""
     arms = recipe.condition.by_raw()
     missing = set(recipe.missing_codes)
-    cvar = recipe.condition.source_var
+    cvars = recipe.condition.variables
 
-    if cvar not in ds.df.columns:
-        raise ValueError(f"condition variable {cvar!r} not in data")
+    for cvar in cvars:
+        if cvar not in ds.df.columns:
+            raise ValueError(f"condition variable {cvar!r} not in data")
     for outcome in recipe.outcomes:
         for declared_arm in recipe.condition.arms:
             var = recipe.outcome_var_for(outcome, declared_arm)
@@ -67,10 +68,10 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 raise ValueError(f"outcome variable {var!r} not in data")
 
     for idx, row in ds.df.iterrows():
-        code = row[cvar]
-        if _is_blank(code):
+        codes = [row[v] for v in cvars]
+        if any(_is_blank(c) for c in codes):
             continue
-        arm = arms.get(int(float(code)))
+        arm = arms.get(tuple(int(float(c)) for c in codes))
         if arm is None:  # arm not declared in the recipe -> not part of the experiment
             continue
 

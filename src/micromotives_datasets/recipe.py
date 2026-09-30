@@ -48,7 +48,15 @@ class Scale(BaseModel):
 class Arm(BaseModel):
     """One randomised arm: its raw code, its canonical index, and what it showed."""
 
-    raw: int = Field(description="Value of the source condition variable.")
+    raw: int | None = Field(
+        default=None, description="Value of the single source condition variable."
+    )
+    raw_values: dict[str, int] | None = Field(
+        default=None,
+        description="Value of EACH source variable, when the assignment is split across "
+        "several (a 2x2 held as two separate randomisation variables). Use with "
+        "Condition.source_vars.",
+    )
     condition_num: int = Field(description="Canonical 0-based index. DECLARED, never inferred.")
     factors: dict[str, str] = Field(
         default_factory=dict,
@@ -87,7 +95,15 @@ class Arm(BaseModel):
 class Condition(BaseModel):
     """The experimental manipulation."""
 
-    source_var: str = Field(description="Variable in the data holding the arm code.")
+    source_var: str | None = Field(
+        default=None, description="Variable in the data holding the arm code."
+    )
+    source_vars: list[str] = Field(
+        default_factory=list,
+        description="Several variables that JOINTLY define the arm, when a factorial "
+        "design is randomised through one variable per factor rather than a single "
+        "combined code. Each arm then declares `raw_values` for all of them.",
+    )
     shared_context: str | None = Field(
         default=None,
         description="Context identical across arms, stated ONCE rather than repeated "
@@ -104,8 +120,26 @@ class Condition(BaseModel):
             return f"{self.shared_context.strip()} {arm.text.strip()}"
         return arm.text.strip()
 
-    def by_raw(self) -> dict[int, Arm]:
-        return {a.raw: a for a in self.arms}
+    @property
+    def variables(self) -> list[str]:
+        """Every variable needed to determine an arm."""
+        return self.source_vars or ([self.source_var] if self.source_var else [])
+
+    def key_for(self, values: dict[str, int]) -> tuple[int, ...]:
+        """The lookup key for a respondent's assignment codes."""
+        return tuple(values[v] for v in self.variables)
+
+    def by_raw(self) -> dict[tuple[int, ...], Arm]:
+        """Arms indexed by their assignment key (a 1-tuple in the usual case)."""
+        out: dict[tuple[int, ...], Arm] = {}
+        for arm in self.arms:
+            if self.source_vars:
+                assert arm.raw_values is not None
+                out[tuple(arm.raw_values[v] for v in self.source_vars)] = arm
+            else:
+                assert arm.raw is not None
+                out[(arm.raw,)] = arm
+        return out
 
 
 class Outcome(BaseModel):
@@ -164,9 +198,28 @@ class Recipe(BaseModel):
         nums = [a.condition_num for a in self.condition.arms]
         if len(set(nums)) != len(nums):
             raise ValueError(f"duplicate condition_num in {self.study_id}: {nums}")
-        raws = [a.raw for a in self.condition.arms]
-        if len(set(raws)) != len(raws):
-            raise ValueError(f"duplicate raw arm code in {self.study_id}: {raws}")
+        if not self.condition.variables:
+            raise ValueError(f"{self.study_id}: condition needs source_var or source_vars")
+        if self.condition.source_vars:
+            for arm in self.condition.arms:
+                missing = set(self.condition.source_vars) - set(arm.raw_values or {})
+                if missing:
+                    raise ValueError(
+                        f"{self.study_id}: an arm is missing raw_values for {sorted(missing)}"
+                    )
+        else:
+            if any(a.raw is None for a in self.condition.arms):
+                raise ValueError(f"{self.study_id}: every arm needs `raw`")
+        # Build the key list from the arms directly — by_raw() is a dict, so
+        # duplicates would silently collapse and never be caught.
+        keys = [
+            tuple(arm.raw_values[v] for v in self.condition.source_vars)  # type: ignore[index]
+            if self.condition.source_vars
+            else (arm.raw,)
+            for arm in self.condition.arms
+        ]
+        if len(set(keys)) != len(keys):
+            raise ValueError(f"duplicate raw arm code in {self.study_id}: {keys}")
         tasks = [o.task_num for o in self.outcomes]
         if len(set(tasks)) != len(tasks):
             raise ValueError(f"duplicate task_num in {self.study_id}: {tasks}")

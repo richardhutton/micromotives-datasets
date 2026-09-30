@@ -301,6 +301,35 @@ we can give it.
 
 ---
 
+
+### Maker #2 — `z358z`, and a schema gap it could not work around
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 33 | **A factorial design can be randomised through one variable per factor**, with no combined assignment code anywhere in the file. `z358z` holds scenario in `XTESS175` and consent alternative in `DOV_OPTION`, fully crossed (503/558/546/523). `Condition` assumed a single `source_var`, so the consent factor could not be expressed at all | **method** | `Condition.source_vars` (several variables that jointly define the arm) + `Arm.raw_values`. Single-variable recipes are unchanged; all seven existing ones still build |
+
+The maker handled the gap the right way: it built the factor it could express, **documented
+the loss at length rather than hiding it**, and — crucially — **omitted the paragraph that
+varies by the factor it could not express**, rather than guessing at it. It also kept
+`comparable_to_socsci210: true` deliberately so the disagreement stayed visible, accepting
+a FAIL over a silent skip.
+
+Its numbers independently confirm the build: `n_rows` 10,445, participants 2,096 and the
+full response distribution all match SocSci210 **exactly**; only the condition index
+differs, and it decomposes precisely (their 0+1 = our 0, their 2+3 = our 1).
+
+It also found that **SocSci210's four conditions render only two distinct stimulus
+strings** — they kept the four-way index but dropped the consent factor from the text.
+Our QC rule 1 would fail that. Same defect class as `sd7cf`.
+
+**Maker/checker verdict so far:** two agents, two studies nobody had built, both producing
+QC-clean recipes with verbatim-checked arm text, explicit uncertainty lists, and numeric
+evidence for every claim of disagreement. One caught a mislabelled order variable that
+fooled Jev at confidence 1.00; the other found a schema limitation and refused to fabricate
+around it. This is the strongest argument yet that the ~188 remaining studies are tractable.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.
