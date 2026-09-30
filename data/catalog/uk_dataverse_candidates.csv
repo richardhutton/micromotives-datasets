@@ -1,0 +1,13 @@
+source,status,doi_or_id,title,authors,topic,design,licence,note
+Harvard Dataverse,NEW-confirmed,10.7910/DVN/QQM5MC,A Tale of Two Peoples: Motivated Reasoning after the Brexit Vote,"Sorace, Hobolt",political cognition,experiment,CC0,
+Harvard Dataverse,NEW-confirmed,10.7910/DVN/TLT65Z,The Better Angels of Our Nature: Anti-Prejudice Norm (GB & Germany),"Blinder, Ford, Ivarsflaten",prejudice / immigration norms,experiment,CC0,
+Harvard Dataverse,NEW-confirmed,10.7910/DVN/X08IVC,Brexit as an Identity: Political Identities and Policy Norms,Tilley,identity / policy attitudes,experiment,CC0,
+Harvard Dataverse,NEW-confirmed,10.7910/DVN/LOGVPZ,Mind the Gap: Why Wealthy Voters Support Brexit,"Green, Pahontu",economic risk / Brexit,experiment (BES-heavy),CC0,
+UKDS ReShare,rejected,10.5255/UKDA-SN-855964,"Dreoni, Ilda and Schaafsma, Marije and Mentzakis, Emmanouil (2022). Preferences for Forest Benefits: Are Distributive Justice Principles Ref",,environment (forests),discrete-choice,," reject: Malawi sample, not UK"
+UKDS ReShare,verified — UKDS safeguarded,10.5255/UKDA-SN-857401,"Kpokiri, Eneyi (2025). Preferences for Sexual Health Services Among Middle-Aged and Older Adults in the United Kingdom, 2023.",,health (sexual health services),discrete-choice / stated-preference,safeguarded (UKDS registration + EUL; NOT open/CC0),
+UKDS ReShare,verified — UKDS safeguarded,10.5255/UKDA-SN-858683,"Koenig-Archibugi, Mathias (2026). A Survey Experiment with General Practitioners on International Agreements and Antimicrobial Resistance, 2",,"health policy (AMR, GP sample)",discrete-choice / stated-preference,safeguarded (UKDS registration + EUL; NOT open/CC0)," note: sample is GPs (professionals), not general public"
+UKDS ReShare,verified — UKDS safeguarded,10.5255/UKDA-SN-858763,"Butler, Simon and Higney, Anthony and Hanley, Nick (2026). Willingness to Pay for Birdsong: Stated Preference Survey Data, 2025.",,environment (birdsong valuation),discrete-choice / stated-preference,safeguarded (UKDS registration + EUL; NOT open/CC0),
+Harvard Dataverse,rejected,10.7910/DVN/AU6FCP,Risk & Preferences for Govt Healthcare Spending (UK COVID),,,,, reject: observational BES analysis
+Harvard Dataverse,rejected,10.7910/DVN/OYJHAM,Intergenerational Political Preferences GB,,,,, reject: observational attitudes survey
+Harvard Dataverse,rejected,10.7910/DVN/ARHZU4,Measuring Subgroup Preferences in Conjoint Experiments,,,,, reject: methods paper; reuses others' (US/Swiss) data
+Harvard Dataverse,rejected,10.7910/DVN/UDFLIA,Experiments on responsiveness of elected officials,,,,, reject: field experiment ON politicians; no respondent persona

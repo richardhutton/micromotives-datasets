@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# uv
+.uv/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Local scratch
+scratch/
+tmp/
+
+# ---------------------------------------------------------------------------
+# Licensed / redistribution-restricted microdata.
+#
+# We keep the CATALOG (data/catalog/*.csv — study lists, IDs, URLs) and the
+# built (P,c,o,r) rows we are licensed to hold, but NOT raw source downloads.
+#
+# UKDS "safeguarded" data (Innovation Panel SN 6849, BES restricted files) is
+# End-User-Licence only — NO redistribution. Keep it local; never commit it.
+# Same for any source whose licence forbids redeposit.
+# ---------------------------------------------------------------------------
+data/raw/
+data/processed/*.parquet
+data/processed/*.csv
+!data/processed/.gitkeep
