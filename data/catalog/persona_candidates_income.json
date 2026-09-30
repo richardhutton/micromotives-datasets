@@ -1,0 +1,3050 @@
+{
+  "3bzxg": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "3xy9j": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "3ydty": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4fsg5": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4kjtn": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4w9pz": [
+    {
+      "var": "T70_12",
+      "label": "[If I were in this teacher\u0092s class, it would be more important for me to learn t",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.78,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.79,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [],
+      "is_attribute": 0.8,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4zscf": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4zwv2": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5an26": [
+    {
+      "var": "Q26",
+      "label": "Which of these starting salaries is closest to what you think {Diane/David} should earn?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "$20,000-$39,999",
+        "$40,000-$59,999",
+        "$60,000-$79,999",
+        "$80,000-$99,999",
+        "$100,000-$119,999",
+        "$120,000-$140,000"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5b6tf": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5hqan": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5mt6r": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "6khjm": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.75,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.72,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [],
+      "is_attribute": 0.74,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "6s2q5": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "7jt2f": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "7rt4q": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "8ctbk": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "9263n": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "9xw67": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a2nbf": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a42yg": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.84,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a5v96": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "b87sm": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "bf8p2": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "bvkfc": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.81,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.79,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "c5r2f": [
+    {
+      "var": "Q4c_1",
+      "label": "[This company probably thinks most employees should set aside about 5% of their monthly earnings for retirement]What, if anything, does the default option tell you about what the company thinks most employees ought to do?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4c_2",
+      "label": "[This company probably thinks most employees do not need to set aside any earnings for retirement]What, if anything, does the default option tell you about what the company thinks most employees ought to do?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "c956y": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "pppa0115",
+      "label": "Q32A: In the past 2 years did you qualify for a residential energy income tax cr",
+      "n_levels": 4,
+      "values": [
+        "Not asked",
+        "Refused",
+        "Yes",
+        "No"
+      ],
+      "is_attribute": 0.04,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "cug34": [
+    {
+      "var": "DOV_EARNINGS",
+      "label": "Data Only Variable: Earnings Inserted Text",
+      "n_levels": 3,
+      "values": [
+        "Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month",
+        "Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month",
+        "They both work about forty hours per week, and each earn $2,000 a month"
+      ],
+      "is_attribute": 0.03,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "B01",
+      "label": "Couples organize their income in many different ways. Do you think Michelle and Anthony should:",
+      "n_levels": 4,
+      "values": [
+        "Refused",
+        "Have a shared account in which they both deposit all their earned income",
+        "Keep all their earned income in separate, individual accounts",
+        "Have both a shared account and separate, individual accounts"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "B08",
+      "label": "If [DOV_Person_B08 TEXT] receives an unexpected bonus at work, who should get to decide what to do with the additional income?",
+      "n_levels": 4,
+      "values": [
+        "Refused",
+        "{DOV_PERSON_B08} alone",
+        "{DOV_PERSON_B08} should consult {DOV_PERSON2_B08}, but {DOV_PERSON_B08} should ultimately decide",
+        "{DOV_PERSON_B08} and {DOV_PERSON2_B08} should decide together"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "dh3nj": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "e45hu": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "egmxd": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "es4xw": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 19,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "evnyh": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ftwqy": [
+    {
+      "var": "Q1",
+      "label": "Please estimate the average yearly salary in dollars in the occupation.",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q20",
+      "label": "What salary in dollars would you recommend for each applicant if the applicant were hired (the proposed salary range is $135,000-$180,000).",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "gzdnf": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "h6zk9": [
+    {
+      "var": "Q01",
+      "label": "What was your household income before taxes in 2015?",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q02",
+      "label": "According to the 2015 Current Population Survey, what percentage of US households earned less than your household?",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.12,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "CurrentIncome",
+      "label": "Data Only Variable : Captures current income from Q01",
+      "n_levels": 340,
+      "values": [],
+      "is_attribute": 0.76,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOMEWITHINBOUNDS",
+      "label": "Data Only Variable : Income within bounds",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.24,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "Q03",
+      "label": "Now that you have received this feedback, what percentage of US households do you think earned less than you, according to the 2015 Current Population Survey?",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q04",
+      "label": "How satisfied are you with your position in the income distribution?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Very satisfied",
+        "Satisfied",
+        "Somewhat satisfied",
+        "Neutral",
+        "Somewhat dissatisfied",
+        "Dissatisfied",
+        "Very dissatisfied"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "hjn6m": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "j6xgs": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "jf46x": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "jkspw": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "m52pd": [
+    {
+      "var": "AAM08",
+      "label": "What salary would you recommend for [Allison/Brad]?",
+      "n_levels": 3,
+      "values": [
+        "DON\u2019T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AAM09",
+      "label": "On a scale from one to seven, how confident are you in your hiring and salary de",
+      "n_levels": 10,
+      "values": [
+        "1 - Not at all confident",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 - Extremely confident",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AAM20",
+      "label": "Thinking about what you learned today about Wadsworth College, what do you think",
+      "n_levels": 14,
+      "values": [
+        "Less than 10% of applicants will be accepted",
+        "10% of applicants will be accepted",
+        "20% of applicants will be accepted",
+        "30% of applicants will be accepted",
+        "40% of applicants will be accepted",
+        "50% of applicants will be accepted",
+        "60% of applicants will be accepted",
+        "70% of applicants will be accepted",
+        "80% of applicants will be accepted",
+        "90% of applicants will be accepted",
+        "100% of applicants will be accepted",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AAM21",
+      "label": "According to what you have learned today, who earns more four-year college degre",
+      "n_levels": 5,
+      "values": [
+        "Women",
+        "Men",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "m7vhz": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "mebw9": [
+    {
+      "var": "Q4",
+      "label": "[INSERT [FIRSTNAME]'s] resume shows that they majored in [INSERT [MAJOR]] and earned a [INSERT [GPA]] grade point average (GPA). If you had to guess, how difficult do you think  [INSERT [FIRSTNAME]\u2019s] classes were in college?",
+      "n_levels": 10,
+      "values": [
+        "1 - Not at all difficult",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 - Extremely difficult",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.72,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.76,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.8,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "n8azj": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ndhyr": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "pjneh": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level household income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level household income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "pxb6n": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "py9q3": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "VIGNETTE1C_Income_Insert",
+      "label": "Vignette1C Income dependence text insert",
+      "n_levels": 2,
+      "values": [
+        "her family depends",
+        "her family does not depend"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "VIGNETTE2C_Income_Insert",
+      "label": "Vignette2C Income dependence text insert",
+      "n_levels": 2,
+      "values": [
+        "her family depends on her income",
+        "her family does not depend on her income because she has other resources at her disposal"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "VIGNETTE3C_Income_Insert",
+      "label": "Vignette3C Income dependence text insert",
+      "n_levels": 2,
+      "values": [
+        "his family depends",
+        "his family does not depend"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Vignette_4B_Income_Insert",
+      "label": "Vignette4B Income dependence text insert",
+      "n_levels": 2,
+      "values": [
+        "her family depends",
+        "her family does not depend"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Vignette_5B_Income_Insert",
+      "label": "Vignette5B Income dependence text insert",
+      "n_levels": 2,
+      "values": [
+        "her family depends on her income",
+        "her family does not depend on her income because she has other resources at her disposal"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Vignette_6B_Income_Insert",
+      "label": "Vignette6B Income dependence text insert",
+      "n_levels": 2,
+      "values": [
+        "his family depends",
+        "his family does not depend"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    }
+  ],
+  "q8ra3": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "qmfy4": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "rpw4u": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "rs65g": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "savkp": [
+    {
+      "var": "PPINCIMP",
+      "label": "HH income - profile and imputed",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.73,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sd7cf": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sffyb": [
+    {
+      "var": "Q10",
+      "label": "How much income do you personally earn in a year (before taxes), excluding the income of other people in your household?",
+      "n_levels": 5,
+      "values": [
+        "Refused",
+        "Less than $49,999",
+        "$50,000 to $99,999",
+        "$100,000 to $149,999",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.12,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10a",
+      "label": "More specifically, how much income do you personally earn in a year (before taxes), excluding the income of other people in your household?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "Less than $10,000",
+        "$10,000 to $19,999",
+        "$20,000 to $29,999",
+        "$30,000 to $39,999",
+        "$40,000 to $49,999"
+      ],
+      "is_attribute": 0.17,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10b",
+      "label": "More specifically, how much income do you personally earn in a year (before taxes), excluding the income of other people in your household?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "$50,000 to $59,999",
+        "$60,000 to $69,999",
+        "$70,000 to $79,999",
+        "$80,000 to $89,999",
+        "$90,000 to $99,999"
+      ],
+      "is_attribute": 0.12,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10c",
+      "label": "More specifically, how much income do you personally earn in a year (before taxes), excluding the income of other people in your household?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "$100,000 to $109,999",
+        "$110,000 to $119,999",
+        "$120,000 to $129,999",
+        "$130,000 to $139,999",
+        "$140,000 to $149,999"
+      ],
+      "is_attribute": 0.14,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "W2_2",
+      "label": "What is your current retirement saving rate, as a percent of your annual personal income?",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.04,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "W3_2",
+      "label": "What is your current retirement saving rate, as a percent of your annual personal income?",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.04,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sh4px": [
+    {
+      "var": "PPINCIMP",
+      "label": "HH income - profile and imputed",
+      "n_levels": 19,
+      "values": [],
+      "is_attribute": 0.64,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "t936a": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.82,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "v3bfk": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.81,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [],
+      "is_attribute": 0.84,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "vhycz": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "w7mnc": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "wmsah": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "x2ztf": [
+    {
+      "var": "INCOME",
+      "label": "",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.68,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.68,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "",
+      "n_levels": 9,
+      "values": [],
+      "is_attribute": 0.73,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "xweq8": [
+    {
+      "var": "RACEDIF2",
+      "label": "[Because most Black people have less in-born ability to learn?] On the average,",
+      "n_levels": 3,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "ABPOOR",
+      "label": "[If the family has a very low income and cannot afford any more children?] Do yo",
+      "n_levels": 3,
+      "values": [],
+      "is_attribute": 0.07,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q9_1",
+      "label": "[Employment (wages) for you, or other members of your household] Does your house",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.14,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_2",
+      "label": "[Social Security] Does your household receive income from any of the following?",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.08,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_4",
+      "label": "[Business, farm, or self-employment] Does your household receive income from any",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.13,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_7",
+      "label": "[Family or friends outside the household] Does your household receive income fro",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.09,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_8",
+      "label": "[Capital gains or rent] Does your household receive income from any of the follo",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.2,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_9",
+      "label": "[Alimony] Does your household receive income from any of the following?",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.12,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_10",
+      "label": "[None of the above] Does your household receive income from any of the following",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.12,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_11",
+      "label": "[Other, please specify:] Does your household receive income from any of the foll",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.13,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_11_OE",
+      "label": "[TEXTBOX] Does your household receive income from any of the following?",
+      "n_levels": 34,
+      "values": [],
+      "is_attribute": 0.17,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_DK",
+      "label": "[DON'T KNOW] Does your household receive income from any of the following?",
+      "n_levels": 1,
+      "values": [],
+      "is_attribute": 0.08,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "Q9_SKP",
+      "label": "[SKIPPED ON WEB] Does your household receive income from any of the following?",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.08,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "Q9_REF",
+      "label": "[REFUSED] Does your household receive income from any of the following?",
+      "n_levels": 1,
+      "values": [],
+      "is_attribute": 0.11,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.79,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level household income",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.81,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level household income",
+      "n_levels": 9,
+      "values": [],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yc2qb": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.82,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ye2ej": [
+    {
+      "var": "QW5",
+      "label": "This company has a set salary range for this position, which is as follows, but the exact salary will be decided after reviewing the candidate\u2019s file. What more specific salary range would you expect for this candidate?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "$40,000-$54,999",
+        "$55,000-$69,999",
+        "$70,000-$84,999",
+        "$85,000-$99,999",
+        "$100,000-$114,999"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yn7mx": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yv2ta": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "z358z": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zaqkm": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME4",
+      "label": "4-level Household Income",
+      "n_levels": 4,
+      "values": [
+        "Less than $30,000",
+        "$30,000 to under $60,000",
+        "$60,000 to under $100,000",
+        "$100,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INCOME9",
+      "label": "9-level Household Income",
+      "n_levels": 9,
+      "values": [
+        "Under $10,000",
+        "$10,000 to under $20,000",
+        "$20,000 to under $30,000",
+        "$30,000 to under $40,000",
+        "$40,000 to under $50,000",
+        "$50,000 to under $75,000",
+        "$75,000 to under $100,000",
+        "$100,000 to under $150,000",
+        "$150,000 or more"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zrwjp": [
+    {
+      "var": "Q3c",
+      "label": "How much do you earn per year before taxes and other deductions?  For example, if you earn $30,000 each year before taxes, please enter \u201c30000\u201d below.",
+      "n_levels": 231,
+      "values": [],
+      "is_attribute": 0.61,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "DOV_HRWAGE",
+      "label": "DATA ONLY:  Calculated hourly wage",
+      "n_levels": 778,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ztwqy": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zv3wc": [
+    {
+      "var": "PPINCIMP",
+      "label": "Household Income",
+      "n_levels": 21,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Less than $5,000",
+        "$5,000 to $7,499",
+        "$7,500 to $9,999",
+        "$10,000 to $12,499",
+        "$12,500 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 or more"
+      ],
+      "is_attribute": 0.81,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zx5b8": [
+    {
+      "var": "INCOME",
+      "label": "Household Income",
+      "n_levels": 18,
+      "values": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $49,999",
+        "$50,000 to $59,999",
+        "$60,000 to $74,999",
+        "$75,000 to $84,999",
+        "$85,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 or more"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ]
+}

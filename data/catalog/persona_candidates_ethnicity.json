@@ -1,0 +1,2933 @@
+{
+  "3bzxg": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "3xy9j": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.82,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "3ydty": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4fsg5": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4kjtn": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4w9pz": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.8,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4zscf": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4zwv2": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5an26": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5b6tf": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5hqan": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5mt6r": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "6khjm": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.81,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "6s2q5": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "7jt2f": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "7rt4q": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.82,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "8ctbk": [
+    {
+      "var": "WEIGHT2",
+      "label": "Final survey weights - Women ages 18-35 normalized by racethnicity (n=1,794)",
+      "n_levels": 1753,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian-Pacific Islander, non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "9263n": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "9xw67": [
+    {
+      "var": "WEIGHT2",
+      "label": "Post-stratification weights - 18+ Non-Hispanic Black population (N=2,048)",
+      "n_levels": 2002,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "RACE_V1_A",
+      "label": "PRELOAD VARIABLE: RACE_V1_A",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.1,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V1_B",
+      "label": "PRELOAD VARIABLE: RACE_V1_B",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.1,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V2_A",
+      "label": "PRELOAD VARIABLE: RACE_V2_A",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.1,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V2_B",
+      "label": "PRELOAD VARIABLE: RACE_V2_B",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.1,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V3_A",
+      "label": "PRELOAD VARIABLE: RACE_V3_A",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.09,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V3_B",
+      "label": "PRELOAD VARIABLE: RACE_V3_B",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.09,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V4_A",
+      "label": "PRELOAD VARIABLE: RACE_V4_A",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.09,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V4_B",
+      "label": "PRELOAD VARIABLE: RACE_V4_B",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.08,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V5_A",
+      "label": "PRELOAD VARIABLE: RACE_V5_A",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.09,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACE_V5_B",
+      "label": "PRELOAD VARIABLE: RACE_V5_B",
+      "n_levels": 2,
+      "values": [
+        "Yes, race is used as a factor.",
+        "No, race is not used as a factor."
+      ],
+      "is_attribute": 0.09,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a2nbf": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a42yg": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a5v96": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "b87sm": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "bf8p2": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "bvkfc": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "c5r2f": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "c956y": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "cug34": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "dh3nj": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "e45hu": [
+    {
+      "var": "weight2",
+      "label": "Sample Weights - race",
+      "n_levels": 315,
+      "values": [],
+      "is_attribute": 0.06,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "XPPRACEM",
+      "label": "Race",
+      "n_levels": 7,
+      "values": [
+        "White",
+        "Black",
+        "American-Indian or Alaska Native",
+        "Asian",
+        "Native Hawaiian/Pacific Islander",
+        "2+Races",
+        "Missing"
+      ],
+      "is_attribute": 0.73,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9",
+      "label": "[How similar do you think the average White/Black/Hispanic/Asian person is to you?] Finally, using the scale below, please answer the following questions:",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "Not at all",
+        "A little",
+        "Moderately",
+        "Very",
+        "Extremely"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q10",
+      "label": "[How privileged do you think the average White/Black/Hispanic/Asian person is relative to you?  ] Finally, using the scale below, please answer the following questions:",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "Not at all",
+        "A little",
+        "Moderately",
+        "Very",
+        "Extremely"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Asian, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.76,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "egmxd": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "es4xw": [
+    {
+      "var": "weight2",
+      "label": "Weight - Total respondents per race group",
+      "n_levels": 372,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "Q1",
+      "label": "This team includes a high degree of ethnic diversity.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q2",
+      "label": "I consider this team to be ethnically diverse.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q3",
+      "label": "This team includes a low degree of ethnic diversity.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q10",
+      "label": "I wish people in this society would stop obsessing so much about race.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q11",
+      "label": "People who become preoccupied by race are forgetting that we are all just human.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q13",
+      "label": "Race is an artificial label that keeps people from thinking freely as individuals.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 5,
+      "values": [
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "pprace",
+      "label": "Race",
+      "n_levels": 5,
+      "values": [
+        "White",
+        "Black or African American",
+        "American Indian or Alaska Native",
+        "Asian/Pacific Islander",
+        "Some other race"
+      ],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "evnyh": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ftwqy": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "gzdnf": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "h6zk9": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "hjn6m": [
+    {
+      "var": "P_EXPE_RACEETH",
+      "label": "Preload Variable : Experimental Race/Ethnic Identity for T085_DISPLAY1",
+      "n_levels": 4,
+      "values": [
+        "White American",
+        "African American",
+        "Hispanic American",
+        "Asian American"
+      ],
+      "is_attribute": 0.12,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "P_EXPV1_RACEETH",
+      "label": "Preload Variable : Experimental Race/Ethnic Identity for V1",
+      "n_levels": 4,
+      "values": [
+        "White American",
+        "African American",
+        "Hispanic American",
+        "Asian American"
+      ],
+      "is_attribute": 0.16,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "P_EXPV2_RACEETH",
+      "label": "Preload Variable : Experimental Race/Ethnic Identity for V2",
+      "n_levels": 4,
+      "values": [
+        "White American",
+        "African American",
+        "Hispanic American",
+        "Asian American"
+      ],
+      "is_attribute": 0.16,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "P_EXPV3_RACEETH",
+      "label": "Preload Variable : Experimental Race/Ethnic Identity for V3",
+      "n_levels": 4,
+      "values": [
+        "White American",
+        "African American",
+        "Hispanic American",
+        "Asian American"
+      ],
+      "is_attribute": 0.17,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "j6xgs": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "jf46x": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "jkspw": [
+    {
+      "var": "weight2_w2",
+      "label": "Post-Stratification Weight - W1+W2 Respondents by Three Race/Ethnicity Groups",
+      "n_levels": 277,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "weight2",
+      "label": "Sample Weights - 18+ US populations by ethnicity and XTESS081 condition",
+      "n_levels": 293,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "m52pd": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "m7vhz": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "mebw9": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.5,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "n8azj": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ndhyr": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "pjneh": [
+    {
+      "var": "Q10_1",
+      "label": "[American Indian or Alaska Native] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_2",
+      "label": "[Asian or Asian American] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_3",
+      "label": "[Black or African American] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_4",
+      "label": "[Hispanic, Latino or Spanish origin] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_5",
+      "label": "[Native Hawaiian or Pacific Islander] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_6",
+      "label": "[Middle Eastern or North African origin] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_7",
+      "label": "[White or European American] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_8",
+      "label": "[Another race or origin] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_8_OE",
+      "label": "[TEXTBOX] What is your race or origin?",
+      "n_levels": 21,
+      "values": [],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_DK",
+      "label": "[DON'T KNOW] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.24,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10_SKP",
+      "label": "[SKIPPED ON WEB] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.13,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "Q10_REF",
+      "label": "[REFUSED] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.15,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "INS_Q11B_RACE1",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.4,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "INS_Q11B_RACE2",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.39,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "INS_Q11B_RACE3",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.41,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "INS_Q11B_RACE4",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.4,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "INS_Q11B_RACE5",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.38,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "INS_Q11B_RACE6",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.38,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "INS_Q11B_RACE7",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.37,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "INS_Q11B_RACE8",
+      "label": "DATA ONLY VARIABLE: Controls selected Q10 responses inserted in Q11B",
+      "n_levels": 8,
+      "values": [
+        "American Indian or Alaska Native",
+        "Asian or Asian American",
+        "Black or African American",
+        "Hispanic, Latino or Spanish origin",
+        "Native Hawaiian or Pacific Islander",
+        "Middle Eastern or North African origin",
+        "White or European American",
+        "[TEXTBOX] Another race or origin"
+      ],
+      "is_attribute": 0.37,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "Q11B",
+      "label": "[Just to confirm, you said your race or origin is [Q10 RESPONSE(S)], is that cor",
+      "n_levels": 5,
+      "values": [
+        "Yes, that is correct",
+        "No, that is incorrect",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.23,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_1",
+      "label": "[American Indian or Alaska Native] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_2",
+      "label": "[Asian or Asian American] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_3",
+      "label": "[Black or African American] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_4",
+      "label": "[Hispanic, Latino or Spanish origin] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_5",
+      "label": "[Native Hawaiian or Pacific Islander] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_6",
+      "label": "[Middle Eastern or North African origin] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_7",
+      "label": "[White or European American] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_8",
+      "label": "[Another race or origin] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_8_OE",
+      "label": "[TEXTBOX] What is your race or origin?",
+      "n_levels": 1,
+      "values": [],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_DK",
+      "label": "[DON'T KNOW] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.2,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q10A_SKP",
+      "label": "[SKIPPED ON WEB] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.11,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "Q10A_REF",
+      "label": "[REFUSED] What is your race or origin?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.11,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian-Pacific Islander, non-Hispanic"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "pxb6n": [
+    {
+      "var": "Q4_FirstCondition",
+      "label": "In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "No",
+        "Yes, Mexican, Mexican American, Chicano",
+        "Yes, Puerto Rican",
+        "Yes, Cuban",
+        "Other (please specify):"
+      ],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_SecondCondition",
+      "label": "In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "No",
+        "Yes, Mexican, Mexican American, Chicano",
+        "Yes, Puerto Rican",
+        "Yes, Cuban",
+        "Other (please specify):"
+      ],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_ThirdCondition",
+      "label": "In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "No",
+        "Yes, Mexican, Mexican American, Chicano",
+        "Yes, Puerto Rican",
+        "Yes, Cuban",
+        "Other (please specify):"
+      ],
+      "is_attribute": 0.09,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_FourthCondition",
+      "label": "In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "No",
+        "Yes, Mexican, Mexican American, Chicano",
+        "Yes, Puerto Rican",
+        "Yes, Cuban",
+        "Other (please specify):"
+      ],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_FifthCondition",
+      "label": "In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "No",
+        "Yes, Mexican, Mexican American, Chicano",
+        "Yes, Puerto Rican",
+        "Yes, Cuban",
+        "Other (please specify):"
+      ],
+      "is_attribute": 0.07,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_SixthCondition",
+      "label": "In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "No",
+        "Yes, Mexican, Mexican American, Chicano",
+        "Yes, Puerto Rican",
+        "Yes, Cuban",
+        "Other (please specify):"
+      ],
+      "is_attribute": 0.11,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_5_Text_FirstCondition",
+      "label": "[Other] In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 38,
+      "values": [],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_5_Text_SecondCondition",
+      "label": "[Other] In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 24,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_5_Text_ThirdCondition",
+      "label": "[Other] In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 24,
+      "values": [],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_5_Text_FourthCondition",
+      "label": "[Other] In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 20,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_5_Text_FifthCondition",
+      "label": "[Other] In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 16,
+      "values": [],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4_5_Text_SixthCondition",
+      "label": "[Other] In your own personal opinion, is this person of Hispanic, Latino, or Spanish origin?",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_FirstCondition",
+      "label": "In your own personal opinion, what is this person's race?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "White",
+        "Black, African American, or Negro",
+        "American Indian or Alaskan Native",
+        "Asian or Pacific Islander",
+        "Mixed/Multiracial"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_SecondCondition",
+      "label": "In your own personal opinion, what is this person's race?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "White",
+        "Black, African American, or Negro",
+        "American Indian or Alaskan Native",
+        "Asian or Pacific Islander",
+        "Mixed/Multiracial"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_ThirdCondition",
+      "label": "In your own personal opinion, what is this person's race?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "White",
+        "Black, African American, or Negro",
+        "American Indian or Alaskan Native",
+        "Asian or Pacific Islander",
+        "Mixed/Multiracial"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_FourthCondition",
+      "label": "In your own personal opinion, what is this person's race?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "White",
+        "Black, African American, or Negro",
+        "American Indian or Alaskan Native",
+        "Asian or Pacific Islander",
+        "Mixed/Multiracial"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_FifthCondition",
+      "label": "In your own personal opinion, what is this person's race?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "White",
+        "Black, African American, or Negro",
+        "American Indian or Alaskan Native",
+        "Asian or Pacific Islander",
+        "Mixed/Multiracial"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_SixthCondition",
+      "label": "In your own personal opinion, what is this person's race?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "White",
+        "Black, African American, or Negro",
+        "American Indian or Alaskan Native",
+        "Asian or Pacific Islander",
+        "Mixed/Multiracial"
+      ],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a1_FirstCondition",
+      "label": "[White] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a2_FirstCondition",
+      "label": "[Black, African American, or Negro] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a3_FirstCondition",
+      "label": "[American Indian or Alaskan Native] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a4_FirstCondition",
+      "label": "[Asian or Pacific Islander] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_FirstCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_FirstCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a_Ref_FirstCondition",
+      "label": "[Refused] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a1_SecondCondition",
+      "label": "[White] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a2_SecondCondition",
+      "label": "[Black, African American, or Negro] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a3_SecondCondition",
+      "label": "[American Indian or Alaskan Native] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a4_SecondCondition",
+      "label": "[Asian or Pacific Islander] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_SecondCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_SecondCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a_Ref_SecondCondition",
+      "label": "[Refused] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a1_ThirdCondition",
+      "label": "[White] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a2_ThirdCondition",
+      "label": "[Black, African American, or Negro] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a3_ThirdCondition",
+      "label": "[American Indian or Alaskan Native] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a4_ThirdCondition",
+      "label": "[Asian or Pacific Islander] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_ThirdCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_ThirdCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a_Ref_ThirdCondition",
+      "label": "[Refused] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a1_FourthCondition",
+      "label": "[White] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a2_FourthCondition",
+      "label": "[Black, African American, or Negro] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a3_FourthCondition",
+      "label": "[American Indian or Alaskan Native] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a4_FourthCondition",
+      "label": "[Asian or Pacific Islander] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_FourthCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_FourthCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a_Ref_FourthCondition",
+      "label": "[Refused] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a1_FifthCondition",
+      "label": "[White] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a2_FifthCondition",
+      "label": "[Black, African American, or Negro] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a3_FifthCondition",
+      "label": "[American Indian or Alaskan Native] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a4_FifthCondition",
+      "label": "[Asian or Pacific Islander] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_FifthCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_FifthCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a_Ref_FifthCondition",
+      "label": "[Refused] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a1_SixthCondition",
+      "label": "[White] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a2_SixthCondition",
+      "label": "[Black, African American, or Negro] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a3_SixthCondition",
+      "label": "[American Indian or Alaskan Native] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a4_SixthCondition",
+      "label": "[Asian or Pacific Islander] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_SixthCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_SixthCondition",
+      "label": "[Other] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a_Ref_SixthCondition",
+      "label": "[Refused] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_Text_FirstCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 24,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_Text_SecondCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 31,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_Text_ThirdCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 26,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_Text_FourthCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 26,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_Text_FifthCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 23,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a5_Text_SixthCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 21,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_Text_FirstCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_Text_SecondCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_Text_ThirdCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 8,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_Text_FourthCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_Text_FifthCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5a6_Text_SixthCondition",
+      "label": "[Other_Text] You selected Mixed/Multiracial. What races do you consider to be part of this person\u2019s race?",
+      "n_levels": 8,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q8_1",
+      "label": "[White] Think of your three closest friends (currently). What are their races? Select all that apply.",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.1,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q8_2",
+      "label": "[Black, African American, or Negro] Think of your three closest friends (currently). What are their races? Select all that apply.",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.07,
+      "kind": "other"
+    },
+    {
+      "var": "Q8_3",
+      "label": "[American Indian or Alaskan Native] Think of your three closest friends (currently). What are their races? Select all that apply.",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.06,
+      "kind": "other"
+    },
+    {
+      "var": "Q8_4",
+      "label": "[Asian or Pacific Islander] Think of your three closest friends (currently). What are their races? Select all that apply.",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.08,
+      "kind": "other"
+    },
+    {
+      "var": "Q8_5",
+      "label": "[Other ] Think of your three closest friends (currently). What are their races? Select all that apply.",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.06,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q8_Ref",
+      "label": "[Refused] Think of your three closest friends (currently). What are their races? Select all that apply.",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.03,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q8_OtherRace",
+      "label": "[Other_Text] Think of your three closest friends (currently). What are their races? Select all that apply.",
+      "n_levels": 25,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "other"
+    },
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "py9q3": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.84,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "q8ra3": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "qmfy4": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "rpw4u": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "rs65g": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "savkp": [
+    {
+      "var": "PPETHM",
+      "label": "Race/Ethnicity, Census categories",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sd7cf": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sffyb": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sh4px": [
+    {
+      "var": "PPETHM",
+      "label": "Race/Ethnicity, Census categories",
+      "n_levels": 5,
+      "values": [
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "t936a": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.78,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "v3bfk": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.84,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "vhycz": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "w7mnc": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "wmsah": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "x2ztf": [
+    {
+      "var": "RACETHNICITY",
+      "label": "",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.77,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "xweq8": [
+    {
+      "var": "WEIGHT2",
+      "label": "Final weights - 18+ general population normalized by racethnicity (N=2,089)",
+      "n_levels": 2072,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "RACEDIF1",
+      "label": "[Mainly due to discrimination?] On the average, Black people have worse jobs, in",
+      "n_levels": 3,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "RACEDIF2",
+      "label": "[Because most Black people have less in-born ability to learn?] On the average,",
+      "n_levels": 3,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "RACEDIF3",
+      "label": "[Because most Black people don't have the chance for education that it takes to",
+      "n_levels": 3,
+      "values": [],
+      "is_attribute": 0.09,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "RACEDIF4",
+      "label": "[Because most Black people just don't have the motivation or will power to pull",
+      "n_levels": 3,
+      "values": [],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "NATRACE",
+      "label": "[Improving the conditions of Black people] ...please indicate whether you think",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.15,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.84,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yc2qb": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ye2ej": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yn7mx": [
+    {
+      "var": "P_RACE",
+      "label": "PRELOAD: White or Black",
+      "n_levels": 2,
+      "values": [
+        "White",
+        "Black"
+      ],
+      "is_attribute": 0.79,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yv2ta": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "z358z": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zaqkm": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.84,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zrwjp": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ztwqy": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zv3wc": [
+    {
+      "var": "PPETHM",
+      "label": "Race / Ethnicity",
+      "n_levels": 7,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "White, Non-Hispanic",
+        "Black, Non-Hispanic",
+        "Other, Non-Hispanic",
+        "Hispanic",
+        "2+ Races, Non-Hispanic"
+      ],
+      "is_attribute": 0.72,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zx5b8": [
+    {
+      "var": "RACETHNICITY",
+      "label": "Combined Race/Ethnicity",
+      "n_levels": 6,
+      "values": [
+        "White, non-Hispanic",
+        "Black, non-Hispanic",
+        "Other, non-Hispanic",
+        "Hispanic",
+        "2+, non-Hispanic",
+        "Asian, non-Hispanic"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ]
+}

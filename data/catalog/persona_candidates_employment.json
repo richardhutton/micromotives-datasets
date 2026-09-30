@@ -1,0 +1,3657 @@
+{
+  "3bzxg": [
+    {
+      "var": "Q5a",
+      "label": "To what extent do you agree or disagree with the following statement: The Irish, Italians, Jews, Vietnamese and other minorities overcame prejudice and worked their way up. Blacks should do the same without any special favors.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly agree",
+        "Agree",
+        "Slightly agree",
+        "Neither agree nor disagree",
+        "Slightly disagree",
+        "Disagree",
+        "Strongly disagree"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5c",
+      "label": "To what extent do you agree or disagree with the following statement: Generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly agree",
+        "Agree",
+        "Slightly agree",
+        "Neither agree nor disagree",
+        "Slightly disagree",
+        "Disagree",
+        "Strongly disagree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q7_1",
+      "label": "[Unemployment insurance] Have you or members of your immediate family ever received any of the following forms of governmental assistance?",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.09,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "3xy9j": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "3ydty": [
+    {
+      "var": "Q11A",
+      "label": "<Partner1> has about 50 hours available per week where [he/she] is not working, commuting to work, or sleeping. Of these 50 hours, how many hours per week should <Partner1> spend doing household chores?",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q11B",
+      "label": "<Partner2> has about 50 hours available per week where [he/she] is not working, commuting to work, or sleeping. Of these 50 hours, how many hours per week should <Partner2> spend doing household chores?",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4fsg5": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4kjtn": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4zscf": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "4zwv2": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5an26": [
+    {
+      "var": "Q23",
+      "label": "How well do you think {Diane/David} would perform the job of a {OCCUPATION}?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "1 Below average",
+        "2",
+        "3 Average",
+        "4",
+        "5 Above average"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q24",
+      "label": "How well {Diane/David} would fit in on the job as a {OCCUPATION}?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "1 Below average",
+        "2",
+        "3 Average",
+        "4",
+        "5 Above average"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q27_Male",
+      "label": "[Male] Suppose you had twenty positions to fill where the work required working with numbers. Of the twenty people you hired to work with numbers, how many do you think would be men and women?",
+      "n_levels": 15,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q27_Female",
+      "label": "[Female] Suppose you had twenty positions to fill where the work required working with numbers. Of the twenty people you hired to work with numbers, how many do you think would be men and women?",
+      "n_levels": 15,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q27_TOTAL",
+      "label": "[Total] Suppose you had twenty positions to fill where the work required working with numbers. Of the twenty people you hired to work with numbers, how many do you think would be men and women?",
+      "n_levels": 1,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q28_Male",
+      "label": "[Male] Suppose you had twenty positions to fill where the work required working with words. Of the twenty people you hired to work with words, how many do you think would be men?",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q28_Female",
+      "label": "[Female] Suppose you had twenty positions to fill where the work required working with numbers. Of the twenty people you hired to work with numbers, how many do you think would be men and women?",
+      "n_levels": 18,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q28_TOTAL",
+      "label": "[Total] Suppose you had twenty positions to fill where the work required working with numbers. Of the twenty people you hired to work with numbers, how many do you think would be men and women?",
+      "n_levels": 1,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5b6tf": [
+    {
+      "var": "Q11",
+      "label": "[Becoming familiar with important works of history, philosophy, literature, and art] When thinking about the experiences [Michael/Emily] should pursue in college, how would you rank the following items in terms of importance?",
+      "n_levels": 12,
+      "values": [
+        "1 - Most Important",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9 - Least Important",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5hqan": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "5mt6r": [
+    {
+      "var": "Q5",
+      "label": "Are you limited in the kind or amount of work you do because of a physical, mental, or emotional problem?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Yes",
+        "No"
+      ],
+      "is_attribute": 0.11,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "6khjm": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.83,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "6s2q5": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "7jt2f": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "7rt4q": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "8ctbk": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "9263n": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "9xw67": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a2nbf": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a42yg": [
+    {
+      "var": "QWORK",
+      "label": "Which statement best describes your current employment status?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.97,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Job",
+      "label": "What is your occupation for your current or main job?",
+      "n_levels": 30,
+      "values": [
+        "Refused",
+        "Management",
+        "Business and Financial Operations",
+        "Computer and Mathematical",
+        "Architecture and Engineering",
+        "Life, Physical, and Social Sciences",
+        "Community and Social Services",
+        "Lawyer, judge",
+        "Teacher, except college and university",
+        "Teacher, college and university",
+        "Other professional",
+        "Medical Doctor (such as physician, surgeon, dentist, veterinarian)",
+        "Other Health Care Practitioner (such as nurse, pharmacist, chiropractor, dietician)",
+        "Health Technologist or Technician (such as paramedic, lab technician)",
+        "Health Care Support (such as nursing aide, orderly, dental assistant)",
+        "Protective Service",
+        "Food Preparation and Serving",
+        "Building and Grounds Cleaning and Maintenance",
+        "Personal Care and Service",
+        "Sales Representative",
+        "Retail Sales",
+        "Other Sales",
+        "Office and Administrative Support",
+        "Farming, Forestry, and Fishing",
+        "Construction and Extraction",
+        "Installation, Maintenance, and Repair",
+        "Precision Production (such as machinist, welder, baker, printer, tailor)",
+        "Transportation and Material Moving",
+        "Armed Services",
+        "Other (please specify)"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Job_Other",
+      "label": "[Other] What is your occupation for your current or main job?",
+      "n_levels": 1,
+      "values": [],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q8_1",
+      "label": "[If a patient requested a curative procedure or treatment that I did not believe would work, I would be willing to fulfill that request...] Please indicate how much you agree or disagree with the following statements.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly disagree 1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "Strongly agree 7"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "XPCM0160",
+      "label": "XPCM0160: Occupation (detailed) in current or main job",
+      "n_levels": 29,
+      "values": [
+        "Management",
+        "Business and Financial Operations",
+        "Computer and Mathematical",
+        "Architecture and Engineering",
+        "Life, Physical, and Social Sciences",
+        "Community and Social Services",
+        "Lawyer, judge",
+        "Teacher, except college and university",
+        "Teacher, college and university",
+        "Other professional",
+        "Medical Doctor (such as physician, surgeon, dentist, veterinarian)",
+        "Other Health Care Practitioner (such as nurse, pharmacist, chiropractor, dietician)",
+        "Health Technologist or Technician (such as paramedic, lab technician)",
+        "Health Care Support (such as nursing aide, orderly, dental assistant)",
+        "Protective Service",
+        "Food Preparation and Serving",
+        "Building and Grounds Cleaning and Maintenance",
+        "Personal Care and Service",
+        "Sales Representative",
+        "Retail Sales",
+        "Other Sales",
+        "Office and Administrative Support",
+        "Farming, Forestry, and Fishing",
+        "Construction and Extraction",
+        "Installation, Maintenance, and Repair",
+        "Precision Production (such as machinist, welder, baker, printer, tailor)",
+        "Transportation and Material Moving",
+        "Armed Services",
+        "Other (please specify)"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "a5v96": [
+    {
+      "var": "ppcm0160",
+      "label": "Occupation (detailed) in current or main job",
+      "n_levels": 31,
+      "values": [
+        "Not asked",
+        "Refused",
+        "Management",
+        "Business and Financial Operations",
+        "Computer and Mathematical",
+        "Architecture and Engineering",
+        "Life, Physical, and Social Sciences",
+        "Community and Social Services",
+        "Lawyer, judge",
+        "Teacher, except college and university",
+        "Teacher, college and university",
+        "Other professional",
+        "Medical Doctor (such as physician, surgeon, dentist, veterinarian)",
+        "Other Health Care Practitioner (such as nurse, pharmacist, chiropractor, dietician)",
+        "Health Technologist or Technician (such as paramedic, lab technician)",
+        "Health Care Support (such as nursing aide, orderly, dental assistant)",
+        "Protective Service",
+        "Food Preparation and Serving",
+        "Building and Grounds Cleaning and Maintenance",
+        "Personal Care and Service",
+        "Sales Representative",
+        "Retail Sales",
+        "Other Sales",
+        "Office and Administrative Support",
+        "Farming, Forestry, and Fishing",
+        "Construction and Extraction",
+        "Installation, Maintenance, and Repair",
+        "Precision Production (such as machinist, welder, baker, printer, tailor)",
+        "Transportation and Material Moving",
+        "Armed Services",
+        "Other (Please specify)"
+      ],
+      "is_attribute": 0.88,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "b87sm": [
+    {
+      "var": "TRUST_B",
+      "label": "[Your mobile phone network provider] How much do you trust each of the following",
+      "n_levels": 7,
+      "values": [
+        "Do not trust at all",
+        "Trust a little",
+        "Trust somewhat",
+        "Trust a lot",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "bf8p2": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "bvkfc": [
+    {
+      "var": "Q1B",
+      "label": "[I believe the government is competent at its job] How much do you agree with th",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q12D",
+      "label": "[Jobs that would be lost because of the new regulation] If you had to guess, how",
+      "n_levels": 6,
+      "values": [],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q15B",
+      "label": "[I believe the government is competent at its job] How much do YOU agree with th",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "c5r2f": [
+    {
+      "var": "Q3c_1",
+      "label": "[This company probably thinks most employees, if asked, would prefer to be enrolled in the company savings plan]What, if anything, does the default option tell you about what the company thinks most employees would prefer?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q3c_1_nothing",
+      "label": "[The default tells me nothing about what the company thinks]What, if anything, does the default option tell you about what the company thinks most employees would prefer?",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q3c_2",
+      "label": "[This company probably thinks most employees, if asked, would prefer not to be enrolled in the company savings plan]What, if anything, does the default option tell you about what the company thinks most employees would prefer?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q3c_2_nothing",
+      "label": "[The default tells me nothing about what the company thinks]What, if anything, does the default option tell you about what the company thinks most employees would prefer?",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q3c_randomization",
+      "label": "[Randomization_order]What, if anything, does the default option tell you about what the company thinks most employees would prefer?",
+      "n_levels": 2,
+      "values": [
+        "Q3c_1, Q3c_2",
+        "Q3c_2, Q3c_1"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Q4c_1",
+      "label": "[This company probably thinks most employees should set aside about 5% of their monthly earnings for retirement]What, if anything, does the default option tell you about what the company thinks most employees ought to do?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4c_1_nothing",
+      "label": "[The default tells me nothing about what the company thinks]What, if anything, does the default option tell you about what the company thinks most employees ought to do?",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4c_2",
+      "label": "[This company probably thinks most employees do not need to set aside any earnings for retirement]What, if anything, does the default option tell you about what the company thinks most employees ought to do?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4c_2_nothing",
+      "label": "[The default tells me nothing about what the company thinks]What, if anything, does the default option tell you about what the company thinks most employees ought to do?",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4c_randomization",
+      "label": "[Randomization_order]What, if anything, does the default option tell you about what the company thinks most employees ought to do?",
+      "n_levels": 2,
+      "values": [
+        "Q4c_1, Q4c_2",
+        "Q4c_2, Q4c_1"
+      ],
+      "is_attribute": 0.02,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Q5_1",
+      "label": "[Health clinics/state policymakers/company officials  have the best interests of their patients/citizens/employees in mind]Please tell us how much you agree or disagree with the following statements?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Neither Agree nor Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_2",
+      "label": "[Health clinics/state policymakers/company officials are out to exploit their patients/citizens/employees]Please tell us how much you agree or disagree with the following statements?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Neither Agree nor Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_4",
+      "label": "[When it comes to structuring policies for their patients/citizens/employees, health clinics/state policymakers/company official typically have no idea what they are doing]Please tell us how much you agree or disagree with the following statements?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Neither Agree nor Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_5",
+      "label": "[Health clinics/state policymakers/company officials have a good understanding of how to make effective policy decisions for their patients/citizens/employees]Please tell us how much you agree or disagree with the following statements?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Disagree",
+        "Somewhat Disagree",
+        "Neither Agree nor Disagree",
+        "Somewhat Agree",
+        "Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "c956y": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "cug34": [
+    {
+      "var": "B08",
+      "label": "If [DOV_Person_B08 TEXT] receives an unexpected bonus at work, who should get to decide what to do with the additional income?",
+      "n_levels": 4,
+      "values": [
+        "Refused",
+        "{DOV_PERSON_B08} alone",
+        "{DOV_PERSON_B08} should consult {DOV_PERSON2_B08}, but {DOV_PERSON_B08} should ultimately decide",
+        "{DOV_PERSON_B08} and {DOV_PERSON2_B08} should decide together"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.91,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "dh3nj": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "e45hu": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "egmxd": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "es4xw": [
+    {
+      "var": "Q4",
+      "label": "This team would treat everyone they worked with fairly.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q7",
+      "label": "I would like to work with this group.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q8",
+      "label": "I wish I had a job on this team.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q9",
+      "label": "I would apply for a job here if they needed someone with my skills.",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Strongly Disagree",
+        "Moderately Disagree",
+        "Slightly Disagree",
+        "Neither",
+        "Slightly Agree",
+        "Moderately Agree",
+        "Strongly Agree"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "evnyh": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ftwqy": [
+    {
+      "var": "xpcm0160",
+      "label": "Occupation (detailed) in current or main job",
+      "n_levels": 28,
+      "values": [
+        "Management",
+        "Business and Financial Operations",
+        "Computer and Mathematical",
+        "Architecture and Engineering",
+        "Life, Physical, and Social Sciences",
+        "Community and Social Services",
+        "Lawyer, judge",
+        "Teacher, except college and university",
+        "Teacher, college and university",
+        "Other professional",
+        "Medical Doctor (such as physician, surgeon, dentist, veterinarian)",
+        "Other Health Care Practitioner (such as nurse, pharmacist, chiropractor, dietician)",
+        "Health Technologist or Technician (such as paramedic, lab technician)",
+        "Health Care Support (such as nursing aide, orderly, dental assistant)",
+        "Protective Service",
+        "Food Preparation and Serving",
+        "Building and Grounds Cleaning and Maintenance",
+        "Personal Care and Service",
+        "Sales Representative",
+        "Retail Sales",
+        "Other Sales",
+        "Office and Administrative Support",
+        "Farming, Forestry, and Fishing",
+        "Construction and Extraction",
+        "Installation, Maintenance, and Repair",
+        "Precision Production (such as machinist, welder, baker, printer, tailor)",
+        "Transportation and Material Moving",
+        "Other"
+      ],
+      "is_attribute": 0.75,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "xind2",
+      "label": "Industry (detailed) in current or main job",
+      "n_levels": 124,
+      "values": [
+        "Not asked",
+        "Refused",
+        "Crop Production",
+        "Animal Production",
+        "Forestry and Logging",
+        "Fishing, Hunting and Trapping",
+        "Support Activities for Agriculture and Forestry",
+        "Oil and Gas Extraction",
+        "Mining (except Oil and Gas)",
+        "Support Activities for Mining",
+        "Utilities",
+        "Construction of Buildings",
+        "Heavy and Civil Engineering Construction",
+        "Specialty Trade Contractors",
+        "Food Manufacturing",
+        "Beverage and Tobacco Product Manufacturing",
+        "Textile Mills",
+        "Textile Product Mills",
+        "Apparel Manufacturing",
+        "Leather and Allied Product Manufacturing",
+        "Wood Product Manufacturing",
+        "Paper Manufacturing",
+        "Printing and Related Support Activities",
+        "Petroleum and Coal Products Manufacturing",
+        "Pharmaceutical and Medicine Manufacturing",
+        "Health, Personal Care, and Beauty Product Manufacturing",
+        "Household Product Manufacturing",
+        "Other Chemical Manufacturing",
+        "Plastics and Rubber Products Manufacturing",
+        "Nonmetallic Mineral Product Manufacturing",
+        "Primary Metal Manufacturing",
+        "Fabricated Metal Product Manufacturing",
+        "Machinery Manufacturing",
+        "Computer and Electronic Product Manufacturing",
+        "Electrical Equipment, Appliance, and Component Manufacturing",
+        "Transportation Equipment Manufacturing",
+        "Furniture and Related Product Manufacturing",
+        "Miscellaneous Manufacturing",
+        "Merchant Wholesalers, Durable Goods",
+        "Merchant Wholesalers, Nondurable Goods",
+        "Wholesale Electronic Markets and Agents and Brokers",
+        "Motor Vehicle and Parts Dealers",
+        "Furniture and Home Furnishings Stores",
+        "Electronics and Appliance Stores",
+        "Building Material and Garden Equipment and Supplies Dealers",
+        "Food and Beverage Stores",
+        "Health and Personal Care Stores",
+        "Gasoline Stations",
+        "Clothing and Clothing Accessories Stores",
+        "Sporting Goods, Hobby, Book, and Music Stores",
+        "General Merchandise Stores",
+        "Miscellaneous Store Retailers",
+        "Nonstore Retailers",
+        "Air Transportation",
+        "Rail Transportation",
+        "Water Transportatio",
+        "Truck Transportation",
+        "Transit and Ground Passenger Transportation",
+        "Pipeline Transportation",
+        "Scenic and Sightseeing Transportation",
+        "Support Activities for Transportation",
+        "Postal Service",
+        "Couriers and Messengers",
+        "Warehousing and Storage",
+        "Publishing Industries (except Internet)",
+        "Motion Picture and Sound Recording Industries",
+        "Broadcasting",
+        "Telecommunications",
+        "Data Processing, Hosting and Related Services",
+        "Other Information Services",
+        "Monetary Authorities-Central Bank",
+        "Credit Intermediation and Related Activities",
+        "Securities, Commodity Contracts, and Other Financial Investments and Related Activities",
+        "Insurance Carriers and Related Activities",
+        "Funds, Trusts, and Other Financial Vehicles",
+        "Real Estate",
+        "Rental and Leasing Services",
+        "Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)",
+        "Legal Services",
+        "Accounting, Tax Preparation, Bookkeeping, and Payroll Services",
+        "Architectural, Engineering, and Related Services",
+        "Specialized Design Services",
+        "Computer Systems Design and Related Services",
+        "Management, Scientific, and Technical Consulting Services",
+        "Marketing Consulting Services",
+        "Scientific Research and Development Services",
+        "Advertising Agencies",
+        "Public Relations Agencies",
+        "Other Professional, Scientific, and Technical Services",
+        "Market Research and Public Opinion Polling",
+        "Management of Companies and Enterprises",
+        "Administrative and Support Services",
+        "Waste Management and Remediation Services",
+        "Educational Services",
+        "Ambulatory Health Care Services",
+        "Hospitals",
+        "Nursing and Residential Care Facilities",
+        "Social Assistance",
+        "Performing Arts, Spectator Sports, and Related Industries",
+        "Museums, Historical Sites, and Similar Institutions",
+        "Amusement, Gambling, and Recreation Industries",
+        "Accommodation",
+        "Food Services and Drinking Places",
+        "Automotive Repair and Maintenance",
+        "Electronic and Precision Equipment Repair and Maintenance",
+        "Commercial and Industrial Machinery and Equipment Repair and Maintenance",
+        "Personal and Household Goods Repair and Maintenance",
+        "Personal Care Services",
+        "Death Care Services",
+        "Drycleaning and Laundry Services",
+        "Religious Organizations",
+        "Grantmaking and Giving Services",
+        "Social Advocacy Organizations",
+        "Civic and Social Organizations",
+        "Business, Professional, Labor, Political, and Similar Organizations",
+        "Private Household Service",
+        "Executive, Legislative, and Other General Government Support",
+        "Justice, Public Order, and Safety Activities",
+        "Administration of Human Resource Programs",
+        "Administration of Environmental Quality Programs",
+        "Administration of Housing Programs, Urban Planning, and Community Development",
+        "Administration of Economic Programs",
+        "Space Research and Technology",
+        "National Security and International Affairs"
+      ],
+      "is_attribute": 0.53,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q2",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how capable do you think management consultants are (compared with the average employee)?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q3",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how efficient do you think management consultants are (compared with the average employee)?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q4",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how skilled do you think management consultants are (compared with the average employee)?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how intelligent do you think management consultants are (compared with the average employee)?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q6",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how independent do you think management consultants are (compared with the average employee)?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q7",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how motivated do you think management consultants are (compared with the average employee)?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q8",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how committed do you think management consultants are (compared with the average employee)?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q10",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how capable do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q11",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how efficient do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q12",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how skilled do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q13",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how intelligent do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q14",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how independent do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q15",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how self-confident do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q16",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how aggressive do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q17",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how organized do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q18",
+      "label": "On a seven point scale ('1' represents 'not at all'; '7' represents 'extremely), how motivated do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q19",
+      "label": "How committed do you think the applicant would be relative to other employees in similar positions at the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "1 Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 Extremely"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "gzdnf": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "h6zk9": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "hjn6m": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "j6xgs": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "jf46x": [
+    {
+      "var": "Q18",
+      "label": "The Department of Homeland Security has the necessary skilled people to carry out its job with regard to smallpox.",
+      "n_levels": 5,
+      "values": [
+        "Refused",
+        "Agree strongly",
+        "Agree mildly",
+        "Disagree",
+        "Disagree strongly"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q20",
+      "label": "The Department of Homeland Security has done a good job in the past protecting the public from smallpox.",
+      "n_levels": 5,
+      "values": [
+        "Refused",
+        "Agree strongly",
+        "Agree mildly",
+        "Disagree",
+        "Disagree strongly"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q21",
+      "label": "The Department of Homeland Security has done a good job in the past protecting the public from recent public health crises such as anthrax.",
+      "n_levels": 5,
+      "values": [
+        "Refused",
+        "Agree strongly",
+        "Agree mildly",
+        "Disagree",
+        "Disagree strongly"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q22",
+      "label": "The Department of Homeland Security has done a good job in the past protecting the public from recent public health crises such as SARS.",
+      "n_levels": 5,
+      "values": [
+        "Refused",
+        "Agree strongly",
+        "Agree mildly",
+        "Disagree",
+        "Disagree strongly"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "jkspw": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "m52pd": [
+    {
+      "var": "AAM13",
+      "label": "[The applicant is hardworking] On a scale from one to seven, how strongly do you",
+      "n_levels": 10,
+      "values": [
+        "1 - Strongly disagree",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 - Strongly agree",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AAM14",
+      "label": "[The applicant has relevant work experience] On a scale from one to seven, how s",
+      "n_levels": 10,
+      "values": [
+        "1 - Strongly disagree",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 - Strongly agree",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.07,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "AAM17",
+      "label": "[Relevant prior work experience] On a scale from one to seven, how important wer",
+      "n_levels": 10,
+      "values": [
+        "1 - Not at all important",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 - Extremely important",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.06,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AAM18",
+      "label": "[Ability to be unemotional in the workplace] On a scale from one to seven, how i",
+      "n_levels": 10,
+      "values": [
+        "1 - Not at all important",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 - Extremely important",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "m7vhz": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "mebw9": [
+    {
+      "var": "WEIGHT",
+      "label": "Post-stratification weights - 18+  employed general population (N=4,891)",
+      "n_levels": 4765,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "EMPLOY1",
+      "label": "Which statement best describes your current employment status?",
+      "n_levels": 10,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other",
+        "DON\u2019T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PARTFULL",
+      "label": "Do you work\u2026",
+      "n_levels": 5,
+      "values": [
+        "Full-time",
+        "Part-time",
+        "DON\u2019T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.78,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "RESUME",
+      "label": "...To work in an organization where my leadership experience, analytical skills from intensive college coursework, and personal communication skills can improve the company and allow me to grow professionally.",
+      "n_levels": 1,
+      "values": [
+        "Continue"
+      ],
+      "is_attribute": 0.08,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Q1",
+      "label": "How likely would you be to recommend that the place you work interview [INSERT [FIRSTNAME]]?",
+      "n_levels": 14,
+      "values": [
+        "0 - Not at all likely",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5 - Neither likely nor unlikely",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10 - Very likely",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q2A",
+      "label": "[Could be trained easily for work at the place you work] How do you think most people would view [INSERT [FIRSTNAME]]?",
+      "n_levels": 10,
+      "values": [
+        "1 - Not at all",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7 - Extremely",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q3",
+      "label": "If [INSERT [FIRSTNAME]] were hired at the place you work, how long do you think they would stay?",
+      "n_levels": 8,
+      "values": [
+        "Less than 1 year",
+        "1-2 years",
+        "2-3 years",
+        "3-4 years",
+        "More than 4 years",
+        "DON\u2019T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    }
+  ],
+  "n8azj": [
+    {
+      "var": "Q6",
+      "label": "Do you approve or disapprove of the way Donald Trump is handling his job as president?",
+      "n_levels": 8,
+      "values": [
+        "Strongly approve",
+        "Somewhat approve",
+        "Neither approve nor disapprove",
+        "Somewhat disapprove",
+        "Strongly disapprove",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ndhyr": [
+    {
+      "var": "Q11",
+      "label": "Have you ever worked in health care?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Yes",
+        "No"
+      ],
+      "is_attribute": 0.84,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.92,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "pjneh": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "pxb6n": [
+    {
+      "var": "Q7",
+      "label": "On a scale of 1-10, how racially mixed is your primary work environment? (if you are not working please think about your last job; if you are a full time student, please think about your classmates)",
+      "n_levels": 11,
+      "values": [
+        "Refused",
+        "1 \u2013 All own race",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10 - All other race(s)"
+      ],
+      "is_attribute": 0.1,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "py9q3": [
+    {
+      "var": "Q23A",
+      "label": "A preschool child is likely to suffer if his or her mother works.",
+      "n_levels": 5,
+      "values": [
+        "Refused",
+        "Strongly agree",
+        "Agree",
+        "Disagree",
+        "Strongly disagree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q23B",
+      "label": "Is a preschool child likely to suffer or benefit if his or her mother works outside the home?",
+      "n_levels": 4,
+      "values": [
+        "Refused",
+        "Likely to suffer",
+        "Likely to benefit",
+        "No difference"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "SPEMPLOY",
+      "label": "Which statement best describes your spouse or partner\u2019s current employment status?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Working \u2013 as a paid employee",
+        "Working \u2013 self-employed",
+        "Not working \u2013 on temporary layoff from a job",
+        "Not working \u2013 looking for work",
+        "Not working \u2013 retired",
+        "Not working \u2013 disabled",
+        "Not working \u2013 other"
+      ],
+      "is_attribute": 0.02,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.82,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "VIGNETTE1A_Job_Insert",
+      "label": "Vignette1A Job text insert",
+      "n_levels": 2,
+      "values": [
+        "satisfied",
+        "not satisfied"
+      ],
+      "is_attribute": 0.03,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "VIGNETTE2A_Job_Insert",
+      "label": "Vignette2A Job text insert",
+      "n_levels": 2,
+      "values": [
+        "satisfied",
+        "not satisfied"
+      ],
+      "is_attribute": 0.03,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "VIGNETTE3A_Job_Insert",
+      "label": "Vignette3A Job text insert",
+      "n_levels": 2,
+      "values": [
+        "satisfied",
+        "not satisfied"
+      ],
+      "is_attribute": 0.04,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Vignette_4A_Job_Insert",
+      "label": "Vignette4A Job text insert",
+      "n_levels": 2,
+      "values": [
+        "satisfied",
+        "not satisfied"
+      ],
+      "is_attribute": 0.03,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Vignette_5A_Job_Insert",
+      "label": "Vignette5A Job text insert",
+      "n_levels": 2,
+      "values": [
+        "satisfied",
+        "not satisfied"
+      ],
+      "is_attribute": 0.04,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "Vignette_6A_Job_Insert",
+      "label": "Vignette6A Job text insert",
+      "n_levels": 2,
+      "values": [
+        "satisfied",
+        "not satisfied"
+      ],
+      "is_attribute": 0.03,
+      "kind": "vignette_or_scenario_attribute"
+    }
+  ],
+  "q8ra3": [
+    {
+      "var": "Q1A_B",
+      "label": "[Generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class.] Please read the following statements and indicate your level of agreement or disagreement:",
+      "n_levels": 8,
+      "values": [
+        "Strongly Disagree",
+        "Disagree",
+        "Neither Agree nor Disagree",
+        "Agree",
+        "Strongly Agree",
+        "DON\u2019T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "qmfy4": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q1",
+      "label": "Q1: Please rate how committed you think Carol is as an employee.",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "Extremely committed",
+        "Very committed",
+        "Somewhat committed",
+        "A little committed",
+        "Not at all committed"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q2",
+      "label": "Q2: Please rate how capable you think Carol is as an employee.",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "Extremely capable",
+        "Very capable",
+        "Somewhat capable",
+        "A little capable",
+        "Not at all capable"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5B",
+      "label": "Q5B: How many days per week do you think Carol's husband should be okay with Carol working extra hours?",
+      "n_levels": 7,
+      "values": [
+        "Refused",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    }
+  ],
+  "rpw4u": [
+    {
+      "var": "AQ2a",
+      "label": "Do you think the government should or should not see to it that every person has a job and a good standard of living?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Government should see to it",
+        "Government should not see to it"
+      ],
+      "is_attribute": 0.01,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AQ2b",
+      "label": "Do you agree or disagree with this statement? The government should see to it that every person has a job and a good standard of living.",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Agree",
+        "Disagree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AQ2c",
+      "label": "Do you agree or disagree with this statement? The government should not see to it that every person has a job and a good standard of living.",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Agree",
+        "Disagree"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "AQ2d",
+      "label": "Do you think the government should not or should see to it that every person has a job and a good standard of living?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Government should not see to it",
+        "Government should see to it"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QB2a",
+      "label": "If there is a union at a particular company or business, do you think that all the workers there should be required to be union members, or are you opposed to this?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Yes, all in union",
+        "No, oppose"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QB2b",
+      "label": "If there is a union at a particular company or business, do you think that all the workers there should be required to be union members?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Yes",
+        "No"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QB2c",
+      "label": "If there is a union at a particular company or business, do you think that all the workers there should be required to be union members, or should it be left to the individuals to decide whether or not he wants to be in the union?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "All should be required",
+        "Left to individuals"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QB2d",
+      "label": "If there is a union at a particular company or business, are you opposed to all the workers there being required to be union members, or do you think that all the workers there should be required to be union members?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Oppose",
+        "All in union"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "rs65g": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "savkp": [
+    {
+      "var": "PPWORK",
+      "label": "Current employment status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sd7cf": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sffyb": [
+    {
+      "var": "S2",
+      "label": "Are you or someone else (e.g., your employer) currently contributing to your retirement plan?",
+      "n_levels": 3,
+      "values": [
+        "Refused",
+        "Yes",
+        "No"
+      ],
+      "is_attribute": 0.13,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "sh4px": [
+    {
+      "var": "PPWORK",
+      "label": "Current employment status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "t936a": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.9,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "v3bfk": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.86,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "vhycz": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "w7mnc": [
+    {
+      "var": "network_ideology",
+      "label": "Political Ideology of Respondent's Facebook Network",
+      "n_levels": 10,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "time_network_ideolog_firstclick",
+      "label": "Network Ideology Page Timing - First Click",
+      "n_levels": 2356,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "time_network_ideolog_lastclick",
+      "label": "Network Ideology Page Timing - Last Click",
+      "n_levels": 2389,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "time_network_ideolog_pagesubmit",
+      "label": "Network Ideology Page Timing - Page Submit",
+      "n_levels": 2412,
+      "values": [],
+      "is_attribute": 0.07,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "time_network_ideolog_clickcount",
+      "label": "Network Ideology Page Timing - Click Count",
+      "n_levels": 14,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "NEW3",
+      "label": "How good are you at working with percentages? Please rate from 1 to 5 where 1 is",
+      "n_levels": 8,
+      "values": [
+        "1 Not at all good",
+        "2",
+        "3",
+        "4",
+        "5 Extremely good",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    }
+  ],
+  "wmsah": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "x2ztf": [
+    {
+      "var": "EMPLOY",
+      "label": "",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.76,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "xweq8": [
+    {
+      "var": "FECHLD",
+      "label": "[A working mother can establish just as warm and secure a relationship with her",
+      "n_levels": 5,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "FEPRESCH",
+      "label": "[A preschool child is likely to suffer if his or her mother works.] Please indic",
+      "n_levels": 5,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "FEHIRE",
+      "label": "[Because of past discrimination, employers should make special efforts to hire a",
+      "n_levels": 5,
+      "values": [],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "FEJOB",
+      "label": "What about your opinion - are you for or against preferential hiring and promoti",
+      "n_levels": 5,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "RACEDIF1",
+      "label": "[Mainly due to discrimination?] On the average, Black people have worse jobs, in",
+      "n_levels": 3,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "CONLABOR",
+      "label": "[Organized labor] ...As far as the people running these institutions are concern",
+      "n_levels": 4,
+      "values": [],
+      "is_attribute": 0.07,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q9_1",
+      "label": "[Employment (wages) for you, or other members of your household] Does your house",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.52,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q9_4",
+      "label": "[Business, farm, or self-employment] Does your household receive income from any",
+      "n_levels": 2,
+      "values": [],
+      "is_attribute": 0.49,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ye2ej": [
+    {
+      "var": "QC4",
+      "label": "How committed do you believe this candidate would be to this job relative to other similarly positioned employees in the company?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Not at all committed1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "Extremely committed7"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QC6",
+      "label": "How frequently do you believe that this candidate would rearrange {his/her} schedule to accommodate work responsibilities?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Not at all frequently1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "Extremely frequently7"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QC7",
+      "label": "On a scale of 1 to 7 how masculine would you describe this job candidate?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Not at all masculine1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "Extremely masculine7"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QC8",
+      "label": "On a scale of 1 to 7, how feminine would you describe this job candidate?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Not at all feminine1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "Extremely feminine7"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "QM1",
+      "label": "[Caucasian?] Was this job candidate \u2026",
+      "n_levels": 4,
+      "values": [
+        "Refused",
+        "Yes",
+        "No",
+        "Don't Know"
+      ],
+      "is_attribute": 0.03,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "QM2",
+      "label": "[In a heterosexual relationship?] Was this job candidate \u2026",
+      "n_levels": 4,
+      "values": [
+        "Refused",
+        "Yes",
+        "No",
+        "Don't Know"
+      ],
+      "is_attribute": 0.04,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "QM3",
+      "label": "[In a gay or lesbian relationship?] Was this job candidate \u2026",
+      "n_levels": 4,
+      "values": [
+        "Refused",
+        "Yes",
+        "No",
+        "Don't Know"
+      ],
+      "is_attribute": 0.04,
+      "kind": "vignette_or_scenario_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.93,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yn7mx": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "yv2ta": [
+    {
+      "var": "QWORK",
+      "label": "Which statement best describes your current employment status?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q2_1",
+      "label": "[Other people in my organization may see me as a less competent worker.] If you",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q2_2",
+      "label": "[Other people in my organization may see me as a less committed worker.] If you",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q2_4",
+      "label": "[My relationships with managers, co-workers, customers, or clients may be harmed",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_1",
+      "label": "[Other people in my organization may see me as a less competent worker.] If you",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_2",
+      "label": "[Other people in my organization may see me as a less committed worker.] If you",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.04,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q5_4",
+      "label": "[My relationships with managers, co-workers, customers, or clients may be harmed",
+      "n_levels": 1,
+      "values": [
+        "Refused"
+      ],
+      "is_attribute": 0.05,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q7_3",
+      "label": "[Job sharing policies] In the case of your own career, which of the following po",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.12,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "Q7_5",
+      "label": "[On-site childcare at your workplace] In the case of your own career, which of t",
+      "n_levels": 2,
+      "values": [
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.19,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "IND2",
+      "label": "Industry (detailed) in current or main job",
+      "n_levels": 132,
+      "values": [
+        "Not asked",
+        "Refused",
+        "Crop Production",
+        "Animal Production",
+        "Forestry and Logging",
+        "Fishing, Hunting and Trapping",
+        "Support Activities for Agriculture and Forestry",
+        "Oil and Gas Extraction",
+        "Mining (except Oil and Gas)",
+        "Support Activities for Mining",
+        "Utilities",
+        "Construction of Buildings",
+        "Heavy and Civil Engineering Construction",
+        "Specialty Trade Contractors",
+        "Food Manufacturing",
+        "Beverage and Tobacco Product Manufacturing",
+        "Textile Mills",
+        "Textile Product Mills",
+        "Apparel Manufacturing",
+        "Leather and Allied Product Manufacturing",
+        "Wood Product Manufacturing",
+        "Paper Manufacturing",
+        "Printing and Related Support Activities",
+        "Petroleum and Coal Products Manufacturing",
+        "Pharmaceutical and Medicine Manufacturing",
+        "Health, Personal Care, and Beauty Product Manufacturing",
+        "Household Product Manufacturing",
+        "Other Chemical Manufacturing",
+        "Plastics and Rubber Products Manufacturing",
+        "Nonmetallic Mineral Product Manufacturing",
+        "Primary Metal Manufacturing",
+        "Fabricated Metal Product Manufacturing",
+        "Machinery Manufacturing",
+        "Computer and Electronic Product Manufacturing",
+        "Electrical Equipment, Appliance, and Component Manufacturing",
+        "Transportation Equipment Manufacturing",
+        "Furniture and Related Product Manufacturing",
+        "Miscellaneous Manufacturing",
+        "Merchant Wholesalers, Durable Goods",
+        "Merchant Wholesalers, Nondurable Goods",
+        "Wholesale Electronic Markets and Agents and Brokers",
+        "Motor Vehicle and Parts Dealers",
+        "Furniture and Home Furnishings Stores",
+        "Electronics and Appliance Stores",
+        "Building Material and Garden Equipment and Supplies Dealers",
+        "Food and Beverage Stores",
+        "Health and Personal Care Stores",
+        "Gasoline Stations",
+        "Clothing and Clothing Accessories Stores",
+        "Sporting Goods, Hobby, Book, and Music Stores",
+        "General Merchandise Stores",
+        "Miscellaneous Store Retailers",
+        "Nonstore Retailers",
+        "Air Transportation",
+        "Rail Transportation",
+        "Water Transportatio",
+        "Truck Transportation",
+        "Transit and Ground Passenger Transportation",
+        "Pipeline Transportation",
+        "Scenic and Sightseeing Transportation",
+        "Support Activities for Transportation",
+        "Postal Service",
+        "Couriers and Messengers",
+        "Warehousing and Storage",
+        "Publishing Industries (except Internet)",
+        "Motion Picture and Sound Recording Industries",
+        "Broadcasting",
+        "Telecommunications",
+        "Data Processing, Hosting and Related Services",
+        "Other Information Services",
+        "Monetary Authorities-Central Bank",
+        "Credit Intermediation and Related Activities",
+        "Securities, Commodity Contracts, and Other Financial Investments and Related Act",
+        "Insurance Carriers and Related Activities",
+        "Funds, Trusts, and Other Financial Vehicles",
+        "Real Estate",
+        "Rental and Leasing Services",
+        "Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)",
+        "Legal Services",
+        "Accounting, Tax Preparation, Bookkeeping, and Payroll Services",
+        "Architectural, Engineering, and Related Services",
+        "Specialized Design Services",
+        "Computer Systems Design and Related Services",
+        "Management, Scientific, and Technical Consulting Services",
+        "Marketing Consulting Services",
+        "Scientific Research and Development Services",
+        "Advertising Agencies",
+        "Public Relations Agencies",
+        "Other Professional, Scientific, and Technical Services",
+        "Market Research and Public Opinion Polling",
+        "Management of Companies and Enterprises",
+        "Administrative and Support Services",
+        "Waste Management and Remediation Services",
+        "Educational Services",
+        "Ambulatory Health Care Services",
+        "Hospitals",
+        "Nursing and Residential Care Facilities",
+        "Social Assistance",
+        "Performing Arts, Spectator Sports, and Related Industries",
+        "Museums, Historical Sites, and Similar Institutions",
+        "Amusement, Gambling, and Recreation Industries",
+        "Accommodation",
+        "Food Services and Drinking Places",
+        "Automotive Repair and Maintenance",
+        "Electronic and Precision Equipment Repair and Maintenance",
+        "Commercial and Industrial Machinery and Equipment Repair and Maintenance",
+        "Personal and Household Goods Repair and Maintenance",
+        "Personal Care Services",
+        "Death Care Services",
+        "Drycleaning and Laundry Services",
+        "Religious Organizations",
+        "Grantmaking and Giving Services",
+        "Social Advocacy Organizations",
+        "Civic and Social Organizations",
+        "Business, Professional, Labor, Political, and Similar Organizations",
+        "Private Household Service",
+        "Executive, Legislative, and Other General Government Support",
+        "Justice, Public Order, and Safety Activities",
+        "Administration of Human Resource Programs",
+        "Administration of Environmental Quality Programs",
+        "Administration of Housing Programs, Urban Planning, and Community Development",
+        "Administration of Economic Programs",
+        "Space Research and Technology",
+        "National Security and International Affairs",
+        "U.S. Army",
+        "U.S. Air Force",
+        "U.S. Navy",
+        "U.S. Marines",
+        "U.S. Coastguard",
+        "U.S. Armed Forces, branch not specified",
+        "Military Reserves or National Guard",
+        "Armed Forces"
+      ],
+      "is_attribute": 0.62,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "ppcm0160",
+      "label": "Occupation (detailed) in current or main job",
+      "n_levels": 31,
+      "values": [
+        "Not asked",
+        "Refused",
+        "Management",
+        "Business and Financial Operations",
+        "Computer and Mathematical",
+        "Architecture and Engineering",
+        "Life, Physical, and Social Sciences",
+        "Community and Social Services",
+        "Lawyer, judge",
+        "Teacher, except college and university",
+        "Teacher, college and university",
+        "Other professional",
+        "Medical Doctor (such as physician, surgeon, dentist, veterinarian)",
+        "Other Health Care Practitioner (such as nurse, pharmacist, chiropractor, dietici",
+        "Health Technologist or Technician (such as paramedic, lab technician)",
+        "Health Care Support (such as nursing aide, orderly, dental assistant)",
+        "Protective Service",
+        "Food Preparation and Serving",
+        "Building and Grounds Cleaning and Maintenance",
+        "Personal Care and Service",
+        "Sales Representative",
+        "Retail Sales",
+        "Other Sales",
+        "Office and Administrative Support",
+        "Farming, Forestry, and Fishing",
+        "Construction and Extraction",
+        "Installation, Maintenance, and Repair",
+        "Precision Production (such as machinist, welder, baker, printer, tailor)",
+        "Transportation and Material Moving",
+        "Armed Services",
+        "Other (Please specify)"
+      ],
+      "is_attribute": 0.85,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "z358z": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zaqkm": [
+    {
+      "var": "ELLIOTT3B",
+      "label": "[...David will be able to live a full life, such as having a steady job, a stabl",
+      "n_levels": 8,
+      "values": [
+        "Very unlikely",
+        "Unlikely",
+        "Neither likely nor unlikely",
+        "Likely",
+        "Very likely",
+        "DON'T KNOW",
+        "SKIPPED ON WEB",
+        "REFUSED"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.87,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zrwjp": [
+    {
+      "var": "weight",
+      "label": "Post-Stratification weight - 18+ Employed by Condition (N=635 Experimental and 640 Control)",
+      "n_levels": 874,
+      "values": [],
+      "is_attribute": 0.03,
+      "kind": "weight_or_admin"
+    },
+    {
+      "var": "WORK",
+      "label": "Which statement best describes your current employment status?",
+      "n_levels": 8,
+      "values": [
+        "Refused",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working \u2013 retired",
+        "Not working \u2013 disabled",
+        "Not working \u2013 other"
+      ],
+      "is_attribute": 0.96,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q3a",
+      "label": "Please think about how many hours you work on average each week, and enter this number in the space below.",
+      "n_levels": 65,
+      "values": [],
+      "is_attribute": 0.31,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "Q3b",
+      "label": "How many weeks do you work on average each year?",
+      "n_levels": 39,
+      "values": [],
+      "is_attribute": 0.69,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.95,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "ppp10090",
+      "label": "DATA ONLY: In the past 12 months, have you...[Worked for a charity or your church]",
+      "n_levels": 4,
+      "values": [
+        "Not asked",
+        "Refused",
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.18,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "ppp10094",
+      "label": "DATA ONLY: In the past 12 months, have you... [Volunteered or worked for a Presidential campaign]",
+      "n_levels": 4,
+      "values": [
+        "Not asked",
+        "Refused",
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.06,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "ppp10095",
+      "label": "DATA ONLY: In the past 12 months, have you... [Volunteered or worked for another political candidate, issue, or cause]",
+      "n_levels": 4,
+      "values": [
+        "Not asked",
+        "Refused",
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "ppp10098",
+      "label": "DATA ONLY: In the past 12 months, have you... [Worked with others in your community to solve a problem]",
+      "n_levels": 4,
+      "values": [
+        "Not asked",
+        "Refused",
+        "No",
+        "Yes"
+      ],
+      "is_attribute": 0.04,
+      "kind": "derived_or_computed"
+    },
+    {
+      "var": "ppcm0062",
+      "label": "Altogether, how many jobs do you have?",
+      "n_levels": 6,
+      "values": [
+        "Not asked",
+        "Refused",
+        "One",
+        "Two",
+        "Three",
+        "Four or more"
+      ],
+      "is_attribute": 0.89,
+      "kind": "respondent_attribute"
+    },
+    {
+      "var": "ppcm0063",
+      "label": "Full-time / part-time status in current or main job",
+      "n_levels": 4,
+      "values": [
+        "Not asked",
+        "Refused",
+        "R works full-time",
+        "R works part-time"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "ztwqy": [
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zv3wc": [
+    {
+      "var": "B2",
+      "label": "How willing would you be to have a person with serious mental illness start working closely with you on a job?",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "Definitely willing",
+        "Somewhat willing",
+        "Neither willing nor unwilling",
+        "Somewhat unwilling",
+        "Definitely unwilling"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "C1_order_3",
+      "label": "[Expanding public programs to help people with serious mental illness find jobs and provide on-the-job support as needed :]Please tell us how much you favor or oppose each item below.",
+      "n_levels": 7,
+      "values": [],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "C1_3",
+      "label": "[Expanding public programs to help people with serious mental illness find jobs and provide on the job training and other support if needed :]Please tell us how much you favor or oppose each item below.",
+      "n_levels": 6,
+      "values": [
+        "Refused",
+        "Strongly favor",
+        "Somewhat favor",
+        "Neither favor nor oppose",
+        "Somewhat oppose",
+        "Definitely oppose"
+      ],
+      "is_attribute": 0.02,
+      "kind": "opinion_or_attitude_item"
+    },
+    {
+      "var": "PPWORK",
+      "label": "Current Employment Status",
+      "n_levels": 9,
+      "values": [
+        "Not asked",
+        "REFUSED",
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.82,
+      "kind": "respondent_attribute"
+    }
+  ],
+  "zx5b8": [
+    {
+      "var": "EMPLOY",
+      "label": "Current Employment Status",
+      "n_levels": 7,
+      "values": [
+        "Working - as a paid employee",
+        "Working - self-employed",
+        "Not working - on temporary layoff from a job",
+        "Not working - looking for work",
+        "Not working - retired",
+        "Not working - disabled",
+        "Not working - other"
+      ],
+      "is_attribute": 0.94,
+      "kind": "respondent_attribute"
+    }
+  ]
+}
