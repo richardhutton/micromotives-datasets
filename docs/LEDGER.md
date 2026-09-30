@@ -355,7 +355,8 @@ on a correct recipe.
 
 ### Makers, batch of five — findings so far
 
-Two of the five have reported. Both drafts verified independently before acceptance.
+All five reported. Every draft builds QC-clean; the numbers below were re-derived here
+rather than taken from the agents' reports.
 
 | # | Finding | Kind | Action |
 |---|---|---|---|
@@ -367,7 +368,18 @@ Two of the five have reported. Both drafts verified independently before accepta
 | 45 | **`task_num` in SocSci210 is not a question key.** Their `9263n` task 6 holds two genuinely different questions (bad–good and sad–happy mood) under one index | **method** | When reconciling scope, read their `prompt` per `task_num` rather than subset-summing row counts — the maker reports that subset-sum returned **342** candidate subsets for one row total, while one `min(prompt) GROUP BY task_num` query identified all seven items at once |
 | 46 | First audited study where SocSci210's stimulus text is substantively **correct** — `9263n` is faithful, all arms distinct, no factor dropped (abridged, and one tense changed from "is" to "was") | context | Their text failures are frequent, not universal. Worth recording so the sample stays honest |
 
-Both drafts reproduce SocSci210 exactly where comparable: `9263n` **PASS on all four numeric
+| 47 | **"Reversed on screen" is not "reversed in the data" — and `rpw4u` is not the general case.** `evnyh` manipulates response-scale direction; the options were displayed in reverse sequence but the stored codes stayed **label-anchored**, so applying an `Arm.response_recode` would have silently inverted half the answers. The same failure as #7, from the opposite action | **method** | Discriminating test, cheap and mechanical: **if one data column serves several arms of the order factor and carries one value-label set, the coding is label-anchored.** `Q1A_1` is labelled "(Groups 4 + 10)" — one column, both directions, one label set. Proven four ways, including correlating each item against its unmanipulated day-count counterpart: r ≈ −0.77 in *both* direction arms, where a positional coding would flip the sign |
+| 48 | SocSci210 **introduced a reversal that was not there, and attached it to the wrong factor.** Their `evnyh` direction wording tracks *alignment* (vertical/horizontal), which is orthogonal to direction. Their 12 conditions render only **7 distinct strings**, so the direction factor is absent from the text. Two of their six cell maps collapse five ordinal levels to three, and one emits `0` against their own declared 1–5 scale | one-off | Our rule 1 fails the identical-text shape, rule 8 the collapse, rule 4 the out-of-scale value. Recovered by matching their counts against raw distributions, consistent across all ten items |
+| 49 | **A deposit's proposal can describe a SMALLER DESIGN than the one fielded**, so SocSci210's *condition count* can be wrong — not just its text. `cug34`'s proposal says "12 (2 x 2 x 3)" and holds duration constant; the fielded instrument randomised a **fourth** factor (`DOV_RELDUR`, 2,014 / 2,006) and has **24** blocks. Their 12 stimulus strings all say "for three years", which is false for the 2,006 respondents who read "7 years" | **method** | Extends #35 and #49 is the sharper form: the proposal is unreliable even on arm *count*. Mechanically checkable — reconcile the answer key's condition count against the assignment variable's cardinality. Here `XTESS217` has 24 values and the key said 12; that gap is the tell |
+| 50 | **The `outcome.var or arm.outcome_var` resolution is a SUM, not a PRODUCT.** One variable per outcome, or one per arm — never one per (arm, outcome) pair. Now the single largest source of unbuilt rows: it costs `evnyh` **nine of ten** experimental items (~15,400 rows), `cug34`'s B02/B03 and its four insert-bearing items, and `z358z`'s two primary outcomes | **method**, open | Proposed `Arm.outcome_vars: {task_num: var}`, resolved before `outcome.var`. No change to any existing recipe |
+| 51 | **The questionnaire can specify a vignette combinatorially rather than as written blocks.** `zaqkm`'s 40 arms are 5 first paragraphs × 8 second-paragraph blocks, each branching again on `[SHOW IF DOV_MENTALHEALTH=2: alcohol use disorder ...]`. Three of the last four studies (`dh3nj`, `z358z`, `zaqkm`) assembled arms from templated fragments, and each agent wrote its own throwaway parser | **method**, open | A shared `sources/quex.py` resolving `[SHOW IF VAR=n: ...]` / `[ALL ELSE ...]` / inline switches would make arm text **derived** rather than transcribed, and turn the hardest study in the batch into a routine one |
+| 52 | **Cross-file agreement is a free, strong verification primitive.** TESS deposits ship *simple* and *prog* questionnaires. `zaqkm`'s maker derived all 40 arms from **both** independently and asserted equality — which caught two real bugs in its own parser (an unbounded last block; a `</i>`-before-full-stop divergence) before either reached the YAML | **method** | Standard step wherever both files exist |
+| 53 | **Continuous / quantity outcomes are inexpressible.** `response_recode` is a finite explicit map and rules 7–8 assume bands, so `cug34`'s dollar boxes (0–2,800) would need ~2,800 entries. SocSci210 built exactly those 7,138 answers, so this is real training signal we cannot currently emit | **method**, open | Proposed `Outcome.numeric: {min, max}` passthrough |
+| 54 | **`persona_map` has no missing-code handling.** Panel sentinels (`XIDEO=9 "MISSING"`, `XREL1=14 "MISSING"`) resolve to the literal word "MISSING" in persona text, and a recipe author's only mitigation is to drop the field. `evnyh` dropped ideology and religion to protect 37 rows | **method**, open | Proposed `persona_missing: {VAR: [codes]}`, or a global drop-list of sentinel labels. Raises coverage on every KnowledgePanel study — see the persona-coverage section |
+| 55 | **Proposed, not built: "arm text must not come from the proposal."** Warn when a long n-gram of a recipe's arm text appears in the deposit's proposal PDF but **not** in the questionnaire. Independently proposed by three of the five makers | **method**, open | Mechanises #35/#44. Would have auto-caught SocSci210 on `z358z`, `zaqkm` and `b87sm`. `zaqkm`'s maker already ran it by hand as five assertions, all passing |
+| 56 | **Proposed, not built: factorial completeness.** Assert `len(arms) == product(level counts)` and that every cell is non-empty in the data. At 40 arms a dropped or duplicated cell is invisible by eye | **method**, open | One line; `zaqkm` (5×4×2 = 40) is the case that motivates it |
+
+Both `9263n` and `zaqkm` reproduce SocSci210 exactly: `9263n` **PASS on all four numeric
 fields** (6,328 rows, conditions 1685/1447/1479/1717 in their order, the whole 10-bin
 distribution), independently re-derived here. `b87sm` is not comparable — their 8
 "conditions" are the eight presentation *slots*, not the manipulation — but the maker
@@ -432,6 +444,35 @@ null on every KnowledgePanel study.
 
 → Same shape as the stimulus-text finding: their **structure** is sound, their
 **filling-in** is not. Our crosswalk (§6) should aim to beat their coverage, not match it.
+
+---
+
+## Where the batch leaves us
+
+14 recipes (9 committed, 5 drafts awaiting checkers), **80,010 rows**, all QC PASS.
+
+**Verification state, stated plainly:**
+
+| | Count |
+|---|---|
+| Numeric answer key from SocSci210, passing | 7 — `7jt2f`, `bf8p2`, `dh3nj`, `sd7cf`, `z358z`, `9263n`, `zaqkm` |
+| No usable key (they built a different scope) | 7 |
+| Independent read of the questionnaire by a second party | 2 — `a5v96`, `z358z` |
+
+So the five new drafts are maker-verified but not yet checked. On the two studies
+that have been through the full loop, the checkers found one method-level defect in
+our own QC, two latent pipeline bugs, and a four-way crosscheck PASS the maker alone
+could not reach — so the remaining five checker runs are the next real step, and
+they give the n=7 defect-rate measurement that would license scaling.
+
+**What the batch cost:** five agents, roughly 15 minutes of wall-clock each in
+parallel, ~10 minutes of review each. Against the 30–60 min/study hand estimate, and
+with materially better evidence than hand-building produced.
+
+**What the batch bought, beyond five studies:** rules 10 and 11, two measured fixes
+to rule 9, and nine method-level findings. The pattern to note is that every rule in
+this ledger was found by a study breaking it — not by design. Rules 9 and 11 both
+came from a study the previous rule was blind to, one batch apart.
 
 ---
 
