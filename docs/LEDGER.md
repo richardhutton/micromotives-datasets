@@ -104,6 +104,32 @@ must be adjudicated against the questionnaire.
 
 ---
 
+### Study 4 — `c5r2f` (3 × 2 × 2 factorial, 12 cells)
+
+The most complex design so far, and the **first study that needed no new format
+features** — the split-ballot support added for `rpw4u` covered it unchanged.
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 13 | 12 cells, each with its own outcome variable `Cond_1..Cond_12` | — | Already handled by `Arm.outcome_var` |
+| 14 | Three factors (domain × default × process) | — | Already handled by first-class `factors` |
+| 15 | Our scope is narrower than theirs (primary DV only; they also built two blocks of follow-up items, 3 tasks / 4,375 rows) | one-off | `comparable_to_socsci210: false`, with the per-condition check done manually |
+
+Outcome: **QC PASS**, 1,091 rows, 12 conditions. Per-condition counts on the primary
+measure match SocSci210 **exactly, 12 for 12** — so their arm assignment is right and
+our parse agrees with it.
+
+Confirms the earlier audit: their stimulus text rotates the domains by one block (every
+arm gets the wrong scenario), and their retirement text's "3% of earnings" appears
+nowhere in the source — the questionnaire says **5% of net monthly salary**. Verified
+by reading the `[SP; XTESS084 = n]` blocks directly.
+
+**First signal on cost:** this study took materially less work than studies 2 and 3
+despite being the most complex design, because the format already fitted. That is the
+batching bet paying off — method fixes compounding.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.

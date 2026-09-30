@@ -1,0 +1,198 @@
+study_id: c5r2f
+source: tess
+title: "Do Policy Defaults Communicate Choice-Relevant Information?"
+data_file: TESS2 084 - Tannenbaum_Client.sav
+
+# Our scope is narrower than SocSci210's: we build the primary dependent measure
+# (accept the default vs switch away), while they also included two blocks of
+# follow-up agreement items (3 task_nums, 4,375 rows). Per-condition counts on the
+# primary measure do match theirs exactly; whole-study totals cannot.
+comparable_to_socsci210: false
+
+notes: >
+  TESS2 084 (Tannenbaum). A 3 x 2 x 2 between-subjects design (12 cells):
+    domain          - medical testing / organ donation / retirement savings
+    default         - autoenrollment (you are opted IN) / non-enrollment (opted OUT)
+    policy_process  - random (the vignette states the default was chosen at random)
+                      / standard (no such note)
+
+  Each cell is asked its own variable, Cond_1..Cond_12, populated only for the
+  respondents in that cell — a split-ballot shape, handled with per-arm `outcome_var`.
+  Answer coding is consistent across all twelve: 1 = accept the default, 2 = switch
+  away from it. No per-arm reversal is needed.
+
+  Arm wordings taken from the questionnaire's `[SP; XTESS084 = n]` blocks in
+  tess2_084_tannenbaum_FINAL.txt (lines 146-291), read directly.
+
+  NOTE ON SOCSCI210: its stimulus text for this study attaches the WRONG SCENARIO
+  to every one of the 12 arms — the domains are rotated by one block, so the arms
+  that read the medical-testing vignette are described as organ donation, organ
+  donation as retirement, and retirement as medical testing. Its retirement text
+  also states "3% of earnings"; the questionnaire says 5% of net monthly salary,
+  so that figure appears nowhere in the source. The numeric arm assignment is
+  nevertheless correct (confirmed by an exact 12-for-12 match of the (1,2) answer
+  counts to the raw Cond_N items), which is why the mapping below is raw - 1.
+
+condition:
+  source_var: XTESS084
+  factors: [domain, default, policy_process]
+  shared_context: >
+    You were asked to read a short scenario and respond as you would if you were
+    actually presented with the choice today.
+  arms:
+    # ---- medical testing -------------------------------------------------
+    - raw: 1
+      condition_num: 0
+      factors: {domain: "medical testing", default: "autoenrollment", policy_process: "random"}
+      outcome_var: Cond_1
+      text: >
+        You are at a health clinic for a physical check-up. The nurse tells you that
+        testing is now available for Streptococcus encephalinus, an emerging virus.
+        The clinic's policy for this virus is "routine testing": patients are tested
+        unless they actively request not to be. You are told the clinic was randomly
+        chosen to provide routine testing, as part of a large multi-site study
+        providing either routine or voluntary testing. You are therefore scheduled to
+        be tested for this virus.
+    - raw: 2
+      condition_num: 1
+      factors: {domain: "medical testing", default: "non-enrollment", policy_process: "random"}
+      outcome_var: Cond_2
+      text: >
+        You are at a health clinic for a physical check-up. The nurse tells you that
+        testing is now available for Streptococcus encephalinus, an emerging virus.
+        The clinic's policy for this virus is "voluntary testing": patients are not
+        tested unless they actively request to be. You are told the clinic was randomly
+        chosen to provide voluntary testing, as part of a large multi-site study
+        providing either routine or voluntary testing. You are therefore not scheduled
+        to be tested for this virus.
+    - raw: 3
+      condition_num: 2
+      factors: {domain: "medical testing", default: "autoenrollment", policy_process: "standard"}
+      outcome_var: Cond_3
+      text: >
+        You are at a health clinic for a physical check-up. The nurse tells you that
+        testing is now available for Streptococcus encephalinus, an emerging virus.
+        The clinic's policy for this virus is "routine testing": patients are tested
+        unless they actively request not to be. You are therefore scheduled to be
+        tested for this virus.
+    - raw: 4
+      condition_num: 3
+      factors: {domain: "medical testing", default: "non-enrollment", policy_process: "standard"}
+      outcome_var: Cond_4
+      text: >
+        You are at a health clinic for a physical check-up. The nurse tells you that
+        testing is now available for Streptococcus encephalinus, an emerging virus.
+        The clinic's policy for this virus is "voluntary testing": patients are not
+        tested unless they actively request to be. You are therefore not scheduled to
+        be tested for this virus.
+    # ---- organ donation --------------------------------------------------
+    - raw: 5
+      condition_num: 4
+      factors: {domain: "organ donation", default: "autoenrollment", policy_process: "random"}
+      outcome_var: Cond_5
+      text: >
+        You have just moved to a new state and must get a driver's license. As you
+        complete the application you read that in this state the default is "donor":
+        every person is considered to be an organ donor upon their death unless they
+        choose not to be. You are told the default option was randomly chosen by a
+        computer and changes from year to year. You are therefore currently a
+        potential donor.
+    - raw: 6
+      condition_num: 5
+      factors: {domain: "organ donation", default: "non-enrollment", policy_process: "random"}
+      outcome_var: Cond_6
+      text: >
+        You have just moved to a new state and must get a driver's license. As you
+        complete the application you read that in this state the default is "not a
+        donor": every person is considered not to be an organ donor upon their death
+        unless they choose to be. You are told the default option was randomly chosen
+        by a computer and changes from year to year. You are therefore currently not a
+        potential donor.
+    - raw: 7
+      condition_num: 6
+      factors: {domain: "organ donation", default: "autoenrollment", policy_process: "standard"}
+      outcome_var: Cond_7
+      text: >
+        You have just moved to a new state and must get a driver's license. As you
+        complete the application you read that in this state the default is "donor":
+        every person is considered to be an organ donor upon their death unless they
+        choose not to be. You are therefore currently a potential donor.
+    - raw: 8
+      condition_num: 7
+      factors: {domain: "organ donation", default: "non-enrollment", policy_process: "standard"}
+      outcome_var: Cond_8
+      text: >
+        You have just moved to a new state and must get a driver's license. As you
+        complete the application you read that in this state the default is "not a
+        donor": every person is considered not to be an organ donor upon their death
+        unless they choose to be. You are therefore currently not a potential donor.
+    # ---- retirement savings ----------------------------------------------
+    - raw: 9
+      condition_num: 8
+      factors: {domain: "retirement savings", default: "autoenrollment", policy_process: "random"}
+      outcome_var: Cond_9
+      text: >
+        You have just been hired at a company and must fill out work-related forms.
+        You read that the default for retirement savings is "automatic enrollment":
+        5% of your net monthly salary is automatically deposited into a basic company
+        savings plan, though employees may opt out, in which case none of your salary
+        is set aside. You are told the default was randomly chosen by a computer and
+        changes from year to year. You are therefore currently enrolled in the company
+        savings plan.
+    - raw: 10
+      condition_num: 9
+      factors: {domain: "retirement savings", default: "non-enrollment", policy_process: "random"}
+      outcome_var: Cond_10
+      text: >
+        You have just been hired at a company and must fill out work-related forms.
+        You read that the default for retirement savings is "non-enrollment": none of
+        your monthly salary is set aside for retirement, though employees may enroll,
+        in which case 5% of your net monthly salary is set aside. You are told the
+        default was randomly chosen by a computer and changes from year to year. You
+        are therefore currently not enrolled in the company savings plan.
+    - raw: 11
+      condition_num: 10
+      factors: {domain: "retirement savings", default: "autoenrollment", policy_process: "standard"}
+      outcome_var: Cond_11
+      text: >
+        You have just been hired at a company and must fill out work-related forms.
+        You read that the default for retirement savings is "automatic enrollment":
+        5% of your net monthly salary is automatically deposited into a basic company
+        savings plan, though employees may opt out, in which case none of your salary
+        is set aside. You are therefore currently enrolled in the company savings plan.
+    - raw: 12
+      condition_num: 11
+      factors: {domain: "retirement savings", default: "non-enrollment", policy_process: "standard"}
+      outcome_var: Cond_12
+      text: >
+        You have just been hired at a company and must fill out work-related forms.
+        You read that the default for retirement savings is "non-enrollment": none of
+        your monthly salary is set aside for retirement, though employees may enroll,
+        in which case 5% of your net monthly salary is set aside. You are therefore
+        currently not enrolled in the company savings plan.
+
+outcomes:
+  # No `var`: each arm supplies its own Cond_N.
+  - task_num: 0
+    question: "Do you accept this policy as it stands, or do you switch away from it?"
+    scale:
+      min: 1
+      max: 2
+      min_label: "accept the default"
+      max_label: "switch away from the default"
+
+response_recode: {1: 1, 2: 2}
+missing_codes: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  urban_rural: PPMSACAT
