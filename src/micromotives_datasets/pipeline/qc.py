@@ -7,6 +7,7 @@ real dataset — see docs/verification/.
 
 from __future__ import annotations
 
+import itertools
 from collections import Counter
 from dataclasses import dataclass, field
 
@@ -111,17 +112,41 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     # --- Rule 5: each factor must actually vary in the rendered text --------
     # Guards against a factor being declared but never expressed — the failure
     # mode behind SocSci210's inverted/dropped factors.
+    #
+    # Compare MINIMAL PAIRS: two arms differing in this factor and nothing else
+    # must render different text. Anything looser is vacuous. The first version
+    # of this rule failed only when *every* arm rendered identically, which
+    # rule 1 already catches — so it passed a factor provably absent from all
+    # arm text, and contributed nothing on the first eight studies.
     for factor in recipe.condition.factors:
         levels = {a.factors.get(factor) for a in recipe.condition.arms}
         if len(levels) < 2:
             rep.warnings.append(f"factor {factor!r} has fewer than 2 levels")
             continue
-        texts_by_level: dict[str | None, set[str]] = {}
-        for a in recipe.condition.arms:
-            texts_by_level.setdefault(a.factors.get(factor), set()).add(a.text)
-        flat = [t for ts in texts_by_level.values() for t in ts]
-        if len(set(flat)) == 1:
-            rep.failures.append(f"factor {factor!r} varies but arm text never changes")
+        others = [o for o in recipe.condition.factors if o != factor]
+        pairs = [
+            (a, b)
+            for a, b in itertools.combinations(recipe.condition.arms, 2)
+            if a.factors.get(factor) != b.factors.get(factor)
+            and all(a.factors.get(o) == b.factors.get(o) for o in others)
+        ]
+        # No minimal pair means the factor is nested rather than crossed — e.g.
+        # "did the doctor heed the computer?" is undefined in the arms with no
+        # computer. That is a legitimate augmented factorial, not a defect, so
+        # say the test could not run rather than passing it silently.
+        if not pairs:
+            rep.warnings.append(
+                f"factor {factor!r} is nested, not crossed — no minimal pair exists, "
+                "so its effect on the text could not be tested"
+            )
+            continue
+        # split() so reflowing a YAML block does not read as a difference.
+        same = [(a.raw, b.raw) for a, b in pairs if a.text.split() == b.text.split()]
+        if same:
+            rep.failures.append(
+                f"factor {factor!r} does not change the arm text for {same} "
+                "— declared but not expressed"
+            )
 
     # --- Rule 6: no empty condition text ------------------------------------
     if any(not r.condition.strip() for r in rows):

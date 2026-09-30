@@ -51,7 +51,7 @@ def _load_and_build(recipe_path: Path) -> tuple[recipe_mod.Recipe, list[Row]]:
     return rec, rows
 
 
-def _write_parquet(rows: list[Row], out_dir: Path, study_id: str) -> Path:
+def _write_parquet(rows: list[Row], out_dir: Path, rec: recipe_mod.Recipe) -> Path:
     import pandas as pd
 
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -61,7 +61,11 @@ def _write_parquet(rows: list[Row], out_dir: Path, study_id: str) -> Path:
         d["persona_text"] = render_persona(r.persona)
         d["persona"] = r.persona.model_dump_json()
         flat.append(d)
-    path = out_dir / f"{study_id}.parquet"
+    # One OSF deposit can hold several independent experiments (`rpw4u` has ~15).
+    # Keying the output on study_id alone made the second sub-experiment silently
+    # overwrite the first.
+    stem = f"{rec.study_id}_{rec.experiment}" if rec.experiment else rec.study_id
+    path = out_dir / f"{stem}.parquet"
     pd.DataFrame(flat).to_parquet(path, index=False)
     return path
 
@@ -93,7 +97,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         return 1
 
     if not args.dry_run:
-        path = _write_parquet(rows, Path(args.out), rec.study_id)
+        path = _write_parquet(rows, Path(args.out), rec)
         print(f"\nwrote {len(rows):,} rows -> {path}")
     return 0
 
@@ -103,6 +107,16 @@ def cmd_crosscheck(args: argparse.Namespace) -> int:
 
     recipe_path = Path(args.recipe) if args.recipe else Path("recipes") / f"{args.study_id}.yaml"
     rec, rows = _load_and_build(recipe_path)
+    # Honour `comparable_to_socsci210` here too. `mmds build --crosscheck` did,
+    # but this path did not, so a study we have deliberately marked
+    # not-comparable reported a false FAIL and exited 1.
+    if not rec.comparable_to_socsci210:
+        print(
+            f"CROSSCHECK — {rec.study_id}: SKIPPED (not comparable)\n"
+            "  SocSci210 reconstructed a different scope for this study, so a numeric\n"
+            "  comparison would be meaningless. See the recipe's notes."
+        )
+        return 0
     rep = compare(rows, rec.study_id)
     print(rep.render())
     return 0 if rep.passed else 1

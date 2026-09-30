@@ -1,0 +1,549 @@
+study_id: z358z
+source: tess
+title: "Randomized Drug Trials without Consent? The Public's Perspective"
+data_file: TESS3_175 Nayak_Client.sav
+
+# Full 2x2. Matches SocSci210 on n_rows, n_participants, the response
+# distribution AND all four condition indices.
+comparable_to_socsci210: true
+
+notes: >
+  TESS3 175 (Nayak). CHECKER REBUILD of recipes/draft/z358z.yaml, using
+  `Condition.source_vars` + `Arm.raw_values` (schema extension for ledger
+  finding #33). Supersedes the 2-arm draft; same scope, same rows, four arms.
+
+  The deposit's questionnaire covers THREE projects (173 Kalla / 175 Nayak /
+  176 Saperstein). Only lines 320-709 of
+  "TESS3 173 175 176- Kalla Nayak Saperstein_Quex_FINAL.txt" belong to this
+  study: line 320 is the "XTESS 175" heading, line 713 the "XTESS 176" heading,
+  and lines 710-712 are blank. Verified by reading both boundaries.
+
+
+  THE DESIGN (questionnaire line 322)
+
+  "This study has a two-by-two randomized design. Respondents will be randomized
+  to receive one of two research scenarios and then be randomized again to
+  receive one of two options for obtaining informed consent."
+
+    scenario            XTESS175   1 = "scenario 1" (CTD vs TRT — which drug)
+                                   2 = "scenario 2" (morning vs night — when)
+    consent_alternative DOV_OPTION 1 = "Option A" (general notification)
+                                   2 = "Option B" (verbal consent)
+
+  Both value-label sets are taken from the .sav, not guessed. The two factors
+  live in TWO SEPARATE variables and are fully crossed with no missing:
+  (1,1) n=503, (1,2) n=558, (2,1) n=546, (2,2) n=523, total 2130.
+
+  There is NO combined four-level assignment variable. Every column with <= 20
+  distinct values was tested for whether its value determines the (XTESS175,
+  DOV_OPTION) cell; the only ones that do are Q1a..Q2d, which are non-blank in
+  exactly one cell each — those are ANSWERS, not assignment.
+
+
+  CONDITION MAPPING — DECLARED (rule 2)
+
+  (XTESS175, DOV_OPTION) -> condition_num:
+    (1,1) -> 0   (1,2) -> 1   (2,1) -> 2   (2,2) -> 3
+
+  Scenario-major, option-minor, following the source's own value-label order
+  ("scenario 1"/"scenario 2" x "Option A"/"Option B"). Independently confirmed
+  three ways: (a) Q3a..Q7a are non-blank only where XTESS175 = 1 and Q3b..Q7b
+  only where XTESS175 = 2; (b) Q1a/Q2a only in cell (1,1), Q1b/Q2b only in
+  (1,2), Q1c/Q2c only in (2,1), Q1d/Q2d only in (2,2), matching the
+  questionnaire's own routing conditions at lines 364/421/508/564;
+  (c) SocSci210's four cells are 2426/2728/2697/2594, which equal our four
+  cells IN THE SAME ORDER, and their stimulus text names CTD for conditions
+  0 and 1 and morning/night for 2 and 3.
+
+
+  OUTCOMES — WHY TEN
+
+  Five secondary items (paper Appendix 1, "Key variables: Secondary") asked of
+  every respondent, each in a scenario-specific column: Q3a..Q7a for scenario 1,
+  Q3b..Q7b for scenario 2. Each column is its own Outcome with its own `var`;
+  a respondent's other battery is blank and drops, so each respondent still
+  contributes at most five rows. task_num 5-9 are the scenario-2 counterparts
+  of 0-4 (0<->5, 1<->6, ...), renumbered only because task_num must be unique.
+
+  Q3/Q4/Q5 are word-for-word identical between the two batteries — the source's
+  own wording (lines 661-663 vs 705-707, and the .sav variable labels). Q6 and
+  Q7 genuinely differ ("which treatment they receive" vs "when they should take
+  their medicine").
+
+  STILL NOT BUILT: Q1/Q2, the study's PRIMARY outcomes (a four-way split ballot,
+  Q1a/Q1b/Q1c/Q1d and Q2a/Q2b/Q2c/Q2d, one variable per CELL, on a 4-point
+  Written-Consent-vs-alternative scale). The four-level arm now exists, so they
+  are expressible, but `Arm.outcome_var` holds ONE variable per arm and these
+  are two items per arm. Left out so that this rebuild's scope is identical to
+  the 2-arm draft's and to SocSci210's, which makes the crosscheck meaningful.
+  Building them is owed and needs either a second recipe file or a per-(arm,
+  outcome) variable override.
+
+
+  TEXT PROVENANCE — all four arms verified word-for-word against the source
+
+  shared_context = line 325 + lines 336-349 (identical to 484-497; checked).
+
+  arm text, per cell:
+    (1,1) 351-361 (vignette + Study Proposal)
+        + 366-384 (Recruiting Participants, incl. the OPTION A paragraph)
+        + 625-631 (reminder block before Q3-Q7)
+    (1,2) 351-361 + 423-445 (incl. the OPTION B paragraph) + 625-631
+    (2,1) 499-505 + 510-527 (incl. the OPTION A paragraph) + 669-675
+    (2,2) 499-505 + 566-586 (incl. the OPTION B paragraph) + 669-675
+
+  THE PARAGRAPH THE 2-ARM DRAFT OMITTED IS NOW RESTORED. It is the ethics
+  board's actual recommendation and it is the DOV_OPTION manipulation:
+    (1,1) line 384      — general notification, CTD/TRT
+    (1,2) lines 441-445 — verbal consent, CTD/TRT
+    (2,1) line 527      — general notification, morning/night
+    (2,2) lines 583-586 — verbal consent, morning/night
+  Nothing is invented; every word is in the questionnaire.
+
+  Two presentational liberties, no words added or changed (same as the 2-arm
+  draft): bulleted lists are flattened into the sentence they complete, joined
+  with the source's own commas (or "; " where the bullets carry no
+  punctuation); section headings are run into the paragraph with a full stop;
+  curly apostrophes are straightened.
+
+  SOURCE INCONSISTENCY, now reproduced faithfully instead of majority-voted:
+  the consent-form bullet reads "any alternative treatments" at lines 372, 516
+  and 572 but "alternative treatments" at line 429 (cell (1,2) only). The
+  2-arm draft had to pick one wording for the merged arm and took the
+  three-block majority; with four arms each cell carries its own.
+
+  SocSci210's stimulus names the drugs "chlorthalidone (CTD) versus
+  hydrochlorothiazide (HCTZ)". Respondents never saw those names — the fielded
+  instrument says "CTD and TRT (we have changed the names but they refer to
+  real drugs)" (line 352); "hydrochlorothiazide" and "HCTZ" appear NOWHERE in
+  the questionnaire. Their four conditions also render only TWO distinct
+  stimulus strings (0 == 1, 2 == 3, byte-identical): they kept the four-way
+  index but dropped the consent factor from the text. Our QC rule 1 would fail
+  that. This recipe keeps the index AND the text.
+
+
+  MISSING CODES
+
+  -1 "Refused" is the only missing code defined on these items and the only
+  out-of-scale value present (observed values across Q3a-Q7b are -1 and 1-7).
+  Not-asked cells are blank (NaN) and drop on their own.
+
+condition:
+  source_vars: [XTESS175, DOV_OPTION]
+  factors: [scenario, consent_alternative]
+  shared_context: >
+    We are trying to learn about people's views on a type of clinical research that
+    would take place in doctors' offices. It is very important that you read the
+    scenario carefully. We will then ask for your opinions about such research. We
+    will not collect or store any personally identifiable information about you.
+
+    The Learning Healthcare System. The learning healthcare system is a special type
+    of healthcare system that integrates research as a part of providing care. These
+    healthcare systems have a team of researchers who regularly review patient
+    medical records to figure out which treatments work the best in order to improve
+    the care patients receive.
+
+    However, sometimes it is not possible to determine whether one treatment is
+    better than another without actively conducting a research study that tests two
+    or more treatments head-to-head. Therefore, learning healthcare systems will also
+    actively conduct head-to-head comparisons as part of routine care. Patients who
+    seek treatment at these healthcare systems are informed of this practice through
+    letters when they join the healthcare system and posters and brochures that are
+    placed in the hospital and clinics.
+
+    All research studies are reviewed and approved by an ethics review board whose
+    job it is to protect the rights and well-being of patients. The knowledge
+    generated by the research will be used to improve treatment for patients in the
+    healthcare system and beyond, potentially helping millions of patients. In this
+    survey, we will describe an example of such a research study.
+
+    One area where researchers are interested in improving patient care is the
+    treatment of high blood pressure.
+
+    What is High Blood Pressure? High blood pressure is a chronic medical condition
+    that affects millions of Americans. If left untreated for many years, it can lead
+    to a variety of medical problems, such as: stroke, heart attacks, kidney disease.
+  arms:
+    # =====================================================================
+    # cell (1,1): scenario 1 x Option A — lines 351-361, 366-384, 625-631
+    # =====================================================================
+    - raw_values: {XTESS175: 1, DOV_OPTION: 1}
+      condition_num: 0
+      factors:
+        scenario: "which drug (CTD vs TRT)"
+        consent_alternative: "general notification"
+      text: >
+        Common Treatments for High Blood Pressure: CTD or TRT. Although exercise and
+        other lifestyle changes can help lower blood pressure, many people require
+        treatment with medicine. The two most commonly recommended medicines for high
+        blood pressure are CTD and TRT (we have changed the names but they refer to
+        real drugs): both are FDA approved and have been used for many years to treat
+        high blood pressure; both are effective in lowering blood pressure; both have
+        similar, mostly non-serious side effects.
+
+        Because CTD and TRT are so similar and have never been compared
+        head-to-head, it is not known whether CTD or TRT is more effective than the
+        other for treating high blood pressure. Even if it turns out that one drug is
+        only slightly better than the other, because so many people have high blood
+        pressure, this knowledge could benefit the long-term health of millions of
+        people.
+
+        Study Proposal. To get the best possible evidence, the learning health care
+        system will conduct a randomized study. This means that when each patient
+        enters the study a computer program will randomly decide (like the flip of a
+        coin) whether the patient receives CTD or TRT. After one year, the patients
+        who receive CTD will be compared to the patients who receive TRT to assess
+        which medicine is better. The patient's medicine can be changed at any time
+        if the patient or the patient's doctor feels that a different medicine would
+        be better.
+
+        Recruiting Participants. The ethics review board is composed of researchers,
+        clinicians, ethicists, patient representatives, and outside community
+        members, and is tasked with overseeing all research in the healthcare system.
+        The ethics review board is having a debate about the best way to conduct this
+        study. Some members argue that patients should be given a written consent
+        form about the study and asked to sign the form if they choose to
+        participate. The consent form would include information about: the purpose of
+        the research, risks and benefits, any alternative treatments, how patient
+        privacy will be maintained, contact information for questions, a statement
+        that participation is voluntary. However, this written consent process will
+        require extra time and effort from both the clinic staff and the patient. As
+        a result, requiring written consent would make it difficult to integrate
+        research studies like this into routine health care practice. In some cases,
+        if written consent is required, studies like these may not be done. Other
+        members of the ethics review board argue that written consent is
+        unnecessarily burdensome in this case because the study has very low risk:
+        CTD and TRT are both commonly used, have similar side effects, and doctors do
+        not know which one is better.
+
+        These members of the ethics review board recommend that it is enough to
+        provide general notification to all patients (through posters, brochures, and
+        letters) that the learning healthcare system regularly conducts research like
+        this. Eligible patients who wish to begin treatment for their high blood
+        pressure would automatically be enrolled in the study without being informed
+        or specifically asked if they would like to participate. From the patients'
+        perspective, all other aspects of care they receive would be no different
+        than usual, except for the fact that a computer randomly chooses the
+        treatment.
+
+        We would also like to ask some questions about your opinions on how this
+        proposed research study compares to usual care. As a reminder: A. Randomized
+        Study: The patient's doctor will use a computer to randomly choose the
+        treatment (CTD or TRT) for the patient. B. Usual Care: The patient's doctor
+        will choose the treatment (CTD or TRT) for the patient. In either case, the
+        medication the patient is taking can be changed at any time if the patient or
+        the patient's doctor feels that a different medicine would be better.
+
+    # =====================================================================
+    # cell (1,2): scenario 1 x Option B — lines 351-361, 423-445, 625-631
+    # NB line 429 reads "alternative treatments" (no "any") — source's own
+    # inconsistency, reproduced.
+    # =====================================================================
+    - raw_values: {XTESS175: 1, DOV_OPTION: 2}
+      condition_num: 1
+      factors:
+        scenario: "which drug (CTD vs TRT)"
+        consent_alternative: "verbal consent"
+      text: >
+        Common Treatments for High Blood Pressure: CTD or TRT. Although exercise and
+        other lifestyle changes can help lower blood pressure, many people require
+        treatment with medicine. The two most commonly recommended medicines for high
+        blood pressure are CTD and TRT (we have changed the names but they refer to
+        real drugs): both are FDA approved and have been used for many years to treat
+        high blood pressure; both are effective in lowering blood pressure; both have
+        similar, mostly non-serious side effects.
+
+        Because CTD and TRT are so similar and have never been compared
+        head-to-head, it is not known whether CTD or TRT is more effective than the
+        other for treating high blood pressure. Even if it turns out that one drug is
+        only slightly better than the other, because so many people have high blood
+        pressure, this knowledge could benefit the long-term health of millions of
+        people.
+
+        Study Proposal. To get the best possible evidence, the learning health care
+        system will conduct a randomized study. This means that when each patient
+        enters the study a computer program will randomly decide (like the flip of a
+        coin) whether the patient receives CTD or TRT. After one year, the patients
+        who receive CTD will be compared to the patients who receive TRT to assess
+        which medicine is better. The patient's medicine can be changed at any time
+        if the patient or the patient's doctor feels that a different medicine would
+        be better.
+
+        Recruiting Participants. The ethics review board is composed of researchers,
+        clinicians, ethicists, patient representatives, and outside community
+        members, and is tasked with overseeing all research in the healthcare system.
+        The ethics review board is having a debate about the best way to conduct this
+        study. Some members argue that patients should be given a written consent
+        form about the study and asked to sign the form if they choose to
+        participate. The consent form would include information about: the purpose of
+        the research, risks and benefits, alternative treatments, how patient
+        privacy will be maintained, contact information for questions, a statement
+        that participation is voluntary. However, this written consent process will
+        require extra time and effort from both the clinic staff and the patient. As
+        a result, requiring written consent would make it difficult to integrate
+        research studies like this into routine health care practice. In some cases,
+        if written consent is required, studies like these may not be done. Other
+        members of the ethics review board argue that written consent is
+        unnecessarily burdensome in this case because the study has very low risk:
+        CTD and TRT are both commonly used, have similar side effects, and doctors do
+        not know which one is better.
+
+        These members of the ethics review board recommend that it is enough to
+        obtain verbal consent from the patient. The patient's doctor would briefly
+        explain the study of CTD vs. TRT: explain that the two drugs are both FDA
+        approved and widely used medications, discuss their potential side effects,
+        and emphasize that the selection will be random. The doctor would ask whether
+        the patient would like to participate, and then record the patient's decision
+        in the medical record. For those that participate, all other aspects of care
+        they receive would be no different than usual, except for the fact that a
+        computer randomly chooses the treatment.
+
+        We would also like to ask some questions about your opinions on how this
+        proposed research study compares to usual care. As a reminder: A. Randomized
+        Study: The patient's doctor will use a computer to randomly choose the
+        treatment (CTD or TRT) for the patient. B. Usual Care: The patient's doctor
+        will choose the treatment (CTD or TRT) for the patient. In either case, the
+        medication the patient is taking can be changed at any time if the patient or
+        the patient's doctor feels that a different medicine would be better.
+
+    # =====================================================================
+    # cell (2,1): scenario 2 x Option A — lines 499-505, 510-527, 669-675
+    # =====================================================================
+    - raw_values: {XTESS175: 2, DOV_OPTION: 1}
+      condition_num: 2
+      factors:
+        scenario: "when to take it (morning vs night)"
+        consent_alternative: "general notification"
+      text: >
+        When to Take High Blood Pressure Medications: Morning or Night? Although
+        exercise and other lifestyle changes can help lower blood pressure, many
+        people require treatment with medicine. The most commonly recommended
+        treatments are once-a-day blood pressure medications. These medicines work
+        over the course of a day to help keep blood pressure under control and
+        patients are told that they should take the medicine at the same time every
+        day for best results.
+
+        However, it is not known whether taking blood pressure medicines in the
+        morning or at night is more effective. Because it is not known which is
+        better, doctors usually do not give guidance on when it is best to take these
+        medicines. Even if it turns out that one time is only slightly better than the
+        other, because so many people have high blood pressure, this knowledge could
+        benefit the long-term health of millions of people.
+
+        Study Proposal. To get the best possible evidence, the learning health care
+        system will conduct a randomized study. This means that when each patient
+        enters the study a computer program will randomly decide (like the flip of a
+        coin) whether the patient should be told to take the medicine in the morning
+        or at night. After one year, the patients who are told to take the medicine in
+        the morning will be compared to the patients who are told to take the medicine
+        at night to assess which treatment is better. The patient's medicine can be
+        changed at any time if the patient or the patient's doctor feels that a
+        different medicine would be better.
+
+        Recruiting Participants. The ethics review board is composed of researchers,
+        clinicians, ethicists, patient representatives, and outside community
+        members, and is tasked with overseeing all research in the healthcare system.
+        The ethics review board is having a debate about the best way to conduct this
+        study. Some members argue that patients should be given a written consent
+        form about the study and asked to sign the form if they choose to
+        participate. The consent form would include information about: the purpose of
+        the research, risks and benefits, any alternative treatments, how patient
+        privacy will be maintained, contact information for questions, a statement
+        that participation is voluntary. However, this written consent process will
+        require extra time and effort from both the clinic staff and the patient. As
+        a result, requiring written consent would make it difficult to integrate
+        research studies like this into routine health care practice. In some cases,
+        if written consent is required, studies like these may not be done. Other
+        members of the ethics review board argue that written consent is
+        unnecessarily burdensome in this case because the study has very low risk:
+        doctors usually do not give guidance on what time of day it is best to take
+        these medicines and they do not know when is better.
+
+        These members of the ethics review board recommend that it is enough to
+        provide general notification to all patients (through posters, brochures, and
+        letters) that the learning healthcare system regularly conducts research like
+        this. Eligible patients who wish to begin treatment for their high blood
+        pressure would automatically be enrolled in the study without being informed
+        or specifically asked if they would like to participate. From the patients'
+        perspective, all other aspects of care they receive would be no different
+        than usual, except for the fact that a computer randomly chooses the time the
+        treatment should be taken.
+
+        We would also like to ask some questions about your opinions on how this
+        proposed research study compares to usual care. As a reminder: Randomized
+        Study: The patient's doctor will use a computer to randomly choose when the
+        treatment should be taken (Morning or Night) for the patient. Usual Care:
+        Most doctors will not give directions on when to take the medication. Some
+        doctors may suggest taking the medication in the morning or at night. In
+        either case, the medication the patient is taking can be changed at any time
+        if the patient or the patient's doctor feels that a different medicine would
+        be better.
+
+    # =====================================================================
+    # cell (2,2): scenario 2 x Option B — lines 499-505, 566-586, 669-675
+    # =====================================================================
+    - raw_values: {XTESS175: 2, DOV_OPTION: 2}
+      condition_num: 3
+      factors:
+        scenario: "when to take it (morning vs night)"
+        consent_alternative: "verbal consent"
+      text: >
+        When to Take High Blood Pressure Medications: Morning or Night? Although
+        exercise and other lifestyle changes can help lower blood pressure, many
+        people require treatment with medicine. The most commonly recommended
+        treatments are once-a-day blood pressure medications. These medicines work
+        over the course of a day to help keep blood pressure under control and
+        patients are told that they should take the medicine at the same time every
+        day for best results.
+
+        However, it is not known whether taking blood pressure medicines in the
+        morning or at night is more effective. Because it is not known which is
+        better, doctors usually do not give guidance on when it is best to take these
+        medicines. Even if it turns out that one time is only slightly better than the
+        other, because so many people have high blood pressure, this knowledge could
+        benefit the long-term health of millions of people.
+
+        Study Proposal. To get the best possible evidence, the learning health care
+        system will conduct a randomized study. This means that when each patient
+        enters the study a computer program will randomly decide (like the flip of a
+        coin) whether the patient should be told to take the medicine in the morning
+        or at night. After one year, the patients who are told to take the medicine in
+        the morning will be compared to the patients who are told to take the medicine
+        at night to assess which treatment is better. The patient's medicine can be
+        changed at any time if the patient or the patient's doctor feels that a
+        different medicine would be better.
+
+        Recruiting Participants. The ethics review board is composed of researchers,
+        clinicians, ethicists, patient representatives, and outside community
+        members, and is tasked with overseeing all research in the healthcare system.
+        The ethics review board is having a debate about the best way to conduct this
+        study. Some members argue that patients should be given a written consent
+        form about the study and asked to sign the form if they choose to
+        participate. The consent form would include information about: the purpose of
+        the research, risks and benefits, any alternative treatments, how patient
+        privacy will be maintained, contact information for questions, a statement
+        that participation is voluntary. However, this written consent process will
+        require extra time and effort from both the clinic staff and the patient. As
+        a result, requiring written consent would make it difficult to integrate
+        research studies like this into routine health care practice. In some cases,
+        if written consent is required, studies like these may not be done. Other
+        members of the ethics review board argue that written consent is
+        unnecessarily burdensome in this case because the study has very low risk:
+        doctors usually do not give guidance on what time of day it is best to take
+        these medicines and they do not know when is better.
+
+        These members of the ethics review board recommend that it is enough to
+        obtain verbal consent from the patient. The patient's doctor would briefly
+        explain the study of taking blood pressure medicines in the morning or at
+        night: explain that it is not known which is better, and emphasize that the
+        selection will be random. The doctor would ask whether the patient would like
+        to participate, and then record the patient's decision in the medical record.
+        For those that participate, all other aspects of care they receive would be no
+        different than usual, except for the fact that a computer randomly chooses the
+        time the treatment should be taken.
+
+        We would also like to ask some questions about your opinions on how this
+        proposed research study compares to usual care. As a reminder: Randomized
+        Study: The patient's doctor will use a computer to randomly choose when the
+        treatment should be taken (Morning or Night) for the patient. Usual Care:
+        Most doctors will not give directions on when to take the medication. Some
+        doctors may suggest taking the medication in the morning or at night. In
+        either case, the medication the patient is taking can be changed at any time
+        if the patient or the patient's doctor feels that a different medicine would
+        be better.
+
+outcomes:
+  # --- scenario 1 battery: non-blank only where XTESS175 = 1 (lines 661-665) ---
+  - var: Q3a
+    task_num: 0
+    question: >-
+      Please rate the following statement: "It is valuable to study whether one
+      treatment option is more effective than the other for treating high blood
+      pressure."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q4a
+    task_num: 1
+    question: >-
+      Please rate the following statement: "Patients who participate in the randomized
+      study face greater risks than patients who receive usual care."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q5a
+    task_num: 2
+    question: >-
+      Please rate the following statement: "Patients who participate in the randomized
+      study are more likely to improve (lower) their high blood pressure than patients
+      who receive usual care."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q6a
+    task_num: 3
+    question: >-
+      Please rate the following statement: "In the randomized study, it is important to
+      explain to patients that the doctor will use a computer to randomly choose which
+      treatment they receive."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q7a
+    task_num: 4
+    question: >-
+      Please rate the following statement: "In usual care, it is important to explain to
+      patients how the doctor will choose which treatment they receive."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+
+  # --- scenario 2 battery: non-blank only where XTESS175 = 2 (lines 705-709) ---
+  # Q3b/Q4b/Q5b repeat the scenario-1 wording verbatim — the source's own text.
+  - var: Q3b
+    task_num: 5
+    question: >-
+      Please rate the following statement: "It is valuable to study whether one
+      treatment option is more effective than the other for treating high blood
+      pressure."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q4b
+    task_num: 6
+    question: >-
+      Please rate the following statement: "Patients who participate in the randomized
+      study face greater risks than patients who receive usual care."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q5b
+    task_num: 7
+    question: >-
+      Please rate the following statement: "Patients who participate in the randomized
+      study are more likely to improve (lower) their high blood pressure than patients
+      who receive usual care."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q6b
+    task_num: 8
+    question: >-
+      Please rate the following statement: "In the randomized study, it is important to
+      explain to patients that the doctor will use a computer to randomly choose when
+      they should take their medicine."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+  - var: Q7b
+    task_num: 9
+    question: >-
+      Please rate the following statement: "In usual care, it is important to explain to
+      patients how the doctor will choose when they should take their medicine."
+    scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
+
+# 1 (Strongly Disagree) .. 7 (Strongly Agree), straight through.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  # Panel profile variables carried on the file ("Samvar", questionnaire lines
+  # 24-31): measured attributes, not manipulations.
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1

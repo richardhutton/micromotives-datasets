@@ -41,7 +41,110 @@ def test_factor_that_never_changes_the_text_fails(fixture_sav, fixture_recipe) -
     fixture_recipe.condition.arms[1].text = fixture_recipe.condition.arms[0].text
     rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
     rep = check(rows, fixture_recipe)
-    assert any("never changes" in f or "identical text" in f for f in rep.failures)
+    assert any("does not change the arm text" in f or "identical text" in f for f in rep.failures)
+
+
+def _two_factor_recipe(with_phantom: bool = False):
+    """A crossed recipe whose text expresses every factor except `phantom`.
+
+    Needed because the shared fixture has one factor and two arms, which cannot
+    distinguish a real rule-5 check from a vacuous one. With `with_phantom` the
+    grid becomes 2x2x2 so that `phantom` has genuine minimal pairs — arms alike
+    in temperature and distance but differing in phantom — whose text is
+    necessarily identical, since the text never mentions it.
+    """
+    import itertools as it
+
+    from micromotives_datasets.recipe import Arm, Condition, Outcome, Recipe, Scale
+
+    factors = ["temperature", "distance"] + (["phantom"] * with_phantom)
+    levels = [("warm", "cold"), ("near", "far")] + ([("blond", "brown")] * with_phantom)
+    arms = []
+    for i, combo in enumerate(it.product(*levels)):
+        f = dict(zip(factors, combo, strict=True))
+        arms.append(
+            Arm(
+                raw=i + 1,
+                condition_num=i,
+                factors=f,
+                text=f"The room was {f['temperature']} and {f['distance']}.",
+            )
+        )
+    return Recipe(
+        study_id="test02",
+        source="tess",
+        data_file="fixture.sav",
+        condition=Condition(source_var="COND", factors=factors, arms=arms),
+        outcomes=[
+            Outcome(
+                var="A1",
+                task_num=0,
+                question="How good?",
+                scale=Scale(min=-3, max=3, min_label="Bad", max_label="Good"),
+            )
+        ],
+        response_recode={5: 0},
+        persona_map={"age": "AGE"},
+    )
+
+
+def _rows_for(recipe):
+    """One row per arm — enough for the recipe-level rules."""
+    from micromotives_datasets.schema import Persona, Row
+
+    return [
+        Row(
+            persona=Persona(age=40),
+            condition=recipe.condition.render(a),
+            outcome="How good?",
+            response="0",
+            condition_num=a.condition_num,
+            task_num=0,
+            response_num=0.0,
+            participant_id=str(a.raw),
+            study_id=recipe.study_id,
+            source="tess",
+        )
+        for a in recipe.condition.arms
+    ]
+
+
+def test_declared_factor_absent_from_all_arm_text_fails() -> None:
+    """Rule 5 must not be vacuous.
+
+    The original rule failed only when EVERY arm rendered identically — which
+    rule 1 already catches — so a factor that appeared in no arm text at all
+    passed. `phantom` varies across arms and is expressed nowhere.
+    """
+    recipe = _two_factor_recipe(with_phantom=True)
+    rep = check(_rows_for(recipe), recipe)
+    assert not rep.passed, "a factor absent from every arm text must fail"
+    assert any("'phantom'" in f and "does not change the arm text" in f for f in rep.failures)
+
+
+def test_crossed_factors_both_expressed_passes() -> None:
+    """The same 2x2 without the phantom factor is clean."""
+    recipe = _two_factor_recipe()
+    rep = check(_rows_for(recipe), recipe)
+    assert rep.passed, rep.failures
+
+
+def test_nested_factor_warns_rather_than_failing() -> None:
+    """A factor with no minimal pair cannot be tested — say so, don't guess.
+
+    `a5v96` has `cds_recommendation: none` only on the arms with no decision
+    aid: heed-vs-defy is undefined when there is no recommendation. That is a
+    legitimate augmented factorial, so the rule must neither pass it silently
+    nor fail it.
+    """
+    recipe = _two_factor_recipe()
+    # Make `distance` perfectly confounded with `temperature`: no pair of arms
+    # now differs in `distance` alone.
+    for arm in recipe.condition.arms:
+        arm.factors["distance"] = "near" if arm.factors["temperature"] == "warm" else "far"
+    rep = check(_rows_for(recipe), recipe)
+    assert rep.passed, rep.failures
+    assert any("nested, not crossed" in w and "'distance'" in w for w in rep.warnings)
 
 
 def test_response_outside_declared_scale_fails(fixture_sav, fixture_recipe) -> None:

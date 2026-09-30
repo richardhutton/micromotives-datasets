@@ -330,11 +330,75 @@ around it. This is the strongest argument yet that the ~188 remaining studies ar
 
 ---
 
+### Checkers — the maker/checker loop closed
+
+Both drafts were then reviewed by a second agent, working from source and told to assume
+at least one error. Verdicts: `z358z` **accept, superseded by the 4-arm rebuild**;
+`a5v96` **accept with fixes** (all in the audit trail, none in the data).
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 34 | **QC rule 5 never tested anything.** Meant to enforce "each declared factor must vary the arm text", its final test failed only when *every* arm rendered identically — which rule 1 already catches. Proved by injecting a factor (`doctor_hair_colour`) present in no arm text at all: **PASS**. Vacuous on all eight studies built to date | **method** (bug in our code) | Replaced with a **minimal-pair** test: for each factor, arms differing in that factor *and nothing else* must render different text. A factor with no minimal pair is **nested, not crossed** (heed-vs-defy is undefined with no computer) and now warns "could not be tested" rather than passing silently or failing wrongly. Re-run against all 10 recipes: **all PASS** — the vacuous rule was not hiding a real defect; we simply had not been checking |
+| 35 | **A TESS deposit's proposal PDF and its fielded questionnaire are different instruments.** SocSci210's `z358z` stimulus uses the proposal's `CTD`/`HCTZ` wording; `hydrochlorothiazide` appears **0 times** in the fielded questionnaire, which says "CTD and TRT (we have changed the names but they refer to real drugs)". No respondent saw their text | **method** | **Arm text comes from the questionnaire, never from the proposal or paper appendix**, even when the appendix reprints what looks like the stimulus. The PDF remains a legitimate second authority on *arm ordering* — it resolved the `Xtess193=1.3` typo in `a5v96` decisively |
+| 36 | `_write_parquet` keyed output on `study_id` alone, ignoring `experiment`, so a second sub-experiment of one deposit would **silently overwrite the first**. Latent until `a5v96` became the first deposit with two experiments both meant to be built | **method** (bug in our code) | Output stem is now `<study_id>_<experiment>` when `experiment` is set |
+| 37 | `mmds crosscheck` ignored `comparable_to_socsci210` while `mmds build --crosscheck` honoured it, so a study deliberately marked not-comparable reported a **false FAIL** and exited 1 | **method** (bug in our code) | Both paths now skip and exit 0 |
+| 38 | `z358z` rebuilt to 4 arms on the extended schema: crosscheck **PASS on all four condition indices** (2426/2728/2697/2594, exact and in order) plus `n_rows`, participants and the full response distribution. The `DOV_OPTION` paragraph the maker had omitted **did exist** in the questionnaire and is restored verbatim | one-off, resolved | `recipes/z358z.yaml`; first study to exercise `source_vars`/`raw_values` end to end |
+
+**Proposed, measured, not yet built — rule 9, "is there a second randomisation you didn't
+declare?"** Anchored on the recipe's declared assignment variable, flag any other column
+that looks randomised (name/label pattern), is near-uniform, ≥95% non-null, and crosses
+the declared key with no empty cell. Measured by the checker: **0 warnings on the seven
+clean recipes, exactly 1 on the `z358z` draft naming exactly `DOV_OPTION`**, and 6 on
+`rpw4u_RO1` which are true positives of a different class (its other sub-experiments).
+Makes finding #33 mechanical rather than dependent on an agent noticing. Needs the
+`Dataset` alongside the recipe, so it belongs in `cmd_build`, not in
+`qc.check(rows, recipe)` whose signature has no data access.
+
+**What the checkers cost:** ~10 minutes of review each. Between them: one method-level
+defect in our own QC, two latent pipeline bugs, a rule about which source document to
+trust, and a four-way crosscheck PASS the maker alone could not reach. Maker-only would
+have shipped two good recipes and left rule 5 vacuous indefinitely.
+
+---
+
+### SocSci210's persona coverage — measured, not assumed
+
+Their `demographic` field is a fixed 16-key dict, harmonised across TESS's **two** panel
+families (KnowledgePanel `PP*`, 44 of our 73 fetched studies; AmeriSpeak
+`AGE`/`EDUC`/`RACETHNICITY`, 29). So the crosswalk problem is real but small — two lookup
+tables, not one per study.
+
+They did not finish it. Fill rates over whole studies, not samples:
+
+| Studies | Family | Fields populated (of 16) |
+|---|---|---|
+| `7jt2f`, `zrwjp`, `c5r2f`, `sd7cf` | KnowledgePanel | **6 / 16** |
+| `dh3nj`, `m52pd`, `xweq8` | AmeriSpeak | 14–15 / 16 |
+| `bf8p2` | AmeriSpeak | **1 / 16** |
+
+The KnowledgePanel studies are null on `gender`, `employment`, `location`, `ideology`,
+`party_id`, `housing_ownership`, `housing_type`, `internet_access`, `metro_status` and
+`phone_service` — and all seven of those checked **exist in the source `.sav`**
+(`PPGENDER`, `PPWORK`, `PPSTATEN`, `PPRENT`, `PPHOUSE`, `PPNET`, `PPMSACAT`). Gender is
+null on every KnowledgePanel study.
+
+→ Same shape as the stimulus-text finding: their **structure** is sound, their
+**filling-in** is not. Our crosswalk (§6) should aim to beat their coverage, not match it.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.
+- `a5v96` vignette 2 (12-arm combat-medic triage) is owed — the deposit's second
+  experiment, deliberately out of scope for `a5v96_vignette1.yaml`.
+- `z358z` Q1/Q2, the study's **primary** outcomes (4-point written-consent-vs-alternative).
+  SocSci210 did not build them either. Now expressible, but `Arm.outcome_var` holds one
+  variable per arm and these are two items per arm — needs a per-(arm, outcome) override
+  or a second recipe.
+- Rule 9 (above) designed and measured, not yet implemented.
 - Persona categories are still passed through raw (`Education: Bachelor's degree or
-  higher`). The crosswalk to one shared vocabulary (master doc §6) is unbuilt — this
-  is the intended first Jev task.
+  higher`). The crosswalk to one shared vocabulary (master doc §6) is unbuilt — two
+  panel lookup tables plus UK re-anchoring, per the coverage finding above.
 - `.doc` conversion uses macOS `textutil`; needs `antiword`/LibreOffice elsewhere.
   Arm text is committed into the recipe, so the melt and its tests stay unaffected.
