@@ -76,7 +76,9 @@ def data_file_for(study_id: str) -> Path | None:
     files = [
         p
         for p in folder.rglob("*")
-        if p.is_file() and p.suffix.lower() in {".sav", ".dta", ".por"} and not p.name.startswith("._")
+        if p.is_file()
+        and p.suffix.lower() in {".sav", ".dta", ".por"}
+        and not p.name.startswith("._")
     ]
     return max(files, key=lambda p: p.stat().st_size) if files else None
 
@@ -161,7 +163,9 @@ def main() -> int:
 
     print(f"\n{'study':7} {'verdict':15} {'stim':>5} {'outc':>5}  title")
     for s in sorted(results, key=lambda s: -s.outcome_us):
-        print(f"{s.study_id:7} {s.verdict:15} {s.stimulus_us:>5.2f} {s.outcome_us:>5.2f}  {s.title[:46]}")
+        print(
+            f"{s.study_id:7} {s.verdict:15} {s.stimulus_us:>5.2f} {s.outcome_us:>5.2f}  {s.title[:46]}"
+        )
 
     if args.validate:
         print("\nVALIDATION against hand-classified studies")

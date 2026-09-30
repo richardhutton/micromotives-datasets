@@ -262,6 +262,45 @@ concern from US **content**. Only the latter varies.
 
 ---
 
+
+## Maker/checker trial — and a hard limit on data-only screening
+
+First maker agent drafted a recipe for `a5v96` (McLaughlin, clinical decision support),
+a study nobody had built, so there was nothing to copy.
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 30 | **A variable labelled "Experimental condition" can be presentation order.** `a5v96`'s `XTESS193` is labelled exactly that; its values are *"Vignette1 followed by Vignette2"*. The real manipulations (`Vignette1`, 10 arms; `Vignette2`, 12 arms) are labelled merely *"Data Only Variable"* with opaque values *"Vignette 1-1"…* | **method** | The label heuristic is not safe. Only the questionnaire resolves it |
+| 31 | **Jev picked the order variable at confidence 1.00** — a confident-wrong answer on a fresh study. Adding value labels to the prompt did **not** fix it, because the true manipulation's value labels are meaningless codes while the order variable's read like a real design | **limit, not a bug** | `jev_firstpass` is demoted to a hint, not a gate. Data-only screening has a ceiling |
+| 32 | The maker agent got it right, because it read the questionnaire and found the randomisation note | — | Confirms the architecture: extraction needs an agent, not a typed judgment |
+
+**This revises the Jev assessment for the third time, and each revision has been in the
+same direction: its value is narrower than it first appears, and the wrapper matters
+more than the model.**
+
+- Measured 84% with narrow option lists → optimistic, because narrow choices inflate confidence.
+- Widened options → confidence fell, accuracy held.
+- Fresh study with a misleading label → **wrong at 1.00**, and unfixable by sending more metadata.
+
+Standing conclusion: use it to **rank and flag**, never to decide. The three times it
+looked wrong, twice it was our option list and once it was a genuine limit of the input
+we can give it.
+
+### What the maker produced
+
+`a5v96`: QC PASS, 3,621 rows, 10 conditions, 3 outcomes. It also:
+- spotted the deposit holds **two independent experiments** (10-arm and 12-arm vignettes,
+  separately randomised) and built one, flagging the other as owed;
+- verified its own arm text **byte-for-byte** against the questionnaire, keeping a
+  source typo ("make sure that that he is right") rather than tidying it;
+- marked the study not-comparable and then **proved** the difference rather than
+  asserting it — reproducing SocSci210's merge exactly, all 7 conditions and the full
+  response distribution digit-for-digit, showing they merged both experiments and
+  dropped two of the three factors;
+- listed six specific uncertainties for the checker.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.

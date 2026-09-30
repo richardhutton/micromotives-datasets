@@ -80,6 +80,11 @@ def _is_plausible(name: str) -> bool:
     return all(s not in low for s in EXCLUDE_SUBSTR)
 
 
+def _fmt(key: object) -> str:
+    """Value-label keys are usually floats but can be strings."""
+    return f"{key:g}" if isinstance(key, (int, float)) else str(key)
+
+
 def data_file_for(study_id: str) -> Path | None:
     """The biggest .sav/.dta in the study's raw folder."""
     folder = RAW / study_id
@@ -112,7 +117,24 @@ def main() -> int:
 
         ds = spss.read(path)
         cols = list(ds.df.columns)
-        listing = "\n".join(f"- {c}: {(ds.column_labels.get(c) or '')[:110]}" for c in cols[:70])
+
+        def describe(col: str, ds: spss.Dataset = ds) -> str:
+            """Variable label PLUS its value labels.
+
+            The value labels are what disambiguate. a5v96's XTESS193 is LABELLED
+            "Experimental condition" but its values are "Vignette1 followed by
+            Vignette2" — presentation order, not the manipulation, whose own
+            variables are labelled merely "Data Only Variable". Sending variable
+            labels alone made Jev pick the order variable at confidence 1.00.
+            """
+            label = (ds.column_labels.get(col) or "")[:110]
+            values = ds.value_labels.get(col) or {}
+            if values and len(values) <= 14:
+                shown = "; ".join(f"{_fmt(k)}={v}" for k, v in list(values.items())[:6])
+                return f"- {col}: {label}  [values: {shown[:170]}]"
+            return f"- {col}: {label}"
+
+        listing = "\n".join(describe(c) for c in cols[:70])
         # Offer EVERY plausible variable. Two earlier attempts to "help" by
         # pre-selecting (keyword hints, then fewest-distinct-values) each
         # excluded the true answer: the keyword filter dropped CALARCO_VIGNETTE
