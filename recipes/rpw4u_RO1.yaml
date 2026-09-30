@@ -28,6 +28,18 @@ notes: >
 condition:
   source_var: DOV_RO1_Assign
   factors: [statement_order, question_format]
+  # These are genuine randomisations, fully crossed with ours — but they belong to
+  # OTHER experiments in the same deposit (ledger #5: ~15 independent split-ballots,
+  # one per DOV_*_Assign), each of which needs its own recipe. Recorded rather than
+  # left implicit, so the undeclared-assignment screen stays quiet for the right
+  # reason instead of by luck.
+  considered_and_rejected:
+    DOV_AQ4_Assign: "separate experiment (AQ4 question wording)"
+    DOV_QW1_Assign: "separate experiment (QW1 question wording)"
+    DOV_RO4_Assign: "separate experiment (RO4 response order)"
+    DOV_QO1_Assign: "separate experiment (QO1 question order)"
+    DOV_RO5_Assign: "separate experiment (RO5 response order)"
+    DOV_RO6_Assign: "separate experiment (RO6 response order)"
   shared_context: >
     You were asked for your best guess about how long the oil supply will last.
   arms:

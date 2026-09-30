@@ -44,11 +44,11 @@ def _resolve_data_file(study_id: str, data_file: str) -> Path:
     )
 
 
-def _load_and_build(recipe_path: Path) -> tuple[recipe_mod.Recipe, list[Row]]:
+def _load_and_build(recipe_path: Path) -> tuple[recipe_mod.Recipe, list[Row], spss.Dataset]:
     rec = recipe_mod.load(recipe_path)
     data_path = _resolve_data_file(rec.study_id, rec.data_file)
-    rows = list(build_rows(spss.read(data_path), rec))
-    return rec, rows
+    ds = spss.read(data_path)
+    return rec, list(build_rows(ds, rec)), ds
 
 
 def _write_parquet(rows: list[Row], out_dir: Path, rec: recipe_mod.Recipe) -> Path:
@@ -71,9 +71,17 @@ def _write_parquet(rows: list[Row], out_dir: Path, rec: recipe_mod.Recipe) -> Pa
 
 
 def cmd_build(args: argparse.Namespace) -> int:
-    rec, rows = _load_and_build(Path(args.recipe))
+    rec, rows, ds = _load_and_build(Path(args.recipe))
     report = check(rows, rec)
     print(report.render())
+
+    # Rule 9 — needs the data alongside the recipe, so it cannot live in
+    # `qc.check`. Warns only; it never blocks a build.
+    from .pipeline.screen import find_undeclared_assignment
+    from .pipeline.screen import render as render_screen
+
+    if suspects := find_undeclared_assignment(ds, rec):
+        print(render_screen(suspects))
 
     if args.crosscheck:
         print()
@@ -106,7 +114,7 @@ def cmd_crosscheck(args: argparse.Namespace) -> int:
     from .pipeline.crosscheck import compare
 
     recipe_path = Path(args.recipe) if args.recipe else Path("recipes") / f"{args.study_id}.yaml"
-    rec, rows = _load_and_build(recipe_path)
+    rec, rows, _ = _load_and_build(recipe_path)
     # Honour `comparable_to_socsci210` here too. `mmds build --crosscheck` did,
     # but this path did not, so a study we have deliberately marked
     # not-comparable reported a false FAIL and exited 1.

@@ -112,6 +112,13 @@ class Condition(BaseModel):
     factors: list[str] = Field(
         default_factory=list, description="Names of the design factors, e.g. [label, biography]."
     )
+    considered_and_rejected: dict[str, str] = Field(
+        default_factory=dict,
+        description="Variables that LOOK like a second randomisation but are not part of "
+        "this experiment's assignment, mapped to the reason why. Silences the "
+        "undeclared-assignment screen for that variable, and records the judgment "
+        "rather than leaving it implicit.",
+    )
     arms: list[Arm]
 
     def render(self, arm: Arm) -> str:

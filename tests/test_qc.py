@@ -230,3 +230,119 @@ def test_reverse_coded_scale_is_allowed(fixture_sav, fixture_recipe) -> None:
     rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
     rep = check(rows, fixture_recipe)
     assert not any("changes direction" in f for f in rep.failures), rep.failures
+
+
+# ---------------------------------------------------------------------------
+# Mutation tests: do the rules FIRE when they should?
+#
+# Rule 5 was dead for eight studies and we found it by luck, not by testing.
+# Every rule below therefore gets a MINIMAL mutation of an otherwise-clean
+# study, and each assertion names that rule's own message — because asserting
+# only `not rep.passed` is what let rule 5 hide: a crude mutation tripped
+# rule 1 as well, so the suite went green while rule 5 checked nothing.
+# ---------------------------------------------------------------------------
+
+
+def _fails(rep, needle: str) -> bool:
+    return any(needle in f for f in rep.failures)
+
+
+def _warns(rep, needle: str) -> bool:
+    return any(needle in w for w in rep.warnings)
+
+
+def test_clean_study_raises_no_warnings_either(fixture_sav, fixture_recipe) -> None:
+    """A clean study must be silent, not merely passing.
+
+    A rule that warns spuriously is nearly as bad as one that never fires: it
+    trains us to ignore the warning column.
+    """
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rep = check(rows, fixture_recipe)
+    assert rep.passed, rep.failures
+    assert rep.warnings == [], rep.warnings
+
+
+def test_rule2_rows_in_an_undeclared_arm_fail(fixture_sav, fixture_recipe) -> None:
+    """Rule 2: a condition_num the recipe never declared means the melt and the
+    recipe disagree about the design."""
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rows[0].condition_num = 77
+    rep = check(rows, fixture_recipe)
+    assert _fails(rep, "rows in undeclared arms"), rep.failures
+
+
+def test_rule2_declared_arm_with_no_rows_warns(fixture_sav, fixture_recipe) -> None:
+    """Rule 2, other direction: an arm nobody was assigned to.
+
+    A warning rather than a failure — small studies legitimately have empty
+    cells — but it must be said out loud, because the usual cause is a wrong
+    `raw` code silently matching nothing.
+    """
+    from micromotives_datasets.recipe import Arm
+
+    fixture_recipe.condition.arms.append(
+        Arm(raw=99, condition_num=2, factors={"framing": "neutral"}, text='It said "meh".')
+    )
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rep = check(rows, fixture_recipe)
+    assert _warns(rep, "declared arms with no rows"), rep.warnings
+    assert "[2]" in " ".join(rep.warnings)
+
+
+def test_rule3_declared_outcome_with_no_rows_warns(fixture_sav, fixture_recipe) -> None:
+    """Rule 3: an outcome that produced nothing — usually a wrong variable name."""
+    rows = [r for r in build_rows(spss.read(fixture_sav), fixture_recipe) if r.task_num != 1]
+    rep = check(rows, fixture_recipe)
+    assert _warns(rep, "declared outcomes with no rows"), rep.warnings
+
+
+def test_rule6_empty_condition_text_fails(fixture_sav, fixture_recipe) -> None:
+    """Rule 6: blank stimulus text. The row would train on nothing."""
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rows[0].condition = "   \n  "
+    rep = check(rows, fixture_recipe)
+    assert _fails(rep, "empty condition text"), rep.failures
+
+
+def test_rule8_two_bands_collapsing_to_one_value_fails(fixture_sav, fixture_recipe) -> None:
+    """Rule 8: the `zrwjp` defect — "1-4 minutes" and "1-3 hours" both to 1.
+
+    A 60x error that made two bands indistinguishable. Distinct source bands
+    must stay distinct.
+    """
+    fixture_recipe.outcomes[0].response_recode = {2: -3, 3: -2, 4: -1, 5: -1, 6: 1, 7: 2, 8: 3}
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rep = check(rows, fixture_recipe)
+    assert _fails(rep, "maps distinct bands to the same value"), rep.failures
+    assert "4" in " ".join(rep.failures) and "5" in " ".join(rep.failures)
+
+
+def test_rule7_accepts_a_legitimately_reversed_scale(fixture_sav, fixture_recipe) -> None:
+    """Rule 7 must NOT fire on a reverse-coded scale.
+
+    Reverse coding is extremely common and legitimate; only a MIXED direction
+    indicates a unit switch or parsing error. A rule that rejected reversal
+    would push us to "fix" correct recipes.
+    """
+    fixture_recipe.outcomes[0].response_recode = {2: 3, 3: 2, 4: 1, 5: 0, 6: -1, 7: -2, 8: -3}
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rep = check(rows, fixture_recipe)
+    assert not _fails(rep, "changes direction"), rep.failures
+
+
+def test_rule5_catches_an_unexpressed_factor_in_an_arm_with_no_rows() -> None:
+    """Where rule 5 is genuinely independent of rule 1.
+
+    Rule 1 inspects the text of BUILT ROWS, so an arm nobody was assigned to is
+    invisible to it. Rule 5 inspects the recipe's arms, so it still catches an
+    unexpressed factor there. This is the case that justifies keeping both.
+    """
+    recipe = _two_factor_recipe(with_phantom=True)
+    # The minimal pairs on `phantom` are condition_nums (0,1), (2,3), (4,5), (6,7).
+    # Drop ONE arm from each pair, so no two surviving arms share text and rule 1
+    # really is blind — while all eight arms remain in the recipe for rule 5.
+    rows = [r for r in _rows_for(recipe) if r.condition_num % 2 == 0]
+    rep = check(rows, recipe)
+    assert not _fails(rep, "render identical text"), "rule 1 should be blind here"
+    assert _fails(rep, "does not change the arm text"), rep.failures

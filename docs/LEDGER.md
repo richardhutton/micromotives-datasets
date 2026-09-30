@@ -344,15 +344,40 @@ at least one error. Verdicts: `z358z` **accept, superseded by the 4-arm rebuild*
 | 37 | `mmds crosscheck` ignored `comparable_to_socsci210` while `mmds build --crosscheck` honoured it, so a study deliberately marked not-comparable reported a **false FAIL** and exited 1 | **method** (bug in our code) | Both paths now skip and exit 0 |
 | 38 | `z358z` rebuilt to 4 arms on the extended schema: crosscheck **PASS on all four condition indices** (2426/2728/2697/2594, exact and in order) plus `n_rows`, participants and the full response distribution. The `DOV_OPTION` paragraph the maker had omitted **did exist** in the questionnaire and is restored verbatim | one-off, resolved | `recipes/z358z.yaml`; first study to exercise `source_vars`/`raw_values` end to end |
 
-**Proposed, measured, not yet built — rule 9, "is there a second randomisation you didn't
-declare?"** Anchored on the recipe's declared assignment variable, flag any other column
-that looks randomised (name/label pattern), is near-uniform, ≥95% non-null, and crosses
-the declared key with no empty cell. Measured by the checker: **0 warnings on the seven
-clean recipes, exactly 1 on the `z358z` draft naming exactly `DOV_OPTION`**, and 6 on
-`rpw4u_RO1` which are true positives of a different class (its other sub-experiments).
-Makes finding #33 mechanical rather than dependent on an agent noticing. Needs the
-`Dataset` alongside the recipe, so it belongs in `cmd_build`, not in
-`qc.check(rows, recipe)` whose signature has no data access.
+| 39 | **Rule 9 — "is there a second randomisation you didn't declare?"** Built, in `pipeline/screen.py`, called from `cmd_build`; it warns and never blocks. Anchored on the recipe's own declared assignment variable, it flags any other column that looks randomised (name/label pattern), is ≥95% non-null, has 2–12 balanced levels, and crosses the declared key with no empty cell and balanced cells | **method** | Measured on the real recipes: **0 suspects on all 9**, and on `z358z` rolled back to its pre-discovery single-variable state, **exactly 1, naming exactly `DOV_OPTION`**. `rpw4u_RO1`'s 6 hits are true positives of a different class (its other sub-experiments) and are now silenced by `condition.considered_and_rejected`, which records the reason rather than leaving the judgment implicit. Makes finding #33 mechanical instead of dependent on an agent noticing |
+
+The anchoring is what makes it usable. An unanchored sweep for randomisation-looking
+variables across the corpus returns over a thousand hits, dominated by item-order
+variables; requiring full, balanced crossing against the *declared* key cuts that to zero
+on a correct recipe.
+
+---
+
+### Testing the tests
+
+Rule 5 was dead for eight studies and we found it **by luck** — a checker probing an
+unrelated uncertainty. Nothing in the suite would have told us. That is a worse problem
+than the rule itself: it means "QC PASS" was a weaker claim than we had been making, and
+we had no way to know which other rules were hollow.
+
+So every rule now has a **mutation test**: a minimal break of an otherwise-clean study,
+asserting that rule's *own* message. Asserting only `not rep.passed` is exactly what let
+rule 5 hide — the crude mutation tripped rule 1 as well, so the suite stayed green while
+rule 5 checked nothing.
+
+Verified by restoring the vacuous rule 5 and re-running: **3 tests go red.** The suite now
+catches the bug we actually shipped.
+
+Also pinned, because each was a live trap:
+- a clean study must raise **no warnings either**, not merely pass — a rule that cries
+  wolf trains us to ignore the warning column;
+- rule 7 must **not** fire on a legitimately reverse-coded scale, only on a mixed
+  direction;
+- rule 5 must catch an unexpressed factor in an arm with **no rows**, where rule 1 is
+  structurally blind (it reads built rows; rule 5 reads the recipe). That case is the one
+  that justifies keeping both rules.
+
+58 tests.
 
 **What the checkers cost:** ~10 minutes of review each. Between them: one method-level
 defect in our own QC, two latent pipeline bugs, a rule about which source document to
@@ -396,7 +421,8 @@ null on every KnowledgePanel study.
   SocSci210 did not build them either. Now expressible, but `Arm.outcome_var` holds one
   variable per arm and these are two items per arm — needs a per-(arm, outcome) override
   or a second recipe.
-- Rule 9 (above) designed and measured, not yet implemented.
+- Rule 9's thresholds (12 levels, 95% coverage, 0.70 balance) are set from 9 recipes.
+  Expect to revisit them once a batch of studies has run through it.
 - Persona categories are still passed through raw (`Education: Bachelor's degree or
   higher`). The crosswalk to one shared vocabulary (master doc §6) is unbuilt — two
   panel lookup tables plus UK re-anchoring, per the coverage finding above.
