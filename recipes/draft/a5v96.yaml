@@ -1,0 +1,241 @@
+study_id: a5v96
+experiment: vignette1
+source: tess
+title: "What fosters patients' acceptance of Clinical Decision Support? (vignette 1: the twisted ankle)"
+data_file: TESS3_193_McLaughlin_Client.sav
+
+# SocSci210 reconstructed a DIFFERENT scope for this deposit. It merged BOTH of the
+# deposit's independent experiments into a single 7-condition study (7,229 rows,
+# 1,211 participants) and, inside each experiment, collapsed arms that differ:
+#   their cond 0 = our vignette1 arms 1-2   (682 rows  = 229 respondents x 3 items)
+#   their cond 1 = our vignette1 arms 3-6   (1,435     = 479 x 3)
+#   their cond 2 = our vignette1 arms 7-10  (1,504     = 503 x 3)
+#   their conds 3-6 = vignette2 arms 1-2 / 3-6 / 7-8 / 9-12
+# i.e. they kept only the CDS-accuracy factor and dropped both the computer's
+# recommendation (DOES vs DOES NOT need an x-ray) and the end result (good vs bad)
+# — the two factors this study is actually about. A numeric comparison against that
+# scope is meaningless, so it is switched off; the collapse is documented above so
+# the difference is explained rather than hidden.
+#
+# That account is not a guess: re-melting this .sav under their merge reproduces all
+# seven of their per-condition counts EXACTLY (682 / 1,435 / 1,504 / 595 / 1,219 /
+# 591 / 1,203 = 7,229) and their whole response distribution exactly
+# ({1: 766, 2: 1235, 3: 1333, 4: 1674, 5: 587, 6: 974, 7: 660}). So their *recoding*
+# and their per-item dropping of -1 agree with ours; only the scope differs. Our
+# vignette-1 rows are a strict subset: our arms 0-1 sum to their cond 0 (345+337=682),
+# arms 2-5 to their cond 1 (1,435), arms 6-9 to their cond 2 (1,504).
+comparable_to_socsci210: false
+
+notes: >
+  TESS3 193 (McLaughlin, Northwestern, June 2015). Everything below is traceable to
+  'TESS3 193_McLaughlin_Questionnaire_final.txt'; file line numbers are given.
+
+  THIS DEPOSIT HOLDS TWO INDEPENDENT EXPERIMENTS, separately randomised, both shown
+  to every respondent (questionnaire lines 5-13: "randomly assign 1 of 10 vignettes
+  to respondents in vignette1", "1 of 12 vignettes ... in vignette2", "two different
+  randomization seeds"). This recipe covers VIGNETTE 1 only — the 10-arm twisted-ankle
+  scenario in variable `Vignette1`, answered by Q1A/Q1B/Q1C (line 9: "please show Q1a,
+  Q1b and Q1c with Vignette1 and Q2a, Q2b, Q2c with Vignette2"). Vignette 2 (the
+  12-arm combat-medic triage scenario in `Vignette2`, answered by Q2A/Q2B/Q2C) is a
+  second experiment and needs its own recipe file; it is NOT built here, because one
+  recipe melts one condition variable and every respondent carries an assignment on
+  both. Nothing from vignette 2 is used or referenced in the arm text below.
+
+  NOT the condition variable: `XTESS193` ("XTESS193: Experimental condition") is only
+  the ORDER in which the two vignettes were shown (1 = vignette1 first, 2 = vignette2
+  first; lines 5-7), not the vignette manipulation. It is a nuisance factor and is
+  deliberately not modelled. `Q2A_Insert` (medic's/doctor's) belongs to vignette 2.
+
+  CONDITION MAPPING (declared, not inferred): `Vignette1` is coded 1-10 with value
+  labels 'Vignette 1-1' ... 'Vignette 1-10', which correspond one-to-one and in order
+  to the questionnaire blocks headed "Vignette=1.1" ... "Vignette=1.10" (lines 24-59).
+  So condition_num = raw - 1 here, but it is written out per arm. Note the source's
+  own typo at line 30, which heads the third block "Xtess193=1.3" rather than
+  "Vignette=1.3"; it sits between blocks 1.2 and 1.4 and its text is the 1.3 variant
+  ("as good as the average doctor", computer says DOES NOT need one, good ending), so
+  it is read as Vignette=1.3.
+
+  DESIGN — an augmented factorial with a no-computer control, 2 + (2 x 2 x 2) = 10 cells:
+    cds_support        absent (arms 1-2) / equal accuracy ("as good as the average
+                       doctor", arms 3-6) / superior accuracy ("better than the
+                       average doctor ... correct 90% of the time and doctors are
+                       correct 80% of the time", arms 7-10)
+    cds_recommendation none (no computer, arms 1-2) / "DOES NOT need one" i.e. the
+                       computer agrees with the doctor (arms 3, 5, 7, 9) / "DOES need
+                       one" i.e. the computer contradicts the doctor (arms 4, 6, 8, 10)
+    end_result         good (she enjoys her vacation, arms 1, 3, 4, 7, 8) / bad (she
+                       visits an emergency room and did break her ankle, arms 2, 5, 6,
+                       9, 10)
+  In EVERY arm the doctor ends up not ordering the x-ray, so cds_recommendation
+  "x-ray needed" is the arm in which he overrides the computer. The control arms 1-2
+  have no computer at all, hence level "none" on cds_recommendation: that factor is
+  crossed only within the 8 computer arms. Declaring it as a third level (rather than
+  splitting the design into two recipes) keeps all 10 randomised cells in one melt
+  and keeps the control comparison available.
+
+  TEXT: verbatim from the "Presented Text" column of the vignette-1 design table
+  (questionnaire lines 25, 28, 31, 35, 39, 43, 47, 51, 55, 59 — one line per arm, in
+  arm order). The opening clause is byte-identical across all ten arms, so it sits in
+  `shared_context` once (preceded by one sentence of framing, as in the other TESS
+  recipes) and each arm carries only the verbatim remainder. The doubled word in
+  "to make sure that that he is right" is in the source and is kept unaltered.
+
+  OUTCOMES: all three vignette-1 items are built. Q1A (line 66) and Q1B (line 85) are
+  7-point; Q1C (line 104) is 4-point, so it carries its own identity recode 1-4
+  rather than borrowing the study-level 1-7 map. Endpoint labels are taken from the
+  response lists printed under each question (lines 67-73, 86-92, 105-108), which
+  match the .sav value labels exactly. The only normalisation is the apostrophe in
+  "doctor's" (the source and the variable label use a typographic apostrophe).
+
+  MISSING: -1 "Refused" is the only missing code in this file — checked on Q1A, Q1B,
+  Q1C and on every persona variable. There is no 77/98/99 coding here (unlike the
+  TESS studies bf8p2 and dh3nj), and no respondent is unassigned on `Vignette1`.
+  Refusals are 2 on Q1A, 3 on Q1B, 7 on Q1C; dropping them per item leaves 3,621 rows
+  from 1,211 respondents.
+
+condition:
+  source_var: Vignette1
+  factors: [cds_support, cds_recommendation, end_result]
+  shared_context: >
+    You read the following scenario, and were then asked what you thought of it.
+    A woman goes to see her doctor because she twisted her ankle two days before her
+    vacation. The doctor checks her ankle thoroughly and decides that she does not
+    have a broken ankle. He does not believe that she needs an x-ray,
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {cds_support: "absent", cds_recommendation: "none", end_result: "good"}
+      text: >
+        so he DOES NOT order one. She goes home with an ankle brace and enjoys her
+        vacation. Her ankle feels better within three days.
+    - raw: 2
+      condition_num: 1
+      factors: {cds_support: "absent", cds_recommendation: "none", end_result: "bad"}
+      text: >
+        so he DOES NOT order one. She goes home with an ankle brace. On the second day
+        of her vacation, she visits an emergency room because she cannot walk without
+        pain. She learns that she did break her ankle and should have had an x-ray
+        earlier.
+    - raw: 3
+      condition_num: 2
+      factors: {cds_support: "equal accuracy", cds_recommendation: "no x-ray needed", end_result: "good"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is as good as the average doctor at predicting who needs
+        an x-ray in these kinds of cases. The computer suggests that she DOES NOT need
+        one. He DOES NOT order the x-ray. She goes home with an ankle brace and enjoys
+        her vacation. Her ankle feels better within three days.
+    - raw: 4
+      condition_num: 3
+      factors: {cds_support: "equal accuracy", cds_recommendation: "x-ray needed", end_result: "good"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is as good as the average doctor at predicting who needs
+        an x-ray in these kinds of cases. The computer suggests that she DOES need one.
+        He DOES NOT order the x-ray. She goes home with an ankle brace and enjoys her
+        vacation. Her ankle feels better within three days.
+    - raw: 5
+      condition_num: 4
+      factors: {cds_support: "equal accuracy", cds_recommendation: "no x-ray needed", end_result: "bad"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is as good as the average doctor at predicting who needs
+        an x-ray in these kinds of cases. The computer suggests that she DOES NOT need
+        one. He DOES NOT order the x-ray. She goes home with an ankle brace. On the
+        second day of her vacation, she visits an emergency room because she cannot
+        walk without pain. She learns that she did break her ankle and should have had
+        an x-ray earlier.
+    - raw: 6
+      condition_num: 5
+      factors: {cds_support: "equal accuracy", cds_recommendation: "x-ray needed", end_result: "bad"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is as good as the average doctor at predicting who needs
+        an x-ray in these kinds of cases. The computer suggests that she DOES need one.
+        He DOES NOT order the x-ray. She goes home with an ankle brace. On the second
+        day of her vacation, she visits an emergency room because she cannot walk
+        without pain. She learns that she did break her ankle and should have had an
+        x-ray earlier.
+    - raw: 7
+      condition_num: 6
+      factors: {cds_support: "superior accuracy", cds_recommendation: "no x-ray needed", end_result: "good"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is better than the average doctor at predicting who
+        needs an x-ray in these kinds of cases. The computer is correct 90% of the time
+        and doctors are correct 80% of the time. The computer suggests that she DOES
+        NOT need one. He DOES NOT order the x-ray. She goes home with an ankle brace
+        and enjoys her vacation. Her ankle feels better within three days.
+    - raw: 8
+      condition_num: 7
+      factors: {cds_support: "superior accuracy", cds_recommendation: "x-ray needed", end_result: "good"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is better than the average doctor at predicting who
+        needs an x-ray in these kinds of cases. The computer is correct 90% of the time
+        and doctors are correct 80% of the time. The computer suggests that she DOES
+        need one. He DOES NOT order the x-ray. She goes home with an ankle brace and
+        enjoys her vacation. Her ankle feels better within three days.
+    - raw: 9
+      condition_num: 8
+      factors: {cds_support: "superior accuracy", cds_recommendation: "no x-ray needed", end_result: "bad"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is better than the average doctor at predicting who
+        needs an x-ray in these kinds of cases. The computer is correct 90% of the time
+        and doctors are correct 80% of the time. The computer suggests that she DOES
+        NOT need one. He DOES NOT order the x-ray. She goes home with an ankle brace.
+        On the second day of her vacation, she visits an emergency room because she
+        cannot walk without pain. She learns that she did break her ankle and should
+        have had an x-ray earlier.
+    - raw: 10
+      condition_num: 9
+      factors: {cds_support: "superior accuracy", cds_recommendation: "x-ray needed", end_result: "bad"}
+      text: >
+        but enters information from her exam into a computer to make sure that that he
+        is right. The computer is better than the average doctor at predicting who
+        needs an x-ray in these kinds of cases. The computer is correct 90% of the time
+        and doctors are correct 80% of the time. The computer suggests that she DOES
+        need one. He DOES NOT order the x-ray. She goes home with an ankle brace. On
+        the second day of her vacation, she visits an emergency room because she cannot
+        walk without pain. She learns that she did break her ankle and should have had
+        an x-ray earlier.
+
+outcomes:
+  - var: Q1A
+    task_num: 0
+    question: "Please rate the doctor's overall quality."
+    scale: {min: 1, max: 7, min_label: "Very Low", max_label: "Very High"}
+  - var: Q1B
+    task_num: 1
+    question: "In the scenario you just read, how acceptable was the end result?"
+    scale: {min: 1, max: 7, min_label: "Totally Unacceptable", max_label: "Perfectly Acceptable"}
+  - var: Q1C
+    task_num: 2
+    question: "In the scenario you just read, how responsible was the doctor for the end result?"
+    scale: {min: 1, max: 4, min_label: "Not at all Responsible", max_label: "Completely Responsible"}
+    # 4-point item in a study whose other two items are 7-point: its own identity map,
+    # so codes 5-7 can never leak in from the study-level 1-7 recode.
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+
+# Identity: Q1A and Q1B are already 1-7 with 1 = the low/negative end.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: PARTY7
+  ideology: IDEO
+  religion: REL1

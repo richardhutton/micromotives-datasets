@@ -680,36 +680,87 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
 
 ## 10. Status & next steps
 
-- ✅ SocSci210 understood (schema, splits, objectives, DPO construction).
-- ✅ TESS foundation layer mapped: 202 UK-appropriate, 75 pull / 120 build,
-  download URLs captured. → `tess_uk_foundation_sources.csv`.
-- ✅ UK-native sources scoped: Dataverse sets, BES (longitudinal), DEL.
-- ✅ Persona spine + crosswalk (2 fields need fixing).
-- ✅ Moved into a proper Python project (§11) with the inspection scripts documented.
-- **Decided (v1 build):** the first worked example is a **simple 2-arm TESS
-  study**, not the conjoint. Target = **`ca9ub` "Nature or Nurture?"** — verified
-  clean: condition `EXPLAIN` (1=Essentialist / 2=Socio-Cultural), outcomes
-  `Q1–Q24` Likert with question wording already in the variable labels, full
-  `PP*` demographic spine, negative missing codes (`-1` refused, `-2` not asked),
-  410 respondents × ~24 items ≈ ~9.8k rows. Rationale: nail the deterministic
-  melt + tests on the simplest real case before taking on multi-task conjoint
-  complexity. *(Caveat: US KnowledgePanel sample — UK-appropriate by topic, not
-  by sample; the UK-sample layer comes from BES/IP later.)*
-  Approach: **recipe-driven** — a hand-authored YAML per study captures §8
-  stages 2–4 (condition var, arm→text, outcome vars, persona map, missing codes);
-  a pure `build_rows(df, meta, recipe)` does the mechanics. Judgment stays
-  separate from mechanics, so the melt is heavily testable and the recipe becomes
-  the artifact an agent + Jev will later draft for human approval.
-  v1 CLI is minimal: `mmds build <recipe>` and `mmds pull <study_id>`.
-- **Next candidates:**
-  1. **Then the UK-native conjoint** (Pricing Immigration or Brexit) — highest
-     ROI (§5d): most signal per scarce respondent + best-generalising format.
-     Build end-to-end and test held-out-attribute-level generalisation. Needs the
-     melt to handle multiple tasks per respondent.
-  2. Pick a starter batch of 10–15 foundation studies to reconstruct end-to-end.
-  3. Finish the persona crosswalk (social grade bands, Divided region remap, BES coding).
-  4. BES wide→long converter (the input every forecasting model needs).
-  5. (Optional) design-level pass to verify the full conjoint list (title-based is a floor).
+*(Detailed per-study findings live in `docs/LEDGER.md`. This is the summary.)*
+
+### Built and verified
+
+**7 studies, 18,822 rows**, each built from source and machine-checked:
+
+| Study | Design | Rows | Verification |
+|---|---|---|---|
+| `7jt2f` | 2×4 vignette (anti-atheist prejudice) | 3,053 | crosscheck exact |
+| `sd7cf` | 3×4 framing × distractor position | 4,124 | crosscheck exact |
+| `dh3nj` | 2×3×2 vignette (prenatal alcohol) | 4,001 | crosscheck pass (permuted index) |
+| `c5r2f` | 3×2×2 policy defaults | 1,091 | 12/12 cells match |
+| `zrwjp` | 2-arm, banded quantity outcomes | 2,532 | QC pass; we disagree with SocSci210 deliberately |
+| `bf8p2` | 2×2 valence × social comparison | 1,998 | crosscheck exact |
+| `rpw4u_RO1` | split-ballot question wording | 1,023 | QC pass (not comparable) |
+
+### The finding that changed the plan
+
+**PULL is not free.** An audit of 5 SocSci210 studies found its *stimulus text*
+materially wrong in 4 of 5 — a factor inverted, a factor dropped, all arms given the
+wrong scenario, arms merged — plus **three numeric defects** in one study (wrong
+variable, a comma-parsing bug, minutes conflated with hours). Its *arm assignment and
+row structure* have been right every time.
+
+So the two-path design collapsed into one: **build everything from source; use
+SocSci210 as a numeric answer key only.** Verifying a study costs the same as
+rebuilding it, so there is no shortcut to protect. `crosscheck` asserts on numbers and
+reports text as informational.
+
+### The pipeline that now exists
+
+`mmds fetch <osf_code>` → recipe (YAML) → `mmds build --crosscheck` → Parquet.
+
+- **Recipe** = the human judgment, reviewable: factors first-class, condition mapping
+  declared not inferred, response recode an explicit map, per-arm overrides for
+  split-ballot designs (own variable, own question, own scale, own recode).
+- **`pipeline/build.py`** = a pure deterministic melt. 36 tests, offline.
+- **8 QC invariants**, each earned from a real failure, and all working without an
+  oracle so they also protect the ~120 studies with no reference.
+- **`crosscheck`** reads SocSci210 via DuckDB over its parquet shards (its `/filter`
+  API cannot serve a dataset this size).
+
+### Jev (TypeSafe) — measured, not assumed
+
+Two jobs, both closed judgments over material the code assembles:
+**(a)** which variable is the randomised assignment; **(b)** does a study's outcome
+require US-specific knowledge. It never touches the data and never writes arm text.
+
+Measured on 19 decisions with known answers: **84% accurate, nothing above 0.80
+confidence was wrong.** But that was with narrow option lists — widening them dropped
+confidence (0.79 → 0.59 on one study), so the calibration is optimistic and the honest
+value is **a ranked shortlist, not auto-accept**. Twice it looked wrong and the fault
+was ours: a keyword allowlist that excluded the right answer, then a ranking heuristic
+that did the same. *Narrowing the options is the caller making the decision it is
+asking the model to make.*
+
+### UK-transferability — two axes
+
+`uk_applicable` (could this design run in the UK?) was judged from titles and is sound;
+it is now merged into the working catalog. `uk_content` (does the stimulus or outcome
+need US knowledge?) is new, recorded when we open a study. Of 29 screened, **only
+`sd7cf` crosses the threshold** — its outcome is support for the Patriot Act. The
+original filter holds up well.
+
+### The bottleneck
+
+**Recipe authoring.** Everything else is automated; reading a questionnaire and writing
+the arm text is not, at ~30–60 minutes a study. 188 remaining ⇒ 90–190 hours. Being
+tested now: a **maker/checker agent pair** drafting recipes for a human to review,
+scored against studies where the crosscheck gives objective ground truth.
+
+### Next
+
+1. **Finish the TESS base** (188 studies) — gated on whether maker/checker works.
+2. **Persona crosswalk (§6)** — still unbuilt. Categories pass through raw, so studies
+   do not line up with each other. Blocks merging into one corpus.
+3. **Re-plan the UK-native layer.** Today's finding: Dataverse replication archives
+   often omit the questionnaire entirely (`QQM5MC` was unbuildable for this reason), so
+   that layer is *dearer* per study than TESS, not cheaper. Favour sources that deposit
+   instruments — UKDS and the Innovation Panel — over replication archives.
+4. **Then the UK conjoint** (Pricing Immigration / Brexit) — needs multi-task melt.
 
 ---
 
