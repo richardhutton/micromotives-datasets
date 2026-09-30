@@ -52,14 +52,21 @@ def cmd_build(args: argparse.Namespace) -> int:
     print(report.render())
 
     if args.crosscheck:
-        from .pipeline.crosscheck import compare
-
         print()
-        cc = compare(rows, rec.study_id)
-        print(cc.render())
-        if not cc.passed and not args.force:
-            print("\ncrosscheck failed — not writing output (use --force to override)")
-            return 1
+        if not rec.comparable_to_socsci210:
+            print(
+                f"CROSSCHECK — {rec.study_id}: SKIPPED (not comparable)\n"
+                "  SocSci210 reconstructed a different scope for this study, so a numeric\n"
+                "  comparison would be meaningless. See the recipe's notes."
+            )
+        else:
+            from .pipeline.crosscheck import compare
+
+            cc = compare(rows, rec.study_id)
+            print(cc.render())
+            if not cc.passed and not args.force:
+                print("\ncrosscheck failed — not writing output (use --force to override)")
+                return 1
 
     if not report.passed and not args.force:
         print("\nQC failed — not writing output (use --force to override)")
@@ -81,9 +88,22 @@ def cmd_crosscheck(args: argparse.Namespace) -> int:
     return 0 if rep.passed else 1
 
 
+def cmd_fetch(args: argparse.Namespace) -> int:
+    from .sources.osf import fetch
+
+    result = fetch(args.osf_code, RAW_DIR, study_id=args.study_id or args.osf_code)
+    print(result.render())
+    return 0 if result.data_files else 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="mmds", description=__doc__)
     sub = p.add_subparsers(dest="command", required=True)
+
+    f = sub.add_parser("fetch", help="download a study's raw deposit from OSF")
+    f.add_argument("osf_code", help="OSF 5-char code (== study_id for TESS studies)")
+    f.add_argument("--study-id", default=None, help="override the local folder name")
+    f.set_defaults(func=cmd_fetch)
 
     b = sub.add_parser("build", help="build a study into (P,c,o,r) rows")
     b.add_argument("recipe")

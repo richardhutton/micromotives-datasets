@@ -57,6 +57,21 @@ class Arm(BaseModel):
     )
     text: str = Field(description="What this arm saw. Verbatim for what varies.")
 
+    # --- question-wording designs ------------------------------------------
+    # In a split-ballot study each arm is asked a DIFFERENT variable, and the
+    # answer codes may be reversed between arms (option-order experiments).
+    # Both are declared per arm so a reversal can never be applied silently.
+    outcome_var: str | None = Field(
+        default=None,
+        description="Variable holding this arm's answer, when the outcome variable "
+        "differs by arm (split-ballot). Overrides Outcome.var.",
+    )
+    response_recode: dict[int, int] | None = Field(
+        default=None,
+        description="Arm-specific raw->canonical answer map, for arms whose response "
+        "options are presented in a different order. Overrides Recipe.response_recode.",
+    )
+
 
 class Condition(BaseModel):
     """The experimental manipulation."""
@@ -85,7 +100,11 @@ class Condition(BaseModel):
 class Outcome(BaseModel):
     """One outcome question the respondent answered."""
 
-    var: str = Field(description="Variable in the data holding the answer.")
+    var: str | None = Field(
+        default=None,
+        description="Variable holding the answer. Omit in split-ballot designs, where "
+        "each Arm names its own `outcome_var` instead.",
+    )
     task_num: int = Field(description="Canonical 0-based item index.")
     question: str = Field(description="The question wording.")
     scale: Scale
@@ -99,6 +118,16 @@ class Recipe(BaseModel):
     title: str | None = None
     data_file: str = Field(description="Filename of the data file inside data/raw/<study_id>/.")
     notes: str | None = None
+    experiment: str | None = Field(
+        default=None,
+        description="Names the sub-experiment when one deposit contains several "
+        "independent experiments (one recipe file each), e.g. 'RO1'.",
+    )
+    comparable_to_socsci210: bool = Field(
+        default=True,
+        description="False when SocSci210 reconstructed a different scope for this study "
+        "(a subset of arms, or arms merged), so a numeric crosscheck is meaningless.",
+    )
 
     condition: Condition
     outcomes: list[Outcome]
@@ -129,7 +158,24 @@ class Recipe(BaseModel):
             missing = set(self.condition.factors) - set(arm.factors)
             if missing:
                 raise ValueError(f"arm raw={arm.raw} missing factor(s) {sorted(missing)}")
+        # Every outcome must get its variable from somewhere: either the outcome
+        # itself, or (split-ballot) every arm.
+        arms_have_var = all(a.outcome_var for a in self.condition.arms)
+        for outcome in self.outcomes:
+            if not outcome.var and not arms_have_var:
+                raise ValueError(
+                    f"outcome task_num={outcome.task_num} has no `var`, and not every arm "
+                    "declares `outcome_var`"
+                )
         return self
+
+    def recode_for(self, arm: Arm) -> dict[int, int]:
+        """The answer map for an arm — its own if it has one, else the study's."""
+        return arm.response_recode if arm.response_recode is not None else self.response_recode
+
+    def outcome_var_for(self, outcome: Outcome, arm: Arm) -> str | None:
+        """The variable holding this arm's answer to this outcome."""
+        return outcome.var or arm.outcome_var
 
 
 def load(path: str | Path) -> Recipe:

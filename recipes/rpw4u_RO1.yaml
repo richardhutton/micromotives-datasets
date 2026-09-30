@@ -1,0 +1,97 @@
+study_id: rpw4u
+experiment: RO1
+source: tess
+title: "Cross-National Replication of Question Design Experiments (RO1: oil supply)"
+data_file: TESS3_183_Krosnick_Client.sav
+
+# SocSci210 reconstructed a DIFFERENT scope for this deposit: it produced just two
+# conditions for the whole survey, each merging all arms of one question series and
+# describing them only as "with option order varied" / "with wording varied" — i.e.
+# without saying which wording the respondent actually saw. For a question-wording
+# experiment the wording IS the treatment, so their condition text carries no signal.
+# A numeric crosscheck is therefore meaningless here (different scope, not a bug in
+# either build). Their *recoding* was correct — verified: their merged distribution
+# for this series is {1: 778, 2: 245}, matching a correctly order-flipped merge.
+comparable_to_socsci210: false
+
+notes: >
+  TESS3 183 (Krosnick). This deposit holds ~15 independent split-ballot experiments,
+  one per DOV_*_Assign variable; each needs its own recipe file. This one covers RO1,
+  a 2x2 response-order / question-format experiment on oil supply.
+
+  Two things make this shape different from a standard vignette study:
+    1. Each arm is asked a DIFFERENT variable (RO1a..RO1d) — `outcome_var` per arm.
+    2. The response options are REVERSED in arms b and d, so raw code 1 means
+       opposite things across arms — `response_recode` per arm.
+  Canonical answer coding: 1 = "plenty of oil in 25 years", 2 = "used up in 15 years".
+
+condition:
+  source_var: DOV_RO1_Assign
+  factors: [statement_order, question_format]
+  shared_context: >
+    You were asked for your best guess about how long the oil supply will last.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {statement_order: "plenty first", question_format: "two statements then question"}
+      outcome_var: RO1a
+      response_recode: {1: 1, 2: 2}
+      text: >
+        You were asked: "Some people say that we will still have plenty of oil 25 years
+        from now. Others say that at the rate we are using our oil, it will all be used
+        up in 15 years. Which of these ideas would you guess is most nearly right?"
+    - raw: 2
+      condition_num: 1
+      factors: {statement_order: "used up first", question_format: "two statements then question"}
+      outcome_var: RO1b
+      # Options presented in the opposite order: raw 1 = "used up", raw 2 = "plenty".
+      response_recode: {1: 2, 2: 1}
+      text: >
+        You were asked: "Some people say that at the rate we are using our oil, it will
+        be all used up in 15 years. Others say that we will still have plenty of oil 25
+        years from now. Which of these ideas would you guess is most nearly right?"
+    - raw: 3
+      condition_num: 2
+      factors: {statement_order: "plenty first", question_format: "question then options"}
+      outcome_var: RO1c
+      response_recode: {1: 1, 2: 2}
+      text: >
+        You were asked: "Which of these ideas would you guess is most nearly right? We
+        will still have plenty of oil 25 years from now, or at the rate we are using our
+        oil, it will all be used up in 15 years."
+    - raw: 4
+      condition_num: 3
+      factors: {statement_order: "used up first", question_format: "question then options"}
+      outcome_var: RO1d
+      response_recode: {1: 2, 2: 1}
+      text: >
+        You were asked: "Which of these ideas would you guess is most nearly right? At
+        the rate we are using our oil, it will be all used up in 15 years, or we will
+        still have plenty of oil 25 years from now."
+
+outcomes:
+  # No `var` here: each arm supplies its own via `outcome_var`.
+  - task_num: 0
+    question: "Which of these ideas would you guess is most nearly right?"
+    scale:
+      min: 1
+      max: 2
+      min_label: "There will be plenty of oil in 25 years"
+      max_label: "Oil will be used up in 15 years"
+
+# Study-level fallback; every arm overrides it above.
+response_recode: {1: 1, 2: 2}
+missing_codes: [-1]
+
+persona_map:
+  age: ppage
+  gender: ppgender
+  education: ppeducat
+  ethnicity: ppethm
+  income: ppincimp
+  marital_status: ppmarit
+  employment: ppwork
+  region: ppreg4
+  household_size: pphhsize
+  housing_type: pphouse
+  urban_rural: ppmsacat

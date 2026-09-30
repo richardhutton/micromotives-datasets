@@ -61,8 +61,10 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
     if cvar not in ds.df.columns:
         raise ValueError(f"condition variable {cvar!r} not in data")
     for outcome in recipe.outcomes:
-        if outcome.var not in ds.df.columns:
-            raise ValueError(f"outcome variable {outcome.var!r} not in data")
+        for declared_arm in recipe.condition.arms:
+            var = recipe.outcome_var_for(outcome, declared_arm)
+            if var is not None and var not in ds.df.columns:
+                raise ValueError(f"outcome variable {var!r} not in data")
 
     for idx, row in ds.df.iterrows():
         code = row[cvar]
@@ -75,16 +77,24 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
         persona = _persona(ds, row, recipe)
         condition_text = recipe.condition.render(arm)
 
+        # Both the answer variable and the answer coding can differ by arm:
+        # split-ballot studies ask each arm a different question, and
+        # option-order experiments reverse the codes between arms.
+        recode = recipe.recode_for(arm)
+
         for outcome in recipe.outcomes:
-            raw = row[outcome.var]
+            var = recipe.outcome_var_for(outcome, arm)
+            if var is None:
+                continue
+            raw = row[var]
             if _is_blank(raw):
                 continue
             ivalue = int(float(raw))
             if ivalue in missing:
                 continue
-            if ivalue not in recipe.response_recode:
+            if ivalue not in recode:
                 continue  # value outside the declared scale -> drop, don't guess
-            response = recipe.response_recode[ivalue]
+            response = recode[ivalue]
 
             yield Row(
                 persona=persona,
