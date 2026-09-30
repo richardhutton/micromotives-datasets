@@ -1,0 +1,500 @@
+study_id: evnyh
+source: tess
+title: "Impact of Response Scale Direction on Survey Responses (Keusch, TESS3 150)"
+data_file: TESS3_150_Keusch_Final_Client.sav
+experiment: Q1a_and_validation
+
+# Our scope is NARROWER than SocSci210's, so a numeric crosscheck of n_rows is
+# meaningless. Full arithmetic, and the exact reconciliation that was done by
+# hand instead, is in `notes` under "SocSci210 reconciliation".
+comparable_to_socsci210: false
+
+notes: >
+  TESS3 150 (Florian Keusch, Univ. of Michigan / Northwestern). A 2 x 2 x 3 full
+  factorial METHODS experiment on response-scale presentation. All line numbers below
+  refer to data/raw/evnyh/TESS3_150_Keusch_Questionnaire_Final.txt and were checked
+  individually with `sed -n Np`.
+
+
+  == DESIGN, AND THE EVIDENCE FOR IT ==
+
+  Line 92 (proposal section, reproduced inside the fielded questionnaire): "The first
+  factor varies the direction of response scales. For half of the sample, the scale
+  runs from high to low. For the other half, the scale runs from low to high. The
+  second factor varies the presentation of the response scale on a screen. The response
+  scale is presented either horizontally or vertically. As a third factor, I vary the
+  vagueness of scale verbal labels, creating three versions."
+  Line 104: "The full factorial 2x2x3 design leads to 12 experimental groups".
+
+  Assignment is a SINGLE variable. Line 170: "[SamVar DOV=xtes3150; Should be evenly
+  distributed across sample]". Lines 174-238 are the "Experimental Group Design" table
+  giving group -> (Scale Direction, Scale Alignment, Label Vagueness) for groups 1-12;
+  e.g. lines 179-183 = "1 / High to Low / Vertical / Vague / 133", lines 209-213 =
+  "7 / Low to High / Vertical / Vague / 134", lines 234-238 = "12 / Low to High /
+  Horizontal / Vague + Precise / 133".
+
+  Lines 241-252 derive the three factor flags from that one variable:
+  "[create dov_direct / if xtes3150 = 1 through 6 = dov_direction = 1 "High to Low" /
+  if xtes3150 = 7 through 12 = dov_direction = 2 "Low to High]" (note the source's own
+  inconsistency: the block is headed `dov_direct` but its body writes `dov_direction`;
+  every downstream [show if] uses `dov_direct`, and the .sav column is DOV_DIRECT);
+  "[create dov_align / if xtes3150 = 1 through 3 OR 7 through 9 = dov_align = 1
+  "Vertical" / if xtes3150 = 4 through 6 OR 10 through 12 = dov_align = 2
+  "Horizontal"]"; "[create dov_label / if xtes3150 = 1 OR 4 OR 7 OR 10 = dov_label = 1
+  "Vague" / if xtes3150 = 2 OR 5 OR 8 OR 11 = dov_label = 2 "Precise" / if xtes3150 =
+  3 OR 6 OR 9 OR 12 = dov_label = 3 "Vague + Precise"]".
+
+  Confirmed in the data. XTESS150 (labelled "Experimental Condition", values "Group
+  1".."Group 12") is 100% non-null over 1,729 rows with counts
+  {1:149, 2:150, 3:147, 4:153, 5:140, 6:145, 7:137, 8:138, 9:136, 10:151, 11:144,
+  12:139} (sum 1,729). Cross-tabulating XTESS150 against DOV_DIRECT / DOV_ALIGN /
+  DOV_LABEL gives exactly ONE triple per group, matching lines 241-252 for all 12
+  groups. So DOV_DIRECT/ALIGN/LABEL are deterministic functions of XTESS150, not
+  independent randomisations: `source_vars` (ledger #33) is NOT needed here and would
+  be redundant. Marginals: DOV_DIRECT {1:884, 2:845} = groups 1-6 / 7-12; DOV_ALIGN
+  {1:857, 2:872}; DOV_LABEL {1:590, 2:572, 3:567}.
+
+  Ledger #5 / #30 warning discharged: XTESS150 *is* labelled "Experimental Condition"
+  and in a5v96 such a variable turned out to be presentation order. Here it is genuine
+  — the questionnaire's own [create ...] notes name it as the source of all three
+  factors, the .sav variable labels on the outcome columns name the group numbers
+  ("(Groups 4 + 10)"), and the crosstab agrees. No other column in the file is a
+  candidate: scanning for ^(DOV|XTESS|X[A-Z]{2,}) or labels matching
+  random/condition/assign/version/experiment returns only XTESS150, the three derived
+  DOV_* flags, and the six GfK profile variables (XPH10001, XPH1DEPR, XIDEO, XREL1,
+  XREL2, XPARTY7), none of which is randomised.
+
+
+  == SCALE DIRECTION: WHAT WAS MANIPULATED, AND WHY THERE IS NO PER-ARM RECODE ==
+
+  This is the study's point and the one place it is easy to get catastrophically wrong,
+  so the reasoning is spelled out.
+
+  The manipulation is PURELY the on-screen ORDER of the five options. The programming
+  note is identical above every experimental item, e.g. line 258: "[if dov_direct=1
+  show response options 1-5; if dov_direct=2 show response options 5-1]". The option
+  list itself is written once per (alignment x label) block with fixed codes, e.g.
+  lines 260-270: "All of the time / 1 / Most of the time / 2 / Some of the time / 3 /
+  A little of the time / 4 / Never / 5". "show response options 5-1" therefore means
+  "display the same five coded options in reverse sequence", NOT "renumber them".
+  Lines 257 and 331 add "[grid sp across: do not show numbers]" / "[sp: do not show
+  numbers]" — the 1-5 codes were never visible to respondents at all; they are
+  administrative codes, not screen furniture.
+
+  That means the stored codes are LABEL-anchored, not POSITION-anchored: raw 1 means
+  "All of the time" in both direction arms, and raw 5 means "Never" in both. This is
+  the OPPOSITE of ledger #7 (rpw4u), where the options were genuinely renumbered and
+  `Arm.response_recode` was required. Four independent confirmations:
+
+  (1) Structural. A single .sav column serves BOTH direction arms of a cell — Q1A_1 is
+  labelled "(Groups 4 + 10)", i.e. High-to-Low group 4 and Low-to-High group 10 — and
+  it carries ONE value-label set (1 'All of the time' ... 5 'Never'). A positional
+  coding could not be expressed in one column with one label set. Verified in data:
+  for every group g, exactly one of Q1A_1..Q1A_6 is non-null, and the populated one is
+  the suffix the (align, label) show-if predicts, with n equal to the full group size
+  (e.g. group 4 -> Q1A_1, n=153; group 10 -> Q1A_1, n=151).
+
+  (2) Marginal means are near-identical, not mirrored. Mean raw code on Q1A by
+  direction: Q1A_1 4.386 / 4.347; Q1A_2 4.664 / 4.542; Q1A_3 4.552 / 4.403;
+  Q1A_4 4.369 / 4.419; Q1A_5 4.530 / 4.555; Q1A_6 4.441 / 4.541. A positional coding
+  would have put direction 2 near 1.6, i.e. 6 - 4.4.
+
+  (3) Modal cell. Q1A_1 by direction: dir 1 {2:7, 3:15, 4:43, 5:88}, dir 2
+  {-1:1, 2:6, 3:18, 4:44, 5:82}. Both pile on raw 5 = "Never", which is the
+  substantively expected answer for "so sad that nothing could cheer you up".
+
+  (4) Decisive external anchor. Q17a-f / Q18a-d are open-ended 0-7 day counts with NO
+  experimental variation (line 94: "There is no experimental variation for these 10
+  items"), so they are unambiguously ASCENDING in frequency. Correlating each
+  experimental item's raw code with its own validation counterpart, within direction:
+  Q1A/Q17A r = -0.773 (dir 1, n=862) and -0.729 (dir 2, n=829); Q1B/Q17B -0.834 /
+  -0.802; Q2A/Q18A -0.811 / -0.773; Q2D/Q18D -0.900 / -0.866. Strongly NEGATIVE in
+  BOTH arms. If direction-2 codes were positional the sign would flip to strongly
+  positive.
+
+  Consequence for this recipe: response_recode is the IDENTITY {1:1,...,5:5} for every
+  arm, with NO `Arm.response_recode` anywhere. Adding a per-arm reversal here would be
+  the error, not the fix. The canonical meaning is fixed and the same in all 12 arms:
+  1 = most frequent ("All of the time" / "7 days"), 5 = least frequent ("Never" /
+  "0 days"). `response_num` is therefore on a common, comparable footing across all 12
+  arms for task 0. QC rule 7 sees a strictly increasing map, which it accepts.
+
+  Note the direction convention differs BETWEEN the two item sets in this recipe and
+  cannot be reconciled without departing from the source codebooks: task 0 runs 1 =
+  most frequent -> 5 = least frequent, while tasks 1-10 are raw day counts running 0 =
+  least -> 7 = most. Both are the source coding, and each `Scale`'s min_label/max_label
+  states its own direction explicitly in the rendered outcome instruction, so a reader
+  of a row is never left to guess.
+
+  Where the direction IS expressed: the arm text. The scale endpoint LABELS cannot
+  carry it, because `Scale.min_label` is by construction the label of code 1, which is
+  direction-invariant. So each arm's text lists the five option labels IN THE ORDER
+  THEY WERE DISPLAYED and says which way that order ran on screen. Nothing is invented:
+  the five label strings are verbatim from the arm's own questionnaire block, and the
+  sequence is the one line 258 specifies. See the caveat below on the wording used for
+  the layout itself.
+
+  Caveat, stated plainly because the checker should weigh it: the questionnaire gives
+  NO respondent-facing words for either direction or alignment. Both are purely
+  visual/ordinal, expressed only in programming notes ("show response options 5-1",
+  "[grid sp across]" vs "[sp]"). So the two sentences of framing in each arm ("shown
+  vertically, one per line, in this order from top to bottom" / "shown horizontally,
+  side by side in a single row across the screen, in this order from left to right")
+  are a DESCRIPTION of the presentation, not transcribed stimulus text. They are the
+  minimum needed to make a purely visual manipulation legible in a text-only row; the
+  alternative is to drop two of the three factors, which QC rule 1 and rule 5 would
+  (rightly) fail. Flagged as uncertainty #1 in the handover.
+
+
+  == PER-ARM OUTCOME VARIABLES ==
+
+  The experimental item is asked as SIX different .sav columns, one per (alignment x
+  label) cell, so the question itself is the treatment and `Arm.outcome_var` is
+  required. Mapping, from the [show if] headers and confirmed by the .sav variable
+  labels' "(Groups n + m)" annotations:
+    _1 = [show if dov_align=2 and dov_label=1] (line 256) -> Horizontal, Vague     -> groups 4, 10
+    _2 = [show if dov_align=2 and dov_label=2] (line 278) -> Horizontal, Precise   -> groups 5, 11
+    _3 = [show if dov_align=2 and dov_label=3] (line 302) -> Horizontal, Combined  -> groups 6, 12
+    _4 = [show if dov_align=1 and dov_label=1] (line 330) -> Vertical,   Vague     -> groups 1, 7
+    _5 = [show if dov_align=1 and dov_label=2] (line 347) -> Vertical,   Precise   -> groups 2, 8
+    _6 = [show if dov_align=1 and dov_label=3] (line 364) -> Vertical,   Combined  -> groups 3, 9
+  Each arm also gets its own `scale`, because the endpoint labels differ by cell.
+
+  Verbatim option lists used (questionnaire lines; the "1 " .. "5 " prefixes in the
+  vertical blocks are the code numbers and are dropped, per "do not show numbers"):
+    Horizontal Vague    260-270: All of the time / Most of the time / Some of the time / A little of the time / Never
+    Horizontal Precise  284-294: 7 days / 5 or 6 days / 3 or 4 days / 1 or 2 days / 0 days
+    Horizontal Combined 308-321: All of the time (7 days) / Most of the time (5 or 6 days) / Some of the time (3 or 4 days) / A little of the time (1 or 2 days) / Never (0 days)
+    Vertical   Vague    335-343: All of the time / Most of the time / Some of the time / A little of the time / Never
+    Vertical   Precise  352-360: 7 Days / 5 to 6 Days / 3 to 4 Days / 1 to 2 Days / 0 Days
+    Vertical   Combined 369-377: All of the time (7 Days) / Most of the time (5 to 6 Days) / Some of the time (3 to 4 Days) / A little of the time (1 to 2 Days) / Never (0 Days)
+  The horizontal/vertical blocks really do differ in wording ("5 or 6 days" vs "5 to 6
+  Days", lower- vs upper-case "days"). That is a questionnaire inconsistency, not a
+  design factor, but it is reproduced verbatim because BOTH sources agree on it: the
+  .sav value labels independently carry "5 or 6 days" on Q1A_2 and "5 to 6 Days" on
+  Q1A_5. Two deviations from the .txt are deliberate and minimal: line 369 reads
+  "(7  Days)" with a double space (a .docx-to-text artifact; the .sav value label is
+  "All of the time (7 Days)"), and line 308-309 splits "All of the time " / "(7 days)"
+  across a wrapped line. Uncertainty #2.
+
+
+  == SCOPE, AND A SCHEMA LIMIT THAT COSTS NINE ITEMS ==
+
+  The experiment was run on TEN items: six mental-health items Q1a-Q1f (lines 113-119,
+  fielded at 259+) and four health-behaviour items Q2a-Q2d (lines 123-127, fielded at
+  1012+). Each exists as six columns, so the answer variable is a function of
+  (item x arm) — 60 columns. The recipe schema resolves the answer variable as
+  `outcome.var or arm.outcome_var` (recipe.py `outcome_var_for`), a sum and not a
+  product: one variable per outcome OR one variable per arm, never one per pair. So
+  only ONE experimental item can be expressed per recipe file. This recipe builds
+  Q1a ("so sad that nothing could cheer you up"). Q1b, Q1c, Q1d, Q1e, Q1f, Q2a, Q2b,
+  Q2c and Q2d are mechanical repeats of the same 12 arms against Q1B_*..Q2D_* and are
+  OWED, not dropped. The gap is documented rather than worked around (cf. ledger #33);
+  the suggested fix is an `Arm.outcome_vars: {task_num: var}` override resolved before
+  `outcome.var`.
+
+  Also included, as tasks 1-10, are the ten open-ended validation items Q17a-f and
+  Q18a-d (lines 1579-1638, "[number box 0-7]"). These carry NO experimental variation
+  by design (line 94) and no per-arm variable, so they cost nothing schema-wise and
+  add 16,824 genuine rows. Their `Outcome.response_recode` is a separate identity map
+  over 0-7 (ledger #9: a study's outcomes can sit on different scales). The
+  shared_context is worded to say the respondent was asked that block somewhere in the
+  survey, without claiming the current question is inside it — because for tasks 1-10
+  it is not. Uncertainty #3.
+
+  NOT built, and a genuine second sub-experiment in this deposit: Q3-Q9 ("Thinking
+  about yesterday...", line 1523) and Q10-Q16 ("Here are a few general statements about
+  food and health...", line 1552) both carry "[if dov_direct=1 show response options
+  1-5; if dov_direct=2 show response options 5-1]" (lines 1522, 1551) but NO
+  dov_align/dov_label show-if — they are always a horizontal grid with fixed labels
+  ("Very".."Not at all"; "Strongly agree".."Strongly disagree"). So 14 further items
+  carry the DIRECTION factor alone, as single columns Q3..Q16, a clean 2-arm
+  sub-experiment worth its own recipe (`experiment: Q3_Q16_direction`). It is excluded
+  here because one recipe has one condition text per arm and that text would have to
+  describe a different scale.
+
+
+  == SOCSCI210 RECONCILIATION (done by hand; `comparable_to_socsci210: false`) ==
+
+  SocSci210's evnyh is 33,932 rows / 1,724 participants / 12 conditions with
+  rows_per_condition {0:2958, 1:2916, 2:2866, 3:3013, 4:2742, 5:2830, 6:2662, 7:2723,
+  8:2644, 9:2990, 10:2823, 11:2765}. Reproducing their scope exactly — all TEN
+  experimental items (each respondent's assigned column, codes 1-5) PLUS all ten
+  open-ended items (codes 0-7) — gives 17,108 + 16,824 = 33,932 rows, 1,724
+  participants, and per-group counts identical to theirs under condition_num = group - 1,
+  all twelve exact and in order. Their arm assignment and row structure are right
+  again, and our group -> condition_num convention agrees with theirs. Their `task_num`
+  runs 0-9 only, because they file each experimental item and its open-ended
+  counterpart under the SAME task index.
+
+  Their TEXT and their RESPONSE CODING are both wrong, and both are provable.
+
+  Text: 12 conditions render only SEVEN distinct `stimuli` strings (six experimental +
+  one shared open-ended). Conditions {0,6}, {1,7}, {2,8}, {3,9}, {4,10}, {5,11} are
+  pairwise identical — i.e. the SCALE DIRECTION FACTOR, the study's headline
+  manipulation, is absent from their stimulus text. Our QC rule 1 fails that shape
+  (same defect class as sd7cf and z358z). Worse, the direction wording they do emit
+  tracks ALIGNMENT instead: every "vertical" string says the scale ran low-to-high
+  ("from never to all of the time") and every "horizontal" string says high-to-low
+  ("from all of the time to never"), for both direction arms alike. Nothing in the
+  questionnaire supports that; alignment and direction are orthogonal factors.
+
+  Coding: their per-cell maps, recovered by matching their response counts against the
+  raw .sav distributions for all 10 items (consistent across every item):
+    Horizontal Vague    (_1): identity 1->1..5->5                  correct
+    Horizontal Precise  (_2): identity 1->1..5->5                  correct
+    Horizontal Combined (_3): 1->1, 2->2, 3->3, 4->4, 5->0         WRONG: emits 0, outside their own declared 1-5 scale
+    Vertical   Vague    (_4): 1->5, 2->4, 3->3, 4->2, 5->1         WRONG: reverses a scale that was never renumbered
+    Vertical   Precise  (_5): 1->5, 2->5, 3->3, 4->1, 5->1         WRONG: non-injective; two band pairs collapse
+    Vertical   Combined (_6): 1->5, 2->5, 3->3, 4->1, 5->1         WRONG: as above
+  Worked example, Q1A_6 (Vertical Combined), raw {1:3, 2:7, 3:14, 4:82, 5:174}, n=280:
+  their counts are {1:256, 3:14, 5:10} — 5 = 3+7, 3 = 14, 1 = 82+174. That is the day
+  figure parsed out of each label (7, 5, 3, 1, 0) and then clamped into 1-5, so
+  "All of the time (7 Days)" and "Most of the time (5 to 6 Days)" both become 5, and
+  "A little of the time (1 to 2 Days)" and "Never (0 Days)" both become 1. Q1A_5
+  (Vertical Precise), raw {1:6, 2:3, 3:16, 4:66, 5:195}, n=286, theirs {1:261, 3:16,
+  5:9}: same arithmetic, 9 = 6+3, 261 = 66+195. Our QC rule 8 (injective bands) would
+  fail both maps, and rule 4 would fail the 0 they emit against a 1-5 scale.
+  Net effect on their dataset: response_num means opposite things either side of the
+  ALIGNMENT factor (1 = "all of the time" in horizontal arms, 1 = "never" in vertical
+  arms), and for eight of the twelve arms the ordinal information is degraded from five
+  levels to three.
+
+  So: they did NOT get the option-order reversal right here, unlike in rpw4u. There was
+  no reversal to handle — the codes were already label-anchored — and they introduced
+  one, in a factor that is not the direction factor. This revises the ledger's standing
+  summary once more: their arm assignment and row structure are right 8/8, but their
+  response values are unreliable whenever a code has to be interpreted against a label,
+  not only when a band must be converted to a quantity.
+
+
+  == UK CONTENT ==
+
+  `uk_content: full` (reported, not written to the CSV). Nothing US-specific: the
+  stimulus is a response scale and the items are generic mental-health and diet/
+  exercise frequencies. A US sample, but no US content.
+
+condition:
+  source_var: XTESS150
+  factors: [scale_direction, scale_alignment, label_vagueness]
+  shared_context: >
+    In this survey you were asked a block of questions about how often, during an
+    average week, you feel certain ways and do certain things. Every question in that
+    block was answered on the same five-point, fully labelled frequency scale.
+  arms:
+    # ---- Direction 1: High to Low (groups 1-6) ----------------------------
+    - raw: 1
+      condition_num: 0
+      factors: {scale_direction: "high to low", scale_alignment: "vertical", label_vagueness: "vague quantifiers"}
+      outcome_var: Q1A_4
+      scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      text: >
+        The five response options were shown vertically, one per line, in this order
+        from top to bottom: "All of the time"; "Most of the time"; "Some of the time";
+        "A little of the time"; "Never".
+    - raw: 2
+      condition_num: 1
+      factors: {scale_direction: "high to low", scale_alignment: "vertical", label_vagueness: "precise frequency"}
+      outcome_var: Q1A_5
+      scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}
+      text: >
+        The five response options were shown vertically, one per line, in this order
+        from top to bottom: "7 Days"; "5 to 6 Days"; "3 to 4 Days"; "1 to 2 Days";
+        "0 Days".
+    - raw: 3
+      condition_num: 2
+      factors: {scale_direction: "high to low", scale_alignment: "vertical", label_vagueness: "vague quantifiers + precise frequency"}
+      outcome_var: Q1A_6
+      scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}
+      text: >
+        The five response options were shown vertically, one per line, in this order
+        from top to bottom: "All of the time (7 Days)"; "Most of the time (5 to 6
+        Days)"; "Some of the time (3 to 4 Days)"; "A little of the time (1 to 2 Days)";
+        "Never (0 Days)".
+    - raw: 4
+      condition_num: 3
+      factors: {scale_direction: "high to low", scale_alignment: "horizontal", label_vagueness: "vague quantifiers"}
+      outcome_var: Q1A_1
+      scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      text: >
+        The five response options were shown horizontally, side by side in a single row
+        across the screen, in this order from left to right: "All of the time"; "Most
+        of the time"; "Some of the time"; "A little of the time"; "Never".
+    - raw: 5
+      condition_num: 4
+      factors: {scale_direction: "high to low", scale_alignment: "horizontal", label_vagueness: "precise frequency"}
+      outcome_var: Q1A_2
+      scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}
+      text: >
+        The five response options were shown horizontally, side by side in a single row
+        across the screen, in this order from left to right: "7 days"; "5 or 6 days";
+        "3 or 4 days"; "1 or 2 days"; "0 days".
+    - raw: 6
+      condition_num: 5
+      factors: {scale_direction: "high to low", scale_alignment: "horizontal", label_vagueness: "vague quantifiers + precise frequency"}
+      outcome_var: Q1A_3
+      scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never (0 days)"}
+      text: >
+        The five response options were shown horizontally, side by side in a single row
+        across the screen, in this order from left to right: "All of the time (7
+        days)"; "Most of the time (5 or 6 days)"; "Some of the time (3 or 4 days)";
+        "A little of the time (1 or 2 days)"; "Never (0 days)".
+
+    # ---- Direction 2: Low to High (groups 7-12) ---------------------------
+    # Same six option lists, same six answer variables, same 1-5 codes; only the
+    # on-screen sequence is reversed ("show response options 5-1", line 258).
+    - raw: 7
+      condition_num: 6
+      factors: {scale_direction: "low to high", scale_alignment: "vertical", label_vagueness: "vague quantifiers"}
+      outcome_var: Q1A_4
+      scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      text: >
+        The five response options were shown vertically, one per line, in this order
+        from top to bottom: "Never"; "A little of the time"; "Some of the time"; "Most
+        of the time"; "All of the time".
+    - raw: 8
+      condition_num: 7
+      factors: {scale_direction: "low to high", scale_alignment: "vertical", label_vagueness: "precise frequency"}
+      outcome_var: Q1A_5
+      scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}
+      text: >
+        The five response options were shown vertically, one per line, in this order
+        from top to bottom: "0 Days"; "1 to 2 Days"; "3 to 4 Days"; "5 to 6 Days";
+        "7 Days".
+    - raw: 9
+      condition_num: 8
+      factors: {scale_direction: "low to high", scale_alignment: "vertical", label_vagueness: "vague quantifiers + precise frequency"}
+      outcome_var: Q1A_6
+      scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}
+      text: >
+        The five response options were shown vertically, one per line, in this order
+        from top to bottom: "Never (0 Days)"; "A little of the time (1 to 2 Days)";
+        "Some of the time (3 to 4 Days)"; "Most of the time (5 to 6 Days)"; "All of the
+        time (7 Days)".
+    - raw: 10
+      condition_num: 9
+      factors: {scale_direction: "low to high", scale_alignment: "horizontal", label_vagueness: "vague quantifiers"}
+      outcome_var: Q1A_1
+      scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      text: >
+        The five response options were shown horizontally, side by side in a single row
+        across the screen, in this order from left to right: "Never"; "A little of the
+        time"; "Some of the time"; "Most of the time"; "All of the time".
+    - raw: 11
+      condition_num: 10
+      factors: {scale_direction: "low to high", scale_alignment: "horizontal", label_vagueness: "precise frequency"}
+      outcome_var: Q1A_2
+      scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}
+      text: >
+        The five response options were shown horizontally, side by side in a single row
+        across the screen, in this order from left to right: "0 days"; "1 or 2 days";
+        "3 or 4 days"; "5 or 6 days"; "7 days".
+    - raw: 12
+      condition_num: 11
+      factors: {scale_direction: "low to high", scale_alignment: "horizontal", label_vagueness: "vague quantifiers + precise frequency"}
+      outcome_var: Q1A_3
+      scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never (0 days)"}
+      text: >
+        The five response options were shown horizontally, side by side in a single row
+        across the screen, in this order from left to right: "Never (0 days)"; "A
+        little of the time (1 or 2 days)"; "Some of the time (3 or 4 days)"; "Most of
+        the time (5 or 6 days)"; "All of the time (7 days)".
+
+outcomes:
+  # Task 0 — the experimental item. No `var`: each arm supplies its own
+  # `outcome_var` (one of Q1A_1..Q1A_6) and its own `scale` endpoint labels.
+  # Question text verbatim from line 259 (the Q1a block carries its own intro).
+  - task_num: 0
+    question: >-
+      Now we are going to ask you some questions about feelings you may have
+      experienced during an average week. During an average week, how often do you
+      feel so sad that nothing could cheer you up?
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+
+  # Tasks 1-10 — the open-ended validation items. No experimental variation
+  # (line 94); single column each; "[number box 0-7]" so the scale is 0-7 days
+  # and needs its own identity recode at outcome level.
+  - var: Q17A
+    task_num: 1
+    question: >-
+      A few more questions about how you generally feel, what you generally eat and do.
+      During an average week, on how many days do you feel so sad that nothing could
+      cheer you up?
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q17B
+    task_num: 2
+    question: "During an average week, on how many days do you feel nervous?"
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q17C
+    task_num: 3
+    question: "During an average week, on how many days do you feel restless or fidgety?"
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q17D
+    task_num: 4
+    question: "During an average week, on how many days do you feel hopeless?"
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q17E
+    task_num: 5
+    question: "During an average week, on how many days do you feel that everything was an effort?"
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q17F
+    task_num: 6
+    question: "During an average week, on how many days do you feel worthless?"
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q18A
+    task_num: 7
+    question: >-
+      During an average week, on how many days do you eat foods that are high in fat
+      and/or calories?
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q18B
+    task_num: 8
+    question: "During an average week, on how many days do you eat fast food?"
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q18C
+    task_num: 9
+    question: >-
+      During an average week, on how many days do you eat a variety of fresh fruits and
+      vegetables?
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q18D
+    task_num: 10
+    question: "During an average week, on how many days do you do physical exercise?"
+    scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+
+# Study-level map: the 5-point experimental scale, applied identically in all 12
+# arms. Deliberately NOT overridden per arm — see the SCALE DIRECTION section of
+# `notes`. Values not listed are dropped.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  # ideology (XIDEO) and religion (XREL1/XREL2) are deliberately omitted: 23, 14 and
+  # 11 respondents respectively carry the panel's own missing sentinel (XIDEO=9,
+  # XREL1=14, XREL2=9) whose value label is the literal string "MISSING", and
+  # `persona_map` has no way to declare per-field missing codes, so those personas
+  # would read "Ideology: MISSING". XPARTY7 is included because it has zero 9s here.

@@ -40,6 +40,10 @@ MAX_LEVELS = 12
 MIN_COVERAGE = 0.95
 MIN_BALANCE = 0.70
 
+# A numbered sibling of the declared assignment variable: `P_S1` -> `P_S2..P_S8`,
+# `Vignette1` -> `Vignette2`. See `find_numbered_siblings`.
+STEM_PAT = re.compile(r"^(.*?)(\d+)$")
+
 
 @dataclass
 class Suspect:
@@ -108,12 +112,58 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
     return out
 
 
-def render(suspects: list[Suspect]) -> str:
+def find_numbered_siblings(ds: Dataset, recipe: Recipe) -> list[str]:
+    """Columns that are a NUMBERED SIBLING of a declared assignment variable.
+
+    Rule 11, and a direct answer to a blind spot in rule 9 above. `b87sm` is a
+    within-subject vignette study: each respondent saw eight vignettes drawn from
+    a 72-cell universe, with slot k assigned by `P_S{k}`. Declaring `P_S1` leaves
+    seven further randomisations — 7/8 of the study's observations — unreachable,
+    and rule 9 misses every one of them for three independent reasons: the names
+    do not match its pattern, the labels ("PRELOAD VARIABLE: P_S2") carry no
+    keyword, and 72 levels exceeds `MAX_LEVELS`.
+
+    A numbered sibling needs none of that machinery. `P_S1` alongside `P_S2..P_S8`
+    is what a repeated-measures design looks like in a wide file, and `Vignette1`
+    alongside `Vignette2` is what a two-experiment deposit looks like. Measured
+    across every recipe: zero false positives, and true positives on exactly the
+    two studies with observations left on the table.
+
+    Either shape means the recipe covers part of the deposit, which is fine — but
+    it should be a stated scope decision, not an accident.
+    """
+    declared = {v.upper() for v in recipe.condition.variables}
+    rejected = {k.upper() for k in recipe.condition.considered_and_rejected}
+    stems = set()
+    for var in declared:
+        if (m := STEM_PAT.match(var)) and m.group(1):
+            stems.add(m.group(1))
+    if not stems:
+        return []
+
+    out = []
+    for col in ds.df.columns:
+        up = col.upper()
+        if up in declared or up in rejected:
+            continue
+        if (m := STEM_PAT.match(up)) and m.group(1) in stems:
+            out.append(col)
+    return out
+
+
+def render(suspects: list[Suspect], siblings: list[str] | None = None) -> str:
     lines = [f"  warn  possible undeclared assignment: {s.render()}" for s in suspects]
     if lines:
         lines.append(
             "        fully crossed and balanced against the declared assignment. "
             "Declare it in `source_vars`, or give a reason in "
+            "`condition.considered_and_rejected`."
+        )
+    if siblings:
+        lines.append(f"  warn  numbered siblings of the declared assignment: {', '.join(siblings)}")
+        lines.append(
+            "        the deposit probably holds further arms or a repeated measure. "
+            "Declare them, or record the scope decision in "
             "`condition.considered_and_rejected`."
         )
     return "\n".join(lines)

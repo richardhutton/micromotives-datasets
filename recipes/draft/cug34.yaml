@@ -1,0 +1,548 @@
+study_id: cug34
+source: tess
+title: "Public Perceptions of Money in Families"
+data_file: TESS3_217_Pepin_Client.sav
+experiment: B01_B09
+
+# SocSci210 built a DIFFERENT scope for this deposit: 12 conditions (they dropped
+# the relationship-duration factor) and three tasks (B04, B06, and the four B02/B03
+# dollar boxes merged into one task_num) — none of which is B01 or B09. Our scope is
+# the full 24-cell design on the two items whose wording is constant across all
+# respondents, so a numeric crosscheck compares different things. Their assignment
+# is nevertheless reproduced EXACTLY here in `notes`, digit for digit, which is the
+# real check that our arm mapping agrees with theirs.
+comparable_to_socsci210: false
+
+notes: >
+  TESS3 217 (Pepin, Northwestern). Source of record for all stimulus text:
+  "310.209.00988.1_TESS3217_Pepin_Northwestern_University _v5.00.txt" (the fielded
+  questionnaire). Line numbers below are lines of that .txt file and have each been
+  re-checked against it.
+
+
+  THE DESIGN — 2 x 2 x 2 x 3 = 24 CELLS, ONE COMBINED ASSIGNMENT VARIABLE
+
+  Questionnaire line 18 declares the assignment variable in the sample-variable
+  list: "XTESS217 (Block Assignment, Values 1 - 24)". Line 59, immediately above the
+  vignette: "SCRIPTER: See Appendix A for Block Assignment, which determines dynamic
+  inserts". Appendix A (lines 523-649) is a 24-row table whose columns are BLOCK /
+  RELSTAT / RELDUR / PARENTST / EARNINGS; Block01 starts at line 530 and each block
+  occupies 5 lines (label + 4 inserts), so Block-n's label is at line 530 + 5(n-1)
+  and Block24's label is at line 645.
+
+    factor                 levels                                         column
+    relationship_status    "are married" / "live together"                 RELSTAT
+    relationship_duration  "3 years" / "7 years"                           RELDUR
+    parental_status        "no children" / "one child together"            PARENTST
+    relative_earnings      man higher / woman higher / equal               EARNINGS
+
+  2 x 2 x 2 x 3 = 24, matching Appendix A's 24 rows and XTESS217's 24 values.
+
+  ASSIGNMENT IS NOT SPLIT (ledger #33 checked and ruled out). The .sav holds BOTH a
+  combined code (XTESS217) and one variable per factor (DOV_RELSTAT, DOV_RELDUR,
+  DOV_PARENTST, DOV_EARNINGS). They are redundant, not complementary: grouping the
+  4,020 rows by (XTESS217, DOV_RELSTAT, DOV_RELDUR, DOV_PARENTST, DOV_EARNINGS)
+  yields exactly 24 distinct combinations, i.e. XTESS217 determines all four DOVs
+  and vice versa, and the 24 combinations are precisely Appendix A's table. So a
+  single `source_var: XTESS217` is sufficient and `source_vars` is not needed.
+
+  CELL COUNTS from the .sav (XTESS217, n = 4,020, no missing):
+    1:160  2:170  3:165  4:168  5:184  6:162  7:170  8:173  9:175 10:162
+   11:166 12:160 13:160 14:155 15:170 16:172 17:167 18:181 19:177 20:162
+   21:166 22:163 23:167 24:165      (sum = 4,020)
+
+  CONDITION MAPPING — DECLARED (recipe rule 2): condition_num = XTESS217 - 1, i.e.
+  Appendix A's own Block01..Block24 order. This is a convention, not a fact; it is
+  chosen to make the recipe auditable line-by-line against Appendix A.
+
+  DO-NOT-TRUST-THE-LABEL CHECK (ledger #30). Two other variables in this .sav have
+  labels that read like a manipulation: XKLAR ("Condition Assignment", 6 arms + a
+  7th value "No condition" holding 3,312 of 4,020) and X20271 ("Klar Questions
+  Shown"). Neither belongs to this experiment. They route questionnaire lines
+  178-333 (K01-K12, "How would you feel if you had a son or daughter who married
+  someone who votes for the Democratic Party?") — a piggy-backed Klar study whose
+  base is "If X20271=1 AND XKLAR=n" (lines 178, 204, 231, 257, 283, 309). K01-K12
+  are NOT columns in this .sav at all, so that study cannot be built from this file
+  and is out of scope by absence, not by choice.
+
+
+  THE MISSING FOURTH FACTOR, AND WHAT SocSci210 DID
+
+  The PROPOSAL (Pepin791.pdf, "Study Design", PDF sheet 7 of 16 = manuscript p.4)
+  describes a TWELVE-cell design: "...characteristics that vary along three
+  dimensions: marital status (cohabiting or married), parenting status (no children
+  or one child), and relative income (male higher earner, female higher earner, or
+  equal dual-earners), resulting in 12 (2 x 2 x 3) different vignettes", and holds
+  duration constant: "Respondents will be told the couple has been together for
+  three years". Its own Appendix A (PDF sheet 14 of 16) gives the vignette template
+  as "Michelle and Anthony, both 31 years old, have been << relationship status >>
+  for three years.", with "Relationship status: married; living together".
+
+  THE FIELDED INSTRUMENT IS DIFFERENT. Line 62 reads: "Michelle and Anthony, both
+  31 years old, [INSERT RELSTAT TEXT] and have been a couple for [INSERT RELDUR
+  TEXT]." RELDUR is a real, randomised, fourth factor (DOV_RELDUR: 2,014 at
+  "3 years", 2,006 at "7 years"), and the fielded sentence is worded differently
+  from the proposal's ("are married and have been a couple for 3 years", not "have
+  been married for three years").
+
+  SocSci210 built from the proposal, not the questionnaire — ledger #35 again.
+  Their 12 conditions drop RELDUR, and every one of their stimulus strings says
+  "have been married / living together for three years", which is the proposal's
+  wording and is factually wrong for the 2,006 respondents who read "7 years".
+  They also drop the sentence "They enjoy spending time together and they are happy
+  with their relationship.", which is in both documents.
+
+  THEIR BUILD REPRODUCED EXACTLY (so their assignment, not their text, is sound).
+  Taking their condition index as
+      c12 = 6*(DOV_RELSTAT-1) + 3*(DOV_PARENTST-1) + (DOV_EARNINGS-1)
+  and their row scope as B04 + B06 + {B02_Shared, B02_Individual, B03_Shared,
+  B03_Individual}, dropping -1 ("Refused") per item, gives
+    rows per condition 0..11:
+      1166 1294 1237 1190 1244 1168 1282 1161 1353 1280 1334 1428
+    total 15,137 rows, 4,007 participants
+  which equals SocSci210's figures for cug34 exactly, in the same order, and the
+  full response distribution (all 90 distinct values: 1-4 from B04/B06 plus every
+  distinct dollar amount answered, 0 to 2800) matches key-for-key, with no key
+  present on one side only and no count differing. Arithmetic on the row
+  total: B04 4,020-19 refused = 4,001; B06 4,020-22 = 3,998; the four dollar boxes
+  are asked only of the 1,787 respondents who answered B01=3, so 1,787 x 4 = 7,148
+  minus 10 refusals (3 + 2 + 1 + 4 across the four boxes) = 7,138.
+  4,001 + 3,998 + 7,138 = 15,137. Their task_num 0 holds all 7,138 dollar answers,
+  task_num 1 holds B04, task_num 2 holds B06.
+
+  Conclusion: numerically they are right about who was in which of the 12 cells;
+  the defect is that 24 cells were collapsed to 12 and the text came from the
+  proposal. We therefore build 24 arms and mark the study not comparable.
+
+
+  SCOPE — TWO OUTCOMES, AND WHY THE OTHER SIX ARE NOT HERE
+
+  Line 68: "SCRIPTER: Display paragraph from A02 above questions B01 to B10 on same
+  page." So the vignette paragraph is on screen for every item. Eight answerable
+  items exist (B01, B02, B03, B04, B06, B08, B09, B10; B05 and B07 are open-text
+  justifications). Only TWO have wording that is constant across respondents:
+
+    B01 (lines 70-75)   income organization — the study's headline DV
+    B09 (lines 161-166) the restaurant bill
+
+  The other six are excluded, for two distinct reasons, and NOTHING about them is
+  guessed at:
+
+  (a) B04, B06, B08, B10 each carry a SECOND, independent randomisation that
+      changes the QUESTION text, not the vignette (Appendix C, lines 783-829,
+      "Random assignment. Use fresh random seed. Record random selection"):
+        B04: DOV_ITEM (3: which house or apartment to take / what mattress to buy /
+             where to go on vacation) x DOV_PERSON_B04 (2: Michelle / Anthony)
+        B06: DOV_ACTIVITY (2) x DOV_PERSON_B06 (2)
+        B08: DOV_PERSON_B08 (2)
+        B10: DOV_PERSON_B10 (2)
+      All are 100% non-null and fully crossed with XTESS217 (24 x 3 and 24 x 2
+      tables, smallest cell 41 and 66 respectively), and DOV_PERSON2_* is always
+      the complement of DOV_PERSON_* (verified row by row), as Appendix C
+      specifies ("Assign response not selected in DOV_PERSON_B0n"). These are real
+      factors, not nuisance: the proposal's own Table 1 reports "Female Final Say"
+      and "Male Final Say" columns. Expressing them needs the arm to be the full
+      cross (e.g. 24 x 3 x 2 = 144 arms for B04), which only works in a recipe
+      with a single outcome, because `Arm.outcome_question` is per-arm and would
+      otherwise have to differ between two outcomes of the same arm. Owed as one
+      recipe per item.
+
+  (b) B02 and B03 (lines 83-89, 95-101) are quantity boxes whose ceiling is set by
+      the earnings block — Appendix B, lines 653-779, and in the data
+      DOV_B02_MaxValue / DOV_B03_MaxValue are a deterministic function of
+      DOV_EARNINGS (earnings 1 -> B02 max 1200 and B03 max 2800; earnings 2 -> 2800
+      and 1200; earnings 3 -> 2000 and 2000; 3 x 3 crosstab is diagonal with zero
+      off-diagonal). The two items therefore need DIFFERENT question text within
+      the SAME arm ("Total must sum to $1,200" for B02 vs "$2,800" for B03), which
+      the schema cannot express: `Arm.outcome_question` applies to every outcome of
+      that arm. This is the same per-(arm, outcome) gap recorded for z358z's Q1/Q2.
+      A second obstacle: the answers are raw dollars, 0-2800, so `response_recode`
+      would need ~2,800 explicit entries.
+
+  So this file builds B01 and B09 only. Row arithmetic: 3,989 (B01: 4,020 - 31
+  refused) + 3,964 (B09: 4,020 - 56 refused) = 7,953 rows over 4,004 participants
+  (16 respondents refused both).
+
+
+  TEXT PROVENANCE — checked word for word
+
+  shared_context = line 55 (A01, the instruction screen, shown to everyone) then
+  the invariant opening of line 62, "Michelle and Anthony, both 31 years old,".
+
+  Each arm's `text` is line 62's remainder with its four inserts filled from
+  Appendix A. The insert strings are taken verbatim; they are also the .sav's own
+  value labels for DOV_RELSTAT / DOV_RELDUR / DOV_PARENTST / DOV_EARNINGS, which
+  match Appendix A character for character (checked for all 2+2+2+3 = 9 levels).
+  One presentational point: line 62 supplies the full stop after the earnings
+  insert ("[INSERT EARNINGS TEXT]."), and the Appendix A earnings strings carry no
+  terminal punctuation, so the rendered sentence ends with exactly one full stop.
+  Nothing is added, reordered or paraphrased; the shared sentence "They enjoy
+  spending time together and they are happy with their relationship." sits in the
+  MIDDLE of the paragraph and so is kept inside each arm's text rather than
+  hoisted, to preserve the paragraph as respondents read it.
+
+  B01's and B09's question text and answer options are lines 71/73-75 and
+  162/164-166, quoted verbatim with the three options run into the question so the
+  model sees the choice set. Neither item has any insert.
+
+  B09 names a dollar amount ($30 bill, $40 in each wallet) and B01 names no amount;
+  the earnings amounts live in the vignette.
+
+
+  RESPONSE CODING
+
+  Both items are 3-option NOMINAL choices, not scales. Raw codes 1/2/3 are carried
+  through unchanged (`response_recode: {1: 1, 2: 2, 3: 3}`) and -1 ("Refused",
+  the only negative code on either item) is dropped per item. The `Scale` endpoint
+  labels are therefore a formatting device, not a claim of ordering; all three
+  options appear in the question text.
+
+
+  SECOND-RANDOMISATION SWEEP (ledger rule 9, run by hand)
+
+  Columns matching ^(DOV|XTESS|X[A-Z]{2,}) were each crossed with XTESS217.
+  Found and accounted for: the four DOV_* factor re-expressions (redundant with
+  XTESS217, above); DOV_ITEM / DOV_PERSON_B04 / DOV_ACTIVITY / DOV_PERSON_B06 /
+  DOV_PERSON2_B06 / DOV_PERSON_B08 / DOV_PERSON2_B08 / DOV_PERSON_B10 /
+  DOV_PERSON2_B10 / DOV_B10_ins1 (affect only the excluded items (a) above);
+  DOV_B02_MaxValue / DOV_B03_MaxValue (deterministic in DOV_EARNINGS);
+  DOV_B02_B03_Order (order of B02 vs B03, only 44.5% non-null because it exists
+  only for B01=3 respondents — line 79, "SCRIPTER: Randomize and record order of
+  B02 and B03"); DOV_B05_TextInsert / DOV_B07_TextInsert (echoes of the
+  respondent's own B04/B06 answer, not randomisation); XKLAR / X20271 (the other
+  study, above); XPARTY7 (a demographic). NOTHING randomised is left unexplained,
+  and nothing randomised affects the text of B01 or B09. All of it is recorded in
+  `condition.considered_and_rejected` below.
+
+  MEASURED LIMITATION OF THE AUTOMATED RULE-9 SCREEN, found here. With 24 declared
+  arms the screen's within-cell balance test loses its power: the 24 x k crosstab
+  has ~84 respondents per cell, so ordinary sampling noise pushes min/max below the
+  0.70 threshold. Within-cell balance for the six genuine independent second
+  randomisations in this file: DOV_ITEM 0.569, DOV_PERSON_B04 0.647, DOV_ACTIVITY
+  0.641, DOV_PERSON_B06 0.650, DOV_PERSON_B10 0.667, DOV_PERSON_B08 0.704. Only
+  the last clears the bar, so the screen reports 1 of 6 — and which one is
+  essentially chance. It is not a false-positive problem (it correctly ignores
+  DOV_RELSTAT/DOV_RELDUR/DOV_PARENTST/DOV_EARNINGS, whose crosstabs against
+  XTESS217 contain zeros because they are deterministic in it); it is a
+  false-negative problem that grows with arm count.
+
+
+  OPEN QUESTIONS FOR THE CHECKER
+
+  1. Scope. Is "24 arms x {B01, B09}" the right first cut, or should the first
+     recipe instead be the 144-arm B04 recipe that overlaps SocSci210's task 1?
+  2. Nominal outcomes on a `Scale`. B01 and B09 are unordered 3-way choices;
+     min_label/max_label imply an ordering that does not exist. All three options
+     are in the question text, but a `nominal: true` flag (or option list) on
+     `Outcome` would be more honest.
+  3. shared_context includes "Please read it closely, then continue to the next
+     page." (line 55), which is survey mechanics rather than stimulus. Verbatim,
+     but arguably noise in the model input.
+  4. persona_map includes ideology (IDEO) and religion (REL1), which carry code -1
+     "Refused" for 30 and 24 respondents respectively; `_persona` resolves that to
+     the literal string "Refused" in the persona text. Include, drop, or add a
+     per-field missing list?
+
+condition:
+  source_var: XTESS217
+  factors: [relationship_status, relationship_duration, parental_status, relative_earnings]
+
+  # Rule 9 sweep, on the record. Every randomisation-looking column in this .sav and
+  # why it is not part of THIS experiment's assignment key. The automated screen only
+  # flags DOV_PERSON_B08 / DOV_PERSON2_B08 on its own thresholds; the rest are listed
+  # anyway so the judgment is explicit rather than implicit.
+  considered_and_rejected:
+    DOV_RELSTAT: "Per-factor re-expression of XTESS217, not a second randomisation: grouping the 4,020 rows by (XTESS217, DOV_RELSTAT, DOV_RELDUR, DOV_PARENTST, DOV_EARNINGS) yields exactly 24 combinations, so XTESS217 already carries this factor. Its levels ARE declared, through XTESS217."
+    DOV_RELDUR: "Same — a component of XTESS217, already declared through it."
+    DOV_PARENTST: "Same — a component of XTESS217, already declared through it."
+    DOV_EARNINGS: "Same — a component of XTESS217, already declared through it."
+    DOV_ITEM: "A genuine second randomisation (Appendix C, lines 785-789) but it varies only B04's question text, and B04 is out of scope here. Owed as its own recipe (24 x 3 x 2 arms)."
+    DOV_PERSON_B04: "Genuine second randomisation (lines 791-794); varies only B04's text. Out of scope with B04."
+    DOV_ACTIVITY: "Genuine second randomisation (lines 796-799); varies only B06's text. Out of scope with B06."
+    DOV_PERSON_B06: "Genuine second randomisation (lines 801-804); varies only B06's text. Out of scope with B06."
+    DOV_PERSON2_B06: "Deterministic complement of DOV_PERSON_B06 (lines 806-809, 'Assign response not selected in DOV_PERSON_BO6'); verified unequal on all 4,020 rows. Not independent."
+    DOV_PERSON_B08: "Genuine second randomisation (lines 811-814); varies only B08's text. Out of scope with B08."
+    DOV_PERSON2_B08: "Deterministic complement of DOV_PERSON_B08 (lines 816-819); verified unequal on all 4,020 rows."
+    DOV_PERSON_B10: "Genuine second randomisation (lines 821-824); varies only B10's text. Out of scope with B10."
+    DOV_PERSON2_B10: "Deterministic complement of DOV_PERSON_B10 (lines 826-829); verified unequal on all 4,020 rows."
+    DOV_B10_ins1: "Pronoun 'she'/'he' derived from DOV_PERSON_B10 (line 172); the 2 x 2 crosstab is perfectly diagonal. Not a randomisation."
+    DOV_B02_MaxValue: "Deterministic function of DOV_EARNINGS (Appendix B, lines 653-779); the 3 x 3 crosstab is diagonal. Affects only B02, out of scope."
+    DOV_B03_MaxValue: "Deterministic function of DOV_EARNINGS, as above. Affects only B03, out of scope."
+    DOV_B02_B03_Order: "Presentation order of B02 vs B03 (line 79). Exists only for the 1,787 respondents who answered B01=3, hence 44.5% non-null. Affects neither B01 nor B09."
+    DOV_B05_TextInsert: "Echo of the respondent's OWN B04 answer (line 120). Not randomised."
+    DOV_B07_TextInsert: "Echo of the respondent's OWN B06 answer (line 143). Not randomised."
+    XKLAR: "Belongs to a different, piggy-backed study (Klar): it routes K01-K12 at lines 178-333, whose base is 'If X20271=1 AND XKLAR=n'. 3,312 of 4,020 hold 'No condition', and K01-K12 are not columns in this .sav at all."
+    X20271: "The Klar-study gate ('Klar Questions Shown': 708 shown / 3,312 not). Same other study as XKLAR."
+    XPARTY7: "A sample demographic (party identification), used in persona_map. Matches the X-prefix name pattern but is not randomised."
+
+  shared_context: >
+    The next questions ask your opinions of how a couple should handle money. You will
+    be presented with a hypothetical scenario. Please read it closely, then continue to
+    the next page. Michelle and Anthony, both 31 years old,
+  arms:
+    # Block01 — questionnaire line 530
+    - raw: 1
+      condition_num: 0
+      factors:
+        relationship_status: "married"
+        relationship_duration: "3 years"
+        parental_status: "no children"
+        relative_earnings: "man earns more"
+      text: "are married and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block02 — questionnaire line 535
+    - raw: 2
+      condition_num: 1
+      factors:
+        relationship_status: "married"
+        relationship_duration: "3 years"
+        parental_status: "no children"
+        relative_earnings: "woman earns more"
+      text: "are married and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block03 — questionnaire line 540
+    - raw: 3
+      condition_num: 2
+      factors:
+        relationship_status: "married"
+        relationship_duration: "3 years"
+        parental_status: "no children"
+        relative_earnings: "equal earners"
+      text: "are married and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have no children. They both work about forty hours per week, and each earn $2,000 a month."
+    # Block04 — questionnaire line 545
+    - raw: 4
+      condition_num: 3
+      factors:
+        relationship_status: "married"
+        relationship_duration: "3 years"
+        parental_status: "one child"
+        relative_earnings: "man earns more"
+      text: "are married and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block05 — questionnaire line 550
+    - raw: 5
+      condition_num: 4
+      factors:
+        relationship_status: "married"
+        relationship_duration: "3 years"
+        parental_status: "one child"
+        relative_earnings: "woman earns more"
+      text: "are married and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block06 — questionnaire line 555
+    - raw: 6
+      condition_num: 5
+      factors:
+        relationship_status: "married"
+        relationship_duration: "3 years"
+        parental_status: "one child"
+        relative_earnings: "equal earners"
+      text: "are married and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have one child together. They both work about forty hours per week, and each earn $2,000 a month."
+    # Block07 — questionnaire line 560
+    - raw: 7
+      condition_num: 6
+      factors:
+        relationship_status: "married"
+        relationship_duration: "7 years"
+        parental_status: "no children"
+        relative_earnings: "man earns more"
+      text: "are married and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block08 — questionnaire line 565
+    - raw: 8
+      condition_num: 7
+      factors:
+        relationship_status: "married"
+        relationship_duration: "7 years"
+        parental_status: "no children"
+        relative_earnings: "woman earns more"
+      text: "are married and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block09 — questionnaire line 570
+    - raw: 9
+      condition_num: 8
+      factors:
+        relationship_status: "married"
+        relationship_duration: "7 years"
+        parental_status: "no children"
+        relative_earnings: "equal earners"
+      text: "are married and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have no children. They both work about forty hours per week, and each earn $2,000 a month."
+    # Block10 — questionnaire line 575
+    - raw: 10
+      condition_num: 9
+      factors:
+        relationship_status: "married"
+        relationship_duration: "7 years"
+        parental_status: "one child"
+        relative_earnings: "man earns more"
+      text: "are married and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block11 — questionnaire line 580
+    - raw: 11
+      condition_num: 10
+      factors:
+        relationship_status: "married"
+        relationship_duration: "7 years"
+        parental_status: "one child"
+        relative_earnings: "woman earns more"
+      text: "are married and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block12 — questionnaire line 585
+    - raw: 12
+      condition_num: 11
+      factors:
+        relationship_status: "married"
+        relationship_duration: "7 years"
+        parental_status: "one child"
+        relative_earnings: "equal earners"
+      text: "are married and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have one child together. They both work about forty hours per week, and each earn $2,000 a month."
+    # Block13 — questionnaire line 590
+    - raw: 13
+      condition_num: 12
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "3 years"
+        parental_status: "no children"
+        relative_earnings: "man earns more"
+      text: "live together and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block14 — questionnaire line 595
+    - raw: 14
+      condition_num: 13
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "3 years"
+        parental_status: "no children"
+        relative_earnings: "woman earns more"
+      text: "live together and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block15 — questionnaire line 600
+    - raw: 15
+      condition_num: 14
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "3 years"
+        parental_status: "no children"
+        relative_earnings: "equal earners"
+      text: "live together and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have no children. They both work about forty hours per week, and each earn $2,000 a month."
+    # Block16 — questionnaire line 605
+    - raw: 16
+      condition_num: 15
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "3 years"
+        parental_status: "one child"
+        relative_earnings: "man earns more"
+      text: "live together and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block17 — questionnaire line 610
+    - raw: 17
+      condition_num: 16
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "3 years"
+        parental_status: "one child"
+        relative_earnings: "woman earns more"
+      text: "live together and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block18 — questionnaire line 615
+    - raw: 18
+      condition_num: 17
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "3 years"
+        parental_status: "one child"
+        relative_earnings: "equal earners"
+      text: "live together and have been a couple for 3 years. They enjoy spending time together and they are happy with their relationship. They have one child together. They both work about forty hours per week, and each earn $2,000 a month."
+    # Block19 — questionnaire line 620
+    - raw: 19
+      condition_num: 18
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "7 years"
+        parental_status: "no children"
+        relative_earnings: "man earns more"
+      text: "live together and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block20 — questionnaire line 625
+    - raw: 20
+      condition_num: 19
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "7 years"
+        parental_status: "no children"
+        relative_earnings: "woman earns more"
+      text: "live together and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have no children. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block21 — questionnaire line 630
+    - raw: 21
+      condition_num: 20
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "7 years"
+        parental_status: "no children"
+        relative_earnings: "equal earners"
+      text: "live together and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have no children. They both work about forty hours per week, and each earn $2,000 a month."
+    # Block22 — questionnaire line 635
+    - raw: 22
+      condition_num: 21
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "7 years"
+        parental_status: "one child"
+        relative_earnings: "man earns more"
+      text: "live together and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Anthony earns $2,800 a month while Michelle earns $1,200 a month."
+    # Block23 — questionnaire line 640
+    - raw: 23
+      condition_num: 22
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "7 years"
+        parental_status: "one child"
+        relative_earnings: "woman earns more"
+      text: "live together and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have one child together. Although they both work about forty hours per week, Michelle earns $2,800 a month while Anthony earns $1,200 a month."
+    # Block24 — questionnaire line 645
+    - raw: 24
+      condition_num: 23
+      factors:
+        relationship_status: "living together"
+        relationship_duration: "7 years"
+        parental_status: "one child"
+        relative_earnings: "equal earners"
+      text: "live together and have been a couple for 7 years. They enjoy spending time together and they are happy with their relationship. They have one child together. They both work about forty hours per week, and each earn $2,000 a month."
+
+outcomes:
+  # B01 — questionnaire lines 70-75. No dynamic insert; identical for all arms.
+  - var: B01
+    task_num: 0
+    question: >-
+      Couples organize their income in many different ways. Do you think Michelle and
+      Anthony should: (1) Have a shared account in which they both deposit all their
+      earned income; (2) Keep all their earned income in separate, individual accounts;
+      (3) Have both a shared account and separate, individual accounts?
+    scale:
+      min: 1
+      max: 3
+      min_label: "Have a shared account in which they both deposit all their earned income"
+      max_label: "Have both a shared account and separate, individual accounts"
+  # B09 — questionnaire lines 161-166. No dynamic insert; identical for all arms.
+  - var: B09
+    task_num: 1
+    question: >-
+      Anthony and Michelle went out to dinner and realized the restaurant only takes
+      cash. The price of their meals was about the same and the total bill is $30. They
+      both have $40 cash in their wallet. How should they pay the bill? (1) They should
+      each pay $15; (2) Michelle should cover all of it; (3) Anthony should cover all of it.
+    scale:
+      min: 1
+      max: 3
+      min_label: "They should each pay $15"
+      max_label: "Anthony should cover all of it"
+
+# Both items are nominal 3-option choices; codes pass through unchanged.
+response_recode: {1: 1, 2: 2, 3: 3}
+missing_codes: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: IDEO
+  religion: REL1

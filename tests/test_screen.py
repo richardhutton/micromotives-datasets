@@ -129,3 +129,77 @@ def test_ignores_implausible_level_counts(tmp_path, n_levels) -> None:
     df["DOV_OPTION"] = [float(i % n_levels) + 1 for i in range(40)]
     ds = _write(tmp_path, df, LABELS)
     assert find_undeclared_assignment(ds, _recipe(["XTESS175"])) == []
+
+
+# ---------------------------------------------------------------------------
+# Rule 11 — numbered siblings of the declared assignment variable.
+#
+# `b87sm` is within-subject: each respondent saw 8 vignettes from a 72-cell
+# universe, slot k assigned by `P_S{k}`. Declaring `P_S1` leaves 7/8 of the
+# observations unreachable, and rule 9 misses all seven — wrong name pattern,
+# no keyword in the label ("PRELOAD VARIABLE: P_S2"), and 72 levels over
+# MAX_LEVELS. This rule needs none of that machinery.
+# ---------------------------------------------------------------------------
+
+SLOTS = pd.DataFrame(
+    {
+        "P_S1": [float(i % 8) + 1 for i in range(40)],
+        "P_S2": [float((i + 3) % 8) + 1 for i in range(40)],
+        "Y": [1.0, 2.0] * 20,
+        "AGE": [30.0] * 40,
+    }
+)
+SLOT_LABELS = {
+    "P_S1": "PRELOAD VARIABLE: P_S1",
+    "P_S2": "PRELOAD VARIABLE: P_S2",
+    "Y": "outcome",
+    "AGE": "age",
+}
+
+
+def test_numbered_sibling_is_flagged(tmp_path) -> None:
+    """The b87sm regression: P_S1 declared, P_S2 must be surfaced."""
+    from micromotives_datasets.pipeline.screen import find_numbered_siblings
+
+    ds = _write(tmp_path, SLOTS, SLOT_LABELS)
+    assert find_numbered_siblings(ds, _recipe(["P_S1"])) == ["P_S2"]
+
+
+def test_rule9_alone_is_blind_to_the_repeated_measure(tmp_path) -> None:
+    """Why rule 11 has to exist separately.
+
+    The sibling has no matching name pattern, no keyword in its label, and too
+    many levels for rule 9's plausibility filter — so rule 9 says nothing. This
+    test fails if someone later "simplifies" rule 11 away.
+    """
+    ds = _write(tmp_path, SLOTS, SLOT_LABELS)
+    assert find_undeclared_assignment(ds, _recipe(["P_S1"])) == []
+
+
+def test_numbered_siblings_silent_when_declared(tmp_path) -> None:
+    from micromotives_datasets.pipeline.screen import find_numbered_siblings
+
+    ds = _write(tmp_path, SLOTS, SLOT_LABELS)
+    assert find_numbered_siblings(ds, _recipe(["P_S1", "P_S2"])) == []
+
+
+def test_numbered_siblings_silenced_by_considered_and_rejected(tmp_path) -> None:
+    from micromotives_datasets.pipeline.screen import find_numbered_siblings
+
+    ds = _write(tmp_path, SLOTS, SLOT_LABELS)
+    rec = _recipe(["P_S1"], rejected={"P_S2": "slot 2, owed as its own recipe"})
+    assert find_numbered_siblings(ds, rec) == []
+
+
+def test_no_stem_means_no_sibling_check(tmp_path) -> None:
+    """A declared variable not ending in digits has no numbered siblings.
+
+    Most assignment variables are like this (`SCENE`, `DOV_OPTION`), and the rule
+    must stay silent rather than inventing a stem.
+    """
+    from micromotives_datasets.pipeline.screen import find_numbered_siblings
+
+    df = SLOTS.rename(columns={"P_S1": "SCENE"})
+    labels = {**{k: v for k, v in SLOT_LABELS.items() if k != "P_S1"}, "SCENE": "Scenario"}
+    ds = _write(tmp_path, df, labels)
+    assert find_numbered_siblings(ds, _recipe(["SCENE"])) == []

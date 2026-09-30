@@ -353,6 +353,29 @@ on a correct recipe.
 
 ---
 
+### Makers, batch of five — findings so far
+
+Two of the five have reported. Both drafts verified independently before acceptance.
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 40 | **Rule 10 — every arm must be measured about as thoroughly as its peers.** Found on `9263n`, where six of seven items are asked with a different variable per branch (`Q3A` for the experiential arms, `Q3B` for the material ones). Declaring only the A variants halves the corpus and leaves arms 2 and 3 with **one item out of seven** — and QC passed with no warnings. Confirmed by building it that way: 6,328 rows to 3,188, arms 2 and 3 down to 189 and 219 rows, verdict PASS | **method** | Counting per OUTCOME would warn on every legitimately branched item (12 of 14 here) and train us to ignore the column, so the rule counts per ARM: silent when branching is symmetric, loud when it is not. Verified on both builds — no warning on the correct one, naming exactly arms 2 and 3 on the broken one |
+| 41 | **A within-subject repeated-measures design randomises the arm PER ITEM, not per respondent.** `b87sm`: each respondent read **eight** vignettes drawn without replacement from a 72-cell universe, slot k assigned by `P_S{k}`. `Condition` resolves one arm per respondent row, so 7/8 of the study's vignette observations are unreachable. A new shape, distinct from #5 (several independent experiments) and #33 (factorial split across variables) | **method**, open | Needs either per-(arm, outcome) assignment — the same gap open for `z358z` Q1/Q2 — or a "long" mode where one respondent row yields several rows with different arms. Slot 1 built (5,769 rows); slots 2–8 owed |
+| 42 | **Rule 9 is structurally blind to that shape**, verified empirically: it returns nothing for `P_S2..P_S8` for three independent reasons — names do not match its pattern, labels ("PRELOAD VARIABLE: P_S2") carry no keyword, and 72 levels exceeds `MAX_LEVELS`; and past all three, a 72-level anchor guarantees an empty crosstab cell | **method** | **Rule 11 — numbered siblings of the declared assignment variable.** `P_S1` -> `P_S2..P_S8`, `Vignette1` -> `Vignette2`. Needs no balance, crossing or level-count machinery. Measured across all 13 recipes and drafts: **zero false positives**, true positives on exactly the two studies with observations left on the table |
+| 43 | **A deposit's stimulus text can live in a spreadsheet, not the questionnaire.** `b87sm`'s questionnaire contains no arm text at all — only `[INSERT P_S1]` and "(See excel table for look up)". The 72 vignettes are in `Independent Variables Map.xlsx`, referenced by the instrument and therefore part of it | **method** | Source triage must check for a lookup/map spreadsheet the questionnaire points to. A step that reads only `.txt`/`.docx` would conclude the text is unrecoverable |
+| 44 | **Third instance of #35**, with a mechanical fingerprint: SocSci210's `b87sm` text contains "you should leave the research app installed", which occurs in the proposal and **0 times** in the fielded instrument (which reads "you would be asked to leave"). Their 8 conditions render **2 distinct strings**, so 71 of 72 arms are described wrongly, and they kept code 98 "SKIPPED ON WEB" as a response value | one-off + **method** | A phrase present in the proposal and absent from the questionnaire is a cheap, automatable provenance check |
+| 45 | **`task_num` in SocSci210 is not a question key.** Their `9263n` task 6 holds two genuinely different questions (bad–good and sad–happy mood) under one index | **method** | When reconciling scope, read their `prompt` per `task_num` rather than subset-summing row counts — the maker reports that subset-sum returned **342** candidate subsets for one row total, while one `min(prompt) GROUP BY task_num` query identified all seven items at once |
+| 46 | First audited study where SocSci210's stimulus text is substantively **correct** — `9263n` is faithful, all arms distinct, no factor dropped (abridged, and one tense changed from "is" to "was") | context | Their text failures are frequent, not universal. Worth recording so the sample stays honest |
+
+Both drafts reproduce SocSci210 exactly where comparable: `9263n` **PASS on all four numeric
+fields** (6,328 rows, conditions 1685/1447/1479/1717 in their order, the whole 10-bin
+distribution), independently re-derived here. `b87sm` is not comparable — their 8
+"conditions" are the eight presentation *slots*, not the manipulation — but the maker
+reproduced their full response distribution digit-for-digit under that reading, including
+the 198 retained code-98 non-responses.
+
+---
+
 ### Testing the tests
 
 Rule 5 was dead for eight studies and we found it **by luck** — a checker probing an
@@ -377,7 +400,7 @@ Also pinned, because each was a live trap:
   structurally blind (it reads built rows; rule 5 reads the recipe). That case is the one
   that justifies keeping both rules.
 
-58 tests.
+63 tests.
 
 **What the checkers cost:** ~10 minutes of review each. Between them: one method-level
 defect in our own QC, two latent pipeline bugs, a rule about which source document to
@@ -421,8 +444,11 @@ null on every KnowledgePanel study.
   SocSci210 did not build them either. Now expressible, but `Arm.outcome_var` holds one
   variable per arm and these are two items per arm — needs a per-(arm, outcome) override
   or a second recipe.
-- Rule 9's thresholds (12 levels, 95% coverage, 0.70 balance) are set from 9 recipes.
-  Expect to revisit them once a batch of studies has run through it.
+- Rule 9's thresholds (12 levels, 95% coverage, 0.70 balance) and rule 10's 0.5 ratio
+  are set from a handful of recipes. Expect to revisit once a batch has run through them.
+- `b87sm` slots 2-8 owed (finding #41) — blocked on per-item arm assignment, the same
+  schema gap as `z358z` Q1/Q2.
+- Automate the proposal-vs-questionnaire phrase check (finding #44).
 - Persona categories are still passed through raw (`Education: Bachelor's degree or
   higher`). The crosswalk to one shared vocabulary (master doc §6) is unbuilt — two
   panel lookup tables plus UK re-anchoring, per the coverage finding above.

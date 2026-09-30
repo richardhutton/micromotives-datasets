@@ -1,0 +1,861 @@
+study_id: zaqkm
+source: tess
+title: "Causal Attributions, Treatability, and Mental Illness Stigma"
+data_file: "9089.115.TESS ELLIOTT.dta"
+
+# 5 (mental health condition) x 4 (causal attribution) x 2 (treatability)
+# = 40 fully crossed cells, carried by three separate DOV_* variables.
+# Numbers match SocSci210 exactly on all 40 condition indices; their
+# stimulus text is the PROPOSAL's wording, not the fielded questionnaire's.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS 115 (Elliott, Northwestern), fielded by NORC/AmeriSpeak 13 Oct - 9 Nov 2022,
+  N=1,607 web interviews (SURV_MODE = 2 "Web Interview" for all 1,607 rows).
+  Line numbers below are 1-based into the two .txt questionnaires under
+  "data/raw/zaqkm/TESS 115 Elliott/":
+    SIMPLE = 9089.115.TESS ELLIOTT_vFINALsimple.txt   (the human-readable quex)
+    PROG   = 9089.115.TESS ELLIOTT_vFINALprog.txt     (the programming quex)
+  
+  
+  THE DESIGN — 5 x 4 x 2 = 40 CELLS, FULLY CROSSED
+  
+  SIMPLE line 53: "The five versions of the first paragraph should be randomly
+  combined with the 8 versions of the second paragraph, resulting in a total of 40
+  versions of the vignette (see Appendix). Given a total sample size of 1600, 40
+  survey respondents will be exposed to each condition."
+  SIMPLE line 55: "Second Paragraph (8 versions combining 4 attribution conditions
+  and 2 treatability conditions)".
+  
+    mental_health  DOV_MENTALHEALTH   1 Subclinical distress / 2 Alcohol use disorder
+                                      3 Major depression / 4 Opioid Use Disorder
+                                      5 Schizophrenia
+    attribution    DOV_ATTRIBUTION    1 No attribution included / 2 Environmental
+                                      attribution / 3 Genetic attribution
+                                      4 Environmental and genetic attributions
+    treatability   DOV_TREATABILITY   1 Treatability information included
+                                      2 Treatability information not mentioned
+  
+  All three value-label sets are read from the .dta itself (pyreadstat returned 36
+  value-label sets; the pandas fallback was NOT used, so these are the file's own
+  labels, not declared by us). They also appear verbatim at SIMPLE 435-456 and
+  PROG 270-292.
+  
+  
+  HOW ASSIGNMENT IS CARRIED — AND WHY WE USE THE THREE FACTOR VARIABLES
+  
+  PROG 427-431 (quoted exactly):
+    "RANDOMIZATION WITHOUT REPLACEMENT
+     SET QUOTA_ELLIOTT WITH 40 QUOTA BUCKETS
+     ASSIGN TO QUOTA WITH THE FEWEST COMPLETES, RADOMLY ASSIGN AMONG THOSE BUCKETS
+     IF MORE THAN ONE BUCKET HAS THE FEWEST COMPLETES
+     DOV_EXP_ELLIOTT = VALUE OF QUOTA_ELLIOTT QUOTA BUCKET ASSIGNED"
+  PROG 433-434 derives DOV_TREATABILITY, 436-440 DOV_MENTALHEALTH, 442-445
+  DOV_ATTRIBUTION, each as an explicit list of DOV_EXP_ELLIOTT buckets.
+  
+  So this study DOES have a single 40-level assignment column, DOV_EXP_ELLIOTT
+  ("DATA-ONLY VARIABLE: Used for computation for ELLIOTT"), which is unlike
+  z358z. We nevertheless declare `source_vars: [DOV_MENTALHEALTH,
+  DOV_ATTRIBUTION, DOV_TREATABILITY]` because (a) those three ARE the design, so
+  each arm's `raw_values` reads off its factor levels directly, and (b) the
+  bucket numbering is an arbitrary quota index — its own value labels are
+  uninformative ("ELLIOTT BUCKET 17") and bucket 35's label is MISSING from the
+  .dta's label set although 39 respondents are in it.
+  
+  The choice is safe because the two encodings are a verified bijection. Re-deriving
+  all three DOV_* variables from DOV_EXP_ELLIOTT using PROG 433-445 reproduces the
+  file's own columns for all 1,607 respondents with zero mismatches, and each
+  (mental_health, attribution, treatability) cell maps to exactly one bucket.
+  
+  CROSSTAB, all 1,607 respondents, no missing on any of the three (verified):
+    40 of 40 cells non-empty; cell n ranges 37..44; sum = 1,607.
+    mh=1: (a1,t1)41 (a1,t2)38 (a2,t1)43 (a2,t2)41 (a3,t1)41 (a3,t2)40 (a4,t1)40 (a4,t2)38
+    mh=2: (a1,t1)43 (a1,t2)38 (a2,t1)38 (a2,t2)44 (a3,t1)40 (a3,t2)41 (a4,t1)39 (a4,t2)40
+    mh=3: (a1,t1)37 (a1,t2)41 (a2,t1)40 (a2,t2)39 (a3,t1)43 (a3,t2)39 (a4,t1)39 (a4,t2)39
+    mh=4: (a1,t1)42 (a1,t2)39 (a2,t1)40 (a2,t2)39 (a3,t1)41 (a3,t2)39 (a4,t1)38 (a4,t2)42
+    mh=5: (a1,t1)44 (a1,t2)38 (a2,t1)41 (a2,t2)39 (a3,t1)42 (a3,t2)43 (a4,t1)38 (a4,t2)40
+    Marginals: DOV_MENTALHEALTH 322/323/317/320/325; DOV_ATTRIBUTION 401/404/409/393;
+    DOV_TREATABILITY 810/797.
+  
+  
+  A SECOND RANDOMISATION, DELIBERATELY NOT DECLARED — P_ORDER
+  
+  P_ORDER (1 "ORDER1" n=799 / 2 "ORDER 2" n=808) is a real randomisation, but it is
+  not a factor of this experiment. PROG 420-422: "PROGRAMMING NOTE: IF P_ORDER=1:
+  DISPLAY SECTION BROWN, ELLIOTT, HUFFMAN / IF P_ORDER=2: DISPLAY SECTION HUFFMAN,
+  ELLIOTT, BROWN". It is the order of three researchers' blocks in a shared
+  omnibus; ELLIOTT is in the middle either way and NO ELLIOTT text depends on it.
+  Declaring it would double the arms to 80 with two identical stimulus strings per
+  pair, which QC rule 1 exists to reject. This is the ledger #30 case, resolved by
+  the programming note rather than by the label. It is recorded in
+  `condition.considered_and_rejected` rather than left implicit. Only the ELLIOTT
+  block's variables are present in the .dta, so BROWN and HUFFMAN are not
+  buildable from this deposit and are not owed here.
+  
+  WORTH KNOWING: rule 9 (pipeline/screen.py) does NOT flag P_ORDER on this study,
+  and would not have even without the `considered_and_rejected` entry. P_ORDER
+  passes every other test - 2 levels, 100% coverage, marginal balance 0.99, all 80
+  cells against the declared key non-empty - but the within-cell balance is 0.39
+  (cells range 11..28 around a mean of 20), below the 0.70 threshold. That is not a
+  bug in P_ORDER's favour; it is arithmetic. With 40 declared cells and n=1,607,
+  crossing in a second 2-level factor gives 80 cells of ~20, where sampling noise
+  alone puts min/max near 0.4. The screen's sensitivity therefore decays as the
+  declared arm count rises, and it is blind on exactly the studies where a missed
+  second randomisation would be hardest to spot by eye. DOV_EXP_ELLIOTT is also
+  unflagged, for the opposite and correct reason: it has 40 levels (over the
+  12-level cap) and 1,560 of its 1,600 cells against the declared key are empty,
+  because it IS the declared key.
+  
+  
+  CONDITION MAPPING — DECLARED (recipe rule 2)
+  
+    condition_num = (mental_health - 1) * 8 + (attribution - 1) * 2
+                    + (1 if treatability == 1 else 0)
+  
+  i.e. mental-health-major, then attribution, with treatability innermost and
+  "not mentioned" (raw 2) FIRST in each pair, so even indices are no-treatability.
+  This is not a guess: it is SocSci210's ordering, recovered from their data and
+  then confirmed twice over, by two independent routes that are jointly complete.
+    (i) COUNTS. Our per-condition row counts equal theirs for all 40 indices, in
+        order, with no permutation. On its own this pins only 19 of the 40 cells,
+        because 21 of the counts are tied (234 occurs 4x; 228 3x; 220, 227, 233,
+        238, 240, 241, 244 twice each).
+    (ii) THEIR TEXT. Classifying each of their 40 stimulus strings by keyword -
+        which diagnosis is named, whether "car accident" appears, whether
+        "genetic" appears, whether the treatment sentence appears - reproduces the
+        formula above for all 40 with zero mismatches. That pins every cell,
+        including the tied ones, and fixes the within-pair direction (odd index =
+        treatability included = raw 1).
+  Route (ii) uses their text only for ARM ORDERING, never for wording (rule 2 /
+  ledger #35); their wording is rejected below.
+  
+  Note the ordering follows the FIELDED codes, not the proposal's: ElliottM14.pdf
+  lists the five conditions as 1 subclinical / 2 major depressive disorder /
+  3 alcohol use disorder / 4 schizophrenia / 5 opioid use disorder, whereas
+  DOV_MENTALHEALTH is 1 subclinical / 2 alcohol / 3 depression / 4 opioid /
+  5 schizophrenia. SocSci210 used the fielded order. So did we.
+  
+  
+  OUTCOMES — SIX ITEMS, AND WHY NOT SEVEN
+  
+  Three grids of two items each (SIMPLE 130-169):
+    ELLIOTT1A/1B  "Likelihood of violence"  (stem 132; items 135, 136; options 139-143)
+    ELLIOTT2A/2B  "Social distance"         (stem 147; items 148, 149; options 152-156)
+    ELLIOTT3A/3B  "Future prognosis"        (stem 160; items 161, 162; options 165-169)
+  
+  Each question is the grid stem and the grid item joined, with the source's
+  ellipses at the join removed and nothing else changed (e.g. stem 132 "In your
+  opinion, how likely or unlikely is it that David would do something..." + item
+  135 "...violent to other people?").
+  
+  ELLIOTT4 (SIMPLE 171-179, "Have you, or someone you are close to, ever been
+  diagnosed with a mental illness?") is EXCLUDED. It is a respondent attribute,
+  not a judgement about the stimulus - the proposal files it under "Contact",
+  i.e. a moderator. Excluding it is also what reconciles the row count.
+  
+  ROW ARITHMETIC, exact:
+    1,607 respondents x 6 items = 9,642 potential rows
+    minus code 98 "SKIPPED ON WEB" per item: 9 + 37 + 13 + 39 + 6 + 10 = 114
+    = 9,528 rows.  SocSci210 also reports 9,528 rows and 1,607 participants.
+    (Had ELLIOTT4 been included: 1,607 x 7 = 11,249 minus 114 + 15 = 11,120,
+    which is not 9,528. So SocSci210 excluded it too.)
+  
+  No respondent answered 77 or 99 on any of the six items; 98 is the only missing
+  code observed. All three are declared as `missing_codes` because PROG 379-383
+  defines them all ("77 DON'T KNOW", "99 REFUSED", "98 IMPLICIT REFUSAL, WEB SKIP").
+  
+  
+  RESPONSE CODING — NOT REVERSE CODED (ledger #7 checked, not assumed)
+  
+  All six items run 1 "Very unlikely"/"Very unwilling" to 5 "Very likely"/"Very
+  willing" in the .dta's own value labels, matching the questionnaire's option
+  order at SIMPLE 139-143, 152-156 and 165-169. The recode is therefore the
+  identity 1..5 with no per-arm or per-outcome override, and nothing about the
+  arm changes the option order (there is no order variable for these items).
+  Positive confirmation: the identity map reproduces SocSci210's response
+  distribution {1:450, 2:1328, 3:2811, 4:3961, 5:978} exactly, and it does so
+  item by item (per-item sums 123+47+118+105+23+34 = 450, and likewise for 2-5).
+  A reversal on any item would have broken that.
+  
+  Substantive caution for a downstream reader, not a coding issue: the three grids
+  point in opposite valence directions. High = more predicted violence (bad) on
+  ELLIOTT1, high = more willing to associate (good) on ELLIOTT2, high = better
+  prognosis (good) on ELLIOTT3. We keep the source's direction on all six.
+  
+  
+  TEXT PROVENANCE — DERIVED, NOT TRANSCRIBED
+  
+  The questionnaire specifies the vignette COMBINATORIALLY, not as 40 written-out
+  blocks: five first paragraphs, then eight second-paragraph blocks each of which
+  itself branches on DOV_MENTALHEALTH. Every arm here was therefore ASSEMBLED, and
+  the assembly was done by a script that resolves the questionnaire's own "SHOW IF"
+  markup rather than by hand. Sources:
+  
+    first paragraph   SIMPLE 60-61 (mh=1), 63-64 (mh=2), 66-67 (mh=3),
+                      69-70 (mh=4), 72-73 (mh=5)
+    second paragraph  SIMPLE 76-79   attribution=1 x treatability=2
+                      SIMPLE 83-86   attribution=3 x treatability=2
+                      SIMPLE 90-93   attribution=2 x treatability=2
+                      SIMPLE 97-100  attribution=4 x treatability=2
+                      SIMPLE 104-107 attribution=1 x treatability=1
+                      SIMPLE 111-114 attribution=3 x treatability=1
+                      SIMPLE 118-121 attribution=2 x treatability=1
+                      SIMPLE 125-128 attribution=4 x treatability=1
+    (the same eight blocks are PROG 475-481, 482-488, 489-495, 496-502, 503-509,
+     510-516, 517-523, 524-527, and the same five first paragraphs PROG 459-472)
+  
+  Each block holds a "[SHOW IF DOV_MENTALHEALTH=1: ...]" branch and an
+  "[ALL ELSE DOV_MENTALHEALTH<>1: ...]" branch; the latter contains inline
+  four-way switches "[SHOW IF DOV_MENTALHEALTH=2: alcohol use disorder SHOW IF
+  DOV_MENTALHEALTH=3: major depression SHOW IF DOV_MENTALHEALTH=4: opioid use
+  disorder SHOW IF DOV_MENTALHEALTH=5: schizophrenia]" which the script resolves
+  for the arm's own mh. So the mh=1 arms say "determined that he is very distressed
+  but does not have a mental illness" and never name a diagnosis, while mh=2..5
+  arms say "diagnosed him with <diagnosis>" and repeat that diagnosis in the
+  attribution sentence.
+  
+  HOW IT WAS VERIFIED: the same derivation was run independently over BOTH
+  questionnaire files and the 40 results compared. After stripping the prog file's
+  <i>/<u> tags they agree on all 40 arms, character for character, and all 40 are
+  distinct. In addition every arm's text is asserted to be free of leftover
+  "SHOW IF"/"ALL ELSE" markup, and each of the 8 x 2 second-paragraph fragments
+  and 5 first paragraphs is asserted to occur as a verbatim substring of the
+  questionnaire.
+  
+  TWO PRESENTATIONAL LIBERTIES, no word added, removed or altered:
+    1. runs of whitespace collapsed to one space (the source has stray double
+       spaces, e.g. SIMPLE 114 "Regarding what  caused" and SIMPLE 121
+       "schizophrenia].  Regarding");
+    2. whitespace immediately before "." or "," removed. This is the ONLY point on
+       which the two questionnaire files disagree: in PROG the closing </i> tag
+       sits before the sentence-final full stop in three blocks (e.g. PROG 478
+       "...schizophrenia]] . </i>"), which leaves " ." once tags are stripped.
+       SIMPLE has no such space; we follow SIMPLE.
+  Source spellings and punctuation are otherwise kept exactly, including the
+  curly apostrophes in "David's", the straight ones in "can't"/"isn't", the en
+  dashes in the alcohol and opioid paragraphs, "sticks with himself all day long"
+  (sic) and the comma difference between "a little over a year ago, David was in a
+  car accident" (attribution=2) and "a little over a year ago David was in a car
+  accident" (the second clause of attribution=4).
+  
+  shared_context holds the one sentence common to all 40 arms - "David is a White
+  man who has completed high school." - preceded by our own second-person framing
+  sentence, which is NOT source text and is written in the house style used by
+  a5v96/dh3nj/sd7cf. Everything after it is verbatim source.
+  
+  
+  DISAGREEMENT WITH SocSci210 ON TEXT — ledger #35, again, and worse
+  
+  Numbers agree completely (see below). The stimulus text does not, and the reason
+  is exactly finding #35: SocSci210 built this study's text from the PROPOSAL,
+  ElliottM14.pdf, not from the fielded questionnaire. Three examples; in each, the
+  left string appears in their `stimuli` and in ElliottM14.pdf, and appears ZERO
+  times in either questionnaire file:
+  
+    treatability  theirs "When explaining the results of his evaluation to David,
+                  the doctor suggested that David consider a course of mental
+                  health treatment that is known to be helpful in treating
+                  David's condition."
+                  fielded "When explaining the results of his evaluation, the
+                  doctor recommended to David that he consider medications and/or
+                  psychotherapy. Research shows that these treatments can be
+                  effective in addressing the problems David is experiencing."
+    attribution   theirs "While the doctor does not know for sure why David has
+                  developed his condition, he thinks it may be genetic because..."
+                  fielded "Regarding what caused David's <condition>, the doctor
+                  suspects that it is genetic because..."
+    diagnosis     theirs "diagnosed him with major depressive disorder"
+                  fielded "diagnosed him with major depression"
+  
+  Their depression vignette also reads "sticks with him all day long" and "nothing
+  seems to give David pleasure" where both the fielded questionnaire AND the
+  deposit's own description file read "sticks with himself all day long" and
+  "nothing seems to give him pleasure".
+  
+  This is a sharper case than z358z: their wording matches the proposal PDF and
+  matches NEITHER questionnaire NOR "M14-Elliott description.txt" (whose lines
+  48 and 59-71 carry the fielded wording). The treatability manipulation - the
+  study's headline factor - is a sentence no respondent read.
+  
+  Unlike sd7cf/z358z they did NOT lose a factor: their 40 conditions render 40
+  distinct strings and all three factors vary. The defect is provenance only.
+  
+  
+  CROSSCHECK
+  
+  comparable_to_socsci210: true. Scope is identical (same 40 cells, same six
+  items, same 1,607 respondents), so a numeric disagreement would be a real bug.
+  Ours vs theirs: n_rows 9,528 = 9,528; participants 1,607 = 1,607; conditions
+  40 = 40; rows_per_condition equal for all 40 indices with no permutation;
+  response_distribution {1:450, 2:1328, 3:2811, 4:3961, 5:978} identical.
+  
+  
+  PERSONA
+  
+  AmeriSpeak naming (AGE/GENDER/RACETHNICITY), as in dh3nj. 17 fields mapped, all
+  with value labels in the .dta except the numeric AGE/HHSIZE. EDUC5 is used
+  because this file has no plain EDUC column, and PartyID7 is spelled with that
+  exact mixed case in the .dta (not PARTYID7 as in dh3nj). ELLIOTT4 is not mapped
+  into the persona: it is measured AFTER the stimulus, so it is post-treatment.
+
+condition:
+  source_vars: [DOV_MENTALHEALTH, DOV_ATTRIBUTION, DOV_TREATABILITY]
+  factors: [mental_health, attribution, treatability]
+  considered_and_rejected:
+    P_ORDER: "Randomised (799/808) but not a factor of this experiment. PROG 420-422: 'IF P_ORDER=1: DISPLAY SECTION BROWN, ELLIOTT, HUFFMAN / IF P_ORDER=2: DISPLAY SECTION HUFFMAN, ELLIOTT, BROWN'. It orders three researchers' blocks in a shared omnibus; ELLIOTT is in the middle either way and no ELLIOTT text depends on it."
+    DOV_EXP_ELLIOTT: "Not a second randomisation but the SAME one: the 40-bucket quota index (PROG 428-431) from which the three declared DOV_* variables are derived (PROG 433-445). Verified a bijection with (DOV_MENTALHEALTH, DOV_ATTRIBUTION, DOV_TREATABILITY) on all 1,607 rows. Declaring it as well would double-count the assignment."
+  shared_context: |-
+    You read the following description of a man named David, and were then asked what you thought of him. David is a White man who has completed high school.
+  arms:
+    # cond 0: Subclinical distress x No attribution included x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 2
+      condition_num: 0
+      factors:
+        mental_health: subclinical_distress
+        attribution: none
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness.
+    # cond 1: Subclinical distress x No attribution included x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 1
+      condition_num: 1
+      factors:
+        mental_health: subclinical_distress
+        attribution: none
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 2: Subclinical distress x Environmental attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 2
+      condition_num: 2
+      factors:
+        mental_health: subclinical_distress
+        attribution: environmental
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness. Regarding what caused David’s distress, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 3: Subclinical distress x Environmental attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 1
+      condition_num: 3
+      factors:
+        mental_health: subclinical_distress
+        attribution: environmental
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness. Regarding what caused David’s distress, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 4: Subclinical distress x Genetic attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 2
+      condition_num: 4
+      factors:
+        mental_health: subclinical_distress
+        attribution: genetic
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness. Regarding what caused David’s distress, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him.
+    # cond 5: Subclinical distress x Genetic attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 1
+      condition_num: 5
+      factors:
+        mental_health: subclinical_distress
+        attribution: genetic
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness. Regarding what caused David’s distress, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 6: Subclinical distress x Environmental and genetic attributions x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 2
+      condition_num: 6
+      factors:
+        mental_health: subclinical_distress
+        attribution: genetic_and_environmental
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness. Regarding what caused David’s distress, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 7: Subclinical distress x Environmental and genetic attributions x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 1
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 1
+      condition_num: 7
+      factors:
+        mental_health: subclinical_distress
+        attribution: genetic_and_environmental
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. While nothing much is going wrong in David’s life, he sometimes feels worried, a little sad, or has trouble sleeping at night. David feels that at times things bother him more than they bother other people and that when things go wrong, he sometimes gets nervous or annoyed. Otherwise, David is getting along pretty well. He enjoys being with other people and although David sometimes argues with his family, David has been getting along pretty well with his family. Because he has been having these problems, David was evaluated by a doctor who determined that he is very distressed but does not have a mental illness. Regarding what caused David’s distress, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 8: Alcohol use disorder x No attribution included x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 2
+      condition_num: 8
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: none
+        treatability: not_mentioned
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder.
+    # cond 9: Alcohol use disorder x No attribution included x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 1
+      condition_num: 9
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: none
+        treatability: included
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 10: Alcohol use disorder x Environmental attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 2
+      condition_num: 10
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: environmental
+        treatability: not_mentioned
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder. Regarding what caused David’s alcohol use disorder, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 11: Alcohol use disorder x Environmental attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 1
+      condition_num: 11
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: environmental
+        treatability: included
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder. Regarding what caused David’s alcohol use disorder, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 12: Alcohol use disorder x Genetic attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 2
+      condition_num: 12
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: genetic
+        treatability: not_mentioned
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder. Regarding what caused David’s alcohol use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him.
+    # cond 13: Alcohol use disorder x Genetic attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 1
+      condition_num: 13
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: genetic
+        treatability: included
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder. Regarding what caused David’s alcohol use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 14: Alcohol use disorder x Environmental and genetic attributions x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 2
+      condition_num: 14
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: genetic_and_environmental
+        treatability: not_mentioned
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder. Regarding what caused David’s alcohol use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 15: Alcohol use disorder x Environmental and genetic attributions x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 2
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 1
+      condition_num: 15
+      factors:
+        mental_health: alcohol_use_disorder
+        attribution: genetic_and_environmental
+        treatability: included
+      text: |-
+          During the last month, David has started to drink more than his usual amount of alcohol. In fact, he has noticed that he needs to drink twice as much as he used to get the same effect. Several times, he has tried to cut down, or stop drinking, but he can't. Each time he tried to cut down, he became very agitated, sweaty and he couldn't sleep, so he took another drink. His family has complained that he is often hung-over, and has become unreliable – making plans one day, and canceling them the next. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with alcohol use disorder. Regarding what caused David’s alcohol use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 16: Major depression x No attribution included x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 2
+      condition_num: 16
+      factors:
+        mental_health: major_depression
+        attribution: none
+        treatability: not_mentioned
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression.
+    # cond 17: Major depression x No attribution included x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 1
+      condition_num: 17
+      factors:
+        mental_health: major_depression
+        attribution: none
+        treatability: included
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 18: Major depression x Environmental attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 2
+      condition_num: 18
+      factors:
+        mental_health: major_depression
+        attribution: environmental
+        treatability: not_mentioned
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression. Regarding what caused David’s major depression, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 19: Major depression x Environmental attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 1
+      condition_num: 19
+      factors:
+        mental_health: major_depression
+        attribution: environmental
+        treatability: included
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression. Regarding what caused David’s major depression, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 20: Major depression x Genetic attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 2
+      condition_num: 20
+      factors:
+        mental_health: major_depression
+        attribution: genetic
+        treatability: not_mentioned
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression. Regarding what caused David’s major depression, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him.
+    # cond 21: Major depression x Genetic attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 1
+      condition_num: 21
+      factors:
+        mental_health: major_depression
+        attribution: genetic
+        treatability: included
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression. Regarding what caused David’s major depression, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 22: Major depression x Environmental and genetic attributions x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 2
+      condition_num: 22
+      factors:
+        mental_health: major_depression
+        attribution: genetic_and_environmental
+        treatability: not_mentioned
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression. Regarding what caused David’s major depression, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 23: Major depression x Environmental and genetic attributions x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 3
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 1
+      condition_num: 23
+      factors:
+        mental_health: major_depression
+        attribution: genetic_and_environmental
+        treatability: included
+      text: |-
+          For the last two weeks, David has been feeling really down. He wakes up in the morning with a flat, heavy feeling that sticks with himself all day long. He isn't enjoying things the way he normally would. In fact, nothing seems to give him pleasure. Even when good things happen, they don't seem to make David happy. He pushes on through his days, but it is really hard. The smallest tasks are difficult to accomplish. He finds it hard to concentrate on anything. He feels out of energy and out of steam. And even though David feels tired when night comes, he can't get to sleep. David feels pretty worthless, and very discouraged. David’s family has noticed that he hasn't been himself for about the last month, and that he has pulled away from them. David just doesn't feel like talking. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with major depression. Regarding what caused David’s major depression, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 24: Opioid Use Disorder x No attribution included x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 2
+      condition_num: 24
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: none
+        treatability: not_mentioned
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder.
+    # cond 25: Opioid Use Disorder x No attribution included x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 1
+      condition_num: 25
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: none
+        treatability: included
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 26: Opioid Use Disorder x Environmental attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 2
+      condition_num: 26
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: environmental
+        treatability: not_mentioned
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder. Regarding what caused David’s opioid use disorder, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 27: Opioid Use Disorder x Environmental attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 1
+      condition_num: 27
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: environmental
+        treatability: included
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder. Regarding what caused David’s opioid use disorder, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 28: Opioid Use Disorder x Genetic attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 2
+      condition_num: 28
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: genetic
+        treatability: not_mentioned
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder. Regarding what caused David’s opioid use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him.
+    # cond 29: Opioid Use Disorder x Genetic attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 1
+      condition_num: 29
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: genetic
+        treatability: included
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder. Regarding what caused David’s opioid use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 30: Opioid Use Disorder x Environmental and genetic attributions x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 2
+      condition_num: 30
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: genetic_and_environmental
+        treatability: not_mentioned
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder. Regarding what caused David’s opioid use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 31: Opioid Use Disorder x Environmental and genetic attributions x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 4
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 1
+      condition_num: 31
+      factors:
+        mental_health: opioid_use_disorder
+        attribution: genetic_and_environmental
+        treatability: included
+      text: |-
+          About a year ago, David was prescribed prescription pain medication. He took the pain medication regularly, and after a few weeks found that he increasingly felt the desire for more, even though his pain had improved. David went to several different doctors to get more prescriptions from them and then started getting them from a friend. Each time David tried to cut down, he felt anxious and became sweaty and nauseated for hours on end and also could not sleep. These symptoms lasted until he resumed taking the prescription pain medication. David’s friends complained that he had become unreliable – making plans one day and canceling them the next. His family said he had changed and that they could no longer count on him. David has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with opioid use disorder. Regarding what caused David’s opioid use disorder, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 32: Schizophrenia x No attribution included x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 2
+      condition_num: 32
+      factors:
+        mental_health: schizophrenia
+        attribution: none
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia.
+    # cond 33: Schizophrenia x No attribution included x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 1
+        DOV_TREATABILITY: 1
+      condition_num: 33
+      factors:
+        mental_health: schizophrenia
+        attribution: none
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 34: Schizophrenia x Environmental attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 2
+      condition_num: 34
+      factors:
+        mental_health: schizophrenia
+        attribution: environmental
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia. Regarding what caused David’s schizophrenia, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 35: Schizophrenia x Environmental attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 2
+        DOV_TREATABILITY: 1
+      condition_num: 35
+      factors:
+        mental_health: schizophrenia
+        attribution: environmental
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia. Regarding what caused David’s schizophrenia, the doctor suspects it is related to the fact that a little over a year ago, David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 36: Schizophrenia x Genetic attribution x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 2
+      condition_num: 36
+      factors:
+        mental_health: schizophrenia
+        attribution: genetic
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia. Regarding what caused David’s schizophrenia, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him.
+    # cond 37: Schizophrenia x Genetic attribution x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 3
+        DOV_TREATABILITY: 1
+      condition_num: 37
+      factors:
+        mental_health: schizophrenia
+        attribution: genetic
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia. Regarding what caused David’s schizophrenia, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+    # cond 38: Schizophrenia x Environmental and genetic attributions x Treatability information not mentioned
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 2
+      condition_num: 38
+      factors:
+        mental_health: schizophrenia
+        attribution: genetic_and_environmental
+        treatability: not_mentioned
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia. Regarding what caused David’s schizophrenia, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries.
+    # cond 39: Schizophrenia x Environmental and genetic attributions x Treatability information included
+    - raw_values:
+        DOV_MENTALHEALTH: 5
+        DOV_ATTRIBUTION: 4
+        DOV_TREATABILITY: 1
+      condition_num: 39
+      factors:
+        mental_health: schizophrenia
+        attribution: genetic_and_environmental
+        treatability: included
+      text: |-
+          Up until a year ago, life was pretty okay for David. But then, things started to change. He thought that people around him were making disapproving comments and talking behind his back. David was convinced that people were spying on him and that they could hear what he was thinking. David lost his drive to participate in his usual work and family activities and retreated to his home, eventually spending most of his day in his room. David became so preoccupied with what he was thinking that he skipped meals and stopped bathing regularly. At night, when everyone else was sleeping, he was walking back and forth in his room. David was hearing voices even though no one else was around. These voices told him what to do and what to think. He has been living this way for six months. Because he has been having these problems, David was evaluated by a doctor who diagnosed him with schizophrenia. Regarding what caused David’s schizophrenia, the doctor suspects that it is genetic because David’s father, his father’s father, and his aunt on his mother’s side, are all very similar to him. The doctor also suspects it is related to the fact that a little over a year ago David was in a car accident with his best friend who died a week later from his injuries. When explaining the results of his evaluation, the doctor recommended to David that he consider medications and/or psychotherapy. Research shows that these treatments can be effective in addressing the problems David is experiencing.
+
+outcomes:
+  - var: ELLIOTT1A
+    task_num: 0
+    question: "In your opinion, how likely or unlikely is it that David would do something violent to other people?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Very unlikely"
+      max_label: "Very likely"
+  - var: ELLIOTT1B
+    task_num: 1
+    question: "In your opinion, how likely or unlikely is it that David would do something violent to himself?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Very unlikely"
+      max_label: "Very likely"
+  - var: ELLIOTT2A
+    task_num: 2
+    question: "How willing or unwilling would you be to spend an evening socializing with David?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Very unwilling"
+      max_label: "Very willing"
+  - var: ELLIOTT2B
+    task_num: 3
+    question: "How willing or unwilling would you be to make friends with David?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Very unwilling"
+      max_label: "Very willing"
+  - var: ELLIOTT3A
+    task_num: 4
+    question: "In your opinion, how likely or unlikely is it that David’s condition will improve with proper treatment?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Very unlikely"
+      max_label: "Very likely"
+  - var: ELLIOTT3B
+    task_num: 5
+    question: "In your opinion, how likely or unlikely is it that David will be able to live a full life, such as having a steady job, a stable romantic relationship, and an engaged social life?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Very unlikely"
+      max_label: "Very likely"
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [77, 98, 99]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG

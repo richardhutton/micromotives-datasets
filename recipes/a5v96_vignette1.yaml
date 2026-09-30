@@ -109,6 +109,12 @@ notes: >
 
 condition:
   source_var: Vignette1
+  # `Vignette2` is a real second randomisation — the 12-arm combat-medic scenario,
+  # this deposit's OTHER experiment, owed as its own recipe. Recorded here so the
+  # numbered-sibling screen reports a stated scope decision rather than an
+  # accident, and so the debt is visible in the recipe and not only in the ledger.
+  considered_and_rejected:
+    Vignette2: "second experiment (12-arm combat-medic triage); owed as its own recipe"
   factors: [cds_support, cds_recommendation, end_result]
   shared_context: >
     You read the following scenario, and were then asked what you thought of it.

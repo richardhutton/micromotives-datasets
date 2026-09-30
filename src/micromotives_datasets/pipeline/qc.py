@@ -96,6 +96,29 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     if missing_t := declared_tasks - set(rep.rows_per_task):
         rep.warnings.append(f"declared outcomes with no rows: {sorted(missing_t)}")
 
+    # --- Rule 10: every arm must be measured about as thoroughly -------------
+    # Found on `9263n`, where six of seven items are asked with a different
+    # variable per branch (`Q3A` for the experiential arms, `Q3B` for the
+    # material ones). Declaring only the A variants halved the corpus and left
+    # arms 2 and 3 with one item out of seven — and QC passed, silently.
+    #
+    # Counting per OUTCOME would warn on every legitimately branched item (12 of
+    # 14 here), which trains us to ignore the column. Counting per ARM is silent
+    # when branching is symmetric and loud when it is not.
+    tasks_per_arm: dict[int, set[int]] = {}
+    for r in rows:
+        if r.condition_num is not None and r.task_num is not None:
+            tasks_per_arm.setdefault(r.condition_num, set()).add(r.task_num)
+    if len(tasks_per_arm) > 1:
+        widest = max(len(t) for t in tasks_per_arm.values())
+        thin = {cond: len(t) for cond, t in sorted(tasks_per_arm.items()) if len(t) < 0.5 * widest}
+        if thin:
+            rep.warnings.append(
+                f"arms measured on far fewer outcomes than their peers: {thin} "
+                f"against {widest} — if the design is branched this is expected, "
+                "otherwise an outcome variable for those arms is missing"
+            )
+
     # --- Rule 4: responses inside the declared scale ------------------------
     # A recode can be declared at study, outcome or arm level, so the allowed
     # set is the union of all of them.

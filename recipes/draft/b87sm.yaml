@@ -1,0 +1,1427 @@
+study_id: b87sm
+experiment: scenario1
+source: tess
+title: "How to Increase the Acceptance of Mobile App and Sensor Data Collection?"
+data_file: 8041.087 WENZ weighted data 20210823.sav
+
+# SocSci210 reconstructed a DIFFERENT scope for this deposit: its 8 "conditions" are
+# the eight PRESENTATION SLOTS (SCENARIO_1..SCENARIO_8), not the manipulation, and its
+# stimulus text is one fixed vignette identical across all eight. The 2x3x3x2x2
+# vignette experiment is entirely absent from their build. Proven by arithmetic in
+# the notes below, so a numeric comparison is meaningless rather than a bug.
+comparable_to_socsci210: false
+
+notes: |
+  TESS 8041.087 (Wenz, "How to increase the acceptance of mobile app and sensor
+  data collection?"). AmeriSpeak web/phone panel, fielded 26 Jul - 9 Aug 2021
+  (vFINALsimple lines 15-17). MAKER DRAFT — for checker review.
+
+  Line citations below are 1-based line numbers in
+    Q  = "8041.087 TESS Wenz vFINALsimple.txt"   (the fielded questionnaire)
+    PG = "8041.087 TESS Wenz vFINALprog.txt"     (the programming version)
+    PR = "TESS-1387.R1 description.txt"          (the PROPOSAL — not a text source)
+    RP = "8041.087 TESS WENZ Project Report.txt"
+    XL = "Independent Variables Map.xlsx"        (the fielded vignette lookup)
+
+
+  THE DESIGN — a 2 x 3 x 3 x 2 x 2 within-subject vignette experiment
+
+  Each respondent read EIGHT vignettes drawn without replacement from a universe
+  of 72, and rated willingness to download a research app after each. Q lines
+  628-631 give the randomisation for slot 1 verbatim:
+
+      P_S1
+      Randomly assigned value:
+      1 through 72
+      (See excel table for look up)
+
+  and PG lines 277-283 repeat it in the preload table ("P_S1 ... Randomly
+  assigned value: 1 through 72 (See excel table for look up)"). P_S2..P_S8 carry
+  the same note at Q 632-659 / PG 284-332. Q line 71 ("[INSERT P_S1]") and PG
+  line 496 ("[<unbold> INSERT P_S1 </unbold>]") place the drawn vignette inside
+  SCENARIO_1, between the fixed opening (Q 68-70) and the outcome question
+  (Q 73).
+
+  The "excel table" is the deposit's "Independent Variables Map.xlsx". Its
+  "Lookup table" sheet has 72 rows, one per preload value, with five factor
+  columns (Tech_Support, Control_data, Incentive, Feedback,
+  Protection_Privacy) and a "Text Displayed" column holding the exact text
+  inserted for that value. Its "Updated Conditions Value Labels" sheet holds the
+  per-level text. The 72 rows are exactly the full crossing
+  2 x 3 x 3 x 2 x 2 = 72, each combination appearing once (checked
+  programmatically: all 72 (Tech,Control,Inc,Feed,Priv) tuples distinct).
+
+  FACTORS AND LEVELS (level text from XL, which is the fielded instrument; the
+  factor NAMES follow PR line 23, "2 privacy statement x 2 technical support x
+  3 control x 3 monetary incentive x 2 feedback ... a vignette universe of 72
+  unique descriptions and each respondent will be randomly assigned to 8
+  vignettes without replacement"):
+
+    technical_support   1 letter with login details only
+                        2 letter plus interviewer phone call
+    data_control        1 can switch app off
+                        2 can review and delete data
+                        3 no control
+    monetary_incentive  1 unconditional $20 (enclosed in the letter)
+                        2 conditional $20 fixed (on download + keeping installed)
+                        3 conditional $6 plus $1 per day, max $20
+    feedback            1 personal summary provided
+                        2 none
+    privacy_statement   1 plain wording
+                        2 formal wording
+
+
+  ASSIGNMENT VARIABLE — P_S1, and the evidence
+
+  The data file carries BOTH a single combined code and the decomposed factors,
+  for every slot: P_S1..P_S8 (1..72) and P_S{k}_Tech_Support,
+  P_S{k}_Control_data, P_S{k}_Incentive, P_S{k}_Feedback,
+  P_S{k}_Protection_Privacy. The recipe declares the single code P_S1, because
+  that is the variable the questionnaire itself names as randomised (Q 628-631);
+  the decomposed columns appear nowhere in Q or PG and are a delivery
+  convenience.
+
+  They agree perfectly, which independently validates the arm -> factor mapping:
+  mapping each P_S{k} value through XL's lookup table and comparing against the
+  five P_S{k}_* columns gives 0 mismatches over all 1,948 x 8 = 15,584
+  assignments. P_S1 has no missing values and all 72 values present, cell sizes
+  16 to 41 (mean 1948/72 = 27.06). Slot-1 factor marginals from the data:
+    technical_support  1012 / 936
+    data_control       627 / 638 / 683
+    monetary_incentive 639 / 644 / 665
+    feedback           978 / 970
+    privacy_statement  974 / 974
+  All near-uniform, consistent with random draw without replacement.
+  Draws are genuinely without replacement: all 8 of P_S1..P_S8 are distinct for
+  1,948 of 1,948 respondents.
+
+  DO NOT TRUST P_S1's OWN VALUE LABELS. In the .sav, P_S1's value labels quote
+  only the Tech_Support sentence, so values 1, 2, 3, 7, 8, 9, ... all share the
+  label "You would receive a letter with login details and a link to the app
+  store where you could install the app". Read as a codebook it would look like
+  a 2-level variable. The lookup table, not the value labels, defines the arm.
+  (Same failure class as ledger #30/#5.)
+
+
+  CONDITION MAPPING — DECLARED (rule 2)
+
+  condition_num = P_S1 - 1, i.e. raw 1 -> 0 ... raw 72 -> 71, following the
+  source's own preload numbering. There is no external convention to match here:
+  SocSci210 did not build this manipulation at all (see below), so nothing
+  constrains the index.
+
+
+  SCOPE — slot 1 only, and why
+
+  The recipe builds PRESENTATION SLOT 1 only (SCENARIO_1, SCENARIO_1_DIFFICULT,
+  SCENARIO_1_SECURE), hence `experiment: scenario1`.
+
+  The reason is a schema limit, not a judgement about the data. In this design
+  the arm varies WITHIN respondent: slot k's arm is P_S{k}. `Condition` resolves
+  one arm per respondent ROW (build.py reads the condition variables off the
+  respondent's row and renders one condition text for all of that respondent's
+  outcomes), so a single recipe cannot give SCENARIO_2 a different arm from
+  SCENARIO_1. Slots 2-8 are therefore owed as seven further recipes
+  (`experiment: scenario2` ... `scenario8`), each with `source_var: P_S{k}`, the
+  same 72 arms and the single SCENARIO_{k} outcome. That would add 7 x 1,948
+  = 13,636 further respondent-items. Nothing is fabricated or guessed by
+  stopping at slot 1; 7/8 of the vignette observations are simply not yet built.
+  See the LESSON note at the end.
+
+  Slot 1 is also the only slot with the two secondary items (Q 89-118), and the
+  only slot with no prior-vignette exposure.
+
+  All 1,948 delivered cases are used. RP line 56 says "In field, NORC collected
+  1876 qualified interviews"; the file's QUAL is 1 ("Qualified Complete") for
+  1,876 and 9 ("Invalid Complete") for 72, totalling 1,948. No QUAL filter is
+  applied, which matches SocSci210 (their n_participants is 1,948).
+
+
+  ROW ARITHMETIC — exact
+
+  rows = respondents x items - refusals
+       = 1,948 x 3 - 75
+       = 5,844 - 75
+       = 5,769
+
+  The 75 dropped are code 98 "SKIPPED ON WEB" (PG line 422, "98 IMPLICIT
+  REFUSAL, WEB SKIP"): 12 on SCENARIO_1, 14 on SCENARIO_1_DIFFICULT, 49 on
+  SCENARIO_1_SECURE. Codes 77 and 99 are declared missing too (PG lines
+  418-419) but do not occur on these three items. Per-item kept counts:
+  1,936 + 1,934 + 1,899 = 5,769.
+
+  participants = 1,941, not 1,948: seven respondents answered 98 on all three
+  slot-1 items and so contribute no rows (1,948 - 7 = 1,941). All 1,941 fall in
+  72 non-empty cells, sizes 48 to 122 rows (16 to 41 respondents x up to 3
+  items).
+
+
+  THE UNDECLARED-ASSIGNMENT SCREEN CANNOT SEE SLOTS 2-8
+
+  Rule 9 (`pipeline/screen.py`) reports nothing here, with or without the
+  `considered_and_rejected` entries below — verified by clearing the dict and
+  re-running `find_undeclared_assignment`. P_S2..P_S8 are genuine further
+  randomisations and it misses all seven, for three independent reasons: their
+  names do not match `^(DOV|XTESS|X[A-Z]{2,})`, their labels ("PRELOAD
+  VARIABLE: P_S2") contain none of the keyword patterns, and they have 72 levels
+  against MAX_LEVELS = 12 — and even past those, a 72-level anchor makes an
+  empty crosstab cell certain. They are declared in `considered_and_rejected`
+  anyway so the judgement is recorded rather than implicit. See the LESSON note.
+
+
+  OUTCOMES
+
+  Three items, all referring to slot 1, all 0-10 sliders:
+    task 0  SCENARIO_1            Q 73;  endpoints Q 76 / Q 86
+    task 1  SCENARIO_1_DIFFICULT  Q 90;  endpoints Q 92 / Q 102
+    task 2  SCENARIO_1_SECURE     Q 106; endpoints Q 108 / Q 118
+
+  Endpoint wording is taken from the questionnaire's RESPONSE OPTIONS blocks and
+  matches the .sav value labels ("0 - Definitely would not participate" /
+  "10 - Definitely would participate", etc.). The two secondary items are asked
+  only about scenario 1 and PG lines 520 and 544 confirm the slot-1 vignette was
+  re-shown in a pop-up while they were answered ("SHOW P_S1 IN POP UP ... SO
+  THAT THE RESPONDENT CAN CLICK TO VIEW AS A VIGNETTE REMINDER"), so attaching
+  them to the slot-1 arm is correct, not an assumption.
+
+  No arm reverses the option order, so there is no per-arm response_recode. Note
+  the DIFFICULT item runs low = good and the SECURE item runs low = bad, i.e.
+  they point in opposite directions substantively; both are carried through as
+  raw 0-10 with their own endpoint labels rather than being flipped to a common
+  polarity, so the scale text disambiguates them (ledger #7/#9 class).
+
+
+  TEXT PROVENANCE
+
+  shared_context = Q 56-62 (the DISPLAY_EXP description of the app and the data
+  it collects) + Q 66, 68, 70 (the fixed opening of SCENARIO_1). Word-for-word
+  from Q except for two documented omissions:
+
+    1. Q 53-54, "On the following pages, you will see 8 different scenarios
+       which vary in a number of features. All scenarios will contain study
+       invitations that ask participants to download a research app to a
+       smartphone." Survey mechanics about an 8-vignette battery; this recipe
+       renders one vignette per row, so the sentence would be false in context.
+       Omitted deliberately, not overlooked.
+    2. The bracketed clause shown ONLY to respondents who answered SMARTPHONE=2
+       (Q 54, "[SHOW IF SMARTPHONE = 2; Participants without a smartphone would
+       be loaned a device for the study.]" and Q 68, "[SHOW IF SMARTPHONE = 2:
+       If you do not own a smartphone, you would be loaned a device for the
+       study.]"). This is a PER-RESPONDENT stimulus element, not a randomised
+       one: 1,856 respondents answered Yes, 82 No, 10 skipped. The recipe cannot
+       vary stimulus text by respondent (ledger #27), so the clause is omitted
+       for everyone rather than shown to everyone. 82/1,948 = 4.2% of
+       respondents therefore have condition text missing one sentence they saw.
+       SocSci210 took the other choice and asserts it to all respondents.
+
+  arm text = XL "Lookup table" -> "Text Displayed", for the matching preload
+  value, verbatim. Whitespace only was normalised: trailing spaces stripped per
+  line, and runs of 3+ newlines collapsed to a blank line. The latter matters for
+  the 36 rows with feedback = none, where the source leaves the feedback slot
+  empty and so contains "\n\n\n\n" between the incentive and privacy bullets.
+  Checked: for all 72 values, "Text Displayed" is exactly the five per-level
+  strings from the "Updated Conditions Value Labels" sheet joined by "\n\n",
+  with the feedback slot replaced by the empty string when Feedback = 2 (0
+  exceptions). After normalisation all 72 arm texts are distinct.
+
+  The "The study would last for two weeks and you would be asked to leave the
+  research app installed on your smartphone until the end of the study" sentence
+  is part of the Tech_Support component in XL, so it appears in every arm but
+  travels with the technical-support bullet, as fielded. It is intentionally NOT
+  lifted into shared_context, to keep arm text byte-identical to the source.
+
+  NOT taken from the proposal. PR lines 54-71 print what look like the same
+  bullets, but the wording differs from what was fielded — e.g. PR line 57 has
+  "you should leave the research app installed", which appears 0 times in XL and
+  0 times in Q; XL has "you would be asked to leave". Likewise PR "would walk
+  you through all steps" vs XL "to walk you through all steps". Ledger #35.
+
+
+  SOCSCI210 — WHAT THEY BUILT, AND THE ARITHMETIC
+
+  Their profile: n_rows 19,480, n_participants 1,948, 8 conditions, with
+  rows_per_condition {0: 5844, 1: 1948, 2: 1948, 3: 1948, 4: 1948, 5: 1948,
+  6: 1948, 7: 1948}.
+
+  Their conditions are the eight PRESENTATION SLOTS, not the manipulation:
+    19,480 = 1,948 x 10 items (SCENARIO_1..SCENARIO_8, plus
+             SCENARIO_1_DIFFICULT and SCENARIO_1_SECURE)
+    condition 0 = 5,844 = 1,948 x 3  (the three items that refer to slot 1)
+    conditions 1..7 = 1,948 each     (SCENARIO_2..SCENARIO_8, one item each)
+
+  Reproduced exactly: merging the raw distributions of those ten variables gives
+  {0: 5079, 1: 1117, 2: 1197, 3: 1332, 4: 1024, 5: 2230, 6: 1189, 7: 1433,
+  8: 1427, 9: 907, 10: 2347, 98: 198} — digit for digit their
+  response_distribution. So they also kept code 98 (SKIPPED ON WEB) as a
+  response value; the 198 is 12+11+15+16+21+22+23+15 across SCENARIO_1..8 plus
+  14 and 49 on the two secondary items.
+
+  Their stimulus text is ONE FIXED VIGNETTE, identical in all eight conditions
+  (8 conditions, 2 distinct strings, and the two differ only in which outcome
+  question is appended). The vignette they describe is the cell
+  (Tech_Support 2, Control_data 2, Incentive 1, Feedback none,
+  Protection_Privacy 2) = preload value 41 — so 71 of the 72 arms are described
+  wrongly, and the whole five-factor manipulation is absent. It is also not
+  verbatim: it is the PROPOSAL's wording with "would" rewritten to "will"
+  (it contains "you should leave the research app installed", which is in PR and
+  not in XL/Q), and it asserts "If you do not own a smartphone, you will be
+  loaned a device for the study" to all respondents although Q 68 shows that
+  clause only when SMARTPHONE = 2.
+
+  Same defect class as sd7cf (factor dropped) and c5r2f (wrong scenario for
+  every arm), and the same source error as z358z (ledger #35).
+
+  `comparable_to_socsci210: false` because the scopes are genuinely different
+  (their unit is slot x respondent over all 8 slots keeping refusals; ours is
+  the 72-cell arm x 3 items for slot 1 dropping refusals), not because either
+  build is wrong about who was in which cell. Their arm assignment is not
+  checkable against ours at all, since they did not reconstruct one; the numbers
+  above are reproduced from the same file, which is the strongest agreement
+  available.
+
+
+  LESSON (candidate ledger entry / QC rule)
+
+  A within-subject repeated-measures vignette design randomises the arm PER ITEM,
+  not per respondent. `Condition` resolves one arm per respondent row, so such a
+  design can only be built one slot at a time, and 7/8 of the observations here
+  are unreachable without either (a) a per-(arm, outcome) assignment — the same
+  gap already open for z358z Q1/Q2 — or (b) a "long" mode where one respondent
+  row yields several rows with different arms. Worth a schema note.
+
+  Related: rule 9 should probably also flag columns that SHARE A NAME STEM with
+  the declared assignment variable (P_S1 -> P_S2..P_S8), independently of level
+  count and crossing. That pattern — one variable per repeated exposure — is how
+  a within-subject design looks in a wide file, and it is exactly what the
+  current anchored-crossing test is designed to reject.
+
+
+  WHAT THE CHECKER SHOULD RESOLVE
+
+   1. Scope. Is slot-1-only the right call, or should all eight slots be drafted
+      now as eight recipes? 5,769 rows built vs ~19,400 available.
+   2. Is `experiment: scenario1` the right use of that field? Slots 1-8 are
+      repeated exposures of ONE experiment, not independent experiments as in
+      rpw4u/a5v96.
+   3. privacy_statement level names. "plain wording" (level 1) / "formal
+      wording" (level 2) are my reading of the two texts. PR line 25 calls the
+      factor "Readability ... Easy / Difficult" but never says which level is
+      which; level 1 is the shorter, plainer text, so 1 = Easy. Not stated
+      anywhere in Q, PG or XL. Naming only — the arm text is verbatim either way.
+   4. The two shared_context omissions (Q 53-54 mechanics; the SMARTPHONE = 2
+      loaned-device clause). Both are deliberate and documented, but a checker
+      may prefer the clause included for all, or the 82 non-owners excluded.
+   5. Whether the three items should be one recipe or whether DIFFICULT/SECURE
+      belong in a separate one — they are manipulation checks / mediators rather
+      than the primary DV, and they point in opposite substantive directions.
+   6. Whether QUAL = 9 ("Invalid Complete", 72 cases) should be excluded. Kept
+      here to match SocSci210's 1,948 participants, but "invalid" is NORC's own
+      flag and RP line 56 counts only the 1,876 qualified.
+   7. Whitespace normalisation of the 72 arm texts (trailing spaces; "\n\n\n\n"
+      -> "\n\n" for the 36 feedback = none arms). Content untouched; verify.
+   8. Bullet glyphs: arm text keeps the source's "•"; shared_context uses
+      "• " where Q 57-61 has tab-bullet-tab. Cosmetic normalisation.
+   9. condition_num = P_S1 - 1 is arbitrary but declared; no external
+      convention exists because SocSci210 built slots, not arms.
+  10. I did not open Wenz1387.zip or the published paper. Neither is a text
+      authority (ledger #35) and the fielded text is fully determined by XL, but
+      the zip may contain the author's own analysis code, which would be a second
+      witness on the arm -> factor mapping.
+  11. XL's sheet is titled "Updated Conditions Value Labels". "Updated" implies
+      an earlier version existed. Nothing in the deposit says what changed; the
+      delivered P_S*_* columns match this version exactly for all 15,584
+      assignments, so this is the version that was fielded, but the checker may
+      want to confirm no superseded text is lurking in the .docx originals.
+
+condition:
+  source_var: P_S1
+  factors: [technical_support, data_control, monetary_incentive, feedback, privacy_statement]
+
+  # Shown to every respondent before Scenario #1 and identical across all 72 arms:
+  # DISPLAY_EXP (vFINALsimple lines 56-62) + the fixed opening of SCENARIO_1
+  # (lines 66, 68, 70). Verbatim except for the two omissions documented in notes.
+  shared_context: |
+    The research app, when downloaded to a smartphone, would send short surveys about how people spend their time and collect the following data:
+
+    • Technical characteristics of the phone (for example, brand, screen size)
+    • Whether the phone is currently in motion
+    • The current location (every 5 minutes)
+    • What apps are used and what websites are visited on the phone
+    • The number of incoming and outgoing phone calls and text messages on the phone
+
+    Please note that the research app would only collect information on when other apps are opened or when a call is made. The research app could not see what happens inside other apps or what is said in a phone call or a text message.
+
+    Please read Scenario #1 carefully.
+
+    Imagine that researchers from a public university invite you to participate in a research study that includes downloading a research app to your smartphone.
+
+    The data collected from the app would help researchers to learn more about how Americans spend their time, such as work, childcare, and leisure.
+
+  considered_and_rejected:
+    P_S2: "Vignette shown in presentation slot 2, a different draw from the same 72-cell
+      universe. Slots 2-8 are separate exposures of the SAME experiment and need one
+      recipe each (see notes, SCOPE)."
+    P_S3: "Vignette shown in presentation slot 3; see P_S2."
+    P_S4: "Vignette shown in presentation slot 4; see P_S2."
+    P_S5: "Vignette shown in presentation slot 5; see P_S2."
+    P_S6: "Vignette shown in presentation slot 6; see P_S2."
+    P_S7: "Vignette shown in presentation slot 7; see P_S2."
+    P_S8: "Vignette shown in presentation slot 8; see P_S2."
+    SMARTPHONE: "Self-reported smartphone ownership (1856 yes / 82 no / 10 skipped), a
+      measured attribute, not randomised. It gates one conditional sentence in the
+      stimulus — see the OMISSIONS note."
+
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 2
+      condition_num: 1
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 3
+      condition_num: 2
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 4
+      condition_num: 3
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 5
+      condition_num: 4
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 6
+      condition_num: 5
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 7
+      condition_num: 6
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 8
+      condition_num: 7
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 9
+      condition_num: 8
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 10
+      condition_num: 9
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 11
+      condition_num: 10
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 12
+      condition_num: 11
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 13
+      condition_num: 12
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 14
+      condition_num: 13
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 15
+      condition_num: 14
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 16
+      condition_num: 15
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 17
+      condition_num: 16
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 18
+      condition_num: 17
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 19
+      condition_num: 18
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 20
+      condition_num: 19
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 21
+      condition_num: 20
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 22
+      condition_num: 21
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 23
+      condition_num: 22
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 24
+      condition_num: 23
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 25
+      condition_num: 24
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 26
+      condition_num: 25
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 27
+      condition_num: 26
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 28
+      condition_num: 27
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 29
+      condition_num: 28
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 30
+      condition_num: 29
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 31
+      condition_num: 30
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 32
+      condition_num: 31
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 33
+      condition_num: 32
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 34
+      condition_num: 33
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 35
+      condition_num: 34
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 36
+      condition_num: 35
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 37
+      condition_num: 36
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 38
+      condition_num: 37
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 39
+      condition_num: 38
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 40
+      condition_num: 39
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 41
+      condition_num: 40
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 42
+      condition_num: 41
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 43
+      condition_num: 42
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 44
+      condition_num: 43
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 45
+      condition_num: 44
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 46
+      condition_num: 45
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 47
+      condition_num: 46
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 48
+      condition_num: 47
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 49
+      condition_num: 48
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 50
+      condition_num: 49
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 51
+      condition_num: 50
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 52
+      condition_num: 51
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 53
+      condition_num: 52
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 54
+      condition_num: 53
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "personal summary provided", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 55
+      condition_num: 54
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 56
+      condition_num: 55
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 57
+      condition_num: 56
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 58
+      condition_num: 57
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 59
+      condition_num: 58
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 60
+      condition_num: 59
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "unconditional $20", feedback: "personal summary provided", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 enclosed in the invitation letter as a token of appreciation for your time.
+
+        • You would also receive a personal summary of your results at the end of the study.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 61
+      condition_num: 60
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 62
+      condition_num: 61
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 63
+      condition_num: 62
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 64
+      condition_num: 63
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 65
+      condition_num: 64
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 66
+      condition_num: 65
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $20 fixed", feedback: "none", privacy_statement: "plain wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $20 for downloading the app and leaving it installed on your smartphone until the end of the study.
+
+        • The study would be in line with U.S. regulations about data protection and privacy. All information collected by the research app would be confidential. It would only be used by the researchers and they would not share your individual data with anyone else. The researchers would write publications about the overall results of the study. They would also present the findings at international conferences.
+    - raw: 67
+      condition_num: 66
+      factors: {technical_support: "letter with login details only", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 68
+      condition_num: 67
+      factors: {technical_support: "letter with login details only", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 69
+      condition_num: 68
+      factors: {technical_support: "letter with login details only", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter with login details and a link to the app store where you could install the app. The letter would also contain instructions on how to use the app.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 70
+      condition_num: 69
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can switch app off", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to switch it off at times when you do not want it to collect any data from your smartphone. However, it would be important for this study that you use this option only in rare cases and for short periods.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 71
+      condition_num: 70
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "can review and delete data", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • The research app would allow you to review the data that have been collected and you would have the option to delete specific data points when you do not want them to be transmitted to the researcher. However, it would be important for this study that you use this option only in rare cases.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+    - raw: 72
+      condition_num: 71
+      factors: {technical_support: "letter plus interviewer phone call", data_control: "no control", monetary_incentive: "conditional $6 plus $1 per day, max $20", feedback: "none", privacy_statement: "formal wording"}
+      text: |
+        • You would receive a letter and a phone call from an interviewer to walk you through all steps to install the app. They would also show you how to use the app and answer any questions you may have.
+
+        The study would last for two weeks and you would be asked to leave the research app installed on your smartphone until the end of the study.
+
+        • There would be no option to switch the research app on and off during the course of the study.
+
+        • You would receive $6 for downloading the app and $1 for every day that you leave the app installed on your smartphone, resulting in a maximum amount of $20.
+
+        • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
+
+outcomes:
+  - var: SCENARIO_1
+    task_num: 0
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+  - var: SCENARIO_1_DIFFICULT
+    task_num: 1
+    question: >-
+      How difficult would it be for you to download the app on a smartphone?
+    scale: {min: 0, max: 10, min_label: "Not at all difficult", max_label: "Very difficult"}
+  - var: SCENARIO_1_SECURE
+    task_num: 2
+    question: >-
+      How secure would you consider the information collected from the app?
+    scale: {min: 0, max: 10, min_label: "Not at all secure", max_label: "Very secure"}
+
+# 0-10 slider, straight through. All three items share the same 0-10 coding
+# (.sav value labels on SCENARIO_1 / _DIFFICULT / _SECURE); no arm reverses the
+# option order, so no per-arm response_recode is needed.
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+# 77 DON'T KNOW, 98 SKIPPED ON WEB, 99 REFUSED (prog file lines 418-422 and the
+# .sav value labels). Only 98 actually occurs on these three items.
+missing_codes: [77, 98, 99]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO20
+  religion: RELIG

@@ -1,0 +1,470 @@
+study_id: 9263n
+source: tess
+title: "To Do, to Have, or to Share? Valuing Experiences over Material Possessions"
+data_file: TESS2 086 - Caprariello_Client.sav
+
+# Scope deliberately matches SocSci210's item set exactly (their 7 task_num values
+# = our 7 conceptual items), so the numeric crosscheck is meaningful and strict.
+comparable_to_socsci210: true
+
+notes: >
+  TESS2 086 (Caprariello, University of Chicago, fielded 31 Aug - 11 Sep 2011;
+  "TESS2 086 - Caprariello - Response Rate Report.txt": N fielded 1327,
+  N completed 824). Every text claim below is traceable to
+  "TESS2 086 Caprariello_Quex_vFINAL.txt" with line numbers, which were read and
+  re-read individually rather than inferred from a range. The proposal PDF
+  (Caprariello130.pdf) is used ONLY as a second authority on arm ORDERING and
+  factor names (ledger #35); no stimulus text is taken from it.
+
+
+  THE DESIGN — 2 x 2, ONE assignment variable
+
+  Questionnaire p.1 "Samvar" block, line 29, verbatim:
+    "XTESS086 (1= Condition A, 2= Condition B, 3= Condition C,  4= Condition D),"
+
+  The questionnaire never names the factors; it defines each arm by a display
+  condition on XTESS086. Those [IF] tags are what fix the mapping, and each was
+  read directly:
+    line 57  "[IF XTESS086 = 1]" -> Q2A  "...in order to do something with at
+             least one other person"                    = experiential x shared
+    line 68  "[IF XTESS086 = 2]" -> Q2B  "...in order to do something by
+             yourself"                                  = experiential x solitary
+    line 79  "[IF XTESS086 = 3]" -> Q2C  "...in order to acquire a material
+             possession to use with at least one other person" = material x shared
+    line 89  "[IF XTESS086 = 4]" -> Q2D  "...in order to acquire a material
+             possession to use by yourself"             = material x solitary
+
+  The factor NAMES come from the proposal, which is a legitimate authority for
+  them: PDF p.3 "Crossing these two dimensions results in four possibilities:
+  Shared experiences, shared possessions, solitary experiences, and solitary
+  possessions"; p.4 "the proposed study employs a 2 x 2 design, crossing the
+  experiential-material dimension with the social-solitary dimension". The
+  proposal's Appendices A-D are, in order, "social experience", "solitary
+  experience", "social object", "solitary object" — the same order as
+  XTESS086 = 1,2,3,4, independently confirming the arm ordering above.
+
+
+  WHY XTESS086 IS THE ASSIGNMENT VARIABLE, NOT A LABEL WE TRUSTED (ledger #30)
+
+  Its .sav column label is "Experimental condition", which on its own proves
+  nothing (a5v96's XTESS193 carried that exact label and was presentation order).
+  Three independent confirmations from the data:
+
+  1. Branch fill is EXACT. Q3A/Q4A/Q5A/Q6A/Q7A/Q8A are non-null on exactly
+     407 rows = XTESS086 in {1,2} (218 + 189 = 407). Q3B..Q8B are non-null on
+     exactly 418 = XTESS086 in {3,4} (192 + 226 = 418). Q13A 407 / Q13B 418
+     likewise. That is precisely the routing the questionnaire specifies at
+     lines 98/114 ("[IF XTESS086 = 1-2]" / "[IF XTESS086 = 3-4]"), with zero
+     leakage — impossible if XTESS086 were an order or a nuisance variable.
+  2. Cell counts: 1 -> 218, 2 -> 189, 3 -> 192, 4 -> 226 (sum 825, the full
+     file). Near-uniform, no missing, no fifth value.
+  3. The weight variable's own label is "Sample Weights - 18+ Genpop by
+     XTESS086 conditions".
+
+  SECOND-RANDOMISATION CHECK (ledger #33 / proposed rule 9): none exists. The
+  .sav has 65 columns. The only ones matching ^(DOV|XTESS|X[A-Z]{2,}) are
+  XTESS086, XPARTY7, XIDEO, XREL1, XREL2 — and the last four are pre-existing
+  KnowledgePanel PROFILE measures, listed in the same "Samvar" block at
+  questionnaire lines 30-33 with substantive value sets (party, ideology,
+  religion, attendance) and re-asked as PARTY1-4 / IDEO / REL1 / REL2 at lines
+  502-681. They are neither uniform (e.g. XIDEO: 24/122/91/274/105/163/37) nor
+  randomised. There is no DOV_* column in the client file at all. So a single
+  four-level variable carries the whole 2 x 2; `source_var`, not `source_vars`.
+
+
+  ARM TEXT — shared opening compressed once, remainder verbatim
+
+  `shared_context` is line 55 verbatim, shown to every arm
+  ("[IF XTESS086 = 1-4]" at line 54). Each arm's `text` is its own Q2 paragraph
+  verbatim: line 58 joined to line 59 (Q2A), line 69 joined to line 70 (Q2B),
+  line 80 (Q2C), line 90 (Q2D); the "Q2A-" prefix and its run of spaces are
+  dropped, and the mid-sentence line break in the .txt (an artefact of the
+  .doc -> .txt conversion: "to see a" / "movie with some people") is joined with
+  a single space. Nothing else is altered — the en dashes, the spaced ellipsis
+  " ... any" in arms 1-3 and the UNSPACED "by yourself... any" in arm 4
+  (line 90) are the source's own and are kept.
+
+  Two asymmetries in the instrument that are NOT omissions on our part:
+  (a) the second sentence "The primary focus of this expense should have been on
+      an activity ... and not on buying something that could be kept" exists only
+      in the experiential arms (lines 58, 69). It is absent from Q2C and Q2D
+      (lines 80, 90). Cross-checked against the proposal's Appendices C and D,
+      which also lack it. The arms are therefore unequal in length by design.
+  (b) "What is the purchase that you are thinking about?" is identical in all
+      four arms (lines 61, 72, 82, 92) but TRAILS the varying paragraph. The
+      schema's `shared_context` is a prefix only, so it is repeated inside each
+      arm's `text` rather than dropped. It is kept because it is the instruction
+      that makes the recall concrete, and because every outcome below refers back
+      to it ("your activity" / "your possession"). See uncertainty 2.
+
+  The "[MEDIUM TEXT BOX]" / "[GRID]" / "[NUMBER BOX]" programming tokens are
+  layout directives, not respondent-facing text, and are excluded.
+
+
+  THE STIMULUS IS PARTLY SELF-GENERATED — a real limitation (cf. ledger #27)
+
+  What each respondent then evaluated is their OWN recalled purchase, typed into
+  Q2A/Q2B/Q2C/Q2D (both are populated in the .sav; e.g. "weekend trip to
+  Atlanta", "Spending a day at a Casino with friends."). 613 of 825 Q2A cells are
+  the empty string, i.e. each respondent filled exactly the one box for their
+  arm. The recipe format has no per-respondent stimulus template, so the rendered
+  condition text is the recall INSTRUCTION only, not the purchase the respondent
+  named. This is a genuine information loss, identical in kind to h6zk9's
+  personalised feedback. It is stated rather than worked around. SocSci210 made
+  the same choice.
+
+
+  OUTCOMES — 14 declarations for 7 conceptual items, and why
+
+  Six of the seven items are asked with DIFFERENT wording and a DIFFERENT
+  variable depending on the branch ("your activity" vs "your possession"). The
+  schema has `Outcome.var` (one per item, all arms) and `Arm.outcome_var` (one
+  per arm, all items) but no per-(arm, outcome) override — the gap recorded as an
+  open item for z358z's Q1/Q2. No extension was needed here: because Q3A is NULL
+  for arms 3-4 and Q3B is NULL for arms 1-2, declaring the A and B variants as
+  two separate outcomes lets `build._is_blank` drop the inapplicable one, so each
+  respondent still yields exactly one row per conceptual item. The cost is only
+  that task_num counts items-by-branch (14) rather than items (7):
+
+    task 0  Q3A  line 100   task 1  Q3B  line 116   "how happy ... right now?"
+    task 2  Q4A  line 132   task 3  Q4B  line 148   "how happy ... at the time?"
+    task 4  Q5A  line 165   task 5  Q5B  line 182   money well-spent
+    task 6  Q6A  line 199   task 7  Q6B  line 214   close and connected
+    task 8  Q7A  line 231   task 9  Q7B  line 248   loved and cared about
+    task 10 Q8A  line 265   task 11 Q8B  line 282   people in your life care
+    task 12 Q9A  line 299                            current mood, bad-good
+    task 13 Q9B  line 302                            current mood, sad-happy
+
+  Every question string is the questionnaire line verbatim with the "Q3A-" style
+  prefix and its padding spaces removed, and Q3A/Q3B's single trailing space
+  stripped. Scale end labels are the questionnaire's own option lists
+  (lines 102-111, 167-176, 201-210), which match the .sav value labels except
+  that the .sav drops a space ("Neutral(or slightly unhappy)"); the
+  questionnaire's spelling is used.
+
+  Q9B HAS NO QUESTION STEM OF ITS OWN. Line 302 is literally "Q9B- " and line
+  303 is blank padding; it is the second row of the Q9A grid
+  ("[SHOW Q9A and Q9B ON SAME SCREEN]", line 298), so it inherits Q9A's stem and
+  differs only in its end labels. Reusing Q9A's stem is therefore a
+  reconstruction of what was on screen, not invented text. See uncertainty 3.
+
+
+  RESPONSE CODING
+
+  Q3-Q8: raw 1-5 = displayed 1-5 (the questionnaire prints the numbers
+  themselves, e.g. lines 102-106). Study-level recode is the identity 1..5.
+
+  Q9A/Q9B: the .sav stores 1-9 but the respondent saw a SIGNED scale. Line 301
+  is the grid header verbatim (tabs shown as \\t):
+    -4\\t-3\\t-2\\t-1\\t0\\t1\\t2\\t3\\t4\\t\\textremely bad\\tvery bad\\tbad\\t...
+  so raw 1..9 -> -4..+4 restores the displayed value; it is not an arbitrary
+  transform. Declared as an outcome-level `response_recode` on tasks 12 and 13
+  (monotonic and injective, so QC rules 7-8 hold).
+
+  NO REVERSE-CODED ARM (ledger #7). Checked every paired item's option order in
+  the .sav value labels: Q3A/Q3B, Q4A/Q4B, Q5A/Q5B, Q6A/Q6B, Q7A/Q7B, Q8A/Q8B
+  all run low->high in the same direction with identical anchors, and Q9A
+  (bad->good) and Q9B (sad->happy) both run negative->positive. Q13A/Q13B, which
+  do differ in wording, also both run self->others. No `Arm.response_recode` is
+  needed anywhere.
+
+  `missing_codes: [-1]` = "Refused", the only negative code on any outcome
+  variable here. Dropped per item, so a respondent who refuses one item still
+  contributes the others.
+
+
+  ITEMS DELIBERATELY OUT OF SCOPE
+
+  Q10 (importance, 1-4), Q11 (cost in dollars, free numeric 0-1000000),
+  Q12_Years/Q12_Months (recency), Q13A/Q13B (the 7-point sharing manipulation
+  check), Q14 (material-experiential manipulation check) and Q15-Q20 (TIPI
+  extraversion pair and four materialism items) are all present and clean in the
+  .sav but are NOT built. Q13A/Q13B and Q14 are manipulation checks rather than
+  DVs; Q11/Q12 are unbounded numerics with no option list to recode; Q15-Q20 are
+  trait covariates. SocSci210 excluded all of them too, so including any would
+  break an otherwise exact numeric crosscheck. They are a clean second recipe if
+  wanted, at the cost of comparability.
+
+
+  CONDITION MAPPING — DECLARED (schema rule 2), and independently confirmed
+
+  condition_num = XTESS086 - 1. This is not fitted to SocSci210: the [IF] tags at
+  lines 57/68/79/89 fix which text each raw code shows, and the proposal's
+  appendix order agrees. SocSci210 happens to use the same index, verified cell
+  by cell before any build: their (condition_num, task_num) counts for their
+  task 0 are 215/184/187/216, and our per-XTESS086 counts of valid (non-refused)
+  Q3A-or-Q3B answers are 215/184/187/216 for raw 1/2/3/4 respectively.
+
+
+  ARITHMETIC — where 6,328 rows come from
+
+  825 respondent records in the .sav (the response-rate report says 824
+  completed; there is one extra record, see uncertainty 1). Rows are NOT
+  respondents x items: refusals are dropped per item. Valid answers per
+  conceptual item, pooling each item's A and B variant:
+    Q3 802, Q4 789, Q5 804, Q6 805, Q7 801, Q8 794  -> 4,795
+    Q9A 811, Q9B 722                                -> 1,533
+    total 4,795 + 1,533 = 6,328
+  i.e. 825 x 8 = 6,600 minus 272 refusals = 6,328. Per condition:
+    raw 1: 215+210+213+213+214+214+217+189 = 1,685
+    raw 2: 184+179+185+185+183+182+186+163 = 1,447
+    raw 3: 187+186+188+188+188+186+189+167 = 1,479
+    raw 4: 216+214+218+219+216+212+219+203 = 1,717
+    1,685 + 1,447 + 1,479 + 1,717 = 6,328
+  All four match SocSci210's rows_per_condition exactly, and 1,533 is exactly
+  their task-6 count (they gave Q9A and Q9B one shared task_num, 811 + 722; we
+  give them two, which changes rows_per_task only, a field the crosscheck does
+  not compare).
+
+  Participants: 825 records minus the 11 who refused ALL fourteen declared
+  items = 814, which is SocSci210's participant count exactly. Those 11 are
+  CaseID 17, 31, 192, 200, 326, 407, 562, 590, 769, 831, 840; nine of them have
+  duration <= 12 seconds and an empty recall box, and two typed a refusal
+  ("I really can't think of anything", "at this time nothing").
+
+
+  WHERE SOCSCI210'S TEXT DIFFERS FROM OURS (informational, not a numeric claim)
+
+  Unusually, their arm text is substantively RIGHT here — a faithful substring of
+  Q2A-Q2D. The differences are abridgement and one tense change:
+    - they drop the shared discretionary-money preamble (line 55) entirely;
+    - they drop the "Maybe you bought tickets to see a movie ..." exemplar
+      sentence from all four arms, and the trailing "What is the purchase that
+      you are thinking about?";
+    - their Q5 wording reads "was money well-spent", where both the
+      questionnaire (lines 165, 182) and the .sav label read "is money
+      well-spent";
+    - they render all four arms distinctly (8 distinct stimulus strings per
+      condition = 8 question variants x 1 arm text), so no factor is lost —
+      unlike sd7cf / z358z.
+  Their persona is the KnowledgePanel 6-of-16 subset (Age, Ethnicity, Education,
+  Marital Status, Income, Household Size); this recipe maps 13 fields.
+
+
+  OPEN UNCERTAINTIES FOR THE CHECKER
+
+  1. Row count 825 vs "N Completed 824" in the response-rate report. CaseID is
+     unique across all 825 and every record has a non-zero weight, so no
+     duplicate or obvious placeholder explains the extra one. Not resolved.
+     It does not affect the build: the 825 -> 814 arithmetic above reproduces
+     SocSci210's participant count exactly, so both sides read 825 records.
+  2. Whether "What is the purchase that you are thinking about?" belongs in the
+     rendered condition at all. It is verbatim instrument text shown to every
+     arm, but it trails the varying paragraph so it cannot go in
+     `shared_context` and is repeated four times; and the model is never asked
+     to answer it. SocSci210 omitted it. Removing it changes no number.
+  3. Q9B's question stem is Q9A's, because line 302 is bare ("Q9B- "). Defensible
+     (one grid, "[SHOW Q9A and Q9B ON SAME SCREEN]", line 298) but it IS a
+     reconstruction, and the two rows are then distinguished only by their end
+     labels in the rendered outcome. SocSci210 made the same choice.
+  4. 14 task_num values for 7 conceptual items. The alternative — one task_num
+     per item with a per-(arm, outcome) variable override — needs a schema
+     extension. Confirm that indexing by (item, branch) is acceptable, and that
+     nothing downstream assumes task_num counts conceptual items.
+  5. persona_map omits party_id / ideology / religion. Judgement call, not a
+     source limit: XPARTY7 (9 = "Missing", 75 records), XIDEO (-1 = "Refused",
+     9 records) and XREL1 (-1, 5 records) are all present. Mapping them would
+     add three fields for ~91% of respondents at the price of a literal
+     "Missing"/"Refused" in the persona for the rest. Overridable either way.
+  6. Scope. Q10, Q11, Q12_Years/Q12_Months, Q13A/Q13B, Q14, Q15-Q20 are built by
+     neither side. Q13A/Q13B in particular is the manipulation check for the
+     social-solitary factor and would be a good DV on its own, but adding
+     anything breaks the exact crosscheck. Confirm that matching SocSci210's
+     scope was the right trade here rather than building the fuller study and
+     marking it not-comparable.
+  7. The rendered stimulus is the recall instruction, not the purchase each
+     respondent actually evaluated (which is in Q2A-Q2D as free text). No format
+     support exists for a per-respondent stimulus. This is the one substantive
+     fidelity loss in this recipe and it is not fixable in the recipe.
+  8. "Neutral (or slightly unhappy)" as the low anchor of Q3/Q4 is the
+     questionnaire's own wording (line 107) and is odd as a scale MINIMUM — the
+     scale has no genuinely unhappy end. Faithful, but worth a second pair of
+     eyes in case the fielded instrument differed from this .doc.
+
+
+  UK CONTENT: `full`. Nothing here needs US knowledge — the respondent recalls
+  their own discretionary spending. Only "(in US dollars?)" at line 324 and the
+  $10-$10,000 bracket are US-specific, and both sit in Q11, which is out of
+  scope. A UK rebuild swaps the currency symbol and nothing else.
+
+condition:
+  source_var: XTESS086
+  factors: [purchase_type, social_involvement]
+  shared_context: >-
+    We are interested in ways you spend your discretionary money. Discretionary
+    money refers to money that is spent on anything that is NOT essential to
+    basic activity (that is, essentials refer to things like tuition and
+    textbooks, groceries, transportation, rent, gas for a car, health care,
+    etc.). We'd like you to answer the questions that follow for money that you
+    spent on something discretionary.
+  arms:
+    # --- raw 1 = "Condition A" (line 29) = social experience -----------------
+    - raw: 1
+      condition_num: 0
+      factors: {purchase_type: experiential, social_involvement: shared}
+      text: >-
+        Please think of the last time you spent at least $10 (but no more than
+        $10,000) of your discretionary money in order to do something with at
+        least one other person. The primary focus of this expense should have
+        been on an activity – doing something with at least one other person –
+        and not on buying something that could be kept. Maybe you bought tickets
+        to see a movie with some people, maybe you paid to visit an art museum
+        with friends, maybe you and some other people went to a spa together …
+        any of these would be legitimate examples of spending money to do
+        something with others.
+
+
+        What is the purchase that you are thinking about?
+
+    # --- raw 2 = "Condition B" = solitary experience -------------------------
+    - raw: 2
+      condition_num: 1
+      factors: {purchase_type: experiential, social_involvement: solitary}
+      text: >-
+        Please think of the last time you spent at least $10 (but no more than
+        $10,000) of your discretionary money in order to do something by
+        yourself. The primary focus of this expense should have been on an
+        activity – doing something by yourself – and not on buying something
+        that could be kept. Maybe you bought a ticket to see a movie by
+        yourself, maybe you paid to enter an art museum, maybe you went to a spa
+        by yourself … any of these would be legitimate examples of spending
+        money to do something by yourself.
+
+
+        What is the purchase that you are thinking about?
+
+    # --- raw 3 = "Condition C" = social object ------------------------------
+    - raw: 3
+      condition_num: 2
+      factors: {purchase_type: material, social_involvement: shared}
+      text: >-
+        Please think of the last time you spent at least $10 (but no more than
+        $10,000) of your discretionary money in order to acquire a material
+        possession to use with at least one other person. Maybe you bought a
+        sound system to use with others, maybe you acquired new clothes or
+        jewelry for dressing up to go out with others, or maybe you bought a
+        game to play with others … any of these would be legitimate examples of
+        spending money to acquire material goods to use with others.
+
+
+        What is the purchase that you are thinking about?
+
+    # --- raw 4 = "Condition D" = solitary object ----------------------------
+    - raw: 4
+      condition_num: 3
+      factors: {purchase_type: material, social_involvement: solitary}
+      text: >-
+        Please think of the last time you spent at least $10 (but no more than
+        $10,000) of your discretionary money in order to acquire a material
+        possession to use by yourself. Maybe you bought a sound system that only
+        you will use, maybe you acquired new clothes or jewelry for dressing up
+        to go out alone, maybe you bought a game to play by yourself… any of
+        these would be legitimate examples of spending money to acquire material
+        goods to use alone.
+
+
+        What is the purchase that you are thinking about?
+
+outcomes:
+  # Item 1 — happiness now (questionnaire lines 100 / 116)
+  - var: Q3A
+    task_num: 0
+    question: "Think about when you engaged in your activity. How happy does it make you right now?"
+    scale: {min: 1, max: 5, min_label: "Neutral (or slightly unhappy)", max_label: "Exceptionally happy"}
+  - var: Q3B
+    task_num: 1
+    question: "Think about the last time you used your possession. How happy does it make you right now?"
+    scale: {min: 1, max: 5, min_label: "Neutral (or slightly unhappy)", max_label: "Exceptionally happy"}
+
+  # Item 2 — happiness at the time (lines 132 / 148)
+  - var: Q4A
+    task_num: 2
+    question: "Think about when you engaged in your activity. How happy did it make you at the time?"
+    scale: {min: 1, max: 5, min_label: "Neutral (or slightly unhappy)", max_label: "Exceptionally happy"}
+  - var: Q4B
+    task_num: 3
+    question: "Think about the last time you used your possession. How happy did it make you at the time?"
+    scale: {min: 1, max: 5, min_label: "Neutral (or slightly unhappy)", max_label: "Exceptionally happy"}
+
+  # Item 3 — money well-spent (lines 165 / 182)
+  - var: Q5A
+    task_num: 4
+    question: "To what extent would you say this activity is money well-spent?"
+    scale: {min: 1, max: 5, min_label: "Not well-spent", max_label: "Extremely well-spent"}
+  - var: Q5B
+    task_num: 5
+    question: "To what extent would you say this possession is money well-spent?"
+    scale: {min: 1, max: 5, min_label: "Not well-spent", max_label: "Extremely well-spent"}
+
+  # Item 4 — close and connected to others (lines 199 / 214)
+  - var: Q6A
+    task_num: 6
+    question: "Think about when you engaged in your activity. To what extent did it enable you to feel close and connected to others?"
+    scale: {min: 1, max: 5, min_label: "Not at all", max_label: "Extremely"}
+  - var: Q6B
+    task_num: 7
+    question: "Think about the last time you used your possession. To what extent did it enable you to feel close and connected to others?"
+    scale: {min: 1, max: 5, min_label: "Not at all", max_label: "Extremely"}
+
+  # Item 5 — loved and cared about (lines 231 / 248)
+  - var: Q7A
+    task_num: 8
+    question: "Think about when you engaged in your activity. To what extent did it help you feel loved and cared about?"
+    scale: {min: 1, max: 5, min_label: "Not at all", max_label: "Extremely"}
+  - var: Q7B
+    task_num: 9
+    question: "Think about the last time you used your possession. To what extent did it help you feel loved and cared about?"
+    scale: {min: 1, max: 5, min_label: "Not at all", max_label: "Extremely"}
+
+  # Item 6 — people in your life care about you (lines 265 / 282)
+  - var: Q8A
+    task_num: 10
+    question: "Think about when you engaged in your activity. To what extent did it help show you that people in your life care about you?"
+    scale: {min: 1, max: 5, min_label: "Not at all", max_label: "Extremely"}
+  - var: Q8B
+    task_num: 11
+    question: "Think about the last time you used your possession. To what extent did it help show you that people in your life care about you?"
+    scale: {min: 1, max: 5, min_label: "Not at all", max_label: "Extremely"}
+
+  # Item 7 — current mood, two rows of one grid (lines 299 / 301 / 302 / 304-305).
+  # Asked of all four arms ("[IF XTESS086 = 1-4]", line 296). Q9B shares Q9A's
+  # stem; only the end labels differ. Raw 1..9 -> displayed -4..+4.
+  - var: Q9A
+    task_num: 12
+    question: "Please rate your current mood. Use the following scales to indicate how you feel right now."
+    scale: {min: -4, max: 4, min_label: "extremely bad", max_label: "extremely good"}
+    response_recode: {1: -4, 2: -3, 3: -2, 4: -1, 5: 0, 6: 1, 7: 2, 8: 3, 9: 4}
+  - var: Q9B
+    task_num: 13
+    question: "Please rate your current mood. Use the following scales to indicate how you feel right now."
+    scale: {min: -4, max: 4, min_label: "extremely sad", max_label: "extremely happy"}
+    response_recode: {1: -4, 2: -3, 3: -2, 4: -1, 5: 0, 6: 1, 7: 2, 8: 3, 9: 4}
+
+# Q3-Q8 print their own option numbers 1-5 (e.g. lines 102-106), so the study
+# default is the identity. Q9A/Q9B override it above.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+# -1 = "Refused" on every outcome variable in this .sav. No other negative or
+# sentinel code appears on Q3-Q9.
+missing_codes: [-1]
+
+# KnowledgePanel profile variables. party_id / ideology / religion are available
+# as XPARTY7 / XIDEO / XREL1 but are NOT mapped: XPARTY7 = 9 "Missing" on 75 of
+# 825 records (9.1%) and the client file omits the DOV_XPARTY7 merge that the
+# questionnaire defines at lines 535-575 to repair exactly those cases, so the
+# persona would carry the literal string "Missing". Same for XIDEO / XREL1's
+# -1 "Refused". See uncertainty 5.
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
