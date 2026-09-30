@@ -40,17 +40,56 @@ def read(path: str | Path) -> Dataset:
     """Read a .sav (SPSS) or .dta (Stata) file."""
     p = Path(path)
     suffix = p.suffix.lower()
-    if suffix == ".sav":
-        df, meta = pyreadstat.read_sav(str(p))
-    elif suffix == ".dta":
-        df, meta = pyreadstat.read_dta(str(p))
-    elif suffix == ".por":
-        df, meta = pyreadstat.read_por(str(p))
-    else:
+    readers: dict[str, Any] = {
+        ".sav": pyreadstat.read_sav,
+        ".dta": pyreadstat.read_dta,
+        ".por": pyreadstat.read_por,
+    }
+    reader = readers.get(suffix)
+    if reader is None:
         raise ValueError(f"unsupported data file type: {p.name} (expected .sav/.dta/.por)")
+
+    # Older SPSS files are frequently written in a Windows codepage rather than
+    # UTF-8, and pyreadstat raises rather than substituting. Fall back through
+    # the usual suspects instead of losing the study.
+    last: Exception | None = None
+    for encoding in (None, "latin1", "cp1252", "utf-8-sig", "iso-8859-15"):
+        try:
+            df, meta = reader(str(p)) if encoding is None else reader(str(p), encoding=encoding)
+            break
+        except (UnicodeDecodeError, pyreadstat.ReadstatError) as exc:
+            last = exc
+    else:
+        # pandas' Stata reader recovers some files pyreadstat cannot decode at
+        # any encoding. It gives variable labels but not value labels, which is
+        # enough to inspect and screen a study; a recipe that needs value labels
+        # will have to declare them itself.
+        if suffix == ".dta":
+            try:
+                return _read_dta_with_pandas(p)
+            except Exception as exc:
+                last = exc
+        raise ValueError(f"could not decode {p.name}: {last}") from last
     return Dataset(
         df=df,
         value_labels=dict(meta.variable_value_labels),
         # Some columns carry no label; drop those rather than widen the type.
         column_labels={k: v for k, v in meta.column_names_to_labels.items() if v is not None},
+    )
+
+
+def _read_dta_with_pandas(path: Path) -> Dataset:
+    """Last-resort Stata reader for files pyreadstat cannot decode.
+
+    Returns variable labels but no value labels — pandas does not expose them
+    in a comparable form. Enough to inspect and screen a study; a recipe built
+    on such a file must declare its own codings.
+    """
+    with pd.io.stata.StataReader(str(path)) as reader:
+        df = reader.read()  # type: ignore[attr-defined]  # present at runtime
+        labels = reader.variable_labels()
+    return Dataset(
+        df=df,
+        value_labels={},
+        column_labels={k: v for k, v in labels.items() if v},
     )
