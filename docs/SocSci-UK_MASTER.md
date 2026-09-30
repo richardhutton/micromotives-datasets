@@ -685,11 +685,27 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
   download URLs captured. → `tess_uk_foundation_sources.csv`.
 - ✅ UK-native sources scoped: Dataverse sets, BES (longitudinal), DEL.
 - ✅ Persona spine + crosswalk (2 fields need fixing).
+- ✅ Moved into a proper Python project (§11) with the inspection scripts documented.
+- **Decided (v1 build):** the first worked example is a **simple 2-arm TESS
+  study**, not the conjoint. Target = **`ca9ub` "Nature or Nurture?"** — verified
+  clean: condition `EXPLAIN` (1=Essentialist / 2=Socio-Cultural), outcomes
+  `Q1–Q24` Likert with question wording already in the variable labels, full
+  `PP*` demographic spine, negative missing codes (`-1` refused, `-2` not asked),
+  410 respondents × ~24 items ≈ ~9.8k rows. Rationale: nail the deterministic
+  melt + tests on the simplest real case before taking on multi-task conjoint
+  complexity. *(Caveat: US KnowledgePanel sample — UK-appropriate by topic, not
+  by sample; the UK-sample layer comes from BES/IP later.)*
+  Approach: **recipe-driven** — a hand-authored YAML per study captures §8
+  stages 2–4 (condition var, arm→text, outcome vars, persona map, missing codes);
+  a pure `build_rows(df, meta, recipe)` does the mechanics. Judgment stays
+  separate from mechanics, so the melt is heavily testable and the recipe becomes
+  the artifact an agent + Jev will later draft for human approval.
+  v1 CLI is minimal: `mmds build <recipe>` and `mmds pull <study_id>`.
 - **Next candidates:**
-  1. **First worked example = a UK-native conjoint** (Pricing Immigration or
-     Brexit) — highest ROI (§5d): most signal per scarce respondent + best-
-     generalising format. Build it end-to-end and test held-out-attribute-level
-     generalisation.
+  1. **Then the UK-native conjoint** (Pricing Immigration or Brexit) — highest
+     ROI (§5d): most signal per scarce respondent + best-generalising format.
+     Build end-to-end and test held-out-attribute-level generalisation. Needs the
+     melt to handle multiple tasks per respondent.
   2. Pick a starter batch of 10–15 foundation studies to reconstruct end-to-end.
   3. Finish the persona crosswalk (social grade bands, Divided region remap, BES coding).
   4. BES wide→long converter (the input every forecasting model needs).
@@ -699,16 +715,31 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
 
 ## 11. Files & tooling
 
-**Keep (top level):**
-- `SocSci-UK_MASTER.md` — this doc.
-- `tess_uk_foundation_sources.csv` — the 202 foundation studies (the work-list):
-  `year, title, category, is_conjoint, tess_id, osf_code, study_id,
-  in_socsci210, socsci210_rows, buildable, osf_type, data_file, data_bytes,
-  has_questionnaire, tess_url, osf_url, data_download, is_new`. (`is_conjoint`
-  flags conjoint/factorial designs — see §5d.)
-- Scripts: `explore.py` (SocSci210 inspector), `bes_inspect.py` (BES).
+**Project home:** `~/Workspace/products/micromotives-datasets` — a proper Python
+project (uv, `src/` layout, ruff + mypy + pytest), mirroring sibling `melange-sim`.
+GitHub: `richardhutton/micromotives-datasets` (private). Note the split: the repo
+and folder use a **hyphen**, the importable package uses an **underscore**
+(`micromotives_datasets`). "Micromotives" is the umbrella name for the whole
+simulation stack.
 
-**Archived (`archive/`):** the source notes this doc merged (SocSci210_studies.md,
+**Layout:**
+- `docs/SocSci-UK_MASTER.md` — this doc (source of truth).
+- `docs/innovation_panel_checklist.md` — UKDS SN 6849 pull & reconstruct recipe.
+- `data/catalog/tess_uk_foundation_sources.csv` — the 202 foundation studies (the
+  work-list): `year, title, category, is_conjoint, tess_id, osf_code, study_id,
+  in_socsci210, socsci210_rows, buildable, osf_type, data_kind, data_file,
+  data_bytes, has_questionnaire, tess_url, osf_url, data_download, is_new`.
+  (`is_conjoint` flags conjoint/factorial designs — see §5d.)
+- `data/catalog/uk_dataverse_candidates.csv` — UK Dataverse finds + rejects.
+- `src/micromotives_datasets/` — the package: `schema.py` (the `(P,c,o,r)` `Row`
+  + `Persona`), `persona.py`, `config.py`, `recipe.py`, `sources/`, `pipeline/`.
+- `scripts/` — `explore.py` (SocSci210 inspector), `bes_inspect.py` (BES);
+  usage documented in `scripts/README.md`.
+- `recipes/` — one hand-authored YAML per BUILD study (§8 stages 2–4).
+- `data/raw/` and `data/processed/` — **gitignored**; source downloads and built
+  rows never enter git (UKDS safeguarded = no redistribution).
+
+**Archived (`docs/archive/`):** the source notes this doc merged (SocSci210_studies.md,
 SocSci210_uk_suitability.md, SocSci-UK_v0.1.md, SocSci-UK_data-overview.md,
 SocSci-UK_persona-crosswalk.md, SocSci-UK_DEL.md, BES.md, README.md) and the
 intermediate CSV/JSON (SocSci210_uk_filter, tess_uk_keep_join, tess_uk_foundation,
