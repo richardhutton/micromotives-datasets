@@ -130,6 +130,43 @@ batching bet paying off — method fixes compounding.
 
 ---
 
+### Study 5 — `QQM5MC` (Harvard Dataverse, UK YouGov sample) — **NOT BUILDABLE**
+
+Chosen to test a different source (Dataverse rather than TESS/OSF), a different file
+format (`.tab`), and to get our first genuinely **UK sample**. It produced the most
+consequential finding of Phase 0 — by failing.
+
+Sorace & Hobolt, "A Tale of Two Peoples: Motivated Reasoning after the Brexit
+Referendum". CC0. 3,267 UK respondents, 4 arms (Control / Prime only / Info only /
+Prime & Info).
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 16 | **The deposit contains no questionnaire and no treatment text** — only Stata code, a log, and a de-labelled `.tab`. We know which arm each respondent was in, but not what they read | **method** | Study is blocked pending the paper. See the source-family note below |
+| 17 | `.tab` files carry **no value labels**; labels live in the `.do` file (`lab define expgroup 1 "Prime only" ...`) | **method** | A delimited reader will need labels declared in the recipe, not read from the file |
+| 18 | The arm indicator is **not a column** — it is implied by which suffixed variable is populated (`Q2A`/`Q2B`/`Q2C`/`Q2D`), recovered in Stata by `reshape long` | **method** | Needs a "derive the arm from which outcome variable is present" mode |
+
+**The structural point, which changes sourcing strategy:**
+
+| Source family | Contains | Arm text recoverable? |
+|---|---|---|
+| TESS / OSF (202 studies) | data + questionnaire + methodology report | **Yes** — demonstrated on 4 studies |
+| Dataverse replication archives | analysis code, logs, de-labelled data | **Often not** — built to replicate the *analysis*, not the *instrument* |
+
+The UK-native layer (master doc §5a) leans on Dataverse. This says that layer is
+**more expensive per study than the TESS layer, not less** — the opposite of the
+working assumption — because the instrument has to be recovered from the paper, or
+the study dropped. Worth confirming across the other three confirmed UK Dataverse
+studies before committing.
+
+It also argues for preferring sources that deposit **instruments** — UKDS (which
+supplies questionnaires) and the Innovation Panel — over replication archives.
+
+Outcome: **no rows built.** Recorded as blocked rather than forced; writing arm text
+we cannot evidence is exactly the failure we are trying not to repeat.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.
