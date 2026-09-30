@@ -56,7 +56,7 @@ def test_outcome_carries_question_and_scale_instruction(fixture_sav, fixture_rec
 
 def test_persona_resolves_value_labels(fixture_sav, fixture_recipe) -> None:
     rows = _rows(fixture_sav, fixture_recipe)
-    r = min(rows, key=lambda r: int(r.participant_id))
+    r = min(rows, key=lambda r: int(r.participant_id.split(":")[1]))
     assert r.persona.age == 30
     assert r.persona.sex == "Male"  # 1.0 -> label, not "1"
 

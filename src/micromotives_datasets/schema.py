@@ -82,8 +82,26 @@ class Row(BaseModel):
         description="Source adapter: socsci210 | tess | dataverse | innovation_panel | bes"
     )
     study_id: str = Field(description="Stable study identifier (OSF 5-char code, TESS id, SN, …).")
-    participant_id: str | None = None
+    experiment: str | None = Field(
+        default=None,
+        description="Sub-experiment within the study, when one deposit yields several "
+        "recipes. Part of the row's identity: one deposit's sub-experiments are "
+        "answered by the SAME people, so without it a respondent's rows from two "
+        "sub-experiments are indistinguishable.",
+    )
+    participant_id: str | None = Field(
+        default=None,
+        description="Respondent identifier, namespaced by study. It must be unique "
+        "ACROSS studies, not only within one: these rows get merged into a single "
+        "corpus, and a bare row index made 23,464 respondents collapse into 4,010 "
+        "ids, with 'person 0' existing in all 14 studies as 14 different people.",
+    )
 
-    def anchor(self) -> tuple[str, str, str | None]:
-        """(source, study_id, participant_id) — the row's origin key."""
-        return (self.source, self.study_id, self.participant_id)
+    def anchor(self) -> tuple[str, str, str | None, str | None]:
+        """(source, study_id, experiment, participant_id) — the row's origin key.
+
+        `experiment` is in here because a deposit's sub-experiments share their
+        respondents: `a5v96`'s two vignettes were both shown to all 1,211 people,
+        so the key must separate them.
+        """
+        return (self.source, self.study_id, self.experiment, self.participant_id)

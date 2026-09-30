@@ -127,5 +127,8 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 task_num=outcome.task_num,
                 source=recipe.source,
                 study_id=recipe.study_id,
-                participant_id=str(idx),
+                experiment=recipe.experiment,
+                # Namespaced by study: these rows get merged into one corpus, and a
+                # bare row index collapsed 23,464 respondents into 4,010 ids.
+                participant_id=f"{recipe.study_id}:{idx}",
             )

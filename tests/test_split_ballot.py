@@ -89,7 +89,9 @@ def test_reversed_arm_is_flipped_to_the_canonical_coding(ballot_sav, ballot_reci
     rows = list(build_rows(spss.read(ballot_sav), ballot_recipe))
     # Arm 1 raw (1,2) -> (1,2). Arm 2 raw (1,2) -> (2,1). Canonical totals balance.
     assert Counter(int(r.response_num) for r in rows) == {1: 2, 2: 2}
-    arm2 = sorted((r for r in rows if r.condition_num == 1), key=lambda r: int(r.participant_id))
+    arm2 = sorted(
+        (r for r in rows if r.condition_num == 1), key=lambda r: int(r.participant_id.split(":")[1])
+    )
     assert [int(r.response_num) for r in arm2] == [2, 1]  # flipped, not passed through
 
 

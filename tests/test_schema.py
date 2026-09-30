@@ -31,7 +31,9 @@ def test_row_has_four_distinct_parts() -> None:
     )
     # The tuple's four parts are distinct fields.
     assert row.condition != row.outcome
-    assert row.anchor() == ("tess", "ab12c", None)
+    # (source, study_id, experiment, participant_id) — `experiment` is part of
+    # the key because a deposit's sub-experiments share their respondents.
+    assert row.anchor() == ("tess", "ab12c", None, None)
 
 
 def test_synthetic_quote_defaults_false() -> None:
@@ -45,3 +47,36 @@ def test_synthetic_quote_defaults_false() -> None:
     )
     assert row.synthetic_quote is False
     assert row.quote is None
+
+
+def test_participant_id_is_namespaced_by_study(fixture_sav, fixture_recipe) -> None:
+    """Identity must be unique ACROSS studies, not just within one.
+
+    These rows get merged into a single corpus. With a bare row index, 23,464
+    respondents collapsed into 4,010 ids and "person 0" existed in all 14
+    studies as 14 different people.
+    """
+    from micromotives_datasets.pipeline.build import build_rows
+    from micromotives_datasets.sources import spss
+
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    assert all(r.participant_id.startswith("test01:") for r in rows)
+
+
+def test_anchor_separates_sub_experiments(fixture_sav, fixture_recipe) -> None:
+    """One deposit's sub-experiments are answered by the SAME people.
+
+    `a5v96`'s two vignettes were both shown to all 1,211 respondents, so without
+    `experiment` in the key a respondent's rows from the two are
+    indistinguishable.
+    """
+    from micromotives_datasets.pipeline.build import build_rows
+    from micromotives_datasets.sources import spss
+
+    ds = spss.read(fixture_sav)
+    fixture_recipe.experiment = "one"
+    a = list(build_rows(ds, fixture_recipe))[0]
+    fixture_recipe.experiment = "two"
+    b = list(build_rows(ds, fixture_recipe))[0]
+    assert a.participant_id == b.participant_id, "same respondent, same id"
+    assert a.anchor() != b.anchor(), "but different rows of the corpus"
