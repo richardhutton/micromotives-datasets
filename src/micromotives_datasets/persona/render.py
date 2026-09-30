@@ -8,7 +8,7 @@ only turns a populated `Persona` into a sentence-ish block.
 
 from __future__ import annotations
 
-from .schema import Persona
+from ..schema import Persona
 
 # (attribute, human label) in render order.
 _FIELDS: list[tuple[str, str]] = [

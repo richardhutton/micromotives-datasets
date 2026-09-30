@@ -75,8 +75,8 @@ def test_anchor_separates_sub_experiments(fixture_sav, fixture_recipe) -> None:
 
     ds = spss.read(fixture_sav)
     fixture_recipe.experiment = "one"
-    a = list(build_rows(ds, fixture_recipe))[0]
+    a = next(iter(build_rows(ds, fixture_recipe)))
     fixture_recipe.experiment = "two"
-    b = list(build_rows(ds, fixture_recipe))[0]
+    b = next(iter(build_rows(ds, fixture_recipe)))
     assert a.participant_id == b.participant_id, "same respondent, same id"
     assert a.anchor() != b.anchor(), "but different rows of the corpus"
