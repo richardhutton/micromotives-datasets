@@ -220,6 +220,48 @@ that failed both failed for *source* reasons, not pipeline reasons.
 
 ---
 
+
+## UK-transferability — two axes, not one
+
+Prompted by a check on whether we are building studies that are actually useful
+as a basis for UK work.
+
+**A prior judgement already exists and is good.** `docs/archive/SocSci210_uk_filter.csv`
+carries `uk_applicable`, `conf` and `note` per study, and the criterion was sound: the
+drops are overwhelmingly US race and partisan politics (partisan stereotypes, Latino
+policy attitudes, affective polarization, Congress, the 2020 election), and 17 studies
+carry real reasoning — *"mechanism universal; US racial frame, borderline"*, *"name is
+US, mechanism universal"*, *"dollar prices; convertible"*, *"has race dimension; keep
+non-race arms"*.
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 28 | That judgement **was not reaching the working catalog at all** — it sat in `archive/`, so nothing in the build process could see it | **method** | `uk_applicable`, `uk_conf`, `uk_note` merged into `data/catalog/tess_uk_foundation_sources.csv` (75 of 202 have one) |
+| 29 | The judgement was made from **titles**, so it cannot catch a study whose title reads universal but whose *content* is US-specific. `sd7cf` — "Framing in Noisy Informational Environments" — scored `conf=1.0` with no note; its stimulus is the **Patriot Act** and its outcome is *support for the Patriot Act*, which a UK respondent cannot hold a view on | **method** | New `uk_content` axis, recorded when we open a study to write its recipe — which is free, because we are reading the questionnaire anyway |
+
+**Two distinct axes, both needed:**
+
+| Axis | Question | Source |
+|---|---|---|
+| `uk_applicable` | Could this design be run in the UK at all? | title-level, pre-existing |
+| `uk_content` | Does the stimulus or outcome require US-specific knowledge? | content-level, recorded at build time |
+
+`full` = no country-specific institutions. `mechanism-only` = the effect transfers but
+the stimulus or outcome is US-specific.
+
+Of the 9 studies opened so far: **7 `full`, 2 `mechanism-only`** (`sd7cf` Patriot Act,
+`rpw4u` US oil/courts items). 193 still unassessed at content level.
+
+**Not dropping the `mechanism-only` ones.** The paper's own finding is that training on
+more studies improves generalisation to unseen ones, so a framing effect learned on the
+Patriot Act may still teach the model how framing works. Tagging them means we can hold
+them out and *measure* whether they help, instead of guessing either way.
+
+Also worth noting: a US **sample** is unavoidable across all 202 and is a separate
+concern from US **content**. Only the latter varies.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.
