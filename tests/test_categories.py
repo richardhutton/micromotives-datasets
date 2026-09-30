@@ -95,23 +95,60 @@ def test_identical_schemes_need_no_folding() -> None:
     assert len(set(target.values())) == len(A.concepts)
 
 
-def test_a_scheme_with_no_residual_cannot_absorb_and_must_raise() -> None:
-    """Better to say "cannot reconcile" than to pick a victim.
+NO_RESIDUAL = CatScheme(
+    "strict",
+    [
+        cat("White", "white"),
+        cat("Black", "black"),
+        cat("Hispanic", "hispanic"),
+        cat("2+", "two_or_more_races"),
+        cat("Asian", "asian"),
+    ],
+)
 
-    If a scheme lacks Asian AND has no catch-all, there is no honest place to
-    put those respondents, and choosing one would be fabrication.
+
+def test_a_scheme_without_the_residual_can_still_be_harmonised() -> None:
+    """The real `e45hu` case, and a correction to my first version of this rule.
+
+    e45hu lists White/Black/Asian/Hispanic/2+ with no Other at all. Mapping its
+    `asian` into a canonical `Other or Asian` is a valid coarsening — a
+    canonical category may be the union of ONE source category as well as
+    several. Demanding every scheme own every folded concept blocked a
+    legitimate merge, and the first version of this module did exactly that.
     """
-    no_residual = CatScheme(
-        "strict",
-        [
-            cat("White", "white"),
-            cat("Black", "black"),
-            cat("Hispanic", "hispanic"),
-            cat("2+", "two_or_more_races"),
-        ],
+    # Paired against A, which has Other but NOT Asian — the real e45hu shape.
+    # (Pairing it with B would be no test at all: both distinguish Asian, so it
+    # correctly survives, which is what my first version of this test asserted
+    # against.)
+    target = canonical([NO_RESIDUAL, A])
+    assert crosswalk(NO_RESIDUAL, target)["Asian"] == target["other"] == "Other or Asian"
+
+
+def test_raises_only_when_no_scheme_anywhere_offers_a_residual() -> None:
+    """Then there is genuinely nowhere honest to put the folded concept."""
+    also_no_residual = CatScheme(
+        "strict2",
+        [cat("White", "white"), cat("Black", "black"), cat("Hispanic", "hispanic")],
     )
-    with pytest.raises(ValueError, match="no residual"):
-        canonical([no_residual, B])
+    with pytest.raises(ValueError, match="no scheme offers a residual"):
+        canonical([NO_RESIDUAL, also_no_residual])
+
+
+def test_refusals_do_not_become_a_category() -> None:
+    """A refusal is an absence of an answer, so it gets no canonical category.
+
+    It must also not drag a real concept into the residual by appearing to be a
+    concept some schemes lack — the same reason `bands` keeps unparsed labels
+    out of its edge arithmetic.
+    """
+    with_sentinels = CatScheme(
+        "s", [*A.categories, cat("REFUSED", "declined"), cat("Not asked", "none_of_these")]
+    )
+    target = canonical([with_sentinels, A])
+    assert "declined" not in target
+    assert "none_of_these" not in target
+    # ...and it is dropped from the crosswalk, leaving the field empty.
+    assert "REFUSED" not in crosswalk(with_sentinels, target)
 
 
 def test_crosswalk_rejects_a_concept_outside_the_vocabulary() -> None:

@@ -1,0 +1,49 @@
+{
+  "canonical": {
+    "black": "Black",
+    "hispanic": "Hispanic",
+    "two_or_more_races": "Two or more races",
+    "white": "White",
+    "other_residual": "Other or Asian",
+    "asian": "Other or Asian"
+  },
+  "schemes": {
+    "3bzxg+40": {
+      "White, Non-Hispanic": "White",
+      "Black, Non-Hispanic": "Black",
+      "Other, Non-Hispanic": "Other or Asian",
+      "Hispanic": "Hispanic",
+      "2+ Races, Non-Hispanic": "Two or more races"
+    },
+    "4fsg5+19": {
+      "White, non-Hispanic": "White",
+      "Black, non-Hispanic": "Black",
+      "Other, non-Hispanic": "Other or Asian",
+      "Hispanic": "Hispanic",
+      "2+, non-Hispanic": "Two or more races",
+      "Asian, non-Hispanic": "Other or Asian"
+    },
+    "es4xw+1": {
+      "White, Non-Hispanic": "White",
+      "Black, Non-Hispanic": "Black",
+      "Other, Non-Hispanic": "Other or Asian",
+      "Hispanic": "Hispanic",
+      "2+ Races, Non-Hispanic": "Two or more races"
+    },
+    "8ctbk": {
+      "White, non-Hispanic": "White",
+      "Black, non-Hispanic": "Black",
+      "Other, non-Hispanic": "Other or Asian",
+      "Hispanic": "Hispanic",
+      "2+, non-Hispanic": "Two or more races",
+      "Asian-Pacific Islander, non-Hispanic": "Other or Asian"
+    },
+    "e45hu": {
+      "White, Non-Hispanic": "White",
+      "Black, Non-Hispanic": "Black",
+      "Asian, Non-Hispanic": "Other or Asian",
+      "Hispanic": "Hispanic",
+      "2+ Races, Non-Hispanic": "Two or more races"
+    }
+  }
+}

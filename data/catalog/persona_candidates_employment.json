@@ -42,7 +42,7 @@
         "No",
         "Yes"
       ],
-      "is_attribute": 0.09,
+      "is_attribute": 0.11,
       "kind": "respondent_attribute"
     },
     {
@@ -80,7 +80,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.9,
+      "is_attribute": 0.91,
       "kind": "respondent_attribute"
     }
   ],
@@ -92,7 +92,7 @@
       "values": [
         "Refused"
       ],
-      "is_attribute": 0.03,
+      "is_attribute": 0.02,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -138,7 +138,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.93,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -158,7 +158,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -198,7 +198,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.96,
       "kind": "respondent_attribute"
     }
   ],
@@ -369,7 +369,7 @@
         "Yes",
         "No"
       ],
-      "is_attribute": 0.11,
+      "is_attribute": 0.1,
       "kind": "respondent_attribute"
     },
     {
@@ -387,7 +387,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -397,7 +397,7 @@
       "label": "Current Employment Status",
       "n_levels": 7,
       "values": [],
-      "is_attribute": 0.83,
+      "is_attribute": 0.8,
       "kind": "respondent_attribute"
     }
   ],
@@ -511,7 +511,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.94,
+      "is_attribute": 0.95,
       "kind": "respondent_attribute"
     }
   ],
@@ -589,7 +589,7 @@
         "Armed Services",
         "Other (please specify)"
       ],
-      "is_attribute": 0.93,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     },
     {
@@ -652,7 +652,7 @@
         "Armed Services",
         "Other (please specify)"
       ],
-      "is_attribute": 0.9,
+      "is_attribute": 0.91,
       "kind": "respondent_attribute"
     },
     {
@@ -712,7 +712,7 @@
         "Armed Services",
         "Other (Please specify)"
       ],
-      "is_attribute": 0.88,
+      "is_attribute": 0.86,
       "kind": "respondent_attribute"
     },
     {
@@ -730,7 +730,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.91,
+      "is_attribute": 0.92,
       "kind": "respondent_attribute"
     }
   ],
@@ -816,7 +816,7 @@
       "label": "Current Employment Status",
       "n_levels": 7,
       "values": [],
-      "is_attribute": 0.86,
+      "is_attribute": 0.84,
       "kind": "respondent_attribute"
     }
   ],
@@ -953,7 +953,7 @@
         "Agree",
         "Strongly Agree"
       ],
-      "is_attribute": 0.01,
+      "is_attribute": 0.02,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -970,7 +970,7 @@
         "Agree",
         "Strongly Agree"
       ],
-      "is_attribute": 0.01,
+      "is_attribute": 0.02,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -1022,7 +1022,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.92,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -1075,7 +1075,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.91,
+      "is_attribute": 0.92,
       "kind": "respondent_attribute"
     }
   ],
@@ -1209,7 +1209,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.94,
+      "is_attribute": 0.95,
       "kind": "respondent_attribute"
     }
   ],
@@ -1469,7 +1469,7 @@
         "6",
         "7 Extremely"
       ],
-      "is_attribute": 0.02,
+      "is_attribute": 0.01,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -1708,7 +1708,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.93,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -1784,7 +1784,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -1901,7 +1901,7 @@
         "SKIPPED ON WEB",
         "REFUSED"
       ],
-      "is_attribute": 0.02,
+      "is_attribute": 0.03,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -1920,7 +1920,7 @@
         "SKIPPED ON WEB",
         "REFUSED"
       ],
-      "is_attribute": 0.07,
+      "is_attribute": 0.08,
       "kind": "vignette_or_scenario_attribute"
     },
     {
@@ -1939,7 +1939,7 @@
         "SKIPPED ON WEB",
         "REFUSED"
       ],
-      "is_attribute": 0.06,
+      "is_attribute": 0.07,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -1958,7 +1958,7 @@
         "SKIPPED ON WEB",
         "REFUSED"
       ],
-      "is_attribute": 0.03,
+      "is_attribute": 0.04,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -1992,7 +1992,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.94,
+      "is_attribute": 0.93,
       "kind": "respondent_attribute"
     }
   ],
@@ -2002,7 +2002,7 @@
       "label": "Post-stratification weights - 18+  employed general population (N=4,891)",
       "n_levels": 4765,
       "values": [],
-      "is_attribute": 0.02,
+      "is_attribute": 0.03,
       "kind": "weight_or_admin"
     },
     {
@@ -2035,7 +2035,7 @@
         "SKIPPED ON WEB",
         "REFUSED"
       ],
-      "is_attribute": 0.78,
+      "is_attribute": 0.8,
       "kind": "respondent_attribute"
     },
     {
@@ -2045,7 +2045,7 @@
       "values": [
         "Continue"
       ],
-      "is_attribute": 0.08,
+      "is_attribute": 0.09,
       "kind": "vignette_or_scenario_attribute"
     },
     {
@@ -2153,7 +2153,7 @@
         "Yes",
         "No"
       ],
-      "is_attribute": 0.84,
+      "is_attribute": 0.82,
       "kind": "respondent_attribute"
     },
     {
@@ -2211,7 +2211,7 @@
         "9",
         "10 - All other race(s)"
       ],
-      "is_attribute": 0.1,
+      "is_attribute": 0.12,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -2258,7 +2258,7 @@
         "Likely to benefit",
         "No difference"
       ],
-      "is_attribute": 0.01,
+      "is_attribute": 0.02,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -2293,7 +2293,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.82,
+      "is_attribute": 0.84,
       "kind": "respondent_attribute"
     },
     {
@@ -2337,7 +2337,7 @@
         "satisfied",
         "not satisfied"
       ],
-      "is_attribute": 0.03,
+      "is_attribute": 0.04,
       "kind": "vignette_or_scenario_attribute"
     },
     {
@@ -2348,7 +2348,7 @@
         "satisfied",
         "not satisfied"
       ],
-      "is_attribute": 0.04,
+      "is_attribute": 0.03,
       "kind": "vignette_or_scenario_attribute"
     },
     {
@@ -2394,7 +2394,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -2474,7 +2474,7 @@
         "Government should see to it",
         "Government should not see to it"
       ],
-      "is_attribute": 0.01,
+      "is_attribute": 0.02,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -2576,7 +2576,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.93,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -2596,7 +2596,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -2650,7 +2650,7 @@
         "Yes",
         "No"
       ],
-      "is_attribute": 0.13,
+      "is_attribute": 0.11,
       "kind": "respondent_attribute"
     },
     {
@@ -2716,7 +2716,7 @@
       "label": "Current Employment Status",
       "n_levels": 7,
       "values": [],
-      "is_attribute": 0.86,
+      "is_attribute": 0.89,
       "kind": "respondent_attribute"
     }
   ],
@@ -2746,7 +2746,7 @@
       "label": "Political Ideology of Respondent's Facebook Network",
       "n_levels": 10,
       "values": [],
-      "is_attribute": 0.02,
+      "is_attribute": 0.03,
       "kind": "derived_or_computed"
     },
     {
@@ -2754,7 +2754,7 @@
       "label": "Network Ideology Page Timing - First Click",
       "n_levels": 2356,
       "values": [],
-      "is_attribute": 0.05,
+      "is_attribute": 0.06,
       "kind": "derived_or_computed"
     },
     {
@@ -2794,7 +2794,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.96,
       "kind": "respondent_attribute"
     },
     {
@@ -2829,7 +2829,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.95,
+      "is_attribute": 0.94,
       "kind": "respondent_attribute"
     }
   ],
@@ -2849,7 +2849,7 @@
       "label": "[A working mother can establish just as warm and secure a relationship with her",
       "n_levels": 5,
       "values": [],
-      "is_attribute": 0.05,
+      "is_attribute": 0.06,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -2865,7 +2865,7 @@
       "label": "[Because of past discrimination, employers should make special efforts to hire a",
       "n_levels": 5,
       "values": [],
-      "is_attribute": 0.05,
+      "is_attribute": 0.04,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -2873,7 +2873,7 @@
       "label": "What about your opinion - are you for or against preferential hiring and promoti",
       "n_levels": 5,
       "values": [],
-      "is_attribute": 0.03,
+      "is_attribute": 0.02,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -2889,7 +2889,7 @@
       "label": "[Organized labor] ...As far as the people running these institutions are concern",
       "n_levels": 4,
       "values": [],
-      "is_attribute": 0.07,
+      "is_attribute": 0.08,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -2897,7 +2897,7 @@
       "label": "[Employment (wages) for you, or other members of your household] Does your house",
       "n_levels": 2,
       "values": [],
-      "is_attribute": 0.52,
+      "is_attribute": 0.51,
       "kind": "respondent_attribute"
     },
     {
@@ -2905,7 +2905,7 @@
       "label": "[Business, farm, or self-employment] Does your household receive income from any",
       "n_levels": 2,
       "values": [],
-      "is_attribute": 0.49,
+      "is_attribute": 0.45,
       "kind": "respondent_attribute"
     },
     {
@@ -2913,7 +2913,7 @@
       "label": "Current Employment Status",
       "n_levels": 7,
       "values": [],
-      "is_attribute": 0.87,
+      "is_attribute": 0.88,
       "kind": "respondent_attribute"
     }
   ],
@@ -2949,7 +2949,7 @@
         "6",
         "Extremely frequently7"
       ],
-      "is_attribute": 0.02,
+      "is_attribute": 0.03,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -3097,7 +3097,7 @@
       "values": [
         "Refused"
       ],
-      "is_attribute": 0.05,
+      "is_attribute": 0.04,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -3117,7 +3117,7 @@
       "values": [
         "Refused"
       ],
-      "is_attribute": 0.05,
+      "is_attribute": 0.04,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -3148,7 +3148,7 @@
         "No",
         "Yes"
       ],
-      "is_attribute": 0.12,
+      "is_attribute": 0.14,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -3159,7 +3159,7 @@
         "No",
         "Yes"
       ],
-      "is_attribute": 0.19,
+      "is_attribute": 0.2,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -3300,7 +3300,7 @@
         "Military Reserves or National Guard",
         "Armed Forces"
       ],
-      "is_attribute": 0.62,
+      "is_attribute": 0.58,
       "kind": "respondent_attribute"
     },
     {
@@ -3340,7 +3340,7 @@
         "Armed Services",
         "Other (Please specify)"
       ],
-      "is_attribute": 0.85,
+      "is_attribute": 0.86,
       "kind": "respondent_attribute"
     },
     {
@@ -3413,7 +3413,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.87,
+      "is_attribute": 0.88,
       "kind": "respondent_attribute"
     }
   ],
@@ -3448,7 +3448,7 @@
       "label": "Please think about how many hours you work on average each week, and enter this number in the space below.",
       "n_levels": 65,
       "values": [],
-      "is_attribute": 0.31,
+      "is_attribute": 0.32,
       "kind": "respondent_attribute"
     },
     {
@@ -3456,7 +3456,7 @@
       "label": "How many weeks do you work on average each year?",
       "n_levels": 39,
       "values": [],
-      "is_attribute": 0.69,
+      "is_attribute": 0.71,
       "kind": "respondent_attribute"
     },
     {
@@ -3487,7 +3487,7 @@
         "No",
         "Yes"
       ],
-      "is_attribute": 0.18,
+      "is_attribute": 0.16,
       "kind": "derived_or_computed"
     },
     {
@@ -3526,7 +3526,7 @@
         "No",
         "Yes"
       ],
-      "is_attribute": 0.04,
+      "is_attribute": 0.05,
       "kind": "derived_or_computed"
     },
     {
@@ -3574,7 +3574,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.94,
+      "is_attribute": 0.93,
       "kind": "respondent_attribute"
     }
   ],
@@ -3614,7 +3614,7 @@
         "Somewhat oppose",
         "Definitely oppose"
       ],
-      "is_attribute": 0.02,
+      "is_attribute": 0.01,
       "kind": "opinion_or_attitude_item"
     },
     {
@@ -3632,7 +3632,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.82,
+      "is_attribute": 0.84,
       "kind": "respondent_attribute"
     }
   ],
@@ -3650,7 +3650,7 @@
         "Not working - disabled",
         "Not working - other"
       ],
-      "is_attribute": 0.94,
+      "is_attribute": 0.95,
       "kind": "respondent_attribute"
     }
   ]

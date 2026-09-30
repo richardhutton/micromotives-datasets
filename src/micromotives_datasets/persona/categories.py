@@ -33,6 +33,13 @@ from dataclasses import dataclass
 # these are the spellings seen so far, kept as a fallback for offline use.
 RESIDUAL_HINTS = ("other", "something else", "none of these", "not listed")
 
+# Concepts that are not categories at all. A refusal or an unasked question is
+# an absence of an answer, so it must not become a canonical category and must
+# not drag a real concept into the residual with it — the same reason
+# `bands.Scheme` keeps its unparsed labels separate rather than guessing at an
+# interval for "REFUSED".
+NON_ANSWER_CONCEPTS = frozenset({"declined", "none_of_these", "refused", "missing"})
+
 
 @dataclass(frozen=True)
 class Category:
@@ -50,7 +57,8 @@ class CatScheme:
 
     @property
     def concepts(self) -> set[str]:
-        return {c.concept for c in self.categories}
+        """The real concepts, excluding refusals and unasked questions."""
+        return {c.concept for c in self.categories if c.concept not in NON_ANSWER_CONCEPTS}
 
     @property
     def residual(self) -> Category | None:
@@ -65,9 +73,16 @@ def canonical(schemes: list[CatScheme]) -> dict[str, str]:
     that lack it have already absorbed it into their residual — so it folds
     into the residual, whose label then names what it now contains.
 
-    Raises when a concept is missing from a scheme that has no residual to
-    absorb it: that scheme genuinely cannot be reconciled, and saying so is
-    better than guessing which of its categories should swallow the difference.
+    A scheme does NOT have to hold every folded concept. `e45hu` lists
+    White/Black/Asian/Hispanic/2+ with no Other at all, and mapping its `asian`
+    into a canonical `Other or Asian` is still a valid coarsening: a canonical
+    category may be the union of a single source category just as well as
+    several. Requiring each scheme to own every folded concept was my own error
+    and it blocked a legitimate merge.
+
+    Raises only when a concept must fold and NO scheme anywhere offers a
+    residual to fold it into — then there is genuinely nowhere honest to put
+    it, and saying so beats electing a victim.
     """
     live = [s for s in schemes if s.categories]
     if not live:
@@ -76,18 +91,15 @@ def canonical(schemes: list[CatScheme]) -> dict[str, str]:
     universal = set.intersection(*(s.concepts for s in live))
     everything = set.union(*(s.concepts for s in live))
     folded = sorted(everything - universal)
+    residual_concepts = {s.residual.concept for s in live if s.residual}
 
-    if folded:
-        for s in live:
-            missing = folded and not s.concepts.issuperset(folded)
-            if missing and s.residual is None:
-                raise ValueError(
-                    f"{s.name} distinguishes none of {folded} and has no residual "
-                    "category to absorb them — cannot reconcile without guessing"
-                )
+    if folded and not residual_concepts:
+        raise ValueError(
+            f"{folded} are distinguished by only some schemes and no scheme offers a "
+            "residual category to fold them into — cannot reconcile without guessing"
+        )
 
     out: dict[str, str] = {}
-    residual_concepts = {s.residual.concept for s in live if s.residual}
     for concept in sorted(universal):
         out[concept] = _title(concept)
     # Everything not universally distinguished lands in the residual, and the
@@ -102,8 +114,15 @@ def canonical(schemes: list[CatScheme]) -> dict[str, str]:
     return out
 
 
+# Concept slugs whose natural titling reads badly. `other_residual` is named
+# for what it DOES in the algorithm, not for what a row should say.
+DISPLAY = {"other_residual": "Other"}
+
+
 def _title(concept: str) -> str:
     """`two_or_more_races` -> `Two or more races`."""
+    if concept in DISPLAY:
+        return DISPLAY[concept]
     words = concept.replace("_", " ").strip()
     return words[:1].upper() + words[1:] if words else words
 
@@ -117,6 +136,11 @@ def crosswalk(scheme: CatScheme, target: dict[str, str]) -> dict[str, str]:
     """
     out = {}
     for cat in scheme.categories:
+        # A non-answer gets no canonical category: the persona field is left
+        # empty instead, which is what `persona_missing` does for the same
+        # reason (rule 12 - "Ethnicity: REFUSED" is worse than no ethnicity).
+        if cat.concept in NON_ANSWER_CONCEPTS:
+            continue
         if cat.concept not in target:
             raise ValueError(
                 f"{scheme.name}: concept {cat.concept!r} (label {cat.label!r}) is not "
