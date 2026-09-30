@@ -34,6 +34,14 @@ condition:
   # left implicit, so the undeclared-assignment screen stays quiet for the right
   # reason instead of by luck.
   considered_and_rejected:
+    DOV_RO2_Assign: "separate experiment (RO2)"
+    DOV_RO3_Assign: "separate experiment (RO3)"
+    DOV_AQ1_Assign: "separate experiment (AQ1)"
+    DOV_AQ2_Assign: "separate experiment (AQ2)"
+    DOV_AQ3_Assign: "separate experiment (AQ3)"
+    DOV_NO_Assign: "separate experiment (NO)"
+    DOV_QB1_Assign: "separate experiment (QB1)"
+    DOV_QB2_Assign: "separate experiment (QB2)"
     DOV_AQ4_Assign: "separate experiment (AQ4 question wording)"
     DOV_QW1_Assign: "separate experiment (QW1 question wording)"
     DOV_RO4_Assign: "separate experiment (RO4 response order)"

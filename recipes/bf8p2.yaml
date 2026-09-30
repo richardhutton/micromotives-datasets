@@ -23,6 +23,8 @@ notes: >
 
 condition:
   source_var: SCENE
+  considered_and_rejected:
+    RND_SECT: "order of the three TESS projects in this omnibus; no bf8p2 text depends on it"
   factors: [valence, social_comparison]
   shared_context: >
     You were asked to imagine living in an apartment, and how you would feel about

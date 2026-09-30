@@ -1,23 +1,32 @@
-"""Rule 9 — is there a second randomisation the recipe didn't declare?
+"""Screens that need the DATA alongside the recipe, so cannot live in `qc.check`.
 
-This exists because of ledger #33. `z358z` is a 2x2 randomised through TWO
-variables — `XTESS175` (scenario) and `DOV_OPTION` (consent alternative) — with
-no combined four-level code anywhere in the file. The recipe declared only the
-first, so a whole factor was silently absent from the stimulus text, and nothing
-in the pipeline could have noticed. An agent happened to spot it.
+Both warn; neither ever fails a build. A recipe silences a variable either by
+declaring it in `source_vars`, or by recording a reason in
+`condition.considered_and_rejected` — which keeps the judgment on the record
+instead of leaving it implicit.
 
-It lives here rather than in `qc.check(rows, recipe)` because it needs the
-`Dataset`, and that signature has no data access.
+**Rule 9 — an undeclared second randomisation.** Ledger #33: `z358z` is a 2x2
+randomised through two variables, `XTESS175` (scenario) and `DOV_OPTION`
+(consent alternative), with no combined four-level code anywhere in the file.
+The recipe declared only the first, so a whole factor was silently absent from
+the stimulus text and nothing in the pipeline could notice. An agent spotted it.
 
-The screen is anchored on the recipe's OWN declared assignment variable. That
-anchoring is what makes it usable: a naive "find all randomisation-looking
-variables" sweep over the corpus returns over a thousand hits, dominated by
-item-order variables. Requiring full, balanced crossing against the declared key
-cuts it to near-zero on a correct recipe.
+The screen is anchored on the recipe's OWN declared assignment. That anchoring
+is what makes it usable: an unanchored sweep for randomisation-looking variables
+across the corpus returns over a thousand hits.
 
-It warns; it never fails a build. A recipe silences a variable either by
-declaring it in `source_vars` or by recording a reason in
-`condition.considered_and_rejected`.
+**Rule 11 — a numbered sibling of the declared assignment.** `P_S1` alongside
+`P_S2..P_S8` is what a within-subject repeated measure looks like in a wide file;
+`Vignette1` alongside `Vignette2` is what a two-experiment deposit looks like.
+Rule 9 is structurally blind to both, so this is deliberately a separate, much
+cruder test.
+
+Neither rule can tell a second ARM FACTOR from an item-order randomisation:
+both are randomised, balanced, and independent of the first. The difference is
+whether the level shows up in the stimulus text, which no statistic can see. So
+these screens surface candidates for a decision — and order variables are
+surfaced too, because ledger #2 is `sd7cf`'s *dropped distractor-position*
+factor, i.e. a case where order WAS the manipulation.
 """
 
 from __future__ import annotations
@@ -34,14 +43,18 @@ from ..sources.spss import Dataset
 # only variable"), `XTESS*`, or an X-prefixed code. Labels are a second route in,
 # for the deposits that do not follow the naming.
 NAME_PAT = re.compile(r"^(DOV|XTESS|X[A-Z]{2,})", re.I)
-LABEL_PAT = re.compile(r"random|experim|condition|assign|version|\barm\b", re.I)
+
+# "preload" and "order" are both load-bearing. TESS labels randomisation
+# preloads as `PRELOAD : P_ORDER` / `PRELOAD VARIABLE: P_S1`, matching no other
+# keyword — that alone hid `zaqkm`'s second randomisation. And see the module
+# docstring on why order variables must be surfaced rather than assumed benign.
+LABEL_PAT = re.compile(r"random|experim|condition|assign|version|preload|\border\b|\barm\b", re.I)
 
 MAX_LEVELS = 12
 MIN_COVERAGE = 0.95
 MIN_BALANCE = 0.70
 
-# A numbered sibling of the declared assignment variable: `P_S1` -> `P_S2..P_S8`,
-# `Vignette1` -> `Vignette2`. See `find_numbered_siblings`.
+# `P_S1` -> `P_S2`, `Vignette1` -> `Vignette2`. See `find_numbered_siblings`.
 STEM_PAT = re.compile(r"^(.*?)(\d+)$")
 
 
@@ -66,8 +79,37 @@ def _balance(counts: pd.Series) -> float:
     return float(counts.min() / counts.max())
 
 
+def find_numbered_siblings(ds: Dataset, recipe: Recipe) -> list[str]:
+    """Rule 11 — columns that are a numbered sibling of a declared variable.
+
+    `b87sm` is within-subject: each respondent saw eight vignettes from a 72-cell
+    universe, slot k assigned by `P_S{k}`. Declaring `P_S1` leaves seven further
+    randomisations — 7/8 of the observations — unreachable, and rule 9 misses all
+    seven for three independent reasons: the names do not match its pattern, the
+    labels carry no keyword it knew, and 72 levels exceeds `MAX_LEVELS`; past all
+    three, a 72-level anchor guarantees an empty crosstab cell.
+
+    A numbered sibling needs none of that machinery. Measured across every recipe
+    and draft: zero false positives, true positives on exactly the two studies
+    with observations left on the table.
+    """
+    declared = {v.upper() for v in recipe.condition.variables}
+    rejected = {k.upper() for k in recipe.condition.considered_and_rejected}
+    stems = {m.group(1) for v in declared if (m := STEM_PAT.match(v)) and m.group(1)}
+    if not stems:
+        return []
+    return [
+        col
+        for col in ds.df.columns
+        if col.upper() not in declared
+        and col.upper() not in rejected
+        and (m := STEM_PAT.match(col.upper()))
+        and m.group(1) in stems
+    ]
+
+
 def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
-    """Columns that look like a second randomisation crossed with the declared one."""
+    """Rule 9 — columns that look like a second randomisation crossed with ours."""
     declared = {v.upper() for v in recipe.condition.variables}
     if not declared:
         return []
@@ -79,11 +121,20 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
         return []
     anchor = ds.df[keys].astype("string").agg("|".join, axis=1)
 
+    # Rule 11 owns the numbered-sibling family, so skip those and their component
+    # columns. `b87sm` declares `P_S1`; the file also holds `P_S2..P_S8` and each
+    # slot's five decomposed factor columns (`P_S2_Tech_Support`, ...). Rule 11
+    # already reports the seven slots, and repeating all 40 components here would
+    # bury the very signal it exists to give.
+    sibling_prefixes = tuple(s.upper() for s in find_numbered_siblings(ds, recipe))
+
     out: list[Suspect] = []
     n = len(ds.df)
     for col in ds.df.columns:
         up = col.upper()
         if up in declared or up in rejected:
+            continue
+        if sibling_prefixes and up.startswith(sibling_prefixes):
             continue
         label = (ds.column_labels.get(col) or "").strip()
         if not (NAME_PAT.match(col) or LABEL_PAT.search(label)):
@@ -98,56 +149,23 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
         if _balance(counts) < MIN_BALANCE:
             continue
 
-        # The discriminating test: a genuine second factor is fully crossed with
-        # the declared one and roughly balanced within every cell. An item-order
-        # or attention-check variable usually is not, or has empty cells.
+        # Full crossing is the discriminating test: a second randomisation has
+        # every combination populated, while a nested variable — a follow-up
+        # asked of one arm only, or a component of the declared code itself —
+        # leaves empty cells.
+        #
+        # We do NOT additionally require balance WITHIN cells. That gate was here
+        # originally and it silently lost power as arm count grew: with `cug34`'s
+        # 24 arms (~84 per cell) sampling noise alone puts min/max at 0.57-0.70,
+        # so of six genuine second randomisations it reported exactly one — and
+        # which one was essentially chance. `zaqkm` measured 0.39 at 40 arms.
+        # Marginal balance (above) carries the same signal without the cell-size
+        # dependence: those six score 0.91-1.00 on it.
         table = pd.crosstab(anchor, series)
         if table.size == 0 or (table.to_numpy() == 0).any():
             continue
-        cells = table.to_numpy().flatten()
-        if _balance(pd.Series(cells)) < MIN_BALANCE:
-            continue
 
         out.append(Suspect(var=col, label=label, n_levels=len(counts), balance=_balance(counts)))
-    return out
-
-
-def find_numbered_siblings(ds: Dataset, recipe: Recipe) -> list[str]:
-    """Columns that are a NUMBERED SIBLING of a declared assignment variable.
-
-    Rule 11, and a direct answer to a blind spot in rule 9 above. `b87sm` is a
-    within-subject vignette study: each respondent saw eight vignettes drawn from
-    a 72-cell universe, with slot k assigned by `P_S{k}`. Declaring `P_S1` leaves
-    seven further randomisations — 7/8 of the study's observations — unreachable,
-    and rule 9 misses every one of them for three independent reasons: the names
-    do not match its pattern, the labels ("PRELOAD VARIABLE: P_S2") carry no
-    keyword, and 72 levels exceeds `MAX_LEVELS`.
-
-    A numbered sibling needs none of that machinery. `P_S1` alongside `P_S2..P_S8`
-    is what a repeated-measures design looks like in a wide file, and `Vignette1`
-    alongside `Vignette2` is what a two-experiment deposit looks like. Measured
-    across every recipe: zero false positives, and true positives on exactly the
-    two studies with observations left on the table.
-
-    Either shape means the recipe covers part of the deposit, which is fine — but
-    it should be a stated scope decision, not an accident.
-    """
-    declared = {v.upper() for v in recipe.condition.variables}
-    rejected = {k.upper() for k in recipe.condition.considered_and_rejected}
-    stems = set()
-    for var in declared:
-        if (m := STEM_PAT.match(var)) and m.group(1):
-            stems.add(m.group(1))
-    if not stems:
-        return []
-
-    out = []
-    for col in ds.df.columns:
-        up = col.upper()
-        if up in declared or up in rejected:
-            continue
-        if (m := STEM_PAT.match(up)) and m.group(1) in stems:
-            out.append(col)
     return out
 
 
@@ -155,9 +173,8 @@ def render(suspects: list[Suspect], siblings: list[str] | None = None) -> str:
     lines = [f"  warn  possible undeclared assignment: {s.render()}" for s in suspects]
     if lines:
         lines.append(
-            "        fully crossed and balanced against the declared assignment. "
-            "Declare it in `source_vars`, or give a reason in "
-            "`condition.considered_and_rejected`."
+            "        fully crossed with the declared assignment. Declare it in "
+            "`source_vars`, or give a reason in `condition.considered_and_rejected`."
         )
     if siblings:
         lines.append(f"  warn  numbered siblings of the declared assignment: {', '.join(siblings)}")

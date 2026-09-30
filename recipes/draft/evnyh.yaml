@@ -262,10 +262,12 @@ notes: >
 
   So: they did NOT get the option-order reversal right here, unlike in rpw4u. There was
   no reversal to handle — the codes were already label-anchored — and they introduced
-  one, in a factor that is not the direction factor. This revises the ledger's standing
-  summary once more: their arm assignment and row structure are right 8/8, but their
-  response values are unreliable whenever a code has to be interpreted against a label,
-  not only when a band must be converted to a quantity.
+  one, in a factor that is not the direction factor. This sharpens the ledger's standing
+  summary: their arm assignment and row structure are right again (as in every study
+  reconciled so far), but their response values are unreliable whenever a code has to
+  be interpreted against its value LABEL — not only when a band must be converted to a
+  quantity (ledger #9), and not only downward: here the degradation is a reversal and a
+  three-level collapse, both introduced where the source needed nothing done at all.
 
 
   == UK CONTENT ==

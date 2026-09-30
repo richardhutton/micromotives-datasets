@@ -114,6 +114,7 @@ condition:
   # numbered-sibling screen reports a stated scope decision rather than an
   # accident, and so the debt is visible in the recipe and not only in the ledger.
   considered_and_rejected:
+    XTESS193: "presentation ORDER of the two vignettes, not the manipulation - see the notes above"
     Vignette2: "second experiment (12-arm combat-medic triage); owed as its own recipe"
   factors: [cds_support, cds_recommendation, end_result]
   shared_context: >

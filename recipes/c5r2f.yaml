@@ -35,6 +35,8 @@ notes: >
 
 condition:
   source_var: XTESS084
+  considered_and_rejected:
+    Q2_randomization: "order of the two Q2 items within the follow-up battery, which is out of scope here"
   factors: [domain, default, policy_process]
   shared_context: >
     You were asked to read a short scenario and respond as you would if you were
