@@ -1,5 +1,9 @@
 # Failure ledger
 
+Project-wide rulings live in **`docs/CONVENTIONS.md`** — characters, source
+authority, arm-text principle, scope. This file records what went *wrong*; that
+one records what we *decided*.
+
 One line per problem found, and what we did about it. The point is to separate
 **one-off fixes** (patch this study) from **method fixes** (a rule that protects
 every future study). Only the second kind compounds — if the pass rate isn't
@@ -489,7 +493,11 @@ came from a study the previous rule was blind to, one batch apart.
   are set from a handful of recipes. Expect to revisit once a batch has run through them.
 - `b87sm` slots 2-8 owed (finding #41) — blocked on per-item arm assignment, the same
   schema gap as `z358z` Q1/Q2.
-- Automate the proposal-vs-questionnaire phrase check (finding #44).
+- Automate the proposal-vs-questionnaire phrase check (findings #44, #55).
+- **Character sweep owed on `zaqkm`**: 114 curly apostrophes in arm text, against
+  the ruling now in `docs/CONVENTIONS.md`. One file. The other 13 recipes already
+  comply, having straightened quotes before anyone decided to. Held until its
+  checker reports, to avoid editing a file under review.
 - Persona categories are still passed through raw (`Education: Bachelor's degree or
   higher`). The crosswalk to one shared vocabulary (master doc §6) is unbuilt — two
   panel lookup tables plus UK re-anchoring, per the coverage finding above.
