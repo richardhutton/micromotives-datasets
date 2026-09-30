@@ -158,15 +158,20 @@ notes: |
 
   THE UNDECLARED-ASSIGNMENT SCREEN CANNOT SEE SLOTS 2-8
 
-  Rule 9 (`pipeline/screen.py`) reports nothing here, with or without the
-  `considered_and_rejected` entries below — verified by clearing the dict and
-  re-running `find_undeclared_assignment`. P_S2..P_S8 are genuine further
+  Rule 9 (`pipeline/screen.py`) cannot see P_S2..P_S8. P_S2..P_S8 are genuine further
   randomisations and it misses all seven, for three independent reasons: their
   names do not match `^(DOV|XTESS|X[A-Z]{2,})`, their labels ("PRELOAD
   VARIABLE: P_S2") contain none of the keyword patterns, and they have 72 levels
   against MAX_LEVELS = 12 — and even past those, a 72-level anchor makes an
   empty crosstab cell certain. They are declared in `considered_and_rejected`
-  anyway so the judgement is recorded rather than implicit. See the LESSON note.
+  anyway so the judgement is recorded rather than implicit, and to silence rule 11.
+  NB the first draft claimed rule 9 reported nothing here either way; that was
+  wrong. As drafted it reported 40 suspects — the 5 order variables below plus 35
+  `P_S{k}_*` component columns — because rule 9 derived its sibling-suppression
+  list from `find_numbered_siblings`, which strips rejected variables, so recording
+  the slots un-silenced their components. Fixed in the pipeline (rule 9 now
+  suppresses on the sibling FAMILY); the build reports exactly the 5 below.
+  See the LESSON note.
 
 
   OUTCOMES
@@ -367,6 +372,14 @@ condition:
     P_S6: "Vignette shown in presentation slot 6; see P_S2."
     P_S7: "Vignette shown in presentation slot 7; see P_S2."
     P_S8: "Vignette shown in presentation slot 8; see P_S2."
+    CONCERN_ORDER1: "Item-order randomisation for the CONCERN_A/CONCERN_B attitude
+      battery, a later block that is not an outcome of this recipe. Not part of the
+      vignette assignment."
+    CONCERN_ORDER2: "See CONCERN_ORDER1."
+    TRUST_ORDER1: "Item-order randomisation for the TRUST_A..TRUST_C battery, a later
+      block that is not an outcome of this recipe. Not part of the vignette assignment."
+    TRUST_ORDER2: "See TRUST_ORDER1."
+    TRUST_ORDER3: "See TRUST_ORDER1."
     SMARTPHONE: "Self-reported smartphone ownership (1856 yes / 82 no / 10 skipped), a
       measured attribute, not randomised. It gates one conditional sentence in the
       stimulus — see the OMISSIONS note."

@@ -214,17 +214,23 @@ notes: >
   and nothing randomised affects the text of B01 or B09. All of it is recorded in
   `condition.considered_and_rejected` below.
 
-  MEASURED LIMITATION OF THE AUTOMATED RULE-9 SCREEN, found here. With 24 declared
-  arms the screen's within-cell balance test loses its power: the 24 x k crosstab
-  has ~84 respondents per cell, so ordinary sampling noise pushes min/max below the
-  0.70 threshold. Within-cell balance for the six genuine independent second
-  randomisations in this file: DOV_ITEM 0.569, DOV_PERSON_B04 0.647, DOV_ACTIVITY
-  0.641, DOV_PERSON_B06 0.650, DOV_PERSON_B10 0.667, DOV_PERSON_B08 0.704. Only
-  the last clears the bar, so the screen reports 1 of 6 — and which one is
-  essentially chance. It is not a false-positive problem (it correctly ignores
+  MEASURED LIMITATION OF THE RULE-9 SCREEN, found here — AND SINCE FIXED because of
+  it. As first written the screen also required balance WITHIN each cell of the
+  anchor x candidate crosstab. With 24 declared arms (~84 respondents per cell)
+  ordinary sampling noise pushed min/max under the 0.70 threshold: within-cell
+  balance for the six genuine independent second randomisations in this file was
+  DOV_ITEM 0.569, DOV_PERSON_B04 0.647, DOV_ACTIVITY 0.641, DOV_PERSON_B06 0.650,
+  DOV_PERSON_B10 0.667, DOV_PERSON_B08 0.704 — only the last clearing the bar, so
+  it reported 1 of 6 and which one was essentially chance. A false-NEGATIVE problem
+  that grew with arm count, not a false-positive one: it correctly ignored
   DOV_RELSTAT/DOV_RELDUR/DOV_PARENTST/DOV_EARNINGS, whose crosstabs against
-  XTESS217 contain zeros because they are deterministic in it); it is a
-  false-negative problem that grows with arm count.
+  XTESS217 contain zeros because they are deterministic in it.
+
+  The within-cell gate has been removed; marginal balance carries the same signal
+  without the cell-size dependence (those six score 0.91-1.00 on it). With
+  `considered_and_rejected` emptied, the CURRENT screen names all ten candidates:
+  the six above, the three DOV_PERSON2_* complements, and DOV_B10_ins1. So the
+  entries below are load-bearing, not decoration.
 
 
   OPEN QUESTIONS FOR THE CHECKER
@@ -232,8 +238,10 @@ notes: >
   1. Scope. Is "24 arms x {B01, B09}" the right first cut, or should the first
      recipe instead be the 144-arm B04 recipe that overlaps SocSci210's task 1?
   2. Nominal outcomes on a `Scale`. B01 and B09 are unordered 3-way choices;
-     min_label/max_label imply an ordering that does not exist. All three options
-     are in the question text, but a `nominal: true` flag (or option list) on
+     min_label/max_label would imply an ordering that does not exist, so both
+     outcomes declare `scale.nominal: true`, which renders "Only return one of 1,
+     2 or 3" with no endpoints. All three options are enumerated in the question
+     text. (Before that flag existed the draft named 1 and 3 as endpoints on
      `Outcome` would be more honest.
   3. shared_context includes "Please read it closely, then continue to the next
      page." (line 55), which is survey mechanics rather than stimulus. Verbatim,
@@ -509,8 +517,11 @@ outcomes:
     scale:
       min: 1
       max: 3
-      min_label: "Have a shared account in which they both deposit all their earned income"
-      max_label: "Have both a shared account and separate, individual accounts"
+      # NOMINAL: an unordered 3-way choice, so no endpoint labels. Code 3 ("both
+      # accounts") is conceptually BETWEEN 1 and 2, so naming 1 and 3 as the poles
+      # would assert an order the measure does not have. All three options are
+      # enumerated verbatim in `question` above.
+      nominal: true
   # B09 — questionnaire lines 161-166. No dynamic insert; identical for all arms.
   - var: B09
     task_num: 1
@@ -522,8 +533,11 @@ outcomes:
     scale:
       min: 1
       max: 3
-      min_label: "They should each pay $15"
-      max_label: "Anthony should cover all of it"
+      # NOMINAL, and here the mislabelling would be substantive: calling 1 and 3
+      # the endpoints implies code 2 ("Michelle should cover all of it") lies
+      # between them, when it is the opposite pole of the very gender dimension
+      # this item measures. All three options are enumerated in `question`.
+      nominal: true
 
 # Both items are nominal 3-option choices; codes pass through unchanged.
 response_recode: {1: 1, 2: 2, 3: 3}

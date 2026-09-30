@@ -160,3 +160,35 @@ def test_arm_missing_a_source_variable_rejected(fixture_recipe) -> None:
         arm["factors"] = {}
     with pytest.raises(ValueError, match="missing raw_values"):
         recipe_mod.Recipe.model_validate(data)
+
+
+def test_nominal_scale_renders_no_endpoints() -> None:
+    """An unordered choice must not be given poles.
+
+    `cug34`'s B09 codes are "they each pay half" / "Michelle pays all" /
+    "Anthony pays all". Naming 1 and 3 as the endpoints implies Michelle-pays-all
+    lies between them, when it is the opposite pole of the gender dimension the
+    item measures.
+    """
+    from micromotives_datasets.recipe import Scale
+
+    s = Scale(min=1, max=3, nominal=True)
+    assert s.instruction() == "Only return one of 1, 2 or 3, nothing else."
+    assert "from 1 to 3" not in s.instruction()
+
+
+def test_nominal_scale_rejects_endpoint_labels() -> None:
+    """The flag and the labels are contradictory, so the recipe must not load."""
+    import pytest
+
+    from micromotives_datasets.recipe import Scale
+
+    with pytest.raises(ValueError, match="nominal scale must not carry"):
+        Scale(min=1, max=3, nominal=True, min_label="a", max_label="b")
+
+
+def test_ordinal_scale_keeps_its_endpoints() -> None:
+    from micromotives_datasets.recipe import Scale
+
+    s = Scale(min=-3, max=3, min_label="Bad", max_label="Good")
+    assert 'from -3 to 3 where -3 means "Bad" and 3 means "Good"' in s.instruction()

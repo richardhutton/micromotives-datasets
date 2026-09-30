@@ -164,7 +164,7 @@ notes: >
   vertical blocks are the code numbers and are dropped, per "do not show numbers"):
     Horizontal Vague    260-270: All of the time / Most of the time / Some of the time / A little of the time / Never
     Horizontal Precise  284-294: 7 days / 5 or 6 days / 3 or 4 days / 1 or 2 days / 0 days
-    Horizontal Combined 308-321: All of the time (7 days) / Most of the time (5 or 6 days) / Some of the time (3 or 4 days) / A little of the time (1 or 2 days) / Never (0 days)
+    Horizontal Combined 308-321: All of the time (7 days) / Most of the time (5 or 6 days) / Some of the time (3 or 4 days) / A little of the time (1 or 2 days) / Never(0 days)
     Vertical   Vague    335-343: All of the time / Most of the time / Some of the time / A little of the time / Never
     Vertical   Precise  352-360: 7 Days / 5 to 6 Days / 3 to 4 Days / 1 to 2 Days / 0 Days
     Vertical   Combined 369-377: All of the time (7 Days) / Most of the time (5 to 6 Days) / Some of the time (3 to 4 Days) / A little of the time (1 to 2 Days) / Never (0 Days)
@@ -335,12 +335,12 @@ condition:
       condition_num: 5
       factors: {scale_direction: "high to low", scale_alignment: "horizontal", label_vagueness: "vague quantifiers + precise frequency"}
       outcome_var: Q1A_3
-      scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never (0 days)"}
+      scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}
       text: >
         The five response options were shown horizontally, side by side in a single row
         across the screen, in this order from left to right: "All of the time (7
         days)"; "Most of the time (5 or 6 days)"; "Some of the time (3 or 4 days)";
-        "A little of the time (1 or 2 days)"; "Never (0 days)".
+        "A little of the time (1 or 2 days)"; "Never(0 days)".
 
     # ---- Direction 2: Low to High (groups 7-12) ---------------------------
     # Same six option lists, same six answer variables, same 1-5 codes; only the
@@ -395,10 +395,10 @@ condition:
       condition_num: 11
       factors: {scale_direction: "low to high", scale_alignment: "horizontal", label_vagueness: "vague quantifiers + precise frequency"}
       outcome_var: Q1A_3
-      scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never (0 days)"}
+      scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}
       text: >
         The five response options were shown horizontally, side by side in a single row
-        across the screen, in this order from left to right: "Never (0 days)"; "A
+        across the screen, in this order from left to right: "Never(0 days)"; "A
         little of the time (1 or 2 days)"; "Some of the time (3 or 4 days)"; "Most of
         the time (5 or 6 days)"; "All of the time (7 days)".
 
@@ -480,6 +480,19 @@ outcomes:
 response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
 missing_codes: [-1]
 
+# Panel missing sentinels, suppressed rather than rendered (QC rule 12). Counts in
+# this file: XIDEO=9 "MISSING" 23 respondents, XREL1=14 "MISSING" 14. The DUMMY
+# codes (XIDEO=8, XREL2=7/8) are declared for completeness though none occurs.
+persona_missing:
+  XIDEO: [8, 9]
+  XREL1: [14]
+# XREL1 code 12 IS a real answer whose panel label carries the interviewer
+# instruction ("OTHER NON-CHRISTIAN, PLEASE SPECIFY", 48 respondents). Dropping it
+# would discard a genuine response, so the label is cleaned instead. Code 11 is
+# already clean here ("OTHER CHRISTIAN") - unlike cug34's REL1, where both need it.
+persona_label_rewrite:
+  XREL1:
+    12: "OTHER NON-CHRISTIAN"
 persona_map:
   age: PPAGE
   gender: PPGENDER
@@ -495,8 +508,11 @@ persona_map:
   urban_rural: PPMSACAT
   internet_access: PPNET
   party_id: XPARTY7
-  # ideology (XIDEO) and religion (XREL1/XREL2) are deliberately omitted: 23, 14 and
-  # 11 respondents respectively carry the panel's own missing sentinel (XIDEO=9,
-  # XREL1=14, XREL2=9) whose value label is the literal string "MISSING", and
-  # `persona_map` has no way to declare per-field missing codes, so those personas
-  # would read "Ideology: MISSING". XPARTY7 is included because it has zero 9s here.
+  # ideology and religion ARE mapped. They were omitted in the first draft because
+  # 23 and 14 respondents carry the panel's own "MISSING" sentinel and there was no
+  # way to suppress it, so the persona would have read "Ideology: MISSING". That
+  # trade was the wrong way round — it cost the field on ~18,300 rows to avoid a
+  # junk label on ~250 (1.4%) — and `persona_missing` below now handles it
+  # directly. XPARTY7 needs no entry: its sentinel count here is zero, verified.
+  ideology: XIDEO
+  religion: XREL1

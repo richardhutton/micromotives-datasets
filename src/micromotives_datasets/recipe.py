@@ -33,9 +33,23 @@ class Scale(BaseModel):
     max: int
     min_label: str | None = None
     max_label: str | None = None
+    nominal: bool = Field(
+        default=False,
+        description="True when the codes are an UNORDERED choice rather than a scale. "
+        "Naming endpoints then asserts an ordering that does not exist: `cug34`'s "
+        "B09 codes are 'each pay half' / 'Michelle pays all' / 'Anthony pays all', "
+        "so calling 1 and 3 the endpoints implies Michelle-pays-all lies between "
+        "them, when it is the opposite pole of the gender dimension being measured. "
+        "The options must instead be enumerated in the question text.",
+    )
 
     def instruction(self) -> str:
         """e.g. 'Only return an integer from -3 to 3 where -3 means "Very bad"...'"""
+        if self.nominal:
+            # No endpoints, and no "from x to y" either — that phrasing reads as a
+            # range. The options belong in the question, where they carry no order.
+            codes = ", ".join(str(c) for c in range(self.min, self.max))
+            return f"Only return one of {codes} or {self.max}, nothing else."
         base = f"Only return an integer from {self.min} to {self.max}"
         if self.min_label and self.max_label:
             base += (
@@ -43,6 +57,16 @@ class Scale(BaseModel):
                 f' and {self.max} means "{self.max_label}"'
             )
         return base + ", nothing else."
+
+    @model_validator(mode="after")
+    def _check_nominal(self) -> Scale:
+        if self.nominal and (self.min_label or self.max_label):
+            raise ValueError(
+                "a nominal scale must not carry min_label/max_label — they would "
+                "assert an ordering it does not have; enumerate the options in the "
+                "outcome `question` instead"
+            )
+        return self
 
 
 class Arm(BaseModel):

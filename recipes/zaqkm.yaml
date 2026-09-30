@@ -92,18 +92,23 @@ notes: |-
   block's variables are present in the .dta, so BROWN and HUFFMAN are not
   buildable from this deposit and are not owed here.
   
-  WORTH KNOWING: rule 9 (pipeline/screen.py) does NOT flag P_ORDER on this study,
-  and would not have even without the `considered_and_rejected` entry. P_ORDER
-  passes every other test - 2 levels, 100% coverage, marginal balance 0.99, all 80
-  cells against the declared key non-empty - but the within-cell balance is 0.39
-  (cells range 11..28 around a mean of 20), below the 0.70 threshold. That is not a
-  bug in P_ORDER's favour; it is arithmetic. With 40 declared cells and n=1,607,
-  crossing in a second 2-level factor gives 80 cells of ~20, where sampling noise
-  alone puts min/max near 0.4. The screen's sensitivity therefore decays as the
-  declared arm count rises, and it is blind on exactly the studies where a missed
-  second randomisation would be hardest to spot by eye. DOV_EXP_ELLIOTT is also
-  unflagged, for the opposite and correct reason: it has 40 levels (over the
-  12-level cap) and 1,560 of its 1,600 cells against the declared key are empty,
+  WORTH KNOWING: rule 9 (pipeline/screen.py) does not flag P_ORDER here, but ONLY
+  because of the `considered_and_rejected` entry above — that entry is load-bearing,
+  not belt-and-braces. Remove it and the screen returns exactly one suspect,
+  "P_ORDER (2 levels, balance 0.99) [PRELOAD : P_ORDER]". P_ORDER passes every test
+  the current screen applies: 2 levels, 100% coverage, marginal balance 0.99, and
+  all 80 cells against the declared key non-empty.
+  
+  Its WITHIN-cell balance is 0.39 (cells range 11..28 around a mean of 20), which
+  would have failed the OLD 0.70 within-cell gate — and that measurement is why the
+  gate no longer exists. With 40 declared cells and n=1,607, crossing in a second
+  2-level factor gives 80 cells of ~20, where sampling noise alone puts min/max near
+  0.4, so the gate's sensitivity decayed exactly as declared arm count rose. It was
+  removed for that reason (screen.py cites this study's 0.39), and marginal balance
+  now carries the signal without the cell-size dependence.
+  
+  DOV_EXP_ELLIOTT is unflagged for a different and correct reason: 40 levels (over
+  the 12-level cap) and 1,560 of its 1,600 cells against the declared key are empty,
   because it IS the declared key.
   
   
