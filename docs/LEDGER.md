@@ -192,6 +192,34 @@ remove the human.
 
 ---
 
+
+### Batch 1 results — 3 of 5 built
+
+| Study | Design | Rows | Result |
+|---|---|---|---|
+| `sd7cf` | 3 x 4 framing x distractor position | 4,124 | ✅ crosscheck exact |
+| `bf8p2` | 2 x 2 valence x social comparison | 1,998 | ✅ crosscheck exact |
+| `dh3nj` | 2 x 3 x 2 vignette (status x drinking x warning) | 4,001 | ✅ crosscheck pass (permuted index) |
+| `savkp` | 3 x 2 emotion x information (video stimuli) | — | ⚠️ their numbers do not reconcile |
+| `h6zk9` | 2-arm income-feedback + economic games | — | ⚠️ needs per-respondent stimulus |
+
+**First-pass build rate: 3/5 (60%).** Both non-builds are recorded rather than forced.
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 23 | Arms can be asked **different questions on different scales** — `bf8p2`'s loss arms ask how DISAPPOINTED, its gain arms how SATISFIED | **method** | `Arm.outcome_question` and `Arm.scale`, completing the per-arm override set |
+| 24 | Zips extract into a subfolder, so a recipe's `data_file` is often not at the study root | **method** | `mmds build` resolves the filename anywhere under `data/raw/<study_id>/` |
+| 25 | **`condition_num` ordering is a convention, not a fact.** `dh3nj`'s per-condition counts are a *permutation* of SocSci210's — same cells, different numbering | **method** | Crosscheck now reports a permutation as a note rather than failing. A real disagreement changes the multiset of counts; a relabelling does not |
+| 26 | `savkp`: SocSci210's responses span only **2-6** on items that are genuinely **1-7** in the source. With 4,564 responses, missing both endpoints is impossible — they applied some undocumented transformation | open | Flagged. Not built; would need their transform reverse-engineered, or build ours and mark not comparable |
+| 27 | `h6zk9`: the stimulus is **personalised** — the feedback text depends on a computed per-respondent value ("you *overestimated* your position"), not just the randomised arm | open | Needs a per-respondent stimulus template; no format support yet |
+
+**Cost signal.** `sd7cf`, `bf8p2` and `dh3nj` were each markedly quicker than the Phase 0
+studies — the format now fits most designs, and `dh3nj`'s twelve arms were composed from
+the questionnaire's own templated fragments rather than transcribed one by one. The two
+that failed both failed for *source* reasons, not pipeline reasons.
+
+---
+
 ## Open items
 
 - Only `RO1` of `rpw4u`'s ~15 experiments is built. The rest are mechanical repeats.

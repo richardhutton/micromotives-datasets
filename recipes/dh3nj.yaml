@@ -1,0 +1,208 @@
+study_id: dh3nj
+source: tess
+title: Public Perceptions of Prenatal Alcohol Consumption
+data_file: 8041.036_CALARCO_TESS036_weighted.sav
+notes: "TESS 036 (Calarco). A 2 x 3 x 2 between-subjects vignette design (12 cells):\n  status   \
+  \      - high (lawyer) / low (supermarket cashier)\n  drinking       - none / light (one glass)\
+  \ / heavy (two glasses)\n  doctor_warning - absent / present (she recalls her doctor's advice)\n\
+  \nArm texts composed from the verbatim VIGNETTE VERSION blocks in\n'[8041.033.035.036] TESS Combined_v10clean.txt'\
+  \ (lines 525-570). The source\nvignettes are themselves templated - one frame with three slots -\
+  \ so composing\nfrom the verified fragments mirrors how the instrument was built.\n\nQ7 and Q8 quote\
+  \ the drinking level inline ('Megan's decision to [drink only\nwater/sip one glass of wine/finish\
+  \ two glasses of wine]'). The condition text\nalready states what she drank, so the questions refer\
+  \ to 'Megan's decision'\nwithout the insert - unambiguous, and it avoids needing per-arm-per-outcome\n\
+  wording.\n\nJev flagged CALARCO_VIGNETTE as the assignment variable at confidence 0.80\nafter the\
+  \ option list was widened; an earlier keyword shortlist had excluded\nit and produced a confident\
+  \ wrong answer (BLOCKORDER2 at 0.99)."
+condition:
+  source_var: CALARCO_VIGNETTE
+  factors:
+  - status
+  - drinking
+  - doctor_warning
+  shared_context: You read a short story about a pregnant woman at a bar with her co-workers, and
+    were then asked what you thought of it.
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      status: high
+      drinking: none
+      doctor_warning: absent
+    text: Megan is a 27-year-old lawyer. One Friday, after a long day at the office, a few of Megan's
+      co-workers invite her to join them at a nearby bar for drinks. Megan is seven months pregnant
+      with her first child - but she agrees to tag along. At the bar, Megan and her colleagues swap
+      stories and talk about possible names for Megan's baby. While chatting, Megan drinks only water.
+      After about an hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 2
+    condition_num: 1
+    factors:
+      status: high
+      drinking: none
+      doctor_warning: present
+    text: Megan is a 27-year-old lawyer. One Friday, after a long day at the office, a few of Megan's
+      co-workers invite her to join them at a nearby bar for drinks. Megan is seven months pregnant
+      with her first child, and she recalls her doctor saying that pregnant women should avoid alcohol
+      - but she agrees to tag along. At the bar, Megan and her colleagues swap stories and talk about
+      possible names for Megan's baby. While chatting, Megan drinks only water. After about an hour,
+      Megan's husband comes to pick her up and drive her home.
+  - raw: 3
+    condition_num: 2
+    factors:
+      status: high
+      drinking: light
+      doctor_warning: absent
+    text: Megan is a 27-year-old lawyer. One Friday, after a long day at the office, a few of Megan's
+      co-workers invite her to join them at a nearby bar for drinks. Megan is seven months pregnant
+      with her first child - but she agrees to tag along. At the bar, Megan and her colleagues swap
+      stories and talk about possible names for Megan's baby. While chatting, Megan sips one glass
+      of wine. After about an hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 4
+    condition_num: 3
+    factors:
+      status: high
+      drinking: light
+      doctor_warning: present
+    text: Megan is a 27-year-old lawyer. One Friday, after a long day at the office, a few of Megan's
+      co-workers invite her to join them at a nearby bar for drinks. Megan is seven months pregnant
+      with her first child, and she recalls her doctor saying that pregnant women should avoid alcohol
+      - but she agrees to tag along. At the bar, Megan and her colleagues swap stories and talk about
+      possible names for Megan's baby. While chatting, Megan sips one glass of wine. After about an
+      hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 5
+    condition_num: 4
+    factors:
+      status: high
+      drinking: heavy
+      doctor_warning: absent
+    text: Megan is a 27-year-old lawyer. One Friday, after a long day at the office, a few of Megan's
+      co-workers invite her to join them at a nearby bar for drinks. Megan is seven months pregnant
+      with her first child - but she agrees to tag along. At the bar, Megan and her colleagues swap
+      stories and talk about possible names for Megan's baby. While chatting, Megan finishes two glasses
+      of wine. After about an hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 6
+    condition_num: 5
+    factors:
+      status: high
+      drinking: heavy
+      doctor_warning: present
+    text: Megan is a 27-year-old lawyer. One Friday, after a long day at the office, a few of Megan's
+      co-workers invite her to join them at a nearby bar for drinks. Megan is seven months pregnant
+      with her first child, and she recalls her doctor saying that pregnant women should avoid alcohol
+      - but she agrees to tag along. At the bar, Megan and her colleagues swap stories and talk about
+      possible names for Megan's baby. While chatting, Megan finishes two glasses of wine. After about
+      an hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 7
+    condition_num: 6
+    factors:
+      status: low
+      drinking: none
+      doctor_warning: absent
+    text: Megan is a 27-year-old cashier at a supermarket. One Friday, after a long day at the store,
+      a few of Megan's co-workers invite her to join them at a nearby bar for drinks. Megan is seven
+      months pregnant with her first child - but she agrees to tag along. At the bar, Megan and her
+      co-workers swap stories and talk about possible names for Megan's baby. While chatting, Megan
+      drinks only water. After about an hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 8
+    condition_num: 7
+    factors:
+      status: low
+      drinking: none
+      doctor_warning: present
+    text: Megan is a 27-year-old cashier at a supermarket. One Friday, after a long day at the store,
+      a few of Megan's co-workers invite her to join them at a nearby bar for drinks. Megan is seven
+      months pregnant with her first child, and she recalls her doctor saying that pregnant women
+      should avoid alcohol - but she agrees to tag along. At the bar, Megan and her co-workers swap
+      stories and talk about possible names for Megan's baby. While chatting, Megan drinks only water.
+      After about an hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 9
+    condition_num: 8
+    factors:
+      status: low
+      drinking: light
+      doctor_warning: absent
+    text: Megan is a 27-year-old cashier at a supermarket. One Friday, after a long day at the store,
+      a few of Megan's co-workers invite her to join them at a nearby bar for drinks. Megan is seven
+      months pregnant with her first child - but she agrees to tag along. At the bar, Megan and her
+      co-workers swap stories and talk about possible names for Megan's baby. While chatting, Megan
+      sips one glass of wine. After about an hour, Megan's husband comes to pick her up and drive
+      her home.
+  - raw: 10
+    condition_num: 9
+    factors:
+      status: low
+      drinking: light
+      doctor_warning: present
+    text: Megan is a 27-year-old cashier at a supermarket. One Friday, after a long day at the store,
+      a few of Megan's co-workers invite her to join them at a nearby bar for drinks. Megan is seven
+      months pregnant with her first child, and she recalls her doctor saying that pregnant women
+      should avoid alcohol - but she agrees to tag along. At the bar, Megan and her co-workers swap
+      stories and talk about possible names for Megan's baby. While chatting, Megan sips one glass
+      of wine. After about an hour, Megan's husband comes to pick her up and drive her home.
+  - raw: 11
+    condition_num: 10
+    factors:
+      status: low
+      drinking: heavy
+      doctor_warning: absent
+    text: Megan is a 27-year-old cashier at a supermarket. One Friday, after a long day at the store,
+      a few of Megan's co-workers invite her to join them at a nearby bar for drinks. Megan is seven
+      months pregnant with her first child - but she agrees to tag along. At the bar, Megan and her
+      co-workers swap stories and talk about possible names for Megan's baby. While chatting, Megan
+      finishes two glasses of wine. After about an hour, Megan's husband comes to pick her up and
+      drive her home.
+  - raw: 12
+    condition_num: 11
+    factors:
+      status: low
+      drinking: heavy
+      doctor_warning: present
+    text: Megan is a 27-year-old cashier at a supermarket. One Friday, after a long day at the store,
+      a few of Megan's co-workers invite her to join them at a nearby bar for drinks. Megan is seven
+      months pregnant with her first child, and she recalls her doctor saying that pregnant women
+      should avoid alcohol - but she agrees to tag along. At the bar, Megan and her co-workers swap
+      stories and talk about possible names for Megan's baby. While chatting, Megan finishes two glasses
+      of wine. After about an hour, Megan's husband comes to pick her up and drive her home.
+outcomes:
+- var: Q7
+  task_num: 0
+  question: To what extent do you approve or disapprove of Megan's decision at the bar?
+  scale:
+    min: 1
+    max: 5
+    min_label: strongly approve
+    max_label: strongly disapprove
+- var: Q8
+  task_num: 1
+  question: Do you think that Megan's decision will cause harm to her baby?
+  scale:
+    min: 1
+    max: 5
+    min_label: strongly agree
+    max_label: strongly disagree
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+missing_codes:
+- 77
+- 98
+- 99
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  urban_rural: METRO
+  internet_access: INTERNET
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG

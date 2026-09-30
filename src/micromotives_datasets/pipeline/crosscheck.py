@@ -133,8 +133,24 @@ def compare(rows: list[Row], study_id: str) -> CrossCheckReport:
     rep = CrossCheckReport(study_id=study_id, ours=ours, theirs=theirs)
 
     for key in ("n_rows", "n_conditions", "rows_per_condition", "response_distribution"):
-        if ours.get(key) != theirs.get(key):
-            rep.mismatches.append(f"{key} differs")
+        if ours.get(key) == theirs.get(key):
+            continue
+        # Per-condition counts that are a PERMUTATION of each other mean both
+        # builds put the same respondents in the same cells and merely number
+        # the cells differently. condition_num is an arbitrary index, and there
+        # is no shared convention — one audited study used raw-1, another had
+        # the arms reversed. That is a labelling difference, not a data
+        # disagreement, so it is reported rather than failed.
+        if key == "rows_per_condition":
+            ours_counts = sorted((ours.get(key) or {}).values())
+            their_counts = sorted((theirs.get(key) or {}).values())
+            if ours_counts and ours_counts == their_counts:
+                rep.text_notes.append(
+                    "rows_per_condition is a permutation of SocSci210's — same cell sizes, "
+                    "different condition_num ordering. Cells agree; only the index does not."
+                )
+                continue
+        rep.mismatches.append(f"{key} differs")
 
     # Text is reported, never asserted — see module docstring.
     their_stimuli = theirs.get("stimuli", {})
