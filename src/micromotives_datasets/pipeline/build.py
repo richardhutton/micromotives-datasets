@@ -35,29 +35,53 @@ def _as_code(raw: Any) -> int | None:
     return int(f) if f == int(f) else None
 
 
+def _codes_for(mapping: dict[str, Any], var: str) -> Any:
+    """Look a variable up in a recipe override map, ignoring case.
+
+    Recipes and deposits disagree about capitalisation, so a case-sensitive
+    lookup would silently ignore a declared override — the same class of bug as
+    the one that dropped three studies' whole persona.
+    """
+    if var in mapping:
+        return mapping[var]
+    upper = var.upper()
+    for k, v in mapping.items():
+        if k.upper() == upper:
+            return v
+    return ()
+
+
 def _persona(ds: Dataset, row: Any, recipe: Recipe) -> Persona:
     """Build a Persona by resolving each mapped source variable to its label."""
     fields: dict[str, Any] = {}
     extra: dict[str, str] = {}
     known = set(Persona.model_fields) - {"extra"}
+    # SPSS/Stata variable names are case-insensitive in practice and deposits are
+    # inconsistent about it, so resolve case-insensitively. A case-sensitive
+    # lookup here silently dropped the ENTIRE persona of three studies — 33
+    # mapped fields, 7,679 rows — because the recipes said `ppincimp` and the
+    # files said `PPINCIMP`. Nothing caught it: QC never inspected persona and
+    # crosscheck does not compare it.
+    by_upper = {str(k).upper(): k for k in row.index}
     for field, var in recipe.persona_map.items():
-        if var not in row.index:
+        key = by_upper.get(var.upper())
+        if key is None:
             continue
-        raw = row[var]
+        raw = row[key]
         if _is_blank(raw):
             continue
         # A sentinel code carries no answer, so leave the field empty rather than
         # rendering its label — "Religion: Refused" is worse than no religion.
         code = _as_code(raw)
-        if code is not None and code in recipe.persona_missing.get(var, ()):
+        if code is not None and code in _codes_for(recipe.persona_missing, var):
             continue
         # A code that IS an answer but whose panel label carries scripting
         # boilerplate ("Other Christian religion, please specify") gets rewritten,
         # because dropping it would throw away a real response.
-        rewrite = recipe.persona_label_rewrite.get(var, {})
+        rewrite = _codes_for(recipe.persona_label_rewrite, var) or {}
         label = rewrite.get(code) if code is not None else None
         if label is None:
-            label = ds.label(var, raw)
+            label = ds.label(key, raw)
         if field in known:
             # age / household_size are ints on the model; everything else is text.
             if field in {"age", "household_size"}:
@@ -86,6 +110,19 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             var = recipe.outcome_var_for(outcome, declared_arm)
             if var is not None and var not in ds.df.columns:
                 raise ValueError(f"outcome variable {var!r} not in data")
+
+    # A mapped persona variable that is not in the file is a mistake, never an
+    # intention: the recipe asked for a field and would silently get an empty
+    # one. Three studies lost their whole persona this way. Fail loudly instead —
+    # `persona_map` is a declaration, so a name that resolves to nothing is as
+    # much an error as a missing outcome variable.
+    present = {str(c).upper() for c in ds.df.columns}
+    absent = {f: v for f, v in recipe.persona_map.items() if v.upper() not in present}
+    if absent:
+        raise ValueError(
+            f"persona variables not in data: {absent} — a mapped field that "
+            "resolves to nothing would render an empty persona silently"
+        )
 
     for idx, row in ds.df.iterrows():
         codes = [row[v] for v in cvars]

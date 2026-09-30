@@ -83,3 +83,27 @@ def test_undeclared_arm_is_skipped(fixture_sav, fixture_recipe, tmp_path) -> Non
     p = tmp_path / "arm9.sav"
     pyreadstat.write_sav(df, str(p))
     assert list(build_rows(spss.read(p), fixture_recipe)) == []
+
+
+def test_persona_variable_names_are_case_insensitive(fixture_sav, fixture_recipe) -> None:
+    """Deposits and recipes disagree about capitalisation; that must not matter.
+
+    A case-sensitive lookup silently dropped the ENTIRE persona of three studies
+    — 33 mapped fields across 7,679 rows — because the recipes said `ppincimp`
+    and the files said `PPINCIMP`. Persona is one of the four parts of the
+    tuple, so those rows were near-useless, and nothing caught it: QC never
+    inspected persona and crosscheck does not compare it.
+    """
+    fixture_recipe.persona_map = {"age": "age", "sex": "SeX"}  # file has AGE / SEX
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    assert rows[0].persona.age is not None
+    assert rows[0].persona.sex is not None
+
+
+def test_mapped_persona_variable_absent_from_data_is_an_error(fixture_sav, fixture_recipe) -> None:
+    """Asking for a field and silently getting nothing is the failure mode."""
+    import pytest
+
+    fixture_recipe.persona_map = {"age": "AGE", "income": "NOT_A_COLUMN"}
+    with pytest.raises(ValueError, match="persona variables not in data"):
+        list(build_rows(spss.read(fixture_sav), fixture_recipe))
