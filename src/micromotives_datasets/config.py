@@ -22,8 +22,8 @@ DOCS_DIR = REPO_ROOT / "docs"
 TESS_FOUNDATION_CSV = CATALOG_DIR / "tess_uk_foundation_sources.csv"
 UK_DATAVERSE_CSV = CATALOG_DIR / "uk_dataverse_candidates.csv"
 
-# SocSci210 on the Hugging Face Hub (adjust when the exact repo id is confirmed).
-SOCSCI210_HF_REPO = "SocSci210/SocSci210"
+# SocSci210 on the Hugging Face Hub (org `socratesft`; see scripts/explore.py).
+SOCSCI210_HF_REPO = "socratesft/SocSci210"
 
 
 class Settings(BaseSettings):
