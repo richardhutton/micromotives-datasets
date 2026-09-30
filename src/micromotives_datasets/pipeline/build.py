@@ -26,6 +26,15 @@ def _is_blank(value: Any) -> bool:
     return isinstance(value, float) and math.isnan(value)
 
 
+def _as_code(raw: Any) -> int | None:
+    """The value as an integer code, or None if it is not one."""
+    try:
+        f = float(raw)
+    except (TypeError, ValueError):
+        return None
+    return int(f) if f == int(f) else None
+
+
 def _persona(ds: Dataset, row: Any, recipe: Recipe) -> Persona:
     """Build a Persona by resolving each mapped source variable to its label."""
     fields: dict[str, Any] = {}
@@ -37,7 +46,18 @@ def _persona(ds: Dataset, row: Any, recipe: Recipe) -> Persona:
         raw = row[var]
         if _is_blank(raw):
             continue
-        label = ds.label(var, raw)
+        # A sentinel code carries no answer, so leave the field empty rather than
+        # rendering its label — "Religion: Refused" is worse than no religion.
+        code = _as_code(raw)
+        if code is not None and code in recipe.persona_missing.get(var, ()):
+            continue
+        # A code that IS an answer but whose panel label carries scripting
+        # boilerplate ("Other Christian religion, please specify") gets rewritten,
+        # because dropping it would throw away a real response.
+        rewrite = recipe.persona_label_rewrite.get(var, {})
+        label = rewrite.get(code) if code is not None else None
+        if label is None:
+            label = ds.label(var, raw)
         if field in known:
             # age / household_size are ints on the model; everything else is text.
             if field in {"age", "household_size"}:

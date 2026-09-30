@@ -346,3 +346,90 @@ def test_rule5_catches_an_unexpressed_factor_in_an_arm_with_no_rows() -> None:
     rep = check(rows, recipe)
     assert not _fails(rep, "render identical text"), "rule 1 should be blind here"
     assert _fails(rep, "does not change the arm text"), rep.failures
+
+
+def _mixed_scale_recipe():
+    """An arm-level scale alongside outcomes that name their own `var`.
+
+    The `evnyh` shape: the arm supplies the experimental item (per-cell 1-5
+    endpoints), while a second outcome is an open-ended 0-7 day count read from
+    its own column. The arm's scale must not leak onto that second outcome.
+    """
+    from micromotives_datasets.recipe import Arm, Condition, Outcome, Recipe, Scale
+
+    return Recipe(
+        study_id="test03",
+        source="tess",
+        data_file="fixture.sav",
+        condition=Condition(
+            source_var="COND",
+            factors=["framing"],
+            arms=[
+                Arm(
+                    raw=1,
+                    condition_num=0,
+                    factors={"framing": "a"},
+                    text="x",
+                    outcome_var="A1",
+                    scale=Scale(min=1, max=5, min_label="lo", max_label="hi"),
+                ),
+                Arm(
+                    raw=2,
+                    condition_num=1,
+                    factors={"framing": "b"},
+                    text="y",
+                    outcome_var="A1",
+                    scale=Scale(min=1, max=5, min_label="hi", max_label="lo"),
+                ),
+            ],
+        ),
+        outcomes=[
+            # The arm supplies this one: no `var`, so the arm's scale applies.
+            Outcome(
+                task_num=0,
+                question="experimental item?",
+                scale=Scale(min=1, max=5, min_label="lo", max_label="hi"),
+            ),
+            # This one names its own variable and its own wider scale.
+            Outcome(
+                var="A2",
+                task_num=1,
+                question="how many days?",
+                scale=Scale(min=-3, max=3, min_label="0 days", max_label="7 days"),
+            ),
+        ],
+        response_recode={2: -3, 3: -2, 4: -1, 5: 0, 6: 1, 7: 2, 8: 3},
+        missing_codes=[-1],
+        persona_map={"age": "AGE"},
+    )
+
+
+def test_arm_scale_does_not_leak_onto_an_outcome_with_its_own_var(fixture_sav) -> None:
+    """The evnyh defect: 16,824 rows told "an integer from 1 to 5" over 0-7 data.
+
+    `outcome_var_for` prefers the outcome; `scale_for` must agree rather than
+    invert that precedence.
+    """
+    recipe = _mixed_scale_recipe()
+    rows = list(build_rows(spss.read(fixture_sav), recipe))
+    task1 = [r for r in rows if r.task_num == 1]
+    assert task1, "expected rows for the outcome that names its own var"
+    for r in task1:
+        assert "from -3 to 3" in r.outcome, r.outcome
+        assert "from 1 to 5" not in r.outcome, r.outcome
+
+
+def test_rule13_catches_a_response_outside_its_own_rendered_scale(fixture_sav) -> None:
+    """Rule 4 cannot see this: every value IS in some declared recode.
+
+    A crude break here would also trip rule 4, which is exactly how rule 5
+    stayed hidden for eight studies — so this asserts rule 13's own message.
+    """
+    recipe = _mixed_scale_recipe()
+    rows = list(build_rows(spss.read(fixture_sav), recipe))
+    # Narrow the outcome's declared scale so its own rendered instruction no
+    # longer admits the responses already built against it.
+    recipe.outcomes[1].scale.min = 0
+    recipe.outcomes[1].scale.max = 0
+    rep = check(rows, recipe)
+    assert _fails(rep, "outside the scale their own outcome text states"), rep.failures

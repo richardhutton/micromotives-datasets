@@ -8,11 +8,18 @@ real dataset — see docs/verification/.
 from __future__ import annotations
 
 import itertools
+import re
 from collections import Counter
 from dataclasses import dataclass, field
 
 from ..recipe import Recipe
 from ..schema import Row
+
+# Panel non-answer labels and scripting boilerplate, as they actually appear in
+# TESS value labels. See rule 12.
+_NON_ANSWER = re.compile(
+    r"please specify|refused|missing|not asked|skipped|don'?t know|no answer", re.I
+)
 
 
 @dataclass
@@ -170,6 +177,59 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
                 f"factor {factor!r} does not change the arm text for {same} "
                 "— declared but not expressed"
             )
+
+    # --- Rule 13: the response must fit the scale the ROW'S OWN TEXT states --
+    # Rule 4 checks the union of all declared recodes, which is structurally
+    # blind to the rendered instruction. `evnyh` emitted "return an integer from
+    # 1 to 5" on 16,824 rows whose responses ran 0-7 — direction inverted on top
+    # — and QC passed with zero warnings, because every one of those values IS in
+    # some declared recode.
+    #
+    # Resolved through `recipe.scale_for`, the same call the melt uses, so this
+    # rule and the rendering can never drift apart.
+    by_cond = {a.condition_num: a for a in recipe.condition.arms}
+    by_task = {o.task_num: o for o in recipe.outcomes}
+    outside: Counter[tuple[int, int]] = Counter()
+    for r in rows:
+        r_arm = by_cond.get(r.condition_num) if r.condition_num is not None else None
+        r_out = by_task.get(r.task_num) if r.task_num is not None else None
+        if r_arm is None or r_out is None or r.response_num is None:
+            continue
+        scale = recipe.scale_for(r_out, r_arm)
+        if not scale.min <= r.response_num <= scale.max:
+            outside[(r.condition_num, r.task_num)] += 1  # type: ignore[index]
+    if outside:
+        rep.failures.append(
+            "responses outside the scale their own outcome text states, per "
+            f"(condition, task): {dict(sorted(outside.items()))} — the rendered answer "
+            "instruction contradicts the response it is attached to"
+        )
+
+    # --- Rule 12: no persona field may render a non-answer label ------------
+    # Found by sweeping built rows across the whole corpus: 5 of 14 recipes were
+    # putting panel boilerplate into persona text, and `b87sm` shipped 93 rows of
+    # `religion: "SKIPPED ON WEB"` with a 335-line notes block that never
+    # mentioned persona. Nothing caught it because nothing looked.
+    #
+    # Two distinct causes, which is why there are two escape hatches. A sentinel
+    # ("Refused", "SKIPPED ON WEB") carries no answer and belongs in
+    # `persona_missing`. But `cug34`'s 685 rows read "Other Christian religion,
+    # please specify" — a real answer wearing an interviewer instruction, which
+    # dropping would discard; that belongs in `persona_label_rewrite`.
+    dirty: Counter[str] = Counter()
+    for r in rows:
+        for pfield, value in r.persona.model_dump().items():
+            if pfield == "extra" or not isinstance(value, str):
+                continue
+            if m := _NON_ANSWER.search(value):
+                dirty[f"{pfield}={m.group(0)!r}"] += 1
+    if dirty:
+        worst = ", ".join(f"{k} x{v}" for k, v in dirty.most_common(4))
+        rep.warnings.append(
+            f"persona fields carrying a non-answer label: {worst} "
+            "— use `persona_missing` for sentinels that carry no answer, or "
+            "`persona_label_rewrite` where the code is a real answer with a dirty label"
+        )
 
     # --- Rule 6: no empty condition text ------------------------------------
     if any(not r.condition.strip() for r in rows):

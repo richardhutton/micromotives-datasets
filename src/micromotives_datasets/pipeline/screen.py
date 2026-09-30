@@ -93,8 +93,25 @@ def find_numbered_siblings(ds: Dataset, recipe: Recipe) -> list[str]:
     and draft: zero false positives, true positives on exactly the two studies
     with observations left on the table.
     """
-    declared = {v.upper() for v in recipe.condition.variables}
     rejected = {k.upper() for k in recipe.condition.considered_and_rejected}
+    return [c for c in _sibling_family(ds, recipe) if c.upper() not in rejected]
+
+
+def _sibling_family(ds: Dataset, recipe: Recipe) -> list[str]:
+    """Every numbered sibling of a declared variable, rejected or not.
+
+    Rule 9 suppresses on this FAMILY rather than on what rule 11 still reports,
+    and the distinction is load-bearing. Deriving the suppression list from
+    `find_numbered_siblings` coupled the two rules backwards: recording
+    `P_S2..P_S8` in `considered_and_rejected` — exactly what a recipe is supposed
+    to do to silence rule 11 — emptied the list and un-silenced their 35
+    decomposed component columns in rule 9. Measured on `b87sm`: doing the right
+    thing took the build from 5 warnings to 40.
+
+    The general form: **a suppression mechanism must not be derived from a
+    reporting mechanism that the suppression itself feeds.**
+    """
+    declared = {v.upper() for v in recipe.condition.variables}
     stems = {m.group(1) for v in declared if (m := STEM_PAT.match(v)) and m.group(1)}
     if not stems:
         return []
@@ -102,7 +119,6 @@ def find_numbered_siblings(ds: Dataset, recipe: Recipe) -> list[str]:
         col
         for col in ds.df.columns
         if col.upper() not in declared
-        and col.upper() not in rejected
         and (m := STEM_PAT.match(col.upper()))
         and m.group(1) in stems
     ]
@@ -126,7 +142,7 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
     # slot's five decomposed factor columns (`P_S2_Tech_Support`, ...). Rule 11
     # already reports the seven slots, and repeating all 40 components here would
     # bury the very signal it exists to give.
-    sibling_prefixes = tuple(s.upper() for s in find_numbered_siblings(ds, recipe))
+    sibling_prefixes = tuple(s.upper() for s in _sibling_family(ds, recipe))
 
     out: list[Suspect] = []
     n = len(ds.df)

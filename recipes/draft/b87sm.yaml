@@ -1407,6 +1407,10 @@ response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10
 # .sav value labels). Only 98 actually occurs on these three items.
 missing_codes: [77, 98, 99]
 
+# Sentinel codes carrying no answer: the field is left empty rather than
+# rendering the label, which would read "Religion: Refused" (QC rule 12).
+persona_missing:
+  RELIG: [98]
 persona_map:
   age: AGE
   gender: GENDER

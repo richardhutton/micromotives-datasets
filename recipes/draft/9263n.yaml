@@ -1,6 +1,6 @@
 study_id: 9263n
 source: tess
-title: "To Do, to Have, or to Share? Valuing Experiences over Material Possessions"
+title: "To Do, to Have, or to Share? Valuing Experiences and Material Possessions by Involving Others"
 data_file: TESS2 086 - Caprariello_Client.sav
 
 # Scope deliberately matches SocSci210's item set exactly (their 7 task_num values
@@ -104,10 +104,11 @@ notes: >
   THE STIMULUS IS PARTLY SELF-GENERATED — a real limitation (cf. ledger #27)
 
   What each respondent then evaluated is their OWN recalled purchase, typed into
-  Q2A/Q2B/Q2C/Q2D (both are populated in the .sav; e.g. "weekend trip to
-  Atlanta", "Spending a day at a Casino with friends."). 613 of 825 Q2A cells are
-  the empty string, i.e. each respondent filled exactly the one box for their
-  arm. The recipe format has no per-respondent stimulus template, so the rendered
+  Q2A/Q2B/Q2C/Q2D (all four are populated in the .sav; e.g. "weekend trip to
+  Atlanta", "Spending a day at a Casino with friends."). Each box is non-empty
+  ONLY for its own arm (Q2A only where XTESS086=1, and so on - zero cross-branch
+  leakage), and 790 of 825 respondents filled theirs: Q2A 212 of 218, Q2B 179 of
+  189, Q2C 183 of 192, Q2D 216 of 226. 613 of 825 Q2A cells are empty. The recipe format has no per-respondent stimulus template, so the rendered
   condition text is the recall INSTRUCTION only, not the purchase the respondent
   named. This is a genuine information loss, identical in kind to h6zk9's
   personalised feedback. It is stated rather than worked around. SocSci210 made
@@ -180,7 +181,10 @@ notes: >
   check), Q14 (material-experiential manipulation check) and Q15-Q20 (TIPI
   extraversion pair and four materialism items) are all present and clean in the
   .sav but are NOT built. Q13A/Q13B and Q14 are manipulation checks rather than
-  DVs; Q11/Q12 are unbounded numerics with no option list to recode; Q15-Q20 are
+  DVs; Q11 is a free numeric (observed 0-32,000 over 141 distinct values, so
+  inexpressible per ledger #53) but Q12_Years (0-15) and Q12_Months (1-12) ARE
+  bounded by the instrument (line 332) and expressible as an explicit identity
+  recode, so their exclusion is a scope choice and not a format limit; Q15-Q20 are
   trait covariates. SocSci210 excluded all of them too, so including any would
   break an otherwise exact numeric crosscheck. They are a clean second recipe if
   wanted, at the cost of comparability.
@@ -218,9 +222,23 @@ notes: >
 
   Participants: 825 records minus the 11 who refused ALL fourteen declared
   items = 814, which is SocSci210's participant count exactly. Those 11 are
-  CaseID 17, 31, 192, 200, 326, 407, 562, 590, 769, 831, 840; nine of them have
-  duration <= 12 seconds and an empty recall box, and two typed a refusal
-  ("I really can't think of anything", "at this time nothing").
+  CaseID 17, 31, 192, 200, 326, 407, 562, 590, 769, 831, 840. Nine have duration
+  <= 12 - the column's label is "Interview duration in MINUTES", not seconds -
+  and seven left the recall box empty; four typed a refusal instead of a purchase
+  ("I really can't think of anything" 192, "at this time nothing" 326, "None"
+  407, "I havent" 831). The two long-duration cases (192 at 4,637 minutes, 200 at
+  2,639) are abandon-and-return sessions.
+
+  THE DELIVERED N IS 825, AND THE RESPONSE-RATE REPORT'S "N Completed 824" IS NOT
+  A DISCREPANCY. The report gives Field End Date 09/11/11. Exactly one record
+  finished after it: CaseID 867, started 09/12 06:52 and finished 07:03, a full
+  10-minute complete with a full answer set, and the highest serial in the file.
+  824 records finished on or before the close. The report's own arithmetic
+  confirms which N it used: 824/1327 = 62.09%, printed as its stated 62.1%,
+  where 825/1327 = 62.17% would have printed 62.2%. KN nonetheless weighted all
+  825 (sum(weight) = 825.05, per-cell sums 218.03/189.01/191.97/226.04 matching
+  the 218/189/192/226 cell counts), so the client file is the authority and both
+  we and SocSci210 correctly read 825.
 
 
   WHERE SOCSCI210'S TEXT DIFFERS FROM OURS (informational, not a numeric claim)
@@ -448,12 +466,22 @@ response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
 # sentinel code appears on Q3-Q9.
 missing_codes: [-1]
 
-# KnowledgePanel profile variables. party_id / ideology / religion are available
-# as XPARTY7 / XIDEO / XREL1 but are NOT mapped: XPARTY7 = 9 "Missing" on 75 of
-# 825 records (9.1%) and the client file omits the DOV_XPARTY7 merge that the
-# questionnaire defines at lines 535-575 to repair exactly those cases, so the
-# persona would carry the literal string "Missing". Same for XIDEO / XREL1's
-# -1 "Refused". See uncertainty 5.
+# KnowledgePanel profile variables. Sentinel rates measured IN BUILT ROWS, per
+# variable rather than per family, because they differ by two orders of magnitude:
+#   party_id  XPARTY7 = 9 "Missing"   587 of 6,328 rows (9.28%)  -> NOT mapped
+#   ideology  XIDEO   = -1 "Refused"   20 of 6,328 rows (0.32%)  -> mapped
+#   religion  XREL1   = -1 "Refused"    8 of 6,328 rows (0.13%)  -> mapped
+# Only XPARTY7 is a real ledger #54 problem: the client file omits the
+# DOV_XPARTY7 merge the questionnaire defines at lines 535-575 to repair exactly
+# those cases, so ~9% of personas would read "Party Id: Missing". At 0.3% and
+# 0.1% the other two are worth having. Persona is not one of the four fields
+# crosscheck asserts on, so coverage is never in tension with the answer key -
+# verified: adding both leaves rows, conditions and the distribution identical.
+# Sentinel codes carrying no answer: the field is left empty rather than
+# rendering the label, which would read "Religion: Refused" (QC rule 12).
+persona_missing:
+  XIDEO: [-1]
+  XREL1: [-1]
 persona_map:
   age: PPAGE
   gender: PPGENDER
@@ -468,3 +496,5 @@ persona_map:
   housing_ownership: PPRENT
   urban_rural: PPMSACAT
   internet_access: PPNET
+  ideology: XIDEO
+  religion: XREL1

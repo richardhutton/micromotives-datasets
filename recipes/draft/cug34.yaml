@@ -529,6 +529,18 @@ outcomes:
 response_recode: {1: 1, 2: 2, 3: 3}
 missing_codes: [-1]
 
+# Sentinel codes carrying no answer: the field is left empty rather than
+# rendering the label, which would read "Religion: Refused" (QC rule 12).
+persona_missing:
+  IDEO: [-1]
+  REL1: [-1]
+persona_label_rewrite:
+  # Codes 11 and 12 ARE real answers; the panel label just carries the
+  # interviewer instruction. Dropping them would discard 685 rows of a genuine
+  # response, so the label is cleaned instead.
+  REL1:
+    11: "Other Christian religion"
+    12: "Other non-Christian religion"
 persona_map:
   age: PPAGE
   gender: PPGENDER

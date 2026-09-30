@@ -199,6 +199,20 @@ class Recipe(BaseModel):
     persona_map: dict[str, str] = Field(
         default_factory=dict, description="Persona field -> source variable name."
     )
+    persona_missing: dict[str, list[int]] = Field(
+        default_factory=dict,
+        description="Source variable -> codes that mean refused / not asked / missing. "
+        "The field is left EMPTY for those respondents rather than rendering the "
+        "sentinel's label. Use this when the code carries no answer.",
+    )
+    persona_label_rewrite: dict[str, dict[int, str]] = Field(
+        default_factory=dict,
+        description="Source variable -> {code: replacement label}. Use this when the "
+        "code IS a real answer but the panel's label carries scripting boilerplate — "
+        "`REL1` code 11 is labelled 'Other Christian religion, please specify', which "
+        "is a genuine response wearing an instruction. Dropping it would lose the "
+        "answer; rewriting keeps it.",
+    )
 
     @model_validator(mode="after")
     def _check(self) -> Recipe:
@@ -264,15 +278,38 @@ class Recipe(BaseModel):
         """The variable holding this arm's answer to this outcome."""
         return outcome.var or arm.outcome_var
 
-    def outcome_text_for(self, outcome: Outcome, arm: Arm) -> str:
-        """The rendered outcome: question + answer instruction, arm overrides first.
+    def scale_for(self, outcome: Outcome, arm: Arm) -> Scale:
+        """The scale whose answer instruction this row carries.
 
-        In a split-ballot the arm IS the question, so its wording and its scale
-        endpoints can both differ from the study-level outcome.
+        An arm-level override exists because in a split-ballot the ARM supplies
+        the item: it names `outcome_var` and its own endpoint labels. When the
+        OUTCOME names its own `var`, the arm is not supplying that item and its
+        scale must not leak onto it.
+
+        Getting this wrong was silent and severe. `evnyh` declares a per-cell 1-5
+        scale on every arm (it must, for the experimental item) and a 0-7 scale on
+        each of its ten open-ended validation outcomes. Under a bare
+        `arm.scale or outcome.scale`, all ten rendered "return an integer from 1
+        to 5" over responses that ran 0-7 — 8,774 rows, 47.3% of that study,
+        carrying an answer instruction their own response contradicts, with the
+        direction inverted on top. QC passed with zero warnings, because rule 4
+        checks the union of declared RECODES and cannot see the rendered scale.
+
+        `outcome_var_for` already prefers the outcome; this keeps the two
+        resolutions consistent instead of opposite.
         """
-        question = arm.outcome_question or outcome.question
-        scale = arm.scale or outcome.scale
-        return f"{question} {scale.instruction()}"
+        if outcome.var is None and arm.scale is not None:
+            return arm.scale
+        return outcome.scale
+
+    def outcome_text_for(self, outcome: Outcome, arm: Arm) -> str:
+        """The rendered outcome: question + answer instruction.
+
+        Arm-level overrides apply only where the arm supplies the item — see
+        `scale_for`.
+        """
+        question = (arm.outcome_question if outcome.var is None else None) or outcome.question
+        return f"{question} {self.scale_for(outcome, arm).instruction()}"
 
 
 def load(path: str | Path) -> Recipe:

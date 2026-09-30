@@ -203,3 +203,33 @@ def test_no_stem_means_no_sibling_check(tmp_path) -> None:
     labels = {**{k: v for k, v in SLOT_LABELS.items() if k != "P_S1"}, "SCENE": "Scenario"}
     ds = _write(tmp_path, df, labels)
     assert find_numbered_siblings(ds, _recipe(["SCENE"])) == []
+
+
+def test_recording_a_sibling_does_not_unsilence_its_components(tmp_path) -> None:
+    """Rule 9 must suppress on the sibling FAMILY, not on what rule 11 reports.
+
+    The bug this pins: rule 9 took its suppression list from
+    `find_numbered_siblings`, which strips rejected variables — so recording
+    `P_S2` in `considered_and_rejected` (the correct way to silence rule 11)
+    un-silenced `P_S2`'s decomposed component columns in rule 9. Measured on the
+    real `b87sm`, doing the right thing took the build from 5 warnings to 40.
+    """
+    from micromotives_datasets.pipeline.screen import find_numbered_siblings
+
+    df = SLOTS.copy()
+    # A component column of the sibling, of the shape b87sm really has.
+    df["P_S2_Tech_Support"] = [1.0, 2.0] * 20
+    labels = {**SLOT_LABELS, "P_S2_Tech_Support": "PRELOAD VARIABLE: P_S2 tech support"}
+    ds = _write(tmp_path, df, labels)
+
+    # Undeclared: rule 11 names the sibling, and rule 9 stays off its family.
+    bare = _recipe(["P_S1"])
+    assert find_numbered_siblings(ds, bare) == ["P_S2"]
+    assert [s.var for s in find_undeclared_assignment(ds, bare)] == []
+
+    # Recorded: rule 11 goes quiet and rule 9 must NOT pick up the component.
+    rec = _recipe(["P_S1"], rejected={"P_S2": "slot 2, owed as its own recipe"})
+    assert find_numbered_siblings(ds, rec) == []
+    assert [s.var for s in find_undeclared_assignment(ds, rec)] == [], (
+        "recording a sibling must not un-silence its component columns"
+    )
