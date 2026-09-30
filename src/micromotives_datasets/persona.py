@@ -23,9 +23,14 @@ _FIELDS: list[tuple[str, str]] = [
     ("income", "Income"),
     ("marital_status", "Marital status"),
     ("household_size", "Household size"),
+    ("housing_type", "Housing type"),
+    ("housing_ownership", "Housing ownership"),
     ("religion", "Religion"),
     ("urban_rural", "Area"),
+    ("internet_access", "Internet access"),
+    ("phone_service", "Phone service"),
     ("party_id", "Party identification"),
+    ("ideology", "Ideology"),
 ]
 
 

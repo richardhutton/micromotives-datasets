@@ -1,0 +1,100 @@
+"""The melt: recipe + survey data -> (P, c, o, r) rows.
+
+Pure and deterministic. Everything requiring judgment lives in the recipe;
+this module only mechanically applies it. That split is what makes the melt
+testable against a fixture and verifiable against an external oracle.
+
+One row per (respondent x outcome item) where the response is present and
+not a missing code — matching how SocSci210 drops refused items individually
+rather than excluding the whole respondent.
+"""
+
+from __future__ import annotations
+
+import math
+from collections.abc import Iterator
+from typing import Any
+
+from ..recipe import Recipe
+from ..schema import Persona, Row
+from ..sources.spss import Dataset
+
+
+def _is_blank(value: Any) -> bool:
+    if value is None:
+        return True
+    return isinstance(value, float) and math.isnan(value)
+
+
+def _persona(ds: Dataset, row: Any, recipe: Recipe) -> Persona:
+    """Build a Persona by resolving each mapped source variable to its label."""
+    fields: dict[str, Any] = {}
+    extra: dict[str, str] = {}
+    known = set(Persona.model_fields) - {"extra"}
+    for field, var in recipe.persona_map.items():
+        if var not in row.index:
+            continue
+        raw = row[var]
+        if _is_blank(raw):
+            continue
+        label = ds.label(var, raw)
+        if field in known:
+            # age / household_size are ints on the model; everything else is text.
+            if field in {"age", "household_size"}:
+                try:
+                    fields[field] = int(float(raw))
+                except (TypeError, ValueError):
+                    continue
+            else:
+                fields[field] = label
+        else:
+            extra[field] = label
+    return Persona(**fields, extra=extra)
+
+
+def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
+    """Melt one study into canonical rows."""
+    arms = recipe.condition.by_raw()
+    missing = set(recipe.missing_codes)
+    cvar = recipe.condition.source_var
+
+    if cvar not in ds.df.columns:
+        raise ValueError(f"condition variable {cvar!r} not in data")
+    for outcome in recipe.outcomes:
+        if outcome.var not in ds.df.columns:
+            raise ValueError(f"outcome variable {outcome.var!r} not in data")
+
+    for idx, row in ds.df.iterrows():
+        code = row[cvar]
+        if _is_blank(code):
+            continue
+        arm = arms.get(int(float(code)))
+        if arm is None:  # arm not declared in the recipe -> not part of the experiment
+            continue
+
+        persona = _persona(ds, row, recipe)
+        condition_text = recipe.condition.render(arm)
+
+        for outcome in recipe.outcomes:
+            raw = row[outcome.var]
+            if _is_blank(raw):
+                continue
+            ivalue = int(float(raw))
+            if ivalue in missing:
+                continue
+            if ivalue not in recipe.response_recode:
+                continue  # value outside the declared scale -> drop, don't guess
+            response = recipe.response_recode[ivalue]
+
+            yield Row(
+                persona=persona,
+                condition=condition_text,
+                outcome=f"{outcome.question} {outcome.scale.instruction()}",
+                response=str(response),
+                response_num=float(response),
+                condition_num=arm.condition_num,
+                task_num=outcome.task_num,
+                source=recipe.source,
+                study_id=recipe.study_id,
+                participant_id=str(idx),
+            )

@@ -35,9 +35,14 @@ class Persona(BaseModel):
     region: str | None = None
     social_grade: str | None = None
     party_id: str | None = None
+    ideology: str | None = None
     religion: str | None = None
     household_size: int | None = None
     urban_rural: str | None = None
+    housing_type: str | None = None
+    housing_ownership: str | None = None
+    internet_access: str | None = None
+    phone_service: str | None = None
     # Free-form extras a source provides that don't map to a named field above.
     extra: dict[str, str] = Field(default_factory=dict)
 

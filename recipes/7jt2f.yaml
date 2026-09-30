@@ -1,0 +1,124 @@
+study_id: 7jt2f
+source: tess
+title: "When Others' Disbelief Engenders Prejudice: Characterizing Anti-Atheist Prejudice"
+data_file: tess2_062_swan_final_data.sav
+
+notes: >
+  TESS2 062 (Swan). 2 x 4 between-subjects design: whether Jordan is presented
+  with a self-introduction (individuating information) x how Jordan's (non-)belief
+  is labelled. Respondents rate Jordan on five semantic differentials.
+
+  Arm text authored from the questionnaire's `SHOW IF XTESS062 = n` blocks in
+  tess2_062_swan_v1.doc. Verified directly: blocks for XTESS062 1-4 contain the
+  self-introduction paragraph (~1,690 chars); blocks for 5-8 do not (~960 chars).
+
+  NOTE: SocSci210's own reconstruction of this study has the biography factor
+  INVERTED (it describes arms 1-4 as "identified only by the label") and swaps
+  the labels for arms 2 and 3. This recipe follows the questionnaire, so the
+  condition TEXT is expected to disagree with SocSci210. The numeric structure
+  (row counts, per-arm cells, response distribution) is expected to match exactly.
+
+condition:
+  source_var: XTESS062
+  factors: [label, self_introduction]
+  # Identical across all eight arms, so stated once rather than repeated.
+  shared_context: >
+    You were asked to judge a real person named Jordan, someone who previously
+    took part in the researchers' study, on the basis of very little information.
+  arms:
+    # --- arms 1-4: label PLUS the self-introduction -------------------------
+    - raw: 1
+      condition_num: 0
+      factors: {label: "Atheist", self_introduction: present}
+      text: >
+        Jordan is identified by the label "Atheist", together with a short friendly
+        self-introduction in which Jordan mentions finishing a degree in architecture,
+        hoping to move to California, and running marathons.
+    - raw: 2
+      condition_num: 1
+      factors: {label: "Believe in God: No", self_introduction: present}
+      text: >
+        Jordan is identified by the label "Believe in God: No", together with a short
+        friendly self-introduction in which Jordan mentions finishing a degree in
+        architecture, hoping to move to California, and running marathons.
+    - raw: 3
+      condition_num: 2
+      factors: {label: "Religious", self_introduction: present}
+      text: >
+        Jordan is identified by the label "Religious", together with a short friendly
+        self-introduction in which Jordan mentions finishing a degree in architecture,
+        hoping to move to California, and running marathons.
+    - raw: 4
+      condition_num: 3
+      factors: {label: "Marital Status: Single", self_introduction: present}
+      text: >
+        Jordan is identified by the label "Marital Status: Single", together with a short
+        friendly self-introduction in which Jordan mentions finishing a degree in
+        architecture, hoping to move to California, and running marathons.
+    # --- arms 5-8: label ONLY, no self-introduction --------------------------
+    - raw: 5
+      condition_num: 4
+      factors: {label: "Atheist", self_introduction: absent}
+      text: 'Jordan is identified only by the label "Atheist", with no other information.'
+    - raw: 6
+      condition_num: 5
+      factors: {label: "Believe in God: No", self_introduction: absent}
+      text: 'Jordan is identified only by the label "Believe in God = No", with no other information.'
+    - raw: 7
+      condition_num: 6
+      factors: {label: "Religious", self_introduction: absent}
+      text: 'Jordan is identified only by the label "Religious", with no other information.'
+    - raw: 8
+      condition_num: 7
+      factors: {label: "Marital Status: Single", self_introduction: absent}
+      text: 'Jordan is identified only by the label "Marital Status: Single", with no other information.'
+
+# Q7 (Untrustworthy/Trustworthy) is deliberately excluded: SocSci210 used only
+# Q2-Q6, and we match that here so the numeric crosscheck is like-for-like.
+outcomes:
+  - var: Q2
+    task_num: 0
+    question: "On a scale from -3 to +3, where do you think Jordan falls between bad and good?"
+    scale: {min: -3, max: 3, min_label: "Bad", max_label: "Good"}
+  - var: Q3
+    task_num: 1
+    question: "On a scale from -3 to +3, where do you think Jordan falls between foolish and wise?"
+    scale: {min: -3, max: 3, min_label: "Foolish", max_label: "Wise"}
+  - var: Q4
+    task_num: 2
+    question: "On a scale from -3 to +3, where do you think Jordan falls between cold and warm?"
+    scale: {min: -3, max: 3, min_label: "Cold", max_label: "Warm"}
+  - var: Q5
+    task_num: 3
+    question: "On a scale from -3 to +3, where do you think Jordan falls between immoral and moral?"
+    scale: {min: -3, max: 3, min_label: "Immoral", max_label: "Moral"}
+  - var: Q6
+    task_num: 4
+    question: "On a scale from -3 to +3, where do you think Jordan falls between unpleasant and pleasant?"
+    scale: {min: -3, max: 3, min_label: "Unpleasant", max_label: "Pleasant"}
+
+# Source codes 2-8 carry the printed scale points -3..+3. Codes 1 ("Bad") and
+# 9 ("Good") are the extreme anchor labels and are unused in this data.
+response_recode:
+  2: -3
+  3: -2
+  4: -1
+  5: 0
+  6: 1
+  7: 2
+  8: 3
+
+missing_codes: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  urban_rural: PPMSACAT

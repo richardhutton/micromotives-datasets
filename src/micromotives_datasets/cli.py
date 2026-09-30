@@ -1,0 +1,113 @@
+"""`mmds` — build and verify study datasets.
+
+mmds build recipes/7jt2f.yaml [--crosscheck] [--out data/processed]
+mmds crosscheck 7jt2f
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+from . import recipe as recipe_mod
+from .config import PROCESSED_DIR, RAW_DIR
+from .persona import render as render_persona
+from .pipeline.build import build_rows
+from .pipeline.qc import check
+from .schema import Row
+from .sources import spss
+
+
+def _load_and_build(recipe_path: Path) -> tuple[recipe_mod.Recipe, list[Row]]:
+    rec = recipe_mod.load(recipe_path)
+    data_path = RAW_DIR / rec.study_id / rec.data_file
+    if not data_path.exists():
+        raise SystemExit(
+            f"data file not found: {data_path}\n"
+            f"Place the study's raw file there (it is gitignored by design)."
+        )
+    rows = list(build_rows(spss.read(data_path), rec))
+    return rec, rows
+
+
+def _write_parquet(rows: list[Row], out_dir: Path, study_id: str) -> Path:
+    import pandas as pd
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    flat = []
+    for r in rows:
+        d = r.model_dump()
+        d["persona_text"] = render_persona(r.persona)
+        d["persona"] = r.persona.model_dump_json()
+        flat.append(d)
+    path = out_dir / f"{study_id}.parquet"
+    pd.DataFrame(flat).to_parquet(path, index=False)
+    return path
+
+
+def cmd_build(args: argparse.Namespace) -> int:
+    rec, rows = _load_and_build(Path(args.recipe))
+    report = check(rows, rec)
+    print(report.render())
+
+    if args.crosscheck:
+        from .pipeline.crosscheck import compare
+
+        print()
+        cc = compare(rows, rec.study_id)
+        print(cc.render())
+        if not cc.passed and not args.force:
+            print("\ncrosscheck failed — not writing output (use --force to override)")
+            return 1
+
+    if not report.passed and not args.force:
+        print("\nQC failed — not writing output (use --force to override)")
+        return 1
+
+    if not args.dry_run:
+        path = _write_parquet(rows, Path(args.out), rec.study_id)
+        print(f"\nwrote {len(rows):,} rows -> {path}")
+    return 0
+
+
+def cmd_crosscheck(args: argparse.Namespace) -> int:
+    from .pipeline.crosscheck import compare
+
+    recipe_path = Path(args.recipe) if args.recipe else Path("recipes") / f"{args.study_id}.yaml"
+    rec, rows = _load_and_build(recipe_path)
+    rep = compare(rows, rec.study_id)
+    print(rep.render())
+    return 0 if rep.passed else 1
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(prog="mmds", description=__doc__)
+    sub = p.add_subparsers(dest="command", required=True)
+
+    b = sub.add_parser("build", help="build a study into (P,c,o,r) rows")
+    b.add_argument("recipe")
+    b.add_argument("--out", default=str(PROCESSED_DIR))
+    b.add_argument("--crosscheck", action="store_true", help="also verify against SocSci210")
+    b.add_argument("--dry-run", action="store_true", help="report only, write nothing")
+    b.add_argument("--force", action="store_true", help="write even if checks fail")
+    b.set_defaults(func=cmd_build)
+
+    c = sub.add_parser("crosscheck", help="compare a build against SocSci210")
+    c.add_argument("study_id")
+    c.add_argument("--recipe", default=None)
+    c.set_defaults(func=cmd_crosscheck)
+
+    return p
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    try:
+        return int(args.func(args))
+    except KeyboardInterrupt:  # pragma: no cover
+        return 130
+
+
+if __name__ == "__main__":  # pragma: no cover
+    sys.exit(main())
