@@ -127,4 +127,44 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     if any(not r.condition.strip() for r in rows):
         rep.failures.append("empty condition text on some rows")
 
+    # --- Rules 7-8: banded recodes must behave like a quantity --------------
+    # SocSci210 converted "1-4 minutes" and "1-3 hours" both to 1, under a
+    # stimulus reading "hours saved" — a 60x error that made the two bands
+    # indistinguishable. Both checks below catch that class without needing a
+    # questionnaire, a model, or an oracle.
+    for label, recode in _all_recodes(recipe):
+        values = [recode[k] for k in sorted(recode)]
+
+        # 7: monotonic in EITHER direction. Increasing is the normal case;
+        # decreasing is a legitimately reverse-coded scale (very common). What
+        # is never legitimate is a mixed direction — values climbing, dropping
+        # back, then climbing again, which is what a unit switch looks like
+        # (0,1,5,10,20,40 minutes then 1,4,7 hours).
+        if values != sorted(values) and values != sorted(values, reverse=True):
+            rep.failures.append(
+                f"{label} recode changes direction: {values} — band order and value order "
+                "only partly agree, which usually means a unit switch or a parsing error"
+            )
+
+        # 8: injective — two distinct bands must not collapse onto one value.
+        dupes = {v for v in values if values.count(v) > 1}
+        if dupes:
+            collisions = {v: [k for k in sorted(recode) if recode[k] == v] for v in sorted(dupes)}
+            rep.failures.append(
+                f"{label} recode maps distinct bands to the same value: {collisions} "
+                "— a distinction in the source has been lost"
+            )
+
     return rep
+
+
+def _all_recodes(recipe: Recipe) -> list[tuple[str, dict[int, int]]]:
+    """Every declared recode, labelled by where it came from."""
+    out: list[tuple[str, dict[int, int]]] = [("study", recipe.response_recode)]
+    for outcome in recipe.outcomes:
+        if outcome.response_recode:
+            out.append((f"outcome task_num={outcome.task_num}", outcome.response_recode))
+    for arm in recipe.condition.arms:
+        if arm.response_recode:
+            out.append((f"arm raw={arm.raw}", arm.response_recode))
+    return out
