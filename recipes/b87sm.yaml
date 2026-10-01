@@ -1,8 +1,21 @@
 study_id: b87sm
-experiment: scenario1
 source: tess
 title: "How to Increase the Acceptance of Mobile App and Sensor Data Collection?"
 data_file: 8041.087 WENZ weighted data 20210823.sav
+
+# `experiment:` omitted. This deposit holds exactly ONE experiment — the
+# 2x3x3x2x2 vignette assignment, shown 8 times per respondent in slots P_S1..
+# P_S8 — not several independent experiments needing separate files (contrast
+# rpw4u's ~15 DOV_*_Assign sub-experiments, or a5v96's two separately
+# randomised vignettes, each of which DOES need `experiment:`). The prior
+# draft's `experiment: scenario1` named a SCOPE LIMIT (the schema could only
+# resolve one arm per respondent, so only slot 1 was built), not a
+# sub-experiment; now that `Outcome.condition_var` resolves an arm per
+# (respondent, item), all eight slots are one recipe and there is nothing left
+# for the field to disambiguate. Matches the convention already used by every
+# other single-experiment study (7jt2f, zrwjp, dh3nj, z358z, zaqkm, ...), all
+# of which omit `experiment`. Output file is therefore `b87sm.parquet`, not
+# `b87sm_scenario1.parquet`.
 
 # SocSci210 reconstructed a DIFFERENT scope for this deposit: its 8 "conditions" are
 # the eight PRESENTATION SLOTS (SCENARIO_1..SCENARIO_8), not the manipulation, and its
@@ -111,25 +124,45 @@ notes: |
   constrains the index.
 
 
-  SCOPE — slot 1 only, and why
+  SCOPE — ALL EIGHT SLOTS, now that the schema supports it
 
-  The recipe builds PRESENTATION SLOT 1 only (SCENARIO_1, SCENARIO_1_DIFFICULT,
-  SCENARIO_1_SECURE), hence `experiment: scenario1`.
+  This recipe builds all ten items: SCENARIO_1, SCENARIO_1_DIFFICULT,
+  SCENARIO_1_SECURE (all about presentation slot 1) and SCENARIO_2..SCENARIO_8
+  (one per remaining slot). The prior draft (`b87sm_scenario1.yaml`) built slot
+  1 only, because `Condition` then resolved one arm per respondent ROW: a
+  single recipe could not give SCENARIO_2 a different arm from SCENARIO_1, even
+  though both are the SAME experiment drawing from the SAME 72-arm universe.
+  `Outcome.condition_var` (committed since that draft) removes the limit: each
+  outcome now names the variable holding ITS slot's draw, so the arm resolves
+  per (respondent, item) rather than per respondent. This recipe is otherwise
+  unchanged from the slot-1 draft — same 72 arms, same text, same factors.
 
-  The reason is a schema limit, not a judgement about the data. In this design
-  the arm varies WITHIN respondent: slot k's arm is P_S{k}. `Condition` resolves
-  one arm per respondent ROW (build.py reads the condition variables off the
-  respondent's row and renders one condition text for all of that respondent's
-  outcomes), so a single recipe cannot give SCENARIO_2 a different arm from
-  SCENARIO_1. Slots 2-8 are therefore owed as seven further recipes
-  (`experiment: scenario2` ... `scenario8`), each with `source_var: P_S{k}`, the
-  same 72 arms and the single SCENARIO_{k} outcome. That would add 7 x 1,948
-  = 13,636 further respondent-items. Nothing is fabricated or guessed by
-  stopping at slot 1; 7/8 of the vignette observations are simply not yet built.
-  See the LESSON note at the end.
-
-  Slot 1 is also the only slot with the two secondary items (Q 89-118), and the
-  only slot with no prior-vignette exposure.
+  VERIFIED FOR SLOTS 2-8, not assumed:
+    - Each SCENARIO_k (k=2..8) block in Q (lines 121-286) is byte-for-byte the
+      same opening, insert point and question as SCENARIO_1, just with
+      [INSERT P_S{k}] and "Scenario #{k}": "Please read Scenario #{k}
+      carefully." / "Imagine that researchers from a public university invite
+      you to participate..." / "How likely is it that you would download the
+      app to participate in this research study?" with the identical
+      RESPONSE OPTIONS block (00 Definitely would not participate .. 10
+      Definitely would participate). Confirmed by reading Q lines 121-286
+      directly (all seven SCENARIO_2..8 blocks).
+    - The .sav carries SCENARIO_2..SCENARIO_8 with the SAME value labels as
+      SCENARIO_1 ("0 - Definitely would not participate" .. "10 - Definitely
+      would participate", plus 77/98/99), confirmed programmatically for
+      SCENARIO_1, SCENARIO_2 and SCENARIO_8.
+    - No SCENARIO_k for k>1 has a DIFFICULT or SECURE sibling — grepped both Q
+      and the .sav column list; only SCENARIO_1 has them. Q 89/105 and PG
+      520/544 are explicit that the two secondary items are asked once, about
+      slot 1, with slot 1's vignette re-shown in a pop-up as a reminder — they
+      are NOT repeated per slot.
+    - P_S1..P_S8 all have 1,948 non-missing values, min 1 / max 72 / 72 distinct
+      values each (checked programmatically). The notes already established
+      (ORIGINAL VERIFICATION, above) that the five P_S{k}_* decomposed columns
+      agree with XL's lookup table for ALL EIGHT slots (0 mismatches over
+      1,948 x 8 = 15,584 assignments) — i.e. the 72-arm universe and its text
+      are already confirmed correct for slots 2-8, not just slot 1. Nothing
+      below re-derives the arm text; it reuses the 72 arms verbatim.
 
   All 1,948 delivered cases are used. RP line 56 says "In field, NORC collected
   1876 qualified interviews"; the file's QUAL is 1 ("Qualified Complete") for
@@ -140,60 +173,103 @@ notes: |
   ROW ARITHMETIC — exact
 
   rows = respondents x items - refusals
-       = 1,948 x 3 - 75
-       = 5,844 - 75
-       = 5,769
+       = 1,948 x 10 - 198
+       = 19,480 - 198
+       = 19,282
 
-  The 75 dropped are code 98 "SKIPPED ON WEB" (PG line 422, "98 IMPLICIT
-  REFUSAL, WEB SKIP"): 12 on SCENARIO_1, 14 on SCENARIO_1_DIFFICULT, 49 on
-  SCENARIO_1_SECURE. Codes 77 and 99 are declared missing too (PG lines
-  418-419) but do not occur on these three items. Per-item kept counts:
-  1,936 + 1,934 + 1,899 = 5,769.
+  The 198 dropped are code 98 "SKIPPED ON WEB" (PG line 422, "98 IMPLICIT
+  REFUSAL, WEB SKIP"), per item: SCENARIO_1 12, SCENARIO_1_DIFFICULT 14,
+  SCENARIO_1_SECURE 49, SCENARIO_2 11, SCENARIO_3 15, SCENARIO_4 16,
+  SCENARIO_5 21, SCENARIO_6 22, SCENARIO_7 23, SCENARIO_8 15 (checked
+  programmatically against the .sav; sums to 198). Codes 77 and 99 are
+  declared missing too (PG lines 418-419) but occur 0 times on all ten items.
+  Per-item kept counts: 1,936 + 1,934 + 1,899 + 1,937 + 1,933 + 1,932 + 1,927 +
+  1,926 + 1,925 + 1,933 = 19,282.
 
-  participants = 1,941, not 1,948: seven respondents answered 98 on all three
-  slot-1 items and so contribute no rows (1,948 - 7 = 1,941). All 1,941 fall in
-  72 non-empty cells, sizes 48 to 122 rows (16 to 41 respondents x up to 3
-  items).
+  participants = 1,942, not 1,948: six respondents answered 98 on all ten
+  items and so contribute no rows (1,948 - 6 = 1,942; checked programmatically
+  — this is six, not the seven that answered 98 on all of slot 1's THREE
+  items in the slot-1-only draft, because a respondent who skipped slot 1
+  entirely can still answer slots 2-8). All 72 arms are non-empty across the
+  full build.
 
 
-  THE UNDECLARED-ASSIGNMENT SCREEN CANNOT SEE SLOTS 2-8
+  THE UNDECLARED-ASSIGNMENT SCREENS, NOW THAT P_S2..P_S8 ARE DECLARED
 
-  Rule 9 (`pipeline/screen.py`) cannot see P_S2..P_S8. P_S2..P_S8 are genuine further
-  randomisations and it misses all seven, for three independent reasons: their
-  names do not match `^(DOV|XTESS|X[A-Z]{2,})`, their labels ("PRELOAD
-  VARIABLE: P_S2") contain none of the keyword patterns, and they have 72 levels
-  against MAX_LEVELS = 12 — and even past those, a 72-level anchor makes an
-  empty crosstab cell certain. They are declared in `considered_and_rejected`
-  anyway so the judgement is recorded rather than implicit, and to silence rule 11.
-  NB the first draft claimed rule 9 reported nothing here either way; that was
-  wrong. As drafted it reported 40 suspects — the 5 order variables below plus 35
-  `P_S{k}_*` component columns — because rule 9 derived its sibling-suppression
-  list from `find_numbered_siblings`, which strips rejected variables, so recording
-  the slots un-silenced their components. Fixed in the pipeline (rule 9 now
-  suppresses on the sibling FAMILY); the build reports exactly the 5 below.
-  See the LESSON note.
+  Declaring P_S2..P_S8 as `Outcome.condition_var` (rather than recording them in
+  `considered_and_rejected`, as the slot-1 draft did) puts them in
+  `Recipe.assignment_variables`, which is exactly the set rule 11
+  (`find_numbered_siblings`) and rule 9's sibling-suppression both key off. Two
+  consequences, one good and one that needs an explicit entry:
+
+    - Rule 11 now reports NOTHING for P_S2..P_S8 — correctly: they are declared,
+      not merely rejected, so there is no further slot "left on the table" for
+      it to name. (Previously it named exactly these seven.)
+
+    - Rule 9's sibling-family suppression is DERIVED FROM the declared set
+      (`_sibling_family`), and it only catches columns whose name ends in the
+      SAME trailing digit as a declared variable (`P_S2` suppresses anything
+      starting "P_S2", by prefix). With P_S1 alone declared, that family was
+      {P_S2..P_S8} — which incidentally also prefix-matched their 35 decomposed
+      component columns (`P_S2_Tech_Support` starts with "P_S2"). Now that
+      P_S1..P_S8 are ALL declared, none of them is left OUTSIDE the declared set
+      for the family computation to find, so the family is empty and that
+      incidental protection disappears. Rule 9's anchor is still just the
+      study-level `source_var` (P_S1 — unchanged), so each of the 35
+      `P_S{k}_Tech_Support` / `_Control_data` / `_Incentive` / `_Feedback` /
+      `_Protection_Privacy` columns for k=2..8 would otherwise be tested
+      against it: label matches (PRELOAD), coverage 100%, 2-3 balanced levels,
+      and — because slot k's draw is a DIFFERENT, largely independent draw from
+      slot 1's — fully crossed with no empty cell. Measured: all 35 ARE fully
+      crossed against P_S1 and WOULD be flagged. (P_S1's own five component
+      columns are not at risk: they are a deterministic function of the SAME
+      P_S1 value used as the anchor, so the crosstab has empty cells and rule 9
+      excludes them on that basis alone, same as the slot-1 draft.)
+
+  So all 35 are declared explicitly in `considered_and_rejected` below, with the
+  accurate reason: each is a decomposed restatement of an already-declared
+  per-item assignment variable (P_S{k}), not an independent randomisation —
+  checked 0 mismatches against the fielded code value for exactly this reason.
 
 
   OUTCOMES
 
-  Three items, all referring to slot 1, all 0-10 sliders:
-    task 0  SCENARIO_1            Q 73;  endpoints Q 76 / Q 86
-    task 1  SCENARIO_1_DIFFICULT  Q 90;  endpoints Q 92 / Q 102
-    task 2  SCENARIO_1_SECURE     Q 106; endpoints Q 108 / Q 118
+  Ten items, all 0-10 sliders. The first three refer to slot 1 only; the
+  remaining seven are the SAME willingness-to-download question asked again
+  after each of the other seven slots:
+    task 0  SCENARIO_1            Q 73;  endpoints Q 76 / Q 86;  condition_var P_S1
+    task 1  SCENARIO_1_DIFFICULT  Q 90;  endpoints Q 92 / Q 102; condition_var P_S1
+    task 2  SCENARIO_1_SECURE     Q 106; endpoints Q 108 / Q 118; condition_var P_S1
+    task 3  SCENARIO_2            Q 129; endpoints Q 132 / Q 142; condition_var P_S2
+    task 4  SCENARIO_3            Q 153; endpoints Q 156 / Q 166; condition_var P_S3
+    task 5  SCENARIO_4            Q 177; endpoints Q 180 / Q 190; condition_var P_S4
+    task 6  SCENARIO_5            Q 201; endpoints Q 204 / Q 214; condition_var P_S5
+    task 7  SCENARIO_6            Q 225; endpoints Q 228 / Q 238; condition_var P_S6
+    task 8  SCENARIO_7            Q 249; endpoints Q 252 / Q 262; condition_var P_S7
+    task 9  SCENARIO_8            Q 273; endpoints Q 276 / Q 286; condition_var P_S8
 
   Endpoint wording is taken from the questionnaire's RESPONSE OPTIONS blocks and
   matches the .sav value labels ("0 - Definitely would not participate" /
-  "10 - Definitely would participate", etc.). The two secondary items are asked
-  only about scenario 1 and PG lines 520 and 544 confirm the slot-1 vignette was
-  re-shown in a pop-up while they were answered ("SHOW P_S1 IN POP UP ... SO
-  THAT THE RESPONDENT CAN CLICK TO VIEW AS A VIGNETTE REMINDER"), so attaching
-  them to the slot-1 arm is correct, not an assumption.
+  "10 - Definitely would participate", etc.) for all ten items — checked
+  programmatically for SCENARIO_1/2/8 and by reading Q 121-286 for the rest; all
+  seven SCENARIO_2..8 blocks carry the identical RESPONSE OPTIONS text. The two
+  secondary items (DIFFICULT, SECURE) are asked only about scenario 1 and PG
+  lines 520 and 544 confirm the slot-1 vignette was re-shown in a pop-up while
+  they were answered ("SHOW P_S1 IN POP UP ... SO THAT THE RESPONDENT CAN CLICK
+  TO VIEW AS A VIGNETTE REMINDER"), so attaching them to the slot-1 arm
+  (condition_var P_S1, same as task 0) is correct, not an assumption. They have
+  no equivalent for slots 2-8 (verified: no SCENARIO_k_DIFFICULT/_SECURE column
+  for k>1, and Q has no such block) — asked once, not per slot.
 
   No arm reverses the option order, so there is no per-arm response_recode. Note
   the DIFFICULT item runs low = good and the SECURE item runs low = bad, i.e.
   they point in opposite directions substantively; both are carried through as
   raw 0-10 with their own endpoint labels rather than being flipped to a common
   polarity, so the scale text disambiguates them (ledger #7/#9 class).
+
+  Line numbers for Q 121-286 above were read directly (not estimated from the
+  block starts): all seven SCENARIO_2..8 blocks were opened in full and their
+  question/RESPONSE OPTIONS lines counted exactly as for SCENARIO_1.
 
 
   TEXT PROVENANCE
@@ -276,38 +352,55 @@ notes: |
   Same defect class as sd7cf (factor dropped) and c5r2f (wrong scenario for
   every arm), and the same source error as z358z (ledger #35).
 
-  `comparable_to_socsci210: false` because the scopes are genuinely different
-  (their unit is slot x respondent over all 8 slots keeping refusals; ours is
-  the 72-cell arm x 3 items for slot 1 dropping refusals), not because either
-  build is wrong about who was in which cell. Their arm assignment is not
-  checkable against ours at all, since they did not reconstruct one; the numbers
-  above are reproduced from the same file, which is the strongest agreement
-  available.
+  `comparable_to_socsci210: false` because the scopes are STILL genuinely
+  different, even though this build now covers the same TEN items SocSci210
+  did: their unit is slot x respondent over all 8 slots, keeping code-98
+  refusals as a response value; ours is the 72-cell arm x 10 items, dropping
+  refusals, with the arm correctly varying per item rather than fixed at one
+  mis-described vignette. n_rows no longer matches by coincidence either:
+  theirs is 19,480 (keeps the 198 refusals as rows with response=98); ours is
+  19,282 (drops them). Their arm assignment is not checkable against ours at
+  all, since they never reconstructed one — they modelled 8 "conditions" that
+  are presentation slots, not the 72-arm manipulation. The response
+  distributions still agree exactly net of that recoding choice (see above),
+  which is the strongest cross-check available in the absence of a real
+  condition-level key on their side.
 
 
-  LESSON (candidate ledger entry / QC rule)
+  LESSON — RESOLVED by Outcome.condition_var
 
-  A within-subject repeated-measures vignette design randomises the arm PER ITEM,
-  not per respondent. `Condition` resolves one arm per respondent row, so such a
-  design can only be built one slot at a time, and 7/8 of the observations here
-  are unreachable without either (a) a per-(arm, outcome) assignment — the same
-  gap already open for z358z Q1/Q2 — or (b) a "long" mode where one respondent
-  row yields several rows with different arms. Worth a schema note.
+  A within-subject repeated-measures vignette design randomises the arm PER
+  ITEM, not per respondent. The slot-1 draft's `Condition` resolved one arm per
+  respondent row, so it could only build one slot at a time. `Outcome.
+  condition_var` / `condition_vars` (committed after that draft, see
+  recipe.py and test_crossed_items.py) resolve the arm per (respondent, item)
+  instead, which is what this recipe now uses for all ten outcomes. Kept here
+  as a record of the gap that motivated the schema change, now closed.
 
-  Related: rule 9 should probably also flag columns that SHARE A NAME STEM with
-  the declared assignment variable (P_S1 -> P_S2..P_S8), independently of level
-  count and crossing. That pattern — one variable per repeated exposure — is how
-  a within-subject design looks in a wide file, and it is exactly what the
-  current anchored-crossing test is designed to reject.
+  The companion observation about rule 9 is also resolved, but differently
+  than first guessed: declaring the per-item variables (rather than adding a
+  stem-matching rule) is itself what silences rule 11 correctly — see
+  "THE UNDECLARED-ASSIGNMENT SCREENS" above — and it has the side effect of
+  REMOVING rule 9's incidental protection for the 35 decomposed component
+  columns, which this recipe now declares explicitly instead.
 
 
   WHAT THE CHECKER SHOULD RESOLVE
 
-   1. Scope. Is slot-1-only the right call, or should all eight slots be drafted
-      now as eight recipes? 5,769 rows built vs ~19,400 available.
-   2. Is `experiment: scenario1` the right use of that field? Slots 1-8 are
-      repeated exposures of ONE experiment, not independent experiments as in
-      rpw4u/a5v96.
+   1. Scope. All eight slots are now built (19,282 rows vs the prior 5,769).
+      Confirm the verification done for slots 2-8 above (same question,
+      same 0-10 scale, no DIFFICULT/SECURE sibling) is sufficient, or that the
+      checker wants to re-derive it independently.
+   2. `experiment:` is now omitted rather than `scenario1`. Confirm that is the
+      right call given CONVENTIONS.md's description of the field (several
+      independent experiments needing separate files) — this deposit has only
+      one experiment, now built whole.
+   2b. The 35 `P_S{k}_*` (k=2..8) decomposed-component columns are declared in
+      `considered_and_rejected` because, once P_S1..P_S8 are ALL declared, they
+      are no longer incidentally protected from rule 9 by the sibling-family
+      mechanism (see notes above) — confirm the dry-run build actually produces
+      zero rule-9 warnings with this recipe, and that the reasoning for why they
+      would otherwise fire is correct rather than overcautious.
    3. privacy_statement level names. "plain wording" (level 1) / "formal
       wording" (level 2) are my reading of the two texts. PR line 25 calls the
       factor "Readability ... Easy / Difficult" but never says which level is
@@ -363,15 +456,17 @@ condition:
     The data collected from the app would help researchers to learn more about how Americans spend their time, such as work, childcare, and leisure.
 
   considered_and_rejected:
-    P_S2: "Vignette shown in presentation slot 2, a different draw from the same 72-cell
-      universe. Slots 2-8 are separate exposures of the SAME experiment and need one
-      recipe each (see notes, SCOPE)."
-    P_S3: "Vignette shown in presentation slot 3; see P_S2."
-    P_S4: "Vignette shown in presentation slot 4; see P_S2."
-    P_S5: "Vignette shown in presentation slot 5; see P_S2."
-    P_S6: "Vignette shown in presentation slot 6; see P_S2."
-    P_S7: "Vignette shown in presentation slot 7; see P_S2."
-    P_S8: "Vignette shown in presentation slot 8; see P_S2."
+    # P_S1..P_S8 are NOT listed here any more: they are DECLARED, as the
+    # study-level source_var (P_S1) and as each outcome's condition_var
+    # (P_S2..P_S8) — see notes, SCOPE. A rejected-variable entry would be
+    # inaccurate for a variable the recipe now uses to assign the arm.
+    #
+    # Their decomposed five-factor restatements are NOT listed here. Rule 9
+    # suppresses any column named `<declared assignment>_<factor>` on its own,
+    # and reports the count as one checkable note. Listing all 40 by hand was
+    # the first fix attempted; it worked, but it put a pipeline concern into
+    # forty lines of recipe, and the next within-subject study would have paid
+    # it again.
     CONCERN_ORDER1: "Item-order randomisation for the CONCERN_A/CONCERN_B attitude
       battery, a later block that is not an outcome of this recipe. Not part of the
       vignette assignment."
@@ -1395,26 +1490,88 @@ condition:
         • The study would be in compliance with prevailing U.S. data protection and privacy regulations and several procedures would be in place to preserve the confidentiality of all information collected by the research app. Any data collected would only be used by the principal investigators and would not be shared with any other parties. Aggregated study findings would be disseminated through publications and international conferences.
 
 outcomes:
+  # Slot 1: the primary willingness item plus its two secondary items, all
+  # keyed to the same slot-1 draw (P_S1). condition_var is named explicitly
+  # even though it equals the study-level source_var, for symmetry with
+  # tasks 3-9 and because it is what makes the per-item assignment auditable
+  # at a glance.
   - var: SCENARIO_1
     task_num: 0
     question: >-
       How likely is it that you would download the app to participate in this
       research study?
     scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S1
   - var: SCENARIO_1_DIFFICULT
     task_num: 1
     question: >-
       How difficult would it be for you to download the app on a smartphone?
     scale: {min: 0, max: 10, min_label: "Not at all difficult", max_label: "Very difficult"}
+    condition_var: P_S1
   - var: SCENARIO_1_SECURE
     task_num: 2
     question: >-
       How secure would you consider the information collected from the app?
     scale: {min: 0, max: 10, min_label: "Not at all secure", max_label: "Very secure"}
+    condition_var: P_S1
+  # Slots 2-8: the SAME willingness question, re-asked about a fresh draw from
+  # the same 72-arm universe. Verified against Q 121-286 (see notes, SCOPE) —
+  # identical question wording and RESPONSE OPTIONS block to SCENARIO_1, only
+  # the scenario number and [INSERT P_S{k}] differ.
+  - var: SCENARIO_2
+    task_num: 3
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S2
+  - var: SCENARIO_3
+    task_num: 4
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S3
+  - var: SCENARIO_4
+    task_num: 5
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S4
+  - var: SCENARIO_5
+    task_num: 6
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S5
+  - var: SCENARIO_6
+    task_num: 7
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S6
+  - var: SCENARIO_7
+    task_num: 8
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S7
+  - var: SCENARIO_8
+    task_num: 9
+    question: >-
+      How likely is it that you would download the app to participate in this
+      research study?
+    scale: {min: 0, max: 10, min_label: "Definitely would not participate", max_label: "Definitely would participate"}
+    condition_var: P_S8
 
-# 0-10 slider, straight through. All three items share the same 0-10 coding
-# (.sav value labels on SCENARIO_1 / _DIFFICULT / _SECURE); no arm reverses the
-# option order, so no per-arm response_recode is needed.
+# 0-10 slider, straight through. All ten items share the same 0-10 coding
+# (.sav value labels agree across SCENARIO_1..8 / _DIFFICULT / _SECURE,
+# checked programmatically for SCENARIO_1/2/8); no arm reverses the option
+# order, so no per-arm response_recode is needed.
 response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
 # 77 DON'T KNOW, 98 SKIPPED ON WEB, 99 REFUSED (prog file lines 418-422 and the
 # .sav value labels). Only 98 actually occurs on these three items.

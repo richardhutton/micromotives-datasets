@@ -4,10 +4,18 @@ title: "Impact of Response Scale Direction on Survey Responses (Keusch, TESS3 15
 data_file: TESS3_150_Keusch_Final_Client.sav
 experiment: Q1a_and_validation
 
-# Our scope is NARROWER than SocSci210's, so a numeric crosscheck of n_rows is
-# meaningless. Full arithmetic, and the exact reconciliation that was done by
-# hand instead, is in `notes` under "SocSci210 reconciliation".
-comparable_to_socsci210: false
+# Flipped from `false` to `true` now that `Arm.items` lets this recipe build all
+# TEN experimental items, not just Q1a: our scope is no longer narrower than
+# SocSci210's, and a live crosscheck now runs `n_rows`/`n_conditions`/
+# `rows_per_condition` exact matches (33,932 / 12 / all twelve cells digit-for-
+# digit) against theirs. It still reports FAIL, deliberately: `response_distribution`
+# disagrees, because SocSci210's per-cell coding is wrong (see "SOCSCI210
+# RECONCILIATION" in `notes` — 0 outside their own declared 1-5 scale, a scale
+# reversed where none was renumbered, two non-injective collapses), not because our
+# scope differs. Following the z358z precedent (ledger): keep the disagreement
+# visible as a FAIL rather than hide it behind a scope-mismatch SKIP now that the
+# scope genuinely matches.
+comparable_to_socsci210: true
 
 notes: >
   TESS3 150 (Florian Keusch, Univ. of Michigan / Northwestern). A 2 x 2 x 3 full
@@ -178,20 +186,55 @@ notes: >
   across a wrapped line. Uncertainty #2.
 
 
-  == SCOPE, AND A SCHEMA LIMIT THAT COSTS NINE ITEMS ==
+  == SCOPE: ALL TEN EXPERIMENTAL ITEMS, NOW THAT `Arm.items` EXISTS ==
 
   The experiment was run on TEN items: six mental-health items Q1a-Q1f (lines 113-119,
   fielded at 259+) and four health-behaviour items Q2a-Q2d (lines 123-127, fielded at
   1012+). Each exists as six columns, so the answer variable is a function of
-  (item x arm) — 60 columns. The recipe schema resolves the answer variable as
-  `outcome.var or arm.outcome_var` (recipe.py `outcome_var_for`), a sum and not a
-  product: one variable per outcome OR one variable per arm, never one per pair. So
-  only ONE experimental item can be expressed per recipe file. This recipe builds
-  Q1a ("so sad that nothing could cheer you up"). Q1b, Q1c, Q1d, Q1e, Q1f, Q2a, Q2b,
-  Q2c and Q2d are mechanical repeats of the same 12 arms against Q1B_*..Q2D_* and are
-  OWED, not dropped. The gap is documented rather than worked around (cf. ledger #33);
-  the suggested fix is an `Arm.outcome_vars: {task_num: var}` override resolved before
-  `outcome.var`.
+  (item x arm) — 60 columns. Previously the recipe schema resolved the answer variable
+  as `outcome.var or arm.outcome_var` (recipe.py `outcome_var_for`), a sum and not a
+  product: one variable per outcome OR one variable per arm, never one per pair, so
+  only Q1a (task 0) could be expressed and the other nine items — ~15,400 rows — were
+  OWED (ledger #50). The new `Arm.items: {task_num: ItemOverride}` (keyed by the
+  outcome's `task_num`) resolves before `outcome.var`/`arm.outcome_var` and is
+  per-(arm, item), so all nine are now built as tasks 11-19.
+
+  Verified from source for every one of the nine, not assumed from Q1a's pattern:
+  (1) the 54 columns Q1B_1..Q1F_6, Q2A_1..Q2D_6 all exist in the .sav; (2) for every
+  one, nonnull(column) == (XTESS150 in the pair of groups that column's OWN .sav value
+  label names) held exactly, e.g. Q1B_1 n=304 for groups {4,10} down to Q2D_6 n=283 for
+  groups {3,9} — so the suffix->(align,label) mapping is identical across all ten items,
+  not merely assumed from Q1a; (3) each suffix's six value labels (wording, codes,
+  "Refused"=-1) are byte-identical across all ten items' same suffix — Q1B_2's value
+  labels are the same "7 days".."0 days" set as Q1A_2's, Q1B_5 the same "7 Days".."0
+  Days" as Q1A_5, etc. — confirmed by reading `meta.variable_value_labels` for all 54
+  columns, not inferred; (4) the questionnaire's own text for Q1b_1..Q1f_6 and
+  Q2a_1..Q2d_6 (grepped `^Q1[b-f]_[1-6]\.` / `^Q2[a-d]_[1-6]\.`, 54 lines) carries the
+  SAME option-label wording per suffix as Q1a's blocks, and the question stem itself is
+  invariant across a letter's six suffixes (e.g. all six Q1b_* blocks read "During an
+  average week, how often do you feel nervous?" verbatim, no intro-sentence variant
+  anywhere) — so one `Outcome.question` per item is correct, with no per-arm
+  `outcome_question` override needed; (5) the label-anchoring argument (see SCALE
+  DIRECTION above) was re-run per item, not inherited by assumption: correlating each
+  item's raw code against its own open-ended counterpart (Q17B-F, Q18A-D) is strongly
+  NEGATIVE in BOTH direction arms for all nine, with near-identical (not mirrored) means
+  — e.g. Q1B dir1 r=-0.776 mean=4.149 vs dir2 r=-0.784 mean=4.178; weakest case Q2A
+  dir1 r=-0.792 vs dir2 r=-0.737 — the same signature Q1a's four-part proof established,
+  confirming no per-arm `response_recode` is needed on these nine either. Each arm's
+  `items` entry therefore carries `outcome_var` (its own column for that item) and
+  `scale` (the same endpoint-label strings already on that arm for task 0, restated
+  explicitly per item rather than left to fall through `scale_for`'s
+  `outcome.var is None and arm.scale is not None` branch — both resolve to the same
+  value here, and the explicit form is the one a reader can check without tracing the
+  resolution order, which is the exact property that failed silently in ledger #58).
+
+  Row-count consequence, measured rather than assumed: before this change the build was
+  18,544 rows (task 0 contributing 1,720 after dropping -1 "Refused"). Each of tasks
+  11-19 has the same 1,729-respondent non-null footprint as task 0 (confirmed above)
+  but its OWN refusal count — Q1B 13, Q1C 24, Q1D 21, Q1E 21, Q1F 21, Q2A 16, Q2B 17,
+  Q2C 20, Q2D 20 — so the nine contribute 1,716+1,705+1,708+1,708+1,708+1,713+1,712+
+  1,709+1,709 = 15,388 rows, not a uniform 9 x 1,729. See the handover for the exact
+  post-build CLI number, which this arithmetic predicts.
 
   Also included, as tasks 1-10, are the ten open-ended validation items Q17a-f and
   Q18a-d (lines 1579-1638, "[number box 0-7]"). These carry NO experimental variation
@@ -214,7 +257,7 @@ notes: >
   describe a different scale.
 
 
-  == SOCSCI210 RECONCILIATION (done by hand; `comparable_to_socsci210: false`) ==
+  == SOCSCI210 RECONCILIATION (done by hand; `comparable_to_socsci210: true`) ==
 
   SocSci210's evnyh is 33,932 rows / 1,724 participants / 12 conditions with
   rows_per_condition {0:2958, 1:2916, 2:2866, 3:3013, 4:2742, 5:2830, 6:2662, 7:2723,
@@ -269,6 +312,31 @@ notes: >
   quantity (ledger #9), and not only downward: here the degradation is a reversal and a
   three-level collapse, both introduced where the source needed nothing done at all.
 
+  CONFIRMED BY THE LIVE CROSSCHECK, now that `Arm.items` builds all ten items and the
+  hand-reconciled scope above is actually what the recipe emits (`mmds crosscheck evnyh
+  --recipe recipes/evnyh_Q1a_and_validation.yaml`):
+    n_rows               ok   33,932 == 33,932
+    n_conditions         ok   12 == 12
+    rows_per_condition   ok   all twelve cells exact: {0:2958,1:2916,2:2866,3:3013,
+                               4:2742,5:2830,6:2662,7:2723,8:2644,9:2990,10:2823,11:2765}
+    response_distribution  DIFF  ours {0:7445,1:3705,2:3442,3:3968,4:6331,5:7712,6:462,
+                               7:867} vs theirs {0:8575,1:8570,2:3673,3:3968,4:3831,
+                               5:3986,6:462,7:867} — exactly the shape the by-hand
+                               analysis above predicts: 3 and the two validation-only
+                               bins (6, 7 = task-set day-counts 6-7) agree outright;
+                               0/1/2/4/5 diverge because their per-cell maps collapse
+                               and reverse as documented.
+    => FAIL (by construction — see above)
+  The stimuli note now reads "12 conditions, 1 distinct string" rather than the
+  by-hand "7 distinct", because the live query takes min(stimuli) over ALL of a
+  condition's rows across every task_num, and ten of our twenty tasks (the open-ended
+  validation items) are genuinely IDENTICAL text across all twelve conditions on
+  their side too — that collapses the by-hand per-item-0 count of 7 further under an
+  unfiltered min(), it does not contradict it. `comparable_to_socsci210` is therefore
+  `true`: the scope now matches exactly, so the FAIL is the intended, informative
+  signal, not a false alarm — see the top-of-file comment and the z358z ledger
+  precedent for why that is the right setting rather than `false`.
+
 
   == UK CONTENT ==
 
@@ -290,6 +358,16 @@ condition:
       factors: {scale_direction: "high to low", scale_alignment: "vertical", label_vagueness: "vague quantifiers"}
       outcome_var: Q1A_4
       scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      items:
+        11: {outcome_var: Q1B_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        12: {outcome_var: Q1C_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        13: {outcome_var: Q1D_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        14: {outcome_var: Q1E_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        15: {outcome_var: Q1F_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        16: {outcome_var: Q2A_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        17: {outcome_var: Q2B_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        18: {outcome_var: Q2C_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        19: {outcome_var: Q2D_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
       text: >
         The five response options were shown vertically, one per line, in this order
         from top to bottom: "All of the time"; "Most of the time"; "Some of the time";
@@ -299,6 +377,16 @@ condition:
       factors: {scale_direction: "high to low", scale_alignment: "vertical", label_vagueness: "precise frequency"}
       outcome_var: Q1A_5
       scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}
+      items:
+        11: {outcome_var: Q1B_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        12: {outcome_var: Q1C_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        13: {outcome_var: Q1D_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        14: {outcome_var: Q1E_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        15: {outcome_var: Q1F_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        16: {outcome_var: Q2A_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        17: {outcome_var: Q2B_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        18: {outcome_var: Q2C_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        19: {outcome_var: Q2D_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
       text: >
         The five response options were shown vertically, one per line, in this order
         from top to bottom: "7 Days"; "5 to 6 Days"; "3 to 4 Days"; "1 to 2 Days";
@@ -308,6 +396,16 @@ condition:
       factors: {scale_direction: "high to low", scale_alignment: "vertical", label_vagueness: "vague quantifiers + precise frequency"}
       outcome_var: Q1A_6
       scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}
+      items:
+        11: {outcome_var: Q1B_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        12: {outcome_var: Q1C_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        13: {outcome_var: Q1D_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        14: {outcome_var: Q1E_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        15: {outcome_var: Q1F_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        16: {outcome_var: Q2A_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        17: {outcome_var: Q2B_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        18: {outcome_var: Q2C_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        19: {outcome_var: Q2D_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
       text: >
         The five response options were shown vertically, one per line, in this order
         from top to bottom: "All of the time (7 Days)"; "Most of the time (5 to 6
@@ -318,6 +416,16 @@ condition:
       factors: {scale_direction: "high to low", scale_alignment: "horizontal", label_vagueness: "vague quantifiers"}
       outcome_var: Q1A_1
       scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      items:
+        11: {outcome_var: Q1B_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        12: {outcome_var: Q1C_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        13: {outcome_var: Q1D_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        14: {outcome_var: Q1E_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        15: {outcome_var: Q1F_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        16: {outcome_var: Q2A_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        17: {outcome_var: Q2B_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        18: {outcome_var: Q2C_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        19: {outcome_var: Q2D_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
       text: >
         The five response options were shown horizontally, side by side in a single row
         across the screen, in this order from left to right: "All of the time"; "Most
@@ -327,6 +435,16 @@ condition:
       factors: {scale_direction: "high to low", scale_alignment: "horizontal", label_vagueness: "precise frequency"}
       outcome_var: Q1A_2
       scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}
+      items:
+        11: {outcome_var: Q1B_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        12: {outcome_var: Q1C_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        13: {outcome_var: Q1D_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        14: {outcome_var: Q1E_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        15: {outcome_var: Q1F_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        16: {outcome_var: Q2A_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        17: {outcome_var: Q2B_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        18: {outcome_var: Q2C_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        19: {outcome_var: Q2D_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
       text: >
         The five response options were shown horizontally, side by side in a single row
         across the screen, in this order from left to right: "7 days"; "5 or 6 days";
@@ -336,6 +454,16 @@ condition:
       factors: {scale_direction: "high to low", scale_alignment: "horizontal", label_vagueness: "vague quantifiers + precise frequency"}
       outcome_var: Q1A_3
       scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}
+      items:
+        11: {outcome_var: Q1B_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        12: {outcome_var: Q1C_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        13: {outcome_var: Q1D_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        14: {outcome_var: Q1E_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        15: {outcome_var: Q1F_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        16: {outcome_var: Q2A_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        17: {outcome_var: Q2B_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        18: {outcome_var: Q2C_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        19: {outcome_var: Q2D_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
       text: >
         The five response options were shown horizontally, side by side in a single row
         across the screen, in this order from left to right: "All of the time (7
@@ -350,6 +478,16 @@ condition:
       factors: {scale_direction: "low to high", scale_alignment: "vertical", label_vagueness: "vague quantifiers"}
       outcome_var: Q1A_4
       scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      items:
+        11: {outcome_var: Q1B_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        12: {outcome_var: Q1C_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        13: {outcome_var: Q1D_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        14: {outcome_var: Q1E_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        15: {outcome_var: Q1F_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        16: {outcome_var: Q2A_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        17: {outcome_var: Q2B_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        18: {outcome_var: Q2C_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        19: {outcome_var: Q2D_4, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
       text: >
         The five response options were shown vertically, one per line, in this order
         from top to bottom: "Never"; "A little of the time"; "Some of the time"; "Most
@@ -359,6 +497,16 @@ condition:
       factors: {scale_direction: "low to high", scale_alignment: "vertical", label_vagueness: "precise frequency"}
       outcome_var: Q1A_5
       scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}
+      items:
+        11: {outcome_var: Q1B_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        12: {outcome_var: Q1C_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        13: {outcome_var: Q1D_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        14: {outcome_var: Q1E_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        15: {outcome_var: Q1F_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        16: {outcome_var: Q2A_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        17: {outcome_var: Q2B_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        18: {outcome_var: Q2C_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
+        19: {outcome_var: Q2D_5, scale: {min: 1, max: 5, min_label: "7 Days", max_label: "0 Days"}}
       text: >
         The five response options were shown vertically, one per line, in this order
         from top to bottom: "0 Days"; "1 to 2 Days"; "3 to 4 Days"; "5 to 6 Days";
@@ -368,6 +516,16 @@ condition:
       factors: {scale_direction: "low to high", scale_alignment: "vertical", label_vagueness: "vague quantifiers + precise frequency"}
       outcome_var: Q1A_6
       scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}
+      items:
+        11: {outcome_var: Q1B_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        12: {outcome_var: Q1C_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        13: {outcome_var: Q1D_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        14: {outcome_var: Q1E_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        15: {outcome_var: Q1F_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        16: {outcome_var: Q2A_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        17: {outcome_var: Q2B_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        18: {outcome_var: Q2C_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
+        19: {outcome_var: Q2D_6, scale: {min: 1, max: 5, min_label: "All of the time (7 Days)", max_label: "Never (0 Days)"}}
       text: >
         The five response options were shown vertically, one per line, in this order
         from top to bottom: "Never (0 Days)"; "A little of the time (1 to 2 Days)";
@@ -378,6 +536,16 @@ condition:
       factors: {scale_direction: "low to high", scale_alignment: "horizontal", label_vagueness: "vague quantifiers"}
       outcome_var: Q1A_1
       scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+      items:
+        11: {outcome_var: Q1B_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        12: {outcome_var: Q1C_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        13: {outcome_var: Q1D_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        14: {outcome_var: Q1E_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        15: {outcome_var: Q1F_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        16: {outcome_var: Q2A_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        17: {outcome_var: Q2B_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        18: {outcome_var: Q2C_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
+        19: {outcome_var: Q2D_1, scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}}
       text: >
         The five response options were shown horizontally, side by side in a single row
         across the screen, in this order from left to right: "Never"; "A little of the
@@ -387,6 +555,16 @@ condition:
       factors: {scale_direction: "low to high", scale_alignment: "horizontal", label_vagueness: "precise frequency"}
       outcome_var: Q1A_2
       scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}
+      items:
+        11: {outcome_var: Q1B_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        12: {outcome_var: Q1C_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        13: {outcome_var: Q1D_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        14: {outcome_var: Q1E_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        15: {outcome_var: Q1F_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        16: {outcome_var: Q2A_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        17: {outcome_var: Q2B_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        18: {outcome_var: Q2C_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
+        19: {outcome_var: Q2D_2, scale: {min: 1, max: 5, min_label: "7 days", max_label: "0 days"}}
       text: >
         The five response options were shown horizontally, side by side in a single row
         across the screen, in this order from left to right: "0 days"; "1 or 2 days";
@@ -396,6 +574,16 @@ condition:
       factors: {scale_direction: "low to high", scale_alignment: "horizontal", label_vagueness: "vague quantifiers + precise frequency"}
       outcome_var: Q1A_3
       scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}
+      items:
+        11: {outcome_var: Q1B_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        12: {outcome_var: Q1C_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        13: {outcome_var: Q1D_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        14: {outcome_var: Q1E_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        15: {outcome_var: Q1F_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        16: {outcome_var: Q2A_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        17: {outcome_var: Q2B_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        18: {outcome_var: Q2C_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
+        19: {outcome_var: Q2D_3, scale: {min: 1, max: 5, min_label: "All of the time (7 days)", max_label: "Never(0 days)"}}
       text: >
         The five response options were shown horizontally, side by side in a single row
         across the screen, in this order from left to right: "Never(0 days)"; "A
@@ -473,6 +661,65 @@ outcomes:
     question: "During an average week, on how many days do you do physical exercise?"
     scale: {min: 0, max: 7, min_label: "0 days", max_label: "7 days"}
     response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+
+  # Tasks 11-19 — the nine remaining experimental items (ledger #50's "nine of
+  # ten unreachable"). Each is asked as six columns per item, exactly like Q1a
+  # (task 0): suffix _1.._6 maps to (align, label) groups identically across
+  # ALL ten items — confirmed, not assumed. For every one of these nine
+  # variables, nonnull(col) == (XTESS150 in {the two groups the var's own
+  # value label names}) held exactly (e.g. Q1B_1 n=304 for groups {4,10}, down
+  # to Q2D_6 n=283 for groups {3,9}) and the .sav value-label sets are
+  # byte-identical to Q1A's own six (same wording, same "5 or 6 days" vs
+  # "5 to 6 Days" horizontal/vertical inconsistency, same "Never(0 days)" vs
+  # "Never (0 Days)" spacing). So no `var` here either; every arm's `items`
+  # override supplies both `outcome_var` and `scale`, and the scale values are
+  # the SAME strings already declared on that arm for task 0 — not copied by
+  # assumption but independently re-checked against each item's own value
+  # labels above. No arm/item `response_recode`: the label-anchoring argument
+  # in the SCALE DIRECTION section of these notes is a property of the
+  # programming (one grid, codes never shown), not of which item is asked, and
+  # was re-run per item as a condition of building these nine: for every one,
+  # correlating its raw code against its own open-ended counterpart (Q17B..D,
+  # Q18A..D) is strongly NEGATIVE in BOTH direction arms with near-identical
+  # means (e.g. Q1B dir1 r=-0.776 mean=4.149 vs dir2 r=-0.784 mean=4.178; worst
+  # case Q2A dir1 r=-0.792 vs dir2 r=-0.737) — the same signature as Q1a's
+  # four-part proof, not a mirrored one, confirming the stored codes are
+  # label-anchored for these nine items too. Question wording verbatim from
+  # the questionnaire lines grepped for `^Q1[b-f]_[1-6]\.` / `^Q2[a-d]_[1-6]\.`:
+  # all six suffixes of a given letter render byte-identical question text, so
+  # one `question` per outcome is correct and no per-arm `outcome_question` is
+  # needed (unlike cug34/z358z, where that override exists for a reason).
+  - task_num: 11
+    question: "During an average week, how often do you feel nervous?"
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 12
+    question: "During an average week, how often do you feel restless or fidgety?"
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 13
+    question: "During an average week, how often do you feel hopeless?"
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 14
+    question: "During an average week, how often do you feel that everything was an effort?"
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 15
+    question: "During an average week, how often do you feel worthless?"
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 16
+    question: >-
+      During an average week, how often do you eat foods that are high in fat
+      and/or calories?
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 17
+    question: "During an average week, how often do you eat fast food?"
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 18
+    question: >-
+      During an average week, how often do you eat a variety of fresh fruits and
+      vegetables?
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
+  - task_num: 19
+    question: "During an average week, how often do you do physical exercise?"
+    scale: {min: 1, max: 5, min_label: "All of the time", max_label: "Never"}
 
 # Study-level map: the 5-point experimental scale, applied identically in all 12
 # arms. Deliberately NOT overridden per arm — see the SCALE DIRECTION section of

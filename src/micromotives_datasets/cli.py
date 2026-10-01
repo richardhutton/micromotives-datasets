@@ -77,13 +77,18 @@ def cmd_build(args: argparse.Namespace) -> int:
 
     # Rules 9 and 11 — need the data alongside the recipe, so they cannot live in
     # `qc.check`. Both warn only; neither blocks a build.
-    from .pipeline.screen import find_numbered_siblings, find_undeclared_assignment
+    from .pipeline.screen import (
+        find_assignment_components,
+        find_numbered_siblings,
+        find_undeclared_assignment,
+    )
     from .pipeline.screen import render as render_screen
 
     suspects = find_undeclared_assignment(ds, rec)
     siblings = find_numbered_siblings(ds, rec)
-    if suspects or siblings:
-        print(render_screen(suspects, siblings))
+    components = find_assignment_components(ds, rec)
+    if suspects or siblings or components:
+        print(render_screen(suspects, siblings, components))
 
     if args.crosscheck:
         print()

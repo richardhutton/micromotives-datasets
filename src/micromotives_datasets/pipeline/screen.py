@@ -146,6 +146,21 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
     keys = [c for c in ds.df.columns if c.upper() in study_level]
     if len(keys) != len(study_level):
         return []
+
+    # A column named `<declared assignment>_<something>` is a DECOMPOSITION of
+    # a declared variable — `P_S2_Tech_Support` restates one factor of the
+    # vignette `P_S2` already names — so it is not a second randomisation and
+    # reporting it as one is noise.
+    #
+    # This fires only once the siblings are properly declared, and it is the
+    # SAME bug as ledger #52 in a new dress. That one: recording `P_S2..P_S8`
+    # in `considered_and_rejected` emptied the sibling list and un-silenced
+    # their 35 component columns. This one: DECLARING `P_S2..P_S8` as per-item
+    # assignment empties it the same way, for the same reason. The suppression
+    # was derived from "siblings we have not dealt with yet", so every way of
+    # dealing with them removed it. Deriving it from the declared variables
+    # themselves has no such feedback.
+    components = tuple(f"{v}_" for v in declared)
     anchor = ds.df[keys].astype("string").agg("|".join, axis=1)
 
     # Rule 11 owns the numbered-sibling family, so skip those and their component
@@ -162,6 +177,8 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
         if up in declared or up in rejected:
             continue
         if sibling_prefixes and up.startswith(sibling_prefixes):
+            continue
+        if up.startswith(components):
             continue
         label = (ds.column_labels.get(col) or "").strip()
         if not (NAME_PAT.match(col) or LABEL_PAT.search(label)):
@@ -196,7 +213,26 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
     return out
 
 
-def render(suspects: list[Suspect], siblings: list[str] | None = None) -> str:
+def find_assignment_components(ds: Dataset, recipe: Recipe) -> list[str]:
+    """Columns that decompose a declared assignment variable.
+
+    Rule 9 does not report these one by one — there are 40 of them in `b87sm`
+    and they would bury the signal the rule exists to give. But it must not
+    hide them either: "40 columns suppressed as components of P_S1..P_S8" is a
+    claim a reader can check, and a second manipulation that happened to be
+    named after a declared variable would be visible in that list.
+    """
+    prefixes = tuple(f"{v}_" for v in recipe.assignment_variables)
+    if not prefixes:
+        return []
+    return [c for c in ds.df.columns if c.upper().startswith(prefixes)]
+
+
+def render(
+    suspects: list[Suspect],
+    siblings: list[str] | None = None,
+    components: list[str] | None = None,
+) -> str:
     lines = [f"  warn  possible undeclared assignment: {s.render()}" for s in suspects]
     if lines:
         lines.append(
@@ -209,5 +245,12 @@ def render(suspects: list[Suspect], siblings: list[str] | None = None) -> str:
             "        the deposit probably holds further arms or a repeated measure. "
             "Declare them, or record the scope decision in "
             "`condition.considered_and_rejected`."
+        )
+    if components:
+        shown = ", ".join(components[:6])
+        more = f", and {len(components) - 6} more" if len(components) > 6 else ""
+        lines.append(
+            f"  note  {len(components)} column(s) suppressed as decompositions of the "
+            f"declared assignment: {shown}{more}"
         )
     return "\n".join(lines)

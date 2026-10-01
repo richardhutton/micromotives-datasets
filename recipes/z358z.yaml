@@ -3,9 +3,14 @@ source: tess
 title: "Randomized Drug Trials without Consent? The Public's Perspective"
 data_file: TESS3_175 Nayak_Client.sav
 
-# Full 2x2. Matches SocSci210 on n_rows, n_participants, the response
-# distribution AND all four condition indices.
-comparable_to_socsci210: true
+# Full 2x2, now WITH Q1/Q2 (today's build, see notes "Q1/Q2 — BUILT"). On the
+# original 10-outcome scope (Q3-Q7 only) this matched SocSci210 on n_rows,
+# n_participants, the response distribution AND all four condition indices —
+# exactly. Adding Q1/Q2 — which SocSci210 never built at all — necessarily
+# changes every one of those numbers, so the comparison is no longer meaningful
+# as a strict crosscheck. Flipped to false FOR THAT REASON ONLY: the arithmetic
+# is adjudicated and matches exactly (see notes), not a disagreement.
+comparable_to_socsci210: false
 
 notes: >
   TESS3 175 (Nayak). CHECKER REBUILD of recipes/draft/z358z.yaml, using
@@ -56,7 +61,7 @@ notes: >
   0 and 1 and morning/night for 2 and 3.
 
 
-  OUTCOMES — WHY TEN
+  OUTCOMES — WHY TEN (SECONDARY), THEN TWELVE (WITH Q1/Q2 ADDED)
 
   Five secondary items (paper Appendix 1, "Key variables: Secondary") asked of
   every respondent, each in a scenario-specific column: Q3a..Q7a for scenario 1,
@@ -70,14 +75,65 @@ notes: >
   Q7 genuinely differ ("which treatment they receive" vs "when they should take
   their medicine").
 
-  STILL NOT BUILT: Q1/Q2, the study's PRIMARY outcomes (a four-way split ballot,
-  Q1a/Q1b/Q1c/Q1d and Q2a/Q2b/Q2c/Q2d, one variable per CELL, on a 4-point
-  Written-Consent-vs-alternative scale). The four-level arm now exists, so they
-  are expressible, but `Arm.outcome_var` holds ONE variable per arm and these
-  are two items per arm. Left out so that this rebuild's scope is identical to
-  the 2-arm draft's and to SocSci210's, which makes the crosscheck meaningful.
-  Building them is owed and needs either a second recipe file or a per-(arm,
-  outcome) variable override.
+  Q1/Q2 — BUILT (maker #2 pass, today). These are the study's PRIMARY outcomes: a
+  four-way split ballot, Q1a/Q1b/Q1c/Q1d and Q2a/Q2b/Q2c/Q2d (lines 390-620), one
+  variable per CELL, on a 4-point Written-Consent-vs-alternative scale. The
+  four-level arm already existed; what was missing was a way for Q1 and Q2 — two
+  outcomes of the SAME arm — to each name their own variable, which
+  `Arm.outcome_var` cannot do (one variable per arm). `Arm.items` (ItemOverride,
+  keyed by task_num) now does: task_num 10 (Q1) and 11 (Q2) are declared with
+  `var: null` on the Outcome, and every one of the four arms supplies
+  `outcome_var` (Q1a/Q1b/Q1c/Q1d and Q2a/Q2b/Q2c/Q2d respectively) via its own
+  `items` override, alongside the matching question wording and scale.
+
+  TEXT: Q1's question is lines 390/451/533/592, Q2's is 407/468/549/609, all
+  quoted verbatim. Both ask about "Written Consent or [X]" where X is the arm's
+  OWN consent_alternative ("General Notification" for scenario x Option A cells,
+  "Verbal Consent" for Option B cells) — confirmed: Q1a (cell 1,1) and Q1c (cell
+  2,1) are word-for-word identical text over different variables, as are Q1b/Q1d
+  and Q2a/Q2c and Q2b/Q2d. So the text factor here is `consent_alternative`
+  only; `scenario` does not appear in Q1/Q2's wording at all (unlike Q3-Q7a/b,
+  where two of five items genuinely differ by scenario).
+
+  SCALE/CODING: each [grid, sp across] block (e.g. lines 392-401) has column
+  headers "Written Consent" | [alternative] and row headers "Definitely |
+  Probably | Probably | Definitely" against codes 1/2/3/4 in that exact order —
+  i.e. 1 = Definitely Written Consent ... 4 = Definitely [alternative], a genuine
+  ordered 4-point bipolar scale (not nominal: codes 2 and 3 sit strictly between
+  the two poles). Checked all eight blocks (Q1a/b/c/d, Q2a/b/c/d): the column
+  order is "Written Consent" first in every one, so there is no option-order
+  reversal between arms and no `response_recode` override is needed — the
+  study-level {1:1..7:7} map already passes 1-4 through unchanged.
+
+  VERIFIED AGAINST THE .sav. Q1a/Q1b/Q1c/Q1d are non-blank in exactly 503/558/
+  546/523 rows — the same four cell sizes as the condition crosstab, each in its
+  own cell only (Q1a only where (XTESS175,DOV_OPTION)=(1,1), etc.) — confirming
+  these ARE the per-cell answer columns, not something else. Refusals (-1): 0 in
+  Q1a/Q1b/Q1d, 2 in Q1c; 0 in Q2a/Q2b/Q2d, 1 in Q2c. Valid rows: Q1 503+558+544+
+  523 = 2,128; Q2 503+558+545+523 = 2,129.
+
+  ROW ARITHMETIC, reconciled against the pre-Q1/Q2 build (10,445 rows, 2,096
+  participants, conditions {0:2426, 1:2728, 2:2697, 3:2594}):
+    n_rows:        10,445 + 2,128 + 2,129 = 14,702       (build confirms 14,702)
+    participants:  2,096 + 34 = 2,130. The +34 are respondents who refused EVERY
+                   Q3-Q7 item (so contributed 0 rows before) but validly answered
+                   at least one of Q1/Q2 — confirmed directly in the .sav: exactly
+                   34 respondents have no non-refused value in any of Q3a..Q7b but
+                   at least one in Q1a..Q2d.
+    per condition: arm 0 gained Q1a(503)+Q2a(503)=1,006  -> 2,426 + 1,006 = 3,432
+                   arm 1 gained Q1b(558)+Q2b(558)=1,116  -> 2,728 + 1,116 = 3,844
+                   arm 2 gained Q1c(544)+Q2c(545)=1,089  -> 2,697 + 1,089 = 3,786
+                   arm 3 gained Q1d(523)+Q2d(523)=1,046  -> 2,594 + 1,046 = 3,640
+                   all four match the build exactly: {0:3432, 1:3844, 2:3786, 3:3640}
+    response distribution: Q1/Q2's own codes 1/2/3/4 tally {1:1962, 2:882, 3:823,
+                   4:590} (computed directly from the eight columns); added to the
+                   pre-existing {1:629, 2:644, 3:693, 4:3410, 5:1467, 6:1381,
+                   7:2221} gives {1:2591, 2:1526, 3:1516, 4:4000, 5:1467, 6:1381,
+                   7:2221} — which is exactly what the build produces.
+  Every number the crosscheck now disputes is explained by this decomposition,
+  digit for digit; none of it is a defect, so `comparable_to_socsci210` is
+  flipped to false (see the top of this file) rather than leaving a FAIL that
+  looks like a disagreement.
 
 
   TEXT PROVENANCE — all four arms verified word-for-word against the source
@@ -233,6 +289,21 @@ condition:
         will choose the treatment (CTD or TRT) for the patient. In either case, the
         medication the patient is taking can be changed at any time if the patient or
         the patient's doctor feels that a different medicine would be better.
+      # Q1/Q2 (lines 390, 407): this arm's own columns, "General Notification"
+      # wording — identical text to cell (2,1), different variable.
+      items:
+        10:
+          outcome_var: Q1a
+          outcome_question: >-
+            If you were to give advice to the ethics review board, would you recommend
+            Written Consent or General Notification?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely General Notification"}
+        11:
+          outcome_var: Q2a
+          outcome_question: >-
+            If you were a patient in this health care system, which would you personally
+            prefer, Written Consent or General Notification?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely General Notification"}
 
     # =====================================================================
     # cell (1,2): scenario 1 x Option B — lines 351-361, 423-445, 625-631
@@ -305,6 +376,21 @@ condition:
         will choose the treatment (CTD or TRT) for the patient. In either case, the
         medication the patient is taking can be changed at any time if the patient or
         the patient's doctor feels that a different medicine would be better.
+      # Q1/Q2 (lines 451, 468): this arm's own columns, "Verbal Consent" wording —
+      # identical text to cell (2,2), different variable.
+      items:
+        10:
+          outcome_var: Q1b
+          outcome_question: >-
+            If you were to give advice to the ethics review board, would you recommend
+            Written Consent or Verbal Consent?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely Verbal Consent"}
+        11:
+          outcome_var: Q2b
+          outcome_question: >-
+            If you were a patient in this health care system, which would you personally
+            prefer, Written Consent or Verbal Consent?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely Verbal Consent"}
 
     # =====================================================================
     # cell (2,1): scenario 2 x Option A — lines 499-505, 510-527, 669-675
@@ -378,6 +464,21 @@ condition:
         either case, the medication the patient is taking can be changed at any time
         if the patient or the patient's doctor feels that a different medicine would
         be better.
+      # Q1/Q2 (lines 533, 549): this arm's own columns, "General Notification"
+      # wording — identical text to cell (1,1), different variable.
+      items:
+        10:
+          outcome_var: Q1c
+          outcome_question: >-
+            If you were to give advice to the ethics review board, would you recommend
+            Written Consent or General Notification?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely General Notification"}
+        11:
+          outcome_var: Q2c
+          outcome_question: >-
+            If you were a patient in this health care system, which would you personally
+            prefer, Written Consent or General Notification?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely General Notification"}
 
     # =====================================================================
     # cell (2,2): scenario 2 x Option B — lines 499-505, 566-586, 669-675
@@ -451,6 +552,21 @@ condition:
         either case, the medication the patient is taking can be changed at any time
         if the patient or the patient's doctor feels that a different medicine would
         be better.
+      # Q1/Q2 (lines 592, 609): this arm's own columns, "Verbal Consent" wording —
+      # identical text to cell (1,2), different variable.
+      items:
+        10:
+          outcome_var: Q1d
+          outcome_question: >-
+            If you were to give advice to the ethics review board, would you recommend
+            Written Consent or Verbal Consent?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely Verbal Consent"}
+        11:
+          outcome_var: Q2d
+          outcome_question: >-
+            If you were a patient in this health care system, which would you personally
+            prefer, Written Consent or Verbal Consent?
+          scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely Verbal Consent"}
 
 outcomes:
   # --- scenario 1 battery: non-blank only where XTESS175 = 1 (lines 661-665) ---
@@ -524,7 +640,42 @@ outcomes:
       patients how the doctor will choose when they should take their medicine."
     scale: {min: 1, max: 7, min_label: "strongly disagree", max_label: "strongly agree"}
 
-# 1 (Strongly Disagree) .. 7 (Strongly Agree), straight through.
+  # --- Q1/Q2, the study's PRIMARY outcomes (ledger open item, resolved below) ---
+  # One variable per CELL (Q1a/b/c/d, Q2a/b/c/d — lines 390-620), a genuine
+  # per-(arm, outcome) design: Q1 and Q2 are two outcomes of the SAME 4-arm
+  # condition, and each needed its own variable per arm, which `Arm.outcome_var`
+  # cannot express (it holds one variable for the whole arm). `Arm.items`
+  # (ItemOverride, keyed by task_num) now does: every arm declares `outcome_var`
+  # for task_num 10 and 11 separately. `var` is left unset here because every
+  # arm supplies one via its item override (see `condition.arms[*].items`); the
+  # `question`/`scale` below are therefore placeholders, never rendered —
+  # every arm's own item override always wins (see recipe.py scale_for/
+  # outcome_text_for). Scale is 1-4, a genuine bipolar continuum (1 = Definitely
+  # Written Consent ... 4 = Definitely the alternative), confirmed from the
+  # [grid, sp across] layout at lines 392-401 etc: column headers "Written
+  # Consent" / alternative, row headers "Definitely / Probably / Probably /
+  # Definitely" mapped to codes 1/2/3/4 in that order — NOT nominal, since 2 and
+  # 3 sit strictly between the two poles on one continuum. Same 1-4 codebook on
+  # all eight columns, no option-order reversal between arms (checked: every
+  # [grid] block lists "Written Consent" first and the alternative second,
+  # Definitely/Probably always nearest its own column) so no `response_recode`
+  # override is needed; the study-level 1..7 map already carries 1-4 unchanged.
+  - var: null
+    task_num: 10
+    question: >-
+      If you were to give advice to the ethics review board, would you recommend
+      Written Consent or [the arm's consent alternative]?
+    scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely the alternative"}
+  - var: null
+    task_num: 11
+    question: >-
+      If you were a patient in this health care system, which would you personally
+      prefer, Written Consent or [the arm's consent alternative]?
+    scale: {min: 1, max: 4, min_label: "Definitely Written Consent", max_label: "Definitely the alternative"}
+
+# 1 (Strongly Disagree) .. 7 (Strongly Agree), straight through for Q3-Q7; Q1/Q2
+# use only codes 1-4 of this same map (1:1 .. 4:4), which already covers them —
+# no additional recode needed.
 response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
 missing_codes: [-1]
 
