@@ -2,6 +2,8 @@ study_id: evnyh
 source: tess
 title: "Impact of Response Scale Direction on Survey Responses (Keusch, TESS3 150)"
 data_file: TESS3_150_Keusch_Final_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 experiment: Q1a_and_validation
 
 # Flipped from `false` to `true` now that `Arm.items` lets this recipe build all

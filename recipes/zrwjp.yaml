@@ -2,6 +2,8 @@ study_id: zrwjp
 source: tess
 title: "The Barriers of Buying Happier Time"
 data_file: TESS3_180_Whillans_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 # Task 0 (cost in dollars) matches SocSci210 exactly. Task 1 (time saved) does
 # NOT, deliberately — see `notes`. Since one task diverges by design, a whole-study

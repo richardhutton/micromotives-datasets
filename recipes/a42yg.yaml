@@ -2,6 +2,8 @@ study_id: a42yg
 source: tess
 title: "Conflict between curative and palliative goals among health care personnel: Elucidating psychological processes and resolving conflict through self-affirmation"
 data_file: "TESS220_Orehek_Ferrer_Client.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 # SocSci210 built the same 4 arms (XTESS220) and the same 17 fielded measures,
 # but rendered only the conflict/fusion framing text and DROPPED the
@@ -199,12 +201,39 @@ notes: |-
   pattern). -1 "Refused" is the only missing code observed or defined on any
   of the 16 items (checked against every item's value-label set).
 
-  Q7's scale names only the two endpoints (1 "Curative care", 7 "Palliative
-  Care"); the questionnaire's own column header also labels the midpoint "4
-  Both are important" (line 440), which `Scale` has no field for, so that
-  clause is folded into the outcome `question` text instead, sourced from the
-  same column header rather than invented.
+  Q7's scale names the two endpoints (1 "Curative care", 7 "Palliative Care")
+  AND the midpoint, "Both are important" (line 440), now carried by
+  `Scale.mid_label`.
 
+  CORRECTED BY THE CHECKER. This recipe previously folded the midpoint into the
+  outcome `question` text as "(4 means both are equally important.)" and stated
+  here that the clause was "sourced from the same column header rather than
+  invented". That was wrong twice over: the source says "Both are important",
+  never "equally" — a word that asserts parity where the source asserts only
+  that both matter — and the note claimed provenance the text did not have.
+  Neither was deliberate; `Scale` had no field for a midpoint, so the
+  information went into free text, which is where it drifted. `Scale.mid_label`
+  now exists and renders it verbatim. Scale legends belong in the scale.
+
+
+  THE THREE AUTHORED JOINING CLAUSES, all of them, listed because
+  docs/CONVENTIONS.md ("Narrating what the respondent did") requires every one
+  to be recorded verbatim and said to be added. Two of the three were missing
+  from this list until the checker found them:
+
+    1. "You first completed a short writing task, and then read a passage about
+       palliative and curative care before answering questions about both."
+       (shared_context)
+    2. "You then selected a value and were asked:"  (in both self-affirmation
+       arms' own text, between the values list and the writing prompt)
+    3. "For the reading passage, you read:"  (in all four arms' text, before
+       the conflict/fusion framing)
+
+  Every other word in every arm is the instrument's. Each clause narrates what
+  the respondent DID rather than what they were shown, is true for every
+  respondent in the arms it appears in — including the no-affirmation arms,
+  where the writing task was the daily-routine prompt and clause 1 still holds
+  — and contains no number and no sequence position.
 
   PERSONA
 
@@ -491,17 +520,17 @@ outcomes:
     question: >-
       Please indicate which type of care it is important to seek in the
       following situation: "The patients I see who are dealing with disease
-      or illness feel it is important to seek..." (4 means both are equally
-      important.)
-    scale: {min: 1, max: 7, min_label: "Curative care", max_label: "Palliative Care"}
+      or illness feel it is important to seek..."
+    scale: {min: 1, max: 7, min_label: "Curative care",
+            mid_label: "Both are important", max_label: "Palliative Care"}
   - var: Q7_2
     task_num: 13
     question: >-
       Please indicate which type of care it is important to seek in the
       following situation: "If you were a patient dealing with disease or
-      illness, you would feel it is important to seek..." (4 means both are
-      equally important.)
-    scale: {min: 1, max: 7, min_label: "Curative care", max_label: "Palliative Care"}
+      illness, you would feel it is important to seek..."
+    scale: {min: 1, max: 7, min_label: "Curative care",
+            mid_label: "Both are important", max_label: "Palliative Care"}
   - var: Q8_1
     task_num: 14
     question: >-

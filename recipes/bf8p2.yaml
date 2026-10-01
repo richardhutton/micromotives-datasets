@@ -2,6 +2,8 @@ study_id: bf8p2
 source: tess
 title: "Does Misery Love Company? Exploration of a Strategic Social Comparison"
 data_file: TESS005_FARROW_27June17.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 notes: >
   TESS 005 (Farrow). A 2 x 2 between-subjects design (4 cells):

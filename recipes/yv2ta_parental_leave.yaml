@@ -2,6 +2,8 @@ study_id: yv2ta
 source: tess
 title: "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns"
 data_file: TESS215_Pedulla_Client.dta
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 experiment: parental_leave
 
 # SocSci210 built a materially different scope: a SINGLE outcome (Q1 only,
@@ -123,40 +125,22 @@ notes: >
   masculinity and femininity?" — 1-100, "Highly Feminine" (1) to "Highly
   Masculine" (100).
 
-  Q8/Q9 (lines 258-276) are MANIPULATION-CHECK items, not attitude items: they
-  ask the respondent to recall which pay level (Q8) and which message, if any
-  (Q9), appeared in the vignette they just read. Built as nominal outcomes
-  (task_num 6, 7) because the options are an unordered set of possibilities,
-  enumerated verbatim in the question text, matching cug34's B01/B09
-  treatment of unordered choices. Both reference "the parental leave policy
-  scenario that you were presented with earlier" (line 259, 270) — this
-  points to the condition text that appears EARLIER IN THE SAME ROW (the
-  vignette always precedes the outcome in the rendered prompt), not to a
-  numbered position in a sequence of rows, so it is not the signpost pattern
-  QC rule 15 exists to catch (docs/CONVENTIONS.md, "Sequence signposting").
+  NOT BUILT, BY PROJECT RULING (2026-10-01). Q8/Q9 (lines 258-276) are post-vignette RECALL
+  CHECKS — they ask the respondent which pay level and which message appeared
+  in the vignette they had just read, which is how researchers spot someone who
+  skim-read. They are genuine answers from real people, so excluding them is a
+  judgement about what this dataset is for, not about data quality: the answer
+  is recoverable from the condition text alone, so a model would score highly on
+  them while learning nothing about behaviour, and any evaluation including them
+  would read better than it deserves. See docs/CONVENTIONS.md, "Attention and
+  recall checks are not outcomes". Cost: 4,047 rows.
 
-  SOURCE INCONSISTENCY, reproduced rather than corrected (same class as
-  z358z's "any alternative treatments"/"alternative treatments", ledger
-  notes): Q9's own options (lines 272-275) are worded "...indicated that
-  USING THIS POLICY may decrease/would not affect..." — the BLOCK 2 phrasing
-  (compare INSERT 4, line 183/186) — whereas the actual Block-1 vignette
-  insert (lines 118-119/121-122 of the chart; INSERT 2 levels C/D above) says
-  "...indicated that TAKING THE FULL AMOUNT OF LEAVE may decrease/would not
-  affect...". A respondent who correctly remembers the vignette they read
-  would therefore be choosing between the vignette's own wording and a
-  recall-check option that paraphrases it slightly differently. This is the
-  source's own inconsistency (not ours), so Q9's options are transcribed
-  exactly as Q9 itself states them (lines 272-276), not rewritten to match the
-  vignette.
-
-  Q7 (lines 243-252, "which of the following policies have you used") is OUT
-  OF SCOPE: it is a general career-history question, asked identically of
-  every respondent regardless of which arm they saw, with no dependence on
-  the randomisation at all. Building it would pair a condition-independent
-  question with condition text that has nothing to do with it. Left out
-  rather than built, per "cannot determine a connection to this experiment
-  from source" — there isn't meant to be one.
-
+  This paragraph previously described them as built, at task_num 6 and 7, with
+  their refusal counts — stale after the removal, and found by the checker. The
+  removal had been recorded in a YAML comment beside the outcomes block rather
+  than here, and `notes` is the field the schema actually carries as the audit
+  trail, so a reader relying on it would have concluded the recall checks were
+  in the corpus.
 
   RESPONSE CODING.
 
@@ -169,7 +153,7 @@ notes: >
   covered by the same 1-100 identity map, so no extra recode is needed; -1
   ("Refused") drops the same way. Verified against the .dta: Q1 has 46
   refusals (of 2,036), Q2_1-4 have 0/2/6/8, Q3 has 15 — all well inside 1-100
-  otherwise. Q8 has 11 refusals (of 2,036), Q9 has 14.
+  otherwise. (Q8/Q9 are not built — see above.)
 
 
   SECOND-RANDOMISATION SWEEP (ledger rule 9, run by hand — see
@@ -224,11 +208,20 @@ notes: >
   is not this recipe's job.
 
 
+  ONE DISCLOSED WORD CHANGE in the Q2_1-4 join. The source stem is plural —
+  "to what extent would the following possibilities be a concern for you?" —
+  because it introduces all four sub-items on one screen. Each built outcome
+  carries one sub-item, so the rendered stem reads "the following possibility",
+  singular, to agree with it. This recipe previously claimed "both halves are
+  the source's own words, only the joining punctuation is ours"; that was not
+  accurate, and the checker was right to say so. The change is grammatical
+  agreement forced by splitting one screen into several rows (the same cause as
+  docs/CONVENTIONS.md, "One stem, several labelled answer fields"), and it is
+  recorded here rather than left to be rediscovered.
+
   OPEN QUESTIONS FOR THE CHECKER.
 
-  1. Scope: is including Q8/Q9 (manipulation checks) as nominal outcomes the
-     right call, or should a recall-accuracy item be left out of an attitude
-     dataset even though it is a real question with a real response?
+  1. SETTLED by project ruling: recall checks are not outcomes. Q8/Q9 removed.
   2. The Q2_1-4 "stem: sub-item" question construction — acceptable, or should
      it be flagged as the same class of liberty as cug34's "Report only the
      amount for the Shared Account" addition (docs/CONVENTIONS.md, "One stem,

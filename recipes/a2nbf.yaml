@@ -5,6 +5,8 @@ title: >-
   Social Survey Indicators of Attitudes toward Genetic Testing (Singer,
   TESS2 104)
 data_file: TESS2104_Singer_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 comparable_to_socsci210: false
 
 notes: >
@@ -180,10 +182,10 @@ notes: >
   resolution (which would be FALSE for every respondent of the other gender —
   a fabrication) or silently dropping Q3/Q4 (an unnecessary scope cut), this
   recipe renders the unresolved template using curly-brace notation —
-  "{you/your partner}", "{her}" — which MIRRORS the .sav's own variable-label
+  "[IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your partner]", "[IF PPGENDER=1 INSERT: her]" — which MIRRORS the .sav's own variable-label
   convention for the same construct (confirmed via pyreadstat: Q3_1's column
-  label literally reads "...If {you/your partner} were pregnant, would you
-  want {her} to have a test..."), so this is not an invented notation. It is
+  label literally reads "...If [IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your partner] were pregnant, would you
+  want [IF PPGENDER=1 INSERT: her] to have a test..."), so this is not an invented notation. It is
   true for every respondent (asserts no specific resolution) but is visibly a
   template rather than prose a respondent read verbatim. Flagged explicitly as
   the thing I am least confident about; an alternative would be to drop Q3/Q4
@@ -268,13 +270,13 @@ condition:
             Today, tests are being developed that make it possible to detect
             serious genetic defects before a baby is born. But so far, it is
             impossible either to treat or to correct most of them. If
-            {you/your partner} were pregnant, would you want {her} to have a
+            [IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your partner] were pregnant, would you want [IF PPGENDER=1 INSERT: her] to have a
             test to find out if the baby has any serious genetic defects?
         3:
           outcome_var: Q4_1
           outcome_question: >-
             Suppose a test shows the baby has a serious genetic defect. Would
-            you, yourself want {your partner} to have an abortion if a test
+            you, yourself want [IF PPGENDER=1 INSERT: your partner] to have an abortion if a test
             shows the baby has a serious genetic defect?
     - raw: 2
       condition_num: 1
@@ -296,13 +298,13 @@ condition:
             Today, tests are being developed that make it possible to detect
             serious genetic defects before a baby is born. But so far, it is
             impossible either to treat or to correct most of them. If
-            {you/your partner} were pregnant, would you want {her} to have a
+            [IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your partner] were pregnant, would you want [IF PPGENDER=1 INSERT: her] to have a
             test to find out if the baby has any serious genetic defects?
         3:
           outcome_var: Q4_1
           outcome_question: >-
             Suppose a test shows the baby has a serious genetic defect. Would
-            you, yourself want {your partner} to have an abortion if a test
+            you, yourself want [IF PPGENDER=1 INSERT: your partner] to have an abortion if a test
             shows the baby has a serious genetic defect?
     - raw: 3
       condition_num: 2
@@ -324,14 +326,14 @@ condition:
             Today, tests are being developed that make it possible to detect
             serious genetic defects in the fetus during pregnancy. But so
             far, it is impossible either to treat or to correct most of
-            them. If {you/your partner} were pregnant, would you want {her}
+            them. If [IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your partner] were pregnant, would you want [IF PPGENDER=1 INSERT: her]
             to have a test to find out if the fetus has any serious genetic
             defects?
         3:
           outcome_var: Q4_2
           outcome_question: >-
             Suppose a test shows the fetus has a serious genetic defect.
-            Would you, yourself want {your partner} to have an abortion if a
+            Would you, yourself want [IF PPGENDER=1 INSERT: your partner] to have an abortion if a
             test shows the fetus has a serious genetic defect?
     - raw: 4
       condition_num: 3
@@ -354,14 +356,14 @@ condition:
             Today, tests are being developed that make it possible to detect
             serious genetic defects in the fetus during pregnancy. But so
             far, it is impossible either to treat or to correct most of
-            them. If {you/your partner} were pregnant, would you want {her}
+            them. If [IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your partner] were pregnant, would you want [IF PPGENDER=1 INSERT: her]
             to have a test to find out if the fetus has any serious genetic
             defects?
         3:
           outcome_var: Q4_2
           outcome_question: >-
             Suppose a test shows the fetus has a serious genetic defect.
-            Would you, yourself want {your partner} to have an abortion if a
+            Would you, yourself want [IF PPGENDER=1 INSERT: your partner] to have an abortion if a
             test shows the fetus has a serious genetic defect?
 
 outcomes:
@@ -383,7 +385,7 @@ outcomes:
       Today, tests are being developed that make it possible to detect
       serious genetic defects before a baby is born. But so far, it is
       impossible either to treat or to correct most of them. If {you/your
-      partner} were pregnant, would you want {her} to have a test to find
+      partner} were pregnant, would you want [IF PPGENDER=1 INSERT: her] to have a test to find
       out if the baby has any serious genetic defects?
     scale: {min: 1, max: 2, min_label: "Yes", max_label: "No"}
   - task_num: 3
@@ -391,12 +393,16 @@ outcomes:
     # only the schema's required fallback and is never actually rendered.
     question: >-
       Suppose a test shows the baby has a serious genetic defect. Would you,
-      yourself want {your partner} to have an abortion if a test shows the
+      yourself want [IF PPGENDER=1 INSERT: your partner] to have an abortion if a test shows the
       baby has a serious genetic defect?
     scale: {min: 1, max: 2, min_label: "Yes", max_label: "No"}
 
 response_recode: {1: 1, 2: 2, 3: 3}
 missing_codes: [-1]
+
+# PPGENDER resolves the pronoun directives the source puts in Q3/Q4. Declared
+# so nothing resolves silently; see Recipe.respondent_vars.
+respondent_vars: [PPGENDER]
 
 persona_map:
   age: PPAGE

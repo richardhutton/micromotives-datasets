@@ -2,6 +2,8 @@ study_id: b87sm
 source: tess
 title: "How to Increase the Acceptance of Mobile App and Sensor Data Collection?"
 data_file: 8041.087 WENZ weighted data 20210823.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 # `experiment:` omitted. This deposit holds exactly ONE experiment — the
 # 2x3x3x2x2 vignette assignment, shown 8 times per respondent in slots P_S1..

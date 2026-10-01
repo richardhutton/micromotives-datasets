@@ -12,12 +12,14 @@ rather than excluding the whole respondent.
 from __future__ import annotations
 
 import math
+import re
 from collections.abc import Iterator
 from typing import Any
 
 from ..persona.crosswalk import Crosswalk
 from ..recipe import Arm, Recipe
 from ..schema import Persona, Row
+from ..sources import quex
 from ..sources.spss import Dataset
 
 
@@ -140,6 +142,33 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             "resolves to nothing would render an empty persona silently"
         )
 
+    # Resolved once per study: the column names, upper-cased, for looking up a
+    # respondent variable whatever case the recipe wrote it in.
+    cols = {str(c).upper(): c for c in ds.df.columns}
+
+    def _for_respondent(text: str, who: quex.Values) -> str:
+        """Resolve any inline directive that depends on who is answering.
+
+        A no-op for the usual study, which declares no `respondent_vars` and so
+        cannot contain a directive this would resolve. Where one IS declared,
+        `quex.resolve_inline` raises on a directive it cannot read, which is the
+        behaviour we want: the alternative is shipping bracket notation into the
+        corpus as stimulus text, which is what this exists to stop.
+        """
+        if not who:
+            return text
+        out = quex.resolve_inline(text, who)
+        if out == text:
+            return text
+        # A branch resolving to nothing leaves a gap the survey engine would have
+        # closed: "would you want [IF PPGENDER=1 INSERT: her] to have" reads
+        # "would you want  to have" for a female respondent. Tidied ONLY where
+        # resolution actually changed the string, so text that legitimately holds
+        # a double space keeps it — typography normalises, words never do
+        # (docs/CONVENTIONS.md).
+        out = re.sub(r"[ \t]{2,}", " ", out)
+        return re.sub(r"[ \t]+([,.;:?!])", r"\1", out)
+
     def arm_for(row: Any, variables: list[str]) -> Arm | None:
         """The declared arm this respondent saw, by these assignment variables."""
         codes = [row[v] for v in variables]
@@ -159,6 +188,14 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             continue
 
         persona = _persona(ds, row, recipe, cw)
+        # Stimulus wording that varies by RESPONDENT, not by arm — a pronoun
+        # chosen from the respondent's own recorded sex, say. Resolved per row
+        # against the declared variables only, through the shared directive
+        # parser, which refuses a condition it cannot read rather than guessing.
+        who: quex.Values = {}
+        for var in recipe.respondent_vars:
+            key = cols.get(var.upper())
+            who[var.upper()] = None if key is None else _as_code(row[key])
 
         for outcome in recipe.outcomes:
             arm = (
@@ -168,7 +205,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             )
             if arm is None:
                 continue
-            condition_text = recipe.condition.render(arm)
+            condition_text = _for_respondent(recipe.condition.render(arm), who)
             # Both the answer variable and its coding can vary: split-ballot
             # studies ask each arm a different question, option-order designs
             # reverse the codes per arm, and a study's items can sit on
@@ -190,7 +227,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             yield Row(
                 persona=persona,
                 condition=condition_text,
-                outcome=recipe.outcome_text_for(outcome, arm),
+                outcome=_for_respondent(recipe.outcome_text_for(outcome, arm), who),
                 response=str(response),
                 response_num=float(response),
                 condition_num=arm.condition_num,

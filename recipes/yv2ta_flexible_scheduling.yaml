@@ -2,6 +2,8 @@ study_id: yv2ta
 source: tess
 title: "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns"
 data_file: TESS215_Pedulla_Client.dta
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 experiment: flexible_scheduling
 
 # See yv2ta_parental_leave.yaml for the full crosscheck writeup — the same
@@ -90,28 +92,26 @@ notes: >
   masculinity and femininity?" — 1-100, "Highly Feminine" (1) to "Highly
   Masculine" (100).
 
-  Q10/Q11 (lines 280-297) are the Block-2 manipulation checks, same
-  treatment as Block 1's Q8/Q9: nominal outcomes (task_num 6, 7), options
-  enumerated verbatim in the question text. Both reference "the scheduling
-  policy scenario that you were presented with earlier" (lines 281, 291) —
-  an in-row forward/backward reference to this row's own condition text, not
-  a numbered-sequence signpost (see the parental-leave file's notes on this
-  point; QC rule 15 does not apply).
+  NOT BUILT, BY PROJECT RULING (2026-10-01). Q10/Q11 (lines 280-297) are post-vignette RECALL
+  CHECKS — they ask the respondent which pay level and which message appeared
+  in the vignette they had just read, which is how researchers spot someone who
+  skim-read. They are genuine answers from real people, so excluding them is a
+  judgement about what this dataset is for, not about data quality: the answer
+  is recoverable from the condition text alone, so a model would score highly on
+  them while learning nothing about behaviour, and any evaluation including them
+  would read better than it deserves. See docs/CONVENTIONS.md, "Attention and
+  recall checks are not outcomes". Cost: 4,045 rows.
 
-  Unlike Block 1's Q9, Q11's options (lines 293-297, "...using this policy
-  may decrease/would not affect...") match INSERT 4's own wording exactly —
-  no cross-wording inconsistency on this side.
-
-  Q7 is excluded for the same reason as in the parental-leave file: a
-  condition-independent career-history question with no dependence on this
-  randomisation.
-
+  This paragraph previously described them as built, at task_num 6 and 7, with
+  their refusal counts — stale after the removal, and found by the checker. The
+  removal had been recorded in a YAML comment beside the outcomes block rather
+  than here, and `notes` is the field the schema actually carries as the audit
+  trail, so a reader relying on it would have concluded the recall checks were
+  in the corpus.
 
   RESPONSE CODING. Same identity-map treatment as the parental-leave file:
   Q4, Q5_1-4, Q6 are 1-100 sliders (-1 "Refused" dropped); verified refusal
-  counts from the .dta: Q4 31, Q5_1-4 9/7/16/8, Q6 14. Q10 (1-3) and Q11
-  (1-5) are covered by the same 1-100 identity map; Q10 has 13 refusals, Q11
-  has 14.
+  counts from the .dta: Q4 31, Q5_1-4 9/7/16/8, Q6 14. (Q10/Q11 are not built — see above.)
 
 
   SECOND-RANDOMISATION SWEEP. Same two candidates as the parental-leave file,
@@ -125,8 +125,19 @@ notes: >
   `comparable_to_socsci210: false`, no numeric assertion made.
 
 
-  OPEN QUESTIONS FOR THE CHECKER. Same as the parental-leave file (Q10/Q11 as
-  nominal outcomes; the "stem: sub-item" construction for Q5; the generated
+  ONE DISCLOSED WORD CHANGE in the Q5_1-4 join. The source stem is plural —
+  "to what extent would the following possibilities be a concern for you?" —
+  because it introduces all four sub-items on one screen. Each built outcome
+  carries one sub-item, so the rendered stem reads "the following possibility",
+  singular, to agree with it. This recipe previously claimed "both halves are
+  the source's own words, only the joining punctuation is ours"; that was not
+  accurate, and the checker was right to say so. The change is grammatical
+  agreement forced by splitting one screen into several rows (the same cause as
+  docs/CONVENTIONS.md, "One stem, several labelled answer fields"), and it is
+  recorded here rather than left to be rediscovered.
+
+  OPEN QUESTIONS FOR THE CHECKER. Same as the parental-leave file (the
+  "stem: sub-item" construction for Q5; the generated
   1-100 identity recode; the two considered_and_rejected entries) — see that
   file for the full list, which applies here unchanged.
 

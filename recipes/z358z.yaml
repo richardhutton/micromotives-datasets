@@ -2,6 +2,8 @@ study_id: z358z
 source: tess
 title: "Randomized Drug Trials without Consent? The Public's Perspective"
 data_file: TESS3_175 Nayak_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 # Full 2x2, now WITH Q1/Q2 (today's build, see notes "Q1/Q2 — BUILT"). On the
 # original 10-outcome scope (Q3-Q7 only) this matched SocSci210 on n_rows,

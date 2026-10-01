@@ -80,3 +80,19 @@ def test_anchor_separates_sub_experiments(fixture_sav, fixture_recipe) -> None:
     b = next(iter(build_rows(ds, fixture_recipe)))
     assert a.participant_id == b.participant_id, "same respondent, same id"
     assert a.anchor() != b.anchor(), "but different rows of the corpus"
+
+
+def test_extra_persona_fields_render_with_a_written_label() -> None:
+    """A persona must not describe one person in two registers.
+
+    `Ideology: Slightly conservative` followed by `religious_attendance: Once a
+    week` is the same block of text switching style mid-way, in a prompt a model
+    is asked to read. Affects every study mapping an attribute outside the named
+    schema — five of twenty when a checker found it.
+    """
+    from micromotives_datasets.persona import render
+    from micromotives_datasets.schema import Persona
+
+    out = render(Persona(age=40, extra={"religious_attendance": "Once a week"}))
+    assert "Religious attendance: Once a week" in out
+    assert "religious_attendance" not in out

@@ -43,5 +43,21 @@ def render(persona: Persona) -> str:
             lines.append(f"{label}: {value}")
     for key, value in persona.extra.items():
         if value != "":
-            lines.append(f"{key}: {value}")
+            lines.append(f"{_label_for(key)}: {value}")
     return "\n".join(lines)
+
+
+def _label_for(key: str) -> str:
+    """`religious_attendance` -> `Religious attendance`.
+
+    The named fields above all carry a written label; `extra` keys were rendered
+    raw, so a persona read "Ideology: Slightly conservative" and then
+    "religious_attendance: Once a week" — the same person described in two
+    registers, in one block of text a model is asked to read. Found by a checker
+    on `5hqan` and traced here; it affects every study that maps an attribute
+    outside the named schema, which is five of twenty so far. Cosmetic, but this
+    corpus is merged across studies and gratuitous inconsistency in the prompt
+    is a signal about provenance rather than about the person.
+    """
+    words = key.replace("_", " ").strip()
+    return words[:1].upper() + words[1:] if words else words

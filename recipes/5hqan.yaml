@@ -2,6 +2,8 @@ study_id: 5hqan
 source: tess
 title: "Gender Identity and Diversity"
 data_file: "TESS3_176 Saperstein_Client.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 # SocSci210 reports 6,409 rows for this study; ours is 6,411 (see CROSSCHECK in
 # notes — the 2-row gap is a traceable judgement, not an unexplained mismatch).

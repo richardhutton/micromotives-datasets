@@ -2,6 +2,8 @@ study_id: 8ctbk
 source: tess
 title: Childbearing Preferences in the Face of Work, Family, and Financial Constraints
 data_file: TESS 127 Behrman_Final Data23Oct27.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 experiment: desirability
 
 notes: |

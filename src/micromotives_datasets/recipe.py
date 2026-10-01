@@ -33,6 +33,19 @@ class Scale(BaseModel):
     max: int
     min_label: str | None = None
     max_label: str | None = None
+    mid_label: str | None = Field(
+        default=None,
+        description="Label the source gives the MIDPOINT, where it labels one. "
+        "`a42yg`'s Q7 runs 1 'Curative care' to 7 'Palliative Care' and also "
+        "labels 4 'Both are important'. With nowhere to put it, the maker wrote "
+        "it into the question text as '(4 means both are equally important.)' — "
+        "inventing the word 'equally', which asserts parity where the source "
+        "says only that both matter, and then recording in `notes` that the "
+        "clause was sourced rather than written. Neither the slip nor the false "
+        "provenance was deliberate; the field was simply missing, so the "
+        "information had to go somewhere, and free text is where things drift. "
+        "Scale legends belong in the scale.",
+    )
     nominal: bool = Field(
         default=False,
         description="True when the codes are an UNORDERED choice rather than a scale. "
@@ -52,20 +65,38 @@ class Scale(BaseModel):
             return f"Only return one of {codes} or {self.max}, nothing else."
         base = f"Only return an integer from {self.min} to {self.max}"
         if self.min_label and self.max_label:
-            base += (
-                f' where {self.min} means "{self.min_label}"'
-                f' and {self.max} means "{self.max_label}"'
-            )
+            base += f' where {self.min} means "{self.min_label}"'
+            if self.mid_label:
+                base += f', {self.midpoint} means "{self.mid_label}",'
+            base += f' and {self.max} means "{self.max_label}"'
         return base + ", nothing else."
+
+    @property
+    def midpoint(self) -> int:
+        """The integer code halfway along. Only meaningful on an odd-length scale."""
+        return (self.min + self.max) // 2
 
     @model_validator(mode="after")
     def _check_nominal(self) -> Scale:
-        if self.nominal and (self.min_label or self.max_label):
+        if self.nominal and (self.min_label or self.max_label or self.mid_label):
             raise ValueError(
-                "a nominal scale must not carry min_label/max_label — they would "
-                "assert an ordering it does not have; enumerate the options in the "
-                "outcome `question` instead"
+                "a nominal scale must not carry min_label/max_label/mid_label — they "
+                "would assert an ordering it does not have; enumerate the options in "
+                "the outcome `question` instead"
             )
+        if self.mid_label:
+            if not (self.min_label and self.max_label):
+                raise ValueError(
+                    "mid_label needs min_label and max_label: the instruction names the "
+                    "midpoint only inside an endpoint-labelled scale, so a mid_label "
+                    "alone would be silently dropped"
+                )
+            if (self.max - self.min) % 2:
+                raise ValueError(
+                    f"scale {self.min}-{self.max} has an even number of points, so it has "
+                    "no middle code for mid_label to name — the source labelling one means "
+                    "the scale has been read wrongly"
+                )
         return self
 
 
@@ -305,6 +336,22 @@ class Recipe(BaseModel):
         description="Source variable -> codes that mean refused / not asked / missing. "
         "The field is left EMPTY for those respondents rather than rendering the "
         "sentinel's label. Use this when the code carries no answer.",
+    )
+    respondent_vars: list[str] = Field(
+        default_factory=list,
+        description="Source variables whose value may resolve an inline directive in "
+        "condition or outcome text, for stimulus wording that varies by RESPONDENT "
+        "rather than by arm.\n\n"
+        "`a2nbf` asks: 'If [IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your "
+        "partner] were pregnant, would you want a test...'. That is not a "
+        "manipulation — it is the same question phrased for who is being asked — so "
+        "it cannot be an arm, and the maker rendered the unresolved template "
+        "`{you/your partner}` on 3,117 rows: text no respondent read. The resolution "
+        "was never unknowable; PPGENDER sits in this recipe's own `persona_map`.\n\n"
+        "Declared rather than inferred, so nothing resolves silently: only variables "
+        "named here are offered to the resolver, and the directives themselves are "
+        "parsed by `sources.quex`, which REFUSES anything outside its measured "
+        "grammar rather than guessing.",
     )
     persona_label_rewrite: dict[str, dict[int, str]] = Field(
         default_factory=dict,

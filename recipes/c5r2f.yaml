@@ -2,6 +2,8 @@ study_id: c5r2f
 source: tess
 title: "Do Policy Defaults Communicate Choice-Relevant Information?"
 data_file: TESS2 084 - Tannenbaum_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 # Our scope is narrower than SocSci210's: we build the primary dependent measure
 # (accept the default vs switch away), while they also included two blocks of

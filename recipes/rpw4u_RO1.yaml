@@ -3,6 +3,8 @@ experiment: RO1
 source: tess
 title: "Cross-National Replication of Question Design Experiments (RO1: oil supply)"
 data_file: TESS3_183_Krosnick_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 
 # SocSci210 reconstructed a DIFFERENT scope for this deposit: it produced just two
 # conditions for the whole survey, each merging all arms of one question series and

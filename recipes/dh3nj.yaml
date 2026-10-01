@@ -2,6 +2,8 @@ study_id: dh3nj
 source: tess
 title: Public Perceptions of Prenatal Alcohol Consumption
 data_file: 8041.036_CALARCO_TESS036_weighted.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
 notes: "TESS 036 (Calarco). A 2 x 3 x 2 between-subjects vignette design (12 cells):\n  status   \
   \      - high (lawyer) / low (supermarket cashier)\n  drinking       - none / light (one glass)\
   \ / heavy (two glasses)\n  doctor_warning - absent / present (she recalls her doctor's advice)\n\
