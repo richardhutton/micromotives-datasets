@@ -1,0 +1,235 @@
+study_id: py9q3
+source: tess
+title: "Attitudes toward the Employment of Mothers and Fathers"
+data_file: "TESS2-094 - Jacobs.sav"
+experiment: vignette3_married_father
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# Not a clean "different scope" disagreement either — see notes "SOCSCI210
+# DISAGREEMENT". Two of this vignette's four items (Q8, Q9) surface under
+# SocSci210's condition_num=5, mislabelled with Vignette-2 text; the other
+# two (Q10, Q11) surface under condition_num=6 ALONGSIDE two Part-2 items
+# (Q12, Q13, a different sub-experiment) that do not belong to this vignette
+# at all. Their reconstruction never puts all four of this vignette's items
+# under one coherent condition/text pairing.
+comparable_to_socsci210: false
+
+notes: >
+  TESS2-094 (Jacobs & Gerson). Sibling of py9q3_vignette1.yaml -- see that
+  file for the shared design background. This file covers Part 1, Vignette 3
+  (married father; Q8-Q11) only.
+
+
+  THE DESIGN -- VIGNETTE 3 (MARRIED FATHER), 2x2x2 = 8 ARMS
+
+  Lines 215-221. Base text (viewing-order clause dropped, as in the sibling
+  recipes): "The family consists of a married father with a preschool child.
+  He is employed full-time; [JOB] with his job; [CARE] with his child care
+  arrangements; and [INCOME] on his income." ONE VERBATIM SOURCE
+  INCONSISTENCY kept rather than tidied: vignette 1 reads "She IS: \n employed
+  full-time" (colon after "is"); vignette 3 reads "He IS \n employed
+  full-time" (NO colon) -- checked at lines 116 vs 217 of the questionnaire
+  text, a genuine difference in the source's own punctuation, not a
+  transcription slip on our part.
+
+    factor                  variable                   levels (raw 1 / raw 2)
+    job_satisfaction        VIGNETTE3A_Job_Insert       "satisfied" / "not satisfied"
+    child_care_satisfaction VIGNETTE3B_Care_Insert      "satisfied" / "not satisfied"
+    financial_need          VIGNETTE3C_Income_Insert    "his family depends" /
+                                                         "his family does not depend"
+
+  Checked against the .sav: VIGNETTE3A_Job_Insert {1:834, 2:858},
+  VIGNETTE3B_Care_Insert {1:849, 2:843}, VIGNETTE3C_Income_Insert {1:867,
+  2:825}, each populated for exactly the 1,692 XTESS094=2 respondents,
+  independently of vignette 1's and vignette 2's own triplets.
+
+  CONDITION MAPPING -- same convention: condition_num = 4*(job-1) +
+  2*(care-1) + (income-1).
+
+  CELL SIZES (VIGNETTE3A/B/C, n=1,692, no missing): (1,1,1) 207, (1,1,2) 213,
+  (1,2,1) 213, (1,2,2) 201, (2,1,1) 212, (2,1,2) 229, (2,2,1) 207, (2,2,2)
+  210.
+
+
+  OUTCOMES -- Q8-Q11, ALL FOUR DISPLAYED WITH THE SAME VIGNETTE (line 223)
+
+    task 0  Q8   "is it better for HIM if he..."
+    task 1  Q9   "is it better for the CHILD if he..."
+    task 2  Q10  "is it better for the MARRIAGE if he..."
+    task 3  Q11  "what do you think he should do?"
+
+  Same 3-way nominal choice set as vignette 1/2 (Stays at his job / Cuts
+  back to part-time / Stays home; Q11 uses the infinitive forms Stay/Cut
+  back/Stay home). Same `{1:1,2:2,3:3}` map, -1 "Refused" the only missing
+  code. Q11's stem-plus-options join uses the identical liberty as vignette
+  1's Q4 / vignette 2's Q7.
+
+  ROW ARITHMETIC. Valid counts from the .sav: Q8 1,675, Q9 1,676, Q10 1,657,
+  Q11 1,651. Total 6,659.
+
+
+  SOCSCI210 DISAGREEMENT. Queried directly against the HuggingFace parquet
+  mirror (`task_num, response, count(*)`). Q8 and Q9 surface under
+  condition_num=5 (task_num 8, 9) -- response distributions match our raw
+  .sav tallies EXACTLY ({1:1155,2:338,3:182} and {1:1011,2:400,3:265}) -- but
+  SocSci210's OWN rendered text for condition_num=5/these task_nums claims
+  Vignette 2 ("is it better for the child if SHE...", single mother), not
+  Vignette 3. Q10 and Q11 surface under condition_num=6 (task_num 10, 11),
+  again an exact numeric match ({1:1657 total across its 3 options} /
+  {1:1651 total}) with correct Vignette-3 text this time ("is it better for
+  the marriage if HE..."). But condition_num=6 ALSO holds two more task_nums
+  (12, 13) whose response distributions match Q12 and Q13 EXACTLY
+  ({1:317,2:166,3:134,4:216} and {1:211,2:185,3:319,4:120}, both 4-level) --
+  those are Part 2 items (Vignette 4, married mother, extended response
+  options), a different sub-experiment entirely, mislabelled here with
+  Vignette-3 "marriage"/"what should he do" text. So no single SocSci210
+  condition_num corresponds cleanly to Vignette 3: its four real items are
+  split across two of their condition_nums, one of those condition_nums
+  carries the wrong vignette's text, and the other is padded with two
+  unrelated Part-2 items. See py9q3_vignette2.yaml's notes for the matching
+  finding on its own scope (Q5/Q6 missing from their build outright). Given
+  this, `comparable_to_socsci210: false` here signals more than a scope
+  difference -- it flags that SocSci210's own internal bookkeeping for this
+  part of the deposit does not hold together, so there is no coherent
+  SocSci210 number to compare against at all.
+
+
+  PERSONA, MISSING CODES, SECOND-RANDOMISATION SWEEP: identical to
+  py9q3_vignette1.yaml (same respondent population, XTESS094=2) -- see that
+  file for the full reasoning.
+
+condition:
+  source_vars: [VIGNETTE3A_Job_Insert, VIGNETTE3B_Care_Insert, VIGNETTE3C_Income_Insert]
+  factors: [job_satisfaction, child_care_satisfaction, financial_need]
+  considered_and_rejected:
+    VIGNETTE1A_Job_Insert: "Independent randomisation for Vignette 1 (married mother), covered by the sibling recipe py9q3_vignette1.yaml. Out of scope here."
+    VIGNETTE1B_Care_Insert: "Same — Vignette 1's own child-care factor."
+    VIGNETTE1C_Income_Insert: "Same — Vignette 1's own income factor."
+    VIGNETTE2A_Job_Insert: "Independent randomisation for Vignette 2 (single mother), covered by the sibling recipe py9q3_vignette2.yaml. Out of scope here."
+    VIGNETTE2B_Care_Insert: "Same — Vignette 2's own child-care factor."
+    VIGNETTE2C_Income_Insert: "Same — Vignette 2's own income factor."
+    Vignette_Shown_First: "Presentation-order randomisation across the three vignette topics, not content. Its signalling words are dropped per the sequence-signposting convention; see py9q3_vignette1.yaml."
+    Vignette_Shown_Second: "Same — presentation order, not content."
+    Vignette_Shown_Third: "Same — presentation order, not content."
+    XTESS094: "Sample-split/routing variable (see py9q3_vignette1.yaml notes), not a treatment of Vignette 3's content."
+    Assign1: "Belongs to Part 3 (GSS question-wording split ballot), a different, out-of-scope sub-experiment."
+    Assign2: "Same — Part 3's other split-ballot assignment."
+    Order1: "Controls whether Part 3's GSS questions appear before or after the vignettes. Out-of-scope sub-experiment."
+  shared_context: >
+    On the following screens we briefly describe several different family and
+    work situations. Please answer a short set of questions about each of
+    them.
+  arms:
+    - raw_values: {VIGNETTE3A_Job_Insert: 1, VIGNETTE3B_Care_Insert: 1, VIGNETTE3C_Income_Insert: 1}
+      condition_num: 0
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; satisfied with his job; satisfied with his
+        child care arrangements; and his family depends on his income.
+    - raw_values: {VIGNETTE3A_Job_Insert: 1, VIGNETTE3B_Care_Insert: 1, VIGNETTE3C_Income_Insert: 2}
+      condition_num: 1
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; satisfied with his job; satisfied with his
+        child care arrangements; and his family does not depend on his
+        income.
+    - raw_values: {VIGNETTE3A_Job_Insert: 1, VIGNETTE3B_Care_Insert: 2, VIGNETTE3C_Income_Insert: 1}
+      condition_num: 2
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: not_satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; satisfied with his job; not satisfied with
+        his child care arrangements; and his family depends on his income.
+    - raw_values: {VIGNETTE3A_Job_Insert: 1, VIGNETTE3B_Care_Insert: 2, VIGNETTE3C_Income_Insert: 2}
+      condition_num: 3
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: not_satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; satisfied with his job; not satisfied with
+        his child care arrangements; and his family does not depend on his
+        income.
+    - raw_values: {VIGNETTE3A_Job_Insert: 2, VIGNETTE3B_Care_Insert: 1, VIGNETTE3C_Income_Insert: 1}
+      condition_num: 4
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; not satisfied with his job; satisfied with
+        his child care arrangements; and his family depends on his income.
+    - raw_values: {VIGNETTE3A_Job_Insert: 2, VIGNETTE3B_Care_Insert: 1, VIGNETTE3C_Income_Insert: 2}
+      condition_num: 5
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; not satisfied with his job; satisfied with
+        his child care arrangements; and his family does not depend on his
+        income.
+    - raw_values: {VIGNETTE3A_Job_Insert: 2, VIGNETTE3B_Care_Insert: 2, VIGNETTE3C_Income_Insert: 1}
+      condition_num: 6
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: not_satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; not satisfied with his job; not satisfied
+        with his child care arrangements; and his family depends on his
+        income.
+    - raw_values: {VIGNETTE3A_Job_Insert: 2, VIGNETTE3B_Care_Insert: 2, VIGNETTE3C_Income_Insert: 2}
+      condition_num: 7
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: not_satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married father with a preschool child. He
+        is employed full-time; not satisfied with his job; not satisfied
+        with his child care arrangements; and his family does not depend on
+        his income.
+
+outcomes:
+  - var: Q8
+    task_num: 0
+    question: >-
+      All things considered, is it better for him if he stays at his job,
+      cuts back to part-time, or stays home?
+    scale: {min: 1, max: 3, nominal: true}
+  - var: Q9
+    task_num: 1
+    question: >-
+      All things considered, is it better for the child if he stays at his
+      job, cuts back to part-time, or stays home?
+    scale: {min: 1, max: 3, nominal: true}
+  - var: Q10
+    task_num: 2
+    question: >-
+      All things considered, is it better for the marriage if he stays at
+      his job, cuts back to part-time, or stays home?
+    scale: {min: 1, max: 3, nominal: true}
+  - var: Q11
+    task_num: 3
+    question: >-
+      All things considered, what do you think he should do: stay at his
+      job, cut back to part-time, or stay home?
+    scale: {min: 1, max: 3, nominal: true}
+
+response_recode: {1: 1, 2: 2, 3: 3}
+missing_codes: [-1]
+
+persona_missing:
+  DOV_IDEO: [-1]
+  DOV_REL1: [-1]
+  DOV_XPARTY7: [-1]
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: DOV_XPARTY7
+  ideology: DOV_IDEO
+  religion: DOV_REL1

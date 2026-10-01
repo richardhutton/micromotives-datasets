@@ -1,0 +1,977 @@
+study_id: sh4px
+source: tess
+title: "Self-Affirmation and Affect: Effects on Implementation Intentions"
+data_file: "TESS2_115_Ferrer_Client.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# SocSci210 built this study at N=1161 participants but with ONLY TWO
+# "conditions" (2 and 4) and never represents the real 10-arm XTESS115
+# randomisation at all (see notes, "SOCSCI210 DISAGREEMENT" — the two indices
+# turn out to be our two OUTCOME CLUSTERS, not experimental arms, confirmed by
+# an exact digit-for-digit reconciliation of both n and the full response
+# distribution). So there is no usable per-arm numeric key to crosscheck
+# against; comparable_to_socsci210 is false for a structural reason, not a
+# disagreement about values.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 115 (Ferrer, University of Chicago / Knowledge Networks KnowledgePanel),
+  fielded July 2012, N=1161 women screened on past-year drinking (S1/S2,
+  questionnaire lines 130-157; terminate if the quota conditions are not met).
+  Line numbers below are 1-based into "TESSS2 115 - Ferrer Survey.txt", the
+  fielded questionnaire — the only wording authority used (CONVENTIONS.md
+  "Source authority"). The proposal (Koblitz279.pdf) was NOT opened: the
+  questionnaire's own Table 1 (lines 42-76) states the full 10-cell design
+  with condition labels and target Ns, so there was nothing the proposal could
+  add and no risk of pulling proposal-only wording into the recipe.
+
+
+  THE DESIGN — ONE RANDOMISED VARIABLE, XTESS115, A 5 x 2 (10 raw levels)
+
+  Table 1 (lines 44-76): XTESS115 = 1..10, labelled "1. Happiness,
+  self-affirmation" .. "10. Neutral, no-affirmation", 100 target per cell.
+  Confirmed directly against the .sav: XTESS115 populated for all 1161
+  respondents, 10 levels, counts 133/111/126/118/113/110/104/115/118/113
+  (raw 1-10) — a real, balanced, fully-crossed 2x5. The value-label text
+  (identical to recipe_prep's Jev-assisted read, confidence 1.00, accepted
+  without changes) is itself the two factor names:
+
+    FACTOR 1 — EMOTION (happiness / sadness / anger / hopeful / neutral), 5
+    levels, realised by WHICH emotion-recall writing task the respondent did.
+    FACTOR 2 — SELF-AFFIRMATION (present / absent), realised by WHICH values
+    task the respondent did afterwards.
+
+  Both are genuine randomised, fully-crossed, balanced factors (not an order
+  variable mislabelled as a manipulation — ledger #30's failure mode): the
+  branching below is conditioned on XTESS115 throughout the instrument, and
+  the .sav's own non-null patterns for Q1 vs Q1A and Q6/Q6A vs Q7/Q7A confirm
+  the branching exactly (see "OUTCOME SCOPE" below).
+
+  CONDITION MAPPING (declared, rule 2): condition_num = raw - 1. Arm raw=1 ->
+  cond 0 (Happiness, self-affirmation) ... raw=10 -> cond 9 (Neutral,
+  no-affirmation), in the questionnaire's own order. This is our own
+  numbering; SocSci210 does not number by XTESS115 at all (see below).
+
+
+  FACTOR 1 TEXT — EMOTIONAL RECALL (TASK 1), lines 160-171
+
+  [If xtess115=1,2,3,4,6,7,8,9] Q1: "For the next five minutes, please think
+  of the time when you felt the [happiest/saddest/angriest/most hopeful] in
+  your life. Please write about that time in detail, while trying to
+  re-experience the emotions involved." — the bracketed word is keyed to
+  XTESS115: 1 or 6 -> happiest; 2 or 7 -> saddest; 3 or 8 -> angriest; 4 or 9
+  -> most hopeful (line 164).
+
+  [if xtess115=5,10] Q1A: "For the next five minutes, please write a detailed
+  description of a room in your house." (line 171) — the NEUTRAL cell's task:
+  a standard affect-neutral control writing task, structurally parallel to
+  Q1, not a different kind of manipulation.
+
+  What the respondent actually WROTE (free text, columns Q1/Q1A) is their own
+  output, not a fixed stimulus, and is not rendered into arm text — the same
+  ruling as a42yg's SA1/SA2 and z358z's treatment of open-ended cells.
+
+
+  FACTOR 2 TEXT — SELF-AFFIRMATION VS CONTROL (TASK 2), lines 261-333
+
+  [if xtess115=1-5] Q6 (line 263-265): choose the value MOST important to you
+  from the standard 20-item self-affirmation values list (word-for-word the
+  same list used in a42yg/Orehek & Ferrer — same PI, same house instrument).
+  Then Q6A (line 296): "Please type a short statement about why this value is
+  important to you. Take a few minutes to think about this value and how
+  this value has influenced your past behaviors or attitudes. Please write
+  about how you use this value in your everyday life - at work, at home,
+  with friends, or in dealing with strangers. If you can, try to recall and
+  write about specific occasions on which this value determined what you
+  did."
+
+  [IF XTESS115=6-10] a display (line 300, same intro sentence as Q6's stem
+  but with the source's OWN typo "moral principle" singular, kept verbatim —
+  Q6's own stem two lines earlier says "moral principles" plural; both are
+  transcribed exactly as fielded, not harmonised) then Q7 (line 304-306):
+  choose the value LEAST important to you, same 20-item list. Then Q7A (line
+  333): "Please type a short statement about why this value could be
+  important to another person. Take a few minutes to think about how this
+  value may influence this person's behaviors or attitudes. Please write
+  about how this person may use this value in everyday life - at work, at
+  home, with friends, or in dealing with strangers. Only think about why this
+  value might be important to another person, and not why it is unimportant
+  to you." — the standard self-affirmation-vs-control pairing (affirm your
+  own top value vs reason about someone else's), same logical shape as
+  a42yg's values-task/daily-routines-task pair, here realised as
+  most-important-to-self vs least-important-to-another.
+
+  Which value the respondent picked (Q6/Q7, nominal, 21-way) and what they
+  wrote (Q6A/Q7A, free text) are again the respondent's own output, not a
+  fixed stimulus — not rendered into arm text, and not built as outcomes
+  either (see "OUTCOME SCOPE").
+
+
+  SHARED STIMULUS — THE ALCOHOL/BREAST-CANCER ARTICLE, lines 342-346
+
+  Identical for all 10 arms, three paragraphs, verbatim (curly quotes
+  straightened only). It sits AFTER both writing tasks, not at the start of
+  the arm, so per CONVENTIONS.md ("shared material that sits mid-paragraph
+  cannot be hoisted") it is repeated inside every arm's own `text`, not
+  hoisted into `shared_context` — the same treatment a42yg gives its mid-arm
+  "Palliative care is defined..." sentence and cug34 its 24-times-repeated
+  sentence.
+
+
+  THREE AUTHORED JOINING CLAUSES, all of them, per CONVENTIONS.md ("Narrating
+  what the respondent did") — every word of every arm besides these three is
+  the instrument's own:
+
+    1. "You first completed a writing task, then a second writing task about
+       your personal values, and then read an article about alcohol and
+       breast cancer before answering questions about it. For the first
+       writing task, you read:"  (shared_context, a true prefix: identical
+       framing for all 10 arms, said BEFORE anything arm-specific)
+    2. "You then completed a second writing task. For this task, you read:"
+       (joins the recall task to the self-affirmation/control task, inside
+       every arm's text)
+    3. "You then read the following article:"  (joins the self-affirmation/
+       control task to the shared article, inside every arm's text)
+
+  Each narrates what the respondent DID (not what they were shown), holds for
+  every respondent in every arm it appears in (everyone does a first writing
+  task, then a second one, then reads the article — true of all 10 arms), and
+  contains no number and no sequence position (CONVENTIONS.md "Sequence
+  signposting").
+
+
+  OUTCOME SCOPE — WHY SIX ITEMS, NOT TEN, AND WHY THAT IS A SCHEMA LIMIT, NOT
+  A CHOICE
+
+  The instrument asks TEN scaled items in total: Q2-Q5 (current happy / sad /
+  angry / hopeful, 1-7, lines 173-258) and Q8, Q10-Q14 (drinking intention and
+  breast-cancer risk beliefs, 1-7, lines 349-477). Both batteries are genuine
+  measured responses, not attention/recall checks (CONVENTIONS.md's
+  exclusion), and the study's own title ("...Effects on Implementation
+  Intentions") makes Q8 (drinking-reduction intention) and Q10-Q14 (worry and
+  risk perception) its primary DVs.
+
+  BUT Q2-Q5 sit BETWEEN the two writing tasks (after Q1/Q1A, before Q6/Q6A or
+  Q7/Q7A — lines 173-258 fall strictly between 171 and 261), while Q8/Q10-14
+  sit AFTER everything (after the article, lines 349+). `Condition.render`
+  takes only an `Arm`, never an `Outcome` (`recipe.py`'s `render(self, arm)`,
+  used unconditionally by `build_rows`) — one arm's `text` is attached to
+  EVERY outcome of that arm, with no per-(arm, outcome) condition text. For
+  Q8/Q10-14 that is correct: the respondent really had done both writing
+  tasks and read the article by the time they answered. For Q2-Q5 it would be
+  FALSE: attaching the full 10-arm text (which narrates the self-affirmation/
+  control task and the article) to a Q2-Q5 row would assert the respondent
+  had done the second writing task and read the article BEFORE rating their
+  current mood, when the questionnaire's own order says neither had happened
+  yet. That is a fabricated treatment history, not a narrower scope.
+
+  The schema-level workaround — give the "mood" items their own, truthful,
+  recall-only condition text — is independently blocked by QC rule 1
+  ("distinct conditions must render distinct text"): the self-affirmation
+  factor has genuinely not acted yet when Q2-Q5 are asked, so arm raw=1
+  (happy, self-affirmation) and arm raw=6 (happy, no-affirmation) would have
+  to render BYTE-IDENTICAL "recall only" text under two different
+  `condition_num`s — which rule 1 treats unconditionally as "a manipulation
+  has been lost" (it has no within-study exception, unlike rule 10's
+  documented within-subject skip). Nothing is actually lost here: the two
+  arms ARE experientially identical up to that point, by the instrument's own
+  design, and rule 1 cannot represent that. Confirmed no real column exists
+  to key a narrower, emotion-only condition off instead (the only
+  10-or-fewer-level candidate near the assignment is XTESS115 itself).
+
+  So Q2-Q5 are EXCLUDED from this build, not merged or reduced. This is the
+  single scope decision in this recipe most worth a second look — see the
+  maker's report. The fix is a schema one: an `ItemOverride`-style per-(arm,
+  outcome) override for `Condition`'s rendered TEXT (parallel to the
+  per-(arm, outcome) overrides `ItemOverride` already gives
+  `outcome_question`/`scale`/`response_recode`/`outcome_var`), so Q2-Q5 could
+  declare their own truthful (recall-only) text per arm without touching the
+  10 `condition_num`s or rule 1. Not built here — recipes may not change
+  shared code.
+
+  Also excluded, same reasoning as a42yg's SA1 and z358z's open-ended cells:
+    - Q6/Q7 (which value was picked, nominal 21-way) and Q6A/Q7A (free text):
+      the respondent's own output executing the task, not a fixed stimulus
+      and not a scaled response.
+    - Q9 ("how will you go about it", free text, line 372): open-ended, no
+      bounded response scale to build.
+    - Link_Clicked (line 480's programmer note, column present in the .sav):
+      records "1 = clicked" for 104 of 1161 respondents with NO complementary
+      "0 = did not click" value label defined anywhere — the other 1057 rows
+      are system-missing, not explicitly coded. Treating missing-as-0 for an
+      ostensibly real behavioural measure is exactly the kind of inference
+      "never impute missing responses" warns against here: the source gives
+      no label confirming absence-of-record means "did not click" rather
+      than something else, and building only the 104 code=1 rows would ship a
+      degenerate, all-one-value outcome. Left out; flagged for anyone who can
+      confirm the platform's convention independently.
+
+  CONFIRMED INDEPENDENTLY: this six/four split is exactly SocSci210's own
+  split (see "SOCSCI210 DISAGREEMENT" below) — strong outside evidence this
+  is the instrument's real joint structure, not an artefact of how we read
+  it.
+
+
+  RESPONSE CODING — Q8, Q10-Q14
+
+    task 0  Q8   (line 350) "I intend to decrease my alcohol consumption in
+                 the next 2 weeks." 1-7, 1 "Definitely will not do" .. 7
+                 "Definitely will do".
+    task 1  Q10  (line 375) "How worried are you about your drinking
+                 behavior?" 1-7, 1 "Not worried at all" .. 7 "Extremely
+                 worried".
+    task 2  Q11  (line 396) "How worried are you about developing breast
+                 cancer because of your drinking behavior?" same scale.
+    task 3  Q12  (line 417) "How would you rate your chance of developing
+                 breast cancer?" 1-7, 1 "Very low" .. 7 "Very high".
+    task 4  Q13  (line 438) "Overall, how do you think your chance of
+                 developing breast cancer compares to the average woman your
+                 age?" 1-7, 1 "Much lower" .. 7 "Much higher", AND the .sav's
+                 own value label names the midpoint too (4 "About the same",
+                 matching the grid layout at lines 444-445) — carried by
+                 `Scale.mid_label` (the field built for exactly this, a42yg
+                 ledger #76).
+    task 5  Q14  (line 459) "I feel very vulnerable to breast cancer." 1-7, 1
+                 "Strongly disagree" .. 7 "Strongly agree" per the
+                 QUESTIONNAIRE's own grid labels (lines 461, 469). The .sav's
+                 value labels for this one item read "1 Stronly disagree" /
+                 "7 Stronly agree" — an SPSS label-entry typo, not something
+                 any respondent read on screen; CONVENTIONS.md's source
+                 authority ruling (questionnaire over any other artefact for
+                 wording) is applied here deliberately, so the correctly
+                 spelled "Strongly disagree/agree" is used, not the .sav's
+                 misspelling.
+
+  All six checked directly against the .sav value-label sets: option order is
+  low-to-high (1 = low pole ... 7 = high pole) on every item, matching the
+  questionnaire's own grid column order throughout, so one study-level
+  identity map (1-7) covers all six with no per-item or per-arm override and
+  no option-order factor exists in this design. -1 "Refused" is the only
+  missing code defined or observed on any of the six items (checked: min/max
+  on each is -1..7, nothing else negative or above 7).
+
+
+  PERSONA
+
+  KnowledgePanel naming (PPAGE/PPGENDER/PPEDUCAT/...), same family as
+  a42yg/z358z (same TESS production pipeline). Mapped the same 13 PP* fields
+  plus party/ideology/religion as those two recipes, all checked present with
+  no case issues. `education` maps to PPEDUCAT (4-level categorical), NOT
+  PPEDUC (14-level, the exact degree) — see "OVERRULING recipe_prep" below.
+
+  XPARTY7, IDEO, REL1, REL2 in this .sav are already the MERGED/final values
+  (the questionnaire's own re-ask branch logic, lines 488-664, backfills a
+  "9/14 Missing" panel code with a re-ask; neither the raw panel columns nor
+  the PARTY1-4/DOV_* re-ask/merge columns the questionnaire describes are
+  separately present in this client file — only the plain final name is, the
+  same finding a42yg made for the same vendor pipeline). Confirmed by value
+  range: IDEO is -1..7 with -1 "Refused" defined and present; REL1 is -1..13
+  with -1 "Refused" defined and present, both exactly as the merged DOV_*
+  columns would read. XPARTY7 here shows NO -1 in 1161 rows (range 1-7
+  cleanly) — unlike a42yg's PARTY7, nobody in this sample refused; still
+  declared with the -1 drop anyway (`persona_missing`), matching a42yg's own
+  reasoning: its value-label set defines "Refused" even where none occurred,
+  so a future resample is covered without this recipe needing a second look.
+  REL1's own value labels here are already clean ("Other Christian", "Other
+  non-Christian" — no "please specify" tail), so no `persona_label_rewrite`
+  is needed, unlike a42yg's REL1 (different vendor run of the same field).
+  REL2 is not mapped (attendance frequency), matching both precedent
+  recipes, which map `religion` only.
+
+  EXTRA FIELD: this entire sample was screened to be past-year drinkers
+  (S1/S2, lines 132-149, the quota that the whole study is conditioned on —
+  a sample-defining attribute, same role as a42yg's `occupation` for its
+  health-care-worker sample). Mapped as `drinking_frequency` (S1) and
+  `typical_drinks_per_occasion` (S2), both complete with no missing codes
+  observed (checked: S1/S2 range 2-6 and 2-6 respectively across all 1161,
+  no -1 despite "Refused" being a defined code on both — consistent with the
+  hard screening rule TERMINATING anyone who refused S1/S2 before XTESS115 was
+  ever assigned).
+
+  INCOME, URBAN_RURAL AND INTERNET_ACCESS NOT MAPPED. PPINCIMP (1-19), PPMSACAT
+  (0-1) and PPNET (0-1) all carry values in this file but NO value labels at
+  all for any of the three (`meta.variable_to_label[...]` is None for each,
+  confirmed against the raw .sav, not a reading bug: every OTHER mapped
+  variable in this file does have labels). First built with them included,
+  which rendered nonsense ("Area: 1", "Internet access: 1", "Income: 11") —
+  a bare code with no stated units or bands presented as though it were a
+  real category, caught by inspecting built rows rather than by QC (rule 14
+  only flagged income, not the other two, because its canonical-vocabulary
+  check does not cover every field). The standard KnowledgePanel codebooks for
+  these fields are not written anywhere this questionnaire references for
+  this study, so filling them in from outside knowledge would be inventing
+  the one thing "never fabricate" forbids. All three left unmapped.
+
+  pph1canc (prior cancer diagnosis, any type) was considered — thematically
+  relevant to a breast-cancer-risk study — but left unmapped: it carries BOTH
+  a defined sentinel ("Not asked"/"Refused", -2/-1) AND 21 true system-missing
+  (NaN) rows not explained by either code, and is not asked specifically about
+  breast cancer. Left out rather than guessed at; a future pass could add it
+  with `persona_missing: {pph1canc: [-2, -1]}` once the NaN rows are
+  understood.
+
+
+  OVERRULING recipe_prep (per the brief: Jev decides nothing, I verify)
+
+  recipe_prep's persona pass picked `education: PPEDUC` at confidence 0.96,
+  with `PPEDUCAT` as runner-up at 0.02. OVERRULED: `PPEDUC` is the exact
+  14-level degree variable; `PPEDUCAT` is the 4-level categorical the
+  project's own crosswalk is built against (ledger #64: "derived the
+  crosswalk from the variable Jev picked... the recipes map 4-level
+  PPEDUCAT... covered labels the corpus never contains" — the exact granularity
+  tiebreak failure this ledger entry describes, now caught before it recurred
+  a third time). Both existing Ferrer-family recipes (a42yg, z358z) map
+  `education: PPEDUCAT`; this one follows them, for consistency and because
+  the finer variable cannot be reconciled through the categories crosswalk.
+
+  Every other recipe_prep answer was accepted as given: the assignment
+  variable (XTESS115, conf 1.00), all ten persona candidates besides
+  education, and every non-answer-label call in section 3 of its report
+  (checked by hand against the .sav value labels quoted above; all match).
+
+
+  SOCSCI210 DISAGREEMENT AND ARITHMETIC
+
+  `crosscheck.fetch_socsci210("sh4px")` returns n_rows=11532, n_participants=
+  1161 (the full sample — so they built every respondent), but only TWO
+  condition indices (2: 4621 rows; 4: 6911 rows), and their own rendered
+  "stimuli" for those two are generic placeholders that do not match this
+  instrument at all: condition 2 reads "You were asked to write about a
+  personal experience. How calm or agitated do you feel right now, from 1
+  (very agitated) to 7 (very calm)?" — "calm/agitated" is not an item in this
+  questionnaire anywhere (ours are happy/sad/angry/hopeful); condition 4 reads
+  "You read an article about alcohol and breast cancer. Compared to the
+  average woman your age, how would you rate your chances of developing
+  breast cancer...?" — this is literally Q13's wording, used as a label for a
+  6-item cluster.
+
+  Reconciled exactly, by hand, against our own raw .sav tallies (identity
+  recode, -1 dropped):
+    - Their condition 2 (4621 rows) = Q2+Q3+Q4+Q5 valid-response counts:
+      1161*4 - (1+10+11+1 refusals) = 4644 - 23 = 4621. EXACT.
+    - Their condition 4 (6911 rows) = Q8+Q10+Q11+Q12+Q13+Q14 valid-response
+      counts: 1161*6 - (4+6+13+6+14+12 refusals) = 6966 - 55 = 6911. EXACT.
+    - Their full response_distribution {1:2669, 2:2232, 3:1463, 4:2215,
+      5:1318, 6:1070, 7:565} (sum 11532) reproduces EXACTLY, value for value,
+      summing the same ten items' own per-value counts from the .sav (e.g.
+      value 1: 13+171+334+16+246+673+531+252+105+328 = 2669; value 2:
+      42+423+381+54+167+228+267+245+132+293 = 2232; checked through all seven
+      values with the same exact-match result).
+
+  So SocSci210 built this study by treating "which of two outcome blocks" as
+  `condition_num`, not the real XTESS115 randomisation — the 10-arm emotion x
+  self-affirmation design is entirely absent from their build (n_conditions=2,
+  not 10; no trace of XTESS115 in their numbers at all). This is a different,
+  and more severe, failure than the text-only disagreements logged for
+  a42yg/z358z: there SocSci210 found the right arms and lost the text; here
+  they never represented the arms. There is therefore no usable per-arm
+  numeric key — `comparable_to_socsci210: false` — but the exact reconciliation
+  above is independent confirmation that the six-item/four-item outcome split
+  this recipe uses (Q8/Q10-14 vs Q2-Q5) is the instrument's real structure,
+  not an artefact of this recipe's own reading, and that Q6/Q7/Q9/Link_Clicked
+  were right to leave out (SocSci210 did not build them either — their total
+  of 11532 rows has no room for a seventh scaled item or an eleventh arm).
+
+condition:
+  source_var: XTESS115
+  factors: [emotion, self_affirmation]
+  shared_context: >-
+    You first completed a writing task, then a second writing task about
+    your personal values, and then read an article about alcohol and breast
+    cancer before answering questions about it. For the first writing task,
+    you read:
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {emotion: happiness, self_affirmation: present}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the happiest in your life. Please write about that time in detail,
+        while trying to re-experience the emotions involved. You then
+        completed a second writing task. For this task, you read: In this
+        study we are interested in investigating values. By values we mean
+        the moral principles and standards by which people try to live their
+        lives. For example, honesty might be a core value for some people.
+        That is, they may try to be honest in all they do when dealing with
+        other people. Please look at the list of values below, and check the
+        one that is most important to you: Artistic skills, Athletics,
+        Business/earning money, Compassion, Conscientiousness, Creativity,
+        Friendliness, Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty, Independence, Intelligence, Kindness, Musical
+        ability/appreciation, Politics, Relations with friends or family,
+        Spirituality/Religiousness, Sense of Humor, Spontaneity/Living life
+        in the moment, Trustworthiness, or Other. You then selected a value
+        and were asked: Please type a short statement about why this value
+        is important to you. Take a few minutes to think about this value
+        and how this value has influenced your past behaviors or attitudes.
+        Please write about how you use this value in your everyday life - at
+        work, at home, with friends, or in dealing with strangers. If you
+        can, try to recall and write about specific occasions on which this
+        value determined what you did. You then read the following article:
+        Drinking a single alcoholic drink a day increases a woman's chance
+        of developing breast cancer, according to a 2008 quantitative review
+        and synthesis of many studies examining the association of alcohol
+        and breast cancer. Further, a recent 2011 study in the Journal of
+        the American Medical Association found that consumption of 3-6
+        alcoholic drinks per week carried a 15% increased risk of breast
+        cancer. Dr. Wendy Chen of Brigham and Women's Hospital in Boston,
+        and lead author of this study, stated "There aren't many modifiable
+        risk factors for breast cancer, so it's important to think about
+        this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 2
+      condition_num: 1
+      factors: {emotion: sadness, self_affirmation: present}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the saddest in your life. Please write about that time in detail,
+        while trying to re-experience the emotions involved. You then
+        completed a second writing task. For this task, you read: In this
+        study we are interested in investigating values. By values we mean
+        the moral principles and standards by which people try to live their
+        lives. For example, honesty might be a core value for some people.
+        That is, they may try to be honest in all they do when dealing with
+        other people. Please look at the list of values below, and check the
+        one that is most important to you: Artistic skills, Athletics,
+        Business/earning money, Compassion, Conscientiousness, Creativity,
+        Friendliness, Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty, Independence, Intelligence, Kindness, Musical
+        ability/appreciation, Politics, Relations with friends or family,
+        Spirituality/Religiousness, Sense of Humor, Spontaneity/Living life
+        in the moment, Trustworthiness, or Other. You then selected a value
+        and were asked: Please type a short statement about why this value
+        is important to you. Take a few minutes to think about this value
+        and how this value has influenced your past behaviors or attitudes.
+        Please write about how you use this value in your everyday life - at
+        work, at home, with friends, or in dealing with strangers. If you
+        can, try to recall and write about specific occasions on which this
+        value determined what you did. You then read the following article:
+        Drinking a single alcoholic drink a day increases a woman's chance
+        of developing breast cancer, according to a 2008 quantitative review
+        and synthesis of many studies examining the association of alcohol
+        and breast cancer. Further, a recent 2011 study in the Journal of
+        the American Medical Association found that consumption of 3-6
+        alcoholic drinks per week carried a 15% increased risk of breast
+        cancer. Dr. Wendy Chen of Brigham and Women's Hospital in Boston,
+        and lead author of this study, stated "There aren't many modifiable
+        risk factors for breast cancer, so it's important to think about
+        this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 3
+      condition_num: 2
+      factors: {emotion: anger, self_affirmation: present}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the angriest in your life. Please write about that time in detail,
+        while trying to re-experience the emotions involved. You then
+        completed a second writing task. For this task, you read: In this
+        study we are interested in investigating values. By values we mean
+        the moral principles and standards by which people try to live their
+        lives. For example, honesty might be a core value for some people.
+        That is, they may try to be honest in all they do when dealing with
+        other people. Please look at the list of values below, and check the
+        one that is most important to you: Artistic skills, Athletics,
+        Business/earning money, Compassion, Conscientiousness, Creativity,
+        Friendliness, Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty, Independence, Intelligence, Kindness, Musical
+        ability/appreciation, Politics, Relations with friends or family,
+        Spirituality/Religiousness, Sense of Humor, Spontaneity/Living life
+        in the moment, Trustworthiness, or Other. You then selected a value
+        and were asked: Please type a short statement about why this value
+        is important to you. Take a few minutes to think about this value
+        and how this value has influenced your past behaviors or attitudes.
+        Please write about how you use this value in your everyday life - at
+        work, at home, with friends, or in dealing with strangers. If you
+        can, try to recall and write about specific occasions on which this
+        value determined what you did. You then read the following article:
+        Drinking a single alcoholic drink a day increases a woman's chance
+        of developing breast cancer, according to a 2008 quantitative review
+        and synthesis of many studies examining the association of alcohol
+        and breast cancer. Further, a recent 2011 study in the Journal of
+        the American Medical Association found that consumption of 3-6
+        alcoholic drinks per week carried a 15% increased risk of breast
+        cancer. Dr. Wendy Chen of Brigham and Women's Hospital in Boston,
+        and lead author of this study, stated "There aren't many modifiable
+        risk factors for breast cancer, so it's important to think about
+        this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 4
+      condition_num: 3
+      factors: {emotion: hopeful, self_affirmation: present}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the most hopeful in your life. Please write about that time in
+        detail, while trying to re-experience the emotions involved. You
+        then completed a second writing task. For this task, you read: In
+        this study we are interested in investigating values. By values we
+        mean the moral principles and standards by which people try to live
+        their lives. For example, honesty might be a core value for some
+        people. That is, they may try to be honest in all they do when
+        dealing with other people. Please look at the list of values below,
+        and check the one that is most important to you: Artistic skills,
+        Athletics, Business/earning money, Compassion, Conscientiousness,
+        Creativity, Friendliness, Generosity, Hedonism (the pursuit of
+        pleasure/happiness), Honesty, Independence, Intelligence, Kindness,
+        Musical ability/appreciation, Politics, Relations with friends or
+        family, Spirituality/Religiousness, Sense of Humor, Spontaneity/
+        Living life in the moment, Trustworthiness, or Other. You then
+        selected a value and were asked: Please type a short statement about
+        why this value is important to you. Take a few minutes to think
+        about this value and how this value has influenced your past
+        behaviors or attitudes. Please write about how you use this value in
+        your everyday life - at work, at home, with friends, or in dealing
+        with strangers. If you can, try to recall and write about specific
+        occasions on which this value determined what you did. You then
+        read the following article: Drinking a single alcoholic drink a day
+        increases a woman's chance of developing breast cancer, according to
+        a 2008 quantitative review and synthesis of many studies examining
+        the association of alcohol and breast cancer. Further, a recent 2011
+        study in the Journal of the American Medical Association found that
+        consumption of 3-6 alcoholic drinks per week carried a 15% increased
+        risk of breast cancer. Dr. Wendy Chen of Brigham and Women's
+        Hospital in Boston, and lead author of this study, stated "There
+        aren't many modifiable risk factors for breast cancer, so it's
+        important to think about this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 5
+      condition_num: 4
+      factors: {emotion: neutral, self_affirmation: present}
+      text: >-
+        For the next five minutes, please write a detailed description of a
+        room in your house. You then completed a second writing task. For
+        this task, you read: In this study we are interested in
+        investigating values. By values we mean the moral principles and
+        standards by which people try to live their lives. For example,
+        honesty might be a core value for some people. That is, they may try
+        to be honest in all they do when dealing with other people. Please
+        look at the list of values below, and check the one that is most
+        important to you: Artistic skills, Athletics, Business/earning
+        money, Compassion, Conscientiousness, Creativity, Friendliness,
+        Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty,
+        Independence, Intelligence, Kindness, Musical ability/appreciation,
+        Politics, Relations with friends or family, Spirituality/
+        Religiousness, Sense of Humor, Spontaneity/Living life in the
+        moment, Trustworthiness, or Other. You then selected a value and
+        were asked: Please type a short statement about why this value is
+        important to you. Take a few minutes to think about this value and
+        how this value has influenced your past behaviors or attitudes.
+        Please write about how you use this value in your everyday life - at
+        work, at home, with friends, or in dealing with strangers. If you
+        can, try to recall and write about specific occasions on which this
+        value determined what you did. You then read the following article:
+        Drinking a single alcoholic drink a day increases a woman's chance
+        of developing breast cancer, according to a 2008 quantitative review
+        and synthesis of many studies examining the association of alcohol
+        and breast cancer. Further, a recent 2011 study in the Journal of
+        the American Medical Association found that consumption of 3-6
+        alcoholic drinks per week carried a 15% increased risk of breast
+        cancer. Dr. Wendy Chen of Brigham and Women's Hospital in Boston,
+        and lead author of this study, stated "There aren't many modifiable
+        risk factors for breast cancer, so it's important to think about
+        this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 6
+      condition_num: 5
+      factors: {emotion: happiness, self_affirmation: absent}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the happiest in your life. Please write about that time in detail,
+        while trying to re-experience the emotions involved. You then
+        completed a second writing task. For this task, you read: In this
+        study we are interested in investigating values. By values we mean
+        the moral principle and standards by which people try to live their
+        lives. For example, honesty might be a core value for some people.
+        That is, they may try to be honest in all they do when dealing with
+        other people. Please look at the list of values below, and check the
+        one that is least important to you: Artistic skills, Athletics,
+        Business/earning money, Compassion, Conscientiousness, Creativity,
+        Friendliness, Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty, Independence, Intelligence, Kindness, Musical
+        ability/appreciation, Politics, Relations with friends or family,
+        Spirituality/Religiousness, Sense of Humor, Spontaneity/Living life
+        in the moment, Trustworthiness, or Other. You then selected a value
+        and were asked: Please type a short statement about why this value
+        could be important to another person. Take a few minutes to think
+        about how this value may influence this person's behaviors or
+        attitudes. Please write about how this person may use this value in
+        everyday life - at work, at home, with friends, or in dealing with
+        strangers. Only think about why this value might be important to
+        another person, and not why it is unimportant to you. You then read
+        the following article: Drinking a single alcoholic drink a day
+        increases a woman's chance of developing breast cancer, according to
+        a 2008 quantitative review and synthesis of many studies examining
+        the association of alcohol and breast cancer. Further, a recent 2011
+        study in the Journal of the American Medical Association found that
+        consumption of 3-6 alcoholic drinks per week carried a 15% increased
+        risk of breast cancer. Dr. Wendy Chen of Brigham and Women's
+        Hospital in Boston, and lead author of this study, stated "There
+        aren't many modifiable risk factors for breast cancer, so it's
+        important to think about this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 7
+      condition_num: 6
+      factors: {emotion: sadness, self_affirmation: absent}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the saddest in your life. Please write about that time in detail,
+        while trying to re-experience the emotions involved. You then
+        completed a second writing task. For this task, you read: In this
+        study we are interested in investigating values. By values we mean
+        the moral principle and standards by which people try to live their
+        lives. For example, honesty might be a core value for some people.
+        That is, they may try to be honest in all they do when dealing with
+        other people. Please look at the list of values below, and check the
+        one that is least important to you: Artistic skills, Athletics,
+        Business/earning money, Compassion, Conscientiousness, Creativity,
+        Friendliness, Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty, Independence, Intelligence, Kindness, Musical
+        ability/appreciation, Politics, Relations with friends or family,
+        Spirituality/Religiousness, Sense of Humor, Spontaneity/Living life
+        in the moment, Trustworthiness, or Other. You then selected a value
+        and were asked: Please type a short statement about why this value
+        could be important to another person. Take a few minutes to think
+        about how this value may influence this person's behaviors or
+        attitudes. Please write about how this person may use this value in
+        everyday life - at work, at home, with friends, or in dealing with
+        strangers. Only think about why this value might be important to
+        another person, and not why it is unimportant to you. You then read
+        the following article: Drinking a single alcoholic drink a day
+        increases a woman's chance of developing breast cancer, according to
+        a 2008 quantitative review and synthesis of many studies examining
+        the association of alcohol and breast cancer. Further, a recent 2011
+        study in the Journal of the American Medical Association found that
+        consumption of 3-6 alcoholic drinks per week carried a 15% increased
+        risk of breast cancer. Dr. Wendy Chen of Brigham and Women's
+        Hospital in Boston, and lead author of this study, stated "There
+        aren't many modifiable risk factors for breast cancer, so it's
+        important to think about this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 8
+      condition_num: 7
+      factors: {emotion: anger, self_affirmation: absent}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the angriest in your life. Please write about that time in detail,
+        while trying to re-experience the emotions involved. You then
+        completed a second writing task. For this task, you read: In this
+        study we are interested in investigating values. By values we mean
+        the moral principle and standards by which people try to live their
+        lives. For example, honesty might be a core value for some people.
+        That is, they may try to be honest in all they do when dealing with
+        other people. Please look at the list of values below, and check the
+        one that is least important to you: Artistic skills, Athletics,
+        Business/earning money, Compassion, Conscientiousness, Creativity,
+        Friendliness, Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty, Independence, Intelligence, Kindness, Musical
+        ability/appreciation, Politics, Relations with friends or family,
+        Spirituality/Religiousness, Sense of Humor, Spontaneity/Living life
+        in the moment, Trustworthiness, or Other. You then selected a value
+        and were asked: Please type a short statement about why this value
+        could be important to another person. Take a few minutes to think
+        about how this value may influence this person's behaviors or
+        attitudes. Please write about how this person may use this value in
+        everyday life - at work, at home, with friends, or in dealing with
+        strangers. Only think about why this value might be important to
+        another person, and not why it is unimportant to you. You then read
+        the following article: Drinking a single alcoholic drink a day
+        increases a woman's chance of developing breast cancer, according to
+        a 2008 quantitative review and synthesis of many studies examining
+        the association of alcohol and breast cancer. Further, a recent 2011
+        study in the Journal of the American Medical Association found that
+        consumption of 3-6 alcoholic drinks per week carried a 15% increased
+        risk of breast cancer. Dr. Wendy Chen of Brigham and Women's
+        Hospital in Boston, and lead author of this study, stated "There
+        aren't many modifiable risk factors for breast cancer, so it's
+        important to think about this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 9
+      condition_num: 8
+      factors: {emotion: hopeful, self_affirmation: absent}
+      text: >-
+        For the next five minutes, please think of the time when you felt
+        the most hopeful in your life. Please write about that time in
+        detail, while trying to re-experience the emotions involved. You
+        then completed a second writing task. For this task, you read: In
+        this study we are interested in investigating values. By values we
+        mean the moral principle and standards by which people try to live
+        their lives. For example, honesty might be a core value for some
+        people. That is, they may try to be honest in all they do when
+        dealing with other people. Please look at the list of values below,
+        and check the one that is least important to you: Artistic skills,
+        Athletics, Business/earning money, Compassion, Conscientiousness,
+        Creativity, Friendliness, Generosity, Hedonism (the pursuit of
+        pleasure/happiness), Honesty, Independence, Intelligence, Kindness,
+        Musical ability/appreciation, Politics, Relations with friends or
+        family, Spirituality/Religiousness, Sense of Humor, Spontaneity/
+        Living life in the moment, Trustworthiness, or Other. You then
+        selected a value and were asked: Please type a short statement about
+        why this value could be important to another person. Take a few
+        minutes to think about how this value may influence this person's
+        behaviors or attitudes. Please write about how this person may use
+        this value in everyday life - at work, at home, with friends, or in
+        dealing with strangers. Only think about why this value might be
+        important to another person, and not why it is unimportant to you.
+        You then read the following article: Drinking a single alcoholic
+        drink a day increases a woman's chance of developing breast cancer,
+        according to a 2008 quantitative review and synthesis of many
+        studies examining the association of alcohol and breast cancer.
+        Further, a recent 2011 study in the Journal of the American Medical
+        Association found that consumption of 3-6 alcoholic drinks per week
+        carried a 15% increased risk of breast cancer. Dr. Wendy Chen of
+        Brigham and Women's Hospital in Boston, and lead author of this
+        study, stated "There aren't many modifiable risk factors for breast
+        cancer, so it's important to think about this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+    - raw: 10
+      condition_num: 9
+      factors: {emotion: neutral, self_affirmation: absent}
+      text: >-
+        For the next five minutes, please write a detailed description of a
+        room in your house. You then completed a second writing task. For
+        this task, you read: In this study we are interested in
+        investigating values. By values we mean the moral principle and
+        standards by which people try to live their lives. For example,
+        honesty might be a core value for some people. That is, they may try
+        to be honest in all they do when dealing with other people. Please
+        look at the list of values below, and check the one that is least
+        important to you: Artistic skills, Athletics, Business/earning
+        money, Compassion, Conscientiousness, Creativity, Friendliness,
+        Generosity, Hedonism (the pursuit of pleasure/happiness), Honesty,
+        Independence, Intelligence, Kindness, Musical ability/appreciation,
+        Politics, Relations with friends or family, Spirituality/
+        Religiousness, Sense of Humor, Spontaneity/Living life in the
+        moment, Trustworthiness, or Other. You then selected a value and
+        were asked: Please type a short statement about why this value
+        could be important to another person. Take a few minutes to think
+        about how this value may influence this person's behaviors or
+        attitudes. Please write about how this person may use this value in
+        everyday life - at work, at home, with friends, or in dealing with
+        strangers. Only think about why this value might be important to
+        another person, and not why it is unimportant to you. You then read
+        the following article: Drinking a single alcoholic drink a day
+        increases a woman's chance of developing breast cancer, according to
+        a 2008 quantitative review and synthesis of many studies examining
+        the association of alcohol and breast cancer. Further, a recent 2011
+        study in the Journal of the American Medical Association found that
+        consumption of 3-6 alcoholic drinks per week carried a 15% increased
+        risk of breast cancer. Dr. Wendy Chen of Brigham and Women's
+        Hospital in Boston, and lead author of this study, stated "There
+        aren't many modifiable risk factors for breast cancer, so it's
+        important to think about this."
+
+        "The recommendation would not be to stop drinking altogether, but to
+        keep it below the range of three to six glasses a week," Chen said.
+        Alcohol may increase the risk of breast cancer by raising the levels
+        of estrogen in the body. Estrogen has a well-established link with
+        breast cancer, with research suggesting estrogen can play a role in
+        both triggering its development and encouraging the growth of
+        tumors.
+
+        Considering the potential harmful effects of drinking, including
+        breast cancer, it is advised that those who do drink more than 7
+        drinks per week should cut down their consumption. Additionally,
+        based on recent evidence, women who drink even 3-6 drinks per week
+        might consider cutting down their consumption. According to the
+        U.S. Department of Health and Human Services, women should not
+        exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
+        of hard liquor) and should drink no more than 7 servings per week.
+
+outcomes:
+  - var: Q8
+    task_num: 0
+    question: "I intend to decrease my alcohol consumption in the next 2 weeks."
+    scale: {min: 1, max: 7, min_label: "Definitely will not do", max_label: "Definitely will do"}
+  - var: Q10
+    task_num: 1
+    question: "How worried are you about your drinking behavior?"
+    scale: {min: 1, max: 7, min_label: "Not worried at all", max_label: "Extremely worried"}
+  - var: Q11
+    task_num: 2
+    question: "How worried are you about developing breast cancer because of your drinking behavior?"
+    scale: {min: 1, max: 7, min_label: "Not worried at all", max_label: "Extremely worried"}
+  - var: Q12
+    task_num: 3
+    question: "How would you rate your chance of developing breast cancer?"
+    scale: {min: 1, max: 7, min_label: "Very low", max_label: "Very high"}
+  - var: Q13
+    task_num: 4
+    question: "Overall, how do you think your chance of developing breast cancer compares to the average woman your age?"
+    scale: {min: 1, max: 7, min_label: "Much lower", mid_label: "About the same", max_label: "Much higher"}
+  - var: Q14
+    task_num: 5
+    question: "I feel very vulnerable to breast cancer."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_missing:
+  IDEO: [-1]
+  REL1: [-1]
+  XPARTY7: [-1]
+# PPEDUCAT code 4's own .sav value label is "Bachelors degree or higher" —
+# missing the possessive apostrophe that every other Ferrer-family recipe's
+# deposit (a42yg, z358z) carries on the same code ("Bachelor's degree or
+# higher"), which is why it fails QC rule 14 (canonical vocabulary) unchanged:
+# a one-character export artefact in an internal demographic CODE LABEL, never
+# shown to any respondent on screen, not a wording difference in stimulus
+# text. Restored to match, same reasoning as a42yg's REL1 restoration (ledger
+# precedent: "the same words, not different ones").
+persona_label_rewrite:
+  PPEDUCAT:
+    4: "Bachelor's degree or higher"
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  party_id: XPARTY7
+  ideology: IDEO
+  religion: REL1
+  drinking_frequency: S1
+  typical_drinks_per_occasion: S2

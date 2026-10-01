@@ -1,0 +1,723 @@
+study_id: ye2ej
+source: tess
+title: "The Wages of Parenthood: At the Intersection of Sexual Orientation and Child Caregiving"
+data_file: TESS190_Demerjian_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+comparable_to_socsci210: false
+
+notes: >
+  SOCSCI210 CROSSCHECK — RUN, FAILED AS CODED, THEN RECONCILED EXACTLY BY
+  HAND. Two explainable differences, both pinned with digit-for-digit
+  arithmetic:
+
+  (1) SocSci210 has only 11 conditions, not 12 — condition_num 3 (vignette 4:
+  Female, LESBIAN, Not-indicated caregiving, raw XTESS190=4) is MISSING from
+  their build entirely. Their 11 present conditions' row counts equal ours
+  EXACTLY, digit for digit: {0:1044, 1:1213, 2:1030, 4:1045, 5:1088, 6:1085,
+  7:1032, 8:1109, 9:1056, 10:1053, 11:1128}. Their n_rows (11,883) equals ours
+  (12,971) minus exactly our condition 3's row total (1,088) — not an
+  approximate match, exact. So this is not a different scope decision of
+  theirs (contrast a42yg/yv2ta, where they dropped a whole FACTOR); it is one
+  specific arm of a correctly-reconstructed 12-arm design missing from their
+  output, for a reason their own reconstruction does not state. (Speculation,
+  flagged as such: XTESS190's own value label is the one vignette spelled
+  "LESBIAN" in capitals — vignettes 8 and 12, the other two lesbian arms, are
+  "Lesbian" — but those two built fine on their side, so capitalisation alone
+  does not explain it; the cause is in their pipeline, not recoverable from
+  here.) Per CONVENTIONS, "treat the reference reconstruction as a lower
+  bound on the design" — we build all 12 arms, as fielded.
+
+  (2) Response distribution only matches once QW5 (expected salary, a 5-band
+  item) is coded as its RAW BAND NUMBER (1-5) rather than the dollar value we
+  use. Proven directly: re-running our own build with condition 3 excluded
+  and QW5's response recoded 1->1, 2->2, 3->3, 4->4, 5->5 instead of
+  1->$40,000 etc. reproduces SocSci210's response_distribution EXACTLY, to
+  the row: {1: 622, 2: 724, 3: 817, 4: 2684, 5: 2731, 6: 2783,
+  7: 1522}, n=11,883. So SocSci210 pooled QW5's 1-5 band code into the SAME
+  response axis as the thirteen 1-7 Likert items, which conflates a salary
+  band selection with a suitability/agreement rating — the same class of
+  defect as zrwjp's band-to-quantity errors (ledger #9/#26), here a
+  conflation rather than a parsing bug. Our dollar-valued recode keeps QW5 on
+  its own scale, as `Outcome.response_recode` exists to do. Neither
+  difference is a defect in this build; both are explained exactly, so
+  `comparable_to_socsci210` is false FOR THAT REASON (CONVENTIONS/z358z
+  precedent), not because of disagreement left unresolved.
+
+  Confirms, as a side effect: SocSci210's scope also excludes the four
+  manipulation-check items (QM1-4) and the two respondent-background items
+  (Q6C, Q9) — their n_rows reconciles to ours with NEITHER of those groups
+  present, independently supporting (not proving) the scope judgement below.
+
+
+  TESS3 190 (Demerjian, "The Wages of Parenthood"), N=1,013. Single-shot
+  between-subjects factorial vignette: respondents read ONE job-candidate
+  profile (an accountant up for promotion track) and rated it. Line numbers
+  below are 1-based into "TESS3 190 Demerjian_Questionnaire_Final.txt", the
+  fielded questionnaire; cross-checked against the .docx of the same name
+  (textutil-converted and diffed byte-for-byte against the .txt — identical,
+  so no cross-file disagreement to adjudicate, unlike zaqkm/cug34).
+
+
+  THE DESIGN - ONE VARIABLE, XTESS190, A FULLY CROSSED 3x2x2 (12 ARMS)
+
+  Line 22 (SAMVAR): XTESS190 1-12, "Vignette1: Male, Heterosexual, Not
+  indicated" ... "Vignette12: Female, Lesbian, Primary Caregiving". This is a
+  single combined assignment code, not a design split across several
+  variables (unlike z358z/zaqkm) — confirmed in the .sav: XTESS190 populated
+  for all 1,013 respondents, 12 levels, counts 83/96/80/84/81/85/85/82/86/
+  82/82/87, roughly equal cells, no other column needed to resolve an arm.
+
+  THE WARNING IN THE BRIEF ("at the intersection of X and Y" -> factorial
+  vignette, check source_vars) does not bite here in the form expected: both
+  factors (gender x sexual orientation) ARE combined with a third
+  (caregiving position) into ONE column, not split across several. The
+  proposal's own Figure 1 (page 4) confirms the same 3x2x2 = 12-cell table
+  with the same factor names and levels as XTESS190's value labels, so
+  SocSci210's row/arm count is not narrower than fielded here (contrast
+  cug34/a2nbf/yv2ta/8ctbk, ledger #71) — this is the one study in the
+  "factorial vignette" family audited so far where the proposal and the
+  fielded instrument agree on scope.
+
+  CONDITION MAPPING (declared, rule 2): condition_num = raw - 1 (0-11), the
+  source's own ordering (caregiving-major is NOT the source order; the
+  source's own order is gender-major within caregiving-block: vignettes 1-4
+  = "not indicated" caregiving crossing {Male-Het, Male-Gay, Female-Het,
+  Female-Lesbian}; 5-8 = same 2x2 under "secondary caregiving"; 9-12 = same
+  2x2 under "primary caregiving"). Kept as fielded, not reordered.
+
+
+  THE PIPED VIGNETTE TEXT - WHY THIS IS NOT THE a2nbf TRAP
+
+  Lines 40-53 define DOV_INSERT1..DOV_INSERT6 (candidate's first name, spouse's
+  first name, candidate's own possessive/subject pronoun, spouse's own
+  subject/reflexive pronoun), each entirely as a function of WHICH VIGNETTE
+  NUMBER (i.e. of the arm itself — "if vignette1 or vignette5 or vignette9
+  then..."), never of any respondent attribute. This is the opposite shape
+  from a2nbf's `{you/your partner}` (ledger #77), which varied by the
+  RESPONDENT'S OWN PPGENDER regardless of arm. Here the insert values are
+  fully determined by XTESS190, so they were resolved by hand, once per arm,
+  into the arm's own `text` — no `respondent_vars` needed, and no template
+  notation ships into the corpus. Verified that no `[IF PPGENDER=...]`-style
+  respondent-conditional directive exists anywhere in this questionnaire.
+
+  Insert values, grouped by (gender, orientation) — identical across all
+  three caregiving blocks:
+    Male/Heterosexual  (vign. 1,5,9):   candidate Matthew (his/he), spouse Kristen (she/herself)
+    Male/Gay           (vign. 2,6,10):  candidate Matthew (his/he), spouse Brendan (he/himself)
+    Female/Heterosexual(vign. 3,7,11):  candidate Sarah (her/she),  spouse Brendan (he/himself)
+    Female/Lesbian     (vign. 4,8,12):  candidate Sarah (her/she),  spouse Kristen (she/herself)
+  Internally consistent: every heterosexual arm pairs the candidate with an
+  opposite-sex-named spouse, every gay/lesbian arm with a same-sex-named one.
+
+  The three caregiving-block paragraphs (lines 71, 75, 79) differ in BA year
+  (2004 / 2005 / 2003) and in whether the spouse or the candidate is described
+  reducing to part-time work around the children — this is the
+  "caregiving position" factor and it is fully expressed in the text (the
+  "not indicated" block, lines 70-71, says nothing about who does the
+  caregiving at all). Checked as a QC rule 5 minimal pair: (vignette1,
+  vignette5) differ only in caregiving block, same Male/Hetero inserts; text
+  differs. (vignette1, vignette2) differ only in spouse name/pronoun (Kristen
+  vs Brendan), same caregiving block; text differs.
+
+  SHARED_CONTEXT = lines 57-66 ("Evaluation of Job Candidates" intro through
+  "please respond to the following questions with your first, uncensored
+  impressions"), identical for all 12 arms, verbatim except: curly quotes/
+  apostrophes straightened (2026-10-01 CONVENTIONS), a double space after
+  "[DOV_INSERT1]'s" (line 75, source formatting artifact) collapsed to one,
+  and the two section headings ("Evaluation of Job Candidates" / "The Hiring
+  Scenario") run into the paragraph with a full stop, matching the z358z/
+  a42yg precedent for headings.
+
+  The meta-notes in the source are NOT shown to respondents and are dropped:
+  "[Each respondent will receive just one of 12 variations...]", "[Caregiving
+  not indicated: Gender x Sexual Orientation manipulated]", "[IF XTESS190=1
+  to 4]" and siblings — these are the questionnaire's own routing logic, not
+  stimulus text (same class of omission as z358z's bracketed [SP]/[GRID]
+  tags).
+
+
+  OUTCOMES - 13 BUILT (W1-W5, C1-C8), 4+2 EXCLUDED
+
+  task 0-4   QW1-QW5  suitability / interview / hire / promote (1-7) and
+             expected salary (banded, 5 levels, QW5)
+  task 5-7   QC1-QC3  trait ratings: Organized / Capable / Competent (1-7)
+  task 8     QC4      committed, relative to peers (1-7)
+  task 9-10  QC5/QC6  how frequently the candidate would rearrange THEIR OWN
+             schedule for childcare / for work (1-7) — see PRONOUN below
+  task 11-12 QC7/QC8  masculine / feminine attribution (1-7)
+
+  All 13 are asked of every respondent in one continuous block right after
+  the single vignette, with no further randomisation gating any of them —
+  confirmed against the .sav: all 13 columns are non-null for all 1,013
+  respondents (only -1 "Refused" ever missing; no NaN on any of them).
+
+  PRONOUN ON QC5/QC6. The .sav's own column label for QC5 reads literally
+  "How frequently do you believe that this candidate would rearrange
+  {his/her} schedule..." — an un-resolved template surviving in the LABEL
+  (not a respondent-facing problem; SPSS exports sometimes keep the
+  scripter's own piping notation in the variable label even though the
+  fielded instrument resolved it per arm, see questionnaire lines 234, 255).
+  The questionnaire's grid items C5/C6 pipe [DOV_INSERT3], the CANDIDATE's
+  own possessive pronoun — a function of the candidate's gender only (his for
+  vignettes 1/2/5/6/9/10, her for 3/4/7/8/11/12), NOT of sexual orientation or
+  caregiving. Declared via `Arm.items` (ItemOverride) on task_num 9 and 10
+  for every arm: `outcome_var` is left unset (falls through to the outcome's
+  own QC5/QC6, since this is NOT a split-ballot — every arm shares the same
+  answer column) and only `outcome_question` is overridden, which
+  `outcome_text_for` applies unconditionally regardless of `outcome.var`.
+  This is the schema's documented "override the question text for one cell
+  without changing which variable holds the answer" use (recipe.py's own
+  z358z precedent used items for variable AND question together; here only
+  question changes).
+
+  EXCLUDED AS MANIPULATION CHECKS (CONVENTIONS "Attention and recall checks
+  are not outcomes"). QM1-QM4, labelled "[Manipulation Checks]" in the source
+  (line 317) with no new section header before QM4, which the layout and
+  content both place in the same block: "Was this candidate Caucasian / In a
+  heterosexual relationship / In a gay or lesbian relationship?" (QM1-QM3)
+  and "Who has primary responsibility for caring for this candidate's
+  children?" (QM4). Each answer is recoverable from the condition text alone
+  (the manipulation itself), so building them would let a model score well
+  while learning nothing about evaluative behaviour — the identical reasoning
+  CONVENTIONS gives for yv2ta's recall checks. Row cost: QM1 985, QM2 986,
+  QM3 983, QM4 992 (non-refused, non-null) = 3,946 rows not built.
+
+  EXCLUDED AS OUT OF SCOPE FOR THIS EXPERIMENT (my own judgement call, not
+  compelled by an existing CONVENTIONS rule — flagged for the checker). Q6C
+  ("How frequently do you arrange YOUR OWN schedule to accommodate childcare
+  or household responsibilities?", asked only if Q6=1, i.e. the RESPONDENT
+  has children) and Q9 (the same question, past tense, asked of everyone) sit
+  in the "Demographic and Background Questions" section, well after the
+  vignette-rating block, and ask about the RESPONDENT'S OWN life, not the
+  fictional candidate. They are not attention/recall checks (the answer is
+  not recoverable from the stimulus) and the respondent genuinely did read
+  the arm's text beforehand, so attaching the arm's condition to them would
+  not be dishonest — but the response would be causally unrelated to the
+  condition shown, which sits uneasily with CLAUDE.md's stated purpose of
+  "predicting human behaviour" in response to a stimulus: every other outcome
+  in this recipe is about evaluating the candidate; these two are not, and
+  building them would mean 1,626 rows (Q6C 634 + Q9 992, non-refused,
+  non-null) where condition and response are unrelated by construction. I
+  left them out rather than build noise, but this is a scope judgement, not a
+  fabrication issue, and a checker may disagree — the data support building
+  them as "no stimulus" style measures if the project wants maximum row
+  coverage over strict condition-outcome relevance.
+
+
+  RESPONSE CODING
+
+  QW1-4, QC1-4, QC5-8: identity 1-7, matching the grid headers directly
+  (e.g. 1 "Not at all suitable" ... 7 "Extremely suitable"). The .sav's own
+  value labels append the numeric code onto the endpoint label as an export
+  artifact ("Not at all suitable1", "Extremely suitable7" — the digit is not
+  part of the respondent-facing wording); `Scale.min_label`/`max_label` below
+  use the questionnaire's own clean wording instead (lines 90/97, 111/118,
+  etc.), not the .sav's concatenated string. -1 "Refused" is the only missing
+  code on any of the 13 items (checked each item's observed values and label
+  set).
+
+  QW5 (expected salary) is a 5-band ordinal, handled the zrwjp way: codes 1-5
+  already match the band order, response_recode maps each to its band's lower
+  bound ($40,000 / $55,000 / $70,000 / $85,000 / $100,000); Scale carries the
+  bottom and top band's full range as min_label/max_label, matching all five
+  bands documented inline. No band-parsing ambiguity here (unlike zrwjp's
+  comma bug) — these are round-number bands with no internal commas to
+  mis-parse.
+
+
+  PERSONA
+
+  Canonical 10-field KnowledgePanel set as in z358z/a42yg (PPAGE, PPGENDER,
+  PPEDUCAT [not PPEDUC — recipe_prep's top candidate, OVERRULED: ledger #64
+  established that the corpus crosswalk is built on 4-level PPEDUCAT, and the
+  finer PPEDUC would be unreconcilable with every other recipe's education
+  field], PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4 [recipe_prep flagged
+  REVIEW, conf 0.58 vs ppreg9 conf 0.33 — OVERRULED in favour of the
+  corpus-wide convention: every other recipe maps region to PPREG4, and
+  ledger #66 specifically warns that preferring the finer-grained alternative
+  (ppreg9, 9 census divisions) is the tiebreak mistake that has misfired
+  three times already], PPHHSIZE), plus the merged panel-profile variables
+  (DOV_REL1 -> religion, DOV_XPARTY7 -> party_id, DOV_IDEO -> ideology,
+  DOV_REL2 -> religion_attendance [extra]). As in a42yg, the raw pre-merge
+  XPARTY7/XIDEO/XREL1/XREL2 columns the questionnaire describes are not
+  separately present in the client file, only the merged DOV_ variants.
+  persona_missing drops -1 "Refused" on DOV_REL1 (2 respondents), DOV_IDEO
+  (5), DOV_REL2 (11); DOV_XPARTY7 has no -1 either defined or observed (1,013
+  non-missing, range 1-7).
+
+  EXTRA FIELDS, directly on-topic for a study about sexual orientation and
+  child caregiving (a42yg precedent: occupation mapped as an extra field
+  because the whole sample was health-care personnel):
+    sexual_orientation_self <- Q4 ("Do you consider yourself to be...",
+      answered by all 1,013, not gated as the questionnaire's own routing
+      note at line 344 implies — xPPP20063 and DOV_Q4 are not present as
+      separate columns in the delivered file, only Q4 itself, which is fully
+      populated; -1 Refused (3) dropped)
+    has_children <- Q6 ("Do you have children?"; -1 Refused (11) dropped;
+      label "Other:" -> persona_label_rewrite strips the trailing colon,
+      ledger #60's exact pattern: a real answer ("Other") wearing the
+      textbox instruction's punctuation, not a non-answer)
+    children_live_with_respondent <- Q6A (asked only if Q6=1; -1 dropped)
+    other_adults_help_childcare <- Q6B (asked only if Q6=1; -1 dropped; same
+      "Other:" colon-strip as Q6)
+    attitude_same_sex_relations <- Q12 ("do you think [sexual relations
+      between two adults of the same sex] is: Always wrong .. Not wrong at
+      all"; -1 Refused (38) dropped)
+  Q6_TEXT/Q6B_TEXT (free-text "Other" specify boxes) are not mapped — open
+  response content, not a stable attribute, same reasoning as a42yg's
+  SA2/NA1 exclusion.
+
+condition:
+  source_var: XTESS190
+  factors: [gender, sexual_orientation, caregiving]
+  shared_context: >
+    Evaluation of Job Candidates. In this study I am interested in
+    understanding more about hiring choices and workplace dynamics. There are
+    no "right" or "wrong" answers. This study consists of two parts: a hiring
+    scenario with follow up questions, and demographic questions. This survey
+    will take about 5 minutes to complete. The Hiring Scenario. In this
+    scenario, imagine that you are a manager at a large company and your boss
+    selected you to be a part of an advisory panel for new hires. You have
+    been eager to be a part of this advisory panel for new hires and know
+    that you are more likely to be asked to be on this panel again in the
+    future if the employee you recommend does well on the job and gets
+    quickly promoted. You received resumes from human resources, but for a
+    couple of job candidates you also received information via email from
+    fellow coworkers who know the candidates from outside of work. The
+    candidates are applying for a full-time accountant position and, if all
+    goes well, whoever is hired could be tracked for promotion to move up to
+    senior accountant. Though the position is full-time, the actual work
+    schedule varies week to week, depending upon client needs. Because this
+    position has a varying schedule, it can also accommodate familial needs
+    during typical business hours from time to time. The following is an
+    excerpt from an email you received from a coworker about one job
+    candidate you are reviewing. You already have this candidate's resume,
+    which tells you much of the information, however, your coworker knows
+    this candidate and just wanted to share some information also. Typically,
+    your firm has trusted the impressions, even based on little information,
+    made by its managers. Please read the excerpted message about this
+    candidate and then respond to the following questions with your first,
+    uncensored impressions.
+  arms:
+    # ================= Caregiving NOT INDICATED (lines 70-71, BA 2004) =================
+    - raw: 1
+      condition_num: 0
+      factors: {gender: male, sexual_orientation: heterosexual, caregiving: not_indicated}
+      text: >
+        Matthew received his BA in 2004. He has worked as an accountant for a
+        local chain of bookstores where he has been responsible for managing
+        the accounts for four locations and the overall company. His
+        reference letter indicates that he consistently met established
+        performance expectations. His former boss said he could always be
+        counted on and a former colleague said he was a pleasant coworker. He
+        is married to a graphic designer, Kristen. They have two children, a
+        2 year-old son, Alex, and a 3 year-old daughter, Eliza.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate work responsibilities?
+
+    - raw: 2
+      condition_num: 1
+      factors: {gender: male, sexual_orientation: gay, caregiving: not_indicated}
+      text: >
+        Matthew received his BA in 2004. He has worked as an accountant for a
+        local chain of bookstores where he has been responsible for managing
+        the accounts for four locations and the overall company. His
+        reference letter indicates that he consistently met established
+        performance expectations. His former boss said he could always be
+        counted on and a former colleague said he was a pleasant coworker. He
+        is married to a graphic designer, Brendan. They have two children, a
+        2 year-old son, Alex, and a 3 year-old daughter, Eliza.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate work responsibilities?
+
+    - raw: 3
+      condition_num: 2
+      factors: {gender: female, sexual_orientation: heterosexual, caregiving: not_indicated}
+      text: >
+        Sarah received her BA in 2004. She has worked as an accountant for a
+        local chain of bookstores where she has been responsible for managing
+        the accounts for four locations and the overall company. Her
+        reference letter indicates that she consistently met established
+        performance expectations. Her former boss said she could always be
+        counted on and a former colleague said she was a pleasant coworker.
+        She is married to a graphic designer, Brendan. They have two
+        children, a 2 year-old son, Alex, and a 3 year-old daughter, Eliza.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate work responsibilities?
+
+    - raw: 4
+      condition_num: 3
+      factors: {gender: female, sexual_orientation: lesbian, caregiving: not_indicated}
+      text: >
+        Sarah received her BA in 2004. She has worked as an accountant for a
+        local chain of bookstores where she has been responsible for managing
+        the accounts for four locations and the overall company. Her
+        reference letter indicates that she consistently met established
+        performance expectations. Her former boss said she could always be
+        counted on and a former colleague said she was a pleasant coworker.
+        She is married to a graphic designer, Kristen. They have two
+        children, a 2 year-old son, Alex, and a 3 year-old daughter, Eliza.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate work responsibilities?
+
+    # ================= SECONDARY CAREGIVING (lines 74-75, BA 2005) =================
+    - raw: 5
+      condition_num: 4
+      factors: {gender: male, sexual_orientation: heterosexual, caregiving: secondary}
+      text: >
+        Matthew received his BA in 2005. He has worked as an accountant for a
+        local chain of bookstores where he is responsible for managing the
+        accounts for four locations and the overall company. His reference
+        letter indicates that he consistently met established performance
+        expectations. His former boss said he could always be counted on and
+        a former colleague said he was a pleasant coworker. He is married to
+        a graphic designer, Kristen, and they have a 2 year-old son, Alex,
+        and a 3 year-old daughter, Eliza. Matthew's spouse decided to stay at
+        home with their daughter in 2013, and in this past year, Kristen has
+        been working part time until she picks up the children from
+        preschool, however Kristen has just accepted a fulltime position
+        herself.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate work responsibilities?
+
+    - raw: 6
+      condition_num: 5
+      factors: {gender: male, sexual_orientation: gay, caregiving: secondary}
+      text: >
+        Matthew received his BA in 2005. He has worked as an accountant for a
+        local chain of bookstores where he is responsible for managing the
+        accounts for four locations and the overall company. His reference
+        letter indicates that he consistently met established performance
+        expectations. His former boss said he could always be counted on and
+        a former colleague said he was a pleasant coworker. He is married to
+        a graphic designer, Brendan, and they have a 2 year-old son, Alex,
+        and a 3 year-old daughter, Eliza. Matthew's spouse decided to stay at
+        home with their daughter in 2013, and in this past year, Brendan has
+        been working part time until he picks up the children from preschool,
+        however Brendan has just accepted a fulltime position himself.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate work responsibilities?
+
+    - raw: 7
+      condition_num: 6
+      factors: {gender: female, sexual_orientation: heterosexual, caregiving: secondary}
+      text: >
+        Sarah received her BA in 2005. She has worked as an accountant for a
+        local chain of bookstores where she is responsible for managing the
+        accounts for four locations and the overall company. Her reference
+        letter indicates that she consistently met established performance
+        expectations. Her former boss said she could always be counted on and
+        a former colleague said she was a pleasant coworker. She is married
+        to a graphic designer, Brendan, and they have a 2 year-old son, Alex,
+        and a 3 year-old daughter, Eliza. Sarah's spouse decided to stay at
+        home with their daughter in 2013, and in this past year, Brendan has
+        been working part time until he picks up the children from preschool,
+        however Brendan has just accepted a fulltime position himself.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate work responsibilities?
+
+    - raw: 8
+      condition_num: 7
+      factors: {gender: female, sexual_orientation: lesbian, caregiving: secondary}
+      text: >
+        Sarah received her BA in 2005. She has worked as an accountant for a
+        local chain of bookstores where she is responsible for managing the
+        accounts for four locations and the overall company. Her reference
+        letter indicates that she consistently met established performance
+        expectations. Her former boss said she could always be counted on and
+        a former colleague said she was a pleasant coworker. She is married
+        to a graphic designer, Kristen, and they have a 2 year-old son, Alex,
+        and a 3 year-old daughter, Eliza. Sarah's spouse decided to stay at
+        home with their daughter in 2013, and in this past year, Kristen has
+        been working part time until she picks up the children from
+        preschool, however Kristen has just accepted a fulltime position
+        herself.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate work responsibilities?
+
+    # ================= PRIMARY CAREGIVING (lines 78-79, BA 2003) =================
+    - raw: 9
+      condition_num: 8
+      factors: {gender: male, sexual_orientation: heterosexual, caregiving: primary}
+      text: >
+        Matthew received his BA in 2003. He worked as an accountant for a
+        local chain of bookstores where he was responsible for managing the
+        accounts for four locations and the overall company. His reference
+        letter indicates that he consistently met established performance
+        expectations. His former boss said he could always be counted on and
+        a former colleague said he was a pleasant coworker. He is married to
+        a graphic designer, Kristen. Together they have a 2 year-old son,
+        Alex, and a 3 year-old daughter, Eliza. In 2013 Matthew decided to
+        stay home with his daughter. In the past year Matthew has been
+        working part time until he picks up the children from preschool.
+        Matthew is now applying for full time positions.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate work responsibilities?
+
+    - raw: 10
+      condition_num: 9
+      factors: {gender: male, sexual_orientation: gay, caregiving: primary}
+      text: >
+        Matthew received his BA in 2003. He worked as an accountant for a
+        local chain of bookstores where he was responsible for managing the
+        accounts for four locations and the overall company. His reference
+        letter indicates that he consistently met established performance
+        expectations. His former boss said he could always be counted on and
+        a former colleague said he was a pleasant coworker. He is married to
+        a graphic designer, Brendan. Together they have a 2 year-old son,
+        Alex, and a 3 year-old daughter, Eliza. In 2013 Matthew decided to
+        stay home with his daughter. In the past year Matthew has been
+        working part time until he picks up the children from preschool.
+        Matthew is now applying for full time positions.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            his schedule to accommodate work responsibilities?
+
+    - raw: 11
+      condition_num: 10
+      factors: {gender: female, sexual_orientation: heterosexual, caregiving: primary}
+      text: >
+        Sarah received her BA in 2003. She worked as an accountant for a
+        local chain of bookstores where she was responsible for managing the
+        accounts for four locations and the overall company. Her reference
+        letter indicates that she consistently met established performance
+        expectations. Her former boss said she could always be counted on and
+        a former colleague said she was a pleasant coworker. She is married
+        to a graphic designer, Brendan. Together they have a 2 year-old son,
+        Alex, and a 3 year-old daughter, Eliza. In 2013 Sarah decided to stay
+        home with her daughter. In the past year Sarah has been working part
+        time until she picks up the children from preschool. Sarah is now
+        applying for full time positions.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate work responsibilities?
+
+    - raw: 12
+      condition_num: 11
+      factors: {gender: female, sexual_orientation: lesbian, caregiving: primary}
+      text: >
+        Sarah received her BA in 2003. She worked as an accountant for a
+        local chain of bookstores where she was responsible for managing the
+        accounts for four locations and the overall company. Her reference
+        letter indicates that she consistently met established performance
+        expectations. Her former boss said she could always be counted on and
+        a former colleague said she was a pleasant coworker. She is married
+        to a graphic designer, Kristen. Together they have a 2 year-old son,
+        Alex, and a 3 year-old daughter, Eliza. In 2013 Sarah decided to stay
+        home with her daughter. In the past year Sarah has been working part
+        time until she picks up the children from preschool. Sarah is now
+        applying for full time positions.
+      items:
+        9:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate childcare and household
+            responsibilities?
+        10:
+          outcome_question: >-
+            How frequently do you believe that this candidate would rearrange
+            her schedule to accommodate work responsibilities?
+
+outcomes:
+  - var: QW1
+    task_num: 0
+    question: "How suitable do you perceive this candidate to be for the full time accountant position?"
+    scale: {min: 1, max: 7, min_label: "Not at all suitable", max_label: "Extremely suitable"}
+  - var: QW2
+    task_num: 1
+    question: "How likely would you be to invite this candidate for an interview?"
+    scale: {min: 1, max: 7, min_label: "Not at all likely", max_label: "Extremely likely"}
+  - var: QW3
+    task_num: 2
+    question: "How likely would you be to hire this candidate for the full time accountant position?"
+    scale: {min: 1, max: 7, min_label: "Not at all likely", max_label: "Extremely likely"}
+  - var: QW4
+    task_num: 3
+    question: "How likely would you be to recommend this candidate for the promotion track upon hire?"
+    scale: {min: 1, max: 7, min_label: "Not at all likely", max_label: "Extremely likely"}
+  - var: QW5
+    task_num: 4
+    question: >-
+      This company has a set salary range for this position, which is as
+      follows, but the exact salary will be decided after reviewing the
+      candidate's file. What more specific salary range would you expect for
+      this candidate?
+    scale:
+      min: 40000
+      max: 100000
+      min_label: "$40,000-$54,999"
+      max_label: "$100,000-$114,999"
+    response_recode:
+      1: 40000   # $40,000-$54,999
+      2: 55000   # $55,000-$69,999
+      3: 70000   # $70,000-$84,999
+      4: 85000   # $85,000-$99,999
+      5: 100000  # $100,000-$114,999
+  - var: QC1
+    task_num: 5
+    question: "Please indicate how accurately you believe the following trait describes the candidate: Organized."
+    scale: {min: 1, max: 7, min_label: "Not at all accurate", max_label: "Extremely accurate"}
+  - var: QC2
+    task_num: 6
+    question: "Please indicate how accurately you believe the following trait describes the candidate: Capable."
+    scale: {min: 1, max: 7, min_label: "Not at all accurate", max_label: "Extremely accurate"}
+  - var: QC3
+    task_num: 7
+    question: "Please indicate how accurately you believe the following trait describes the candidate: Competent."
+    scale: {min: 1, max: 7, min_label: "Not at all accurate", max_label: "Extremely accurate"}
+  - var: QC4
+    task_num: 8
+    question: >-
+      How committed do you believe this candidate would be to this job
+      relative to other similarly positioned employees in the company?
+    scale: {min: 1, max: 7, min_label: "Not at all committed", max_label: "Extremely committed"}
+  # QC5/QC6: placeholder text only, NEVER rendered — every arm supplies its own
+  # pronoun via `items[9]`/`items[10].outcome_question` (see notes, PRONOUN).
+  - var: QC5
+    task_num: 9
+    question: >-
+      How frequently do you believe that this candidate would rearrange
+      [the candidate's own pronoun] schedule to accommodate childcare and
+      household responsibilities?
+    scale: {min: 1, max: 7, min_label: "Not at all frequently", max_label: "Extremely frequently"}
+  - var: QC6
+    task_num: 10
+    question: >-
+      How frequently do you believe that this candidate would rearrange
+      [the candidate's own pronoun] schedule to accommodate work
+      responsibilities?
+    scale: {min: 1, max: 7, min_label: "Not at all frequently", max_label: "Extremely frequently"}
+  - var: QC7
+    task_num: 11
+    question: "On a scale of 1 to 7 how masculine would you describe this job candidate?"
+    scale: {min: 1, max: 7, min_label: "Not at all masculine", max_label: "Extremely masculine"}
+  - var: QC8
+    task_num: 12
+    question: "On a scale of 1 to 7, how feminine would you describe this job candidate?"
+    scale: {min: 1, max: 7, min_label: "Not at all feminine", max_label: "Extremely feminine"}
+
+# 1-7 identity, used by QW1-4/QC1-4/QC5-8; QW5 overrides with its own band map.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_missing:
+  DOV_REL1: [-1]
+  DOV_IDEO: [-1]
+  DOV_REL2: [-1]
+  Q4: [-1]
+  Q6: [-1]
+  Q6A: [-1]
+  Q6B: [-1]
+  Q12: [-1]
+persona_label_rewrite:
+  Q6:
+    3: "Other"
+  Q6B:
+    3: "Other"
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  religion: DOV_REL1
+  party_id: DOV_XPARTY7
+  ideology: DOV_IDEO
+  religion_attendance: DOV_REL2
+  sexual_orientation_self: Q4
+  has_children: Q6
+  children_live_with_respondent: Q6A
+  other_adults_help_childcare: Q6B
+  attitude_same_sex_relations: Q12

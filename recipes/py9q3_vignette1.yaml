@@ -1,0 +1,347 @@
+study_id: py9q3
+source: tess
+title: "Attitudes toward the Employment of Mothers and Fathers"
+data_file: "TESS2-094 - Jacobs.sav"
+experiment: vignette1_married_mother
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# SocSci210 built this study_id as a single pooled study_id with 7 condition
+# indices spanning three genuinely different sub-experiments (see notes). The
+# cell that corresponds to THIS recipe's scope (Vignette 1, Part 1's four
+# questions) is their condition_num=4 / task_num 3-6: their per-task response
+# distributions match ours EXACTLY (792/525/354, 591/530/548, 769/534/362,
+# 711/531/420 for Q1-Q4, -1 dropped) -- strong confirmation the variable
+# identification is right -- but they collapsed the study's actual randomised
+# factor (job x child-care x income satisfaction, 8 cells) into ONE condition
+# index and rendered ONE stimulus string for all 1,671 Q1 rows (verified:
+# `SELECT count(DISTINCT stimuli) FROM s WHERE task_num=3` returns 1). Same
+# defect class as a42yg/z358z's draft: a declared factor present in the data
+# and the fielded instrument, absent from their reconstruction. So
+# `comparable_to_socsci210: false`, reconciled by hand below rather than left
+# as a misleading FAIL.
+comparable_to_socsci210: false
+
+notes: >
+  TESS2-094 (Jacobs & Gerson, University of Chicago / GfK Knowledge Networks),
+  fielded ~2012. Source of record for all stimulus wording: "TESS2 094-
+  Jacobs Survey.txt" (the fielded questionnaire; line numbers below are lines
+  of that file). The proposal (Jacobs087.pdf) was NOT used for any wording.
+
+
+  THE WHOLE DEPOSIT HAS THREE INDEPENDENT SUB-EXPERIMENTS, NOT ONE.
+
+  XTESS094 (line 28, "Experimental Condition", 2 raw levels, labels literally
+  '1'/'2' -- content-free) is NOT a treatment; it is a SAMPLE-SPLIT/ROUTING
+  variable. Respondents with XTESS094=2 (n=1,692, lines 61-65: "WHEN
+  XTESS094=2, THEN PARTS 1 AND 3 ARE SHOWN") see Part 1 (3 vignettes, Q1-Q11)
+  and Part 3 (GSS question-wording experiment, Q23A/B, Q24A/Q25B).
+  Respondents with XTESS094=1 (n=850, "WHEN XTESS094=1, THEN PART 2 IS SHOWN
+  TO A SAMPLE OF 800", Vignettes 4-6, Q12-Q22, extended response options) see
+  ONLY Part 2. Confirmed directly in the .sav: Q1-Q11 and Q23A-Q25B are
+  non-null ONLY for XTESS094=2 (850 NaN each, matching XTESS094=1's count
+  exactly); Q12-Q22 are non-null ONLY for XTESS094=1 (1,692 NaN each). This is
+  my biggest overrule of `recipe_prep.py`'s first pass: it offered XTESS094 as
+  the randomised-assignment candidate at confidence 0.83 (REVIEW). Its own
+  label, "Experimental Condition", is exactly ledger finding #30's trap -- a
+  column whose label says "condition" can be routing, not a manipulation. The
+  REAL manipulations are the per-vignette insert triplets (VIGNETTE1A/B/C_*,
+  VIGNETTE2A/B/C_*, VIGNETTE3A/B/C_*, Vignette_4A/4B/5A/5B/6A/6B_*) and, for
+  Part 3, Assign1/Assign2. `recipe_prep` never saw these as the runner-up
+  because its run-off was between XTESS094 and Assign1 only -- a narrow
+  candidate list, the exact failure mode CLAUDE.md warns inflates confidence.
+
+  Scope of THIS recipe: Part 1, Vignette 1 only (married mother; Q1-Q4). Two
+  sibling recipes (py9q3_vignette2.yaml, py9q3_vignette3.yaml) cover Vignette 2
+  (single mother, Q5-Q7) and Vignette 3 (married father, Q8-Q11) -- see "WHY
+  THREE SEPARATE RECIPES" below. Part 2 (Vignettes 4-6, extended response
+  options, N~800) and Part 3 (GSS question-wording split ballot, Q23A/B,
+  Q24A/Q25B) are DELIBERATELY OUT OF SCOPE of all three vignette recipes --
+  each is its own sub-experiment per project convention ("one recipe per
+  sub-experiment") and neither is built here. Recorded as owed, not silently
+  dropped.
+
+
+  WHY THREE SEPARATE RECIPES, NOT ONE WITH A "FAMILY TYPE" FACTOR
+
+  Every XTESS094=2 respondent sees ALL THREE vignette topics (lines 75,
+  "[SURVEY NOTE: ... Each vignette has 8 conditions, each to be administered
+  at random.]"; line 78, "VIGNETTES 1 TO 3 ... WILL BE SHOWN IN A RANDOM ORDER
+  TO ALL RESPONDENTS"). So "which family type" is not itself something a
+  respondent was randomised INTO or OUT OF -- everyone gets all three -- only
+  the ORDER is randomised (Vignette_Shown_First/Second/Third), and each
+  vignette's own 2x2x2 (job satisfaction x child-care satisfaction x financial
+  need) is independently randomised via its OWN triplet of insert variables
+  (VIGNETTE1A/B/C_*_Insert for vignette 1, VIGNETTE2A/B/C_* for vignette 2,
+  VIGNETTE3A/B/C_* for vignette 3 -- confirmed in the .sav: all three triplets
+  are ~50/50 and non-null for exactly the 1,692 XTESS094=2 respondents, each
+  independently of the other two). The schema's per-item assignment
+  (`Outcome.condition_var(s)`) was built for a design where the SAME 72-arm
+  universe is shared across items (b87sm) -- here the stimulus BODY itself
+  (not just the outcome wording) differs by vignette topic, and `Condition`
+  has no way to vary `Arm.text` by task_num (`ItemOverride` only overrides the
+  outcome side: var/question/scale/recode, never the arm's own `text`). Folding
+  all three into one condition would therefore either (a) force one shared
+  arm-text model across three genuinely different stimulus bodies, which the
+  schema cannot express, or (b) need 24 arms keyed on the union of all nine
+  insert variables, which is wrong on its face: a respondent has a real,
+  simultaneous value for all nine, so an 8-of-512 slice is not "this
+  respondent's arm", it just discards the other two vignettes' randomisation
+  entirely. Three independent 8-arm experiments, one recipe each (same shape
+  as rpw4u's ~15 sub-experiments and cug34's B04/B06/B08/B10 that needed a
+  wider condition), is what the data actually is.
+
+
+  THE DESIGN -- VIGNETTE 1 (MARRIED MOTHER), 2x2x2 = 8 ARMS
+
+  Lines 114-121. Base text (line 116, with the viewing-order clause dropped --
+  see "SEQUENCE SIGNPOSTING" below): "The family consists of a married mother
+  with a preschool child. She is: employed full-time; [JOB] with her job;
+  [CARE] with her child care arrangements; and [INCOME] on her income."
+
+    factor                  variable                   levels (raw 1 / raw 2)
+    job_satisfaction        VIGNETTE1A_Job_Insert       "satisfied" / "not satisfied"
+    child_care_satisfaction VIGNETTE1B_Care_Insert      "satisfied" / "not satisfied"
+    financial_need          VIGNETTE1C_Income_Insert    "her family depends" /
+                                                         "her family does not depend"
+
+  All three triplets are independently randomised, confirmed in the .sav:
+  VIGNETTE1A_Job_Insert {1:832, 2:860}, VIGNETTE1B_Care_Insert {1:875, 2:817},
+  VIGNETTE1C_Income_Insert {1:843, 2:849}, all populated for exactly the 1,692
+  XTESS094=2 respondents and NaN for the other 850 -- confirming these, not
+  XTESS094, are the manipulation. Value labels taken directly from the .sav
+  (not guessed): checked word-for-word against the questionnaire's own bracket
+  text at lines 118-120.
+
+  CONDITION MAPPING -- DECLARED (rule 2): condition_num = 4*(job-1) +
+  2*(care-1) + (income-1), i.e. job-major, care-mid, income-minor, raw 1 = the
+  first-named level in each bracket. A convention, not a fact, chosen so the
+  8 cells read as a binary count in (job, care, income) order.
+
+  CELL SIZES in the .sav (VIGNETTE1A_Job_Insert, VIGNETTE1B_Care_Insert,
+  VIGNETTE1C_Income_Insert), n=1,692, no missing on the three insert columns
+  themselves: (1,1,1) 212, (1,1,2) 214, (1,2,1) 203, (1,2,2) 203, (2,1,1) 220,
+  (2,1,2) 226, (2,2,1) 211, (2,2,2) 203 -- roughly equal eighths of 1,692, as
+  expected for an independently-randomised 2x2x2.
+
+
+  SEQUENCE SIGNPOSTING -- DROPPED, PER CONVENTION
+
+  Line 116's own bracket: "The [IF VIGNETTE SHOW FIRST = 1:first/IF VIGNETTE
+  SHOWN SECOND = 1:next/IF VIGNETTE SHOWN THIRD = 1:last] family consists
+  of...". This is exactly the shape `docs/CONVENTIONS.md` rules out under
+  "Sequence signposting": the word tells the respondent WHERE in the
+  randomised viewing order this vignette fell, which is (a) not a measure of
+  anything, (b) different for different respondents even within this one arm,
+  and (c) a row cannot assert its own sequence position. Dropped entirely, so
+  the text starts "The family consists of...". This resolves 3 of the 9
+  `quex`-refused directives `recipe_prep.py` flagged under "WILL NOT PARSE"
+  (the "VIGNETTE SHOW FIRST/SECOND/THIRD = 1" trio) -- not stimulus gates at
+  all, display-order routing, now explicitly recorded rather than left REVIEW.
+  The other 6 (=2 and =3 variants) resolve the same way for vignette2/3's own
+  recipes.
+
+
+  OUTCOMES -- Q1-Q4, ALL FOUR DISPLAYED TOGETHER WITH THE SAME VIGNETTE
+  (lines 123, "ABOVE EACH QUESTION FROM Q1 TO Q4 PLEASE DISPLAY THE ABOVE
+  VIGNETTE")
+
+    task 0  Q1  "is it better for HER if she..."
+    task 1  Q2  "is it better for the CHILD if she..."
+    task 2  Q3  "is it better for the MARRIAGE if she..."
+    task 3  Q4  "what do you think she should do?"
+
+  Each is a 3-way NOMINAL choice (Stays at her job / Cuts back to part-time /
+  Stays home), not an ordered scale -- same shape as cug34's B01/B09, so
+  `scale.nominal: true` and all three options are enumerated in the question
+  text rather than named as scale endpoints. Checked the .sav value labels for
+  all four: identical codebook {1,2,3}, no option-order variation between
+  arms, so the study-level `{1:1,2:2,3:3}` map applies unchanged; -1 "Refused"
+  is the only missing code defined or observed. Q1-Q3 use "Stays"/"Cuts
+  back"/"Stays home" (3rd person); Q4 uses "Stay"/"Cut back"/"Stay home"
+  (infinitive, "what do YOU think she should do") -- a genuine grammatical
+  difference in the source between the two question FRAMINGS, not noise, kept
+  verbatim rather than normalised to one form. ONE added touch, flagged per
+  "Narrating what the respondent did"/"Reusing the source's own words": Q4's
+  stem ends "...what do you think she should do?" and the options are then
+  listed as separate answer choices on screen, not inline in the stem; joining
+  them into one sentence ("...should do: stay at her job, cut back to
+  part-time, or stay home?") replaces the stem's own final "?" with ":" so the
+  options read as part of the question. Every word is the source's; only that
+  one punctuation substitution is ours.
+
+  SocSci210 WRONGLY OFFERED A FOURTH OPTION on this item ("Seeks alternative
+  arrangements or another full-time job") -- that option belongs to Part 2's
+  vignettes (4-6), not Part 1's Q1-Q4/Q5-Q7/Q8-Q11, confirmed by reading lines
+  129-158 directly (3 options only, no fourth). Their response_distribution
+  for task_num=3 ({1:792, 2:525, 3:354}) nonetheless matches our raw Q1 tally
+  EXACTLY (Q1 value_counts: {1:792, 2:525, 3:354, -1:21}, -1 dropped) --
+  confirming the variable identification is right even though their rendered
+  instruction text offered an option nobody could have picked.
+
+
+  ROW ARITHMETIC. Valid (non-refused, non-null) counts, computed directly from
+  the .sav: Q1 1,671, Q2 1,669, Q3 1,665, Q4 1,662. Total 6,667 -- exactly
+  SocSci210's condition_num=4 total (1,671+1,669+1,665+1,662), confirming scope
+  and variable identification agree even though their condition/stimulus
+  collapses the 8-arm factor. Confirmed by the build.
+
+
+  PERSONA. Standard KnowledgePanel naming (PPAGE/PPGENDER/PPEDUCAT/... as in
+  z358z/a42yg), checked against this .sav's own column list. DOV_IDEO and
+  DOV_REL1 are the merge-coded (panel + re-ask) ideology/religion fields per
+  the questionnaire's own recode logic (lines 574-648); DOV_XPARTY7 likewise
+  for party. Checked directly against the XTESS094=2 subpopulation: PP* fields
+  have zero -2/-1 occurrences; DOV_IDEO has 9 occurrences of -1 "Refused",
+  DOV_REL1 has 4. DOV_XPARTY7's -1 "Refused" code is defined by the
+  questionnaire's own recode logic (lines 541-542) but did not occur in this
+  subpopulation; declared as `persona_missing` anyway rather than relying on
+  there being no instances to hide the gap (same reasoning a42yg used for
+  PARTY7/REL2). `region` maps to PPREG4 (4-level census region), matching
+  every prior recipe's convention, OVERRULING `recipe_prep.py`'s REVIEW flag
+  (0.71, runner-up ppreg9 at 0.22) in favour of corpus consistency -- ppreg9
+  is a real, finer alternative, not a wrong one, but switching one study to a
+  9-level region would make this study's persona incomparable to the other 15
+  already built on PPREG4 for no benefit this study's design needs.
+
+
+  SECOND-RANDOMISATION SWEEP (rule 9), run by hand ahead of the automated
+  screen, because this deposit's OTHER vignettes' own insert variables live in
+  the SAME file and are independently randomised, fully crossed, and balanced
+  against THIS vignette's own triplet -- exactly the shape rule 9 looks for.
+  All recorded below rather than left for the screen to flag as unexplained.
+
+condition:
+  source_vars: [VIGNETTE1A_Job_Insert, VIGNETTE1B_Care_Insert, VIGNETTE1C_Income_Insert]
+  factors: [job_satisfaction, child_care_satisfaction, financial_need]
+  considered_and_rejected:
+    VIGNETTE2A_Job_Insert: "Independent randomisation for Vignette 2 (single mother), this study's own sibling recipe (py9q3_vignette2.yaml). Does not affect Vignette 1's text or outcomes; only non-null for the same XTESS094=2 population, hence balanced against this recipe's own triplet by construction."
+    VIGNETTE2B_Care_Insert: "Same — Vignette 2's own child-care factor, out of scope here."
+    VIGNETTE2C_Income_Insert: "Same — Vignette 2's own income factor, out of scope here."
+    VIGNETTE3A_Job_Insert: "Independent randomisation for Vignette 3 (married father), this study's own sibling recipe (py9q3_vignette3.yaml). Out of scope here."
+    VIGNETTE3B_Care_Insert: "Same — Vignette 3's own child-care factor, out of scope here."
+    VIGNETTE3C_Income_Insert: "Same — Vignette 3's own income factor, out of scope here."
+    Vignette_Shown_First: "Presentation-order randomisation (which vignette topic is shown first/second/third to a given respondent), not a content manipulation. Its signalling words ('first'/'next'/'last') are deliberately dropped from arm text per the sequence-signposting convention; the order itself does not change what Vignette 1 says."
+    Vignette_Shown_Second: "Same — presentation order, not content."
+    Vignette_Shown_Third: "Same — presentation order, not content."
+    XTESS094: "Sample-split/routing variable, not a treatment (see notes). XTESS094=2 is the population Vignette 1 is shown to at all; XTESS094=1 respondents never answer Q1-Q4. A gate, not a manipulation of Vignette 1's own content."
+    Assign1: "Belongs to Part 3 (GSS question-wording split ballot), a different, out-of-scope sub-experiment. Independently randomised, so balanced against this triplet by construction, but does not touch Vignette 1's text or outcomes."
+    Assign2: "Same — Part 3's other split-ballot assignment, out of scope here."
+    Order1: "Controls whether Part 3's GSS questions appear before or after the vignettes (line 69). Out-of-scope sub-experiment; does not affect Vignette 1's own text."
+  shared_context: >
+    On the following screens we briefly describe several different family and
+    work situations. Please answer a short set of questions about each of
+    them.
+  arms:
+    - raw_values: {VIGNETTE1A_Job_Insert: 1, VIGNETTE1B_Care_Insert: 1, VIGNETTE1C_Income_Insert: 1}
+      condition_num: 0
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; satisfied with her job; satisfied with her
+        child care arrangements; and her family depends on her income.
+    - raw_values: {VIGNETTE1A_Job_Insert: 1, VIGNETTE1B_Care_Insert: 1, VIGNETTE1C_Income_Insert: 2}
+      condition_num: 1
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; satisfied with her job; satisfied with her
+        child care arrangements; and her family does not depend on her
+        income.
+    - raw_values: {VIGNETTE1A_Job_Insert: 1, VIGNETTE1B_Care_Insert: 2, VIGNETTE1C_Income_Insert: 1}
+      condition_num: 2
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: not_satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; satisfied with her job; not satisfied with
+        her child care arrangements; and her family depends on her income.
+    - raw_values: {VIGNETTE1A_Job_Insert: 1, VIGNETTE1B_Care_Insert: 2, VIGNETTE1C_Income_Insert: 2}
+      condition_num: 3
+      factors: {job_satisfaction: satisfied, child_care_satisfaction: not_satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; satisfied with her job; not satisfied with
+        her child care arrangements; and her family does not depend on her
+        income.
+    - raw_values: {VIGNETTE1A_Job_Insert: 2, VIGNETTE1B_Care_Insert: 1, VIGNETTE1C_Income_Insert: 1}
+      condition_num: 4
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; not satisfied with her job; satisfied with
+        her child care arrangements; and her family depends on her income.
+    - raw_values: {VIGNETTE1A_Job_Insert: 2, VIGNETTE1B_Care_Insert: 1, VIGNETTE1C_Income_Insert: 2}
+      condition_num: 5
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; not satisfied with her job; satisfied with
+        her child care arrangements; and her family does not depend on her
+        income.
+    - raw_values: {VIGNETTE1A_Job_Insert: 2, VIGNETTE1B_Care_Insert: 2, VIGNETTE1C_Income_Insert: 1}
+      condition_num: 6
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: not_satisfied, financial_need: depends}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; not satisfied with her job; not satisfied
+        with her child care arrangements; and her family depends on her
+        income.
+    - raw_values: {VIGNETTE1A_Job_Insert: 2, VIGNETTE1B_Care_Insert: 2, VIGNETTE1C_Income_Insert: 2}
+      condition_num: 7
+      factors: {job_satisfaction: not_satisfied, child_care_satisfaction: not_satisfied, financial_need: does_not_depend}
+      text: >-
+        The family consists of a married mother with a preschool child. She
+        is: employed full-time; not satisfied with her job; not satisfied
+        with her child care arrangements; and her family does not depend on
+        her income.
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: >-
+      All things considered, is it better for her if she stays at her job,
+      cuts back to part-time, or stays home?
+    scale: {min: 1, max: 3, nominal: true}
+  - var: Q2
+    task_num: 1
+    question: >-
+      All things considered, is it better for the child if she stays at her
+      job, cuts back to part-time, or stays home?
+    scale: {min: 1, max: 3, nominal: true}
+  - var: Q3
+    task_num: 2
+    question: >-
+      All things considered, is it better for the marriage if she stays at
+      her job, cuts back to part-time, or stays home?
+    scale: {min: 1, max: 3, nominal: true}
+  - var: Q4
+    task_num: 3
+    question: >-
+      All things considered, what do you think she should do: stay at her
+      job, cut back to part-time, or stay home?
+    scale: {min: 1, max: 3, nominal: true}
+
+response_recode: {1: 1, 2: 2, 3: 3}
+missing_codes: [-1]
+
+persona_missing:
+  DOV_IDEO: [-1]
+  DOV_REL1: [-1]
+  DOV_XPARTY7: [-1]
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: DOV_XPARTY7
+  ideology: DOV_IDEO
+  religion: DOV_REL1

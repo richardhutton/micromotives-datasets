@@ -1,0 +1,490 @@
+study_id: es4xw
+source: tess
+title: "Perceptions of Diversity Across Groups"
+data_file: TESS2_040_Bauman_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01:
+  node_license null, no license relationship at https://api.osf.io/v2/nodes/es4xw/).
+  TESS archived its post-2009 projects through the Roper Center and its own site
+  states no reuse terms; TESS has since suspended operations. So there is no
+  explicit grant of redistribution rights for this deposit, and none should be
+  assumed. Same finding as every other TESS deposit checked so far.
+
+# Crosscheck WAS run (see notes "SOCSCI210 CROSSCHECK RUN"): SocSci210's es4xw
+# is reconstructed from the PROPOSAL's description of a different, earlier
+# pilot study (eight headshots, 3-or-5 pure-group minority counts), not from
+# the instrument actually fielded (six headshots, two minority members, a
+# genuine mixed Black+Asian condition). Not a narrower-scope disagreement —
+# a different design — so no numeric reconciliation is possible or attempted.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 040 (Bauman, University of Chicago), fielded 2010, GfK KnowledgePanel,
+  N=2,512 (sample screened to equal African American/Asian/Hispanic/White
+  quotas per the deposit's "Sample Criteria", though the fielded .sav has no
+  screener variable retained). Line numbers below are 1-based into
+  "Tess2_040_Bauman_final.txt", the fielded questionnaire. The proposal
+  (Bauman024.pdf, "Perceptions of Diversity across Groups") was read ONLY to
+  check whether it describes a different design than what was fielded — see
+  "PROPOSAL VS FIELDED" below — and supplied no wording used in this recipe.
+
+
+  THE DESIGN - ONE RANDOMISED VARIABLE, PICTURE SHOWN, 4 LEVELS
+
+  Line 21-26 (Samvar): "XTESS042  1=Picture1  2=Picture2  3=Picture3
+  4=Picture4". The .sav's actual assignment column is named XTESS040 (label
+  "Picture Selected", value labels {1: 'Picture 1', ..., 4: 'Picture 4'}) —
+  note the questionnaire's own Samvar block names XTESS042, not XTESS040, a
+  mismatch inside the deposit itself (study TESS2-040 referencing a variable
+  numbered 042, likely a copy-paste artefact from a template shared with
+  another TESS project). Treated as the same variable under a typo, not a
+  second randomisation: the value labels are identical in wording and order
+  ("Picture1".."Picture4" vs "Picture 1".."Picture 4"), XTESS040 is the only
+  4-level column in the file whose counts match N exactly (636+644+625+607 =
+  2,512), and recipe_prep.py (Jev) independently identified XTESS040 as the
+  assignment variable at confidence 0.96 from its label and value-label text
+  alone, with no awareness of the questionnaire's own internal typo. Accepted.
+
+  Lines 46-60: "[SHOW PICTURE AND TEXT BELOW ("A large company...") NOT ON
+  SEPARATE DISPLAY SCREEN BUT ON SAME PAGE AS THE FIRST THREE SETS OF
+  QUESTIONS]" then one picture placeholder per XTESS042/XTESS040 value (lines
+  47, 50, 53, 57), then one caption shown to all respondents under the image
+  (line 59-60, quoted verbatim below). The text contains NO other description
+  of what each picture shows — the manipulation is entirely the photograph
+  itself, "[SHOW BELOW PICTURE IF ...]" with nothing else in the .txt
+  extraction, which cannot render an embedded image.
+
+
+  THE STIMULUS IS A PHOTOGRAPH, RECOVERED FROM THE .docx, NOT THE .txt — AND
+  THE RACIAL COMPOSITION OF EACH ARM IS NOW TRIPLY SOURCED
+
+  "Tess2_040_Bauman_final.docx" embeds four PNGs (word/media/image1-4.png,
+  ~111-116KB each, confirmed non-identical by MD5) at exactly the four
+  "[SHOW BELOW PICTURE IF XTESS042=n]" positions in the same document. This is
+  the only place in the deposit the actual stimulus content exists — the .txt
+  extraction of a Word image placeholder is necessarily blank, which is why
+  the .txt shows four empty "[SHOW BELOW PICTURE...]" blocks with nothing
+  between them (lines 47-58). Each PNG is a 2-row-by-3-column grid of six
+  individual headshot photographs (a company "management team").
+
+  SOURCE 1 — pixel diff of the deposit's own images. All 4 images cropped
+  into their six face quadrants and compared pairwise (numpy mean absolute
+  difference per quadrant; ~1-3.5 is same-photo JPEG/PNG re-encoding noise,
+  30-45 is a different photograph):
+
+    position         image1   image2   image3   image4
+    top row, left      A        A        A        A      (same photo, all 4)
+    top row, middle     X1       X2       X2       X3     (VARIES)
+    top row, right      B        B        B        B      (same photo, all 4)
+    bottom row, left    Y1       Y2       Y1       Y3     (VARIES)
+    bottom row, middle  C        C        C        C      (same photo, all 4)
+    bottom row, right   D        D        D        D      (same photo, all 4)
+
+  Four of the six pictured people (A, B, C, D) are PIXEL-IDENTICAL across all
+  four images (diff 1.1-3.5, noise level). Only the top-middle and
+  bottom-left photos change between arms (diff 30-45, a genuinely different
+  photograph): image3's X2 is the SAME photo as image2's (diff=1.2) and
+  image3's Y1 is the SAME photo as image1's (diff=1.7), so image3 recombines
+  one face from image1 and one from image2 rather than introducing new
+  people. By direct visual inspection those varying faces read as Black men
+  (image1), Asian men (image2), one Asian + one Black (image3), and White men
+  (image4, distinct from A/B/C/D). This alone gives a clean, fully-crossed 2x2
+  inside the nominal 4-level assignment and was my working hypothesis before
+  checking any other source.
+
+  SOURCE 2 — the TESS study's own public record. http://tessexperiments.org
+  /study/bauman024 documents the four conditions explicitly as "Racial
+  composition of 6-person groups via pictures": (1) six White members; (2)
+  four White + two African American; (3) four White + two Asian; (4) four
+  White + one African American + one Asian. Six people, two varying slots —
+  independent confirmation of SOURCE 1's structure, with condition count and
+  racial labels stated in the study's own words rather than inferred from
+  pixels.
+
+  SOURCE 3 — the published paper: Bauman, C. W., Trawalter, S., & Unzueta,
+  M. M. (2014). "Diverse according to whom? Racial group membership and
+  concerns about discrimination shape diversity judgments." Personality and
+  Social Psychology Bulletin, 40, 1354-1372. Its headline finding is that the
+  mixed (one Black, one Asian) team is rated most diverse by White, Black AND
+  Asian participants alike — an independent theoretical prediction, not just
+  a description, that the raw=3 condition should score highest across every
+  respondent ethnicity.
+
+  SOURCE 3 VERIFIED AGAINST THE DATA ITSELF, independently reproduced here
+  (not merely taken on report): mean of (Q1 + Q2 + (8-Q3)) / 3 — a simple
+  reverse-coded diversity index — grouped by PPETHM x XTESS040 directly from
+  the .sav:
+
+    PPETHM        XTESS040=1  XTESS040=2  XTESS040=3  XTESS040=4
+    White (1)       4.853       4.701       5.431       2.385
+    Black (2)       4.508       3.376       4.864       2.462
+    Other (3)       3.766       4.293       5.413       1.826
+    Hispanic (4)    4.535       4.078       5.182       2.313
+
+  XTESS040=3 (the hypothesised mixed team) is the highest-rated condition for
+  EVERY respondent ethnicity, exactly matching the paper's headline result.
+  XTESS040=4 is the lowest for every group, confirming it as the all-White
+  control. XTESS040=1 vs XTESS040=2 is where the in-group effect pins down
+  WHICH pure-minority condition is which: Black respondents rate XTESS040=1
+  a full 1.13 points above XTESS040=2 (4.508 vs 3.376), while White
+  respondents are nearly flat between them (4.853 vs 4.701, a 0.15 gap) — a
+  racial in-group member drives a large perceived-diversity jump only for
+  the group that IS pictured, so XTESS040=1 is the two-Black condition and
+  XTESS040=2 is the two-Asian condition. All three sources agree exactly:
+
+    raw=1 -> two Black, four White      (SOURCE 1 image1; SOURCE 2 cond. 2)
+    raw=2 -> two Asian, four White      (SOURCE 1 image2; SOURCE 2 cond. 3)
+    raw=3 -> one Black, one Asian, four White  (SOURCE 1 image3; SOURCE 2
+                                                 cond. 4; SOURCE 3's own
+                                                 headline finding)
+    raw=4 -> six White (control)        (SOURCE 1 image4; SOURCE 2 cond. 1)
+
+  This gives a clean, fully-crossed 2x2 inside the nominal 4-level assignment:
+  whether a Black team member is pictured (yes: raw 1,3; no: raw 2,4) crossed
+  with whether an Asian team member is pictured (yes: raw 2,3; no: raw 1,4) —
+  declared below as `black_member_present` x `asian_member_present`.
+
+  WHAT IS AND ISN'T SOURCED, and what changed from an earlier draft of this
+  recipe. Neither TESS's study-record page nor the paper states anything
+  about the six pictured individuals' GENDER or their POSITION in the
+  2x3 grid — those were my own visual read of the images, used in an earlier
+  draft ("a White woman, top row, left...") despite adding nothing a
+  respondent's answer could depend on beyond the sourced fact of WHO is
+  present. Per "never fabricate", that unsourced detail is now dropped
+  entirely: the condition states only what is independently sourced — how
+  many of the six are Black, Asian, or White — and nothing about gender or
+  grid position. The face-quadrant diff table above is kept as corroborating
+  evidence for which arms share which photographs, not as the basis for any
+  wording in the condition text itself.
+
+  A SECOND, SEPARATE DEFECT IN THE EARLIER DRAFT, independent of sourcing:
+  `shared_context` said the four constant photographs were the same "in
+  every version of this photograph", and each arm said the other two were,
+  "in this version", such-and-such. No respondent ever knew a second version
+  existed — this narrates the EXPERIMENT'S structure to someone who could
+  only ever see their own one arm, the same failure class as b87sm's
+  "Scenario #1" (docs/CONVENTIONS.md, "Sequence signposting"), just not
+  numbered and so not caught by the existing QC rule 15 pattern. Fixed by
+  describing only what that respondent actually saw, with no reference to
+  there being other versions.
+
+  THE CAPTION'S "(see above)" IS ALSO DROPPED. Lines 59-60's caption reads
+  "...sent out an announcement about the project (see above)", referring to
+  the photograph's position ABOVE the caption on the page. The row now leads
+  with the scenario (this note's next section) and states the pictured
+  composition afterwards, so a literal "(see above)" would point at nothing
+  preceding it in the row. Dropped for the same reason CONVENTIONS.md drops
+  numbered sequence signposts: it is a reference to the instrument's own
+  page layout, which this row format does not reproduce, not a substantive
+  part of the scenario.
+
+
+  CONDITION MAPPING: condition_num = raw - 1 (raw 1->0, 2->1, 3->2, 4->3),
+  following the Samvar's own Picture1..4 order.
+
+
+  SCENARIO, THEN COMPOSITION, IN THE ORDER THE INFORMATION FUNCTIONS FOR THE
+  RESPONDENT. Lines 59-60's caption ("A large company recently formed a
+  management team...") is identical across all four arms and is a true
+  PREFIX (nothing precedes it), so it is hoisted into `shared_context` once,
+  per CONVENTIONS.md "verbatim for what varies, compressed for what is
+  shared" (curly apostrophe in "You don't" straightened per the same doc).
+  Composition — the only thing that varies — follows in each arm's own
+  `text`, stating only the sourced fact (how many of the six are Black /
+  Asian / White), with no gender, position, or any reference to there being
+  other versions of the photograph.
+
+
+  OUTCOMES - Q1-Q13, ALL FIELDED, ALL BUILT (lines 62-245)
+
+  Four batteries, each its own [GRID - SP] block, same 7-point scale
+  throughout (verified identically in all four .sav value-label sets: -1
+  Refused, 1 Strongly Disagree .. 4 Neither .. 7 Strongly Agree, column order
+  left-to-right in the questionnaire's own DISAGREE...AGREE headers matching
+  the value-label order exactly):
+    task 0-2  Q1-Q3   perceived ethnic diversity of the team ("high degree
+              of... diversity" / "I consider this team to be... diverse" /
+              "low degree of... diversity" [reverse-worded])
+    task 3-5  Q4-Q6   expected fairness (treat everyone fairly / listen to
+              everyone / apply rules consistently)
+    task 6-8  Q7-Q9   desire to join the team (would like to work with /
+              wish I had a job / would apply for a job)
+    task 9-12 Q10-Q13 colorblind racial ideology (stop obsessing about race /
+              preoccupation with race forgets we're human / racial labels
+              obscure individuality / race is an artificial label)
+  All 13 are asked of every respondent after the single picture manipulation,
+  with no further randomisation or branching (confirmed: no [SHOW IF...]
+  directive anywhere between line 62 and line 246). No reason under
+  "Attention and recall checks are not outcomes" to exclude any of them —
+  none asks the respondent to recall anything about the picture, all are
+  substantive attitude/preference items.
+
+  Scale's midpoint IS labelled in the source ("Neither", column 4 of 7, lines
+  68/111/156/201 etc.) and is a genuinely informative label (symmetric
+  neutral point on a disagree/agree continuum), so `Scale.mid_label:
+  "Neither"` is used (ledger #76/schema precedent) rather than leaving it
+  unstated. min=1/max=7 satisfies the validator's even-width requirement for
+  a mid_label (midpoint = 4).
+
+  -1 "Refused" is the only missing code defined or observed on any of the 13
+  items (checked against each item's own value-label set in the .sav); no
+  out-of-scale codes observed. Single study-level response_recode (1:1..7:7)
+  covers all 13 — no item is on a different scale, so no per-outcome
+  override is needed, unlike z358z/cug34.
+
+
+  PERSONA
+
+  KnowledgePanel naming is LOWERCASE in this delivered file (xparty7, xideo,
+  xrel1, xrel2 — unlike z358z/a42yg's uppercase XREL1 etc.), resolved
+  case-insensitively by the pipeline (ledger #61) so this is cosmetic, not a
+  mapping risk; confirmed present and populated (0/8/2/386 missing of 2,512
+  respectively; xrel2's 386 is skip logic — REL2 is only asked if REL1 is not
+  "None", 384 of the 2,512 respondents are "None" — not a refusal, and
+  correctly left blank by `_is_blank` with no persona_missing entry needed).
+
+  All 12 standard PP* fields plus xparty7/xideo/xrel1 are populated with
+  essentially no missingness (checked min/max and value counts on every
+  mapped field directly against the .sav, not assumed): xparty7 has 0 of
+  {8 "Dummy", 9 "Missing"} observed; xideo and xrel1 each show a handful of
+  true system-missing rows (8 and 2) and no -1/9/14 sentinel codes observed
+  either. `persona_missing` is still declared for the documented sentinel
+  codes on xparty7/xideo/xrel1/xrel2 (matching a42yg's practice of declaring
+  them even where unobserved in this particular sample, "rather than relying
+  on there being no instances to hide the gap") except where the code IS
+  observed and IS a refusal (xrel2's -1, 15 respondents).
+
+  xrel1 code 12's own .sav label, "Other non-Christian, please specify:",
+  carries interviewer-instruction boilerplate on a genuine answer (51
+  respondents) — ledger #60's exact case — rewritten via
+  `persona_label_rewrite` to "Other non-Christian" rather than dropped.
+  xrel1 code 11, "Other Christian" (298 respondents), carries no such tail in
+  THIS deposit (contrast a42yg's REL1, whose code 11 does) and needs no
+  rewrite — confirmed by reading the .sav label directly (recipe_prep.py
+  flagged it `answer` at conf 0.89, no boilerplate warning, which matches).
+
+  `education`: mapped to PPEDUCAT (4-category: "Less than high school" /
+  "High school" / "Some college" / "Bachelor's degree or higher"), NOT the
+  11-point PPEDUC that recipe_prep.py's Jev pass suggested at confidence
+  0.99. OVERRULED: ledger findings #64-66 record that the project's own
+  persona crosswalk is keyed to the variable each recipe DECLARES, and an
+  earlier crosswalk built from Jev's finer-grained pick (PPEDUC) covered
+  labels the corpus never actually contains, because every existing recipe
+  (z358z, a42yg, ...) declares the coarser PPEDUCAT. Declaring PPEDUC here
+  would both re-open that exact defect and make this study's education field
+  unmergeable with the rest of the corpus. PPEDUCAT is confirmed present,
+  fully populated, and value-labelled identically to the other recipes.
+
+  `region`: mapped to PPREG4 (4-region), which recipe_prep.py flagged REVIEW
+  at confidence 0.68 (next candidate ppreg9 at 0.3). ACCEPTED, overruling the
+  REVIEW flag: 0.68 vs 0.3 is not a close call needing adjudication — ppreg9
+  only outscored nothing else, PPREG4 is simply the stronger candidate by a
+  wide margin, and it is the SAME variable every other built recipe
+  (z358z, a42yg) already uses for `region`, which keeps this study mergeable
+  on that field rather than introducing a second, finer 9-region scheme no
+  other study carries (the exact "prefer the finer measure" trap ledger #66
+  warns against, inverted: here the finer option just scored worse, so no
+  tiebreak judgement was needed at all).
+
+  All other persona fields use the SAME variables and labels as z358z/a42yg's
+  KnowledgePanel recipes (PPAGE, PPGENDER, PPINCIMP, PPETHM, PPWORK, PPMARIT,
+  PPHHSIZE, PPHOUSE, PPRENT, PPMSACAT, PPNET), each confirmed present and
+  value-labelled in this .sav with the identical label text, so no new
+  crosswalk entries are needed and rule 14 (canonical vocabulary) is not
+  expected to fire.
+
+
+  PROPOSAL VS FIELDED — recorded per CONVENTIONS.md "source authority", not
+  used for any wording
+
+  Bauman024.pdf describes a LARGER, DIFFERENT design than what was fielded,
+  the by-now-standard pattern (ledger #49, #71): a "2 (number of minority
+  group members: 3, 5) x 2 (number of ethnic minority groups: 1, 2) x 3
+  (participant ethnicity) factorial [...] plus two additional conditions"
+  (p.4), composite pictures of EIGHT head shots (not six), and only "two
+  items [to] assess perceived ethnic diversity, and two items [to] assess
+  how comfortable people would feel working in the group" (p.5) — i.e. 4
+  outcome items, not the 13 actually fielded. None of the proposal's
+  specific numbers (3 or 5 minority members, 8 head shots, 4 outcome items)
+  match the fielded instrument or the .sav (6 head shots per photo, 2
+  minority members pictured where present, 13 outcome items, a single
+  4-level nominal assignment rather than a 2x2x3-plus-extras factorial).
+  Confirms the standing finding that the proposal is unreliable on both
+  stimulus wording AND condition/outcome count, in both directions (smaller
+  AND differently-shaped here, not simply smaller as in cug34). No proposal
+  text or number appears anywhere in this recipe.
+
+
+  SOCSCI210 CROSSCHECK RUN — THEIR RECONSTRUCTION IS NOT OF THE FIELDED STUDY
+
+  `mmds crosscheck es4xw` DOES find es4xw in SocSci210 (shard 0009, 9,891
+  rows, 4 conditions {0:2495, 1:2528, 2:2469, 3:2399}, 3 outcome items per
+  respondent). Read directly (`SELECT condition_num, min(stimuli) ...`),
+  their four `stimuli` strings are:
+    cond0: "...composite image of eight headshots depicting three African
+            American individuals and five White individuals..."
+    cond1: "...eight headshots depicting five African American individuals
+            and three White individuals..."
+    cond2: "...eight headshots depicting three Asian American individuals
+            and five White individuals..."
+    cond3: "...eight headshots depicting five Asian American individuals
+            and three White individuals..."
+  and their 3 outcome `prompt`s paraphrase: "I consider this group to be
+  ethnically diverse", "I would feel comfortable working as a part of this
+  group", "This group would be effective at dealing with issues related to
+  ethnic diversity" (response -3..+3, their own response_distribution
+  {-3:1213,-2:930,-1:1035,0:2513,1:1535,2:1558,3:1107}).
+
+  NONE of this is the fielded study. "Eight headshots" with "three or five"
+  of one minority group is the PILOT STUDY's description from the proposal
+  (Bauman024.pdf p.2: pilot "participants viewed eight head shots... low
+  diversity condition viewed pictures of five African Americans and three
+  Whites... high diversity condition viewed pictures of three African
+  Americans, two Asian Americans, and three Whites") crossed with the
+  proposal's separately-described, never-fielded-as-such factorial ("2
+  (number of minority group members: 3, 5) x 2 (number of ethnic minority
+  groups: 1, 2)", p.4) — producing four PURE-group conditions (3-or-5 Black
+  only, 3-or-5 Asian only) that match NEITHER the pilot (whose high-diversity
+  cell MIXED two minority groups) NOR the fielded instrument (SIX headshots,
+  TWO minority members when present, and a mixed Black+Asian condition
+  actually exists at raw=3 — see the image diff table above). Their outcome
+  wording fares no better: only their task0 roughly paraphrases fielded Q2
+  ("I consider this team to be ethnically diverse"); "comfortable working as
+  a part of this group" and "effective at dealing with issues related to
+  ethnic diversity" appear NOWHERE in the fielded Q1-Q13 (the latter is the
+  PILOT's own second DV, "how effectively the group could handle diversity
+  issues", proposal p.2 — a construct that was never fielded to these 2,512
+  TESS respondents as a question at all).
+
+  So this is not the familiar "narrower scope" pattern (ledger #49/#71) but a
+  stronger version of #35/#44: SocSci210's es4xw is reconstructed almost
+  entirely from the PROPOSAL's description of an earlier, different,
+  university-sample PILOT study, not from the instrument actually fielded to
+  the KnowledgePanel sample. `n_rows` (9,891 vs our 32,228), every condition
+  index, and every response value in their `response_distribution` are
+  therefore not a meaningful comparison for this study — not merely a
+  different scope of the SAME design, but a different design, so
+  `comparable_to_socsci210: false` with no numeric reconciliation attempted
+  (unlike z358z/a42yg, where the disagreement WAS reconciled digit-for-digit
+  by hand; here there is no shared arm structure to reconcile against: their
+  4 conditions are not a subset, merge, or permutation of ours, they are
+  pure-group counterfactuals this study never ran). This independently
+  confirms, more strongly than any study audited so far, that the proposal
+  must never be used for stimulus wording or condition structure — it is the
+  reason the row contract's "condition is the only part we write" exists.
+
+condition:
+  source_var: XTESS040
+  factors: [black_member_present, asian_member_present]
+  shared_context: >
+    A large company recently formed a management team to lead a new
+    project. You don't know any of them personally, but the company
+    included pictures of the management team when it sent out an
+    announcement about the project.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {black_member_present: present, asian_member_present: absent}
+      text: >
+        The team pictured had six people: two were Black and four were
+        White.
+    - raw: 2
+      condition_num: 1
+      factors: {black_member_present: absent, asian_member_present: present}
+      text: >
+        The team pictured had six people: two were Asian and four were
+        White.
+    - raw: 3
+      condition_num: 2
+      factors: {black_member_present: present, asian_member_present: present}
+      text: >
+        The team pictured had six people: one was Black, one was Asian,
+        and four were White.
+    - raw: 4
+      condition_num: 3
+      factors: {black_member_present: absent, asian_member_present: absent}
+      text: >
+        The team pictured had six people, all of them White.
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: "Please rate the following statement: \"This team includes a high degree of ethnic diversity.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q2
+    task_num: 1
+    question: "Please rate the following statement: \"I consider this team to be ethnically diverse.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q3
+    task_num: 2
+    question: "Please rate the following statement: \"This team includes a low degree of ethnic diversity.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q4
+    task_num: 3
+    question: "Please rate the following statement: \"This team would treat everyone they worked with fairly.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q5
+    task_num: 4
+    question: "Please rate the following statement: \"This group would listen to everyone's views and opinions.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q6
+    task_num: 5
+    question: "Please rate the following statement: \"This team would apply rules and procedures consistently to everyone.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q7
+    task_num: 6
+    question: "Please rate the following statement: \"I would like to work with this group.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q8
+    task_num: 7
+    question: "Please rate the following statement: \"I wish I had a job on this team.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q9
+    task_num: 8
+    question: "Please rate the following statement: \"I would apply for a job here if they needed someone with my skills.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q10
+    task_num: 9
+    question: "Please rate the following statement: \"I wish people in this society would stop obsessing so much about race.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q11
+    task_num: 10
+    question: "Please rate the following statement: \"People who become preoccupied by race are forgetting that we are all just human.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q12
+    task_num: 11
+    question: "Please rate the following statement: \"Putting racial labels on people obscures the fact that everyone is a unique individual.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+  - var: Q13
+    task_num: 12
+    question: "Please rate the following statement: \"Race is an artificial label that keeps people from thinking freely as individuals.\""
+    scale: {min: 1, max: 7, min_label: "Strongly Disagree", mid_label: "Neither", max_label: "Strongly Agree"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_missing:
+  xparty7: [8, 9]
+  xideo: [-1, 8, 9]
+  xrel1: [14]
+  xrel2: [-1]
+persona_label_rewrite:
+  xrel1:
+    12: "Other non-Christian"
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: xparty7
+  ideology: xideo
+  religion: xrel1
