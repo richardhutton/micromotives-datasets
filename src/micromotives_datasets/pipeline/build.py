@@ -205,7 +205,9 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             )
             if arm is None:
                 continue
-            condition_text = _for_respondent(recipe.condition.render(arm), who)
+            # Per (arm, item), not per arm: an outcome can sit where only part
+            # of the arm's stimulus has happened yet.
+            condition_text = _for_respondent(recipe.condition_text_for(outcome, arm), who)
             # Both the answer variable and its coding can vary: split-ballot
             # studies ask each arm a different question, option-order designs
             # reverse the codes per arm, and a study's items can sit on

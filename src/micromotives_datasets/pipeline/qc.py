@@ -82,19 +82,46 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     # Two conditions rendering the same string means a manipulation was lost.
     # This is the failure we found in SocSci210's `sd7cf`, where 12 conditions
     # collapsed into 3 distinct stimulus strings.
-    text_by_cond: dict[int, set[str]] = {}
+    # Compared PER ITEM, because a manipulation is lost only when two arms show
+    # the same thing in answer to the SAME question. Comparing across all of a
+    # study's items conflates that with a legitimate case: an outcome measured
+    # before the arms have diverged, where identical text is the truth.
+    #
+    # `sh4px` asks four mood items BETWEEN its two writing tasks, so at those
+    # items nothing distinguishes an arm yet; its maker excluded all four rather
+    # than narrate a treatment the respondent had not reached, costing 4 of 10
+    # fielded items. `a2nbf` has the same shape at Q1/Q2.
+    #
+    # The exemption is not automatic. Both cells must DECLARE a
+    # `condition_text` override for that item, so a maker states that the two
+    # are deliberately identical there and a reader can argue with it. An
+    # undeclared collision still fails — which is the `sd7cf` defect this rule
+    # exists for, where 12 conditions collapsed into 3 distinct strings.
+    declared_same = {
+        (task, arm.condition_num)
+        for arm in recipe.condition.arms
+        for task, item in arm.items.items()
+        if item.condition_text is not None
+    }
+    by_item: dict[int, dict[int, set[str]]] = {}
     for r in rows:
-        if r.condition_num is not None:
-            text_by_cond.setdefault(r.condition_num, set()).add(r.condition)
-    seen: dict[str, int] = {}
-    for cond, texts in sorted(text_by_cond.items()):
-        for t in texts:
-            if t in seen and seen[t] != cond:
-                rep.failures.append(
-                    f"conditions {seen[t]} and {cond} render identical text "
-                    "— a manipulation has been lost"
-                )
-            seen[t] = cond
+        if r.condition_num is None or r.task_num is None:
+            continue
+        by_item.setdefault(r.task_num, {}).setdefault(r.condition_num, set()).add(r.condition)
+    for task, per_condition in sorted(by_item.items()):
+        seen: dict[str, int] = {}
+        for cond, texts in sorted(per_condition.items()):
+            for t in texts:
+                if t in seen and seen[t] != cond:
+                    if (task, cond) in declared_same and (task, seen[t]) in declared_same:
+                        continue
+                    rep.failures.append(
+                        f"conditions {seen[t]} and {cond} render identical text on task "
+                        f"{task} — a manipulation has been lost. If they are genuinely "
+                        "identical there (an item measured before the arms diverge), "
+                        "declare `condition_text` on both"
+                    )
+                seen[t] = cond
 
     # --- Rule 2: every declared arm must appear -----------------------------
     declared = {a.condition_num for a in recipe.condition.arms}

@@ -619,3 +619,112 @@ def test_rule18_is_quiet_on_balanced_text(fixture_sav, fixture_recipe) -> None:
     text = "1. You have one child\n2. A well-known, long-standing arrangement\n"
     rep = check(_one_row(text, persona=Persona(age=40, religion=full)), fixture_recipe)
     assert not _warns(rep, "appears cut off"), rep.warnings
+
+
+# --------------------------------------------------------------------------
+# Rule 1, per item, with a declared exemption
+# --------------------------------------------------------------------------
+
+
+def _two_arm_recipe(shared_at_task_0: bool):
+    """Two arms, two items. Optionally both declare identical text at task 0."""
+    from micromotives_datasets.recipe import Arm, Condition, ItemOverride, Outcome, Recipe, Scale
+
+    pre = ItemOverride(condition_text="You answered some questions about yourself.")
+    return Recipe(
+        study_id="t",
+        source="tess",
+        data_file="s.sav",
+        licence="none stated",
+        condition=Condition(
+            source_var="X",
+            arms=[
+                Arm(
+                    raw=1,
+                    condition_num=0,
+                    text="You read the LEAFLET.",
+                    items={0: pre} if shared_at_task_0 else {},
+                ),
+                Arm(
+                    raw=2,
+                    condition_num=1,
+                    text="You watched the FILM.",
+                    items={0: pre} if shared_at_task_0 else {},
+                ),
+            ],
+        ),
+        outcomes=[
+            Outcome(
+                var=f"Y{t}",
+                task_num=t,
+                question="q",
+                scale=Scale(min=1, max=2, min_label="lo", max_label="hi"),
+            )
+            for t in (0, 1)
+        ],
+        response_recode={1: 1, 2: 2},
+        persona_map={"age": "AGE"},
+    )
+
+
+def _rows_for_two_arms(recipe):
+    from micromotives_datasets.schema import Persona, Row
+
+    out = []
+    for arm in recipe.condition.arms:
+        for outcome in recipe.outcomes:
+            out.append(
+                Row(
+                    persona=Persona(age=40),
+                    condition=recipe.condition_text_for(outcome, arm),
+                    outcome="q",
+                    response="1",
+                    condition_num=arm.condition_num,
+                    task_num=outcome.task_num,
+                    response_num=1.0,
+                    participant_id=f"p{arm.condition_num}",
+                    study_id="t",
+                    source="tess",
+                )
+            )
+    return out
+
+
+def test_rule1_allows_identical_text_where_both_arms_declare_it() -> None:
+    """An item measured before the arms diverge is identical, truthfully.
+
+    `sh4px` asks four mood items BETWEEN its two writing tasks; at that point
+    nothing distinguishes an arm. Its maker excluded all four rather than
+    narrate a self-affirmation exercise the respondent had not yet done, which
+    cost 4 of 10 fielded items. The same shape blocks a2nbf's Q1/Q2.
+    """
+    recipe = _two_arm_recipe(shared_at_task_0=True)
+    rows = _rows_for_two_arms(recipe)
+    assert len({r.condition for r in rows if r.task_num == 0}) == 1, "fixture should collide"
+    rep = check(rows, recipe)
+    assert rep.passed, rep.failures
+
+
+def test_rule1_still_fails_an_undeclared_collision() -> None:
+    """The sd7cf defect: 12 conditions collapsing into 3 distinct strings.
+
+    The exemption is only ever granted where a maker declared `condition_text`
+    on BOTH cells and a reader can argue with it. Identical text nobody declared
+    is still a lost manipulation.
+    """
+    recipe = _two_arm_recipe(shared_at_task_0=False)
+    recipe.condition.arms[1].text = recipe.condition.arms[0].text
+    rows = _rows_for_two_arms(recipe)
+    rep = check(rows, recipe)
+    assert not rep.passed
+    assert any("identical text" in f for f in rep.failures), rep.failures
+
+
+def test_rule1_fails_when_only_one_side_declares_it() -> None:
+    """One arm declaring an override cannot excuse the other's collision."""
+    recipe = _two_arm_recipe(shared_at_task_0=True)
+    recipe.condition.arms[1].items = {}
+    recipe.condition.arms[1].text = "You answered some questions about yourself."
+    rows = _rows_for_two_arms(recipe)
+    rep = check(rows, recipe)
+    assert not rep.passed, "an undeclared side must still fail"

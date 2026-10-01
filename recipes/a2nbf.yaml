@@ -110,14 +110,18 @@ notes: >
   This also makes the design directly comparable to SocSci210's, which modelled
   it as 2 arms, and it is what a checker argued for at the time.
 
-  STILL OPEN, and not fixed here. Each arm's remaining clause says the question
-  set "referred to a serious genetic defect being found 'before a baby is
-  born'". That is true at Q3 and Q4, where the wording is in the question text
-  itself, and FALSE at Q1 and Q2, which are byte-identical between versions and
-  are asked before any wording variant appears -- 3,094 of the 6,211 rows.
-  Fixing it needs a per-(arm, item) override on the CONDITION side; the schema
-  has `ItemOverride` for the outcome side only. sh4px is blocked on the same
-  gap, from the other direction.
+  NOW FIXED, with `ItemOverride.condition_text`. Each arm's clause says the
+  question set "referred to a serious genetic defect being found 'before a baby
+  is born'". That is true at Q3 and Q4, where the wording sits in the question
+  text itself, and FALSE at Q1 and Q2 -- byte-identical between versions, and
+  asked before Q3 introduces any variant. It was on 3,094 of the 6,211 rows.
+
+  Tasks 0 and 1 now declare `condition_text: ""` on BOTH arms, so those rows
+  carry the shared context alone, which is all the respondent had seen. Both
+  sides must declare it: QC rule 1 compares condition text PER ITEM and grants
+  the exemption only where two cells have each said they are deliberately
+  identical there. Verified in the built rows -- tasks 0 and 1 render one
+  distinct condition, tasks 2 and 3 render two.
 
   SocSci210 modelled this as a 2-arm design (Version only), confirmed by
   querying their parquet directly: n_rows=6,211, n_conditions=2,
@@ -267,8 +271,16 @@ condition:
         baby is born" and asked about "the baby."
       items:
         0:
+          # Q1 and Q2 precede any wording variant: they are byte-identical
+          # between versions and are asked before Q3 introduces "before a baby
+          # is born" / "in the fetus during pregnancy". The arm's own clause is
+          # therefore false here, so this cell contributes nothing and the
+          # shared context stands alone. Declared on BOTH arms, which is what
+          # lets QC rule 1 accept the two rendering identically at this item.
+          condition_text: ""
           outcome_var: Q1_1
         1:
+          condition_text: ""
           outcome_var: Q2_1
         2:
           outcome_var: Q3_1
@@ -293,8 +305,10 @@ condition:
         fetus during pregnancy" and asked about "the fetus."
       items:
         0:
+          condition_text: ""
           outcome_var: Q1_2
         1:
+          condition_text: ""
           outcome_var: Q2_2
         2:
           outcome_var: Q3_2

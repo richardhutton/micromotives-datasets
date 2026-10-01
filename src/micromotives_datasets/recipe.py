@@ -131,6 +131,20 @@ class ItemOverride(BaseModel):
     outcome_question: str | None = Field(
         default=None, description="Question wording for this (arm, item) cell."
     )
+    condition_text: str | None = Field(
+        default=None,
+        description="CONDITION text for this (arm, item) cell, replacing `Arm.text`. "
+        "An arm's text is one string shared by every outcome of that arm, but an "
+        "outcome can sit at a point in the questionnaire where only PART of the arm's "
+        "stimulus has happened. `sh4px` asks four mood items BETWEEN its two writing "
+        "tasks, so the arm's text narrates a self-affirmation exercise the respondent "
+        "has not yet done; its maker excluded all four items rather than assert a "
+        "treatment history, costing 4 of 10 fielded items. `a2nbf`'s arm text says the "
+        "questions referred to a defect found 'before a baby is born', which is true at "
+        "Q3/Q4 and false at Q1/Q2, asked before any wording variant appears — 3,094 of "
+        "its 6,211 rows. Set this to what WAS true at that item. The empty string is a "
+        "legitimate value and means the shared context alone.",
+    )
     scale: Scale | None = Field(default=None, description="Response scale for this cell.")
     response_recode: dict[int, int] | None = Field(
         default=None, description="raw->canonical answer map for this cell."
@@ -528,6 +542,22 @@ class Recipe(BaseModel):
         if outcome is not None and outcome.response_recode is not None:
             return outcome.response_recode
         return self.response_recode
+
+    def condition_text_for(self, outcome: Outcome, arm: Arm) -> str:
+        """The condition string for this (arm, item) cell.
+
+        An item-level override wins, as everywhere else here, because it names
+        the one cell it describes. `shared_context` is still prepended: it holds
+        what was true for everyone throughout, and an item override replaces the
+        ARM's contribution, not the study's.
+        """
+        item = self.item_for(outcome, arm)
+        text = arm.text if item is None or item.condition_text is None else item.condition_text
+        ctx = (self.condition.shared_context or "").strip()
+        body = text.strip()
+        if ctx and body:
+            return f"{ctx} {body}"
+        return ctx or body
 
     def outcome_var_for(self, outcome: Outcome, arm: Arm) -> str | None:
         """The variable holding this arm's answer to this outcome."""
