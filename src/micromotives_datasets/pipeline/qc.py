@@ -410,12 +410,11 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     # zero matches in any condition or outcome text.
     cut: Counter[str] = Counter()
     for r in rows:
-        for field, text in (("condition", r.condition), ("outcome", r.outcome)):
+        for where, text in (("condition", r.condition), ("outcome", r.outcome)):
             if _EMPTY_SLOT.search(str(text)):
-                cut[f"{field}: an attribute slot renders as a bare dash"] += 1
-        for field, text in (("condition", r.condition), ("outcome", r.outcome)):
+                cut[f"{where}: an attribute slot renders as a bare dash"] += 1
             if text.count("(") > text.count(")"):
-                cut[f"{field}: unclosed bracket, text looks truncated"] += 1
+                cut[f"{where}: unclosed bracket, text looks truncated"] += 1
         # Persona is a structured object here, not rendered text, so check its
         # own string fields — the same traversal rule 12 uses. That is also the
         # more precise place to look: it names the field that is truncated
