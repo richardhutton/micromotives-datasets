@@ -173,7 +173,7 @@ notes: |-
   before the fix. `persona_label_rewrite` restores the full wording from the
   questionnaire itself (line 240 of SurveyA_vFINALsimple.txt: "Protestant
   (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian,
-  Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness,
+  Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness,
   etc.)") - the same words, not different ones. The identical truncation
   (same code, same cut point) is also present in Survey B's .sav and fixed
   the same way in 9xw67_conjoint.yaml.
@@ -386,7 +386,7 @@ persona_missing:
 
 persona_label_rewrite:
   RELIG:
-    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
 
 persona_map:
   age: AGE

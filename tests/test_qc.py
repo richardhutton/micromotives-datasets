@@ -525,8 +525,6 @@ def _one_row(condition: str, *, persona=None, outcome: str = "How good?"):
         # es4xw's shipped text, both occurrences, on 32,228 rows.
         "Four of the six people are the same in every version of this photograph.",
         "The remaining two are, in this version, both Black men.",
-        # 5hqan, the two the corpus sweep found.
-        "This part of the survey asked you about sex and gender.",
         "You were randomly assigned to read the following.",
         "In this condition the policy was described as permanent.",
         # 5hqan's actual shipped clause, on all 6,411 rows. The first version of
@@ -553,6 +551,11 @@ def test_rule17_catches_text_about_the_study_itself(fixture_sav, fixture_recipe,
         # A legitimate stimulus that happens to use the word "version".
         "The app would download the latest version of the questionnaire.",
         "You were asked to imagine a new condition affecting your health.",
+        # Names a SECTION of the instrument, not an arm. Truthful, and the
+        # participant plainly knew which part of the survey they were in. An
+        # early rule 17 flagged this and I recorded it as a genuine hit without
+        # reading it.
+        "This part of the survey asked you about sex and gender.",
     ],
 )
 def test_rule17_is_quiet_on_legitimate_text(fixture_sav, fixture_recipe, text) -> None:

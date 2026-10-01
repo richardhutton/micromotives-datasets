@@ -370,11 +370,18 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     # measurement still holds, so the narrow rule stays narrow and this one takes
     # the separable class: words about the study's variants and apparatus.
     #
-    # Measured over all 27 built experiments before being added: 2 matches, both
-    # in `5hqan` ("This part of the survey asked you about sex and gender"), both
-    # genuine. Against `es4xw`'s shipped text it fires twice; against its fix,
-    # not at all; against `b87sm`'s "Scenario #1", not at all, which is right —
-    # that one is rule 15's.
+    # Measured over all 27 built experiments: the only match is `5hqan`'s ", in the
+    # same position regardless of condition", on all 6,411 rows.
+    #
+    # A draft also matched "this part of the survey", which I recorded as a second
+    # genuine hit without reading the sentence. Read, it is fine: "This part of the
+    # survey asked you about sex and gender" names a SECTION, not an arm, asserts
+    # nothing a participant could not know, and reveals no variants. Counting a
+    # match is not the same as finding a defect, and that branch is gone.
+    #
+    # Against `es4xw`'s shipped text it fires twice; against its fix, not at all;
+    # against `b87sm`'s "Scenario #1", not at all, which is right — that one is
+    # rule 15's.
     construction: Counter[str] = Counter()
     for r in rows:
         for text in (r.condition, r.outcome):
@@ -442,7 +449,6 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
 _CONSTRUCTION = re.compile(
     r"\b(?:in|for)\s+this\s+(?:version|condition|arm|variant|scenario\s+group)\b"
     r"|\b(?:every|each|another|the\s+other)\s+(?:version|condition|arm|variant)\b"
-    r"|\bthis\s+(?:part|section)\s+of\s+the\s+(?:survey|study|questionnaire)\b"
     r"|\bregardless\s+of\s+(?:condition|version|arm|which\s+version)\b"
     r"|\brandomly\s+assigned\b|\bexperimental\s+condition\b",
     re.I,

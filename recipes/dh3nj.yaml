@@ -192,6 +192,13 @@ missing_codes:
 - 77
 - 98
 - 99
+persona_label_rewrite:
+  # SPSS severed this value label at the writer's ceiling, so the built rows
+  # read "...Presbyterian, Pent". Restored verbatim from this deposit's own
+  # questionnaire -- not from another study's wording, because the deposits
+  # do not all use the same list.
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
 persona_map:
   age: AGE
   gender: GENDER

@@ -1046,6 +1046,7 @@ persona_label_rewrite:
   # interviewer instruction. Dropping them would discard 685 rows of a genuine
   # response, so the label is cleaned instead.
   REL1:
+    2: "Evangelical or Protestant Christian (Baptist, Lutheran, Methodist, Presbyterian, Episcopalian, Pentecostal, Church of Christ, etc.)"
     11: "Other Christian religion"
     12: "Other non-Christian religion"
 persona_map:

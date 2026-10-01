@@ -323,6 +323,13 @@ persona_missing:
   XREL2: [7]
   pppa_lgb: [-1]
 
+persona_label_rewrite:
+  # SPSS severed this value label at the writer's ceiling, so the built rows
+  # read "...Presbyterian, Pent". Restored verbatim from this deposit's own
+  # questionnaire -- not from another study's wording, because the deposits
+  # do not all use the same list.
+  XREL1:
+    2: "Evangelical or Protestant Christian (Baptist, Lutheran, Methodist, Presbyterian, Episcopalian, Pentecostal, Church of Christ, etc.)"
 persona_map:
   age: PPAGE
   gender: PPGENDER

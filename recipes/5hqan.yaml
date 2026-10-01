@@ -299,8 +299,7 @@ condition:
       text: >-
         You were asked "What sex were you assigned at birth?" before you were
         asked "What is your current gender?". The question about whether you
-        would be considered transgender came after both, in the same position
-        regardless of condition.
+        would be considered transgender came after both.
     - raw: 2
       condition_num: 1
       factors:
@@ -308,8 +307,7 @@ condition:
       text: >-
         You were asked "What is your current gender?" before you were asked
         "What sex were you assigned at birth?". The question about whether you
-        would be considered transgender came after both, in the same position
-        regardless of condition.
+        would be considered transgender came after both.
 
 outcomes:
   - var: Q1
