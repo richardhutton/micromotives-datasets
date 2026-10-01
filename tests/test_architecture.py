@@ -15,6 +15,7 @@ test, because a boundary nobody checks is a boundary that moves.
 from __future__ import annotations
 
 import ast
+import itertools
 from pathlib import Path
 
 SRC = Path(__file__).resolve().parents[1] / "src" / "micromotives_datasets"
@@ -156,3 +157,90 @@ def test_the_exception_list_names_only_files_that_exist() -> None:
     """An exemption for a deleted file is an exemption nobody will ever revisit."""
     missing = sorted(n for n in MAY_CALL_JEV_DIRECTLY if not (SCRIPTS / n).exists())
     assert not missing, f"exempted scripts that no longer exist: {missing}"
+
+
+# --------------------------------------------------------------------------
+# the persona vocabulary does not fork
+# --------------------------------------------------------------------------
+
+SNAPSHOT = Path(__file__).resolve().parents[1] / "data" / "catalog" / "persona_snapshot.json"
+
+
+# Answers that could belong to almost any question, so sharing them is no
+# evidence two fields are one. Every false positive the overlap heuristic
+# produced on this corpus was a subset of these.
+GENERIC_ANSWERS = frozenset(
+    {"yes", "no", "other", "don't know", "refused", "prefer not to say", "none", "not sure"}
+)
+
+
+def _overlap(a: set[str], b: set[str]) -> float:
+    return len(a & b) / len(a | b) if (a | b) else 0.0
+
+
+def _generic(values: set[str]) -> bool:
+    """True when the answers identify no particular question."""
+    return {v.strip().lower() for v in values} <= GENERIC_ANSWERS
+
+
+def test_no_two_persona_fields_are_the_same_field_twice() -> None:
+    """Two spellings of one concept make a study invisible to anyone filtering.
+
+    `ye2ej` emitted `religion_attendance` where five other recipes emit
+    `religious_attendance`, with an IDENTICAL value set, and
+    `sexual_orientation_self` where `yv2ta` emits `sexual_orientation`. Both
+    survived maker, checker and every QC rule, because neither is visible inside
+    one study — only in a sorted list of the whole corpus.
+
+    Two heuristics, because the two cases differ. A name that contains another
+    name is one field wearing a qualifier; a DISTINCTIVE value set that largely
+    coincides with another is one question asked twice. Both are heuristics and
+    both can be wrong — the point is that a fork has to be ARGUED with rather
+    than arriving unannounced.
+
+    "Distinctive" is load-bearing and was learned the hard way here. The first
+    version of this check used overlap alone and reported three pairs, all
+    false: `has_children`, `household_head` and `other_adults_help_childcare`
+    are three different questions that happen to share the answers Yes / No /
+    Other. A generic answer set says nothing about which question was asked, so
+    it cannot be evidence that two questions are one. Measured on the corpus,
+    every false positive was a subset of GENERIC and the one true positive
+    (`religious_attendance`, six ordered frequencies) was not — so the rule is
+    about the KIND of answer set, not a size threshold picked to fit.
+    """
+    import json
+
+    fields = {
+        k: set(v) for k, v in json.loads(SNAPSHOT.read_text()).items() if k.startswith("extra.")
+    }
+    forks: list[str] = []
+    for a, b in itertools.combinations(sorted(fields), 2):
+        short, long_ = sorted((a[6:], b[6:]), key=len)
+        if short in long_:
+            forks.append(f"{a} / {b} — one name contains the other")
+        elif not _generic(fields[a]) and _overlap(fields[a], fields[b]) >= 0.5:
+            forks.append(f"{a} / {b} — value sets overlap {_overlap(fields[a], fields[b]):.0%}")
+    assert not forks, (
+        f"the persona vocabulary has forked: {forks}. Pick one spelling across "
+        "every recipe and re-run scripts/persona_snapshot.py — a consumer "
+        "filtering the merged corpus on one of these silently loses the other."
+    )
+
+
+def test_the_fork_check_would_notice() -> None:
+    """Both arms fire on the real cases, and the generic guard spares the rest."""
+    # The religious_attendance fork: identical, distinctive, and NOT a substring
+    # pair — "religion_attendance" is not inside "religious_attendance" — so the
+    # overlap arm is the one that has to catch it.
+    attendance = {"Never", "Once a week", "Once a year or less", "A few times a year"}
+    assert _overlap(attendance, attendance) == 1.0
+    assert not _generic(attendance)
+    assert "religion_attendance" not in "religious_attendance"
+
+    # The sexual_orientation fork: caught by the name arm, since the value sets
+    # genuinely differ between the panel profile and the study's own question.
+    assert "sexual_orientation" in "sexual_orientation_self"
+
+    # And the three questions that merely share Yes / No / Other are spared.
+    assert _generic({"Yes", "No", "Other"})
+    assert _overlap({"a"}, {"b"}) == 0.0

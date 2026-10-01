@@ -1,0 +1,2942 @@
+{
+  "education": {
+    "Bachelors to postgraduate": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "CSE grade 1, GCE O level, GCSE, School Certificate": [
+      "QQM5MC"
+    ],
+    "CSE grades 2-5": [
+      "QQM5MC"
+    ],
+    "City & Guilds certificate": [
+      "QQM5MC"
+    ],
+    "City & Guilds certificate - advanced": [
+      "QQM5MC"
+    ],
+    "Clerical and commercial": [
+      "QQM5MC"
+    ],
+    "GCE A level or Higher Certificate": [
+      "QQM5MC"
+    ],
+    "High school": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Less than high school": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "No formal qualifications": [
+      "QQM5MC"
+    ],
+    "Nursing qualification (e.g. SEN, SRN, SCM, RGN)": [
+      "QQM5MC"
+    ],
+    "ONC": [
+      "QQM5MC"
+    ],
+    "Other technical, professional or higher qualification": [
+      "QQM5MC"
+    ],
+    "Recognised trade apprenticeship completed": [
+      "QQM5MC"
+    ],
+    "Scottish Higher Certificate": [
+      "QQM5MC"
+    ],
+    "Scottish Ordinary/ Lower Certificate": [
+      "QQM5MC"
+    ],
+    "Some college to associate": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Teaching qualification (not degree)": [
+      "QQM5MC"
+    ],
+    "University diploma": [
+      "QQM5MC"
+    ],
+    "University or CNAA first degree (e.g. BA, B.Sc, B.Ed)": [
+      "QQM5MC"
+    ],
+    "University or CNAA higher degree (e.g. M.Sc, Ph.D)": [
+      "QQM5MC"
+    ],
+    "Youth training certificate/skillseekers": [
+      "QQM5MC"
+    ]
+  },
+  "employment": {
+    "Disabled": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "z358z",
+      "zaqkm"
+    ],
+    "Employed unspecified": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Full time student": [
+      "QQM5MC"
+    ],
+    "Not working": [
+      "QQM5MC"
+    ],
+    "Other": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "QQM5MC",
+      "a2nbf",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "z358z",
+      "zaqkm"
+    ],
+    "Retired": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "QQM5MC",
+      "a2nbf",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "z358z",
+      "zaqkm"
+    ],
+    "Self employed": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Unemployed": [
+      "QQM5MC"
+    ],
+    "Unemployed looking": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "Unemployed not looking": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "Working full time (30 or more hours per week)": [
+      "QQM5MC"
+    ],
+    "Working part time (8-29 hours a week)": [
+      "QQM5MC"
+    ],
+    "Working part time (Less than 8 hours a week)": [
+      "QQM5MC"
+    ]
+  },
+  "ethnicity": {
+    "Black": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Hispanic": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Other or Asian": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Two or more races": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "White": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ]
+  },
+  "extra.attitude_same_sex_relations": {
+    "Almost always wrong": [
+      "ye2ej"
+    ],
+    "Always wrong": [
+      "ye2ej"
+    ],
+    "Not wrong at all": [
+      "ye2ej"
+    ],
+    "Wrong only sometimes": [
+      "ye2ej"
+    ]
+  },
+  "extra.children_live_with_respondent": {
+    "Approximately half of the time": [
+      "ye2ej"
+    ],
+    "Less than half of the time": [
+      "ye2ej"
+    ],
+    "No, never": [
+      "ye2ej"
+    ],
+    "Yes, all the time": [
+      "ye2ej"
+    ],
+    "Yes, most of the time": [
+      "ye2ej"
+    ]
+  },
+  "extra.drinking_frequency": {
+    "2-3 times per week": [
+      "sh4px"
+    ],
+    "2-4 times per month": [
+      "sh4px"
+    ],
+    "4-5 times per week": [
+      "sh4px"
+    ],
+    "6+ times per week": [
+      "sh4px"
+    ],
+    "Monthly or less": [
+      "sh4px"
+    ]
+  },
+  "extra.education_age": {
+    "15 or under": [
+      "QQM5MC"
+    ],
+    "16": [
+      "QQM5MC"
+    ],
+    "17-18": [
+      "QQM5MC"
+    ],
+    "19": [
+      "QQM5MC"
+    ],
+    "20+": [
+      "QQM5MC"
+    ],
+    "Still at school/Full time student": [
+      "QQM5MC"
+    ]
+  },
+  "extra.eu_referendum_vote": {
+    "I did not vote": [
+      "QQM5MC"
+    ],
+    "I voted to Leave": [
+      "QQM5MC"
+    ],
+    "I voted to Remain": [
+      "QQM5MC"
+    ]
+  },
+  "extra.has_children": {
+    "No": [
+      "ye2ej"
+    ],
+    "Other": [
+      "ye2ej"
+    ],
+    "Yes": [
+      "ye2ej"
+    ]
+  },
+  "extra.household_head": {
+    "No": [
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Yes": [
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ]
+  },
+  "extra.occupation": {
+    "Health Care Support (such as nursing aide, orderly, dental assistant)": [
+      "a42yg"
+    ],
+    "Health Technologist or Technician (such as paramedic, lab technician)": [
+      "a42yg"
+    ],
+    "Medical Doctor (such as physician, surgeon, dentist, veterinarian)": [
+      "a42yg"
+    ],
+    "Other Health Care Practitioner (such as nurse, pharmacist, chiropractor, dietician)": [
+      "a42yg"
+    ]
+  },
+  "extra.other_adults_help_childcare": {
+    "No": [
+      "ye2ej"
+    ],
+    "Other": [
+      "ye2ej"
+    ],
+    "Yes": [
+      "ye2ej"
+    ]
+  },
+  "extra.religious_attendance": {
+    "2-3 times a month": [
+      "8ctbk_desirability"
+    ],
+    "A few times a year": [
+      "5hqan",
+      "a2nbf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "About once a month": [
+      "8ctbk_desirability"
+    ],
+    "About once or twice a year": [
+      "8ctbk_desirability"
+    ],
+    "Every week": [
+      "8ctbk_desirability"
+    ],
+    "Less than once per year": [
+      "8ctbk_desirability"
+    ],
+    "More than once a week": [
+      "5hqan",
+      "a2nbf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Nearly every week": [
+      "8ctbk_desirability"
+    ],
+    "Never": [
+      "5hqan",
+      "8ctbk_desirability",
+      "a2nbf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Once a week": [
+      "5hqan",
+      "a2nbf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Once a year or less": [
+      "5hqan",
+      "a2nbf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Once or twice a month": [
+      "5hqan",
+      "a2nbf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Several times a week": [
+      "8ctbk_desirability"
+    ],
+    "Several times a year": [
+      "8ctbk_desirability"
+    ]
+  },
+  "extra.sexual_orientation": {
+    "Bisexual": [
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Gay": [
+      "ye2ej"
+    ],
+    "Gay or lesbian": [
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Heterosexual or straight": [
+      "ye2ej"
+    ],
+    "Lesbian": [
+      "ye2ej"
+    ],
+    "Other": [
+      "ye2ej"
+    ],
+    "Something else": [
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Straight, that is, not gay": [
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ]
+  },
+  "extra.typical_drinks_per_occasion": {
+    "1-2 drinks": [
+      "sh4px"
+    ],
+    "10 or more drinks": [
+      "sh4px"
+    ],
+    "3-4 drinks": [
+      "sh4px"
+    ],
+    "5-6 drinks": [
+      "sh4px"
+    ],
+    "7-9 drinks": [
+      "sh4px"
+    ]
+  },
+  "gender": {
+    "Female": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "QQM5MC",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Male": [
+      "5hqan",
+      "7jt2f",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "QQM5MC",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ]
+  },
+  "housing_ownership": {
+    "Occupied without payment of cash rent": [
+      "5hqan",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "Owned or being bought by you or someone in your household": [
+      "5hqan",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "Rented for cash": [
+      "5hqan",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ]
+  },
+  "housing_type": {
+    "A building with 2 or more apartments": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "A mobile home": [
+      "5hqan",
+      "7jt2f",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "c5r2f",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zrwjp"
+    ],
+    "A mobile home or trailer": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "A one-family house attached to one or more houses": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "A one-family house detached from any other house": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Boat, RV, van, etc": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "Boat, RV, van, etc.": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "c5r2f",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ]
+  },
+  "ideology": {
+    "\"Conservative\u201d": [
+      "dh3nj"
+    ],
+    "\"Extremely Conservative\u201d": [
+      "dh3nj"
+    ],
+    "\"Extremely Liberal\u201d": [
+      "dh3nj"
+    ],
+    "\"Haven\u2019t thought much about it\u201d": [
+      "dh3nj"
+    ],
+    "\"Liberal\u201d": [
+      "dh3nj"
+    ],
+    "\"Moderate\u201d": [
+      "dh3nj"
+    ],
+    "\"Slightly Conservative\u201d": [
+      "dh3nj"
+    ],
+    "\"Slightly Liberal\u201d": [
+      "dh3nj"
+    ],
+    "CONSERVATIVE": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Conservative": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "EXTREMELY CONSERVATIVE": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "EXTREMELY LIBERAL": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Extremely conservative": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Extremely liberal": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "LIBERAL": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Liberal": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "MODERATE, MIDDLE OF THE ROAD": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Moderate": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Moderate, middle of the road": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "SLIGHTLY CONSERVATIVE": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "SLIGHTLY LIBERAL": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Slightly conservative": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Slightly liberal": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Somewhat conservative": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Somewhat liberal": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Unknown": [
+      "b87sm",
+      "zaqkm"
+    ],
+    "Very conservative": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Very liberal": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ]
+  },
+  "income": {
+    "$10,000 to $14,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$100,000 to $124,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$125,000 to $149,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$15,000 to $19,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$150,000 to $174,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$175,000 or more": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$20,000 to $24,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$25,000 to $29,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$30,000 to $34,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$35,000 to $39,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$40,000 to $49,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$5,000 to $9,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$50,000 to $59,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$60,000 to $74,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$75,000 to $84,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "$85,000 to $99,999": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Under $5,000": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "under \u00a35,000 per year": [
+      "QQM5MC"
+    ],
+    "\u00a310,000 to \u00a314,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a3100,000 and over": [
+      "QQM5MC"
+    ],
+    "\u00a315,000 to \u00a319,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a320,000 to \u00a324,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a325,000 to \u00a329,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a330,000 to \u00a334,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a335,000 to \u00a339,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a340,000 to \u00a344,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a345,000 to \u00a349,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a35,000 to \u00a39,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a350,000 to \u00a359,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a360,000 to \u00a369,999 per year": [
+      "QQM5MC"
+    ],
+    "\u00a370,000 to \u00a399,999 per year": [
+      "QQM5MC"
+    ]
+  },
+  "internet_access": {
+    "Internet Household": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "No": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Non-internet household": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "Yes": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ]
+  },
+  "marital_status": {
+    "Divorced": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Living with partner": [
+      "5hqan",
+      "7jt2f",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zrwjp"
+    ],
+    "Married": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Never married": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Separated": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Widowed": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ]
+  },
+  "party_id": {
+    "Conservative": [
+      "QQM5MC"
+    ],
+    "Don't Lean/Independent/None": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "zaqkm"
+    ],
+    "Don\u2019t Lean/Independent/None": [
+      "dh3nj"
+    ],
+    "Green": [
+      "QQM5MC"
+    ],
+    "LEANS DEMOCRAT": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "LEANS REPUBLICAN": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Labour": [
+      "QQM5MC"
+    ],
+    "Lean Democrat": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "Lean Republican": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "Leans Democrat": [
+      "5hqan",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Leans Republican": [
+      "5hqan",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Liberal Democrat": [
+      "QQM5MC"
+    ],
+    "Moderate Democrat": [
+      "bf8p2",
+      "dh3nj"
+    ],
+    "Moderate Republican": [
+      "bf8p2",
+      "dh3nj"
+    ],
+    "NOT STRONG DEMOCRAT": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "NOT STRONG REPUBLICAN": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Not Strong Democrat": [
+      "5hqan",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Not Strong Republican": [
+      "5hqan",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Not so strong Democrat": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Not so strong Republican": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Other": [
+      "QQM5MC"
+    ],
+    "Plaid Cymru": [
+      "QQM5MC"
+    ],
+    "STRONG DEMOCRAT": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "STRONG REPUBLICAN": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Scottish National Party (SNP)": [
+      "QQM5MC"
+    ],
+    "Strong Democrat": [
+      "5hqan",
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "Strong Republican": [
+      "5hqan",
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "UK Independence Party (UKIP)": [
+      "QQM5MC"
+    ],
+    "UNDECIDED/INDEPENDENT/OTHER": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Undecided/Independent/Other": [
+      "5hqan",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Unknown": [
+      "b87sm",
+      "bf8p2",
+      "zaqkm"
+    ]
+  },
+  "phone_service": {
+    "Cellphone only": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Have a landline, but mostly use cellphone": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Have cellphone, but mostly use landline": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Landline telephone only": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "No telephone service": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ]
+  },
+  "region": {
+    "East Midlands": [
+      "QQM5MC"
+    ],
+    "East of England": [
+      "QQM5MC"
+    ],
+    "London": [
+      "QQM5MC"
+    ],
+    "MidWest": [
+      "sh4px"
+    ],
+    "Midwest": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "North East": [
+      "QQM5MC"
+    ],
+    "North West": [
+      "QQM5MC"
+    ],
+    "NorthEast": [
+      "sh4px"
+    ],
+    "Northeast": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "Scotland": [
+      "QQM5MC"
+    ],
+    "South": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "South East": [
+      "QQM5MC"
+    ],
+    "South West": [
+      "QQM5MC"
+    ],
+    "Wales": [
+      "QQM5MC"
+    ],
+    "West": [
+      "5hqan",
+      "7jt2f",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "bf8p2",
+      "c5r2f",
+      "cug34_B01_B09",
+      "dh3nj",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm",
+      "zrwjp"
+    ],
+    "West Midlands": [
+      "QQM5MC"
+    ],
+    "Yorkshire and the Humber": [
+      "QQM5MC"
+    ]
+  },
+  "religion": {
+    "\"Atheist (do not believe in God)\u201d": [
+      "dh3nj"
+    ],
+    "\"Buddhist\u201d": [
+      "dh3nj"
+    ],
+    "\"Hindu\u201d": [
+      "dh3nj"
+    ],
+    "\"Jewish (Judaism)\u201d": [
+      "dh3nj"
+    ],
+    "\"Mormon (Church of Jesus Christ of Latter-day Saints/LDS)\u201d": [
+      "dh3nj"
+    ],
+    "\"Muslim (Islam)\u201d": [
+      "dh3nj"
+    ],
+    "\"Orthodox (Greek, Russian, or some other orthodox church)\u201d": [
+      "dh3nj"
+    ],
+    "\"Roman Catholic (Catholic)\u201d": [
+      "dh3nj"
+    ],
+    "Agnostic (not sure if there is a God)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Atheist (do not believe in God)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "BAPTIST\u2014ANY DENOMINATION": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "BUDDHIST": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Baptist-any denomination": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Buddhist": [
+      "5hqan",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "CATHOLIC": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Catholic": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "EASTERN ORTHODOX": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Eastern Orthodox": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Evangelical or Protestant Christian (Baptist, Lutheran, Methodist, Presbyterian, Episcopalian, Pentecostal, Church of Christ, etc.)": [
+      "a42yg",
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "HINDU": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Hindu": [
+      "5hqan",
+      "8ctbk_desirability",
+      "9263n",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "b87sm",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zaqkm"
+    ],
+    "Islam/Muslim": [
+      "a42yg",
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "JEWISH": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Jehovah's Witness": [
+      "a42yg"
+    ],
+    "Jehovah\u2019s Witness": [
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Jewish": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Jewish (Judaism)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Just Christian": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "MORMON": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "MUSLIM": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Mormon": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "cug34_B01_B09",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z"
+    ],
+    "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Muslim": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Muslim (Islam)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "NONE": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "No religion, not a believer, atheist, agnostic": [
+      "a42yg",
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "None": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Nothing in particular": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "OTHER CHRISTIAN": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "OTHER NON-CHRISTIAN": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Orthodox (Greek, Russian, or some other orthodox church)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Orthodox Church (Greek or Russian)": [
+      "a42yg",
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Other Christian": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Other Christian religion": [
+      "a42yg",
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "Other non-Christian": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Other non-Christian religion": [
+      "a42yg",
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave"
+    ],
+    "PENTECOSTAL": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "PROTESTANT (E.G., METHODIST, LUTHERAN, PRESBYTERIAN, EPISCOPAL)": [
+      "evnyh_Q1a_and_validation"
+    ],
+    "Pentecostal": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)": [
+      "9xw67_conjoint"
+    ],
+    "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah\u2019s Witness, etc.)": [
+      "8ctbk_desirability",
+      "9xw67_vignette",
+      "b87sm",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "Protestant (e.g., Methodist, Lutheran, Presbyterian, Episcopal)": [
+      "5hqan",
+      "9263n",
+      "a2nbf",
+      "a5v96_vignette1",
+      "es4xw",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "sh4px",
+      "ye2ej",
+      "z358z"
+    ],
+    "Roman Catholic (Catholic)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Something else": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "zaqkm"
+    ],
+    "Unitarian (Universalist)": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "a42yg",
+      "b87sm",
+      "cug34_B01_B09",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "zaqkm"
+    ]
+  },
+  "social_grade": {
+    "A": [
+      "QQM5MC"
+    ],
+    "B": [
+      "QQM5MC"
+    ],
+    "C1": [
+      "QQM5MC"
+    ],
+    "C2": [
+      "QQM5MC"
+    ],
+    "D": [
+      "QQM5MC"
+    ],
+    "E": [
+      "QQM5MC"
+    ]
+  },
+  "urban_rural": {
+    "Metro": [
+      "5hqan",
+      "7jt2f",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "c5r2f",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zrwjp"
+    ],
+    "Metro Area": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ],
+    "Non-Metro": [
+      "5hqan",
+      "7jt2f",
+      "9263n",
+      "a2nbf",
+      "a42yg",
+      "a5v96_vignette1",
+      "c5r2f",
+      "cug34_B01_B09",
+      "es4xw",
+      "evnyh_Q1a_and_validation",
+      "py9q3_vignette1_married_mother",
+      "py9q3_vignette2_single_mother",
+      "py9q3_vignette3_married_father",
+      "rpw4u_RO1",
+      "sd7cf",
+      "yv2ta_flexible_scheduling",
+      "yv2ta_parental_leave",
+      "z358z",
+      "zrwjp"
+    ],
+    "Non-Metro Area": [
+      "8ctbk_desirability",
+      "9xw67_conjoint",
+      "9xw67_vignette",
+      "b87sm",
+      "bf8p2",
+      "dh3nj",
+      "zaqkm"
+    ]
+  }
+}

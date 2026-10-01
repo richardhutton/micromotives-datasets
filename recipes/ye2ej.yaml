@@ -249,8 +249,19 @@ notes: >
 
   EXTRA FIELDS, directly on-topic for a study about sexual orientation and
   child caregiving (a42yg precedent: occupation mapped as an extra field
-  because the whole sample was health-care personnel):
-    sexual_orientation_self <- Q4 ("Do you consider yourself to be...",
+  because the whole sample was health-care personnel).
+
+  The keys here are the corpus's spellings, not this study's. Two of them were
+  this study's own and nothing noticed: `religion_attendance` where five other
+  recipes say `religious_attendance` (identical value sets), and
+  `sexual_orientation_self` where `yv2ta` says `sexual_orientation`. A consumer
+  filtering the merged corpus on either common spelling lost this study's 12,971
+  rows in silence. The `_self` suffix was guarding against a collision with this
+  study's `sexual_orientation` CONDITION factor, which cannot happen — factors
+  and persona are separate columns on the row. Found by
+  `data/catalog/persona_snapshot.json`, which exists to make exactly this
+  visible; invisible in this study alone, obvious in one sorted list.
+    sexual_orientation <- Q4 ("Do you consider yourself to be...",
       answered by all 1,013, not gated as the questionnaire's own routing
       note at line 344 implies — xPPP20063 and DOV_Q4 are not present as
       separate columns in the delivered file, only Q4 itself, which is fully
@@ -715,8 +726,8 @@ persona_map:
   religion: DOV_REL1
   party_id: DOV_XPARTY7
   ideology: DOV_IDEO
-  religion_attendance: DOV_REL2
-  sexual_orientation_self: Q4
+  religious_attendance: DOV_REL2
+  sexual_orientation: Q4
   has_children: Q6
   children_live_with_respondent: Q6A
   other_adults_help_childcare: Q6B
