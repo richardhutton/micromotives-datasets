@@ -680,19 +680,31 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
 
 ## 10. Where we actually are (1 October 2026, end of day)
 
-**20 experiments from 19 studies. 182,684 rows, 31,538 respondents.** All QC
-PASS with zero warnings. 187 tests. Persona harmonised across four fields and
-100% populated on eight. Licence recorded for all 20.
+**28 experiments from 24 studies. 279,314 rows. 11.9% of the 202-study
+catalogue.** All 28 build through the CLI and pass QC. One warning in the whole
+corpus, on `9xw67_conjoint`, kept deliberately — 31 declared profiles whose
+single occurrence in 20,480 draws is a refusal, which is precisely what rule 2
+exists to surface. 215 tests. Licence recorded for all 28.
 
-Up from 14 studies / 80,010 rows at the start of the day — 2.3x the rows for
-five more studies, because 40,296 of them came from four studies ALREADY built
-whose rows the schema had been unable to reach.
+Up from 14 studies / 80,010 rows at the start of the day. The first jump came
+from four studies ALREADY built whose rows the schema could not reach (40,296);
+the second from wave 2's five studies (96,630).
 
-`yv2ta` is why experiments (20) exceeds studies (19): one deposit held two
-independent experiments asked of the same 2,036 people. Expect that gap to
-widen — `8ctbk`'s forced-choice task, `a5v96`'s second vignette, `evnyh`'s
-Q3-Q16 block and `b87sm`'s other items are all owed, and would add rows without
-moving the study count.
+Experiments (28) exceed studies (24) because three deposits each hold several:
+`yv2ta` two, `9xw67` two (a vignette and a conjoint, and SocSci210 built only
+the vignette), `py9q3` three. Expect that gap to widen — `py9q3`'s Parts 2 and
+3, `a5v96`'s second vignette, `evnyh`'s Q3-Q16 and `b87sm`'s other items are all
+owed, and would add rows without moving the study count. **Mining a deposit we
+already hold is far cheaper per row than a new study, but it does not move the
+20% figure, which counts studies.**
+
+**The UK layer has begun.** All four Harvard Dataverse UK experiments are
+fetched — `QQM5MC`, `TLT65Z`, `X08IVC`, `LOGVPZ` — in their ORIGINAL format,
+with licences read from the Dataverse API rather than asserted: **CC0 1.0, all
+four.** That matters more than the row count: no TESS deposit grants
+redistribution, so these are the first material here that could be published.
+None is built yet; the blocker is a decision, not tooling — see "Two things that
+are not done".
 
 ### The plan
 
@@ -712,11 +724,25 @@ Three checkers: `8ctbk` and `5hqan` clean on every point, the other three each
 with one real defect, all in the condition-and-notes layer, none touching a
 response or a persona value. Zero numeric defects across all five.
 
-**Wave 2, selected, one launched:** `9xw67` (policy algorithms, launched),
-`es4xw` (perceptions of diversity), `sh4px` (self-affirmation and health
-intentions), `ye2ej` (parenthood pay penalty x sexual orientation), `py9q3`
-(employment of mothers and fathers). All `full` transfer, five domains, ~58,650
-rows by SocSci210's count.
+**Wave 2, built:** `9xw67` 5,816 + 20,373, `es4xw` 32,228, `sh4px` 6,911,
+`ye2ej` 12,971, `py9q3` 6,667 + 5,005 + 6,659. Seven experiments from five
+studies, **96,630 rows** — against the ~58,650 SocSci210 records for the same
+five, because four of the five were built narrower than what was fielded and the
+fifth was built from the wrong document.
+
+**SocSci210 was wrong about all five, each differently.** `9xw67`: vignette
+only, control arm dropped, conjoint never attempted. `es4xw`: built from the
+proposal's PILOT — eight headshots, a design never fielded. `sh4px`: its two
+"conditions" are our two outcome clusters, so the real 10-arm randomisation is
+absent. `ye2ej`: an arm dropped, and a banded salary coded as band numbers 1-5
+pooled onto a Likert axis. `py9q3`: vignette-3 items under vignette-2 labels,
+plus items from a different sub-experiment. Every difference was reconciled
+arithmetically rather than asserted. The paper explains the pattern: the 210
+were reconstructed by an automated agent.
+
+That makes the base rate 9 of 9 on studies audited closely. **Treat SocSci210 as
+a numeric answer key and a lower bound on the design, never as a description of
+one.**
 
 ### What changed today, beyond the studies
 
@@ -751,16 +777,37 @@ rows by SocSci210's count.
   no fielded questionnaire, 2 whose outcome needs US knowledge, 118 not yet
   reached.
 
-### Two things that are not done
+### Three things that are not done
 
-**Publication is not cleared.** All 19 OSF deposits state NO licence —
-`node_license` null, no licence relationship, checked via the OSF API — and
-TESS's own site states no reuse terms and has suspended operations. There is no
-explicit grant of redistribution rights for any of this. Recorded in every
-recipe. It does not block building; it blocks publishing.
+**Publication is not cleared for the TESS corpus.** All 24 OSF deposits state NO
+licence — `node_license` null, no licence relationship, checked via the OSF API —
+and TESS's own site states no reuse terms and has suspended operations. There is
+no explicit grant of redistribution rights for any of it. Recorded in every
+recipe. It does not block building; it blocks publishing. The four UK Dataverse
+studies are the exception and the reason to prioritise them: **CC0 1.0**, stated
+by the API, recorded in `data/catalog/uk_dataverse_provenance.json`. Today the
+publishable part of this dataset has 279,314 rows we cannot ship and zero we can.
 
-**Evaluation is unexercised.** No eval exists yet. Every identifier it needs is
-present in the corpus.
+**The persona crosswalk is US-anchored, and that blocks the UK layer.** Canonical
+education runs "Less than high school / High school / Some college to associate /
+Bachelors to postgraduate"; canonical ethnicity includes "Hispanic". The first UK
+file, `QQM5MC`, has `education_level` = "No formal qualifications" / "Youth
+training certificate/skillseekers" / "Recognised trade apprenticeship completed",
+and carries `education_age` ("15 or under", "16", "17-18"), the standard BES
+measure with no US analogue at all. A trade apprenticeship has no US rung, and UK
+ethnicity is a different classification rather than a relabelling.
+
+So one decision, and it is not a build: a single shared vocabulary that is lossy
+in both directions, or two vocabularies with an explicit mapping and each row
+tagged by which it uses. The second is more faithful to "absent stays absent,
+merged stays merged" and costs more in the persona layer. Decide it against a
+real UK file, not in the abstract — the file is now on disk.
+
+**Evaluation is barely exercised.** `scripts/condition_probe.py` is the first
+eval this project has had: it scores the condition screen against the five
+defects actually shipped, catching 4 of 5 and naming 4 of 5 correctly, with its
+one apparent false positive being a true positive on a control written by hand.
+Nothing else is measured. Every identifier a real eval needs is present.
 
 ## 11. Files & tooling
 
