@@ -1,0 +1,418 @@
+study_id: a2nbf
+source: tess
+title: >-
+  An Experiment Testing Possible Question-Wording Effects on Key General
+  Social Survey Indicators of Attitudes toward Genetic Testing (Singer,
+  TESS2 104)
+data_file: TESS2104_Singer_Client.sav
+comparable_to_socsci210: false
+
+notes: >
+  TESS2 104 (Eleanor Singer, University of Michigan). All line numbers below
+  refer to "data/raw/a2nbf/TESS2 104 - Singer_FINAL.txt", checked individually.
+  There is only one fielded questionnaire file in this deposit (no separate
+  simple/prog pair to cross-check against), confirmed by listing
+  data/raw/a2nbf/ and the zip contents: a .doc/.txt FINAL questionnaire, the
+  Response Rate Report, the KN methodology PDF, the proposal (Singer251.pdf,
+  NOT used for wording per source-authority convention) and the .sav.
+
+
+  == DESIGN ==
+
+  A single assignment variable, XTESS104, with 4 codes declared on the
+  questionnaire's own "Study Details" page, lines 45-48:
+    "XTESS104 =1 (Version1 and AX1)
+     XTESS104 =2 (Version1 and AY1)
+     XTESS104 =3 (Version2 and AX2)
+     XTESS104 =4 (Version2 and AY2)"
+  This is a genuine 2x2: VERSION (wording of two of the four questions) crossed
+  with FOLLOWUP (which closing open-ended item the respondent received). Both
+  factors are randomised through the one variable; there is no separate column
+  for either factor alone. XTESS104 in the .sav is 100% non-null over 1,570
+  respondents, counts {1:386, 2:389, 3:397, 4:398}, confirmed balanced.
+
+  VERSION (lines 117-203, the Appendix, which gives the actually-fielded
+  wording — the body text above it, lines 59-83, is the PROPOSAL and is used
+  here only to understand intent, never for wording, per source-authority
+  convention). Version 1 (XTESS104 in {1,2}, lines 117-159) asks Q.3_1/Q.4_1
+  using the word "baby": Q3_1 (GENESELF1, line 137) "...detect serious genetic
+  defects before a baby is born... to find out if the baby has any serious
+  genetic defects?"; Q4_1 (GENEABRT1, line 144) "...the baby has a serious
+  genetic defect... if a test shows the baby has a serious genetic defect?".
+  Version 2 (XTESS104 in {3,4}, lines 160-204) asks the same two questions
+  with "fetus"/"during pregnancy" substituted: Q3_2 (line 181) "...detect
+  serious genetic defects in the fetus during pregnancy... to find out if the
+  fetus has any serious genetic defects?"; Q4_2 (line 188) "...the fetus has a
+  serious genetic defect... if a test shows the fetus has a serious genetic
+  defect?". Q1 (GENETEST, lines 122/166) and Q2 (GENEGOOD, lines 130/174) are
+  BYTE-IDENTICAL between versions — confirmed by diffing the two blocks of the
+  .txt — so Version has NO effect on their wording; they are fielded under
+  separate variables (Q1_1/Q1_2, Q2_1/Q2_2) purely because of how the
+  questionnaire branches on XTESS104, exactly the class of "same item, arm-
+  specific answer variable" that `Arm.items[...].outcome_var` exists for.
+
+  FOLLOWUP (lines 149-159, 192-203). AX (XTESS104 in {1,3}) gets a generic
+  closing probe: "We would very much appreciate your telling us why you chose
+  this answer." AY (XTESS104 in {2,4}) gets one that references the
+  respondent's own Q3 answer: "Earlier, you said you [would/would not]
+  want... to have a test to find out if the baby/fetus has a serious genetic
+  defect. We would very much appreciate your telling us why you chose this
+  answer." Both are TEXT BOXES (lines 150, 156, 193, 201) with no numeric
+  code — the schema has no outcome type for a free-text answer with no
+  accompanying closed response (`pipeline/build.py` computes
+  `ivalue = int(float(raw))`, which cannot run on a string column), so these
+  two items (Q5X/Q5Y in the proposal's numbering) are NOT built. This is a
+  genuine scope limit, recorded here rather than silently dropped: QAX1/QAY1/
+  QAX2/QAY2 all exist as string columns in the .sav (confirmed via pyreadstat)
+  and are left out.
+
+
+  == WHY FOUR CONDITIONS, NOT TWO, AND comparable_to_socsci210: false ==
+
+  This is the riskiest judgement in this recipe and the one I am least sure
+  of; see the handover note at the end.
+
+  The schema requires one Arm per raw code, each with a UNIQUE condition_num
+  (recipe.py's validator rejects a duplicate even when two raw codes would
+  otherwise be "the same" condition — verified by hand: constructing two Arms
+  with the same condition_num raises "duplicate condition_num" before this
+  recipe was written). Since XTESS104 takes 4 values, this recipe declares 4
+  arms. FOLLOWUP has zero effect on Q1-Q4 (its only textual content is the
+  closing probe, which is not built), so a reader may reasonably ask why it is
+  not collapsed into a 2-arm VERSION-only design — which is exactly what
+  SocSci210 did (see below). Three reasons this recipe did not:
+  (1) the schema's raw<->condition_num map is 1:1 and explicit, by design
+      (CONVENTIONS/ledger #39 and #68: a suppression or a merge must be
+      declared, never inferred, and rpw4u was flagged for exactly this kind of
+      arm-merging);
+  (2) QC rule 1 fails hard if two different condition_nums render identical
+      text, and the ONLY true, source-grounded fact distinguishing XTESS104=1
+      from XTESS104=2 (both Version 1) is which closing probe they got — so
+      collapsing them would require giving them identical arm text, which the
+      pipeline refuses to build;
+  (3) there is no column in the .sav holding "Version" alone (unlike evnyh's
+      DOV_DIRECT, which the survey house materialised as a literal column) —
+      only the combined XTESS104 — so a 2-arm design would need either a
+      fabricated/derived data column outside the recipe (which would move a
+      judgement out of the reviewable YAML, against the "recipe holds every
+      judgement" convention) or silently dropping half the respondents
+      (XTESS104 in {2,4}), which is a correctness defect, not a scope choice.
+  So each of the 4 arms' text states BOTH true facts about what that
+  respondent's block of questions consisted of: which wording variant (baby/
+  fetus) appeared in the two genetic-defect questions, and which closing
+  open-ended item followed. Both clauses are TRUE, verbatim-grounded facts
+  (not fabricated), phrased without any positional/sequence language ("next",
+  "afterward", "the Nth question") per the sequence-signposting ruling, so
+  they describe CONTENT the respondent read, not the instrument's structure.
+  `condition.factors: [version, followup]` declares both; QC rule 5 passes
+  because every minimal pair's text does differ as declared (checked by hand
+  for all 6 pairs: (1,2)/(3,4) differ only in the followup clause, (1,3)/(2,4)
+  differ only in the version clause, (1,4)/(2,3) differ in both).
+
+  SocSci210 modelled this as a 2-arm design (Version only), confirmed by
+  querying their parquet directly: n_rows=6,211, n_conditions=2,
+  rows_per_condition={0: 3056, 1: 3155}, response_distribution=
+  {1: 2875, 2: 3023, 3: 313}. Hand reconciliation against OUR 4-arm scope:
+  summing non-refused, non-missing responses across all 8 outcome columns
+  (Q1_1,Q2_1,Q3_1,Q4_1,Q1_2,Q2_2,Q3_2,Q4_2) by XTESS104 value gives per-raw
+  totals {1: 1518, 2: 1538, 3: 1579, 4: 1576}, summing to 6,211 (exact match
+  on n_rows) and {1518+1538=3056, 1579+1576=3155} (exact match on their two
+  cell sizes, aggregated). response_distribution, summed the same way across
+  all 8 columns ignoring XTESS104 entirely, gives {1: 2875, 2: 3023, 3: 313} —
+  an EXACT match, digit for digit, to theirs. n_participants: we predict 1,567
+  (the count of respondents with at least one non-refused answer among the 8
+  columns), which also matches theirs exactly. So SocSci210's reconstruction
+  is numerically a strict coarsening of this one (every one of our 4 cells
+  sums correctly into their 2), not a disagreement — but because the SCOPE
+  differs (2 vs 4 conditions), the automated `mmds crosscheck` comparison on
+  `n_conditions`/`rows_per_condition` would report a raw MISMATCH rather than
+  a permutation match (the lengths differ, 2 vs 4), which is exactly what
+  `comparable_to_socsci210: false` exists for per its own docstring ("SocSci210
+  reconstructed a different scope... a subset of arms, or arms merged"). Set
+  to false here, with this by-hand reconciliation standing in for the
+  automated one.
+
+
+  == RESPONSE OPTIONS AND WHY NO ARM-LEVEL RECODE ==
+
+  Q1 (GENETEST): "A great deal"=1, "Something but not very much"=2, "Nothing
+  at all"=3 (lines 124-126/168-170), identical codes both versions — treated
+  as an ordinal amount-of-exposure scale, decreasing.
+
+  Q2 (GENEGOOD): "More good than harm"=1, "More harm than good"=2 (lines
+  132-133/176-177). The question text itself is randomised for DISPLAY ORDER
+  ("[RANDOMIZE "MORE GOOD THAN HARM..." AND "MORE HARM THAN GOOD..." IN THE
+  QUESTION TEXT AS WELL AS MATCH IT WITH THE RESPONSE OPTIONS]", lines
+  129/173), tracked in Order_Q2_1/Order_Q2_2 (confirmed non-null only for the
+  matching version, ~50/50 split). Checked whether this reverses the stored
+  code (ledger risk: evnyh's `rpw4u`-vs-`evnyh` distinction): crosstabbing
+  Order_Q2_1 x Q2_1 gives {order1: {-1:16, 1:251, 2:117}, order2: {-1:11,
+  1:285, 2:95}} — in BOTH display orders code 1 remains the majority answer
+  ("More good than harm" is substantively the expected modal response,
+  matching GSS norms), so the coding is LABEL-anchored like evnyh's Q1a, not
+  POSITION-anchored like rpw4u. No `response_recode` reversal needed. This
+  order randomisation is NOT part of the declared condition (it is nested
+  inside Q2's own display, orthogonal to XTESS104) and was checked against
+  the undeclared-assignment screen: Order_Q2_1/Order_Q2_2 are each non-null
+  for only ~49% of respondents (one version's worth), under the screen's 95%
+  coverage threshold, so neither is flagged — confirmed by running
+  `mmds build` below with zero screen warnings.
+
+  Q3/Q4: "Yes"=1, "No"=2 (lines 139-140/146-147/183-184/189-190), identical
+  codes both versions.
+
+  All four items share one study-level `response_recode` (identity, 1/2/3)
+  and `missing_codes: [-1]` ("Refused", confirmed as the only non-answer code
+  across all 8 columns via pyreadstat value labels).
+
+
+  == THE GENDER-CONDITIONAL PRONOUN INSERT (uncertainty, flagged for the
+  checker) ==
+
+  Q3 and Q4 carry a respondent-GENDER-conditional insert, not an arm-
+  conditional one: "If [IF PPGENDER=2 INSERT: you; IF PPGENDER=1 INSERT: your
+  partner] were pregnant, would you want [IF PPGENDER=1 INSERT: her] to have a
+  test..." (line 137, and the Q3_2/Q4_1/Q4_2 equivalents at 181/144/188). This
+  is PPGENDER (a persona attribute), not an experimental arm, so it cannot be
+  resolved via `quex.py`'s per-arm substitution, and the schema has no
+  mechanism for outcome TEXT to vary by persona (`outcome_text_for` resolves
+  from (outcome, arm) only). Rather than arbitrarily picking one gender's
+  resolution (which would be FALSE for every respondent of the other gender —
+  a fabrication) or silently dropping Q3/Q4 (an unnecessary scope cut), this
+  recipe renders the unresolved template using curly-brace notation —
+  "{you/your partner}", "{her}" — which MIRRORS the .sav's own variable-label
+  convention for the same construct (confirmed via pyreadstat: Q3_1's column
+  label literally reads "...If {you/your partner} were pregnant, would you
+  want {her} to have a test..."), so this is not an invented notation. It is
+  true for every respondent (asserts no specific resolution) but is visibly a
+  template rather than prose a respondent read verbatim. Flagged explicitly as
+  the thing I am least confident about; an alternative would be to drop Q3/Q4
+  entirely rather than ship an unresolved bracket, or to extend the schema to
+  carry a persona-conditional outcome text (out of scope for a single-study
+  recipe to decide).
+
+
+  == ROW COUNT, VERIFIED AGAINST THE DATA BY HAND ==
+
+  Per (outcome-column, XTESS104) non-null-non-refused counts: Q1_1 772, Q1_2
+  789, Q2_1 748, Q2_2 785, Q3_1 771, Q3_2 792, Q4_1 765, Q4_2 789 — total
+  6,211 across the whole study. Per raw value: {1: 1518, 2: 1538, 3: 1579,
+  4: 1576}, also summing to 6,211. n_participants (at least one non-refused
+  answer among the 4 items): 1,567 of 1,570.
+
+
+  == PERSONA ==
+
+  Standard KN/GfK panel demographics (same shape as `evnyh`/`dh3nj`/`5hqan`).
+  Checked value-label dictionaries for every mapped source variable via
+  pyreadstat: unlike `evnyh`, NONE of XPARTY7 (9=Missing), XIDEO (8=Dummy,
+  9=Missing) or XREL1 (14=Missing) actually carries its sentinel code in this
+  deposit's data — confirmed by printing full value_counts for each (XPARTY7:
+  7 real codes only, summing to 1,570; XIDEO: 7 real codes + 11 genuinely
+  blank/NaN, no 8 or 9; XREL1: 12 real codes + 6 blank/NaN, no 14 or -1) — so
+  `persona_missing`/`persona_label_rewrite` are not needed here; omitting them
+  is a verified finding, not an oversight. `religious_attendance: XREL2` goes
+  into `extra` (no corresponding Persona field), matching the precedent in
+  `5hqan`/`yv2ta_parental_leave`.
+
+
+  == UK CONTENT ==
+
+  `uk_content: none` (reported, not written to the CSV). A 2012 US internet
+  panel (KnowledgePanel/GfK), US-specific GSS replication items, no UK
+  relevance.
+
+
+  == HANDOVER: WHAT I AM LEAST SURE OF ==
+
+  The four-arm-vs-two-arm judgement above (the "WHY FOUR CONDITIONS" section)
+  is the call I am least confident about. It is internally consistent with
+  this project's "raw->condition_num is declared, never inferred" rule and
+  with QC rule 1 as written, and the by-hand reconciliation shows the 4-arm
+  scope is a strict refinement of SocSci210's 2-arm one (no numeric
+  disagreement, only a finer partition) — but a checker could reasonably
+  argue the followup/version clauses added to arm text are closer to
+  "describing the instrument's structure" than genuine stimulus, since their
+  only purpose is to make 4 arms textually distinct for an item (the open-
+  ended followup) this recipe deliberately does not score. I believe they are
+  on the right side of that line because they are true, verbatim-grounded,
+  and carry no positional language — but this is a judgement call, not a
+  mechanical fact, and is the first thing I would ask a checker to pressure-
+  test.
+
+condition:
+  source_var: XTESS104
+  factors: [version, followup]
+  shared_context: >-
+    The next few questions are about a special technique called "genetic
+    testing," which makes it possible to predict whether or not a person is
+    likely to develop certain inherited diseases.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {version: "baby wording", followup: "general open-ended"}
+      text: >-
+        This set of survey questions, about prenatal genetic testing and
+        abortion, referred to a serious genetic defect being found "before a
+        baby is born" and asked about "the baby." It also included an
+        open-ended question asking, in your own words, why you chose your
+        answer.
+      items:
+        0:
+          outcome_var: Q1_1
+        1:
+          outcome_var: Q2_1
+        2:
+          outcome_var: Q3_1
+          outcome_question: >-
+            Today, tests are being developed that make it possible to detect
+            serious genetic defects before a baby is born. But so far, it is
+            impossible either to treat or to correct most of them. If
+            {you/your partner} were pregnant, would you want {her} to have a
+            test to find out if the baby has any serious genetic defects?
+        3:
+          outcome_var: Q4_1
+          outcome_question: >-
+            Suppose a test shows the baby has a serious genetic defect. Would
+            you, yourself want {your partner} to have an abortion if a test
+            shows the baby has a serious genetic defect?
+    - raw: 2
+      condition_num: 1
+      factors: {version: "baby wording", followup: "test-referencing open-ended"}
+      text: >-
+        This set of survey questions, about prenatal genetic testing and
+        abortion, referred to a serious genetic defect being found "before a
+        baby is born" and asked about "the baby." It also included an
+        open-ended question, referring back to your own earlier answer about
+        wanting a test, asking in your own words why you chose your answer.
+      items:
+        0:
+          outcome_var: Q1_1
+        1:
+          outcome_var: Q2_1
+        2:
+          outcome_var: Q3_1
+          outcome_question: >-
+            Today, tests are being developed that make it possible to detect
+            serious genetic defects before a baby is born. But so far, it is
+            impossible either to treat or to correct most of them. If
+            {you/your partner} were pregnant, would you want {her} to have a
+            test to find out if the baby has any serious genetic defects?
+        3:
+          outcome_var: Q4_1
+          outcome_question: >-
+            Suppose a test shows the baby has a serious genetic defect. Would
+            you, yourself want {your partner} to have an abortion if a test
+            shows the baby has a serious genetic defect?
+    - raw: 3
+      condition_num: 2
+      factors: {version: "fetus wording", followup: "general open-ended"}
+      text: >-
+        This set of survey questions, about prenatal genetic testing and
+        abortion, referred to a serious genetic defect being found "in the
+        fetus during pregnancy" and asked about "the fetus." It also included
+        an open-ended question asking, in your own words, why you chose your
+        answer.
+      items:
+        0:
+          outcome_var: Q1_2
+        1:
+          outcome_var: Q2_2
+        2:
+          outcome_var: Q3_2
+          outcome_question: >-
+            Today, tests are being developed that make it possible to detect
+            serious genetic defects in the fetus during pregnancy. But so
+            far, it is impossible either to treat or to correct most of
+            them. If {you/your partner} were pregnant, would you want {her}
+            to have a test to find out if the fetus has any serious genetic
+            defects?
+        3:
+          outcome_var: Q4_2
+          outcome_question: >-
+            Suppose a test shows the fetus has a serious genetic defect.
+            Would you, yourself want {your partner} to have an abortion if a
+            test shows the fetus has a serious genetic defect?
+    - raw: 4
+      condition_num: 3
+      factors: {version: "fetus wording", followup: "test-referencing open-ended"}
+      text: >-
+        This set of survey questions, about prenatal genetic testing and
+        abortion, referred to a serious genetic defect being found "in the
+        fetus during pregnancy" and asked about "the fetus." It also included
+        an open-ended question, referring back to your own earlier answer
+        about wanting a test, asking in your own words why you chose your
+        answer.
+      items:
+        0:
+          outcome_var: Q1_2
+        1:
+          outcome_var: Q2_2
+        2:
+          outcome_var: Q3_2
+          outcome_question: >-
+            Today, tests are being developed that make it possible to detect
+            serious genetic defects in the fetus during pregnancy. But so
+            far, it is impossible either to treat or to correct most of
+            them. If {you/your partner} were pregnant, would you want {her}
+            to have a test to find out if the fetus has any serious genetic
+            defects?
+        3:
+          outcome_var: Q4_2
+          outcome_question: >-
+            Suppose a test shows the fetus has a serious genetic defect.
+            Would you, yourself want {your partner} to have an abortion if a
+            test shows the fetus has a serious genetic defect?
+
+outcomes:
+  - task_num: 0
+    question: >-
+      How much would you say you have heard or read about genetic testing -
+      a great deal, something but not very much, or nothing at all?
+    scale: {min: 1, max: 3, min_label: "A great deal", max_label: "Nothing at all"}
+  - task_num: 1
+    question: >-
+      Some people say that genetic testing is a wonderful advance. Others
+      think it may cause trouble. Based on what you know, do you think
+      genetic testing will do more good than harm or more harm than good?
+    scale: {min: 1, max: 2, min_label: "More good than harm", max_label: "More harm than good"}
+  - task_num: 2
+    # Overridden by every arm's `items[2].outcome_question` (above); this is
+    # only the schema's required fallback and is never actually rendered.
+    question: >-
+      Today, tests are being developed that make it possible to detect
+      serious genetic defects before a baby is born. But so far, it is
+      impossible either to treat or to correct most of them. If {you/your
+      partner} were pregnant, would you want {her} to have a test to find
+      out if the baby has any serious genetic defects?
+    scale: {min: 1, max: 2, min_label: "Yes", max_label: "No"}
+  - task_num: 3
+    # Overridden by every arm's `items[3].outcome_question` (above); this is
+    # only the schema's required fallback and is never actually rendered.
+    question: >-
+      Suppose a test shows the baby has a serious genetic defect. Would you,
+      yourself want {your partner} to have an abortion if a test shows the
+      baby has a serious genetic defect?
+    scale: {min: 1, max: 2, min_label: "Yes", max_label: "No"}
+
+response_recode: {1: 1, 2: 2, 3: 3}
+missing_codes: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2

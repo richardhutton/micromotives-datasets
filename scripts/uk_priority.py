@@ -46,7 +46,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from micromotives_datasets.sources import spss  # noqa: E402
 
 try:
-    from typesafe_sdk import Choice, Noul, TypeSafeClient
+    from typesafe_sdk import Choice, Score, TypeSafeClient
 except ImportError:  # pragma: no cover
     sys.exit("uv add typesafe-sdk first")
 
@@ -58,8 +58,12 @@ SCREEN = REPO / "data" / "catalog" / "uk_transfer_screen.json"
 SHORTLIST = REPO / "data" / "catalog" / "uk_shortlist.json"
 
 BUILT = {
+    "5hqan",
     "7jt2f",
+    "8ctbk",
     "9263n",
+    "a2nbf",
+    "a42yg",
     "a5v96",
     "b87sm",
     "bf8p2",
@@ -71,6 +75,7 @@ BUILT = {
     "sd7cf",
     "z358z",
     "zaqkm",
+    "yv2ta",
     "zrwjp",
 }
 
@@ -91,13 +96,50 @@ SKIP_PREFIX = ("pp", "tm_", "ds_", "ts_", "dov_", "xtess")
 SKIP_SUBSTR = ("_time", "weight", "caseid", "duration", "starttime", "endtime", "respdate")
 
 
+# Relevance and evergreen are POSITIONS ON A SPECTRUM, so they are asked as
+# `Score`, not `Noul`. The first version of this script asked both as `Noul`s
+# and then ranked 59 studies by `relevance + 0.15 * evergreen` — arithmetic on
+# two probabilities-of-yes. The primitive docs are explicit that this is not
+# what a Noul measures: "A Noul value of 0.5 means the model gives yes and no
+# equal probability. It does not mean the candidate has a medium skill level."
+# The numbers looked perfectly usable, which is exactly the problem.
+#
+# A `Score` takes an ORDERED list of levels and returns the probability-weighted
+# average of them, so the value is a position by construction and averaging two
+# of them means something. Writing the levels out also forces the judgement to
+# be stated rather than implied — the old `Noul` instructions described what a
+# high score meant and left every other value to inference.
+RELEVANCE_LEVELS = [
+    "Of no interest to UK social research. The outcome bears on nothing a UK "
+    "researcher, civil servant or journalist argues about.",
+    "Marginal. Academic interest only, or a question settled long ago.",
+    "Real but niche. A recognisable question within one specialism.",
+    "Clearly relevant. A UK researcher in the field would call this a live "
+    "question, though not a prominent one.",
+    "Prominent. The outcome bears on something argued about in UK policy, the "
+    "press or public debate right now.",
+]
+
+EVERGREEN_LEVELS = [
+    "Tied to a specific past event, named politician, or a policy or technology "
+    "since superseded. The question no longer exists in this form.",
+    "Dated. Still intelligible, but the context has moved substantially.",
+    "Partly dated. The underlying question survives; its framing has aged.",
+    "Largely stable. Asked today it would mean much the same thing.",
+    "Timeless. A question about human behaviour that does not depend on when it was asked.",
+]
+
+
 @dataclass
 class Priority:
     study_id: str
     title: str
     relevance: float = 0.0
     evergreen: float = 0.0
+    relevance_conf: float = 0.0
+    evergreen_conf: float = 0.0
     domain: str = ""
+    domain_conf: float = 0.0
     transfer: str = ""
     socsci_rows: int = 0
 
@@ -108,9 +150,22 @@ class Priority:
         A dated-but-central question still beats a timeless irrelevant one, so
         evergreen is weighted lightly. `full` transfer earns a small bonus
         because re-anchoring a scenario is real work even when it is possible.
+
+        Both terms are `Score` values on 0-4 rubrics, normalised to 0-1 here so
+        the transfer bonus keeps the magnitude it was tuned at.
         """
         bonus = {"full": 0.10, "mechanism-only": 0.0, "us-specific": -0.30}.get(self.transfer, 0.0)
-        return self.relevance + 0.15 * self.evergreen + bonus
+        return self.relevance / 4 + 0.15 * (self.evergreen / 4) + bonus
+
+    @property
+    def shaky(self) -> bool:
+        """Any judgement the model itself was unsure of.
+
+        `Score` and `Choice` both return a confidence whose documented purpose
+        is deciding "when to act automatically and when to escalate to a
+        person". We were reading `.choice` alone and throwing it away.
+        """
+        return min(self.relevance_conf, self.evergreen_conf, self.domain_conf) < 0.6
 
 
 def questions_in(path: Path, limit: int = 30) -> str:
@@ -136,22 +191,21 @@ def score(client: TypeSafeClient, p: Priority, path: Path) -> None:
     r = client.system_one(
         state=state,
         questions={
-            "uk_relevance": Noul(
+            "uk_relevance": Score(
+                criteria=RELEVANCE_LEVELS,
                 instructions=(
-                    "The OUTCOME this study measures bears on a question that UK "
-                    "social research, public debate or policy actively argues about — "
-                    "something a UK researcher, civil servant or journalist would "
-                    "recognise as a live issue. Judge the substance of what is being "
-                    "measured, not whether the scenario happens to be set in America."
-                )
+                    "How much does the OUTCOME this study measures bear on a question "
+                    "UK social research, public debate or policy argues about? Judge "
+                    "the substance of what is being measured, not whether the scenario "
+                    "happens to be set in America."
+                ),
             ),
-            "evergreen": Noul(
+            "evergreen": Score(
+                criteria=EVERGREEN_LEVELS,
                 instructions=(
-                    "The attitude or behaviour measured here is still the same question "
-                    "today as when it was asked. Score low if it is tied to a specific "
-                    "news event, a named politician, or a technology or policy that has "
-                    "since been superseded."
-                )
+                    "Is the attitude or behaviour measured here still the same question "
+                    "today as when it was asked?"
+                ),
             ),
             "domain": Choice(
                 criteria={**DOMAINS, "other": "none of these fits"},
@@ -159,9 +213,10 @@ def score(client: TypeSafeClient, p: Priority, path: Path) -> None:
             ),
         },
     )
-    p.relevance = float(r.answers["uk_relevance"].noul)
-    p.evergreen = float(r.answers["evergreen"].noul)
-    p.domain = str(r.answers["domain"].choice)
+    rel, ever, dom = (r.answers[k] for k in ("uk_relevance", "evergreen", "domain"))
+    p.relevance, p.relevance_conf = float(rel.score), float(rel.confidence)
+    p.evergreen, p.evergreen_conf = float(ever.score), float(ever.confidence)
+    p.domain, p.domain_conf = str(dom.choice), float(dom.confidence)
 
 
 def data_file_for(code: str) -> Path | None:

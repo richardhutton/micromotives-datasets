@@ -8,20 +8,28 @@
     "asian": "Other or Asian"
   },
   "schemes": {
-    "7jt2f+9": {
+    "5hqan+14": {
       "White, Non-Hispanic": "White",
       "Black, Non-Hispanic": "Black",
       "Other, Non-Hispanic": "Other or Asian",
       "Hispanic": "Hispanic",
       "2+ Races, Non-Hispanic": "Two or more races"
     },
-    "b87sm_scenario1+3": {
+    "b87sm+3": {
       "White, non-Hispanic": "White",
       "Black, non-Hispanic": "Black",
       "Other, non-Hispanic": "Other or Asian",
       "Hispanic": "Hispanic",
       "2+, non-Hispanic": "Two or more races",
       "Asian, non-Hispanic": "Other or Asian"
+    },
+    "8ctbk": {
+      "White, non-Hispanic": "White",
+      "Black, non-Hispanic": "Black",
+      "Other, non-Hispanic": "Other or Asian",
+      "Hispanic": "Hispanic",
+      "2+, non-Hispanic": "Two or more races",
+      "Asian-Pacific Islander, non-Hispanic": "Other or Asian"
     }
   }
 }

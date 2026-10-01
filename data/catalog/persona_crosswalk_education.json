@@ -6,13 +6,13 @@
     "Bachelors to postgraduate": "Bachelors to postgraduate"
   },
   "schemes": {
-    "7jt2f+9": {
+    "5hqan+14": {
       "Less than high school": "Less than high school",
       "High school": "High school",
       "Some college": "Some college to associate",
       "Bachelor's degree or higher": "Bachelors to postgraduate"
     },
-    "b87sm_scenario1+1": {
+    "b87sm+1": {
       "Less than HS": "Less than high school",
       "HS graduate or equivalent": "High school",
       "Vocational/tech school/some college/ associates": "Some college to associate",
@@ -34,6 +34,13 @@
       "Bachelors degree": "Bachelors to postgraduate",
       "Masters degree": "Bachelors to postgraduate",
       "Professional or Doctorate degree": "Bachelors to postgraduate"
+    },
+    "8ctbk": {
+      "Less than HS": "Less than high school",
+      "HS graduate or equivalent": "High school",
+      "Some college/ associates degree": "Some college to associate",
+      "Bachelor's degree": "Bachelors to postgraduate",
+      "Post grad study/professional degree": "Bachelors to postgraduate"
     }
   }
 }

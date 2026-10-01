@@ -1,0 +1,480 @@
+study_id: yv2ta
+source: tess
+title: "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns"
+data_file: TESS215_Pedulla_Client.dta
+experiment: parental_leave
+
+# SocSci210 built a materially different scope: a SINGLE outcome (Q1 only,
+# their "likelihood" item) under a SINGLE combined condition numbering that
+# spans BOTH this sub-experiment and the companion flexible-scheduling one
+# (yv2ta_flexible_scheduling.yaml) end to end, and its own reconstruction has
+# internal gaps (see CROSSCHECK below). That is a different scope on three
+# axes at once (fewer outcomes, a different condition index, a different
+# per-condition row count), so a numeric crosscheck would not be comparing
+# like with like.
+comparable_to_socsci210: false
+
+notes: >
+  TESS3 215 (Pedulla). Source of record for all stimulus text and question
+  wording: "310.209.00994.1_TESS3 215_Pedulla_FINAL.txt" (the fielded
+  questionnaire), NOT Pedulla821.pdf (the proposal) — per
+  docs/CONVENTIONS.md's source-authority ruling. Line numbers below are lines
+  of the .txt file.
+
+
+  TWO INDEPENDENT SUB-EXPERIMENTS IN ONE DEPOSIT.
+
+  Line 69: "SCRIPTER: Randomly assign respondents a value of 1 or 2 for
+  DOV_BLOCK. If DOV_BLOCK=1 show Block 1 first (Q1-Q3). If DOV_BLOCK=2 show
+  Block 2 first (Q4-Q7)." Every respondent answers BOTH blocks; DOV_BLOCK only
+  controls which is shown first (and, per line 255, which pair of recall-check
+  items — Q8/Q9 vs Q10/Q11 — comes first). So this is two separate, fully
+  crossed vignette experiments asked of the same 2,036 respondents, each with
+  its own randomisation variable and its own outcome battery — the same shape
+  as `rpw4u` (ledger #5) and `a5v96` (ledger #30-32): one recipe per
+  sub-experiment. THIS FILE builds Block 1 (parental leave, Q1-Q3, Q8-Q9).
+  Block 2 (flexible scheduling) is `yv2ta_flexible_scheduling.yaml`.
+
+  The study title names exactly these two concerns: Block 1's manipulated
+  factor is the PAY LEVEL of the leave (a material/financial concern) crossed
+  with a stigma/social-norm MESSAGE (a cultural concern); Block 2 crosses
+  policy TYPE with the same message factor. This file is the material x
+  cultural design for the parental-leave vignette.
+
+
+  THE DESIGN — 3 (pay) x 5 (message) = 15 CELLS, ONE COMBINED VARIABLE.
+
+  Line 73: "SCRIPTER: Create DOV_TESS215P. Randomly assign each respondent a
+  value of 1-15, blocking by gender." Lines 77-125 are the lookup chart
+  ("Use below chart for DOV_TESS215P insert values for Display 1"), columns
+  XTESS215P / INSERT 1 / INSERT 2:
+
+    raw  INSERT 1 (pay_coverage)                                  INSERT 2 (social_message)
+     1   unpaid leave                                             more than 80% have used this policy (norm: high usage)
+     2   50% of usual pay                                         less than 10% have used this policy (norm: low usage)
+     3   100% of usual pay                                        manager says it may decrease promotion chances
+     4   unpaid leave                                             manager says it would NOT affect promotion chances
+     5   50% of usual pay                                         [NO INSERT] (no message)
+     6   100% of usual pay                                        more than 80% have used this policy
+     7   unpaid leave                                             less than 10% have used this policy
+     8   50% of usual pay                                         manager says it may decrease promotion chances
+     9   100% of usual pay                                        manager says it would NOT affect promotion chances
+    10   unpaid leave                                             [NO INSERT]
+    11   50% of usual pay                                         more than 80% have used this policy
+    12   100% of usual pay                                        less than 10% have used this policy
+    13   unpaid leave                                              manager says it may decrease promotion chances
+    14   50% of usual pay                                         manager says it would NOT affect promotion chances
+    15   100% of usual pay                                        [NO INSERT]
+
+  3 (unpaid/50%/100%) x 5 (high-usage/low-usage/decrease-warning/reassurance/
+  none) = 15, matching DOV_TESS215P's 15 values exactly. VERIFIED against the
+  .dta: DOV_TESS215P is 100% populated (n=2,036, no missing), 15 distinct
+  values, counts 121-152 (roughly even, consistent with the stated
+  gender-blocked randomisation). Both pay_coverage and social_message are
+  fully crossed (every one of the 15 combinations above is realised by exactly
+  one raw value, confirmed by eye against the chart) — this is NOT a case
+  needing `Condition.source_vars` (ledger #33): a single combined code already
+  exists.
+
+  CONDITION MAPPING — DECLARED (rule 2): condition_num = DOV_TESS215P - 1, the
+  chart's own row order (raw 1-15 -> condition_num 0-14). A convention, not a
+  fact (ledger #25) — chosen so the recipe reads straight down Appendix-style
+  against the chart above.
+
+
+  TEXT PROVENANCE.
+
+  Line 134 (shown as "Display 1" on the same page as Q1, line 130): "Please
+  imagine that the company where you work offers parental leave to all
+  employees following the birth or adoption of a child. The policy offers a
+  worker 12 weeks of [INSERT 1]. The parental leave policy has been in place
+  for more than a decade. [INSERT 2]." shared_context is the invariant prefix
+  up to "12 weeks of"; each arm's `text` is INSERT 1 verbatim + the fixed
+  "has been in place..." sentence + INSERT 2 verbatim (with its own trailing
+  full stop) where INSERT 2 is not "[NO INSERT]". For the five raw values
+  with "[NO INSERT]" (5, 10, 15), the second sentence is dropped entirely
+  rather than rendering an empty clause — confirmed this is also how
+  SocSci210 rendered its own no-message cells (their text ends "...more than a
+  decade." with nothing following). Nothing is added, reordered or
+  paraphrased; INSERT 1/2 strings are copied character for character from the
+  chart (trailing spaces in the source table are trimmed, which is whitespace
+  normalisation, not a word change).
+
+
+  OUTCOMES.
+
+  Q1 (line 141-142, scale instruction at line 139): "How likely would you be
+  to use this parental leave policy if you were to have a child?" — a 1-100
+  slider, "Very Unlikely" (1) to "Very Likely" (100).
+
+  Q2 (lines 146-154) is FOUR separate sliders under one stem ("If you were to
+  use this parental leave policy, to what extent would the following
+  possibilities be a concern for you?"), each its own .dta column (Q2_1..Q2_4)
+  and each a genuinely distinct sub-item (competence / commitment / financial
+  security / relationships), 1-100, "Not at all concerned" (1) to "Very
+  concerned" (100). Built as four outcomes, task_num 1-4, each outcome's
+  `question` joining the (verbatim) stem and the (verbatim) sub-item with a
+  colon — both halves are the source's own words, only the joining
+  punctuation is ours (the source itself separates them as "Q2_1: <text>" on
+  its own line under the shared stem).
+
+  Q3 (lines 159-162): "If you were to use this parental leave policy, how do
+  you think other people in your organization would see you in terms of
+  masculinity and femininity?" — 1-100, "Highly Feminine" (1) to "Highly
+  Masculine" (100).
+
+  Q8/Q9 (lines 258-276) are MANIPULATION-CHECK items, not attitude items: they
+  ask the respondent to recall which pay level (Q8) and which message, if any
+  (Q9), appeared in the vignette they just read. Built as nominal outcomes
+  (task_num 6, 7) because the options are an unordered set of possibilities,
+  enumerated verbatim in the question text, matching cug34's B01/B09
+  treatment of unordered choices. Both reference "the parental leave policy
+  scenario that you were presented with earlier" (line 259, 270) — this
+  points to the condition text that appears EARLIER IN THE SAME ROW (the
+  vignette always precedes the outcome in the rendered prompt), not to a
+  numbered position in a sequence of rows, so it is not the signpost pattern
+  QC rule 15 exists to catch (docs/CONVENTIONS.md, "Sequence signposting").
+
+  SOURCE INCONSISTENCY, reproduced rather than corrected (same class as
+  z358z's "any alternative treatments"/"alternative treatments", ledger
+  notes): Q9's own options (lines 272-275) are worded "...indicated that
+  USING THIS POLICY may decrease/would not affect..." — the BLOCK 2 phrasing
+  (compare INSERT 4, line 183/186) — whereas the actual Block-1 vignette
+  insert (lines 118-119/121-122 of the chart; INSERT 2 levels C/D above) says
+  "...indicated that TAKING THE FULL AMOUNT OF LEAVE may decrease/would not
+  affect...". A respondent who correctly remembers the vignette they read
+  would therefore be choosing between the vignette's own wording and a
+  recall-check option that paraphrases it slightly differently. This is the
+  source's own inconsistency (not ours), so Q9's options are transcribed
+  exactly as Q9 itself states them (lines 272-276), not rewritten to match the
+  vignette.
+
+  Q7 (lines 243-252, "which of the following policies have you used") is OUT
+  OF SCOPE: it is a general career-history question, asked identically of
+  every respondent regardless of which arm they saw, with no dependence on
+  the randomisation at all. Building it would pair a condition-independent
+  question with condition text that has nothing to do with it. Left out
+  rather than built, per "cannot determine a connection to this experiment
+  from source" — there isn't meant to be one.
+
+
+  RESPONSE CODING.
+
+  Q1, Q2_1-4, Q3 are continuous 1-100 sliders with no banding, so a single
+  identity map `response_recode: {1:1, ..., 100:100}` (generated, not
+  hand-typed) passes every value through unchanged — same device as cug34's
+  dollar boxes (ledger #53 is still open; this is the same workaround). -1
+  ("Refused") is the only code outside 1-100 observed on any of these items
+  and is dropped via `missing_codes`. Q8/Q9's own codes (1-4, 1-5) are already
+  covered by the same 1-100 identity map, so no extra recode is needed; -1
+  ("Refused") drops the same way. Verified against the .dta: Q1 has 46
+  refusals (of 2,036), Q2_1-4 have 0/2/6/8, Q3 has 15 — all well inside 1-100
+  otherwise. Q8 has 11 refusals (of 2,036), Q9 has 14.
+
+
+  SECOND-RANDOMISATION SWEEP (ledger rule 9, run by hand — see
+  `considered_and_rejected` below for the two genuine candidates, both
+  independently randomised and fully crossed with DOV_TESS215P, and both out
+  of scope for a documented reason rather than a missed one).
+
+
+  CROSSCHECK — WHAT SocSci210 ACTUALLY BUILT, measured directly against the
+  parquet (not inferred).
+
+  `fetch_socsci210('yv2ta')` returns n_rows=13,070, n_conditions=20,
+  condition_num running 0-23 (not 0-14/0-9 separately), with exactly four
+  indices absent: 4, 8, 13, 19 (and an implied 24th slot never reached — see
+  below). Reading their rendered stimulus text per condition shows they built
+  ONLY Q1 (every stimulus string ends "...and then were asked: 'How likely
+  would you be to use/utilize this policy...'"), under ONE combined index
+  spanning both blocks: condition_num 0-14 is this file's DOV_TESS215P-1 but
+  numbered in a DIFFERENT order (grouped pay-major/message-minor, i.e.
+  5*pay_idx + message_idx rather than this file's raw-1), and condition_num
+  15-23 is Block 2's DOV_TESS215F, offset by +15, also grouped
+  policy_idx-major (5*policy_idx + message_idx). Decoding their text against
+  the chart confirms their condition 0-14 message order is [high-usage,
+  low-usage, decrease-warning, reassurance, no-message] within each pay group.
+
+  Under that grouped index, the FOUR missing slots decode to raw DOV_TESS215P
+  values 10 (unpaid + no-message), 14 (50% + reassurance), 9 (100% +
+  reassurance) for this block, and raw DOV_TESS215F value 5 or 10 (job-sharing
+  or flex-schedule + no-message) for Block 2 — not one clean dropped factor
+  level, which would be a single repeated slot across all pay/policy groups.
+  Row-count arithmetic does not support "those three raw codes were dropped
+  outright" either: restricting to the other 12 raw codes and summing valid
+  Q1+Q2_1-4+Q3 responses gives totals that do not land on their reported
+  per-condition row counts (checked exhaustively; no subset of {Q1, Q2_1..4,
+  Q3} restricted to 12/15 or 15/15 raw codes reproduces their 508-608 range).
+  Some per-condition row counts also exceed 4x their own raw cell's
+  respondent count (e.g. their condition 9, decoded as raw 5, 123
+  respondents, 593 rows = 4.82x, versus ~3.95-4.0x for the arithmetic-clean
+  conditions), consistent with rows from a dropped cell having been folded
+  into a neighbouring one rather than discarded — but this is not proven
+  exhaustively, only observed as a consistent anomaly.
+
+  CONCLUSION: SocSci210's yv2ta reconstruction has an internal defect of its
+  own (missing/merged cells under a scope that also drops two of our three
+  attitude items and both manipulation checks), not merely a narrower scope.
+  `comparable_to_socsci210` is false for three independent reasons (fewer
+  outcomes, a different combined-index convention spanning two experiments,
+  and what looks like a genuine reconstruction bug on their side), so no
+  numeric assertion is made. This is reported as the crosscheck finding
+  rather than resolved further, per "treat it as an answer key, not a
+  specification" — reverse-engineering a third party's own bug exhaustively
+  is not this recipe's job.
+
+
+  OPEN QUESTIONS FOR THE CHECKER.
+
+  1. Scope: is including Q8/Q9 (manipulation checks) as nominal outcomes the
+     right call, or should a recall-accuracy item be left out of an attitude
+     dataset even though it is a real question with a real response?
+  2. The Q2_1-4 "stem: sub-item" question construction — acceptable, or should
+     it be flagged as the same class of liberty as cug34's "Report only the
+     amount for the Shared Account" addition (docs/CONVENTIONS.md, "One stem,
+     several labelled answer fields")? It differs in that nothing is ADDED
+     here (stem and sub-item are both verbatim, just joined), but worth a
+     second look.
+  3. Q9's options are transcribed as Q9 itself states them, which are the
+     wrong-policy's wording relative to the actual vignette the respondent
+     read for THIS block. Is reproducing the source's own inconsistency the
+     right call here, or should Q9 be left out given its options may
+     mislead a model reading the row?
+  4. The generated 1-100 identity `response_recode` (same workaround as
+     cug34's, ledger #53 is still open) — acceptable pending `Outcome.numeric`,
+     or should continuous sliders be left as debt instead?
+  5. DOV_TESS215F and DOV_BLOCK are declared `considered_and_rejected` below
+     because they are the companion experiment's own assignment and a display-
+     order variable respectively — agree, or is either actually part of this
+     experiment's scope?
+
+condition:
+  source_var: DOV_TESS215P
+  factors: [pay_coverage, social_message]
+
+  considered_and_rejected:
+    DOV_TESS215F: "The companion sub-experiment's OWN assignment variable (the 10-arm flexible-scheduling design, Q4-Q6/Q10-Q11). Independently randomised (line 166) and fully crossed with DOV_TESS215P, but it manipulates a different vignette entirely and governs different outcomes. Out of scope for this file; built separately as yv2ta_flexible_scheduling.yaml (experiment: flexible_scheduling)."
+    DOV_BLOCK: "Presentation-order variable only (line 69: which vignette block, and which pair of recall-check items, is shown first). Independently randomised and crossed with DOV_TESS215P, but it does not change this vignette's text, Q1-Q3's wording, or Q8/Q9's wording — it only reorders which block the respondent sees first. Not a content manipulation."
+
+  shared_context: >
+    Please imagine that the company where you work offers parental leave to all
+    employees following the birth or adoption of a child. The policy offers a
+    worker 12 weeks of
+
+  arms:
+    # DOV_TESS215P = 1: unpaid / high-usage norm
+    - raw: 1
+      condition_num: 0
+      factors: {pay_coverage: unpaid, social_message: high_usage_norm}
+      text: >-
+        unpaid leave. The parental leave policy has been in place for more than a
+        decade. Of the eligible workers within your organization, including
+        managers, more than 80% have used this policy over the past five years.
+    # DOV_TESS215P = 2: 50% pay / low-usage norm
+    - raw: 2
+      condition_num: 1
+      factors: {pay_coverage: half_pay, social_message: low_usage_norm}
+      text: >-
+        leave where the individual receives 50% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. Of the
+        eligible workers within your organization, including managers, less than
+        10% have used this policy over the past five years.
+    # DOV_TESS215P = 3: 100% pay / promotion-risk warning
+    - raw: 3
+      condition_num: 2
+      factors: {pay_coverage: full_pay, social_message: promotion_risk_warning}
+      text: >-
+        leave where the individual receives 100% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. However,
+        your manager recently indicated that taking the full amount of leave may
+        decrease your chances of being promoted.
+    # DOV_TESS215P = 4: unpaid / promotion reassurance
+    - raw: 4
+      condition_num: 3
+      factors: {pay_coverage: unpaid, social_message: promotion_reassurance}
+      text: >-
+        unpaid leave. The parental leave policy has been in place for more than a
+        decade. In addition, your manager recently indicated that taking the full
+        amount of leave would not affect your chances of being promoted.
+    # DOV_TESS215P = 5: 50% pay / no message
+    - raw: 5
+      condition_num: 4
+      factors: {pay_coverage: half_pay, social_message: no_message}
+      text: >-
+        leave where the individual receives 50% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade.
+    # DOV_TESS215P = 6: 100% pay / high-usage norm
+    - raw: 6
+      condition_num: 5
+      factors: {pay_coverage: full_pay, social_message: high_usage_norm}
+      text: >-
+        leave where the individual receives 100% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. Of the
+        eligible workers within your organization, including managers, more than
+        80% have used this policy over the past five years.
+    # DOV_TESS215P = 7: unpaid / low-usage norm
+    - raw: 7
+      condition_num: 6
+      factors: {pay_coverage: unpaid, social_message: low_usage_norm}
+      text: >-
+        unpaid leave. The parental leave policy has been in place for more than a
+        decade. Of the eligible workers within your organization, including
+        managers, less than 10% have used this policy over the past five years.
+    # DOV_TESS215P = 8: 50% pay / promotion-risk warning
+    - raw: 8
+      condition_num: 7
+      factors: {pay_coverage: half_pay, social_message: promotion_risk_warning}
+      text: >-
+        leave where the individual receives 50% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. However,
+        your manager recently indicated that taking the full amount of leave may
+        decrease your chances of being promoted.
+    # DOV_TESS215P = 9: 100% pay / promotion reassurance
+    - raw: 9
+      condition_num: 8
+      factors: {pay_coverage: full_pay, social_message: promotion_reassurance}
+      text: >-
+        leave where the individual receives 100% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. In
+        addition, your manager recently indicated that taking the full amount of
+        leave would not affect your chances of being promoted.
+    # DOV_TESS215P = 10: unpaid / no message
+    - raw: 10
+      condition_num: 9
+      factors: {pay_coverage: unpaid, social_message: no_message}
+      text: >-
+        unpaid leave. The parental leave policy has been in place for more than a
+        decade.
+    # DOV_TESS215P = 11: 50% pay / high-usage norm
+    - raw: 11
+      condition_num: 10
+      factors: {pay_coverage: half_pay, social_message: high_usage_norm}
+      text: >-
+        leave where the individual receives 50% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. Of the
+        eligible workers within your organization, including managers, more than
+        80% have used this policy over the past five years.
+    # DOV_TESS215P = 12: 100% pay / low-usage norm
+    - raw: 12
+      condition_num: 11
+      factors: {pay_coverage: full_pay, social_message: low_usage_norm}
+      text: >-
+        leave where the individual receives 100% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. Of the
+        eligible workers within your organization, including managers, less than
+        10% have used this policy over the past five years.
+    # DOV_TESS215P = 13: unpaid / promotion-risk warning
+    - raw: 13
+      condition_num: 12
+      factors: {pay_coverage: unpaid, social_message: promotion_risk_warning}
+      text: >-
+        unpaid leave. The parental leave policy has been in place for more than a
+        decade. However, your manager recently indicated that taking the full
+        amount of leave may decrease your chances of being promoted.
+    # DOV_TESS215P = 14: 50% pay / promotion reassurance
+    - raw: 14
+      condition_num: 13
+      factors: {pay_coverage: half_pay, social_message: promotion_reassurance}
+      text: >-
+        leave where the individual receives 50% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade. In
+        addition, your manager recently indicated that taking the full amount of
+        leave would not affect your chances of being promoted.
+    # DOV_TESS215P = 15: 100% pay / no message
+    - raw: 15
+      condition_num: 14
+      factors: {pay_coverage: full_pay, social_message: no_message}
+      text: >-
+        leave where the individual receives 100% of his or her usual pay. The
+        parental leave policy has been in place for more than a decade.
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: >-
+      How likely would you be to use this parental leave policy if you were to
+      have a child?
+    scale: {min: 1, max: 100, min_label: "Very Unlikely", max_label: "Very Likely"}
+  - var: Q2_1
+    task_num: 1
+    question: >-
+      If you were to use this parental leave policy, to what extent would the
+      following possibility be a concern for you: "Other people in my
+      organization may see me as a less competent worker."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q2_2
+    task_num: 2
+    question: >-
+      If you were to use this parental leave policy, to what extent would the
+      following possibility be a concern for you: "Other people in my
+      organization may see me as a less committed worker."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q2_3
+    task_num: 3
+    question: >-
+      If you were to use this parental leave policy, to what extent would the
+      following possibility be a concern for you: "My financial security may
+      be at risk."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q2_4
+    task_num: 4
+    question: >-
+      If you were to use this parental leave policy, to what extent would the
+      following possibility be a concern for you: "My relationships with
+      managers, co-workers, customers, or clients may be harmed."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q3
+    task_num: 5
+    question: >-
+      If you were to use this parental leave policy, how do you think other
+      people in your organization would see you in terms of masculinity and
+      femininity?
+    scale: {min: 1, max: 100, min_label: "Highly Feminine", max_label: "Highly Masculine"}
+  # Q8/Q9 (parental leave) and Q10/Q11 (scheduling) are NOT built. They are
+  # post-vignette RECALL CHECKS — "thinking back to the scenario, how much of
+  # your pay was covered?" — which researchers use to spot respondents who
+  # skim-read. They are real answers from real people, but they measure whether
+  # someone read the stimulus, not how they behave: the answer is recoverable
+  # from the condition text alone, so a model would score highly on them while
+  # learning nothing about behaviour, and any evaluation including them would
+  # read better than it deserves. Excluded by project ruling, 2026-10-01; see
+  # docs/CONVENTIONS.md, "Attention and recall checks are not outcomes".
+  # Cost: 4,047 rows here, 4,045 in the scheduling recipe.
+# 1-100 identity passthrough, generated (not hand-typed) — every slider value
+# maps to itself; also covers Q8 (1-4) and Q9 (1-5) unchanged. -1 ("Refused")
+# is the only out-of-range code observed on any of these items.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+missing_codes: [-1]
+
+# Sentinel codes carrying no answer, taken from the .dta's OWN value labels
+# (which differ from the questionnaire text's stated codes, e.g. XIDEO's
+# "Missing" sentinel is documented as 9 in the sample-variables list at line
+# 15 but is actually coded 8 in the data; the .dta's own labels are the
+# authority — same ruling as z358z's option-order proof).
+persona_missing:
+  XIDEO: [8]
+  XREL1: [14]
+  XREL2: [7]
+  pppa_lgb: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1
+  # Panel profile variables carried on the file, not part of the manipulation.
+  religious_attendance: XREL2
+  sexual_orientation: pppa_lgb
+  household_head: PPHHHEAD

@@ -150,7 +150,12 @@ A source is done only when **all** of these hold:
    consistent, every response in range, persona fields mapped.
 3. Checked against an independent reference where one exists (published
    numbers, another build of the same data). Where none exists, say so.
-4. Tests added and passing.
+4. Tests added and passing. For a **source**, its recipe plus QC plus the
+   independent crosscheck *are* its tests: all three are executable, all three
+   re-run on every build, and the recipe is a reviewable text file. Unit tests
+   belong to the **pipeline**, which is the part with branches. Adding a rule or
+   changing shared code means adding a test for it, and mutation-testing that
+   test. (Ruled 2026-10-01.)
 5. Source, licence and provenance recorded.
 
 "The code runs and produces rows" is **not** done.

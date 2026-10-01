@@ -1,0 +1,375 @@
+study_id: 5hqan
+source: tess
+title: "Gender Identity and Diversity"
+data_file: "TESS3_176 Saperstein_Client.sav"
+
+# SocSci210 reports 6,409 rows for this study; ours is 6,411 (see CROSSCHECK in
+# notes — the 2-row gap is a traceable judgement, not an unexplained mismatch).
+comparable_to_socsci210: true
+
+notes: |-
+  TESS3 176 (Saperstein, Northwestern), "Gender Identity and Diversity", fielded
+  by GfK KnowledgePanel 12/12/14-12/29/14. N completed = N qualified completes =
+  2,144 (exact match to "TESS3 176 - Saperstein Response Rate Report.txt":
+  "N Completed 2,144" / "N Qualified Completes 2,144" / completion rate 64.4%).
+  The .sav itself, TESS3_176 Saperstein_Client.sav, has exactly 2,144 rows.
+
+
+  THE TRAP — A COMBINED THREE-STUDY INSTRUMENT, AND WHERE SAPERSTEIN'S BLOCK IS
+
+  The only questionnaire file in data/raw/5hqan is
+  "TESS3 173 175 176- Kalla Nayak Saperstein_Quex_FINAL.txt" (947 lines), which
+  is explicitly a combined instrument for THREE unrelated studies fielded in one
+  omnibus wave and rotated by `dov_order` (line 46-57: "[Randomize and record
+  order of tess173 quex, tess175 quex, and tess 176]", 4 possible orderings).
+  Each study's block is headed by its own "XTESS ###" marker:
+
+    line 67   "XTESS 173"   — Kalla (candidate-resume conjoint; city council /
+                               Congress / governor)
+    line 320  "XTESS 175"   — Nayak (learning-healthcare-system consent; this
+                               project's OWN z358z recipe already established
+                               this exact boundary: "line 320 is the 'XTESS 175'
+                               heading, line 713 the 'XTESS 176' heading, and
+                               lines 710-712 are blank" — read independently
+                               here and confirmed identical)
+    line 713  "XTESS 176"   — SAPERSTEIN. This recipe's scope: lines 713-764
+                               only (the module ends at line 764; lines 765 is
+                               a blank separator before the shared "PARTY7"
+                               backfill section at line 766).
+    line 766+ "PARTY7" / "IDEOLOGY" / "RELIGION1" / "RELIGION2" — NOT part of
+                               any one study. These re-ask party/ideology/
+                               religion of respondents whose panel profile
+                               (XPARTY7/XIDEO/XREL1/XREL2, defined once in the
+                               "Samvar" header block at lines 20-31) came back
+                               missing. They are shared across all three
+                               studies, which is why they sit after all three
+                               XTESS blocks rather than inside Saperstein's.
+
+  Confirmed independently (not inferred from z358z's note): read the full
+  947-line file end to end. "XTESS 176" appears exactly once (line 713); the
+  text from 713 to 764 is self-contained (a 3-question module with its own
+  randomisation logic and no reference to city councils, Congress, drug trials,
+  or blood pressure — the other two studies' subject matter); nothing from
+  lines 67-712 (Kalla/Nayak) or 766-942 (shared backfill) concerns sex, gender,
+  or transgender identity.
+
+  DECISIVE CONFIRMATION — the delivered .sav IS ALREADY SCOPED to this study
+  alone. TESS3_176 Saperstein_Client.sav has 38 columns and NONE of them are
+  `dov_order`, `XTESS175`, `DOV_COND`, `DOV_OPTION`, or any other
+  Kalla/Nayak-specific variable — those live only in the OTHER two studies'
+  client files (z358z's is literally named "TESS3_175 Nayak_Client.sav"). So
+  the trap the brief warns about (pulling wording or a randomisation variable
+  from a neighbouring study's block) is not just avoided by reading line
+  numbers; it is structurally impossible here, because this deposit's own data
+  file only carries Saperstein's columns plus the panel-profile covariates
+  shared by the whole omnibus (XPARTY7/XIDEO/XREL1/XREL2 — see PERSONA below).
+  I checked anyway, by reading 713-764 end to end, because "the file can't
+  contain it" is exactly the kind of reasoning that goes unchecked.
+
+
+  THE DESIGN (questionnaire lines 713-734)
+
+  "This short study module will test the feasibility of asking alternative
+  measures of sex and gender in nationally representative surveys. Question
+  order for the first two items will be randomized to identify an optimal
+  presentation for future data collection that minimizes false positives and
+  false negatives for transgender or gender variant respondents. The third item
+  will be displayed the same way to everyone. No special stimulus or
+  sub-sampling is needed." (lines 715-720)
+
+  Three questions, asked of every respondent:
+    Q1  "What sex were you assigned at birth? (For example, on your birth
+         certificate.)"                    Female=1 / Male=2 / Intersex=3
+    Q2  "What is your current gender?"     Woman=1 / Man=2 / Transgender=3 /
+                                            "A gender not listed here (please
+                                            specify)"=4
+    Q3  "Some people consider themselves transgender if they have a different
+         gender identity from their sex at birth. For example, a person born
+         into a male body who feels female or lives as a woman. According to
+         this definition, would you be considered transgender?"  Yes=1 / No=2
+
+  THE MANIPULATION is the PRESENTATION ORDER of Q1 and Q2 (Q3 always comes
+  third, line 719 "The third item will be displayed the same way to everyone"
+  — confirmed: DOV_RAND has only 2 levels, both placing Q3 last). Lines 725-732:
+
+    "DOV_RAND: logic: randomly assign respondents to see the questions in the
+    following order. if DOV_rand=1 see questions in the order of q1, q2, q3;
+    if DOV_rand=2 see questions in the order of q2, q1, q3.
+    Q1, Q2, Q3   1
+    Q2, Q1, Q3   2"
+
+  Value labels in the .sav match exactly: DOV_RAND {1.0: 'Q1, Q2, Q3', 2.0:
+  'Q2, Q1, Q3'}. No combined-code third variable exists or is needed —
+  `source_var: DOV_RAND` is the whole assignment. Counts: 1,114 (order 1) /
+  1,030 (order 2), sum 2,144, balance 1030/1114=0.92 — consistent with simple
+  random assignment, not a quota.
+
+  Line 734: "[programming note: please disable the back function, respondents
+  should not be able to return to the previous screen to change the answer.]"
+  — a scripting/anti-backtrack instruction, not content. Not rendered.
+
+
+  ARM TEXT — DESCRIPTION, NOT TRANSCRIPTION (same exception as `evnyh`)
+
+  The questionnaire contains NO respondent-facing sentence announcing item
+  order; `DOV_RAND`'s branching is pure survey-engine scripting (an
+  `[if dov_rand=1, show Q1, Q2, Q3]` instruction), exactly like the
+  vertical/horizontal layout `evnyh` found no words for. Per
+  docs/CONVENTIONS.md's "Never invent stimulus text" exception, the two arms
+  below carry one clause of PLAIN DESCRIPTION of the order actually
+  experienced — not transcribed stimulus, and flagged as such. The two
+  question strings quoted inside each clause ARE verbatim source text (Q1's
+  and Q2's own stems); only the framing sentence around them is ours. Dropping
+  the order factor entirely was considered and rejected: it is the one thing
+  this module was fielded to test (lines 716-718, "to identify an optimal
+  presentation... that minimizes false positives and false negatives"), so
+  omitting it would misrepresent a feasibility study as having no manipulation
+  at all.
+
+  The clause names which of the two items came first and is true for every row
+  built under that arm (all three outcomes, since the order is a property of
+  the whole module a respondent experienced, not of one item). It does not cite
+  any row's own position in a sequence ("the 2nd of 3 questions") — banned by
+  CONVENTIONS.md's sequence-signposting rule — it reports which of two NAMED,
+  verbatim-quoted questions preceded the other, exactly as `evnyh` reports
+  which named option came first on screen.
+
+
+  CONDITION MAPPING — DECLARED (recipe rule 2)
+
+    raw 1 (DOV_RAND=1, "Q1, Q2, Q3") -> condition_num 0
+    raw 2 (DOV_RAND=2, "Q2, Q1, Q3") -> condition_num 1
+
+  Direct, unpermuted mapping of the .sav's own value-label order. No inference.
+
+
+  SECOND-RANDOMISATION CHECK (ledger #33 / rule 9)
+
+  The client file's 38 columns were checked by hand against rule 9's own
+  criteria (name matches DOV/XTESS/X[A-Z]{2,}, or label matches
+  random/experim/condition/assign/version/preload/order/arm; 2-12 levels;
+  >=95% coverage; marginal balance >=0.70; fully crossed with DOV_RAND):
+
+    XPARTY7  7 levels, balance 88/410 = 0.21   -> fails balance
+    XIDEO    8 levels incl. -1, balance 16/791 = 0.02 -> fails balance
+    XREL1    14 levels incl. -1               -> exceeds the 12-level cap
+    XREL2    7 levels incl. -1, balance 8/554 = 0.01  -> fails balance
+
+  All four are the Samvar panel-PROFILE variables (defined once at lines 20-31,
+  shared by the whole omnibus, same family dh3nj/z358z/9263n/evnyh already map
+  as persona) — not a second experimental factor, and they fail rule 9's own
+  numeric gates regardless. No `considered_and_rejected` entry is needed for
+  them (verified they do not actually trigger the screen; see QC OUTPUT below),
+  but the check is recorded here rather than left implicit, per the brief's
+  instruction that a three-study combined instrument is exactly where rule 9
+  would otherwise flag a neighbouring study's randomisation variable. In this
+  deposit that risk doesn't materialise because the client .sav was already
+  delivered pre-scoped to Saperstein alone (see THE TRAP, above) — Kalla's
+  `DOV_COND` and Nayak's `XTESS175`/`DOV_OPTION` are not columns in this file
+  at all, so there is nothing of theirs here to mistake for ours.
+
+  Rule 11 (numbered siblings): `DOV_RAND` ends in letters, not digits, so the
+  stem pattern never matches it; no sibling family, no suspects.
+
+
+  OUTCOMES — THREE ITEMS, ALL NOMINAL
+
+  Q1 (task 0), Q2 (task 1), Q3 (task 2) are each an unordered identity
+  category, not a scale — there is no magnitude dimension along which "Male"
+  sits between "Female" and "Intersex", or "No" sits below "Yes". All three
+  therefore use `scale.nominal: true` (recipe.py's own worked case for this is
+  `cug34`'s B01/B09). The options are enumerated in each outcome's `question`
+  text, verbatim from the .sav's own value labels, as the nominal convention
+  requires in place of endpoint labels. Q2's code-4 enumeration drops the
+  scripting artefact "[text box]" (a layout instruction, not a respondent-
+  facing word — same kind of removal `strip_scripting` in sources/quex.py
+  performs) and keeps the fielded option label "A gender not listed here
+  (please specify)" verbatim otherwise.
+
+  Q3's question text includes its full definitional preamble ("Some people
+  consider themselves transgender if they have a different gender identity
+  from their sex at birth. For example...") rather than only the final
+  interrogative clause, because the definition is load-bearing: "would you be
+  considered transgender?" is unanswerable without it, and SocSci210's own
+  reconstructions have been found in this project's audits to drop exactly
+  this kind of framing (ledger: `sd7cf`, `c5r2f`).
+
+  Q2_TEXT (the free-text write-in for code 4, "A gender not listed here") is
+  NOT built: only 2 of 2,144 respondents used it ("human", "cat"), and the row
+  schema has no field for a write-in string attached to a categorical outcome.
+  Code 4 itself IS kept as a response value (see RESPONSE CODING below) — only
+  the verbatim write-in text is left out. This is a documented debt, not a
+  silent loss.
+
+
+  RESPONSE CODING — IDENTITY MAP, CODE 4 KEPT (not treated as missing)
+
+  `response_recode: {1:1, 2:2, 3:3, 4:4}`, `missing_codes: [-1]` ("Refused" in
+  all three items' own value labels). All three items share one map because
+  codes 1-4 already mean the same canonical thing the .sav says they mean;
+  nothing is reversed or rescaled.
+
+  Measured, all three items: Q1 valid=2,137 missing(-1)=7; Q2 valid=2,137
+  missing(-1)=7; Q3 valid=2,137 missing(-1)=7 (n=2,144 each). No other sentinel
+  code (e.g. 98/99) occurs on any of the three.
+
+  Deliberately KEPT: Q2 code 4 ("a gender not listed here") is a genuine
+  fielded answer category, not a non-response — dropping it would violate
+  "never impute missing responses... absent stays absent" in reverse, by
+  treating a real answer as absent. 2 respondents used it.
+
+
+  ROW ARITHMETIC
+
+    2,144 respondents x 3 items = 6,432 potential rows
+    minus 7 + 7 + 7 = 21 refusals (code -1)
+    = 6,411 rows.
+
+
+  CROSSCHECK WITH SocSci210 — 6,411 vs their 6,409 (diff = 2)
+
+  comparable_to_socsci210: true (same scope: 3 items, same respondents). The
+  2-row gap is exactly accounted for: it equals the 2 respondents who answered
+  Q2 with code 4 ("a gender not listed here"). If SocSci210 treated that
+  write-in category as a non-response (plausible — it IS an open-ended
+  "please specify" option, the same shape of item this project's own
+  `evnyh`/`cug34` recipes flag as needing care), their 6,409 = our 6,411 minus
+  those 2 rows exactly. We keep the 2 rows because code 4 is a real, fielded,
+  non-refusal answer (see RESPONSE CODING). This is a judgement, stated as
+  one, not an unexplained discrepancy — and it is the kind of difference
+  `docs/CONVENTIONS.md` and `CLAUDE.md` both expect to find in a reference
+  reconstruction (numbers nearly always right, detail sometimes dropped),
+  rather than a bug in this build.
+
+  Condition split: our 1,114 (order 1) / 1,030 (order 2) respondents are a
+  straight read of DOV_RAND's own counts; I did not attempt to re-derive
+  SocSci210's per-condition breakdown since they report participants/rows
+  only, not condition splits, for this study in the audited archive docs.
+
+
+  PERSONA
+
+  GfK KnowledgePanel naming (PP-prefixed), matching the standard set already
+  established for every other recipe built from this panel family
+  (dh3nj/z358z/9263n/evnyh/cug34/a5v96/7jt2f/c5r2f): age, gender, education,
+  ethnicity, income, marital_status, employment, region, household_size,
+  housing_type, housing_ownership, urban_rural, internet_access. All 13 are
+  present with zero refused/not-asked codes in this file (checked: no negative
+  values on any PP* column across all 2,144 rows).
+
+  Four additional panel-PROFILE measures from the Samvar header (lines 20-31,
+  shared by the whole omnibus, not Saperstein-specific but recorded for every
+  Saperstein respondent): party_id (XPARTY7, 0 refused in this file), ideology
+  (XIDEO, 16 refused), religion (XREL1, 12 refused), religious_attendance
+  (XREL2, 8 refused). `persona_missing` suppresses the -1 "Refused" sentinel
+  for all four (QC rule 12) rather than rendering it as a label.
+
+  NOT mapped: `PPGENDER` (the panel's own binary profile Male/Female
+  attribute) IS mapped, deliberately, even though this study's own outcomes
+  (Q1/Q2/Q3) ask about sex and gender directly and may disagree with it for
+  some respondents — that disagreement is not a data error, it is close to
+  the point of fielding this module (line 717-718: "minimizes false positives
+  and false negatives for transgender or gender variant respondents"). Per the
+  row contract, persona is "who is responding... as recorded in the source",
+  and PPGENDER is the source's own independently-recorded panel attribute,
+  mapped identically in every sibling recipe from this panel. The thing being
+  judged (Q1/Q2/Q3) is never part of the persona (CLAUDE.md), and PPGENDER
+  is not derived from or corrected against Q1/Q2/Q3 — it is KnowledgePanel's
+  pre-existing profile value, present before this respondent ever saw this
+  study.
+
+  `Q2_Text` is not a persona field (it is the free-text component of an
+  OUTCOME, not an attribute of the respondent collected independently of the
+  stimulus) and is handled under OUTCOMES above.
+
+condition:
+  source_var: DOV_RAND
+  factors: [question_order]
+  shared_context: >-
+    This part of the survey asked you about sex and gender.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors:
+        question_order: "sex_at_birth_first"
+      # DESCRIPTION of the order experienced, not transcribed stimulus text —
+      # see "ARM TEXT" in notes. The two quoted question stems are verbatim.
+      text: >-
+        You were asked "What sex were you assigned at birth?" before you were
+        asked "What is your current gender?". The question about whether you
+        would be considered transgender came after both, in the same position
+        regardless of condition.
+    - raw: 2
+      condition_num: 1
+      factors:
+        question_order: "current_gender_first"
+      text: >-
+        You were asked "What is your current gender?" before you were asked
+        "What sex were you assigned at birth?". The question about whether you
+        would be considered transgender came after both, in the same position
+        regardless of condition.
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: >-
+      What sex were you assigned at birth? (For example, on your birth
+      certificate.) Options: 1 = Female, 2 = Male, 3 = Intersex.
+    scale:
+      min: 1
+      max: 3
+      nominal: true
+  - var: Q2
+    task_num: 1
+    question: >-
+      What is your current gender? Options: 1 = Woman, 2 = Man,
+      3 = Transgender, 4 = A gender not listed here (please specify).
+    scale:
+      min: 1
+      max: 4
+      nominal: true
+  - var: Q3
+    task_num: 2
+    question: >-
+      Some people consider themselves transgender if they have a different
+      gender identity from their sex at birth. For example, a person born
+      into a male body who feels female or lives as a woman. According to
+      this definition, would you be considered transgender? Options: 1 = Yes,
+      2 = No.
+    scale:
+      min: 1
+      max: 2
+      nominal: true
+
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+missing_codes:
+  - -1
+
+persona_missing:
+  XPARTY7: [-1]
+  XIDEO: [-1]
+  XREL1: [-1]
+  XREL2: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2

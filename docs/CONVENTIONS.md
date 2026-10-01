@@ -149,3 +149,40 @@ rather than transcription.
   otherwise flag them, in `condition.considered_and_rejected` with a reason. A
   recorded reason must be *accurate*, not merely present — a wrong reason is
   worse than none, because it closes the question.
+
+## Narrating what the respondent did
+
+A manipulation delivered across several screens — a writing task, then a passage
+to read — has to become ONE condition string, and the join has to be written by
+us. That is permitted, under three conditions, all required:
+
+- it narrates **what the respondent did**, never what they were shown;
+- it is **true for everyone in that arm**, with no numbers and no sequence
+  position (see **Sequence signposting**);
+- `notes` records the added words verbatim and says they were added.
+
+`a42yg` is the worked example: *"You first completed a short writing task, and
+then read a passage..."*, then the values list and the writing prompt both
+verbatim, joined by *"You then selected a value and were asked:"*. Every other
+word is the instrument's.
+
+This is narrower than it looks. The alternative was either to drop the
+self-affirmation factor from the text — which QC rule 5 correctly fails as a
+declared factor that does not express — or to present a two-screen task as one
+undifferentiated block, which would be less true, not more.
+
+## Attention and recall checks are not outcomes
+
+**Do not build post-stimulus recall or attention checks as outcomes.** "Thinking
+back to the policy you were shown, how much of your pay was covered?" is a check
+on whether the respondent read the screen, not a measure of how they behave.
+
+They are genuine answers from real people, so excluding them is a judgement
+about what this dataset is for, not about data quality. The reason: the answer is
+recoverable from the condition text alone, so a model would score highly on them
+while learning nothing about behaviour — and any evaluation that included them
+would read better than it deserves. A dataset whose headline number is inflated
+by comprehension items is worse than a smaller honest one.
+
+Record the exclusion and its row cost in `notes`. `yv2ta` cost 8,092 rows across
+its two recipes.

@@ -195,6 +195,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 response_num=float(response),
                 condition_num=arm.condition_num,
                 task_num=outcome.task_num,
+                factors=dict(arm.factors),
                 source=recipe.source,
                 study_id=recipe.study_id,
                 experiment=recipe.experiment,

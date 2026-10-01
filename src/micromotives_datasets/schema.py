@@ -68,6 +68,18 @@ class Row(BaseModel):
     response_num: float | None = Field(
         default=None, description="Numeric response, when the answer is a scale/choice code."
     )
+    factors: dict[str, str] = Field(
+        default_factory=dict,
+        description="The design factor levels this row's arm expressed, e.g. "
+        "{privacy_statement: plain, monetary_incentive: unconditional_20}. "
+        "CLAUDE.md requires that what varies within a condition be kept as "
+        "structured metadata and not only in prompt text; without this a "
+        "consumer cannot select the rows where the privacy wording was plain "
+        "except by parsing the condition string. Every study here declares "
+        "factors and QC rule 5 already checks each one is expressed in the "
+        "text, so this carries through what the recipe already knows. Empty "
+        "for a source whose arms are not factorial.",
+    )
 
     # --- optional generative target ---------------------------------------
     quote: str | None = Field(

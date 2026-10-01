@@ -1,0 +1,556 @@
+study_id: a42yg
+source: tess
+title: "Conflict between curative and palliative goals among health care personnel: Elucidating psychological processes and resolving conflict through self-affirmation"
+data_file: "TESS220_Orehek_Ferrer_Client.sav"
+
+# SocSci210 built the same 4 arms (XTESS220) and the same 17 fielded measures,
+# but rendered only the conflict/fusion framing text and DROPPED the
+# self-affirmation factor from the stimulus entirely — their 4 "conditions"
+# render only 2 distinct strings (see notes, "SOCSCI210 DISAGREEMENT"). We
+# also build 16 of their 17 outcomes (Q1, the image-selection item, is
+# excluded — see "Q1 EXCLUDED"). Both differences change the row/response
+# totals, so a numeric crosscheck would not be apples-to-apples; it is
+# switched off and the arithmetic is reconciled by hand below instead.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS3 220 (Orehek & Ferrer, University of Pittsburgh / GfK KnowledgePanel),
+  fielded 27 Jun - 29 Jul 2016, N=503 health care personnel (screened to
+  JOB=11 Medical Doctor / 12 Other Health Care Practitioner / 13 Health
+  Technologist or Technician / 14 Health Care Support; see questionnaire line
+  187). Line numbers below are 1-based into
+  "310.209.01014.1_TESS3 220 – Orehek & Ferrer_FINAL.txt", the fielded
+  questionnaire. The proposal (Ferrer825.pdf) was consulted ONLY to confirm
+  that Q1's images carry no recoverable text (see below) and is not used for
+  any wording.
+
+
+  THE DESIGN - ONE RANDOMISED FACTORIAL VARIABLE, XTESS220, 2x2
+
+  Line 14 (SAMPLE VARIABLES): "XTESS220  1=Self-Affirmation/Conflict;
+  2=Self-Affirmation/Fusion; 3=No-Affirmation/Conflict; 4=No-Affirmation/Fusion".
+  This single 4-level variable *is* the 2 (self-affirmation present/absent) x 2
+  (conflict/fusion framing) design; there is no separate combined-assignment
+  variable to reconcile against it (unlike zaqkm/z358z). Confirmed against the
+  .sav: XTESS220 is populated for all 503 respondents, 4 levels, counts
+  115/124/137/127 (raw 1/2/3/4), matching a roughly-equal-cells 2x2.
+
+  FACTOR 1 - SELF-AFFIRMATION (the study's headline manipulation, "resolving
+  conflict through self-affirmation" in the title). Base "If XTESS220=1 OR 2"
+  (line 194, SA1) routes respondents to a VALUES self-affirmation task; base
+  "If XTESS220=3 OR 4" (line 228, NA1) routes them to a daily-routines control
+  task. Confirmed this is a real, balanced, fully-crossed randomised factor —
+  it is not a label on an order variable (ledger #30's failure mode): SA1/SA2
+  are only shown to raw 1-2 (n=239) and NA1 only to raw 3-4 (n=264), and the
+  .sav's own SA1/SA2/NA1 non-null patterns confirm the branching exactly.
+
+    SA1 [S] (line 194-218): "In this study we are interested in investigating
+    values. By values we mean the moral principles and standards by which
+    people try to live their lives. For example, honesty might be a core value
+    for some people. That is, they may try to be honest in all they do when
+    dealing with other people. Please look at the list of values below, and
+    check the one that is most important to you." followed by a 20-item list
+    (Artistic skills ... Trustworthiness, or Other).
+    SA2 [O] (line 225-226): "Please type a statement about why this value is
+    important to you. Take a few minutes to think about this value and how
+    this value has influenced your past behaviors or attitudes. Please write
+    about how you use this value in your everyday life – at work, at home,
+    with friends, or in dealing with strangers. If you can, try to recall and
+    write about specific occasions on which this value determined what you
+    did."
+    NA1 [O] (line 233-234, control task): "In this study we are interested in
+    investigating daily routines. By routines we mean the types of activities
+    that you normally do in a given day. Take a few minutes to think about the
+    activities you regularly engage in. Then, please type a statement about
+    your daily routine."
+
+  The specific value the respondent picked (SA1) and what they wrote (SA2/NA1,
+  open text) are the respondent's OWN output, not a fixed stimulus, so they are
+  not rendered into arm text (and SA2/NA1 contain no bounded response scale to
+  build as an outcome either). What IS fixed and identical for everyone in the
+  arm is the task INSTRUCTION, which is what the arm text below transcribes.
+
+  FACTOR 2 - CONFLICT/FUSION FRAMING of the palliative-curative relationship.
+  Base "If XTESS220=1 OR 3" (line 245, GC1, CONFLICT framing); base "If
+  XTESS220=2 OR 4" (line 251, GF1, FUSION framing). Both begin with the
+  identical sentence "Palliative care is defined as an approach designed to
+  treat pain, manage physical symptoms/ treatment side effects, and provide
+  psychosocial support that improves the quality of life of patients and their
+  families." (verbatim in both, lines 249 and 255) and then diverge:
+
+    GC1 (line 249, conflict): "However, barriers to integrating palliative
+    care are many, and include important conflicts between integrating
+    palliative and curative treatment, including medical training that
+    prioritizes curative care no matter the cost, an incentive and payment
+    structure weighted toward curative treatment, and a medical system that
+    constrains time medical personnel with patients."
+    GF1 (line 255, fusion): "A growing number of medical organizations endorse
+    the integration of palliative care into the entire care continuum of
+    patients with advanced disease or significant symptom burden. Although
+    there are barriers to optimal integration of palliative care, a mounting
+    body of evidence shows that it can actually contribute to the benefits of
+    curative care. For example, several recent studies have demonstrated that
+    early palliative care can extend length of life among terminal cancer
+    patients."
+
+  Because the shared "Palliative care is defined..." sentence sits MID-text
+  (after the self-affirmation/control task, not at the very start of the
+  arm), it cannot be hoisted into `shared_context` (which is a true prefix) and
+  is instead repeated verbatim in all 4 arms, as cug34 repeats one sentence 24
+  times for the same reason.
+
+  CONDITION MAPPING (declared, rule 2): condition_num = raw - 1. Arm raw=1 ->
+  cond 0 (Self-Affirmation/Conflict), raw=2 -> cond 1 (Self-Affirmation/Fusion),
+  raw=3 -> cond 2 (No-Affirmation/Conflict), raw=4 -> cond 3 (No-Affirmation/
+  Fusion). This is our own numbering (not SocSci210's); see "SOCSCI210
+  DISAGREEMENT" below for how the two orderings relate.
+
+  SHARED_CONTEXT is our own one-sentence second-person framing (house style,
+  as in a5v96/zaqkm), not source text: "You first completed a short writing
+  task, and then read a passage about palliative and curative care before
+  answering questions about both. For the writing task, you read:" — this
+  prefix is identical for all 4 arms (it says what kind of task, not which
+  one), and "For the writing task, you read:" is literally common to all 4
+  before either SA1 or NA1 follows.
+
+  QC RULE 5 (minimal pairs), checked by hand: self_affirmation's minimal pair
+  is (cond0, cond2) and (cond1, cond3) - same framing text, differing only in
+  the SA1/SA2-vs-NA1 block - and framing's minimal pair is (cond0, cond1) and
+  (cond2, cond3) - same writing-task text, differing only in GC1-vs-GF1. Both
+  pairs differ textually by construction, so this is expected to pass.
+
+
+  A SECOND RANDOMISATION, DELIBERATELY NOT DECLARED - DOV_Q8
+
+  Line 262-264: "Scripter: Create DOV_Q8 and randomly assign all respondents a
+  value of 1 'Q8 Last' or 2 'Q8 First'. ... If DOV_Q8=1 show Q8 as indicated by
+  the quex (i.e., in order, after Q7). If DOV_Q8=2 show Q8 before Q1." This is
+  a real, balanced (238/265), fully-crossed-with-XTESS220 randomisation
+  (checked: all 8 cells non-empty, 51/64/61/63/71/66/55/72), so rule 9 would
+  flag it without an entry here. It is PRESENTATION ORDER of one measures
+  block relative to another, not a factor of the design: it changes nothing
+  about any arm's text or any outcome's wording, only when Q8 is shown. Not
+  declared as a factor; recorded in `considered_and_rejected`.
+
+  Also not declared: `Scripter: Randomize order of Q7_1 and Q7_2` (line 423)
+  and `...Q8_1 and Q8_2` (line 447). These randomise the on-screen ROW order
+  within one grid; the data columns Q7_1/Q7_2 and Q8_1/Q8_2 are label-anchored
+  (Q7_1 is always "The patients I see...", regardless of which row displayed
+  first - ledger #47's test), so no recoding or declaration is needed, and
+  being within-item they do not match rule 9's column-level pattern anyway.
+
+
+  OUTCOMES - SECTION B "MEASURES", 17 FIELDED ITEMS, 16 BUILT
+
+  All of Q1-Q8 are asked of every respondent, in one continuous block,
+  immediately after the single XTESS220 manipulation above - there is no
+  second experiment and no separate block here (unlike a5v96/rpw4u). The
+  proposal's conceptual model (Ferrer825.pdf, Figures 1-2) frames Q2/Q3 as the
+  primary conflict/fusion measure, Q4 (nurturing/compassion) and Q5
+  (competence) as candidate mediating "psychological processes", and Q6/Q7/Q8
+  as downstream priority/preference/behavioural-intention measures - but the
+  fielded instrument does not gate any of them behind a different
+  randomisation, so all are built as outcomes of this one experiment:
+
+    task 0-4   Q2_1..Q2_5  (5 items, 1-5)  agree/disagree with 5 statements
+               about whether curative/palliative goals help or harm each other
+    task 5-6   Q3_1..Q3_2  (2 items, 1-5)  harmful/helpful effect of achieving
+               one goal type on the other
+    task 7-8   Q4_1..Q4_2  (2 items, 1-7)  current feelings of nurturing /
+               compassion - candidate mediator
+    task 9     Q5          (1 item,  1-7)  feeling less competent facing an
+               unsolvable patient problem - candidate mediator
+    task 10-11 Q6_1..Q6_2  (2 items, 1-7)  curative/palliative as a "strong
+               priority"
+    task 12-13 Q7_1..Q7_2  (2 items, 1-7)  bipolar curative<->palliative
+               preference, for patients seen and hypothetically for self
+    task 14-15 Q8_1..Q8_2  (2 items, 1-7)  willingness to support a patient's
+               requested curative/palliative procedure
+
+  Q1 EXCLUDED. Q1 (line 271-316, "Please select the image below that best
+  represents the relationship between curative and palliative care") is an
+  8-option VISUAL item - respondents saw 8 images (apparently overlapping
+  circles labelled "Palliative"/"Curative" in different configurations, an
+  IOS-type diagram). The questionnaire's own plain-text extraction of the
+  image layout (lines 274-313) is a garbled grid of "Palliative"/"Curative"
+  labels with no recoverable correspondence to which image is which
+  configuration, and the proposal's own text extraction of the same task
+  (Ferrer825.pdf, around "Please select the image...") is equally unrecoverable
+  - confirming this is not a parsing failure specific to one file but an
+  inherent property of a diagram with no caption. We cannot determine what
+  response code 4 (say) actually depicts, so under "never fabricate /
+  leave it out", Q1 is dropped rather than built with content-free options.
+  This is a narrower BUILD scope for one unbuildable item, not a narrower
+  DESIGN scope - Q1 remains part of the same single-randomisation experiment,
+  it is simply not represented in the corpus.
+
+
+  RESPONSE CODING
+
+  Checked directly against the .sav value labels (not assumed): Q2/Q3 are
+  1-5, option order 1=low pole ... 5=high pole, matching the questionnaire's
+  column order (Strongly disagree -> Strongly agree; Very harmful -> Very
+  helpful). Q4-Q8 are 1-7 on the same low-to-high convention (Not at all ->
+  Extremely; Strongly disagree -> Strongly agree; Curative care -> Palliative
+  Care). No arm presents any item's options in a different order (there is no
+  option-order factor in this study), so a single study-level identity map
+  (1-7) covers Q4-Q8, and Q2/Q3 each carry their own 1-5 identity override so
+  that 6/7 can never leak in from the wider study-level map (a5v96's Q1C
+  pattern). -1 "Refused" is the only missing code observed or defined on any
+  of the 16 items (checked against every item's value-label set).
+
+  Q7's scale names only the two endpoints (1 "Curative care", 7 "Palliative
+  Care"); the questionnaire's own column header also labels the midpoint "4
+  Both are important" (line 440), which `Scale` has no field for, so that
+  clause is folded into the outcome `question` text instead, sourced from the
+  same column header rather than invented.
+
+
+  PERSONA
+
+  KnowledgePanel naming (PPAGE/PPGENDER/PPEDUCAT/...), as in a5v96/zaqkm. All
+  12 PP* fields plus PARTY7/IDEO/REL1/REL2 are populated with no missing codes
+  observed, EXCEPT one Refusal each on IDEO and REL1 (checked: min/max on every
+  mapped field; only IDEO and REL1 show -1). PARTY7 and REL2 are declared with
+  a -1 drop anyway (their own value-label sets define a "Refused" code, even
+  though none occurred in this N=503 sample) rather than relying on there
+  being no instances to hide the gap.
+
+  The delivered .sav's PARTY7/IDEO/REL1/REL2 already carry the questionnaire's
+  MERGED coding (its own DOV_XPARTY7/DOV_IDEO/DOV_REL1/DOV_REL2, lines 492-646,
+  which backfill the KnowledgePanel profile value with a re-ask only for
+  respondents coded 9/14 "Missing" on the panel's own XPARTY7/XIDEO/XREL1/
+  XREL2) - the raw XPARTY7/XIDEO/XREL1/XREL2/IDEO/REL1/REL2-re-ask columns the
+  questionnaire describes are not separately present in the client file, only
+  the final merged variable under the plain name. Consistent with the value
+  ranges actually observed (IDEO -1,1-7; REL1 -1,1-13; PARTY7 1-7; REL2 1-6).
+
+  REL1 code 2's own .sav label is truncated by SPSS's label-length limit
+  ("Evangelical or Protestant Christian (Baptist, Lutheran, Methodist,
+  Presbyterian, Episcopalian, Pentecostal, Church of Ch"); `persona_label_rewrite`
+  restores the full wording from the questionnaire itself (line 18), which is
+  the same words, not different ones. REL1 codes 11/12 ("Other Christian
+  religion, please specify:" / "Other non-Christian religion, please specify:",
+  27 and 7 respondents respectively) are genuine answers wearing an interviewer
+  instruction (ledger #60's exact case); `persona_label_rewrite` drops the
+  "please specify:" tail and keeps the answer.
+
+  `occupation` (-> `Job`, the post-screener detailed role: 47 Medical Doctor /
+  255 Other Health Care Practitioner / 85 Health Technologist or Technician /
+  116 Health Care Support) is mapped as an EXTRA persona field (not one of the
+  canonical ones), because this study's whole sample is health care personnel
+  and their specific role is directly relevant background a generic persona
+  schema does not capture. `QWORK`/`PPWORK` (both "working", 471-472/503) and
+  `Job_Other`/`SA1_Other`/`SA2`/`SA2_Extra`/`NA1`/`NA1_Extra` (open text) are
+  not mapped - the latter group is response content, not a stable attribute.
+
+
+  SOCSCI210 DISAGREEMENT AND ARITHMETIC
+
+  SocSci210 built the SAME 4 arms (XTESS220) and the SAME 17 fielded items
+  (8,524 rows = 503 x 17 - 27 individually-refused items, verified exactly),
+  but its rendered `stimuli` text contains ONLY the conflict/fusion framing
+  sentence and the outcome question - the self-affirmation/control task is
+  absent from the text on all 4 conditions. Their 4 condition indices
+  therefore render only 2 distinct strings (cond 0 = cond 2 = the conflict
+  text verbatim, cond 1 = cond 3 = the fusion text verbatim) - the exact
+  pattern already on record for sd7cf/evnyh/z358z (a declared factor dropped
+  from the text, which our own rule 1 would fail).
+
+  Their condition_num does not equal `raw - 1`. Recovered two ways that agree:
+  (i) their rows_per_condition {0: 2317, 1: 2154, 2: 1951, 3: 2102} includes
+  Q1; subtracting their own per-condition Q1 counts (queried directly:
+  {0: 137, 1: 126, 2: 115, 3: 124}) gives their NON-Q1 totals {0: 2180,
+  1: 2028, 2: 1836, 3: 1978}, which match our own raw-level tallies of the 16
+  built items {raw3: 2180, raw4: 2028, raw1: 1836, raw2: 1978} EXACTLY, pinning
+  cond0=raw3, cond1=raw4, cond2=raw1, cond3=raw2. (ii) independently, their Q1
+  per-condition counts equal the raw XTESS220 marginals up to the single Q1
+  refusal (137=n(raw3), 126=n(raw4)-1, 115=n(raw1), 124=n(raw2)), the same
+  pairing. Their conflict-text conditions (0, 2) are raw 3 and 1 respectively
+  (both "Conflict" by our own line-245/251 bases) and their fusion-text
+  conditions (1, 3) are raw 4 and 2 (both "Fusion") - consistent with the text
+  disagreement being provenance/completeness only, not a wrong pairing.
+
+  ROW ARITHMETIC: our build keeps 16 of their 17 items. Pooled response
+  distribution for those 16 items, computed directly from the raw .sav
+  (identity-recoded, -1 dropped): {1: 663, 2: 683, 3: 1464, 4: 2202, 5: 1240,
+  6: 811, 7: 959}, summing to 8,022. This is IDENTICAL, value for value, to
+  SocSci210's own full response_distribution with its Q1 responses (coded 1-8,
+  with 52 respondents at code 8, which does not exist on any of our 16 items)
+  subtracted out: theirs is {1: 724, 2: 729, 3: 1537, 4: 2337, 5: 1300, 6: 865,
+  7: 980, 8: 52} = 8,524; removing Q1's own per-value counts (queried directly:
+  {1: 61, 2: 46, 3: 73, 4: 135, 5: 60, 6: 54, 7: 21, 8: 52, -1(refused): 1})
+  leaves exactly {1: 663, 2: 683, 3: 1464, 4: 2202, 5: 1240, 6: 811, 7: 959},
+  8,022 total. So the two builds agree on every number for every item except
+  Q1, and the only live disagreement is: (a) we render the self-affirmation
+  factor into the text and they do not, and (b) we do not build Q1, an
+  8-option visual item neither file can reconstruct the content of. Given (a)
+  and (b), `comparable_to_socsci210: false` and the automated numeric
+  crosscheck is skipped (it would FAIL on n_rows and response_distribution by
+  construction, for the reasons just reconciled by hand, not from an error).
+
+condition:
+  source_var: XTESS220
+  factors: [self_affirmation, framing]
+  considered_and_rejected:
+    DOV_Q8: "Real, balanced (238/265) randomisation, fully crossed with XTESS220 (all 8 cells non-empty), but it only controls whether the Q8 measures block is displayed before Q1 or after Q7 (line 262-264). It does not change any arm's text or any outcome's wording, so it is not a factor of this design."
+  shared_context: >
+    You first completed a short writing task, and then read a passage about
+    palliative and curative care before answering questions about both. For
+    the writing task, you read:
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {self_affirmation: present, framing: conflict}
+      text: >
+        In this study we are interested in investigating values. By values we
+        mean the moral principles and standards by which people try to live
+        their lives. For example, honesty might be a core value for some
+        people. That is, they may try to be honest in all they do when
+        dealing with other people. Please look at the list of values below,
+        and check the one that is most important to you: Artistic skills,
+        Athletics, Business/earning money, Compassion, Conscientiousness,
+        Creativity, Friendliness, Generosity, Hedonism (the pursuit of
+        pleasure/happiness), Honesty, Independence, Intelligence, Kindness,
+        Musical ability/appreciation, Politics, Relations with friends or
+        family, Spirituality/Religiousness, Sense of Humor, Spontaneity/Living
+        life in the moment, Trustworthiness, or Other. You then selected a
+        value and were asked: Please type a statement about why this value is
+        important to you. Take a few minutes to think about this value and
+        how this value has influenced your past behaviors or attitudes.
+        Please write about how you use this value in your everyday life - at
+        work, at home, with friends, or in dealing with strangers. If you
+        can, try to recall and write about specific occasions on which this
+        value determined what you did. For the reading passage, you read:
+        Palliative care is defined as an approach designed to treat pain,
+        manage physical symptoms/ treatment side effects, and provide
+        psychosocial support that improves the quality of life of patients
+        and their families. However, barriers to integrating palliative care
+        are many, and include important conflicts between integrating
+        palliative and curative treatment, including medical training that
+        prioritizes curative care no matter the cost, an incentive and
+        payment structure weighted toward curative treatment, and a medical
+        system that constrains time medical personnel with patients.
+    - raw: 2
+      condition_num: 1
+      factors: {self_affirmation: present, framing: fusion}
+      text: >
+        In this study we are interested in investigating values. By values we
+        mean the moral principles and standards by which people try to live
+        their lives. For example, honesty might be a core value for some
+        people. That is, they may try to be honest in all they do when
+        dealing with other people. Please look at the list of values below,
+        and check the one that is most important to you: Artistic skills,
+        Athletics, Business/earning money, Compassion, Conscientiousness,
+        Creativity, Friendliness, Generosity, Hedonism (the pursuit of
+        pleasure/happiness), Honesty, Independence, Intelligence, Kindness,
+        Musical ability/appreciation, Politics, Relations with friends or
+        family, Spirituality/Religiousness, Sense of Humor, Spontaneity/Living
+        life in the moment, Trustworthiness, or Other. You then selected a
+        value and were asked: Please type a statement about why this value is
+        important to you. Take a few minutes to think about this value and
+        how this value has influenced your past behaviors or attitudes.
+        Please write about how you use this value in your everyday life - at
+        work, at home, with friends, or in dealing with strangers. If you
+        can, try to recall and write about specific occasions on which this
+        value determined what you did. For the reading passage, you read:
+        Palliative care is defined as an approach designed to treat pain,
+        manage physical symptoms/ treatment side effects, and provide
+        psychosocial support that improves the quality of life of patients
+        and their families. A growing number of medical organizations endorse
+        the integration of palliative care into the entire care continuum of
+        patients with advanced disease or significant symptom burden.
+        Although there are barriers to optimal integration of palliative
+        care, a mounting body of evidence shows that it can actually
+        contribute to the benefits of curative care. For example, several
+        recent studies have demonstrated that early palliative care can
+        extend length of life among terminal cancer patients.
+    - raw: 3
+      condition_num: 2
+      factors: {self_affirmation: absent, framing: conflict}
+      text: >
+        In this study we are interested in investigating daily routines. By
+        routines we mean the types of activities that you normally do in a
+        given day. Take a few minutes to think about the activities you
+        regularly engage in. Then, please type a statement about your daily
+        routine. For the reading passage, you read: Palliative care is
+        defined as an approach designed to treat pain, manage physical
+        symptoms/ treatment side effects, and provide psychosocial support
+        that improves the quality of life of patients and their families.
+        However, barriers to integrating palliative care are many, and
+        include important conflicts between integrating palliative and
+        curative treatment, including medical training that prioritizes
+        curative care no matter the cost, an incentive and payment structure
+        weighted toward curative treatment, and a medical system that
+        constrains time medical personnel with patients.
+    - raw: 4
+      condition_num: 3
+      factors: {self_affirmation: absent, framing: fusion}
+      text: >
+        In this study we are interested in investigating daily routines. By
+        routines we mean the types of activities that you normally do in a
+        given day. Take a few minutes to think about the activities you
+        regularly engage in. Then, please type a statement about your daily
+        routine. For the reading passage, you read: Palliative care is
+        defined as an approach designed to treat pain, manage physical
+        symptoms/ treatment side effects, and provide psychosocial support
+        that improves the quality of life of patients and their families. A
+        growing number of medical organizations endorse the integration of
+        palliative care into the entire care continuum of patients with
+        advanced disease or significant symptom burden. Although there are
+        barriers to optimal integration of palliative care, a mounting body
+        of evidence shows that it can actually contribute to the benefits of
+        curative care. For example, several recent studies have demonstrated
+        that early palliative care can extend length of life among terminal
+        cancer patients.
+
+outcomes:
+  - var: Q2_1
+    task_num: 0
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "Curative care is detrimental to palliative care."
+    scale: {min: 1, max: 5, min_label: "Strongly disagree", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q2_2
+    task_num: 1
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "Palliative care is detrimental to curative care."
+    scale: {min: 1, max: 5, min_label: "Strongly disagree", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q2_3
+    task_num: 2
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "Curative care is helpful to palliative care."
+    scale: {min: 1, max: 5, min_label: "Strongly disagree", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q2_4
+    task_num: 3
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "Palliative care is helpful to curative care."
+    scale: {min: 1, max: 5, min_label: "Strongly disagree", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q2_5
+    task_num: 4
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "Palliative care and curative care are in conflict with one
+      another."
+    scale: {min: 1, max: 5, min_label: "Strongly disagree", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q3_1
+    task_num: 5
+    question: >-
+      Does successfully achieving palliative goals for a patient have a
+      helpful, harmful, or no effect at all on achieving curative goals for a
+      patient?
+    scale: {min: 1, max: 5, min_label: "Very harmful", max_label: "Very helpful"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q3_2
+    task_num: 6
+    question: >-
+      Does successfully achieving curative goals for a patient have a
+      helpful, harmful, or no effect at all on achieving palliative goals for
+      a patient?
+    scale: {min: 1, max: 5, min_label: "Very harmful", max_label: "Very helpful"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q4_1
+    task_num: 7
+    question: "How much do you currently feel nurturing?"
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Extremely"}
+  - var: Q4_2
+    task_num: 8
+    question: "How much do you currently feel compassionate?"
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Extremely"}
+  - var: Q5
+    task_num: 9
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "I feel less competent when I am faced with a patient who
+      has a medical problem that I cannot solve."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q6_1
+    task_num: 10
+    question: >-
+      When thinking about the range of goals and priorities you may have for
+      a patient's care, how much do you agree with the following statement:
+      "Curative care is a strong priority"?
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q6_2
+    task_num: 11
+    question: >-
+      When thinking about the range of goals and priorities you may have for
+      a patient's care, how much do you agree with the following statement:
+      "Palliative care is a strong priority"?
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q7_1
+    task_num: 12
+    question: >-
+      Please indicate which type of care it is important to seek in the
+      following situation: "The patients I see who are dealing with disease
+      or illness feel it is important to seek..." (4 means both are equally
+      important.)
+    scale: {min: 1, max: 7, min_label: "Curative care", max_label: "Palliative Care"}
+  - var: Q7_2
+    task_num: 13
+    question: >-
+      Please indicate which type of care it is important to seek in the
+      following situation: "If you were a patient dealing with disease or
+      illness, you would feel it is important to seek..." (4 means both are
+      equally important.)
+    scale: {min: 1, max: 7, min_label: "Curative care", max_label: "Palliative Care"}
+  - var: Q8_1
+    task_num: 14
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "If a patient requested a curative procedure or treatment
+      that I did not believe would work, I would be willing to fulfill that
+      request (if possible) or support them in making the request of other
+      medical personnel."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q8_2
+    task_num: 15
+    question: >-
+      Please indicate how much you agree or disagree with the following
+      statement: "If a patient requested a palliative procedure or treatment
+      instead of a curative treatment, I would be willing to fulfill that
+      request (if possible) or support them in making the request of other
+      medical personnel."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+
+# Identity 1-7; Q2/Q3 override to their own 1-5 map above so 6/7 can never
+# leak onto a 5-point item (a5v96's Q1C pattern).
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_missing:
+  IDEO: [-1]
+  REL1: [-1]
+  PARTY7: [-1]
+  REL2: [-1]
+persona_label_rewrite:
+  REL1:
+    2: "Evangelical or Protestant Christian (Baptist, Lutheran, Methodist, Presbyterian, Episcopalian, Pentecostal, Church of Christ, etc.)"
+    11: "Other Christian religion"
+    12: "Other non-Christian religion"
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: PARTY7
+  ideology: IDEO
+  religion: REL1
+  occupation: Job

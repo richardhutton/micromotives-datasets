@@ -1,0 +1,334 @@
+study_id: yv2ta
+source: tess
+title: "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns"
+data_file: TESS215_Pedulla_Client.dta
+experiment: flexible_scheduling
+
+# See yv2ta_parental_leave.yaml for the full crosscheck writeup — the same
+# reasons apply here: SocSci210 built one combined index spanning BOTH
+# sub-experiments, only one outcome (their "likelihood" item), and their own
+# reconstruction has internal gaps. Not comparable on scope or on index.
+comparable_to_socsci210: false
+
+notes: >
+  TESS3 215 (Pedulla). Companion file to yv2ta_parental_leave.yaml — read that
+  file's notes first; this one does not repeat the shared background (the
+  two-sub-experiment structure, DOV_BLOCK, the source-authority ruling, the
+  crosscheck findings). Source of record: the same fielded questionnaire,
+  "310.209.00994.1_TESS3 215_Pedulla_FINAL.txt". This file builds BLOCK 2
+  (flexible scheduling, Q4-Q6, Q10-Q11).
+
+
+  THE DESIGN — 2 (policy type) x 5 (message) = 10 CELLS, ONE COMBINED
+  VARIABLE.
+
+  Line 166: "SCRIPTER: Create DOV_TESS215F. Randomly assign each respondent a
+  value of 1-10, blocking by gender." Lines 171-204 are the lookup chart
+  ("Use below chart for DOV_TESS215F insert values for Display 2"), columns
+  XTESS215F / INSERT 3 / INSERT 4:
+
+    raw  INSERT 3 (policy_type)        INSERT 4 (social_message)
+     1   job sharing                   more than 80% have used this policy (norm: high usage)
+     2   flexible scheduling           less than 10% have used this policy (norm: low usage)
+     3   job sharing                   manager says it may decrease promotion chances
+     4   flexible scheduling           manager says it would NOT affect promotion chances
+     5   job sharing                   [NO INSERT] (no message)
+     6   flexible scheduling           more than 80% have used this policy
+     7   job sharing                   less than 10% have used this policy
+     8   flexible scheduling           manager says it may decrease promotion chances
+     9   job sharing                   manager says it would NOT affect promotion chances
+    10   flexible scheduling           [NO INSERT]
+
+  2 (job-sharing/flexible-scheduling) x 5 (high-usage/low-usage/decrease-
+  warning/reassurance/none) = 10, matching DOV_TESS215F's 10 values exactly.
+  VERIFIED against the .dta: DOV_TESS215F is 100% populated (n=2,036, no
+  missing), 10 distinct values, counts 175-224. Both policy_type and
+  social_message are fully crossed (each of the 10 combinations above
+  realised by exactly one raw value) — a single combined code already
+  exists, so `Condition.source_vars` (ledger #33) is not needed here either.
+
+  Note that INSERT 4's wording for levels C/D ("...using this policy may
+  decrease/would not affect your chances of being promoted", lines 183/186)
+  differs from Block 1's INSERT 2 levels C/D ("...taking the full amount of
+  leave may decrease/would not affect...") — a genuine difference between the
+  two vignettes' own text, not an inconsistency on our part. Levels A/B are
+  word-for-word identical between the two blocks' message inserts.
+
+  CONDITION MAPPING — DECLARED (rule 2): condition_num = DOV_TESS215F - 1,
+  the chart's own row order (raw 1-10 -> condition_num 0-9), same convention
+  as the parental-leave file.
+
+
+  TEXT PROVENANCE.
+
+  Line 212 ("Display2", shown on the same page as Q4, line 210): "Please
+  imagine that the company where you work offers all employees access to
+  [INSERT 3]. This policy has been in place for the past decade. [INSERT 4]."
+  shared_context is the invariant prefix up to "access to"; each arm's `text`
+  is INSERT 3 verbatim + the fixed "has been in place..." sentence + INSERT 4
+  verbatim (with its own trailing full stop) where INSERT 4 is not
+  "[NO INSERT]". For the two raw values with "[NO INSERT]" (5, 10), the
+  second sentence is dropped entirely, same treatment as Block 1's
+  no-message arms. Nothing added, reordered or paraphrased.
+
+
+  OUTCOMES.
+
+  Q4 (line 217-218, scale instruction at line 216): "How likely would you be
+  to utilize this scheduling policy?" — 1-100, "Very Unlikely" (1) to
+  "Very Likely" (100).
+
+  Q5 (lines 220-228) is FOUR separate sliders under one stem ("If you were to
+  use this scheduling policy, to what extent would the following
+  possibilities be a concern for you?"), each its own .dta column
+  (Q5_1..Q5_4). Same four sub-items as Block 1's Q2 (competence / commitment
+  / financial security / relationships), 1-100. Built the same way as Q2:
+  four outcomes, task_num 1-4, "stem: sub-item" question text.
+
+  Q6 (lines 232-235): "If you were to use this scheduling policy, how do you
+  think other people in your organization would see you in terms of
+  masculinity and femininity?" — 1-100, "Highly Feminine" (1) to "Highly
+  Masculine" (100).
+
+  Q10/Q11 (lines 280-297) are the Block-2 manipulation checks, same
+  treatment as Block 1's Q8/Q9: nominal outcomes (task_num 6, 7), options
+  enumerated verbatim in the question text. Both reference "the scheduling
+  policy scenario that you were presented with earlier" (lines 281, 291) —
+  an in-row forward/backward reference to this row's own condition text, not
+  a numbered-sequence signpost (see the parental-leave file's notes on this
+  point; QC rule 15 does not apply).
+
+  Unlike Block 1's Q9, Q11's options (lines 293-297, "...using this policy
+  may decrease/would not affect...") match INSERT 4's own wording exactly —
+  no cross-wording inconsistency on this side.
+
+  Q7 is excluded for the same reason as in the parental-leave file: a
+  condition-independent career-history question with no dependence on this
+  randomisation.
+
+
+  RESPONSE CODING. Same identity-map treatment as the parental-leave file:
+  Q4, Q5_1-4, Q6 are 1-100 sliders (-1 "Refused" dropped); verified refusal
+  counts from the .dta: Q4 31, Q5_1-4 9/7/16/8, Q6 14. Q10 (1-3) and Q11
+  (1-5) are covered by the same 1-100 identity map; Q10 has 13 refusals, Q11
+  has 14.
+
+
+  SECOND-RANDOMISATION SWEEP. Same two candidates as the parental-leave file,
+  reversed: DOV_TESS215P (the companion experiment's own assignment) and
+  DOV_BLOCK (presentation order only) — see `considered_and_rejected` below.
+
+
+  CROSSCHECK. See yv2ta_parental_leave.yaml — the same finding applies to
+  both files: SocSci210's single combined index spans both sub-experiments
+  and only reconstructs Q1/Q4 ("likelihood"), with internal gaps of its own.
+  `comparable_to_socsci210: false`, no numeric assertion made.
+
+
+  OPEN QUESTIONS FOR THE CHECKER. Same as the parental-leave file (Q10/Q11 as
+  nominal outcomes; the "stem: sub-item" construction for Q5; the generated
+  1-100 identity recode; the two considered_and_rejected entries) — see that
+  file for the full list, which applies here unchanged.
+
+condition:
+  source_var: DOV_TESS215F
+  factors: [policy_type, social_message]
+
+  considered_and_rejected:
+    DOV_TESS215P: "The companion sub-experiment's OWN assignment variable (the 15-arm parental-leave design, Q1-Q3/Q8-Q9). Independently randomised (line 73) and fully crossed with DOV_TESS215F, but it manipulates a different vignette entirely and governs different outcomes. Out of scope for this file; built separately as yv2ta_parental_leave.yaml (experiment: parental_leave)."
+    DOV_BLOCK: "Presentation-order variable only (line 69: which vignette block, and which pair of recall-check items, is shown first). Independently randomised and crossed with DOV_TESS215F, but it does not change this vignette's text, Q4-Q6's wording, or Q10/Q11's wording — it only reorders which block the respondent sees first. Not a content manipulation."
+
+  shared_context: >
+    Please imagine that the company where you work offers all employees access
+    to
+
+  arms:
+    # DOV_TESS215F = 1: job sharing / high-usage norm
+    - raw: 1
+      condition_num: 0
+      factors: {policy_type: job_sharing, social_message: high_usage_norm}
+      text: >-
+        a job sharing program, where they can reduce their hours by up to 50%
+        without changing their job title. As part of this program, employees are
+        only paid for the proportion of their full-time schedule that they work.
+        This policy has been in place for the past decade. Of the eligible
+        workers within your organization, including managers, more than 80% have
+        used this policy over the past five years.
+    # DOV_TESS215F = 2: flexible scheduling / low-usage norm
+    - raw: 2
+      condition_num: 1
+      factors: {policy_type: flexible_scheduling, social_message: low_usage_norm}
+      text: >-
+        a flexible scheduling policy that provides them with a degree of control
+        over their work schedule. As part of this program, employees receive
+        their full compensation as long as they do not decrease the total number
+        of hours they work per week. This policy has been in place for the past
+        decade. Of the eligible workers within your organization, including
+        managers, less than 10% have used this policy over the past five years.
+    # DOV_TESS215F = 3: job sharing / promotion-risk warning
+    - raw: 3
+      condition_num: 2
+      factors: {policy_type: job_sharing, social_message: promotion_risk_warning}
+      text: >-
+        a job sharing program, where they can reduce their hours by up to 50%
+        without changing their job title. As part of this program, employees are
+        only paid for the proportion of their full-time schedule that they work.
+        This policy has been in place for the past decade. However, your manager
+        recently indicated that using this policy may decrease your chances of
+        being promoted.
+    # DOV_TESS215F = 4: flexible scheduling / promotion reassurance
+    - raw: 4
+      condition_num: 3
+      factors: {policy_type: flexible_scheduling, social_message: promotion_reassurance}
+      text: >-
+        a flexible scheduling policy that provides them with a degree of control
+        over their work schedule. As part of this program, employees receive
+        their full compensation as long as they do not decrease the total number
+        of hours they work per week. This policy has been in place for the past
+        decade. In addition, your manager recently indicated that using this
+        policy would not affect your chances of being promoted.
+    # DOV_TESS215F = 5: job sharing / no message
+    - raw: 5
+      condition_num: 4
+      factors: {policy_type: job_sharing, social_message: no_message}
+      text: >-
+        a job sharing program, where they can reduce their hours by up to 50%
+        without changing their job title. As part of this program, employees are
+        only paid for the proportion of their full-time schedule that they work.
+        This policy has been in place for the past decade.
+    # DOV_TESS215F = 6: flexible scheduling / high-usage norm
+    - raw: 6
+      condition_num: 5
+      factors: {policy_type: flexible_scheduling, social_message: high_usage_norm}
+      text: >-
+        a flexible scheduling policy that provides them with a degree of control
+        over their work schedule. As part of this program, employees receive
+        their full compensation as long as they do not decrease the total number
+        of hours they work per week. This policy has been in place for the past
+        decade. Of the eligible workers within your organization, including
+        managers, more than 80% have used this policy over the past five years.
+    # DOV_TESS215F = 7: job sharing / low-usage norm
+    - raw: 7
+      condition_num: 6
+      factors: {policy_type: job_sharing, social_message: low_usage_norm}
+      text: >-
+        a job sharing program, where they can reduce their hours by up to 50%
+        without changing their job title. As part of this program, employees are
+        only paid for the proportion of their full-time schedule that they work.
+        This policy has been in place for the past decade. Of the eligible
+        workers within your organization, including managers, less than 10% have
+        used this policy over the past five years.
+    # DOV_TESS215F = 8: flexible scheduling / promotion-risk warning
+    - raw: 8
+      condition_num: 7
+      factors: {policy_type: flexible_scheduling, social_message: promotion_risk_warning}
+      text: >-
+        a flexible scheduling policy that provides them with a degree of control
+        over their work schedule. As part of this program, employees receive
+        their full compensation as long as they do not decrease the total number
+        of hours they work per week. This policy has been in place for the past
+        decade. However, your manager recently indicated that using this policy
+        may decrease your chances of being promoted.
+    # DOV_TESS215F = 9: job sharing / promotion reassurance
+    - raw: 9
+      condition_num: 8
+      factors: {policy_type: job_sharing, social_message: promotion_reassurance}
+      text: >-
+        a job sharing program, where they can reduce their hours by up to 50%
+        without changing their job title. As part of this program, employees are
+        only paid for the proportion of their full-time schedule that they work.
+        This policy has been in place for the past decade. In addition, your
+        manager recently indicated that using this policy would not affect your
+        chances of being promoted.
+    # DOV_TESS215F = 10: flexible scheduling / no message
+    - raw: 10
+      condition_num: 9
+      factors: {policy_type: flexible_scheduling, social_message: no_message}
+      text: >-
+        a flexible scheduling policy that provides them with a degree of control
+        over their work schedule. As part of this program, employees receive
+        their full compensation as long as they do not decrease the total number
+        of hours they work per week. This policy has been in place for the past
+        decade.
+
+outcomes:
+  - var: Q4
+    task_num: 0
+    question: "How likely would you be to utilize this scheduling policy?"
+    scale: {min: 1, max: 100, min_label: "Very Unlikely", max_label: "Very Likely"}
+  - var: Q5_1
+    task_num: 1
+    question: >-
+      If you were to use this scheduling policy, to what extent would the
+      following possibility be a concern for you: "Other people in my
+      organization may see me as a less competent worker."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q5_2
+    task_num: 2
+    question: >-
+      If you were to use this scheduling policy, to what extent would the
+      following possibility be a concern for you: "Other people in my
+      organization may see me as a less committed worker."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q5_3
+    task_num: 3
+    question: >-
+      If you were to use this scheduling policy, to what extent would the
+      following possibility be a concern for you: "My financial security may
+      be at risk."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q5_4
+    task_num: 4
+    question: >-
+      If you were to use this scheduling policy, to what extent would the
+      following possibility be a concern for you: "My relationships with
+      managers, co-workers, customers, or clients may be harmed."
+    scale: {min: 1, max: 100, min_label: "Not at all concerned", max_label: "Very concerned"}
+  - var: Q6
+    task_num: 5
+    question: >-
+      If you were to use this scheduling policy, how do you think other
+      people in your organization would see you in terms of masculinity and
+      femininity?
+    scale: {min: 1, max: 100, min_label: "Highly Feminine", max_label: "Highly Masculine"}
+  # Q8/Q9 (parental leave) and Q10/Q11 (scheduling) are NOT built. They are
+  # post-vignette RECALL CHECKS — "thinking back to the scenario, how much of
+  # your pay was covered?" — which researchers use to spot respondents who
+  # skim-read. They are real answers from real people, but they measure whether
+  # someone read the stimulus, not how they behave: the answer is recoverable
+  # from the condition text alone, so a model would score highly on them while
+  # learning nothing about behaviour, and any evaluation including them would
+  # read better than it deserves. Excluded by project ruling, 2026-10-01; see
+  # docs/CONVENTIONS.md, "Attention and recall checks are not outcomes".
+  # Cost: 4,047 rows here, 4,045 in the scheduling recipe.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+missing_codes: [-1]
+
+# Same sentinel-code treatment as the parental-leave file — see that file's
+# notes for why the codes differ from the questionnaire's stated values.
+persona_missing:
+  XIDEO: [8]
+  XREL1: [14]
+  XREL2: [7]
+  pppa_lgb: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2
+  sexual_orientation: pppa_lgb
+  household_head: PPHHHEAD

@@ -32,6 +32,10 @@ class QCReport:
     response_distribution: dict[int, int] = field(default_factory=dict)
     failures: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
+    # A rule that declined to run, and why. Distinct from a warning: nothing is
+    # wrong, but a check a reader would assume had run did not, and silently
+    # skipping it would let a real defect hide behind an unexamined PASS.
+    notes: list[str] = field(default_factory=list)
 
     @property
     def passed(self) -> bool:
@@ -52,6 +56,8 @@ class QCReport:
             lines.append(f"  FAIL  {f_}")
         for w in self.warnings:
             lines.append(f"  warn  {w}")
+        for n in self.notes:
+            lines.append(f"  note  {n}")
         lines.append(f"  => {'PASS' if self.passed else 'FAIL'}")
         return "\n".join(lines)
 
@@ -112,19 +118,46 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     # Counting per OUTCOME would warn on every legitimately branched item (12 of
     # 14 here), which trains us to ignore the column. Counting per ARM is silent
     # when branching is symmetric and loud when it is not.
-    tasks_per_arm: dict[int, set[int]] = {}
-    for r in rows:
-        if r.condition_num is not None and r.task_num is not None:
-            tasks_per_arm.setdefault(r.condition_num, set()).add(r.task_num)
-    if len(tasks_per_arm) > 1:
-        widest = max(len(t) for t in tasks_per_arm.values())
-        thin = {cond: len(t) for cond, t in sorted(tasks_per_arm.items()) if len(t) < 0.5 * widest}
-        if thin:
-            rep.warnings.append(
-                f"arms measured on far fewer outcomes than their peers: {thin} "
-                f"against {widest} — if the design is branched this is expected, "
-                "otherwise an outcome variable for those arms is missing"
-            )
+    #
+    # The rule only has purchase on a BETWEEN-SUBJECTS design, where every
+    # respondent in an arm is asked every item, so uneven coverage can only mean
+    # a missing variable. Where an outcome carries its own `condition_var` the
+    # arm varies within respondent, and coverage is then set by how often each
+    # arm happened to be DRAWN — which the rule cannot distinguish from a defect.
+    #
+    # Measured on the first conjoint built here, `8ctbk`: 1,146 profiles crossed
+    # with 10 task slots, so a profile drawn 4 times cannot span more than 4 of
+    # the 10 and the rule fired on nearly every arm. The two obvious repairs both
+    # fail — counting per (participant, arm) silences `8ctbk` but then fires on
+    # `b87sm`, where slot 1 legitimately carries 3 items and slots 2-8 carry 1,
+    # and loosening the 0.5 threshold gives up the `9263n` defect it exists for.
+    # So it is skipped, and says so: a rule that cannot tell design from defect
+    # on a class of design should decline, not guess.
+    within_subject = any(
+        recipe.condition_vars_for(o) != recipe.condition.variables for o in recipe.outcomes
+    )
+    if within_subject:
+        rep.notes.append(
+            "rule 10 (per-arm outcome coverage) skipped: this design assigns arms "
+            "per item, so coverage reflects how often each arm was drawn rather "
+            "than whether an outcome variable is missing"
+        )
+    else:
+        tasks_per_arm: dict[int, set[int]] = {}
+        for r in rows:
+            if r.condition_num is not None and r.task_num is not None:
+                tasks_per_arm.setdefault(r.condition_num, set()).add(r.task_num)
+        if len(tasks_per_arm) > 1:
+            widest = max(len(t) for t in tasks_per_arm.values())
+            thin = {
+                cond: len(t) for cond, t in sorted(tasks_per_arm.items()) if len(t) < 0.5 * widest
+            }
+            if thin:
+                rep.warnings.append(
+                    f"arms measured on far fewer outcomes than their peers: {thin} "
+                    f"against {widest} — if the design is branched this is expected, "
+                    "otherwise an outcome variable for those arms is missing"
+                )
 
     # --- Rule 4: responses inside the declared scale ------------------------
     # A recode can be declared at study, outcome or arm level, so the allowed
