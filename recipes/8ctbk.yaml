@@ -212,26 +212,37 @@ notes: |
   columns). So the literal on-screen bullet SEQUENCE varies by respondent,
   while the CONTENT (which 6 statements appear) does not.
 
-  This recipe renders every arm's 6 bullets in the FIXED CANONICAL order
-  matching Table 1 / the LSnA1..A6 column order (childbearing, career,
-  division, policy, financial, marital) for EVERY respondent, not the
-  respondent's own randomized screen order. Reasons:
-    - attribute order is not one of the six declared experimental factors (it
-      is a counterbalancing nuisance variable to guard against primacy
-      effects contaminating the ATTRIBUTE-level estimates, not a condition
-      under study in its own right);
-    - the information content is identical regardless of order;
-    - the schema's Arm.text is ONE string per declared condition_num, shared
-      across every respondent who drew that arm; rendering the true
-      per-respondent order would require crossing the 1,146-cell content
-      universe with up to 720 order permutations, which is not tractable and
-      is the same class of problem as the forced-choice task's combinatorics
-      (see SCOPE).
-  This is the same shape as ledger #27 (b87sm's SMARTPHONE=2 clause: "the
-  recipe cannot vary stimulus text by respondent... clause omitted for
-  everyone") — here the recipe cannot vary stimulus ORDER by respondent, so it
-  renders one fixed, declared order for everyone. Flagged as the single
-  judgement call in this recipe I am least sure about; see JUDGEMENT CALLS.
+  THIS RECIPE USED TO RENDER one FIXED CANONICAL order for every respondent,
+  matching Table 1 / the LSnA1..A6 column order. It no longer does, and the
+  measurement of what that cost is blunt: of 1,794 respondents, exactly ONE saw
+  that order. 17,463 of 17,464 rows stated an order nobody had seen, and every
+  count reconciled the whole time.
+
+  The original reasoning gave three grounds. Two still hold and did not matter:
+  attribute order is a counterbalancing nuisance variable rather than a declared
+  factor, and the information content is identical regardless of order. The
+  third was the actual blocker and it was mistaken -- "rendering the true
+  per-respondent order would require crossing the 1,146-cell content universe
+  with up to 720 order permutations, which is not tractable". That assumes the
+  order has to be declared as part of the condition. It does not. Order is a
+  property of the RESPONDENT, like the pronoun `respondent_vars` resolves, so it
+  is applied when a row is rendered: 1,146 declared conditions stay 1,146, and
+  each row is laid out in the order its own respondent met.
+
+  `condition.line_order_vars` names the six order columns, in the same sequence
+  as the lines of every condition's `text` and as `factors`. The melt reorders
+  and renumbers. The numbering is the instrument's own, not a layout device we
+  added -- the deposit's embedded screenshots show 1-6 down the left of the
+  fielded table -- so renumbering is required, not optional: a line that keeps
+  its declared number while moving slot would contradict itself.
+
+  Verified against the source rather than asserted: 17,431 (participant,
+  condition) pairs re-derived from the six Attribute*_Order_* columns, zero
+  mismatches.
+
+  This was ledger #27's shape (b87sm's SMARTPHONE=2 clause, "the recipe cannot
+  vary stimulus text by respondent... clause omitted for everyone"), and the
+  answer turned out to be the same one: the recipe now can.
 
 
   WORDING: Q1/Q2 TEXT vs. THE SCREENSHOT
@@ -626,6 +637,23 @@ condition:
     CBCVersion: "Sawtooth's internal profile-generation block id (300 blocks of ~6
       respondents). A delivery artefact of how LSnAk was generated, not an
       independent manipulation; LSnAk is declared directly."
+  # The six attribute rows were randomised per respondent, and the deposit
+  # records the position each one took. 654 of the 720 possible orders occur
+  # across 1,794 respondents, so rendering one fixed order was right for about
+  # 1 row in 720 -- all 17,464 rows asserted an order the respondent did not
+  # see. The order of these variables matches the order of the lines in every
+  # condition's `text`, which matches `factors` above.
+  #
+  # The numbering is the instrument's own, not a layout device we added: the
+  # screenshots embedded in the deposit's .docx show 1-6 down the left of the
+  # fielded table.
+  line_order_vars:
+    - Attribute1_Order_ChildBearing
+    - Attribute2_Order_TimeIntensityOfCareer
+    - Attribute3_Order_DivisionOfCareInTheFamily
+    - Attribute4_Order_FamilyPolicy
+    - Attribute5_Order_FinancialStability
+    - Attribute6_Order_MaritalStatus
   arms:
   - raw_values: {LS1A1: 1, LS1A2: 1, LS1A3: 4, LS1A4: 1, LS1A5: 1, LS1A6: 1}
     condition_num: 0

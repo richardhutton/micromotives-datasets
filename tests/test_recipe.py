@@ -282,3 +282,52 @@ def test_an_arm_with_neither_raw_nor_raws_is_rejected() -> None:
                 ]
             )
         )
+
+
+# --------------------------------------------------------------------------
+# line_order_vars — the instrument randomised which order its lines appeared in
+# --------------------------------------------------------------------------
+
+
+def test_lines_are_rendered_in_the_order_this_respondent_saw() -> None:
+    """`8ctbk` randomised its six attribute rows per respondent.
+
+    654 of the 720 possible orders occur across 1,794 respondents, and exactly
+    ONE respondent saw the order the recipe used to render for everybody — so
+    17,463 of 17,464 rows stated an order nobody had seen.
+    """
+    text = "1. first\n2. second\n3. third"
+    # This respondent saw them third, first, second.
+    assert Condition.reorder_lines(text, [3, 1, 2]) == "1. second\n2. third\n3. first"
+
+
+def test_the_declared_order_renders_unchanged() -> None:
+    text = "1. first\n2. second\n3. third"
+    assert Condition.reorder_lines(text, [1, 2, 3]) == text
+
+
+def test_an_order_that_is_not_a_permutation_is_refused() -> None:
+    """Silently rendering a partial order would be worse than failing.
+
+    A duplicate position means one line would overwrite another and one slot
+    would stay empty, producing a profile the respondent never saw — the exact
+    class of defect this field exists to remove.
+    """
+    with pytest.raises(ValueError, match="not a permutation"):
+        Condition.reorder_lines("1. a\n2. b\n3. c", [1, 1, 3])
+
+
+def test_a_mismatched_width_is_refused() -> None:
+    with pytest.raises(ValueError, match="3 positions for 2 lines"):
+        Condition.reorder_lines("1. a\n2. b", [1, 2, 3])
+
+
+def test_existing_numbers_are_replaced_not_kept() -> None:
+    """The number a line carries in the recipe is its DECLARED position.
+
+    Keeping it would render "1. second" as "2. second" in slot 1 — a row whose
+    own numbering contradicts its order.
+    """
+    out = Condition.reorder_lines("1. alpha\n2. beta", [2, 1])
+    assert out == "1. beta\n2. alpha"
+    assert "2. beta" not in out

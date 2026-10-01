@@ -111,6 +111,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
     # Loaded once per study: the crosswalk is small and identical for every row.
     cw = Crosswalk.load()
     arms = recipe.condition.by_raw()
+    order_vars = recipe.condition.line_order_vars or []
     missing = set(recipe.missing_codes)
     cvars = recipe.condition.variables
     # An outcome may carry its own assignment variable, for a design where the
@@ -187,6 +188,17 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
         if study_arm is None and not within_subject:
             continue
 
+        # The positions this respondent saw each condition line in, when the
+        # instrument randomised them. `8ctbk` records six, and 654 of the 720
+        # possible orders occur, so one fixed rendering is right for about 1 row
+        # in 720.
+        line_order: list[int] | None = None
+        if order_vars:
+            codes = [row[v] for v in order_vars]
+            line_order = (
+                None if any(_is_blank(c) for c in codes) else [int(float(c)) for c in codes]
+            )
+
         persona = _persona(ds, row, recipe, cw)
         # Stimulus wording that varies by RESPONDENT, not by arm — a pronoun
         # chosen from the respondent's own recorded sex, say. Resolved per row
@@ -205,9 +217,13 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             )
             if arm is None:
                 continue
-            # Per (arm, item), not per arm: an outcome can sit where only part
-            # of the arm's stimulus has happened yet.
-            condition_text = _for_respondent(recipe.condition_text_for(outcome, arm), who)
+            # Per (condition, outcome), not per condition: an outcome can sit
+            # where only part of the stimulus has happened yet. And where the
+            # instrument randomised the order its attribute rows appeared in,
+            # render THIS respondent's order rather than one fixed guess.
+            condition_text = _for_respondent(
+                recipe.condition_text_for(outcome, arm, line_order), who
+            )
             # Both the answer variable and its coding can vary: split-ballot
             # studies ask each arm a different question, option-order designs
             # reverse the codes per arm, and a study's items can sit on

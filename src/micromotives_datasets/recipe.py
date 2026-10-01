@@ -19,6 +19,7 @@ Three design rules, each learned from auditing SocSci210's own reconstruction
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Any
 
@@ -151,6 +152,9 @@ class ItemOverride(BaseModel):
     )
 
 
+_LINE_NUMBER = re.compile(r"^\s*\d+\.\s*")
+
+
 class Arm(BaseModel):
     """One randomised arm: its raw code, its canonical index, and what it showed."""
 
@@ -251,6 +255,40 @@ class Condition(BaseModel):
         "rather than leaving it implicit.",
     )
     arms: list[Arm]
+
+    line_order_vars: list[str] | None = Field(
+        default=None,
+        description="One variable per LINE of every arm's text, giving the position "
+        "(1-based) that line was shown in to this respondent. For a conjoint whose "
+        "attribute rows are randomised per respondent: `8ctbk` records six "
+        "`Attribute<n>_Order_*` columns and 654 of the 720 possible orders occur, so a "
+        "single fixed rendering is right for about 1 row in 720. Declaring these makes "
+        "the melt render each respondent's own order and renumber accordingly. The "
+        "numbering is the instrument's, not ours -- the deposit's screenshots show 1-6 "
+        "down the left of the fielded table.",
+    )
+
+    @staticmethod
+    def reorder_lines(text: str, positions: list[int]) -> str:
+        """Put each line where this respondent saw it, and renumber.
+
+        `positions[i]` is the 1-based slot that line i occupied on screen. Any
+        existing "N. " prefix is stripped before renumbering, because the number
+        a line carries in the recipe is its position in the DECLARED order, not
+        in the one this respondent met.
+        """
+        lines = [ln.strip() for ln in text.strip().split("\n") if ln.strip()]
+        if len(lines) != len(positions):
+            raise ValueError(
+                f"line_order_vars gives {len(positions)} positions for {len(lines)} lines"
+            )
+        if sorted(positions) != list(range(1, len(lines) + 1)):
+            raise ValueError(f"line order is not a permutation of 1..{len(lines)}: {positions}")
+        bare = [_LINE_NUMBER.sub("", ln) for ln in lines]
+        ordered = [""] * len(lines)
+        for line, slot in zip(bare, positions, strict=True):
+            ordered[slot - 1] = line
+        return "\n".join(f"{i}. {line}" for i, line in enumerate(ordered, 1))
 
     def render(self, arm: Arm) -> str:
         """shared_context + arm text -> the condition string."""
@@ -543,7 +581,9 @@ class Recipe(BaseModel):
             return outcome.response_recode
         return self.response_recode
 
-    def condition_text_for(self, outcome: Outcome, arm: Arm) -> str:
+    def condition_text_for(
+        self, outcome: Outcome, arm: Arm, line_order: list[int] | None = None
+    ) -> str:
         """The condition string for this (arm, item) cell.
 
         An item-level override wins, as everywhere else here, because it names
@@ -553,8 +593,12 @@ class Recipe(BaseModel):
         """
         item = self.item_for(outcome, arm)
         text = arm.text if item is None or item.condition_text is None else item.condition_text
-        ctx = (self.condition.shared_context or "").strip()
         body = text.strip()
+        # Only the arm's own lines are reordered. `shared_context` is not a list
+        # of attributes and has no position to carry.
+        if line_order and body:
+            body = self.condition.reorder_lines(body, line_order)
+        ctx = (self.condition.shared_context or "").strip()
         if ctx and body:
             return f"{ctx} {body}"
         return ctx or body

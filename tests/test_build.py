@@ -107,3 +107,65 @@ def test_mapped_persona_variable_absent_from_data_is_an_error(fixture_sav, fixtu
     fixture_recipe.persona_map = {"age": "AGE", "income": "NOT_A_COLUMN"}
     with pytest.raises(ValueError, match="persona variables not in data"):
         list(build_rows(spss.read(fixture_sav), fixture_recipe))
+
+
+def test_the_melt_renders_each_respondent_s_own_line_order(tmp_path) -> None:
+    """The melt must USE `line_order_vars`, not merely be able to.
+
+    A unit test on `Condition.reorder_lines` proves the helper; it says nothing
+    about whether the build calls it. `8ctbk` is why that distinction matters:
+    its six attribute rows were randomised per respondent, 654 of the 720
+    possible orders occur, and exactly ONE of 1,794 respondents saw the order
+    the recipe rendered for everybody — so 17,463 of 17,464 rows asserted an
+    order nobody had seen, and every count still reconciled.
+
+    Two respondents, same condition, opposite orders.
+    """
+    import pandas as pd
+    import pyreadstat
+
+    from micromotives_datasets.recipe import Arm, Condition, Outcome, Recipe, Scale
+
+    path = tmp_path / "o.sav"
+    pyreadstat.write_sav(
+        pd.DataFrame(
+            {
+                "X": [1.0, 1.0],
+                "P1": [1.0, 2.0],
+                "P2": [2.0, 1.0],
+                "Y": [1.0, 2.0],
+                "AGE": [40.0, 41.0],
+            }
+        ),
+        str(path),
+        column_labels={
+            "X": "cond",
+            "P1": "slot of line 1",
+            "P2": "slot of line 2",
+            "Y": "y",
+            "AGE": "age",
+        },
+    )
+    recipe = Recipe(
+        study_id="t",
+        source="tess",
+        data_file="o.sav",
+        licence="none stated",
+        condition=Condition(
+            source_var="X",
+            line_order_vars=["P1", "P2"],
+            arms=[Arm(raw=1, condition_num=0, text="1. apples\n2. pears")],
+        ),
+        outcomes=[
+            Outcome(
+                var="Y",
+                task_num=0,
+                question="q",
+                scale=Scale(min=1, max=2, min_label="lo", max_label="hi"),
+            )
+        ],
+        response_recode={1: 1, 2: 2},
+        persona_map={"age": "AGE"},
+    )
+    rendered = sorted(r.condition for r in build_rows(spss.read(path), recipe))
+    assert rendered == ["1. apples\n2. pears", "1. pears\n2. apples"], rendered
