@@ -121,7 +121,8 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
     per_item = {o.task_num: recipe.condition_vars_for(o) for o in recipe.outcomes}
     within_subject = any(v != cvars for v in per_item.values())
 
-    for cvar in {v for vs in per_item.values() for v in vs} | set(cvars):
+    witness_vars = recipe.condition.witness_vars
+    for cvar in {v for vs in per_item.values() for v in vs} | set(cvars) | set(witness_vars):
         if cvar not in ds.df.columns:
             raise ValueError(f"condition variable {cvar!r} not in data")
     for outcome in recipe.outcomes:
@@ -179,8 +180,31 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
         # design: deposits carry respondents from other blocks of the same field.
         return arms.get(tuple(int(float(c)) for c in codes))
 
+    def witnessed_arms_for(row: Any) -> list[Arm]:
+        """Every condition this respondent was asked, by the not-asked codes.
+
+        None is ordinary — a deposit carries people from other blocks of the same
+        omnibus. More than one is a defect in the instrument's routing, and the
+        caller counts those rather than picking one.
+        """
+        codes: dict[str, int | None] = {}
+        for var in witness_vars:
+            value = row[var]
+            codes[var] = None if _is_blank(value) else int(float(value))
+        return recipe.condition.arms_asked(codes)
+
+    ambiguous = 0
+
     for idx, row in ds.df.iterrows():
-        study_arm = arm_for(row, cvars)
+        if witness_vars:
+            asked = witnessed_arms_for(row)
+            if len(asked) > 1:
+                # Two conditions is no condition: the tuple this corpus is made of
+                # has exactly one, and we cannot know which of the two they met.
+                ambiguous += 1
+            study_arm = asked[0] if len(asked) == 1 else None
+        else:
+            study_arm = arm_for(row, cvars)
         # A between-subjects design can skip the whole respondent on an
         # unassigned code. A within-subject one cannot: missing a vignette in
         # slot 1 says nothing about slots 2-8, and dropping the respondent would
@@ -258,3 +282,15 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 # bare row index collapsed 23,464 respondents into 4,010 ids.
                 participant_id=f"{recipe.study_id}:{idx}",
             )
+
+    # Checked once the melt has seen every respondent, so the number is the whole
+    # file's and not a prefix of it. A mismatch either way is a failure: fewer
+    # than declared means the deposit changed under a judgement made about the
+    # old one, more means a discard nobody has looked at.
+    if ambiguous != recipe.condition.ambiguous_routing:
+        raise ValueError(
+            f"{recipe.study_id}: {ambiguous} respondent(s) were routed to more than one "
+            f"condition, but the recipe declares ambiguous_routing="
+            f"{recipe.condition.ambiguous_routing}. Read the routing before changing the "
+            f"number — a respondent with two conditions has none, and is dropped."
+        )

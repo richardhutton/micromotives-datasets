@@ -177,6 +177,17 @@ class Arm(BaseModel):
         "several (a 2x2 held as two separate randomisation variables). Use with "
         "Condition.source_vars.",
     )
+    witness_var: str | None = Field(
+        default=None,
+        description="Variable whose `Condition.not_asked_code` proves this respondent was "
+        "NOT shown this condition. For an instrument that routes respondents to separate "
+        "blocks of variables and records no assignment column at all: `QQM5MC` carries its "
+        "four conditions as Q1A/Q2A/Q3A .. Q2D/Q3D, and the only record of who saw what is "
+        "that the other blocks read 'Not Asked'. That code is the instrument's own account "
+        "of what it asked, not an inference from the answer — item non-response has its own "
+        "separate code. Use with `Condition.not_asked_code` and never together with "
+        "`raw`/`raws`/`raw_values`.",
+    )
     condition_num: int = Field(description="Canonical 0-based index. DECLARED, never inferred.")
     factors: dict[str, str] = Field(
         default_factory=dict,
@@ -192,6 +203,8 @@ class Arm(BaseModel):
             return f"raws={self.raws}"
         if self.raw_values is not None:
             return f"raw_values={self.raw_values}"
+        if self.witness_var is not None:
+            return f"witness_var={self.witness_var}"
         return f"raw={self.raw}"
 
     # --- question-wording designs ------------------------------------------
@@ -256,6 +269,29 @@ class Condition(BaseModel):
     )
     arms: list[Arm]
 
+    not_asked_code: int | None = Field(
+        default=None,
+        description="The code meaning 'this respondent was never shown this variable', for "
+        "a study whose assignment is recorded only by WHICH block of variables was put to "
+        "each person. Switches arm resolution to `Arm.witness_var`. Declared rather than "
+        "guessed because the same file also codes item non-response, and the two must not "
+        "be confused: in `QQM5MC` 9999 is 'Not Asked' and 9998 is 'Skipped'.",
+    )
+    ambiguous_routing: int = Field(
+        default=0,
+        description="How many respondents the instrument routed to MORE THAN ONE condition. "
+        "Such a respondent has no condition, so no (persona, condition, outcome, response) "
+        "row can honestly be written for them and the melt drops them. The count is "
+        "declared so the drop is never silent and never open-ended: the melt FAILS when the "
+        "number it finds differs from this, so a second occurrence appearing in a re-fetched "
+        "deposit stops the build instead of quietly growing the discard.",
+    )
+    ambiguous_routing_reason: str | None = Field(
+        default=None,
+        description="Why those respondents are routed twice, and why dropping them is right. "
+        "Required whenever `ambiguous_routing` is non-zero.",
+    )
+
     line_order_vars: list[str] | None = Field(
         default=None,
         description="One variable per LINE of every arm's text, giving the position "
@@ -298,15 +334,56 @@ class Condition(BaseModel):
 
     @property
     def variables(self) -> list[str]:
-        """Every variable needed to determine an arm."""
+        """Every variable needed to determine an arm.
+
+        Empty under the witness design, which has no assignment column at all;
+        `witness_vars` carries those names instead. Keeping them apart matters:
+        these are read as CODES and looked up in `by_raw`, and a witness value is
+        a response, not a code.
+        """
         return self.source_vars or ([self.source_var] if self.source_var else [])
+
+    @property
+    def witness_vars(self) -> list[str]:
+        """The per-arm witness variables, in arm order. Empty unless witnessed."""
+        return [a.witness_var for a in self.arms if a.witness_var is not None]
+
+    @property
+    def witnessed(self) -> bool:
+        """True when arms are resolved by not-asked codes rather than an arm code."""
+        return self.not_asked_code is not None
+
+    def arms_asked(self, codes: dict[str, int | None]) -> list[Arm]:
+        """Every arm this respondent was ASKED, by its witness.
+
+        `codes` maps each witness variable to the respondent's value, or None
+        where the cell is blank. A blank witness is treated exactly like the
+        not-asked code: both mean the melt has no evidence this person saw the
+        condition, and inventing one from an absent cell is the error this whole
+        mechanism exists to avoid. Returns every match, not the first — the
+        caller decides what more than one means, because a respondent with two
+        conditions has none.
+        """
+        asked = []
+        for arm in self.arms:
+            assert arm.witness_var is not None
+            value = codes.get(arm.witness_var)
+            if value is not None and value != self.not_asked_code:
+                asked.append(arm)
+        return asked
 
     def key_for(self, values: dict[str, int]) -> tuple[int, ...]:
         """The lookup key for a respondent's assignment codes."""
         return tuple(values[v] for v in self.variables)
 
     def by_raw(self) -> dict[tuple[int, ...], Arm]:
-        """Arms indexed by their assignment key (a 1-tuple in the usual case)."""
+        """Arms indexed by their assignment key (a 1-tuple in the usual case).
+
+        Empty under the witness design, which has no codes to index by. The melt
+        resolves those arms through `arms_asked` instead.
+        """
+        if self.witnessed:
+            return {}
         out: dict[tuple[int, ...], Arm] = {}
         for arm in self.arms:
             if self.source_vars:
@@ -436,41 +513,99 @@ class Recipe(BaseModel):
         "answer; rewriting keeps it.",
     )
 
+    def _check_assignment(self) -> None:
+        """A recipe declares its assignment exactly one way, and declares it fully.
+
+        The two ways are mutually exclusive by construction, not by convention: a
+        witnessed arm has no code to look up and a coded arm has no witness to
+        read, so a recipe holding both would have two answers to the only
+        question that matters about a row.
+        """
+        cond = self.condition
+        witnesses = [a.witness_var for a in cond.arms if a.witness_var is not None]
+        if cond.witnessed:
+            if cond.variables:
+                raise ValueError(
+                    f"{self.study_id}: condition declares both `not_asked_code` and "
+                    f"source_var/source_vars — an arm cannot be resolved two ways"
+                )
+            if len(witnesses) != len(cond.arms):
+                raise ValueError(
+                    f"{self.study_id}: `not_asked_code` is set, so every arm needs a "
+                    f"`witness_var` ({len(witnesses)} of {len(cond.arms)} have one)"
+                )
+            if len(set(witnesses)) != len(witnesses):
+                # Two arms sharing a witness can never be told apart: the same
+                # value would answer for both, so every respondent asked one
+                # would read as having been asked the other too.
+                raise ValueError(
+                    f"{self.study_id}: arms share a witness_var and so cannot be "
+                    f"distinguished: {witnesses}"
+                )
+            if any(a.raw is not None or a.raws or a.raw_values for a in cond.arms):
+                raise ValueError(
+                    f"{self.study_id}: a witnessed arm also declares raw/raws/raw_values"
+                )
+        else:
+            if witnesses:
+                raise ValueError(
+                    f"{self.study_id}: arms declare `witness_var` but the condition has no "
+                    f"`not_asked_code`, so the witnesses would never be read"
+                )
+            if not cond.variables:
+                raise ValueError(
+                    f"{self.study_id}: condition needs source_var, source_vars, or "
+                    f"`not_asked_code` with a `witness_var` per arm"
+                )
+        if cond.ambiguous_routing and not cond.ambiguous_routing_reason:
+            raise ValueError(
+                f"{self.study_id}: ambiguous_routing={cond.ambiguous_routing} without a "
+                f"reason — a discarded respondent must say why they were discarded"
+            )
+        if cond.ambiguous_routing and not cond.witnessed:
+            raise ValueError(
+                f"{self.study_id}: ambiguous_routing applies only to the witness design; "
+                f"a coded assignment yields one arm by construction"
+            )
+
     @model_validator(mode="after")
     def _check(self) -> Recipe:
         nums = [a.condition_num for a in self.condition.arms]
         if len(set(nums)) != len(nums):
             raise ValueError(f"duplicate condition_num in {self.study_id}: {nums}")
-        if not self.condition.variables:
-            raise ValueError(f"{self.study_id}: condition needs source_var or source_vars")
-        if self.condition.source_vars:
-            for arm in self.condition.arms:
-                missing = set(self.condition.source_vars) - set(arm.raw_values or {})
-                if missing:
-                    raise ValueError(
-                        f"{self.study_id}: an arm is missing raw_values for {sorted(missing)}"
-                    )
-        else:
-            if any(a.raw is None and not a.raws for a in self.condition.arms):
-                raise ValueError(f"{self.study_id}: every arm needs `raw` or `raws`")
-            if any(a.raw is not None and a.raws for a in self.condition.arms):
-                raise ValueError(f"{self.study_id}: an arm declares both `raw` and `raws`")
-        # Build the key list from the arms directly — by_raw() is a dict, so
-        # duplicates would silently collapse and never be caught.
-        keys: list[tuple[int, ...]] = []
-        for arm in self.condition.arms:
+        self._check_assignment()
+        # Arm codes, and their uniqueness. Skipped entirely under the witness
+        # design, which declares no codes at all — `_check_assignment` has
+        # already proved its witnesses are complete and distinct.
+        if not self.condition.witnessed:
             if self.condition.source_vars:
-                keys.append(
-                    tuple(arm.raw_values[v] for v in self.condition.source_vars)  # type: ignore[index]
-                )
-            elif arm.raws is not None:
-                # Every code separately, so two arms both claiming code 2 is still
-                # caught — the whole point of this check.
-                keys.extend((c,) for c in arm.raws)
+                for arm in self.condition.arms:
+                    missing = set(self.condition.source_vars) - set(arm.raw_values or {})
+                    if missing:
+                        raise ValueError(
+                            f"{self.study_id}: an arm is missing raw_values for {sorted(missing)}"
+                        )
             else:
-                keys.append((arm.raw,))  # type: ignore[arg-type]
-        if len(set(keys)) != len(keys):
-            raise ValueError(f"duplicate raw arm code in {self.study_id}: {keys}")
+                if any(a.raw is None and not a.raws for a in self.condition.arms):
+                    raise ValueError(f"{self.study_id}: every arm needs `raw` or `raws`")
+                if any(a.raw is not None and a.raws for a in self.condition.arms):
+                    raise ValueError(f"{self.study_id}: an arm declares both `raw` and `raws`")
+            # Build the key list from the arms directly — by_raw() is a dict, so
+            # duplicates would silently collapse and never be caught.
+            keys: list[tuple[int, ...]] = []
+            for arm in self.condition.arms:
+                if self.condition.source_vars:
+                    keys.append(
+                        tuple(arm.raw_values[v] for v in self.condition.source_vars)  # type: ignore[index]
+                    )
+                elif arm.raws is not None:
+                    # Every code separately, so two arms both claiming code 2 is still
+                    # caught — the whole point of this check.
+                    keys.extend((c,) for c in arm.raws)
+                else:
+                    keys.append((arm.raw,))  # type: ignore[arg-type]
+            if len(set(keys)) != len(keys):
+                raise ValueError(f"duplicate raw arm code in {self.study_id}: {keys}")
         tasks = [o.task_num for o in self.outcomes]
         if len(set(tasks)) != len(tasks):
             raise ValueError(f"duplicate task_num in {self.study_id}: {tasks}")

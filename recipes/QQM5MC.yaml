@@ -1,0 +1,309 @@
+study_id: QQM5MC
+source: dataverse
+title: "A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote"
+data_file: YouGovExp.dta
+licence: >-
+  CC0 1.0, stated on the Harvard Dataverse deposit and read from the Dataverse API
+  (latestVersion.license), recorded in data/catalog/uk_dataverse_provenance.json.
+  This is the FIRST study in the corpus with an explicit grant of reuse rights. The
+  24 TESS deposits all state none.
+
+comparable_to_socsci210: false
+
+notes: |-
+  Sorace, M. and Hobolt, S. B. (2021), "A Tale of Two Peoples: Motivated Reasoning
+  in the Aftermath of the Brexit Vote", Political Psychology. Harvard Dataverse
+  doi:10.7910/DVN/QQM5MC. The survey experiment was fielded by YouGov 24-26 July
+  2018; N = 3,267 UK citizens aged 18+.
+
+  The deposit holds THREE files and no questionnaire: `YouGovExp.dta` (the
+  experiment), `Sorace_Hobolt_DoFile.do`, `Sorace_Hobolt_Log.smcl`. Every piece of
+  text below is quoted from the published paper, which is open access at
+  https://kar.kent.ac.uk/88730/ and https://eprints.lse.ac.uk/105106/. Page numbers
+  are the KAR PDF's printed page numbers. NOTHING here is reconstructed.
+
+
+  THE DESIGN — A FULLY CROSSED 2 x 2, CARRIED AS FOUR BLOCKS OF VARIABLES
+
+  Paper p. 23: "Our fully crossed (2x2) survey-based experiment was fielded between
+  July 24-26, 2018 by the reputable survey organization YouGov. 3,267 UK citizens
+  above the age of 18 took part and were randomly exposed to three experimental and
+  one control condition."
+
+    identity_prime         - the Leaver/Remainer identity question is asked first
+    economic_information   - an ONS statement on UK GDP growth is shown
+
+  The two factors are carried by WHICH BLOCK of variables a respondent was routed
+  to. Block A = Q1A/Q2A/Q3A, B = Q1B/Q2B/Q3B, C = Q2C/Q3C, D = Q2D/Q3D. The do-file
+  names them at lines 449-459:
+
+    reshape long Q1 Q2 Q3, i(ID) j(Exp_Group, string)
+    encode Exp_Group, gen(Group)
+    recode Group 4=0 1=2 2=1
+    lab define expgroup 1 "Prime only" 2 "Prime & Info" 3 "Info only" 0 "Control"
+
+  `encode` is alphabetical, so A=1 B=2 C=3 D=4 before the recode, and after it:
+
+    A -> 2  Prime & Info      B -> 1  Prime only
+    C -> 3  Info only         D -> 0  Control
+
+  `condition_num` below IS that Group coding, so our index and the paper's agree.
+
+  The mapping is confirmed INDEPENDENTLY of the do-file by the data itself: Q1 (the
+  prime) exists only for blocks A and B, which are exactly the two the recode calls
+  primed. It is confirmed a second time by the paper's own numbers. p. 24: "Of those
+  subjected to the priming treatment, the vast majority (82.1%) reported identifying
+  as either a Leaver or a Remainer ... Only 14.3% reported no allegiance and 3.6%
+  did not answer." Across blocks A and B, 1,679 people were asked Q1:
+    Leaver or Remainer   1,378 / 1,679 = 82.07%
+    neither                241 / 1,679 = 14.35%
+    did not answer          60 / 1,679 =  3.57%
+
+
+  VERIFIED AGAINST THE PUBLISHED RESULTS BEFORE THIS RECIPE WAS WRITTEN
+
+  UK studies are not in SocSci210, so `comparable_to_socsci210` is false and the
+  usual numeric answer key does not exist. The published table is the answer key
+  instead, and `scripts/verify_QQM5MC.py` checks the BUILT rows against it. Group
+  means reconstructed from the deposit, against the paper's Figures 4 and 5:
+
+                    Q2 rank  Leave/Remain     Q3 optimism  Leave/Remain
+    0 Control       14.06 / 16.83  (14.1/16.9)   1.84 / 1.19  (1.85/1.19)
+    1 Prime only    12.46 / 18.04  (12.5/18.1)   2.04 / 1.10  (2.04/1.10)
+    2 Prime & Info  13.84 / 18.32  (13.8/18.3)   1.94 / 1.07  (1.95/1.07)
+    3 Info only     15.42 / 18.49  (15.4/18.5)   1.66 / 1.13  (1.66/1.13)
+
+  Every one matches. Table 1's N (2,762 for the rank item, 2,653 for the economy
+  item, both restricted to Remain/Leave voters) reproduces exactly, as does its
+  constant of 16.83 — the Control/Remain cell above.
+
+  Respondents per block: A 859, B 820, C 798, D 791.
+
+
+  NO ASSIGNMENT COLUMN — WHY THIS RECIPE USES `witness_var`
+
+  Every other recipe here names a `condition.source_var`. This file has none. The
+  only record of who saw what is that the blocks a respondent was NOT routed to are
+  coded 9999 "Not Asked". That is the instrument's own account of what it asked, not
+  an inference from the answer, and the file keeps the two apart: 9999 is "Not
+  Asked" and 9998 is "Skipped". So each arm declares the variable whose not-asked
+  code proves non-membership.
+
+  The routing is internally consistent. Within each block Q1 and Q3 agree exactly on
+  who was not asked (A 2,408 and 2,408; B 2,447 and 2,447). Q2 carries NO item
+  non-response at all once Not Asked is removed, which is what the paper states at
+  Table 1: "The rank dependent variable (model 1) has no missing observations."
+
+  Q3 is declared as the witness rather than Q2 because Q2's valid answers run 1-34
+  and include the two-digit values a careless reading could confuse with a sentinel;
+  Q3's valid answers are 0-4 and its codes are unambiguous.
+
+
+  ONE RESPONDENT ROUTED TWICE — ID 2158
+
+  ID 2158 was asked BOTH block B and block C: Q1B=1, Q2B=6, Q3B=2 and Q2C=6, Q3C=2,
+  with A and D at 9999. It is the only such case in 3,267 respondents.
+
+  The authors' `drop if Q1==. & Q2==. & Q3==.` (do-file line 454) keeps that person
+  in TWICE after the reshape, once as Prime only and once as Info only, so Table 1's
+  N of 2,762 includes the duplicate. We do not reproduce that. A respondent routed
+  to two conditions has no condition — the tuple this corpus is made of has exactly
+  one, and we cannot know which of the two they actually met — so the melt drops
+  them and `ambiguous_routing: 1` declares it. If a re-fetched deposit ever contains
+  a second such respondent the build FAILS rather than quietly discarding more.
+
+
+  Q1 IS THE MANIPULATION, NOT AN OUTCOME
+
+  Asking the identity question IS the prime. Paper p. 23: "The in-group priming
+  treatment asks respondents whether they identify as a Leaver or Remainer or
+  neither. This is a (subtle) way of priming respondents to think of Brexit-related
+  social identities." It exists in only two of the four conditions, and the control
+  is a true control — p. 23: "The individuals in the control group (no referendum
+  prime and no information) are only asked the economic performance questions."
+
+  So Q1 is recorded in `factors` and in the condition text, and is NOT melted as a
+  response. Including it would add 1,679 rows that exist in half the design.
+
+
+  THE TWO OUTCOMES
+
+  Both wordings are quoted verbatim from p. 25, where the paper prints them as the
+  two items used "to measure the outcome variable - perceptions of the UK economic
+  context". Response options for Q3 are the .dta's own value labels, not ours.
+
+  Q2 (task 0) is a 1-34 ranking against the OECD; 1 is best, 34 is worst, so HIGHER
+  means more pessimistic. Q3 (task 1) runs 0 "Getting a lot worse" to 4 "Getting a
+  lot better", so higher means more optimistic. The two run in opposite directions
+  and are left that way, each with its own endpoint labels, because that is how they
+  were fielded.
+
+  Q3's 999 "Don't know" (187 respondents) is dropped as a missing code — it is not a
+  point on the scale, and the do-file recodes it to missing at line 467. Q2 has no
+  equivalent: the question itself says "If you don't know the answer, please make
+  your best guess", and every routed respondent answered.
+
+
+  PERSONA — AND THREE DELIBERATE EXCLUSIONS
+
+  No crosswalk applies yet. These are the UK panel's own labels and QC rule 14 will
+  report them as unmapped, which is correct: the UK persona vocabulary is designed
+  after all four UK deposits are read, not from this one.
+
+  `work_type` IS EXCLUDED. Four of its nine value labels are severed at Stata's
+  80-character ceiling, mid-word: code 1 ends "...that requires at least degree-level
+  qualifications (e.g", code 2 "...finance manager, person", code 3 "...clerk,
+  secretar", code 7 "...labourer, driver, b". This is the 9xw67 fault (six truncated
+  labels, recovered there from the questionnaire) in a second deposit, and this
+  deposit has no questionnaire to recover them from. `work_stat` and
+  `socialgrade_cie` carry the same ground untruncated.
+
+  `age_2` (four bands) is excluded as redundant with `age` (18-87, ungrouped);
+  `socgrade` (ABC1/C2DE) as redundant with `socialgrade_cie` (A/B/C1/C2/D/E).
+
+  `VoteEURef` IS included, in `extra`. It is pre-treatment — a 2016 vote recalled in
+  a 2018 survey — and it is the paper's moderator, the variable every result is
+  conditioned on. A persona without it would make these rows close to unpredictable.
+  `Q1`, by contrast, is post-treatment and is not a persona field.
+
+  This study carries NO ethnicity, religion, marital status or household size. UK
+  personas are thinner than the US ones, and systematically so.
+
+  Missing codes are the file's own sentinels, which are NOT the 98/99 the value
+  label sets suggest — this deposit uses 9999 throughout (234 on income, 287 on
+  education_age, 594 on Vote2017, 2 on work_stat, 1 on VoteEURef).
+
+condition:
+  not_asked_code: 9999
+  ambiguous_routing: 1
+  ambiguous_routing_reason: >-
+    ID 2158 was routed to both block B (Prime only) and block C (Info only) — Q1B=1,
+    Q2B=6, Q3B=2 alongside Q2C=6, Q3C=2. It is the only such respondent in 3,267. We
+    cannot know which condition they met, and a row needs exactly one, so they are
+    dropped rather than written twice. The authors' own reshape keeps them in both
+    groups, so the paper's N of 2,762 counts this person twice.
+  factors: [identity_prime, economic_information]
+  shared_context: >-
+    You are taking part in an online survey of adults in Great Britain, run by YouGov
+    in late July 2018, a little over two years after the referendum on the United
+    Kingdom's membership of the European Union.
+
+  arms:
+    - witness_var: Q3D
+      condition_num: 0
+      factors: {identity_prime: "absent", economic_information: "absent"}
+      items:
+        0: {outcome_var: Q2D}
+        1: {outcome_var: Q3D}
+      text: >-
+        You go straight to the questions about the economy. You are not asked whether
+        you think of yourself as a Leaver or a Remainer, and you are not shown any
+        figures about how the UK economy has been performing.
+
+    - witness_var: Q3B
+      condition_num: 1
+      factors: {identity_prime: "present", economic_information: "absent"}
+      items:
+        0: {outcome_var: Q2B}
+        1: {outcome_var: Q3B}
+      text: >-
+        First you are asked: "Since the EU referendum, some people now think of
+        themselves as 'Leavers' and 'Remainers', do you think of yourself as a Leaver,
+        a Remainer, neither a Leaver nor a Remainer?" You answer, and then go on to
+        the questions about the economy. You are not shown any figures about how the
+        UK economy has been performing.
+
+    - witness_var: Q3A
+      condition_num: 2
+      factors: {identity_prime: "present", economic_information: "present"}
+      items:
+        0: {outcome_var: Q2A}
+        1: {outcome_var: Q3A}
+      text: >-
+        First you are asked: "Since the EU referendum, some people now think of
+        themselves as 'Leavers' and 'Remainers', do you think of yourself as a Leaver,
+        a Remainer, neither a Leaver nor a Remainer?" You answer, and are then shown
+        the following statement: "The UK's Gross Domestic Product (GDP) annual growth
+        rate was 1.2% in the first quarter of 2018. The UK Office for National
+        Statistics reports that this is the slowest growth in the UK since 2012." You
+        then go on to the questions about the economy.
+
+    - witness_var: Q3C
+      condition_num: 3
+      factors: {identity_prime: "absent", economic_information: "present"}
+      items:
+        0: {outcome_var: Q2C}
+        1: {outcome_var: Q3C}
+      text: >-
+        You are shown the following statement: "The UK's Gross Domestic Product (GDP)
+        annual growth rate was 1.2% in the first quarter of 2018. The UK Office for
+        National Statistics reports that this is the slowest growth in the UK since
+        2012." You then go on to the questions about the economy. You are not asked
+        whether you think of yourself as a Leaver or a Remainer.
+
+outcomes:
+  # No `var`: each arm names its own through `items`, because the same question was
+  # asked in a different column in each block.
+  - task_num: 0
+    question: >-
+      How do you think the UK's economic growth rate currently ranks in comparison to
+      other the 34 developed countries part of the OECD? Please give a ranking from 1
+      to 34, where 1 means that you consider the UK to currently be the best
+      performing economy in the developed world, while 34 means that the UK is the
+      worst performing one. If you don't know the answer, please make your best guess.
+    scale:
+      min: 1
+      max: 34
+      min_label: "the best performing economy in the developed world"
+      max_label: "the worst performing one"
+    response_recode:
+      {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12,
+       13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21,
+       22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30,
+       31: 31, 32: 32, 33: 33, 34: 34}
+
+  - task_num: 1
+    question: "Do you think that the economy is getting better, getting worse or staying about the same?"
+    scale:
+      min: 0
+      max: 4
+      min_label: "Getting a lot worse"
+      mid_label: "Staying about the same"
+      max_label: "Getting a lot better"
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4}
+
+# Study-level fallback; both outcomes declare their own above.
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4}
+missing_codes: [98, 99, 999, 9998, 9999]
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_personal_income
+  region: Region_GOR
+  social_grade: socialgrade_cie
+  employment: work_stat
+  party_id: Vote2017
+  education_age: education_age
+  eu_referendum_vote: VoteEURef
+
+persona_missing:
+  # 19 "Don't know", 20 "Prefer not to say".
+  education_level: [19, 20, 98, 99, 9999]
+  # 15 "Don't know", 16 "Prefer not to answer".
+  gross_personal_income: [15, 16, 98, 99, 9999]
+  # 13 "Non UK & Invalid".
+  Region_GOR: [12, 13, 98, 99, 9999]
+  # 7 "Refused", 8 "Unknown". 6 "E" is a real grade.
+  socialgrade_cie: [7, 8, 98, 99, 9999]
+  # 8 "Other" is a real answer; only the sentinels go.
+  work_stat: [98, 99, 9999]
+  # 8/9 "N/A", 99 "Don't know". 98 "Other" is a real vote.
+  Vote2017: [8, 9, 99, 998, 999, 9999]
+  # 7 "Can't remember". 6 "Still at school/Full time student" is a real answer.
+  education_age: [7, 8, 9, 9999]
+  # 4 "Can't remember". 3 "I did not vote" is a real answer and is kept.
+  VoteEURef: [4, 8, 9, 9999]
+  gender: [8, 9, 9999]
+  age: [-9, -8, 9999]
