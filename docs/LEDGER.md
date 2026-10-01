@@ -451,6 +451,67 @@ null on every KnowledgePanel study.
 
 ---
 
+### The persona crosswalk — findings 57-63
+
+Built after the five-study batch, to make the corpus mergeable. The corpus is
+now harmonised on four fields: income 17 bands (was 19 vs 18), education 4
+levels (4 vs 5), ethnicity 5 categories (5 vs 6), employment 7 (7 vs 9 vs 2).
+
+| # | Finding | Kind | Action |
+|---|---|---|---|
+| 57 | **Recording a numbered sibling in `considered_and_rejected` un-silenced rule 9 on its component columns**, because rule 9 took its suppression list from `find_numbered_siblings`, which strips rejected variables. Doing the right thing took `b87sm` from 5 warnings to 40 | **method** (bug in our code) | Rule 9 suppresses on the sibling FAMILY via `_sibling_family`. General form: *a suppression mechanism must not be derived from a reporting mechanism that the suppression itself feeds* |
+| 58 | **`Arm.scale` leaked onto outcomes that name their own `var`.** `evnyh` rendered "return an integer from 1 to 5" on 16,824 rows whose responses ran 0-7, direction inverted — **8,774 rows, 47.3% of that study**, carrying an instruction their own response contradicts. QC passed with ZERO warnings. Cause was our own inconsistency: `outcome_var_for` prefers the outcome, `outcome_text_for` preferred the arm | **method** (bug in our code) | `Recipe.scale_for`, shared by the melt and rule 13 so they cannot drift. `evnyh` was the only recipe triggering it; 0 offending rows across all 14 |
+| 59 | **Rule 13** — a response must lie inside the scale its OWN rendered text states. Rule 4 checks the union of declared recodes and is structurally blind, since every one of those 0-7 values IS in some declared recode | **method** | Proved by restoring the buggy precedence: rule 13 fails, naming the (condition, task) pairs |
+| 60 | **Rule 12** — no persona field may render a non-answer label. 6 of 14 recipes were putting panel boilerplate into personas, 930 rows; `b87sm` shipped 93 rows of `religion: "SKIPPED ON WEB"` under a 335-line notes block that never mentioned persona | **method** | Two escape hatches for two causes: `persona_missing` drops sentinels carrying no answer; `persona_label_rewrite` cleans `cug34`'s 685 rows of "Other Christian religion, please specify" — a real answer wearing an interviewer instruction, which dropping would discard |
+| 61 | **Three studies had NO persona at all** — `rpw4u`, `sd7cf`, `zrwjp`, 33 mapped fields, 7,679 rows — because the recipes said `ppincimp` and the files say `PPINCIMP`, and the lookup was case-sensitive and skipped in silence. Persona is one of the four parts of the tuple. Three of our own early recipes, wrong since written | **method** (bug in our code) | Case-insensitive resolution (SPSS names *are* case-insensitive), and a mapped variable absent from the data is now a HARD ERROR. Coverage on the ten core fields went 90.4% -> 100% |
+| 62 | **`participant_id` was a per-study row index**, so on merge 23,464 respondents collapsed into 4,010 ids and "person 0" existed in all 14 studies as 14 different people | **method** (bug in our code) | Namespaced `<study_id>:<idx>`; `experiment` added to `Row` and `anchor()` too, because a deposit's sub-experiments are answered by the SAME people |
+| 63 | **Rule 14** — persona values must be in the canonical vocabulary. An unmapped label passes through UNCHANGED rather than being blanked, because silently thinning the corpus as new schemes arrive is the failure this layer exists to prevent | **method** | Caught finding #64 within minutes of existing |
+
+**The pattern across 57-63:** every one was invisible per study — each recipe
+built, passed QC and crosschecked — and obvious the moment the corpus was
+merged and *looked at*. Building the artifact found in minutes what fourteen
+clean builds had not.
+
+### Crosswalk design: three wrong sources before the right one
+
+| # | Finding | Kind |
+|---|---|---|
+| 64 | Derived the crosswalk from the variable **Jev picked**. But a recipe renders whatever variable IT declared, which can be a coarser sibling: the classifier prefers fine-grained `PPEDUC` while the recipes map 4-level `PPEDUCAT`, so education's crosswalk covered labels the corpus never contains | **method** (our error) |
+| 65 | Then derived it from the **built corpus**, which looks right and is worse — circular. Once applied, the corpus holds harmonised labels, so the second run reads its own output back as input | **method** (our error) |
+| 66 | Then filtered to value labels **observed in each sample**. `zrwjp`'s respondents are all in work, so it looked like a 2-category employment scheme, which forced every other study's retired/disabled/unemployed distinctions to collapse — 7 categories down to 3. **A scheme's categories are what the questionnaire OFFERED; absence in a sample is not absence from the scheme** | **method** (our error) |
+
+Correct source: the variable each **recipe declares**, read raw from the `.sav`.
+
+**Education needed the ORDINAL path, not the categorical one.** "Bachelor's degree
+or higher" is not a concept some schemes lack, it is a merge of adjacent rungs —
+so it routes through the band arithmetic. Pointing `categories.py` at it made the
+field unreconcilable, which was our error and not a fact about the data.
+
+**The granularity tiebreak misfired three times**, always by preferring a
+*different construct* that happened to be finer: `zrwjp`'s personal earnings over
+household income, and `ppcm0160` "Occupation (detailed)" over `PPWORK` "Current
+Employment Status" on two studies. Window narrowed from 0.10 to 0.03 (0.05 is the
+widest that still resolves every known answer), and picks decided by the tiebreak
+rather than by the score are now flagged for review. The real fix — asking Jev
+whether two candidates measure the same construct — is not built.
+
+### What Jev is for, settled
+
+rich pushed back on hand-coding the crosswalk with regex plus arithmetic, on the
+grounds that there would be a lot of edge cases. Measuring it settled it against
+us twice: there are **8** income band schemes across the fetched studies, not the
+2 visible in the built ones; and our own regex offered six **vignette** variables
+about a fictional character ("her family depends on her income") as income
+columns. The pattern could not even identify the right variable.
+
+So the division is: **Jev answers "what is this variable" and "what does this
+label mean"; code answers "do these bands tile".** Measured — 785 candidate
+columns across four fields, **327 rejected** by Jev; 14/14 on the studies whose
+income variable we already knew; and all six `py9q3` vignette variables scored
+0.02 against 0.85 for the real one.
+
+---
+
 ## Where the batch leaves us
 
 14 recipes (9 committed, 5 drafts awaiting checkers), **80,010 rows**, all QC PASS.
