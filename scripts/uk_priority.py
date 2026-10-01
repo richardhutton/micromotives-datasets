@@ -54,6 +54,8 @@ REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
 CATALOG = REPO / "data" / "catalog" / "tess_uk_foundation_sources.csv"
 OUT = REPO / "data" / "catalog" / "uk_priority.json"
+SCREEN = REPO / "data" / "catalog" / "uk_transfer_screen.json"
+SHORTLIST = REPO / "data" / "catalog" / "uk_shortlist.json"
 
 BUILT = {
     "7jt2f",
@@ -189,13 +191,33 @@ def buildable(code: str) -> bool:
 
 
 def existing_transfer_verdicts() -> dict[str, str]:
-    """What `uk_content_screen.py` concluded, where it has run."""
-    out = {}
+    """Each study's transfer verdict, hand-read beating screened.
+
+    Two sources, deliberately ranked. The catalog's `uk_content` column holds
+    verdicts reached by reading the fielded questionnaire; `uk_transfer_screen.json`
+    holds `uk_content_screen.py`'s guesses from variable labels. The screen
+    agrees with hand reading on 12 of 16, and TWO of its four errors are in the
+    dangerous direction — it called `b87sm` and `rpw4u` fully transferable where
+    reading said mechanism-only. So the screen orders the queue; it never
+    overrules an eye.
+    """
+    out: dict[str, str] = {}
+    if SCREEN.exists():
+        for code, rec in json.loads(SCREEN.read_text()).items():
+            out[code] = rec["verdict"]
     with open(CATALOG) as fh:
         for row in csv.DictReader(fh):
             if row.get("uk_content"):
                 out[row["osf_code"]] = row["uk_content"]
     return out
+
+
+# `other` is what Jev says when none of the ten domains fit. It is a residual,
+# not a domain, so giving it a turn in the round-robin spends slots on the
+# studies that matched nothing — `vhycz` (collective memory, 0.58) was taking a
+# place from better-scoring studies in real domains purely because `other` came
+# up in rotation.
+NOT_A_DOMAIN = frozenset({"other", ""})
 
 
 def balance(items: list[Priority], want: int) -> list[Priority]:
@@ -208,6 +230,8 @@ def balance(items: list[Priority], want: int) -> list[Priority]:
     """
     by_domain: dict[str, list[Priority]] = defaultdict(list)
     for p in sorted(items, key=lambda x: -x.score):
+        if p.domain in NOT_A_DOMAIN:
+            continue
         by_domain[p.domain].append(p)
     picked: list[Priority] = []
     while len(picked) < want and any(by_domain.values()):
@@ -223,6 +247,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--all", action="store_true", help="score every buildable unbuilt study")
     ap.add_argument("--balance", type=int, default=0, help="also print a domain-spread shortlist")
+    ap.add_argument(
+        "--reuse",
+        action="store_true",
+        help="re-rank from saved scores without calling Jev (picks up new transfer verdicts)",
+    )
     ap.add_argument("studies", nargs="*")
     args = ap.parse_args()
 
@@ -230,33 +259,38 @@ def main() -> int:
         catalog = {r["osf_code"]: r for r in csv.DictReader(fh)}
     verdicts = existing_transfer_verdicts()
 
-    if args.all:
-        targets = [c for c in catalog if c not in BUILT and buildable(c)]
+    if args.reuse:
+        # The relevance and domain judgements do not change when a transfer
+        # verdict arrives, so re-ranking must not re-pay for them.
+        results = [Priority(**rec) for rec in json.loads(OUT.read_text())]
+        for p in results:
+            p.transfer = verdicts.get(p.study_id, p.transfer)
     else:
-        targets = args.studies
-
-    client = TypeSafeClient()
-    results: list[Priority] = []
-    for code in sorted(targets):
-        path = data_file_for(code)
-        if path is None:
-            continue
-        p = Priority(
-            study_id=code,
-            title=catalog[code]["title"],
-            transfer=verdicts.get(code, ""),
-            socsci_rows=int(catalog[code].get("socsci210_rows") or 0),
+        targets = (
+            [c for c in catalog if c not in BUILT and buildable(c)] if args.all else args.studies
         )
-        try:
-            score(client, p, path)
-            results.append(p)
-            print(
-                f"{code}  rel={p.relevance:.2f} ever={p.evergreen:.2f} {p.domain:28} {p.title[:40]}"
+        client = TypeSafeClient()
+        results = []
+        for code in sorted(targets):
+            path = data_file_for(code)
+            if path is None:
+                continue
+            p = Priority(
+                study_id=code,
+                title=catalog[code]["title"],
+                transfer=verdicts.get(code, ""),
+                socsci_rows=int(catalog[code].get("socsci210_rows") or 0),
             )
-        except Exception as exc:
-            print(f"ERR   {code}: {type(exc).__name__}: {str(exc)[:80]}")
-
-    OUT.write_text(json.dumps([vars(r) for r in results], indent=2))
+            try:
+                score(client, p, path)
+                results.append(p)
+                print(
+                    f"{code}  rel={p.relevance:.2f} ever={p.evergreen:.2f} "
+                    f"{p.domain:28} {p.title[:40]}"
+                )
+            except Exception as exc:
+                print(f"ERR   {code}: {type(exc).__name__}: {str(exc)[:80]}")
+        OUT.write_text(json.dumps([vars(r) for r in results], indent=2))
 
     print(f"\n{'study':7} {'score':>5} {'rel':>5} {'ever':>5} {'domain':28} title")
     for p in sorted(results, key=lambda x: -x.score):
@@ -273,11 +307,21 @@ def main() -> int:
         print(f"   {dom:30} {n}")
 
     if args.balance:
+        picked = balance(results, args.balance)
         print(f"\nSHORTLIST — {args.balance} studies, spread across domains")
-        print(f"{'study':7} {'score':>5} {'domain':28} title")
-        for p in balance(results, args.balance):
-            print(f"{p.study_id:7} {p.score:5.2f} {p.domain:28} {p.title[:40]}")
-    print(f"\nwrote {OUT.relative_to(REPO)}")
+        print(f"{'study':7} {'score':>5} {'transfer':15} {'domain':28} title")
+        for p in picked:
+            print(
+                f"{p.study_id:7} {p.score:5.2f} {p.transfer or '-':15} {p.domain:28} {p.title[:40]}"
+            )
+        rows = sum(p.socsci_rows for p in picked)
+        print(f"\n{len(picked)} studies, {rows:,} rows by SocSci210's count")
+        # Saved so the build queue is a file both of us can read, rather than
+        # something regenerated differently each time it is asked for.
+        SHORTLIST.write_text(json.dumps([vars(p) for p in picked], indent=2))
+        print(f"wrote {SHORTLIST.relative_to(REPO)}")
+    if not args.reuse:
+        print(f"wrote {OUT.relative_to(REPO)}")
     return 0
 
 

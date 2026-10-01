@@ -161,8 +161,13 @@ ds = load_dataset("socratesft/SocSci210", split="train", streaming=True)
 print(next(iter(ds)))
 
 # reproduce the "unseen studies" test split
-mp = json.load(open(hf_hub_download("socratesft/SocSci210",
-              "metadata/participant_mapping.json", repo_type="dataset")))
+mp = json.load(
+    open(
+        hf_hub_download(
+            "socratesft/SocSci210", "metadata/participant_mapping.json", repo_type="dataset"
+        )
+    )
+)
 unseen = set(mp["unseen"])
 full = load_dataset("socratesft/SocSci210", split="train")
 test = full.filter(lambda r: r["study_id"] in unseen)

@@ -26,8 +26,9 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import sys
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
@@ -42,6 +43,14 @@ except ImportError:  # pragma: no cover
 REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
 CATALOG = REPO / "data" / "catalog" / "tess_uk_foundation_sources.csv"
+
+# Kept separate from the catalog's `uk_content` column ON PURPOSE. That column
+# holds verdicts reached by reading the questionnaire; this file holds the
+# screen's guesses. Writing the screen into the same column would overwrite
+# read-with-my-own-eyes judgements with model output and leave no way to tell
+# them apart — and the screen's whole justification is that it is a cheap
+# pre-filter, not an authority.
+OUT = REPO / "data" / "catalog" / "uk_transfer_screen.json"
 
 SKIP_PREFIX = ("pp", "tm_", "ds_", "ts_")
 SKIP_SUBSTR = ("_time", "weight", "caseid", "duration", "starttime", "endtime", "respdate")
@@ -160,6 +169,19 @@ def main() -> int:
             results.append(screen(client, code, rows[code]["title"], path))
         except Exception as exc:
             print(f"ERR   {code}: {type(exc).__name__}: {str(exc)[:110]}")
+
+    if results and not args.validate:
+        # Merge rather than replace, so screening another ten studies next week
+        # does not discard this week's. Keyed by study, newest run wins.
+        saved = json.loads(OUT.read_text()) if OUT.exists() else {}
+        for s in results:
+            saved[s.study_id] = {
+                **asdict(s),
+                "verdict": s.verdict,
+                "confidence": round(s.confidence, 3),
+            }
+        OUT.write_text(json.dumps(saved, indent=2, sort_keys=True))
+        print(f"\nwrote {len(results)} verdicts to {OUT.relative_to(REPO)} ({len(saved)} total)")
 
     print(f"\n{'study':7} {'verdict':15} {'stim':>5} {'outc':>5}  title")
     for s in sorted(results, key=lambda s: -s.outcome_us):

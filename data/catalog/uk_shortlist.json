@@ -1,0 +1,236 @@
+[
+  {
+    "study_id": "a2nbf",
+    "title": "The Effect of Question Wording on Preferences for Prenatal Genetic Testing and Abortion",
+    "relevance": 0.9,
+    "evergreen": 0.7,
+    "domain": "survey_methodology",
+    "transfer": "full",
+    "socsci_rows": 6211
+  },
+  {
+    "study_id": "5hqan",
+    "title": "Gender Identity and Diversity",
+    "relevance": 0.89,
+    "evergreen": 0.72,
+    "domain": "discrimination_and_identity",
+    "transfer": "full",
+    "socsci_rows": 6409
+  },
+  {
+    "study_id": "8ctbk",
+    "title": "Childbearing Preferences in the Face of Work, Family, and Financial Constraints",
+    "relevance": 0.88,
+    "evergreen": 0.77,
+    "domain": "family_and_relationships",
+    "transfer": "full",
+    "socsci_rows": 28228
+  },
+  {
+    "study_id": "a42yg",
+    "title": "Conflict between curative and palliative goals among health care personnel: Elucidating psychological processes and resolving conflict through self-affirmation",
+    "relevance": 0.85,
+    "evergreen": 0.8,
+    "domain": "health_and_care",
+    "transfer": "full",
+    "socsci_rows": 8524
+  },
+  {
+    "study_id": "yv2ta",
+    "title": "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns",
+    "relevance": 0.85,
+    "evergreen": 0.72,
+    "domain": "work_and_money",
+    "transfer": "full",
+    "socsci_rows": 13070
+  },
+  {
+    "study_id": "9xw67",
+    "title": "Blame and Bias in Trust in Public Policy Algorithms",
+    "relevance": 0.83,
+    "evergreen": 0.58,
+    "domain": "politics_and_institutions",
+    "transfer": "full",
+    "socsci_rows": 5313
+  },
+  {
+    "study_id": "gzdnf",
+    "title": "But how do you feel about climate change? Assessing affective reactions to climate change",
+    "relevance": 0.87,
+    "evergreen": 0.74,
+    "domain": "environment_and_energy",
+    "transfer": "mechanism-only",
+    "socsci_rows": 10817
+  },
+  {
+    "study_id": "h6zk9",
+    "title": "How Does Economic Status Affect Social Preferences? Experimental Evidence",
+    "relevance": 0.76,
+    "evergreen": 0.69,
+    "domain": "welfare_and_inequality",
+    "transfer": "full",
+    "socsci_rows": 2269
+  },
+  {
+    "study_id": "4fsg5",
+    "title": "Accounting for the Correlation between Perceived Risks and Rewards to Crime",
+    "relevance": 0.81,
+    "evergreen": 0.78,
+    "domain": "crime_and_justice",
+    "transfer": "mechanism-only",
+    "socsci_rows": 43105
+  },
+  {
+    "study_id": "w7mnc",
+    "title": "Consuming Values: Estimating Consumer Demand for Corporate Social Responsibility",
+    "relevance": 0.81,
+    "evergreen": 0.6,
+    "domain": "consumer_and_technology",
+    "transfer": "mechanism-only",
+    "socsci_rows": 52899
+  },
+  {
+    "study_id": "5an26",
+    "title": "Gender and Physical Attractiveness as Status Beliefs",
+    "relevance": 0.86,
+    "evergreen": 0.81,
+    "domain": "discrimination_and_identity",
+    "transfer": "full",
+    "socsci_rows": 11689
+  },
+  {
+    "study_id": "py9q3",
+    "title": "Attitudes toward the Employment of Mothers and Fathers",
+    "relevance": 0.86,
+    "evergreen": 0.78,
+    "domain": "family_and_relationships",
+    "transfer": "full",
+    "socsci_rows": 20030
+  },
+  {
+    "study_id": "sh4px",
+    "title": "Self-Affirmation and Affect: Effects on Implementation Intentions",
+    "relevance": 0.84,
+    "evergreen": 0.82,
+    "domain": "health_and_care",
+    "transfer": "full",
+    "socsci_rows": 11532
+  },
+  {
+    "study_id": "ye2ej",
+    "title": "The Wages of Parenthood: At the Intersection of Sexual Orientation and Child Caregiving",
+    "relevance": 0.81,
+    "evergreen": 0.73,
+    "domain": "work_and_money",
+    "transfer": "full",
+    "socsci_rows": 11883
+  },
+  {
+    "study_id": "egmxd",
+    "title": "Do Sustainability Labels Lead to More Sustainable and Healthier Food Choices?",
+    "relevance": 0.84,
+    "evergreen": 0.7,
+    "domain": "environment_and_energy",
+    "transfer": "mechanism-only",
+    "socsci_rows": 90977
+  },
+  {
+    "study_id": "wmsah",
+    "title": "Equivalency Framing of Societal Problems and Policy Solutions",
+    "relevance": 0.68,
+    "evergreen": 0.73,
+    "domain": "survey_methodology",
+    "transfer": "full",
+    "socsci_rows": 12175
+  },
+  {
+    "study_id": "4zwv2",
+    "title": "Do Injustice and Power Determine Anger and Fear Toward Terrorist Groups?",
+    "relevance": 0.77,
+    "evergreen": 0.55,
+    "domain": "politics_and_institutions",
+    "transfer": "mechanism-only",
+    "socsci_rows": 25290
+  },
+  {
+    "study_id": "5b6tf",
+    "title": "Social Class, College Debt, and the Purpose of College",
+    "relevance": 0.7,
+    "evergreen": 0.74,
+    "domain": "welfare_and_inequality",
+    "transfer": "mechanism-only",
+    "socsci_rows": 27175
+  },
+  {
+    "study_id": "x2ztf",
+    "title": "Two-Sided Collective Action: An Experimental Study of Grocery Consumers\u2019 Behavior",
+    "relevance": 0.62,
+    "evergreen": 0.55,
+    "domain": "consumer_and_technology",
+    "transfer": "full",
+    "socsci_rows": 12009
+  },
+  {
+    "study_id": "es4xw",
+    "title": "Perceptions of Diversity Across Groups",
+    "relevance": 0.81,
+    "evergreen": 0.8,
+    "domain": "discrimination_and_identity",
+    "transfer": "full",
+    "socsci_rows": 9891
+  },
+  {
+    "study_id": "ndhyr",
+    "title": "Patient Responses to Medical Error Disclosure: Does Compensation Matter?",
+    "relevance": 0.81,
+    "evergreen": 0.78,
+    "domain": "health_and_care",
+    "transfer": "full",
+    "socsci_rows": 13423
+  },
+  {
+    "study_id": "ftwqy",
+    "title": "Devaluation and Valuation in the Labor Market",
+    "relevance": 0.75,
+    "evergreen": 0.77,
+    "domain": "work_and_money",
+    "transfer": "full",
+    "socsci_rows": 13075
+  },
+  {
+    "study_id": "t936a",
+    "title": "Fairness and Favorability Assessments of Differential Parental Investment in the U.S.",
+    "relevance": 0.74,
+    "evergreen": 0.78,
+    "domain": "family_and_relationships",
+    "transfer": "full",
+    "socsci_rows": 15891
+  },
+  {
+    "study_id": "bvkfc",
+    "title": "Does Allowing Firms to Pay to Pollute Reduce the Moral Stigma of Pollution?",
+    "relevance": 0.75,
+    "evergreen": 0.57,
+    "domain": "environment_and_energy",
+    "transfer": "full",
+    "socsci_rows": 27056
+  },
+  {
+    "study_id": "5mt6r",
+    "title": "Improving Measurement of Self-Reported Health: Effects of Question Context and Response Order",
+    "relevance": 0.65,
+    "evergreen": 0.82,
+    "domain": "survey_methodology",
+    "transfer": "full",
+    "socsci_rows": 21180
+  },
+  {
+    "study_id": "hjn6m",
+    "title": "Judgments of Extremism and Social Information",
+    "relevance": 0.75,
+    "evergreen": 0.68,
+    "domain": "politics_and_institutions",
+    "transfer": "mechanism-only",
+    "socsci_rows": 48550
+  }
+]

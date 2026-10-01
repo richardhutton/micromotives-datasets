@@ -35,6 +35,7 @@ On the wire: value labels and variable labels only. Never respondent rows.
 from __future__ import annotations
 
 import argparse
+import itertools
 import json
 import sys
 import warnings
@@ -247,7 +248,7 @@ def harmonise_ordinal(client: TypeSafeClient, field: str, groups: dict) -> int:
             print(f"    {label:48} {rungs}")
         per_scheme.append((name, spans))
         covered = sorted(set(spans.values()))
-        holes = [(a[1], b[0]) for a, b in zip(covered, covered[1:], strict=False) if a[1] < b[0]]
+        holes = [(a[1], b[0]) for a, b in itertools.pairwise(covered) if a[1] < b[0]]
         if holes:
             print(f"    note: rungs no category covers: {holes}")
         print()
@@ -270,7 +271,7 @@ def harmonise_ordinal(client: TypeSafeClient, field: str, groups: dict) -> int:
     cuts = [0, *sorted(set.intersection(*edge_sets)), top]
     canon = [
         (lo, hi, ladder[lo] if hi - lo == 1 else f"{ladder[lo]} to {ladder[hi - 1]}")
-        for lo, hi in zip(cuts, cuts[1:], strict=False)
+        for lo, hi in itertools.pairwise(cuts)
     ]
     print(f"CANONICAL {field.upper()} — {len(canon)} levels")
     for _, _, label in canon:
