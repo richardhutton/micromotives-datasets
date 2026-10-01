@@ -40,7 +40,14 @@ class CrossCheckReport:
 
     def render(self) -> str:
         lines = [f"CROSSCHECK — {self.study_id}  (numbers only; text is informational)"]
-        for key in ("n_rows", "n_conditions", "rows_per_condition", "response_distribution"):
+        for key in (
+            "n_rows",
+            "n_conditions",
+            "n_tasks",
+            "rows_per_condition",
+            "rows_per_task",
+            "response_distribution",
+        ):
             o, t = self.ours.get(key), self.theirs.get(key)
             flag = "ok " if o == t else "DIFF"
             lines.append(f"  [{flag}] {key}")
@@ -100,6 +107,13 @@ def fetch_socsci210(study_id: str, shards: list[str] | None = None) -> dict[str,
         "SELECT count(*), count(DISTINCT participant) FROM s"
     ).fetchone()
     per_cond = dict(con.execute("SELECT condition_num, count(*) FROM s GROUP BY 1").fetchall())
+    # SocSci210 carries a `task_num` and we had never read it, comparing only
+    # conditions and responses. That blindness cost real time: `sh4px`'s two
+    # "conditions" turned out to be our two OUTCOME clusters, and `py9q3` had
+    # items from a different sub-experiment filed under one condition -- both
+    # found by a maker querying this parquet by hand. A study whose rows agree
+    # per condition can still have them distributed across the wrong questions.
+    per_task = dict(con.execute("SELECT task_num, count(*) FROM s GROUP BY 1").fetchall())
     dist = dict(con.execute("SELECT response, count(*) FROM s GROUP BY 1").fetchall())
     stimuli = dict(
         con.execute("SELECT condition_num, min(stimuli) FROM s GROUP BY 1 ORDER BY 1").fetchall()
@@ -108,7 +122,9 @@ def fetch_socsci210(study_id: str, shards: list[str] | None = None) -> dict[str,
         "n_rows": int(n_rows),
         "n_participants": int(n_participants),
         "n_conditions": len(per_cond),
+        "n_tasks": len(per_task),
         "rows_per_condition": {int(k): int(v) for k, v in per_cond.items()},
+        "rows_per_task": {int(k): int(v) for k, v in per_task.items()},
         "response_distribution": {int(k): int(v) for k, v in dist.items()},
         "stimuli": {int(k): v for k, v in stimuli.items()},
     }
@@ -117,12 +133,15 @@ def fetch_socsci210(study_id: str, shards: list[str] | None = None) -> dict[str,
 def profile(rows: list[Row]) -> dict[str, Any]:
     """The same numeric profile, computed from our own rows."""
     per_cond = Counter(r.condition_num for r in rows if r.condition_num is not None)
+    per_task = Counter(r.task_num for r in rows if r.task_num is not None)
     dist = Counter(int(r.response_num) for r in rows if r.response_num is not None)
     return {
         "n_rows": len(rows),
         "n_participants": len({r.participant_id for r in rows}),
         "n_conditions": len(per_cond),
+        "n_tasks": len(per_task),
         "rows_per_condition": {int(k): int(v) for k, v in per_cond.items()},
+        "rows_per_task": {int(k): int(v) for k, v in per_task.items()},
         "response_distribution": {int(k): int(v) for k, v in dist.items()},
     }
 
@@ -132,7 +151,14 @@ def compare(rows: list[Row], study_id: str) -> CrossCheckReport:
     theirs = fetch_socsci210(study_id)
     rep = CrossCheckReport(study_id=study_id, ours=ours, theirs=theirs)
 
-    for key in ("n_rows", "n_conditions", "rows_per_condition", "response_distribution"):
+    for key in (
+        "n_rows",
+        "n_conditions",
+        "n_tasks",
+        "rows_per_condition",
+        "rows_per_task",
+        "response_distribution",
+    ):
         if ours.get(key) == theirs.get(key):
             continue
         # Per-condition counts that are a PERMUTATION of each other mean both
@@ -150,6 +176,35 @@ def compare(rows: list[Row], study_id: str) -> CrossCheckReport:
                     "different condition_num ordering. Cells agree; only the index does not."
                 )
                 continue
+
+        # THE TASK DIMENSION IS REPORTED, NEVER FAILED, for the same reason
+        # condition_num ordering is not failed: there is no shared convention,
+        # and a branched design has more than one defensible numbering.
+        #
+        # Measured on `9263n`: we declare 14 tasks and SocSci210 seven, and each
+        # of theirs is exactly a pair of ours merged (399+403=802, 389+400=789,
+        # ...). Six questions are asked with a different variable per branch —
+        # Q3A "your activity" to the experiential arms, Q3B "your possession" to
+        # the material ones — so splitting them makes task_num partly a function
+        # of condition_num, which a crosstab confirms: tasks 0-11 each occur in
+        # exactly 2 of the 4 conditions. Their merge is arguably righter there.
+        # But tasks 12 and 13 ARE asked of all four conditions and they merged
+        # those too, which is not. Neither build is simply wrong.
+        #
+        # What this is FOR is the other case. `sh4px`'s two SocSci210
+        # "conditions" turned out to be our two outcome clusters, and `py9q3`
+        # had items from a different sub-experiment filed under one condition.
+        # Both were found by a maker querying the parquet by hand. A study can
+        # agree on rows, conditions and responses and still have them
+        # distributed across the wrong questions, and nothing used to look.
+        if key in ("n_tasks", "rows_per_task"):
+            rep.text_notes.append(
+                f"{key}: ours {ours.get(key)} vs SocSci210's {theirs.get(key)} — task "
+                "numbering has no shared convention, so this is reported, not failed. "
+                "Check it anyway: if their cells are merges or splits of ours the two "
+                "builds disagree about what question a row answers."
+            )
+            continue
         rep.mismatches.append(f"{key} differs")
 
     # Text is reported, never asserted — see module docstring.
