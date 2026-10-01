@@ -61,9 +61,30 @@ The dataset's value is that every row is something a real person actually did.
 ## Using Jev (the LLM judge)
 
 **Jev** (the `typesafe-sdk` package) is this project's structured-judgement API:
-`TypeSafeClient.system_one(state, questions)`, where each question is a `Noul`
-(0–1 judgement), a `Choice` (pick one, with reasons) or a `Score`. Use it for
-the questions that need **reading comprehension**, and only those.
+`TypeSafeClient.system_one(state, questions)`. Use it for the questions that
+need **reading comprehension**, and only those.
+
+**Pick the right primitive** — they are not interchangeable, and the wrong one
+returns a number that looks usable and means something else
+(https://docs.typesafe.ai/primitives):
+
+| Primitive | For | `criteria` | Returns |
+|---|---|---|---|
+| `Noul` | a **yes/no** question where the probability itself is the answer | optional: what yes and no mean | `noul`, a probability 0–1 |
+| `Choice` | pick one from a known **unordered** set | a MAP of option name to description; include `other` when coverage is uncertain | `choice`, `probabilities`, `confidence` |
+| `Score` | a position on a **defined spectrum**, each level given a meaning | an ORDERED LIST of levels | `score` (may fall between levels), `legend`, `probabilities`, `confidence` |
+
+The trap, in the docs' own words: *"A Noul value of 0.5 means the model gives
+yes and no equal probability. It does not mean the candidate has a medium skill
+level."* A `Noul` is **not** a magnitude. Do not rank, average or weight `Noul`
+values as if they were positions on a scale — that is what `Score` is for, with
+the levels written out.
+
+`Noul` has no confidence field (the probability is the answer). `Choice` and
+`Score` do, and the docs are explicit that it exists to decide *"when to act
+automatically and when to escalate to a person"* — so read it rather than
+taking `.choice` alone. Questions in one call are independent: removing one does
+not change the others.
 
 **Use Jev for meaning.** What construct does this variable measure? What does
 this response label denote? Which of these columns holds the randomised
@@ -92,6 +113,14 @@ questionnaire said otherwise. That is why the screen orders the queue and never
 overrules an eye.
 
 **Known failure modes**, all observed here:
+- **Using `Noul` where `Score` belongs.** `scripts/uk_priority.py` asks
+  `uk_relevance` and `evergreen` as `Noul`s and then ranks 59 studies by
+  `relevance + 0.15 * evergreen` — arithmetic on two probabilities-of-yes, which
+  the docs say explicitly is not what they measure. The verdict thresholds in
+  `uk_content_screen.py` are a legitimate `Noul` use (they really are yes/no);
+  the ranking is not, and should be re-asked as a `Score` with written levels.
+  Open, recorded here rather than quietly re-run, because re-asking changes the
+  shortlist. (2026-10-01)
 - A narrow option list inflates confidence. Keep candidate lists wide and let
   the low scores do the rejecting.
 - A "prefer the more granular measure" tiebreak misfired three times by
@@ -108,8 +137,9 @@ prints the exact JSON a call sends so you can check. Licence-restricted data
 the licence has been read.
 
 **Practical notes.** `TYPESAFE_API_KEY` lives in `~/.bash_profile`, which the
-Bash tool does not source — prefix `source ~/.bash_profile &&`. `Choice.criteria`
-is a mapping of option name to description, not a list.
+Bash tool does not source — prefix `source ~/.bash_profile &&`. The primitive
+reference above is the authority on `criteria`'s shape, which differs per
+primitive and is the easiest thing to get wrong.
 
 ## Definition of done
 
