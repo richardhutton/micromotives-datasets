@@ -1,0 +1,362 @@
+{
+ "LOGVPZ": {
+  "authors": "Green, Pahontu",
+  "doi": "10.7910/DVN/LOGVPZ",
+  "files": [
+   {
+    "bytes": 1093,
+    "name": "10-figd2.R",
+    "original_format": null,
+    "served_as": "10-figd2.R"
+   },
+   {
+    "bytes": 643,
+    "name": "10-fige1.do",
+    "original_format": null,
+    "served_as": "10-fige1.do"
+   },
+   {
+    "bytes": 1059,
+    "name": "11-figd3.R",
+    "original_format": null,
+    "served_as": "11-figd3.R"
+   },
+   {
+    "bytes": 747,
+    "name": "11-fige2.do",
+    "original_format": null,
+    "served_as": "11-fige2.do"
+   },
+   {
+    "bytes": 17217,
+    "name": "1-master.do",
+    "original_format": null,
+    "served_as": "1-master.do"
+   },
+   {
+    "bytes": 1497,
+    "name": "1-master.R",
+    "original_format": null,
+    "served_as": "1-master.R"
+   },
+   {
+    "bytes": 3793,
+    "name": "2-dataclean.do",
+    "original_format": null,
+    "served_as": "2-dataclean.do"
+   },
+   {
+    "bytes": 881,
+    "name": "2-fig1.R",
+    "original_format": null,
+    "served_as": "2-fig1.R"
+   },
+   {
+    "bytes": 956,
+    "name": "3-fig2.R",
+    "original_format": null,
+    "served_as": "3-fig2.R"
+   },
+   {
+    "bytes": 4561,
+    "name": "3-wealthgenerateboe.do",
+    "original_format": null,
+    "served_as": "3-wealthgenerateboe.do"
+   },
+   {
+    "bytes": 15115,
+    "name": "3-wealthgenerate.do",
+    "original_format": null,
+    "served_as": "3-wealthgenerate.do"
+   },
+   {
+    "bytes": 1018,
+    "name": "4-fig3.R",
+    "original_format": null,
+    "served_as": "4-fig3.R"
+   },
+   {
+    "bytes": 477,
+    "name": "4-tab2.do",
+    "original_format": null,
+    "served_as": "4-tab2.do"
+   },
+   {
+    "bytes": 877,
+    "name": "5-fig4.R",
+    "original_format": null,
+    "served_as": "5-fig4.R"
+   },
+   {
+    "bytes": 613,
+    "name": "5-tabd1.do",
+    "original_format": null,
+    "served_as": "5-tabd1.do"
+   },
+   {
+    "bytes": 1097,
+    "name": "6-fig5.R",
+    "original_format": null,
+    "served_as": "6-fig5.R"
+   },
+   {
+    "bytes": 638,
+    "name": "6-tabd2.do",
+    "original_format": null,
+    "served_as": "6-tabd2.do"
+   },
+   {
+    "bytes": 834,
+    "name": "7-fig6.R",
+    "original_format": null,
+    "served_as": "7-fig6.R"
+   },
+   {
+    "bytes": 1295,
+    "name": "7-figd4.do",
+    "original_format": null,
+    "served_as": "7-figd4.do"
+   },
+   {
+    "bytes": 855,
+    "name": "8-fig7.R",
+    "original_format": null,
+    "served_as": "8-fig7.R"
+   },
+   {
+    "bytes": 491,
+    "name": "8-tab3.do",
+    "original_format": null,
+    "served_as": "8-tab3.do"
+   },
+   {
+    "bytes": 2026,
+    "name": "9-figc1.R",
+    "original_format": null,
+    "served_as": "9-figc1.R"
+   },
+   {
+    "bytes": 950,
+    "name": "9-figd1.R",
+    "original_format": null,
+    "served_as": "9-figd1.R"
+   },
+   {
+    "bytes": 842,
+    "name": "9-figd5.do",
+    "original_format": null,
+    "served_as": "9-figd5.do"
+   },
+   {
+    "bytes": 122807,
+    "name": "analysis_log.log",
+    "original_format": null,
+    "served_as": "analysis_log.log"
+   },
+   {
+    "bytes": 10060,
+    "name": "analysis_logr.log",
+    "original_format": null,
+    "served_as": "analysis_logr.log"
+   },
+   {
+    "bytes": 1242035,
+    "name": "bes-subset.dta",
+    "original_format": "application/x-stata-14",
+    "served_as": "bes-subset.tab"
+   },
+   {
+    "bytes": 536041416,
+    "name": "Lower_Layer_Super_Output_Areas_December_2011_Boundaries_EW_BFC.shp",
+    "original_format": null,
+    "served_as": "Lower_Layer_Super_Output_Areas_December_2011_Boundaries_EW_BFC.shp"
+   },
+   {
+    "bytes": 625994,
+    "name": "lsoa_median.dta",
+    "original_format": "application/x-stata",
+    "served_as": "lsoa_median.tab"
+   },
+   {
+    "bytes": 277391861,
+    "name": "nmg.dta",
+    "original_format": null,
+    "served_as": "nmg.dta"
+   },
+   {
+    "bytes": 4094976,
+    "name": "yougov.dta",
+    "original_format": "application/x-stata-14",
+    "served_as": "yougov.tab"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "title": "Mind the Gap: Why Wealthy Voters Support Brexit"
+ },
+ "QQM5MC": {
+  "authors": "Sorace, Hobolt",
+  "doi": "10.7910/DVN/QQM5MC",
+  "files": [
+   {
+    "bytes": 31555,
+    "name": "Sorace_Hobolt_DoFile.do",
+    "original_format": null,
+    "served_as": "Sorace_Hobolt_DoFile.do"
+   },
+   {
+    "bytes": 760134,
+    "name": "Sorace_Hobolt_Log.smcl",
+    "original_format": null,
+    "served_as": "Sorace_Hobolt_Log.smcl"
+   },
+   {
+    "bytes": 1974182,
+    "name": "YouGovExp.dta",
+    "original_format": "application/x-stata-14",
+    "served_as": "YouGovExp.tab"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "title": "A Tale of Two Peoples: Motivated Reasoning after the Brexit Vote"
+ },
+ "TLT65Z": {
+  "authors": "Blinder, Ford, Ivarsflaten",
+  "doi": "10.7910/DVN/TLT65Z",
+  "files": [
+   {
+    "bytes": 12530,
+    "name": "Better Angels of Our Nature Study 1 citizenship experiment demographic controls code.do",
+    "original_format": null,
+    "served_as": "Better Angels of Our Nature Study 1 citizenship experiment demographic controls code.do"
+   },
+   {
+    "bytes": 7644,
+    "name": "Better Angels of Our Nature Study 1 citizenship experiment replication code.do",
+    "original_format": null,
+    "served_as": "Better Angels of Our Nature Study 1 citizenship experiment replication code.do"
+   },
+   {
+    "bytes": 5622,
+    "name": "Better Angels of Our Nature Study 1 citizenship experiment robustness checks code final.do",
+    "original_format": null,
+    "served_as": "Better Angels of Our Nature Study 1 citizenship experiment robustness checks code final.do"
+   },
+   {
+    "bytes": 8051,
+    "name": "Better Angels of Our Nature Study 2 replication code.do",
+    "original_format": null,
+    "served_as": "Better Angels of Our Nature Study 2 replication code.do"
+   },
+   {
+    "bytes": 4471,
+    "name": "Better Angels of Our Nature Study 2 robustness checks replication code.do",
+    "original_format": null,
+    "served_as": "Better Angels of Our Nature Study 2 robustness checks replication code.do"
+   },
+   {
+    "bytes": 19918,
+    "name": "Better Angels of our nature study 3 - demographic controls Germany.do",
+    "original_format": null,
+    "served_as": "Better Angels of our nature study 3 - demographic controls Germany.do"
+   },
+   {
+    "bytes": 34594,
+    "name": "Better Angels of our nature study 3 - voting analysis Britain - full replication code.do",
+    "original_format": null,
+    "served_as": "Better Angels of our nature study 3 - voting analysis Britain - full replication code.do"
+   },
+   {
+    "bytes": 24385,
+    "name": "Better Angels of our nature study 3 - voting analysis Germany - full replication code.do",
+    "original_format": null,
+    "served_as": "Better Angels of our nature study 3 - voting analysis Germany - full replication code.do"
+   },
+   {
+    "bytes": 1775257,
+    "name": "better angels study 1 bccap data final old.zip",
+    "original_format": null,
+    "served_as": "better angels study 1 bccap data final old.zip"
+   },
+   {
+    "bytes": 861456,
+    "name": "better angels study 2 cmsfinal old_1.dta",
+    "original_format": null,
+    "served_as": "better angels study 2 cmsfinal old_1.dta"
+   },
+   {
+    "bytes": 39177704,
+    "name": "gccap.immsmall.votemerged.dta",
+    "original_format": "application/x-stata",
+    "served_as": "gccap.immsmall.votemerged.tab"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "title": "The Better Angels of Our Nature: Anti-Prejudice Norm (GB & Germany)"
+ },
+ "X08IVC": {
+  "authors": "Tilley",
+  "doi": "10.7910/DVN/X08IVC",
+  "files": [
+   {
+    "bytes": 2000318,
+    "name": "Brexitidentitydata1.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "Brexitidentitydata1.tab"
+   },
+   {
+    "bytes": 332805,
+    "name": "Brexitidentitydata2.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "Brexitidentitydata2.tab"
+   },
+   {
+    "bytes": 89471,
+    "name": "Brexitidentitydata3.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "Brexitidentitydata3.tab"
+   },
+   {
+    "bytes": 278654,
+    "name": "Brexitidentitydata4.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "Brexitidentitydata4.tab"
+   },
+   {
+    "bytes": 60028,
+    "name": "Brexitidentitydata5-1.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "Brexitidentitydata5-1.tab"
+   },
+   {
+    "bytes": 21484,
+    "name": "Fig1-1.xlsx",
+    "original_format": null,
+    "served_as": "Fig1-1.xlsx"
+   },
+   {
+    "bytes": 39212,
+    "name": "Fig2Fig3.xlsx",
+    "original_format": null,
+    "served_as": "Fig2Fig3.xlsx"
+   },
+   {
+    "bytes": 12891,
+    "name": "Readme.docx",
+    "original_format": null,
+    "served_as": "Readme.docx"
+   },
+   {
+    "bytes": 3979,
+    "name": "Replication syntax.sps",
+    "original_format": null,
+    "served_as": "Replication syntax.sps"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "title": "Brexit as an Identity: Political Identities and Policy Norms"
+ }
+}
