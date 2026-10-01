@@ -343,6 +343,20 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             "number is wrong for most rows. Drop the signpost, or record why it belongs"
         )
 
+    # --- Rule 16: the deposit's licence must be recorded --------------------
+    # CLAUDE.md's definition of done asks for "source, licence and provenance
+    # recorded". Source and provenance were recorded richly from the first
+    # study — adapter, study id, line citations into the instrument — and
+    # licence was recorded in ZERO of fourteen, which nothing noticed because
+    # nothing asked. An unrecorded licence is the one provenance gap that can
+    # make a built row unpublishable, and it is cheapest to answer while the
+    # deposit page is still open.
+    if not (recipe.licence or "").strip():
+        rep.warnings.append(
+            "no licence recorded for this deposit — see `Recipe.licence`. Write what "
+            "the deposit itself states, including 'none stated' where it states none"
+        )
+
     return rep
 
 

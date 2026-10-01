@@ -186,3 +186,22 @@ by comprehension items is worse than a smaller honest one.
 
 Record the exclusion and its row cost in `notes`. `yv2ta` cost 8,092 rows across
 its two recipes.
+
+## A source with no stimulus
+
+Some sources measure a response with no manipulation at all — a panel question
+asked of everyone, with nothing randomised. CLAUDE.md requires that such a row
+"say so explicitly with a consistent sentinel", and until a source needs one
+every maker would invent a different spelling. So it is fixed here, before it
+is needed:
+
+    condition: "No stimulus was shown; the question was asked of everyone."
+
+One arm, `condition_num: 0`, that exact string, and `factors: {}`. Not an empty
+string and not a dash: a reader of the corpus must be able to tell "nothing was
+shown" from "something was shown and we failed to record it", and an empty field
+cannot carry that difference.
+
+None of the 20 sources built so far needs this — every one has a manipulation.
+It is written down because the first one that does will be written by an agent
+that has not had this conversation.

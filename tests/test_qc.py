@@ -465,3 +465,31 @@ def test_rule15_ignores_a_forward_reference_inside_the_same_row(
     rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
     rep = check(rows, fixture_recipe)
     assert not _warns(rep, "cites a position in a sequence"), rep.warnings
+
+
+def test_rule16_warns_when_no_licence_is_recorded(fixture_sav, fixture_recipe) -> None:
+    """Definition of done asks for source, licence AND provenance.
+
+    Source and provenance were recorded richly from the first study; licence was
+    recorded in zero of fourteen, because nothing asked.
+    """
+    fixture_recipe.licence = None
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    assert _warns(check(rows, fixture_recipe), "no licence recorded"), "rule 16 silent"
+
+
+def test_rule16_accepts_none_stated_as_a_recorded_licence(fixture_sav, fixture_recipe) -> None:
+    """ "None stated" is a fact about the deposit, and a useful one.
+
+    Treating it as unrecorded would push a maker towards guessing a licence to
+    clear the warning, which is the opposite of what the rule is for.
+    """
+    fixture_recipe.licence = "none stated"
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    assert not _warns(check(rows, fixture_recipe), "no licence recorded")
+
+
+def test_rule16_is_not_satisfied_by_whitespace(fixture_sav, fixture_recipe) -> None:
+    fixture_recipe.licence = "   "
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    assert _warns(check(rows, fixture_recipe), "no licence recorded")

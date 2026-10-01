@@ -265,6 +265,17 @@ class Recipe(BaseModel):
     source: str = Field(description="socsci210 | tess | dataverse | innovation_panel | bes")
     title: str | None = None
     data_file: str = Field(description="Filename of the data file inside data/raw/<study_id>/.")
+    licence: str | None = Field(
+        default=None,
+        description="The deposit's licence, as the deposit itself states it — e.g. "
+        "'CC0 1.0 Universal (OSF deposit)', or 'none stated' where the archive "
+        "gives none. CLAUDE.md's definition of done requires source, licence AND "
+        "provenance; source and provenance were recorded richly from the start and "
+        "licence was recorded in 0 of 14 studies, which nothing noticed because "
+        "nothing asked. QC rule 16 asks. "
+        "Record what the deposit says, not what seems likely: 'none stated' is a "
+        "fact about the deposit and a useful one, a guessed licence is neither.",
+    )
     notes: str | None = None
     experiment: str | None = Field(
         default=None,

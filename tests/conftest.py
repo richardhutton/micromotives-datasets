@@ -48,6 +48,9 @@ def fixture_recipe() -> Recipe:
         study_id="test01",
         source="tess",
         data_file="fixture.sav",
+        # A clean study records its licence — see QC rule 16. Stated here so the
+        # "clean study raises no warnings" test keeps meaning what it says.
+        licence="not applicable — synthetic test fixture, not a real deposit",
         condition=Condition(
             source_var="COND",
             shared_context="You read a short profile.",
