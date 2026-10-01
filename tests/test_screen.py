@@ -233,3 +233,57 @@ def test_recording_a_sibling_does_not_unsilence_its_components(tmp_path) -> None
     assert [s.var for s in find_undeclared_assignment(ds, rec)] == [], (
         "recording a sibling must not un-silence its component columns"
     )
+
+
+# --------------------------------------------------------------------------
+# a condition column that is null for part of the file
+# --------------------------------------------------------------------------
+
+# `py9q3` is the first recipe in the corpus whose assignment columns are empty
+# for part of the data file: a sample-split variable routes a third of the 2,542
+# respondents into a different sub-experiment, so the vignette-insert columns are
+# null for them. Not missing data — a disjoint population. 40 of these 60 rows
+# are assigned; the other 20 belong elsewhere.
+PART_OF_FILE = pd.DataFrame(
+    {
+        "XTESS175": [1.0] * 20 + [2.0] * 20 + [float("nan")] * 20,
+        "DOV_OPTION": ([1.0] * 10 + [2.0] * 10) * 2 + [float("nan")] * 20,
+        "Y": [1.0, 2.0] * 30,
+        "AGE": [30.0] * 60,
+    }
+)
+
+
+def test_a_null_assignment_column_does_not_crash_the_build(tmp_path) -> None:
+    """It raised `TypeError: expected str instance, NAType found`, killing mmds build.
+
+    `"|".join` met a `pd.NA` when the anchor was assembled. `py9q3`'s maker had
+    to bypass the CLI entirely and hand-roll the parquet write to get around it,
+    which meant three built studies never went through the standard path.
+    """
+    ds = _write(tmp_path, PART_OF_FILE, LABELS)
+    suspects = find_undeclared_assignment(ds, _recipe(["XTESS175"]))
+    assert isinstance(suspects, list)
+
+
+def test_a_second_randomisation_is_still_caught_among_the_assigned(tmp_path) -> None:
+    """The reason the fix is a subset and not `.fillna("")`.
+
+    Coverage and crossing must be judged against the respondents who HAVE an
+    assignment. Here a genuine second factor is fully crossed within the assigned
+    40 and null for the other 20, so its coverage over the whole file is 0.67 —
+    below MIN_COVERAGE of 0.95. Judged against the file it is skipped and a real
+    second randomisation goes unreported, which is the z358z defect returning
+    through the back door; judged against the assigned population its coverage is
+    1.00 and it is caught.
+    """
+    ds = _write(tmp_path, PART_OF_FILE, LABELS)
+    suspects = find_undeclared_assignment(ds, _recipe(["XTESS175"]))
+    assert [s.var for s in suspects] == ["DOV_OPTION"], [s.render() for s in suspects]
+
+
+def test_nothing_assigned_means_nothing_to_say(tmp_path) -> None:
+    df = PART_OF_FILE.copy()
+    df["XTESS175"] = float("nan")
+    ds = _write(tmp_path, df, LABELS)
+    assert find_undeclared_assignment(ds, _recipe(["XTESS175"])) == []

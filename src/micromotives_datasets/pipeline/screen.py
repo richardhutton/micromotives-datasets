@@ -161,7 +161,28 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
     # dealing with them removed it. Deriving it from the declared variables
     # themselves has no such feedback.
     components = tuple(f"{v}_" for v in declared)
-    anchor = ds.df[keys].astype("string").agg("|".join, axis=1)
+
+    # Only respondents who HAVE a study-level assignment take part in this rule.
+    # `py9q3` is the first recipe whose condition columns are null for part of the
+    # file: a sample-split variable routes ~850 of 2,542 respondents to a
+    # different sub-experiment, so that study's vignette-insert columns are empty
+    # for them. Not missing data — a disjoint population.
+    #
+    # Before this, `.agg("|".join)` met a `pd.NA` and raised `TypeError: sequence
+    # item 0: expected str instance, NAType found`, taking `mmds build` down with
+    # it. The tempting one-line fix is `.fillna("")`, and it is wrong: it gives
+    # every unassigned respondent the same anchor value, inventing an extra arm
+    # made of people who saw nothing. Every column that differs between the two
+    # sub-experiments would then cross fully against that fake arm and be reported
+    # as a second randomisation — the rule would not crash, it would lie.
+    #
+    # Rule 9 asks whether another column is crossed with OUR assignment, which is
+    # only a question about respondents who were assigned.
+    assigned = ds.df[keys].notna().all(axis=1)
+    if not assigned.any():
+        return []
+    df = ds.df.loc[assigned]
+    anchor = df[keys].astype("string").agg("|".join, axis=1)
 
     # Rule 11 owns the numbered-sibling family, so skip those and their component
     # columns. `b87sm` declares `P_S1`; the file also holds `P_S2..P_S8` and each
@@ -171,8 +192,12 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
     sibling_prefixes = tuple(s.upper() for s in _sibling_family(ds, recipe))
 
     out: list[Suspect] = []
-    n = len(ds.df)
-    for col in ds.df.columns:
+    # Coverage is judged against the assigned population too, not the whole file:
+    # a column asked of everyone who saw a vignette has full coverage among them
+    # and would otherwise fail MIN_COVERAGE purely because a third of the file
+    # was routed elsewhere.
+    n = len(df)
+    for col in df.columns:
         up = col.upper()
         if up in declared or up in rejected:
             continue
@@ -184,7 +209,7 @@ def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
         if not (NAME_PAT.match(col) or LABEL_PAT.search(label)):
             continue
 
-        series = ds.df[col]
+        series = df[col]
         if series.notna().sum() < MIN_COVERAGE * n:
             continue
         counts = series.value_counts(dropna=True)
