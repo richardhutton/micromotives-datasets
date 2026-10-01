@@ -86,6 +86,16 @@ automatically and when to escalate to a person"* — so read it rather than
 taking `.choice` alone. Questions in one call are independent: removing one does
 not change the others.
 
+**One door: `scripts/recipe_prep.py <study_id>`.** Run it BEFORE writing a
+recipe. It asks all four Jev-able questions about a study — which column is the
+randomised assignment, which columns are the persona attributes, which value
+labels are non-answers, and which questionnaire directives `quex` refuses and
+whether any of them gate stimulus text. Everything it prints carries a
+confidence and is flagged REVIEW when the model was unsure or the runner-up was
+close. Wave 1 was authored without it, by five agents reading variable names by
+eye, because it did not exist and its parts were scattered across eight scripts.
+`src/micromotives_datasets/jev.py` is the shared layer underneath. (2026-10-01)
+
 **Use Jev for meaning.** What construct does this variable measure? What does
 this response label denote? Which of these columns holds the randomised
 assignment? Does answering this question require local knowledge a respondent
@@ -113,14 +123,17 @@ questionnaire said otherwise. That is why the screen orders the queue and never
 overrules an eye.
 
 **Known failure modes**, all observed here:
-- **Using `Noul` where `Score` belongs.** `scripts/uk_priority.py` asks
-  `uk_relevance` and `evergreen` as `Noul`s and then ranks 59 studies by
-  `relevance + 0.15 * evergreen` — arithmetic on two probabilities-of-yes, which
-  the docs say explicitly is not what they measure. The verdict thresholds in
-  `uk_content_screen.py` are a legitimate `Noul` use (they really are yes/no);
-  the ranking is not, and should be re-asked as a `Score` with written levels.
-  Open, recorded here rather than quietly re-run, because re-asking changes the
-  shortlist. (2026-10-01)
+- **Using `Noul` where `Score` belongs.** `uk_priority.py` asked
+  `uk_relevance` and `evergreen` as `Noul`s and ranked 59 studies by
+  `relevance + 0.15 * evergreen` — arithmetic on two probabilities-of-yes. FIXED:
+  both are now `Score` with five written-out levels, and the values discriminate
+  where they had not (evergreen spreads 0.39–3.88 against a tight high cluster; a
+  2002 smallpox-vaccine study correctly collapses to 0.39). The thresholds in
+  `uk_content_screen.py` remain a legitimate `Noul` use — those really are yes/no
+  questions. (2026-10-01)
+- **An oversized call answers "none of the above" instead of failing.** See the
+  option-list note below; this is the failure mode most likely to go unnoticed,
+  because an empty report reads exactly like a clean one. (2026-10-01)
 - A narrow option list inflates confidence. Keep candidate lists wide and let
   the low scores do the rejecting.
 - A "prefer the more granular measure" tiebreak misfired three times by
@@ -135,6 +148,16 @@ deliberate and worth preserving in any new script; `scripts/jev_show_wire.py`
 prints the exact JSON a call sends so you can check. Licence-restricted data
 (see **Data handling**) must never reach Jev at all, instrument included, until
 the licence has been read.
+
+**Ask one question at a time, and keep option lists under ~45.** Measured: a
+`Choice` over 57 variables answers correctly and confidently; the same question
+over 150 returns NONE_OF_THESE for every field, including fields whose variable
+is plainly in the list. An oversized call does not error — it quietly answers
+"none of the above", and an empty report reads exactly like a clean one.
+`jev.choose` pages and runs off rather than truncating, because narrowing the
+list by keyword is the caller making the decision it is asking the model to
+make. **Carry each page's runner-up forward too**, or a candidate that loses its
+own page is never compared against the answer at all. (2026-10-01)
 
 **Practical notes.** `TYPESAFE_API_KEY` lives in `~/.bash_profile`, which the
 Bash tool does not source — prefix `source ~/.bash_profile &&`. The primitive
