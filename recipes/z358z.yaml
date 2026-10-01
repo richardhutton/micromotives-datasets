@@ -105,6 +105,16 @@ notes: >
   reversal between arms and no `response_recode` override is needed — the
   study-level {1:1..7:7} map already passes 1-4 through unchanged.
 
+  WHERE THAT PROOF LIVES, precisely, because the obvious place to look does not
+  have it. The .sav's value labels for all eight columns are generic —
+  {1: 'Definitely', 2: 'Probably', 3: 'Probably', 4: 'Definitely'} — and never
+  name which pole is which. The .sav therefore CANNOT settle the direction, and
+  a future checker who goes only there will find nothing either way and may
+  conclude the claim is unsupported. The authority is the questionnaire's grid
+  column headers, read in all eight blocks at the lines cited above. Noted
+  because a correct claim resting on an unstated source is one revision away
+  from looking like an assumption.
+
   VERIFIED AGAINST THE .sav. Q1a/Q1b/Q1c/Q1d are non-blank in exactly 503/558/
   546/523 rows — the same four cell sizes as the condition crosstab, each in its
   own cell only (Q1a only where (XTESS175,DOV_OPTION)=(1,1), etc.) — confirming

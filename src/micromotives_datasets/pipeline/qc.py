@@ -279,7 +279,47 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
                 "— a distinction in the source has been lost"
             )
 
+    # --- Rule 15: no row may cite its own position in a sequence ------------
+    # `b87sm` carried "Please read Scenario #1 carefully." in `shared_context`,
+    # so 13,513 of its 19,282 rows (70.1%) told the respondent they were reading
+    # scenario 1 while rating scenario 2 through 8. Nothing existing could see
+    # it: the 72 arms still rendered 72 distinct strings (rules 1 and 5
+    # satisfied), the arm text matched the source byte-for-byte, the row counts
+    # reconciled exactly, and QC passed with no warnings. It was visible only by
+    # reading a row and asking what it said.
+    #
+    # The general fault is not the wrong number, it is citing a position at all.
+    # A row is one (persona, condition, outcome, response) tuple with no way to
+    # express "this is the fifth of eight screens you have seen", so a numbered
+    # self-reference asserts a sequence the row cannot represent — and in a
+    # within-subject design it is additionally wrong for most rows.
+    #
+    # Numbered references only. Measured across all 14 built studies this
+    # pattern has zero matches once `b87sm` is fixed, while a pattern that also
+    # caught "the following scenario" would fire on two studies where the phrase
+    # is a forward reference inside the same row and perfectly correct.
+    signposts: Counter[str] = Counter()
+    for r in rows:
+        for text in (r.condition, r.outcome):
+            for m in _SIGNPOST.finditer(str(text)):
+                signposts[" ".join(m.group(0).split())] += 1
+    if signposts:
+        rep.warnings.append(
+            f"row text cites a position in a sequence: {dict(signposts)} — a row cannot "
+            "say which of several screens it was, and in a within-subject design the "
+            "number is wrong for most rows. Drop the signpost, or record why it belongs"
+        )
+
     return rep
+
+
+# A numbered self-reference, e.g. "Scenario #1", "Question 3", "part 2". NOT
+# "the following scenario", which points inside the same row and is correct.
+_SIGNPOST = re.compile(
+    r"\b(?:scenario|vignette|item|question|situation|statement|part|page|screen|section)"
+    r"\s+(?:#\s*)?\d+\b",
+    re.I,
+)
 
 
 def _all_recodes(recipe: Recipe) -> list[tuple[str, dict[int, int]]]:

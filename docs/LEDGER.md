@@ -564,3 +564,20 @@ came from a study the previous rule was blind to, one batch apart.
   panel lookup tables plus UK re-anchoring, per the coverage finding above.
 - `.doc` conversion uses macOS `textutil`; needs `antiword`/LibreOffice elsewhere.
   Arm text is committed into the recipe, so the melt and its tests stay unaffected.
+
+---
+
+## Round 7 — the per-(arm, outcome) schema gap, findings 67-70
+
+| # | Finding | Kind |
+|---|---|---|
+| 67 | **Four studies already "built, checked and crosschecked" were each missing most of their rows**, all for one cause: the schema could describe arms that ARE items and arms crossed with nothing, but not arms crossed with items. 40,296 rows — a third of the eventual corpus — sat unreachable behind it, and every recipe said so in its own `notes`. **A documented debt stops being visible the moment it is documented.** The four recipes recorded the gap when written and it was still there studies later; the thing that moved it was counting the rows it cost | **method** |
+| 68 | **A suppression derived from "things we have not dealt with yet" is removed by every way of dealing with them.** Ledger #52 was: recording `P_S2..P_S8` in `considered_and_rejected` emptied the sibling list and un-silenced their 40 component columns, 5 warnings to 40. This round: **declaring** them as per-item assignment emptied it the same way, for the same reason. The fix both times is the same shape — derive the suppression from the DECLARED set, which no act of declaring can empty. Found because a maker worked around it with 40 lines of recipe and said so | **method** (our error, twice) |
+| 69 | **A row cannot cite its own position in a sequence.** `b87sm` carried "Please read Scenario #1 carefully." in `shared_context`, so 13,513 of 19,282 rows (70.1%) told the respondent they were reading scenario 1 while rating scenario 2-8. Nothing caught it: 72 arms still rendered 72 distinct strings (rules 1 and 5 satisfied), arm text matched the source byte-for-byte, row counts reconciled exactly, and an exhaustive independent recomputation of all 19,282 rows' arm assignment found zero errors. **A checker found it by reading one rendered row and asking what it said.** Now QC rule 15, numbered references only — "the following scenario" points inside the row and is correct | **method** |
+| 70 | **"Presumably" in a verification note is a guess wearing a finding's clothes.** `cug34` explained 5 rows where Shared + Individual ≠ TOTAL as "presumably client-side rounding/validation slips". A checker identified all 5 exactly: each is a refusal (-1) with TOTAL still showing the cap. No arithmetic involved. Harmless here because TOTAL is not built — but the sentence read as checked when it was not. Related: `z358z`'s option-order proof was cited to the `.sav`, whose value labels are generic (`{1: 'Definitely', 2: 'Probably', ...}`) and cannot settle direction; the real authority is the questionnaire's grid column headers. A correct claim resting on an unstated source is one revision from looking like an assumption | **method** |
+
+**What maker/checker is now worth, measured.** n=11 through the full loop. Defects
+found in built data: **one** (#69), in 70% of one study's rows, by a checker
+reading a row rather than running a check. Everything else the checkers found was
+documentation. Two makers flagged their own riskiest judgement before being asked,
+and one of those flags is what exposed #68.

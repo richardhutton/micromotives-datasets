@@ -433,3 +433,35 @@ def test_rule13_catches_a_response_outside_its_own_rendered_scale(fixture_sav) -
     recipe.outcomes[1].scale.max = 0
     rep = check(rows, recipe)
     assert _fails(rep, "outside the scale their own outcome text states"), rep.failures
+
+
+def test_rule15_catches_a_row_citing_its_position_in_a_sequence(
+    fixture_sav, fixture_recipe
+) -> None:
+    """The b87sm defect: 13,513 rows of 19,282 said "Scenario #1" while rating 2-8.
+
+    Nothing else could see it. The 72 arms still rendered 72 distinct strings so
+    rules 1 and 5 passed, the arm text matched the source byte-for-byte, the row
+    counts reconciled exactly, and an exhaustive recomputation of every row's arm
+    assignment found no error. It was visible only by reading a rendered row.
+    """
+    fixture_recipe.condition.shared_context = "Please read Scenario #1 carefully."
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rep = check(rows, fixture_recipe)
+    assert _warns(rep, "cites a position in a sequence"), rep.warnings
+    assert _warns(rep, "Scenario #1"), rep.warnings
+
+
+def test_rule15_ignores_a_forward_reference_inside_the_same_row(
+    fixture_sav, fixture_recipe
+) -> None:
+    """ "The following scenario" points inside the row and is correct.
+
+    Two built studies use exactly this phrasing (`a5v96`, `z358z`). A rule that
+    flagged them would be turned off within a week, which is how a rule stops
+    catching anything.
+    """
+    fixture_recipe.condition.shared_context = "Please read the following scenario."
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rep = check(rows, fixture_recipe)
+    assert not _warns(rep, "cites a position in a sequence"), rep.warnings

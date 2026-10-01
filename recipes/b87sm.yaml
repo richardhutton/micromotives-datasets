@@ -276,7 +276,28 @@ notes: |
 
   shared_context = Q 56-62 (the DISPLAY_EXP description of the app and the data
   it collects) + Q 66, 68, 70 (the fixed opening of SCENARIO_1). Word-for-word
-  from Q except for two documented omissions:
+  from Q except for three documented omissions:
+
+    0. "Please read Scenario #k carefully." (Q 66, 122, 146, 170, 194, 218, 242,
+       266 — the number varies by slot). CAUGHT BY THE CHECKER, and it had been
+       wrong: the sentence sat in shared_context hardcoded to "#1", so 13,513 of
+       19,282 rows (70.1% — every SCENARIO_2..8 row) told the respondent they
+       were reading scenario 1 while rating a different one.
+
+       Fixed by DROPPING it rather than by varying it per slot, which is the
+       same ruling as omission 1 below and for the same reason. A row is one
+       (persona, condition, outcome, response) tuple and has no way to say "this
+       is the fifth of eight scenarios you have read". "Please read Scenario #5
+       carefully" inside a row that contains no scenarios #1-#4 asserts a
+       sequence the row cannot represent. The number is navigation inside an
+       8-screen block, not part of the manipulation: all 72 arms differ in the
+       vignette, never in the signpost.
+
+       Note what did NOT catch this. The 72 arms still rendered 72 distinct
+       strings, so rules 1 and 5 were satisfied; the arm text itself was
+       verified byte-for-byte against XL; the row counts reconcile exactly; QC
+       passed with zero warnings. It was visible only by reading a rendered row
+       and asking what it said. See CONVENTIONS, "Sequence signposting".
 
     1. Q 53-54, "On the following pages, you will see 8 different scenarios
        which vary in a number of features. All scenarios will contain study
@@ -448,8 +469,6 @@ condition:
     • The number of incoming and outgoing phone calls and text messages on the phone
 
     Please note that the research app would only collect information on when other apps are opened or when a call is made. The research app could not see what happens inside other apps or what is said in a phone call or a text message.
-
-    Please read Scenario #1 carefully.
 
     Imagine that researchers from a public university invite you to participate in a research study that includes downloading a research app to your smartphone.
 

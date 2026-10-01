@@ -65,6 +65,52 @@ be hoisted, and is therefore repeated per arm (`cug34` repeats one sentence 24
 times). That is correct: keeping the paragraph as the respondent read it beats
 de-duplication.
 
+## Sequence signposting: a row cannot say where it sat
+
+**Drop any text that cites the row's own position in a sequence** — "Please read
+Scenario #5 carefully", "the third of eight questions", "on the previous page".
+Do not transcribe it and do not vary it per item.
+
+A row is one `(persona, condition, outcome, response)` tuple. It has no way to
+express "this is the fifth of eight screens you have seen", so a numbered
+self-reference asserts a sequence the row does not contain. In a within-subject
+design it is additionally *wrong* for most rows: `b87sm` hardcoded "Scenario #1"
+into `shared_context`, and 13,513 of its 19,282 rows (70.1%) told the respondent
+they were reading scenario 1 while rating scenario 2 through 8.
+
+Note what did not catch that. The 72 arms still rendered 72 distinct strings, so
+rules 1 and 5 were satisfied; the arm text matched the source byte-for-byte; the
+row counts reconciled exactly; QC passed with zero warnings; an independent
+exhaustive check of all 19,282 rows' arm assignment found no error. A checker
+found it by reading one rendered row and asking what it said. **QC rule 15** now
+tests it, on numbered references only — "the following scenario" points inside
+the same row and is correct.
+
+This is the same ruling as dropping survey mechanics ("on the following pages
+you will see 8 different scenarios"), and for the same reason: both describe the
+instrument's structure, which the row format does not reproduce.
+
+## One stem, several labelled answer fields
+
+Where one question screen collects **several numbers under their own field
+labels** — `cug34`'s B02 asks how much goes in the shared account *and* the
+individual account on one screen — build one outcome per field and append a
+single sentence naming which field this row reports: *"Report only the amount
+for the Shared Account."*
+
+This is permitted because it disambiguates the **response format**, not the
+stimulus: the respondent's decision is already made and fixed, and the sentence
+only says which of their two numbers this row carries. It is the same job the
+scale instruction does.
+
+Two conditions, both required:
+- the field name must be the **source's own label**, quoted, not a paraphrase;
+- `notes` must record the added sentence verbatim and say it was added.
+
+It is narrower than the layout exception above. That one exists because the
+source contains *no words at all* for the manipulation; this one is reusing
+words the source does contain.
+
 ## Source authority
 
 1. **The fielded questionnaire is the only authority on stimulus wording.** Never
