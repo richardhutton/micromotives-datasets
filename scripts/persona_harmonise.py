@@ -40,10 +40,12 @@ import json
 import sys
 import warnings
 from pathlib import Path
+from typing import Any
 
 warnings.filterwarnings("ignore")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from micromotives_datasets import jev  # noqa: E402
 from micromotives_datasets.persona import bands as band_mod  # noqa: E402
 from micromotives_datasets.persona.categories import (  # noqa: E402
     Category,
@@ -53,11 +55,6 @@ from micromotives_datasets.persona.categories import (  # noqa: E402
 )
 from micromotives_datasets.sources import spss  # noqa: E402
 
-try:
-    from typesafe_sdk import Choice, Noul, TypeSafeClient
-except ImportError:  # pragma: no cover
-    sys.exit("uv add typesafe-sdk first")
-
 REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
 OUT = REPO / "data" / "catalog"
@@ -65,45 +62,6 @@ OUT = REPO / "data" / "catalog"
 # Generous on purpose: a concept missing from the vocabulary forces a wrong
 # answer, while a concept nobody uses costs nothing. `none_of_these` is the
 # escape and every use of it gets surfaced.
-VOCAB = {
-    "ethnicity": {
-        "white": "White, Caucasian or European",
-        "black": "Black, African-American or African",
-        "hispanic": "Hispanic, Latino or Spanish origin",
-        "asian": "Asian or Asian-American",
-        "native_american": "American Indian, Native American or Alaska Native",
-        "pacific_islander": "Native Hawaiian or other Pacific Islander",
-        "middle_eastern": "Middle Eastern or North African",
-        "two_or_more_races": "two or more races, mixed or multiracial",
-        "other_residual": "a catch-all for anything not listed",
-        "declined": "refused, prefer not to say, or missing",
-    },
-    "employment": {
-        "employed_full_time": "working full time",
-        "employed_part_time": "working part time",
-        "self_employed": "self-employed",
-        "employed_unspecified": "working, without full/part time distinguished",
-        "unemployed_looking": "not working and looking for work",
-        "unemployed_not_looking": "not working and not looking for work",
-        "retired": "retired",
-        "student": "in school or a student",
-        "homemaker": "keeping house, homemaker or caring for family",
-        "disabled": "disabled or unable to work",
-        "other_residual": "a catch-all for anything not listed",
-        "declined": "refused, prefer not to say, or missing",
-    },
-    "education": {
-        "less_than_high_school": "did not complete secondary school",
-        "high_school": "completed secondary school or equivalent",
-        "some_college": "some post-secondary study, no degree",
-        "associate": "a two-year or associate degree",
-        "bachelors": "a bachelor's degree",
-        "postgraduate": "a master's, doctorate or professional degree",
-        "bachelors_or_higher": "a bachelor's degree or above, not distinguished further",
-        "other_residual": "a catch-all for anything not listed",
-        "declined": "refused, prefer not to say, or missing",
-    },
-}
 
 
 # Must match persona_classify.TIE_DELTA. Narrow because granularity is only a
@@ -122,47 +80,19 @@ TIE_DELTA = 0.03
 # anything it cannot be checked on.
 BANDED = {"income"}
 
-ORDINAL = {
-    "education": [
-        "less_than_high_school",
-        "high_school",
-        "some_college",
-        "associate",
-        "bachelors",
-        "postgraduate",
-    ],
-}
 
+def assign_ordinal(client: Any, field: str, labels: tuple[str, ...]):
+    """For each label, the interval of rungs it covers, as a Band.
 
-def assign_ordinal(client: TypeSafeClient, field: str, labels: tuple[str, ...]):
-    """For each label, the lowest and highest rung it covers.
-
-    Two questions rather than one, because a label like "Bachelor's degree or
-    higher" genuinely spans several rungs and forcing it onto a single concept
-    is what broke the categorical attempt.
+    The two Choices are `jev.ordinal_span`; what is here is the arithmetic —
+    turning a (lowest, highest) pair into an interval `persona.bands` can tile,
+    and tolerating the pair arriving the wrong way round.
     """
-    ladder = ORDINAL[field]
-    vocab = {k: VOCAB[field][k] for k in ladder}
+    ladder = jev.PERSONA_LADDER[field]
     out = []
     for label in labels:
-        state = (
-            f"A survey recorded the respondent's {field} with these categories:\n\n"
-            + "\n".join(f"  - {x}" for x in labels)
-            + f"\n\nThe category in question is: {label!r}\n"
-        )
-        qs = {}
-        for edge, word in (("lowest", "LOWEST"), ("highest", "HIGHEST")):
-            qs[edge] = Choice(
-                criteria={**vocab, "none_of_these": "not an educational level at all"},
-                instructions=(
-                    f"The {word} level of education a respondent in the category "
-                    f"{label!r} could have. For a category covering one level only, "
-                    "the lowest and the highest are the same."
-                ),
-            )
-        r = client.system_one(state=state, questions=qs)
-        lo = str(r.answers["lowest"].choice)
-        hi = str(r.answers["highest"].choice)
+        lo_v, hi_v = jev.ordinal_span(client, field, label, labels)
+        lo, hi = lo_v.value, hi_v.value
         if lo == "none_of_these" or hi == "none_of_these":
             out.append((label, None))
             continue
@@ -213,7 +143,7 @@ def harmonise_banded(field: str, groups: dict) -> int:
     return 0
 
 
-def harmonise_ordinal(client: TypeSafeClient, field: str, groups: dict) -> int:
+def harmonise_ordinal(client: Any, field: str, groups: dict) -> int:
     """Ordered-ladder harmonisation.
 
     Same shape as `bands.canonical` — the canonical cut points are the
@@ -228,7 +158,7 @@ def harmonise_ordinal(client: TypeSafeClient, field: str, groups: dict) -> int:
     So labels are grouped by interval first, and only the distinct intervals are
     treated as the scheme's partition.
     """
-    ladder = ORDINAL[field]
+    ladder = jev.PERSONA_LADDER[field]
     top = len(ladder)
     per_scheme: list[tuple[str, dict[str, tuple[int, int]]]] = []
     declined: list[tuple[str, str]] = []
@@ -396,43 +326,21 @@ def schemes_for(field: str) -> dict[tuple[str, ...], list[str]]:
     return found
 
 
-def assign(client: TypeSafeClient, field: str, labels: tuple[str, ...]) -> list[Category]:
-    """One Jev call per label: which concept, and is it the catch-all."""
-    vocab = VOCAB[field]
+def assign(client: Any, field: str, labels: tuple[str, ...]) -> list[Category]:
+    """One Jev call per label: which concept, and is it the catch-all.
+
+    The prompt is `jev.category_concept`. The 0.5 cut on `is_residual` is the
+    judgement this script keeps, because `categories.canonical` can only fold an
+    unmatched concept into a residual and raises when a scheme has none.
+    """
     out = []
     for label in labels:
-        state = (
-            f"A survey recorded the respondent's {field} with these categories:\n\n"
-            + "\n".join(f"  - {x}" for x in labels)
-            + f"\n\nThe category in question is: {label!r}\n"
-        )
-        r = client.system_one(
-            state=state,
-            questions={
-                "concept": Choice(
-                    criteria={**vocab, "none_of_these": "no listed concept fits"},
-                    instructions=(
-                        f"Which concept the category {label!r} denotes. Judge the "
-                        "category itself, in the context of the full list above. "
-                        "Choose none_of_these rather than forcing a poor fit."
-                    ),
-                ),
-                "is_residual": Noul(
-                    instructions=(
-                        f"The category {label!r} is a CATCH-ALL: it holds respondents "
-                        "who do not fit any of the other listed categories. A specific "
-                        "named group is not a catch-all, and neither is a refusal or "
-                        "missing-data code."
-                    )
-                ),
-            },
-        )
-        concept = str(r.answers["concept"].choice)
+        reading = jev.category_concept(client, field, label, labels)
         out.append(
             Category(
                 label=label,
-                concept=concept,
-                is_residual=float(r.answers["is_residual"].noul) >= 0.5,
+                concept=reading.concept.value,
+                is_residual=reading.residual,
             )
         )
     return out
@@ -440,7 +348,7 @@ def assign(client: TypeSafeClient, field: str, labels: tuple[str, ...]) -> list[
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--field", default="ethnicity", choices=sorted(set(VOCAB) | BANDED))
+    ap.add_argument("--field", default="ethnicity", choices=sorted(set(jev.PERSONA_VOCAB) | BANDED))
     ap.add_argument(
         "--from-candidates",
         action="store_true",
@@ -456,8 +364,8 @@ def main() -> int:
     if args.field in BANDED:
         return harmonise_banded(args.field, groups)
 
-    client = TypeSafeClient()
-    if args.field in ORDINAL:
+    client = jev.client()
+    if args.field in jev.PERSONA_LADDER:
         return harmonise_ordinal(client, args.field, groups)
     built: list[CatScheme] = []
     declined: list[tuple[str, str]] = []

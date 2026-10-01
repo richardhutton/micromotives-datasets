@@ -39,16 +39,13 @@ import warnings
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 warnings.filterwarnings("ignore")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from micromotives_datasets import jev  # noqa: E402
 from micromotives_datasets.sources import spss  # noqa: E402
-
-try:
-    from typesafe_sdk import Choice, Score, TypeSafeClient
-except ImportError:  # pragma: no cover
-    sys.exit("uv add typesafe-sdk first")
 
 REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
@@ -79,18 +76,6 @@ BUILT = {
     "zrwjp",
 }
 
-DOMAINS = {
-    "health_and_care": "illness, medicine, doctors, mental health, disability, social care",
-    "work_and_money": "jobs, pay, unemployment, pensions, debt, household finances",
-    "family_and_relationships": "couples, parenting, childcare, housework, caring",
-    "welfare_and_inequality": "benefits, poverty, redistribution, class, deservingness",
-    "discrimination_and_identity": "race, gender, sexuality, religion, immigration, stigma",
-    "crime_and_justice": "policing, courts, punishment, risk, safety",
-    "environment_and_energy": "climate, pollution, energy use, sustainable consumption",
-    "politics_and_institutions": "voting, parties, government, trust in institutions, media",
-    "consumer_and_technology": "purchases, firms, apps, data and privacy, algorithms",
-    "survey_methodology": "the study is ABOUT how surveys work — scales, wording, order effects",
-}
 
 SKIP_PREFIX = ("pp", "tm_", "ds_", "ts_", "dov_", "xtess")
 SKIP_SUBSTR = ("_time", "weight", "caseid", "duration", "starttime", "endtime", "respdate")
@@ -109,25 +94,6 @@ SKIP_SUBSTR = ("_time", "weight", "caseid", "duration", "starttime", "endtime", 
 # of them means something. Writing the levels out also forces the judgement to
 # be stated rather than implied — the old `Noul` instructions described what a
 # high score meant and left every other value to inference.
-RELEVANCE_LEVELS = [
-    "Of no interest to UK social research. The outcome bears on nothing a UK "
-    "researcher, civil servant or journalist argues about.",
-    "Marginal. Academic interest only, or a question settled long ago.",
-    "Real but niche. A recognisable question within one specialism.",
-    "Clearly relevant. A UK researcher in the field would call this a live "
-    "question, though not a prominent one.",
-    "Prominent. The outcome bears on something argued about in UK policy, the "
-    "press or public debate right now.",
-]
-
-EVERGREEN_LEVELS = [
-    "Tied to a specific past event, named politician, or a policy or technology "
-    "since superseded. The question no longer exists in this form.",
-    "Dated. Still intelligible, but the context has moved substantially.",
-    "Partly dated. The underlying question survives; its framing has aged.",
-    "Largely stable. Asked today it would mean much the same thing.",
-    "Timeless. A question about human behaviour that does not depend on when it was asked.",
-]
 
 
 @dataclass
@@ -183,40 +149,12 @@ def questions_in(path: Path, limit: int = 30) -> str:
     return "\n".join(out)
 
 
-def score(client: TypeSafeClient, p: Priority, path: Path) -> None:
-    state = (
-        f'Survey experiment: "{p.title}"\n\n'
-        f"The questions asked of respondents:\n\n{questions_in(path)}\n"
-    )
-    r = client.system_one(
-        state=state,
-        questions={
-            "uk_relevance": Score(
-                criteria=RELEVANCE_LEVELS,
-                instructions=(
-                    "How much does the OUTCOME this study measures bear on a question "
-                    "UK social research, public debate or policy argues about? Judge "
-                    "the substance of what is being measured, not whether the scenario "
-                    "happens to be set in America."
-                ),
-            ),
-            "evergreen": Score(
-                criteria=EVERGREEN_LEVELS,
-                instructions=(
-                    "Is the attitude or behaviour measured here still the same question "
-                    "today as when it was asked?"
-                ),
-            ),
-            "domain": Choice(
-                criteria={**DOMAINS, "other": "none of these fits"},
-                instructions="The single domain this study's OUTCOME sits in.",
-            ),
-        },
-    )
-    rel, ever, dom = (r.answers[k] for k in ("uk_relevance", "evergreen", "domain"))
-    p.relevance, p.relevance_conf = float(rel.score), float(rel.confidence)
-    p.evergreen, p.evergreen_conf = float(ever.score), float(ever.confidence)
-    p.domain, p.domain_conf = str(dom.choice), float(dom.confidence)
+def score(client: Any, p: Priority, path: Path) -> None:
+    """Fill in a Priority from `jev.score_uk_priority`. Rubrics live with the prompt."""
+    reading = jev.score_uk_priority(client, p.title, questions_in(path))
+    p.relevance, p.relevance_conf = reading.relevance, reading.relevance_conf
+    p.evergreen, p.evergreen_conf = reading.evergreen, reading.evergreen_conf
+    p.domain, p.domain_conf = reading.domain.value, reading.domain.confidence
 
 
 def data_file_for(code: str) -> Path | None:
@@ -324,7 +262,7 @@ def main() -> int:
         targets = (
             [c for c in catalog if c not in BUILT and buildable(c)] if args.all else args.studies
         )
-        client = TypeSafeClient()
+        client = jev.client()
         results = []
         for code in sorted(targets):
             path = data_file_for(code)

@@ -264,3 +264,166 @@ def test_the_screen_sends_only_instrument_text() -> None:
     cli = ScreenStub({"none": 1.0})
     jev.screen_condition(cli, "THE CONDITION", "THE OUTCOME")
     assert "THE CONDITION" in cli.states[0] and "THE OUTCOME" in cli.states[0]
+
+
+# --------------------------------------------------------------------------
+# the persona and queue prompts, moved here from four scripts
+# --------------------------------------------------------------------------
+
+
+class PromptStub:
+    """Answers every question with a fixed value, and records the whole call.
+
+    These tests are mostly about the SHAPE of the call rather than the answer:
+    that both questions are asked, that a label is shown its siblings, and that
+    no respondent data goes with it. The prompts spent months living in scripts
+    where nothing checked any of that.
+    """
+
+    def __init__(self, answers: dict[str, Any]) -> None:
+        self.answers = answers
+        self.states: list[str] = []
+        self.questions: list[dict[str, Any]] = []
+
+    def system_one(self, state: str, questions: dict[str, Any]) -> Any:
+        self.states.append(state)
+        self.questions.append(questions)
+        return _Response({k: self.answers[k] for k in questions})
+
+
+def _noul(value: float) -> Any:
+    return type("N", (), {"noul": value})()
+
+
+def _score(value: float, confidence: float) -> Any:
+    return type("S", (), {"score": value, "confidence": confidence})()
+
+
+def test_classifying_a_variable_asks_both_questions() -> None:
+    """The Noul says how sure, the Choice says what it is instead.
+
+    Both are needed: a regex proposed six vignette variables about a fictional
+    character as 'income', and only the Choice had somewhere to put them.
+    """
+    stub = PromptStub(
+        {
+            "is_respondent_attribute": _noul(0.03),
+            "kind": _Answer("vignette_or_scenario_attribute", 0.97, {}),
+        }
+    )
+    reading = jev.classify_persona_variable(
+        stub, "income", "A study", "- variable `V1`\n  label: her family depends on her income"
+    )
+    assert reading.is_attribute == 0.03
+    assert reading.kind.value == "vignette_or_scenario_attribute"
+    assert set(stub.questions[0]) == {"is_respondent_attribute", "kind"}
+    # The option to decline must survive the move out of the script.
+    assert "other" in stub.questions[0]["kind"].criteria
+
+
+def test_a_category_is_judged_against_its_siblings() -> None:
+    """Whether 'Other' is the catch-all depends entirely on what else was offered.
+
+    So the full list goes in the state. A label judged alone cannot answer the
+    question `categories.canonical` actually needs answered.
+    """
+    labels = ("White", "Black", "Other")
+    stub = PromptStub({"concept": _Answer("other_residual", 0.9, {}), "is_residual": _noul(0.95)})
+    reading = jev.category_concept(stub, "ethnicity", "Other", labels)
+    assert reading.concept.value == "other_residual"
+    assert reading.residual
+    for sibling in labels:
+        assert sibling in stub.states[0]
+
+
+def test_a_category_below_the_residual_cut_is_not_the_catch_all() -> None:
+    stub = PromptStub({"concept": _Answer("white", 0.99, {}), "is_residual": _noul(0.2)})
+    assert not jev.category_concept(stub, "ethnicity", "White", ("White", "Other")).residual
+
+
+def test_an_ordinal_label_is_asked_for_both_ends() -> None:
+    """ "Bachelor's degree or higher" genuinely spans several rungs.
+
+    Forcing it onto a single concept is what broke the categorical attempt, so
+    the span is two questions and the answer is an interval.
+    """
+    stub = PromptStub(
+        {"lowest": _Answer("bachelors", 0.9, {}), "highest": _Answer("postgraduate", 0.9, {})}
+    )
+    lo, hi = jev.ordinal_span(
+        stub,
+        "education",
+        "Bachelor's degree or higher",
+        ("High school", "Bachelor's degree or higher"),
+    )
+    assert (lo.value, hi.value) == ("bachelors", "postgraduate")
+    # Only the ladder's rungs are offered — the residual and declined concepts
+    # are not levels of education and must not be choosable as one.
+    offered = set(stub.questions[0]["lowest"].criteria)
+    assert offered == set(jev.PERSONA_LADDER["education"]) | {"none_of_these"}
+
+
+def test_the_transfer_screen_returns_both_probabilities() -> None:
+    stub = PromptStub(
+        {"stimulus_is_us_specific": _noul(0.91), "outcome_needs_us_knowledge": _noul(0.12)}
+    )
+    assert jev.screen_uk_transfer(stub, "A study", "- Do you support the Patriot Act?") == (
+        0.91,
+        0.12,
+    )
+
+
+def test_priority_is_scored_not_asked_as_a_yes_no() -> None:
+    """Ledger 72: a Noul is a yes/no probability, not a magnitude.
+
+    Asked as Nouls these returned a tight high cluster that discriminated
+    nothing. The rubrics are what make the Score mean something, so they travel
+    with the prompt rather than staying behind in the script.
+    """
+    stub = PromptStub(
+        {
+            "uk_relevance": _score(3.8, 0.84),
+            "evergreen": _score(0.39, 0.71),
+            "domain": _Answer("health_and_care", 0.9, {}),
+        }
+    )
+    reading = jev.score_uk_priority(stub, "A study", "- Would you take the vaccine?")
+    assert (reading.relevance, reading.evergreen) == (3.8, 0.39)
+    assert reading.domain.value == "health_and_care"
+    assert len(stub.questions[0]["uk_relevance"].criteria) == 5
+    assert len(stub.questions[0]["evergreen"].criteria) == 5
+
+
+def test_a_shaky_priority_asks_for_review() -> None:
+    stub = PromptStub(
+        {
+            "uk_relevance": _score(2.0, 0.55),
+            "evergreen": _score(2.0, 0.9),
+            "domain": _Answer("other", 0.9, {}),
+        }
+    )
+    assert jev.score_uk_priority(stub, "t", "q").needs_review
+
+
+def test_no_prompt_here_can_be_handed_a_dataframe() -> None:
+    """The never-respondent-rows property, asserted structurally.
+
+    Every function takes strings and label tuples. That is what makes "the
+    instrument goes on the wire, the data does not" a fact about the signatures
+    rather than a habit — and it has to survive prompts moving between files.
+    """
+    import inspect
+
+    for name in (
+        "classify_persona_variable",
+        "category_concept",
+        "ordinal_span",
+        "screen_uk_transfer",
+        "score_uk_priority",
+    ):
+        params = list(inspect.signature(getattr(jev, name)).parameters.values())
+        for p in params[1:]:  # the client itself is exempt
+            assert p.annotation in (str, "str", tuple, "tuple[str, ...]"), (
+                f"jev.{name} takes {p.name}: {p.annotation} — every argument after the "
+                "client must be text or labels, never a dataframe"
+            )

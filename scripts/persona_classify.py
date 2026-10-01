@@ -35,16 +35,13 @@ import warnings
 from dataclasses import dataclass
 from dataclasses import field as dc_field
 from pathlib import Path
+from typing import Any
 
 warnings.filterwarnings("ignore")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from micromotives_datasets import jev  # noqa: E402
 from micromotives_datasets.sources import spss  # noqa: E402
-
-try:
-    from typesafe_sdk import Choice, Noul, TypeSafeClient
-except ImportError:  # pragma: no cover
-    sys.exit("uv add typesafe-sdk first")
 
 REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
@@ -64,13 +61,6 @@ PATTERNS = {
 }
 
 # What we are actually looking for, in the words we would use to a person.
-WANTED = {
-    "income": "the respondent's own total household income",
-    "education": "the respondent's own highest level of education completed",
-    "ethnicity": "the respondent's own race or ethnicity",
-    "employment": "the respondent's own current employment status",
-    "region": "where the respondent themselves lives",
-}
 
 # Studies whose income variable we already know, from recipes that build and
 # crosscheck. Used by --validate to measure Jev before trusting it.
@@ -138,56 +128,16 @@ def candidates_for(ds: spss.Dataset, field: str) -> list[Candidate]:
     return out
 
 
-def classify(client: TypeSafeClient, field: str, title: str, cands: list[Candidate]) -> None:
-    """Ask, per candidate, whether it is the respondent's own attribute."""
+def classify(client: Any, field: str, title: str, cands: list[Candidate]) -> None:
+    """Ask, per candidate, whether it is the respondent's own attribute.
+
+    The prompt lives in `jev.classify_persona_variable`, not here — see the
+    note at the top of that module's persona section.
+    """
     for c in cands:
-        state = f'Survey study: "{title}"\n\nOne variable from its data file:\n\n{c.describe()}\n'
-        r = client.system_one(
-            state=state,
-            questions={
-                "is_respondent_attribute": Noul(
-                    instructions=(
-                        f"This variable records {WANTED[field]} — as a fact about the "
-                        "person answering the survey. It is NOT a derived/computed "
-                        "helper, NOT a weight, NOT an attribute of a fictional person "
-                        "described in a vignette or scenario shown to the respondent, "
-                        "and NOT a question asking the respondent's opinion about "
-                        "someone else."
-                    )
-                ),
-                # `criteria` is the option set; `other` is deliberately present so
-                # the model can decline rather than being forced into a wrong box —
-                # the narrow-option-list mistake from the earlier Jev work.
-                "kind": Choice(
-                    criteria={
-                        "respondent_attribute": (
-                            "a fact about the person answering, from the panel profile "
-                            "or a demographic question they answered about themselves"
-                        ),
-                        "vignette_or_scenario_attribute": (
-                            "an attribute of a fictional person or situation described "
-                            "in material shown TO the respondent"
-                        ),
-                        "derived_or_computed": (
-                            "a helper column computed from other columns, e.g. a "
-                            "recode, a bracket flag or a 'data only variable'"
-                        ),
-                        "opinion_or_attitude_item": (
-                            "a question asking what the respondent thinks, rather than "
-                            "recording what they are"
-                        ),
-                        "weight_or_admin": (
-                            "a survey weight, case id, timestamp, mode or other "
-                            "administrative field"
-                        ),
-                        "other": "none of the above fits",
-                    },
-                    instructions="What this variable actually is.",
-                ),
-            },
-        )
-        c.is_attribute = float(r.answers["is_respondent_attribute"].noul)
-        c.kind = str(r.answers["kind"].choice)
+        reading = jev.classify_persona_variable(client, field, title, c.describe())
+        c.is_attribute = reading.is_attribute
+        c.kind = reading.kind.value
 
 
 def pick(cands: list[Candidate]) -> Candidate:
@@ -276,7 +226,7 @@ def main() -> int:
     else:
         targets = args.studies
 
-    client = TypeSafeClient()
+    client = jev.client()
     results: dict[str, list[Candidate]] = {}
     for code in targets:
         path = data_file_for(code)

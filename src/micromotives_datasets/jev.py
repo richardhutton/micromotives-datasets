@@ -92,12 +92,18 @@ class Verdict:
         return head
 
 
-def client() -> Any:
+def client(http_client: Any = None) -> Any:
     """A TypeSafe client, or a clear explanation of why not.
 
     `TYPESAFE_API_KEY` lives in `~/.bash_profile`, which the Bash tool does not
     source — so the usual cause of failure here is a shell that was never told,
     not a missing key. Say so rather than letting the SDK raise something vaguer.
+
+    `http_client` is for `scripts/jev_show_wire.py`, which hooks the transport to
+    print exactly what leaves the machine. It takes one so that the thing being
+    inspected is a REAL production call: the alternative is a script that builds
+    its own payload and reports on that, which is how a stale copy of the
+    transfer-screen prompt came to live there (ledger 85).
     """
     try:
         from typesafe_sdk import TypeSafeClient
@@ -108,7 +114,7 @@ def client() -> Any:
             "TYPESAFE_API_KEY is not set. It lives in ~/.bash_profile, which is not "
             "sourced automatically — prefix the command with `source ~/.bash_profile &&`"
         )
-    return TypeSafeClient()
+    return TypeSafeClient() if http_client is None else TypeSafeClient(http_client=http_client)
 
 
 def _verdict(answer: Any, *, note: str = "") -> Verdict:
@@ -561,4 +567,400 @@ def screen_condition(cli: Any, condition: str, outcome: str, *, study: str = "")
         study=study,
         outcome=outcome[:200],
         excerpt=condition[:400],
+    )
+
+
+# --------------------------------------------------------------------------
+# the persona layer: which variable, and what its labels mean
+# --------------------------------------------------------------------------
+#
+# These five prompts lived in four scripts until they were moved here. The
+# module docstring above has said since it was written that asking them in
+# separate scripts is how "a lesson learned in one did not reach the others",
+# and the scripts went on owning them anyway — including `jev_show_wire.py`,
+# which held a stale sixth copy of the transfer-screen wording, and
+# `jev_calibration.py`, the harness that MEASURES Jev, which measured a prompt
+# production does not send (ledger 86). `tests/test_architecture.py` now fails
+# on a `system_one` call outside this module.
+
+# What each persona field means, as a phrase that completes "This variable
+# records ___ — as a fact about the person answering the survey."
+PERSONA_WANTED = {
+    "income": "the respondent's own total household income",
+    "education": "the respondent's own highest level of education completed",
+    "ethnicity": "the respondent's own race or ethnicity",
+    "employment": "the respondent's own current employment status",
+    "region": "where the respondent themselves lives",
+}
+
+# What a variable can turn out to be. `other` is deliberately present so the
+# model can decline rather than be forced into a wrong box — the narrow-option
+# mistake from the earlier Jev work, and the reason `a5v96`'s order variable was
+# picked at confidence 1.00 once the true manipulation had been filtered out.
+PERSONA_VARIABLE_KINDS = {
+    "respondent_attribute": (
+        "a fact about the person answering, from the panel profile or a "
+        "demographic question they answered about themselves"
+    ),
+    "vignette_or_scenario_attribute": (
+        "an attribute of a fictional person or situation described in material "
+        "shown TO the respondent"
+    ),
+    "derived_or_computed": (
+        "a helper column computed from other columns, e.g. a recode, a bracket "
+        "flag or a 'data only variable'"
+    ),
+    "opinion_or_attitude_item": (
+        "a question asking what the respondent thinks, rather than recording what they are"
+    ),
+    "weight_or_admin": ("a survey weight, case id, timestamp, mode or other administrative field"),
+    "other": "none of the above fits",
+}
+
+# The canonical concepts a source label can denote, per field. US-anchored, and
+# knowingly so: every scheme harmonised so far is a US survey. The UK layer adds
+# a second vocabulary here rather than stretching this one — a trade
+# apprenticeship has no rung on this ladder, and forcing it onto one would
+# assert something false that nothing downstream could detect.
+PERSONA_VOCAB: dict[str, dict[str, str]] = {
+    "ethnicity": {
+        "white": "White, Caucasian or European",
+        "black": "Black, African-American or African",
+        "hispanic": "Hispanic, Latino or Spanish origin",
+        "asian": "Asian or Asian-American",
+        "native_american": "American Indian, Native American or Alaska Native",
+        "pacific_islander": "Native Hawaiian or other Pacific Islander",
+        "middle_eastern": "Middle Eastern or North African",
+        "two_or_more_races": "two or more races, mixed or multiracial",
+        "other_residual": "a catch-all for anything not listed",
+        "declined": "refused, prefer not to say, or missing",
+    },
+    "employment": {
+        "employed_full_time": "working full time",
+        "employed_part_time": "working part time",
+        "self_employed": "self-employed",
+        "employed_unspecified": "working, without full/part time distinguished",
+        "unemployed_looking": "not working and looking for work",
+        "unemployed_not_looking": "not working and not looking for work",
+        "retired": "retired",
+        "student": "in school or a student",
+        "homemaker": "keeping house, homemaker or caring for family",
+        "disabled": "disabled or unable to work",
+        "other_residual": "a catch-all for anything not listed",
+        "declined": "refused, prefer not to say, or missing",
+    },
+    "education": {
+        "less_than_high_school": "did not complete secondary school",
+        "high_school": "completed secondary school or equivalent",
+        "some_college": "some post-secondary study, no degree",
+        "associate": "a two-year or associate degree",
+        "bachelors": "a bachelor's degree",
+        "postgraduate": "a master's, doctorate or professional degree",
+        "bachelors_or_higher": "a bachelor's degree or above, not distinguished further",
+        "other_residual": "a catch-all for anything not listed",
+        "declined": "refused, prefer not to say, or missing",
+    },
+}
+
+# Fields whose concepts sit on a LINE, lowest to highest, so a label can span
+# several of them. Order is load-bearing.
+PERSONA_LADDER = {
+    "education": [
+        "less_than_high_school",
+        "high_school",
+        "some_college",
+        "associate",
+        "bachelors",
+        "postgraduate",
+    ],
+}
+
+
+@dataclass
+class PersonaVariable:
+    """What Jev made of one candidate column."""
+
+    is_attribute: float
+    kind: Verdict
+
+    @property
+    def needs_review(self) -> bool:
+        return self.kind.needs_review
+
+
+def classify_persona_variable(
+    cli: Any, field: str, study_title: str, variable_block: str
+) -> PersonaVariable:
+    """Is this column the RESPONDENT's own attribute, or something else?
+
+    Two questions rather than one, because they fail differently: the `Noul`
+    says how confident it is that this is the person's own fact, the `Choice`
+    says what it is instead when it is not. A regex proposed six vignette
+    variables about a fictional character as "income"; the Choice is what threw
+    them out, and it could only do that by having somewhere to put them.
+
+    `variable_block` is the rendered candidate — name, label and value labels.
+    Labels and metadata only: no respondent rows reach this call.
+    """
+    from typesafe_sdk import Choice, Noul
+
+    state = (
+        f'Survey study: "{study_title}"\n\nOne variable from its data file:\n\n{variable_block}\n'
+    )
+    r = cli.system_one(
+        state=state,
+        questions={
+            "is_respondent_attribute": Noul(
+                instructions=(
+                    f"This variable records {PERSONA_WANTED[field]} — as a fact about the "
+                    "person answering the survey. It is NOT a derived/computed "
+                    "helper, NOT a weight, NOT an attribute of a fictional person "
+                    "described in a vignette or scenario shown to the respondent, "
+                    "and NOT a question asking the respondent's opinion about "
+                    "someone else."
+                )
+            ),
+            "kind": Choice(
+                criteria=dict(PERSONA_VARIABLE_KINDS),
+                instructions="What this variable actually is.",
+            ),
+        },
+    )
+    return PersonaVariable(
+        is_attribute=float(r.answers["is_respondent_attribute"].noul),
+        kind=_verdict(r.answers["kind"]),
+    )
+
+
+def _label_in_scheme(field: str, label: str, labels: tuple[str, ...]) -> str:
+    """The state shared by both label-reading calls: the label, in its own list.
+
+    A category is only readable against its siblings — whether 'Other' is the
+    catch-all depends entirely on what else was offered.
+    """
+    return (
+        f"A survey recorded the respondent's {field} with these categories:\n\n"
+        + "\n".join(f"  - {x}" for x in labels)
+        + f"\n\nThe category in question is: {label!r}\n"
+    )
+
+
+@dataclass
+class CategoryReading:
+    """What one source label denotes, and whether it is the scheme's catch-all."""
+
+    concept: Verdict
+    is_residual: float
+
+    @property
+    def residual(self) -> bool:
+        return self.is_residual >= 0.5
+
+    @property
+    def needs_review(self) -> bool:
+        return self.concept.needs_review
+
+
+def category_concept(cli: Any, field: str, label: str, labels: tuple[str, ...]) -> CategoryReading:
+    """Which canonical concept an UNORDERED source label denotes.
+
+    `persona.categories` then does the bookkeeping: a canonical category must be
+    a union of categories from EVERY scheme, so a concept one scheme separates
+    and another folds into its residual ends up labelled `Other or Asian` rather
+    than `Other`. Which label IS the residual is the judgement, and it is this
+    call — a specific named group is not a catch-all, and neither is a refusal.
+    """
+    from typesafe_sdk import Choice, Noul
+
+    r = cli.system_one(
+        state=_label_in_scheme(field, label, labels),
+        questions={
+            "concept": Choice(
+                criteria={**PERSONA_VOCAB[field], "none_of_these": "no listed concept fits"},
+                instructions=(
+                    f"Which concept the category {label!r} denotes. Judge the "
+                    "category itself, in the context of the full list above. "
+                    "Choose none_of_these rather than forcing a poor fit."
+                ),
+            ),
+            "is_residual": Noul(
+                instructions=(
+                    f"The category {label!r} is a CATCH-ALL: it holds respondents "
+                    "who do not fit any of the other listed categories. A specific "
+                    "named group is not a catch-all, and neither is a refusal or "
+                    "missing-data code."
+                )
+            ),
+        },
+    )
+    return CategoryReading(
+        concept=_verdict(r.answers["concept"]),
+        is_residual=float(r.answers["is_residual"].noul),
+    )
+
+
+def ordinal_span(
+    cli: Any, field: str, label: str, labels: tuple[str, ...]
+) -> tuple[Verdict, Verdict]:
+    """The lowest and highest rung an ORDERED source label covers.
+
+    Two questions rather than one, because a label like "Bachelor's degree or
+    higher" genuinely spans several rungs and forcing it onto a single concept
+    is what broke the categorical attempt. The pair is what lets a label become
+    an interval, which `persona.bands` can then tile.
+    """
+    from typesafe_sdk import Choice
+
+    vocab = {k: PERSONA_VOCAB[field][k] for k in PERSONA_LADDER[field]}
+    questions = {
+        edge: Choice(
+            criteria={**vocab, "none_of_these": "not an educational level at all"},
+            instructions=(
+                f"The {word} level of {field} a respondent in the category "
+                f"{label!r} could have. For a category covering one level only, "
+                "the lowest and the highest are the same."
+            ),
+        )
+        for edge, word in (("lowest", "LOWEST"), ("highest", "HIGHEST"))
+    }
+    r = cli.system_one(state=_label_in_scheme(field, label, labels), questions=questions)
+    return _verdict(r.answers["lowest"]), _verdict(r.answers["highest"])
+
+
+# --------------------------------------------------------------------------
+# choosing what to build: does a US study transfer, and is it worth it
+# --------------------------------------------------------------------------
+
+# 0-4 rubrics, written out. Asked as `Noul`s first, these returned a tight high
+# cluster that discriminated nothing — a Noul is a yes/no probability, not a
+# magnitude (ledger 72). As `Score`s with these levels, evergreen spreads
+# 0.39-3.88 and a 2002 smallpox-vaccine study correctly collapses to 0.39.
+UK_RELEVANCE_LEVELS = [
+    "Of no interest to UK social research. The outcome bears on nothing a UK "
+    "researcher, civil servant or journalist argues about.",
+    "Marginal. Academic interest only, or a question settled long ago.",
+    "Real but niche. A recognisable question within one specialism.",
+    "Clearly relevant. A UK researcher in the field would call this a live "
+    "question, though not a prominent one.",
+    "Prominent. The outcome bears on something argued about in UK policy, the "
+    "press or public debate right now.",
+]
+
+UK_EVERGREEN_LEVELS = [
+    "Tied to a specific past event, named politician, or a policy or technology "
+    "since superseded. The question no longer exists in this form.",
+    "Dated. Still intelligible, but the context has moved substantially.",
+    "Partly dated. The underlying question survives; its framing has aged.",
+    "Largely stable. Asked today it would mean much the same thing.",
+    "Timeless. A question about human behaviour that does not depend on when it was asked.",
+]
+
+UK_DOMAINS = {
+    "health_and_care": "illness, medicine, doctors, mental health, disability, social care",
+    "work_and_money": "jobs, pay, unemployment, pensions, debt, household finances",
+    "family_and_relationships": "couples, parenting, childcare, housework, caring",
+    "welfare_and_inequality": "benefits, poverty, redistribution, class, deservingness",
+    "discrimination_and_identity": "race, gender, sexuality, religion, immigration, stigma",
+    "crime_and_justice": "policing, courts, punishment, risk, safety",
+    "environment_and_energy": "climate, pollution, energy use, sustainable consumption",
+    "politics_and_institutions": "voting, parties, government, trust in institutions, media",
+    "consumer_and_technology": "purchases, firms, apps, data and privacy, algorithms",
+    "survey_methodology": "the study is ABOUT how surveys work — scales, wording, order effects",
+}
+
+
+def _study_state(title: str, questions: str) -> str:
+    """A study described by its own question wordings. Instrument only."""
+    return f'Survey experiment: "{title}"\n\nThe questions asked of respondents:\n\n{questions}'
+
+
+def screen_uk_transfer(cli: Any, title: str, questions: str) -> tuple[float, float]:
+    """Would this US study mean the same thing asked in the UK?
+
+    Returns (stimulus_is_us_specific, outcome_needs_us_knowledge).
+
+    **This orders a queue and never overrules an eye.** Measured against hand
+    reading of the fielded questionnaires it agreed on 12 of 16 studies, and two
+    of its four errors were in the dangerous direction — it called `b87sm` and
+    `rpw4u` fully transferable where reading said mechanism-only.
+    """
+    from typesafe_sdk import Noul
+
+    r = cli.system_one(
+        state=_study_state(title, questions),
+        questions={
+            "stimulus_is_us_specific": Noul(
+                instructions=(
+                    "The scenarios or materials shown to respondents refer to institutions, "
+                    "laws, political parties, public figures or cultural references that are "
+                    "specific to the United States."
+                )
+            ),
+            "outcome_needs_us_knowledge": Noul(
+                instructions=(
+                    "Answering the main outcome question requires knowledge of United States "
+                    "law, politics or institutions that a respondent in another country would "
+                    "not reliably have. Judge the OUTCOME question, not the topic in general — "
+                    "a universal psychological question set in a US scene does not count."
+                )
+            ),
+        },
+    )
+    return (
+        float(r.answers["stimulus_is_us_specific"].noul),
+        float(r.answers["outcome_needs_us_knowledge"].noul),
+    )
+
+
+@dataclass
+class PriorityReading:
+    """How much a study is worth building, and what it is about."""
+
+    relevance: float
+    relevance_conf: float
+    evergreen: float
+    evergreen_conf: float
+    domain: Verdict
+
+    @property
+    def needs_review(self) -> bool:
+        return min(self.relevance_conf, self.evergreen_conf, self.domain.confidence) < 0.6
+
+
+def score_uk_priority(cli: Any, title: str, questions: str) -> PriorityReading:
+    """Rank a study for UK value: relevance, how well it has aged, its domain."""
+    from typesafe_sdk import Choice, Score
+
+    r = cli.system_one(
+        state=_study_state(title, questions) + "\n",
+        questions={
+            "uk_relevance": Score(
+                criteria=list(UK_RELEVANCE_LEVELS),
+                instructions=(
+                    "How much does the OUTCOME this study measures bear on a question "
+                    "UK social research, public debate or policy argues about? Judge "
+                    "the substance of what is being measured, not whether the scenario "
+                    "happens to be set in America."
+                ),
+            ),
+            "evergreen": Score(
+                criteria=list(UK_EVERGREEN_LEVELS),
+                instructions=(
+                    "Is the attitude or behaviour measured here still the same question "
+                    "today as when it was asked?"
+                ),
+            ),
+            "domain": Choice(
+                criteria={**UK_DOMAINS, "other": "none of these fits"},
+                instructions="The single domain this study's OUTCOME sits in.",
+            ),
+        },
+    )
+    rel, ever = r.answers["uk_relevance"], r.answers["evergreen"]
+    return PriorityReading(
+        relevance=float(rel.score),
+        relevance_conf=float(rel.confidence),
+        evergreen=float(ever.score),
+        evergreen_conf=float(ever.confidence),
+        domain=_verdict(r.answers["domain"]),
     )

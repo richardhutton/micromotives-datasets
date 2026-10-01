@@ -30,15 +30,12 @@ import json
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from micromotives_datasets import jev
 from micromotives_datasets.sources import spss
-
-try:
-    from typesafe_sdk import Noul, TypeSafeClient
-except ImportError:  # pragma: no cover
-    sys.exit("uv add typesafe-sdk first")
 
 REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
@@ -108,37 +105,10 @@ def question_text(path: Path, limit: int = 45) -> str:
     return "\n".join(out)
 
 
-def screen(client: TypeSafeClient, study_id: str, title: str, path: Path) -> Screen:
-    state = (
-        f'Survey experiment: "{title}"\n\n'
-        f"The questions asked of respondents:\n\n{question_text(path)}"
-    )
-    r = client.system_one(
-        state=state,
-        questions={
-            "stimulus_is_us_specific": Noul(
-                instructions=(
-                    "The scenarios or materials shown to respondents refer to institutions, "
-                    "laws, political parties, public figures or cultural references that are "
-                    "specific to the United States."
-                )
-            ),
-            "outcome_needs_us_knowledge": Noul(
-                instructions=(
-                    "Answering the main outcome question requires knowledge of United States "
-                    "law, politics or institutions that a respondent in another country would "
-                    "not reliably have. Judge the OUTCOME question, not the topic in general — "
-                    "a universal psychological question set in a US scene does not count."
-                )
-            ),
-        },
-    )
-    return Screen(
-        study_id=study_id,
-        title=title,
-        stimulus_us=float(r.answers["stimulus_is_us_specific"].noul),
-        outcome_us=float(r.answers["outcome_needs_us_knowledge"].noul),
-    )
+def screen(client: Any, study_id: str, title: str, path: Path) -> Screen:
+    """Two Nouls, asked by `jev.screen_uk_transfer`. This only assembles the input."""
+    stimulus_us, outcome_us = jev.screen_uk_transfer(client, title, question_text(path))
+    return Screen(study_id=study_id, title=title, stimulus_us=stimulus_us, outcome_us=outcome_us)
 
 
 def main() -> int:
@@ -158,7 +128,7 @@ def main() -> int:
     else:
         targets = args.studies
 
-    client = TypeSafeClient()
+    client = jev.client()
     results: list[Screen] = []
     for code in targets:
         path = data_file_for(code)
