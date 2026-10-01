@@ -680,11 +680,11 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
 
 ## 10. Where we actually are (1 October 2026, end of day)
 
-**28 experiments from 24 studies. 279,314 rows. 11.9% of the 202-study
+**28 experiments from 24 studies. 283,935 rows. 11.9% of the 202-study
 catalogue.** All 28 build through the CLI and pass QC. One warning in the whole
 corpus, on `9xw67_conjoint`, kept deliberately — 31 declared profiles whose
 single occurrence in 20,480 draws is a refusal, which is precisely what rule 2
-exists to surface. 215 tests. Licence recorded for all 28.
+exists to surface. 228 tests. Licence recorded for all 28.
 
 Up from 14 studies / 80,010 rows at the start of the day. The first jump came
 from four studies ALREADY built whose rows the schema could not reach (40,296);
@@ -776,6 +776,27 @@ one.**
 - **`docs/SKIPPED.md`** — every source not built and why: 7 no access, 56 with
   no fielded questionnaire, 2 whose outcome needs US knowledge, 118 not yet
   reached.
+
+### Repairs after the wave-2 audit
+
+The condition screen and the task-dimension crosscheck turned up defects in work
+already built and checked. All are fixed; each is in the ledger.
+
+| study | what it asserted | rows |
+|---|---|---|
+| `8ctbk` | one fixed attribute order; exactly 1 of 1,794 respondents saw it | 17,464 |
+| 7 studies | religion severed at the SPSS label ceiling ("…Presbyterian, Pent") | ~27,900 |
+| `a2nbf` | a wording variant at Q1/Q2, asked before it appeared | 3,094 |
+| `a2nbf` | an open-ended probe administered after every scored outcome | 6,211 |
+| `sh4px` | four outcomes DROPPED rather than assert a treatment not yet given | 6,911 → 11,532 |
+| `5hqan` | "…in the same position regardless of condition" | 6,411 |
+
+Three schema additions came out of it, each unblocking a recipe that had
+documented its own blocker and been refused on grounds that no longer held:
+`Arm.raws` (several source codes denoting one condition),
+`ItemOverride.condition_text` (a condition can differ by outcome, not only by
+condition) and `Condition.line_order_vars` (the instrument randomised which
+order its lines appeared in). QC rule 1 now compares per outcome.
 
 ### Three things that are not done
 
