@@ -493,3 +493,117 @@ def test_rule16_is_not_satisfied_by_whitespace(fixture_sav, fixture_recipe) -> N
     fixture_recipe.licence = "   "
     rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
     assert _warns(check(rows, fixture_recipe), "no licence recorded")
+
+
+# --------------------------------------------------------------------------
+# Rule 17 — a row must not mention the experiment's own construction
+# --------------------------------------------------------------------------
+
+
+def _one_row(condition: str, *, persona=None, outcome: str = "How good?"):
+    from micromotives_datasets.schema import Persona, Row
+
+    return [
+        Row(
+            persona=persona or Persona(age=40),
+            condition=condition,
+            outcome=outcome,
+            response="0",
+            condition_num=0,
+            task_num=0,
+            response_num=0.0,
+            participant_id="p1",
+            study_id="t",
+            source="tess",
+        )
+    ]
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        # es4xw's shipped text, both occurrences, on 32,228 rows.
+        "Four of the six people are the same in every version of this photograph.",
+        "The remaining two are, in this version, both Black men.",
+        # 5hqan, the two the corpus sweep found.
+        "This part of the survey asked you about sex and gender.",
+        "You were randomly assigned to read the following.",
+        "In this condition the policy was described as permanent.",
+    ],
+)
+def test_rule17_catches_text_about_the_study_itself(fixture_sav, fixture_recipe, text) -> None:
+    """A participant was in one condition and knew nothing of the others."""
+    rep = check(_one_row(text), fixture_recipe)
+    assert _warns(rep, "refers to the experiment's own construction"), rep.warnings
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        # es4xw's CORRECTED text must be clean, or the fix would not pass QC.
+        "The team pictured had six people: two were Black and four were White.",
+        # Rule 15 owns this one. If rule 17 also fired, the two would be
+        # duplicates rather than siblings and the measured narrowness of 15
+        # would have been pointless.
+        "Scenario #1. A company is developing a smartphone app.",
+        # A legitimate stimulus that happens to use the word "version".
+        "The app would download the latest version of the questionnaire.",
+        "You were asked to imagine a new condition affecting your health.",
+    ],
+)
+def test_rule17_is_quiet_on_legitimate_text(fixture_sav, fixture_recipe, text) -> None:
+    rep = check(_one_row(text), fixture_recipe)
+    assert not _warns(rep, "refers to the experiment's own construction"), rep.warnings
+
+
+# --------------------------------------------------------------------------
+# Rule 18 — a row must not render text that is cut off
+# --------------------------------------------------------------------------
+
+
+def test_rule18_catches_an_attribute_slot_rendered_as_a_dash(fixture_sav, fixture_recipe) -> None:
+    """8ctbk, 5,682 of 17,464 rows (32.5%).
+
+    Its conjoint attribute whose level is "BLANK" rendered as a bare "4. -", so a
+    third of the study told participants they read a six-line profile whose
+    fourth line was a hyphen.
+    """
+    text = (
+        "1. You have one child\n"
+        "2. You work 40 hours a week\n"
+        "3. You do most of the household work\n"
+        "4. -\n"
+        "5. Your household has just enough to pay your bills\n"
+    )
+    rep = check(_one_row(text), fixture_recipe)
+    assert _warns(rep, "appears cut off"), rep.warnings
+
+
+def test_rule18_catches_a_truncated_persona_label(fixture_sav, fixture_recipe) -> None:
+    """Seven studies, ~27,900 rows, and a42yg had the identical fault fixed in
+    one recipe while its siblings were never swept.
+
+    SPSS severs a value label at 120 characters and two deposits sever at 80, so
+    an unclosed bracket is the signal rather than a length test — a length test
+    would have missed two of the seven.
+    """
+    from micromotives_datasets.schema import Persona
+
+    truncated = "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pent"
+    rep = check(
+        _one_row("A clean condition.", persona=Persona(age=40, religion=truncated)), fixture_recipe
+    )
+    assert _warns(rep, "appears cut off"), rep.warnings
+    assert "persona.religion" in " ".join(rep.warnings), "the rule should name the field"
+
+
+def test_rule18_is_quiet_on_balanced_text(fixture_sav, fixture_recipe) -> None:
+    from micromotives_datasets.schema import Persona
+
+    full = (
+        "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, "
+        "Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+    )
+    text = "1. You have one child\n2. A well-known, long-standing arrangement\n"
+    rep = check(_one_row(text, persona=Persona(age=40, religion=full)), fixture_recipe)
+    assert not _warns(rep, "appears cut off"), rep.warnings

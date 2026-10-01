@@ -357,8 +357,102 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             "the deposit itself states, including 'none stated' where it states none"
         )
 
+    # --- Rule 17: no row may mention the experiment's own construction ------
+    # `es4xw` shipped 32,228 rows (100% of the study) whose condition said four
+    # faces "are the same in every version of this photograph" and that the other
+    # two are, "in this version", both Black men. A participant was assigned to
+    # one condition and could not know versions existed.
+    #
+    # This is a SIBLING of rule 15, not a widening of it. Rule 15's own comment
+    # records that it was deliberately held to numbered references because a
+    # pattern also catching "the following scenario" fired falsely on two studies
+    # where the phrase is a correct forward reference inside the same row. That
+    # measurement still holds, so the narrow rule stays narrow and this one takes
+    # the separable class: words about the study's variants and apparatus.
+    #
+    # Measured over all 27 built experiments before being added: 2 matches, both
+    # in `5hqan` ("This part of the survey asked you about sex and gender"), both
+    # genuine. Against `es4xw`'s shipped text it fires twice; against its fix,
+    # not at all; against `b87sm`'s "Scenario #1", not at all, which is right —
+    # that one is rule 15's.
+    construction: Counter[str] = Counter()
+    for r in rows:
+        for text in (r.condition, r.outcome):
+            for m in _CONSTRUCTION.finditer(str(text)):
+                construction[" ".join(m.group(0).split()).lower()] += 1
+    if construction:
+        rep.warnings.append(
+            f"row text refers to the experiment's own construction: {dict(construction)} "
+            "— a participant saw one condition and knew nothing of the others, so this "
+            "tells them something they could not have known. Drop it, or record why it "
+            "was genuinely on screen"
+        )
+
+    # --- Rule 18: no row may render text that is cut off --------------------
+    # Two shipped instances, both found by sweeping the corpus rather than by
+    # anything in the pipeline:
+    #
+    #   * Seven studies rendered religion as "Protestant (Baptist, Methodist,
+    #     Non-denominational, Lutheran, Presbyterian, Pent" — SPSS truncates a
+    #     value label at 120 characters, and two deposits truncate at 80, so a
+    #     length test alone would have missed two of the seven. ~27,900 rows.
+    #     a42yg's REL1 had the identical fault, was fixed in that one recipe, and
+    #     the corpus was never swept — the fifth time this project has fixed a
+    #     defect locally and left its siblings standing.
+    #
+    #   * `8ctbk` rendered a conjoint attribute whose level is "BLANK" as a bare
+    #     "4. -" on 5,682 of 17,464 rows (32.5%), telling participants they read a
+    #     six-line profile whose fourth line was a hyphen.
+    #
+    # An unbalanced opening bracket is the precise signal for the first, because
+    # a truncated label almost always severs a parenthetical. Measured: 5,714
+    # distinct persona values across 7 studies, every one a real truncation, and
+    # zero matches in any condition or outcome text.
+    cut: Counter[str] = Counter()
+    for r in rows:
+        for field, text in (("condition", r.condition), ("outcome", r.outcome)):
+            if _EMPTY_SLOT.search(str(text)):
+                cut[f"{field}: an attribute slot renders as a bare dash"] += 1
+        for field, text in (("condition", r.condition), ("outcome", r.outcome)):
+            if text.count("(") > text.count(")"):
+                cut[f"{field}: unclosed bracket, text looks truncated"] += 1
+        # Persona is a structured object here, not rendered text, so check its
+        # own string fields — the same traversal rule 12 uses. That is also the
+        # more precise place to look: it names the field that is truncated
+        # ("religion") instead of reporting that something in a long rendered
+        # paragraph was.
+        for pfield, value in r.persona.model_dump().items():
+            if pfield == "extra" or not isinstance(value, str):
+                continue
+            if value.count("(") > value.count(")"):
+                cut[f"persona.{pfield}: unclosed bracket, label looks truncated"] += 1
+    if cut:
+        rep.warnings.append(
+            f"row text appears cut off — {dict(cut)} — recover the full wording from the "
+            "questionnaire, or drop the line. A value label truncated by SPSS is still "
+            "wrong when it reaches a built row"
+        )
+
     return rep
 
+
+# Text about the experiment's own apparatus: its variants, its arms, its sections.
+# Deliberately NOT a general "version" match. An early draft included
+# `versions? of th(is|e)`, which fired on "the latest version of the
+# questionnaire" — a legitimate stimulus — and was redundant anyway, since
+# es4xw's "every version of this photograph" is caught by the quantifier branch
+# below. Each alternative here names the study's own construction.
+_CONSTRUCTION = re.compile(
+    r"\b(?:in|for)\s+this\s+(?:version|condition|arm|variant|scenario\s+group)\b"
+    r"|\b(?:every|each|another|the\s+other)\s+(?:version|condition|arm|variant)\b"
+    r"|\bthis\s+(?:part|section)\s+of\s+the\s+(?:survey|study|questionnaire)\b"
+    r"|\brandomly\s+assigned\b|\bexperimental\s+condition\b",
+    re.I,
+)
+
+# A numbered list item whose content is a bare dash: `8ctbk`'s BLANK conjoint
+# attribute level. Anchored to the whole line so a hyphenated phrase is untouched.
+_EMPTY_SLOT = re.compile(r"^\s*\d+\.\s*[-\u2013\u2014]\s*$", re.M)
 
 # A numbered self-reference, e.g. "Scenario #1", "Question 3", "part 2". NOT
 # "the following scenario", which points inside the same row and is correct.
