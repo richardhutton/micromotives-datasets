@@ -180,15 +180,33 @@ notes: |-
   to key a narrower, emotion-only condition off instead (the only
   10-or-fewer-level candidate near the assignment is XTESS115 itself).
 
-  So Q2-Q5 are EXCLUDED from this build, not merged or reduced. This is the
-  single scope decision in this recipe most worth a second look — see the
-  maker's report. The fix is a schema one: an `ItemOverride`-style per-(arm,
-  outcome) override for `Condition`'s rendered TEXT (parallel to the
-  per-(arm, outcome) overrides `ItemOverride` already gives
-  `outcome_question`/`scale`/`response_recode`/`outcome_var`), so Q2-Q5 could
-  declare their own truthful (recall-only) text per arm without touching the
-  10 `condition_num`s or rule 1. Not built here — recipes may not change
-  shared code.
+  Q2-Q5 WERE EXCLUDED, and are now BUILT. The maker named the fix exactly: an
+  `ItemOverride`-style per-(condition, outcome) override for the rendered
+  CONDITION text, parallel to what `ItemOverride` already gave
+  `outcome_question`/`scale`/`response_recode`/`outcome_var`. That is now
+  `ItemOverride.condition_text`, and this recipe uses it.
+
+  Tasks 6-9 (Q2-Q5) declare, per condition, a `condition_text` naming only the
+  emotion-recall prompt — which is all that had happened when they were asked.
+  The two conditions sharing an emotion render identically at those outcomes,
+  because at that point nothing distinguishes them; that is the truth, and QC
+  rule 1 now compares PER OUTCOME and accepts it because both sides declared
+  it. Verified in the built rows: 5 distinct conditions at tasks 6-9 against 10
+  at tasks 0-5, and none of the 4,621 mood rows mentions the values task or the
+  article.
+
+  `shared_context` was shortened for the same reason. It read "You first
+  completed a writing task, then a second writing task about your personal
+  values, and then read an article about alcohol and breast cancer before
+  answering questions about it. For the first writing task, you read:" — and it
+  is prepended to EVERY outcome, so at tasks 6-9 it narrated two stages that had
+  not happened. It now holds only "For the first writing task, you read:".
+  Nothing is lost: each condition's own `text` already narrates its later stages.
+
+  The build goes 6,911 -> 11,532 rows, 6 -> 10 outcomes. 11,532 is also exactly
+  SocSci210's row count for this study, which their own numbers predicted: the
+  maker reconciled their two "conditions" as Q2-Q5's valid responses (4,621) and
+  Q8-Q14's (6,911). We now build both, correctly separated.
 
   Also excluded, same reasoning as a42yg's SA1 and z358z's open-ended cells:
     - Q6/Q7 (which value was picked, nominal 21-way) and Q6A/Q7A (free text):
@@ -376,11 +394,14 @@ notes: |-
 condition:
   source_var: XTESS115
   factors: [emotion, self_affirmation]
+  # Prepended to EVERY outcome, so it may hold only what was true at every one
+  # of them. It used to narrate all three stages ("...then a second writing task
+  # about your personal values, and then read an article..."), which is false at
+  # the mood outcomes (tasks 6-9): those are asked after the FIRST writing task
+  # and before the values task. Each condition now narrates its own later stages
+  # in `text`, so nothing is lost by shortening this.
   shared_context: >-
-    You first completed a writing task, then a second writing task about
-    your personal values, and then read an article about alcohol and breast
-    cancer before answering questions about it. For the first writing task,
-    you read:
+    For the first writing task, you read:
   arms:
     - raw: 1
       condition_num: 0
@@ -435,6 +456,18 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: &first_task_happiness >-
+            For the next five minutes, please think of the time when you felt the
+            happiest in your life. Please write about that time in detail, while
+            trying to re-experience the emotions involved.
+        7:
+          condition_text: *first_task_happiness
+        8:
+          condition_text: *first_task_happiness
+        9:
+          condition_text: *first_task_happiness
     - raw: 2
       condition_num: 1
       factors: {emotion: sadness, self_affirmation: present}
@@ -488,6 +521,18 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: &first_task_sadness >-
+            For the next five minutes, please think of the time when you felt the
+            saddest in your life. Please write about that time in detail, while
+            trying to re-experience the emotions involved.
+        7:
+          condition_text: *first_task_sadness
+        8:
+          condition_text: *first_task_sadness
+        9:
+          condition_text: *first_task_sadness
     - raw: 3
       condition_num: 2
       factors: {emotion: anger, self_affirmation: present}
@@ -541,6 +586,18 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: &first_task_anger >-
+            For the next five minutes, please think of the time when you felt the
+            angriest in your life. Please write about that time in detail, while
+            trying to re-experience the emotions involved.
+        7:
+          condition_text: *first_task_anger
+        8:
+          condition_text: *first_task_anger
+        9:
+          condition_text: *first_task_anger
     - raw: 4
       condition_num: 3
       factors: {emotion: hopeful, self_affirmation: present}
@@ -595,6 +652,18 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: &first_task_hopeful >-
+            For the next five minutes, please think of the time when you felt the
+            most hopeful in your life. Please write about that time in detail, while
+            trying to re-experience the emotions involved.
+        7:
+          condition_text: *first_task_hopeful
+        8:
+          condition_text: *first_task_hopeful
+        9:
+          condition_text: *first_task_hopeful
     - raw: 5
       condition_num: 4
       factors: {emotion: neutral, self_affirmation: present}
@@ -648,6 +717,17 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: &first_task_neutral >-
+            For the next five minutes, please write a detailed description of a room
+            in your house.
+        7:
+          condition_text: *first_task_neutral
+        8:
+          condition_text: *first_task_neutral
+        9:
+          condition_text: *first_task_neutral
     - raw: 6
       condition_num: 5
       factors: {emotion: happiness, self_affirmation: absent}
@@ -701,6 +781,15 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: *first_task_happiness
+        7:
+          condition_text: *first_task_happiness
+        8:
+          condition_text: *first_task_happiness
+        9:
+          condition_text: *first_task_happiness
     - raw: 7
       condition_num: 6
       factors: {emotion: sadness, self_affirmation: absent}
@@ -754,6 +843,15 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: *first_task_sadness
+        7:
+          condition_text: *first_task_sadness
+        8:
+          condition_text: *first_task_sadness
+        9:
+          condition_text: *first_task_sadness
     - raw: 8
       condition_num: 7
       factors: {emotion: anger, self_affirmation: absent}
@@ -807,6 +905,15 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: *first_task_anger
+        7:
+          condition_text: *first_task_anger
+        8:
+          condition_text: *first_task_anger
+        9:
+          condition_text: *first_task_anger
     - raw: 9
       condition_num: 8
       factors: {emotion: hopeful, self_affirmation: absent}
@@ -861,6 +968,15 @@ condition:
         U.S. Department of Health and Human Services, women should not
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
+      items:
+        6:
+          condition_text: *first_task_hopeful
+        7:
+          condition_text: *first_task_hopeful
+        8:
+          condition_text: *first_task_hopeful
+        9:
+          condition_text: *first_task_hopeful
     - raw: 10
       condition_num: 9
       factors: {emotion: neutral, self_affirmation: absent}
@@ -915,6 +1031,15 @@ condition:
         exceed 1 serving per day (12 oz. of beer, 5 oz. of wine, or 1.5 oz.
         of hard liquor) and should drink no more than 7 servings per week.
 
+      items:
+        6:
+          condition_text: *first_task_neutral
+        7:
+          condition_text: *first_task_neutral
+        8:
+          condition_text: *first_task_neutral
+        9:
+          condition_text: *first_task_neutral
 outcomes:
   - var: Q8
     task_num: 0
@@ -941,6 +1066,44 @@ outcomes:
     question: "I feel very vulnerable to breast cancer."
     scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
 
+  # Q2-Q5, recovered. Asked after the FIRST writing task and before the values
+  # task, so the self-affirmation has not happened at this point. Each condition
+  # declares its own `condition_text` for tasks 6-9 naming only the emotion-recall
+  # prompt; the two conditions sharing an emotion render identically there, which
+  # is true, and QC rule 1 accepts it because both declared it. Previously these
+  # four were excluded entirely rather than assert a treatment history.
+  - var: Q2
+    task_num: 6
+    question: On a scale of 1 to 7, how much do you currently feel happy?
+    scale:
+      min: 1
+      max: 7
+      min_label: Not at all
+      max_label: Extremely
+  - var: Q3
+    task_num: 7
+    question: On a scale of 1 to 7, how much do you currently feel sad?
+    scale:
+      min: 1
+      max: 7
+      min_label: Not at all
+      max_label: Extremely
+  - var: Q4
+    task_num: 8
+    question: On a scale of 1 to 7, how much do you currently feel angry?
+    scale:
+      min: 1
+      max: 7
+      min_label: Not at all
+      max_label: Extremely
+  - var: Q5
+    task_num: 9
+    question: On a scale of 1 to 7, how much do you currently feel hopeful?
+    scale:
+      min: 1
+      max: 7
+      min_label: Not at all
+      max_label: Extremely
 response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
 missing_codes: [-1]
 
