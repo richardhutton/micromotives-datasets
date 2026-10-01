@@ -111,7 +111,11 @@ def _sibling_family(ds: Dataset, recipe: Recipe) -> list[str]:
     The general form: **a suppression mechanism must not be derived from a
     reporting mechanism that the suppression itself feeds.**
     """
-    declared = {v.upper() for v in recipe.condition.variables}
+    # Per-item assignment variables count as declared here too: once a recipe
+    # builds all eight of `b87sm`'s slots by naming `P_S{k}` on each outcome,
+    # rule 11's whole message — "there are seven more slots you have not built" —
+    # has been answered, and it must fall silent rather than report the answer.
+    declared = recipe.assignment_variables
     stems = {m.group(1) for v in declared if (m := STEM_PAT.match(v)) and m.group(1)}
     if not stems:
         return []
@@ -126,14 +130,21 @@ def _sibling_family(ds: Dataset, recipe: Recipe) -> list[str]:
 
 def find_undeclared_assignment(ds: Dataset, recipe: Recipe) -> list[Suspect]:
     """Rule 9 — columns that look like a second randomisation crossed with ours."""
-    declared = {v.upper() for v in recipe.condition.variables}
+    # Two different sets, and conflating them would break the rule in opposite
+    # directions. `declared` is everything the recipe uses to assign an arm,
+    # INCLUDING per-item assignment variables, because a declared variable must
+    # never be reported as undeclared. The ANCHOR stays the study-level
+    # condition: crossing slot 1's vignette against slot 2's is not a second
+    # randomisation, it is the same randomisation drawn again, and anchoring on
+    # all eight slots would make every column look nested.
+    declared = recipe.assignment_variables
     if not declared:
         return []
     rejected = {k.upper() for k in recipe.condition.considered_and_rejected}
 
-    # The declared assignment, as one key per respondent.
-    keys = [c for c in ds.df.columns if c.upper() in declared]
-    if len(keys) != len(declared):
+    study_level = {v.upper() for v in recipe.condition.variables}
+    keys = [c for c in ds.df.columns if c.upper() in study_level]
+    if len(keys) != len(study_level):
         return []
     anchor = ds.df[keys].astype("string").agg("|".join, axis=1)
 

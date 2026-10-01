@@ -16,7 +16,7 @@ from collections.abc import Iterator
 from typing import Any
 
 from ..persona.crosswalk import Crosswalk
-from ..recipe import Recipe
+from ..recipe import Arm, Recipe
 from ..schema import Persona, Row
 from ..sources.spss import Dataset
 
@@ -111,8 +111,14 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
     arms = recipe.condition.by_raw()
     missing = set(recipe.missing_codes)
     cvars = recipe.condition.variables
+    # An outcome may carry its own assignment variable, for a design where the
+    # arm varies WITHIN respondent (the same person rated eight of 72 vignettes).
+    # Where none does, every item shares the study-level assignment and this is
+    # the same single lookup as before.
+    per_item = {o.task_num: recipe.condition_vars_for(o) for o in recipe.outcomes}
+    within_subject = any(v != cvars for v in per_item.values())
 
-    for cvar in cvars:
+    for cvar in {v for vs in per_item.values() for v in vs} | set(cvars):
         if cvar not in ds.df.columns:
             raise ValueError(f"condition variable {cvar!r} not in data")
     for outcome in recipe.outcomes:
@@ -134,18 +140,35 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             "resolves to nothing would render an empty persona silently"
         )
 
-    for idx, row in ds.df.iterrows():
-        codes = [row[v] for v in cvars]
+    def arm_for(row: Any, variables: list[str]) -> Arm | None:
+        """The declared arm this respondent saw, by these assignment variables."""
+        codes = [row[v] for v in variables]
         if any(_is_blank(c) for c in codes):
-            continue
-        arm = arms.get(tuple(int(float(c)) for c in codes))
-        if arm is None:  # arm not declared in the recipe -> not part of the experiment
+            return None
+        # Not in the recipe's arms -> not part of this experiment. Silent by
+        # design: deposits carry respondents from other blocks of the same field.
+        return arms.get(tuple(int(float(c)) for c in codes))
+
+    for idx, row in ds.df.iterrows():
+        study_arm = arm_for(row, cvars)
+        # A between-subjects design can skip the whole respondent on an
+        # unassigned code. A within-subject one cannot: missing a vignette in
+        # slot 1 says nothing about slots 2-8, and dropping the respondent would
+        # throw away the seven items they did answer.
+        if study_arm is None and not within_subject:
             continue
 
         persona = _persona(ds, row, recipe, cw)
-        condition_text = recipe.condition.render(arm)
 
         for outcome in recipe.outcomes:
+            arm = (
+                study_arm
+                if per_item[outcome.task_num] == cvars
+                else arm_for(row, per_item[outcome.task_num])
+            )
+            if arm is None:
+                continue
+            condition_text = recipe.condition.render(arm)
             # Both the answer variable and its coding can vary: split-ballot
             # studies ask each arm a different question, option-order designs
             # reverse the codes per arm, and a study's items can sit on

@@ -69,6 +69,43 @@ class Scale(BaseModel):
         return self
 
 
+class ItemOverride(BaseModel):
+    """What one arm did to ONE outcome item, keyed by `task_num` on the arm.
+
+    The four fields on `Arm` below (`outcome_var`, `response_recode`,
+    `outcome_question`, `scale`) apply to every outcome of that arm, which is
+    right for a split-ballot study where the arm IS the item. It is wrong
+    whenever a study crosses arms with items, and that case is not rare — it
+    currently blocks roughly 60,000 rows across four studies already built and
+    verified:
+
+      `evnyh`  holds its answers in 60 columns, one per (item x arm). Nine of
+               its ten items are unreachable because the answer VARIABLE varies
+               by both, and `Arm.outcome_var` can only name one.
+      `cug34`  needs two outcomes of the same arm to carry different question
+               text; `Arm.outcome_question` applies to all of them.
+      `z358z`  the same, on Q1/Q2.
+
+    An item-level override is also safer than the blanket kind, which is why it
+    takes precedence unconditionally. `scale_for` has to guard the arm-level
+    scale — an arm must not leak its scale onto an outcome that named its own
+    variable, which cost 8,774 rows of `evnyh` an answer instruction that
+    contradicted the response. An override that names its task cannot leak,
+    because it has said exactly which cell it describes.
+    """
+
+    outcome_var: str | None = Field(
+        default=None, description="Variable holding THIS arm's answer to THIS item."
+    )
+    outcome_question: str | None = Field(
+        default=None, description="Question wording for this (arm, item) cell."
+    )
+    scale: Scale | None = Field(default=None, description="Response scale for this cell.")
+    response_recode: dict[int, int] | None = Field(
+        default=None, description="raw->canonical answer map for this cell."
+    )
+
+
 class Arm(BaseModel):
     """One randomised arm: its raw code, its canonical index, and what it showed."""
 
@@ -113,6 +150,12 @@ class Arm(BaseModel):
         default=None,
         description="Arm-specific response scale, when the arm's question uses "
         "different endpoint labels. Overrides Outcome.scale.",
+    )
+    items: dict[int, ItemOverride] = Field(
+        default_factory=dict,
+        description="Overrides for individual outcome items, keyed by the outcome's "
+        "`task_num`. Use when arms are CROSSED with items rather than being items. "
+        "Beats every other override, because it names the exact cell.",
     )
 
 
@@ -189,6 +232,29 @@ class Outcome(BaseModel):
         description="Item-specific raw->canonical map, for studies whose outcomes are on "
         "different scales (e.g. one banded in dollars, another in minutes). Overridden "
         "by an Arm's own recode.",
+    )
+
+    # --- within-subject designs --------------------------------------------
+    # `Condition.source_var` resolves ONE arm per respondent, which assumes the
+    # assignment is between subjects. In a within-subject vignette design it is
+    # not: `b87sm` showed each respondent eight vignettes drawn without
+    # replacement from a universe of 72, and which of the 72 appeared in slot k
+    # is held in its own variable `P_S{k}`. One arm per respondent can therefore
+    # only ever build one slot — the recipe says so in its own notes, and seven
+    # eighths of that study's vignette observations (about 40,900 rows) sit
+    # outside it.
+    #
+    # Declaring the assignment variable on the OUTCOME says what is true: the 72
+    # arms are shared, and each item records which one it showed.
+    condition_var: str | None = Field(
+        default=None,
+        description="Variable holding the arm code FOR THIS ITEM, when assignment varies "
+        "within respondent (a vignette shown in slot k). Overrides Condition.source_var.",
+    )
+    condition_vars: list[str] = Field(
+        default_factory=list,
+        description="Per-item equivalent of Condition.source_vars, for a within-subject "
+        "factorial. Must list the same factors in the same order.",
     )
 
 
@@ -273,25 +339,102 @@ class Recipe(BaseModel):
             missing = set(self.condition.factors) - set(arm.factors)
             if missing:
                 raise ValueError(f"arm raw={arm.raw} missing factor(s) {sorted(missing)}")
-        # Every outcome must get its variable from somewhere: either the outcome
-        # itself, or (split-ballot) every arm.
+        # Every outcome must get its variable from somewhere: the outcome itself,
+        # (split-ballot) every arm, or an item-level override on every arm.
         arms_have_var = all(a.outcome_var for a in self.condition.arms)
         for outcome in self.outcomes:
-            if not outcome.var and not arms_have_var:
+            items_have_var = all(
+                (ov := a.items.get(outcome.task_num)) is not None and ov.outcome_var
+                for a in self.condition.arms
+            )
+            if not outcome.var and not arms_have_var and not items_have_var:
                 raise ValueError(
-                    f"outcome task_num={outcome.task_num} has no `var`, and not every arm "
-                    "declares `outcome_var`"
+                    f"outcome task_num={outcome.task_num} has no `var`, and neither every "
+                    "arm's `outcome_var` nor every arm's item override supplies one"
+                )
+        # An item override keyed by a task_num no outcome has is dead text that
+        # looks live. Silently ignoring it is how an answer variable goes
+        # unapplied — a typo'd key would leave the blanket arm-level value in
+        # force and read, in review, as though the override had taken effect.
+        declared_tasks = {o.task_num for o in self.outcomes}
+        for arm in self.condition.arms:
+            stray = sorted(set(arm.items) - declared_tasks)
+            if stray:
+                raise ValueError(
+                    f"{self.study_id}: arm raw={arm.raw} has item override(s) for "
+                    f"task_num {stray}, which no outcome declares"
+                )
+        # A per-item assignment must describe the same factors in the same order
+        # as the study-level one, because arms are keyed by that tuple. A
+        # different length would miss every arm and build nothing; a different
+        # ORDER would silently match the wrong arm, which is worse.
+        width = len(self.condition.variables)
+        for outcome in self.outcomes:
+            if outcome.condition_var and outcome.condition_vars:
+                raise ValueError(
+                    f"outcome task_num={outcome.task_num} declares both `condition_var` "
+                    "and `condition_vars` — use one"
+                )
+            own = self.condition_vars_for(outcome)
+            if len(own) != width:
+                raise ValueError(
+                    f"outcome task_num={outcome.task_num} names {len(own)} condition "
+                    f"variable(s) {own} but the arms are keyed by {width} "
+                    f"({self.condition.variables}) — the key would never match"
                 )
         return self
+
+    @property
+    def assignment_variables(self) -> set[str]:
+        """Every variable this recipe uses to assign an arm, upper-cased.
+
+        The study-level condition plus any per-item assignment. The screens need
+        the full set and the melt needs them separately, so the distinction is
+        kept rather than collapsed: a variable named here has been DECLARED, and
+        must not then be reported as an undeclared second randomisation.
+
+        This is the same coupling that cost `b87sm` 35 spurious warnings once —
+        rule 11's suppression was derived from rule 9's reporting. A per-item
+        assignment variable is declared in a new place, so anything asking "is
+        this variable part of the design?" has to ask here, not at
+        `condition.variables`.
+        """
+        out = {v.upper() for v in self.condition.variables}
+        for outcome in self.outcomes:
+            out |= {v.upper() for v in self.condition_vars_for(outcome)}
+        return out
+
+    def item_for(self, outcome: Outcome, arm: Arm) -> ItemOverride | None:
+        """This arm's override for this specific item, if it declared one."""
+        return arm.items.get(outcome.task_num)
+
+    def condition_vars_for(self, outcome: Outcome) -> list[str]:
+        """The variable(s) holding the arm code for this item.
+
+        The outcome's own declaration wins, because an outcome only names one
+        when the assignment genuinely varies within respondent; otherwise the
+        study-level condition applies to every item, as before.
+        """
+        if outcome.condition_vars:
+            return outcome.condition_vars
+        if outcome.condition_var:
+            return [outcome.condition_var]
+        return self.condition.variables
 
     def recode_for(self, arm: Arm, outcome: Outcome | None = None) -> dict[int, int]:
         """The answer map to use, most specific first.
 
-        Arm beats outcome beats study. An arm-level map exists because that arm
-        *presented* the options differently (option-order experiments); an
-        outcome-level map exists because that item is on a different scale
-        (dollars vs minutes). Arm wins because it describes what was shown.
+        Item beats arm beats outcome beats study. An arm-level map exists
+        because that arm *presented* the options differently (option-order
+        experiments); an outcome-level map exists because that item is on a
+        different scale (dollars vs minutes). Arm beats outcome because it
+        describes what was shown; an item-level map beats both because it names
+        the one cell it is about.
         """
+        if outcome is not None:
+            item = self.item_for(outcome, arm)
+            if item is not None and item.response_recode is not None:
+                return item.response_recode
         if arm.response_recode is not None:
             return arm.response_recode
         if outcome is not None and outcome.response_recode is not None:
@@ -300,6 +443,9 @@ class Recipe(BaseModel):
 
     def outcome_var_for(self, outcome: Outcome, arm: Arm) -> str | None:
         """The variable holding this arm's answer to this outcome."""
+        item = self.item_for(outcome, arm)
+        if item is not None and item.outcome_var is not None:
+            return item.outcome_var
         return outcome.var or arm.outcome_var
 
     def scale_for(self, outcome: Outcome, arm: Arm) -> Scale:
@@ -321,7 +467,14 @@ class Recipe(BaseModel):
 
         `outcome_var_for` already prefers the outcome; this keeps the two
         resolutions consistent instead of opposite.
+
+        An ITEM-level scale needs no such guard and so comes first: it has named
+        the task it belongs to, and cannot be applied to an item it was not
+        written for.
         """
+        item = self.item_for(outcome, arm)
+        if item is not None and item.scale is not None:
+            return item.scale
         if outcome.var is None and arm.scale is not None:
             return arm.scale
         return outcome.scale
@@ -330,9 +483,14 @@ class Recipe(BaseModel):
         """The rendered outcome: question + answer instruction.
 
         Arm-level overrides apply only where the arm supplies the item — see
-        `scale_for`.
+        `scale_for`. An item-level override always applies, for the same reason.
         """
-        question = (arm.outcome_question if outcome.var is None else None) or outcome.question
+        item = self.item_for(outcome, arm)
+        question = (
+            (item.outcome_question if item is not None else None)
+            or (arm.outcome_question if outcome.var is None else None)
+            or outcome.question
+        )
         return f"{question} {self.scale_for(outcome, arm).instruction()}"
 
 
