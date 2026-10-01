@@ -153,14 +153,30 @@ notes: |-
   N=1,846 sample, declared anyway per the scheme's own definition); PartyID7
   code -1 "Unknown" (2 occurrences); IDEO code -1 "Unknown" (32 occurrences);
   RELIG codes 77/98/99 "DON'T KNOW"/"SKIPPED ON WEB"/"REFUSED" (21
-  occurrences). No `persona_label_rewrite` needed: RELIG's own value labels
-  (lines 491-524 of the questionnaire / .sav) carry no scripting boilerplate
+  occurrences). RELIG's own value labels carry no scripting boilerplate
   comparable to a42yg's REL1 "please specify:" tail - the .sav's own label for
-  code 14 is the plain "Something else" with no trailing instruction, so
-  nothing to rewrite (Jev's non-answer scan on RELIG flagged only the genuine
-  sentinels 77/98/99 plus "Other, non-Hispanic" on RACETHNICITY and "Not
-  working - other" on EMPLOY, both real answers at conf 0.88-0.89, correctly
-  scored as "answer" rather than "non_answer" and left untouched).
+  code 14 is the plain "Something else" with no trailing instruction (Jev's
+  non-answer scan on RELIG flagged only the genuine sentinels 77/98/99 plus
+  "Other, non-Hispanic" on RACETHNICITY and "Not working - other" on EMPLOY,
+  both real answers at conf 0.88-0.89, correctly scored as "answer" rather
+  than "non_answer" and left untouched).
+
+  FOUND BY READING BUILT ROWS, NOT BY JEV OR QC: RELIG code 1's own .sav
+  label IS truncated by SPSS's label-length limit - "Protestant (Baptist,
+  Methodist, Non-denominational, Lutheran, Presbyterian, Pent" (82 chars, cut
+  mid-word, no closing parenthesis) - the exact same failure mode as a42yg's
+  REL1 code 2 (ledger), just on a different code and a different study.
+  Nothing in QC checks persona text for truncation; this surfaced only when
+  reading rendered rows end to end (a respondent's religion read as
+  "...Presbyterian, Pent", which is not a real answer any respondent gave -
+  it is a display artefact). Confirmed 1,619 of 5,816 rows (27.8%) carried it
+  before the fix. `persona_label_rewrite` restores the full wording from the
+  questionnaire itself (line 240 of SurveyA_vFINALsimple.txt: "Protestant
+  (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian,
+  Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness,
+  etc.)") - the same words, not different ones. The identical truncation
+  (same code, same cut point) is also present in Survey B's .sav and fixed
+  the same way in 9xw67_conjoint.yaml.
 
   ATTEND / PID1 / D3 and their branches (lines 168-233) are downstream
   demographic re-ask items gated on whether the panel profile value is stale,
@@ -367,6 +383,10 @@ persona_missing:
   PartyID7: [-1]
   IDEO: [-1]
   RELIG: [77, 98, 99]
+
+persona_label_rewrite:
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
 
 persona_map:
   age: AGE

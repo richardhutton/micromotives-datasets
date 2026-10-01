@@ -529,6 +529,10 @@ def _one_row(condition: str, *, persona=None, outcome: str = "How good?"):
         "This part of the survey asked you about sex and gender.",
         "You were randomly assigned to read the following.",
         "In this condition the policy was described as permanent.",
+        # 5hqan's actual shipped clause, on all 6,411 rows. The first version of
+        # rule 17 missed it and caught a different sentence in the same study —
+        # which is why one match per study is not evidence the rule is complete.
+        "The question came after both, in the same position regardless of condition.",
     ],
 )
 def test_rule17_catches_text_about_the_study_itself(fixture_sav, fixture_recipe, text) -> None:
@@ -561,12 +565,17 @@ def test_rule17_is_quiet_on_legitimate_text(fixture_sav, fixture_recipe, text) -
 # --------------------------------------------------------------------------
 
 
-def test_rule18_catches_an_attribute_slot_rendered_as_a_dash(fixture_sav, fixture_recipe) -> None:
-    """8ctbk, 5,682 of 17,464 rows (32.5%).
+def test_rule18_does_not_flag_a_slot_the_questionnaire_left_blank(
+    fixture_sav, fixture_recipe
+) -> None:
+    """`8ctbk`'s "4. -" is CORRECT, and an earlier version of rule 18 said it was not.
 
-    Its conjoint attribute whose level is "BLANK" rendered as a bare "4. -", so a
-    third of the study told participants they read a six-line profile whose
-    fourth line was a hyphen.
+    The questionnaire declares `c. [LEAVE BLANK]` as a genuine third level of the
+    Family Policy attribute, and the screenshots embedded in the deposit's own
+    .docx show a literal hyphen in that slot on screen. 5,682 of 17,464 rows
+    reproduce what the participant actually read. A rule that flagged it would
+    push a maker to "fix" correct text, which is worse than the rule not
+    existing — so the detection was removed and this pins it out.
     """
     text = (
         "1. You have one child\n"
@@ -576,7 +585,7 @@ def test_rule18_catches_an_attribute_slot_rendered_as_a_dash(fixture_sav, fixtur
         "5. Your household has just enough to pay your bills\n"
     )
     rep = check(_one_row(text), fixture_recipe)
-    assert _warns(rep, "appears cut off"), rep.warnings
+    assert not _warns(rep, "appears cut off"), rep.warnings
 
 
 def test_rule18_catches_a_truncated_persona_label(fixture_sav, fixture_recipe) -> None:
