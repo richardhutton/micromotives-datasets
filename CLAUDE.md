@@ -58,6 +58,59 @@ The dataset's value is that every row is something a real person actually did.
 
 "Cannot determine from source" is a finding, not a failure.
 
+## Using Jev (the LLM judge)
+
+**Jev** (the `typesafe-sdk` package) is this project's structured-judgement API:
+`TypeSafeClient.system_one(state, questions)`, where each question is a `Noul`
+(0–1 judgement), a `Choice` (pick one, with reasons) or a `Score`. Use it for
+the questions that need **reading comprehension**, and only those.
+
+**Use Jev for meaning.** What construct does this variable measure? What does
+this response label denote? Which of these columns holds the randomised
+assignment? Does answering this question require local knowledge a respondent
+elsewhere would not have? Which domain does this outcome belong to? These are
+semantic judgements over question wordings and labels, and no amount of regex
+will do them — a pattern-match offered six variables about a fictional
+character as "household income" until the candidate list was widened.
+
+**Use code for mechanics.** Do these bands tile without gaps or overlaps? Is
+this recode injective? Does this variable exist in the file? Do these two
+questionnaire versions agree? Anything decidable by arithmetic or parsing is
+code's job, because code can be unit-tested and a judgement cannot.
+
+**Never auto-accept.** Jev ranks and flags; a person or a second, independent
+pass decides. Record the score next to the decision so a later reader can see
+how close the call was. Do not write a threshold that silently commits.
+
+**Calibrate before trusting a new question.** `scripts/jev_probe.py` and
+`scripts/jev_calibration.py` pose questions whose answers are already known
+from hand-built sources, so a new prompt can be scored before it is pointed at
+sources with no reference. Do this: the transfer screen scored 12/16 against
+hand-read studies, and **two of its four errors were in the dangerous
+direction** — it called a source fully transferable where reading the
+questionnaire said otherwise. That is why the screen orders the queue and never
+overrules an eye.
+
+**Known failure modes**, all observed here:
+- A narrow option list inflates confidence. Keep candidate lists wide and let
+  the low scores do the rejecting.
+- A "prefer the more granular measure" tiebreak misfired three times by
+  preferring a *different construct* that happened to be finer. Make tiebreaks
+  narrow, and check whether one was load-bearing.
+- Confidence is not calibrated across question types; compare scores within a
+  question, not between questions.
+
+**What may go on the wire.** Question wordings, variable labels, value labels
+and study titles — the instrument. **Never respondent rows.** This property is
+deliberate and worth preserving in any new script; `scripts/jev_show_wire.py`
+prints the exact JSON a call sends so you can check. Licence-restricted data
+(see **Data handling**) must never reach Jev at all, instrument included, until
+the licence has been read.
+
+**Practical notes.** `TYPESAFE_API_KEY` lives in `~/.bash_profile`, which the
+Bash tool does not source — prefix `source ~/.bash_profile &&`. `Choice.criteria`
+is a mapping of option name to description, not a list.
+
 ## Definition of done
 
 A source is done only when **all** of these hold:
@@ -217,10 +270,10 @@ would need. Rules for updating:
   "merged categories stay merged" under **Never fabricate**: producing a finer
   category than a source offered would invent a distinction nobody measured.
   (2026-10-01)
-- **The LLM judges meaning; code judges mechanics.** It answers "what is this
-  variable" and "what does this label mean"; code answers "do these bands
-  tile". It ranks and flags, never auto-accepts. Question wordings and variable
-  labels may go on the wire; respondent rows never do. (2026-10-01)
+- **The LLM judges meaning; code judges mechanics** — settled by measurement
+  across 785 candidate columns, of which 327 were rejected. See **Using Jev**
+  above for the division of labour, the calibration requirement and the
+  wire rule. (2026-10-01)
 - **Maker/checker on every source**, the checker briefed to break the work
   rather than confirm it and told explicitly that a PASS is not evidence. A
   maker should name its own riskiest judgement before being asked — the two
