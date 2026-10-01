@@ -205,3 +205,56 @@ cannot carry that difference.
 None of the 20 sources built so far needs this — every one has a manipulation.
 It is written down because the first one that does will be written by an agent
 that has not had this conversation.
+
+## A study with no assignment column
+
+Most instruments record which condition a respondent met in a column. Some do
+not: they route people to separate blocks of variables and the only record is
+that the blocks a person never saw carry a "not asked" code. `QQM5MC` is the
+first here — four conditions as `Q1A/Q2A/Q3A` .. `Q2D/Q3D`, no `Exp_Group`
+anywhere in the file, and the authors reconstruct it with a `reshape long`.
+
+Declare `condition.not_asked_code` and a `witness_var` per arm. Three rules go
+with it, and none of them is optional:
+
+**Read the routing, never the response.** The witness is the code meaning "this
+person was never shown this variable", which is the instrument's own account of
+what it asked. It is not "they left it blank" and not "they answered". A file
+that cannot tell those apart cannot use this mechanism — check first. `QQM5MC`
+codes 9999 "Not Asked" and 9998 "Skipped" separately, which is what makes it
+readable.
+
+**A blank witness is a not-asked witness.** An absent cell is no evidence a
+person saw a condition, and inventing one from a gap is the error the whole
+mechanism exists to avoid.
+
+**A respondent routed to two conditions has none.** Do not pick the first, and
+do not pick by any rule — a row carries exactly one condition and we cannot know
+which of the two they met, so drop the respondent. Declare how many
+(`ambiguous_routing`) and why (`ambiguous_routing_reason`). The melt fails when
+the number it finds differs in either direction, so the discard can never grow
+quietly and a stale declaration cannot stand. `QQM5MC` has exactly one such
+respondent in 3,267, and the published analysis counts them twice.
+
+## Verifying a study SocSci210 does not contain
+
+`mmds crosscheck` has nothing to compare a non-TESS study to, so
+`comparable_to_socsci210: false` leaves it with no numeric answer key at all.
+Use the published paper's own table instead — and prefer a table to a figure
+whenever both carry the same numbers, because a drawn bar resolves to about 0.1
+and that is looser than any useful tolerance.
+
+A saturated regression is the best case: when every condition is crossed with
+every level of a moderator, the printed coefficients ARE the cell means, and
+summing the terms a cell switches on recovers each to the precision printed.
+`scripts/verify_QQM5MC.py` is the pattern — one script per study, transcribing
+the table as data, reading the BUILT parquet rather than the deposit. Reading
+the deposit would prove only that the paper is reproducible; reading the melted
+rows proves the condition mapping, the outcome mapping, the response recode and
+the persona all survived the melt, which are four things a recipe can get wrong
+silently.
+
+Where our number legitimately differs from the published one, assert the
+difference rather than widening the tolerance to swallow it. `QQM5MC`'s N is
+exactly two below the paper's because we drop a doubly-routed respondent the
+authors count twice, so the script checks for `published - 2` and says why.

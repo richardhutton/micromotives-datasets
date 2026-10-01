@@ -680,11 +680,13 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
 
 ## 10. Where we actually are (1 October 2026, end of day)
 
-**28 experiments from 24 studies. 283,935 rows. 11.9% of the 202-study
-catalogue.** All 28 build through the CLI and pass QC. One warning in the whole
-corpus, on `9xw67_conjoint`, kept deliberately — 31 declared profiles whose
-single occurrence in 20,480 draws is a refusal, which is precisely what rule 2
-exists to surface. 228 tests. Licence recorded for all 28.
+**29 experiments from 25 studies. 290,280 rows. 12.4% of the 202-study
+catalogue.** All 29 build through the CLI and pass QC. Two warnings in the whole
+corpus, both deliberate: `9xw67_conjoint`'s 31 declared profiles whose single
+occurrence in 20,480 draws is a refusal, which is precisely what rule 2 exists to
+surface; and `QQM5MC`'s unmapped UK persona values, which rule 14 is reporting
+exactly as designed and which are the input to the UK vocabulary work. 244 tests.
+Licence recorded for all 29.
 
 Up from 14 studies / 80,010 rows at the start of the day. The first jump came
 from four studies ALREADY built whose rows the schema could not reach (40,296);
@@ -703,8 +705,37 @@ fetched — `QQM5MC`, `TLT65Z`, `X08IVC`, `LOGVPZ` — in their ORIGINAL format,
 with licences read from the Dataverse API rather than asserted: **CC0 1.0, all
 four.** That matters more than the row count: no TESS deposit grants
 redistribution, so these are the first material here that could be published.
-None is built yet; the blocker is a decision, not tooling — see "Two things that
-are not done".
+
+**`QQM5MC` is built: 6,345 rows, and the first CC0 rows in the corpus.** Sorace &
+Hobolt (2021), YouGov, 24-26 July 2018, a fully crossed 2x2 — a Leaver/Remainer
+identity prime crossed with an ONS statement on UK GDP growth — with two outcomes,
+a 1-34 ranking of the UK against the OECD and the five-point "is the economy
+getting better". 3,266 of 3,267 respondents; the one exclusion is explained below.
+
+It is also the first study whose numbers were **verified against the published
+paper before the recipe was written**, and the first with no assignment column at
+all. Three things came out of it:
+
+- **A numeric answer key without SocSci210.** UK studies are not in the 210, so
+  `comparable_to_socsci210` is false and `mmds crosscheck` has nothing to compare.
+  The published regression table is the answer key instead. Both of Table 1's
+  models are saturated, so the printed coefficients ARE the eight cell means;
+  `scripts/verify_QQM5MC.py` reads the BUILT parquet and reproduces all eight,
+  plus both Ns. Expect to need this for every UK study.
+- **The witness design.** `Arm.witness_var` + `Condition.not_asked_code`, for an
+  instrument that routes respondents to separate blocks of variables and records
+  no assignment column — here the only record of who saw what is that the other
+  blocks read "Not Asked". Inert for the 28 existing recipes, which rebuild to
+  283,935 rows unchanged.
+- **One respondent routed to two conditions.** `ID 2158` was asked both the Prime
+  only and the Info only blocks. The authors' own reshape keeps that person in
+  both groups, so the paper's N of 2,762 counts them twice. A respondent with two
+  conditions has none, so the melt drops them and `ambiguous_routing: 1` declares
+  it — and the melt FAILS if a re-fetched deposit ever holds a second.
+
+Three UK studies remain unbuilt. The persona vocabulary is the next piece, and is
+deliberately being designed after all four deposits are read rather than from this
+one — see "Two things that are not done".
 
 ### The plan
 
@@ -806,23 +837,34 @@ and TESS's own site states no reuse terms and has suspended operations. There is
 no explicit grant of redistribution rights for any of it. Recorded in every
 recipe. It does not block building; it blocks publishing. The four UK Dataverse
 studies are the exception and the reason to prioritise them: **CC0 1.0**, stated
-by the API, recorded in `data/catalog/uk_dataverse_provenance.json`. Today the
-publishable part of this dataset has 279,314 rows we cannot ship and zero we can.
+by the API, recorded in `data/catalog/uk_dataverse_provenance.json`. The
+publishable part of this dataset now has 283,935 rows we cannot ship and **6,345
+we can** — `QQM5MC`, built.
 
-**The persona crosswalk is US-anchored, and that blocks the UK layer.** Canonical
-education runs "Less than high school / High school / Some college to associate /
-Bachelors to postgraduate"; canonical ethnicity includes "Hispanic". The first UK
-file, `QQM5MC`, has `education_level` = "No formal qualifications" / "Youth
-training certificate/skillseekers" / "Recognised trade apprenticeship completed",
-and carries `education_age` ("15 or under", "16", "17-18"), the standard BES
-measure with no US analogue at all. A trade apprenticeship has no US rung, and UK
+**The persona crosswalk is US-anchored, and the UK rows are not yet harmonised.**
+Canonical education runs "Less than high school / High school / Some college to
+associate / Bachelors to postgraduate"; canonical ethnicity includes "Hispanic".
+`QQM5MC` has `education_level` = "No formal qualifications" / "Youth training
+certificate/skillseekers" / "Recognised trade apprenticeship completed", and
+carries `education_age` ("15 or under", "16", "17-18"), the standard BES measure
+with no US analogue at all. A trade apprenticeship has no US rung, and UK
 ethnicity is a different classification rather than a relabelling.
 
-So one decision, and it is not a build: a single shared vocabulary that is lossy
-in both directions, or two vocabularies with an explicit mapping and each row
-tagged by which it uses. The second is more faithful to "absent stays absent,
-merged stays merged" and costs more in the persona layer. Decide it against a
-real UK file, not in the abstract — the file is now on disk.
+**The decision is made: two vocabularies with an explicit mapping, each row tagged
+by which it uses** — not one shared ladder that is lossy in both directions. It is
+more faithful to "absent stays absent, merged stays merged" and costs more in the
+persona layer. It is not yet built. `QQM5MC`'s UK labels pass through unchanged
+and QC rule 14 reports them, which is the crosswalk's designed behaviour ("a label
+with no mapping is left ALONE") and is the input to this work.
+
+**Build it from all four UK deposits, not from `QQM5MC`.** The four do not even
+ask the same education question: highest qualification (`QQM5MC`, 20 levels), age
+left full-time education (`TLT65Z` q112, and `QQM5MC`'s own `education_age`), and
+ever attended university (`LOGVPZ` `anyUniW19`, 5 levels). No single UK ladder
+carries all three. Income is the same story — `QQM5MC` bands gross PERSONAL income
+in 14 steps, `TLT65Z` bands annual HOUSEHOLD income in 9 — and only `TLT65Z`
+carries ethnicity at all. Designing the vocabulary from the one file we have built
+would be the "fixed locally, never swept" shape a sixth time.
 
 **Evaluation is barely exercised.** `scripts/condition_probe.py` is the first
 eval this project has had: it scores the condition screen against the five
