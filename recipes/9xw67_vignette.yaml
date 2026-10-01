@@ -1,0 +1,388 @@
+study_id: 9xw67
+source: tess
+title: "Blame and Bias in Trust in Public Policy Algorithms"
+data_file: s2077_surveyA_final_20211021.dta
+experiment: vignette
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-01:
+  https://api.osf.io/v2/nodes/9xw67/ -> node_license null, no license
+  relationship). TESS archived its post-2009 projects through the Roper
+  Center and its own site states no reuse terms; TESS has since suspended
+  operations. So there is no explicit grant of redistribution rights for
+  this deposit, and none should be assumed.
+
+notes: |-
+  TESS 091 (Ozer, LSE), "Blame and Bias in Trust in Public Policy Algorithms"
+  (2021), AmeriSpeak panel, fielded 23 Aug - 27 Sep 2021 for this sub-
+  experiment. Line numbers below are 1-based into
+  "[8041.091] TESS Ozer SurveyA_vFINALsimple.txt" (the fielded questionnaire);
+  cross-checked line-for-line against "...vFINALprog.txt" (lines 414-503),
+  which carries the identical wording plus [SPACE]/[RECORD TIME ON SCREEN]/
+  [DISPLAY] scripting markers — simple and prog AGREE on every word of every
+  arm and every outcome, per CONVENTIONS.md's "derive from both and assert
+  equality".
+
+  TWO DATA FILES, TWO EXPERIMENTS. The deposit's proposal (Ozer1324.pdf,
+  "Design" section) states this project is "composed of two experiments": the
+  "Vignette Experiment" (Survey A, 1,846 rows, THIS recipe) and the "Conjoint
+  Experiment" (Survey B, 2,048 rows, a separate recipe — 9xw67_conjoint.yaml).
+  Each is its own randomisation and its own file, so each gets its own recipe
+  per CONVENTIONS.md "Scope". The proposal is read here ONLY to confirm this
+  split and the attribute table for the OTHER recipe; no wording below is
+  taken from it — every word of arm text and outcome text is the fielded
+  questionnaire's own (source-authority rule 1).
+
+  RECIPE_PREP / JEV. Run on 091A: assignment variable P_EXP at confidence 0.99
+  (run-off against 2 others out of 54 candidates) — accepted, and independently
+  confirmed against the .sav: P_EXP is populated for all 1,846 respondents, 7
+  levels, counts 252/251/276/286/258/258/265 (raw 1-7), matching the proposal's
+  own 7-treatment table (Ozer1324.pdf, Design) verbatim by label. All 10
+  persona fields were "ok" at confidence 1.00 EXCEPT region (REGION4, 0.41,
+  flagged REVIEW against REGION9 at 0.43 — a near-tie). Accepted REGION4
+  anyway: CLAUDE.md's "harmonising may only merge, never split" means the
+  4-category scheme is always buildable and the 9-category one routes through
+  the same crosswalk with no finer distinction the corpus currently uses (every
+  other built study maps region to the 4-category scheme), so there is no
+  actual decision being deferred — both resolve to the same canonical label set.
+  Non-answer labels (Jev-3) all scored >=0.88 and all m atched source inspection
+  (see PERSONA below); none overruled. Directive refusals (Jev-4) are the
+  routing-only P_RELIG/P_LATEST_ATTEND/P_ATTEND skip conditions (lines 235,
+  256) plus "RESPONDENT IS AVAILABLE" (CATI phone-intro boilerplate, not in
+  this file's web path) — none gate stimulus text; all are administration/
+  routing on demographic follow-up questions this recipe does not build
+  (PID1/PIDA/PIDB/PIDi/D3/D4/D5/RELIG/ATTEND are all downstream of the
+  experiment, not part of it, and this recipe does not need them resolved).
+
+  THE DESIGN - P_EXP, 7 ARMS, NOT A CLEAN 2x2 (lines 46-122, questionnaire;
+  verbatim-identical lines 414-503, prog)
+
+  Proposal's own treatment table (Ozer1324.pdf, "Experimental Treatments"):
+    1 Control - Judge only
+    2 Human only                (probation officer recommends, judge AGREES)
+    3 Human only disagree       (probation officer recommends, judge DISAGREES)
+    4 Human + Algorithm         (officer+algorithm recommend, judge AGREES)
+    5 Human + Algorithms disagree (officer+algorithm recommend, judge DISAGREES)
+    6 Algorithms only           (algorithm recommends, judge AGREES)
+    7 Algorithms only disagree  (algorithm recommends, judge DISAGREES)
+
+  This is an AUGMENTED factorial, not a crossed 2x2x(something): arm 1 has no
+  recommender at all, so "agree/disagree" is undefined for it. Declared as two
+  factors anyway - `decision_maker` {none, human, human_and_algorithm,
+  algorithm} and `recommendation` {none, agree, disagree} - because minimal
+  pairs DO exist for both away from arm 1 (decision_maker: arms {2,4,6} share
+  recommendation=agree and differ only in decision_maker, likewise {3,5,7} at
+  disagree; recommendation: {2,3},{4,5},{6,7} share decision_maker and differ
+  only in recommendation), so QC rule 5 can test both factors properly rather
+  than reporting "nested, could not be tested" for everything. Arm 1 simply
+  has no partner at recommendation=none, which is a true structural fact about
+  the design (ledger #73's point: a rule that cannot tell design from defect
+  should decline, not guess - here the rule CAN be given real minimal pairs,
+  so it is).
+
+  CONDITION MAPPING (declared, rule 2): condition_num = raw - 1. This is the
+  instrument's own stated order (P_EXP value labels, questionnaire lines
+  549-563 / codebook), not inferred from arm sizes, which are too close to
+  settle it on their own (252-286 across 7 arms).
+
+  ARM TEXT. Paragraph 1 ("A defendant with a prior drunk driving charge was
+  arrested for drunk driving a second time.") is byte-identical across all 7
+  arms (checked by eye against all 7 blocks, lines 48,58,69,80,92,103,115) and
+  is a genuine PREFIX, so it is hoisted into `shared_context` per CONVENTIONS.md.
+  The final paragraph ("While on probation for the second offense...killing
+  that person instantly.") is ALSO byte-identical across all 7 arms, but it
+  sits at the END of each arm's text, not the start, so `shared_context` (a
+  prefix only) cannot carry it; it is repeated verbatim in each arm's own
+  `text`, the same treatment CONVENTIONS.md gives cug34's mid-paragraph
+  sentence. Only the middle paragraph(s) vary by arm, and are transcribed
+  verbatim including the "Based on.../Despite..." divergence that signals
+  agree vs disagree.
+
+  OUTCOMES - Q1 IS A BRANCHED GRID, NOT ONE QUESTION PER ARM
+
+  The grid's own show-if lines (139.A, questionnaire 132-134 / prog 516-518):
+    [SHOW IF P_EXP=1,2,3,4,5,6,7: The judge]           -> Q1A, every arm
+    [SHOW IF P_EXP=2,3,4,5: The probation officer]     -> Q1B, arms 2/3/4/5
+    [SHOW IF P_EXP=4,5,6,7: The computer algorithm]    -> Q1C, arms 4/5/6/7
+  This exactly matches the proposal's own "which actors should respondents be
+  asked about" table and is CONFIRMED against the .sav's own null pattern, not
+  assumed: Q1B is non-null for raw 2/3/4/5 only (251/276/286/258 = exactly
+  their arm sizes) and null for 1/6/7; Q1C is non-null for raw 4/5/6/7 only
+  (286/258/258/265) and null for 1/2/3. Three separate outcomes (task_num
+  0/1/2), one variable each (Q1A/Q1B/Q1C); the melt drops the null cells
+  automatically (an arm simply has no row for an outcome it didn't ask), which
+  is the data saying the same thing the show-if lines say. QC rule 10 (arm
+  outcome-coverage symmetry) does not fire: the widest arm (4,5) answers all 4
+  outcomes, and the thinnest (arm 1, judge+vote only) answers exactly 2, which
+  is not below the 0.5 threshold (2 is not < 0.5*4=2) - checked by running QC,
+  not asserted.
+
+  Q2 (line 150) is asked of every arm unconditionally - "The judge is up for
+  reelection next year. How likely is it that this incident would influence
+  your vote for the judge?" - task_num 3, var Q2. Not an attention/recall
+  check (CONVENTIONS.md) - it asks a forward-looking behavioural intention
+  about the respondent's own vote, not whether they remember the vignette.
+
+  SCALES. Q1A/Q1B/Q1C: 1-10, "None at all" (1) to "A great deal" (10) - the
+  value labels' own wording (.sav: "1 - None at all" / "10 - A great deal"),
+  matching the stem's lower-case quoted phrasing. Q2: 1-10, "Extremely
+  unlikely" (1) to "Extremely likely" (10), same source. response_recode is
+  study-level identity 1-10; missing_codes [77, 98, 99] (DON'T KNOW / SKIPPED
+  ON WEB / REFUSED) drop per item. Checked directly: 4 of 1,846 Q1A responses
+  and smaller counts on Q1B/Q1C/Q2 are code 98; no 77 or 99 occurred on any of
+  the four items in this sample, but the codes are declared regardless (REL1-
+  style - a scheme's missing codes are what it DEFINES, not what happened to
+  occur, per a42yg's same reasoning for its own zero-occurrence codes).
+
+  PERSONA. age/gender/income/education/ethnicity/employment/marital_status/
+  region/religion/household_size map to AGE/GENDER/INCOME/EDUC5/RACETHNICITY/
+  EMPLOY/MARITAL/REGION4/RELIG/HHSIZE - all checked directly against the .sav's
+  own value labels (not assumed), all AmeriSpeak preload fields using the same
+  naming as a42yg/a5v96/zaqkm's KnowledgePanel equivalents would use a
+  different prefix; this is AmeriSpeak, whose preload vars carry no PP-prefix
+  (confirmed against the vFINALprog.txt preload table, lines ~20-85).
+  Additionally mapped as EXTRA canonical fields, since this survey's own
+  wave re-asked them for respondents whose panel profile value was stale/
+  missing (merged into the delivered PartyID7/IDEO, not separate raw/re-ask
+  columns in this client file - same merged-field pattern as a42yg's PARTY7/
+  IDEO/REL1/REL2): party_id -> PartyID7, ideology -> IDEO. Also mapped:
+  urban_rural -> METRO, internet_access -> INTERNET, housing_type -> HOME_TYPE,
+  housing_ownership -> HOUSING, phone_service -> PHONESERVICE.
+
+  persona_missing, checked directly against each variable's own value-label
+  set and occurrence count: GENDER code 0 "Unknown" (0 occurrences in this
+  N=1,846 sample, declared anyway per the scheme's own definition); PartyID7
+  code -1 "Unknown" (2 occurrences); IDEO code -1 "Unknown" (32 occurrences);
+  RELIG codes 77/98/99 "DON'T KNOW"/"SKIPPED ON WEB"/"REFUSED" (21
+  occurrences). No `persona_label_rewrite` needed: RELIG's own value labels
+  (lines 491-524 of the questionnaire / .sav) carry no scripting boilerplate
+  comparable to a42yg's REL1 "please specify:" tail - the .sav's own label for
+  code 14 is the plain "Something else" with no trailing instruction, so
+  nothing to rewrite (Jev's non-answer scan on RELIG flagged only the genuine
+  sentinels 77/98/99 plus "Other, non-Hispanic" on RACETHNICITY and "Not
+  working - other" on EMPLOY, both real answers at conf 0.88-0.89, correctly
+  scored as "answer" rather than "non_answer" and left untouched).
+
+  ATTEND / PID1 / D3 and their branches (lines 168-233) are downstream
+  demographic re-ask items gated on whether the panel profile value is stale,
+  not part of this experiment and not persona fields this schema has a slot
+  for beyond what is already mapped (party_id, ideology, religion); not built.
+
+  CROSSCHECK (comparable_to_socsci210: true - kept true deliberately, per
+  z358z's precedent, because the disagreement decomposes exactly rather than
+  being apples-to-oranges). `mmds crosscheck` reports FAIL: n_rows 5,816 vs
+  5,313; n_conditions 7 vs 6; response_distribution differs. Fully reconciled
+  by hand:
+
+  (a) SocSci210's condition_num 1-6 match ours EXACTLY, cell for cell -
+  {1:753, 2:827, 3:1136, 4:1031, 5:772, 6:794} on both sides - which also
+  confirms our raw->condition_num=raw-1 mapping independently (their
+  numbering agrees with ours, not merely a permutation of it).
+
+  (b) They have NO condition 0. n_participants theirs=1,594 vs ours=1,846;
+  the difference, 252, is exactly raw=1's (the control arm's) participant
+  count. They dropped the entire control condition.
+
+  (c) The response-distribution difference, value by value ({1:51, 2:22,
+  3:31, 4:33, 5:65, 6:49, 7:59, 8:59, 9:32, 10:102}), is EXACTLY our
+  condition-0-only response distribution (queried directly from our built
+  parquet: identical to the digit). So every one of the 503 extra rows we
+  build over theirs is accounted for by the arm they omitted, and nothing
+  else differs.
+
+  (d) Their own rendered `stimuli` text (queried directly, all 6 of their
+  conditions) is a single generic paraphrase, byte-identical across every
+  condition: "You read a scenario in which a defendant with a prior
+  drunk-driving conviction is arrested for a second drunk-driving offense.
+  ...the decision was made as described in your condition. While on
+  probation..." - not the fielded questionnaire's wording at all (no
+  "probation officer", "computer algorithm", "master's degree", etc.
+  anywhere), and identical across all 6, so it carries NO information about
+  which actor recommended what or whether the judge agreed. The auto-note
+  confirms: "6 conditions but only 1 distinct stimulus string". Our own rule
+  1 would fail this outright.
+
+  So: SocSci210's per-condition ROW COUNTS are correct and match ours exactly
+  for every arm they built, which is further confirmation this recipe's
+  condition mapping and arm assignment are right - but they (i) dropped the
+  control arm entirely and (ii) their stimulus text carries none of the
+  manipulation. Consistent with Round 8's base rate ("assume the reference
+  reconstruction is a lower bound on the design") and with the standing
+  finding that their arm assignment is reliable while their text is not.
+
+  ROWS READ END TO END. Checked condition 0/1/3/4/6 x task 0-3 combinations
+  directly: branching pattern matches the proposal's actor table exactly (0:
+  judge only; 1,2: judge+officer; 3,4: judge+officer+algorithm; 5,6:
+  judge+algorithm, no officer) with row counts per (condition, task) cell
+  confirming it numerically, and each outcome's rendered text names the
+  correct actor (e.g. condition 4 task 2 asks about "the computer algorithm",
+  condition 1 task 1 asks about "the probation officer") with no row
+  referencing an actor absent from its own condition text.
+
+  WHAT IS NOT BUILT. P_EXP1..P_EXP7 "_TOTALTIME" screen-timing variables
+  (survey mechanics, not a respondent answer). PartyID7/IDEO's and RELIG's
+  downstream branch items (PID1/PIDA/PIDB/PIDi/D3/D4/D5/ATTEND) - demographic
+  detail beyond the persona schema, not outcomes of this experiment.
+
+condition:
+  source_var: P_EXP
+  factors: [decision_maker, recommendation]
+  shared_context: >-
+    A defendant with a prior drunk driving charge was arrested for drunk
+    driving a second time.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {decision_maker: none, recommendation: none}
+      text: >-
+        Based on the defendant's otherwise clean criminal history, lack of
+        any other substance abuse charges, high level of education (master's
+        degree), generally stable family and friend support system, and lack
+        of criminal attitudes, a judge granted the defendant a period of
+        probation. While on probation for the second offense, the defendant
+        was again driving drunk, but this time struck someone with the
+        vehicle, killing that person instantly.
+    - raw: 2
+      condition_num: 1
+      factors: {decision_maker: human, recommendation: agree}
+      text: >-
+        Based on the defendant's otherwise clean criminal history, lack of
+        any other substance abuse charges, high level of education (master's
+        degree), generally stable family and friend support system, and lack
+        of criminal attitudes, a probation officer recommended probation for
+        the defendant for this second offense. A judge accepted the
+        recommendation of the probation officer and granted the defendant
+        the recommended period of probation. While on probation for the
+        second offense, the defendant was again driving drunk, but this time
+        struck someone with the vehicle, killing that person instantly.
+    - raw: 3
+      condition_num: 2
+      factors: {decision_maker: human, recommendation: disagree}
+      text: >-
+        Despite the defendant's otherwise clean criminal history, lack of any
+        other substance abuse charges, high level of education (master's
+        degree), generally stable family and friend support system, and lack
+        of criminal attitudes, a probation officer recommended imprisonment
+        for the defendant for this second offense. A judge disagreed with the
+        recommendation of the probation officer and granted the defendant a
+        period of probation. While on probation for the second offense, the
+        defendant was again driving drunk, but this time struck someone with
+        the vehicle, killing that person instantly.
+    - raw: 4
+      condition_num: 3
+      factors: {decision_maker: human_and_algorithm, recommendation: agree}
+      text: >-
+        Based on the defendant's otherwise clean criminal history, lack of
+        any other substance abuse charges, high level of education (master's
+        degree), generally stable family and friend support system, and lack
+        of criminal attitudes, a probation officer along with a computer
+        algorithm designed by computer scientists and criminal justice
+        experts, recommended probation for the defendant for this second
+        offense. A judge accepted the recommendation of the probation
+        officer and the computer algorithm designed by computer scientists
+        and criminal justice experts, and granted the defendant the
+        recommended period of probation. While on probation for the second
+        offense, the defendant was again driving drunk, but this time struck
+        someone with the vehicle, killing that person instantly.
+    - raw: 5
+      condition_num: 4
+      factors: {decision_maker: human_and_algorithm, recommendation: disagree}
+      text: >-
+        Despite the defendant's otherwise clean criminal history, lack of any
+        other substance abuse charges, high level of education (master's
+        degree), generally stable family and friend support system, and lack
+        of criminal attitudes, a probation officer along with a computer
+        algorithm designed by computer scientists and criminal justice
+        experts, recommended imprisonment for the defendant for this second
+        offense. A judge disagreed with the recommendation of the probation
+        officer and the computer algorithm designed by computer scientists
+        and criminal justice experts, and granted the defendant a period of
+        probation. While on probation for the second offense, the defendant
+        was again driving drunk, but this time struck someone with the
+        vehicle, killing that person instantly.
+    - raw: 6
+      condition_num: 5
+      factors: {decision_maker: algorithm, recommendation: agree}
+      text: >-
+        Based on the defendant's otherwise clean criminal history, lack of
+        any other substance abuse charges, high level of education (master's
+        degree), generally stable family and friend support system, and lack
+        of criminal attitudes, a computer algorithm designed by computer
+        scientists and criminal justice experts recommended probation for the
+        defendant for this second offense. A judge accepted the
+        recommendation of the computer algorithm designed by computer
+        scientists and criminal justice experts, and granted the defendant
+        the recommended period of probation. While on probation for the
+        second offense, the defendant was again driving drunk, but this time
+        struck someone with the vehicle, killing that person instantly.
+    - raw: 7
+      condition_num: 6
+      factors: {decision_maker: algorithm, recommendation: disagree}
+      text: >-
+        Despite the defendant's otherwise clean criminal history, lack of any
+        other substance abuse charges, high level of education (master's
+        degree), generally stable family and friend support system, and lack
+        of criminal attitudes, a computer algorithm designed by computer
+        scientists and criminal justice experts recommended imprisonment for
+        the defendant for this second offense. A judge disagreed with the
+        recommendation of the computer algorithm designed by computer
+        scientists and criminal justice experts, and granted the defendant a
+        period of probation. While on probation for the second offense, the
+        defendant was again driving drunk, but this time struck someone with
+        the vehicle, killing that person instantly.
+
+outcomes:
+  - var: Q1A
+    task_num: 0
+    question: >-
+      On the following 10 point scale, where 1 indicates "none at all" and
+      10 indicates "a great deal", indicate the extent to which you think
+      the judge is to blame.
+    scale: {min: 1, max: 10, min_label: "None at all", max_label: "A great deal"}
+  - var: Q1B
+    task_num: 1
+    question: >-
+      On the following 10 point scale, where 1 indicates "none at all" and
+      10 indicates "a great deal", indicate the extent to which you think
+      the probation officer is to blame.
+    scale: {min: 1, max: 10, min_label: "None at all", max_label: "A great deal"}
+  - var: Q1C
+    task_num: 2
+    question: >-
+      On the following 10 point scale, where 1 indicates "none at all" and
+      10 indicates "a great deal", indicate the extent to which you think
+      the computer algorithm is to blame.
+    scale: {min: 1, max: 10, min_label: "None at all", max_label: "A great deal"}
+  - var: Q2
+    task_num: 3
+    question: >-
+      The judge is up for reelection next year. How likely is it that this
+      incident would influence your vote for the judge?
+    scale: {min: 1, max: 10, min_label: "Extremely unlikely", max_label: "Extremely likely"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+missing_codes: [77, 98, 99]
+
+persona_missing:
+  GENDER: [0]
+  PartyID7: [-1]
+  IDEO: [-1]
+  RELIG: [77, 98, 99]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  income: INCOME
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  employment: EMPLOY
+  marital_status: MARITAL
+  region: REGION4
+  religion: RELIG
+  household_size: HHSIZE
+  party_id: PartyID7
+  ideology: IDEO
+  urban_rural: METRO
+  internet_access: INTERNET
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  phone_service: PHONESERVICE

@@ -678,54 +678,89 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
 
 ---
 
-## 10. Where we actually are (1 October 2026)
+## 10. Where we actually are (1 October 2026, end of day)
 
-**14 studies, 80,010 rows, 23,464 respondents.** All QC PASS with no warnings.
-Persona harmonised across four fields. 109 tests. 7 of 14 pass an independent
-SocSci210 numeric crosscheck exactly; the other 7 have no usable key because
-SocSci210 built a different scope.
+**20 experiments from 19 studies. 182,684 rows, 31,538 respondents.** All QC
+PASS with zero warnings. 187 tests. Persona harmonised across four fields and
+100% populated on eight. Licence recorded for all 20.
+
+Up from 14 studies / 80,010 rows at the start of the day — 2.3x the rows for
+five more studies, because 40,296 of them came from four studies ALREADY built
+whose rows the schema had been unable to reach.
+
+`yv2ta` is why experiments (20) exceeds studies (19): one deposit held two
+independent experiments asked of the same 2,036 people. Expect that gap to
+widen — `8ctbk`'s forced-choice task, `a5v96`'s second vignette, `evnyh`'s
+Q3-Q16 block and `b87sm`'s other items are all owed, and would add rows without
+moving the study count.
 
 ### The plan
 
-Not 100% of the catalog. **20% (~40 studies) chosen for UK value** — 26 more
-than exist today. `data/catalog/uk_priority.json` ranks the 59 buildable
-candidates on UK relevance, whether the question is still live, and domain, and
-`scripts/uk_priority.py --balance 26` produces a shortlist spread across 11
-domains rather than piled into one topic.
+Not 100% of the catalogue. **20% (~40 studies) chosen for UK value**, so 21
+more. `data/catalog/uk_shortlist.json` holds the queue;
+`scripts/uk_priority.py --reuse --balance N` regenerates it. Both open
+decisions from this morning are settled: the ranking was re-asked as a `Score`
+rather than a `Noul` (see below) and survey-methodology studies fell out at two
+on merit; `full`-transfer studies are being built first, and wave 1 and 2 are
+all `full`.
 
-Two decisions open: how many survey-methodology studies to include (11 of 59
-candidates, one tops the ranking, but they are not UK questions), and whether to
-build the 14 `full`-transfer studies before the 11 `mechanism-only` ones that
-need their scenarios re-anchored.
+### Waves
 
-### What is proven
+**Wave 1, built and checked:** `a2nbf` 6,211, `5hqan` 6,411, `a42yg` 8,022,
+`8ctbk` 17,464 (the first CONJOINT — 1,146 profiles), `yv2ta` 12,139 + 12,131.
+Three checkers: `8ctbk` and `5hqan` clean on every point, the other three each
+with one real defect, all in the condition-and-notes layer, none touching a
+response or a persona value. Zero numeric defects across all five.
 
-Every design shape TESS throws: **2 to 72 arms**, 1 to 14 outcome items,
-assignment via one variable / three variables jointly / combinatorial `[SHOW IF]`
-templates / a lookup spreadsheet, split-ballot where the question IS the
-treatment, per-arm recodes, nominal outcomes, banded quantities, and several
-sub-experiments in one deposit.
+**Wave 2, selected, one launched:** `9xw67` (policy algorithms, launched),
+`es4xw` (perceptions of diversity), `sh4px` (self-affirmation and health
+intentions), `ye2ej` (parenthood pay penalty x sexual orientation), `py9q3`
+(employment of mothers and fathers). All `full` transfer, five domains, ~58,650
+rows by SocSci210's count.
 
-Quality against SocSci210 is measured rather than asserted — see `docs/LEDGER.md`.
-Their persona coverage is 6/16 fields on KnowledgePanel studies with the data
-sitting in the source file; ours is 100% on ten core fields.
+### What changed today, beyond the studies
 
-### What is not proven
+- **The per-(arm, outcome) schema gap is closed**, in both directions:
+  `Arm.items` for arms crossed with items, `Outcome.condition_var` for items
+  carrying their own assignment. That is what unblocked the 40,296 rows.
+- **`sources/quex.py`** — the shared questionnaire-directive resolver. Parses
+  89.7% of the 1,853 conditional directives in the corpus and REFUSES the rest
+  rather than guessing. Written to a census of all 127 questionnaires, because
+  the grammar three worked examples suggested covered only 733 of them.
+- **`respondent_vars`** — stimulus wording that varies by respondent rather
+  than by arm, resolved per row through `quex`. Fixed 3,117 rows of `a2nbf`
+  that had been shipping unresolved template notation no respondent read.
+- **`Scale.mid_label`**, after a maker had to write a labelled midpoint into
+  free text and invented a word doing it.
+- **`Row.factors`** — the row contract requires within-condition structure as
+  metadata; 50 distinct factor names now reach the parquet instead of being
+  discarded.
+- **QC rules 15 and 16** (sequence signposting; licence recorded), and rule 10
+  now DECLINES on within-subject designs rather than guessing, via a new
+  `notes` channel on the report.
+- **`src/micromotives_datasets/jev.py` and `scripts/recipe_prep.py`** — the
+  LLM judge now has one home and one door, run before authoring a recipe.
+  `tests/test_architecture.py` enforces that the pipeline never imports it:
+  builds must stay offline and reproducible.
+- **The study ranking was re-asked as `Score`, not `Noul`.** The docs are
+  explicit that a `Noul` is a yes/no probability, not a magnitude, and we had
+  been ranking 59 studies by `relevance + 0.15 * evergreen`. The `Score`
+  version visibly discriminates: evergreen spreads 0.39-3.82 where the `Noul`
+  clustered high.
+- **`docs/SKIPPED.md`** — every source not built and why: 7 no access, 56 with
+  no fielded questionnaire, 2 whose outcome needs US knowledge, 118 not yet
+  reached.
 
-**Scale.** 14 of 202 is 7%, and SocSci210 is 36x bigger. Throughput works at 5
-parallel agents and is untested at 50. 125 studies are not fetched.
+### Two things that are not done
 
-Two design shapes we met and could not fully build, blocking ~60,000 rows in
-studies already verified: within-subject per-item assignment (`b87sm`, 1 of 8
-vignettes) and per-(arm, outcome) variables (`evnyh`, 1 of 10 items).
+**Publication is not cleared.** All 19 OSF deposits state NO licence —
+`node_license` null, no licence relationship, checked via the OSF API — and
+TESS's own site states no reuse terms and has suspended operations. There is no
+explicit grant of redistribution rights for any of this. Recorded in every
+recipe. It does not block building; it blocks publishing.
 
-### How it is built
-
-Maker/checker agent pairs, n=7 through the full loop with **zero defects in built
-data** — what the checkers found instead were bugs in our own pipeline. Jev
-decides which column is which persona attribute and what each category label
-means; arithmetic proves the band merges. Both are measured, both rank and flag
-rather than deciding.
+**Evaluation is unexercised.** No eval exists yet. Every identifier it needs is
+present in the corpus.
 
 ## 11. Files & tooling
 
