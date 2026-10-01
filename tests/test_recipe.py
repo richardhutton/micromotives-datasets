@@ -5,8 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
+from pydantic import ValidationError
 
 from micromotives_datasets import recipe as recipe_mod
+from micromotives_datasets.recipe import Arm, Condition, Outcome, Recipe, Scale
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -192,3 +194,91 @@ def test_ordinal_scale_keeps_its_endpoints() -> None:
 
     s = Scale(min=-3, max=3, min_label="Bad", max_label="Good")
     assert 'from -3 to 3 where -3 means "Bad" and 3 means "Good"' in s.instruction()
+
+
+# --------------------------------------------------------------------------
+# Arm.raws — several source codes denoting one condition
+# --------------------------------------------------------------------------
+
+
+def _arm_recipe(arms: list[Arm]) -> dict[str, object]:
+    return {
+        "study_id": "t",
+        "source": "tess",
+        "data_file": "s.sav",
+        "condition": Condition(source_var="X", arms=arms),
+        "outcomes": [
+            Outcome(
+                var="Y",
+                task_num=0,
+                question="q",
+                scale=Scale(min=1, max=2, min_label="lo", max_label="hi"),
+            )
+        ],
+        "response_recode": {1: 1, 2: 2},
+        "persona_map": {"age": "AGE"},
+    }
+
+
+def test_several_raw_codes_can_denote_one_condition() -> None:
+    """`a2nbf` randomised question wording x a follow-up item, 2x2.
+
+    The follow-up was administered after every scored outcome, so for the rows
+    we build it had not happened — codes 1 and 2 are one condition and 3 and 4
+    are another. Without this the recipe must either keep four arms whose text
+    is identical in pairs (rule 1 fails, a manipulation looks lost) or describe
+    a follow-up the participant had not yet reached.
+    """
+    r = Recipe.model_validate(
+        _arm_recipe(
+            [
+                Arm(raws=[1, 2], condition_num=0, text="baby wording"),
+                Arm(raws=[3, 4], condition_num=1, text="fetus wording"),
+            ]
+        )
+    )
+    by_raw = r.condition.by_raw()
+    assert set(by_raw) == {(1,), (2,), (3,), (4,)}
+    assert by_raw[(1,)] is by_raw[(2,)], "both codes must resolve to the same arm"
+    assert by_raw[(3,)].condition_num == 1
+
+
+def test_a_code_claimed_by_two_arms_is_still_caught() -> None:
+    """The duplicate check must see every code, not one key per arm.
+
+    Expanding `raws` into the key list is what keeps this an error; building one
+    key per arm would let two arms both claim code 2 and never notice.
+    """
+    with pytest.raises(ValidationError, match="duplicate raw arm code"):
+        Recipe.model_validate(
+            _arm_recipe(
+                [
+                    Arm(raws=[1, 2], condition_num=0, text="a"),
+                    Arm(raws=[2, 3], condition_num=1, text="b"),
+                ]
+            )
+        )
+
+
+def test_an_arm_may_not_declare_both_raw_and_raws() -> None:
+    with pytest.raises(ValidationError, match="both `raw` and `raws`"):
+        Recipe.model_validate(
+            _arm_recipe(
+                [
+                    Arm(raw=1, raws=[1, 2], condition_num=0, text="a"),
+                    Arm(raw=3, condition_num=1, text="b"),
+                ]
+            )
+        )
+
+
+def test_an_arm_with_neither_raw_nor_raws_is_rejected() -> None:
+    with pytest.raises(ValidationError, match="needs `raw` or `raws`"):
+        Recipe.model_validate(
+            _arm_recipe(
+                [
+                    Arm(condition_num=0, text="a"),
+                    Arm(raw=3, condition_num=1, text="b"),
+                ]
+            )
+        )

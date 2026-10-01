@@ -143,6 +143,16 @@ class Arm(BaseModel):
     raw: int | None = Field(
         default=None, description="Value of the single source condition variable."
     )
+    raws: list[int] | None = Field(
+        default=None,
+        description="Several values of the single source condition variable that all "
+        "denote THE SAME condition. `a2nbf` randomised a 2x2 of question wording x a "
+        "follow-up item, but the follow-up was administered after every scored "
+        "outcome, so for the rows we build it had not happened: raw codes 1 and 2 are "
+        "one condition, 3 and 4 another. Use this rather than two arms sharing a "
+        "condition_num, which would leave it ambiguous which arm's text and factors "
+        "applied.",
+    )
     raw_values: dict[str, int] | None = Field(
         default=None,
         description="Value of EACH source variable, when the assignment is split across "
@@ -156,6 +166,15 @@ class Arm(BaseModel):
         "Used by QC to check every factor is actually expressed in the text.",
     )
     text: str = Field(description="What this arm saw. Verbatim for what varies.")
+
+    @property
+    def label(self) -> str:
+        """How to name this arm in an error, whichever way it declares its codes."""
+        if self.raws is not None:
+            return f"raws={self.raws}"
+        if self.raw_values is not None:
+            return f"raw_values={self.raw_values}"
+        return f"raw={self.raw}"
 
     # --- question-wording designs ------------------------------------------
     # In a split-ballot study each arm is asked a DIFFERENT variable, and the
@@ -241,6 +260,9 @@ class Condition(BaseModel):
             if self.source_vars:
                 assert arm.raw_values is not None
                 out[tuple(arm.raw_values[v] for v in self.source_vars)] = arm
+            elif arm.raws is not None:
+                for code in arm.raws:
+                    out[(code,)] = arm
             else:
                 assert arm.raw is not None
                 out[(arm.raw,)] = arm
@@ -377,16 +399,24 @@ class Recipe(BaseModel):
                         f"{self.study_id}: an arm is missing raw_values for {sorted(missing)}"
                     )
         else:
-            if any(a.raw is None for a in self.condition.arms):
-                raise ValueError(f"{self.study_id}: every arm needs `raw`")
+            if any(a.raw is None and not a.raws for a in self.condition.arms):
+                raise ValueError(f"{self.study_id}: every arm needs `raw` or `raws`")
+            if any(a.raw is not None and a.raws for a in self.condition.arms):
+                raise ValueError(f"{self.study_id}: an arm declares both `raw` and `raws`")
         # Build the key list from the arms directly — by_raw() is a dict, so
         # duplicates would silently collapse and never be caught.
-        keys = [
-            tuple(arm.raw_values[v] for v in self.condition.source_vars)  # type: ignore[index]
-            if self.condition.source_vars
-            else (arm.raw,)
-            for arm in self.condition.arms
-        ]
+        keys: list[tuple[int, ...]] = []
+        for arm in self.condition.arms:
+            if self.condition.source_vars:
+                keys.append(
+                    tuple(arm.raw_values[v] for v in self.condition.source_vars)  # type: ignore[index]
+                )
+            elif arm.raws is not None:
+                # Every code separately, so two arms both claiming code 2 is still
+                # caught — the whole point of this check.
+                keys.extend((c,) for c in arm.raws)
+            else:
+                keys.append((arm.raw,))  # type: ignore[arg-type]
         if len(set(keys)) != len(keys):
             raise ValueError(f"duplicate raw arm code in {self.study_id}: {keys}")
         tasks = [o.task_num for o in self.outcomes]
@@ -396,7 +426,7 @@ class Recipe(BaseModel):
         for arm in self.condition.arms:
             missing = set(self.condition.factors) - set(arm.factors)
             if missing:
-                raise ValueError(f"arm raw={arm.raw} missing factor(s) {sorted(missing)}")
+                raise ValueError(f"arm {arm.label} missing factor(s) {sorted(missing)}")
         # Every outcome must get its variable from somewhere: the outcome itself,
         # (split-ballot) every arm, or an item-level override on every arm.
         arms_have_var = all(a.outcome_var for a in self.condition.arms)
@@ -419,7 +449,7 @@ class Recipe(BaseModel):
             stray = sorted(set(arm.items) - declared_tasks)
             if stray:
                 raise ValueError(
-                    f"{self.study_id}: arm raw={arm.raw} has item override(s) for "
+                    f"{self.study_id}: arm {arm.label} has item override(s) for "
                     f"task_num {stray}, which no outcome declares"
                 )
         # A per-item assignment must describe the same factors in the same order

@@ -204,7 +204,7 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             )
             continue
         # split() so reflowing a YAML block does not read as a difference.
-        same = [(a.raw, b.raw) for a, b in pairs if a.text.split() == b.text.split()]
+        same = [(a.label, b.label) for a, b in pairs if a.text.split() == b.text.split()]
         if same:
             rep.failures.append(
                 f"factor {factor!r} does not change the arm text for {same} "
@@ -472,5 +472,5 @@ def _all_recodes(recipe: Recipe) -> list[tuple[str, dict[int, int]]]:
             out.append((f"outcome task_num={outcome.task_num}", outcome.response_recode))
     for arm in recipe.condition.arms:
         if arm.response_recode:
-            out.append((f"arm raw={arm.raw}", arm.response_recode))
+            out.append((f"arm {arm.label}", arm.response_recode))
     return out
