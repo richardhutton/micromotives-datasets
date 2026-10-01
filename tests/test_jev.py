@@ -15,6 +15,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
+import pytest
+
 from micromotives_datasets import jev
 
 
@@ -160,3 +162,105 @@ def test_describe_variable_sends_labels_and_never_data() -> None:
     line = jev.describe_variable("XTESS193", "Experimental condition", {1.0: "Vignette1 first"})
     assert "XTESS193" in line and "Vignette1 first" in line
     assert "values:" in line, "value labels are what disambiguate a mislabelled variable"
+
+
+# --------------------------------------------------------------------------
+# the condition screen
+# --------------------------------------------------------------------------
+
+
+class ScreenStub:
+    """Answers `screen_condition` from a probability distribution it is handed.
+
+    Records the `state` so a test can assert what crossed the wire, and what the
+    frame told the model — the frame is not cosmetic here: a wrong one measurably
+    inverted `sh4px`'s result (the corrected condition scored worse than the
+    defective one), so it is worth a test of its own.
+    """
+
+    def __init__(self, probabilities: dict[str, float]) -> None:
+        self.probabilities = probabilities
+        self.states: list[str] = []
+
+    def system_one(self, state: str, questions: dict[str, Any]) -> Any:
+        self.states.append(state)
+        chosen = max(self.probabilities, key=lambda k: self.probabilities[k])
+        return _Response(
+            {"defect": _Answer(chosen, self.probabilities[chosen], self.probabilities)}
+        )
+
+
+def _screen(probs: dict[str, float]) -> jev.ConditionFlag:
+    return jev.screen_condition(
+        ScreenStub(probs), "A company formed a team of six.", "How diverse is it?"
+    )
+
+
+def test_a_truthful_condition_is_not_flagged() -> None:
+    f = _screen({"none": 0.9, "premature_treatment": 0.1})
+    assert not f.needs_review
+    assert f.defect_mass == pytest.approx(0.1)
+
+
+def test_a_named_defect_class_is_flagged() -> None:
+    f = _screen({"sequence_signposting": 0.7, "none": 0.3})
+    assert f.needs_review
+    assert "sequence_signposting" in f.render()
+
+
+def test_defect_mass_is_summed_over_the_whole_distribution() -> None:
+    """A defect split across several classes must not vanish from the signal.
+
+    `Verdict.runners_up` keeps only the top three, so reading the mass off it
+    would drop the fourth class — and a defect the model cannot settle on a name
+    for is precisely when it is least certain and most worth a human. Here "none"
+    wins the vote at 0.28 while 0.72 of the mass says something is wrong.
+    """
+    f = _screen(
+        {
+            "none": 0.28,
+            "sequence_signposting": 0.18,
+            "premature_treatment": 0.18,
+            "reveals_the_experiment": 0.18,
+            "truncated_text": 0.18,
+        }
+    )
+    assert f.defect.value == "none", "the chosen label is still the plurality"
+    assert f.defect_mass == pytest.approx(0.72)
+    assert f.needs_review, "a split defect outvoted by 'none' must still be flagged"
+
+
+def test_a_clean_label_below_the_threshold_passes() -> None:
+    """The calibration, pinned: 0.35 was my guess and would have fired here.
+
+    `relig_truncated_text`'s CORRECTED text measured 0.32. A threshold at 0.35
+    sat 0.03 from flagging a correction; the measured gap put it at 0.45.
+    """
+    f = _screen({"none": 0.68, "truncated_text": 0.32})
+    assert not f.needs_review
+    assert f.defect_mass < jev.DEFECT_MASS_REVIEW
+
+
+def test_the_frame_says_experiment_condition_and_reconstruction() -> None:
+    """All three, because the first version of this frame said none of them.
+
+    It claimed "a survey respondent was shown the following text". They were not
+    shown it — it is second-person prose we compose afterwards from the
+    questionnaire — and calling it a survey hid that one condition of a
+    randomised experiment is what is being judged.
+    """
+    cli = ScreenStub({"none": 1.0})
+    jev.screen_condition(cli, "THE CONDITION", "THE OUTCOME", study="s")
+    state = cli.states[0].lower()
+    assert "experiment" in state
+    assert "condition" in state
+    assert "reconstruction" in state
+    assert "not a transcript" in state
+    assert state.index("the condition") < state.index("the outcome")
+
+
+def test_the_screen_sends_only_instrument_text() -> None:
+    """Structural: the signature takes two strings, so no row can reach Jev."""
+    cli = ScreenStub({"none": 1.0})
+    jev.screen_condition(cli, "THE CONDITION", "THE OUTCOME")
+    assert "THE CONDITION" in cli.states[0] and "THE OUTCOME" in cli.states[0]

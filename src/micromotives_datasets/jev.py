@@ -373,3 +373,192 @@ def explain_condition(cli: Any, text: str) -> Verdict:
         },
     )
     return _verdict(r.answers["kind"], note=text[:160])
+
+
+# --------------------------------------------------------------------------
+# screening a BUILT row's condition — the one question no test can answer
+# --------------------------------------------------------------------------
+
+# Every serious defect this project has shipped was a condition asserting
+# something untrue about what the respondent had experienced when they answered:
+#
+#   b87sm   "Scenario #1"              13,513 rows rating scenarios 2-8
+#   es4xw   "in this version"          32,228 rows told the photo had versions
+#   sh4px   the self-affirmation task  asked before the task happened
+#   a2nbf   "{you/your partner}"        3,117 rows with an unresolved directive
+#   a42yg   "both are equally"          500 rows with a word the source lacks
+#
+# All five live in the corpus's 308 distinct hand-written condition strings, and
+# all five answer to one question: *could the respondent have known everything
+# this text asserts, at the moment they were asked this outcome?* There is no
+# unit test for that — it is irreducibly semantic — and it is the single place
+# where this project's defects have actually lived. Variable selection, which is
+# what Jev had been used for, has never produced a shipped defect.
+#
+# Each of the five was found by a human reading one row. At 308 strings the
+# screen costs almost nothing and reads all of them.
+CONDITION_DEFECTS = {
+    "none": (
+        "every statement is true of a participant in this condition at the moment "
+        "the outcome question was asked"
+    ),
+    "reveals_the_experiment": (
+        "refers to the experiment's own structure — other conditions, arms, versions, "
+        "randomisation, or that other participants saw something different. A "
+        "participant was in one condition and knew nothing of the others"
+    ),
+    "sequence_signposting": (
+        "claims a position in a sequence — 'Scenario #1', 'the first vignette', 'the "
+        "next one' — which need not be the position this condition actually gave them"
+    ),
+    "premature_treatment": (
+        "describes a part of the treatment that had not yet been administered when "
+        "this outcome was measured, so it asserts a history the participant did not "
+        "yet have at that point in the experiment"
+    ),
+    "unresolved_directive": (
+        "contains leftover questionnaire programming that was meant to be resolved "
+        "before the condition was rendered: {a/b} alternatives, [SHOW IF ...], "
+        "[INSERT ...], piping placeholders"
+    ),
+    "truncated_text": (
+        "a sentence, label or list is cut off mid-word or mid-clause, usually an "
+        "unbalanced bracket or a word ending abruptly"
+    ),
+    "addresses_the_wrong_person": (
+        "attributes to the participant a relationship, attribute or circumstance they "
+        "need not have had — a partner, a child, a job — where the text should have "
+        "been resolved to what this participant actually reported"
+    ),
+}
+
+
+# The two labels that mean "nothing wrong here".
+_CLEAN = frozenset({"none", NONE_OF_THESE})
+
+# Probability mass on NAMED defects above which a human looks. Measured by
+# `scripts/condition_probe.py` against the defects this project actually shipped
+# and their corrections, not chosen by taste. The measured gap:
+#
+#   shipped defect   0.63  0.64  0.96  0.97
+#   its correction   0.04  0.05  0.32  (0.71, see below)
+#
+# 0.45 sits in that gap with room on both sides. 0.35, which was my guess before
+# measuring, would have been 0.03 away from firing on a correction.
+#
+# The 0.71 is the interesting one. It is the screen flagging the CONTROL text in
+# the probe — "Suppose that you were pregnant", which I wrote by hand as a42yg's
+# corrected version. It is right: that sentence addresses the wrong person for
+# half the sample, which is why the real fix for `a2nbf` was to resolve the
+# pronoun from the respondent's own recorded sex rather than hardcode "you". The
+# screen found a defect in my test fixture. Left in, and left failing, because a
+# probe whose controls are quietly wrong measures nothing.
+#
+# Re-run the probe if the class list changes — adding a class moves every number.
+DEFECT_MASS_REVIEW = 0.45
+
+
+@dataclass
+class ConditionFlag:
+    """What the screen made of one (condition, outcome) pair.
+
+    The signal is `defect_mass` — the total probability on named defect classes —
+    not the chosen label's confidence. With eight options a correct "none" lands
+    around 0.54-0.75, so `REVIEW_BELOW`, tuned for variable selection where one
+    answer is usually obvious, flags every clean string. Measured: it flagged 8
+    of 8 known-good conditions.
+
+    The first version of this asked a second, redundant `Noul` as a cross-check.
+    It returned 0.55-0.58 across every input — a spread of 0.03 — because the
+    instruction was a three-clause conjunction, and a compound yes/no has no
+    single answer to be probable about. That is ledger #72 exactly: a wrong
+    primitive returns a number that looks perfectly usable. Removed rather than
+    patched; the mass across the `Choice`'s own classes is the honest redundancy,
+    and it is free.
+    """
+
+    defect: Verdict
+    defect_mass: float
+    study: str = ""
+    outcome: str = ""
+    excerpt: str = ""
+
+    @property
+    def needs_review(self) -> bool:
+        return self.defect.value not in _CLEAN or self.defect_mass >= DEFECT_MASS_REVIEW
+
+    def render(self) -> str:
+        head = f"{self.study}  {self.defect.value}  "
+        head += f"(conf {self.defect.confidence:.2f}, defect mass {self.defect_mass:.2f})"
+        named = [(k, v) for k, v in self.defect.runners_up if k not in _CLEAN]
+        if named:
+            head += f"\n    nearest defect: {[(k, round(v, 2)) for k, v in named[:2]]}"
+        if self.outcome:
+            head += f"\n    asked: {self.outcome[:120]}"
+        if self.excerpt:
+            head += f"\n    text:  {self.excerpt[:220]}"
+        return head
+
+
+def screen_condition(cli: Any, condition: str, outcome: str, *, study: str = "") -> ConditionFlag:
+    """Ask whether a built condition tells this respondent the truth.
+
+    Takes two STRINGS — the rendered condition and the outcome question. Both are
+    instrument text: the condition is what we composed from the questionnaire and
+    the outcome is the question as asked. No persona, no response, no respondent
+    row, which keeps the wire rule structural here as everywhere else in this
+    module.
+    """
+    from typesafe_sdk import Choice
+
+    # The frame has to say three things, and the first version said none of them:
+    # that this is a randomised experiment, that the text is ONE CONDITION of it,
+    # and that the text is a reconstruction rather than a transcript. Measured
+    # cost of getting it wrong: told "a respondent was shown the following text",
+    # the model scored `sh4px`'s CORRECTED condition worse than the defective one
+    # (0.35 against 0.17), because under that frame any second-person narration of
+    # past events reads as suspect and the shorter correction loses the context
+    # that justified it. The frame was judging the genre, not the content.
+    state = (
+        "This is from a randomised social-science experiment. Each participant was "
+        "assigned to exactly one experimental condition, then asked an outcome "
+        "question. A participant knew only their own condition.\n\n"
+        "The text below is a RECONSTRUCTION of one condition, written in the second "
+        "person to describe what that condition's participants saw and did. It is "
+        "not a transcript and participants never read these words — it was composed "
+        "afterwards from the experiment's questionnaire.\n\n"
+        f"THE CONDITION, AS RECONSTRUCTED:\n{condition}\n\n"
+        f"THE OUTCOME QUESTION ASKED IN THIS CONDITION:\n{outcome}\n"
+    )
+    r = cli.system_one(
+        state=state,
+        questions={
+            "defect": Choice(
+                instructions=(
+                    "Judge ONLY whether every statement in the reconstruction was TRUE "
+                    "of a participant in this condition at the moment the outcome "
+                    "question was asked. Do not judge the experiment's design or "
+                    "ethics, do not judge whether the outcome is a good measure, and "
+                    "do not penalise the reconstruction for being written in the "
+                    "second person or for narrating earlier steps — that is the format, "
+                    "and narrating what the participant had already done is correct. "
+                    "The fault is a statement that was false, or not yet true, for a "
+                    "participant in THIS condition at THAT moment. If more than one "
+                    "applies, name the most serious."
+                ),
+                criteria={**CONDITION_DEFECTS, NONE_OF_THESE: "none of these fits"},
+            ),
+        },
+    )
+    answer = r.answers["defect"]
+    probs: dict[str, float] = dict(getattr(answer, "probabilities", {}) or {})
+    return ConditionFlag(
+        defect=_verdict(answer),
+        # Summed over the FULL distribution, not `runners_up` — that keeps only
+        # the top three, so a defect split across four classes would vanish from
+        # the signal exactly when it is least certain and most worth a look.
+        defect_mass=sum(p for k, p in probs.items() if k not in _CLEAN),
+        study=study,
+        outcome=outcome[:200],
+        excerpt=condition[:400],
+    )

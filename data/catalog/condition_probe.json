@@ -1,0 +1,62 @@
+{
+ "b87sm_sequence_signposting:bad": {
+  "chosen": "sequence_signposting",
+  "confidence": 0.54,
+  "mass": 0.62,
+  "flagged": true
+ },
+ "b87sm_sequence_signposting:good": {
+  "chosen": "none",
+  "confidence": 0.9,
+  "mass": 0.04,
+  "flagged": false
+ },
+ "es4xw_reveals_the_experiment:bad": {
+  "chosen": "reveals_the_experiment",
+  "confidence": 0.55,
+  "mass": 0.61,
+  "flagged": true
+ },
+ "es4xw_reveals_the_experiment:good": {
+  "chosen": "none",
+  "confidence": 0.93,
+  "mass": 0.03,
+  "flagged": false
+ },
+ "sh4px_premature_treatment:bad": {
+  "chosen": "none",
+  "confidence": 0.88,
+  "mass": 0.05,
+  "flagged": false
+ },
+ "sh4px_premature_treatment:good": {
+  "chosen": "none",
+  "confidence": 0.87,
+  "mass": 0.06,
+  "flagged": false
+ },
+ "a2nbf_unresolved_directive:bad": {
+  "chosen": "unresolved_directive",
+  "confidence": 0.8,
+  "mass": 0.97,
+  "flagged": true
+ },
+ "a2nbf_unresolved_directive:good": {
+  "chosen": "addresses_the_wrong_person",
+  "confidence": 0.62,
+  "mass": 0.6900000000000001,
+  "flagged": true
+ },
+ "relig_truncated_text:bad": {
+  "chosen": "truncated_text",
+  "confidence": 0.91,
+  "mass": 0.9500000000000001,
+  "flagged": true
+ },
+ "relig_truncated_text:good": {
+  "chosen": "none",
+  "confidence": 0.61,
+  "mass": 0.31,
+  "flagged": false
+ }
+}
