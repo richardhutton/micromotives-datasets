@@ -188,18 +188,45 @@ and download links are in `tess_uk_foundation_sources.csv`.**
 The core UK experiments, in (persona · stimulus · condition · response) shape.
 Persona = the YouGov profile block. Stimulus form varies per study.
 
-| Dataset | Rows | Stimulus form | Response | DOI (`10.7910/DVN/…`) |
-|---|---|---|---|---|
-| Persuasion (political rhetoric) | 3,317 | 336 text arguments | MaxDiff (which most persuasive) | POMIFD |
-| Brexit conjoint | 3,293 | negotiation-outcome profiles | forced choice | EFXNLX |
-| Divided by the Vote | 1,635 | lodger / BBC vignettes | affective-polarisation rating | 35M5CV |
-| For/Against Brexit | 19,986 obs | pro/anti Brexit messages | attitude scale, 2 waves | PZB01G |
-| Pricing Immigration | 3,636 | conjoint with prices | choice | 6MRVOM |
-| i-voting | 1,200 | voting-system conjoint | forced choice | RJTVG8 |
-| Cyber Terrorism | 2,028 | TV news report (video→needs text) | support-for-retaliation scale | SACJHE |
-| Vaccine allocation (13-ctry) | — | conjoint | 8 forced choices | PMV0TG |
-| Anti-immigrant (22-ctry) | 45,402 | conjoint | choice | ZZYSIZ |
-| Many Labs 1/2, PSA | — | various (OSF) | various | (OSF) |
+**Resolved against the live Dataverse API on 2 October 2026.** Every row below
+had sat here unverified since early planning, and the check found the heading
+itself was wrong: **`POMIFD` is NOT CC0.** The audit is ledger 106-113; the short
+version is that titles were reliable, licences were not, and the design column
+was wrong on BOTH entries anyone checked against actual data.
+
+`Rows` is now labelled for what it is. **Every number in the old table was a
+RESPONDENT count**, not a row count — `6MRVOM`'s 3,636 and `POMIFD`'s 3,317 are
+both respondents, and `EFXNLX`'s 3,293 respondents are 16,465 pair-level or
+32,930 profile-level observations. A claimed row count read as a row count
+overstates nothing and understates a conjoint by an order of magnitude.
+
+| DOI (`10.7910/DVN/…`) | Dataset | Licence | Design, as VERIFIED | Respondents | Instrument ships? |
+|---|---|---|---|---|---|
+| EFXNLX | Brexit negotiations conjoint (Hobolt, Tilley, Leeper) | CC0 1.0 | 8-attribute conjoint, 6 pairs, forced choice + per-profile acceptability | 3,293 → 16,465 pair / 32,930 profile | **yes**, and data levels match it word for word |
+| 6MRVOM | Pricing Immigration (Hix, Kaufmann, Leeper) | CC0 1.0 | **NOT a conjoint** — 2×2 factorial cost framing, continuous slider outcome | 3,636 | **yes**, carries the template the condition fills |
+| 35M5CV | Divided by the Vote (Hobolt, Leeper, Tilley) | CC0 1.0 | **SIX bundled sub-studies**, not one | unverified | 2 of 6 only (lodger, bbc) |
+| PMV0TG | Vaccine allocation, 13 countries (Duch et al.) | CC0 1.0 | conjoint | unverified | **yes**, a UK-specific Qualtrics instrument |
+| ZZYSIZ | Anti-immigrant, 22 countries (Wimmer et al.) | CC0 1.0 | conjoint, forced choice | unverified; **UK presence NOT confirmed** | an "example" only, not full wording |
+| PZB01G | For/Against Brexit (Goodwin, Hix, Pickup) | CC0 1.0 | 2-wave panel, pro/anti messages | unverified | **no** — no questionnaire or codebook at all |
+| RJTVG8 | i-voting (Turnbull-Dugarte, Devine) | CC0 1.0 | conjoint, bundled with a systematic review | unverified; **UK sample NOT confirmed** | **no** |
+| SACJHE | Cyber Terrorism (Shandler et al.) | CC0 1.0 | TV news report, retaliation scale | 2,028 is a **US+UK+Israel total**, not UK | **no**, and no transcript of the video |
+| POMIFD | Variable Persuasiveness of Political Rhetoric (Blumenau, Lauderdale) | **NOT CC0 — `license` is null** | **NOT MaxDiff** — pairwise comparison, 336 arguments | 3,317 → 13,268 | yes, prompts ship as data |
+| (OSF) | Many Labs 1/2, PSA | various | various | — | — |
+
+**`POMIFD` is the best material of all nine and is blocked on licence alone.** 336
+argument strings ship verbatim as data, every pair a respondent saw is recoverable
+by a join, demographics are the richest of any UK deposit, and the numbers behind
+the main figure ship as R data. Its `termsOfUse` says *"You may wish to
+communicate with the Contact(s) specified before use"* — an invitation to ask, not
+a prohibition. **One email to UCL could unblock it.** If the licence ever clears,
+it goes straight to the top of the queue.
+
+**Great Britain, not the UK.** All three YouGov-fielded deposits checked against
+data (`QQM5MC`, `6MRVOM`, `EFXNLX`) have respondents only in regions 1-11 — zero
+in Northern Ireland, which is a declared level with no rows in every one of them.
+Ruled fine (rich, 2 Oct); recorded as a property of the YouGov studies, not a
+defect. It is also ledger 101's shape three times over, so never trust a region
+drop-list on these deposits without checking occurrences.
 
 **Added 2026-09-25 (search sweep, verified experiments, CC0):**
 
