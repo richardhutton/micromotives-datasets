@@ -21,14 +21,20 @@
 # Usage:  Rscript scripts/answer_key_EFXNLX.R > data/catalog/answer_key_EFXNLX.txt
 
 suppressPackageStartupMessages({
-  library(rio)
+  library(haven)
   library(cregg)
 })
 
 RAW <- "data/raw/EFXNLX"
 stopifnot(dir.exists(RAW))
 
-d <- rio::import(file.path(RAW, "LSEResults_Brexit_170428_client.sav"))
+# `haven::read_sav`, not `rio::import`. rio returns the attribute columns as
+# bare numerics, so every level came through as "1", "2", "3" — identical
+# across all 8 attributes, which cregg then rejected for duplicated level names.
+# That failure was loud. The quiet version of the same mistake would have been
+# an answer key labelled by code number, which is exactly the shape of the
+# defect found in 6MRVOM's Table 1: right numbers, wrong labels on them.
+d <- haven::read_sav(file.path(RAW, "LSEResults_Brexit_170428_client.sav"))
 cat("# respondents:", nrow(d), "\n")
 
 # ---------------------------------------------------------------------------
@@ -98,15 +104,28 @@ cat("\n")
 
 f <- as.formula(paste("chosen ~", paste(ATTRS, collapse = " + ")))
 
+COLS <- c("feature", "level", "estimate", "std.error")
+OUT <- "data/catalog/answer_key_EFXNLX.csv"
+
 cat("## AMCEs (cregg::cj, estimate = \"amce\", clustered by respondent)\n")
 amce <- cj(prof, f, id = ~ID, estimate = "amce")
-print(amce[, c("feature", "level", "estimate", "std.error")], row.names = FALSE,
-      digits = 6)
 
 cat("\n## marginal means (cregg::cj, estimate = \"mm\")\n")
 mm <- cj(prof, f, id = ~ID, estimate = "mm")
-print(mm[, c("feature", "level", "estimate", "std.error")], row.names = FALSE,
-      digits = 6)
+
+# Written as a file, not just printed: a wide data frame wraps in the console
+# into column blocks, and transcribing constants by eye out of wrapped output is
+# the same class of mistake as reading a value off a chart. The CSV is what the
+# Python verify script is built from.
+key <- rbind(
+  cbind(quantity = "amce", amce[, COLS]),
+  cbind(quantity = "mm",   mm[, COLS])
+)
+key$reference <- vapply(as.character(key$feature),
+                        function(a) levels(prof[[a]])[1], character(1))
+write.csv(key, OUT, row.names = FALSE)
+cat(sprintf("\nwrote %s — %d rows (%d AMCEs, %d marginal means)\n",
+            OUT, nrow(key), nrow(amce), nrow(mm)))
 
 cat("\n# a forced choice between two profiles means the marginal means over a\n")
 cat("# fully randomised design average to 0.5; a build whose melt dropped or\n")
