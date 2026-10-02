@@ -4,7 +4,7 @@
 
 24 of 202 catalogued sources are built. The remaining 178 are listed below, grouped by the reason.
 
-A further 1 source(s) are built from OUTSIDE this catalogue, and so are in neither number above: `QQM5MC`. The UK studies come from Harvard Dataverse rather than the TESS foundation set, and are the only material here that can be republished.
+A further 2 source(s) are built from OUTSIDE this catalogue, and so are in neither number above: `EFXNLX`, `QQM5MC`. The UK studies come from Harvard Dataverse rather than the TESS foundation set, and are the only material here that can be republished.
 
 A reason here is a *decision*, and decisions can be revisited: a source with no questionnaire becomes buildable the moment an instrument turns up, and a screen verdict is a queue order rather than a ruling.
 

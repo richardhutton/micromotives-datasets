@@ -11,6 +11,7 @@ import itertools
 import re
 from collections import Counter
 from dataclasses import dataclass, field
+from typing import Any
 
 from ..recipe import Recipe
 from ..schema import Row
@@ -260,11 +261,25 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             rep.warnings.append(f"factor {factor!r} has fewer than 2 levels")
             continue
         others = [o for o in recipe.condition.factors if o != factor]
+        # A minimal pair is two conditions agreeing on every OTHER factor, which
+        # is a GROUP BY rather than a search. Bucketing on the all-but-`factor`
+        # key gives exactly the same pairs as comparing every combination, at
+        # sum(m^2) over buckets instead of n^2 — and when conditions are nearly
+        # all distinct, as in a conjoint, every bucket is a singleton and the
+        # work vanishes. Measured identical to the quadratic form on all 30
+        # recipes in the corpus (samples for the two large conjoints); EFXNLX at
+        # 1,200 conditions went 3.975s to 0.034s, and its full QC pass had been
+        # taking 562 of its 564 seconds in this rule alone. A nine-minute check
+        # is a check people stop running.
+        buckets: dict[tuple[Any, ...], list[Any]] = {}
+        for arm in recipe.condition.arms:
+            buckets.setdefault(tuple(arm.factors.get(o) for o in others), []).append(arm)
         pairs = [
             (a, b)
-            for a, b in itertools.combinations(recipe.condition.arms, 2)
+            for group in buckets.values()
+            if len(group) > 1
+            for a, b in itertools.combinations(group, 2)
             if a.factors.get(factor) != b.factors.get(factor)
-            and all(a.factors.get(o) == b.factors.get(o) for o in others)
         ]
         # No minimal pair means the factor is nested rather than crossed — e.g.
         # "did the doctor heed the computer?" is undefined in the arms with no
