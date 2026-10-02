@@ -1,0 +1,2062 @@
+[
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "ysqex",
+    "origin": "US (TESS)",
+    "title": "Membership in a stigmatized religious minority and political support",
+    "x": 13.1206,
+    "y": 1.4908,
+    "year": "2024"
+  },
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "hjn6m",
+    "origin": "US (TESS)",
+    "title": "Judgments of Extremism and Social Information",
+    "x": 13.5628,
+    "y": 1.5093,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "8u3vd",
+    "origin": "US (TESS)",
+    "title": "Do Women Make More Credible Threats? Gender Stereotypes and Crisis Bargaining",
+    "x": 10.7878,
+    "y": 2.2156,
+    "year": "2019"
+  },
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "xk9ch",
+    "origin": "US (TESS)",
+    "title": "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists",
+    "x": 10.9262,
+    "y": 1.8101,
+    "year": "2018"
+  },
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "q8ra3",
+    "origin": "US (TESS)",
+    "title": "Human Rights Shaming, Compliance, and Nationalist Backlash",
+    "x": 13.4611,
+    "y": 1.3538,
+    "year": "2018"
+  },
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "qt5sk",
+    "origin": "US (TESS)",
+    "title": "Stigmatization as an Explanation for the Authoritarianism of the Uneducated",
+    "x": 13.186,
+    "y": 1.4555,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "4zwv2",
+    "origin": "US (TESS)",
+    "title": "Do Injustice and Power Determine Anger and Fear Toward Terrorist Groups?",
+    "x": 12.5446,
+    "y": 1.491,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "cross-national",
+    "code": "32rvm",
+    "origin": "US (TESS)",
+    "title": "Civilian casualties and support for war: A comparative study",
+    "x": 13.6493,
+    "y": 1.1511,
+    "year": "2010"
+  },
+  {
+    "built": true,
+    "category": "cross-national",
+    "code": "7jt2f",
+    "origin": "US (TESS)",
+    "title": "When Others' Disbelief Engenders Prejudice: Characterizing Anti-Atheist Bias in America",
+    "x": 12.7305,
+    "y": 0.9371,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "qbd8p",
+    "origin": "US (TESS)",
+    "title": "Complexity and Carbon Policy",
+    "x": 14.4782,
+    "y": 2.6261,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "dj4ez",
+    "origin": "US (TESS)",
+    "title": "Taxed or Indebted: Popular Preferences for Fiscal Instruments",
+    "x": 14.1846,
+    "y": 1.9264,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "tqhjv",
+    "origin": "US (TESS)",
+    "title": "Why do Governments Use Inefficient Environmental Policies?",
+    "x": 14.5249,
+    "y": 2.7186,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "4fsg5",
+    "origin": "US (TESS)",
+    "title": "Accounting for the Correlation between Perceived Risks and Rewards to Crime",
+    "x": 12.7358,
+    "y": 2.195,
+    "year": "2022"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "w7mnc",
+    "origin": "US (TESS)",
+    "title": "Consuming Values: Estimating Consumer Demand for Corporate Social Responsibility",
+    "x": 14.2604,
+    "y": 3.1262,
+    "year": "2022"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "x2ztf",
+    "origin": "US (TESS)",
+    "title": "Two-Sided Collective Action: An Experimental Study of Grocery Consumers\u2019 Behavior",
+    "x": 13.8403,
+    "y": 3.3372,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "dtgp7",
+    "origin": "US (TESS)",
+    "title": "Temporal orientation and energy saving investments: a survey experiment",
+    "x": 14.378,
+    "y": 3.0136,
+    "year": "2020"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "m7vhz",
+    "origin": "US (TESS)",
+    "title": "Inattention to Game Form",
+    "x": 13.568,
+    "y": 2.1236,
+    "year": "2018"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "jh5re",
+    "origin": "US (TESS)",
+    "title": "Draining Social Ties and Financial Decision Making",
+    "x": 12.6569,
+    "y": 2.9748,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "h6zk9",
+    "origin": "US (TESS)",
+    "title": "How Does Economic Status Affect Social Preferences? Experimental Evidence",
+    "x": 12.9937,
+    "y": 2.8559,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "ztwqy",
+    "origin": "US (TESS)",
+    "title": "Understanding the Expense Prediction Bias",
+    "x": 14.0203,
+    "y": 2.2491,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "wwdqf",
+    "origin": "US (TESS)",
+    "title": "Lay Benchmarking of a Minimum Meaningful Effect Size for Conceptual Outcomes",
+    "x": 15.8573,
+    "y": 0.8056,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "u8bhg",
+    "origin": "US (TESS)",
+    "title": "Prosocial Motivation, Social Position, and Support for Social Welfare Policy",
+    "x": 13.3248,
+    "y": 2.5277,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "sffyb",
+    "origin": "US (TESS)",
+    "title": "Saving for retirement vs. Saving for a retirement with others: Motivating saving by framing retirement as a social experience",
+    "x": 12.522,
+    "y": 3.1454,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "rs65g",
+    "origin": "US (TESS)",
+    "title": "Do Better Labels Lead to Better Choices? Evidence from Energy Efficient Labels",
+    "x": 14.5847,
+    "y": 2.91,
+    "year": "2014"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "w8ezk",
+    "origin": "US (TESS)",
+    "title": "Examining How Message Characteristics Influence Support for Gasoline Tax Increases",
+    "x": 14.6252,
+    "y": 2.4663,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "tcagq",
+    "origin": "US (TESS)",
+    "title": "Giving as Habit? Exploring Modes of Cognition and Charitable Donations",
+    "x": 13.5544,
+    "y": 3.3367,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "hqgva",
+    "origin": "US (TESS)",
+    "title": "Believing in \"global warming\" versus \"climate change\": Exploring the psychological mechanisms of a framing effect",
+    "x": 14.4376,
+    "y": 1.1255,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "e3gjs",
+    "origin": "US (TESS)",
+    "title": "Exponential Growth Bias: Theory and Experiments",
+    "x": 14.3058,
+    "y": 2.2426,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "gzdnf",
+    "origin": "US (TESS)",
+    "title": "But how do you feel about climate change? Assessing affective reactions to climate change",
+    "x": 14.7744,
+    "y": 1.0309,
+    "year": "2011"
+  },
+  {
+    "built": true,
+    "category": "economics/behavioural",
+    "code": "c5r2f",
+    "origin": "US (TESS)",
+    "title": "Do Policy Defaults Communicate Choice-Relevant Information?",
+    "x": 15.1497,
+    "y": 2.3792,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "gf5sm",
+    "origin": "US (TESS)",
+    "title": "Communicating Uncertainty in the Reports of the Intergovernmental Panel on Climate Change",
+    "x": 14.5655,
+    "y": 1.1389,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "euw7p",
+    "origin": "US (TESS)",
+    "title": "Environmental Values, Beliefs, and Behavior",
+    "x": 14.0564,
+    "y": 2.5191,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "c956y",
+    "origin": "US (TESS)",
+    "title": "Gasoline Prices, Inattentive Consumers, and the Energy Paradox",
+    "x": 14.6244,
+    "y": 2.8503,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "jf6a9",
+    "origin": "US (TESS)",
+    "title": "Gasoline Prices, Inattentive Consumers, and the Energy Paradox",
+    "x": 14.7071,
+    "y": 2.8906,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "kr7n9",
+    "origin": "US (TESS)",
+    "title": "Attitudes toward Risk and Electoral Decision-Making",
+    "x": 14.0988,
+    "y": 1.0303,
+    "year": "2009"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "uf5qm",
+    "origin": "US (TESS)",
+    "title": "Onset and Offset Controllability in Perceptions and Reactions to Home Mortgage Foreclosures",
+    "x": 12.8933,
+    "y": 3.3597,
+    "year": "2009"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "r5d6k",
+    "origin": "US (TESS)",
+    "title": "What Not to Say When Asking for Donations: How the Content of Requests Affects Participation",
+    "x": 13.5122,
+    "y": 3.3955,
+    "year": "2009"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "u2dbt",
+    "origin": "US (TESS)",
+    "title": "A randomized experiment on the determinants of generosity to the poor",
+    "x": 13.4545,
+    "y": 3.1334,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "gy5kn",
+    "origin": "US (TESS)",
+    "title": "Determinants of Trust: A Comparative Analysis",
+    "x": 15.0716,
+    "y": 2.1298,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "pkfdr",
+    "origin": "US (TESS)",
+    "title": "Studying the Effect of Income on Punitive Attitudes with a Two-List Factorial",
+    "x": 12.9685,
+    "y": 2.5642,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "e5rfg",
+    "origin": "US (TESS)",
+    "title": "Who has Narrow Brackets?",
+    "x": 12.6134,
+    "y": 0.6231,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "rf79p",
+    "origin": "US (TESS)",
+    "title": "Trust and Risk",
+    "x": 14.3582,
+    "y": 2.1714,
+    "year": "2004"
+  },
+  {
+    "built": false,
+    "category": "economics/behavioural",
+    "code": "gyrp9",
+    "origin": "US (TESS)",
+    "title": "Game Responses as Survey Instruments: Measuring the Constituents of Social Capital",
+    "x": 15.1675,
+    "y": 1.6087,
+    "year": "2003"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "h6m8g",
+    "origin": "US (TESS)",
+    "title": "Self-Affirmation Intervention for Weight Bias Internalization",
+    "x": 12.4889,
+    "y": 4.5391,
+    "year": "2024"
+  },
+  {
+    "built": true,
+    "category": "health communication",
+    "code": "zaqkm",
+    "origin": "US (TESS)",
+    "title": "Causal Attributions, Treatability, and Mental Illness Stigma: An Experimental Study",
+    "x": 11.5461,
+    "y": 4.2554,
+    "year": "2022"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "egmxd",
+    "origin": "US (TESS)",
+    "title": "Do Sustainability Labels Lead to More Sustainable and Healthier Food Choices?",
+    "x": 14.3275,
+    "y": 3.1357,
+    "year": "2022"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "s6urt",
+    "origin": "US (TESS)",
+    "title": "Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk",
+    "x": 13.2569,
+    "y": 4.5109,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "zx5b8",
+    "origin": "US (TESS)",
+    "title": "Do the benefits of receiving affectionate touch generalize beyond satisfied couples?",
+    "x": 11.9891,
+    "y": 2.3987,
+    "year": "2020"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "zyqcj",
+    "origin": "US (TESS)",
+    "title": "Does Self-affirmation Influence Health Message Processing through Changes in Construal Levels?",
+    "x": 13.0602,
+    "y": 4.1595,
+    "year": "2020"
+  },
+  {
+    "built": true,
+    "category": "health communication",
+    "code": "dh3nj",
+    "origin": "US (TESS)",
+    "title": "Public Perceptions of Prenatal Alcohol Consumption",
+    "x": 10.3795,
+    "y": 4.4199,
+    "year": "2019"
+  },
+  {
+    "built": true,
+    "category": "health communication",
+    "code": "bf8p2",
+    "origin": "US (TESS)",
+    "title": "Does Misery Love Company?: Exploration of a Strategic Intervention to Improve Well-being",
+    "x": 12.1495,
+    "y": 2.9306,
+    "year": "2017"
+  },
+  {
+    "built": true,
+    "category": "health communication",
+    "code": "a42yg",
+    "origin": "US (TESS)",
+    "title": "Conflict between curative and palliative goals among health care personnel: Elucidating psychological processes and resolving conflict through self-affirmation",
+    "x": 13.1528,
+    "y": 4.1359,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "ewu2a",
+    "origin": "US (TESS)",
+    "title": "Interest in Cancer Screening Tests That Lack Benefits: The Role of Cancer Worry, Perceived Cancer Risk, and Perceived Test Risk",
+    "x": 13.3182,
+    "y": 4.5102,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "zv3wc",
+    "origin": "US (TESS)",
+    "title": "Portrayals of Serious Mental Illness: Precursor to Violence or Treatable Health Condition?",
+    "x": 11.4036,
+    "y": 4.2623,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "dvwu7",
+    "origin": "US (TESS)",
+    "title": "Self-Affirmation and Defensiveness to Health Messages for the Self vs a Close Other",
+    "x": 13.22,
+    "y": 4.2033,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "yb3wd",
+    "origin": "US (TESS)",
+    "title": "Self-Affirmation and Implementation Intentions: The Moderating Role of Discrete Emotion",
+    "x": 12.93,
+    "y": 3.8162,
+    "year": "2015"
+  },
+  {
+    "built": true,
+    "category": "health communication",
+    "code": "a5v96",
+    "origin": "US (TESS)",
+    "title": "What fosters patients' acceptance of Clinical Decision Support Systems? The influence of knowledge and provider type on popular willingness to use artificial medical intelligence",
+    "x": 14.3158,
+    "y": 4.1627,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "7tzpe",
+    "origin": "US (TESS)",
+    "title": "Body Size, Illness, and Blame: Causal Attributions and Social Consequences",
+    "x": 11.911,
+    "y": 4.5019,
+    "year": "2014"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "savkp",
+    "origin": "US (TESS)",
+    "title": "Emotion and Response to Physician-Provided Genetic Weight Management Messages",
+    "x": 12.7121,
+    "y": 4.5868,
+    "year": "2014"
+  },
+  {
+    "built": true,
+    "category": "health communication",
+    "code": "z358z",
+    "origin": "US (TESS)",
+    "title": "Randomized Drug Trials without Consent? The Public's Perspective",
+    "x": 14.1601,
+    "y": 4.2116,
+    "year": "2014"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "3xy9j",
+    "origin": "US (TESS)",
+    "title": "An experiment on the presumption of consent to emergency medical treatment",
+    "x": 13.9606,
+    "y": 4.0357,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "sm7qn",
+    "origin": "US (TESS)",
+    "title": "Effects of a Randomized Experiment Portraying Mental Illness and Drug Abuse as Treatable Health Conditions",
+    "x": 11.3984,
+    "y": 4.2465,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "jkspw",
+    "origin": "US (TESS)",
+    "title": "Behavioral Reactions to Skin Infections: Informing Agent-Based Modeling of the MRSA Epidemic",
+    "x": 13.6707,
+    "y": 3.8751,
+    "year": "2012"
+  },
+  {
+    "built": true,
+    "category": "health communication",
+    "code": "sh4px",
+    "origin": "US (TESS)",
+    "title": "Self-Affirmation and Affect: Effects on Implementation Intentions",
+    "x": 13.0967,
+    "y": 3.7022,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "jf46x",
+    "origin": "US (TESS)",
+    "title": "Smallpox Vaccine Recommendations: Could Trust be a Shot in the Arm?",
+    "x": 14.0112,
+    "y": 4.2757,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "ndhyr",
+    "origin": "US (TESS)",
+    "title": "Patient Responses to Medical Error Disclosure: Does Compensation Matter?",
+    "x": 14.2233,
+    "y": 4.2171,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "z867d",
+    "origin": "US (TESS)",
+    "title": "Altruism versus Induced Empathy in Recruitment for Blood Donations",
+    "x": 13.5265,
+    "y": 3.372,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "a7yw8",
+    "origin": "US (TESS)",
+    "title": "Motivating Emergency Preparedness Behaviors: The Effects of Guilt Appeals and Guilty Feelings",
+    "x": 13.2123,
+    "y": 3.8302,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "5fu2b",
+    "origin": "US (TESS)",
+    "title": "Two-Sided Messages and Pandemic Flu: Persuading the Public to Follow Contradictory Government Directives",
+    "x": 13.4743,
+    "y": 4.285,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "agbrd",
+    "origin": "US (TESS)",
+    "title": "The impact of genetic causation of mental illness on attitudes and beliefs toward the illness",
+    "x": 11.5414,
+    "y": 4.4003,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "m8y47",
+    "origin": "US (TESS)",
+    "title": "Measuring Perceptions and Attitudes about Overweight and Obesity",
+    "x": 12.2736,
+    "y": 4.6221,
+    "year": "2004"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "wrdm4",
+    "origin": "US (TESS)",
+    "title": "Shame, Blame and Contamination: Mental Illness Stigma and the Family",
+    "x": 11.4454,
+    "y": 4.3017,
+    "year": "2004"
+  },
+  {
+    "built": false,
+    "category": "health communication",
+    "code": "2awmn",
+    "origin": "US (TESS)",
+    "title": "The Role of Gender Stereotypes in Mental Illness Stigma",
+    "x": 11.1092,
+    "y": 4.0462,
+    "year": "2004"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "8z9h5",
+    "origin": "US (TESS)",
+    "title": "Are Moral Values Uniquely Divisive?",
+    "x": 12.9429,
+    "y": 1.1106,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "bvkfc",
+    "origin": "US (TESS)",
+    "title": "Does Allowing Firms to Pay to Pollute Reduce the Moral Stigma of Pollution?",
+    "x": 14.1445,
+    "y": 2.9354,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "f2zvx",
+    "origin": "US (TESS)",
+    "title": "Paternalism and Deliberation",
+    "x": 13.7589,
+    "y": 2.0436,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "xweq8",
+    "origin": "US (TESS)",
+    "title": "Whose is the conventional thought?",
+    "x": 12.6663,
+    "y": 0.6475,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "v3bfk",
+    "origin": "US (TESS)",
+    "title": "Optimizing Schools? Public Perceptions of Algorithmic versus Status Quo Prioritization in K-12 Schooling",
+    "x": 14.8364,
+    "y": 2.0087,
+    "year": "2022"
+  },
+  {
+    "built": true,
+    "category": "moral/social/cognition",
+    "code": "9xw67",
+    "origin": "US (TESS)",
+    "title": "Blame and Bias in Trust in Public Policy Algorithms",
+    "x": 14.715,
+    "y": 2.1157,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "yc2qb",
+    "origin": "US (TESS)",
+    "title": "Educational Rankings and Adolescent Perceptions of College Cost",
+    "x": 10.2262,
+    "y": 3.6997,
+    "year": "2021"
+  },
+  {
+    "built": true,
+    "category": "moral/social/cognition",
+    "code": "b87sm",
+    "origin": "US (TESS)",
+    "title": "How to increase the acceptance of mobile app and sensor data collection?",
+    "x": 15.7597,
+    "y": 2.3744,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "4w9pz",
+    "origin": "US (TESS)",
+    "title": "When and How Teachers Communicate Growth Mindset Affordances to Adolescents",
+    "x": 12.6438,
+    "y": 3.8545,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "mebw9",
+    "origin": "US (TESS)",
+    "title": "Which College Graduates are Perceived as Trainable for Today\u2019s Work World? Perceptions of Race, Gender, Achievement, and the Liberal Arts",
+    "x": 10.2458,
+    "y": 3.2456,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "j6xgs",
+    "origin": "US (TESS)",
+    "title": "Introducing a Novel Framework for Understanding The Relationships Between Busyness, Idleness, and Happiness",
+    "x": 12.1408,
+    "y": 3.1985,
+    "year": "2019"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "5b6tf",
+    "origin": "US (TESS)",
+    "title": "Social Class, College Debt, and the Purpose of College",
+    "x": 10.125,
+    "y": 3.7223,
+    "year": "2019"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "m52pd",
+    "origin": "US (TESS)",
+    "title": "Women\u2019s College Advantage and Public Perception of College Value in the Labor Market",
+    "x": 10.1505,
+    "y": 3.4553,
+    "year": "2018"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "vygjh",
+    "origin": "US (TESS)",
+    "title": "Influence of Affect on Philosophical Intuitions",
+    "x": 13.0212,
+    "y": 1.7363,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "b3n7s",
+    "origin": "US (TESS)",
+    "title": "Does Inequality Activate the System Justification Motivation?",
+    "x": 13.1928,
+    "y": 2.0474,
+    "year": "2015"
+  },
+  {
+    "built": true,
+    "category": "moral/social/cognition",
+    "code": "zrwjp",
+    "origin": "US (TESS)",
+    "title": "The Barriers of Buying Happier Time",
+    "x": 12.3411,
+    "y": 3.3498,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "phbjd",
+    "origin": "US (TESS)",
+    "title": "Do Collective Memory and Autobiographical Memory Refer to Different Developmental Stages?",
+    "x": 14.7258,
+    "y": 0.5312,
+    "year": "2014"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "wrxnz",
+    "origin": "US (TESS)",
+    "title": "When is \"bad stronger than good\" in decision making",
+    "x": 14.5065,
+    "y": 1.6522,
+    "year": "2014"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "dwtue",
+    "origin": "US (TESS)",
+    "title": "Addressing privacy online: A Factorial Vignette Survey to Assess Privacy Expectations of Behavioral Advertising",
+    "x": 15.5385,
+    "y": 2.3681,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "h3pc9",
+    "origin": "US (TESS)",
+    "title": "Moderating the Genetic Interpolation Effect",
+    "x": 11.81,
+    "y": 1.7765,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "n96j5",
+    "origin": "US (TESS)",
+    "title": "Personality and Resistance to Persuasion",
+    "x": 13.571,
+    "y": 1.8649,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "xhqc9",
+    "origin": "US (TESS)",
+    "title": "Solo and Selfish: The Effects of Social Distancing and Rejection Sensitivity on Greedy Behavior",
+    "x": 12.4425,
+    "y": 2.7812,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "vwn96",
+    "origin": "US (TESS)",
+    "title": "What's the Best Way to Motivate Kids?",
+    "x": 12.484,
+    "y": 3.675,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "mtz6s",
+    "origin": "US (TESS)",
+    "title": "Impressionable Attitudes: Re-examining the malleability of implicit attitudes",
+    "x": 12.6169,
+    "y": 1.4146,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "54wzp",
+    "origin": "US (TESS)",
+    "title": "Privacy in Context: Understanding User Privacy Behavior",
+    "x": 15.5125,
+    "y": 2.4757,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "w72cz",
+    "origin": "US (TESS)",
+    "title": "Can masking of video data reduce perceived invasion of privacy?",
+    "x": 15.6859,
+    "y": 2.2596,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "vhycz",
+    "origin": "US (TESS)",
+    "title": "Collective Memory and Autobiographical Memory: Bridging the Divide",
+    "x": 14.6734,
+    "y": 0.5164,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "a43v2",
+    "origin": "US (TESS)",
+    "title": "Marketing genius: The influence of claims and cues on parents\u2019 evaluations of baby videos",
+    "x": 14.0748,
+    "y": 1.5409,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "e45hu",
+    "origin": "US (TESS)",
+    "title": "Racial Bias in Perceptions of Others\u2019 Pain",
+    "x": 11.9231,
+    "y": 1.4488,
+    "year": "2011"
+  },
+  {
+    "built": true,
+    "category": "moral/social/cognition",
+    "code": "9263n",
+    "origin": "US (TESS)",
+    "title": "To Do, to Have, or to Share? Valuing Experiences and Material Possessions by Involving Others",
+    "x": 12.2855,
+    "y": 3.1128,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "6nqkd",
+    "origin": "US (TESS)",
+    "title": "Impact of Information Disclosure on the Attractiveness of a Social Network Site Profile",
+    "x": 15.4108,
+    "y": 2.5581,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "7gavm",
+    "origin": "US (TESS)",
+    "title": "Knowledge, Social Constraint, and Self-Doubt: Mechanisms of Social Network Influence on Attitude Strength",
+    "x": 13.5039,
+    "y": 1.6128,
+    "year": "2010"
+  },
+  {
+    "built": true,
+    "category": "moral/social/cognition",
+    "code": "es4xw",
+    "origin": "US (TESS)",
+    "title": "Perceptions of Diversity Across Groups",
+    "x": 11.6676,
+    "y": 1.3375,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "pxb6n",
+    "origin": "US (TESS)",
+    "title": "Taking Race at Face Value",
+    "x": 11.7105,
+    "y": 1.3591,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "hx98z",
+    "origin": "US (TESS)",
+    "title": "Self-Regulatory Failure and Intimate Partner Violence Perpetration",
+    "x": 12.479,
+    "y": 2.2102,
+    "year": "2009"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "shjfm",
+    "origin": "US (TESS)",
+    "title": "The Disutility of Injustice",
+    "x": 12.8865,
+    "y": 1.6641,
+    "year": "2009"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "zt9r7",
+    "origin": "US (TESS)",
+    "title": "About Face: The Association between Facial Appearance and Status Attainment among Military Personnel",
+    "x": 10.6176,
+    "y": 2.5864,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "v52yu",
+    "origin": "US (TESS)",
+    "title": "Discomfort in Disagreement with God",
+    "x": 12.6498,
+    "y": 0.9976,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "2tzmb",
+    "origin": "US (TESS)",
+    "title": "Perceptions of Swearing: An Analysis of Perceived Face Threats and Communication Competence",
+    "x": 12.6298,
+    "y": 2.0776,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "8snrf",
+    "origin": "US (TESS)",
+    "title": "Regulatory Focus as a Determinant of Feelings of Ambivalence and Ambivalence Reduction",
+    "x": 13.0443,
+    "y": 3.8032,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "tegnk",
+    "origin": "US (TESS)",
+    "title": "The Effect of Visual Imagery on the Formulation of Risk Perceptions",
+    "x": 14.6615,
+    "y": 1.2504,
+    "year": "2008"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "xngky",
+    "origin": "US (TESS)",
+    "title": "The effects of gender and power on persuasion",
+    "x": 10.8157,
+    "y": 2.4114,
+    "year": "2007"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "ga53m",
+    "origin": "US (TESS)",
+    "title": "With God on Our Side",
+    "x": 12.5564,
+    "y": 0.8468,
+    "year": "2007"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "pmuag",
+    "origin": "US (TESS)",
+    "title": "Do People Agree on how much Punishment fits Crimes?",
+    "x": 12.6304,
+    "y": 1.7395,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "3uq9a",
+    "origin": "US (TESS)",
+    "title": "Effects of Outgroup Friendship Salience on Outgroup Attitudes and Moderating Conditions",
+    "x": 11.9697,
+    "y": 1.3091,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "etqdx",
+    "origin": "US (TESS)",
+    "title": "Estimating Number of Lifetime Sexual Partners: A Strategy Activation Study",
+    "x": 15.7096,
+    "y": 0.9042,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "k2mw3",
+    "origin": "US (TESS)",
+    "title": "From the Eye of the Beholder:Attitudes about Physical Attractiveness and their Social and Demographic Correlates",
+    "x": 10.7435,
+    "y": 2.5278,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "g6y8s",
+    "origin": "US (TESS)",
+    "title": "Motivational Mechanisms and Hazing Behavior",
+    "x": 13.0018,
+    "y": 2.2203,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "5jua2",
+    "origin": "US (TESS)",
+    "title": "Reducing Intergroup Bias: Does Dual Identification Help or Harm?",
+    "x": 12.078,
+    "y": 1.1823,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "7dc8s",
+    "origin": "US (TESS)",
+    "title": "Testing the Generalizability of the Moral Mandate Effect Under Conditions of Personal Voice",
+    "x": 13.3203,
+    "y": 3.2396,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "z2vmq",
+    "origin": "US (TESS)",
+    "title": "The Appropriateness of Retaliatory Violence: Effects of Gender and Relationship",
+    "x": 12.292,
+    "y": 1.9526,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "ujw87",
+    "origin": "US (TESS)",
+    "title": "The Impact of Information from similar or different advisors on judgment",
+    "x": 14.4347,
+    "y": 1.5692,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "ctp8n",
+    "origin": "US (TESS)",
+    "title": "Capitalization, self-esteem, and building social resources",
+    "x": 11.7872,
+    "y": 2.8707,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "y3m7j",
+    "origin": "US (TESS)",
+    "title": "Effect of mood on creativity",
+    "x": 13.1418,
+    "y": 2.5535,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "m78xh",
+    "origin": "US (TESS)",
+    "title": "Effects of Ostracism and Stigma on Self-Esteem",
+    "x": 12.0879,
+    "y": 2.8013,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "k5hpv",
+    "origin": "US (TESS)",
+    "title": "Effects of Rejection on Multiple Relationships",
+    "x": 12.0928,
+    "y": 2.5453,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "6gq25",
+    "origin": "US (TESS)",
+    "title": "Exploring the Generality of \"Naive Realism\": Perceptions of Bias in Others who Disagree with our Opinions",
+    "x": 13.1955,
+    "y": 0.9899,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "r8u7c",
+    "origin": "US (TESS)",
+    "title": "Generalization of the Valence Framing Effect",
+    "x": 14.2316,
+    "y": 1.2938,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "gh396",
+    "origin": "US (TESS)",
+    "title": "Maintaining a Sense of Belonging among the Socially Isolated",
+    "x": 12.2446,
+    "y": 2.8658,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "jxdu8",
+    "origin": "US (TESS)",
+    "title": "Moral Luck, Loss of Chance, and Legal Liability",
+    "x": 13.0638,
+    "y": 1.8099,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "wmfe6",
+    "origin": "US (TESS)",
+    "title": "Perception of Synergistic Risk: Adjusted Anchoring Vignettes for Optimized Measurement",
+    "x": 15.4256,
+    "y": 0.7841,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "pkt6f",
+    "origin": "US (TESS)",
+    "title": "Politeness Theory and Conversational Refusals",
+    "x": 12.8871,
+    "y": 2.2725,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "w2zm4",
+    "origin": "US (TESS)",
+    "title": "The Dynamics of System Justification",
+    "x": 13.2451,
+    "y": 1.5822,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "36wjy",
+    "origin": "US (TESS)",
+    "title": "Exploring the Social Bases of Attitude Strength",
+    "x": 13.746,
+    "y": 1.6759,
+    "year": "2004"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "k5zqm",
+    "origin": "US (TESS)",
+    "title": "General Prejudice Versus Discrete Emotions: Understanding Patterns of Intergroup Emotions",
+    "x": 12.0885,
+    "y": 1.224,
+    "year": "2004"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "gyscq",
+    "origin": "US (TESS)",
+    "title": "Emotional Responses to Infidelity: Investigating Jealousy with a National Sample",
+    "x": 12.0251,
+    "y": 2.2296,
+    "year": "2003"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "b2srk",
+    "origin": "US (TESS)",
+    "title": "Recall vs. Judgment: Open-Closed Question Differences in Studying Collective Memory",
+    "x": 14.9536,
+    "y": 0.6004,
+    "year": "2003"
+  },
+  {
+    "built": false,
+    "category": "moral/social/cognition",
+    "code": "yc3jx",
+    "origin": "US (TESS)",
+    "title": "Self-Esteem, Organization of Thoughts about Partners, and Context-Dependence of Partner Views",
+    "x": 11.3481,
+    "y": 2.5772,
+    "year": "2003"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "re72j",
+    "origin": "US (TESS)",
+    "title": "Replicating \u201cAre Survey Experiments Externally Valid?\u201d",
+    "x": 15.9263,
+    "y": 1.4596,
+    "year": "2024"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "pjneh",
+    "origin": "US (TESS)",
+    "title": "Optimizing Surveys: Studying Gender and Health Among LGBT Americans",
+    "x": 9.4153,
+    "y": 2.4468,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "6khjm",
+    "origin": "US (TESS)",
+    "title": "Vignette Order and the Measurement of Subjective Well-Being",
+    "x": 15.3092,
+    "y": 0.666,
+    "year": "2022"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "wmsah",
+    "origin": "US (TESS)",
+    "title": "Equivalency Framing of Societal Problems and Policy Solutions",
+    "x": 14.0752,
+    "y": 1.1983,
+    "year": "2020"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "6mdey",
+    "origin": "US (TESS)",
+    "title": "A Question-Wording Experiment on Support for Free Expression",
+    "x": 14.9411,
+    "y": 1.2899,
+    "year": "2019"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "n8azj",
+    "origin": "US (TESS)",
+    "title": "Evangelical or Born-Again Christian: Unpacking a Double-Barreled Question",
+    "x": 13.1256,
+    "y": 0.767,
+    "year": "2019"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "4fb4p",
+    "origin": "US (TESS)",
+    "title": "Does Transparency Affect Survey Research?",
+    "x": 15.6218,
+    "y": 1.718,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "gzwp2",
+    "origin": "US (TESS)",
+    "title": "Gender Identity and Diversity, Part 2",
+    "x": 9.5749,
+    "y": 2.5227,
+    "year": "2016"
+  },
+  {
+    "built": true,
+    "category": "survey methodology",
+    "code": "rpw4u",
+    "origin": "US (TESS)",
+    "title": "Cross-National Replication of Questions Design Experiments",
+    "x": 15.8286,
+    "y": 1.5602,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "4zscf",
+    "origin": "US (TESS)",
+    "title": "Precarious Sexuality and Categorization of Sexual Orientation",
+    "x": 9.4067,
+    "y": 2.5678,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "wkpqv",
+    "origin": "US (TESS)",
+    "title": "Proposal to Replicate and Extend Seven TESS Studies",
+    "x": 15.8944,
+    "y": 1.5355,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "y78g2",
+    "origin": "US (TESS)",
+    "title": "An Experiment Testing Six Formats of 0 to 100 Rating Scales",
+    "x": 15.6328,
+    "y": 0.7207,
+    "year": "2014"
+  },
+  {
+    "built": true,
+    "category": "survey methodology",
+    "code": "5hqan",
+    "origin": "US (TESS)",
+    "title": "Gender Identity and Diversity",
+    "x": 9.5402,
+    "y": 2.477,
+    "year": "2014"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "6s2q5",
+    "origin": "US (TESS)",
+    "title": "Are Population-Based Survey Experiments Truly Unparalleled? A Test Using Parallel Designs",
+    "x": 15.8601,
+    "y": 1.4163,
+    "year": "2013"
+  },
+  {
+    "built": true,
+    "category": "survey methodology",
+    "code": "evnyh",
+    "origin": "US (TESS)",
+    "title": "Impact of Response Scale Direction on Survey Responses to Factual/Behavioral Questions",
+    "x": 15.4421,
+    "y": 1.1677,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "5mt6r",
+    "origin": "US (TESS)",
+    "title": "Improving Measurement of Self-Reported Health: Effects of Question Context and Response Order",
+    "x": 15.7388,
+    "y": 0.8479,
+    "year": "2013"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "3bzxg",
+    "origin": "US (TESS)",
+    "title": "Do Attempts to Improve Respondent Attention Increase Social Desirability Bias?",
+    "x": 15.6329,
+    "y": 1.2044,
+    "year": "2012"
+  },
+  {
+    "built": true,
+    "category": "survey methodology",
+    "code": "sd7cf",
+    "origin": "US (TESS)",
+    "title": "Framing in Noisy Informational Environments",
+    "x": 14.3966,
+    "y": 1.4679,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "5psrf",
+    "origin": "US (TESS)",
+    "title": "Panel Conditioning in Longitudinal Surveys: An Experiment",
+    "x": 15.7755,
+    "y": 1.093,
+    "year": "2012"
+  },
+  {
+    "built": true,
+    "category": "survey methodology",
+    "code": "a2nbf",
+    "origin": "US (TESS)",
+    "title": "The Effect of Question Wording on Preferences for Prenatal Genetic Testing and Abortion",
+    "x": 15.24,
+    "y": 1.4799,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "4kjtn",
+    "origin": "US (TESS)",
+    "title": "Assessing the Breadth of Framing Effects",
+    "x": 14.2696,
+    "y": 1.378,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "gqmb3",
+    "origin": "US (TESS)",
+    "title": "Does an Anchoring Vignette Character\u2019s Sex Affect Respondents\u2019 Ratings?",
+    "x": 15.5124,
+    "y": 0.7235,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "4h2sa",
+    "origin": "US (TESS)",
+    "title": "The Intersection of Group and Outcome Frames in Shaping Opinion",
+    "x": 13.9301,
+    "y": 1.185,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "kx6aq",
+    "origin": "US (TESS)",
+    "title": "Does Mentioning \u2018Some People\u2019 and \u2018Other People\u2019 in an Attitude Question Improve Measurement Quality?",
+    "x": 15.3038,
+    "y": 0.7675,
+    "year": "2009"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "tz36m",
+    "origin": "US (TESS)",
+    "title": "Vignette Study on Web Paradata",
+    "x": 15.7807,
+    "y": 2.1238,
+    "year": "2009"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "b5cny",
+    "origin": "US (TESS)",
+    "title": "Priming to Improve Survey Measurement through Anchoring Vignettes",
+    "x": 15.5349,
+    "y": 1.0361,
+    "year": "2006"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "yzjnd",
+    "origin": "US (TESS)",
+    "title": "Question Order Effects on Political Interest Reports",
+    "x": 15.3508,
+    "y": 1.2091,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "ht243",
+    "origin": "US (TESS)",
+    "title": "Value Choices in the Mass Public: Testing for Framing Effects and Hierarchical Structure",
+    "x": 14.0822,
+    "y": 1.069,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "survey methodology",
+    "code": "fykuz",
+    "origin": "US (TESS)",
+    "title": "An Investigation of Order Effects in the Measurement of Aggression and Aggressive Cognition",
+    "x": 12.5502,
+    "y": 1.8341,
+    "year": "2003"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "xjtaz",
+    "origin": "US (TESS)",
+    "title": "How does job gender-type influence perceptions of occupational status?",
+    "x": 10.1829,
+    "y": 3.0501,
+    "year": "2024"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "8972k",
+    "origin": "US (TESS)",
+    "title": "Measuring Fertility Preferences",
+    "x": 9.4353,
+    "y": 4.105,
+    "year": "2024"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "g2jcy",
+    "origin": "US (TESS)",
+    "title": "Public Support for Remote Work Arrangements: An Experimental Study of the Effects of Occupational Status, Mental Health Status, and Gender",
+    "x": 9.7521,
+    "y": 3.5763,
+    "year": "2024"
+  },
+  {
+    "built": true,
+    "category": "work/family/gender",
+    "code": "8ctbk",
+    "origin": "US (TESS)",
+    "title": "Childbearing Preferences in the Face of Work, Family, and Financial Constraints",
+    "x": 9.272,
+    "y": 3.9435,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "h4k2t",
+    "origin": "US (TESS)",
+    "title": "The Femin[ist] Mystique: How Group Perceptions Shape Affect and Identity",
+    "x": 10.625,
+    "y": 2.0781,
+    "year": "2023"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "d4zua",
+    "origin": "US (TESS)",
+    "title": "Gender and the Disparate Payoffs of Overwork",
+    "x": 9.6523,
+    "y": 3.3504,
+    "year": "2021"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "yn7mx",
+    "origin": "US (TESS)",
+    "title": "Do Americans Think Surgeon = Male in 2019?",
+    "x": 10.1386,
+    "y": 2.817,
+    "year": "2019"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "tbrfh",
+    "origin": "US (TESS)",
+    "title": "Testing a Theory of Hybrid Femininity",
+    "x": 10.321,
+    "y": 2.2224,
+    "year": "2019"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "7rt4q",
+    "origin": "US (TESS)",
+    "title": "Gender Inequality in Product Markets",
+    "x": 9.9322,
+    "y": 3.2824,
+    "year": "2017"
+  },
+  {
+    "built": true,
+    "category": "work/family/gender",
+    "code": "yv2ta",
+    "origin": "US (TESS)",
+    "title": "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns",
+    "x": 9.4038,
+    "y": 3.7779,
+    "year": "2016"
+  },
+  {
+    "built": true,
+    "category": "work/family/gender",
+    "code": "cug34",
+    "origin": "US (TESS)",
+    "title": "Public Perception of Money in Families",
+    "x": 9.9272,
+    "y": 3.9802,
+    "year": "2016"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "bbehq",
+    "origin": "US (TESS)",
+    "title": "Preferences or Constraints? Education, Gender, and Parenting Attitudes",
+    "x": 9.1981,
+    "y": 3.7631,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "3ydty",
+    "origin": "US (TESS)",
+    "title": "The Division of Labor in Same-sex and Heterosexual Households",
+    "x": 9.1384,
+    "y": 3.2307,
+    "year": "2015"
+  },
+  {
+    "built": true,
+    "category": "work/family/gender",
+    "code": "ye2ej",
+    "origin": "US (TESS)",
+    "title": "The Wages of Parenthood: At the Intersection of Sexual Orientation and Child Caregiving",
+    "x": 9.0719,
+    "y": 3.2171,
+    "year": "2015"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "edgnf",
+    "origin": "US (TESS)",
+    "title": "A Piece of the Pie: Achievement, Children's Sex, and Parent Resource Distribution",
+    "x": 9.2078,
+    "y": 3.7437,
+    "year": "2014"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "tu95h",
+    "origin": "US (TESS)",
+    "title": "Clarifying the Ideal Worker Norm: Workplace Evaluations of Women by Motherhood Status, Level of Involvement, and Race",
+    "x": 9.5151,
+    "y": 3.5406,
+    "year": "2013"
+  },
+  {
+    "built": true,
+    "category": "work/family/gender",
+    "code": "py9q3",
+    "origin": "US (TESS)",
+    "title": "Attitudes toward the Employment of Mothers and Fathers",
+    "x": 9.1469,
+    "y": 3.6259,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "jmtyn",
+    "origin": "US (TESS)",
+    "title": "Can We Finish the Revolution? Gender, Work-Family Ideals, and Institutional Constraint",
+    "x": 9.3684,
+    "y": 3.4425,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "n394s",
+    "origin": "US (TESS)",
+    "title": "Examining the \u2018Raced\u2019 Fatherhood Premium: Workplace Evaluations of Men by Race, Fatherhood Status, and Level of Involvement",
+    "x": 9.3642,
+    "y": 3.4988,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "4bspz",
+    "origin": "US (TESS)",
+    "title": "Laws, Norms, and the Motherhood/Caretaker Penalty",
+    "x": 9.0964,
+    "y": 3.441,
+    "year": "2012"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "ftwqy",
+    "origin": "US (TESS)",
+    "title": "Devaluation and Valuation in the Labor Market",
+    "x": 10.4917,
+    "y": 3.4204,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "5an26",
+    "origin": "US (TESS)",
+    "title": "Gender and Physical Attractiveness as Status Beliefs",
+    "x": 10.6374,
+    "y": 2.4699,
+    "year": "2011"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "t936a",
+    "origin": "US (TESS)",
+    "title": "Fairness and Favorability Assessments of Differential Parental Investment in the U.S.",
+    "x": 9.0249,
+    "y": 3.5794,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "nkvjs",
+    "origin": "US (TESS)",
+    "title": "Gender Threat, Emotional Expressiveness, and Gender Differences in Risk Ratings",
+    "x": 10.7995,
+    "y": 2.0236,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "5azg2",
+    "origin": "US (TESS)",
+    "title": "Men's (Mis)Perceptions of the Stigma of Unemployment",
+    "x": 10.7784,
+    "y": 3.8989,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "9q27y",
+    "origin": "US (TESS)",
+    "title": "Weight-Based Discrimination at Work",
+    "x": 12.117,
+    "y": 4.6291,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "qmfy4",
+    "origin": "US (TESS)",
+    "title": "Why Hillary Rodham Became Hillary Clinton: Consequences of Non-Traditional Last Name Choice in Marriage",
+    "x": 9.5478,
+    "y": 3.0685,
+    "year": "2010"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "ca9ub",
+    "origin": "US (TESS)",
+    "title": "Nature or Nurture?: Explanations for Observed Gender Differences and their Effect on Gender Ideology and Political Opinions",
+    "x": 9.9797,
+    "y": 2.5528,
+    "year": "2007"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "q458t",
+    "origin": "US (TESS)",
+    "title": "The Age-Gender Interaction Effect on Status Expectations: Investigation and Career Implications",
+    "x": 10.0086,
+    "y": 2.9949,
+    "year": "2007"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "fw5eq",
+    "origin": "US (TESS)",
+    "title": "Measuring Teenage Pregnancy Norms and Their Effect on Resource Provision",
+    "x": 9.4245,
+    "y": 4.1252,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "gs6yz",
+    "origin": "US (TESS)",
+    "title": "Statistical Discrimination, Stereotyping, and Evaluations of Worker Productivity",
+    "x": 10.5625,
+    "y": 3.3506,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "work/family/gender",
+    "code": "mjt8r",
+    "origin": "US (TESS)",
+    "title": "Status Effects of Gender",
+    "x": 9.9321,
+    "y": 2.9412,
+    "year": "2005"
+  },
+  {
+    "built": false,
+    "category": "UK Dataverse",
+    "code": "LOGVPZ",
+    "origin": "UK (Dataverse)",
+    "title": "Mind the Gap: Why Wealthy Voters Support Brexit",
+    "x": 13.4665,
+    "y": 0.7894,
+    "year": ""
+  },
+  {
+    "built": true,
+    "category": "UK Dataverse",
+    "code": "QQM5MC",
+    "origin": "UK (Dataverse)",
+    "title": "A Tale of Two Peoples: Motivated Reasoning after the Brexit Vote",
+    "x": 13.5268,
+    "y": 0.7185,
+    "year": ""
+  },
+  {
+    "built": false,
+    "category": "UK Dataverse",
+    "code": "TLT65Z",
+    "origin": "UK (Dataverse)",
+    "title": "The Better Angels of Our Nature: Anti-Prejudice Norm (GB & Germany)",
+    "x": 12.3257,
+    "y": 0.9911,
+    "year": ""
+  },
+  {
+    "built": false,
+    "category": "UK Dataverse",
+    "code": "X08IVC",
+    "origin": "UK (Dataverse)",
+    "title": "Brexit as an Identity: Political Identities and Policy Norms",
+    "x": 13.6757,
+    "y": 0.6707,
+    "year": ""
+  }
+]

@@ -56,3 +56,8 @@ data/raw/
 data/processed/*.parquet
 data/processed/*.csv
 !data/processed/.gitkeep
+
+# Embedding vectors: an expensive-to-recompute INTERMEDIATE, not a result.
+# ~24KB per text and unbounded, so it would bloat the repo for no gain. The
+# result worth tracking is data/catalog/coverage_map.json, the 2D coordinates.
+data/catalog/embeddings/

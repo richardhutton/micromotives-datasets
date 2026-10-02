@@ -18,9 +18,11 @@ Two structural rules, both inherited from `jev.py`:
    something you read once; a raise is something that stops you.
 
 Vectors are cached on disk keyed by (model, input_type, text), so the same text
-is never paid for twice and a map regenerates offline. The cache is TRACKED —
-embeddings of study titles and design text carry no respondent data, and
-committing them means anyone cloning the repo redraws the same map without a key.
+is never paid for twice within a machine. The cache is GITIGNORED: it is about
+24KB per text and grows without bound, and a vector is an expensive-to-recompute
+INTERMEDIATE rather than a result. What gets tracked is the thing derived from it
+— `data/catalog/coverage_map.json`, the 2D coordinates, which is what has to be
+stable and diffable.
 """
 
 from __future__ import annotations
@@ -131,10 +133,9 @@ def _cached(digest: str) -> list[float] | None:
 def _store(digest: str, vector: list[float], model: str) -> None:
     path = _cache_path(digest)
     path.parent.mkdir(parents=True, exist_ok=True)
-    # The TEXT is deliberately not stored. The cache is tracked in git, and a
-    # vector is not readable; the source text is already in the recipe or the
-    # catalogue, so writing it here would duplicate licensed material into a
-    # second tracked file for no gain.
+    # The TEXT is deliberately not stored. The source text is already in the
+    # recipe or the catalogue, so a copy here would duplicate licensed material
+    # into a second file for no gain — and the digest is enough to find a hit.
     path.write_text(json.dumps({"model": model, "vector": vector}) + "\n")
 
 
