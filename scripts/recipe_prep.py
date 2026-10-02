@@ -365,6 +365,24 @@ def main() -> int:
                 file=sys.stderr,
             )
         path = matches[0]
+    elif len(files) > 1:
+        # Refuse rather than pick. Taking the LARGEST silently reported on
+        # `nmg.dta` — a 277MB, 592-column panel wave — when the experiment lives
+        # in `yougov.dta`, and every section of the report looked authoritative
+        # about a file the maker had not chosen. Same family as the two fixes in
+        # 3d92e08 and ad0002a: the tool must not produce a confident verdict
+        # about something nobody selected.
+        listing = "\n".join(
+            f"      {p.name}  ({p.stat().st_size / 1_048_576:.1f} MB)" for p in files
+        )
+        sys.exit(
+            f"{args.study_id} has {len(files)} data files and no --file given:\n"
+            f"{listing}\n"
+            "    Several files usually means several sub-experiments with different\n"
+            "    columns. Choose one — this tool will not pick for you, because a\n"
+            "    report about the wrong file reads exactly like a report about the\n"
+            "    right one."
+        )
     else:
         path = files[0]
 
