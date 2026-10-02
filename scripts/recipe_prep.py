@@ -40,6 +40,7 @@ warnings.filterwarnings("ignore")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from micromotives_datasets import jev  # noqa: E402
+from micromotives_datasets.pipeline.qc import reads_as_a_non_answer  # noqa: E402
 from micromotives_datasets.sources import quex, spss  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[1]
@@ -168,35 +169,66 @@ def report_persona(cli: object, ds: spss.Dataset) -> None:
     )
 
 
+# Above this many labels, the report says so rather than skipping in silence.
+# `label_is_a_non_answer` is one call per label with a three-option Choice, so
+# there is no option-list ceiling here — the cap is about cost, not correctness,
+# and the old value of 20 sat just under a 22-level education ladder.
+MAX_LABELS = 60
+
+
 def report_labels(cli: object, ds: spss.Dataset, mapped: list[str]) -> None:
     section("3. WHICH VALUE LABELS ARE NON-ANSWERS?")
     print(
         "  For `persona_missing` (leave the field empty) vs `persona_label_rewrite`\n"
         "  (a real answer wearing scripting boilerplate). QC rule 12 keeps a keyword\n"
         "  regex as a backstop; this is the judgement.\n"
+        "\n"
+        "  Every label on every mapped variable is asked about. What prints is what is\n"
+        "  ACTIONABLE or SURPRISING: anything Jev calls a non-answer, and anything where\n"
+        "  Jev and the regex disagree. A plain answer the regex also thought was plain\n"
+        "  tells you nothing, so it is counted rather than listed.\n"
     )
     asked = 0
+    disagreements = 0
     for var in mapped:
         labels = [str(v) for v in (ds.value_labels.get(var) or {}).values()]
-        if not labels or len(labels) > 20:
+        if not labels:
             continue
-        suspicious = [
-            lab
-            for lab in labels
-            if any(
-                w in lab.lower()
-                for w in ("refus", "missing", "not asked", "skip", "know", "specify", "other")
-            )
-        ]
-        if not suspicious:
+        if len(labels) > MAX_LABELS:
+            # Said out loud. The previous version skipped at 20 IN SILENCE, which
+            # took out `QQM5MC`'s 22-level education ladder — the richest persona
+            # variable in the study and the one the crosswalk turns on. A variable
+            # with many labels is where a mistake is most likely to hide, so a cap
+            # that hides it is the wrong way round.
+            print(f"  {var}: SKIPPED — {len(labels)} labels, over the {MAX_LABELS} cap")
             continue
-        asked += 1
-        print(f"  {var}:")
-        for lab, v in jev.label_is_a_non_answer(cli, var, labels).items():
-            if lab in suspicious:
-                print(f"    {v.render(repr(lab))}")
-    if not asked:
-        print("  No label in the mapped persona variables looks like a non-answer.")
+
+        verdicts = jev.label_is_a_non_answer(cli, var, labels)
+        asked += len(labels)
+        lines = []
+        for lab, v in verdicts.items():
+            by_jev_is_an_answer = v.value == "answer"
+            by_regex_is_a_non_answer = reads_as_a_non_answer(lab)
+            disagrees = by_jev_is_an_answer == by_regex_is_a_non_answer
+            if disagrees:
+                disagreements += 1
+            # A plain answer that the regex also left alone is the boring majority.
+            if by_jev_is_an_answer and not disagrees:
+                continue
+            flag = "  <- DISAGREES WITH THE REGEX" if disagrees else ""
+            lines.append(f"    {v.render(repr(lab))}{flag}")
+        if lines:
+            print(f"  {var}:")
+            print("\n".join(lines))
+
+    print(f"\n  {asked} labels asked about; {disagreements} where Jev and the regex differ.")
+    print(
+        "  A disagreement is the reason to ask at all. The regex cannot see that\n"
+        "  'Northern Ireland' is a real answer sitting in a drop list, or that\n"
+        "  'Other Christian religion, please specify' is a real answer wearing an\n"
+        "  instruction — and an earlier version of this report filtered Jev's verdicts\n"
+        "  THROUGH that same regex, so the judgement could only ever confirm it."
+    )
 
 
 def report_refusals(cli: object, study_id: str) -> None:

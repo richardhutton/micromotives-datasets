@@ -26,8 +26,9 @@ The classifier is a keyword list and is deliberately crude — it exists to ORDE
 the reading, not to replace it. 120 lines is a readable list; the point is that
 somebody reads it.
 
-    uv run python scripts/persona_missing_audit.py            # every recipe
-    uv run python scripts/persona_missing_audit.py QQM5MC     # one
+    uv run python scripts/persona_missing_audit.py            # offline, the regex
+    uv run python scripts/persona_missing_audit.py --jev      # ask the judge
+    uv run python scripts/persona_missing_audit.py QQM5MC     # one study
 """
 
 from __future__ import annotations
@@ -41,6 +42,7 @@ import yaml
 warnings.filterwarnings("ignore")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from micromotives_datasets import jev  # noqa: E402
 from micromotives_datasets.pipeline.qc import reads_as_a_non_answer  # noqa: E402
 from micromotives_datasets.sources import spss  # noqa: E402
 
@@ -63,8 +65,15 @@ def data_file_for(study: str) -> Path | None:
     return max(files, key=lambda p: p.stat().st_size) if files else None
 
 
-def audit(recipe_path: Path) -> list[tuple[str, str, str, int, str]]:
-    """(variable, code, label, n_respondents, verdict) for each declared code."""
+def audit(recipe_path: Path, cli: object | None = None) -> list[tuple[str, str, str, int, str]]:
+    """(variable, code, label, n_respondents, verdict) for each declared code.
+
+    With a Jev client, the judgement is Jev's and the regex is only a
+    cross-check; without one it is the regex alone. Both paths exist on
+    purpose. UKDS safeguarded data is End User Licence — never sent to an
+    external service, instrument included — so the offline path is the only
+    one those deposits will ever have, and it must stay good enough to run.
+    """
     recipe = yaml.safe_load(recipe_path.read_text())
     declared = recipe.get("persona_missing") or {}
     if not declared:
@@ -84,9 +93,32 @@ def audit(recipe_path: Path) -> list[tuple[str, str, str, int, str]]:
             continue
         labels = ds.value_labels.get(col, {})
         counts = ds.df[col].value_counts()
+        # One Jev pass per variable, over ALL its labels — a label is only
+        # readable against its siblings, and asking about the declared codes
+        # alone would hide the question "is this one unlike the others".
+        judged: dict[str, str] = {}
+        if cli is not None:
+            declared_labels = [labels.get(float(c), "") for c in codes]
+            if any(declared_labels):
+                every = [str(v) for v in labels.values()]
+                judged = {
+                    lab: v.value for lab, v in jev.label_is_a_non_answer(cli, var, every).items()
+                }
         for code in codes:
             label = labels.get(float(code), "")
             n = int(counts.get(float(code), 0))
+            if label and label in judged:
+                # Jev decides; the regex becomes a second opinion worth printing
+                # when it differs, because a disagreement is where either is wrong.
+                by_jev = judged[label] != "answer"
+                by_regex = reads_as_a_non_answer(label)
+                verdict = "(ok)" if by_jev else "SUSPECT"
+                if by_jev != by_regex:
+                    verdict += " [regex differs]"
+                if n == 0 and not verdict.startswith("SUSPECT"):
+                    verdict = "UNUSED" + verdict[4:]
+                out.append((var, str(code), label, n, verdict))
+                continue
             if not label:
                 # No label at all: a bare sentinel like -1 or 9999 that the file
                 # never names. Legitimate and common, but say so.
@@ -102,7 +134,12 @@ def audit(recipe_path: Path) -> list[tuple[str, str, str, int, str]]:
 
 
 def main() -> int:
-    wanted = set(sys.argv[1:])
+    args = [a for a in sys.argv[1:] if a != "--jev"]
+    use_jev = "--jev" in sys.argv[1:]
+    cli = jev.client() if use_jev else None
+    if use_jev:
+        print("Asking Jev per variable. The regex becomes a second opinion.\n")
+    wanted = set(args)
     paths = sorted(RECIPES.glob("*.yaml"))
     if wanted:
         paths = [p for p in paths if p.stem.split("_")[0] in wanted or p.stem in wanted]
@@ -111,7 +148,7 @@ def main() -> int:
     unused = 0
     checked = 0
     for path in paths:
-        rows = audit(path)
+        rows = audit(path, cli)
         if not rows:
             continue
         print(f"\n### {path.stem}")

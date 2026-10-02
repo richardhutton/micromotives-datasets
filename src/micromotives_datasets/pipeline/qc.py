@@ -34,12 +34,18 @@ from ..schema import Row
 # and "Party identification: Unknown" — exactly what this rule exists to catch.
 # Those three recipes now declare it, so the widening leaves no new warning.
 #
+# "not applicable" was added last, and it is the only term here found by the
+# judge rather than by us: `scripts/recipe_prep.py` now prints every label where
+# Jev and this regex disagree, and on its first run it reported exactly one —
+# `work_responsibilty` = "Not applicable", which Jev called a non-answer at 0.79
+# and this list missed. Nothing in the built corpus changes; it closes a hole.
+#
 # Not widened by guesswork beyond that. A term matching too much deletes real
 # answers silently: "na" as a substring swallows "National", "Finance" and
 # "Native American".
 _NON_ANSWER = re.compile(
     r"please specify|refused|missing|not asked|skipped|don['\u2019]?t know"
-    r"|no answer|unknown|dummy|prefer not|can['\u2019]?t remember|n/a|invalid",
+    r"|no answer|unknown|dummy|prefer not|can['\u2019]?t remember|n/a|invalid|not applicable",
     re.I,
 )
 
