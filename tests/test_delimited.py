@@ -67,3 +67,20 @@ def test_a_non_utf8_file_is_recovered_rather_than_lost(tmp_path: Path) -> None:
     p.write_bytes("id\tplace\n1\tM\xfcnchen\n".encode("latin1"))
     ds = delimited.read(p)
     assert ds.df["place"].iloc[0] == "München"
+
+
+def test_read_any_picks_the_reader_from_the_extension(tmp_path: Path) -> None:
+    """The pipeline should not care which format a deposit happened to ship.
+
+    One dispatcher rather than a branch at the call site: a second place that
+    decides how to open a data file is a second place to get it wrong.
+    """
+    from micromotives_datasets.sources import read_any
+
+    tab = _write(tmp_path, "s.tab", "id\tgender\n1\tFemale\n")
+    ds = read_any(tab)
+    assert ds.df["gender"].iloc[0] == "Female"
+    assert ds.value_labels == {}
+
+    with pytest.raises(ValueError, match="no reader for"):
+        read_any(_write(tmp_path, "s.rds", "not a survey file"))

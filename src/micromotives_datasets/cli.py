@@ -16,7 +16,7 @@ from .persona import render as render_persona
 from .pipeline.build import build_rows
 from .pipeline.qc import check
 from .schema import Row
-from .sources import spss
+from .sources import read_any, spss
 
 
 def _resolve_data_file(study_id: str, data_file: str) -> Path:
@@ -47,7 +47,7 @@ def _resolve_data_file(study_id: str, data_file: str) -> Path:
 def _load_and_build(recipe_path: Path) -> tuple[recipe_mod.Recipe, list[Row], spss.Dataset]:
     rec = recipe_mod.load(recipe_path)
     data_path = _resolve_data_file(rec.study_id, rec.data_file)
-    ds = spss.read(data_path)
+    ds = read_any(data_path)
     return rec, list(build_rows(ds, rec)), ds
 
 
