@@ -285,6 +285,24 @@ would need. Rules for updating:
   `Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>`
 
 ### Lessons learned
+
+**Numeric verification cannot see the condition** (2026-10-02). `EFXNLX`
+reproduced its authors' own estimator to 1.6e-13 while all 16,465 of its
+conditions stated an attribute order no respondent ever saw — AMCE estimators are
+invariant to display order. A passing answer-key check says the RESPONSES and the
+ASSIGNMENT survived the melt. It says nothing about the text, which is the part
+we write. Only a checker reading the instrument against the data covers that.
+
+**Remove the mutation.** Mutation-testing a check is required here — a check that
+has never failed is not known to work. But a mutation is a temporary lie told to
+the code: restore it and re-run before reporting. One left in place made a
+generator read an ordering column, validate it, document it in twenty accurate
+lines, and ignore it, with its own test passing.
+
+**Confirm each step consumed the last one's output.** A generator fixed at 13:13,
+a recipe last written at 13:07, and a build at 13:24 reads exactly like "fixed,
+built, verified". Timestamps are evidence; sequence is an assumption.
+
 <!-- Agents: record general pitfalls and how they were resolved. One line each, dated. -->
 - **Build the artifact and inspect it.** Every serious defect in this project
   has been invisible per source and obvious once the corpus was merged and
