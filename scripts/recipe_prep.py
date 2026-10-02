@@ -94,8 +94,15 @@ def data_files_for(study_id: str) -> list[Path]:
     return sorted(files, key=lambda p: -p.stat().st_size)
 
 
-def questionnaires(study_id: str) -> list[Path]:
+def questionnaires(study_id: str, only: str | None = None) -> list[Path]:
     """Every instrument in the deposit, as plain text.
+
+    `only` scopes to one sub-study, the same substring `--file` applies to the
+    data. `35M5CV` bundles SIX separately fielded surveys in one folder, and
+    without this `--file lodger` reported on the BBC instrument too — harmless
+    there because neither parses, but a deposit where one sub-study's
+    directives resolve and another's do not would be collapsed into a single
+    undifferentiated verdict, which is the kind of answer that reads as clean.
 
     TESS deposits ship `.txt`. Every Harvard Dataverse deposit so far ships
     `.docx`, and globbing only `.txt` did not FAIL on `EFXNLX` — it found
@@ -129,6 +136,8 @@ def questionnaires(study_id: str) -> list[Path]:
                 check=True,
             )
         found.append(plain)
+    if only:
+        found = [p for p in found if only in p.name]
     return found
 
 
@@ -265,9 +274,9 @@ def report_labels(cli: object, ds: spss.Dataset, mapped: list[str]) -> None:
     )
 
 
-def report_refusals(cli: object, study_id: str) -> None:
+def report_refusals(cli: object, study_id: str, only: str | None = None) -> None:
     section("4. QUESTIONNAIRE DIRECTIVES `quex` WILL NOT PARSE")
-    found = questionnaires(study_id)
+    found = questionnaires(study_id, only)
     if not found:
         # A pass over zero files reads exactly like a pass over a clean deposit,
         # and that is how `EFXNLX` was reported clean having been scanned not at
@@ -347,6 +356,14 @@ def main() -> int:
         matches = [p for p in files if args.file in str(p)]
         if not matches:
             sys.exit(f"--file {args.file!r} matches none of: {[p.name for p in files]}")
+        if len(matches) > 1:
+            print(
+                f"NOTE: --file {args.file!r} matches {len(matches)} files; using\n"
+                f"      {matches[0].name}. The others were NOT inspected: "
+                f"{[p.name for p in matches[1:]]}.\n"
+                "      A deposit with several sub-experiments needs one run each.",
+                file=sys.stderr,
+            )
         path = matches[0]
     else:
         path = files[0]
@@ -369,7 +386,10 @@ def main() -> int:
             + "\n     Several files usually means several sub-experiments, which is a scope\n"
             "     decision for you: re-run with --file <part of the name> for the others."
         )
-    print(f"\nquestionnaires: {[p.name for p in questionnaires(args.study_id)] or 'NONE FOUND'}")
+    print(
+        f"\nquestionnaires: "
+        f"{[p.name for p in questionnaires(args.study_id, args.file)] or 'NONE FOUND'}"
+    )
 
     want = args.only
     if want in (None, "assignment"):
@@ -380,7 +400,7 @@ def main() -> int:
         cols = [c for c in ds.df.columns if plausible(str(c))]
         report_labels(cli, ds, cols[:40])
     if want in (None, "refusals"):
-        report_refusals(cli, args.study_id)
+        report_refusals(cli, args.study_id, args.file)
 
     print(
         "\nNone of the above is a decision. Write what you accept into the recipe,\n"
