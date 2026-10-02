@@ -62,13 +62,30 @@ CLEARED: dict[str, str] = {
 Deliberately NOT in this list, and each for its own reason:
 
 - **`TESS deposit, none stated`** — every TESS recipe records "no explicit grant
-  of redistribution rights for this deposit, and none should be assumed". That is
-  not a prohibition, and embedding is arguably processing rather than
-  redistribution — but it is an open question rich has not ruled on, and the way
-  to carry an open question is as a hard stop that names it, not as a note
-  somebody has to remember. TESS study TITLES are fine under `public-metadata`;
-  it is the condition and outcome TEXT that waits. Add the key here when it is
-  decided, and say in the commit who decided it.
+  of redistribution rights for this deposit, and none should be assumed", and
+  **Voyage RETAINS API inputs and trains on them by default** (their FAQ, read
+  2026-10-02: zero-day retention exists but must be opted into by an org admin
+  with a payment method, and the opt-out is one-way). So sending this text under
+  default terms would put material we have no redistribution rights to into a
+  third party's training corpus. Not a close call while that is true.
+
+  TESS study TITLES remain fine under `public-metadata` — they are published on
+  tessexperiments.org. It is the condition and outcome TEXT that waits.
+
+  To open this: opt the account out of retention FIRST, then add the key here
+  with the date and who decided. Do not reason from "we already send instrument
+  text to Jev" — see below, that premise is itself unverified.
+- **Note on the wider gap, recorded here because this is where someone will look.**
+  `recipe_prep.py` sends TESS value labels, variable labels and questionnaire
+  directives to Jev (TypeSafe) on every run, which CLAUDE.md permits. TypeSafe's
+  docs state nothing about retention, logging or training on customer input
+  (checked 2026-10-02). CLAUDE.md's rule is precise about WHAT crosses the wire —
+  instrument text only, never respondent rows, enforced structurally because
+  every `jev.py` function takes strings rather than a dataframe — and silent
+  about what the far end does with it. No respondent data has gone anywhere; the
+  exposure is instrument text from deposits with no redistribution grant. Worth
+  asking TypeSafe directly rather than assuming either way.
+
 - **UKDS safeguarded** — End User Licence. Never, under any circumstance, until
   the EUL has been read, instrument text included. `data/catalog/
   uk_dataverse_candidates.csv` carries three such rows WITH titles and authors,
