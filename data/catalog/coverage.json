@@ -1,0 +1,60 @@
+{
+  "built_outside_the_catalogue": {
+    "QQM5MC": [
+      "QQM5MC.yaml"
+    ]
+  },
+  "built_recipes": 29,
+  "built_studies": 25,
+  "catalogued_sources": 202,
+  "categories": {
+    "cross-national": {
+      "built": 1,
+      "catalogued": 9,
+      "in_socsci210": 4,
+      "unbuilt_with_questionnaire": 1,
+      "unscreened": 3
+    },
+    "economics/behavioural": {
+      "built": 1,
+      "catalogued": 34,
+      "in_socsci210": 11,
+      "unbuilt_with_questionnaire": 8,
+      "unscreened": 10
+    },
+    "health communication": {
+      "built": 7,
+      "catalogued": 30,
+      "in_socsci210": 15,
+      "unbuilt_with_questionnaire": 9,
+      "unscreened": 8
+    },
+    "moral/social/cognition": {
+      "built": 5,
+      "catalogued": 68,
+      "in_socsci210": 18,
+      "unbuilt_with_questionnaire": 35,
+      "unscreened": 13
+    },
+    "survey methodology": {
+      "built": 5,
+      "catalogued": 29,
+      "in_socsci210": 14,
+      "unbuilt_with_questionnaire": 5,
+      "unscreened": 9
+    },
+    "work/family/gender": {
+      "built": 5,
+      "catalogued": 32,
+      "in_socsci210": 13,
+      "unbuilt_with_questionnaire": 6,
+      "unscreened": 8
+    }
+  },
+  "uk_deposits": [
+    "LOGVPZ",
+    "QQM5MC",
+    "TLT65Z",
+    "X08IVC"
+  ]
+}

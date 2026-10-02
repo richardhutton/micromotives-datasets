@@ -244,3 +244,72 @@ def test_the_fork_check_would_notice() -> None:
     # And the three questions that merely share Yes / No / Other are spared.
     assert _generic({"Yes", "No", "Other"})
     assert _overlap({"a"}, {"b"}) == 0.0
+
+
+def _imports_voyage(path: Path) -> bool:
+    """An `import voyageai` in any form, ignoring a mention of it in prose."""
+    tree = ast.parse(path.read_text())
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import) and any(
+            a.name.split(".")[0] == "voyageai" for a in node.names
+        ):
+            return True
+        if isinstance(node, ast.ImportFrom) and (node.module or "").split(".")[0] == "voyageai":
+            return True
+    return False
+
+
+def test_only_embed_talks_to_voyage() -> None:
+    """Every embedding call goes through `embed.py`, and nowhere else.
+
+    Same rule as `test_only_jev_owns_a_prompt`, written at the same time as the
+    module rather than after five copies had already escaped — which is the one
+    thing that went wrong last time. `embed.py` carries the licence gate: it
+    refuses any text whose licence has not been cleared for the wire, and
+    `data/catalog/uk_dataverse_candidates.csv` holds three UKDS safeguarded rows
+    with their titles and authors in it. A script that built its own client
+    would bypass that gate, and the failure would be silent and unrecoverable —
+    text does not come back off the wire.
+    """
+    offenders = sorted(
+        p.name
+        for p in itertools.chain(SRC.rglob("*.py"), SCRIPTS.glob("*.py"))
+        if p.name != "embed.py" and _imports_voyage(p)
+    )
+    assert not offenders, (
+        f"these files build their own Voyage client: {offenders}. Call "
+        "src/micromotives_datasets/embed.py instead — it holds the licence gate, "
+        "and a second client is a second way to send something that may not go."
+    )
+
+
+def test_the_voyage_check_would_notice(tmp_path: Path) -> None:
+    """The assertion above passes trivially if `_imports_voyage` never fires."""
+    for source in ("import voyageai\n", "from voyageai import Client\n"):
+        offender = tmp_path / "offender.py"
+        offender.write_text(source)
+        assert _imports_voyage(offender), source
+    innocent = tmp_path / "innocent.py"
+    innocent.write_text("x = 'only embed.py may import voyageai'\n")
+    assert not _imports_voyage(innocent)
+
+
+def test_the_licence_gate_refuses_what_has_not_been_cleared() -> None:
+    """The gate is the point of the module, so it is tested, not assumed.
+
+    UKDS safeguarded material is the case that must never pass: End User
+    Licence, no redistribution, instrument text included.
+    """
+    from micromotives_datasets import embed
+
+    assert "CC0 1.0" in embed.CLEARED
+    assert "UKDS safeguarded" not in embed.CLEARED
+    # The TESS question is open, and open means refused until someone decides.
+    assert "TESS deposit, none stated" not in embed.CLEARED
+
+    import pytest
+
+    with pytest.raises(embed.LicenceRefusedError, match="UKDS safeguarded"):
+        embed.cleared_text([embed.Text(key="k", text="anything", licence="UKDS safeguarded")])
+    cleared = [embed.Text(key="k", text="anything", licence="CC0 1.0")]
+    assert embed.cleared_text(cleared) == cleared
