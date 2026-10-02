@@ -1245,10 +1245,6 @@
       "b87sm",
       "zaqkm"
     ],
-    "Unknown": [
-      "b87sm",
-      "zaqkm"
-    ],
     "Very conservative": [
       "8ctbk_desirability",
       "9xw67_conjoint",
@@ -2255,11 +2251,6 @@
       "yv2ta_flexible_scheduling",
       "yv2ta_parental_leave",
       "z358z"
-    ],
-    "Unknown": [
-      "b87sm",
-      "bf8p2",
-      "zaqkm"
     ]
   },
   "phone_service": {

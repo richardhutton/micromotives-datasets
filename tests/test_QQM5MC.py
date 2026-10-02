@@ -33,6 +33,7 @@ from typing import Any
 import pytest
 
 from micromotives_datasets.pipeline.build import build_rows
+from micromotives_datasets.pipeline.qc import reads_as_a_non_answer
 from micromotives_datasets.recipe import Arm, Condition, Outcome, Recipe, Scale
 from micromotives_datasets.recipe import load as load_recipe
 from micromotives_datasets.sources import spss
@@ -260,11 +261,19 @@ def test_the_prime_appears_in_exactly_the_two_primed_conditions() -> None:
 
 @needs_deposit
 def test_no_condition_text_carries_a_truncated_label() -> None:
-    """`work_type` is excluded because four of its labels are severed at Stata's
-    80-character ceiling. This pins the decision so it cannot creep back through
-    the persona either — the 9xw67 fault in a second deposit.
+    """`work_type` is excluded because four of its labels are severed mid-word.
+
+    At 120 characters, measured — this docstring said "Stata's 80-character
+    ceiling" until a checker counted them. Ledger 85 had already recorded that
+    this project's truncations run 80, 119 and 120, which is why the test matches
+    the CUT rather than the length: a length threshold would miss two of the seven
+    known cases, and the recipe's own 80 was recalled from 9xw67 rather than read.
     """
     from micromotives_datasets.persona.render import render
+
+    labels = spss.read(DATA).value_labels
+    severed_labels = [v for v in labels["work_type"].values() if len(v) == 120]
+    assert len(severed_labels) == 4, f"expected four 120-char labels, got {len(severed_labels)}"
 
     rows = list(build_rows(spss.read(DATA), load_recipe(RECIPE)))
     severed = ("(e.g", "person", "secretar", "driver, b")
@@ -285,3 +294,36 @@ def test_the_built_rows_reproduce_the_published_table() -> None:
     if not module.PARQUET.exists():
         pytest.skip("QQM5MC not built yet — run `mmds build recipes/QQM5MC.yaml`")
     assert module.check(module.load()) == []
+
+
+@needs_deposit
+def test_no_real_answer_is_declared_as_a_missing_code() -> None:
+    """The one defect in this build that touched data, pinned.
+
+    `Region_GOR: [12, ...]` declared "Northern Ireland" — a real region — as a
+    sentinel. It dropped nothing, because this deposit has no respondent from
+    Northern Ireland at all, and that is precisely why it survived a build, a QC
+    pass and a read-through: an inert wrong declaration looks exactly like a
+    correct one. It would have deleted the region of every NI respondent in a
+    refetch, or in the next UK study that copied the pattern.
+
+    Checked against the file's own value labels rather than a hand-written list,
+    so this stays true if the deposit's coding ever changes.
+    """
+    recipe = load_recipe(RECIPE)
+    labels = spss.read(DATA).value_labels
+    by_upper = {k.upper(): k for k in labels}
+
+    real_answers_dropped: list[str] = []
+    for var, codes in recipe.persona_missing.items():
+        key = by_upper.get(var.upper())
+        if key is None:
+            continue
+        for code in codes:
+            label = labels[key].get(float(code), "")
+            if label and not reads_as_a_non_answer(label):
+                real_answers_dropped.append(f"{var}={code} {label!r}")
+    assert not real_answers_dropped, (
+        f"persona_missing drops a label that reads as a real answer: "
+        f"{real_answers_dropped}. Run scripts/persona_missing_audit.py."
+    )

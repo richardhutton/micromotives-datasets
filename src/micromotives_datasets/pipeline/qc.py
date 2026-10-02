@@ -16,10 +16,50 @@ from ..recipe import Recipe
 from ..schema import Row
 
 # Panel non-answer labels and scripting boilerplate, as they actually appear in
-# TESS value labels. See rule 12.
+# value labels. See rule 12.
+#
+# The apostrophe is a CHARACTER CLASS, not a literal. `QQM5MC` spells "Don't
+# know" and "Can't remember" with a curly apostrophe (U+2019), which `don'?t`
+# silently failed to match — a corpus audit's first run reported both as suspect
+# non-answers for exactly that reason. Measured against all 301 persona values in
+# `data/catalog/persona_snapshot.json`, widening it this way changes NOTHING that
+# is already built: it closes a blind spot rather than altering a verdict.
+#
+# Widened to "unknown", "dummy" and "prefer not" after a corpus-wide audit of
+# every declared missing-code (`scripts/persona_missing_audit.py`). Those three
+# are non-answers by any reading, and leaving them out had two costs: the audit
+# reported four permanent false positives, which teaches a reader to skim it; and
+# rule 12 stayed silent on 618 respondents across `b87sm`, `bf8p2` and `zaqkm`
+# whose panel code -1 "Unknown" rendered into a persona as "Ideology: Unknown"
+# and "Party identification: Unknown" — exactly what this rule exists to catch.
+# Those three recipes now declare it, so the widening leaves no new warning.
+#
+# Not widened by guesswork beyond that. A term matching too much deletes real
+# answers silently: "na" as a substring swallows "National", "Finance" and
+# "Native American".
 _NON_ANSWER = re.compile(
-    r"please specify|refused|missing|not asked|skipped|don'?t know|no answer", re.I
+    r"please specify|refused|missing|not asked|skipped|don['\u2019]?t know"
+    r"|no answer|unknown|dummy|prefer not|can['\u2019]?t remember|n/a|invalid",
+    re.I,
 )
+
+
+def reads_as_a_non_answer(label: str) -> bool:
+    """Does this value label carry an answer, or the absence of one?
+
+    Rule 12's judgement, exposed so nothing has to keep a second copy of it.
+    `scripts/persona_missing_audit.py` asks exactly this about a code a recipe
+    proposes to DROP, where rule 12 asks it about a label that survived into a
+    row — the same question from either side of the melt, and the sort of pair
+    that drifts apart when each side owns its own list.
+
+    A keyword list decides this badly at the edges, which is why
+    `jev.label_is_a_non_answer` exists for authoring time and this stays a
+    backstop. It must never be widened by guesswork: a term that matches too much
+    deletes real answers silently, and "na" as a substring swallows "National",
+    "Finance" and "Native American".
+    """
+    return bool(_NON_ANSWER.search(label))
 
 
 @dataclass

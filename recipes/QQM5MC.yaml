@@ -11,9 +11,12 @@ licence: >-
 comparable_to_socsci210: false
 
 notes: |-
-  Sorace, M. and Hobolt, S. B. (2021), "A Tale of Two Peoples: Motivated Reasoning
-  in the Aftermath of the Brexit Vote", Political Psychology. Harvard Dataverse
-  doi:10.7910/DVN/QQM5MC. The survey experiment was fielded by YouGov 24-26 July
+  Sorace, M. and Hobolt, S. B., "A Tale of Two Peoples: Motivated Reasoning in
+  the Aftermath of the Brexit Vote", POLITICAL SCIENCE RESEARCH AND METHODS (ISSN
+  2049-8470). Harvard Dataverse doi:10.7910/DVN/QQM5MC. The journal was recorded
+  here as Political Psychology until a checker read the deposit's own
+  `publicationCitation` metadata and the KAR cover page, which agree with each
+  other and not with us. The survey experiment was fielded by YouGov 24-26 July
   2018; N = 3,267 UK citizens aged 18+.
 
   The deposit holds THREE files and no questionnaire: `YouGovExp.dta` (the
@@ -150,16 +153,32 @@ notes: |-
   report them as unmapped, which is correct: the UK persona vocabulary is designed
   after all four UK deposits are read, not from this one.
 
-  `work_type` IS EXCLUDED. Four of its nine value labels are severed at Stata's
-  80-character ceiling, mid-word: code 1 ends "...that requires at least degree-level
+  `work_type` IS EXCLUDED. Four of its nine value labels are severed mid-word at
+  exactly 120 CHARACTERS: code 1 ends "...that requires at least degree-level
   qualifications (e.g", code 2 "...finance manager, person", code 3 "...clerk,
   secretar", code 7 "...labourer, driver, b". This is the 9xw67 fault (six truncated
   labels, recovered there from the questionnaire) in a second deposit, and this
   deposit has no questionnaire to recover them from. `work_stat` and
   `socialgrade_cie` carry the same ground untruncated.
 
-  `age_2` (four bands) is excluded as redundant with `age` (18-87, ungrouped);
-  `socgrade` (ABC1/C2DE) as redundant with `socialgrade_cie` (A/B/C1/C2/D/E).
+  The length was first written here as "Stata's 80-character ceiling", recalled
+  from 9xw67 rather than measured. Ledger 85 already recorded that this project's
+  truncations run 80, 119 and 120 and that a length test would miss two of seven;
+  measuring these four gives 120 exactly. The cut, not the count, is the signal.
+
+  `age_2` (four bands) is excluded as genuinely redundant with `age` (18-87,
+  ungrouped) — verified, it is a clean derived banding with 0 mismatches across
+  all 3,267 respondents.
+
+  `socgrade` (ABC1/C2DE) is excluded too, but NOT as redundant, which is what this
+  note said until a checker measured it. The file's own variable labels are
+  "Social Grade (PERSONAL)" and "Social Grade (CHIEF INCOME EARNER)" — two
+  different people's grade, not two granularities of one. Cross-tabulated, 991 of
+  3,267 respondents (30.3%) disagree: 220 coded ABC1 personally are C2/D/E by
+  CIE, and 302 coded C2DE are C1. The exclusion stands on scope — the persona
+  already carries the finer CIE measure, which is the one UK survey research
+  conventionally reports — but "redundant" was false, and CONVENTIONS is explicit
+  that a wrong reason is worse than none.
 
   `VoteEURef` IS included, in `extra`. It is pre-treatment — a 2016 vote recalled in
   a 2018 survey — and it is the paper's moderator, the variable every result is
@@ -168,6 +187,27 @@ notes: |-
 
   This study carries NO ethnicity, religion, marital status or household size. UK
   personas are thinner than the US ones, and systematically so.
+
+
+  WORDS WE ADDED, AND WHY — docs/CONVENTIONS.md, "Narrating what the respondent did"
+
+  The deposit holds no questionnaire, so there is no fielded lead-in to quote. The
+  `shared_context` below is composed by us, verbatim:
+
+    "You are taking part in an online survey of adults in Great Britain, run by
+    YouGov in late July 2018, a little over two years after the referendum on the
+    United Kingdom's membership of the European Union."
+
+  Every fact in it is from the paper (p. 23: YouGov, fielded 24-26 July 2018; the
+  referendum was 23 June 2016). It narrates the respondent's situation rather than
+  anything shown to them, it is true for everyone in every condition, and it
+  carries no number and no sequence position. Each arm's own `text` likewise joins
+  verbatim quotations with composed connective prose ("First you are asked:",
+  "You answer, and are then shown the following statement:"); everything inside
+  quotation marks is the paper's.
+
+  Declared here because the convention requires the added words to be recorded
+  verbatim and named as added, and the first version of this recipe did not.
 
   Missing codes are the file's own sentinels, which are NOT the 98/99 the value
   label sets suggest — this deposit uses 9999 throughout (234 on income, 287 on
@@ -293,8 +333,14 @@ persona_missing:
   education_level: [19, 20, 98, 99, 9999]
   # 15 "Don't know", 16 "Prefer not to answer".
   gross_personal_income: [15, 16, 98, 99, 9999]
-  # 13 "Non UK & Invalid".
-  Region_GOR: [12, 13, 98, 99, 9999]
+  # 13 "Non UK & Invalid" only. 12 is "Northern Ireland", a REAL region, and was
+  # in this list until a checker resolved every code against the file's own value
+  # labels. It dropped nothing, because this deposit has no respondent from
+  # Northern Ireland at all (observed values run 1-11) — which is exactly why it
+  # survived review. See `scripts/persona_missing_audit.py`: 55 of the corpus's
+  # 120 declared missing-codes are never exercised by their own deposit, and this
+  # was one of them.
+  Region_GOR: [13, 98, 99, 9999]
   # 7 "Refused", 8 "Unknown". 6 "E" is a real grade.
   socialgrade_cie: [7, 8, 98, 99, 9999]
   # 8 "Other" is a real answer; only the sentinels go.

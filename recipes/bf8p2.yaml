@@ -23,6 +23,16 @@ notes: >
   Missing codes differ from the other TESS studies built so far: 77 DON'T KNOW,
   98 SKIPPED ON WEB, 99 REFUSED (rather than -1).
 
+  PANEL SENTINEL -1 "Unknown" ON THE PROFILE VARIABLES
+
+  Declared after a corpus-wide audit of every missing-code
+  (`scripts/persona_missing_audit.py`). Code -1 is labelled "Unknown" by the
+  panel and carries no answer, but was not declared here, so it RENDERED: these
+  rows read "Ideology: Unknown" / "Party identification: Unknown" in the persona
+  text a model is asked to reason from, which says only that we do not know.
+  618 respondents across b87sm, bf8p2 and zaqkm. QC rule 12 was silent because
+  its keyword list did not carry "unknown"; it does now.
+
 condition:
   source_var: SCENE
   considered_and_rejected:
@@ -99,3 +109,6 @@ persona_map:
   urban_rural: METRO
   internet_access: INTERNET
   party_id: PartyID7
+
+persona_missing:
+  PartyID7: [-1]
