@@ -113,6 +113,21 @@ code's job, because code can be unit-tested and a judgement cannot.
 pass decides. Record the score next to the decision so a later reader can see
 how close the call was. Do not write a threshold that silently commits.
 
+**Never filter Jev's ANSWERS through the heuristic it exists to beat.** The rule
+about keeping option lists wide is well known here; the same error applied to the
+output is not, and it is harder to see because the call still looks right.
+`recipe_prep.py` asked Jev about every value label on a variable and then printed
+only those a keyword regex had already flagged — so the judgement could only ever
+confirm the regex, and every verdict that would have been news was computed, paid
+for and discarded. It was asked about "Northern Ireland", answered, and the answer
+was binned; the defect that let a real region into a drop list was knowable at
+authoring time. **Show what the judge and the heuristic DISAGREE about — that is
+the entire reason to pay for a judgement.** Likewise, never cap how much you ask
+about in silence: the same function skipped any variable with more than 20 labels,
+which took out the 22-level education ladder the whole persona crosswalk turns on.
+The variables with the most labels are where a mistake is most likely to hide.
+(2026-10-02)
+
 **Calibrate before trusting a new question.** `scripts/jev_probe.py` and
 `scripts/jev_calibration.py` pose questions whose answers are already known
 from hand-built sources, so a new prompt can be scored before it is pointed at
@@ -321,6 +336,21 @@ would need. Rules for updating:
   "prefer the finer measure" tiebreak will happily prefer a *different
   construct* that happens to be finer. Keep candidate lists wide and make
   tiebreaks narrow. (2026-10-01)
+- **A declaration with zero current occurrences has never been tested, and is
+  where a wrong one survives.** `Region_GOR: [12, ...]` listed "Northern Ireland"
+  — a real region — as a missing code, and nothing caught it because that deposit
+  has no NI respondents at all: it deleted nothing, so it looked identical to a
+  correct declaration. A corpus sweep found 55 of 124 declared missing-codes in
+  that state. When a declaration cannot be exercised by the data in front of you,
+  it has to be read rather than assumed; `scripts/persona_missing_audit.py`
+  resolves every one against its own value labels. (2026-10-02)
+- **When widening a pattern, write the cases it must still REJECT first.** A
+  keyword list here missed "Don't know" spelled with a curly apostrophe, and the
+  fix — stripping all punctuation — made "na" a substring match, which swallows
+  "National", "Finance" and "Native American". That is the same check failing in
+  the opposite direction, introduced by its own repair, and only a test of what
+  must not match would catch it. The same applies to the pipeline's own regexes:
+  match on words, never on the punctuation a panel happened to use. (2026-10-02)
 
 ### Decisions
 <!-- Agents: record design decisions agreed with the human. One line each, dated. -->

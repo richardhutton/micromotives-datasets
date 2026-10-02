@@ -678,15 +678,42 @@ synthetic). Highest-value move = **step 1: find which sources have open-text ite
 
 ---
 
-## 10. Where we actually are (1 October 2026, end of day)
+## 10. Where we actually are (2 October 2026)
 
 **29 experiments from 25 studies. 290,280 rows. 12.4% of the 202-study
 catalogue.** All 29 build through the CLI and pass QC. Two warnings in the whole
 corpus, both deliberate: `9xw67_conjoint`'s 31 declared profiles whose single
 occurrence in 20,480 draws is a refusal, which is precisely what rule 2 exists to
 surface; and `QQM5MC`'s unmapped UK persona values, which rule 14 is reporting
-exactly as designed and which are the input to the UK vocabulary work. 244 tests.
+exactly as designed and which are the input to the UK vocabulary work. 261 tests.
 Licence recorded for all 29.
+
+**`QQM5MC` is BUILT BUT NOT DONE**, by the definition of done in CLAUDE.md. It
+has an independent reference (the strongest in the corpus), tests, licence and
+provenance — and it still ships that rule 14 warning, which item 2 does not have
+an exception for. The warning is true: 6,345 rows carry unharmonised UK persona
+values. The UK crosswalk is what closes it. Recorded as a debt with a number on
+it rather than waved through, because a documented debt stops being visible the
+moment it is documented.
+
+**What the 2 October pass added, none of it new rows:**
+
+- A **checker** on `QQM5MC`, which CLAUDE.md requires and the build had skipped.
+  It found five defects — one real answer in a sentinel list, a truncation length
+  recalled rather than measured, a wrong journal, an exclusion with a false
+  reason, and composed narration never declared. Zero numeric defects, all five
+  in the condition-and-notes layer. Fixed.
+- `scripts/persona_missing_audit.py` — resolves all 124 declared missing-codes
+  against their own value labels. **55 of 124 have never been exercised by their
+  own deposit**, so they have never been tested; the `Region_GOR` defect was one.
+  It found 618 respondents across `b87sm`, `bf8p2` and `zaqkm` rendering
+  "Ideology: Unknown" into their persona text. Fixed.
+- `scripts/recipe_prep.py` was filtering Jev's answers through the keyword regex
+  Jev exists to beat, so the judgement could only confirm it, and silently skipped
+  any variable with over 20 labels — which excluded the 22-level UK education
+  ladder. Both fixed; its first unfiltered run found a regex blind spot.
+- `qc.reads_as_a_non_answer` is now one definition used by rule 12, the audit and
+  the tests, instead of four keyword lists drifting apart.
 
 Up from 14 studies / 80,010 rows at the start of the day. The first jump came
 from four studies ALREADY built whose rows the schema could not reach (40,296);
