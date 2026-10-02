@@ -1,6 +1,256 @@
 {
+ "35M5CV": {
+  "authors": "Hobolt, Leeper, Tilley",
+  "description": "Replication data for \"Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum\"",
+  "doi": "10.7910/DVN/35M5CV",
+  "files": [
+   {
+    "bytes": 5274,
+    "name": "bbc-analysis-cleaning.R",
+    "original_format": null,
+    "served_as": "bbc-analysis-cleaning.R"
+   },
+   {
+    "bytes": 147051,
+    "name": "bbc-analysis.pdf",
+    "original_format": null,
+    "served_as": "bbc-analysis.pdf"
+   },
+   {
+    "bytes": 10758,
+    "name": "bbc-analysis.Rmd",
+    "original_format": null,
+    "served_as": "bbc-analysis.Rmd"
+   },
+   {
+    "bytes": 3342907,
+    "name": "bbc-data-raw.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "bbc-data-raw.tab"
+   },
+   {
+    "bytes": 491132,
+    "name": "bbc-data-stacked.rds",
+    "original_format": null,
+    "served_as": "bbc-data-stacked.rds"
+   },
+   {
+    "bytes": 25957,
+    "name": "bbc-script.docx",
+    "original_format": null,
+    "served_as": "bbc-script.docx"
+   },
+   {
+    "bytes": 38339,
+    "name": "bes-analysis.sps",
+    "original_format": null,
+    "served_as": "bes-analysis.sps"
+   },
+   {
+    "bytes": 26288,
+    "name": "figure1.xlsx",
+    "original_format": null,
+    "served_as": "figure1.xlsx"
+   },
+   {
+    "bytes": 45378,
+    "name": "figure2.xlsx",
+    "original_format": null,
+    "served_as": "figure2.xlsx"
+   },
+   {
+    "bytes": 5362,
+    "name": "lodger-analysis-cleaning.R",
+    "original_format": null,
+    "served_as": "lodger-analysis-cleaning.R"
+   },
+   {
+    "bytes": 148846,
+    "name": "lodger-analysis.pdf",
+    "original_format": null,
+    "served_as": "lodger-analysis.pdf"
+   },
+   {
+    "bytes": 10907,
+    "name": "lodger-analysis.Rmd",
+    "original_format": null,
+    "served_as": "lodger-analysis.Rmd"
+   },
+   {
+    "bytes": 3450508,
+    "name": "lodger-data-raw.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "lodger-data-raw.tab"
+   },
+   {
+    "bytes": 497506,
+    "name": "lodger-data-stacked.rds",
+    "original_format": null,
+    "served_as": "lodger-data-stacked.rds"
+   },
+   {
+    "bytes": 23887,
+    "name": "lodger-script.docx",
+    "original_format": null,
+    "served_as": "lodger-script.docx"
+   },
+   {
+    "bytes": 2687,
+    "name": "README.md",
+    "original_format": null,
+    "served_as": "README.md"
+   },
+   {
+    "bytes": 17670,
+    "name": "sky-analysis.sps",
+    "original_format": null,
+    "served_as": "sky-analysis.sps"
+   },
+   {
+    "bytes": 2260685,
+    "name": "sky-data.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "sky-data.tab"
+   },
+   {
+    "bytes": 1840,
+    "name": "tracker-analysis.sps",
+    "original_format": null,
+    "served_as": "tracker-analysis.sps"
+   },
+   {
+    "bytes": 1918902,
+    "name": "tracker-data.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "tracker-data.tab"
+   },
+   {
+    "bytes": 5296,
+    "name": "yougov-analysis-brexit-id.sps",
+    "original_format": null,
+    "served_as": "yougov-analysis-brexit-id.sps"
+   },
+   {
+    "bytes": 4666,
+    "name": "yougov-analysis-party-id.sps",
+    "original_format": null,
+    "served_as": "yougov-analysis-party-id.sps"
+   },
+   {
+    "bytes": 279588,
+    "name": "yougov-data-brexit-id.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "yougov-data-brexit-id.tab"
+   },
+   {
+    "bytes": 278256,
+    "name": "yougov-data-party-id.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "yougov-data-party-id.tab"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "publication": {
+   "citation": "Hobolt, Sara B., Thomas J. Leeper, and James Tilley. 2020. \"Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum\" British Journal of Political Science: In press.",
+   "doi": null
+  },
+  "status": "prepared",
+  "title": "Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum"
+ },
+ "6MRVOM": {
+  "authors": "Hix, Kaufmann, Leeper",
+  "description": "This repository contains reproduction materials for a survey experiment on immigration attitudes. It consists of the following files:\r\n\r\n - analysis.R: R code for reproducing all results\r\n - data.sav: the raw, original data file and supporting material from YouGov\r\n - questionnaire.docx: the survey experimental questionnaire",
+  "doi": "10.7910/DVN/6MRVOM",
+  "files": [
+   {
+    "bytes": 17967,
+    "name": "analysis.log",
+    "original_format": null,
+    "served_as": "analysis.log"
+   },
+   {
+    "bytes": 18015,
+    "name": "analysis.R",
+    "original_format": null,
+    "served_as": "analysis.R"
+   },
+   {
+    "bytes": 1389315,
+    "name": "data.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "data.tab"
+   },
+   {
+    "bytes": 14211,
+    "name": "questionnaire.docx",
+    "original_format": null,
+    "served_as": "questionnaire.docx"
+   },
+   {
+    "bytes": 370,
+    "name": "README.md",
+    "original_format": null,
+    "served_as": "README.md"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "publication": {
+   "citation": "Hix, Simon, Eric Kaufmann, and Thomas J. Leeper. 2020. \"Pricing Immigration\" Journal of Experimental Political Science: In press",
+   "doi": null
+  },
+  "status": "prepared",
+  "title": "Pricing Immigration"
+ },
+ "EFXNLX": {
+  "authors": "Leeper, Hobolt, Tilley",
+  "description": "Replication Data for: Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations",
+  "doi": "10.7910/DVN/EFXNLX",
+  "files": [
+   {
+    "bytes": 9851,
+    "name": "analysis-conjoint-cleaning.R",
+    "original_format": null,
+    "served_as": "analysis-conjoint-cleaning.R"
+   },
+   {
+    "bytes": 55078,
+    "name": "analysis.Rmd",
+    "original_format": null,
+    "served_as": "analysis.Rmd"
+   },
+   {
+    "bytes": 58725,
+    "name": "data_dictionary.xlsx",
+    "original_format": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "served_as": "data_dictionary.tab"
+   },
+   {
+    "bytes": 25149515,
+    "name": "LSEResults_Brexit_170428_client.sav",
+    "original_format": "application/x-spss-sav",
+    "served_as": "LSEResults_Brexit_170428_client.tab"
+   },
+   {
+    "bytes": 27192,
+    "name": "questionnaire.docx",
+    "original_format": null,
+    "served_as": "questionnaire.docx"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "publication": {
+   "citation": "Hobolt, Sara B., Thomas J. Leeper, and James Tilley. n.d. \"Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations.\" Political Behavior: In press.",
+   "doi": null
+  },
+  "status": "built",
+  "title": "Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations"
+ },
  "LOGVPZ": {
   "authors": "Green, Pahontu",
+  "description": "Wealth provides self-insurance against financial risk, reducing risk-aversion. We apply this insurance mechanism to electoral behaviour, arguing that a voter who has a desire for a change to the status quo -- and who is wealthy -- is more likely to vote for that change than a voter who lacks the same self-insurance. We apply this argument to the case of Brexit in the UK, which has been widely characterized as a vote by the \u2018economically left-behind\u2019. Our results show that individuals who lacked wealth are less likely to support leaving the EU, explaining why so many Brexit voters were wealthy, in terms of their property wealth. We corroborate our theory using two separate panel surveys, accounting for unobserved individual level heterogeneity, and using a survey experiment. The findings have implications for the potential wider role of wealth-as-insurance in electoral behavior, and for understanding the Brexit case.",
   "doi": "10.7910/DVN/LOGVPZ",
   "files": [
    {
@@ -192,10 +442,85 @@
   ],
   "licence": "CC0 1.0",
   "licence_source": "Dataverse API, latestVersion.license",
+  "publication": null,
+  "status": "prepared",
   "title": "Mind the Gap: Why Wealthy Voters Support Brexit"
+ },
+ "PMV0TG": {
+  "authors": "Duch, Fuentes Becerra, Gonzalez Magnolfi, Robinson, Higuera Ruiz, Roope, Barnett, Clarke",
+  "description": "Replication data for the CANDOUR project on vaccine allocation preferences using conjoint analysis",
+  "doi": "10.7910/DVN/PMV0TG",
+  "files": [
+   {
+    "bytes": 184927,
+    "name": "codebook.pdf",
+    "original_format": null,
+    "served_as": "codebook.pdf"
+   },
+   {
+    "bytes": 12043,
+    "name": "conjoint_combined_results_ols.tex",
+    "original_format": null,
+    "served_as": "conjoint_combined_results_ols.tex"
+   },
+   {
+    "bytes": 11988,
+    "name": "conjoint_combined_results_UNWEIGHTED_ols.tex",
+    "original_format": null,
+    "served_as": "conjoint_combined_results_UNWEIGHTED_ols.tex"
+   },
+   {
+    "bytes": 93153800,
+    "name": "nbh_clean_conjoint_global.tab",
+    "original_format": "text/csv",
+    "served_as": "nbh_clean_conjoint_global.tab"
+   },
+   {
+    "bytes": 3489,
+    "name": "pooled_model_ols.tex",
+    "original_format": null,
+    "served_as": "pooled_model_ols.tex"
+   },
+   {
+    "bytes": 1072,
+    "name": "pop_samp_comparison.tex",
+    "original_format": null,
+    "served_as": "pop_samp_comparison.tex"
+   },
+   {
+    "bytes": 690,
+    "name": "population_comparison.tab",
+    "original_format": "text/csv",
+    "served_as": "population_comparison.tab"
+   },
+   {
+    "bytes": 265425,
+    "name": "Qualtrics Vaccine Survey - UK - English.pdf",
+    "original_format": null,
+    "served_as": "Qualtrics Vaccine Survey - UK - English.pdf"
+   },
+   {
+    "bytes": 753,
+    "name": "README.txt",
+    "original_format": null,
+    "served_as": "README.txt"
+   },
+   {
+    "bytes": 2010,
+    "name": "summary_tab_randomisation.tex",
+    "original_format": null,
+    "served_as": "summary_tab_randomisation.tex"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "publication": null,
+  "status": "prepared",
+  "title": "Citizens from 13 countries share similar preferences for COVID-19 vaccine allocation priorities"
  },
  "QQM5MC": {
   "authors": "Sorace, Hobolt",
+  "description": "Partisanship is a powerful driver of economic perceptions. Yet we know less about whether other political divisions may lead to similar evaluative biases. In this article, we explore how the salient divide between `Remainers\u2019 and `Leavers\u2019 in the UK in the aftermath of the Brexit referendum has given rise to biased economic perceptions. In line with the cognitive dissonance framework, we argue that salient non-partisan divisions can change economic perceptions by triggering processes of self- and in-group justification. Using both nationally-representative observational and experimental survey data, we demonstrate that the perceptions of the economy are shaped by the Brexit divide, and that these biases are exacerbated when respondents are reminded of Brexit. These findings indicate that perceptual biases are not always rooted in partisanship, but can be triggered by other political divisions.",
   "doi": "10.7910/DVN/QQM5MC",
   "files": [
    {
@@ -219,10 +544,16 @@
   ],
   "licence": "CC0 1.0",
   "licence_source": "Dataverse API, latestVersion.license",
+  "publication": {
+   "citation": "Sorace, M. & Hobolt, S. B. (forthcoming). A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote. Political Science Research and Methods",
+   "doi": null
+  },
+  "status": "built",
   "title": "A Tale of Two Peoples: Motivated Reasoning after the Brexit Vote"
  },
  "TLT65Z": {
   "authors": "Blinder, Ford, Ivarsflaten",
+  "description": "Existing research on public opinion related to race and immigration politics emphasizes the role of prejudice or bias against minority groups. We argue that the social norm against prejudice, and individual motivations to comply with it, are crucial elements omitted from prior analyses. In most contemporary Western societies, citizens receive repeated, strong signals that prejudice is not socially or normatively acceptable. We demonstrate that many majority-group citizens have internalized a motivation to control prejudiced thoughts and actions, and that this motivation influences their political behavior in predictable ways. We introduce measures to capture this motivation, develop hypotheses about its influence, and test these hypotheses in three separate experimental and non-experimental survey studies conducted in Great Britain and Germany. Our findings support a dual process model of political behavior suggesting that while many voters harbor negative stereotypes, they also strive to act in accordance with the \u201cbetter angels of their natures.\u201d",
   "doi": "10.7910/DVN/TLT65Z",
   "files": [
    {
@@ -294,10 +625,17 @@
   ],
   "licence": "CC0 1.0",
   "licence_source": "Dataverse API, latestVersion.license",
+  "publication": {
+   "citation": "Blinder, Scott, Robert Ford, and Elisabeth Ivarsflaten. 2013. \u201cThe Better Angels of Our Nature: How the Antiprejudice Norm Affects Policy and Party Preferences in Great Britain and Germany.\u201d American Journal of Political Science 57 (4): 841\u201357.",
+   "doi": "10.1111/ajps.12030"
+  },
+  "status": "dropped",
+  "status_reason": "no recoverable condition text (Study 2's seven message texts are nowhere in the deposit); AJPS is closed access",
   "title": "The Better Angels of Our Nature: Anti-Prejudice Norm (GB & Germany)"
  },
  "X08IVC": {
   "authors": "Tilley",
+  "description": "The 2016 EU referendum in Britain gave rise to two new political identities which divided the electorate into \u2018Remainers\u2019 and \u2018Leavers\u2019. Yet little is known about how these new identities relate to policy attitudes. The literature on partisanship identifies policy group norms that allow partisans to settle on shared policy aims and provide cues about the \u2018correct\u2019 in-group policy choice. In this paper, we examine the extent to which these policy norms are also important for people with a Brexit identity. We show that Brexit identities are associated with specific policy preferences and that these group norms are relatively well-known to people. Using a survey-embedded experiment, we also demonstrate that providing policy cues to Brexit identity groups may encourage people to align their own preferences with their group\u2019s preferences. These findings contribute to the growing literature on non-partisan political identities and their importance in shaping political attitudes and behavior.",
   "doi": "10.7910/DVN/X08IVC",
   "files": [
    {
@@ -357,6 +695,54 @@
   ],
   "licence": "CC0 1.0",
   "licence_source": "Dataverse API, latestVersion.license",
+  "publication": null,
+  "status": "prepared",
   "title": "Brexit as an Identity: Political Identities and Policy Norms"
+ },
+ "ZZYSIZ": {
+  "authors": "Wimmer, Bonikowski, Crabtree, Fu, Golder, Tsutsui",
+  "description": "Introducing an international relations perspective into the literature on anti-immigrant attitudes, we hypothesize that immigrants from rival countries will be shunned and immigrants from allied countries preferred, especially by respondents who identify more strongly with the nation. We fielded a forced-choice conjoint experiment in 22 countries, whereby respondents chose between applicants for permanent resident status with randomized attributes. We identified rival and allied countries of origin for each surveyed country, with one such pair sharing a similar racial and cultural make-up as the majority of respondents, and one pair being more dissimilar. We find that discrimination against immigrants from rival states is so pronounced that it results in net preference for racially and culturally dissimilar immigrants. Since we fielded the surveys amidst the Russian invasion of Ukraine, we are able to leverage exogenous changes in the intensity of one rivalry, providing further evidence for the proposed mechanism.",
+  "doi": "10.7910/DVN/ZZYSIZ",
+  "files": [
+   {
+    "bytes": 498206,
+    "name": "Full Model Results Tables.pdf",
+    "original_format": null,
+    "served_as": "Full Model Results Tables.pdf"
+   },
+   {
+    "bytes": 150547,
+    "name": "Main Survey Instrument.pdf",
+    "original_format": null,
+    "served_as": "Main Survey Instrument.pdf"
+   },
+   {
+    "bytes": 1029,
+    "name": "README.txt",
+    "original_format": null,
+    "served_as": "README.txt"
+   },
+   {
+    "bytes": 35748,
+    "name": "replication_code.R",
+    "original_format": null,
+    "served_as": "replication_code.R"
+   },
+   {
+    "bytes": 5018874,
+    "name": "Supplementary Materials.pdf",
+    "original_format": null,
+    "served_as": "Supplementary Materials.pdf"
+   }
+  ],
+  "licence": "CC0 1.0",
+  "licence_source": "Dataverse API, latestVersion.license",
+  "publication": {
+   "citation": "WIMMER, ANDREAS,  BART BONIKOWSKI, CHARLES CRABTREE, ZHENG FU, MATTHEW GOLDER, and KIYOTERU TSUTSUI. 2024. \u201cGeo-Political Rivalry and Anti-Immigrant Sentiment: A Conjoint Experiment in 22 Countries.\u201d American Political Science Review: 1\u201318.",
+   "doi": "10.1017/S0003055424000753"
+  },
+  "status": "dropped",
+  "status_reason": "no UK-fielded instrument, and no UK-specific numeric result to verify against",
+  "title": "Geo-Political Rivalry and Anti-Immigrant Sentiment: A Conjoint Experiment in 22 Countries"
  }
 }

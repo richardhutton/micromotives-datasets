@@ -12,10 +12,26 @@ mistake: `YouGovExp.tab`, where the API reports
 `originalFileFormat: application/x-stata-14`. Re-running this replaces it.
 
 Unlike every TESS deposit, these state a licence the API will tell you --
-CC0 1.0 for all four -- so the licence is written to
-data/catalog/uk_dataverse_provenance.json, from the API rather than from
-anyone's assertion, which is what QC rule 16 asks a recipe to record. All 19 TESS deposits state none, which is what blocks publication,
-so this is the first material in the corpus that could actually be redistributed.
+CC0 1.0 for all nine UK Dataverse deposits held so far -- so the licence is
+written to data/catalog/uk_dataverse_provenance.json, from the API rather than
+from anyone's assertion, which is what QC rule 16 asks a recipe to record. All
+19 TESS deposits state none, which is what blocks publication, so this is the
+first material in the corpus that could actually be redistributed.
+
+This script's own `candidates()` only drives four of those nine (the rows
+marked NEW-confirmed in uk_dataverse_candidates.csv) -- the other five
+(EFXNLX, 6MRVOM, 35M5CV, PMV0TG, ZZYSIZ) were fetched and their provenance
+entries rebuilt directly against the Dataverse API, not through this CSV.
+Add them as NEW-confirmed rows before relying on `--only` to re-fetch them.
+
+As of 2026-10-02, every provenance entry also carries `description`
+(`dsDescription`, HTML stripped, `None` if the deposit has none) and
+`publication` (`publicationCitation` plus the article DOI, `None` if the
+deposit has neither) -- see `_description`/`_publication` below. Added after
+the provenance file was found to hold zero descriptions for any of the nine
+deposits on disk, and after `QQM5MC`'s own `publicationCitation` was found to
+name the correct journal where another source had named the wrong one
+(ledger 102).
 
     source ~/.bash_profile && uv run python scripts/fetch_dataverse.py
     source ~/.bash_profile && uv run python scripts/fetch_dataverse.py --only QQM5MC
@@ -30,6 +46,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -59,6 +76,60 @@ def _get(url: str, key: str) -> Any:
     req = urllib.request.Request(url, headers={"X-Dataverse-key": key, **HEADERS})
     with urllib.request.urlopen(req) as r:
         return json.load(r)
+
+
+_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def _strip_html(text: str) -> str:
+    """Drop markup Dataverse allows inside citation text (e.g. `<i>journal</i>`).
+
+    This removes tags only -- never rewords or re-punctuates the underlying
+    text, per the typography-normalisation rule in CLAUDE.md.
+    """
+    return _TAG_RE.sub("", text)
+
+
+def _citation_field(version: dict[str, Any], type_name: str) -> dict[str, Any] | None:
+    """Look up one field by name from the dataset's `citation` metadata block."""
+    fields = version["metadataBlocks"]["citation"]["fields"]
+    for f in fields:
+        if f["typeName"] == type_name:
+            return dict(f)
+    return None
+
+
+def _description(version: dict[str, Any]) -> str | None:
+    """Plain-text `dsDescription`, HTML stripped. `None` if the deposit has none.
+
+    rich noticed this project held nine UK deposits and recorded zero
+    descriptions -- this (and `_publication` below) is why.
+    """
+    field = _citation_field(version, "dsDescription")
+    if not field or not field.get("value"):
+        return None
+    first = field["value"][0]
+    value = first.get("dsDescriptionValue", {}).get("value")
+    return _strip_html(value) if value else None
+
+
+def _publication(version: dict[str, Any]) -> dict[str, Any] | None:
+    """The deposit's own `publicationCitation` plus the article DOI, if either exists.
+
+    This field is what caught `QQM5MC` naming the wrong journal (ledger 102) --
+    the deposit's own record had the right one the whole time.
+    """
+    field = _citation_field(version, "publication")
+    if not field or not field.get("value"):
+        return None
+    first = field["value"][0]
+    citation = first.get("publicationCitation", {}).get("value")
+    doi = first.get("publicationIDNumber", {}).get("value")
+    id_type = first.get("publicationIDType", {}).get("value")
+    return {
+        "citation": _strip_html(citation) if citation else None,
+        "doi": doi if (doi and id_type == "doi") else None,
+    }
 
 
 def _download(file_id: int, dest: Path, key: str, *, original: bool) -> int:
@@ -122,6 +193,8 @@ def main() -> int:
             "authors": row["authors"],
             "licence": licence,
             "licence_source": "Dataverse API, latestVersion.license",
+            "description": _description(version),
+            "publication": _publication(version),
             "files": files,
         }
         print(f"{code}: {row['title'][:60]}\n  licence: {licence}\n")
