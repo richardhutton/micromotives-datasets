@@ -1,0 +1,13 @@
+# Homebrew R 4.6.1 sets `CC = clang -std=gnu23` in its Makeconf, but the Apple
+# clang 15 shipped with Xcode Command Line Tools only knows that same language
+# under its pre-standardisation name, `gnu2x`. Every package needing compilation
+# therefore fails with "invalid value 'gnu23' in '-std=gnu23'".
+#
+# Same language, spelling this toolchain accepts. Scoped to this project rather
+# than written into ~/.R/Makevars, so it changes nothing else on the machine:
+#
+#   R_MAKEVARS_USER=tools/Makevars Rscript ...
+#
+# The alternative durable fix is to update the Command Line Tools to a clang
+# that knows `gnu23` (18 or newer), which would make this file unnecessary.
+CC = clang -std=gnu2x

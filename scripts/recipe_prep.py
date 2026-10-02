@@ -32,6 +32,8 @@ Never respondent rows — `jev.describe_variable` takes labels, not data.
 from __future__ import annotations
 
 import argparse
+import re
+import subprocess
 import sys
 import warnings
 from pathlib import Path
@@ -45,6 +47,9 @@ from micromotives_datasets.sources import quex, spss  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
+# Converted instruments live beside the raw data, which is gitignored:
+# they are derived from licensed deposits and must not enter git either.
+CONVERTED = RAW / "_converted"
 
 # Columns that cannot be an assignment or a persona attribute. A DENYLIST on
 # purpose: an allowlist of keyword hints silently drops the right answer when it
@@ -90,12 +95,41 @@ def data_files_for(study_id: str) -> list[Path]:
 
 
 def questionnaires(study_id: str) -> list[Path]:
+    """Every instrument in the deposit, as plain text.
+
+    TESS deposits ship `.txt`. Every Harvard Dataverse deposit so far ships
+    `.docx`, and globbing only `.txt` did not FAIL on `EFXNLX` — it found
+    nothing, and section 4 then printed "every conditional directive in this
+    deposit parses", which is true of the empty set and means nothing. A clean
+    verdict over zero files is the most dangerous output this script can
+    produce, so `.doc`/`.docx` are converted here (`textutil`, as CLAUDE.md
+    already prescribes) and section 4 refuses to report a pass over nothing.
+    """
     folder = RAW / study_id
-    return [
+    found = [
         p
         for p in sorted(folder.rglob("*.txt"))
         if not p.name.startswith("._") and "Response Rate" not in p.name
     ]
+    for doc in sorted(folder.rglob("*.doc*")):
+        if doc.name.startswith("._") or doc.suffix.lower() not in {".doc", ".docx"}:
+            continue
+        plain = CONVERTED / f"{study_id}__{doc.stem}.txt"
+        if not plain.exists():
+            plain.parent.mkdir(parents=True, exist_ok=True)
+            subprocess.run(
+                [
+                    "/usr/bin/textutil",
+                    "-convert",
+                    "txt",
+                    "-output",
+                    str(plain),
+                    str(doc),
+                ],
+                check=True,
+            )
+        found.append(plain)
+    return found
 
 
 def plausible(name: str) -> bool:
@@ -233,21 +267,59 @@ def report_labels(cli: object, ds: spss.Dataset, mapped: list[str]) -> None:
 
 def report_refusals(cli: object, study_id: str) -> None:
     section("4. QUESTIONNAIRE DIRECTIVES `quex` WILL NOT PARSE")
+    found = questionnaires(study_id)
+    if not found:
+        # A pass over zero files reads exactly like a pass over a clean deposit,
+        # and that is how `EFXNLX` was reported clean having been scanned not at
+        # all. Say what was checked, never report a verdict nothing earned.
+        print(
+            "  NOTHING SCANNED — no instrument found in this deposit.\n"
+            "  This is NOT a pass. `quex` checked zero files, so it has said\n"
+            "  nothing about whether a directive gates stimulus text. Either the\n"
+            "  deposit ships no questionnaire — in which case docs/CONVENTIONS.md\n"
+            "  makes it unbuildable, and that is the finding — or it ships one in\n"
+            "  a form this script does not yet read. Find out which before writing\n"
+            "  a recipe."
+        )
+        return
     refused: dict[str, None] = {}
-    for path in questionnaires(study_id):
+    seen = 0
+    looks_conditional = 0
+    for path in found:
         text = path.read_text(errors="replace")
+        # Anything that READS like routing, in whatever syntax. Counted apart
+        # from what `quex` recognises, because the gap between the two numbers
+        # is the thing worth knowing.
+        looks_conditional += len(re.findall(r"[\[{][^\]}\n]{0,160}\bif\b", text, re.I))
         conds = [m.group(1) for m in quex._BLOCK_SHOW_IF.finditer(text)]
         for m in quex._INLINE.finditer(text):
             conds += [b.group("cond") for b in quex._BRANCH.finditer(m.group(1))]
         conds += [m.group("cond") for m in quex._IF_DISPLAY.finditer(text)]
+        seen += len(conds)
         for c in conds:
             c = " ".join(c.split())
             try:
                 quex.parse_condition(c)
             except quex.UnparsedConditionError:
                 refused[c] = None
+    if not seen:
+        # "None refused" over zero directives is not "all parsed", it is "none
+        # recognised". `EFXNLX` writes routing as `[QA2A if pdl.profile_GOR in
+        # [...]]` and `{module conjoint1 if conjoint==1}` — a variable name
+        # before the IF, and braces — so `quex`'s patterns match neither, and
+        # the parser was never asked a single question.
+        print(
+            f"  NOTHING RECOGNISED — `quex` found 0 directives across "
+            f"{len(found)} instrument(s), while a loose scan sees "
+            f"{looks_conditional} that look like routing.\n"
+            "  This is NOT a pass. If that second number is non-zero, this\n"
+            "  deposit writes directives in a syntax `quex` does not read, and\n"
+            "  nothing has been established about whether any of them gate\n"
+            "  stimulus text. Read them by hand before writing the recipe."
+        )
+        return
     if not refused:
-        print("  None — every conditional directive in this deposit parses.")
+        print(f"  None — all {seen} directive(s) found in this deposit parse.")
         return
     print(
         f"  {len(refused)} distinct. Only the ones that gate STIMULUS TEXT need resolving\n"
