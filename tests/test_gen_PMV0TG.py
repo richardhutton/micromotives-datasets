@@ -16,6 +16,7 @@ is absent rather than failing on a fresh clone.
 
 from __future__ import annotations
 
+import functools
 import importlib.util
 import sys
 from pathlib import Path
@@ -31,6 +32,14 @@ RAW = REPO / "data" / "raw" / "PMV0TG" / "nbh_clean_conjoint_global.tab"
 WIDE = REPO / "data" / "raw" / "PMV0TG" / "nbh_clean_conjoint_UK_wide.csv"
 
 
+# The expensive calls below are memoised for the session. `build_arms()` reads
+# the deposit and re-derives every condition; the recipe is up to 57MB of YAML.
+# Each test file called them 4-7 times, nothing cached, and the suite reached
+# 3m37s with 79% of it in five copies of one test — slow enough that agents
+# stopped running it between changes, which is how a stale recipe survived an
+# afternoon. Memoising is safe: same inputs, same output, and the tests that
+# matter still compare generator output against the committed recipe.
+@functools.cache
 def _generator():
     spec = importlib.util.spec_from_file_location("gen_PMV0TG", GEN)
     assert spec and spec.loader

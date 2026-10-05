@@ -12,6 +12,7 @@ absent rather than failing on a fresh clone.
 from __future__ import annotations
 
 import ast
+import functools
 import importlib.util
 import random
 import sys
@@ -26,6 +27,14 @@ RECIPE = REPO / "recipes" / "EFXNLX.yaml"
 DATA = REPO / "data" / "raw" / "EFXNLX" / "LSEResults_Brexit_170428_client.sav"
 
 
+# The expensive calls below are memoised for the session. `build_arms()` reads
+# the deposit and re-derives every condition; the recipe is up to 57MB of YAML.
+# Each test file called them 4-7 times, nothing cached, and the suite reached
+# 3m37s with 79% of it in five copies of one test — slow enough that agents
+# stopped running it between changes, which is how a stale recipe survived an
+# afternoon. Memoising is safe: same inputs, same output, and the tests that
+# matter still compare generator output against the committed recipe.
+@functools.cache
 def _generator():
     spec = importlib.util.spec_from_file_location("gen_EFXNLX", GEN)
     assert spec and spec.loader

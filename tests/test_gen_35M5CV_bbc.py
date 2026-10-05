@@ -12,6 +12,7 @@ absent rather than failing on a fresh clone.
 from __future__ import annotations
 
 import ast
+import functools
 import importlib.util
 import random
 import re
@@ -27,6 +28,14 @@ RECIPE = REPO / "recipes" / "35M5CV_bbc.yaml"
 DATA = REPO / "data" / "raw" / "35M5CV" / "bbc-data-raw.sav"
 
 
+# The expensive calls below are memoised for the session. `build_arms()` reads
+# the deposit and re-derives every condition; the recipe is up to 57MB of YAML.
+# Each test file called them 4-7 times, nothing cached, and the suite reached
+# 3m37s with 79% of it in five copies of one test — slow enough that agents
+# stopped running it between changes, which is how a stale recipe survived an
+# afternoon. Memoising is safe: same inputs, same output, and the tests that
+# matter still compare generator output against the committed recipe.
+@functools.cache
 def _generator():
     spec = importlib.util.spec_from_file_location("gen_35M5CV_bbc", GEN)
     assert spec and spec.loader
