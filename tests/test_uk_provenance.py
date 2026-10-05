@@ -149,46 +149,62 @@ def test_anything_not_built_says_why() -> None:
             assert reason, f"{deposit} is {record['status']!r} with no status_reason"
 
 
-def test_anything_we_might_build_is_cc0() -> None:
-    """The premise the UK layer rests on, spelled exactly as `embed.py` expects.
+def test_anything_we_build_is_cc0_or_says_in_writing_why_not() -> None:
+    """Nothing gets built until someone has written down what permits it.
 
-    Scoped to `built` and `prepared` deliberately. `POMIFD` carries a literal
-    `null` licence — the Dataverse API states no licence at all — and that is a
-    fact to keep rather than a value to correct, so it is `blocked` instead.
-    Requiring CC0 of every row would have forced someone to write *something*
-    into that field, and the honest value is nothing.
+    This test asserted plain `licence == "CC0 1.0"` until 5 October 2026, on the
+    premise that the corpus would be PUBLISHED and CC0 was therefore the only
+    thing shippable. rich then settled that he is not redistributing anything —
+    the dataset is for his own research use — which moves the question from *may
+    we publish this* to *may we use it*, and those have different answers.
 
-    What this test therefore enforces is the implication that matters: a deposit
-    is only allowed into the buildable pool if its licence is the exact string
-    the recipes and `embed.py`'s CLEARED gate key on. Anything else has to be
-    `blocked` or `dropped`, which means someone has to say so in writing.
+    `POMIFD` is the case that forced it. Its licence is literally `null`, so it
+    can never be republished; but its terms invite contact before use, rich made
+    that contact, and he will delete the build if the depositor objects. That is
+    a legitimate basis for use and an illegitimate basis for publication, and a
+    field holding only a licence string cannot express the difference.
+
+    So `use_basis` is required wherever the licence is not CC0. It is prose, not
+    a flag, because the whole value is that a person had to write the reason down
+    and can be held to it. What survives from the old test is the part that
+    mattered: a deposit cannot reach a builder on a status alone.
     """
     for deposit, record in _catalogue().items():
-        if record["status"] in {"built", "prepared"}:
-            assert record.get("licence") == "CC0 1.0", (
-                f"{deposit} is {record['status']!r} but records licence "
-                f"{record.get('licence')!r}. Only CC0 1.0 may be built or queued; if the "
-                f"licence is anything else — including absent — the status is 'blocked' "
-                f"and status_reason says what would unblock it"
-            )
+        if record["status"] not in {"built", "prepared"}:
+            continue
+        if record.get("licence") == "CC0 1.0":
+            continue
+        basis = (record.get("use_basis") or "").strip()
+        assert basis, (
+            f"{deposit} is {record['status']!r} with licence {record.get('licence')!r} "
+            f"and no `use_basis`. A deposit that is not CC0 may still be USED, but only "
+            f"where someone has written down what permits it — the terms relied on, who "
+            f"was contacted, and what happens if they object. Silence is not a basis."
+        )
 
 
-def test_a_deposit_without_cc0_is_blocked_or_dropped_and_never_silently_queued() -> None:
-    """The same rule from the other side, which is where the original error was.
+def test_only_cc0_is_ever_marked_redistributable() -> None:
+    """Use and redistribution are different permissions and must not blur.
 
     §5a's heading said "(all CC0)" for three days after an audit found `POMIFD`
     was not — a licence claim in a heading, with the correction four lines below
-    it. The equivalent error in this file would be a non-CC0 deposit sitting at
-    `prepared`, looking queued, and reaching a builder who trusted the status
-    instead of re-reading the licence.
+    it. The modern version of that error would be a `use_basis` quietly growing
+    into a redistribution claim, because the deposit is sitting in the corpus
+    looking like every other built study.
+
+    `redistributable` is therefore derived from the licence and nothing else. A
+    `use_basis` can permit a build; it can never permit publication.
     """
     for deposit, record in _catalogue().items():
-        if record.get("licence") != "CC0 1.0":
-            assert record["status"] in {"blocked", "dropped"}, (
-                f"{deposit} has licence {record.get('licence')!r} and status "
-                f"{record['status']!r} — a deposit we have no redistribution grant for "
-                f"must not sit in a status that reads as queued"
-            )
+        redistributable = record.get("redistributable")
+        if redistributable is None:
+            continue
+        expected = record.get("licence") == "CC0 1.0"
+        assert redistributable is expected, (
+            f"{deposit} records redistributable={redistributable!r} with licence "
+            f"{record.get('licence')!r}. Only CC0 1.0 is redistributable; a use_basis "
+            f"permits a build and never a publication"
+        )
 
 
 def test_every_deposit_carries_a_doi_and_a_description() -> None:
