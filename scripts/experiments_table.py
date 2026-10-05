@@ -297,6 +297,30 @@ def render(experiments: list[Experiment]) -> str:
     add("---")
     add("")
 
+    # An at-a-glance index, because the per-experiment entries below are long and
+    # the question people actually arrive with is "what have we got and what is it
+    # called". rich asked for this list four separate times in one session before
+    # anyone noticed the doc did not answer it plainly, which is a better argument
+    # for putting it at the top than any reasoning about structure.
+    add("## All experiments, at a glance")
+    add("")
+    add("| ID | Title | Rows |")
+    add("|---|---|---|")
+    for e in sorted(experiments, key=lambda x: (not x.is_uk, -(x.rows or 0))):
+        title = e.title if len(e.title) <= 80 else e.title[:77] + "…"
+        layer = "" if e.is_uk else " _(US)_"
+        flag = "" if e.publishable else " ⚠"
+        add(f"| `{e.recipe}`{flag} | {title}{layer} | {_num(e.rows)} |")
+    add("")
+    add(
+        "⚠ = usable for research but **not** redistributable. UK rows without the mark "
+        "are CC0; everything in the US transfer layer is unmarked only because the whole "
+        "layer is non-redistributable, as the table above says."
+    )
+    add("")
+    add("---")
+    add("")
+
     add("## UK layer — Harvard Dataverse, CC0 1.0")
     add("")
     add(
