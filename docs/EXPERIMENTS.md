@@ -2,14 +2,14 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**40 experiments.** 11 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**42 experiments.** 13 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 11 | 124,139 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 13 | 130,596 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **40** | **421,342** | |
+| **Total** | **42** | **427,799** | |
 
 ---
 
@@ -147,6 +147,19 @@ Forced choice between two hypothetical UK internet-voting (i-voting) policies, d
 - **Licence** — CC0 1.0
 - **Verified against** — the authors' own cregg::mm() marginal means, Table A.4 of the author-accepted manuscript — 51 estimates to within 0.0015
 
+### `PZB01G`
+
+**For and Against Brexit: A Survey Experiment of the Impact of Campaign Effects on Public Attitudes toward EU Membership**
+
+Respondents are shown a campaign vignette combining a pro- or anti-EU cultural frame, a pro- or anti-EU economic frame and a pro- or anti-EU political frame (eight combinations), or no vignette at all (a true control), then asked how they would vote in the EU membership referendum. Tests which real-world campaign arguments, alone and in combination, shift referendum vote intention.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/PZB01G`
+- **Type** — 2x2x2 full factorial (cultural x economic x political frame, each pro/anti) plus a true control, one outcome on a 4-way nominal scale (Remain/Leave/Would not vote/Don't know)
+- **Category** — political preferences/policy
+- **Rows** — 5,333 from 5,333 respondents
+- **Licence** — CC0 1.0
+- **Verified against** — the paper's own Appendix Table A6 (nine group sizes, reproduced exactly) and its own text (p.8, the control group's published Wave 2 Remain/Leave/Don't-know-or-would-not-vote shares, reproduced to 0.1 percentage point); scripts/verify_PZB01G.py
+
 ### `6MRVOM_eu_share`
 
 **Pricing Immigration**
@@ -159,6 +172,19 @@ Respondents are asked what percentage of all immigrants to the UK they would lik
 - **Rows** — 2,397 from 2,397 respondents
 - **Licence** — CC0 1.0
 - **Verified against** — the deposit's own analysis.R — svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding
+
+### `X08IVC`
+
+**Brexit as an Identity: Political Identities and Policy Norms**
+
+Respondents are told there is debate about reducing immigration to Britain, then either given no further information or told that most Leavers support reducing immigration while most Remainers do not, before being asked whether immigration should be reduced. Tests whether a Brexit-identity policy-norm cue shifts Leavers' and Remainers' own immigration preferences toward their in-group's.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/X08IVC`
+- **Type** — two-condition between-subject (control vs. a policy-norm cue), one outcome on a 5-point agreement scale
+- **Category** — political preferences/policy
+- **Rows** — 1,124 from 1,124 respondents
+- **Licence** — CC0 1.0
+- **Verified against** — the paper's own Table 2 — four group means and two group Ns, reproduced exactly
 
 ---
 
@@ -229,7 +255,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 1 | 6 | 95,879 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 6 | 0 | 85,092 |
+| political preferences/policy | 8 | 0 | 91,549 |
 | survey methodology | 0 | 5 | 51,701 |
 | work/family/gender | 0 | 8 | 88,127 |
 

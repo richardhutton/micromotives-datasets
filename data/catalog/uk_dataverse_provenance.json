@@ -835,8 +835,8 @@
     "licence": "CC0 1.0",
     "licence_source": "Dataverse API, latestVersion.license",
     "publication": null,
-    "status": "prepared",
-    "status_reason": "BUILDABLE \u2014 paper-access test passed 5 Oct 2026, and the \u00a75a note that the deposit ships no questionnaire was true but not decisive. Goodwin, Hix & Pickup, BJPolS 50(2) 2020, doi:10.1017/S0007123417000667, is genuinely OPEN ACCESS under CC-BY (verified by fetching the article PDF, not by reading a journal policy), and its Cambridge Core supplementary appendix is headed 'I. Text of the vignettes:' and prints all SIX frame paragraphs word-for-word. Design: 2x2x2 full factorial (cultural x economic x political, each pro/anti) plus a 1/9 control shown no vignette. Wave 1 N=6,074; vignette wave N=5,333 across nine cells of 551-652, matching published Table A6 exactly. Assignment is explicit in the data (cultvig/econvig/politicalvig, split/control). Persona is the richest of any UK deposit after POMIFD. The deposit's own Vignette data.dta carries the frame text in culttext/econtext/politicaltext, which CORROBORATES the appendix wording but is truncated at Stata's str244 limit, so the published appendix remains the authority for complete text. Riskiest open judgement: no primary source attests how the three paragraphs were joined on screen, so the join is a 'cannot determine from source' to document, not to invent.",
+    "status": "built",
+    "status_reason": "BUILT 5 Oct 2026 \u2014 recipes/PZB01G.yaml, 5,333 rows, QC PASS. Goodwin, Hix & Pickup, BJPolS 50(2) 2020, doi:10.1017/S0007123417000667, is genuinely OPEN ACCESS under CC-BY (verified by fetching the article PDF directly), and its Cambridge Core supplementary appendix ('I. Text of the vignettes:') prints all six frame paragraphs word-for-word, independently corroborated against the deposit's own (truncated) culttext/econtext/politicaltext. Design: 2x2x2 full factorial (cultural x economic x political, each pro/anti) plus a 1/9 control shown no vignette, carried by the single `split` variable (1-9). Outcome is wave2q2, the post-vignette referendum vote-intention item (Remain/Leave/Would not vote/Don't know \u2014 Don't know kept as a substantive response, not dropped, per the authors' own do-file treatment); wave2q1 (a 0-10 EU-support scale used only as a Wave 1 pre-treatment moderator) is deferred, not built. Built row count is exactly 5,333 (no drops: no respondent holds a missing outcome code), reconciling exactly against Appendix Table A6's nine group sizes. Persona is 19 fields, all independently confirmed pre-treatment (Wave 1) against Wave 1 data.dta's own column list; wave1q1/wave1q2/wave1q5a/wave1q5b (the Wave 1 EU-attitude/vote items) are excluded under the same-domain rule. scripts/verify_PZB01G.py reproduces Table A6 exactly and the paper's own published control-group vote shares (37.1/44.0/18.8%) to 0.1pp, both from the built parquet. Riskiest judgement, unchanged from the earlier screen and still unresolved: no primary source attests how the three frame paragraphs were joined on screen (checked directly: the appendix, the do-file and Sankey screenshots.docx all contain no assembly/layout evidence) \u2014 rendered as three paragraphs with no invented connector, documented as 'cannot determine from source' in the recipe's notes.",
     "title": "Replication Data for: For and Against Brexit: A Survey Experiment of the Impact of Campaign Effects on Public Attitudes toward EU Membership"
   },
   "QQM5MC": {
@@ -1086,8 +1086,7 @@
     "licence": "CC0 1.0",
     "licence_source": "Dataverse API, latestVersion.license",
     "publication": null,
-    "status": "prepared",
-    "status_reason": "assessed and buildable, not yet started",
+    "status": "built",
     "title": "Brexit as an Identity: Political Identities and Policy Norms"
   },
   "ZZYSIZ": {

@@ -93,6 +93,12 @@
       "design": "paired-profile conjoint, 5 attributes, 8 rounds per respondent",
       "verified_against": "the UK column of the authors' own deposited conjoint_combined_results_UNWEIGHTED_ols.tex — 17 coefficients to within 0.006"
     },
+    "X08IVC": {
+      "category": "political preferences/policy",
+      "description": "Respondents are told there is debate about reducing immigration to Britain, then either given no further information or told that most Leavers support reducing immigration while most Remainers do not, before being asked whether immigration should be reduced. Tests whether a Brexit-identity policy-norm cue shifts Leavers' and Remainers' own immigration preferences toward their in-group's.",
+      "design": "two-condition between-subject (control vs. a policy-norm cue), one outcome on a 5-point agreement scale",
+      "verified_against": "the paper's own Table 2 — four group means and two group Ns, reproduced exactly"
+    },
     "QQM5MC": {
       "category": "political identity/polarisation",
       "description": "A split ballot crossing a Leaver/Remainer identity prime with factual information about UK GDP growth. Outcomes are the respondent's estimate of the UK's growth rank among 34 OECD countries, and whether they think the economy is getting better or worse. Tests motivated reasoning about shared economic facts.",
@@ -110,6 +116,12 @@
       "description": "Respondents see two of 336 political arguments (14 rhetorical elements x 12 policy issues x 2 positions, for/against) shown together, verbatim as extracted from Hansard debate transcripts, and say which they find more persuasive or that the two are about the same. The respondent judges which ARGUMENT about a policy is persuasive, not a person — closer to the 'policy' pole than the 'identity' pole, since nothing about Leave/Remain regard for other people is measured. Unlike every other UK Dataverse study in this corpus (all conjoints, where the condition is a table of attribute levels this project renders into prose), the condition text here is the fielded instrument's own argument text, transcribed verbatim and not authored by this project.",
       "design": "within-subject paired-argument forced choice, 3-way nominal outcome (argument one more persuasive / about the same / argument two more persuasive), 4 comparisons per respondent drawn from 12 policy issues",
       "verified_against": "the paper's own published descriptive statistic (AJPS 2022, p.9) — '28% of comparisons... about the same' — reproduced from the built parquet's response distribution; scripts/verify_POMIFD.py. Does NOT verify the headline Bayesian multilevel model (not refit) or any individual argument's text/pairing, which an aggregate proportion cannot see — see the script's own docstring"
+    },
+    "PZB01G": {
+      "category": "political preferences/policy",
+      "description": "Respondents are shown a campaign vignette combining a pro- or anti-EU cultural frame, a pro- or anti-EU economic frame and a pro- or anti-EU political frame (eight combinations), or no vignette at all (a true control), then asked how they would vote in the EU membership referendum. Tests which real-world campaign arguments, alone and in combination, shift referendum vote intention.",
+      "design": "2x2x2 full factorial (cultural x economic x political frame, each pro/anti) plus a true control, one outcome on a 4-way nominal scale (Remain/Leave/Would not vote/Don't know)",
+      "verified_against": "the paper's own Appendix Table A6 (nine group sizes, reproduced exactly) and its own text (p.8, the control group's published Wave 2 Remain/Leave/Don't-know-or-would-not-vote shares, reproduced to 0.1 percentage point); scripts/verify_PZB01G.py"
     }
   }
 }

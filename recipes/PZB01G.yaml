@@ -1,0 +1,826 @@
+study_id: PZB01G
+source: dataverse
+title: "For and Against Brexit: A Survey Experiment of the Impact of Campaign Effects on Public Attitudes toward EU Membership"
+data_file: Vignette data.dta
+licence: CC0 1.0, stated on the Harvard Dataverse deposit and read from the Dataverse API
+  (latestVersion.license), recorded in data/catalog/uk_dataverse_provenance.json.
+
+comparable_to_socsci210: false
+
+notes: |-
+  Goodwin, M., Hix, S. and Pickup, M., "For and Against Brexit: A Survey Experiment
+  of the Impact of Campaign Effects on Public Attitudes toward EU Membership",
+  BRITISH JOURNAL OF POLITICAL SCIENCE 50(2), 2020, pp. 481-495,
+  doi:10.1017/S0007123417000667. Harvard Dataverse doi:10.7910/DVN/PZB01G, CC0 1.0.
+  The paper's own page 1 states: "This is an Open Access article, distributed under
+  the terms of the Creative Commons Attribution licence
+  (http://creativecommons.org/licenses/by/4.0/)" — fetched directly from
+  https://media.ukandeu.ac.uk/wp-content/uploads/2018/02/For-and-Against-Brexit-a-survey-experiment-on-the-impact-of-campaign-effects-on-public-attitudes-towards-EU-membership.pdf
+  and read in full (all 15 pages), not taken on anyone's word. Fielded by YouGov
+  as an online, two-wave panel: Wave 1 24 September - 1 October 2015 (6,074
+  completions), Wave 2 16 October - 9 November 2015 (5,333 respondents, 87.8%
+  retention; p.7).
+
+  A NEAR-MISS ON FETCH, CAUGHT. The deposit holds 8 files. Checking
+  `originalFileFormat` on every one (per the brief, and per the standing rule in
+  `scripts/fetch_dataverse.py`'s own docstring) found that `BES data analysis
+  Jan2016.dta` is ingested — the API serves a label-stripped `.tab` by default
+  (`originalFileFormat: application/x-stata-13`, served `filename`
+  "BES data analysis_Jan2016.tab", 5,075,709 bytes) and only `?format=original`
+  returns the real `.dta` (10,464,628 bytes — roughly double, consistent with
+  value labels being present). A provenance entry already sitting in
+  `data/catalog/uk_dataverse_provenance.json` before this build (written by an
+  earlier screen, not a full fetch) recorded exactly the served `.tab` name and
+  its smaller byte count, which is the same mistake `QQM5MC` made and `RJTVG8`
+  narrowly avoided. `scripts/fetch_dataverse.py --only PZB01G` was re-run here and
+  fetched the correct original for all 8 files; this recipe is built from that
+  re-fetch. The one file actually used (`Vignette data.dta`) was never at risk —
+  its `originalFileFormat` is null (uploaded directly as `.dta`, not ingested) —
+  but the near-miss on a sibling file in the same deposit is recorded because the
+  next agent should not assume a deposit without a questionnaire is otherwise safe.
+
+  THE DEPOSIT'S 8 FILES. `Readme.txt` (its own words): "Wave 1 data.dta" (Wave 1
+  only), "Vignette data.dta" ("contains the merged data from both the first and
+  second waves" — this recipe's `data_file`), "BES data analysis_Jan2016.dta" (a
+  subset of 2016 BES data used elsewhere in the paper, not the experiment),
+  "Transition figure.dta" / "transition probabilities.do" (Table A8/Figure A1
+  only), "Replication file.do" (the main analysis script), "Sankey screenshots.docx"
+  (explains, in the authors' own words, "how to create Figure A8 using the online
+  software at http://sankeymatic.com/build/" — CHECKED directly: its two embedded
+  images are screenshots of the sankeymatic.com tool's own input/options panels,
+  not of the survey instrument; it contains nothing about how the vignette was
+  laid out on screen — see THE VIGNETTE JOIN below).
+
+
+  THE DESIGN — 2x2x2 FULL FACTORIAL PLUS A TRUE CONTROL, ONE VARIABLE
+
+  p.7: "Our experiment used a 2x2x2 full factorial design, in which each
+  respondent was exposed to a vignette composed of: (1) a 'pro' or 'anti' EU
+  cultural frame; plus (2) a 'pro' or 'anti' EU economic frame; plus (3) a 'pro'
+  or 'anti' EU political frame. One-ninth of respondents were assigned to each of
+  the eight possible treatment groups and one-ninth was assigned to a control
+  group, which was not exposed to a vignette."
+
+  `split` (1-9) carries the whole design. Its own value labels name all nine
+  cells ("Pro cultural, pro Economic, pro Political", etc.) and the CODING is
+  confirmed independently from `Replication file.do` lines 8-96, which recodes
+  `pos_culture`/`pos_econ`/`pos_poli` to 1 for exactly the `split` values each
+  cell's own label says it should: e.g. `pos_culture` (cultural = pro) is set for
+  split in {2,4,6,8}, which are precisely PC_PE_PP(2)/PC_AE_PP(4)/PC_PE_AP(6)/
+  PC_AE_AP(8) — every "PC" (pro-cultural) cell and no other. `pos_econ` and
+  `pos_poli` check out the same way against their own letters. `condition_num`
+  below is `split - 1` (0 = control).
+
+  THE CODE-TO-FRAME MAPPING IS CORROBORATED A SECOND, INDEPENDENT WAY — NOT JUST
+  TRUSTED. The deposit's own `cultvig`/`econvig`/`politicalvig` (1/2, declared
+  "Not Asked"/"Skipped" at -9/-8, neither ever occurring here since these three
+  are only populated for treated respondents) are the per-FRAME codes, and
+  `culttext`/`econtext`/`politicaltext` hold the actual text shown — truncated at
+  Stata's str244 limit, so they cannot replace the appendix, but every character
+  they DO hold is checked against it. For each of the six codes, the first
+  respondent's text was pulled directly from `Vignette data.dta` and compared by
+  eye to the appendix's six paragraphs: `cultvig==1`'s text begins "Britain
+  shares important values with our European neighbours..." (the Pro-EU cultural
+  paragraph, word for word as far as it runs); `cultvig==2` begins "One of the
+  founding pillars of the European Union (EU) is 'free movement'..." (Anti-EU
+  cultural); `econvig==1` begins "Britain's membership of the European Union
+  (EU) attracts significant inward foreign investment..." (Pro-EU economic);
+  `econvig==2` begins "The Eurozone economy is experiencing significant economic
+  problems..." (Anti-EU economic); `politicalvig==1` begins "If the European
+  Union (EU) is to work in Britain's interests..." (Pro-EU political);
+  `politicalvig==2` begins "By leaving the European Union (EU), Britain would be
+  able to set its own course..." (Anti-EU political). All six match the
+  appendix's six paragraphs exactly as far as the str244 truncation runs, and the
+  1=pro/2=anti orientation the brief suggested is therefore independently
+  confirmed from the data itself, not merely asserted from the brief or from
+  `split`'s own value labels. `cultvig`/`econvig`/`politicalvig`/`controlsplit`
+  are NOT used as the assignment variable (that is `split` alone, which is what
+  actually determines the arm) — they are declared in
+  `condition.considered_and_rejected` so the undeclared-assignment screen does
+  not flag them, since they are components of the SAME randomisation, not a
+  second one.
+
+  THE SIX VIGNETTE TEXTS — SOURCE AND TRANSCRIPTION. No questionnaire ships in
+  the deposit. The six frame paragraphs are transcribed WORD FOR WORD, by hand,
+  from the paper's own official supplementary appendix, fetched directly from
+  Cambridge's asset server (no login, no paywall):
+  https://static.cambridge.org/content/id/urn:cambridge.org:id:article:S0007123417000667/resource/name/S0007123417000667sup001.pdf
+  Page 1 is headed "APPENDIX / I. Text of the vignettes:" and prints all six,
+  bold-labelled "Pro-EU cultural:", "Anti-EU cultural:", "Pro-EU economic:",
+  "Anti-EU economic:", "Pro-EU political:", "Anti-EU political:". Those bold
+  labels are the APPENDIX's own organising headings for the reader of the
+  paper — nothing in the appendix, the do-file, or the Sankey document says they
+  were shown on screen to respondents, so they are NOT rendered into the
+  condition text below; only the quoted paragraph that follows each label is
+  transcribed. Curly quotes in the source ('free movement', 'portfolio of
+  power') are normalised to straight quotes per docs/CONVENTIONS.md; no word is
+  changed.
+
+
+  THE VIGNETTE JOIN — THE RISKIEST JUDGEMENT IN THIS RECIPE, FLAGGED UP FRONT
+
+  No primary source says how the three paragraphs (cultural, then economic, then
+  political) were joined on screen into one vignette. CHECKED, not assumed, in
+  three places: (1) the appendix itself prints the six texts individually under
+  Roman-numeral heading "I. Text of the vignettes", with no combined example;
+  (2) `Replication file.do` only ever reads the coded variables
+  (`cultvig`/`econvig`/`politicalvig`/`split`) and the truncated text fields — it
+  contains no vignette-assembly logic, no template string, nothing resembling
+  display code, because Qualtrics/YouGov rendering happens outside Stata; (3)
+  `Sankey screenshots.docx` — read directly, both embedded images extracted and
+  viewed — documents the sankeymatic.com charting tool used to draw Figure A8's
+  vote-flow diagram and contains no screenshot of the vignette screen itself.
+
+  Table A6's naming convention ("Pro Cultural, Pro Economic, Pro Political")
+  fixes the ORDER (cultural, then economic, then political — also the order the
+  variables appear in the data file: `culttext`/`cultvig` before `econtext`/
+  `econvig` before `politicaltext`/`politicalvig`), but says nothing about
+  whether the three paragraphs ran together as continuous prose, as three
+  visually separated paragraphs, or with an introductory or connecting sentence
+  the appendix does not reproduce.
+
+  Per docs/CONVENTIONS.md ("Never invent stimulus text"), this is handled as a
+  genuine "cannot determine from source", not resolved by guessing: each
+  treatment arm's text below is ONE composed lead-in sentence ("You are shown
+  the following:" — true for every treated respondent, no number, no sequence
+  position) followed by the three quoted paragraphs in cultural/economic/
+  political order, each on its own paragraph with a blank line between. The
+  blank line is a NEUTRAL rendering choice, not a claim about the on-screen
+  format — no connecting or transitional sentence between the three paragraphs
+  is invented, and none of the four fielded possibilities (run-on prose, three
+  separated paragraphs, a connector, or an instruction line) is asserted as the
+  truth. A checker who finds primary evidence either way should treat this as
+  the single highest-value thing to revise. The frame CONTENT itself is
+  unambiguous and verified twice over (appendix + data corroboration above); it
+  is only the join that is unattested.
+
+
+  THE OUTCOME — AND WHY IT IS THE VOTE-INTENTION ITEM, NOT THE 0-10 SCALE
+
+  Two EU-attitude items exist in Wave 2: `wave2q1` (a 0-10 EU-support scale) and
+  `wave2q2` (referendum vote intention), both asked immediately after the
+  vignette/control, in that order. p.7, describing Wave 1 and then Wave 2
+  identically: "vote intention was measured using a standard referendum voting
+  intention question: 'How would you vote if the referendum on Britain's
+  membership of the EU were held tomorrow? (Remain in the EU/Leave the EU/Don't
+  Know)' ... In the second wave, respondents were assigned to one of the
+  vignettes ... Respondents were then immediately asked the same vote intention
+  question." This IS the paper's headline dependent variable — Figures 1-4 and
+  the whole difference-in-differences analysis are built on it. `wave2q1` (the
+  0-10 scale) is used only as a Wave 1 PRE-treatment moderator (Figure 3 splits
+  respondents into "anti-EU extremist"/"EU moderate"/"pro-EU extremist" groups
+  from their WAVE 1 score) — it is never the thing being explained, so it is not
+  built here, and is recorded as deliberately deferred, not absent: a second
+  recipe could build `wave2q1` as its own outcome if ever wanted.
+  `wave2q3`/`wave2q4` (immigration attitude; friendship) are different domains
+  entirely and are likewise deferred, not built.
+
+  `wave2q2`'s variable label is truncated at Stata's 80-character ceiling ("How
+  would you vote if a referendum on Britain's membership of the EU were held
+  t[...]"), confirmed by direct length check (exactly 80 characters) — the paper's
+  own quoted wording above is used instead, as the authoritative, untruncated,
+  author-published version of the same question (the "a"/"the" difference
+  between the truncated Stata label and the paper's prose is exactly the word
+  truncation would next have cut).
+
+  `wave2q2`'s DECLARED value labels are {1: 'Remain in the EU', 2: 'Leave the
+  EU', 3: 'Would not vote', 99: "Don't know", 998: 'Skipped', 999: 'Not Asked'}.
+  OBSERVED values across all 5,333 vignette-wave respondents are EXACTLY {1, 2,
+  3, 99} — 998 and 999 never occur (everyone in this file was asked the
+  question; checked directly, no 998/999 rows at all), and every declared
+  substantive code occurs. So the audit runs clean both ways: nothing declared
+  and unused beyond the two sentinels, nothing observed and undeclared.
+
+  CODE 99 ("DON'T KNOW") IS KEPT AS A SUBSTANTIVE RESPONSE, NOT DROPPED AS
+  MISSING — THE SECOND JUDGEMENT CALL IN THIS RECIPE. CLAUDE.md's default is to
+  drop don't-know/missing codes, but the paper's own quoted question offers
+  "Don't Know" as one of the THREE ballot options printed alongside "Remain"/
+  "Leave" — it is not a refusal sentinel, it is a button a respondent could
+  press on this specific item. `Replication file.do` lines 124-134 prove the
+  authors treat it as substantive, not missing: they build THREE dependent
+  variables from this one item — `remain`, `leave`, and `dk` (recode `(1/2=0)
+  (3/99=1)`) — and every headline result (the text quoted above: "37.1 per cent
+  ... 44.0 per cent ... 18.8 per cent", Figures 1-4, Appendix Table A8) reports
+  all three categories, never drops "don't know" respondents from the sample.
+  Dropping it here would both contradict the authors' own published treatment
+  and make `verify_PZB01G.py`'s reproduction of their stated control-group
+  percentages (below) impossible.
+
+  The data keeps `3` ("Would not vote") and `99` ("Don't know") as two DISTINCT
+  declared codes, even though the paper's own prose and its `dk` dummy variable
+  fold them together for modelling convenience. Per docs/CONVENTIONS.md ("merged
+  categories stay merged" — nothing here should invent a merge the SOURCE itself
+  does not make at the level of its own declared codes), this recipe keeps all
+  four codes separate rather than reproducing the authors' two-category fold:
+  `response_recode: {1: 1, 2: 2, 3: 3, 99: 4}` (99 compacted to 4 purely to
+  remove the gap in the integer sequence; no meaning changes). This is a FINER
+  scale than the paper publishes, in the same spirit as `LOGVPZ` keeping its
+  fielded 1-11 scale rather than the paper's rescaled "10=satisfied" display —
+  `scripts/verify_PZB01G.py` sums codes 3 and 4 back together where it needs to
+  compare against the authors' merged published percentage, which is a property
+  of the comparison, not of the stored data.
+
+  Because no row has a missing/sentinel outcome code at all (998/999 never
+  occur, and 99 is kept rather than dropped), THE BUILT ROW COUNT IS EXPECTED TO
+  BE EXACTLY 5,333 — one row per vignette-wave respondent, no drops. This
+  reconciles both against Wave 2's own completion count (p.7) and against
+  Appendix Table A6's nine group sizes, which sum to 5,333 (see next section).
+  `missing_codes: [998, 999]` is declared anyway, correctly rather than guessed
+  (verified zero occurrences, same inert-but-correct status as `LOGVPZ`'s
+  `ageW19` sentinels).
+
+
+  ROW COUNT RECONCILIATION — TABLE A6, MATCHED EXACTLY
+
+  `split` value counts, read directly from `Vignette data.dta`: 1->563 (control),
+  2->636 (PC_PE_PP), 3->551 (AC_PE_PP), 4->617 (PC_AE_PP), 5->553 (AC_AE_PP),
+  6->587 (PC_PE_AP), 7->610 (AC_PE_AP), 8->652 (PC_AE_AP), 9->564 (AC_AE_AP).
+  Sum = 5,333. Appendix Table A6 ("III. Wave 2 Treatment Group Sizes"): Pro
+  Cultural/Pro Economic/Pro Political 636, Pro/Pro/Anti 587, Anti/Pro/Pro 551,
+  Pro/Anti/Pro 617, Anti/Anti/Pro 553, Pro/Anti/Anti 652, Anti/Pro/Anti 610,
+  Anti/Anti/Anti 564 — every one of the eight matches `split` exactly, and the
+  ninth (control, 563) matches the `control` dummy's own count (563 of 5,333).
+  Since every respondent has a valid outcome code (previous section),
+  `scripts/verify_PZB01G.py` checks the BUILT parquet's `condition_num` group
+  sizes against these nine numbers directly.
+
+
+  TWO-WAVE PANEL — CHECKED FOR POST-TREATMENT PERSONA, NOT ASSUMED SAFE
+
+  This is the exact risk CLAUDE.md and the brief flag for a two-wave design:
+  a variable asked in Wave 2, after the vignette, is not persona no matter its
+  subject. Checked directly: `Wave 1 data.dta` (6,074 rows, read separately) was
+  loaded and its own column list compared to `Vignette data.dta`'s demographic
+  block. Every `profile_*`-prefixed variable in `Vignette data.dta` (gender,
+  ethnicity, education, income, household size, marital status, housing,
+  religion, work industry/type/status, region, party ID, newspaper readership)
+  has a same-named (case-differing) counterpart already present in `Wave 1
+  data.dta`: e.g. `profile_ethnicity` <-> `Ethnicity`, `profile_work_stat` <->
+  `Work_Stat`, `profile_GOR`... (region is actually carried as `Reigon` [sic] in
+  Wave 1 and merged in under the `profile_GOR` name — the TYPO is the source's
+  own and is not corrected here, nothing about it is rendered into persona
+  text). `age`, `pastvote_2015`, `partyid_2015`, `qpaper` are likewise already
+  present in `Wave 1data.dta` as `Age`/`Pastvote_2015`/`Partyid_2015`/`Qpaper`.
+  All of this demographic block is therefore WAVE 1 data, carried through the
+  merge into `Vignette data.dta` under lowercase/`profile_`-prefixed names — its
+  position late in the Stata column order (after the Wave 2 outcome columns) is
+  an artefact of merge order, not of collection order, and was not assumed to be
+  safe without this check.
+
+  ONE GENUINE EXCEPTION FOUND, AND EXCLUDED: `social_media_omnibus_1` through
+  `_6` (Facebook/Twitter/etc. usage) exist ONLY in `Vignette data.dta`, with NO
+  counterpart anywhere in `Wave 1 data.dta`'s 68 columns — i.e. these were
+  collected in Wave 2, and this recipe cannot rule out that they were asked
+  after the vignette rather than before it. They are not part of the "rich
+  block" the brief describes and are excluded from persona entirely on this
+  basis, rather than risk a post-treatment field.
+
+
+  THE DOMAIN RULE — wave1q1/wave1q2/wave1q5a/wave1q5b EXCLUDED
+
+  Per the ruling that removed `eu_referendum_vote` from `EFXNLX` and
+  `pastvote_EURef` from both `6MRVOM` recipes: a persona attribute must not sit
+  in the same domain as the outcome. The outcome here IS referendum vote
+  intention, so `wave1q1` (0-10 EU support, Wave 1), `wave1q2` (Wave 1
+  referendum vote intention — literally the SAME question as the outcome, asked
+  two weeks earlier, pre-treatment), and `wave1q5a`/`wave1q5b` (strength of that
+  Wave 1 vote) are ALL excluded from `persona_map`. `wave1q2` is the single most
+  tempting variable in the whole deposit to include (it is the paper's own
+  moderator and the natural "baseline" covariate, exactly like `QQM5MC`'s
+  `VoteEURef`), and it is excluded anyway because, unlike `VoteEURef` sitting
+  against a DIFFERENT outcome domain (economic perceptions) in `QQM5MC`, here it
+  is the identical construct as the outcome. No join against the raw deposit is
+  attempted to recover it for persona purposes either.
+
+  PARTY ID — RULED IN, WITH A STATED REASON. `profile_partyid` (current),
+  `profile_partyid_2010` (2010 recall), `pastvote_2015` (2015 General Election
+  recall) are ALL included. Reasoning: party identification and past General
+  Election vote are both strongly correlated with EU referendum preference, but
+  correlation is not the test CONVENTIONS sets — the test is whether the
+  variable IS the same construct as the outcome. "Which party do you support" /
+  "who did you vote for in a General Election" are not statements about EU
+  membership; they are the same kind of persona covariate `QQM5MC` kept
+  (`Vote2017`) and `LOGVPZ` would have kept had a party variable existed in that
+  deposit. Excluding every variable correlated with the outcome would leave no
+  persona at all in a Brexit study, which is a different (and wrong) rule from
+  the one CLAUDE.md actually states.
+
+  NEWSPAPER READERSHIP — RULED IN, WITH A STATED REASON. `profile_newspaper_
+  readership` is included for the same reason: which paper someone reads is a
+  media-consumption / socio-demographic covariate, correlated with Leave/Remain
+  lean (as region, social grade and education also are) but not itself an
+  attitude toward EU membership. It is treated the same as region and social
+  grade, not specially excluded.
+
+
+  TRUNCATION AUDIT — ONE VARIABLE EXCLUDED WHOLESALE, ONE BLANKED ON ONE CODE
+
+  Checked every persona candidate's OWN value labels for the 80/119/120-character
+  truncation family this project has seen before (ledger 85; `9xw67`;
+  `QQM5MC`'s `work_type`). Two hits, both at exactly 120 characters, both cut
+  mid-word:
+
+  `profile_work_type` (11 declared codes) — 3 of 9 substantive labels are
+  severed at 120 characters mid-word: code 1 ends "...doctor, accountant", code
+  2 ends "...personnel manager, senior sales manager, senior", code 7 ends
+  "...labourer, driver, b". This is the SAME variable, the same fault, and (to
+  three characters) the same cut point as `QQM5MC`'s own `work_type` — same
+  depositor conventions, independently confirmed here rather than assumed from
+  that precedent. No questionnaire exists in this deposit either, so the text
+  cannot be recovered. EXCLUDED wholesale, exactly as `QQM5MC` excluded its
+  `work_type`. `profile_work_stat` and `profile_work_industry` carry the same
+  underlying employment information and are NOT truncated (checked directly,
+  all codes under 120 chars and ending in complete words/punctuation) — both
+  are kept.
+
+  `profile_religion` (21 declared codes) — code 18 ("Yes - Pentecostal...") is
+  severed at 120 characters mid-word ("...Redeemed Christian Chur[...]"). Only
+  1 of 19 substantive codes is affected (36 of 5,333 respondents, 0.7%), unlike
+  `work_type`'s 3 of 9 (33%). Rather than exclude the whole variable over one
+  corrupted label, `profile_religion` is KEPT and code 18 alone is added to
+  `persona_missing` — the field is left blank for those 36 respondents rather
+  than rendering a label we know is incomplete, which is the same mechanism
+  `persona_missing` already uses for refusal sentinels, applied here to a
+  genuine answer we cannot transcribe losslessly rather than a non-answer. Code
+  19 ("Yes - Evangelical...", 95 characters) was checked too and is NOT
+  truncated — it ends in a closing parenthesis, a complete sentence.
+
+
+  REDUNDANT VARIABLES EXCLUDED — VERIFIED NESTED, NOT ASSUMED (the QQM5MC
+  lesson: "redundant" must be checked, not asserted)
+
+  Three pairs were crosstabulated directly against the full 5,333-respondent
+  file before any exclusion:
+  - `socgrade4` (4-level) and `new_socgrade` (2-level, ABC1/C2DE) are BOTH exact,
+    zero-mismatch coarsenings of `profile_socialgrade_cie` (6-level, the Chief
+    Income Earner grade). Both excluded; the finest (`profile_socialgrade_cie`)
+    is kept, per the same "UK survey research conventionally reports the finer
+    CIE measure" reasoning `QQM5MC` used.
+  - `newgor` (7-level: North/Midlands/East/London/South/Wales/Scotland — the
+    scheme the BRIEF itself describes) is an exact, zero-mismatch coarsening of
+    `profile_GOR` (11 UK regions + Northern Ireland [declared, unobserved] +
+    "Non UK & Invalid"). `profile_GOR` is kept as the finer measure; `newgor` is
+    excluded as redundant. (The brief's own region description matches
+    `newgor`, the variable NOT used here — the finer `profile_GOR` carries
+    strictly more information and collapses to `newgor` exactly, so nothing is
+    lost by preferring it.)
+  - `partyid2010` (5-level: Lab/Con/Lib/Others/DK-None) is an exact,
+    zero-mismatch coarsening of `profile_partyid_2010` (11-level, names SNP/
+    Plaid/Green/UKIP/BNP separately within "Others"). `profile_partyid_2010` is
+    kept; `partyid2010` excluded.
+
+  ONE PAIR CHECKED AND FOUND *NOT* REDUNDANT, so only one of the two is used
+  rather than falsely calling the dropped one a duplicate: `profile_housing_stat`
+  (6-level, "Home ownership") and `profile_house_tenure` (9-level, "House
+  Tenure") DISAGREE on a majority of cells when crosstabulated (e.g.
+  `profile_housing_stat==1` "Own outright" splits across SIX different
+  `profile_house_tenure` codes, not predominantly one) — these are two
+  genuinely different survey items, the same "two different questions, not two
+  granularities" situation `QQM5MC` found for its own `socgrade`/
+  `socialgrade_cie` pair. Only `profile_house_tenure` (the finer, more
+  descriptive item) is used; `profile_housing_stat` is excluded on SCOPE
+  (one housing-tenure field is enough for this persona), not on a false
+  redundancy claim.
+
+  `profile_partyid_recode` (splits Labour into "Loyal"/"Disloyal", a different
+  dimension entirely, not a recode of `profile_partyid` in the coarsening
+  sense) and `profile_pcon_2010_new` (constituency, ~650 categories) are
+  deferred on scope — not truncated, not wrongly excluded, just not added to an
+  already-rich 19-field persona.
+
+
+  MISSING-CODE AUDIT — EVERY MAPPED VARIABLE, BOTH DIRECTIONS
+
+  Every `persona_missing` entry below was checked against `profile_*`'s own
+  declared value labels AND the observed value set in the 5,333-respondent file,
+  per CLAUDE.md's "audit, never copy" rule. `profile_GOR`'s code 12 (Northern
+  Ireland) is DECLARED and real, and is NOT in `persona_missing` — it is simply
+  never observed in this file (observed region codes run 1-11 only), the same
+  "Great Britain, not UK" pattern already recorded for every other YouGov UK
+  deposit in `docs/SocSci-UK_MASTER.md`, and the same inert-but-correct shape as
+  ledger 101's own corrective (`QQM5MC`'s `Region_GOR`). Every sentinel below was
+  independently resolved against its own variable's value labels; none is copied
+  from another study's declaration.
+
+  `age`: [-9, -8] (declared, never observed; real ages run 18-95).
+  `profile_gender`: [8, 9].
+  `profile_ethnicity`: [16 "Prefer not to say", 98, 99].
+  `profile_education_level`: [19 "Don't know", 20 "Prefer not to say", 98, 99].
+  `profile_education_age`: [7 "Can't remember", 8, 9] — 6 "Still at school/Full
+    time student" is a real answer and is kept, as in `QQM5MC`.
+  `profile_gross_personal`: [15 "Don't know", 16 "Prefer not to answer", 98, 99].
+  `profile_gross_household`: [16 "Don't know", 17 "Prefer not to answer", 98, 99].
+  `profile_household_size`: [9 "Don't know", 10 "Prefer not to say", 98, 99].
+  `profile_marital_stat`: [8, 9] — all 7 substantive codes are real answers.
+  `profile_house_tenure`: [98, 99] — 9 "Other" is a real answer and is kept.
+  `profile_religion`: [16 "Prefer not to say", 18 (truncated, see above), 98, 99].
+  `profile_work_stat`: [98, 99] — 8 "Other" is a real answer and is kept.
+  `profile_work_industry`: [98, 99] — 21 "Have never worked" is real and kept.
+  `profile_GOR`: [13 "Non UK & Invalid", 98, 99] — 12 "Northern Ireland" stays
+    declared (see above).
+  `profile_socialgrade_cie`: [7 "Refused", 8 "Unknown", 98, 99].
+  `profile_partyid`: [7 "Don't know", 8, 9].
+  `profile_partyid_2010`: [11 "Don't know", 98, 99].
+  `pastvote_2015`: [99 "Don't know", 998, 999] — 9 "Other" is real and kept.
+  `profile_newspaper_readership`: [98, 99] — 16 "None" is a real answer and kept.
+
+
+  NO CROSSWALK YET — AS WITH QQM5MC AND LOGVPZ
+
+  The UK persona vocabulary is designed after reading every UK deposit, not from
+  one of them, so QC rule 14 will report these 19 persona fields as unmapped,
+  which is correct and expected, exactly as `QQM5MC`'s notes record.
+
+
+  WORDS WE ADDED, AND WHY — docs/CONVENTIONS.md "Narrating what the respondent
+  did" / the `LOGVPZ`/`QQM5MC` precedent
+
+  `shared_context` is composed, stating only facts the paper itself gives (p.7:
+  YouGov; Wave 2 fielded 16 October - 9 November 2015, two weeks after Wave 1).
+  The control arm's text narrates the absence of a vignette, per p.7's own
+  description ("a control group, which was not exposed to a vignette"). Each
+  treatment arm's text is the one composed lead-in sentence ("You are shown the
+  following:") plus the three appendix paragraphs verbatim — see THE VIGNETTE
+  JOIN above for exactly what is and is not asserted by this. The outcome
+  question is the paper's own quoted wording (p.7) plus one composed sentence
+  naming all four response codes by the source's own labels, in the same style
+  `PMV0TG` uses for its binary forced choice: '1 means "Remain in the EU"; 2
+  means "Leave the EU"; 3 means "Would not vote"; 4 means "Don't know".'
+
+
+  VERIFICATION — scripts/verify_PZB01G.py, FROM THE BUILT PARQUET
+
+  Two numbers the authors themselves published, both reproduced from the BUILT
+  parquet rather than the deposit:
+  1. Appendix Table A6's nine group sizes (563/636/551/617/553/587/610/652/564,
+     sum 5,333) against the built `condition_num` value counts — exact match
+     expected on every one of the nine, since no row is dropped (see ROW COUNT
+     RECONCILIATION above).
+  2. The paper's own stated control-group Wave 2 percentages (p.8: "among those
+     in the control group... results changed slightly to 37.1 per cent, 44.0 per
+     cent and 18.8 per cent, respectively" for Remain/Leave/DK-or-would-not-vote)
+     against the built rows with `condition_num == 0`, merging response codes 3
+     and 4 for the comparison only (see the DK ruling above for why they are
+     NOT merged in the stored data). Independently recomputed here before
+     writing this recipe, directly from the deposit, to confirm the check is
+     even possible: 209/248/16/90 of 563 = 37.1%/44.0%/2.8%/16.0%, and
+     2.8+16.0 = 18.8% — all three match the paper's printed figures exactly to
+     one decimal place.
+
+condition:
+  source_var: split
+  factors: [cultural_frame, economic_frame, political_frame]
+  considered_and_rejected:
+    cultvig: >-
+      Per-frame code for the cultural argument alone (1 pro / 2 anti). Confirms
+      `split`'s own coding (see notes) but is not itself the assignment variable
+      — it is -9/-8 ("Not Asked"/"Skipped") for the control group, so it cannot
+      resolve the control arm on its own.
+    econvig: Same role as cultvig, for the economic argument.
+    politicalvig: Same role as cultvig, for the political argument.
+    controlsplit: >-
+      A second, redundant encoding of the same nine-way assignment used
+      elsewhere in the authors' own do-file for group-size tabulation; `split`
+      is the one this recipe reads.
+    control: >-
+      Binary dummy (1 = control, 0 = any treatment), a strict function of
+      `split == 1`. Not used as the assignment variable because it cannot
+      distinguish the eight treatment cells from each other.
+  shared_context: >-
+    You are taking part in the second part of an online survey about the United
+    Kingdom's membership of the European Union (EU), run by YouGov. This part
+    was conducted between 16 October and 9 November 2015, about two weeks after
+    you completed the first part of the survey.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {cultural_frame: absent, economic_frame: absent, political_frame: absent}
+      text: >-
+        You are not shown any statement about the EU. You go straight to the
+        question below.
+
+    - raw: 2
+      condition_num: 1
+      factors: {cultural_frame: pro, economic_frame: pro, political_frame: pro}
+      text: >-
+        You are shown the following:
+
+
+        "Britain shares important values with our European neighbours, such as
+        freedom of speech, gender equality, the rule of law, and respect for
+        liberal democracy. Amid a world that seems less stable, and where there
+        are competing ideologies, European countries can better promote and
+        protect their values by acting together, as members of the European
+        Union. For Britain, remaining in the EU would help defend its national
+        culture, traditions and values."
+
+
+        "Britain's membership of the European Union attracts significant inward
+        foreign investment into the British economy. The EU is Britain's major
+        trading partner, which in 2014 accounted for 45% of exports and 53% of
+        imports of goods and services. It is estimated that over three million
+        jobs in Britain are linked, directly or indirectly, to its exports to the
+        European Union. By remaining in the EU, these economic benefits would be
+        safeguarded."
+
+
+        "If the European Union is to work in Britain's interests, then Britain
+        needs to be involved in the decision-making process. France and Germany
+        would have no incentive to listen to Britain if it is not working closely
+        with them as a member of the EU. If Britain were to leave the EU, to
+        continue to trade with EU countries it will need to apply EU rules on
+        trade, investment, product standards and services, but it will have no
+        say when these rules are made. For Britain, remaining in the EU would
+        ensure that it enjoys these political benefits."
+
+    - raw: 3
+      condition_num: 2
+      factors: {cultural_frame: anti, economic_frame: pro, political_frame: pro}
+      text: >-
+        You are shown the following:
+
+
+        "One of the founding pillars of the European Union is 'free movement',
+        which allows citizens of EU member states to travel and work freely in
+        other EU member states. But this free movement of migrant workers into
+        Britain poses a threat to the country's long established values and ways
+        of life. For Britain, leaving the EU would help protect its national
+        culture, values and traditions."
+
+
+        "Britain's membership of the European Union attracts significant inward
+        foreign investment into the British economy. The EU is Britain's major
+        trading partner, which in 2014 accounted for 45% of exports and 53% of
+        imports of goods and services. It is estimated that over three million
+        jobs in Britain are linked, directly or indirectly, to its exports to the
+        European Union. By remaining in the EU, these economic benefits would be
+        safeguarded."
+
+
+        "If the European Union is to work in Britain's interests, then Britain
+        needs to be involved in the decision-making process. France and Germany
+        would have no incentive to listen to Britain if it is not working closely
+        with them as a member of the EU. If Britain were to leave the EU, to
+        continue to trade with EU countries it will need to apply EU rules on
+        trade, investment, product standards and services, but it will have no
+        say when these rules are made. For Britain, remaining in the EU would
+        ensure that it enjoys these political benefits."
+
+    - raw: 4
+      condition_num: 3
+      factors: {cultural_frame: pro, economic_frame: anti, political_frame: pro}
+      text: >-
+        You are shown the following:
+
+
+        "Britain shares important values with our European neighbours, such as
+        freedom of speech, gender equality, the rule of law, and respect for
+        liberal democracy. Amid a world that seems less stable, and where there
+        are competing ideologies, European countries can better promote and
+        protect their values by acting together, as members of the European
+        Union. For Britain, remaining in the EU would help defend its national
+        culture, traditions and values."
+
+
+        "The Eurozone economy is experiencing significant economic problems,
+        including high debt and youth unemployment. Britain's membership of the
+        EU is also costly. In 2014 alone, Britain's net contribution to the EU
+        budget was an estimated £9.8 billion, up from £3.3 billion in 2008. For
+        Britain, remaining in the EU would risk its economic recovery and
+        endanger the jobs of British wage earners."
+
+
+        "If the European Union is to work in Britain's interests, then Britain
+        needs to be involved in the decision-making process. France and Germany
+        would have no incentive to listen to Britain if it is not working closely
+        with them as a member of the EU. If Britain were to leave the EU, to
+        continue to trade with EU countries it will need to apply EU rules on
+        trade, investment, product standards and services, but it will have no
+        say when these rules are made. For Britain, remaining in the EU would
+        ensure that it enjoys these political benefits."
+
+    - raw: 5
+      condition_num: 4
+      factors: {cultural_frame: anti, economic_frame: anti, political_frame: pro}
+      text: >-
+        You are shown the following:
+
+
+        "One of the founding pillars of the European Union is 'free movement',
+        which allows citizens of EU member states to travel and work freely in
+        other EU member states. But this free movement of migrant workers into
+        Britain poses a threat to the country's long established values and ways
+        of life. For Britain, leaving the EU would help protect its national
+        culture, values and traditions."
+
+
+        "The Eurozone economy is experiencing significant economic problems,
+        including high debt and youth unemployment. Britain's membership of the
+        EU is also costly. In 2014 alone, Britain's net contribution to the EU
+        budget was an estimated £9.8 billion, up from £3.3 billion in 2008. For
+        Britain, remaining in the EU would risk its economic recovery and
+        endanger the jobs of British wage earners."
+
+
+        "If the European Union is to work in Britain's interests, then Britain
+        needs to be involved in the decision-making process. France and Germany
+        would have no incentive to listen to Britain if it is not working closely
+        with them as a member of the EU. If Britain were to leave the EU, to
+        continue to trade with EU countries it will need to apply EU rules on
+        trade, investment, product standards and services, but it will have no
+        say when these rules are made. For Britain, remaining in the EU would
+        ensure that it enjoys these political benefits."
+
+    - raw: 6
+      condition_num: 5
+      factors: {cultural_frame: pro, economic_frame: pro, political_frame: anti}
+      text: >-
+        You are shown the following:
+
+
+        "Britain shares important values with our European neighbours, such as
+        freedom of speech, gender equality, the rule of law, and respect for
+        liberal democracy. Amid a world that seems less stable, and where there
+        are competing ideologies, European countries can better promote and
+        protect their values by acting together, as members of the European
+        Union. For Britain, remaining in the EU would help defend its national
+        culture, traditions and values."
+
+
+        "Britain's membership of the European Union attracts significant inward
+        foreign investment into the British economy. The EU is Britain's major
+        trading partner, which in 2014 accounted for 45% of exports and 53% of
+        imports of goods and services. It is estimated that over three million
+        jobs in Britain are linked, directly or indirectly, to its exports to the
+        European Union. By remaining in the EU, these economic benefits would be
+        safeguarded."
+
+
+        "By leaving the European Union, Britain would be able to set its own
+        course. Britain does not need to be a member of the EU to play an
+        important role in the world. Britain has a 'portfolio of power' in its
+        own right, which includes membership of the G20 and G8 nations, a
+        permanent seat on the UN Security Council, leadership of the Commonwealth
+        of 54 nations, and a close relationship with the United States. London is
+        the financial capital of the world. For Britain, leaving the EU would
+        allow the country to regain its national sovereignty while continuing to
+        be a major power on the world stage."
+
+    - raw: 7
+      condition_num: 6
+      factors: {cultural_frame: anti, economic_frame: pro, political_frame: anti}
+      text: >-
+        You are shown the following:
+
+
+        "One of the founding pillars of the European Union is 'free movement',
+        which allows citizens of EU member states to travel and work freely in
+        other EU member states. But this free movement of migrant workers into
+        Britain poses a threat to the country's long established values and ways
+        of life. For Britain, leaving the EU would help protect its national
+        culture, values and traditions."
+
+
+        "Britain's membership of the European Union attracts significant inward
+        foreign investment into the British economy. The EU is Britain's major
+        trading partner, which in 2014 accounted for 45% of exports and 53% of
+        imports of goods and services. It is estimated that over three million
+        jobs in Britain are linked, directly or indirectly, to its exports to the
+        European Union. By remaining in the EU, these economic benefits would be
+        safeguarded."
+
+
+        "By leaving the European Union, Britain would be able to set its own
+        course. Britain does not need to be a member of the EU to play an
+        important role in the world. Britain has a 'portfolio of power' in its
+        own right, which includes membership of the G20 and G8 nations, a
+        permanent seat on the UN Security Council, leadership of the Commonwealth
+        of 54 nations, and a close relationship with the United States. London is
+        the financial capital of the world. For Britain, leaving the EU would
+        allow the country to regain its national sovereignty while continuing to
+        be a major power on the world stage."
+
+    - raw: 8
+      condition_num: 7
+      factors: {cultural_frame: pro, economic_frame: anti, political_frame: anti}
+      text: >-
+        You are shown the following:
+
+
+        "Britain shares important values with our European neighbours, such as
+        freedom of speech, gender equality, the rule of law, and respect for
+        liberal democracy. Amid a world that seems less stable, and where there
+        are competing ideologies, European countries can better promote and
+        protect their values by acting together, as members of the European
+        Union. For Britain, remaining in the EU would help defend its national
+        culture, traditions and values."
+
+
+        "The Eurozone economy is experiencing significant economic problems,
+        including high debt and youth unemployment. Britain's membership of the
+        EU is also costly. In 2014 alone, Britain's net contribution to the EU
+        budget was an estimated £9.8 billion, up from £3.3 billion in 2008. For
+        Britain, remaining in the EU would risk its economic recovery and
+        endanger the jobs of British wage earners."
+
+
+        "By leaving the European Union, Britain would be able to set its own
+        course. Britain does not need to be a member of the EU to play an
+        important role in the world. Britain has a 'portfolio of power' in its
+        own right, which includes membership of the G20 and G8 nations, a
+        permanent seat on the UN Security Council, leadership of the Commonwealth
+        of 54 nations, and a close relationship with the United States. London is
+        the financial capital of the world. For Britain, leaving the EU would
+        allow the country to regain its national sovereignty while continuing to
+        be a major power on the world stage."
+
+    - raw: 9
+      condition_num: 8
+      factors: {cultural_frame: anti, economic_frame: anti, political_frame: anti}
+      text: >-
+        You are shown the following:
+
+
+        "One of the founding pillars of the European Union is 'free movement',
+        which allows citizens of EU member states to travel and work freely in
+        other EU member states. But this free movement of migrant workers into
+        Britain poses a threat to the country's long established values and ways
+        of life. For Britain, leaving the EU would help protect its national
+        culture, values and traditions."
+
+
+        "The Eurozone economy is experiencing significant economic problems,
+        including high debt and youth unemployment. Britain's membership of the
+        EU is also costly. In 2014 alone, Britain's net contribution to the EU
+        budget was an estimated £9.8 billion, up from £3.3 billion in 2008. For
+        Britain, remaining in the EU would risk its economic recovery and
+        endanger the jobs of British wage earners."
+
+
+        "By leaving the European Union, Britain would be able to set its own
+        course. Britain does not need to be a member of the EU to play an
+        important role in the world. Britain has a 'portfolio of power' in its
+        own right, which includes membership of the G20 and G8 nations, a
+        permanent seat on the UN Security Council, leadership of the Commonwealth
+        of 54 nations, and a close relationship with the United States. London is
+        the financial capital of the world. For Britain, leaving the EU would
+        allow the country to regain its national sovereignty while continuing to
+        be a major power on the world stage."
+
+outcomes:
+  - var: wave2q2
+    task_num: 0
+    question: >-
+      How would you vote if the referendum on Britain's membership of the EU were
+      held tomorrow? 1 means "Remain in the EU"; 2 means "Leave the EU"; 3 means
+      "Would not vote"; 4 means "Don't know".
+    scale:
+      min: 1
+      max: 4
+      nominal: true
+    response_recode: {1: 1, 2: 2, 3: 3, 99: 4}
+
+response_recode: {1: 1, 2: 2, 3: 3, 99: 4}
+missing_codes: [998, 999]
+
+persona_map:
+  age: age
+  gender: profile_gender
+  ethnicity: profile_ethnicity
+  education: profile_education_level
+  education_age: profile_education_age
+  income: profile_gross_personal
+  household_income: profile_gross_household
+  household_size: profile_household_size
+  marital_status: profile_marital_stat
+  housing_ownership: profile_house_tenure
+  religion: profile_religion
+  employment: profile_work_stat
+  work_industry: profile_work_industry
+  region: profile_GOR
+  social_grade: profile_socialgrade_cie
+  party_id: profile_partyid
+  party_id_2010: profile_partyid_2010
+  vote_2015: pastvote_2015
+  newspaper_readership: profile_newspaper_readership
+
+persona_missing:
+  age: [-9, -8]
+  profile_gender: [8, 9]
+  profile_ethnicity: [16, 98, 99]
+  profile_education_level: [19, 20, 98, 99]
+  profile_education_age: [7, 8, 9]
+  profile_gross_personal: [15, 16, 98, 99]
+  profile_gross_household: [16, 17, 98, 99]
+  profile_household_size: [9, 10, 98, 99]
+  profile_marital_stat: [8, 9]
+  profile_house_tenure: [98, 99]
+  profile_religion: [16, 18, 98, 99]
+  profile_work_stat: [98, 99]
+  profile_work_industry: [98, 99]
+  profile_GOR: [13, 98, 99]
+  profile_socialgrade_cie: [7, 8, 98, 99]
+  profile_partyid: [7, 8, 9]
+  profile_partyid_2010: [11, 98, 99]
+  pastvote_2015: [99, 998, 999]
+  profile_newspaper_readership: [98, 99]

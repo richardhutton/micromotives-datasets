@@ -1,0 +1,302 @@
+study_id: X08IVC
+source: dataverse
+title: "Brexit as an Identity: Political Identities and Policy Norms"
+data_file: Brexitidentitydata5-1.sav
+
+licence: >-
+  CC0 1.0, read from the Dataverse API (latestVersion.license) and recorded in
+  data/catalog/uk_dataverse_provenance.json.
+
+comparable_to_socsci210: false
+
+notes: |-
+  Tilley, J. and Hobolt, S. B. (2023), "Brexit as an Identity: Political
+  Identities and Policy Norms", PS: POLITICAL SCIENCE & POLITICS 56(4):546-552.
+  doi:10.1017/S1049096523000367. Open access, CC BY 4.0. Fetched and read in
+  full directly (not inferred from the journal's policy): LSE Research Online,
+  https://researchonline.lse.ac.uk/id/eprint/119622/1/Hobolt_brexit_as_an_identity_published.pdf.
+  Replication data: Harvard Dataverse doi:10.7910/DVN/X08IVC, CC0 1.0.
+
+  THE DEPOSIT BUNDLES FIVE DATA FILES. ONLY ONE IS A RANDOMISED EXPERIMENT.
+
+  `Brexitidentitydata1.sav` (30,602 rows) is an 18-wave YouGov identity tracker
+  behind Figure 1/Table 1 (no manipulation — a repeated cross-sectional panel
+  question). `Brexitidentitydata2.sav` (4,982) and parts of `data1` feed Table 1's
+  identity-attachment battery. `Brexitidentitydata3.sav` (1,758, July 2019) is the
+  Figure 2 policy-position battery, one sample, no randomisation. `data4.sav`
+  (3,410) is the Figure 3 perceived-norms battery — FOUR variables
+  (`BrexN3_leavecon/remaincon/leavelab/remainlab`), but these are FOUR SEPARATE
+  REPRESENTATIVE SAMPLES asked about one target group each (paper Appendix 1:
+  "Each battery of norms questions was asked to a separate representative sample
+  of the electorate... by YouGov in July 2019"), not a within-sample random
+  assignment — no respondent-level assignment column exists because there is
+  nothing to assign; which target group a respondent was asked about is constant
+  within each of the four samples. None of data1-4 has the row contract's
+  `condition`: there is no stimulus a respondent was RANDOMLY SHOWN, only which
+  pre-existing sample they happened to answer in.
+
+  `Brexitidentitydata5-1.sav` (1,660 rows, January 2020) is different: it is the
+  paper's Appendix 2 "policy norm experiment", a genuine within-sample randomised
+  survey experiment, and it is the ONLY part of this deposit this recipe builds.
+  "One recipe per sub-experiment" (CONVENTIONS) is satisfied trivially here —
+  there is exactly one sub-experiment in the whole deposit.
+
+
+  THE DESIGN — TWO-CONDITION BETWEEN-SUBJECT, PLUS A THIRD GROUP NOT IN THIS
+  EXPERIMENT AT ALL.
+
+  `splitnumber` (1/2/3, n=582/542/536) is the raw randomisation; the file ALSO
+  carries `Treat`, a derived column built by the authors' own
+  `RECODE splitnumber (1=3)(2=1)(3=2)(else=99) INTO Treat` with
+  `VALUE LABELS treat (1)BID cue (3)Control (99)Missing` — confirmed WORD FOR
+  WORD against `Replication syntax.sps`, which ships in the deposit. `Treat` and
+  `splitnumber` carry IDENTICAL information (crosstabulated: a 1:1 map, zero
+  off-diagonal cells), so `splitnumber` is not a second randomisation and needs
+  no `considered_and_rejected` entry — it is the same assignment under the
+  pre-relabel code.
+
+  `splitnumber=1` (n=582) -> `Treat=3` "Control": asked the G1 battery
+  (`brexG1a` identity, `brexG1c` immigration item, NO cue).
+  `splitnumber=2` (n=542) -> `Treat=1` "BID cue": asked the G2 battery
+  (`brexG2a` identity, `brexG2c` immigration item, WITH the norms cue).
+  `splitnumber=3` (n=536) -> `Treat=2`. The authors' own RECODE assigns this
+  value DELIBERATELY (`(3=2)`, not the `else=99` catch-all) but their own
+  `VALUE LABELS` line never names it — confirmed directly: of this group's 536
+  respondents, EVERY outcome-adjacent column (`brexG1a/c`, `brexG2a/c`, `Immig`,
+  `EUID`) is null for all 536; only `ID`/`starttime`/`endtime`/`splitnumber`
+  are populated, meaning they WERE interviewed (they have a completed session)
+  but were never asked this battery at all. There is no persona, condition,
+  outcome or response to report for them — NOT a missing-code question (nothing
+  here is a sentinel being dropped), simply a group this experiment never
+  reached. This recipe builds no rows for `splitnumber=3` and declares no arm
+  for it; the melt silently skips any `Treat` value with no matching arm
+  (`pipeline/build.py: arm_for`), which is the correct behaviour here, not a
+  gap. Flagged anyway, per the standing instruction to report an unlabelled
+  code either way: this is the authors' own label, not a gap we created.
+
+  Both G1 and G2 ask the SAME identity question first (`brexG1a`/`brexG2a`,
+  identical wording, confirmed from the file's own variable labels), then the
+  immigration item. The paper confirms the order directly (p.6, Appendix 2):
+  "Both the control and treatment groups were asked prior to the immigration
+  question their Brexit identity". The identity question is therefore
+  PRE-TREATMENT in both conditions and is NOT part of the manipulation — see
+  PERSONA below.
+
+
+  THE STIMULUS — RECOVERED FROM THE PAPER, NOT GUESSED AT THE SEVERED LABEL
+
+  `brexG2c`'s own SPSS variable label is severed at 254 characters, mid-sentence
+  (measured, not eyeballed): it ends "...To what extent do you agree that" with
+  no question mark and no "immigration should be reduced?" — the deposit alone
+  cannot complete it. `brexG1c`'s label is NOT severed (127 characters, complete,
+  ending in "?"), confirming the cut is a length ceiling rather than a
+  genuinely short label. Ledger 110 already flagged this truncation; this
+  recipe resolves it against the paper itself, fetched and read directly
+  (p.5-6, Appendix 2), which prints BOTH conditions in full:
+
+  Control (`brexG1c`): "There is a lot of debate about reducing immigration to
+  Britain at the moment. To what extent do you agree that immigration should be
+  reduced?"
+
+  Treatment (`brexG2c`): "There is a lot of debate about reducing immigration
+  to Britain at the moment. A recent survey has shown that most Leavers agree
+  that immigration should be reduced, whereas most Remainers do not agree that
+  immigration should be reduced. To what extent do you agree that immigration
+  should be reduced?"
+
+  Every word below both conditions is the paper's, quoted exactly. The first
+  sentence ("There is a lot of debate...") is IDENTICAL across conditions and
+  sits in `shared_context`, once, per CONVENTIONS. The final question
+  ("To what extent do you agree...") is identical across conditions too and is
+  the OUTCOME, not the condition. What varies is exactly one sentence — the
+  cue — present only in the treatment: `factors: [norms_cue]`.
+
+  The control arm's `text` below ("You are not given any extra information
+  about what Leavers or Remainers think.") is COMPOSED BY US — the paper
+  states the absence in prose ("Those in the control group were asked, with
+  the same response options, simply...") but prints no sentence for it,
+  because nothing was shown. This follows the LOGVPZ precedent for narrating
+  an arm's absence of stimulus: true for everyone in that arm, no numbers, no
+  sequence position. Declared here per CONVENTIONS' requirement that added
+  words be recorded word-for-word and named as added.
+
+  Response options (both conditions, from the file's own value labels on
+  `brexG1c`/`brexG2c`, matching the paper's "strongly agree, agree, neither
+  agree nor disagree, disagree, strongly disagree" exactly): 1 Strongly agree
+  .. 5 Strongly disagree. No 8/9 (Skipped/Not Asked) occurs among the 1,124
+  routed respondents — verified directly, value_counts on both columns sum
+  exactly to their group size with no 8s or 9s present. Declared in
+  `missing_codes` anyway, as the file's own correct sentinels (currently
+  inert, same posture as LOGVPZ's `-8`/`-9` on `ageW19`).
+
+
+  N ARITHMETIC, AND AN EXACT RECONCILIATION OF THE PAPER'S OWN NUMBERS
+
+  Built N = 582 (Control) + 542 (BID cue) = 1,124, one outcome item per
+  respondent, so 1,124 rows.
+
+  Table 2 (p.6) reports means for Leavers and Remainers only, by condition,
+  with Control stated as "(N=451)" and Treatment as "(N=431)" in the Appendix 2
+  prose. Direct computation from the file, splitting each condition's
+  identity question by its own two self-identified categories:
+
+    Control  (n=582 total): Leaver 220, Remainer 231, Neither 102, DK 29.
+      Leaver + Remainer = 220 + 231 = 451  -- EXACTLY the paper's stated N.
+    BID cue  (n=542 total): Leaver 194, Remainer 237, Neither 88, DK 23.
+      Leaver + Remainer = 194 + 237 = 431  -- EXACTLY the paper's stated N.
+
+  So "N=451"/"N=431" are the Leaver+Remainer subset Table 2 actually analyses,
+  not the full routed group, and both reproduce exactly. The paper's OWN PROSE
+  two sentences later gives a different breakdown ("the control group contained
+  219 Leavers, 199 Remainers, and 153 people who answered neither or don't
+  know" -- 219+199+153 = 571, not 451; "the treatment group contained 200
+  Leavers, 221 Remainers, and 143... " -- 200+221+143 = 564, not 431) that does
+  not even sum to the N the same paragraph states two sentences earlier, and
+  disagrees with the numbers that make Table 2's own means reproduce exactly
+  (see VERIFICATION below). This recipe trusts the numbers that reproduce the
+  published table over the numbers that do not sum to the published N; the
+  prose breakdown is flagged here as the paper's own arithmetic error, per
+  CONVENTIONS ("assert the difference rather than widening the tolerance").
+
+
+  CONDITION 2 OUTCOME — THE QUESTION ASKED IS THE SAME SENTENCE IN BOTH ARMS
+
+  One outcome only (`task_num: 0`). Both conditions name their own answer
+  column via `Arm.outcome_var` (split-ballot: `brexG1c` Control, `brexG2c`
+  BID cue) — the LOGVPZ pattern, because the same question is held under two
+  different variable names depending on which condition a respondent was
+  routed to.
+
+
+  PERSONA — ONE FIELD, AND WHY IT IS THE ONLY ONE POSSIBLE
+
+  `Brexitidentitydata5-1.sav` has 11 columns total: `ID`, `starttime`,
+  `endtime`, `splitnumber`, `brexG1a`, `brexG1c`, `brexG2a`, `brexG2c`,
+  `Immig`, `EUID`, `Treat`. No age, gender, education, income, employment,
+  region, social grade, ethnicity, religion, marital status or household size
+  anywhere in this file — confirmed by listing every column; nothing else
+  exists to map. This is thinner even than LOGVPZ's four fields.
+
+  `EUID` is used for the one persona field, `brexit_identity`. It is the
+  AUTHORS' OWN derived column, not something this recipe computes: built by
+  their own `RECODE BrexG1a (1=1)(2=2)(3 thru 4=3)(else=99) INTO EUID` /
+  `RECODE BrexG2a (1=1)(2=2)(3 thru 4=3) INTO EUID` (confirmed word for word
+  against `Replication syntax.sps`), and already present as a column in the
+  deposit. It is used rather than the raw `brexG1a`/`brexG2a` for a mechanical
+  reason: no single column holds the identity answer for every respondent
+  (which of the two questions was asked depends on condition, exactly like the
+  outcome), and `persona_map` names one source variable for the whole study —
+  `EUID` is the one column the authors already built that is populated for
+  every routed respondent regardless of condition. Using it means accepting
+  their own merge of "Neither" and "Don't know" into one `EUID=3` "Neither"
+  code (their `(3 thru 4=3)`) — CONVENTIONS' "merged categories stay merged"
+  applies: this is the source's own merge, not one this recipe performs, and
+  it is not re-split from the finer raw items. `EUID=99` "Missing" is declared
+  in `persona_missing` as the file's own correct sentinel; it never occurs
+  among the 1,124 routed respondents (verified: max observed code is 3) —
+  inert, same posture as other declared-but-unexercised sentinels in this
+  corpus, declared because it is correct, not guessed.
+
+  `Immig` (the authors' own relabelled copy of `brexG1c`/`brexG2c` — same
+  numeric values, 1 "Dislike immigration" vs 5 "Like immigration" rather than
+  1 "Strongly agree [reduce]" vs 5 "Strongly disagree") is EXCLUDED from
+  persona entirely, by ruling: it is not a demographic, it IS the outcome
+  under a different label, so including it anywhere would hand the model the
+  answer. `splitnumber` and `Treat` are excluded as persona for the same
+  reason the condition itself cannot also be a persona field: they ARE the
+  condition assignment.
+
+  DOMAIN RULING ON `brexit_identity` (EUID) — THE RISKIEST JUDGEMENT IN THIS
+  RECIPE, FLAGGED FOR THE CHECKER. The outcome here is a specific IMMIGRATION
+  POLICY preference ("should immigration be reduced"), not a Brexit vote or a
+  Brexit-deal preference — unlike `EFXNLX` (outcome: preference over a
+  Brexit-negotiation deal) and `6MRVOM` (outcome: a Brexit scenario), where a
+  respondent's own EU-referendum vote was ruled to sit in the SAME domain as
+  the outcome and was removed. Brexit IDENTITY (self-categorising as a Leaver
+  or a Remainer) and a POLICY STANCE on immigration are different constructs
+  even though they correlate strongly, and `brexit_identity` is measured
+  BEFORE either condition's stimulus, identically in both arms — it is not
+  post-treatment contamination. On that basis this recipe INCLUDES it,
+  following QQM5MC's precedent of keeping `VoteEURef` (that study's own
+  moderator) where the outcome was a different domain (economic perceptions).
+  The honest counter-argument: `brexit_identity` is not an incidental
+  demographic here, it is the EXACT moderator this experiment was designed
+  around (the cue literally names "Leavers" and "Remainers"), and a stricter
+  reading of "political identity" as its own domain — which the title
+  practically invites — would exclude it as too close to the manipulation
+  itself. Excluding it would make every row context-free (a model could not
+  tell who the cue was targeted at) and would make it impossible to
+  reconstruct Table 2 from the built rows at all. A checker who judges the
+  stricter reading correct should move `brexit_identity` out of `persona_map`;
+  nothing else in this recipe depends on that call except the richness of the
+  verification below, which would then need to read Table 2's overall
+  (unconditioned) comparison instead.
+
+
+  ON-SCREEN ORDER — CHECKED, NOT ASSUMED. All 11 columns in this file are
+  listed above; none is named or labelled as a position/order variable, and
+  this is a single short item (one preamble, one question) with no list of
+  attributes whose order could vary — there is nothing resembling a conjoint
+  or multi-item battery here for order to apply to. Positive evidence of no
+  such column: the full column list was read, not merely searched by keyword.
+
+
+  VERIFICATION. `scripts/verify_X08IVC.py` reproduces Table 2 (p.6) from the
+  BUILT PARQUET: four group means (Control/BID cue x Leaver/Remainer) to the
+  paper's own printed 2-decimal precision, AND the two group N's (451, 431)
+  exactly — an author-computed reference, not a self-computed one we then
+  agreed with. The paper reports no coefficient/regression table for this
+  experiment (Table 2 is group means only), so there is nothing further to
+  check against; this is noted explicitly rather than treated as exhaustive.
+
+condition:
+  source_var: Treat
+  factors: [norms_cue]
+  shared_context: >-
+    There is a lot of debate about reducing immigration to Britain at the
+    moment.
+  arms:
+    - raw: 3
+      condition_num: 0
+      factors: {norms_cue: "absent"}
+      outcome_var: brexG1c
+      # [composed] — the paper states the absence in prose (p.6, "Those in the
+      # control group were asked, with the same response options, simply:"),
+      # printing no sentence for it because nothing was shown. Narrates the
+      # absence per CONVENTIONS, true for everyone in this arm.
+      text: >-
+        You are not given any extra information about what Leavers or
+        Remainers think.
+    - raw: 1
+      condition_num: 1
+      factors: {norms_cue: "present"}
+      outcome_var: brexG2c
+      # [paper p.6, Appendix 2] — verbatim.
+      text: >-
+        A recent survey has shown that most Leavers agree that immigration
+        should be reduced, whereas most Remainers do not agree that
+        immigration should be reduced.
+
+outcomes:
+  - task_num: 0
+    # [paper p.5-6, Appendix 2] — verbatim, identical wording in both conditions.
+    question: "To what extent do you agree that immigration should be reduced?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Strongly agree"
+      mid_label: "Neither agree nor disagree"
+      max_label: "Strongly disagree"
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [8, 9]
+
+persona_map:
+  brexit_identity: EUID
+
+persona_missing:
+  # 99 "Missing", the file's own value label. Never occurs among the 1,124
+  # routed respondents (observed codes run 1-3 only) — declared because it is
+  # the correct sentinel, not guessed.
+  EUID: [99]

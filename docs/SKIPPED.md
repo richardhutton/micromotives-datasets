@@ -4,7 +4,7 @@
 
 24 of 202 catalogued sources are built. The remaining 178 are listed below, grouped by the reason.
 
-A further 8 source(s) are built from OUTSIDE this catalogue, and so are in neither number above: `35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `POMIFD`, `QQM5MC`, `RJTVG8`. The UK studies come from Harvard Dataverse rather than the TESS foundation set. 7 of them (`35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `QQM5MC`, `RJTVG8`) state a CC0 licence and are the only material here that can be republished; 1 (`POMIFD`) states no licence and is usable for research only, under the basis recorded per-study in `uk_dataverse_provenance.json`'s `use_basis`, never redistributed.
+A further 10 source(s) are built from OUTSIDE this catalogue, and so are in neither number above: `35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `POMIFD`, `PZB01G`, `QQM5MC`, `RJTVG8`, `X08IVC`. The UK studies come from Harvard Dataverse rather than the TESS foundation set. 9 of them (`35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `PZB01G`, `QQM5MC`, `RJTVG8`, `X08IVC`) state a CC0 licence and are the only material here that can be republished; 1 (`POMIFD`) states no licence and is usable for research only, under the basis recorded per-study in `uk_dataverse_provenance.json`'s `use_basis`, never redistributed.
 
 A reason here is a *decision*, and decisions can be revisited: a source with no questionnaire becomes buildable the moment an instrument turns up, and a screen verdict is a queue order rather than a ruling.
 
