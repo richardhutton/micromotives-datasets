@@ -3,7 +3,8 @@
     "Less than high school": "Less than high school",
     "High school": "High school",
     "Some college to associate": "Some college to associate",
-    "Bachelors to postgraduate": "Bachelors to postgraduate"
+    "Bachelors to postgraduate": "Bachelors to postgraduate",
+    "Below degree level (not further distinguished)": "Below degree level (not further distinguished)"
   },
   "schemes": {
     "5hqan+14": {
@@ -41,6 +42,68 @@
       "Some college/ associates degree": "Some college to associate",
       "Bachelor's degree": "Bachelors to postgraduate",
       "Post grad study/professional degree": "Bachelors to postgraduate"
+    },
+    "uk_yougov_18": {
+      "No formal qualifications": "Less than high school",
+      "CSE grades 2-5": "Less than high school",
+      "CSE grade 1, GCE O level, GCSE, School Certificate": "High school",
+      "Scottish Ordinary/ Lower Certificate": "High school",
+      "GCE A level or Higher Certificate": "High school",
+      "Scottish Higher Certificate": "High school",
+      "Youth training certificate/skillseekers": "Some college to associate",
+      "Clerical and commercial": "Some college to associate",
+      "City & Guilds certificate": "Some college to associate",
+      "City & Guilds certificate - advanced": "Some college to associate",
+      "ONC": "Some college to associate",
+      "Recognised trade apprenticeship completed": "Some college to associate",
+      "University diploma": "Some college to associate",
+      "Teaching qualification (not degree)": "Some college to associate",
+      "Nursing qualification (e.g. SEN, SRN, SCM, RGN)": "Some college to associate",
+      "Other technical, professional or higher qualification": "Some college to associate",
+      "University or CNAA first degree (e.g. BA, B.Sc, B.Ed)": "Bachelors to postgraduate",
+      "University or CNAA higher degree (e.g. M.Sc, Ph.D)": "Bachelors to postgraduate"
+    },
+    "uk_yougov_18_pzb01g_typography": {
+      "University or CNAA first degree (eg BA, B.Sc, B.Ed)": "Bachelors to postgraduate",
+      "University or CNAA higher degree (eg M.Sc, Ph.D)": "Bachelors to postgraduate",
+      "Nursing qualification (eg SEN, SRN, SCM, RGN)": "Some college to associate",
+      "onc": "Some college to associate"
+    },
+    "uk_rjtvg8_qualtrics_7": {
+      "No formal qualifications": "Less than high school",
+      "Secondary education (e.g. GED/GCSE)": "High school",
+      "High school diploma/A-levels": "High school",
+      "Technical/community college": "Some college to associate",
+      "Undergraduate degree (BA/BSc/other)": "Bachelors to postgraduate",
+      "Graduate degree (MA/MSc/MPhil/other)": "Bachelors to postgraduate",
+      "Doctorate degree (PhD/other)": "Bachelors to postgraduate"
+    },
+    "uk_pmv0tg_isced_3": {
+      "Low": "Less than high school",
+      "Medium": "High school",
+      "High": "Bachelors to postgraduate"
+    },
+    "uk_logvpz_he_only": {
+      "Yes, I graduated from higher education": "Bachelors to postgraduate",
+      "Yes, I am currently enrolled in higher education": "Some college to associate",
+      "Yes, but I didn't complete higher education": "Some college to associate",
+      "No, I have never attended higher education": "Below degree level (not further distinguished)"
     }
-  }
+  },
+  "_about": [
+    "The four canonical levels are a US high-school ladder, inherited from the TESS",
+    "layer. They carry UK qualifications better than expected: a British first degree",
+    "and an American bachelor's land together, GCSEs and a high school diploma land",
+    "together. That makes the UK and US layers comparable at no cost, which is the",
+    "whole point of the project and was not guaranteed.",
+    "",
+    "Seven UK studies share one YouGov 18-level scheme covering 83% of UK rows, so",
+    "the work was mapping three outliers into it rather than inventing a new ladder.",
+    "SocSci210 itself harmonises nothing \u2014 sampling six of its studies returns one",
+    "vocabulary because nearly every TESS study used the same US panel vendor. Our",
+    "corpus is the same shape, and the same strategy applies: translate the minority.",
+    "",
+    "A fifth canonical value exists for LOGVPZ alone. Read its note below before",
+    "adding anything else to the canonical list."
+  ]
 }
