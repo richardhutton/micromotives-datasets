@@ -215,14 +215,14 @@ overstates nothing and understates a conjoint by an order of magnitude.
 | 35M5CV | Divided by the Vote (Hobolt, Leeper, Tilley) | CC0 1.0 | **SIX bundled sub-studies**, not one | unverified | 2 of 6 only (lodger, bbc) |
 | PMV0TG | Vaccine allocation, 13 countries (Duch et al.) | CC0 1.0 | conjoint | unverified | **yes**, a UK-specific Qualtrics instrument |
 | ZZYSIZ | Anti-immigrant, 22 countries (Wimmer et al.) | CC0 1.0 | conjoint, forced choice | unverified; **UK presence NOT confirmed** | an "example" only, not full wording |
-| PZB01G | For/Against Brexit (Goodwin, Hix, Pickup) | CC0 1.0 | **2×2×2 factorial** + control, six vignette frames | **5,333** in the vignette wave (Wave 1: 6,074) | not in the deposit — but all six frames are verbatim in the paper's **open-access CC-BY** appendix |
-| RJTVG8 | i-voting (Turnbull-Dugarte, Devine) | CC0 1.0 | 10-attribute conjoint, 5 tasks | **1,200 UK → 6,000 pairs**, UK confirmed | not in the deposit — Table A.3 of the open author manuscript prints all ten attributes verbatim |
-| SACJHE | Cyber Terrorism (Shandler et al.) | CC0 1.0 | TV news **video**, retaliation scale | **597 UK** of 1,848 (2,028 included an undeposited 180-person pilot) | script is verbatim in the open appendix — **DROPPED anyway on the video-stimulus ruling, below** |
+| PZB01G | For/Against Brexit (Goodwin, Hix, Pickup) | CC0 1.0 | **2×2×2 factorial** + control, six vignette frames | **5,333** in the vignette wave (Wave 1: 6,074) | not in the deposit — but all six frames are word-for-word in the paper's **open-access CC-BY** appendix |
+| RJTVG8 | i-voting (Turnbull-Dugarte, Devine) | CC0 1.0 | 10-attribute conjoint, 5 tasks | **1,200 UK → 6,000 pairs**, UK confirmed | not in the deposit — Table A.3 of the open author manuscript prints all ten attributes word-for-word |
+| SACJHE | Cyber Terrorism (Shandler et al.) | CC0 1.0 | TV news **video**, retaliation scale | **597 UK** of 1,848 (2,028 included an undeposited 180-person pilot) | script is word-for-word in the open appendix — **DROPPED anyway on the video-stimulus ruling, below** |
 | POMIFD | Variable Persuasiveness of Political Rhetoric (Blumenau, Lauderdale) | **NOT CC0 — `license` is null** | pairwise comparison, 336 arguments | 3,317 → 13,268 | yes, prompts ship as data. **Usable but never publishable** — see `use_basis` in the provenance catalogue |
 | (OSF) | Many Labs 1/2, PSA | various | various | — | — |
 
 **`POMIFD` is the best material of all nine and is blocked on licence alone.** 336
-argument strings ship verbatim as data, every pair a respondent saw is recoverable
+argument strings ship word-for-word as data, every pair a respondent saw is recoverable
 by a join, demographics are the richest of any UK deposit, and the numbers behind
 the main figure ship as R data. Its `termsOfUse` says *"You may wish to
 communicate with the Contact(s) specified before use"* — an invitation to ask, not
@@ -244,13 +244,13 @@ are buildable and the third's objections were factually mistaken:
 
 | Deposit | Verdict | Why §5a's note did not decide it |
 |---|---|---|
-| `PZB01G` | **BUILDABLE** — 5,333 respondents, 2×2×2 + control | Paper is **open access CC-BY** in BJPolS; supplementary appendix is headed *"I. Text of the vignettes:"* and prints all six frame paragraphs verbatim |
+| `PZB01G` | **BUILDABLE** — 5,333 respondents, 2×2×2 + control | Paper is **open access CC-BY** in BJPolS; supplementary appendix is headed *"I. Text of the vignettes:"* and prints all six frame paragraphs word-for-word |
 | `RJTVG8` | **BUILDABLE** — 1,200 UK respondents, 6,000 pairs | **UK sample confirmed** from the paper's own text and the data; author-accepted manuscript open at Southampton ePrints, Table A.3 prints all ten attributes with full level text |
 | `SACJHE` | **DROPPED** — rich's scope ruling, 5 Oct 2026 | §5a's two objections were both wrong, but it was dropped for different reasons; see below |
 
 #### The video-stimulus ruling (`SACJHE`, 5 October 2026)
 
-**A verbatim author-written SCRIPT of a produced audiovisual stimulus does not
+**A word-for-word author-written SCRIPT of a produced audiovisual stimulus does not
 count as condition text.** This is a standing ruling rather than a one-off: the
 next study with a video, an audio clip or an image is decided the same way unless
 someone revisits it deliberately.
@@ -263,7 +263,7 @@ the on-screen chyron.
 
 What was NOT wrong with it, so nobody re-litigates the easy parts: the deposit is
 CC0, the UK sample is separable and clean at **n=597** (120/119/118/120/120,
-matching the paper's published Table 3 cell for cell), and a verbatim script
+matching the paper's published Table 3 cell for cell), and a word-for-word script
 genuinely does exist in the open-access Online Appendix B. The ruling was close,
 and these are the three reasons, recorded because the question will come back:
 
@@ -794,7 +794,7 @@ not just individual accuracy. What the paper showed:
 
 ### Quotes / open-ended output (two-stage, decoupled)
 
-We may want a **verbatim-style quote** (justification in the persona's voice), not
+We may want a **word-for-word-style quote** (justification in the persona's voice), not
 just the number. Key fact: we have real **numbers** as ground truth but rarely
 real **quotes** — so any quote is *synthetic* (this is exactly the paper's
 `reasoning` field, which had no ground truth and hurt the number when trained

@@ -261,6 +261,16 @@ would need. Rules for updating:
 
 ### Project conventions
 <!-- Agents: record tooling, layout and naming conventions here as established. -->
+- **Write "word-for-word", never "verbatim".** Same meaning, and one of them is a
+  word rich would have to stop and translate while reading his own documentation.
+  These docs exist so he can pick any of them up and act on it, and a Latin
+  loanword sitting in the sentence that says what must not be paraphrased is a
+  poor advertisement for plain writing. Replaced throughout the docs and
+  catalogues on 2026-10-05. The recipes still carry the old word, deliberately:
+  `tests/test_gen_*.py` assert each generated recipe is byte-identical to what
+  its generator derives, so hand-editing one would fail a test rather than
+  improve anything. Change it in the generator if one is ever rerun.
+  (2026-10-05)
 - Python project managed with **uv**. Add dependencies with `uv add`, run
   everything with `uv run` (scripts, tests, tools). Never use `pip install` or a
   bare `python`; commit `pyproject.toml` and `uv.lock` together.
@@ -396,7 +406,7 @@ built, verified". Timestamps are evidence; sequence is an assumption.
   maker should name its own riskiest judgement before being asked — the two
   times that happened here, one of the flags exposed a real pipeline bug.
   (2026-10-01)
-- **Verbatim for what varies, compressed for what is shared.** Context identical
+- **Word-for-word for what varies, compressed for what is shared.** Context identical
   across arms is stated once; each arm carries only its varying remainder,
-  verbatim. A declared factor that does not change the text between arms is a
+  word-for-word. A declared factor that does not change the text between arms is a
   defect, not a cosmetic issue. (2026-10-01)

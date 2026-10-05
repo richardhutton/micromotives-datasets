@@ -12,7 +12,7 @@ em dashes (`– —` → `-`), the ellipsis character (`…` → `...`), and non
 spaces.
 
 **Never normalise:** words, spelling, grammar, capitalisation, or punctuation that
-changes a sentence. Source typos are kept verbatim — `a5v96`'s doubled "make sure
+changes a sentence. Source typos are kept word-for-word — `a5v96`'s doubled "make sure
 that that he is right", `zaqkm`'s "sticks with himself all day long", `cug34`'s
 missing comma in one attribution arm. If in doubt, it stays.
 
@@ -51,12 +51,12 @@ recipe stop being the audit trail.
 
 ---
 
-## Arm text: verbatim for what varies, compressed for what is shared
+## Arm text: word-for-word for what varies, compressed for what is shared
 
 The oldest rule in the project and the reason the recipes are trustworthy.
 
 - Context identical across every arm goes in `shared_context`, **once**.
-- Each arm carries only its own varying remainder, **verbatim**.
+- Each arm carries only its own varying remainder, **word-for-word**.
 - A declared factor that does not change the text between arms is a **defect**,
   not a cosmetic issue — QC rule 5 tests exactly this, via minimal pairs.
 
@@ -105,7 +105,7 @@ scale instruction does.
 
 Two conditions, both required:
 - the field name must be the **source's own label**, quoted, not a paraphrase;
-- `notes` must record the added sentence verbatim and say it was added.
+- `notes` must record the added sentence word-for-word and say it was added.
 
 It is narrower than the layout exception above. That one exists because the
 source contains *no words at all* for the manipulation; this one is reusing
@@ -137,7 +137,7 @@ maker did this and was right to.
 
 The one accepted exception is a **layout** manipulation with no words anywhere in
 the source (`evnyh` varies whether a scale runs down the page or across it). The
-option labels are transcribed verbatim; the layout gets one clause of plain
+option labels are transcribed word-for-word; the layout gets one clause of plain
 description, and `notes` must say explicitly that the clause is description
 rather than transcription.
 
@@ -159,11 +159,11 @@ us. That is permitted, under three conditions, all required:
 - it narrates **what the respondent did**, never what they were shown;
 - it is **true for everyone in that arm**, with no numbers and no sequence
   position (see **Sequence signposting**);
-- `notes` records the added words verbatim and says they were added.
+- `notes` records the added words word-for-word and says they were added.
 
 `a42yg` is the worked example: *"You first completed a short writing task, and
 then read a passage..."*, then the values list and the writing prompt both
-verbatim, joined by *"You then selected a value and were asked:"*. Every other
+word-for-word, joined by *"You then selected a value and were asked:"*. Every other
 word is the instrument's.
 
 This is narrower than it looks. The alternative was either to drop the

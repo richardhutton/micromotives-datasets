@@ -17,7 +17,7 @@
   ],
   "_category_vocabulary": {
     "_note": [
-      "The first six are TESS's own categories, reused verbatim so coverage can be compared",
+      "The first six are TESS's own categories, reused word-for-word so coverage can be compared",
       "across the two layers rather than across two taxonomies. The two political categories",
       "are additions: the UK layer is overwhelmingly political and TESS's vocabulary has no",
       "political category at all, which is itself a finding about how different the two",
