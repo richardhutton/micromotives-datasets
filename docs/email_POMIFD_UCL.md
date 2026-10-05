@@ -24,7 +24,7 @@ is an average effect. Your treatments are real political arguments and your ques
 which of two a particular person found more persuasive — an individual-level prediction
 problem with genuine political writing as the input. Given your own finding that
 persuasiveness varies so much across implementations, it is also a much harder test than a
-single vignette.
+study built around a single argument.
 
 I am not redistributing anything. Nothing derived from your data would be published or
 shared with anyone; this is for my own research use, and the article would be cited.
@@ -52,6 +52,11 @@ Facts checked against the open author manuscript
 work: AJPS 2022 (the Dataverse record still says "Forthcoming"), YouGov June 2019, 3,317
 respondents x 4 comparisons = 13,268, and 336 arguments = 14 rhetorical elements x 12
 policy issues x 2 positions, sourced from Hansard.
+
+"Vignette" replaced with "a study built around a single argument", on rich's call. It is
+standard political-science usage and Blumenau would know it, but it is not a word rich
+would want to be asked to explain, and the plain phrasing loses nothing.
+"Implementations" is kept because it is Blumenau's own word from the paper.
 
 The third paragraph is the one that earns a reply — it restates his actual contribution
 (variation across implementations, not the average) rather than praising the paper.
