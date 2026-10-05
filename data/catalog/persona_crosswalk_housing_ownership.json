@@ -1,0 +1,47 @@
+{
+  "_about": [
+    "PZB01G only. The source uses an en dash as a sentence connective ('Own \u2013",
+    "outright', 'Neither \u2013 I live rent-free with...'), which reads as a fragment",
+    "in a persona. Rewritten as plain statements; every distinction the source",
+    "draws is preserved, including the three landlord types and the two",
+    "living-with-family cases, which differ by whether rent is paid.",
+    "",
+    "This is the field that exposed the mojibake bug: 5,256 of 5,333 rows carried",
+    "a raw control byte here, because the en dash had been decoded as latin1",
+    "rather than cp1252. Fixed in sources/spss.py; see tests/test_encoding.py.",
+    "",
+    "NOTHING IS COLLAPSED HERE, deliberately. There is one scheme, so there is no",
+    "second vocabulary to reconcile against and no pressure to coarsen. Rolling the",
+    "denominations up to the ONS religion groups, or the tenures up to own/rent,",
+    "would destroy detail nobody has asked us to lose in exchange for a comparability",
+    "that does not yet have a second party. When UKHLS arrives with its own variables",
+    "\u2014 and it will, SN 6849 carries both \u2014 that is the moment to decide the canonical,",
+    "with both schemes in view. Designing it now from one scheme risks exactly the",
+    "one-way-street problem in persona/categories.py: a canonical fixed too early",
+    "cannot be made finer later."
+  ],
+  "canonical": {
+    "Lives with family or friends, paying rent": "Lives with family or friends, paying rent",
+    "Lives with family or friends, rent free": "Lives with family or friends, rent free",
+    "Other": "Other",
+    "Own outright": "Own outright",
+    "Own part, shared ownership scheme": "Own part, shared ownership scheme",
+    "Own with a mortgage": "Own with a mortgage",
+    "Rent from a housing association": "Rent from a housing association",
+    "Rent from a private landlord": "Rent from a private landlord",
+    "Rent from the local authority": "Rent from the local authority"
+  },
+  "schemes": {
+    "uk_yougov_tenure": {
+      "Own \u2013 outright": "Own outright",
+      "Own \u2013 with a mortgage": "Own with a mortgage",
+      "Own (part-own) \u2013 through shared ownership scheme (i.e. pay part mortgage, part rent)": "Own part, shared ownership scheme",
+      "Rent \u2013 from a private landlord": "Rent from a private landlord",
+      "Rent \u2013 from a housing association": "Rent from a housing association",
+      "Rent \u2013 from my local authority": "Rent from the local authority",
+      "Neither \u2013 I live rent-free with my parents, family or friends": "Lives with family or friends, rent free",
+      "Neither \u2013 I live with my parents, family or friends but pay some rent to them": "Lives with family or friends, paying rent",
+      "Other": "Other"
+    }
+  }
+}

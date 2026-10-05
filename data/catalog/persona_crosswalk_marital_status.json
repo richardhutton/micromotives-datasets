@@ -1,0 +1,41 @@
+{
+  "_about": [
+    "One scheme, shared by PZB01G and POMIFD (both YouGov). Values are already",
+    "clean statements about a person, so this map is the identity \u2014 it exists so",
+    "the field is DECLARED as checked rather than merely unreported, and so a",
+    "second scheme has somewhere to land.",
+    "",
+    "'Living as married' is kept distinct from 'Married' rather than folded in.",
+    "They are different legal and social states and the source separates them.",
+    "",
+    "NOTHING IS COLLAPSED HERE, deliberately. There is one scheme, so there is no",
+    "second vocabulary to reconcile against and no pressure to coarsen. Rolling the",
+    "denominations up to the ONS religion groups, or the tenures up to own/rent,",
+    "would destroy detail nobody has asked us to lose in exchange for a comparability",
+    "that does not yet have a second party. When UKHLS arrives with its own variables",
+    "\u2014 and it will, SN 6849 carries both \u2014 that is the moment to decide the canonical,",
+    "with both schemes in view. Designing it now from one scheme risks exactly the",
+    "one-way-street problem in persona/categories.py: a canonical fixed too early",
+    "cannot be made finer later."
+  ],
+  "canonical": {
+    "Civil Partnership": "Civil Partnership",
+    "Divorced": "Divorced",
+    "Living as married": "Living as married",
+    "Married": "Married",
+    "Never married": "Never married",
+    "Separated (after being married)": "Separated (after being married)",
+    "Widowed": "Widowed"
+  },
+  "schemes": {
+    "uk_yougov_marital": {
+      "Civil Partnership": "Civil Partnership",
+      "Divorced": "Divorced",
+      "Living as married": "Living as married",
+      "Married": "Married",
+      "Never married": "Never married",
+      "Separated (after being married)": "Separated (after being married)",
+      "Widowed": "Widowed"
+    }
+  }
+}
