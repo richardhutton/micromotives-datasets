@@ -61,7 +61,11 @@ select = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["N802", "N803"]  # test function/arg naming
+# RUF001 flags characters that LOOK like ASCII (en dash, smart quote). In tests
+# that is usually right, but tests/test_encoding.py exists precisely to assert
+# that a correctly decoded en dash survives and a mis-decoded control byte does
+# not — the ambiguous character IS the assertion there.
+"tests/**" = ["N802", "N803", "RUF001"]  # test naming; see note above on RUF001
 "scripts/**" = ["E501", "B904", "RUF001", "RUF010", "T201"]  # ad-hoc inspection scripts
 
 [tool.ruff.format]

@@ -36,6 +36,22 @@ class Dataset:
         return str(int(fval)) if fval == int(fval) else str(fval)
 
 
+# Codepoints U+0080-U+009F. In Unicode these are unprintable C1 controls that no
+# survey label legitimately contains; in Windows-1252 the same byte values are
+# smart quotes, dashes, bullets and ellipses. So seeing one after a decode is
+# near-proof that a cp1252 file was read as something else.
+_C1 = frozenset(chr(c) for c in range(0x80, 0xA0))
+
+
+def _control_characters(meta: Any) -> list[str]:
+    """Labels containing C1 control characters, which means the decode is wrong."""
+    bad: list[str] = []
+    for labels in meta.variable_value_labels.values():
+        bad.extend(str(v) for v in labels.values() if _C1 & set(str(v)))
+    bad.extend(str(v) for v in meta.column_names_to_labels.values() if v and _C1 & set(str(v)))
+    return bad
+
+
 def read(path: str | Path) -> Dataset:
     """Read a .sav (SPSS) or .dta (Stata) file."""
     p = Path(path)
@@ -52,13 +68,42 @@ def read(path: str | Path) -> Dataset:
     # Older SPSS files are frequently written in a Windows codepage rather than
     # UTF-8, and pyreadstat raises rather than substituting. Fall back through
     # the usual suspects instead of losing the study.
+    #
+    # ORDER IS LOAD-BEARING, and getting it wrong cost 5,279 of PZB01G's 5,333
+    # rows (99%) before a checker read one rendered row and saw
+    # "Own \x96 with a mortgage" where an en dash belonged.
+    #
+    # `latin1` maps every one of the 256 byte values to a codepoint, so it NEVER
+    # raises — which made it not a fallback but a wall. Everything after it in
+    # this tuple was unreachable, and a Windows-1252 file (the standard output of
+    # every UK survey house here) decoded "successfully" with its smart quotes,
+    # dashes and ellipses turned into raw C1 control characters. Those then
+    # travelled all the way into the persona text a model would be shown.
+    #
+    # `cp1252` now comes first among the fallbacks because it is the STRICTER
+    # test: it leaves five byte values undefined (0x81, 0x8D, 0x8F, 0x90, 0x9D)
+    # and raises on them, so a file that is genuinely Latin-1 still falls through
+    # to `latin1` below. A permissive codec must never be tried before a strict
+    # one, or the strict one is decoration.
     last: Exception | None = None
-    for encoding in (None, "latin1", "cp1252", "utf-8-sig", "iso-8859-15"):
+    for encoding in (None, "cp1252", "latin1", "utf-8-sig", "iso-8859-15"):
         try:
             df, meta = reader(str(p)) if encoding is None else reader(str(p), encoding=encoding)
-            break
         except (UnicodeDecodeError, pyreadstat.ReadstatError) as exc:
             last = exc
+            continue
+        if control := _control_characters(meta):
+            # A decode that "worked" and produced control characters did not
+            # work. Ordering alone cannot be trusted to prevent this — the next
+            # odd codepage will not be in the tuple at all — so the result is
+            # checked rather than the method.
+            last = ValueError(
+                f"{encoding or 'utf-8'} decoded {p.name} but produced C1 control "
+                f"characters in {len(control)} label(s), e.g. {control[0]!r}. That is "
+                f"a mis-decode, not text."
+            )
+            continue
+        break
     else:
         # pandas' Stata reader recovers some files pyreadstat cannot decode at
         # any encoding. It gives variable labels but not value labels, which is
