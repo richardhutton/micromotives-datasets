@@ -183,7 +183,7 @@ and download links are in `tess_uk_foundation_sources.csv`.**
 
 ## 5. UK-native datasets
 
-### 5a. Harvard Dataverse UK experiments (all CC0)
+### 5a. Harvard Dataverse UK experiments — CC0 except where the table says otherwise
 
 The core UK experiments, in (persona · stimulus · condition · response) shape.
 Persona = the YouGov profile block. Stimulus form varies per study.
@@ -193,6 +193,14 @@ had sat here unverified since early planning, and the check found the heading
 itself was wrong: **`POMIFD` is NOT CC0.** The audit is ledger 106-113; the short
 version is that titles were reliable, licences were not, and the design column
 was wrong on BOTH entries anyone checked against actual data.
+
+**The heading above was corrected on 5 October 2026, three days after the audit
+that found it wrong** — the 2 October check recorded the error in this paragraph
+and left the heading itself saying "(all CC0)". Worth stating as its own lesson:
+a licence claim in a HEADING is the most dangerous place for one to be wrong,
+because a heading is what someone reads when skimming for what may be published,
+and the correction sat four lines below it unread. The `licence` column in the
+table is the authority; the heading is now written so it cannot contradict it.
 
 `Rows` is now labelled for what it is. **Every number in the old table was a
 RESPONDENT count**, not a row count — `6MRVOM`'s 3,636 and `POMIFD`'s 3,317 are
@@ -220,6 +228,71 @@ the main figure ship as R data. Its `termsOfUse` says *"You may wish to
 communicate with the Contact(s) specified before use"* — an invitation to ask, not
 a prohibition. **One email to UCL could unblock it.** If the licence ever clears,
 it goes straight to the top of the queue.
+
+**`PZB01G`, `RJTVG8` and `SACJHE` have no status, and that is the gap, not their
+quality (2026-10-05).** All three are CC0. All three are marked "no instrument"
+in the table above, and all three are **absent from
+`data/catalog/uk_dataverse_provenance.json` entirely** — so they were never
+dropped, never queued, and no test covers them. "No instrument in the deposit"
+decides nothing on its own: the appendix ruling makes an author-written table or
+appendix an acceptable primary source, which is how `LOGVPZ` is built (its
+paper's Table 4) and how `X08IVC` will be. The test that actually decides is
+**whether the authors' own wording is reachable in an accessible paper**, and
+`TLT65Z` was dropped on precisely that test when its AJPS paper proved paywalled.
+**The test was run on 5 October 2026, and §5a was wrong about all three.** Two
+are buildable and the third's objections were factually mistaken:
+
+| Deposit | Verdict | Why §5a's note did not decide it |
+|---|---|---|
+| `PZB01G` | **BUILDABLE** — 5,333 respondents, 2×2×2 + control | Paper is **open access CC-BY** in BJPolS; supplementary appendix is headed *"I. Text of the vignettes:"* and prints all six frame paragraphs verbatim |
+| `RJTVG8` | **BUILDABLE** — 1,200 UK respondents, 6,000 pairs | **UK sample confirmed** from the paper's own text and the data; author-accepted manuscript open at Southampton ePrints, Table A.3 prints all ten attributes with full level text |
+| `SACJHE` | **awaiting a scope ruling** | §5a's two objections were both wrong — UK *is* separable (n=597, balanced, matching published Table 3), and a verbatim script *does* exist in an open-access appendix |
+
+`SACJHE`'s remaining question is **categorical, not evidential, and it is rich's
+to answer**: does a verbatim author-written SCRIPT of a TV-news video count as
+condition text? The appendix-ruling precedents (`LOGVPZ`, `X08IVC`) are studies
+where respondents **read** text, so reprinting it reprints the actual stimulus.
+Here respondents watched a produced, acted, scored news segment, and the script
+is the words spoken in it — without imagery, tone, pacing or chyron. Nothing in
+`CLAUDE.md`, `CONVENTIONS.md` or the ledger settles it.
+
+Two corrections to the record while we are here. §5a said `SACJHE`'s 2,028 was a
+three-country total; the deposited file actually holds the **1,848**-respondent
+main experiment, and 2,028 adds a 180-person pilot whose raw data was never
+deposited — so the figure in the table was wrong about *which* study it counted,
+not merely about its scope. And §5a said the deposit ships "no transcript", which
+is true of the deposit and irrelevant to the decision, since the transcript is in
+the paper.
+
+All three now hold rows in `uk_dataverse_provenance.json` with a `status` and a
+`status_reason`. `tests/test_uk_provenance.py` requires both, and — the point of
+the new completeness test — requires a row to exist at all for every deposit code
+§5a names, because the other tests iterate the catalogue and a catalogue cannot
+report what it omits.
+
+**`35M5CV` is six studies, and we have built two (2026-10-05).** The table row
+above says "SIX bundled sub-studies" and the deposit was then marked built once
+`lodger` and `bbc` were done. A screen of the other four:
+
+| Sub-study | File | Rows | Verdict |
+|---|---|---|---|
+| `lodger` | `lodger-data-raw.sav` | 1,669 resp → 8,345 | **built** |
+| `bbc` | `bbc-data-raw.sav` | 1,635 resp → 8,175 | **built** |
+| `sky` | `sky-data.sav` | **3,481** | **BUILDABLE — split ballot, see below** |
+| `tracker` | `tracker-data.sav` | 15,341 | no assignment column found; likely the tracker series, not an experiment |
+| `yougov-brexit-id` | `yougov-data-brexit-id.sav` | 1,678 | no assignment column; looks like `sky`'s two halves fielded as separate surveys, which is not random assignment |
+| `yougov-party-id` | `yougov-data-party-id.sav` | 1,648 | as above |
+
+`sky` is a genuine split ballot: `Split` divides 1,779 / 1,702 and partitions
+every row exactly once, and **36 columns are answered by one split and zero by
+the other**. Both halves ask the identical social-distance items — *"Happy if
+child married a …"*, *"Happy to talk politics with …"* — about **Brexit identity**
+(Remainer / Leaver) for Split 1 and **party identity** (Labour / Conservative)
+for Split 2. That is the paper's own central comparison, randomised, and the
+schema already exists: `witness_var` + `not_asked_code`, built for `QQM5MC`,
+which is the same shape. The one gap is that **no questionnaire ships for `sky`**
+(only `bbc-script.docx` and `lodger-script.docx`), so the condition text needs
+the paper under the appendix ruling — the access test has not been run yet.
 
 **Great Britain, not the UK.** All three YouGov-fielded deposits checked against
 data (`QQM5MC`, `6MRVOM`, `EFXNLX`) have respondents only in regions 1-11 — zero
@@ -425,13 +498,44 @@ samples, occasional experimental modules); GESIS Data Archive.
 registration + EUL, no redistribute · **controlled** (admin data, ADR UK) = not
 usable here.*
 
-**Harvest finding (2026-09-25):** the open Harvard Dataverse pool is **~tapped**
-for UK experiments (~13 total: §5a's 9 + 4 new in `uk_dataverse_candidates.csv`).
-Topic-only search drowns in the US-dominated corpus (no country filter); UK
-experiments cluster in the UK poli-sci community, already swept by author. Open
-*volume* would need OSF-beyond-TESS (not API-searchable) or journal supplements.
-The real volume is the **safeguarded UKDS** sources above — start with the
-Innovation Panel.
+**Harvest finding (2026-09-25), SUPERSEDED — see the correction below.** The
+claim was: the open Harvard Dataverse pool is **~tapped** for UK experiments
+(~13 total: §5a's 9 + 4 new in `uk_dataverse_candidates.csv`). Topic-only search
+drowns in the US-dominated corpus (no country filter); UK experiments cluster in
+the UK poli-sci community, already swept by author. Open *volume* would need
+OSF-beyond-TESS (not API-searchable) or journal supplements. The real volume is
+the **safeguarded UKDS** sources above — start with the Innovation Panel.
+
+**Correction (2026-10-05).** The "~tapped" claim above contradicted §5a's own
+closing line, written nine days later: *"Search was **not exhaustive** — more
+remain on both Dataverse and UKDS."* Two statements in one document, pointing
+opposite ways, and the older and more comfortable one is the one that got quoted
+in planning. **§5a is the authority: the pool is not tapped.**
+
+Two concrete reasons it is not, both found on 5 October:
+
+1. **"Tapped" was measured at DEPOSIT level, never at EXPERIMENT level.**
+   `35M5CV` was marked built after two of its **six** bundled sub-studies were
+   done. A screen of the remaining four found `sky-data.sav` — 3,481
+   respondents, a clean 1,779/1,702 `Split`, and 36 split-exclusive columns
+   asking the same social-distance items about **Brexit identity** (Split 1) or
+   **party identity** (Split 2). That is a genuine split-ballot experiment, it
+   is the paper's own central comparison, and the schema for it already exists
+   (`witness_var` + `not_asked_code`, built for `QQM5MC`). Nobody looked for a
+   seventh experiment inside a deposit already marked finished.
+2. **Three CC0 deposits were marked "no instrument" and then nothing happened.**
+   `PZB01G`, `RJTVG8` and `SACJHE` sat in §5a's table with no status, absent
+   from `uk_dataverse_provenance.json` entirely. "No instrument in the deposit"
+   is not a reason to drop anything — the appendix ruling makes an author-written
+   table or appendix an acceptable primary source, which is why `LOGVPZ` is
+   built from its paper's Table 4. The real test is whether the authors' own
+   wording is REACHABLE, and `TLT65Z` was dropped on exactly that test (AJPS
+   paywall). That test was never applied to these three.
+
+**The generalisable lesson**, since this is the second time a planning table has
+aged into an assumption (the first is ledger 106-113): a harvest finding should
+record *what was searched* and *at what grain*, not just its conclusion. "Tapped"
+with no stated grain cannot be checked, and so it survives being wrong.
 
 ---
 

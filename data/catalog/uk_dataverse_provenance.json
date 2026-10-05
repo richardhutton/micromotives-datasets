@@ -519,6 +519,308 @@
     "status": "built",
     "title": "Citizens from 13 countries share similar preferences for COVID-19 vaccine allocation priorities"
   },
+  "POMIFD": {
+    "authors": "Blumenau, Jack E; Lauderdale, Benjamin E",
+    "description": "Which types of political rhetoric are most persuasive? Politicians make arguments that share common rhetorical elements, including metaphor, ad hominem attacks, appeals to expertise, moral appeals, and many others.  However, political arguments are also highly multidimensional, making it difficult to assess the relative persuasive power of these elements.  We report on a novel experimental design which assesses the relative persuasiveness of a large number of arguments that deploy a set of rhetorical elements to argue for and against proposals across a range of UK political issues.  We find modest differences in the average effectiveness of rhetorical elements shared by many arguments, but also large variation in the persuasiveness of arguments of the same rhetorical type across issues. In addition to revealing that some argument-types are more effective than others in shaping public opinion, these results have important implications for the interpretation of survey-experimental studies in the field of political communication.",
+    "doi": "10.7910/DVN/POMIFD",
+    "files": [
+      {
+        "bytes": 23857,
+        "name": "01_experiment_1.R"
+      },
+      {
+        "bytes": 7956,
+        "name": "02_experiment_2.R"
+      },
+      {
+        "bytes": 580987,
+        "name": "10_Renewing_Trident.csv"
+      },
+      {
+        "bytes": 512839,
+        "name": "11_Spending_0.7%_of_GDP_on_overseas_aid.csv"
+      },
+      {
+        "bytes": 514837,
+        "name": "12_Sugar_tax_in_the_UK.csv"
+      },
+      {
+        "bytes": 547669,
+        "name": "1_Building_a_third_runway_at_Heathrow.csv"
+      },
+      {
+        "bytes": 540433,
+        "name": "2_Closing_large_retail_stores_on_Boxing_Day.csv"
+      },
+      {
+        "bytes": 618733,
+        "name": "3_Extending_the_Right_to_Buy.csv"
+      },
+      {
+        "bytes": 607339,
+        "name": "4_Extension_of_surveillance_powers_in_the_UK.csv"
+      },
+      {
+        "bytes": 487297,
+        "name": "5_Fracking_in_the_UK.csv"
+      },
+      {
+        "bytes": 603721,
+        "name": "6_Nationalisation_of_the_railways_in_the_UK.csv"
+      },
+      {
+        "bytes": 669709,
+        "name": "7_Quotas_for_women_on_corporate_boards.csv"
+      },
+      {
+        "bytes": 558739,
+        "name": "8_Reducing_the_legal_restrictions_on_cannabis_use.csv"
+      },
+      {
+        "bytes": 592705,
+        "name": "9_Reducing_university_tuition_fees.csv"
+      },
+      {
+        "bytes": 31490,
+        "name": "Boxing Day.csv"
+      },
+      {
+        "bytes": 33247,
+        "name": "Cannabis.csv"
+      },
+      {
+        "bytes": 147914,
+        "name": "Codebook.pdf"
+      },
+      {
+        "bytes": 28951,
+        "name": "Fracking.csv"
+      },
+      {
+        "bytes": 31728,
+        "name": "Heathrow.csv"
+      },
+      {
+        "bytes": 37199,
+        "name": "Nationalising the railways.csv"
+      },
+      {
+        "bytes": 30947,
+        "name": "Overseas aid.csv"
+      },
+      {
+        "bytes": 37391,
+        "name": "Quotas for women.csv"
+      },
+      {
+        "bytes": 6277,
+        "name": "README.txt"
+      },
+      {
+        "bytes": 35271,
+        "name": "Reducing tuition fees.csv"
+      },
+      {
+        "bytes": 33067,
+        "name": "Renewing Trident.csv"
+      },
+      {
+        "bytes": 35943,
+        "name": "Right to Buy.csv"
+      },
+      {
+        "bytes": 29015,
+        "name": "Sugar tax.csv"
+      },
+      {
+        "bytes": 36307,
+        "name": "Surveillance powers.csv"
+      },
+      {
+        "bytes": 3446445,
+        "name": "argument_fixed_effect.Rdata"
+      },
+      {
+        "bytes": 158548,
+        "name": "canonical_sentences_v2.tab"
+      },
+      {
+        "bytes": 2834,
+        "name": "correlation.R"
+      },
+      {
+        "bytes": 2814,
+        "name": "correlation_arbitrary.R"
+      },
+      {
+        "bytes": 2548,
+        "name": "correlation_element_policy.R"
+      },
+      {
+        "bytes": 3204,
+        "name": "elements.tab"
+      },
+      {
+        "bytes": 800424,
+        "name": "experiment_one.tab"
+      },
+      {
+        "bytes": 1700896,
+        "name": "experiment_two.sav"
+      },
+      {
+        "bytes": 252204,
+        "name": "for_against_screen.png"
+      },
+      {
+        "bytes": 5893,
+        "name": "header.tex"
+      },
+      {
+        "bytes": 5700,
+        "name": "header_si.tex"
+      },
+      {
+        "bytes": 6904,
+        "name": "issue_prompts.tab"
+      },
+      {
+        "bytes": 2423,
+        "name": "linear.R"
+      },
+      {
+        "bytes": 55094,
+        "name": "liwc_dictionaries.Rdata"
+      },
+      {
+        "bytes": 78083,
+        "name": "manuscript.Rmd"
+      },
+      {
+        "bytes": 2439,
+        "name": "ordered.R"
+      },
+      {
+        "bytes": 28304340,
+        "name": "posterior_correlation.Rdata"
+      },
+      {
+        "bytes": 15397232,
+        "name": "posterior_correlation_element_policy.Rdata"
+      },
+      {
+        "bytes": 80181421,
+        "name": "posterior_covariate_correlation_age.Rdata"
+      },
+      {
+        "bytes": 54055787,
+        "name": "posterior_covariate_correlation_attention.Rdata"
+      },
+      {
+        "bytes": 54090227,
+        "name": "posterior_covariate_correlation_educ.Rdata"
+      },
+      {
+        "bytes": 80133501,
+        "name": "posterior_covariate_correlation_euvote.Rdata"
+      },
+      {
+        "bytes": 54091470,
+        "name": "posterior_covariate_correlation_gender.Rdata"
+      },
+      {
+        "bytes": 80175931,
+        "name": "posterior_covariate_correlation_vote17.Rdata"
+      },
+      {
+        "bytes": 33425940,
+        "name": "posterior_linear.Rdata"
+      },
+      {
+        "bytes": 22283374,
+        "name": "posterior_ordered.Rdata"
+      },
+      {
+        "bytes": 29639459,
+        "name": "posterior_simple.Rdata"
+      },
+      {
+        "bytes": 29981657,
+        "name": "posterior_simple_control.Rdata"
+      },
+      {
+        "bytes": 267977,
+        "name": "prompt_2.png"
+      },
+      {
+        "bytes": 30894,
+        "name": "rhetoric-experiment.bib"
+      },
+      {
+        "bytes": 2776,
+        "name": "simple.R"
+      },
+      {
+        "bytes": 3485,
+        "name": "simple_controls.R"
+      },
+      {
+        "bytes": 45900,
+        "name": "supplemental_information.Rmd"
+      }
+    ],
+    "licence": null,
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": "Blumenau, Jack E., and Benjamin E. Lauderdale. [date]. \u201cThe Variable Persuasiveness of Political Rhetoric.\u201d \n<i>American Journal of Political Science</i> Forthcoming. <a href=\"http://ajps.org/\" target=\"_blank\">http://ajps.org/</a>",
+    "status": "blocked",
+    "status_reason": "licence is null on the Dataverse deposit \u2014 re-confirmed live 5 Oct 2026 \u2014 so there is no grant of redistribution rights and none may be assumed. This is the best material of any UK deposit (336 argument strings ship verbatim as 12 per-topic CSVs, all UK policy questions; every pair a respondent saw is recoverable by join; richest demographics in the UK set). termsOfUse says 'You may wish to communicate with the Contact(s) specified before use' \u2014 an invitation, not a prohibition. An email to UCL is outstanding; if the licence clears this goes to the top of the queue.",
+    "title": "Replication Data for: The Variable Persuasiveness of Political Rhetoric"
+  },
+  "PZB01G": {
+    "authors": "Goodwin, Matthew; Hix, Simon; Pickup, Mark",
+    "description": "What can the case of the 2016 referendum on UK membership of the European Union (EU) teach us about message framing effects and arguments that persuade citizens whether or not to support  the EU? In this article, we report findings from an innovative online survey experiment based on a two-wave panel design. Our findings show that despite the expectation that campaign effects are small for high salience issues \u2013 such as Brexit \u2013 the potential for campaign effects were high for the pro-EU frames. This suggests that within an asymmetrical information environment \u2013 where the arguments for one side of an issue (anti-EU) are \u201cpriced in\u201d, while arguments for the other side (pro-EU) have been understated \u2013 the potential for campaign effects in a single direction are substantial. To the extent that this environment is reflected in other referendum campaigns, the potential effect of pro-EU frames may be substantial.",
+    "doi": "10.7910/DVN/PZB01G",
+    "files": [
+      {
+        "bytes": 5075709,
+        "name": "BES data analysis_Jan2016.tab"
+      },
+      {
+        "bytes": 1437,
+        "name": "Readme.txt"
+      },
+      {
+        "bytes": 38918,
+        "name": "Replication file.do"
+      },
+      {
+        "bytes": 422039,
+        "name": "Sankey screenshots.docx"
+      },
+      {
+        "bytes": 8703,
+        "name": "Transition figure.dta"
+      },
+      {
+        "bytes": 5151537,
+        "name": "Vignette data.dta"
+      },
+      {
+        "bytes": 689269,
+        "name": "Wave 1 data.dta"
+      },
+      {
+        "bytes": 7839,
+        "name": "transition probabilities.do"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": null,
+    "status": "prepared",
+    "status_reason": "BUILDABLE \u2014 paper-access test passed 5 Oct 2026, and the \u00a75a note that the deposit ships no questionnaire was true but not decisive. Goodwin, Hix & Pickup, BJPolS 50(2) 2020, doi:10.1017/S0007123417000667, is genuinely OPEN ACCESS under CC-BY (verified by fetching the article PDF, not by reading a journal policy), and its Cambridge Core supplementary appendix is headed 'I. Text of the vignettes:' and prints all SIX frame paragraphs verbatim. Design: 2x2x2 full factorial (cultural x economic x political, each pro/anti) plus a 1/9 control shown no vignette. Wave 1 N=6,074; vignette wave N=5,333 across nine cells of 551-652, matching published Table A6 exactly. Assignment is explicit in the data (cultvig/econvig/politicalvig, split/control). Persona is the richest of any UK deposit after POMIFD. The deposit's own Vignette data.dta carries the frame text in culttext/econtext/politicaltext, which CORROBORATES the appendix wording but is truncated at Stata's str244 limit, so the published appendix remains the authority for complete text. Riskiest open judgement: no primary source attests how the three paragraphs were joined on screen, so the join is a 'cannot determine from source' to document, not to invent.",
+    "title": "Replication Data for: For and Against Brexit: A Survey Experiment of the Impact of Campaign Effects on Public Attitudes toward EU Membership"
+  },
   "QQM5MC": {
     "authors": "Sorace, Hobolt",
     "description": "Partisanship is a powerful driver of economic perceptions. Yet we know less about whether other political divisions may lead to similar evaluative biases. In this article, we explore how the salient divide between `Remainers\u2019 and `Leavers\u2019 in the UK in the aftermath of the Brexit referendum has given rise to biased economic perceptions. In line with the cognitive dissonance framework, we argue that salient non-partisan divisions can change economic perceptions by triggering processes of self- and in-group justification. Using both nationally-representative observational and experimental survey data, we demonstrate that the perceptions of the economy are shaped by the Brexit divide, and that these biases are exacerbated when respondents are reminded of Brexit. These findings indicate that perceptual biases are not always rooted in partisanship, but can be triggered by other political divisions.",
@@ -551,6 +853,72 @@
     },
     "status": "built",
     "title": "A Tale of Two Peoples: Motivated Reasoning after the Brexit Vote"
+  },
+  "RJTVG8": {
+    "authors": "Turnbull-Dugarte, Stuart",
+    "description": "R script for replication of \"Support for digitising the ballot box: a systematic review of i-voting pilots and a conjoint experiment\" published in Electoral Studies.",
+    "doi": "10.7910/DVN/RJTVG8",
+    "files": [
+      {
+        "bytes": 27259,
+        "name": "appendix.R"
+      },
+      {
+        "bytes": 3357569,
+        "name": "evoting_replicationfile.tab"
+      },
+      {
+        "bytes": 20119,
+        "name": "replication_electoralstudies.R"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": "Turnbull-Dugarte, S.J. & Devine, D. (2023) \"Support for digitising the ballot box: a systematic review of i-voting pilots and a conjoint experiment\" Electoral Studies",
+    "status": "prepared",
+    "status_reason": "BUILDABLE \u2014 paper-access test passed 5 Oct 2026, and BOTH of the doubts recorded in \u00a75a are resolved. UK sample CONFIRMED from the paper's own text ('a representative sample of online survey respondents in the UK in May 2022', quota-sampled on the adult British population) and cross-checked against the data: 1,200 respondents, 12,000 profile rows, 5 tasks x 2 profiles, so 6,000 forced-choice pairs. The systematic review bundled in the same deposit is desk research on 26 pilots across 16 polities and is a separate component of the paper, not the experiment. Elsevier's version is paywalled, but the author-accepted manuscript is open at eprints.soton.ac.uk/481545/1/Evoting_accepted.pdf and its Table A.3 prints all TEN attributes with full verbatim level text and italicised baselines. Assignment ships as clean structured data (per-attribute *_num/label pairs). Three outcomes per task: the forced binary choice, plus two 0-6 continuous ratings which need Outcome.numeric, same gap as 6MRVOM. Persona lacks AGE and REGION \u2014 both appear in the paper's own Table A.2 but neither is a column in the deposited file (verified against the full 70-column header), so the persona is simply thinner and nothing is reconstructed. Row-order trap: looked and found nothing \u2014 no order column in 70 columns, no order/rand/shuffle match in 1,130 lines of replication R \u2014 which is NOT the same as positive evidence of a fixed layout, and the paper never states the design either way. Riskiest judgement: 'Online platform controlled by' is ONE 6-level randomised attribute; the authors decompose it into two derived variables for plotting only, and splitting it in the recipe would fabricate a factorial structure no respondent saw.",
+    "title": "Replication Data for: \"Support for digitising the ballot box: a systematic review of i-voting pilots and a conjoint experiment\""
+  },
+  "SACJHE": {
+    "authors": "Shandler, Ryan; Michael L. Gross; Sophia Backhaus; Daphna Canetti",
+    "description": "Does exposure to cyber terrorism prompt calls for retaliatory military strikes? By what psychological mechanism does it do so? Through a series of controlled, randomized experiments, we exposed respondents (n = 2,028) to television news reports depicting cyber and conventional terror attacks against critical infrastructures in the United States, United Kingdom and Israel. Findings indicate that only lethal cyber terrorism triggers strong support for retaliation. Findings also confirm that anger bridges exposure to cyber terrorism and retaliation, rather than psychological mechanisms such as threat perception or anxiety as other studies propose. These findings extend to the cyber realm a recent trend that views anger as a primary mechanism linking exposure to terrorism with militant preferences. With cyber terrorism a mounting international concern, this study demonstrates how exposure to cyber terrorism can generate strong public support for retaliatory policies \u2013 depending on the lethality of the terror attack.",
+    "doi": "10.7910/DVN/SACJHE",
+    "files": [
+      {
+        "bytes": 93090,
+        "name": "Cyber Terrorism Study - Codebook.pdf"
+      },
+      {
+        "bytes": 371358,
+        "name": "Cyber Terrorism Study - Data File.tab"
+      },
+      {
+        "bytes": 1595643,
+        "name": "Cyber Terrorism Study - Output File.htm"
+      },
+      {
+        "bytes": 124830,
+        "name": "Cyber Terrorism Study - Output File.spv"
+      },
+      {
+        "bytes": 2198,
+        "name": "Cyber Terrorism Study - R Code.R"
+      },
+      {
+        "bytes": 8360,
+        "name": "Cyber Terrorism Study - Syntax File.sps"
+      },
+      {
+        "bytes": 1180,
+        "name": "ReadMe.txt"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": null,
+    "status": "prepared",
+    "status_reason": "AWAITING A SCOPE RULING FROM RICH \u2014 paper-access test run 5 Oct 2026, and both of \u00a75a's factual objections turned out to be WRONG. (1) UK is separable and ample: CountryCode==2 gives n=597, balanced 120/119/118/120/120 across the five conditions, matching the published Table 3 exactly. The '2,028 is a three-country total' note was itself off \u2014 the deposited file holds the 1,848-respondent main experiment; 2,028 adds a 180-person pilot whose raw data is not deposited. (2) There IS a verbatim stimulus script: the paper (BJPS 52(2), doi:10.1017/S0007123420000812) is open access CC-BY, and its Online Appendix B prints the full spoken narration for both scenarios with the cyber/conventional minimal pair marked inline. So this is not a TLT65Z-style dead end. THE OPEN QUESTION IS CATEGORICAL, not evidential: does a verbatim author-written SCRIPT of a TV-news video count as condition text? LOGVPZ and X08IVC, the appendix-ruling precedents, are studies where respondents READ text, so reprinting it reprints the actual stimulus. Here respondents watched a produced, acted, scored news segment; the script is the words spoken in it, without imagery, tone, pacing or chyron. No ruling in CLAUDE.md, CONVENTIONS.md or the ledger settles it. If YES: buildable, 597 UK rows x 6 retaliation items, and the riskiest judgement is the UK proper-noun substitution \u2014 Appendix B states UK clips used local names ('National Rail' confirmed from a screenshot chyron) but never gives the UK city/hospital substitute for the US 'Cambridge', so using US place names would misstate what UK respondents saw. If NO: drop, reason 'stimulus was a produced TV news video; only the spoken script is recoverable, and a script describes the stimulus rather than being it.' No video is deposited or linked anywhere.",
+    "title": "Replication Data for: Cyber Terrorism and Public Support for Retaliation - A Multi-Country Survey Experiment"
   },
   "TLT65Z": {
     "authors": "Blinder, Ford, Ivarsflaten",

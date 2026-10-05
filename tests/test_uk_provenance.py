@@ -6,16 +6,23 @@ catalogue in the project that is maintained by hand, which is why it drifted:
 three of its nine deposits still said `"prepared"` after they had been built and
 committed, found by a checker reading it rather than by anything that runs.
 
-A hand-maintained status field will always drift. So the two fields that carry
+A hand-maintained status field will always drift. So the three things that carry
 consequences are pinned here against things that cannot be forgotten:
 
 - **`status`** against the tracked recipes. A study is "built" exactly when a
   recipe exists for it. Deliberately NOT checked against `data/processed/`,
   which is gitignored — a test that passes only on a machine that happens to
   have built everything is not a test.
-- **`licence`** against the literal string `CC0 1.0`. Every UK row we ship rests
-  on that string being right for every deposit, and `embed.py`'s `CLEARED` gate
-  keys on the exact spelling.
+- **`licence`** against the literal string `CC0 1.0`, for anything we might
+  actually use. Every UK row we ship rests on that string being right, and
+  `embed.py`'s `CLEARED` gate keys on the exact spelling.
+- **Completeness against `docs/SocSci-UK_MASTER.md` §5a**, which is the second
+  failure and the worse one. The drift above was a wrong value; this is a missing
+  row. `PZB01G`, `RJTVG8`, `SACJHE` and `POMIFD` were listed in §5a's table and
+  absent from this file entirely — so they had no status, no reason, and nothing
+  checked them, including the tests above, which can only inspect rows that
+  exist. A test that iterates a catalogue cannot notice what is not in it, so the
+  section that names the deposits is now the authority on which rows must be here.
 
 The checker that found the drift also found no data defect from it, which is the
 point worth keeping: this file is read by people deciding what may be published,
@@ -25,13 +32,24 @@ not by the build, so its errors are invisible until someone acts on one.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 PROVENANCE = REPO / "data" / "catalog" / "uk_dataverse_provenance.json"
+MASTER = REPO / "docs" / "SocSci-UK_MASTER.md"
 RECIPES = REPO / "recipes"
 
-STATUSES = {"built", "prepared", "dropped"}
+STATUSES = {
+    "built": "a recipe exists and the rows are in the corpus",
+    "prepared": "assessed, buildable or still under test, not yet built",
+    "dropped": "will not be built, and `status_reason` says why",
+    "blocked": "cannot be built for a reason outside our control — a licence, "
+    "chiefly — rather than a judgement that it is not worth building",
+}
+
+# A Harvard Dataverse deposit code as §5a writes it: six uppercase alphanumerics.
+DEPOSIT_CODE = re.compile(r"[A-Z0-9]{6}")
 
 
 def _catalogue() -> dict[str, dict]:
@@ -50,6 +68,49 @@ def _recipes_for(deposit: str) -> list[str]:
         p.name
         for p in RECIPES.glob("*.yaml")
         if p.stem == deposit or p.stem.startswith(f"{deposit}_")
+    )
+
+
+def _section_5a() -> str:
+    text = MASTER.read_text()
+    match = re.search(r"^### 5a\..*?(?=^###? 5b\.)", text, re.M | re.S)
+    assert match, "could not find section 5a in docs/SocSci-UK_MASTER.md"
+    return match.group(0)
+
+
+def _deposits_named_in_5a() -> set[str]:
+    """Deposit codes appearing in any table cell of §5a.
+
+    Scoped to table rows rather than the whole section so that prose mentioning
+    a code in passing does not create a phantom obligation — it is the TABLES
+    that enumerate the deposits, and a code in a table is a claim that the
+    deposit is part of the UK universe.
+    """
+    codes: set[str] = set()
+    for line in _section_5a().splitlines():
+        if not line.startswith("|"):
+            continue
+        for cell in (c.strip().strip("`") for c in line.split("|")):
+            if DEPOSIT_CODE.fullmatch(cell):
+                codes.add(cell)
+    assert len(codes) >= 9, f"only found {len(codes)} deposit codes in §5a; the parse has broken"
+    return codes
+
+
+def test_every_deposit_in_the_master_doc_has_a_catalogue_row() -> None:
+    """The missing-row failure, which no other test in this file can see.
+
+    Four deposits sat in §5a's table with no row here at all, and so had no
+    status, no reason, and no test touching them — the rest of this file
+    iterates the catalogue, and a catalogue cannot report what it omits. §5a is
+    the authority on WHICH deposits exist; this file is the authority on what is
+    true of each. Adding a deposit to the doc without a row here now fails.
+    """
+    missing = sorted(_deposits_named_in_5a() - set(_catalogue()))
+    assert not missing, (
+        f"{len(missing)} deposit(s) named in §5a of docs/SocSci-UK_MASTER.md have no row in "
+        f"{PROVENANCE.name}: {missing}. A deposit with no row has no status and no reason, "
+        f"so nothing decides anything about it and no test can see it."
     )
 
 
@@ -88,18 +149,46 @@ def test_anything_not_built_says_why() -> None:
             assert reason, f"{deposit} is {record['status']!r} with no status_reason"
 
 
-def test_every_deposit_is_cc0() -> None:
-    """The premise the whole UK layer rests on, spelled exactly as `embed.py` expects.
+def test_anything_we_might_build_is_cc0() -> None:
+    """The premise the UK layer rests on, spelled exactly as `embed.py` expects.
 
-    If a tenth deposit is ever added under different terms, this test is where
-    that has to be confronted — rather than in a recipe that quietly copies
-    whatever the neighbouring recipe said.
+    Scoped to `built` and `prepared` deliberately. `POMIFD` carries a literal
+    `null` licence — the Dataverse API states no licence at all — and that is a
+    fact to keep rather than a value to correct, so it is `blocked` instead.
+    Requiring CC0 of every row would have forced someone to write *something*
+    into that field, and the honest value is nothing.
+
+    What this test therefore enforces is the implication that matters: a deposit
+    is only allowed into the buildable pool if its licence is the exact string
+    the recipes and `embed.py`'s CLEARED gate key on. Anything else has to be
+    `blocked` or `dropped`, which means someone has to say so in writing.
     """
     for deposit, record in _catalogue().items():
-        assert record.get("licence") == "CC0 1.0", (
-            f"{deposit} records licence {record.get('licence')!r}; every UK deposit here is "
-            f"CC0 1.0, and both the recipes and embed.py's CLEARED gate key on that spelling"
-        )
+        if record["status"] in {"built", "prepared"}:
+            assert record.get("licence") == "CC0 1.0", (
+                f"{deposit} is {record['status']!r} but records licence "
+                f"{record.get('licence')!r}. Only CC0 1.0 may be built or queued; if the "
+                f"licence is anything else — including absent — the status is 'blocked' "
+                f"and status_reason says what would unblock it"
+            )
+
+
+def test_a_deposit_without_cc0_is_blocked_or_dropped_and_never_silently_queued() -> None:
+    """The same rule from the other side, which is where the original error was.
+
+    §5a's heading said "(all CC0)" for three days after an audit found `POMIFD`
+    was not — a licence claim in a heading, with the correction four lines below
+    it. The equivalent error in this file would be a non-CC0 deposit sitting at
+    `prepared`, looking queued, and reaching a builder who trusted the status
+    instead of re-reading the licence.
+    """
+    for deposit, record in _catalogue().items():
+        if record.get("licence") != "CC0 1.0":
+            assert record["status"] in {"blocked", "dropped"}, (
+                f"{deposit} has licence {record.get('licence')!r} and status "
+                f"{record['status']!r} — a deposit we have no redistribution grant for "
+                f"must not sit in a status that reads as queued"
+            )
 
 
 def test_every_deposit_carries_a_doi_and_a_description() -> None:
