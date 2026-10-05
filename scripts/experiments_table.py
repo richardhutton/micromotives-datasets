@@ -304,18 +304,22 @@ def render(experiments: list[Experiment]) -> str:
     # for putting it at the top than any reasoning about structure.
     add("## All experiments, at a glance")
     add("")
-    add("| ID | Title | Rows |")
-    add("|---|---|---|")
+    add("| ID | Title | Source | Reference | Rows |")
+    add("|---|---|---|---|---|")
     for e in sorted(experiments, key=lambda x: (not x.is_uk, -(x.rows or 0))):
-        title = e.title if len(e.title) <= 80 else e.title[:77] + "…"
-        layer = "" if e.is_uk else " _(US)_"
+        title = e.title if len(e.title) <= 70 else e.title[:67] + "…"
+        # The source is where the data came FROM, which is also what decides
+        # whether it may be redistributed — so it earns a column rather than the
+        # parenthetical "(US)" it carried before, which told a reader the country
+        # and left them to infer the archive and the licence from it.
+        where = "Harvard Dataverse" if e.is_uk else "TESS (OSF)"
         flag = "" if e.publishable else " ⚠"
-        add(f"| `{e.recipe}`{flag} | {title}{layer} | {_num(e.rows)} |")
+        add(f"| `{e.recipe}`{flag} | {title} | {where} | `{e.reference or '—'}` | {_num(e.rows)} |")
     add("")
     add(
-        "⚠ = usable for research but **not** redistributable. UK rows without the mark "
-        "are CC0; everything in the US transfer layer is unmarked only because the whole "
-        "layer is non-redistributable, as the table above says."
+        "⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows "
+        "without the mark are CC0 and may be published; the TESS layer is unmarked only "
+        "because none of it is redistributable, as the table above says."
     )
     add("")
     add("---")

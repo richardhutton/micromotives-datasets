@@ -15,52 +15,52 @@
 
 ## All experiments, at a glance
 
-| ID | Title | Rows |
-|---|---|---|
-| `EFXNLX` | Policy Preferences and Policy Legitimacy After Referendums: Evidence from the… | 49,395 |
-| `POMIFD` ⚠ | Replication Data for: The Variable Persuasiveness of Political Rhetoric | 13,268 |
-| `35M5CV_sky` | Divided by the Vote: Affective Polarization in the Wake of the Brexit Referen… | 12,055 |
-| `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 vaccine all… | 9,320 |
-| `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brexit Referen… | 8,345 |
-| `35M5CV_bbc` | Divided by the Vote: Affective Polarization in the Wake of the Brexit Referen… | 8,175 |
-| `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | 8,075 |
-| `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | 7,506 |
-| `6MRVOM_brexit_scenario` | Pricing Immigration | 6,526 |
-| `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote | 6,345 |
-| `RJTVG8` | Support for digitising the ballot box: a systematic review of i-voting pilots… | 6,000 |
-| `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campaign Effects… | 5,333 |
-| `6MRVOM_eu_share` | Pricing Immigration | 2,397 |
-| `X08IVC` | Brexit as an Identity: Political Identities and Policy Norms | 1,124 |
-| `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TESS3 150) _(US)_ | 33,932 |
-| `es4xw` ⚠ | Perceptions of Diversity Across Groups _(US)_ | 32,228 |
-| `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms _(US)_ | 20,373 |
-| `b87sm` ⚠ | How to Increase the Acceptance of Mobile App and Sensor Data Collection? _(US)_ | 19,282 |
-| `8ctbk` ⚠ | Childbearing Preferences in the Face of Work, Family, and Financial Constraints _(US)_ | 17,464 |
-| `cug34_B01_B09` ⚠ | Public Perceptions of Money in Families _(US)_ | 15,091 |
-| `z358z` ⚠ | Randomized Drug Trials without Consent? The Public's Perspective _(US)_ | 14,702 |
-| `ye2ej` ⚠ | The Wages of Parenthood: At the Intersection of Sexual Orientation and Child … _(US)_ | 12,971 |
-| `yv2ta_parental_leave` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material and Cultu… _(US)_ | 12,139 |
-| `yv2ta_flexible_scheduling` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material and Cultu… _(US)_ | 12,131 |
-| `sh4px` ⚠ | Self-Affirmation and Affect: Effects on Implementation Intentions _(US)_ | 11,532 |
-| `zaqkm` ⚠ | Causal Attributions, Treatability, and Mental Illness Stigma _(US)_ | 9,528 |
-| `a42yg` ⚠ | Conflict between curative and palliative goals among health care personnel: E… _(US)_ | 8,022 |
-| `py9q3_vignette1` ⚠ | Attitudes toward the Employment of Mothers and Fathers _(US)_ | 6,667 |
-| `py9q3_vignette3` ⚠ | Attitudes toward the Employment of Mothers and Fathers _(US)_ | 6,659 |
-| `5hqan` ⚠ | Gender Identity and Diversity _(US)_ | 6,411 |
-| `9263n` ⚠ | To Do, to Have, or to Share? Valuing Experiences and Material Possessions by … _(US)_ | 6,328 |
-| `a2nbf` ⚠ | An Experiment Testing Possible Question-Wording Effects on Key General Social… _(US)_ | 6,211 |
-| `9xw67_vignette` ⚠ | Blame and Bias in Trust in Public Policy Algorithms _(US)_ | 5,816 |
-| `py9q3_vignette2` ⚠ | Attitudes toward the Employment of Mothers and Fathers _(US)_ | 5,005 |
-| `sd7cf` ⚠ | Framing in Noisy Informational Environments _(US)_ | 4,124 |
-| `dh3nj` ⚠ | Public Perceptions of Prenatal Alcohol Consumption _(US)_ | 4,001 |
-| `a5v96_vignette1` ⚠ | What fosters patients' acceptance of Clinical Decision Support? (vignette 1: … _(US)_ | 3,621 |
-| `7jt2f` ⚠ | When Others' Disbelief Engenders Prejudice: Characterizing Anti-Atheist Preju… _(US)_ | 3,053 |
-| `zrwjp` ⚠ | The Barriers of Buying Happier Time _(US)_ | 2,532 |
-| `bf8p2` ⚠ | Does Misery Love Company? Exploration of a Strategic Social Comparison _(US)_ | 1,998 |
-| `c5r2f` ⚠ | Do Policy Defaults Communicate Choice-Relevant Information? _(US)_ | 1,091 |
-| `rpw4u_RO1` ⚠ | Cross-National Replication of Question Design Experiments (RO1: oil supply) _(US)_ | 1,023 |
+| ID | Title | Source | Reference | Rows |
+|---|---|---|---|---|
+| `EFXNLX` | Policy Preferences and Policy Legitimacy After Referendums: Evidenc… | Harvard Dataverse | `doi:10.7910/DVN/EFXNLX` | 49,395 |
+| `POMIFD` ⚠ | Replication Data for: The Variable Persuasiveness of Political Rhet… | Harvard Dataverse | `doi:10.7910/DVN/POMIFD` | 13,268 |
+| `35M5CV_sky` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 12,055 |
+| `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
+| `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,345 |
+| `35M5CV_bbc` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,175 |
+| `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
+| `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
+| `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
+| `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
+| `RJTVG8` | Support for digitising the ballot box: a systematic review of i-vot… | Harvard Dataverse | `doi:10.7910/DVN/RJTVG8` | 6,000 |
+| `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
+| `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
+| `X08IVC` | Brexit as an Identity: Political Identities and Policy Norms | Harvard Dataverse | `doi:10.7910/DVN/X08IVC` | 1,124 |
+| `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
+| `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
+| `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
+| `b87sm` ⚠ | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | TESS (OSF) | `osf.io/b87sm` | 19,282 |
+| `8ctbk` ⚠ | Childbearing Preferences in the Face of Work, Family, and Financial… | TESS (OSF) | `osf.io/8ctbk` | 17,464 |
+| `cug34_B01_B09` ⚠ | Public Perceptions of Money in Families | TESS (OSF) | `osf.io/cug34` | 15,091 |
+| `z358z` ⚠ | Randomized Drug Trials without Consent? The Public's Perspective | TESS (OSF) | `osf.io/z358z` | 14,702 |
+| `ye2ej` ⚠ | The Wages of Parenthood: At the Intersection of Sexual Orientation … | TESS (OSF) | `osf.io/ye2ej` | 12,971 |
+| `yv2ta_parental_leave` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material… | TESS (OSF) | `osf.io/yv2ta` | 12,139 |
+| `yv2ta_flexible_scheduling` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material… | TESS (OSF) | `osf.io/yv2ta` | 12,131 |
+| `sh4px` ⚠ | Self-Affirmation and Affect: Effects on Implementation Intentions | TESS (OSF) | `osf.io/sh4px` | 11,532 |
+| `zaqkm` ⚠ | Causal Attributions, Treatability, and Mental Illness Stigma | TESS (OSF) | `osf.io/zaqkm` | 9,528 |
+| `a42yg` ⚠ | Conflict between curative and palliative goals among health care pe… | TESS (OSF) | `osf.io/a42yg` | 8,022 |
+| `py9q3_vignette1` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 6,667 |
+| `py9q3_vignette3` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 6,659 |
+| `5hqan` ⚠ | Gender Identity and Diversity | TESS (OSF) | `osf.io/5hqan` | 6,411 |
+| `9263n` ⚠ | To Do, to Have, or to Share? Valuing Experiences and Material Posse… | TESS (OSF) | `osf.io/9263n` | 6,328 |
+| `a2nbf` ⚠ | An Experiment Testing Possible Question-Wording Effects on Key Gene… | TESS (OSF) | `osf.io/a2nbf` | 6,211 |
+| `9xw67_vignette` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 5,816 |
+| `py9q3_vignette2` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 5,005 |
+| `sd7cf` ⚠ | Framing in Noisy Informational Environments | TESS (OSF) | `osf.io/sd7cf` | 4,124 |
+| `dh3nj` ⚠ | Public Perceptions of Prenatal Alcohol Consumption | TESS (OSF) | `osf.io/dh3nj` | 4,001 |
+| `a5v96_vignette1` ⚠ | What fosters patients' acceptance of Clinical Decision Support? (vi… | TESS (OSF) | `osf.io/a5v96` | 3,621 |
+| `7jt2f` ⚠ | When Others' Disbelief Engenders Prejudice: Characterizing Anti-Ath… | TESS (OSF) | `osf.io/7jt2f` | 3,053 |
+| `zrwjp` ⚠ | The Barriers of Buying Happier Time | TESS (OSF) | `osf.io/zrwjp` | 2,532 |
+| `bf8p2` ⚠ | Does Misery Love Company? Exploration of a Strategic Social Comparison | TESS (OSF) | `osf.io/bf8p2` | 1,998 |
+| `c5r2f` ⚠ | Do Policy Defaults Communicate Choice-Relevant Information? | TESS (OSF) | `osf.io/c5r2f` | 1,091 |
+| `rpw4u_RO1` ⚠ | Cross-National Replication of Question Design Experiments (RO1: oil… | TESS (OSF) | `osf.io/rpw4u` | 1,023 |
 
-⚠ = usable for research but **not** redistributable. UK rows without the mark are CC0; everything in the US transfer layer is unmarked only because the whole layer is non-redistributable, as the table above says.
+⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows without the mark are CC0 and may be published; the TESS layer is unmarked only because none of it is redistributable, as the table above says.
 
 ---
 
