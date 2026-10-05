@@ -25,6 +25,7 @@ REPO = Path(__file__).resolve().parents[1]
 CATALOG = REPO / "data" / "catalog" / "tess_uk_foundation_sources.csv"
 SCREEN = REPO / "data" / "catalog" / "uk_transfer_screen.json"
 RECIPES = REPO / "recipes"
+PROVENANCE = REPO / "data" / "catalog" / "uk_dataverse_provenance.json"
 OUT = REPO / "docs" / "SKIPPED.md"
 
 # Why a source is not built, most decisive reason first — a source with no
@@ -95,11 +96,45 @@ def main() -> int:
         "",
     ]
     if elsewhere:
+        # Every UK Dataverse deposit was CC0 until POMIFD (licence null, usable only
+        # under the use_basis recorded in this same provenance file, never
+        # redistributable) -- the per-study licence is read here rather than
+        # asserted, so a future non-CC0 deposit lands on the right side of this
+        # sentence without anyone remembering to edit it (the same fix made to
+        # scripts/experiments_table.py, for the same reason).
+        provenance = json.loads(PROVENANCE.read_text()) if PROVENANCE.exists() else {}
+        cc0 = sorted(
+            c for c in elsewhere if str(provenance.get(c, {}).get("licence", "")).startswith("CC0")
+        )
+        restricted = sorted(c for c in elsewhere if c not in cc0)
+
+        def _state(items: list[str]) -> str:
+            return "states" if len(items) == 1 else "state"
+
+        def _are(items: list[str]) -> str:
+            return "is" if len(items) == 1 else "are"
+
+        republish_note = (
+            "The UK studies come from Harvard Dataverse rather than the TESS foundation set. "
+            + (
+                f"{len(cc0)} of them ({', '.join(f'`{c}`' for c in cc0)}) {_state(cc0)} a CC0 "
+                "licence and are the only material here that can be republished"
+                if cc0
+                else "None of them currently states a redistributable licence"
+            )
+            + (
+                f"; {len(restricted)} ({', '.join(f'`{c}`' for c in restricted)}) "
+                f"{_state(restricted)} no licence and {_are(restricted)} usable for research "
+                "only, under the basis recorded per-study in `uk_dataverse_provenance.json`'s "
+                "`use_basis`, never redistributed."
+                if restricted
+                else "."
+            )
+        )
         lines += [
             f"A further {len(elsewhere)} source(s) are built from OUTSIDE this catalogue, "
             f"and so are in neither number above: {', '.join(f'`{c}`' for c in elsewhere)}. "
-            "The UK studies come from Harvard Dataverse rather than the TESS foundation "
-            "set, and are the only material here that can be republished.",
+            f"{republish_note}",
             "",
         ]
     lines += [

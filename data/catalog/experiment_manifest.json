@@ -104,6 +104,12 @@
       "description": "Forced choice between two hypothetical UK internet-voting (i-voting) policies, differing on ten features — pre-registration, voting method, voting window, where trials succeeded, the pilot's effect on turnout and on fraud risk, who controls the platform, the cost to government, the proposing party and the endorsing body. The respondent judges a PROPOSED POLICY, not a person.",
       "design": "paired-profile conjoint, 10 attributes (one — platform — a single 6-level draw, not a 2x3 cross), 5 tasks per respondent",
       "verified_against": "the authors' own cregg::mm() marginal means, Table A.4 of the author-accepted manuscript — 51 estimates to within 0.0015"
+    },
+    "POMIFD": {
+      "category": "political preferences/policy",
+      "description": "Respondents see two of 336 political arguments (14 rhetorical elements x 12 policy issues x 2 positions, for/against) shown together, verbatim as extracted from Hansard debate transcripts, and say which they find more persuasive or that the two are about the same. The respondent judges which ARGUMENT about a policy is persuasive, not a person — closer to the 'policy' pole than the 'identity' pole, since nothing about Leave/Remain regard for other people is measured. Unlike every other UK Dataverse study in this corpus (all conjoints, where the condition is a table of attribute levels this project renders into prose), the condition text here is the fielded instrument's own argument text, transcribed verbatim and not authored by this project.",
+      "design": "within-subject paired-argument forced choice, 3-way nominal outcome (argument one more persuasive / about the same / argument two more persuasive), 4 comparisons per respondent drawn from 12 policy issues",
+      "verified_against": "the paper's own published descriptive statistic (AJPS 2022, p.9) — '28% of comparisons... about the same' — reproduced from the built parquet's response distribution; scripts/verify_POMIFD.py. Does NOT verify the headline Bayesian multilevel model (not refit) or any individual argument's text/pairing, which an aggregate proportion cannot see — see the script's own docstring"
     }
   }
 }

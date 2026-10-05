@@ -2,13 +2,14 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**39 experiments.** 11 UK (CC0, redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**40 experiments.** 11 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse | 11 | 124,139 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 11 | 124,139 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **39** | **408,074** | |
+| **Total** | **40** | **421,342** | |
 
 ---
 
@@ -91,7 +92,7 @@ The same lottery-wealth treatment, with the outcome a 0-3 financial risk-toleran
 - **Type** — two-condition between-subject, one DERIVED outcome on a 0-3 scale
 - **Category** — economics/behavioural
 - **Rows** — 8,075 from 8,075 respondents
-- **Licence** — >-
+- **Licence** — CC0 1.0 Universal
 - **Verified against** — the paper's own Table D.2 — N, control mean and both regression coefficients; the branch logic itself is pinned by tests/test_derive_LOGVPZ.py across all 64 inputs of the instrument's code space
 
 ### `LOGVPZ_brexit_satisfaction`
@@ -104,7 +105,7 @@ Respondents are told to imagine they have won a substantial lottery prize, or to
 - **Type** — two-condition between-subject, one outcome on an 11-point scale
 - **Category** — political preferences/policy
 - **Rows** — 7,506 from 7,506 respondents
-- **Licence** — >-
+- **Licence** — CC0 1.0 Universal
 - **Verified against** — the paper's own Table D.1 — N, control mean and both regression coefficients
 
 ### `6MRVOM_brexit_scenario`
@@ -117,7 +118,7 @@ Respondents are told the government will, after Brexit, either keep immigration 
 - **Type** — two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (11-level nominal party choice, code 12 'Don't know' dropped per the 2026-10-05 ruling; 0-10 satisfaction)
 - **Category** — political preferences/policy
 - **Rows** — 6,526 from 3,636 respondents
-- **Licence** — >-
+- **Licence** — CC0 1.0
 - **Verified against** — no author-computed or published reference exists for this block (checked analysis.R and the full 24-page accepted manuscript); scripts/verify_6MRVOM.py instead confirms the built distribution matches data.sav's own frequency tables exactly, cell for cell
 
 ### `QQM5MC`
@@ -130,7 +131,7 @@ A split ballot crossing a Leaver/Remainer identity prime with factual informatio
 - **Type** — 2x2 split ballot (prime x information) plus a true control, 2 outcomes
 - **Category** — political identity/polarisation
 - **Rows** — 6,345 from 3,266 respondents
-- **Licence** — >-
+- **Licence** — CC0 1.0
 - **Verified against** — the paper's own Table 1 and Figures 4-5 — eight group means and two Ns
 
 ### `RJTVG8`
@@ -156,8 +157,27 @@ Respondents are asked what percentage of all immigrants to the UK they would lik
 - **Type** — two-condition between-subject (information anchor present/absent), one outcome on a 0-100 scale
 - **Category** — political preferences/policy
 - **Rows** — 2,397 from 2,397 respondents
-- **Licence** — >-
+- **Licence** — CC0 1.0
 - **Verified against** — the deposit's own analysis.R — svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding
+
+---
+
+## UK layer — Harvard Dataverse, licence-restricted
+
+**None of this is redistributable.** Each experiment here carries its own short licence note; the full basis it is used on is recorded in `data/catalog/uk_dataverse_provenance.json`'s `use_basis` for that study. Usable for research under that basis only — never published, shared, or sent to any external service.
+
+### `POMIFD`
+
+**Replication Data for: The Variable Persuasiveness of Political Rhetoric**
+
+Respondents see two of 336 political arguments (14 rhetorical elements x 12 policy issues x 2 positions, for/against) shown together, verbatim as extracted from Hansard debate transcripts, and say which they find more persuasive or that the two are about the same. The respondent judges which ARGUMENT about a policy is persuasive, not a person — closer to the 'policy' pole than the 'identity' pole, since nothing about Leave/Remain regard for other people is measured. Unlike every other UK Dataverse study in this corpus (all conjoints, where the condition is a table of attribute levels this project renders into prose), the condition text here is the fielded instrument's own argument text, transcribed verbatim and not authored by this project.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/POMIFD`
+- **Type** — within-subject paired-argument forced choice, 3-way nominal outcome (argument one more persuasive / about the same / argument two more persuasive), 4 comparisons per respondent drawn from 12 policy issues
+- **Category** — political preferences/policy
+- **Rows** — 13,268 from 3,317 respondents
+- **Licence** — None stated (see `uk_dataverse_provenance.json`'s `use_basis` for the full basis)
+- **Verified against** — the paper's own published descriptive statistic (AJPS 2022, p.9) — '28% of comparisons... about the same' — reproduced from the built parquet's response distribution; scripts/verify_POMIFD.py. Does NOT verify the headline Bayesian multilevel model (not refit) or any individual argument's text/pairing, which an aggregate proportion cannot see — see the script's own docstring
 
 ---
 
@@ -183,7 +203,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `es4xw` | Perceptions of Diversity Across Groups | moral/social/cognition | 32,228 | 2,501 | osf.io/es4xw |
 | `zrwjp` | The Barriers of Buying Happier Time | moral/social/cognition | 2,532 | 1,271 | osf.io/zrwjp |
 | `5hqan` | Gender Identity and Diversity | survey methodology | 6,411 | 2,139 | osf.io/5hqan |
-| `a2nbf` | >- | survey methodology | 6,211 | 1,567 | osf.io/a2nbf |
+| `a2nbf` | An Experiment Testing Possible Question-Wording Effects on Key Gene… | survey methodology | 6,211 | 1,567 | osf.io/a2nbf |
 | `evnyh_Q1a_and_validation` | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | survey methodology | 33,932 | 1,724 | osf.io/evnyh |
 | `rpw4u_RO1` | Cross-National Replication of Question Design Experiments (RO1: oil… | survey methodology | 1,023 | 1,023 | osf.io/rpw4u |
 | `sd7cf` | Framing in Noisy Informational Environments | survey methodology | 4,124 | 2,069 | osf.io/sd7cf |
@@ -209,7 +229,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 1 | 6 | 95,879 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 5 | 0 | 71,824 |
+| political preferences/policy | 6 | 0 | 85,092 |
 | survey methodology | 0 | 5 | 51,701 |
 | work/family/gender | 0 | 8 | 88,127 |
 

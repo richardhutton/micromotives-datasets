@@ -34,6 +34,7 @@ from pathlib import Path
 
 import pandas as pd
 import pyarrow.parquet as pq
+import yaml
 
 REPO = Path(__file__).resolve().parents[1]
 RECIPES = REPO / "recipes"
@@ -85,16 +86,48 @@ def _recipe_head(path: Path) -> dict[str, str]:
 
     The conjoint recipes are 13-57MB of machine-generated arms and `yaml.safe_load`
     on all of them takes over a minute. Only the header scalars are needed here,
-    and they are always in the first few lines, so this reads a fixed prefix and
-    regexes it. The cost of being wrong is a missing field in a doc, not a wrong
-    row in a dataset.
+    and they are always in the first few lines (before `condition:`, which is
+    where the machine-generated arms live), so this slices the text BEFORE that
+    key and parses the slice as real YAML -- a valid partial mapping, since it
+    is a prefix of complete `key: value` pairs.
+
+    This used to regex a single line per key (`^{key}: *(.*)$`), which only
+    ever captures what is on the SAME line as the key. That is correct for a
+    flow scalar (`licence: CC0 1.0, ...`) and for the first line of a quoted
+    scalar that wraps (POMIFD's `licence: 'None stated, ...` -- the comma that
+    matters is on line one). It silently returns the bare block-scalar
+    indicator for the `licence: >-` / `licence: |-` style several recipes use
+    (LOGVPZ's two recipes, 6MRVOM_brexit_scenario, QQM5MC and others), whose
+    actual text is on the FOLLOWING indented lines -- `licence` for every one
+    of those came back as the two characters `>-`, which (correctly, if for
+    the wrong reason) does not start with "CC0", so `Experiment.publishable`
+    silently read them as licence-restricted. It was never visible before
+    because the UK/CC0 split used to be a hardcoded label rather than computed
+    from `publishable` per study -- see `render()`'s own comment on that. A
+    real (if partial) YAML parse reads a block scalar correctly regardless of
+    style; the regex fallback below exists only so a genuinely malformed or
+    unusually-shaped header produces a missing field rather than a crash.
     """
-    head = path.read_text(encoding="utf-8")[:8000]
+    text = path.read_text(encoding="utf-8")
+    match = re.search(r"^condition:", text, re.M)
+    head_text = text[: match.start()] if match else text[:8000]
+    try:
+        parsed = yaml.safe_load(head_text) or {}
+        if isinstance(parsed, dict):
+            return {
+                key: str(parsed[key])
+                for key in ("study_id", "source", "title", "licence", "experiment")
+                if parsed.get(key) is not None
+            }
+    except yaml.YAMLError:
+        pass  # fall through to the line-regex fallback below
+
+    head = text[:8000]
     out: dict[str, str] = {}
     for key in ("study_id", "source", "title", "licence", "experiment"):
-        match = re.search(rf"^{key}: *(.*)$", head, re.M)
-        if match:
-            out[key] = match.group(1).strip().strip("'\"")
+        line_match = re.search(rf"^{key}: *(.*)$", head, re.M)
+        if line_match:
+            out[key] = line_match.group(1).strip().strip("'\"")
     return out
 
 
@@ -203,8 +236,18 @@ def render(experiments: list[Experiment]) -> str:
     uk = [e for e in experiments if e.is_uk]
     tess = [e for e in experiments if not e.is_uk]
     built = [e for e in experiments if e.rows is not None]
-    uk_rows = sum(e.rows or 0 for e in uk)
+    # Every UK Dataverse deposit was CC0 until POMIFD (null licence, usable
+    # only under the use_basis recorded in uk_dataverse_provenance.json, never
+    # redistributable) -- precisely the mistake this module's own docstring
+    # already warns about ("found claiming '(all CC0)' three days after an
+    # audit established that one of its deposits is not"), so the UK layer is
+    # partitioned by each experiment's OWN `publishable` rather than assumed
+    # uniform. Recompute this split whenever a new UK deposit lands.
+    uk_open = [e for e in uk if e.publishable]
+    uk_restricted = [e for e in uk if not e.publishable]
     tess_rows = sum(e.rows or 0 for e in tess)
+    uk_open_rows = sum(e.rows or 0 for e in uk_open)
+    uk_restricted_rows = sum(e.rows or 0 for e in uk_restricted)
 
     lines: list[str] = []
     add = lines.append
@@ -217,10 +260,16 @@ def render(experiments: list[Experiment]) -> str:
         "see the module docstring for why."
     )
     add("")
+    restricted_note = (
+        f", {len(uk_restricted)} UK licence-restricted (usable for research under each one's "
+        "own recorded basis, **not** redistributable)"
+        if uk_restricted
+        else ""
+    )
     add(
         f"**{len(experiments)} experiments.** "
-        f"{len(uk)} UK (CC0, redistributable) and {len(tess)} US transfer layer "
-        f"(TESS, no licence stated — usable for research, **not** redistributable)."
+        f"{len(uk_open)} UK (CC0, redistributable){restricted_note} and {len(tess)} US transfer "
+        f"layer (TESS, no licence stated — usable for research, **not** redistributable)."
     )
     add("")
     if len(built) < len(experiments):
@@ -233,9 +282,17 @@ def render(experiments: list[Experiment]) -> str:
 
     add("| Layer | Experiments | Rows | Redistributable |")
     add("|---|---|---|---|")
-    add(f"| UK — Harvard Dataverse | {len(uk)} | {uk_rows:,} | **yes, CC0 1.0** |")
+    add(f"| UK — Harvard Dataverse (CC0) | {len(uk_open)} | {uk_open_rows:,} | **yes, CC0 1.0** |")
+    if uk_restricted:
+        add(
+            f"| UK — Harvard Dataverse (licence-restricted) | {len(uk_restricted)} | "
+            f"{uk_restricted_rows:,} | **no** — see each experiment's own licence note |"
+        )
     add(f"| US transfer — TESS | {len(tess)} | {tess_rows:,} | **no** — no licence stated |")
-    add(f"| **Total** | **{len(experiments)}** | **{uk_rows + tess_rows:,}** | |")
+    add(
+        f"| **Total** | **{len(experiments)}** | "
+        f"**{uk_open_rows + uk_restricted_rows + tess_rows:,}** | |"
+    )
     add("")
     add("---")
     add("")
@@ -248,7 +305,7 @@ def render(experiments: list[Experiment]) -> str:
         "rather than a number we computed and then agreed with."
     )
     add("")
-    for e in sorted(uk, key=lambda x: -(x.rows or 0)):
+    for e in sorted(uk_open, key=lambda x: -(x.rows or 0)):
         add(f"### `{e.recipe}`")
         add("")
         add(f"**{e.title}**")
@@ -267,6 +324,41 @@ def render(experiments: list[Experiment]) -> str:
 
     add("---")
     add("")
+
+    if uk_restricted:
+        add("## UK layer — Harvard Dataverse, licence-restricted")
+        add("")
+        add(
+            "**None of this is redistributable.** Each experiment here carries its own short "
+            "licence note; the full basis it is used on is recorded in "
+            "`data/catalog/uk_dataverse_provenance.json`'s `use_basis` for that study. Usable "
+            "for research under that basis only — never published, shared, or sent to any "
+            "external service."
+        )
+        add("")
+        for e in sorted(uk_restricted, key=lambda x: -(x.rows or 0)):
+            add(f"### `{e.recipe}`")
+            add("")
+            add(f"**{e.title}**")
+            add("")
+            if e.description:
+                add(e.description)
+                add("")
+            add(f"- **Source** — {SOURCE_LABEL.get(e.source, e.source)}, `{e.reference or '—'}`")
+            add(f"- **Type** — {e.design or '—'}")
+            add(f"- **Category** — {e.category}")
+            add(f"- **Rows** — {_num(e.rows)} from {_num(e.participants)} respondents")
+            add(
+                f"- **Licence** — {e.licence or '—'} "
+                "(see `uk_dataverse_provenance.json`'s `use_basis` for the full basis)"
+            )
+            if e.verified_against:
+                add(f"- **Verified against** — {e.verified_against}")
+            add("")
+
+        add("---")
+        add("")
+
     add("## US transfer layer — TESS, no licence stated")
     add("")
     add(

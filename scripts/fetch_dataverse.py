@@ -187,16 +187,29 @@ def main() -> int:
             flag = "  (ORIGINAL)" if original else ""
             print(f"  {name:38} {size:>10,} bytes{flag}")
 
-        prov[code] = {
-            "doi": doi,
-            "title": row["title"],
-            "authors": row["authors"],
-            "licence": licence,
-            "licence_source": "Dataverse API, latestVersion.license",
-            "description": _description(version),
-            "publication": _publication(version),
-            "files": files,
-        }
+        # MERGE, never replace. `prov[code] = {...}` destroyed PZB01G's hand-authored
+        # `status` and `status_reason` on 5 Oct 2026 — the record of WHY that study is
+        # buildable, which had taken a paper-access test to establish and which nothing
+        # in the API can regenerate. POMIFD survived the same run only because its maker
+        # spotted the hazard and avoided this script entirely.
+        #
+        # The split is the point: everything below comes from the API and may be
+        # refreshed freely, while `status`, `status_reason`, `use_basis` and
+        # `redistributable` are JUDGEMENTS a person recorded, and a fetch has no
+        # standing to overwrite a judgement. Anything this function does not name is
+        # left exactly as it was.
+        prov.setdefault(code, {}).update(
+            {
+                "doi": doi,
+                "title": row["title"],
+                "authors": row["authors"],
+                "licence": licence,
+                "licence_source": "Dataverse API, latestVersion.license",
+                "description": _description(version),
+                "publication": _publication(version),
+                "files": files,
+            }
+        )
         print(f"{code}: {row['title'][:60]}\n  licence: {licence}\n")
 
     PROVENANCE.write_text(json.dumps(prov, indent=1, sort_keys=True))

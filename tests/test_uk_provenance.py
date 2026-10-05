@@ -215,3 +215,42 @@ def test_every_deposit_carries_a_doi_and_a_description() -> None:
         )
         assert (record.get("description") or "").strip(), f"{deposit} has no description"
         assert (record.get("authors") or "").strip(), f"{deposit} has no authors"
+
+
+def test_no_judgement_field_is_ever_blank_where_one_was_recorded() -> None:
+    """A fetch must never overwrite a judgement with an API refresh.
+
+    On 5 October 2026 `scripts/fetch_dataverse.py` did `prov[code] = {...}` — a
+    wholesale replacement — and destroyed `PZB01G`'s `status` and
+    `status_reason`: the record of why that study is buildable, established by a
+    paper-access test and not regenerable from any API. `POMIFD` survived the
+    same run only because its maker read the script first and avoided it.
+
+    The script now merges. This is the second line of defence, and it is a
+    different shape from the other tests here: those check that a value is
+    RIGHT, this checks that a value a person wrote has not silently become
+    absent. `status` is required of every row, so its disappearance is already
+    caught — but `use_basis` and `redistributable` are optional by design, and
+    an optional field is exactly the kind that vanishes without complaint.
+    """
+    catalogue = _catalogue()
+
+    # `use_basis` exists only where the licence is not CC0; wherever that is
+    # true, something must have been written, or the deposit should not be in a
+    # buildable state at all.
+    for deposit, record in catalogue.items():
+        if record.get("licence") == "CC0 1.0":
+            continue
+        if record["status"] in {"dropped", "blocked"}:
+            continue
+        assert (record.get("use_basis") or "").strip(), (
+            f"{deposit} is {record['status']!r} with a non-CC0 licence and an empty "
+            f"use_basis. If a fetch has just run, check whether it overwrote the entry: "
+            f"fetch_dataverse.py merges now, but the failure mode it caused was a "
+            f"judgement silently replaced by an API refresh."
+        )
+
+    assert any(r.get("use_basis") for r in catalogue.values()), (
+        "no deposit records a use_basis at all. POMIFD carries one; if it has gone, "
+        "something has rewritten this file wholesale"
+    )

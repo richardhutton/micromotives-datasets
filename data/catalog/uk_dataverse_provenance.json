@@ -773,7 +773,7 @@
     "licence_source": "Dataverse API, latestVersion.license",
     "publication": "Blumenau, Jack E., and Benjamin E. Lauderdale. [date]. \u201cThe Variable Persuasiveness of Political Rhetoric.\u201d \n<i>American Journal of Political Science</i> Forthcoming. <a href=\"http://ajps.org/\" target=\"_blank\">http://ajps.org/</a>",
     "redistributable": false,
-    "status": "prepared",
+    "status": "built",
     "status_reason": "Blumenau & Lauderdale, 'The Variable Persuasiveness of Political Rhetoric', AJPS 2022, doi:10.1111/ajps.12703 \u2014 note the Dataverse record still says 'Forthcoming'. Author manuscript open at discovery.ucl.ac.uk/id/eprint/10145870. Fielded by YouGov to their UK online panel, June 2019. 3,317 respondents x 4 comparisons = 13,268 observations. 336 arguments = 14 rhetorical elements x 12 policy issues x 2 positions (for/against), with the texts drawn from Hansard transcripts of Commons debates and edited, plus a few written by the authors where no example existed. Each screen showed two arguments on one issue and asked which the respondent found more persuasive; 25% both-for, 25% both-against, 50% one of each. WHY IT IS WORTH THE TROUBLE: every other UK experiment here is a conjoint, where the condition is a table of attribute levels that WE render into prose \u2014 so part of the condition is our own writing, which is the one component of a row nothing downstream can check. Here the condition IS the text, exactly as the respondent read it. And the target is individual rather than aggregate: which argument persuaded THIS person, not an average marginal effect. The authors' own finding \u2014 that the same rhetorical element persuades on one issue and fails on another \u2014 is what makes it a hard test, since a lucky guess cannot survive 336 arguments whose answers keep moving. See use_basis for the licence position; it is not CC0 and never becomes publishable.",
     "title": "Replication Data for: The Variable Persuasiveness of Political Rhetoric",
     "use_basis": "USE PERMITTED, REDISTRIBUTION NEVER. The Dataverse record states no licence \u2014 `license` is literally null, re-confirmed live 5 Oct 2026 \u2014 so nothing derived from this deposit may ever be published or shared. It may nonetheless be USED, on this basis: the deposit's own termsOfUse say 'This dataset is made available with limited information on how it can be used. You may wish to communicate with the Contact(s) specified before use.' That is an invitation to communicate, not a requirement for consent. rich emailed Jack Blumenau (the deposit's named datasetContact, UCL) on 5 Oct 2026 before any data was fetched, describing the project and stating plainly that nothing would be redistributed, and offering to leave out anything the authors would rather was not used. Draft kept at docs/email_POMIFD_UCL.md. THE STANDING COMMITMENT: if Blumenau or Lauderdale object, in whole or in part, the build and the raw deposit are DELETED. That is rich's decision of 5 Oct 2026 and it is the condition the use rests on, so it must survive in this file rather than in a conversation. Whoever reads this next: a non-reply is not an objection, but an objection is final and is not to be argued with."
@@ -784,36 +784,52 @@
     "doi": "10.7910/DVN/PZB01G",
     "files": [
       {
-        "bytes": 5075709,
-        "name": "BES data analysis_Jan2016.tab"
+        "bytes": 10464628,
+        "name": "BES data analysis_Jan2016.dta",
+        "original_format": "application/x-stata-13",
+        "served_as": "BES data analysis_Jan2016.tab"
       },
       {
         "bytes": 1437,
-        "name": "Readme.txt"
+        "name": "Readme.txt",
+        "original_format": null,
+        "served_as": "Readme.txt"
       },
       {
         "bytes": 38918,
-        "name": "Replication file.do"
+        "name": "Replication file.do",
+        "original_format": null,
+        "served_as": "Replication file.do"
       },
       {
         "bytes": 422039,
-        "name": "Sankey screenshots.docx"
+        "name": "Sankey screenshots.docx",
+        "original_format": null,
+        "served_as": "Sankey screenshots.docx"
       },
       {
         "bytes": 8703,
-        "name": "Transition figure.dta"
-      },
-      {
-        "bytes": 5151537,
-        "name": "Vignette data.dta"
-      },
-      {
-        "bytes": 689269,
-        "name": "Wave 1 data.dta"
+        "name": "Transition figure.dta",
+        "original_format": null,
+        "served_as": "Transition figure.dta"
       },
       {
         "bytes": 7839,
-        "name": "transition probabilities.do"
+        "name": "transition probabilities.do",
+        "original_format": null,
+        "served_as": "transition probabilities.do"
+      },
+      {
+        "bytes": 5151537,
+        "name": "Vignette data.dta",
+        "original_format": null,
+        "served_as": "Vignette data.dta"
+      },
+      {
+        "bytes": 689269,
+        "name": "Wave 1 data.dta",
+        "original_format": null,
+        "served_as": "Wave 1 data.dta"
       }
     ],
     "licence": "CC0 1.0",
