@@ -17,26 +17,67 @@ EUL; no redistribution). See master doc §5e.
 
 ## 2. File layout (UKHLS convention)
 
-- Wave-prefixed by letter: `a_` = IP1, `b_` = IP2, … `q_` = IP17.
-- Main file per wave: **`{w}_indresp_ip`** — one row per adult, all answers
-  (personas, outcomes, **and allocation flags**). Support: `{w}_hhresp_ip`
-  (household), `xwavedat_ip` (stable cross-wave vars).
+*Measured against the downloaded bundle on 5 Oct 2026, not inferred.*
+
+- Wave-prefixed by letter: `a_` = IP1 (2008), `b_` = IP2, … `q_` = IP17 (2024).
+  17 waves, 279 files, ~1 GB, in `data/raw/ukds_6849/` (gitignored).
+- **Answers:** `{w}_indresp_ip` — one row per adult. Grows from **678 columns in
+  2008 to 2,194 in 2024** as content accumulates.
+- **Conditions:** `{w}_hhsamp_ip` — every sampled address, and the allocation
+  variables, prefixed `{w}_ff_`. **This is not the file the answers are in**, so
+  every build reads two files and joins them on `{w}_hidp`. That is new: all 13
+  Harvard studies found the condition in the same file as the answer.
+- Others: `{w}_hhresp_ip` (household answers), `{w}_indall_ip` / `{w}_indsamp_ip`
+  (everyone enumerated, including non-respondents), `{w}_egoalt_ip` (one row per
+  *pair* of people in a household — who is whose partner, parent, sibling),
+  `{w}_income_ip` (one row per income source), `{w}_youth_ip` (ages 10–15).
 - Every variable is wave-prefixed (`b_sex`, `b_jbstat`). **`_dv` = derived**
-  (cleaned/harmonised — prefer these).
-- **`pidp` = cross-wave person ID** → links a person across waves = the
-  time/forecasting axis for free.
+  (cleaned/harmonised — prefer these). **`_ff_` = fed forward** from an earlier
+  wave, which is why wave 17's household file carries 172 allocation variables
+  going back to wave 2 — a cumulative history, not 172 experiments in 2024.
+- **`pidp` = cross-wave person ID.** 8,078 people, 41,086 person-wave rows, mean
+  **5.09 waves per person**, 216 people in all 17. **Hash it, never store it
+  raw** — it links to the whole of Understanding Society.
+- Missing codes, consistent across all 279 files and **not** declared missing in
+  Stata, so they arrive as ordinary numbers: `-1` don't know, `-2` refused,
+  `-7` proxy, `-8` not applicable/routed, `-9` missing by error.
+- **Do not use `pandas.read_stata`.** It silently falls back to latin-1 on these
+  files (`UnicodeWarning: ... fallback encoding of latin-1 is being used`), which
+  is the PZB01G mojibake bug by default. `sources/spss.read` reads them as clean
+  UTF-8 with full value labels; verified on waves a, i and q.
 
 ## 3. Find the experiments (allocation variables)
 
-- **Primary:** User Guide experiment table + per-wave working papers list, per
-  wave: experiment name → **allocation/randomisation variable** → outcome
-  variable(s) → arm wordings.
+**Already done once, at desk level:** `data/catalog/innovation_panel_experiments.json`
+holds all **93** experiments the User Guide catalogues, rendered to
+`docs/UKDS_UNBUILT.md` — 44 pass screening (63 experiment-waves), 9 need a
+ruling, 40 are out. 37 of the 93 have their allocation variable named by the
+guide itself and recorded in `allocation_vars`.
+
+- **Primary:** the User Guide's §6.1 overview table and each experiment's own
+  section, which usually names the variable outright — e.g. 9.3: *"The variable
+  `e_ff_lifesatw5` on the record `e_hhsamp_ip` controls allocation to versions of
+  this question"*, followed by its four codes and the outcome variables.
+- **Also:** the per-wave **"Results from methodological experiments"** working
+  papers, free from `understandingsociety.ac.uk`, one per wave from 2008 to 2023.
+  These carry the **published numbers to verify a build against**, which is the
+  project's whole QC method and the reason TLT65Z had to be dropped.
 - **Cross-check in data:** read `.dta` metadata with `pyreadstat`, grep variable
   **labels** for `experiment`, `random`, `alloc`, `treat`, `group`, `split`,
   `version`/`ver`, `assigned`, or the experiment short name. Allocation var is
-  usually in `{w}_indresp_ip`.
-- **Key advantage over BES:** the IP is built for experiments, so the allocation
-  flag **is retained** — no "condition stripped" problem (confirm per experiment).
+  usually in **`{w}_hhsamp_ip`**, not `{w}_indresp_ip` — household-level
+  randomisation dominates, though ~293 person-level allocations exist across the
+  17 waves and sit in the person file directly.
+- **Randomisation is per household**, so everyone in a house saw the same
+  version. 527 of 1,454 households in wave 6 hold two adults, up to seven. People
+  in one household are **not independent rows**.
+- Experiments within a wave are deliberately **orthogonal or independently
+  randomised**, so several can be built from one wave without confounding.
+- **The allocation flag is retained; the condition TEXT is not.** The data gives
+  a group number. The wording lives only in that wave's questionnaire PDF
+  (`6849_ip_wave_*_questionnaires.pdf`, 18 of them). **No questionnaire wording,
+  no condition, nothing buildable** — and whether each of the 44 has usable
+  wording there is the single largest unknown left.
 
 ## 4. Persona spine (`{w}_indresp_ip` + `xwavedat_ip`, prefer `_dv`)
 

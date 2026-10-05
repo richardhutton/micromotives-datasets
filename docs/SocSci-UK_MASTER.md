@@ -520,6 +520,33 @@ safeguarded (UKDS registration + EUL).* Extraction: allocation flag → `conditi
 outcome item → `outcome`, UKHLS demographic block → `persona`, answer → `response`.
 **→ full pull-and-reconstruct checklist: `innovation_panel_checklist.md`.**
 
+**Downloaded and screened, 5 Oct 2026.** SN **6849** (the EUL version; 7083 is the
+special licence, which we do not hold and do not need) is in `data/raw/ukds_6849/`
+— 17 waves, 279 files, 1 GB. The User Guide catalogues **93 experiments**, and all
+93 are now screened in `data/catalog/innovation_panel_experiments.json`, rendered
+to **`docs/UKDS_UNBUILT.md`**:
+
+| Verdict | | |
+|---|---|---|
+| `build` | 44 experiments, 63 experiment-waves | 4 are vignette studies |
+| `marginal` | 9 | need a ruling; `9.3` first |
+| `drop` | 40 | 28 procedural, 5 physical/app, 7 visual or mode |
+
+Three corrections to what this section claimed before the download:
+
+- **The allocation variables are in `{w}_hhsamp_ip`, not `{w}_indresp_ip`.**
+  Randomisation is mostly per household, so every build joins two files on
+  `{w}_hidp` — unlike all 13 Harvard studies, where the condition sits in the
+  same file as the answer. ~293 person-level allocations also exist.
+- **"Retains the allocation variables" is true but not sufficient.** The data
+  gives a group *number*; the condition *wording* exists only in the wave
+  questionnaire PDFs. Whether each of the 44 has usable wording there is the
+  largest unknown left, and resolving it can only move the count down.
+- **Only ~30 of the 93 are substantive.** 43 are about survey methodology,
+  because that is the panel's purpose. TESS remains the broader source on topic;
+  the Innovation Panel's edge is the time axis (8,078 people, mean 5.09 waves
+  each, 216 in all 17) and persona depth.
+
 **Other UK panels / cohorts (forecasting layer, safeguarded on UKDS):**
 UKHLS main study (~40k households, richer than BES on non-political topics);
 birth-cohort studies (NCDS, BCS70, Millennium Cohort, Next Steps); British Social
@@ -1085,6 +1112,13 @@ simulation stack.
 **Layout:**
 - `docs/SocSci-UK_MASTER.md` — this doc (source of truth).
 - `docs/innovation_panel_checklist.md` — UKDS SN 6849 pull & reconstruct recipe.
+- `docs/UKDS_UNBUILT.md` — **generated.** All 93 Innovation Panel experiments with
+  id, title, description, category, waves and a verdict. Source of truth is
+  `data/catalog/innovation_panel_experiments.json`, built by
+  `scripts/innovation_panel_catalogue.py` (parses the User Guide; needs the local
+  licensed bundle) and rendered by `scripts/innovation_panel_table.py --write`.
+  `--check` fails when the doc is stale, and a test runs it.
+- `docs/TESS_UNBUILT.md` — the 178 screened, suitable, unbuilt TESS studies.
 - `data/catalog/tess_uk_foundation_sources.csv` — the 202 foundation studies (the
   work-list): `year, title, category, is_conjoint, tess_id, osf_code, study_id,
   in_socsci210, socsci210_rows, buildable, osf_type, data_kind, data_file,

@@ -1,0 +1,1131 @@
+[
+  {
+    "id": "7.1",
+    "title": "Respondent incentives to encourage participation and web response",
+    "category": "procedural",
+    "waves": "All",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "A set of randomised assignments related to payment of respondent incentives extends across waves 1-6 of the IP. At Wave 6, experimental allocation was nested within mixed mode treatments (See Mixed mode experiments).",
+    "vignette": false,
+    "allocation_vars": [
+      "b_ff_incentw2",
+      "c_ff_incentw3",
+      "d_ff_incentw4",
+      "e_ff_incentw5",
+      "e_ff_invitew5",
+      "f_ff_incentw6"
+    ]
+  },
+  {
+    "id": "7.2",
+    "title": "Conditional and unconditional incentives",
+    "category": "procedural",
+    "waves": "7",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "",
+    "vignette": false,
+    "allocation_vars": [
+      "n_ff_incentw14"
+    ]
+  },
+  {
+    "id": "7.3",
+    "title": "Mixed mode experiments: telephone and face-to-face",
+    "category": "procedural",
+    "waves": "3",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "There is considerable interest in using mixed mode strategies for conducting social surveys, in particular to enhance response rates and fieldwork efficiency while at the same time reducing costs. There is also interest in mode differences in survey measures.",
+    "vignette": false,
+    "allocation_vars": [
+      "b_ff_modew2"
+    ]
+  },
+  {
+    "id": "7.4",
+    "title": "Mixed mode experiments: web and face-to-face",
+    "category": "procedural",
+    "waves": "5-12, 15-17",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "At Waves 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17 the Understanding Society IP was used to investigate the use of web interviewing. The incorporation of web into a mixed mode design has potential both to reduce survey costs and improve quality.",
+    "vignette": false,
+    "allocation_vars": [
+      "e_ff_gridmodew5"
+    ]
+  },
+  {
+    "id": "7.5",
+    "title": "Paper vs CASI self-completion",
+    "category": "procedural",
+    "waves": "4, 5, 6",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This study was relevant to changes toward self-completion being via CASI (computer- assisted self interviewing) in the main Understanding Society survey in Wave 3. It tests the effects of paper vs. CASI self-completion on substantive measures and attrition.",
+    "vignette": false,
+    "allocation_vars": [
+      "d_ff_casiw4",
+      "e_ff_casiw5",
+      "f_casiw6"
+    ]
+  },
+  {
+    "id": "7.6",
+    "title": "Advance materials: letters vs. cards",
+    "category": "procedural",
+    "waves": "2",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "The Wave 2 experiment compared a formal letter on printed stationery with a greeting card type format. The messages in cards and letters were equal in length, text, incentives, and information related to legitimacy of the study and privacy concerns.",
+    "vignette": false,
+    "allocation_vars": [
+      "b_ff_advance"
+    ]
+  },
+  {
+    "id": "7.7",
+    "title": "Advance materials: content of advance letters",
+    "category": "procedural",
+    "waves": "5",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "In Wave 5, the content of the advance letters was varied to test theories about how people can be persuaded to take part in surveys. A two factor manipulation tested the effects of persuasion ideas, being a helpful person and being similar to other respondents.",
+    "vignette": false,
+    "allocation_vars": [
+      "e_ff_persuasionw5"
+    ]
+  },
+  {
+    "id": "7.8",
+    "title": "Targeted advance letters",
+    "category": "procedural",
+    "waves": "6",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "At Wave 6, multiple versions of the advance letter were used to test whether letters targeted at particular sample subgroups and referenced issues of likely importance to them could positively affect participation rates. Half the sample received a standard advance letter.",
+    "vignette": false,
+    "allocation_vars": [
+      "f_ff_advancew6",
+      "f_ff_letterw6"
+    ]
+  },
+  {
+    "id": "7.9",
+    "title": "Number of mailings between interviews",
+    "category": "procedural",
+    "waves": "7",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "Do multiple contacts between waves increase response, by reducing the proportion of untraced movers and increasing the sense of ‘belonging’ the sample member has with the study? Or could it have a negative effect, by annoying sample members and/or giving more chances to refuse?",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.10",
+    "title": "Different ways of asking respondents to register on participant website",
+    "category": "procedural",
+    "waves": "4",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "At Wave 4, this experiment tested different ways of getting respondents to register on the Understanding Society web-site using the delivery of the between wave mailing as a vehicle for achieving this via either e-mail for those who have given us an e-mail address or by traditional postal mailing.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.11",
+    "title": "Improving interviewer observations about characteristics of address",
+    "category": "procedural",
+    "waves": "4",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This Wave 4 experiment examines the utility of observation data provided by interviewers. It is limited to the refreshment sample cases. The focus was on questions of evidence for children in the household or for access to personal transport such as a car or van.",
+    "vignette": false,
+    "allocation_vars": [
+      "d_ff_arfexpw4"
+    ]
+  },
+  {
+    "id": "7.12",
+    "title": "Effect of content of re-issue letter on refusal conversion",
+    "category": "procedural",
+    "waves": "4",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This experiment carried at Wave 4 examined whether additional information included in the re-issue letter would help boost response at this stage. All households were allocated within PSU to a treatment group, but only re-issued households were included in the experiment.",
+    "vignette": false,
+    "allocation_vars": [
+      "d_ff_reissuesw4"
+    ]
+  },
+  {
+    "id": "7.13",
+    "title": "Early bird scheduling: encouraging respondents to call interviewer to schedule appointment",
+    "category": "procedural",
+    "waves": "4",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This experiment carried at Wave 4 tested whether response rates could be improved if respondents are encouraged to telephone their interviewer in advance of fieldwork to set an appointment to be interviewed.",
+    "vignette": false,
+    "allocation_vars": [
+      "d_ff_apptsw4",
+      "d_ff_samplecat"
+    ]
+  },
+  {
+    "id": "7.14",
+    "title": "Targeted weekday invitation emails",
+    "category": "procedural",
+    "waves": "9",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This experiment examined whether targeting respondents by sending email invitations to complete the survey on different days affects response outcomes and data quality.",
+    "vignette": false,
+    "allocation_vars": [
+      "i_ff_maildayhhw9",
+      "i_ff_maildayindw9"
+    ]
+  },
+  {
+    "id": "7.15",
+    "title": "Using prospect theory in wording of advance letters",
+    "category": "procedural",
+    "waves": "10",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "The objective of this experiment is to understand whether a rephrasing of the appeal to altruism in advance letters and invitation letters could enhance participation rates.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.16",
+    "title": "Invitation letters for mixed mode survey",
+    "category": "procedural",
+    "waves": "11",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This is the first time the IP has approached a new sample for a web survey. This experiment is only within this new sample, taken at IP11. It focuses on different ways of asking for the participation of other household members and with different ways of introducing the CAPI follow-up phase.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.17",
+    "title": "Spending Study 2",
+    "category": "procedural",
+    "waves": "11",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This is a follow up to Spending Study 1, which was conducted between IP waves 9 and 10 (see Section 10.4). The data from Spending Study 2 have been deposited with the UK Data Service (SN 8909, 10.5255/UKDA-SN-8909-1).",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.18",
+    "title": "Invitation to complete pre-interview blood pressure measure: information treatment vs pro-social appeal",
+    "category": "procedural",
+    "waves": "12",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "Wave 12 included an advance letter experiment whereby one-third of the sample was provided with information on their nearest pharmacy to enable blood pressure measurement.",
+    "vignette": false,
+    "allocation_vars": [
+      "l_ff_bpinfo"
+    ]
+  },
+  {
+    "id": "7.19",
+    "title": "Fieldwork compression experiment",
+    "category": "procedural",
+    "waves": "13",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "Currently the main Understanding Society survey collects each wave of data over the course of two years. That is, in any given calendar year, half of the sample are completing the survey for wave t. The other half already completed wave t the year before and are now completing wave t+1.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.20",
+    "title": "Event triggered data collection",
+    "category": "procedural",
+    "waves": "13",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "In order to expand the data collected by the survey, and to collect data on life events closer to the time at which they occur, Understanding Society is testing methods to collect data on a more continual basis rather than just annually.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.21",
+    "title": "Consent to send survey questions by SMS",
+    "category": "procedural",
+    "waves": "13,15",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "All IP13 respondents who said they use a mobile phone were asked for consent to be sent occasional survey questions via SMS.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.22",
+    "title": "Wellbeing app study",
+    "category": "procedural",
+    "waves": "13",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "The Wellbeing app collected information on emotion and self-regulation, external stressors, attachment, and interactions with loved ones.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.23",
+    "title": "Asking for Living Apart Together partner details",
+    "category": "procedural",
+    "waves": "14",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "In Wave 13, respondents with partners that live apart were asked for the contact details of these partners non-experimentally (see Section 10.8). The contact details were collected in a manner similar to questions asked in the Stable Contact Details module.",
+    "vignette": false,
+    "allocation_vars": [
+      "n_ff_ncrrexpw14"
+    ]
+  },
+  {
+    "id": "7.24",
+    "title": "Contact protocols for IP14 refreshment sample",
+    "category": "procedural",
+    "waves": "14",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "The wave 14 refreshment sample was part of a larger pilot in preparation for recruiting a refreshment sample for the main Understanding Society study.",
+    "vignette": false,
+    "allocation_vars": [
+      "n_ff_earlybird",
+      "n_ff_encourmes",
+      "n_ff_giftcon",
+      "n_ff_hhoriglong",
+      "n_ff_logocon",
+      "n_ff_ohhemail",
+      "n_ff_prenotcon",
+      "n_ff_toldallad"
+    ]
+  },
+  {
+    "id": "7.25",
+    "title": "PERKs for unconditional incentives",
+    "category": "procedural",
+    "waves": "16",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "This experiment compared different methods of sending out the unconditional incentives that are sent to respondents with the prenotification letter. Using e-vouchers gives participants a greater choice in the type of incentive they receive.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.26",
+    "title": "Youth online survey",
+    "category": "procedural",
+    "waves": "16",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "More households are completing the survey online, but the youth questionnaire has remained paper-based. Even after adding another reminder and copy of the questionnaire, the youth response is still much lower than when the study was interviewer-administered only.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.27",
+    "title": "Test of Government logo on envelopes for continuing sample",
+    "category": "procedural",
+    "waves": "16",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "For the Wave 14 boost (year 2) we experimented with the use of the HM Government logo on the envelopes for mailings to half of addresses.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "7.28",
+    "title": "Youth survey invite mailing",
+    "category": "procedural",
+    "waves": "17",
+    "verdict": "drop",
+    "reason": "procedural: the condition is how the respondent was contacted, paid or interviewed, and the outcome is whether they took part at all rather than an answer they gave. Nothing here fits (persona, condition, outcome, response).",
+    "description": "Some literature shows that children like opening their own letters. .This experiment aimed to investigate whether using letters addressed to children affects their propensity to complete the youth survey.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.1",
+    "title": "Subsetting the questionnaire content",
+    "category": "question-form",
+    "waves": "1-5",
+    "verdict": "marginal",
+    "reason": "random subsets get different content, so there is no shared outcome to compare",
+    "description": "In Wave 1, the Innovation Panel tested the feasibility of using random subsets of questionnaire content. The purpose was to explore the possibility of maximising survey content while minimising overall questionnaire burden for respondents.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.2",
+    "title": "Showcards vs. no showcards",
+    "category": "question-form",
+    "waves": "1-3",
+    "verdict": "drop",
+    "reason": "showcards are a visual stimulus, not text",
+    "description": "There were experiments involving showcards in Waves 1-3. Face-to-face interviews often rely heavily on the use of showcards to enhance measurement.",
+    "vignette": false,
+    "allocation_vars": [
+      "b_ff_showcardw2",
+      "c_ff_showcardsw2",
+      "c_ff_showcardsw3"
+    ]
+  },
+  {
+    "id": "8.3",
+    "title": "Impact of question wording and context on measuring change",
+    "category": "question-form",
+    "waves": "2, 3, 4",
+    "verdict": "build",
+    "reason": "question wording and context, varied in words",
+    "description": "Measuring how people’s social and economic circumstances change over time is a key purpose of household panel surveys. Levels of change are often overestimated in panel surveys.",
+    "vignette": false,
+    "allocation_vars": [
+      "b_ff_changew2",
+      "c_ff_changew2",
+      "d_ff_changew2",
+      "d_ff_changew4"
+    ]
+  },
+  {
+    "id": "8.4",
+    "title": "Dependent interviewing wording",
+    "category": "question-form",
+    "waves": "3, 4, 5, 7",
+    "verdict": "build",
+    "reason": "",
+    "description": "At Wave 3, an experiment was included to examine the potential effects of different wording of dependent interview questions on responses. A split-ballot experiment contrasted two versions of phrasing.",
+    "vignette": false,
+    "allocation_vars": [
+      "c_ff_changew2",
+      "d_ff_changew2"
+    ]
+  },
+  {
+    "id": "8.5",
+    "title": "Branched vs. unbranched rating scales for measuring attitudes",
+    "category": "question-form",
+    "waves": "3, 4, 5",
+    "verdict": "build",
+    "reason": "",
+    "description": "The most common method for eliciting attitudes and beliefs in surveys is to employ rating scales where respondents are asked to choose the alternative that best describes their belief in, attitude towards or agreement with a statement.",
+    "vignette": false,
+    "allocation_vars": [
+      "c_ff_branchingw3"
+    ]
+  },
+  {
+    "id": "8.6",
+    "title": "Smiley faces vs. text-based scales in child self-completion",
+    "category": "question-form",
+    "waves": "5, 6",
+    "verdict": "drop",
+    "reason": "smiley faces are a visual stimulus, not text",
+    "description": "At Wave 5 and Wave 6, the youth questionnaire examines how to adapt questions on satisfaction for children, focusing on the use of pictorial evaluations of feelings.",
+    "vignette": false,
+    "allocation_vars": [
+      "e_ff_smilesw5",
+      "f_ff_smilesw5"
+    ]
+  },
+  {
+    "id": "8.7",
+    "title": "Quality of recall data with web vs. face-to-face",
+    "category": "question-form",
+    "waves": "6",
+    "verdict": "drop",
+    "reason": "the condition is the interview mode, not words",
+    "description": "This experiment aimed (a) to investigate differences in data quality arising from switching Innovation Panel members from face-to-face to web mode of survey administration, (b) to test methods for the mitigation of a hypothesized decline in quality associated with moving to web data collection and (c) to contribute to a general understanding of how web data collection methods can affect data quality.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.8",
+    "title": "Methods of reducing item non-response in web surveys",
+    "category": "question-form",
+    "waves": "6",
+    "verdict": "build",
+    "reason": "prompts to reduce item non-response, varied in words",
+    "description": "Elevated levels of item non-response in web surveys are a concern. To see whether the incidence of item non-response can be reduced, Wave 6 contained an experiment on 6 questions which showed relatively high levels of item non-response in past waves.",
+    "vignette": false,
+    "allocation_vars": [
+      "f_ff_itemnonw6"
+    ]
+  },
+  {
+    "id": "8.9",
+    "title": "Separating systematic measurement error components using MTMM in longitudinal studies",
+    "category": "question-form",
+    "waves": "7, 8, 9",
+    "verdict": "marginal",
+    "reason": "MTMM repeated-measures design; the condition is a measurement model, not a wording",
+    "description": "This experiment extended multi-trait multi-method (MTMM) designs beyond allowing for separation of random and common method variance. It identified three additional systematic variance components: acquiescence, social desirability, and extreme response.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.10",
+    "title": "Replicating classic response order experiments across countries",
+    "category": "question-form",
+    "waves": "7",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment contained a number of questions originally described and analyzed by Schuman and Presser (1981), as well as some new variants. The purpose of these questions was to examine whether the experiments can be replicated decades later and across countries.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.11",
+    "title": "Impact of response scale direction on responses",
+    "category": "question-form",
+    "waves": "7, 8",
+    "verdict": "build",
+    "reason": "answer scale direction reversed",
+    "description": "In Wave 7, this set of experiments reflects two different, though related, research questions. The first, most general, research question is whether and how the direction of a response scale affects survey responses.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.12",
+    "title": "Enhancing respondent engagement with the survey through tailored interesting questions",
+    "category": "question-form",
+    "waves": "7",
+    "verdict": "marginal",
+    "reason": "tailored question selection; needs checking that a shared outcome exists",
+    "description": "This experiment focuses on whether including extra questions that are of interest to the respondent improves their perception of the current survey and participation in the following wave.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.13",
+    "title": "Grid design in mobile surveys",
+    "category": "question-form",
+    "waves": "10",
+    "verdict": "drop",
+    "reason": "mobile grid layout is a visual stimulus, not text",
+    "description": "Mobile phones are increasingly being used as devices to respond to web survey invitations. There are a number of commonly held beliefs of best design for mobile phone surveys, but much less empirical evidence.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.14",
+    "title": "Don’t know/prefer not to answer response presentation",
+    "category": "question-form",
+    "waves": "11",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment explores the impact of the presentation of Don’t Know/Prefer Not to Answer response options in electronic self-completion questions.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "8.15",
+    "title": "Collecting mobile phone numbers",
+    "category": "question-form",
+    "waves": "12, 15",
+    "verdict": "drop",
+    "reason": "outcome is whether a phone number was given, not a survey answer",
+    "description": "At the end of the interview at each wave, contact details for the respondent are collected, making sure that the ones on file are up to date and correct. In past waves, a list of several contact details is asked about simultaneously: home landline, mobile number, work number, and email address.",
+    "vignette": false,
+    "allocation_vars": [
+      "l_ff_mobexp_w12"
+    ]
+  },
+  {
+    "id": "9.1",
+    "title": "Measures of consumption and expenditure",
+    "category": "work-money",
+    "waves": "1, 6",
+    "verdict": "marginal",
+    "reason": "one condition uses a showcard to trigger recall, so part of the stimulus is visual",
+    "description": "At Wave 1, an experiment was conducted to help develop efficient data collection instruments concerning household consumption. There is methodological concern about whether respondents consider all possible categories of expenditure to arrive at reports of household consumption.",
+    "vignette": false,
+    "allocation_vars": [
+      "f_consexpw6"
+    ]
+  },
+  {
+    "id": "9.2",
+    "title": "Measuring satisfaction",
+    "category": "wellbeing",
+    "waves": "1-3, 5, 6",
+    "verdict": "marginal",
+    "reason": "mixes scale points and labelling (buildable) with showcards and mode (not)",
+    "description": "The way you ask subjective evaluation questions (e.g., satisfaction) may have a big influence on the types of answers that you get. A series of experiments with question wording, format and placement have been run in Waves 1-3 and 5 of the IP.",
+    "vignette": false,
+    "allocation_vars": [
+      "b_ff_jobsatw2",
+      "b_ff_lifesatw2",
+      "c_ff_lifesatw3",
+      "f_ff_lifesatw3"
+    ]
+  },
+  {
+    "id": "9.3",
+    "title": "Reference groups in measuring satisfaction",
+    "category": "wellbeing",
+    "waves": "5",
+    "verdict": "marginal",
+    "reason": "X08IVC: the condition asks the respondent to compare themselves to others of their own gender or education, naming their own persona category",
+    "description": "At Wave 5, an experiment examined the comparison groups women have in mind when they answer questions about life satisfaction. Respondents were randomly allocated to one of four treatments groups.",
+    "vignette": false,
+    "allocation_vars": [
+      "e_ff_lifesatw5"
+    ]
+  },
+  {
+    "id": "9.4",
+    "title": "Measuring identity",
+    "category": "attitudes",
+    "waves": "2",
+    "verdict": "build",
+    "reason": "asked about your profession vs your occupation; pure wording",
+    "description": "In Wave 2, the Innovation Panel tested a set of questions on identity based on items carried in the Citizenship Survey in 2007-2008. In total, respondents were given 13 categories with which they could identify (or not).",
+    "vignette": false,
+    "allocation_vars": [
+      "b_ff_identityw2"
+    ]
+  },
+  {
+    "id": "9.5",
+    "title": "Measures of wealth",
+    "category": "work-money",
+    "waves": "3",
+    "verdict": "build",
+    "reason": "wealth asked aggregate vs itemised, 2x2 with who reports",
+    "description": "Wave 3 of the Innovation Panel was used to examine four different question designs for collecting the amount of money held in savings and investments: Table: Schematic design of Wave 3 measuring wealth experiment treatments Individual Reporting Financial Reporting Aggregate Amounts Group 1 Group 2 Itemized Amounts Group 3 Group 4 For all groups, an initial question asks respondents to report which specific types of savings or investments they hold.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.6",
+    "title": "Context of questions about consent to data linkage with administrative records",
+    "category": "consent",
+    "waves": "4",
+    "verdict": "build",
+    "reason": "consent asked in context vs at the end, 2x2",
+    "description": "Often the survey design decisions regarding how to obtain consent for administrative data linkage to social survey data are based on anecdotal accounts and common sense rather than empirical evidence.",
+    "vignette": false,
+    "allocation_vars": [
+      "d_ff_conexpw4"
+    ]
+  },
+  {
+    "id": "9.7",
+    "title": "Respondent preferences about mode of data collection",
+    "category": "question-form",
+    "waves": "4, 5, 6",
+    "verdict": "marginal",
+    "reason": "the outcome is a preference about survey mode, not a substantive answer",
+    "description": "In Wave 4 a split-ballot experiment was used to collect information about the preferred mode of administration for the survey.",
+    "vignette": false,
+    "allocation_vars": [
+      "d_ff_group2",
+      "e_ff_group2",
+      "f_ff_group2"
+    ]
+  },
+  {
+    "id": "9.8",
+    "title": "Feasibility of directly measuring household energy use",
+    "category": "physical",
+    "waves": "5, 6",
+    "verdict": "drop",
+    "reason": "meter readings; no text stimulus",
+    "description": "This experiment assesses the feasibility of investigating certain key environmental behaviours and outcomes directly.",
+    "vignette": false,
+    "allocation_vars": [
+      "f_ff_metersw6"
+    ]
+  },
+  {
+    "id": "9.9",
+    "title": "Context effects in fertility decisions",
+    "category": "family-care",
+    "waves": "4, 5",
+    "verdict": "build",
+    "reason": "",
+    "description": "This Wave 4 experiment examines priming effects that impact on the respondent’s thoughts about expected total fertility. Fertility intentions can be highly dependent on wider context, such as partnership, age, actual childbearing, economic position and social pressures.",
+    "vignette": false,
+    "allocation_vars": [
+      "d_ff_fertw4",
+      "e_ff_fertw4"
+    ]
+  },
+  {
+    "id": "9.10",
+    "title": "Vignettes: measuring partner satisfaction with division of household labour",
+    "category": "family-care",
+    "waves": "5, 6",
+    "verdict": "build",
+    "reason": "respondents rate a described couple, not themselves",
+    "description": "In Waves 5 and 6 respondents evaluated a set of vignettes related to the sharing of domestic work. The hypothetical arrangements varied along five dimensions: (1) paid work; (2) earnings; (3) presence of children; (4) housework allocations; and (5) use of paid help.",
+    "vignette": true,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.11",
+    "title": "Subjective expectations about the returns to higher education and decisions to attend university",
+    "category": "work-money",
+    "waves": "5, 8, 9",
+    "verdict": "build",
+    "reason": "",
+    "description": "This Wave 5 study tested ways of measuring perceptions about the economic returns to higher education, the costs involved, and experimentally tests the effects of information on actual decisions to attend university.",
+    "vignette": false,
+    "allocation_vars": [
+      "e_ff_wageinfow5"
+    ]
+  },
+  {
+    "id": "9.12",
+    "title": "Measuring change in self-assessed disability",
+    "category": "health",
+    "waves": "6, 7",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experimentation uses dependent interviewing to investigate the measurement of change in self-assessed measures of long-standing illness or disability.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.13",
+    "title": "Associated Study: measuring time and risk preferences",
+    "category": "work-money",
+    "waves": "6, 7",
+    "verdict": "build",
+    "reason": "",
+    "description": "These data are from an Associated Study, which was approved and implemented as part of Wave 6 and Wave 7 data collection. Researchers using these data should acknowledge their source in any publications arising from analysis of the data.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.14",
+    "title": "Assessing how people think about environmental taxes",
+    "category": "attitudes",
+    "waves": "7",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment examines different wordings of questions on willingness to pay environmental taxes. Each respondent receives a single question concerning willingness to pay an environmental tax. There are 10 question variants. Households within PSUs are allocated to treatment.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.15",
+    "title": "Validity of interviewer ratings of respondent health",
+    "category": "health",
+    "waves": "8",
+    "verdict": "drop",
+    "reason": "the outcome is the interviewer's rating, not the respondent's answer",
+    "description": "This experiment aims to explore what factors contribute to interviewers’ assessments of respondents’ health.",
+    "vignette": false,
+    "allocation_vars": [
+      "h_inthlthw8"
+    ]
+  },
+  {
+    "id": "9.16",
+    "title": "Social desirability bias in attitudes towards immigration",
+    "category": "attitudes",
+    "waves": "8, 9",
+    "verdict": "build",
+    "reason": "",
+    "description": "Intolerance to ethnic minority immigrants is often masked, which can lead to systematically under-reported opposition and over-reported tolerance. This experiment is a longitudinal application of a list experiment.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.17",
+    "title": "Measuring sexual identity using direct and indirect questioning",
+    "category": "sensitive",
+    "waves": "8, 9",
+    "verdict": "build",
+    "reason": "sexual identity asked directly vs indirectly",
+    "description": "The identification of the best strategies to measure sexual orientation is needed to inform policy makers of experience of stigma and harassment suffered by the lesbian, gay and bisexual population.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.18",
+    "title": "What do the general population regard as “successful ageing”?",
+    "category": "wellbeing",
+    "waves": "9, 17",
+    "verdict": "build",
+    "reason": "a substantive attitude, asked eight years apart",
+    "description": "Populations are ageing and there is substantial interest among researchers, policy makers and the general population as to what constitutes ‘successful ageing’. At Wave 9 and Wave 17, respondents were presented with a series of vignettes, each describing an older person.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.19",
+    "title": "Benefits unit finances module",
+    "category": "work-money",
+    "waves": "9",
+    "verdict": "marginal",
+    "reason": "a module redesign; needs checking that conditions share an outcome",
+    "description": "The first experiment presented respondents with an income summary screen, which displayed the person’s derived monthly net income based on their responses to previous answers in the survey. The second experiment was part of the Benefit Unit Finances module.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.20",
+    "title": "Presentation of response options in satisfaction questions",
+    "category": "wellbeing",
+    "waves": "9",
+    "verdict": "build",
+    "reason": "",
+    "description": "Recent findings suggest a significant drop in health satisfaction across waves of the Understanding Society survey. It is unclear if it is an actual change or artefact of the survey design.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.21",
+    "title": "Improving consent to link to the electoral register",
+    "category": "consent",
+    "waves": "10, 11",
+    "verdict": "build",
+    "reason": "",
+    "description": "Two experimental conditions exist for this experiment. First is the medium of obtaining consent; the second involves the wording to the consent request. Respondents were first assigned to either an “opt-in” or “opt-out” consent condition.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.22",
+    "title": "Financial management within couples",
+    "category": "work-money",
+    "waves": "10",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment compares two ways of asking couples about their financial management and perception of money ownership. The first condition asks only about how joint expenses are shared, with a response option included about shared money.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.23",
+    "title": "Non-resident parents and reasons for separation",
+    "category": "family-care",
+    "waves": "10",
+    "verdict": "build",
+    "reason": "two versions of questions on non-resident parents and separation",
+    "description": "Two question modules which have been used in the past in the Innovation Panel were adapted to capture information on non-resident parents.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.24",
+    "title": "Variations of the EQ-5D questions",
+    "category": "health",
+    "waves": "11",
+    "verdict": "build",
+    "reason": "EQ-5D-3L and EQ-5D-5L variants, three groups",
+    "description": "This module aims to explore the differences in measurement of the widely used EQ-5D instrument using two developed variants. The EQ-5D is a 5-item instrument, designed by a consortium called EuroQol, to measure health-related quality of life.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.25",
+    "title": "HMRC data linkage consent experiment",
+    "category": "consent",
+    "waves": "11, 15",
+    "verdict": "build",
+    "reason": "HMRC linkage consent, easy vs difficult wording",
+    "description": "This experiment compares the impact of placement and wording of consent to data linkage to HMRC records. This consent question was originally carried in the mainstage of Understanding Society.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.26",
+    "title": "Does competition over public services decrease support for residency rights of immigrants?",
+    "category": "attitudes",
+    "waves": "11",
+    "verdict": "build",
+    "reason": "two sets of questions: a conjoint and a set of vignettes",
+    "description": "This study contains two experimental sets of questions that explore respondents’ views towards residency rights of immigrants.",
+    "vignette": true,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.27",
+    "title": "Reporting of height and weight",
+    "category": "health",
+    "waves": "12",
+    "verdict": "drop",
+    "reason": "the condition is interviewer-asked vs self-completion, which is mode",
+    "description": "In Wave 12 data on height and weight of respondents were collected, in order to calculate body mass index, a measure of adiposity. The aim of this experiment was to determine if the interview mode affect the accuracy of individuals’ responses on body weight and height.",
+    "vignette": false,
+    "allocation_vars": [
+      "l_ff_height"
+    ]
+  },
+  {
+    "id": "9.28",
+    "title": "Biomarker and sample collection",
+    "category": "physical",
+    "waves": "12",
+    "verdict": "drop",
+    "reason": "blood, blood spot and hair samples",
+    "description": "Wave 12 collected a number of biomarkers throughout the survey to examine biomarker collection and determine the impact of mode of completion. Which biomarkers were collected and how was determined by mode of completion.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.29",
+    "title": "LinkedIn consent",
+    "category": "consent",
+    "waves": "14",
+    "verdict": "build",
+    "reason": "LinkedIn consent, placement crossed with a motivational statement",
+    "description": "This experiment tested different ways of asking respondents for consent to link data from their LinkedIn profiles to their Understanding Society survey data. LinkedIn is a platform that serves mainly as a professional networking site, including allowing individuals to search for jobs.",
+    "vignette": false,
+    "allocation_vars": [
+      "n_ff_lkincon",
+      "n_ff_lkinstat"
+    ]
+  },
+  {
+    "id": "9.30",
+    "title": "Vignettes: intentions to prepare for automation",
+    "category": "technology",
+    "waves": "14",
+    "verdict": "build",
+    "reason": "automation threat severity x timeframe, 2x2",
+    "description": "This experiment tested how what is communicated about the impact of automation affects the extent to which individuals are concerned about automation, are interested in re/upskilling to prepare for automation and intend to undertake actions accordingly.",
+    "vignette": true,
+    "allocation_vars": [
+      "n_ff_techworkw14"
+    ]
+  },
+  {
+    "id": "9.31",
+    "title": "Comparison of ReQoL-10 to other scales",
+    "category": "health",
+    "waves": "14",
+    "verdict": "build",
+    "reason": "ReQoL-10 against other scales, randomised order",
+    "description": "This experiment compared the 10-item Recovering Quality of Life questionnaire (ReQoL-10) to other health quality of life scales: the instrument (EQ-5D-3L) currently preferred by the National Institute for Health and Clinical Excellence (NICE) and the 12-item General Health Questionnaire (GHQ).",
+    "vignette": false,
+    "allocation_vars": [
+      "n_ff_req10cond"
+    ]
+  },
+  {
+    "id": "9.32",
+    "title": "Proxy nomination",
+    "category": "family-care",
+    "waves": "14",
+    "verdict": "marginal",
+    "reason": "proxy nomination; needs checking that a respondent answer is the outcome",
+    "description": "This experiment tested different ways of asking respondents to nominate a proxy who could complete a short questionnaire on their behalf in future waves, if they themselves were unable to complete it or moved into an institution.",
+    "vignette": false,
+    "allocation_vars": [
+      "n_ff_prxear",
+      "n_ff_prxver"
+    ]
+  },
+  {
+    "id": "9.33",
+    "title": "Twitter consent",
+    "category": "consent",
+    "waves": "15",
+    "verdict": "build",
+    "reason": "",
+    "description": "This module repeats the consent asked (non-experimentally) at IP10 (see 10.5 Consent to link Twitter data) and aims to look at the feasibilities and practicalities of linking social media (in particular Twitter) and survey data in a longitudinal context, and how they can be combined to improve the quality of both.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.34",
+    "title": "Marginal propensity to consume",
+    "category": "work-money",
+    "waves": "15",
+    "verdict": "build",
+    "reason": "",
+    "description": "A large and influential literature aims to measure consumers’ spending, saving and debt responses to income changes using questions of this kind. These studies aim to estimate how much consumers would spend out of each £1 change in income.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.35",
+    "title": "Informal care",
+    "category": "family-care",
+    "waves": "15",
+    "verdict": "build",
+    "reason": "",
+    "description": "Measurement of informal care is problematic for a number of reasons. Caregiving is a complex concept and ontologically vague. Linguistically speaking, ‘care’ can refer to emotions and/or practices and, in common parlance, ‘caregiving’ tends to embody a nebulous set of activities.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.36",
+    "title": "Alcohol consumption",
+    "category": "health",
+    "waves": "15",
+    "verdict": "build",
+    "reason": "",
+    "description": "A review of Understanding Society questionnaires identified our usage of the Audit-C alcohol consumption questions differed somewhat from the questions the NHS uses for its measures.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.37",
+    "title": "Body Volume Index app and body measurements",
+    "category": "physical",
+    "waves": "15",
+    "verdict": "drop",
+    "reason": "body measurement app",
+    "description": "IP15 was used to test different methods of obtaining body measurements. First, all respondents were sent a tape measure with instructions to measure their waist and hip circumference, as well as to self-report their height and weight.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.38",
+    "title": "National identity",
+    "category": "attitudes",
+    "waves": "15",
+    "verdict": "build",
+    "reason": "",
+    "description": "National identities inform behaviours and shape social relations, with evidence for changes both in majority and minority identities in recent years with respect to self-reported identity choice and the meaning people ascribe to it.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.39",
+    "title": "Vignettes: measuring flexibility stigma - double whammy or femininity stigma",
+    "category": "family-care",
+    "waves": "16",
+    "verdict": "build",
+    "reason": "homeworking and gender inequality in the labour market",
+    "description": "This experiment uses a vignette design to examine what the rise in homeworking practices mean with regards to gender inequality in the labour market.",
+    "vignette": true,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.40",
+    "title": "Cognitive reflection and politically motivated reasoning",
+    "category": "attitudes",
+    "waves": "16",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment uses a variation of a known cognitive reflection test (CRT) to test whether politically motivated reasoning is a manifestation of heuristic or deliberative thinking. The CRT is a four-question battery asking cognitive ability-like questions (e.g.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.41",
+    "title": "Robustness of climate change worries measurement",
+    "category": "attitudes",
+    "waves": "16",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment compares two versions of a single question on worry about climate change. Since the effects of climate change aggravate over time, it may mostly impact future generations.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.42",
+    "title": "Understanding of the long-term future",
+    "category": "attitudes",
+    "waves": "16",
+    "verdict": "build",
+    "reason": "",
+    "description": "People’s perception of the long-term future plays an important role in the support for policies that address intergenerational challenges such as climate change, nuclear waste 207 storage and technological risks. Yet, many people find it difficult to think about the future beyond their own lifespan.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.43",
+    "title": "Mental health questions comparisons",
+    "category": "health",
+    "waves": "16",
+    "verdict": "build",
+    "reason": "",
+    "description": "At IP16, a study was conducted to compare the mental health questions that had been deployed in Understanding Society over the years. The main survey questions about diagnoses of health conditions remained close to static for the first nine waves of the main survey.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.44",
+    "title": "Asking for child red book pictures",
+    "category": "physical",
+    "waves": "16",
+    "verdict": "drop",
+    "reason": "outcome is whether photographs were supplied",
+    "description": "Child development up to the age of 2 is a key determinant of child and adult health. However, directly and regularly measuring physical health is invasive and time consuming for families, and costly for the Study.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.45",
+    "title": "Spatial cognition mobile app game",
+    "category": "physical",
+    "waves": "16",
+    "verdict": "drop",
+    "reason": "mobile app game",
+    "description": "We asked respondents to download and use a game app for their smart phones. The data derived from playing this game can be used to measure spatial cognition, which is important in several aspects of life and is shown to be related to general cognition.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.46",
+    "title": "Consent decision process",
+    "category": "consent",
+    "waves": "17",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment aimed to test whether participants can be encouraged to think about a consent request more reflectively and whether this then affects the consent decision and related indicators of effort and understanding.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.47",
+    "title": "Identification of informal caregiving",
+    "category": "family-care",
+    "waves": "17",
+    "verdict": "build",
+    "reason": "standard vs activity-based identification of informal caregiving",
+    "description": "The Understanding Society questionnaire includes questions designed to identify people who provide informal care and seeking to measure how much time they spend providing care. The existing questions adopt an approach of asking about informal care in general.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.48",
+    "title": "Labour market expectations",
+    "category": "work-money",
+    "waves": "17",
+    "verdict": "build",
+    "reason": "",
+    "description": "This experiment was intended to investigate respondents’ reporting of their labour market expectations.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.49",
+    "title": "Indoor residential environment: consent for in-home sensor",
+    "category": "consent",
+    "waves": "17",
+    "verdict": "build",
+    "reason": "consent to place in-home sensors",
+    "description": "Wave 17 included an overarching project to investigate people’s indoor residential environment and their energy use.",
+    "vignette": false,
+    "allocation_vars": []
+  },
+  {
+    "id": "9.50",
+    "title": "Domestic energy use: consent for smart meter data linkage",
+    "category": "consent",
+    "waves": "17",
+    "verdict": "build",
+    "reason": "",
+    "description": "Wave 17 included an overarching project to investigate people’s indoor residential environment and their energy use.",
+    "vignette": false,
+    "allocation_vars": []
+  }
+]
