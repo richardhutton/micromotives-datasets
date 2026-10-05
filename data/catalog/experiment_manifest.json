@@ -6,7 +6,7 @@
     "",
     "The 28 TESS experiments are NOT here. Their category already ships in",
     "data/catalog/tess_uk_foundation_sources.csv, joined on study_id, and duplicating it",
-    "would create exactly the drift that uk_dataverse_provenance.json just suffered — two",
+    "would create exactly the drift that uk_dataverse_provenance.json just suffered \u2014 two",
     "places holding the same fact, one of them going stale unnoticed. Row counts,",
     "participant counts, licences and source are likewise derived, never typed.",
     "",
@@ -33,24 +33,12 @@
     "economics/behavioural": "Risk, money, time preference, economic judgement.",
     "health communication": "Health messaging, screening, vaccination uptake.",
     "moral/social/cognition": "Moral judgement, social perception, reasoning.",
-    "political identity/polarisation": "How people regard each other across a political divide — the outcome is a judgement of a person.",
-    "political preferences/policy": "What people want government to do — the outcome is a judgement of a policy.",
+    "political identity/polarisation": "How people regard each other across a political divide \u2014 the outcome is a judgement of a person.",
+    "political preferences/policy": "What people want government to do \u2014 the outcome is a judgement of a policy.",
     "survey methodology": "The instrument itself is the object of study.",
     "work/family/gender": "Employment, caregiving, gender and family roles."
   },
   "experiments": {
-    "6MRVOM_brexit_scenario": {
-      "category": "political preferences/policy",
-      "description": "Respondents are told the government will, after Brexit, either keep immigration at roughly current levels or only cut it a little while shifting its source from Europe to beyond Europe. Two outcomes under whichever scenario they met: which party they would support in the next general election, and how satisfied they would feel about the Brexit decision. Tests whether the SOURCE of post-Brexit immigration, not just its level, moves party support and Brexit satisfaction.",
-      "design": "two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (11-level nominal party choice, code 12 'Don't know' dropped per the 2026-10-05 ruling; 0-10 satisfaction)",
-      "verified_against": "no author-computed or published reference exists for this block (checked analysis.R and the full 24-page accepted manuscript); scripts/verify_6MRVOM.py instead confirms the built distribution matches data.sav's own frequency tables exactly, cell for cell"
-    },
-    "6MRVOM_eu_share": {
-      "category": "political preferences/policy",
-      "description": "Respondents are asked what percentage of all immigrants to the UK they would like to see coming from the EU (vs. elsewhere), on a 0-100 slider; half are additionally told the current EU share is 50%. Tests whether an explicit base-rate anchor shifts the preferred EU/non-EU immigration mix.",
-      "design": "two-condition between-subject (information anchor present/absent), one outcome on a 0-100 scale",
-      "verified_against": "the deposit's own analysis.R — svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding"
-    },
     "35M5CV_bbc": {
       "category": "political identity/polarisation",
       "description": "Forced choice between two applicants for Director General of the BBC, described by name, age, experience, degree, party politics, EU referendum vote and occupation. Tests whether Leave/Remain identity affects judgement of competence for a public role.",
@@ -65,13 +53,25 @@
     },
     "35M5CV_sky": {
       "category": "political identity/polarisation",
-      "description": "Five-item battery measuring strength of emotional attachment to one's own Brexit identity (Leaver/Remainer) or party identity (Conservative/Labour) — in-group language, personal offence at criticism, felt commonality, connectedness and pride in one's own side. The in-group-identification component of affective polarization, restricted to respondents with a clean primary identity (excludes 'Neither'/'None' respondents routed into a battery via an undocumented follow-up question).",
+      "description": "Five-item battery measuring strength of emotional attachment to one's own Brexit identity (Leaver/Remainer) or party identity (Conservative/Labour) \u2014 in-group language, personal offence at criticism, felt commonality, connectedness and pride in one's own side. The in-group-identification component of affective polarization, restricted to respondents with a clean primary identity (excludes 'Neither'/'None' respondents routed into a battery via an undocumented follow-up question).",
       "design": "randomised split ballot (Brexit identity vs party identity elicitation), 5 items per respondent, 2,411 respondents x 5 items",
-      "verified_against": "the paper's own Table 2 — all four identity-group scale means, weighted by the deposit's own `Weights` column, reproduced to the paper's printed 1dp precision; see scripts/verify_35M5CV_sky.py"
+      "verified_against": "the paper's own Table 2 \u2014 all four identity-group scale means, weighted by the deposit's own `Weights` column, reproduced to the paper's printed 1dp precision; see scripts/verify_35M5CV_sky.py"
+    },
+    "6MRVOM_brexit_scenario": {
+      "category": "political preferences/policy",
+      "description": "Respondents are told the government will, after Brexit, either keep immigration at roughly current levels or only cut it a little while shifting its source from Europe to beyond Europe. Two outcomes under whichever scenario they met: which party they would support in the next general election, and how satisfied they would feel about the Brexit decision. Tests whether the SOURCE of post-Brexit immigration, not just its level, moves party support and Brexit satisfaction.",
+      "design": "two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (11-level nominal party choice, code 12 'Don't know' dropped per the 2026-10-05 ruling; 0-10 satisfaction)",
+      "verified_against": "no author-computed or published reference exists for this block (checked analysis.R and the full 24-page accepted manuscript); scripts/verify_6MRVOM.py instead confirms the built distribution matches data.sav's own frequency tables exactly, cell for cell"
+    },
+    "6MRVOM_eu_share": {
+      "category": "political preferences/policy",
+      "description": "Respondents are asked what percentage of all immigrants to the UK they would like to see coming from the EU (vs. elsewhere), on a 0-100 slider; half are additionally told the current EU share is 50%. Tests whether an explicit base-rate anchor shifts the preferred EU/non-EU immigration mix.",
+      "design": "two-condition between-subject (information anchor present/absent), one outcome on a 0-100 scale",
+      "verified_against": "the deposit's own analysis.R \u2014 svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding"
     },
     "EFXNLX": {
       "category": "political preferences/policy",
-      "description": "Forced choice between two possible Brexit deals, each described by eight negotiated terms — immigration, EU citizens' rights, trade, legal jurisdiction, budget contributions, payments, the Irish border and the timeline — followed by a 1-4 acceptability rating of each deal separately.",
+      "description": "Forced choice between two possible Brexit deals, each described by eight negotiated terms \u2014 immigration, EU citizens' rights, trade, legal jurisdiction, budget contributions, payments, the Irish border and the timeline \u2014 followed by a 1-4 acceptability rating of each deal separately.",
       "design": "paired-profile conjoint, 8 attributes, 6 rounds per respondent, 3 outcomes per round (1 choice + 2 ratings)",
       "verified_against": "the authors' own `cregg::cj()`, 84 estimates agreeing to 1e-6; data/catalog/answer_key_EFXNLX.csv"
     },
@@ -79,49 +79,43 @@
       "category": "political preferences/policy",
       "description": "Respondents are told to imagine they have won a substantial lottery prize, or told nothing, then asked how satisfied they are that the UK voted to leave the EU. Tests whether unearned wealth shifts Brexit support.",
       "design": "two-condition between-subject, one outcome on an 11-point scale",
-      "verified_against": "the paper's own Table D.1 — N, control mean and both regression coefficients"
+      "verified_against": "the paper's own Table D.1 \u2014 N, control mean and both regression coefficients"
     },
     "LOGVPZ_risk_tolerance": {
       "category": "economics/behavioural",
       "description": "The same lottery-wealth treatment, with the outcome a 0-3 financial risk-tolerance code built from a branching pair of hypothetical job-gamble questions (would you swap a safe job for one with a 50-50 chance of doubling or cutting your income).",
       "design": "two-condition between-subject, one DERIVED outcome on a 0-3 scale",
-      "verified_against": "the paper's own Table D.2 — N, control mean and both regression coefficients; the branch logic itself is pinned by tests/test_derive_LOGVPZ.py across all 64 inputs of the instrument's code space"
+      "verified_against": "the paper's own Table D.2 \u2014 N, control mean and both regression coefficients; the branch logic itself is pinned by tests/test_derive_LOGVPZ.py across all 64 inputs of the instrument's code space"
     },
     "PMV0TG": {
       "category": "moral/social/cognition",
       "description": "Forced choice between two hypothetical people over who should receive a COVID-19 vaccine first, differing on risk of death, risk of transmitting, income, occupation and age. A rationing problem: who deserves a scarce life-saving good.",
       "design": "paired-profile conjoint, 5 attributes, 8 rounds per respondent",
-      "verified_against": "the UK column of the authors' own deposited conjoint_combined_results_UNWEIGHTED_ols.tex — 17 coefficients to within 0.006"
-    },
-    "X08IVC": {
-      "category": "political preferences/policy",
-      "description": "Respondents are told there is debate about reducing immigration to Britain, then either given no further information or told that most Leavers support reducing immigration while most Remainers do not, before being asked whether immigration should be reduced. Tests whether a Brexit-identity policy-norm cue shifts Leavers' and Remainers' own immigration preferences toward their in-group's.",
-      "design": "two-condition between-subject (control vs. a policy-norm cue), one outcome on a 5-point agreement scale",
-      "verified_against": "the paper's own Table 2 — four group means and two group Ns, reproduced exactly"
-    },
-    "QQM5MC": {
-      "category": "political identity/polarisation",
-      "description": "A split ballot crossing a Leaver/Remainer identity prime with factual information about UK GDP growth. Outcomes are the respondent's estimate of the UK's growth rank among 34 OECD countries, and whether they think the economy is getting better or worse. Tests motivated reasoning about shared economic facts.",
-      "design": "2x2 split ballot (prime x information) plus a true control, 2 outcomes",
-      "verified_against": "the paper's own Table 1 and Figures 4-5 — eight group means and two Ns"
-    },
-    "RJTVG8": {
-      "category": "political preferences/policy",
-      "description": "Forced choice between two hypothetical UK internet-voting (i-voting) policies, differing on ten features — pre-registration, voting method, voting window, where trials succeeded, the pilot's effect on turnout and on fraud risk, who controls the platform, the cost to government, the proposing party and the endorsing body. The respondent judges a PROPOSED POLICY, not a person.",
-      "design": "paired-profile conjoint, 10 attributes (one — platform — a single 6-level draw, not a 2x3 cross), 5 tasks per respondent",
-      "verified_against": "the authors' own cregg::mm() marginal means, Table A.4 of the author-accepted manuscript — 51 estimates to within 0.0015"
+      "verified_against": "the UK column of the authors' own deposited conjoint_combined_results_UNWEIGHTED_ols.tex \u2014 17 coefficients to within 0.006"
     },
     "POMIFD": {
       "category": "political preferences/policy",
-      "description": "Respondents see two of 336 political arguments (14 rhetorical elements x 12 policy issues x 2 positions, for/against) shown together, verbatim as extracted from Hansard debate transcripts, and say which they find more persuasive or that the two are about the same. The respondent judges which ARGUMENT about a policy is persuasive, not a person — closer to the 'policy' pole than the 'identity' pole, since nothing about Leave/Remain regard for other people is measured. Unlike every other UK Dataverse study in this corpus (all conjoints, where the condition is a table of attribute levels this project renders into prose), the condition text here is the fielded instrument's own argument text, transcribed verbatim and not authored by this project.",
+      "description": "Respondents see two of 336 political arguments (14 rhetorical elements x 12 policy issues x 2 positions, for/against) shown together, verbatim as extracted from Hansard debate transcripts, and say which they find more persuasive or that the two are about the same. The respondent judges which ARGUMENT about a policy is persuasive, not a person \u2014 closer to the 'policy' pole than the 'identity' pole, since nothing about Leave/Remain regard for other people is measured. Unlike every other UK Dataverse study in this corpus (all conjoints, where the condition is a table of attribute levels this project renders into prose), the condition text here is the fielded instrument's own argument text, transcribed verbatim and not authored by this project.",
       "design": "within-subject paired-argument forced choice, 3-way nominal outcome (argument one more persuasive / about the same / argument two more persuasive), 4 comparisons per respondent drawn from 12 policy issues",
-      "verified_against": "the paper's own published descriptive statistic (AJPS 2022, p.9) — '28% of comparisons... about the same' — reproduced from the built parquet's response distribution; scripts/verify_POMIFD.py. Does NOT verify the headline Bayesian multilevel model (not refit) or any individual argument's text/pairing, which an aggregate proportion cannot see — see the script's own docstring"
+      "verified_against": "the paper's own published descriptive statistic (AJPS 2022, p.9) \u2014 '28% of comparisons... about the same' \u2014 reproduced from the built parquet's response distribution; scripts/verify_POMIFD.py. Does NOT verify the headline Bayesian multilevel model (not refit) or any individual argument's text/pairing, which an aggregate proportion cannot see \u2014 see the script's own docstring"
     },
     "PZB01G": {
       "category": "political preferences/policy",
       "description": "Respondents are shown a campaign vignette combining a pro- or anti-EU cultural frame, a pro- or anti-EU economic frame and a pro- or anti-EU political frame (eight combinations), or no vignette at all (a true control), then asked how they would vote in the EU membership referendum. Tests which real-world campaign arguments, alone and in combination, shift referendum vote intention.",
       "design": "2x2x2 full factorial (cultural x economic x political frame, each pro/anti) plus a true control, one outcome on a 4-way nominal scale (Remain/Leave/Would not vote/Don't know)",
       "verified_against": "the paper's own Appendix Table A6 (nine group sizes, reproduced exactly) and its own text (p.8, the control group's published Wave 2 Remain/Leave/Don't-know-or-would-not-vote shares, reproduced to 0.1 percentage point); scripts/verify_PZB01G.py"
+    },
+    "QQM5MC": {
+      "category": "political identity/polarisation",
+      "description": "A split ballot crossing a Leaver/Remainer identity prime with factual information about UK GDP growth. Outcomes are the respondent's estimate of the UK's growth rank among 34 OECD countries, and whether they think the economy is getting better or worse. Tests motivated reasoning about shared economic facts.",
+      "design": "2x2 split ballot (prime x information) plus a true control, 2 outcomes",
+      "verified_against": "the paper's own Table 1 and Figures 4-5 \u2014 eight group means and two Ns"
+    },
+    "RJTVG8": {
+      "category": "political preferences/policy",
+      "description": "Forced choice between two hypothetical UK internet-voting (i-voting) policies, differing on ten features \u2014 pre-registration, voting method, voting window, where trials succeeded, the pilot's effect on turnout and on fraud risk, who controls the platform, the cost to government, the proposing party and the endorsing body. The respondent judges a PROPOSED POLICY, not a person.",
+      "design": "paired-profile conjoint, 10 attributes (one \u2014 platform \u2014 a single 6-level draw, not a 2x3 cross), 5 tasks per respondent",
+      "verified_against": "the authors' own cregg::mm() marginal means, Table A.4 of the author-accepted manuscript \u2014 51 estimates to within 0.0015"
     }
   }
 }

@@ -128,6 +128,47 @@ words the source does contain.
    reach the YAML (ledger #52). Where they genuinely disagree, follow *simple*
    and record the disagreement in `notes`.
 
+## The condition must not name the respondent's own persona category
+
+Distinct from the domain rule, and stricter. The domain rule says a persona
+attribute must not sit in the same domain as the outcome — it is about
+CORRELATION, and it is why `EFXNLX` drops `eu_referendum_vote` and
+`6MRVOM_eu_share` drops `pastvote_EURef`.
+
+This is a different failure. If the condition text names the categories a persona
+field distinguishes, the answer is not correlated with the persona, it is
+DERIVABLE from the prompt by substitution, and the row stops measuring anything
+about people.
+
+The case that established it is `X08IVC` (dropped 2026-10-05). Its cued condition
+read:
+
+> "A recent survey has shown that most Leavers agree that immigration should be
+> reduced, whereas most Remainers do not agree that immigration should be
+> reduced."
+
+and its persona carried `brexit_identity` ∈ {Leaver, Remainer, Neither}. Given
+`{persona: Leaver}` and that sentence, a model reaches the expected answer with no
+knowledge of British politics, of immigration, or of people. It only has to match
+a string.
+
+**What to do when you find one.** Three options, in order of preference:
+
+1. **Remove the persona field.** Correct whenever the study has other persona
+   fields, which is the normal case.
+2. **Drop the study**, if removing the field leaves no persona at all. `X08IVC`
+   had eleven columns and no demographics of any kind, so excluding
+   `brexit_identity` left 1,124 rows describing nobody.
+3. **Keep it and mark it** in `experiment_manifest.json` as trivially
+   predictable. Only defensible for a study whose diagnostic value as a floor
+   outweighs the risk, and only if no aggregate score can be reported without the
+   mark travelling with it. `X08IVC` was judged not to clear that bar.
+
+**How to spot it.** Read one rendered condition against the persona fields beside
+it, for one row. This is not detectable numerically — the study verified against
+all four cells of its authors' published table, on both N and mean, while being
+unusable for its intended purpose.
+
 ## Never invent stimulus text
 
 If the source does not contain text for something, say so in `notes` and leave it

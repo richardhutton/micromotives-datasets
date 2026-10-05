@@ -2,14 +2,14 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**42 experiments.** 13 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**41 experiments.** 12 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 13 | 130,596 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 12 | 129,472 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **42** | **427,799** | |
+| **Total** | **41** | **426,675** | |
 
 ---
 
@@ -30,7 +30,6 @@
 | `RJTVG8` | Support for digitising the ballot box: a systematic review of i-vot… | Harvard Dataverse | `doi:10.7910/DVN/RJTVG8` | 6,000 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
-| `X08IVC` | Brexit as an Identity: Political Identities and Policy Norms | Harvard Dataverse | `doi:10.7910/DVN/X08IVC` | 1,124 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
@@ -224,19 +223,6 @@ Respondents are asked what percentage of all immigrants to the UK they would lik
 - **Licence** — CC0 1.0
 - **Verified against** — the deposit's own analysis.R — svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding
 
-### `X08IVC`
-
-**Brexit as an Identity: Political Identities and Policy Norms**
-
-Respondents are told there is debate about reducing immigration to Britain, then either given no further information or told that most Leavers support reducing immigration while most Remainers do not, before being asked whether immigration should be reduced. Tests whether a Brexit-identity policy-norm cue shifts Leavers' and Remainers' own immigration preferences toward their in-group's.
-
-- **Source** — Harvard Dataverse, `doi:10.7910/DVN/X08IVC`
-- **Type** — two-condition between-subject (control vs. a policy-norm cue), one outcome on a 5-point agreement scale
-- **Category** — political preferences/policy
-- **Rows** — 1,124 from 1,124 respondents
-- **Licence** — CC0 1.0
-- **Verified against** — the paper's own Table 2 — four group means and two group Ns, reproduced exactly
-
 ---
 
 ## UK layer — Harvard Dataverse, licence-restricted
@@ -306,7 +292,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 1 | 6 | 95,879 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 8 | 0 | 91,549 |
+| political preferences/policy | 7 | 0 | 90,425 |
 | survey methodology | 0 | 5 | 51,701 |
 | work/family/gender | 0 | 8 | 88,127 |
 
