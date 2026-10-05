@@ -2,6 +2,12 @@
 
 **Status:** draft, not sent. For rich to send, edit or discard.
 
+**Revised 5 Oct 2026.** The first draft spent paragraphs reassuring UKDS about
+redistribution. rich is not redistributing anything, so clause 5.4 is satisfied
+automatically and saying so at length only invites them to wonder why it came up. The
+whole request is now about **one clause**: 5.5, the Online Data Tools prohibition. That is
+the only thing standing between him and the data he has already downloaded.
+
 **To:** UK Data Service user support (`support@ukdataservice.ac.uk`, or the contact form)
 **Subject:** Request for written permission under EUL clause 5.5 — Online Data Tools, SN 6849
 
@@ -9,50 +15,36 @@
 
 Dear UK Data Service,
 
-I am a registered user and I am writing to request explicit written permission under
-clause 5.5 of the End User Licence Agreement (CD137, v16.00), which requires me to
-abstain from using Online Data Tools in connection with my use of a Data Collection
-unless such permission is granted.
+I am a registered user, and clause 5.5 of the End User Licence Agreement (CD137, v16.00)
+asks me to abstain from using Online Data Tools in connection with a Data Collection
+unless I have explicit written permission. I am writing to request that permission.
 
 **The data:** SN 6849, *Understanding Society: Innovation Panel, Waves 1–17*, downloaded
 under my EUL registration.
 
-**What I want to do.** I am building a research dataset for evaluating how accurately
-large language models predict human survey responses. Each row pairs a respondent's
-demographic profile with the exact stimulus they were shown and the answer they gave.
-The Innovation Panel is uniquely suited to this because it retains the randomisation
-variables, which most UK panel releases do not.
+**What I want to do.** I am building a dataset for my own research into how accurately
+language models predict human survey responses, pairing a respondent's demographics with
+the question they were asked and the answer they gave. The Innovation Panel suits this
+because it retains the randomisation variables that most UK panel releases drop.
 
-**Where an AI tool would be involved.** I want to be precise rather than ask for a
-blanket permission:
+**What I am asking permission for, specifically:** to use an AI coding assistant locally
+while writing the extraction code — reading variable names and labels, and mapping
+allocation variables to the matching questionnaire wordings. **The data would stay on my
+own machine and nothing from the Data Collection would be transmitted anywhere.**
 
-1. **Locally, with no transmission.** Using an AI coding assistant to help write the
-   extraction code — reading variable names and labels, mapping allocation variables to
-   questionnaire wordings. The data stay on my machine; nothing from the Data Collection
-   is sent anywhere. I read clause 5.5 as covering this on its plain wording even though
-   nothing is transferred, which is why I am asking rather than assuming.
+I read clause 5.5 as covering this on its plain wording even though nothing is
+transferred, which is why I am asking rather than assuming.
 
-2. **Transmitting instrument text only, if permitted.** My pipeline can send *question
-   wordings and variable labels* — never respondent records — to a third-party language
-   model to help classify which variable records a randomised allocation. I am happy to
-   disable this entirely for SN 6849 and do that step by hand. I mention it only so the
-   request is complete.
+**What I am not asking for**, so that this is easy to answer:
 
-3. **Model evaluation.** The built rows would be used to score model predictions. If that
-   scoring were run against a hosted model, respondent rows would be transmitted. **I am
-   not asking for permission for this**, and would run any such evaluation against locally
-   hosted models unless you tell me otherwise.
+- I am not asking to send any part of the Data Collection — including questionnaire text
+  or variable labels — to any third-party or hosted service.
+- I am not asking to redistribute anything. Nothing derived from the data would be
+  published or shared with anyone.
 
-**What I am not asking for.** No redistribution. I understand clause 5.4 covers derived
-Datasets including synthetic ones, so nothing derived from SN 6849 would be published or
-shared with anyone who is not a Registered User. I am also aware of clause 5.13 and would
-expect to offer any derived Data Collection for deposit.
+If the answer is no, that is a clear answer and I will not use the data.
 
-If the answer is that (1) alone is permissible and (2) and (3) are not, that would be
-entirely workable and I would proceed on that basis. If it is simpler for you to say no,
-that is a clear answer and I will not use the data.
-
-I would also welcome a steer on whether this needs to go through a different route — an
+I would also welcome a steer on whether this should go through a different route — an
 amendment to my Project Information, or a request to the depositor (ISER) rather than to
 the Service.
 
@@ -66,23 +58,21 @@ UKDS registered user
 
 ## Notes for rich, not for sending
 
-**Why ask at all, rather than just not transmitting anything.** Because clause 5.5 does
-not say "do not transmit". It says abstain from *using* such tools *in connection with*
-your use of the Data Collection. The rationale sentence that follows mentions data
-transfer, but it is explanatory, not limiting. Asking costs an email; being wrong costs
-the registration and any work built on it.
+**This is now a single, narrow ask**, which is the version most likely to get a yes. The
+earlier draft offered them three things to think about, including sending instrument text
+to a third-party model. Cutting that is not just presentational — it is a commitment:
+`recipe_prep.py` must not call Jev for any UKDS source, and I would build that lockout
+before touching the data rather than relying on remembering.
 
-**The three-part split is deliberate.** It makes it easy for them to grant the narrow
-thing (local assistance, no transmission) without having to think about the hard thing
-(sending respondent data to a hosted model). A single vague "can I use AI with your data"
-invites a single vague no.
+**Why ask at all.** Clause 5.5 does not say "do not transmit". It says abstain from
+*using* such tools *in connection with* your use of the Data Collection. The sentence
+after it mentions data transfer, but that is explanatory, not limiting. Asking costs an
+email; being wrong costs the registration.
 
-**Expect this to be a known question.** The clause is new — version 16.00 is dated
-25 February 2026, and the AI language reads as a recent addition. UKDS will have a
-position on it and may already have published guidance.
+**Expect this to be a known question.** Version 16.00 is dated 25 February 2026 and the AI
+wording reads as a recent addition, so they will have a position and may already have
+published guidance.
 
-**If they say no:** the Innovation Panel is off the table and so is the BES Internet Panel
-and the three discrete-choice sets, since all four are UKDS safeguarded under the same
-EUL. That would leave the CC0 Harvard layer as the whole project, and make POMIFD's
-licence and any further Dataverse search considerably more important. Worth knowing that
-before investing more in the UKDS plan.
+**If they say no:** the Innovation Panel, the BES Internet Panel and the three
+discrete-choice sets all go together — same EUL, same clause. Worth knowing before
+investing further in the UKDS plan.
