@@ -136,7 +136,7 @@ def audit(recipe_path: Path, cli: object | None = None) -> list[tuple[str, str, 
 def main() -> int:
     args = [a for a in sys.argv[1:] if a != "--jev"]
     use_jev = "--jev" in sys.argv[1:]
-    cli = jev.client() if use_jev else None
+    cli = jev.client("tess") if use_jev else None
     if use_jev:
         print("Asking Jev per variable. The regex becomes a second opinion.\n")
     wanted = set(args)

@@ -344,6 +344,18 @@ def main() -> int:
     ap.add_argument(
         "--skip-labels", action="store_true", help="skip section 3 (one call per label)"
     )
+    ap.add_argument(
+        "--source",
+        required=True,
+        choices=["tess", "dataverse", "socsci210", "ukds"],
+        help=(
+            "whose material is about to be sent to TypeSafe. Required, with no default, "
+            "because this script's whole job is to send variable labels, value labels and "
+            "questionnaire routing text over the wire — and for a UKDS source that is "
+            "exactly what the End User Licence forbids sharing. `ukds` is refused by "
+            "jev.RESTRICTED; naming it wrongly to get past that is a lie, not a workaround."
+        ),
+    )
     ap.add_argument("--only", choices=["assignment", "persona", "labels", "refusals"])
     ap.add_argument("--file", default=None, help="which data file, when the deposit has several")
     args = ap.parse_args()
@@ -387,7 +399,7 @@ def main() -> int:
         path = files[0]
 
     try:
-        cli = jev.client()
+        cli = jev.client(args.source)
     except jev.JevUnavailableError as exc:
         sys.exit(str(exc))
 

@@ -16,7 +16,10 @@ from __future__ import annotations
 
 import ast
 import itertools
+import re
 from pathlib import Path
+
+import pytest
 
 SRC = Path(__file__).resolve().parents[1] / "src" / "micromotives_datasets"
 
@@ -313,3 +316,61 @@ def test_the_licence_gate_refuses_what_has_not_been_cleared() -> None:
         embed.cleared_text([embed.Text(key="k", text="anything", licence="UKDS safeguarded")])
     cleared = [embed.Text(key="k", text="anything", licence="CC0 1.0")]
     assert embed.cleared_text(cleared) == cleared
+
+
+def test_every_route_to_typesafe_names_its_source() -> None:
+    """No caller reaches the TypeSafe wire without saying whose material it is.
+
+    `jev.client()` takes a required, positional `source`. That is the whole
+    guarantee behind `jev.RESTRICTED`, and it is a weaker one than `embed.py`'s
+    allow-list — deliberately, because this module is reached from nine scripts
+    and an allow-list would have failed closed on every one of them the day it
+    landed, then been widened in a hurry, which is how gates die.
+
+    What it buys: a missing declaration is a TypeError at the call site rather
+    than a silent default, and a wrong one is something a person wrote down.
+
+    The rule this protects is not abstract. `recipe_prep.py` sends variable
+    labels, value labels and questionnaire routing text on every run. The UKDS
+    End User Licence defines its Data Collection to INCLUDE Documentation, and
+    Documentation to include "data-level documentation i.e. about individual
+    databases or data files" — so for a UKDS source those three things are
+    exactly what clause 4 forbids sharing.
+    """
+    bare = []
+    for path in itertools.chain(SRC.rglob("*.py"), SCRIPTS.glob("*.py")):
+        if path.name == "jev.py":
+            continue
+        for lineno, line in enumerate(path.read_text().splitlines(), start=1):
+            if re.search(r"jev\.client\(\s*\)", line):
+                bare.append(f"{path.name}:{lineno}")
+    assert not bare, (
+        f"these call jev.client() with no source: {bare}. Pass the source — "
+        f"'tess', 'dataverse', 'socsci210', 'ukds' — so that what is about to "
+        f"cross the wire is named by whoever sends it."
+    )
+
+
+def test_the_typesafe_gate_actually_refuses() -> None:
+    """A gate nobody has watched refuse is not known to refuse.
+
+    Checks the real function rather than re-implementing its logic, and checks
+    the permitted path too — a gate that refuses everything would pass a
+    one-sided test while breaking the project.
+    """
+    from micromotives_datasets import jev
+
+    assert "ukds" in jev.RESTRICTED, "the UKDS entry has been removed from jev.RESTRICTED"
+
+    with pytest.raises(jev.LicenceRefusedError) as refused:
+        jev.client("ukds")
+    assert "End User Licence" in str(refused.value)
+
+    # A permitted source must get PAST the licence gate. It will then fail on a
+    # missing key or SDK in CI, which is a different error and the proof that
+    # the gate let it through.
+    with pytest.raises((jev.JevUnavailableError, Exception)) as passed:
+        jev.client("tess")
+    assert not isinstance(passed.value, jev.LicenceRefusedError), (
+        "a cleared source was refused by the licence gate"
+    )

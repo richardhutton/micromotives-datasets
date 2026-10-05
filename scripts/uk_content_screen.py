@@ -128,7 +128,7 @@ def main() -> int:
     else:
         targets = args.studies
 
-    client = jev.client()
+    client = jev.client("tess")
     results: list[Screen] = []
     for code in targets:
         path = data_file_for(code)

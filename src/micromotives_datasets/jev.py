@@ -57,6 +57,42 @@ class JevUnavailableError(RuntimeError):
     """No API key, or the SDK is not installed."""
 
 
+class LicenceRefusedError(RuntimeError):
+    """Raised when a source's licence forbids its material reaching TypeSafe."""
+
+
+RESTRICTED: dict[str, str] = {
+    "ukds": (
+        "UK Data Service safeguarded data, used under the End User Licence (CD137 "
+        "v16.00). Clause 4: 'Not to give access to the Data Collection(s), in whole or "
+        "in part, or to any Dataset(s) derived from the Data Collection(s)... except to "
+        "Registered Users.' The EUL's own definitions put the instrument INSIDE the "
+        "collection — 'Data Collection: The Dataset(s), Documentation, Metadata...', "
+        "where Documentation is 'data-level documentation i.e. about individual "
+        "databases or data files'. Variable labels and value labels ARE data-level "
+        "documentation, so the exact thing this module sends is the exact thing clause 4 "
+        "forbids sharing. There is no instrument-text-only carve-out of the kind "
+        "CLAUDE.md permits for TESS deposits. Map UKDS allocation variables by hand."
+    ),
+}
+"""Sources whose material must never reach TypeSafe. Absence is not permission.
+
+This mirrors `embed.py`'s `CLEARED` gate deliberately, but inverts it. `embed`
+names what MAY travel, because its corpus is small and every caller is in one
+file. This module is reached from nine scripts, so an allow-list would have
+failed closed on all of them the day it landed and been widened in a hurry,
+which is how gates die.
+
+The guarantee instead comes from `client()` taking a REQUIRED `source`: a caller
+cannot reach the wire without naming what it is about to send. A missing name is
+a type error at the call site rather than a silent default, and a wrong name is
+something a person wrote down and can be held to.
+
+It is a weaker guarantee than `embed.py`'s and that is worth saying plainly: this
+stops the UKDS mistake, not every mistake.
+"""
+
+
 @dataclass
 class Verdict:
     """One Jev answer, with everything needed to decide whether to trust it."""
@@ -92,8 +128,13 @@ class Verdict:
         return head
 
 
-def client(http_client: Any = None) -> Any:
+def client(source: str, http_client: Any = None) -> Any:
     """A TypeSafe client, or a clear explanation of why not.
+
+    `source` says WHOSE material is about to cross the wire — `tess`, `dataverse`,
+    `ukds`, `socsci210`. It is required and positional so that no caller can reach
+    the wire without naming what it is sending; see `RESTRICTED` for why that is
+    the guarantee rather than an allow-list. Anything named there raises.
 
     `TYPESAFE_API_KEY` lives in `~/.bash_profile`, which the Bash tool does not
     source — so the usual cause of failure here is a shell that was never told,
@@ -105,6 +146,12 @@ def client(http_client: Any = None) -> Any:
     its own payload and reports on that, which is how a stale copy of the
     transfer-screen prompt came to live there (ledger 85).
     """
+    if source in RESTRICTED:
+        raise LicenceRefusedError(
+            f"{source!r} may not be sent to TypeSafe.\n\n{RESTRICTED[source]}\n\n"
+            f"Nothing was sent. Do not widen this by passing a different source name — "
+            f"the name is the declaration, and a false one is worse than no gate."
+        )
     try:
         from typesafe_sdk import TypeSafeClient
     except ImportError as exc:  # pragma: no cover

@@ -262,7 +262,7 @@ def main() -> int:
         targets = (
             [c for c in catalog if c not in BUILT and buildable(c)] if args.all else args.studies
         )
-        client = jev.client()
+        client = jev.client("tess")
         results = []
         for code in sorted(targets):
             path = data_file_for(code)

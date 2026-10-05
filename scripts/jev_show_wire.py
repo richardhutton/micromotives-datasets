@@ -56,7 +56,7 @@ QUESTIONS = """- Experimental Condition
 
 def main() -> int:
     http = httpx.Client(event_hooks={"request": [_on_request], "response": [_on_response]})
-    jev.screen_uk_transfer(jev.client(http_client=http), TITLE, QUESTIONS)
+    jev.screen_uk_transfer(jev.client("tess", http_client=http), TITLE, QUESTIONS)
 
     print("=" * 74)
     print(f"{captured['method']} {captured['url']}")

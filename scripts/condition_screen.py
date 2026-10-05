@@ -84,7 +84,7 @@ def main() -> int:
         print("no built files matched — build something first")
         return 1
 
-    cli = None if args.reuse else jev.client()
+    cli = None if args.reuse else jev.client("tess")
     flags: list[jev.ConditionFlag] = []
     calls = 0
     totals: dict[str, tuple[int, bool]] = {}

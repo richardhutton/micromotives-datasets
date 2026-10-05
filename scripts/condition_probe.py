@@ -118,7 +118,7 @@ CASES: list[dict[str, str]] = [
 
 
 def main() -> int:
-    cli = jev.client()
+    cli = jev.client("tess")
     cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
     rows = []
     for case in CASES:

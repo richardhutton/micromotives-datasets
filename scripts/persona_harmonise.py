@@ -364,7 +364,7 @@ def main() -> int:
     if args.field in BANDED:
         return harmonise_banded(args.field, groups)
 
-    client = jev.client()
+    client = jev.client("tess")
     if args.field in jev.PERSONA_LADDER:
         return harmonise_ordinal(client, args.field, groups)
     built: list[CatScheme] = []
