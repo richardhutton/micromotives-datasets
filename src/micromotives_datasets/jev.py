@@ -146,7 +146,12 @@ def client(source: str, http_client: Any = None) -> Any:
     its own payload and reports on that, which is how a stale copy of the
     transfer-screen prompt came to live there (ledger 85).
     """
-    if source in RESTRICTED:
+    # A caller may legitimately be sending material from several sources in one
+    # run — `persona_harmonise.py` reads every recipe — so a declaration may name
+    # more than one, joined by "+". EVERY name is checked; naming two sources is
+    # a wider promise than naming one, not a way to dilute it.
+    if restricted := sorted(set(source.split("+")) & set(RESTRICTED)):
+        source = restricted[0]
         raise LicenceRefusedError(
             f"{source!r} may not be sent to TypeSafe.\n\n{RESTRICTED[source]}\n\n"
             f"Nothing was sent. Do not widen this by passing a different source name — "

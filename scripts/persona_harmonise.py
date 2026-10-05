@@ -53,7 +53,7 @@ from micromotives_datasets.persona.categories import (  # noqa: E402
     canonical,
     crosswalk,
 )
-from micromotives_datasets.sources import spss  # noqa: E402
+from micromotives_datasets.sources import read_any  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[1]
 RAW = REPO / "data" / "raw"
@@ -284,7 +284,14 @@ def schemes_from_recipes(field: str) -> dict[tuple[str, ...], list[str]]:
         var = rec.persona_map.get(field)
         if not var:
             continue
-        ds = spss.read(_resolve_data_file(rec.study_id, rec.data_file))
+        # A recipe whose source may not reach TypeSafe is skipped HERE, at the
+        # point its labels would be read, rather than guarded by a declaration
+        # at the client. A declaration goes stale the moment someone adds a
+        # recipe; this cannot, because it reads the recipe's own `source`.
+        if rec.source in jev.RESTRICTED:
+            print(f"  SKIP {path.stem}: source {rec.source!r} may not be sent to Jev")
+            continue
+        ds = read_any(_resolve_data_file(rec.study_id, rec.data_file))
         col = next((c for c in ds.df.columns if c.upper() == var.upper()), None)
         if col is None:
             continue
@@ -316,7 +323,7 @@ def schemes_for(field: str) -> dict[tuple[str, ...], list[str]]:
         ]
         if not files:
             continue
-        ds = spss.read(max(files, key=lambda p: p.stat().st_size))
+        ds = read_any(max(files, key=lambda p: p.stat().st_size))
         col = next((c for c in ds.df.columns if c.upper() == chosen["var"].upper()), None)
         if col is None:
             continue
@@ -364,7 +371,10 @@ def main() -> int:
     if args.field in BANDED:
         return harmonise_banded(args.field, groups)
 
-    client = jev.client("tess")
+    # This script reads every recipe, so the wire carries labels from BOTH
+    # layers. Declaring one of them would be a false statement about what is
+    # being sent; `jev.client` checks each name in turn.
+    client = jev.client("tess+dataverse")
     if args.field in jev.PERSONA_LADDER:
         return harmonise_ordinal(client, args.field, groups)
     built: list[CatScheme] = []
