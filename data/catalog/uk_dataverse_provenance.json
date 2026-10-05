@@ -1,748 +1,750 @@
 {
- "35M5CV": {
-  "authors": "Hobolt, Leeper, Tilley",
-  "description": "Replication data for \"Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum\"",
-  "doi": "10.7910/DVN/35M5CV",
-  "files": [
-   {
-    "bytes": 5274,
-    "name": "bbc-analysis-cleaning.R",
-    "original_format": null,
-    "served_as": "bbc-analysis-cleaning.R"
-   },
-   {
-    "bytes": 147051,
-    "name": "bbc-analysis.pdf",
-    "original_format": null,
-    "served_as": "bbc-analysis.pdf"
-   },
-   {
-    "bytes": 10758,
-    "name": "bbc-analysis.Rmd",
-    "original_format": null,
-    "served_as": "bbc-analysis.Rmd"
-   },
-   {
-    "bytes": 3342907,
-    "name": "bbc-data-raw.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "bbc-data-raw.tab"
-   },
-   {
-    "bytes": 491132,
-    "name": "bbc-data-stacked.rds",
-    "original_format": null,
-    "served_as": "bbc-data-stacked.rds"
-   },
-   {
-    "bytes": 25957,
-    "name": "bbc-script.docx",
-    "original_format": null,
-    "served_as": "bbc-script.docx"
-   },
-   {
-    "bytes": 38339,
-    "name": "bes-analysis.sps",
-    "original_format": null,
-    "served_as": "bes-analysis.sps"
-   },
-   {
-    "bytes": 26288,
-    "name": "figure1.xlsx",
-    "original_format": null,
-    "served_as": "figure1.xlsx"
-   },
-   {
-    "bytes": 45378,
-    "name": "figure2.xlsx",
-    "original_format": null,
-    "served_as": "figure2.xlsx"
-   },
-   {
-    "bytes": 5362,
-    "name": "lodger-analysis-cleaning.R",
-    "original_format": null,
-    "served_as": "lodger-analysis-cleaning.R"
-   },
-   {
-    "bytes": 148846,
-    "name": "lodger-analysis.pdf",
-    "original_format": null,
-    "served_as": "lodger-analysis.pdf"
-   },
-   {
-    "bytes": 10907,
-    "name": "lodger-analysis.Rmd",
-    "original_format": null,
-    "served_as": "lodger-analysis.Rmd"
-   },
-   {
-    "bytes": 3450508,
-    "name": "lodger-data-raw.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "lodger-data-raw.tab"
-   },
-   {
-    "bytes": 497506,
-    "name": "lodger-data-stacked.rds",
-    "original_format": null,
-    "served_as": "lodger-data-stacked.rds"
-   },
-   {
-    "bytes": 23887,
-    "name": "lodger-script.docx",
-    "original_format": null,
-    "served_as": "lodger-script.docx"
-   },
-   {
-    "bytes": 2687,
-    "name": "README.md",
-    "original_format": null,
-    "served_as": "README.md"
-   },
-   {
-    "bytes": 17670,
-    "name": "sky-analysis.sps",
-    "original_format": null,
-    "served_as": "sky-analysis.sps"
-   },
-   {
-    "bytes": 2260685,
-    "name": "sky-data.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "sky-data.tab"
-   },
-   {
-    "bytes": 1840,
-    "name": "tracker-analysis.sps",
-    "original_format": null,
-    "served_as": "tracker-analysis.sps"
-   },
-   {
-    "bytes": 1918902,
-    "name": "tracker-data.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "tracker-data.tab"
-   },
-   {
-    "bytes": 5296,
-    "name": "yougov-analysis-brexit-id.sps",
-    "original_format": null,
-    "served_as": "yougov-analysis-brexit-id.sps"
-   },
-   {
-    "bytes": 4666,
-    "name": "yougov-analysis-party-id.sps",
-    "original_format": null,
-    "served_as": "yougov-analysis-party-id.sps"
-   },
-   {
-    "bytes": 279588,
-    "name": "yougov-data-brexit-id.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "yougov-data-brexit-id.tab"
-   },
-   {
-    "bytes": 278256,
-    "name": "yougov-data-party-id.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "yougov-data-party-id.tab"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": {
-   "citation": "Hobolt, Sara B., Thomas J. Leeper, and James Tilley. 2020. \"Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum\" British Journal of Political Science: In press.",
-   "doi": null
+  "35M5CV": {
+    "authors": "Hobolt, Leeper, Tilley",
+    "description": "Replication data for \"Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum\"",
+    "doi": "10.7910/DVN/35M5CV",
+    "files": [
+      {
+        "bytes": 5274,
+        "name": "bbc-analysis-cleaning.R",
+        "original_format": null,
+        "served_as": "bbc-analysis-cleaning.R"
+      },
+      {
+        "bytes": 147051,
+        "name": "bbc-analysis.pdf",
+        "original_format": null,
+        "served_as": "bbc-analysis.pdf"
+      },
+      {
+        "bytes": 10758,
+        "name": "bbc-analysis.Rmd",
+        "original_format": null,
+        "served_as": "bbc-analysis.Rmd"
+      },
+      {
+        "bytes": 3342907,
+        "name": "bbc-data-raw.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "bbc-data-raw.tab"
+      },
+      {
+        "bytes": 491132,
+        "name": "bbc-data-stacked.rds",
+        "original_format": null,
+        "served_as": "bbc-data-stacked.rds"
+      },
+      {
+        "bytes": 25957,
+        "name": "bbc-script.docx",
+        "original_format": null,
+        "served_as": "bbc-script.docx"
+      },
+      {
+        "bytes": 38339,
+        "name": "bes-analysis.sps",
+        "original_format": null,
+        "served_as": "bes-analysis.sps"
+      },
+      {
+        "bytes": 26288,
+        "name": "figure1.xlsx",
+        "original_format": null,
+        "served_as": "figure1.xlsx"
+      },
+      {
+        "bytes": 45378,
+        "name": "figure2.xlsx",
+        "original_format": null,
+        "served_as": "figure2.xlsx"
+      },
+      {
+        "bytes": 5362,
+        "name": "lodger-analysis-cleaning.R",
+        "original_format": null,
+        "served_as": "lodger-analysis-cleaning.R"
+      },
+      {
+        "bytes": 148846,
+        "name": "lodger-analysis.pdf",
+        "original_format": null,
+        "served_as": "lodger-analysis.pdf"
+      },
+      {
+        "bytes": 10907,
+        "name": "lodger-analysis.Rmd",
+        "original_format": null,
+        "served_as": "lodger-analysis.Rmd"
+      },
+      {
+        "bytes": 3450508,
+        "name": "lodger-data-raw.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "lodger-data-raw.tab"
+      },
+      {
+        "bytes": 497506,
+        "name": "lodger-data-stacked.rds",
+        "original_format": null,
+        "served_as": "lodger-data-stacked.rds"
+      },
+      {
+        "bytes": 23887,
+        "name": "lodger-script.docx",
+        "original_format": null,
+        "served_as": "lodger-script.docx"
+      },
+      {
+        "bytes": 2687,
+        "name": "README.md",
+        "original_format": null,
+        "served_as": "README.md"
+      },
+      {
+        "bytes": 17670,
+        "name": "sky-analysis.sps",
+        "original_format": null,
+        "served_as": "sky-analysis.sps"
+      },
+      {
+        "bytes": 2260685,
+        "name": "sky-data.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "sky-data.tab"
+      },
+      {
+        "bytes": 1840,
+        "name": "tracker-analysis.sps",
+        "original_format": null,
+        "served_as": "tracker-analysis.sps"
+      },
+      {
+        "bytes": 1918902,
+        "name": "tracker-data.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "tracker-data.tab"
+      },
+      {
+        "bytes": 5296,
+        "name": "yougov-analysis-brexit-id.sps",
+        "original_format": null,
+        "served_as": "yougov-analysis-brexit-id.sps"
+      },
+      {
+        "bytes": 4666,
+        "name": "yougov-analysis-party-id.sps",
+        "original_format": null,
+        "served_as": "yougov-analysis-party-id.sps"
+      },
+      {
+        "bytes": 279588,
+        "name": "yougov-data-brexit-id.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "yougov-data-brexit-id.tab"
+      },
+      {
+        "bytes": 278256,
+        "name": "yougov-data-party-id.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "yougov-data-party-id.tab"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": {
+      "citation": "Hobolt, Sara B., Thomas J. Leeper, and James Tilley. 2020. \"Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum\" British Journal of Political Science: In press.",
+      "doi": null
+    },
+    "status": "built",
+    "title": "Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum"
   },
-  "status": "prepared",
-  "title": "Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum"
- },
- "6MRVOM": {
-  "authors": "Hix, Kaufmann, Leeper",
-  "description": "This repository contains reproduction materials for a survey experiment on immigration attitudes. It consists of the following files:\r\n\r\n - analysis.R: R code for reproducing all results\r\n - data.sav: the raw, original data file and supporting material from YouGov\r\n - questionnaire.docx: the survey experimental questionnaire",
-  "doi": "10.7910/DVN/6MRVOM",
-  "files": [
-   {
-    "bytes": 17967,
-    "name": "analysis.log",
-    "original_format": null,
-    "served_as": "analysis.log"
-   },
-   {
-    "bytes": 18015,
-    "name": "analysis.R",
-    "original_format": null,
-    "served_as": "analysis.R"
-   },
-   {
-    "bytes": 1389315,
-    "name": "data.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "data.tab"
-   },
-   {
-    "bytes": 14211,
-    "name": "questionnaire.docx",
-    "original_format": null,
-    "served_as": "questionnaire.docx"
-   },
-   {
-    "bytes": 370,
-    "name": "README.md",
-    "original_format": null,
-    "served_as": "README.md"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": {
-   "citation": "Hix, Simon, Eric Kaufmann, and Thomas J. Leeper. 2020. \"Pricing Immigration\" Journal of Experimental Political Science: In press",
-   "doi": null
+  "6MRVOM": {
+    "authors": "Hix, Kaufmann, Leeper",
+    "description": "This repository contains reproduction materials for a survey experiment on immigration attitudes. It consists of the following files:\r\n\r\n - analysis.R: R code for reproducing all results\r\n - data.sav: the raw, original data file and supporting material from YouGov\r\n - questionnaire.docx: the survey experimental questionnaire",
+    "doi": "10.7910/DVN/6MRVOM",
+    "files": [
+      {
+        "bytes": 17967,
+        "name": "analysis.log",
+        "original_format": null,
+        "served_as": "analysis.log"
+      },
+      {
+        "bytes": 18015,
+        "name": "analysis.R",
+        "original_format": null,
+        "served_as": "analysis.R"
+      },
+      {
+        "bytes": 1389315,
+        "name": "data.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "data.tab"
+      },
+      {
+        "bytes": 14211,
+        "name": "questionnaire.docx",
+        "original_format": null,
+        "served_as": "questionnaire.docx"
+      },
+      {
+        "bytes": 370,
+        "name": "README.md",
+        "original_format": null,
+        "served_as": "README.md"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": {
+      "citation": "Hix, Simon, Eric Kaufmann, and Thomas J. Leeper. 2020. \"Pricing Immigration\" Journal of Experimental Political Science: In press",
+      "doi": null
+    },
+    "status": "prepared",
+    "status_reason": "blocked on a schema gap: the outcome is a continuous 0-100 slider and Outcome/Scale can only express discrete integer points",
+    "title": "Pricing Immigration"
   },
-  "status": "prepared",
-  "title": "Pricing Immigration"
- },
- "EFXNLX": {
-  "authors": "Leeper, Hobolt, Tilley",
-  "description": "Replication Data for: Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations",
-  "doi": "10.7910/DVN/EFXNLX",
-  "files": [
-   {
-    "bytes": 9851,
-    "name": "analysis-conjoint-cleaning.R",
-    "original_format": null,
-    "served_as": "analysis-conjoint-cleaning.R"
-   },
-   {
-    "bytes": 55078,
-    "name": "analysis.Rmd",
-    "original_format": null,
-    "served_as": "analysis.Rmd"
-   },
-   {
-    "bytes": 58725,
-    "name": "data_dictionary.xlsx",
-    "original_format": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "served_as": "data_dictionary.tab"
-   },
-   {
-    "bytes": 25149515,
-    "name": "LSEResults_Brexit_170428_client.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "LSEResults_Brexit_170428_client.tab"
-   },
-   {
-    "bytes": 27192,
-    "name": "questionnaire.docx",
-    "original_format": null,
-    "served_as": "questionnaire.docx"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": {
-   "citation": "Hobolt, Sara B., Thomas J. Leeper, and James Tilley. n.d. \"Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations.\" Political Behavior: In press.",
-   "doi": null
+  "EFXNLX": {
+    "authors": "Leeper, Hobolt, Tilley",
+    "description": "Replication Data for: Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations",
+    "doi": "10.7910/DVN/EFXNLX",
+    "files": [
+      {
+        "bytes": 9851,
+        "name": "analysis-conjoint-cleaning.R",
+        "original_format": null,
+        "served_as": "analysis-conjoint-cleaning.R"
+      },
+      {
+        "bytes": 55078,
+        "name": "analysis.Rmd",
+        "original_format": null,
+        "served_as": "analysis.Rmd"
+      },
+      {
+        "bytes": 58725,
+        "name": "data_dictionary.xlsx",
+        "original_format": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "served_as": "data_dictionary.tab"
+      },
+      {
+        "bytes": 25149515,
+        "name": "LSEResults_Brexit_170428_client.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "LSEResults_Brexit_170428_client.tab"
+      },
+      {
+        "bytes": 27192,
+        "name": "questionnaire.docx",
+        "original_format": null,
+        "served_as": "questionnaire.docx"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": {
+      "citation": "Hobolt, Sara B., Thomas J. Leeper, and James Tilley. n.d. \"Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations.\" Political Behavior: In press.",
+      "doi": null
+    },
+    "status": "built",
+    "title": "Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations"
   },
-  "status": "built",
-  "title": "Policy preferences and policy legitimacy after referendums: Evidence from the Brexit negotiations"
- },
- "LOGVPZ": {
-  "authors": "Green, Pahontu",
-  "description": "Wealth provides self-insurance against financial risk, reducing risk-aversion. We apply this insurance mechanism to electoral behaviour, arguing that a voter who has a desire for a change to the status quo -- and who is wealthy -- is more likely to vote for that change than a voter who lacks the same self-insurance. We apply this argument to the case of Brexit in the UK, which has been widely characterized as a vote by the \u2018economically left-behind\u2019. Our results show that individuals who lacked wealth are less likely to support leaving the EU, explaining why so many Brexit voters were wealthy, in terms of their property wealth. We corroborate our theory using two separate panel surveys, accounting for unobserved individual level heterogeneity, and using a survey experiment. The findings have implications for the potential wider role of wealth-as-insurance in electoral behavior, and for understanding the Brexit case.",
-  "doi": "10.7910/DVN/LOGVPZ",
-  "files": [
-   {
-    "bytes": 1093,
-    "name": "10-figd2.R",
-    "original_format": null,
-    "served_as": "10-figd2.R"
-   },
-   {
-    "bytes": 643,
-    "name": "10-fige1.do",
-    "original_format": null,
-    "served_as": "10-fige1.do"
-   },
-   {
-    "bytes": 1059,
-    "name": "11-figd3.R",
-    "original_format": null,
-    "served_as": "11-figd3.R"
-   },
-   {
-    "bytes": 747,
-    "name": "11-fige2.do",
-    "original_format": null,
-    "served_as": "11-fige2.do"
-   },
-   {
-    "bytes": 17217,
-    "name": "1-master.do",
-    "original_format": null,
-    "served_as": "1-master.do"
-   },
-   {
-    "bytes": 1497,
-    "name": "1-master.R",
-    "original_format": null,
-    "served_as": "1-master.R"
-   },
-   {
-    "bytes": 3793,
-    "name": "2-dataclean.do",
-    "original_format": null,
-    "served_as": "2-dataclean.do"
-   },
-   {
-    "bytes": 881,
-    "name": "2-fig1.R",
-    "original_format": null,
-    "served_as": "2-fig1.R"
-   },
-   {
-    "bytes": 956,
-    "name": "3-fig2.R",
-    "original_format": null,
-    "served_as": "3-fig2.R"
-   },
-   {
-    "bytes": 4561,
-    "name": "3-wealthgenerateboe.do",
-    "original_format": null,
-    "served_as": "3-wealthgenerateboe.do"
-   },
-   {
-    "bytes": 15115,
-    "name": "3-wealthgenerate.do",
-    "original_format": null,
-    "served_as": "3-wealthgenerate.do"
-   },
-   {
-    "bytes": 1018,
-    "name": "4-fig3.R",
-    "original_format": null,
-    "served_as": "4-fig3.R"
-   },
-   {
-    "bytes": 477,
-    "name": "4-tab2.do",
-    "original_format": null,
-    "served_as": "4-tab2.do"
-   },
-   {
-    "bytes": 877,
-    "name": "5-fig4.R",
-    "original_format": null,
-    "served_as": "5-fig4.R"
-   },
-   {
-    "bytes": 613,
-    "name": "5-tabd1.do",
-    "original_format": null,
-    "served_as": "5-tabd1.do"
-   },
-   {
-    "bytes": 1097,
-    "name": "6-fig5.R",
-    "original_format": null,
-    "served_as": "6-fig5.R"
-   },
-   {
-    "bytes": 638,
-    "name": "6-tabd2.do",
-    "original_format": null,
-    "served_as": "6-tabd2.do"
-   },
-   {
-    "bytes": 834,
-    "name": "7-fig6.R",
-    "original_format": null,
-    "served_as": "7-fig6.R"
-   },
-   {
-    "bytes": 1295,
-    "name": "7-figd4.do",
-    "original_format": null,
-    "served_as": "7-figd4.do"
-   },
-   {
-    "bytes": 855,
-    "name": "8-fig7.R",
-    "original_format": null,
-    "served_as": "8-fig7.R"
-   },
-   {
-    "bytes": 491,
-    "name": "8-tab3.do",
-    "original_format": null,
-    "served_as": "8-tab3.do"
-   },
-   {
-    "bytes": 2026,
-    "name": "9-figc1.R",
-    "original_format": null,
-    "served_as": "9-figc1.R"
-   },
-   {
-    "bytes": 950,
-    "name": "9-figd1.R",
-    "original_format": null,
-    "served_as": "9-figd1.R"
-   },
-   {
-    "bytes": 842,
-    "name": "9-figd5.do",
-    "original_format": null,
-    "served_as": "9-figd5.do"
-   },
-   {
-    "bytes": 122807,
-    "name": "analysis_log.log",
-    "original_format": null,
-    "served_as": "analysis_log.log"
-   },
-   {
-    "bytes": 10060,
-    "name": "analysis_logr.log",
-    "original_format": null,
-    "served_as": "analysis_logr.log"
-   },
-   {
-    "bytes": 1242035,
-    "name": "bes-subset.dta",
-    "original_format": "application/x-stata-14",
-    "served_as": "bes-subset.tab"
-   },
-   {
-    "bytes": 536041416,
-    "name": "Lower_Layer_Super_Output_Areas_December_2011_Boundaries_EW_BFC.shp",
-    "original_format": null,
-    "served_as": "Lower_Layer_Super_Output_Areas_December_2011_Boundaries_EW_BFC.shp"
-   },
-   {
-    "bytes": 625994,
-    "name": "lsoa_median.dta",
-    "original_format": "application/x-stata",
-    "served_as": "lsoa_median.tab"
-   },
-   {
-    "bytes": 277391861,
-    "name": "nmg.dta",
-    "original_format": null,
-    "served_as": "nmg.dta"
-   },
-   {
-    "bytes": 4094976,
-    "name": "yougov.dta",
-    "original_format": "application/x-stata-14",
-    "served_as": "yougov.tab"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": null,
-  "status": "prepared",
-  "title": "Mind the Gap: Why Wealthy Voters Support Brexit"
- },
- "PMV0TG": {
-  "authors": "Duch, Fuentes Becerra, Gonzalez Magnolfi, Robinson, Higuera Ruiz, Roope, Barnett, Clarke",
-  "description": "Replication data for the CANDOUR project on vaccine allocation preferences using conjoint analysis",
-  "doi": "10.7910/DVN/PMV0TG",
-  "files": [
-   {
-    "bytes": 184927,
-    "name": "codebook.pdf",
-    "original_format": null,
-    "served_as": "codebook.pdf"
-   },
-   {
-    "bytes": 12043,
-    "name": "conjoint_combined_results_ols.tex",
-    "original_format": null,
-    "served_as": "conjoint_combined_results_ols.tex"
-   },
-   {
-    "bytes": 11988,
-    "name": "conjoint_combined_results_UNWEIGHTED_ols.tex",
-    "original_format": null,
-    "served_as": "conjoint_combined_results_UNWEIGHTED_ols.tex"
-   },
-   {
-    "bytes": 93153800,
-    "name": "nbh_clean_conjoint_global.tab",
-    "original_format": "text/csv",
-    "served_as": "nbh_clean_conjoint_global.tab"
-   },
-   {
-    "bytes": 3489,
-    "name": "pooled_model_ols.tex",
-    "original_format": null,
-    "served_as": "pooled_model_ols.tex"
-   },
-   {
-    "bytes": 1072,
-    "name": "pop_samp_comparison.tex",
-    "original_format": null,
-    "served_as": "pop_samp_comparison.tex"
-   },
-   {
-    "bytes": 690,
-    "name": "population_comparison.tab",
-    "original_format": "text/csv",
-    "served_as": "population_comparison.tab"
-   },
-   {
-    "bytes": 265425,
-    "name": "Qualtrics Vaccine Survey - UK - English.pdf",
-    "original_format": null,
-    "served_as": "Qualtrics Vaccine Survey - UK - English.pdf"
-   },
-   {
-    "bytes": 753,
-    "name": "README.txt",
-    "original_format": null,
-    "served_as": "README.txt"
-   },
-   {
-    "bytes": 2010,
-    "name": "summary_tab_randomisation.tex",
-    "original_format": null,
-    "served_as": "summary_tab_randomisation.tex"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": null,
-  "status": "prepared",
-  "title": "Citizens from 13 countries share similar preferences for COVID-19 vaccine allocation priorities"
- },
- "QQM5MC": {
-  "authors": "Sorace, Hobolt",
-  "description": "Partisanship is a powerful driver of economic perceptions. Yet we know less about whether other political divisions may lead to similar evaluative biases. In this article, we explore how the salient divide between `Remainers\u2019 and `Leavers\u2019 in the UK in the aftermath of the Brexit referendum has given rise to biased economic perceptions. In line with the cognitive dissonance framework, we argue that salient non-partisan divisions can change economic perceptions by triggering processes of self- and in-group justification. Using both nationally-representative observational and experimental survey data, we demonstrate that the perceptions of the economy are shaped by the Brexit divide, and that these biases are exacerbated when respondents are reminded of Brexit. These findings indicate that perceptual biases are not always rooted in partisanship, but can be triggered by other political divisions.",
-  "doi": "10.7910/DVN/QQM5MC",
-  "files": [
-   {
-    "bytes": 31555,
-    "name": "Sorace_Hobolt_DoFile.do",
-    "original_format": null,
-    "served_as": "Sorace_Hobolt_DoFile.do"
-   },
-   {
-    "bytes": 760134,
-    "name": "Sorace_Hobolt_Log.smcl",
-    "original_format": null,
-    "served_as": "Sorace_Hobolt_Log.smcl"
-   },
-   {
-    "bytes": 1974182,
-    "name": "YouGovExp.dta",
-    "original_format": "application/x-stata-14",
-    "served_as": "YouGovExp.tab"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": {
-   "citation": "Sorace, M. & Hobolt, S. B. (forthcoming). A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote. Political Science Research and Methods",
-   "doi": null
+  "LOGVPZ": {
+    "authors": "Green, Pahontu",
+    "description": "Wealth provides self-insurance against financial risk, reducing risk-aversion. We apply this insurance mechanism to electoral behaviour, arguing that a voter who has a desire for a change to the status quo -- and who is wealthy -- is more likely to vote for that change than a voter who lacks the same self-insurance. We apply this argument to the case of Brexit in the UK, which has been widely characterized as a vote by the \u2018economically left-behind\u2019. Our results show that individuals who lacked wealth are less likely to support leaving the EU, explaining why so many Brexit voters were wealthy, in terms of their property wealth. We corroborate our theory using two separate panel surveys, accounting for unobserved individual level heterogeneity, and using a survey experiment. The findings have implications for the potential wider role of wealth-as-insurance in electoral behavior, and for understanding the Brexit case.",
+    "doi": "10.7910/DVN/LOGVPZ",
+    "files": [
+      {
+        "bytes": 1093,
+        "name": "10-figd2.R",
+        "original_format": null,
+        "served_as": "10-figd2.R"
+      },
+      {
+        "bytes": 643,
+        "name": "10-fige1.do",
+        "original_format": null,
+        "served_as": "10-fige1.do"
+      },
+      {
+        "bytes": 1059,
+        "name": "11-figd3.R",
+        "original_format": null,
+        "served_as": "11-figd3.R"
+      },
+      {
+        "bytes": 747,
+        "name": "11-fige2.do",
+        "original_format": null,
+        "served_as": "11-fige2.do"
+      },
+      {
+        "bytes": 17217,
+        "name": "1-master.do",
+        "original_format": null,
+        "served_as": "1-master.do"
+      },
+      {
+        "bytes": 1497,
+        "name": "1-master.R",
+        "original_format": null,
+        "served_as": "1-master.R"
+      },
+      {
+        "bytes": 3793,
+        "name": "2-dataclean.do",
+        "original_format": null,
+        "served_as": "2-dataclean.do"
+      },
+      {
+        "bytes": 881,
+        "name": "2-fig1.R",
+        "original_format": null,
+        "served_as": "2-fig1.R"
+      },
+      {
+        "bytes": 956,
+        "name": "3-fig2.R",
+        "original_format": null,
+        "served_as": "3-fig2.R"
+      },
+      {
+        "bytes": 4561,
+        "name": "3-wealthgenerateboe.do",
+        "original_format": null,
+        "served_as": "3-wealthgenerateboe.do"
+      },
+      {
+        "bytes": 15115,
+        "name": "3-wealthgenerate.do",
+        "original_format": null,
+        "served_as": "3-wealthgenerate.do"
+      },
+      {
+        "bytes": 1018,
+        "name": "4-fig3.R",
+        "original_format": null,
+        "served_as": "4-fig3.R"
+      },
+      {
+        "bytes": 477,
+        "name": "4-tab2.do",
+        "original_format": null,
+        "served_as": "4-tab2.do"
+      },
+      {
+        "bytes": 877,
+        "name": "5-fig4.R",
+        "original_format": null,
+        "served_as": "5-fig4.R"
+      },
+      {
+        "bytes": 613,
+        "name": "5-tabd1.do",
+        "original_format": null,
+        "served_as": "5-tabd1.do"
+      },
+      {
+        "bytes": 1097,
+        "name": "6-fig5.R",
+        "original_format": null,
+        "served_as": "6-fig5.R"
+      },
+      {
+        "bytes": 638,
+        "name": "6-tabd2.do",
+        "original_format": null,
+        "served_as": "6-tabd2.do"
+      },
+      {
+        "bytes": 834,
+        "name": "7-fig6.R",
+        "original_format": null,
+        "served_as": "7-fig6.R"
+      },
+      {
+        "bytes": 1295,
+        "name": "7-figd4.do",
+        "original_format": null,
+        "served_as": "7-figd4.do"
+      },
+      {
+        "bytes": 855,
+        "name": "8-fig7.R",
+        "original_format": null,
+        "served_as": "8-fig7.R"
+      },
+      {
+        "bytes": 491,
+        "name": "8-tab3.do",
+        "original_format": null,
+        "served_as": "8-tab3.do"
+      },
+      {
+        "bytes": 2026,
+        "name": "9-figc1.R",
+        "original_format": null,
+        "served_as": "9-figc1.R"
+      },
+      {
+        "bytes": 950,
+        "name": "9-figd1.R",
+        "original_format": null,
+        "served_as": "9-figd1.R"
+      },
+      {
+        "bytes": 842,
+        "name": "9-figd5.do",
+        "original_format": null,
+        "served_as": "9-figd5.do"
+      },
+      {
+        "bytes": 122807,
+        "name": "analysis_log.log",
+        "original_format": null,
+        "served_as": "analysis_log.log"
+      },
+      {
+        "bytes": 10060,
+        "name": "analysis_logr.log",
+        "original_format": null,
+        "served_as": "analysis_logr.log"
+      },
+      {
+        "bytes": 1242035,
+        "name": "bes-subset.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "bes-subset.tab"
+      },
+      {
+        "bytes": 536041416,
+        "name": "Lower_Layer_Super_Output_Areas_December_2011_Boundaries_EW_BFC.shp",
+        "original_format": null,
+        "served_as": "Lower_Layer_Super_Output_Areas_December_2011_Boundaries_EW_BFC.shp"
+      },
+      {
+        "bytes": 625994,
+        "name": "lsoa_median.dta",
+        "original_format": "application/x-stata",
+        "served_as": "lsoa_median.tab"
+      },
+      {
+        "bytes": 277391861,
+        "name": "nmg.dta",
+        "original_format": null,
+        "served_as": "nmg.dta"
+      },
+      {
+        "bytes": 4094976,
+        "name": "yougov.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "yougov.tab"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": null,
+    "status": "built",
+    "title": "Mind the Gap: Why Wealthy Voters Support Brexit"
   },
-  "status": "built",
-  "title": "A Tale of Two Peoples: Motivated Reasoning after the Brexit Vote"
- },
- "TLT65Z": {
-  "authors": "Blinder, Ford, Ivarsflaten",
-  "description": "Existing research on public opinion related to race and immigration politics emphasizes the role of prejudice or bias against minority groups. We argue that the social norm against prejudice, and individual motivations to comply with it, are crucial elements omitted from prior analyses. In most contemporary Western societies, citizens receive repeated, strong signals that prejudice is not socially or normatively acceptable. We demonstrate that many majority-group citizens have internalized a motivation to control prejudiced thoughts and actions, and that this motivation influences their political behavior in predictable ways. We introduce measures to capture this motivation, develop hypotheses about its influence, and test these hypotheses in three separate experimental and non-experimental survey studies conducted in Great Britain and Germany. Our findings support a dual process model of political behavior suggesting that while many voters harbor negative stereotypes, they also strive to act in accordance with the \u201cbetter angels of their natures.\u201d",
-  "doi": "10.7910/DVN/TLT65Z",
-  "files": [
-   {
-    "bytes": 12530,
-    "name": "Better Angels of Our Nature Study 1 citizenship experiment demographic controls code.do",
-    "original_format": null,
-    "served_as": "Better Angels of Our Nature Study 1 citizenship experiment demographic controls code.do"
-   },
-   {
-    "bytes": 7644,
-    "name": "Better Angels of Our Nature Study 1 citizenship experiment replication code.do",
-    "original_format": null,
-    "served_as": "Better Angels of Our Nature Study 1 citizenship experiment replication code.do"
-   },
-   {
-    "bytes": 5622,
-    "name": "Better Angels of Our Nature Study 1 citizenship experiment robustness checks code final.do",
-    "original_format": null,
-    "served_as": "Better Angels of Our Nature Study 1 citizenship experiment robustness checks code final.do"
-   },
-   {
-    "bytes": 8051,
-    "name": "Better Angels of Our Nature Study 2 replication code.do",
-    "original_format": null,
-    "served_as": "Better Angels of Our Nature Study 2 replication code.do"
-   },
-   {
-    "bytes": 4471,
-    "name": "Better Angels of Our Nature Study 2 robustness checks replication code.do",
-    "original_format": null,
-    "served_as": "Better Angels of Our Nature Study 2 robustness checks replication code.do"
-   },
-   {
-    "bytes": 19918,
-    "name": "Better Angels of our nature study 3 - demographic controls Germany.do",
-    "original_format": null,
-    "served_as": "Better Angels of our nature study 3 - demographic controls Germany.do"
-   },
-   {
-    "bytes": 34594,
-    "name": "Better Angels of our nature study 3 - voting analysis Britain - full replication code.do",
-    "original_format": null,
-    "served_as": "Better Angels of our nature study 3 - voting analysis Britain - full replication code.do"
-   },
-   {
-    "bytes": 24385,
-    "name": "Better Angels of our nature study 3 - voting analysis Germany - full replication code.do",
-    "original_format": null,
-    "served_as": "Better Angels of our nature study 3 - voting analysis Germany - full replication code.do"
-   },
-   {
-    "bytes": 1775257,
-    "name": "better angels study 1 bccap data final old.zip",
-    "original_format": null,
-    "served_as": "better angels study 1 bccap data final old.zip"
-   },
-   {
-    "bytes": 861456,
-    "name": "better angels study 2 cmsfinal old_1.dta",
-    "original_format": null,
-    "served_as": "better angels study 2 cmsfinal old_1.dta"
-   },
-   {
-    "bytes": 39177704,
-    "name": "gccap.immsmall.votemerged.dta",
-    "original_format": "application/x-stata",
-    "served_as": "gccap.immsmall.votemerged.tab"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": {
-   "citation": "Blinder, Scott, Robert Ford, and Elisabeth Ivarsflaten. 2013. \u201cThe Better Angels of Our Nature: How the Antiprejudice Norm Affects Policy and Party Preferences in Great Britain and Germany.\u201d American Journal of Political Science 57 (4): 841\u201357.",
-   "doi": "10.1111/ajps.12030"
+  "PMV0TG": {
+    "authors": "Duch, Fuentes Becerra, Gonzalez Magnolfi, Robinson, Higuera Ruiz, Roope, Barnett, Clarke",
+    "description": "Replication data for the CANDOUR project on vaccine allocation preferences using conjoint analysis",
+    "doi": "10.7910/DVN/PMV0TG",
+    "files": [
+      {
+        "bytes": 184927,
+        "name": "codebook.pdf",
+        "original_format": null,
+        "served_as": "codebook.pdf"
+      },
+      {
+        "bytes": 12043,
+        "name": "conjoint_combined_results_ols.tex",
+        "original_format": null,
+        "served_as": "conjoint_combined_results_ols.tex"
+      },
+      {
+        "bytes": 11988,
+        "name": "conjoint_combined_results_UNWEIGHTED_ols.tex",
+        "original_format": null,
+        "served_as": "conjoint_combined_results_UNWEIGHTED_ols.tex"
+      },
+      {
+        "bytes": 93153800,
+        "name": "nbh_clean_conjoint_global.tab",
+        "original_format": "text/csv",
+        "served_as": "nbh_clean_conjoint_global.tab"
+      },
+      {
+        "bytes": 3489,
+        "name": "pooled_model_ols.tex",
+        "original_format": null,
+        "served_as": "pooled_model_ols.tex"
+      },
+      {
+        "bytes": 1072,
+        "name": "pop_samp_comparison.tex",
+        "original_format": null,
+        "served_as": "pop_samp_comparison.tex"
+      },
+      {
+        "bytes": 690,
+        "name": "population_comparison.tab",
+        "original_format": "text/csv",
+        "served_as": "population_comparison.tab"
+      },
+      {
+        "bytes": 265425,
+        "name": "Qualtrics Vaccine Survey - UK - English.pdf",
+        "original_format": null,
+        "served_as": "Qualtrics Vaccine Survey - UK - English.pdf"
+      },
+      {
+        "bytes": 753,
+        "name": "README.txt",
+        "original_format": null,
+        "served_as": "README.txt"
+      },
+      {
+        "bytes": 2010,
+        "name": "summary_tab_randomisation.tex",
+        "original_format": null,
+        "served_as": "summary_tab_randomisation.tex"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": null,
+    "status": "built",
+    "title": "Citizens from 13 countries share similar preferences for COVID-19 vaccine allocation priorities"
   },
-  "status": "dropped",
-  "status_reason": "no recoverable condition text (Study 2's seven message texts are nowhere in the deposit); AJPS is closed access",
-  "title": "The Better Angels of Our Nature: Anti-Prejudice Norm (GB & Germany)"
- },
- "X08IVC": {
-  "authors": "Tilley",
-  "description": "The 2016 EU referendum in Britain gave rise to two new political identities which divided the electorate into \u2018Remainers\u2019 and \u2018Leavers\u2019. Yet little is known about how these new identities relate to policy attitudes. The literature on partisanship identifies policy group norms that allow partisans to settle on shared policy aims and provide cues about the \u2018correct\u2019 in-group policy choice. In this paper, we examine the extent to which these policy norms are also important for people with a Brexit identity. We show that Brexit identities are associated with specific policy preferences and that these group norms are relatively well-known to people. Using a survey-embedded experiment, we also demonstrate that providing policy cues to Brexit identity groups may encourage people to align their own preferences with their group\u2019s preferences. These findings contribute to the growing literature on non-partisan political identities and their importance in shaping political attitudes and behavior.",
-  "doi": "10.7910/DVN/X08IVC",
-  "files": [
-   {
-    "bytes": 2000318,
-    "name": "Brexitidentitydata1.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "Brexitidentitydata1.tab"
-   },
-   {
-    "bytes": 332805,
-    "name": "Brexitidentitydata2.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "Brexitidentitydata2.tab"
-   },
-   {
-    "bytes": 89471,
-    "name": "Brexitidentitydata3.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "Brexitidentitydata3.tab"
-   },
-   {
-    "bytes": 278654,
-    "name": "Brexitidentitydata4.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "Brexitidentitydata4.tab"
-   },
-   {
-    "bytes": 60028,
-    "name": "Brexitidentitydata5-1.sav",
-    "original_format": "application/x-spss-sav",
-    "served_as": "Brexitidentitydata5-1.tab"
-   },
-   {
-    "bytes": 21484,
-    "name": "Fig1-1.xlsx",
-    "original_format": null,
-    "served_as": "Fig1-1.xlsx"
-   },
-   {
-    "bytes": 39212,
-    "name": "Fig2Fig3.xlsx",
-    "original_format": null,
-    "served_as": "Fig2Fig3.xlsx"
-   },
-   {
-    "bytes": 12891,
-    "name": "Readme.docx",
-    "original_format": null,
-    "served_as": "Readme.docx"
-   },
-   {
-    "bytes": 3979,
-    "name": "Replication syntax.sps",
-    "original_format": null,
-    "served_as": "Replication syntax.sps"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": null,
-  "status": "prepared",
-  "title": "Brexit as an Identity: Political Identities and Policy Norms"
- },
- "ZZYSIZ": {
-  "authors": "Wimmer, Bonikowski, Crabtree, Fu, Golder, Tsutsui",
-  "description": "Introducing an international relations perspective into the literature on anti-immigrant attitudes, we hypothesize that immigrants from rival countries will be shunned and immigrants from allied countries preferred, especially by respondents who identify more strongly with the nation. We fielded a forced-choice conjoint experiment in 22 countries, whereby respondents chose between applicants for permanent resident status with randomized attributes. We identified rival and allied countries of origin for each surveyed country, with one such pair sharing a similar racial and cultural make-up as the majority of respondents, and one pair being more dissimilar. We find that discrimination against immigrants from rival states is so pronounced that it results in net preference for racially and culturally dissimilar immigrants. Since we fielded the surveys amidst the Russian invasion of Ukraine, we are able to leverage exogenous changes in the intensity of one rivalry, providing further evidence for the proposed mechanism.",
-  "doi": "10.7910/DVN/ZZYSIZ",
-  "files": [
-   {
-    "bytes": 498206,
-    "name": "Full Model Results Tables.pdf",
-    "original_format": null,
-    "served_as": "Full Model Results Tables.pdf"
-   },
-   {
-    "bytes": 150547,
-    "name": "Main Survey Instrument.pdf",
-    "original_format": null,
-    "served_as": "Main Survey Instrument.pdf"
-   },
-   {
-    "bytes": 1029,
-    "name": "README.txt",
-    "original_format": null,
-    "served_as": "README.txt"
-   },
-   {
-    "bytes": 35748,
-    "name": "replication_code.R",
-    "original_format": null,
-    "served_as": "replication_code.R"
-   },
-   {
-    "bytes": 5018874,
-    "name": "Supplementary Materials.pdf",
-    "original_format": null,
-    "served_as": "Supplementary Materials.pdf"
-   }
-  ],
-  "licence": "CC0 1.0",
-  "licence_source": "Dataverse API, latestVersion.license",
-  "publication": {
-   "citation": "WIMMER, ANDREAS,  BART BONIKOWSKI, CHARLES CRABTREE, ZHENG FU, MATTHEW GOLDER, and KIYOTERU TSUTSUI. 2024. \u201cGeo-Political Rivalry and Anti-Immigrant Sentiment: A Conjoint Experiment in 22 Countries.\u201d American Political Science Review: 1\u201318.",
-   "doi": "10.1017/S0003055424000753"
+  "QQM5MC": {
+    "authors": "Sorace, Hobolt",
+    "description": "Partisanship is a powerful driver of economic perceptions. Yet we know less about whether other political divisions may lead to similar evaluative biases. In this article, we explore how the salient divide between `Remainers\u2019 and `Leavers\u2019 in the UK in the aftermath of the Brexit referendum has given rise to biased economic perceptions. In line with the cognitive dissonance framework, we argue that salient non-partisan divisions can change economic perceptions by triggering processes of self- and in-group justification. Using both nationally-representative observational and experimental survey data, we demonstrate that the perceptions of the economy are shaped by the Brexit divide, and that these biases are exacerbated when respondents are reminded of Brexit. These findings indicate that perceptual biases are not always rooted in partisanship, but can be triggered by other political divisions.",
+    "doi": "10.7910/DVN/QQM5MC",
+    "files": [
+      {
+        "bytes": 31555,
+        "name": "Sorace_Hobolt_DoFile.do",
+        "original_format": null,
+        "served_as": "Sorace_Hobolt_DoFile.do"
+      },
+      {
+        "bytes": 760134,
+        "name": "Sorace_Hobolt_Log.smcl",
+        "original_format": null,
+        "served_as": "Sorace_Hobolt_Log.smcl"
+      },
+      {
+        "bytes": 1974182,
+        "name": "YouGovExp.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "YouGovExp.tab"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": {
+      "citation": "Sorace, M. & Hobolt, S. B. (forthcoming). A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote. Political Science Research and Methods",
+      "doi": null
+    },
+    "status": "built",
+    "title": "A Tale of Two Peoples: Motivated Reasoning after the Brexit Vote"
   },
-  "status": "dropped",
-  "status_reason": "no UK-fielded instrument, and no UK-specific numeric result to verify against",
-  "title": "Geo-Political Rivalry and Anti-Immigrant Sentiment: A Conjoint Experiment in 22 Countries"
- }
+  "TLT65Z": {
+    "authors": "Blinder, Ford, Ivarsflaten",
+    "description": "Existing research on public opinion related to race and immigration politics emphasizes the role of prejudice or bias against minority groups. We argue that the social norm against prejudice, and individual motivations to comply with it, are crucial elements omitted from prior analyses. In most contemporary Western societies, citizens receive repeated, strong signals that prejudice is not socially or normatively acceptable. We demonstrate that many majority-group citizens have internalized a motivation to control prejudiced thoughts and actions, and that this motivation influences their political behavior in predictable ways. We introduce measures to capture this motivation, develop hypotheses about its influence, and test these hypotheses in three separate experimental and non-experimental survey studies conducted in Great Britain and Germany. Our findings support a dual process model of political behavior suggesting that while many voters harbor negative stereotypes, they also strive to act in accordance with the \u201cbetter angels of their natures.\u201d",
+    "doi": "10.7910/DVN/TLT65Z",
+    "files": [
+      {
+        "bytes": 12530,
+        "name": "Better Angels of Our Nature Study 1 citizenship experiment demographic controls code.do",
+        "original_format": null,
+        "served_as": "Better Angels of Our Nature Study 1 citizenship experiment demographic controls code.do"
+      },
+      {
+        "bytes": 7644,
+        "name": "Better Angels of Our Nature Study 1 citizenship experiment replication code.do",
+        "original_format": null,
+        "served_as": "Better Angels of Our Nature Study 1 citizenship experiment replication code.do"
+      },
+      {
+        "bytes": 5622,
+        "name": "Better Angels of Our Nature Study 1 citizenship experiment robustness checks code final.do",
+        "original_format": null,
+        "served_as": "Better Angels of Our Nature Study 1 citizenship experiment robustness checks code final.do"
+      },
+      {
+        "bytes": 8051,
+        "name": "Better Angels of Our Nature Study 2 replication code.do",
+        "original_format": null,
+        "served_as": "Better Angels of Our Nature Study 2 replication code.do"
+      },
+      {
+        "bytes": 4471,
+        "name": "Better Angels of Our Nature Study 2 robustness checks replication code.do",
+        "original_format": null,
+        "served_as": "Better Angels of Our Nature Study 2 robustness checks replication code.do"
+      },
+      {
+        "bytes": 19918,
+        "name": "Better Angels of our nature study 3 - demographic controls Germany.do",
+        "original_format": null,
+        "served_as": "Better Angels of our nature study 3 - demographic controls Germany.do"
+      },
+      {
+        "bytes": 34594,
+        "name": "Better Angels of our nature study 3 - voting analysis Britain - full replication code.do",
+        "original_format": null,
+        "served_as": "Better Angels of our nature study 3 - voting analysis Britain - full replication code.do"
+      },
+      {
+        "bytes": 24385,
+        "name": "Better Angels of our nature study 3 - voting analysis Germany - full replication code.do",
+        "original_format": null,
+        "served_as": "Better Angels of our nature study 3 - voting analysis Germany - full replication code.do"
+      },
+      {
+        "bytes": 1775257,
+        "name": "better angels study 1 bccap data final old.zip",
+        "original_format": null,
+        "served_as": "better angels study 1 bccap data final old.zip"
+      },
+      {
+        "bytes": 861456,
+        "name": "better angels study 2 cmsfinal old_1.dta",
+        "original_format": null,
+        "served_as": "better angels study 2 cmsfinal old_1.dta"
+      },
+      {
+        "bytes": 39177704,
+        "name": "gccap.immsmall.votemerged.dta",
+        "original_format": "application/x-stata",
+        "served_as": "gccap.immsmall.votemerged.tab"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": {
+      "citation": "Blinder, Scott, Robert Ford, and Elisabeth Ivarsflaten. 2013. \u201cThe Better Angels of Our Nature: How the Antiprejudice Norm Affects Policy and Party Preferences in Great Britain and Germany.\u201d American Journal of Political Science 57 (4): 841\u201357.",
+      "doi": "10.1111/ajps.12030"
+    },
+    "status": "dropped",
+    "status_reason": "no recoverable condition text (Study 2's seven message texts are nowhere in the deposit); AJPS is closed access",
+    "title": "The Better Angels of Our Nature: Anti-Prejudice Norm (GB & Germany)"
+  },
+  "X08IVC": {
+    "authors": "Tilley",
+    "description": "The 2016 EU referendum in Britain gave rise to two new political identities which divided the electorate into \u2018Remainers\u2019 and \u2018Leavers\u2019. Yet little is known about how these new identities relate to policy attitudes. The literature on partisanship identifies policy group norms that allow partisans to settle on shared policy aims and provide cues about the \u2018correct\u2019 in-group policy choice. In this paper, we examine the extent to which these policy norms are also important for people with a Brexit identity. We show that Brexit identities are associated with specific policy preferences and that these group norms are relatively well-known to people. Using a survey-embedded experiment, we also demonstrate that providing policy cues to Brexit identity groups may encourage people to align their own preferences with their group\u2019s preferences. These findings contribute to the growing literature on non-partisan political identities and their importance in shaping political attitudes and behavior.",
+    "doi": "10.7910/DVN/X08IVC",
+    "files": [
+      {
+        "bytes": 2000318,
+        "name": "Brexitidentitydata1.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "Brexitidentitydata1.tab"
+      },
+      {
+        "bytes": 332805,
+        "name": "Brexitidentitydata2.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "Brexitidentitydata2.tab"
+      },
+      {
+        "bytes": 89471,
+        "name": "Brexitidentitydata3.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "Brexitidentitydata3.tab"
+      },
+      {
+        "bytes": 278654,
+        "name": "Brexitidentitydata4.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "Brexitidentitydata4.tab"
+      },
+      {
+        "bytes": 60028,
+        "name": "Brexitidentitydata5-1.sav",
+        "original_format": "application/x-spss-sav",
+        "served_as": "Brexitidentitydata5-1.tab"
+      },
+      {
+        "bytes": 21484,
+        "name": "Fig1-1.xlsx",
+        "original_format": null,
+        "served_as": "Fig1-1.xlsx"
+      },
+      {
+        "bytes": 39212,
+        "name": "Fig2Fig3.xlsx",
+        "original_format": null,
+        "served_as": "Fig2Fig3.xlsx"
+      },
+      {
+        "bytes": 12891,
+        "name": "Readme.docx",
+        "original_format": null,
+        "served_as": "Readme.docx"
+      },
+      {
+        "bytes": 3979,
+        "name": "Replication syntax.sps",
+        "original_format": null,
+        "served_as": "Replication syntax.sps"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": null,
+    "status": "prepared",
+    "status_reason": "assessed and buildable, not yet started",
+    "title": "Brexit as an Identity: Political Identities and Policy Norms"
+  },
+  "ZZYSIZ": {
+    "authors": "Wimmer, Bonikowski, Crabtree, Fu, Golder, Tsutsui",
+    "description": "Introducing an international relations perspective into the literature on anti-immigrant attitudes, we hypothesize that immigrants from rival countries will be shunned and immigrants from allied countries preferred, especially by respondents who identify more strongly with the nation. We fielded a forced-choice conjoint experiment in 22 countries, whereby respondents chose between applicants for permanent resident status with randomized attributes. We identified rival and allied countries of origin for each surveyed country, with one such pair sharing a similar racial and cultural make-up as the majority of respondents, and one pair being more dissimilar. We find that discrimination against immigrants from rival states is so pronounced that it results in net preference for racially and culturally dissimilar immigrants. Since we fielded the surveys amidst the Russian invasion of Ukraine, we are able to leverage exogenous changes in the intensity of one rivalry, providing further evidence for the proposed mechanism.",
+    "doi": "10.7910/DVN/ZZYSIZ",
+    "files": [
+      {
+        "bytes": 498206,
+        "name": "Full Model Results Tables.pdf",
+        "original_format": null,
+        "served_as": "Full Model Results Tables.pdf"
+      },
+      {
+        "bytes": 150547,
+        "name": "Main Survey Instrument.pdf",
+        "original_format": null,
+        "served_as": "Main Survey Instrument.pdf"
+      },
+      {
+        "bytes": 1029,
+        "name": "README.txt",
+        "original_format": null,
+        "served_as": "README.txt"
+      },
+      {
+        "bytes": 35748,
+        "name": "replication_code.R",
+        "original_format": null,
+        "served_as": "replication_code.R"
+      },
+      {
+        "bytes": 5018874,
+        "name": "Supplementary Materials.pdf",
+        "original_format": null,
+        "served_as": "Supplementary Materials.pdf"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": {
+      "citation": "WIMMER, ANDREAS,  BART BONIKOWSKI, CHARLES CRABTREE, ZHENG FU, MATTHEW GOLDER, and KIYOTERU TSUTSUI. 2024. \u201cGeo-Political Rivalry and Anti-Immigrant Sentiment: A Conjoint Experiment in 22 Countries.\u201d American Political Science Review: 1\u201318.",
+      "doi": "10.1017/S0003055424000753"
+    },
+    "status": "dropped",
+    "status_reason": "no UK-fielded instrument, and no UK-specific numeric result to verify against",
+    "title": "Geo-Political Rivalry and Anti-Immigrant Sentiment: A Conjoint Experiment in 22 Countries"
+  }
 }

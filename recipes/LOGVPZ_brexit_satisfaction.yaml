@@ -1,0 +1,274 @@
+study_id: LOGVPZ
+source: dataverse
+title: "Mind the Gap: Why Wealthy Voters Support Brexit"
+data_file: yougov.dta
+licence: >-
+  CC0 1.0 Universal, Harvard Dataverse doi:10.7910/DVN/LOGVPZ, confirmed via the
+  Dataverse API's `latestVersion.license` and recorded in
+  data/catalog/uk_dataverse_provenance.json.
+
+experiment: brexit_satisfaction
+comparable_to_socsci210: false
+
+notes: |-
+  Green, J. and Pahontu, R. L. (2024), "Mind the Gap: Why Wealthy Voters Support
+  Brexit", BRITISH JOURNAL OF POLITICAL SCIENCE 54(4):1067-1087. Open access,
+  CC BY 4.0. DOI 10.1017/S0007123423000728. Replication data: Harvard Dataverse
+  doi:10.7910/DVN/LOGVPZ, CC0 1.0. Data fielded by YouGov in BES Wave 19, the
+  post-election panel wave in December 2019 (paper p.1081).
+
+  PROVENANCE CONVENTION FOR THIS RECIPE. The deposit's `yougov.dta` carries NO
+  questionnaire and its own variable labels truncate at Stata's 80-character
+  ceiling, mid-word (confirmed directly: `expRiskIncomeW19`'s label ends
+  "...and you have a good job gu", `expRiskIncomeaW19`'s ends "...double your
+  income, and 50-50 that"). The stimulus and both outcome stems exist only in
+  the paper's own Table 4 (p.1081), "Experimental conditions and outcome
+  wording" — an author-written table in the published, open-access, CC BY 4.0
+  paper, which is a primary source (the authors reporting what they fielded),
+  per the 2026-10-02 ruling that this is categorically different from a third
+  party reconstructing wording that was never recorded. EVERY stimulus and
+  question string below carries an inline YAML comment saying exactly where it
+  came from: `[paper Table 4, p.1081]` for a verbatim quotation, or `[composed]`
+  for connective words we added ourselves. Nothing below is from the proposal,
+  an appendix figure, or any reconstruction.
+
+  THE DESIGN — ONE RANDOMISATION, FOUR CELLS, TWO INDEPENDENT EXPERIMENTS.
+  `randgroup` (value labels {1:'Not Asked', 2:'Skipped', 3:'1', 4:'2', 5:'3',
+  6:'4'} — codes 1 and 2 declared and never occurring, confirmed: 0 rows at
+  either) is a clean 2x2 of {wealth treatment present/absent} x {which outcome
+  block}. Verified against the file directly: 3 -> 3,965; 4 -> 3,958; 5 -> 4,122;
+  6 -> 4,117; missing -> 80,995 (respondents from other BES waves/modules never
+  routed here). 3+4+5+6 = 16,162, which is the paper's own figure (p.1081:
+  "Around 15,000 people participated in the experiment... Figure D4 ... gives us
+  confidence"). Table 4 confirms the quarters: "Treatment ... 1/2 of sample",
+  "Outcome 1 ... 1/2 of the treated sample", "Outcome 2 ... 1/2 of the treated
+  sample" — i.e. half the module got the wealth win, half did not, and within
+  EACH half, half were asked the Brexit question and half the risk question.
+  This recipe builds the Brexit-satisfaction half (randgroup 3 and 5); the
+  risk-tolerance half is `LOGVPZ_risk_tolerance.yaml`, a SEPARATE recipe per
+  CONVENTIONS ("one recipe per sub-experiment") because the two blocks ask
+  different outcome questions of different (non-overlapping) respondents, even
+  though both share the same wealth manipulation and the same randomisation
+  variable.
+
+  treat=1 if randgroup==3 (wealth treatment), treat=0 if randgroup==5 (control).
+  `condition_num` 0=control(raw 5), 1=treatment(raw 3), matching the authors'
+  own `treat` coding in `1-master.do` line ~382.
+
+  SPLIT-BALLOT OUTCOME, AND THE ORDER-OF-OPERATIONS TRAP.
+  The Brexit-satisfaction question is asked under TWO different variable names
+  depending on condition — `EUrefsatisfactionExp_1W19` for the treated
+  (randgroup==3), `EUrefsatisfactionControl_1W19` for control (randgroup==5) —
+  an ordinary split-ballot shape (`Arm.outcome_var` below). Both variables carry
+  an UNLABELLED-as-such 12th code, 12 "Don't know", on an otherwise 1-11 scale.
+  `1-master.do` (lines ~385-386) recodes BOTH variables to missing on code 12
+  BEFORE combining them into one `outcome` column:
+
+      replace EUrefsatisfactionExp_1W19 = . if EUrefsatisfactionExp_1W19 == 12
+      replace EUrefsatisfactionControl_1W19 = . if EUrefsatisfactionControl_1W19 == 12
+      gen outcome = EUrefsatisfactionExp_1W19 if treat == 1
+      replace outcome = EUrefsatisfactionControl_1W19 if treat == 0
+
+  Doing it in the other order (combine first, recode second) would read code 12
+  as a genuine twelfth scale point on whichever variable happened to be selected
+  last. This recipe reproduces the authors' order mechanically, not by
+  sequencing two steps: `response_recode` below lists 1-11 and OMITS 12, so the
+  melt's `ivalue not in recode -> continue` (pipeline/build.py) drops code 12
+  per arm, before any combination happens — each arm reads only its own
+  variable and only its own recode, so there is no "combined" state in which 12
+  could ever be read as a twelfth point. Verified directly against the file:
+  of 8,087 respondents with randgroup in {3,5}, 581 hold code 12 on their
+  arm's own outcome variable and all 581 are correctly excluded (7,506 valid
+  outcomes remain before any persona-based filtering).
+
+  TRAP 1 and TRAP 2 — DECIDED, AND DECIDED TO DIVERGE FROM THE PUBLISHED N.
+  `1-master.do`'s `wkstat` recode (lines ~394-399) has no branch for
+  `workingStatusW19==9` ("Other"): respondents coded 9 fall through to a
+  `drop if wkstat == .` that reads as routine missing-data cleaning but is not
+  — "Other" is a real, offered answer (the file's own value label), not a
+  sentinel. 435 of the 16,162 routed respondents are coded 9 (confirmed
+  directly: value_counts on `workingStatusW19` among randgroup 3-6 gives
+  1:5344, 2:2018, 3:299, 4:281, 5:299, 6:30, 7:5983, 8:1473, **9:435**, with
+  ZERO respondents at 98/99). Separately, `anyUniW19` carries a 9999 "Don't
+  know" code the authors drop outright (`drop if anyUniW19==.` at line ~391,
+  after recoding 9999 to missing) rather than treating as a blankable field.
+
+  THIS RECIPE KEEPS BOTH GROUPS OF RESPONDENTS, deliberately diverging from the
+  published analysis sample. The row contract's `persona` fields are each
+  independently optional — a respondent missing ONE demographic does not need
+  to be missing from the corpus — so `anyUniW19==9999` and
+  `workingStatusW19==9` are handled via `persona_missing`/kept-as-answer exactly
+  like every other UK recipe here (QQM5MC's `Region_GOR`/`socgrade` pattern):
+  9999 blanks the `education` field (it is a non-answer, "Don't know"); 9 is
+  NOT in `workingStatusW19`'s persona_missing list, because "Other" is a real
+  answer and dropping it would be exactly the "cleaning-flavoured" drop
+  CLAUDE.md warns about. 98 "Skipped" and 99 "Not Asked" ARE dropped (true
+  non-answers) — neither occurs in this routed population, so they are
+  currently inert; they are declared anyway because they are the file's own
+  correct sentinels, not a guess (cf. ledger #101's caution about an inert
+  declaration — the difference here is that these two codes are verified
+  correct from the deposit's own value labels, not copied from another study).
+
+  Consequence: this recipe's N (7,506 valid Brexit-satisfaction outcomes before
+  dropping anything on persona grounds — see `scripts/verify_LOGVPZ.py` for the
+  exact built count) is LARGER than the paper's regression N of 7,225
+  (Table D.1, reproduced exactly below). The entire gap is exactly these two
+  drops: 164 of the 7,506 are `workingStatusW19==9` and 130 are
+  `anyUniW19==9999` (some respondents are both). We consider this the more
+  careful choice — it keeps 281 real, answered rows that are not missing
+  anything the ROW format needs — but it is a DELIBERATE divergence from the
+  published analysis sample, not an error, and it is why `verify_LOGVPZ.py`
+  reproduces the paper's regression by replicating the authors' EXTRA filters
+  on top of the built parquet rather than expecting the built row count to
+  match the paper directly.
+
+  TRAP 3 — PERSONA IS THIN, STATED PLAINLY. Four fields only: `anyUniW19`
+  (education, 4 substantive levels + a DK code), `workingStatusW19` (employment,
+  9 levels + 2 sentinels), `gender` (binary), `ageW19` (18-98, verified ZERO
+  missing/sentinel values among the 16,162 routed respondents — the -8/-9
+  sentinels in the file's own value labels never fire here). No income, no
+  education-leaving-age, no region, no social grade, no ethnicity, no religion,
+  no marital status, no household size — this deposit holds only 13 columns
+  total (verified: `pyreadstat.read_dta` on `yougov.dta` lists exactly
+  `randgroup, EUrefsatisfactionExp_1W19, expRiskIncomeW19, expRiskIncomeaW19,
+  expRiskIncomebW19, EUrefsatisfactionControl_1W19, controlRiskIncomeW19,
+  controlRiskIncomeaW19, controlRiskIncomebW19, workingStatusW19, anyUniW19,
+  gender, ageW19` — nothing more exists to map). This is thinner than
+  `EFXNLX`'s 6 fields and far thinner than `QQM5MC`'s 8; it is not padded.
+
+  TRAP 4 — NO BREXIT/PARTY VARIABLE BELONGS IN THIS PERSONA, AND THE QUESTION
+  IS MOOT HERE RATHER THAN RESOLVED BY REMOVAL. `EFXNLX` had to have
+  `eu_referendum_vote` actively REMOVED because it shared a domain with that
+  study's Brexit-deal-preference outcome. Here there is nothing to remove: the
+  13-column file above is the complete variable list, and none of the four
+  usable fields (education, employment, gender, age) sits in the Brexit/party
+  domain, and no EU-referendum-vote or party-ID variable exists anywhere in
+  this deposit to be tempted by in the first place. The thinness noted under
+  Trap 3 is therefore also the reason Trap 4 has nothing left to decide.
+
+  TRAP 5 — NO DISPLAY-ORDER COLUMN. Checked directly, not assumed: all 13
+  columns are accounted for above, none of them named or labelled anything
+  resembling a position/order variable, and this is a 2-arm split-ballot design
+  with a single outcome item per respondent (no list of attributes or items
+  whose order could vary). `EFXNLX`'s `list_table` existed because that study
+  is a conjoint with multiple attribute ROWS per profile; this study presents
+  one short block of text and one question, so there is no sequence to order.
+
+  VERIFICATION — TABLE D.1, REPRODUCED EXACTLY. The main PDF's Table 4/Fig.6
+  give the design and effect-size prose but not the regression table itself;
+  Table D.1 lives in the ONLINE SUPPLEMENTARY MATERIAL (static.cambridge.org,
+  linked from the article's "Supplementary Material" DOI), fetched and
+  transcribed in full in `scripts/verify_LOGVPZ.py`. Both of its columns were
+  reproduced from the DEPOSIT (not the built parquet, for this cross-check)
+  to the precision printed:
+
+      Column 1 (bivariate):    treat coef = 0.245  (paper: 0.245**)
+      Column 2 (+ controls):   treat coef = 0.191  (paper: 0.191**)
+      Control mean (both):     6.2385               (paper: 6.238)
+      N (both columns):        7,225                (paper: 7,225)
+
+  All four reproduce to the printed precision, confirming `treat`, `outcome`
+  and the 12->missing recode are all correct, and that the published N is
+  recovered exactly once the authors' OWN extra drops (anyUniW19==9999,
+  wkstat==., i.e. including workingStatusW19==9) are replicated on top of our
+  variables. Table D.1's own note states the outcome scale as "(10=satisfied)"
+  — this is the AUTHORS' rescaled presentation for Figure 6 (their do-file
+  plots `outcome` on an implicit 0-10 axis for display); the deposit's actual
+  fielded coding is 1-11 (`1`='Extremely dissatisfied' ... `11`='Extremely
+  satisfied', both confirmed from the file's own value labels), and THAT is
+  what this recipe uses — CONVENTIONS forbids translating a value into
+  something the source doesn't support, and the fielded 1-11 scale is what
+  the source supports. `scripts/verify_LOGVPZ.py` reproduces the coefficients
+  and control mean on the 1-11 scale (they are scale-invariant to a constant
+  shift) and notes the discrepancy explicitly rather than silently rescaling.
+
+  SHARED_CONTEXT AND THE CONTROL ARM'S TEXT — WORDS WE ADDED, PER
+  docs/CONVENTIONS.md "Narrating what the respondent did". Table 4 gives
+  wording for the TREATMENT arm only; the control arm has no row in Table 4
+  because nothing was shown. The paper's own prose (p.1081) describes it
+  directly: "a control group who were only asked about their Brexit
+  preference". `shared_context` and the control arm's `text` below compose
+  this into plain narration of absence — true for everyone in that arm, no
+  numbers, no sequence position — rather than leaving the arm with no text at
+  all (CLAUDE.md requires an explicit sentinel only when a WHOLE study has no
+  stimulus; here one arm of a two-arm design has none, so the QQM5MC precedent
+  of narrating what did NOT happen is followed instead). The added words are
+  quoted verbatim in the `text` fields' inline comments below.
+
+  UNCERTAINTIES FOR THE CHECKER:
+  1. The decision to KEEP workingStatusW19==9 and anyUniW19==9999 respondents
+     (diverging from the published N) is a judgement call, not forced by the
+     schema. A checker could reasonably prefer reproducing the authors' sample
+     exactly; I chose completeness because nothing in the row FORMAT required
+     dropping them (persona fields are independently optional).
+  2. The composed control-arm narration ("You are not told anything about
+     winning a prize in a lottery...") is OUR wording, not the paper's. It
+     is intentionally minimal and could be scrutinised for whether it leaks
+     any information the control group should not have.
+  3. Table D.1's outcome note says "(10=satisfied)" while this recipe uses the
+     fielded 1-11 coding. I believe this is right per CONVENTIONS but it is
+     worth an independent look.
+
+condition:
+  source_var: randgroup
+  factors: [wealth_treatment]
+  # [composed] — dates sourced from paper p.1081: "fielded in BES Wave 19 in
+  # the post-election survey in December 2019". No wording here is from the
+  # instrument; it is scene-setting prose, not stimulus content.
+  shared_context: >-
+    You are taking part in the December 2019 post-election wave of the British
+    Election Study internet panel, run by YouGov.
+  arms:
+    - raw: 5
+      condition_num: 0
+      factors: {wealth_treatment: absent}
+      outcome_var: EUrefsatisfactionControl_1W19
+      # [composed] — Table 4 (p.1081) gives no control-arm text; this narrates
+      # the absence per the paper's own prose, "a control group who were only
+      # asked about their Brexit preference" (p.1081).
+      text: >-
+        You are not told anything about winning a prize in a lottery. You go
+        straight to the question below.
+
+    - raw: 3
+      condition_num: 1
+      factors: {wealth_treatment: present}
+      outcome_var: EUrefsatisfactionExp_1W19
+      # [paper Table 4, p.1081, row "Treatment"] — verbatim.
+      text: >-
+        Imagine you took part in a lottery, and you are now the lucky winner of
+        a £1 million house!
+
+outcomes:
+  - task_num: 0
+    # [paper Table 4, p.1081, row "Brexit support / Outcome 1"] — verbatim.
+    question: "How satisfied or dissatisfied are you that the UK voted to leave the EU?"
+    scale:
+      min: 1
+      max: 11
+      min_label: "Extremely dissatisfied"
+      max_label: "Extremely satisfied"
+    response_recode:
+      {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11}
+      # 12 "Don't know" deliberately omitted — see notes above.
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11}
+missing_codes: [12]
+
+persona_map:
+  age: ageW19
+  gender: gender
+  education: anyUniW19
+  employment: workingStatusW19
+
+persona_missing:
+  # 9999 "Don't know" — a real non-answer, blanked rather than rendered.
+  anyUniW19: [9999]
+  # 98 "Skipped", 99 "Not Asked" — true non-answers. Neither occurs in this
+  # routed population (verified), unlike code 9 "Other", which is a real
+  # answer and is deliberately NOT listed here — see Trap 1/2 in notes.
+  workingStatusW19: [98, 99]
+  # -8 "Skipped", -9 "Not Asked" — the file's own sentinels. Verified ZERO
+  # occurrences among randgroup 3-6, so currently inert; declared because they
+  # are correct, not guessed.
+  ageW19: [-8, -9]

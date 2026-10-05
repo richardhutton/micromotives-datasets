@@ -1,0 +1,202 @@
+study_id: LOGVPZ
+source: dataverse
+title: "Mind the Gap: Why Wealthy Voters Support Brexit"
+data_file: yougov_risk_derived.dta
+licence: >-
+  CC0 1.0 Universal, Harvard Dataverse doi:10.7910/DVN/LOGVPZ, confirmed via the
+  Dataverse API's `latestVersion.license` and recorded in
+  data/catalog/uk_dataverse_provenance.json.
+
+experiment: risk_tolerance
+comparable_to_socsci210: false
+
+notes: |-
+  Companion recipe to `LOGVPZ_brexit_satisfaction.yaml` — read that file's notes
+  for the shared study background, the randomisation structure (`randgroup`'s
+  2x2, the 16,162-row module total), the provenance convention used throughout
+  both recipes (`[paper Table 4, p.1081]` for verbatim quotation, `[composed]`
+  for our own connective words), Trap 3 (thin persona), Trap 4 (no Brexit/party
+  variable exists in this deposit to conflict with an outcome) and Trap 5 (no
+  display-order column; this deposit has 13 columns total and none of them
+  order anything). This file covers what is SPECIFIC to the risk-tolerance half
+  of the module: randgroup 4 (treatment) and 6 (control).
+
+  risktreat=1 if randgroup==4, risktreat=0 if randgroup==6 (`1-master.do` line
+  ~415). `condition_num` 0=control(raw 6), 1=treatment(raw 4), matching.
+
+  THE OUTCOME IS COMPOSED FROM A BRANCHING PAIR — WHY THIS RECIPE USES A
+  DERIVED DATA FILE. The response is not one column. `1-master.do`'s `yougov`
+  program (lines ~403-415) builds a 0-3 "risk" variable from THREE raw columns
+  per condition: a base gamble question (`exp`/`controlRiskIncomeW19`, 1=No,
+  2=Yes), then ONE of two follow-up questions depending on the base answer —
+  `expRiskIncomeaW19`/`controlRiskIncomeaW19` if the base answer was Yes (a
+  BIGGER gamble), `expRiskIncomebW19`/`controlRiskIncomebW19` if the base
+  answer was No (a SMALLER, safer gamble):
+
+      risk=0 if base==2(Yes) & a==2(Yes)   risk=1 if base==2(Yes) & a==1(No)
+      risk=2 if base==1(No)  & b==2(Yes)   risk=3 if base==1(No)  & b==1(No)
+
+  The recipe schema's `Arm.outcome_var`/`ItemOverride.outcome_var` can each name
+  only ONE source column per cell — there is no field for "derive this response
+  from a conditional branch over three columns". Rather than force this into
+  the wrong shape (CLAUDE.md: "When a source has a structure the pipeline can't
+  handle, stop and report it"), `scripts/derive_LOGVPZ_risk.py` precomputes the
+  branch exactly as the authors' own do-file does and writes ONE new column,
+  `risk_derived`, into an augmented copy of the deposit
+  (`data/raw/LOGVPZ/yougov_risk_derived.dta`, every original column preserved).
+  This recipe's `data_file` points at that augmented file, and the outcome below
+  names `risk_derived` like any ordinary single-column outcome. The script is
+  COMMITTED, not a throwaway generator (ledger #89's lesson: "a generated recipe
+  keeps the output and throws away the judgement" — the generator here is kept,
+  reviewable, and re-runnable), and it self-verifies before writing: of every
+  respondent who answered a base gamble question in randgroup 4 or 6 (8,075 of
+  8,075), EVERY ONE resolves to exactly one of the four branches — ZERO
+  exceptions, confirmed both by the script's own assertion and independently
+  here (expRiskIncomeW19 answered: 3,958; controlRiskIncomeW19 answered: 4,117;
+  sum 8,075; valid branch resolutions: 8,075 — exact match). This is close to
+  the briefed figure of "16,162 rows" for the branching check; our figure of
+  8,075 covers respondents who answered the BASE question (randgroup 4+6 only),
+  while 16,162 is the whole four-cell module total (3+4+5+6) — the branching
+  logic itself is only applicable to the risk half, so 8,075 is the right
+  denominator for THIS claim; stated explicitly because the two numbers do not
+  match and a reader should not have to work out why.
+
+  WHAT THE FOUR LEVELS MEAN, IN THE RESPONDENT'S OWN ANSWERS:
+    0 = said YES to the base job offer (50-50 double-or-cut-by-a-third), AND
+        said YES again when asked the bigger-risk follow-up (50-50
+        double-or-halve). The most risk-TOLERANT respondents: 1,069 of 8,075.
+    1 = said YES to the base offer, but said NO to the bigger-risk follow-up.
+        769 of 8,075.
+    2 = said NO to the base offer, but said YES to the smaller, safer follow-up
+        (50-50 double-or-cut-by-20%). 1,119 of 8,075.
+    3 = said NO to the base offer, AND said NO again to the safer follow-up.
+        The most risk-AVERSE respondents, and the modal answer: 5,118 of 8,075
+        (63.4%). Matches the paper's own framing of this variable: Fig.7's
+        caption reads "measured on a scale from 0 to 3 (3=risk averse)".
+
+  SCHEMA GAP, NAMED RATHER THAN HIDDEN: `Scale` carries `min_label`/`max_label`
+  (and `mid_label`, only for an ODD-length scale, which 0-3 is not), so the
+  built-in answer instruction can state what 0 and 3 mean but has no slot for 1
+  and 2. Leaving 1 and 2 undefined in the rendered prompt would be worse than
+  the gap itself — it is exactly the shape of ledger #76 (information with
+  nowhere to go drifts into free text) — so the outcome `question` below adds
+  ONE plain sentence enumerating all four, flagged `[composed]` where it
+  appears. This is the riskiest judgement in this recipe: it is meta-content
+  describing what the RESPONSE CODE means (the same job `Scale.instruction()`
+  already does for every outcome in this corpus), not stimulus content, but it
+  is still composed text a respondent never read, and a checker should look
+  hard at whether it crosses into territory CONVENTIONS reserves for narrower
+  cases ("One stem, several labelled answer fields", "Narrating what the
+  respondent did").
+
+  VERIFICATION — TABLE D.2, REPRODUCED EXACTLY. From the online supplementary
+  material (static.cambridge.org, via the article's Supplementary Material DOI),
+  transcribed in full in `scripts/verify_LOGVPZ.py` and reproduced from the
+  deposit (not the built parquet, for this cross-check):
+
+      Column 1 (bivariate):    risktreat coef = -0.117  (paper: -0.117***)
+      Column 2 (+ controls):   risktreat coef = -0.110  (paper: -0.110***)
+      Control mean (both):     2.3323                   (paper: 2.332)
+      N (both columns):        7,704                    (paper: 7,704)
+
+  All four reproduce to the printed precision. The negative sign on `risktreat`
+  (treatment LOWERS the 0-3, 3=risk-averse scale) is the paper's own "a
+  substantial and significant increase in risk-taking among the treated,
+  equivalent to a 5% increase in risk-taking behaviour" (p.1083) — confirmed
+  directionally consistent with our derivation of `risk_derived` independently
+  (we derived it from the branching logic before reading this sentence, and the
+  sign matches).
+
+  TRAP 1/TRAP 2 CONSEQUENCE HERE. Because `risk_derived` has NO missingness
+  beyond the randgroup split itself (branching is exhaustive, 0 exceptions),
+  this recipe's built N before any persona-based filtering is the FULL 8,075 —
+  every respondent routed to randgroup 4 or 6. The gap to the paper's
+  regression N of 7,704 is 371, decomposing the same way as the Brexit-
+  satisfaction recipe: 223 `workingStatusW19==9` ("Other", kept here, not
+  dropped) and 186 `anyUniW19==9999` ("Don't know", blanked via
+  `persona_missing`, not dropped), with some overlap. Same deliberate choice as
+  `LOGVPZ_brexit_satisfaction.yaml`, for the same reason.
+
+  UNCERTAINTIES FOR THE CHECKER:
+  1. The derived-data-file approach (`yougov_risk_derived.dta`) is new in this
+     corpus — no prior recipe has needed a precomputed column. A checker should
+     re-run `scripts/derive_LOGVPZ_risk.py` from the pristine `yougov.dta` and
+     confirm it reproduces the shipped `yougov_risk_derived.dta` bit for bit,
+     and should look for any other way the schema could have expressed this
+     without an extra data-prep step.
+  2. The composed sentence naming all four scale codes (see "SCHEMA GAP" above)
+     is the single judgement call most worth a second look in this recipe.
+  3. Same divergence-from-published-N judgement as the companion recipe.
+
+condition:
+  source_var: randgroup
+  factors: [wealth_treatment]
+  # [composed] — see companion recipe's notes for the source of these dates.
+  shared_context: >-
+    You are taking part in the December 2019 post-election wave of the British
+    Election Study internet panel, run by YouGov.
+  arms:
+    - raw: 6
+      condition_num: 0
+      factors: {wealth_treatment: absent}
+      # [composed] — Table 4 (p.1081) gives no control-arm text; this narrates
+      # the absence per the paper's own prose, "a control group who were only
+      # asked about their risk aversion" (p.1081).
+      text: >-
+        You are not told anything about winning a prize in a lottery. You go
+        straight to the question below.
+
+    - raw: 4
+      condition_num: 1
+      factors: {wealth_treatment: present}
+      # [paper Table 4, p.1081, row "Treatment"] — verbatim, identical wording
+      # to the Brexit-satisfaction arm (the same manipulation feeds both halves
+      # of the module).
+      text: >-
+        Imagine you took part in a lottery, and you are now the lucky winner of
+        a £1 million house!
+
+outcomes:
+  - task_num: 0
+    var: risk_derived
+    # First three sentences: [paper Table 4, p.1081, row "Willingness to take
+    # risks / Outcome 2"], verbatim, joined with our own connective phrases
+    # ("If you said yes/no, you were then asked:") in place of Table 4's "If
+    # 'yes':"/"If 'no':" labels, [composed], flagged per CONVENTIONS
+    # "Narrating what the respondent did". Final sentence enumerating all four
+    # response codes: [composed] — see "SCHEMA GAP" in notes above.
+    question: >-
+      Suppose you are the only income earner in the family, and you have a good
+      job guaranteed to give you income every year for life. You are given the
+      opportunity to take a new and equally good job, with a 50-50 chance it
+      will double your income and a 50-50 chance that it will cut your income
+      by a third. Would you take the new job? If you said yes, you were then
+      asked: "Suppose the chances were 50-50 that it would double your income,
+      and 50-50 that it would cut it in half. Would you still take the new
+      job?" If you said no, you were then asked: "Suppose the chances were
+      50-50 that it would double your income and 50-50 that it would cut it by
+      20 per cent. Would you then take the new job?" Your answer across these
+      questions is recorded on a scale from 0 to 3: 0 if you said yes both
+      times, 1 if you said yes to the first question but no to the second, 2 if
+      you said no to the first question but yes to the second, and 3 if you
+      said no both times.
+    scale:
+      min: 0
+      max: 3
+      min_label: "said yes to the job offer both times (most willing to take financial risks)"
+      max_label: "said no to the job offer both times (least willing to take financial risks)"
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3}
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3}
+missing_codes: []
+
+persona_map:
+  age: ageW19
+  gender: gender
+  education: anyUniW19
+  employment: workingStatusW19
+
+persona_missing:
+  anyUniW19: [9999]
+  workingStatusW19: [98, 99]
+  ageW19: [-8, -9]
