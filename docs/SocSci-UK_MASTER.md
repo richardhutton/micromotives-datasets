@@ -215,10 +215,10 @@ overstates nothing and understates a conjoint by an order of magnitude.
 | 35M5CV | Divided by the Vote (Hobolt, Leeper, Tilley) | CC0 1.0 | **SIX bundled sub-studies**, not one | unverified | 2 of 6 only (lodger, bbc) |
 | PMV0TG | Vaccine allocation, 13 countries (Duch et al.) | CC0 1.0 | conjoint | unverified | **yes**, a UK-specific Qualtrics instrument |
 | ZZYSIZ | Anti-immigrant, 22 countries (Wimmer et al.) | CC0 1.0 | conjoint, forced choice | unverified; **UK presence NOT confirmed** | an "example" only, not full wording |
-| PZB01G | For/Against Brexit (Goodwin, Hix, Pickup) | CC0 1.0 | 2-wave panel, pro/anti messages | unverified | **no** — no questionnaire or codebook at all |
-| RJTVG8 | i-voting (Turnbull-Dugarte, Devine) | CC0 1.0 | conjoint, bundled with a systematic review | unverified; **UK sample NOT confirmed** | **no** |
-| SACJHE | Cyber Terrorism (Shandler et al.) | CC0 1.0 | TV news report, retaliation scale | 2,028 is a **US+UK+Israel total**, not UK | **no**, and no transcript of the video |
-| POMIFD | Variable Persuasiveness of Political Rhetoric (Blumenau, Lauderdale) | **NOT CC0 — `license` is null** | **NOT MaxDiff** — pairwise comparison, 336 arguments | 3,317 → 13,268 | yes, prompts ship as data |
+| PZB01G | For/Against Brexit (Goodwin, Hix, Pickup) | CC0 1.0 | **2×2×2 factorial** + control, six vignette frames | **5,333** in the vignette wave (Wave 1: 6,074) | not in the deposit — but all six frames are verbatim in the paper's **open-access CC-BY** appendix |
+| RJTVG8 | i-voting (Turnbull-Dugarte, Devine) | CC0 1.0 | 10-attribute conjoint, 5 tasks | **1,200 UK → 6,000 pairs**, UK confirmed | not in the deposit — Table A.3 of the open author manuscript prints all ten attributes verbatim |
+| SACJHE | Cyber Terrorism (Shandler et al.) | CC0 1.0 | TV news **video**, retaliation scale | **597 UK** of 1,848 (2,028 included an undeposited 180-person pilot) | script is verbatim in the open appendix — **DROPPED anyway on the video-stimulus ruling, below** |
+| POMIFD | Variable Persuasiveness of Political Rhetoric (Blumenau, Lauderdale) | **NOT CC0 — `license` is null** | pairwise comparison, 336 arguments | 3,317 → 13,268 | yes, prompts ship as data. **Usable but never publishable** — see `use_basis` in the provenance catalogue |
 | (OSF) | Many Labs 1/2, PSA | various | various | — | — |
 
 **`POMIFD` is the best material of all nine and is blocked on licence alone.** 336
@@ -246,15 +246,58 @@ are buildable and the third's objections were factually mistaken:
 |---|---|---|
 | `PZB01G` | **BUILDABLE** — 5,333 respondents, 2×2×2 + control | Paper is **open access CC-BY** in BJPolS; supplementary appendix is headed *"I. Text of the vignettes:"* and prints all six frame paragraphs verbatim |
 | `RJTVG8` | **BUILDABLE** — 1,200 UK respondents, 6,000 pairs | **UK sample confirmed** from the paper's own text and the data; author-accepted manuscript open at Southampton ePrints, Table A.3 prints all ten attributes with full level text |
-| `SACJHE` | **awaiting a scope ruling** | §5a's two objections were both wrong — UK *is* separable (n=597, balanced, matching published Table 3), and a verbatim script *does* exist in an open-access appendix |
+| `SACJHE` | **DROPPED** — rich's scope ruling, 5 Oct 2026 | §5a's two objections were both wrong, but it was dropped for different reasons; see below |
 
-`SACJHE`'s remaining question is **categorical, not evidential, and it is rich's
-to answer**: does a verbatim author-written SCRIPT of a TV-news video count as
-condition text? The appendix-ruling precedents (`LOGVPZ`, `X08IVC`) are studies
-where respondents **read** text, so reprinting it reprints the actual stimulus.
-Here respondents watched a produced, acted, scored news segment, and the script
-is the words spoken in it — without imagery, tone, pacing or chyron. Nothing in
-`CLAUDE.md`, `CONVENTIONS.md` or the ledger settles it.
+#### The video-stimulus ruling (`SACJHE`, 5 October 2026)
+
+**A verbatim author-written SCRIPT of a produced audiovisual stimulus does not
+count as condition text.** This is a standing ruling rather than a one-off: the
+next study with a video, an audio clip or an image is decided the same way unless
+someone revisits it deliberately.
+
+The appendix-ruling precedents — `LOGVPZ`, `X08IVC`, `PZB01G` — are all studies
+where respondents **read** text, so an appendix reprinting that text reprints the
+actual stimulus. `SACJHE`'s respondents watched a produced, acted, scored news
+segment; the script is the words spoken in it, without imagery, tone, pacing or
+the on-screen chyron.
+
+What was NOT wrong with it, so nobody re-litigates the easy parts: the deposit is
+CC0, the UK sample is separable and clean at **n=597** (120/119/118/120/120,
+matching the paper's published Table 3 cell for cell), and a verbatim script
+genuinely does exist in the open-access Online Appendix B. The ruling was close,
+and these are the three reasons, recorded because the question will come back:
+
+1. **The control arm saw no video at all** — 120 of 597. The contrast the design
+   rests on is *watched a dramatic bulletin about a terror attack* versus
+   *nothing*, and no text represents that. Composing a no-stimulus arm is
+   precedented (`LOGVPZ`), but there the treatment arm was also text the
+   respondent READ.
+2. **The outcome is an absolute 1-6 rating, not a contrast.** The
+   cyber/conventional and fatal/non-fatal manipulations ARE purely linguistic and
+   survive in text perfectly well — but a produced segment moves an absolute
+   rating differently from a paragraph, so a model would be asked to predict a
+   number produced by an experience we cannot give it.
+3. **The UK substitute for the US city name "Cambridge" is unrecoverable** —
+   checked against the appendix text, all seven embedded images at native
+   resolution, the paper's own Table 1 screenshots, the codebook, every `.sav`
+   label and the SPSS output file. It appears only in the FATAL script, so either
+   two of four treatment arms assert that UK respondents saw a US city, or the
+   sentence carrying the casualty detail is left incomplete, or both Fatal arms go
+   and 359 respondents remain from a 2×2 with half its cells missing — which is
+   no longer the experiment. (`Amtrak` → `National Rail` IS confirmed, from two
+   independent sources.)
+
+**If it is ever revisited**, the middle option is to build only the four TREATMENT
+arms and drop the control, measuring within-treatment contrasts rather than
+treatment-versus-nothing. That answers reason 1 completely and reasons 2 and 3
+not at all.
+
+Two findings worth keeping whatever the ruling. `ManiCheck1`/`ManiCheck2` hold an
+**undeclared `0`** meaning "Control, never shown a video" rather than a failed
+attention check — the authors' own filter carries a third clause specifically to
+pass Control through, so coding it naively would flag every control respondent as
+a failure. And the authors' headline measure is `MEAN(Retaliation_1,_3,_5,_6)`,
+which must never ship as a `response`, because no respondent produced it.
 
 Two corrections to the record while we are here. §5a said `SACJHE`'s 2,028 was a
 three-country total; the deposited file actually holds the **1,848**-respondent
