@@ -211,7 +211,7 @@ overstates nothing and understates a conjoint by an order of magnitude.
 | DOI (`10.7910/DVN/…`) | Dataset | Licence | Design, as VERIFIED | Respondents | Instrument ships? |
 |---|---|---|---|---|---|
 | EFXNLX | Brexit negotiations conjoint (Hobolt, Tilley, Leeper) | CC0 1.0 | 8-attribute conjoint, 6 pairs, forced choice + per-profile acceptability | 3,293 → 16,465 pair / 32,930 profile | **yes**, and data levels match it word for word |
-| 6MRVOM | Pricing Immigration (Hix, Kaufmann, Leeper) | CC0 1.0 | **NOT a conjoint** — 2×2 factorial cost framing, continuous slider outcome | 3,636 | **yes**, carries the template the condition fills |
+| 6MRVOM | Pricing Immigration (Hix, Kaufmann, Leeper) | CC0 1.0 | **NOT a conjoint** — THREE independent randomisations. BUILT: `ExpSplitQ5` (information anchor, 0-100 share outcome, 2,397 rows) and `ExpSplitQ67` (post-Brexit scenario, party choice + satisfaction, 7,272 rows). UNBUILT: the paper's own main 2×2×2×2 cost-framing experiment, a genuine 0-165,000 net-migration slider, pending an owner decision | 3,636 | **yes**, carries the template the condition fills |
 | 35M5CV | Divided by the Vote (Hobolt, Leeper, Tilley) | CC0 1.0 | **SIX bundled sub-studies**, not one | unverified | 2 of 6 only (lodger, bbc) |
 | PMV0TG | Vaccine allocation, 13 countries (Duch et al.) | CC0 1.0 | conjoint | unverified | **yes**, a UK-specific Qualtrics instrument |
 | ZZYSIZ | Anti-immigrant, 22 countries (Wimmer et al.) | CC0 1.0 | conjoint, forced choice | unverified; **UK presence NOT confirmed** | an "example" only, not full wording |

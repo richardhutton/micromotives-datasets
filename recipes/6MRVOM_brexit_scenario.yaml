@@ -1,0 +1,314 @@
+study_id: 6MRVOM
+source: dataverse
+title: "Pricing Immigration"
+data_file: data.sav
+experiment: brexit_scenario
+licence: >-
+  CC0 1.0, read from the Dataverse API (latestVersion.license) and recorded in
+  data/catalog/uk_dataverse_provenance.json.
+
+comparable_to_socsci210: false
+
+notes: |-
+  Hix, S., Kaufmann, E. and Leeper, T. J. (2020), "Pricing Immigration", JOURNAL
+  OF EXPERIMENTAL POLITICAL SCIENCE 8(1):63-74, doi:10.1017/XPS.2020.6. Harvard
+  Dataverse doi:10.7910/DVN/6MRVOM, CC0 1.0. Same single fielding as the sibling
+  recipe `6MRVOM_eu_share.yaml` — see that recipe's notes for the full
+  provenance (YouGov Omnibus panel, 26 April and 2 May 2017, N=3,636,
+  poststratification-weighted by `W8`). This recipe builds a THIRD, separate
+  randomisation in the same deposit, `ExpSplitQ67`, which the published paper
+  does NOT report on at all (see "NO PUBLISHED OR AUTHOR-COMPUTED REFERENCE"
+  below) — everything here is read directly from the questionnaire and the
+  file.
+
+  THE DESIGN — ONE RANDOMISATION, TWO SCENARIOS, EACH WITH TWO OUTCOME ITEMS
+
+  Confirmed directly against the converted questionnaire (lines ~157-236):
+  `ExpSplitQ67 = random(1,2)`. Module `questions67_1` (party var `Q6_1`,
+  satisfaction var `Q71_1` scripted / stored as `q71l`) fires `if
+  ExpSplitQ67==1`; module `questions67_2` (`Q6_2`/`q72l`) fires `if
+  ExpSplitQ67==2`. `ExpSplitQ67==1` n=1,786, `==2` n=1,850; 1,786+1,850=3,636,
+  the whole sample. Within each module, `{module ... order=randomize}` only
+  randomises which of Q6/Q7 the respondent sees FIRST — it does not change
+  either item's wording, so no order factor is recorded (CONVENTIONS "Sequence
+  signposting": a row cannot cite its own position, and here there is nothing
+  for it to cite — the content of each item is identical whichever came
+  first).
+
+  Both scenario texts, transcribed VERBATIM from the questionnaire (note: the
+  source uses a curly apostrophe in "Britain's" throughout; normalised to
+  straight per docs/CONVENTIONS.md, which normalises typography but never
+  words):
+
+    Scenario 1 (ExpSplitQ67==1, condition_num 0): "When Britain officially
+    leaves the EU, analysts believe the government will, for economic reasons,
+    keep immigration levels at about the same level as now."
+
+    Scenario 2 (ExpSplitQ67==2, condition_num 1): "When Britain officially
+    leaves the EU, analysts believe the government will, for economic reasons,
+    only reduce immigration levels a little, shifting the source of
+    immigration from Europe to beyond Europe (mainly Asia, Africa and the
+    Middle East)."
+
+  The questionnaire inserts `<<br/>><<br/>>` between the scenario and each
+  question — this is the instrument's own line-break scripting, not stimulus
+  content, and is dropped (it carries no words, same treatment as `LOGVPZ`'s
+  own `<br/>` markup noted in its recipe). The .sav's own variable LABELS
+  truncate both scenarios further and keep the literal `<br/>` markup
+  un-rendered — e.g. Q6_1's label ends "...next general ele" and Q7_1's (here
+  `q71l`) ends "...decision to leave the:" — neither is used as a source of
+  wording; both scenarios and both question stems below are transcribed from
+  the questionnaire.docx pages directly, which print them in full.
+
+  CROSSED ARMS AND ITEMS — WHY `Arm.items` IS USED
+
+  Each scenario has its OWN pair of outcome variables (`Q6_1`/`q71l` under
+  scenario 1, `Q6_2`/`q72l` under scenario 2), so this is the crossed-
+  arms-with-items shape `ItemOverride` exists for (its own docstring in
+  `recipe.py` names `evnyh`/`cug34`/`z358z` as precedent; `QQM5MC` is the
+  closest recipe-level analogue, though there the crossing is expressed via
+  `witness_var` blocks rather than a plain `source_var`). Both the question
+  WORDING and the SCALE are identical across the two scenarios (confirmed by
+  direct comparison of the questionnaire's Q6_1/Q6_2 and Q7_1/Q7_2 blocks —
+  they differ only in which scenario sentence precedes them), so only
+  `outcome_var` needs an item-level override; `outcome.question` and
+  `outcome.scale` are declared once each, at the study level.
+
+  ROW SHAPE: one row per (respondent, outcome item) — 2 rows per respondent,
+  since every respondent answered both Q6 and Q7 under whichever scenario they
+  were routed to. Expected 3,636 x 2 = 7,272.
+
+  VERIFIED DIRECTLY AGAINST THE FILE — NO 997 (OR ANY OTHER UNDECLARED CODE)
+  IN THIS BLOCK, UNLIKE THE SIBLING RECIPE
+
+  The 997-undeclared-DK trap that governs `6MRVOM_eu_share.yaml` does NOT
+  apply here — checked, not assumed. `Q6_1`/`Q6_2`/`q71l`/`q72l` are not
+  sliders (no `{rule ...}` directive, no `dk=1` checkbox); they are ordinary
+  `{single}` radio-button items, and every respondent routed to a module
+  answered BOTH of its items with a value inside the item's own declared
+  range:
+
+      Q6_1  n=1,786, sum of codes 1-12 = 1,786 exactly. Zero at 98/99.
+      Q6_2  n=1,850, sum of codes 1-12 = 1,850 exactly. Zero at 98/99.
+      q71l  n=1,786, sum of codes 0-10 = 1,786 exactly. Zero at 98/99/998/999.
+      q72l  n=1,850, sum of codes 0-10 = 1,850 exactly. Zero at 98/99/998/999.
+
+  (`Q6_1`/`Q6_2` declare 98 "Skipped"/99 "Not Asked"; `q71l`/`q72l` declare
+  998/999 for the same meanings — two different sentinel conventions on the
+  same page of the same questionnaire. All four are declared in
+  `missing_codes` below, all four are currently inert, declared because they
+  are the file's own correct codes, not guessed.) `polAttention`-style code
+  offsets were also checked and ruled out: `q71l`/`q72l`'s raw values run 0-10
+  directly, matching the questionnaire's own printed scale ("0 - Very
+  dissatisfied" ... "10 - Very satisfied") with no +1 shift, unlike
+  `polAttention` in the sibling recipe.
+
+  THE ONE JUDGEMENT CALL THIS BLOCK DOES REQUIRE: CODE 12 "DON'T KNOW" ON THE
+  PARTY ITEM
+
+  `Q6_1`/`Q6_2` offer "Don't know" as the explicit 12th radio-button option,
+  printed in the questionnaire alongside the other 11 and carrying no special
+  scripting (contrast the slider's separate "Not sure" CHECKBOX in the eu_share
+  recipe, which sits outside the 0-100 scale entirely as code 997). This is
+  KEPT as a genuine response, not dropped as a non-answer, for three reasons:
+  (1) it is offered on exactly the same footing as "Would not vote" (code 11),
+  which nobody would argue to drop — both describe a real respondent state
+  under a hypothetical scenario, not a failure to engage with the instrument;
+  (2) dropping it would be inconsistent with every other enumerated-list
+  "Don't know" option kept elsewhere in this corpus whenever it sits inside the
+  substantive option list rather than behind a separate escape hatch; (3) it
+  reconciles the row count exactly — keeping it gives 1,786+1,850=3,636 valid
+  party-choice rows (matching q71l/q72l's unconditional 3,636), for 7,272
+  total; dropping it would cost 746 rows (325 on Q6_1, 421 on Q6_2) and leave
+  the two outcomes at different, un-reconciled Ns for no principled reason tied
+  to the row FORMAT. This is a judgement call, not forced by the schema or by
+  CLAUDE.md's general "drop missing/don't-know codes" rule, which is written
+  with an escape-hatch sentinel in mind (a slider's checkbox, a panel's
+  "Prefer not to say") rather than a labelled option inside a closed list a
+  respondent actively selected. A checker who reads CLAUDE.md's rule literally
+  could reasonably drop code 12 instead; see the maker's report for why this
+  is named as the single riskiest call in both recipes.
+
+  PERSONA — TWO EXCLUSIONS, BOTH RULINGS
+
+  Same demographic fields as `6MRVOM_eu_share.yaml` (see that recipe's notes
+  for the full per-variable missing-code audit: `age`, `gender` <-
+  `profile_gender`, `education` <- `profile_education_level`, `education_age`
+  <- `profile_education_age`, `ethnicity` <- `profile_ethnicity`, `region` <-
+  `profile_GOR`, `employment` <- `profile_work_stat`, `social_grade` <-
+  `socialgrade`, `political_attention` <- `polAttention` — all audited there,
+  not re-audited here since it is the same file and the same codes).
+
+  `pastvote_EURef` IS EXCLUDED, per the same 2026-10-02 domain ruling recorded
+  in `EFXNLX.yaml` and in the sibling recipe: this study's outcomes sit in the
+  immigration/Brexit domain, so the respondent's own 2016 referendum vote is
+  too close to the answer to count as a predictor.
+
+  `pastvote_2015` IS ALSO EXCLUDED HERE — unlike the sibling `eu_share` recipe,
+  which keeps it. This recipe's own outcome (task 0) IS party choice in a
+  hypothetical FUTURE general election. Including the respondent's party
+  choice in the PAST (2015) general election as a persona field would hand the
+  model a strong, near-answer-equivalent predictor of its own task-0 target —
+  not identical information (voters do switch parties, and the scenario asks
+  about a hypothetical election under a specific post-Brexit outcome, not the
+  next real one), but close enough to the domain that CLAUDE.md's "a persona
+  attribute must not sit in the same domain as the outcome" rule applies
+  squarely. This is a narrower case than `pastvote_EURef`'s: that exclusion is
+  about predicting an ATTITUDE from a referendum vote on the SAME issue;
+  this one is about predicting a VOTE CHOICE from a past VOTE CHOICE, which is
+  the more direct of the two overlaps.
+
+  WORDS WE ADDED, AND WHY — docs/CONVENTIONS.md "Narrating what the respondent
+  did"
+
+  `shared_context` is identical to the sibling recipe's, composed from the
+  same paper citation (p.6: YouGov Omnibus panel, 26 April-2 May 2017). No
+  other words are added: both scenario texts and both question stems are
+  verbatim quotations, joined with no composed connective prose, because the
+  questionnaire already reads as one continuous stimulus-then-question block
+  with no gap needing a bridge.
+
+  NO PUBLISHED OR AUTHOR-COMPUTED REFERENCE EXISTS FOR THIS BLOCK — STATED
+  PLAINLY RATHER THAN PAPERED OVER
+
+  Checked directly, not assumed: `analysis.R` (the deposit's own replication
+  script, 18KB, every other line of which was read while building the sibling
+  recipe) contains ZERO references to `Q6_1`, `Q6_2`, `q71l`, `q72l`, `Q7_1`,
+  `Q7_2` or `ExpSplitQ67` — grepped case-insensitively across both
+  `analysis.R` and `analysis.log`, no hits. The published paper (accepted
+  manuscript, 24 pages, read in full — abstract, theory, design, results,
+  conclusion, both appendices, both question-wording appendices) likewise
+  never mentions a post-Brexit party-choice or satisfaction item; its own
+  Appendix D question-wording section ends at the `eu_share` item (the
+  sibling recipe's outcome) and the paper's `Design and Methods` section lists
+  exactly the cost-framing experiment, the manipulation check, and "a separate
+  two-condition experiment measuring preferences for a relative balance of EU
+  and non-EU immigrants" (footnote 5, the eu_share item) — THREE things, not
+  four. `ExpSplitQ67` was fielded in the same questionnaire and shipped in the
+  same `data.sav`, but was never analysed or reported anywhere the authors
+  published.
+
+  This means `scripts/verify_6MRVOM.py` CANNOT reproduce an author-computed
+  number for this block, because none exists — "cannot determine from source"
+  per CLAUDE.md, stated here as a finding rather than quietly substituting a
+  number this project computed itself (which the brief and CLAUDE.md both rule
+  out: an answer key we computed and then agreed with is worthless). What the
+  script does instead is a MECHANICAL reconciliation: it recomputes, straight
+  from `data.sav`, the per-arm, per-item response distribution (the 1-12 and
+  0-10 frequency tables shown above) and asserts the BUILT parquet's own
+  distribution matches it exactly, cell for cell, plus the 7,272 row count and
+  the three-digit item-level N check above. This is weaker than the
+  `eu_share` check — it proves the melt is faithful to the file, not that the
+  file's substantive numbers reproduce a published result, because there is no
+  published result to reproduce against. The distinction is stated explicitly
+  in the script's own output so a reader never mistakes one kind of check for
+  the other.
+
+condition:
+  source_var: ExpSplitQ67
+  factors: [immigration_scenario]
+  considered_and_rejected:
+    ExpSplit2A: >-
+      A separate 2x2x2x2 cost-framing randomisation (net migration on a
+      0-165,000 slider), not part of this experiment's assignment. See
+      `6MRVOM_eu_share.yaml` for why it is not built by either `6MRVOM` recipe.
+    ExpSplitQ5: >-
+      A separate two-level randomisation (the EU/non-EU immigrant-share
+      question), built as the sibling recipe `6MRVOM_eu_share.yaml`. Not part
+      of this experiment's assignment.
+    m_questions23_rnd: >-
+      Item-order randomisation inside the cost-framing block (`ExpSplit2A`),
+      which is not built by either `6MRVOM` recipe. Not part of `ExpSplitQ67`.
+    m_moduleT1_rnd: >-
+      Randomises only which of THIS recipe's own two items (Q6_1, q71l) a
+      respondent saw first, under scenario 1 — confirmed against the
+      questionnaire's `{module moduleT1 order=randomize}` wrapping both items
+      with no change to either item's wording. Per CONVENTIONS "Sequence
+      signposting", a row cannot cite its own position, and no row here
+      needs to: the content of Q6_1 and q71l is identical whichever was shown
+      first, so there is no factor for this variable to express.
+    m_moduleT2_rnd: >-
+      The same item-order randomisation as `m_moduleT1_rnd`, for scenario 2's
+      two items (Q6_2, q72l).
+  shared_context: >-
+    You are taking part in an online survey of adults in Great Britain, run by
+    YouGov's Omnibus panel in late April/early May 2017, about ten months after
+    the referendum on the United Kingdom's membership of the European Union.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {immigration_scenario: same_level}
+      items:
+        0: {outcome_var: Q6_1}
+        1: {outcome_var: q71l}
+      text: >-
+        When Britain officially leaves the EU, analysts believe the government
+        will, for economic reasons, keep immigration levels at about the same
+        level as now.
+
+    - raw: 2
+      condition_num: 1
+      factors: {immigration_scenario: shift_to_non_eu}
+      items:
+        0: {outcome_var: Q6_2}
+        1: {outcome_var: q72l}
+      text: >-
+        When Britain officially leaves the EU, analysts believe the government
+        will, for economic reasons, only reduce immigration levels a little,
+        shifting the source of immigration from Europe to beyond Europe
+        (mainly Asia, Africa and the Middle East).
+
+outcomes:
+  - task_num: 0
+    question: >-
+      If this were to occur, which party would you be inclined to support in
+      the next general election? 1 means "Conservative"; 2 means "Labour"; 3
+      means "Liberal Democrat"; 4 means "UK Independence Party (UKIP)"; 5
+      means "Scottish National Party (SNP)/ Plaid Cymru"; 6 means "Green"; 7
+      means "British National Party (BNP)"; 8 means "Respect"; 9 means
+      "Women's Equality Party (WEP)"; 10 means "Some other party"; 11 means
+      "Would not vote"; 12 means "Don't know".
+    scale:
+      min: 1
+      max: 12
+      nominal: true
+    response_recode:
+      {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12}
+
+  - task_num: 1
+    question: >-
+      If this were to occur, how satisfied would you feel about Britain's
+      decision to leave the EU?
+    scale:
+      min: 0
+      max: 10
+      min_label: "Very dissatisfied"
+      max_label: "Very satisfied"
+    response_recode:
+      {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+
+# Study-level fallback; both outcomes declare their own above.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12}
+missing_codes: [98, 99, 998, 999]
+
+persona_map:
+  age: age
+  gender: profile_gender
+  education: profile_education_level
+  education_age: profile_education_age
+  ethnicity: profile_ethnicity
+  region: profile_GOR
+  employment: profile_work_stat
+  social_grade: socialgrade
+  political_attention: polAttention
+
+persona_missing:
+  age: [-9, -8]
+  profile_gender: [8, 9]
+  profile_education_level: [19, 20, 98, 99]
+  profile_education_age: [7, 8, 9]
+  profile_ethnicity: [16, 98, 99]
+  profile_GOR: [13, 98, 99]
+  profile_work_stat: [98, 99]
+  socialgrade: [8, 9]
+  polAttention: [98, 99]

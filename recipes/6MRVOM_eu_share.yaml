@@ -1,0 +1,349 @@
+study_id: 6MRVOM
+source: dataverse
+title: "Pricing Immigration"
+data_file: data.sav
+experiment: eu_share
+licence: >-
+  CC0 1.0, read from the Dataverse API (latestVersion.license) and recorded in
+  data/catalog/uk_dataverse_provenance.json.
+
+comparable_to_socsci210: false
+
+notes: |-
+  Hix, S., Kaufmann, E. and Leeper, T. J. (2020), "Pricing Immigration", JOURNAL
+  OF EXPERIMENTAL POLITICAL SCIENCE 8(1):63-74, doi:10.1017/XPS.2020.6. Harvard
+  Dataverse doi:10.7910/DVN/6MRVOM, CC0 1.0. Data gathered by YouGov through two
+  waves of its online "Omnibus" panel, 26 April and 2 May 2017, ten months after
+  the Brexit referendum (accepted manuscript, researchonline.lse.ac.uk/103268,
+  p.6: "Data were gathered by YouGov through two separate waves of their online
+  'Omnibus' panel (26 April and 2 May, 2017, ten months after the Brexit vote)."
+  N=3,636, matching data.sav exactly). Respondents are selected by quota to
+  reflect the UK population on age, sex, education and region, and the deposit's
+  own `W8` is "the poststratification weights (targeting UK census demographics)
+  provided by YouGov" the paper's own analysis is weighted by (same page).
+
+  THREE SEPARATE RANDOMISATIONS IN THIS DEPOSIT — THIS RECIPE BUILDS ONLY ONE
+
+  The deposit's questionnaire.docx (converted with `textutil`) scripts THREE
+  independent `random()` calls: `ExpSplit2A` (crossed with `ExpSplit2B`/
+  `ExpSplit3A`/`ExpSplit3B`, a 2x2x2x2 cost-framing design eliciting net
+  migration on a 0-165,000 slider, Q1/Q1b/Q2/Q2b/Q3/Q3b) is NOT built here — it
+  is the published paper's main experiment (its Table 1-3, Figures 1-3) but
+  routes to a continuous slider the schema's `Outcome.scale` cannot express as a
+  discrete integer scale without inventing bins the source does not offer, and
+  is pending a decision from the project owner (see
+  `data/catalog/uk_dataverse_provenance.json`'s own `status_reason`). It is
+  declared below in `condition.considered_and_rejected` so the undeclared-
+  assignment screen does not flag it as a second randomisation missed by
+  accident. `ExpSplitQ67` (party choice / Brexit satisfaction under two
+  post-Brexit immigration scenarios) is a SEPARATE recipe,
+  `6MRVOM_brexit_scenario.yaml`, also declared in `considered_and_rejected`
+  here.
+
+  THIS RECIPE builds `ExpSplitQ5` — a clean two-level information-anchor
+  experiment, confirmed directly against the questionnaire (lines ~131-154 of
+  the converted text): `ExpSplitQ5 = random(1,2)`, page `question5T` shown `if
+  ExpSplitQ5==1`, page `question5` shown `if ExpSplitQ5==2`. Both pages ask the
+  IDENTICAL slider question; the ONLY difference is one added factual sentence
+  on the Q5T page. n: ExpSplitQ5==1 (Q5T) 1,800; ExpSplitQ5==2 (Q5) 1,836;
+  1,800+1,836=3,636, the whole sample — every respondent was routed to exactly
+  one of the two.
+
+  THE WORDING TRAP — THE .sav COLUMN LABEL IS WRONG, AND IS WRONG IN A SPECIFIC,
+  CHECKABLE WAY
+
+  Both `Q5T` and `Q5` carry the SPSS variable label "How much net migration
+  should there be from the EU?" — this is leftover scripting text copied
+  verbatim from `Q1` (the UNRELATED net-migration-count question earlier in the
+  instrument, also phrased "How much net migration should there be from the
+  EU?" at line 7 of the converted questionnaire, with its own 0-165,000 slider).
+  It is NOT what this page asks. The actual stimulus+question, read directly off
+  the questionnaire pages `question5T`/`question5`:
+
+    question5T (ExpSplitQ5==1): "Reducing EU immigration will affect the
+    percentage of all immigrants that come from Europe as opposed to Asia,
+    Africa, the Middle East, and the rest of the world. Currently 50% of all
+    immigrants to the UK are from the EU and the rest are mainly from Asia,
+    Africa, and the Middle East. What percentage of all immigrants to the UK
+    would you like to see coming from the EU?"
+
+    question5 (ExpSplitQ5==2): "Reducing EU immigration will affect the
+    percentage of all immigrants that come from Europe as opposed to Asia,
+    Africa, the Middle East, and the rest of the world. What percentage of all
+    immigrants to the UK would you like to see coming from the EU?"
+
+  Both pages render the SAME slider directive: `{rule 0 100 left="0% EU and
+  100% non-EU" right="100% EU and 0% non-EU" show_value=1 dk=1}` — min 0, max
+  100, with its own endpoint labels confirming this is a PERCENTAGE split
+  between EU and non-EU sources, not a count of net migrants. The column label
+  is simply stale copy-paste from Q1's scripting block and is not evidence of
+  what was asked. `analysis.R` itself treats it this way: it builds `eushare`
+  from `Q5T`/`Q5` and names it `eushare`, not a migration count, confirming the
+  authors themselves read this as the percentage-share item.
+
+  SPLIT BY `ARM.outcome_var`, CONDITION TEXT SPLIT AT THE QUESTION SENTENCE
+
+  The condition and outcome are one continuous paragraph in the source with no
+  page break between stimulus and question, so the split is ours: everything
+  up to and including "...Africa, and the Middle East." is `arm.text`
+  (condition), and the trailing sentence "What percentage of all immigrants to
+  the UK would you like to see coming from the EU?" is the outcome's
+  `question` — the CLAUDE.md row contract keeps outcome distinct from
+  condition even where the source prints them as one unbroken paragraph. Both
+  halves are verbatim quotations; nothing is composed here.
+
+  THE 997 TRAP — THE REASON THIS RECIPE EXISTS AS A CAUTIONARY CASE
+
+  `997` is an undeclared Don't-Know sentinel on this slider. The .sav's own
+  value-label set for `Q5T`/`Q5` lists only `{998: 'Skipped', 999: 'Not
+  Asked'}` — 997 is NOT in the dictionary at all, yet it is the single most
+  common value on both variables: Q5T has 617/1,800 (34.3%) at 997, Q5 has
+  622/1,836 (33.9%). The authors' own `analysis.R` proves this is a sentinel,
+  not a real answer, at lines ~59-60:
+
+      d$eushare <- ifelse(d$ExpSplitQ5 == 1, d$Q5T, d$Q5)
+      d$eushare[d$eushare == 997] <- NA_real_
+
+  `997` is declared in `missing_codes` below for exactly this reason. Built
+  without it, 1,239 rows (34.1% of the arm-eligible sample) would carry a
+  sincere-looking answer of "997 percent EU" — a defect invisible to QC rule 4
+  (which only checks declared recodes are internally consistent, not whether a
+  frequent value was left out of the declaration) and invisible to a row count
+  (997 is in-range for nothing declared, so the melt would in fact DROP it
+  silently under the "value outside declared scale" rule UNLESS 997 happened
+  to be added to `response_recode` by mistake — the real risk here is a maker
+  reflexively writing `{i: i for i in range(0, 998)}` and trapping 997 as a
+  valid code). `998` ("Skipped") and `999` ("Not Asked") are declared too but
+  NEVER occur on either variable (checked directly: 0 rows at either code on
+  both `Q5T` and `Q5`) — correct, declared sentinels that are currently inert,
+  not a Ledger-101-style guess, because the panel uses 998/999 consistently
+  elsewhere in this same file (profile_gender, socialgrade, polAttention all
+  use 98/99 or 998/999 the same way).
+
+  ROW COUNT RECONCILIATION — EXACT MATCH
+
+  Valid (non-997/998/999) responses: Q5T 1,800-617=1,183; Q5 1,836-622=1,214.
+  1,183+1,214 = 2,397, exactly the expected N. Independently recomputed
+  straight from `data.sav` with no persona filtering applied (persona fields
+  are each independently optional, so they cannot change this count): 2,397.
+  `scripts/verify_6MRVOM.py` reproduces this from the BUILT parquet.
+
+  PERSONA
+
+  `age` (18-plus, raw; -9 "Not Asked"/-8 "Skipped" sentinels declared, checked
+  directly: never occur, all 3,636 respondents report a plain age), `gender`
+  <- `profile_gender` (1 Male/2 Female; 8/9 sentinels, never occur), `education`
+  <- `profile_education_level` (18 substantive levels + 19 "Don't know" + 20
+  "Prefer not to say"; 98/99 sentinels declared, never occur), `education_age`
+  <- `profile_education_age` (`extra`; 5 substantive bands + 6 "Still at
+  school/Full time student", a real answer kept, + 7 "Can't remember", a
+  non-answer blanked; 8/9 sentinels declared, never occur — only 3,068/3,636
+  answered at all, the rest plain system-missing, left blank), `ethnicity` <-
+  `profile_ethnicity` (15 substantive categories + 16 "Prefer not to say";
+  98/99 sentinels declared, never occur), `region` <- `profile_GOR` (11
+  observed regions; 98/99 sentinels declared, never occur), `employment` <-
+  `profile_work_stat` (7 substantive categories + 8 "Other", a real answer
+  KEPT; 98/99 sentinels declared, never occur), `social_grade` <-
+  `socialgrade` (AB/C1/C2/DE; 8/9 sentinels declared, never occur),
+  `political_attention` <- `polAttention` (`extra`; 98/99 sentinels declared,
+  never occur), `party_id` <- `pastvote_2015` (9 parties + 99 "Don't know", a
+  non-answer blanked; 998/999 sentinels declared, never occur — 582/3,636 are
+  plain system-missing, presumably non-2015-voters, left blank).
+
+  NO LABEL TRUNCATION FOUND — CHECKED, NOT ASSUMED. `QQM5MC`'s `work_type` and
+  `9xw67` both shipped labels severed mid-word at 80/119/120 characters. Every
+  value label on every persona variable used here was measured directly: the
+  longest is `profile_education_level` code 16, "University or CNAA first
+  degree (e.g. BA, B.Sc, B.Ed)" at 53 characters, and `profile_work_stat`'s
+  longest is "Working full time (30 or more hours per week)" at 45 characters.
+  Nothing in this deposit approaches 80 characters, let alone is cut by it.
+  This deposit simply does not have the truncation defect, and no exclusion is
+  needed on that ground.
+
+  `profile_GOR` code 12 is "Northern Ireland" — a REAL region, not a sentinel —
+  and is NOT in `persona_missing`, following the `QQM5MC`/ledger-101 ruling
+  exactly: observed values run 1-11 only (zero NI respondents in this deposit),
+  so the declaration is currently inert and was resolved against the file's
+  own value labels rather than assumed. Code 13 "Non UK & Invalid" IS a
+  sentinel and is declared, also currently inert (0 occurrences).
+
+  `polAttention`'s SPSS codes run 1-11 but its OWN value labels read '0'
+  through '10' (code 1.0 -> '0', code 11.0 -> '10') — an intentional +1 offset
+  baked into the file's own labelling, not a recipe-side correction. Resolving
+  through `ds.label()` (as the melt always does) reads the correct displayed
+  value with no special-casing needed; confirmed directly against the value
+  label dict rather than assumed from the raw code.
+
+  `pastvote_EURef` IS EXCLUDED, from both `6MRVOM` recipes. Ruled 2026-10-02 (as
+  recorded in `EFXNLX.yaml`): a persona attribute must not sit in the same
+  domain as the outcome. This recipe's outcome is a preference over the EU/
+  non-EU composition of immigration — the same domain as a respondent's own
+  2016 referendum vote — so including it would hand the model a close proxy for
+  its own answer rather than ask it to predict one. (`pastvote_2015`, by
+  contrast, is party choice in a PRIOR general election, a different domain
+  from an immigration-composition preference, and is kept here exactly as
+  `QQM5MC` kept `VoteEURef` for its economic-perception outcome — a different
+  domain from the vote. It IS excluded from the sibling `brexit_scenario`
+  recipe, whose outcome is itself party choice.)
+
+  This study carries no income, marital status, household size or religion
+  column at all — UK personas in this corpus are consistently thinner than the
+  US ones.
+
+  WORDS WE ADDED, AND WHY — docs/CONVENTIONS.md "Narrating what the respondent
+  did"
+
+  The questionnaire has no top-level welcome screen before the demographic
+  block (it begins directly at the net-migration question), so there is no
+  fielded lead-in to quote. `shared_context` below is composed, every fact
+  sourced to the paper's own methods section (p.6, quoted above: YouGov
+  Omnibus panel, 26 April-2 May 2017, ten months after the referendum). It is
+  true for every respondent in every arm, carries no number tied to a specific
+  question and no sequence position.
+
+  VERIFICATION
+
+  `scripts/verify_6MRVOM.py` reproduces `analysis.R`'s own weighted figures
+  (lines ~58-69) from the BUILT parquet, joining the deposit's `W8`
+  poststratification weight back in by `participant_id`:
+
+      svymean(~ eushare, design = svy, na.rm = TRUE)                  46.87
+      svyby(~ eushare, ~ tr_eushare, ..., FUN = svymean, na.rm=TRUE)
+        Information (Q5T, ExpSplitQ5==1)                              46.98297
+        Control     (Q5,  ExpSplitQ5==2)                              46.75926
+
+  All three reproduce to within 1e-6 computing `sum(w*response)/sum(w)` over
+  the built rows, which is what `svymean` reduces to under `ids=~0` (no
+  clustering) — confirmed by reproducing the identical figures directly from
+  `data.sav` before the recipe was written, independently of the parquet.
+
+  RISKIEST JUDGEMENT: the condition/outcome SPLIT POINT. The source prints
+  stimulus and question as one unbroken paragraph with no structural marker
+  between them; I split at the question's own sentence boundary (the brief's
+  own identification of "the actual question"), which is the only sentence
+  that is interrogative and names the thing being asked for. A checker could
+  reasonably draw the line differently (e.g. folding the whole paragraph into
+  `condition` and leaving `outcome.question` to just restate it) — the 2,397
+  row count and the weighted-mean check are both invariant to where the split
+  falls, since neither depends on the text, so this judgement is NOT covered
+  by either verification and needs an independent read.
+
+condition:
+  source_var: ExpSplitQ5
+  factors: [eu_share_information]
+  considered_and_rejected:
+    ExpSplit2A: >-
+      A SEPARATE 2x2x2x2 cost-framing randomisation (crossed with ExpSplit2B/
+      ExpSplit3A/ExpSplit3B) eliciting net migration on a 0-165,000 slider via
+      Q1/Q1b/Q2/Q2b/Q3/Q3b. This is the paper's main published experiment but is
+      NOT built in this recipe: it routes to a continuous slider the schema
+      cannot express without inventing bins the source does not offer, and is
+      pending a decision from the project owner.
+    ExpSplitQ67: >-
+      A separate randomisation (party choice / Brexit satisfaction under two
+      post-Brexit immigration scenarios) built as the sibling recipe
+      `6MRVOM_brexit_scenario.yaml`. Not part of this experiment's assignment.
+    m_questions23_rnd: >-
+      Item-ORDER randomisation (which of Q2/Q3 a respondent saw first) inside
+      the cost-framing block (`ExpSplit2A`), which is not built by this
+      recipe at all — see the `ExpSplit2A` entry above. Not part of
+      `ExpSplitQ5`'s assignment.
+    m_moduleT1_rnd: >-
+      Item-order randomisation (which of Q6_1/q71l a respondent saw first)
+      inside the SIBLING `ExpSplitQ67` randomisation, built as
+      `6MRVOM_brexit_scenario.yaml`. Not part of this experiment's assignment.
+    m_moduleT2_rnd: >-
+      Item-order randomisation (which of Q6_2/q72l a respondent saw first)
+      inside the SIBLING `ExpSplitQ67` randomisation, built as
+      `6MRVOM_brexit_scenario.yaml`. Not part of this experiment's assignment.
+  shared_context: >-
+    You are taking part in an online survey of adults in Great Britain, run by
+    YouGov's Omnibus panel in late April/early May 2017, about ten months after
+    the referendum on the United Kingdom's membership of the European Union.
+  arms:
+    - raw: 2
+      condition_num: 0
+      factors: {eu_share_information: absent}
+      outcome_var: Q5
+      text: >-
+        Reducing EU immigration will affect the percentage of all immigrants
+        that come from Europe as opposed to Asia, Africa, the Middle East, and
+        the rest of the world.
+
+    - raw: 1
+      condition_num: 1
+      factors: {eu_share_information: present}
+      outcome_var: Q5T
+      text: >-
+        Reducing EU immigration will affect the percentage of all immigrants
+        that come from Europe as opposed to Asia, Africa, the Middle East, and
+        the rest of the world. Currently 50% of all immigrants to the UK are
+        from the EU and the rest are mainly from Asia, Africa, and the Middle
+        East.
+
+outcomes:
+  - task_num: 0
+    question: "What percentage of all immigrants to the UK would you like to see coming from the EU?"
+    scale:
+      min: 0
+      max: 100
+      min_label: "0% EU and 100% non-EU"
+      max_label: "100% EU and 0% non-EU"
+    response_recode: {
+      0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12,
+      13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25,
+      26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38,
+      39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51,
+      52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64,
+      65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77,
+      78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90,
+      91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100
+    }
+
+response_recode: {
+  0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12,
+  13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25,
+  26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38,
+  39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51,
+  52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64,
+  65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77,
+  78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90,
+  91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100
+}
+missing_codes: [997, 998, 999]
+
+persona_map:
+  age: age
+  gender: profile_gender
+  education: profile_education_level
+  education_age: profile_education_age
+  ethnicity: profile_ethnicity
+  region: profile_GOR
+  employment: profile_work_stat
+  social_grade: socialgrade
+  political_attention: polAttention
+  party_id: pastvote_2015
+
+persona_missing:
+  age: [-9, -8]
+  profile_gender: [8, 9]
+  # 19 "Don't know", 20 "Prefer not to say". 98/99 sentinels declared, never occur.
+  profile_education_level: [19, 20, 98, 99]
+  # 7 "Can't remember" is a non-answer, blanked. 6 "Still at school/Full time
+  # student" is a real answer and is kept.
+  profile_education_age: [7, 8, 9]
+  # 16 "Prefer not to say". 98/99 sentinels declared, never occur.
+  profile_ethnicity: [16, 98, 99]
+  # 13 "Non UK & Invalid" only. 12 "Northern Ireland" is a REAL region and is
+  # kept — see notes (this deposit happens to have zero NI respondents, which
+  # is exactly the condition under which a wrong declaration would go
+  # unnoticed, so it was resolved against the file's own value labels).
+  profile_GOR: [13, 98, 99]
+  # 8 "Other" is a real answer and is kept; only the sentinels go.
+  profile_work_stat: [98, 99]
+  socialgrade: [8, 9]
+  polAttention: [98, 99]
+  # 99 "Don't know" is a non-answer, blanked. 998/999 sentinels declared,
+  # never occur; respondents who did not vote in 2015 are plain system-missing
+  # and are already left blank with no code needed.
+  pastvote_2015: [99, 998, 999]

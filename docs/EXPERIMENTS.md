@@ -2,13 +2,13 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**35 experiments.** 7 UK (CC0, redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**37 experiments.** 9 UK (CC0, redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse | 7 | 97,161 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse | 9 | 106,830 | **yes, CC0 1.0** |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **35** | **381,096** | |
+| **Total** | **37** | **390,765** | |
 
 ---
 
@@ -94,6 +94,19 @@ Respondents are told to imagine they have won a substantial lottery prize, or to
 - **Licence** — >-
 - **Verified against** — the paper's own Table D.1 — N, control mean and both regression coefficients
 
+### `6MRVOM_brexit_scenario`
+
+**Pricing Immigration**
+
+Respondents are told the government will, after Brexit, either keep immigration at roughly current levels or only cut it a little while shifting its source from Europe to beyond Europe. Two outcomes under whichever scenario they met: which party they would support in the next general election, and how satisfied they would feel about the Brexit decision. Tests whether the SOURCE of post-Brexit immigration, not just its level, moves party support and Brexit satisfaction.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/6MRVOM`
+- **Type** — two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (12-level nominal party choice, 0-10 satisfaction)
+- **Category** — political preferences/policy
+- **Rows** — 7,272 from 3,636 respondents
+- **Licence** — >-
+- **Verified against** — no author-computed or published reference exists for this block (checked analysis.R and the full 24-page accepted manuscript); scripts/verify_6MRVOM.py instead confirms the built distribution matches data.sav's own frequency tables exactly, cell for cell
+
 ### `QQM5MC`
 
 **A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote**
@@ -106,6 +119,19 @@ A split ballot crossing a Leaver/Remainer identity prime with factual informatio
 - **Rows** — 6,345 from 3,266 respondents
 - **Licence** — >-
 - **Verified against** — the paper's own Table 1 and Figures 4-5 — eight group means and two Ns
+
+### `6MRVOM_eu_share`
+
+**Pricing Immigration**
+
+Respondents are asked what percentage of all immigrants to the UK they would like to see coming from the EU (vs. elsewhere), on a 0-100 slider; half are additionally told the current EU share is 50%. Tests whether an explicit base-rate anchor shifts the preferred EU/non-EU immigration mix.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/6MRVOM`
+- **Type** — two-condition between-subject (information anchor present/absent), one outcome on a 0-100 scale
+- **Category** — political preferences/policy
+- **Rows** — 2,397 from 2,397 respondents
+- **Licence** — >-
+- **Verified against** — the deposit's own analysis.R — svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding
 
 ---
 
@@ -157,7 +183,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 1 | 6 | 95,879 |
 | political identity/polarisation | 3 | 0 | 22,865 |
-| political preferences/policy | 2 | 0 | 56,901 |
+| political preferences/policy | 4 | 0 | 66,570 |
 | survey methodology | 0 | 5 | 51,701 |
 | work/family/gender | 0 | 8 | 88,127 |
 
