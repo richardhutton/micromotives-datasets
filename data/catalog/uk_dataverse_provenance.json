@@ -864,8 +864,10 @@
         "name": "appendix.R"
       },
       {
-        "bytes": 3357569,
-        "name": "evoting_replicationfile.tab"
+        "bytes": 3040588,
+        "name": "evoting_replicationfile.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "evoting_replicationfile.tab"
       },
       {
         "bytes": 20119,
@@ -875,8 +877,8 @@
     "licence": "CC0 1.0",
     "licence_source": "Dataverse API, latestVersion.license",
     "publication": "Turnbull-Dugarte, S.J. & Devine, D. (2023) \"Support for digitising the ballot box: a systematic review of i-voting pilots and a conjoint experiment\" Electoral Studies",
-    "status": "prepared",
-    "status_reason": "BUILDABLE \u2014 paper-access test passed 5 Oct 2026, and BOTH of the doubts recorded in \u00a75a are resolved. UK sample CONFIRMED from the paper's own text ('a representative sample of online survey respondents in the UK in May 2022', quota-sampled on the adult British population) and cross-checked against the data: 1,200 respondents, 12,000 profile rows, 5 tasks x 2 profiles, so 6,000 forced-choice pairs. The systematic review bundled in the same deposit is desk research on 26 pilots across 16 polities and is a separate component of the paper, not the experiment. Elsevier's version is paywalled, but the author-accepted manuscript is open at eprints.soton.ac.uk/481545/1/Evoting_accepted.pdf and its Table A.3 prints all TEN attributes with full verbatim level text and italicised baselines. Assignment ships as clean structured data (per-attribute *_num/label pairs). Three outcomes per task: the forced binary choice, plus two 0-6 continuous ratings which need Outcome.numeric, same gap as 6MRVOM. Persona lacks AGE and REGION \u2014 both appear in the paper's own Table A.2 but neither is a column in the deposited file (verified against the full 70-column header), so the persona is simply thinner and nothing is reconstructed. Row-order trap: looked and found nothing \u2014 no order column in 70 columns, no order/rand/shuffle match in 1,130 lines of replication R \u2014 which is NOT the same as positive evidence of a fixed layout, and the paper never states the design either way. Riskiest judgement: 'Online platform controlled by' is ONE 6-level randomised attribute; the authors decompose it into two derived variables for plotting only, and splitting it in the recipe would fabricate a factorial structure no respondent saw.",
+    "status": "built",
+    "status_reason": "BUILT 2026-10-05. UK sample CONFIRMED from the paper's own text ('a representative sample of online survey respondents in the UK in May 2022', quota-sampled on the adult British population) and cross-checked against the data: 1,200 respondents, 12,000 profile rows, 5 tasks x 2 profiles, 6,000 forced-choice pairs. Fetched with `?format=original` \u2014 the API reports the served .tab's `originalFileFormat` as `application/x-stata-14`, so the default .tab would have been Dataverse's own label-stripped derivative (the QQM5MC mistake fetch_dataverse.py warns about); the original .dta carries 13 variables' worth of real value labels the .tab would have discarded. recipes/RJTVG8.yaml builds the forced-choice outcome only, one row per task (pair), 6,000 rows, verified against the authors' own cregg::mm() marginal means (Table A.4 of the author-accepted manuscript at eprints.soton.ac.uk/481545/1/Evoting_accepted.pdf) to within 0.0015 on all 51 estimates. 'Online platform controlled by' (platform_num, 6 levels) is rendered as ONE randomised attribute, not split into the authors' platform/private plotting convenience \u2014 verified as a lossless bijection, not merely asserted. The two 0-6 per-profile rating outcomes (trustworthiness, endorsement likelihood) are deliberately deferred, not built \u2014 different grain (one row per profile, not per pair). Persona lacks AGE and REGION \u2014 both appear in the paper's own Table A.2 but neither is a column in the deposited file, so the persona is thinner and nothing is reconstructed. Row-order risk: no order column in 70 columns, no order/rand/shuffle match in 1,130 lines of replication R, and Figure 1 (one screenshot, not independently cross-checked) is the only positive evidence of on-screen order \u2014 recorded as a residual risk in the recipe's notes, condition.line_order_vars deliberately not declared.",
     "title": "Replication Data for: \"Support for digitising the ballot box: a systematic review of i-voting pilots and a conjoint experiment\""
   },
   "SACJHE": {

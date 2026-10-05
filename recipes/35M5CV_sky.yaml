@@ -1,0 +1,620 @@
+study_id: 35M5CV
+experiment: sky
+source: dataverse
+title: 'Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (Sky emotional attachment battery)'
+data_file: sky-data-derived.sav
+licence: CC0 1.0 Universal, stated on the Harvard Dataverse deposit for doi:10.7910/DVN/35M5CV.
+comparable_to_socsci210: false
+notes: |-
+  Hobolt, Leeper & Tilley, "Divided by the Vote: Affective Polarization in the
+  Wake of the Brexit Referendum", British Journal of Political Science
+  51(4):1476-1493, doi:10.1017/S0007123420000125 (paper; the DEPOSIT's own
+  licence, which governs this build, is CC0 1.0 as above). Harvard Dataverse
+  doi:10.7910/DVN/35M5CV. One of six datasets in this deposit (README.md); this
+  is the third, covering the SKY sub-study's emotional-attachment battery only
+  (`recipes/35M5CV_lodger.yaml` and `recipes/35M5CV_bbc.yaml` are the two
+  conjoints; BES/Tracker/YouGov are out of scope for this recipe). Fielded by
+  Sky Polling: Wave 1, 20-30 October 2017 (the .sav's own `ID.date` min/max,
+  1,881 respondents), Wave 2, undated in this deposit but November 2017 per
+  the paper's own Table 1 ("Sky Polling cross-sectional surveys, October and
+  November 2017"), 1,600 respondents. 3,481 total.
+
+  The paper is open access at https://eprints.lse.ac.uk/103485/1/Divided_by_the_vote.pdf
+  (LSE Research Online accepted manuscript, 38pp — the typeset Cambridge version is
+  paywalled). Page numbers below are this PDF's own printed page numbers, fetched
+  and read directly, not taken from any prior brief.
+
+  Deposit files used: `sky-data.sav` (3,481 x 101, SPSS, mostly plain strings
+  with NO value labels — see PERSONA below), `sky-analysis.sps` (the authors'
+  own recode syntax, a primary source for the response scale and for auditing
+  missing-value sentinels). The deposit ships NO questionnaire for Sky (unlike
+  `lodger-script.docx`/`bbc-script.docx` for the two conjoints) — this is the
+  single most consequential fact about this build; see EXCLUDED and the
+  "Neither"/"None" sections below, both of which turn on it.
+
+
+  THE DESIGN — A RANDOMISED SPLIT BALLOT, RE-VERIFIED INDEPENDENTLY
+
+  `Split` (string: "Split 1" 1,779 / "Split 2" 1,702, summing exactly to 3,481)
+  routes respondents to one of two identity-elicitation stems (p. 12):
+
+    Split 1 (`refid`, Brexit identity): "Since the EU referendum last year, some
+    people now think of themselves as Leavers and Remainers, do you think of
+    yourself as a Leaver, a Remainer, or neither a Leaver or Remainer?"
+
+    Split 2 (`pid`, party identity): "Generally speaking, do you think of
+    yourself as Labour, Conservative, Liberal Democrat or what?"
+
+  36 columns are answered by exactly one split and zero by the other, with NO
+  exceptions (re-checked directly: every one of `EArefR1-5`/`EArefL1-5`/
+  `Rmarry`/`Rtalk`/`Lmarry`/`Ltalk` has 0 non-null in Split 2, and every one of
+  `EApidC1-5`/`EApidLa1-5`/`Lamarry`/`Latalk`/`Cmarry`/`Ctalk` has 0 non-null in
+  Split 1) — so unlike `QQM5MC` there is no doubly-routed respondent and
+  `ambiguous_routing` is correctly 0. `Split` is independent of Wave: re-run
+  chi2(Split x Wave) = 1.069, p = 0.301, matching the prior screen exactly.
+
+  THE SPLIT-BALLOT PRIMER ALSO ROUTES THE SOCIAL-DISTANCE ITEMS, BUT TO
+  EVERYONE IN THE SPLIT, NOT BY IDENTITY: `Rmarry`/`Rtalk`/`Lmarry`/`Ltalk` are
+  non-null for all 1,779 of Split 1 regardless of `refid`, and
+  `Lamarry`/`Latalk`/`Cmarry`/`Ctalk` for all 1,702 of Split 2 regardless of
+  `pid` — confirmed directly. Only the five emotional-attachment items per side
+  are identity-gated. This matters below.
+
+
+  WHAT THIS RECIPE BUILDS — THE FIVE-ITEM EMOTIONAL-ATTACHMENT BATTERY ONLY
+
+  Printed verbatim at p. 14 as a bulleted list with a bracketed placeholder:
+
+    "When I speak about the [respondent identity] side, I usually say 'we'
+    instead of 'they'"
+    "When people criticize the [respondent identity] side, it feels like a
+    personal insult"
+    "I have a lot in common with other supporters of the [respondent identity]
+    side"
+    "When I meet someone who supports the [respondent identity] side, I feel
+    connected with this person"
+    "When people praise the [respondent identity] side, it makes me feel good"
+
+  p. 14: "ask people whether they agree or disagree with the following with
+  regard to their own identity ... Response options for all items were
+  'strongly disagree' to 'strongly agree,' scored 1-5 and averaged." This is
+  confirmed, independently and more precisely, by `sky-analysis.sps`'s own
+  RECODE statements on every one of `EArefR1-5`/`EArefL1-5`/`EApidC1-5`/
+  `EApidLa1-5`: ("Strongly agree"=5) ("Agree"=4) ("Neither agree nor
+  disagree"=3) ("Disagree"=2) ("Strongly disagree"=1) — a full 5-point scale
+  with an explicit midpoint the paper's prose does not spell out but the sps
+  does, so `scale.mid_label` below is sourced from the sps, not invented.
+
+  "[respondent identity] side" is filled per arm with the respondent's OWN
+  answer to the stem that routed them there (Remainer/Leaver/Conservative/
+  Labour) — confirmed to be the SAME battery construct for both Brexit and
+  party identity by the sps's own variable labels (`EApidC1` "Emotional
+  attachment C- we not they" etc., parallel to `EArefR1`) and by Table 2's
+  single header "Brexit identity scale (1-5 scale of 5-question battery)"
+  spanning both the Party identity and Brexit identity columns.
+
+  COLUMNS: `EArefR1-5`/`EArefL1-5` (Split 1), `EApidC1-5`/`EApidLa1-5` (Split
+  2). Item order in the sps/column names is the order printed on p. 14 (we not
+  they / criticism=insult / lot in common / connected / praise feels good) and
+  is used as task_num 0-4 throughout.
+
+
+  THE "NEITHER"/"NONE" ROUTING — INVESTIGATED, EXPLAINED, AND STILL EXCLUDED
+
+  `refid` (Split 1): Remainer (1) 574, Leaver (3) 704, Neither (2) 414, missing
+  87. `EArefR1` has 713 non-null and `EArefL1` has 834 — both exceed the clean
+  counts (574, 704), so some "Neither"/missing respondents were routed into one
+  battery or the other. Investigated fully rather than left as a mystery:
+
+  `refid1` ("Referendum ID follow up", from `Q21.a`) is a FOLLOW-UP LEAN
+  QUESTION, and it explains the routing EXACTLY, arithmetically, with zero
+  residual: of the 414 "Neither" respondents, 120 have `refid1`=1 (lean
+  Remainer) and ALL 120 have `EArefR1` non-null; 119 have `refid1`=3 (lean
+  Leaver) and ALL 119 have `EArefL1` non-null; the remaining 175 (`refid1`=2
+  "still Neither" or blank) have neither battery. Of the 87 missing-`refid`
+  respondents, 19 lean-Remainer via `refid1` and all 19 got `EArefR`; 11
+  lean-Leaver and all 11 got `EArefL`; the remaining 57 got neither. Totals
+  reconcile exactly: 574+120+19 = 713 = `EArefR1`'s own non-null count;
+  704+119+11 = 834 = `EArefL1`'s. The raw `Q21.a` text column independently
+  confirms the same numbers from a second angle: 139 respondents answered
+  "Remain" to the follow-up (= 120+19) and 130 answered "Leave" (= 119+11).
+
+  The same mechanism, same shape, on the party side: `pid1` (from `Q27B`) is
+  asked ONLY of `pid`=2 "None" (302 respondents) and NEVER of `pid`=4 "Other
+  party" (267 respondents, confirmed: `pid1` is blank for all 267, and ALL 267
+  have neither `EApidC` nor `EApidLa`). Of the 302 "None" respondents, 49
+  lean-Conservative via `pid1` and all 49 have `EApidC1` non-null; 36
+  lean-Labour and all 36 have `EApidLa1` non-null. 580+49 = 629 = `EApidC1`'s
+  own count; 553+36 = 589 = `EApidLa1`'s.
+
+  SO: this is NOT a mystery and NOT a second randomisation. It is a
+  deterministic two-stage identity elicitation — primary stem, then a lean
+  follow-up asked only of "Neither"/"None" — and it is now fully described,
+  which the brief for this build said would make it "a real finding" if true.
+  It still does not make the lean-routed respondents buildable, for two
+  independent reasons:
+
+  1. NO VERBATIM WORDING EXISTS for the follow-up question. `sky-analysis.sps`
+     gives the RECODE map (Remain=1/Leave=3/Neither=2) but not the question
+     text, and this deposit ships no questionnaire at all for Sky. We do not
+     reconstruct stimulus text (CLAUDE.md, docs/CONVENTIONS.md "Never invent
+     stimulus text") — "cannot determine from source" applies here squarely.
+  2. EVEN WITH the wording, using it would mean writing a condition for a
+     "Neither" respondent that asserts "you think of yourself as a Remainer" —
+     which is simply false against their own answer to the very stem quoted in
+     that sentence. The primary identity stem's answer was "Neither"; no
+     amount of follow-up re-asking changes what they said to THAT question.
+     Building that row would be a fabricated condition — CLAUDE.md's "the one
+     error nothing downstream can detect" — not a cautious omission.
+
+  So every respondent whose PRIMARY answer was "Neither"/"None"/"Other party"/
+  missing is excluded from every arm, following the `QQM5MC` ID-2158 precedent
+  (a respondent routed to two possible conditions, or whose single condition
+  cannot be honestly stated, is dropped entirely rather than guessed).
+
+  THIS IS ALSO EXACTLY THE AUTHORS' OWN SCOPE FOR TABLE 2, NOT JUST THE SAFE
+  CHOICE — independent confirmation, not assumption. `sky-analysis.sps`'s
+  `MEANS TABLES= EArefRscale EArefLscale BY refid` / `... EApidCscale
+  EApidLascale BY pid`, preceded by `WEIGHT BY Weights`, groups by the PRIMARY
+  identity variable, and a "Neither" respondent routed via lean never has
+  BOTH their own `refid`=2 row and a populated scale for the arm they leaned
+  into inside that same grouping in a way Table 2 reports — Table 2 prints
+  only Leaver/Remainer/Conservative/Labour. Recomputing the weighted mean of
+  each battery restricted to the CLEAN identifiers (574/704/580/553) against
+  `Weights` from the raw .sav reproduces all four of Table 2's printed Brexit
+  identity scale values to the paper's own 1dp precision: Remainer 3.4 (we get
+  3.386), Leaver 3.4 (3.410), Conservative 2.9 (2.861), Labour 3.0 (3.014).
+  Recomputing the SAME weighted means over the WIDER lean-routed population
+  (713/834/629/589) instead BREAKS three of the four (3.3/3.3/2.8 vs the
+  printed 3.4/3.4/2.9; only Labour's 3.0 survives by coincidence). So
+  restricting to clean identifiers is not merely cautious — it is what the
+  authors themselves did. See `scripts/verify_35M5CV_sky.py`.
+
+  THE DERIVED ARM COLUMN — `scripts/gen_35M5CV_sky.py`. `recipe.Condition.
+  source_var` names exactly one column, but the arm code lives in `refid` for
+  Split 1 respondents and in `pid` for Split 2 respondents — never both for
+  the same person — so neither `source_var` nor the AND-semantics
+  `source_vars` fits. The generator derives ONE merged column, `IdentityArm`
+  (1 Remainer / 2 Leaver / 3 Conservative / 4 Labour / blank for every
+  excluded respondent), onto a copy of the file, `sky-data-derived.sav`
+  (gitignored like all of `data/raw/`, reproducible by re-running the
+  generator). The generator asserts the four counts (574/704/580/553) and
+  that every arm member answered ALL 5 of their battery's items (verified:
+  zero partial completion anywhere in the file — every respondent who
+  answered item 1 of a battery answered all 5), so a re-fetched deposit that
+  drifts fails the build loudly rather than silently changing the row count.
+
+
+  ROW COUNT — THE ARITHMETIC
+
+  574 (Remainer) + 704 (Leaver) + 580 (Conservative) + 553 (Labour) = 2,411
+  respondents, each answering all 5 items (no item-level missingness within a
+  routed respondent — checked exhaustively). 2,411 x 5 = 12,055 rows. This is
+  NOT the screen's naive 2,765 x 5 = 13,825 (that figure includes the 354
+  lean-routed "Neither"/"None" respondents: 139+130 on the Brexit side, 49+36
+  on the party side = 354, costing 1,770 rows relative to the naive count).
+
+
+  MISSING CODES — AUDITED, NOT COPIED
+
+  `sky-analysis.sps` recodes every out-of-range answer on these 20 items to
+  99 ("else=99"). Checked directly against the shipped .sav: the OBSERVED
+  values on every one of `EArefR1-5`/`EArefL1-5`/`EApidC1-5`/`EApidLa1-5` are
+  exactly {1, 2, 3, 4, 5} plus blank — 99 occurs ZERO times on any of the 20
+  columns. The sps's own recode sentinel is a DECLARED code that never
+  survives into the distributed file; blank stands in for it instead.
+  `missing_codes: [99]` is declared anyway, defensively, per the instrument's
+  own documented convention, with this note that it is currently unexercised
+  — exactly the ledger-101 / 6MRVOM caution about declarations that cannot be
+  tested against the data in front of you. Likewise `refid`/`refid1`/`pid`/
+  `pid1` all carry a declared 99 "Missing" value label that is never observed
+  (checked: `refid` observed values are exactly {1.0, 2.0, 3.0}).
+
+  A genuinely UNDECLARED sentinel was found on `Age`, which carries NO value
+  labels at all (continuous field). Observed values include 0.0 (x4), 5.0,
+  109.0 and 116.0 — implausible for a surveyed UK adult (Table 1: "nationally
+  representative samples" of adults) — found only by checking the observed
+  range against plausibility, the same class of finding as 6MRVOM's
+  undeclared 997. `Age`==99 (one respondent, file-wide) was investigated and
+  deliberately NOT treated as a sentinel: it is a plausible if high age, with
+  no declared code or other evidence it means "refused" for this field
+  specifically (the sps's "else=99" convention belongs to the OTHER, Likert
+  recoded variables, not to raw panel demographics) — and that respondent is
+  not in any arm regardless (`refid`/`pid` both missing). All sentinel
+  cleaning for `Age`/`Govt_region`/`Ethnicity`/`Interest_in_politics`/
+  `English_vs_British` happens in `scripts/gen_35M5CV_sky.py` (see below), so
+  `persona_missing` is correctly EMPTY here — same pattern as `PMV0TG`, where
+  cleaning upstream of the recipe makes the field legitimately empty rather
+  than an oversight.
+
+
+  PERSONA
+
+  This deposit ships MANY columns as plain strings with no value labels at
+  all (`meta.variable_value_labels` empty) — the sentinel is embedded TEXT
+  ("Prefer not to say", "0", "Don't know") rather than a numeric code, so
+  `persona_missing`'s code-matching mechanism (`_as_code`, which needs a
+  value that converts to a number) cannot filter it. `scripts/gen_35M5CV_sky.py`
+  blanks these sentinels mechanically before the recipe ever sees the file,
+  each with its own asserted file-wide count (drift fails the generator
+  loudly): `Govt_region`=="0" (18, no such GB region), `Ethnicity`=="Prefer
+  not to say" (75), `Interest_in_politics`=="Don't know" (21, curly
+  apostrophe, the deposit's own glyph), `English_vs_British`=="Don't know"
+  (24). "None of these" on `English_vs_British` is kept — a genuine fourth
+  answer, not a refusal.
+
+  COMPLETE FOR ALL 3,481 (after cleaning): `age` <- `Age` (raw years, 7
+  implausible values blanked, see above), `gender` <- `Gender` ("Male"/
+  "Female", no sentinel observed), `ethnicity` <- `Ethnicity` (White/Asian
+  British/Black British/Mixed/Other, "Prefer not to say" blanked),
+  `region` <- `Govt_region` (11 GB regions, "0" blanked — no Northern Ireland
+  code exists in this file at all, unlike the YouGov-panel lodger/bbc siblings'
+  `Region_2GOR`), `extra.mosaic_group` <- `Mosaic_2014_groups` (the standard
+  UK Mosaic 2014 15-group geodemographic classification, A-O; shipped as bare
+  letters with no expansion to full group names in this file, so the bare
+  letter is what is rendered — inventing "F = Aspiring Homemakers" from
+  outside knowledge not in the source would itself be a fabrication).
+
+  WAVE-CONDITIONAL, KEPT: `extra.interest_in_politics` <- `Interest_in_politics`
+  and `extra.national_identity` <- `English_vs_British` are both genuinely
+  blank (empty string, not a sentinel) for the entirety of Wave 2's 1,600
+  respondents — a WAVE INSTRUMENT DIFFERENCE (Wave 2 simply did not ask these
+  items), not a `Split` artefact: confirmed by checking non-blank counts
+  within each Wave directly. `_is_blank` in the melt only catches float NaN,
+  not empty string, but `persona.render.render` separately skips any field
+  whose value is `""`, so a Wave-2 respondent's persona simply omits these two
+  lines rather than rendering an empty one — no code change needed, and no
+  special handling beyond mapping them normally. Usable, wave-conditional,
+  exactly as flagged.
+
+  EXCLUDED FROM PERSONA, each with a reason:
+
+  `Age_bands` — a direct banding of `Age` (18-24/25-34/.../75+), which is
+  already carried unbanded; genuinely redundant, same ruling as `QQM5MC`'s
+  `age_2`.
+
+  `Ethnic_minorities_right_have…` (the deposit's OWN column name — truncated/
+  corrupted mid-word with a literal ellipsis character, so even its full
+  identity is uncertain) — excluded on FOUR independent grounds: (1) the
+  truncated name means we cannot be certain what the fielded question even
+  was; (2) no questionnaire exists in this deposit to recover it; (3) it is a
+  policy-attitude item (ethnic minorities' rights "gone too far"/"not far
+  enough") tightly bound to the Leave/Remain cultural cleavage the outcome
+  itself measures — the same domain problem as the vote exclusions below, not
+  a demographic; (4) it ships as the same kind of unlabelled string column
+  with an embedded "Don't know" sentinel as the others above.
+
+  `GE_voting_intention`/`Gevote`, `Did_you_vote_GE2017`/`DidyouvoteGE2017`,
+  `GE2017_past_vote`/`@2017vote`, `Did_you_vote_in_EU_ref`/`DidyouvoteEuref`,
+  `EU_ref_vote`/`Eurefvote` — each pair is the SAME question asked once per
+  Wave under a different column name (confirmed directly: `Gevote` is
+  non-blank for exactly Wave 2's 1,600 and blank for all of Wave 1, while
+  `GE_voting_intention` is the exact complement — 11 distinct values each,
+  same option set). `Gevote` itself is NOT in the brief's own list of
+  raw-coded duplicates and was found independently here by checking every
+  remaining column rather than trusting the list was exhaustive. All ten are
+  excluded on the same domain ground: the outcome is strength of attachment
+  to a Brexit or party IDENTITY, and the respondent's own vote (General
+  Election or EU referendum, past or intended) sits in that same domain, not
+  outside it as a predictor.
+
+  `refid`/`pid`/`refid1`/`pid1` — part of the outcome/condition structure (the
+  elicitation that produced the arm itself), not persona.
+
+  `Weights`, `ID.date`, `Wave`, `Split` — provenance/sampling/structural
+  fields, not persona attributes; `Weights` is read directly from the
+  ORIGINAL `sky-data.sav` by `scripts/verify_35M5CV_sky.py` for the Table 2
+  cross-check, not carried into the derived data file or the row schema
+  (which has no weight field, matching `PMV0TG`'s same ruling).
+
+  No education, income, social grade, employment, religion, marital status or
+  household size anywhere in this file — thinner than the YouGov-panel
+  `lodger`/`bbc` siblings' personas, which is a property of the Sky Polling
+  panel's own demographic set, not an oversight.
+
+
+  WORDS WE ADDED, AND WHY — docs/CONVENTIONS.md "Narrating what the respondent did"
+
+  `shared_context` is composed by us, stating facts the paper itself gives
+  (Sky Polling, October-November 2017, UK adults, referendum date) and true
+  for every arm:
+
+    "You are taking part in an online survey of UK adults conducted by Sky
+    Polling in October and November 2017, a little over a year after the
+    referendum on the United Kingdom's membership of the European Union."
+
+  Each arm's own `text` then joins the VERBATIM identity-elicitation stem
+  (p. 12) with the respondent's own answer, narrating what they did, not what
+  they were shown, true for everyone in that arm, with no number and no
+  sequence position: e.g. Remainer's arm — 'You are asked: "Since the EU
+  referendum last year, some people now think of themselves as Leavers and
+  Remainers, do you think of yourself as a Leaver, a Remainer, or neither a
+  Leaver or Remainer?" You say you think of yourself as a Remainer.' Every
+  word inside quotation marks is the paper's; "You are asked:" / "You say you
+  think of yourself as a Remainer." are composed connective prose, declared
+  here as the convention requires.
+
+  Each outcome's generic `question` keeps the paper's own bracket notation,
+  "[respondent identity]", as printed at p. 14 — a literal fallback that is
+  always overridden by the arm-specific `items[task].outcome_question` below,
+  which fills the bracket with the respondent's own answer ("the Remainer
+  side" / "the Leaver side" / "the Conservative side" / "the Labour side").
+  This is the SAME construction as `QQM5MC`'s bracket-free prose, except here
+  the paper itself already prints a template, so filling it per arm is the
+  minimal addition rather than composing from nothing.
+
+
+  WHAT WE DID NOT BUILD, AND WHY — THE SOCIAL-DISTANCE ITEMS
+
+  `Rmarry`/`Rtalk`/`Lmarry`/`Ltalk` (Split 1, Table 3's "Leaver"/"Remainer"
+  columns) and `Lamarry`/`Latalk`/`Cmarry`/`Ctalk` (Split 2, "Conservative"/
+  "Labour") are EXCLUDED FOR LACK OF VERBATIM WORDING. These are asked of
+  EVERY respondent in their split regardless of identity (1,779 and 1,702
+  non-null respectively — not identity-gated like the attachment battery), so
+  the potential row cost is the full 1,779 + 1,702 = 3,481 respondents x 4
+  items each = 13,924 rows, roughly half this sub-study's total item content.
+
+  The paper only PARAPHRASES them, at p. 21 (confirmed by reading the page
+  directly): "Table 3 shows the proportions of respondents who say that they
+  would be happy with a child of theirs marrying someone from the other side
+  and the proportion that are happy to 'talk politics' with someone from the
+  other side." Only the two words "talk politics" are quoted; the rest is the
+  authors' summary prose. There is no supplementary material with item
+  wording for Sky (unlike the two conjoints' `-script.docx` files), and the
+  `.sav`'s own variable labels ("Happy if child married a Remainer", "Happy to
+  talk politics with Remainer") are depositor abbreviations of the construct,
+  not the fielded question — the same failure that got `TLT65Z` dropped:
+  construct described, exact wording unreachable. We do not reconstruct
+  stimulus text. This is the point of this build's scope, not an oversight.
+
+
+  VERIFICATION AND THE TABLE 2 FOOTNOTE SWAP
+
+  `scripts/verify_35M5CV_sky.py` reproduces Table 2's Brexit/party identity
+  scale means (p. 14) from the BUILT parquet, weighted by the original .sav's
+  own `Weights` (joined back by `participant_id`), to the paper's own 1dp
+  precision — see the arithmetic above.
+
+  Table 2's own note reads: "The Sky data have a total unweighted N of 1,692
+  for party identity and 1,702 for Brexit identity." The deposit shows the
+  OPPOSITE: `pid` (party identity, Split 2) has 1,702 valid responses (= all
+  of Split 2 — zero missing `pid`), and `refid` (Brexit identity, Split 1) has
+  1,692 valid responses (= 1,779 minus 87 who did not answer `refid` at all).
+  So the correct unweighted Ns, read directly from the data, are 1,702 for
+  party identity and 1,692 for Brexit identity — the footnote's two labels are
+  swapped (same error repeats verbatim in Table 3's footnote, p. 21, which is
+  the same boilerplate note reused). `scripts/verify_35M5CV_sky.py` asserts
+  the Ns against the DATA (1,702 party / 1,692 Brexit) and reports the
+  divergence from the printed footnote explicitly rather than either bending
+  to match a probable typo or silently ignoring it.
+
+
+  RISKIEST JUDGEMENT IN THIS BUILD
+
+  Treating the "Neither"/"None" lean-routing as explained-but-still-excluded
+  rather than keepable. The investigation is sound and the arithmetic is
+  exact (zero residual on both sides), but a different, equally careful
+  reader could conclude that a respondent who explicitly answered "Remain" to
+  a direct lean question has, in effect, claimed a Remainer-leaning identity,
+  and that excluding them is over-cautious. What would reveal this judgement
+  as wrong: the Sky questionnaire turning up somewhere (a later Dataverse
+  version, an author's personal site, a FOI request) with the follow-up
+  question's exact wording, AND that wording turning out to be closer to a
+  restatement of the primary identity question than to a distinct "lean"
+  framing — in which case the exclusion would be overly conservative rather
+  than correct. Until then, the absence of a questionnaire for this specific
+  sub-study is the operative fact, not a presumption about what the follow-up
+  probably said.
+
+
+  TWO QC WARNINGS ON BUILD, BOTH CHECKED AND BOTH BENIGN
+
+  Rule 14 ("persona values outside the canonical vocabulary — ethnicity:
+  ['Asian/Asian British', 'Black/Black British', 'Mixed']") is expected and
+  correct, same ruling as `QQM5MC`: no UK ethnicity crosswalk scheme has been
+  built yet (it is designed after all four UK deposits are read, not from
+  this one), so the Sky panel's own census-style labels pass through
+  unmapped, which is the crosswalk's documented behaviour, not a defect.
+
+  Rule 12 ("persona fields carrying a non-answer label: ethnicity='n/A'
+  x360") is a FALSE POSITIVE, checked directly against the built parquet, not
+  a leaked sentinel. `pipeline/qc.py`'s `_NON_ANSWER` regex matches `n/a` as
+  an unanchored substring, and "Asian/Asian British" — the UK census-style
+  label this file ships, confirmed nowhere else in the corpus before this
+  recipe — contains the literal substring "n/A" at the word boundary between
+  "Asian" and "Asian" (...asia-N-/-A-sian...). 360 = 72 respondents x 5
+  items, and 72 is exactly the count of clean-identifier respondents whose
+  `Ethnicity` is "Asian/Asian British" — not a count of any sentinel value,
+  which was already blanked upstream in `scripts/gen_35M5CV_sky.py` (see
+  MISSING CODES above). This is the same class of substring false positive
+  CLAUDE.md's own lessons record for "na" matching "National"/"Finance" — not
+  fixed here, since a shared regex change needs its own corpus-wide check
+  that no genuine "n/a"-labelled sentinel elsewhere would stop being caught,
+  which is a separate piece of work from this recipe. Flagged here so a
+  checker does not mistake it for an unhandled sentinel in THIS build.
+
+condition:
+  source_var: IdentityArm
+  shared_context: >-
+    You are taking part in an online survey of UK adults conducted by Sky
+    Polling in October and November 2017, a little over a year after the
+    referendum on the United Kingdom's membership of the European Union.
+  factors: [own_identity]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {own_identity: "Remainer"}
+      text: >-
+        You are asked: "Since the EU referendum last year, some people now
+        think of themselves as Leavers and Remainers, do you think of
+        yourself as a Leaver, a Remainer, or neither a Leaver or Remainer?"
+        You say you think of yourself as a Remainer.
+      items:
+        0:
+          outcome_var: EArefR1
+          outcome_question: >-
+            When I speak about the Remainer side, I usually say "we" instead
+            of "they"
+        1:
+          outcome_var: EArefR2
+          outcome_question: >-
+            When people criticize the Remainer side, it feels like a personal
+            insult
+        2:
+          outcome_var: EArefR3
+          outcome_question: I have a lot in common with other supporters of the Remainer side
+        3:
+          outcome_var: EArefR4
+          outcome_question: >-
+            When I meet someone who supports the Remainer side, I feel
+            connected with this person
+        4:
+          outcome_var: EArefR5
+          outcome_question: When people praise the Remainer side, it makes me feel good
+
+    - raw: 2
+      condition_num: 1
+      factors: {own_identity: "Leaver"}
+      text: >-
+        You are asked: "Since the EU referendum last year, some people now
+        think of themselves as Leavers and Remainers, do you think of
+        yourself as a Leaver, a Remainer, or neither a Leaver or Remainer?"
+        You say you think of yourself as a Leaver.
+      items:
+        0:
+          outcome_var: EArefL1
+          outcome_question: >-
+            When I speak about the Leaver side, I usually say "we" instead of
+            "they"
+        1:
+          outcome_var: EArefL2
+          outcome_question: >-
+            When people criticize the Leaver side, it feels like a personal
+            insult
+        2:
+          outcome_var: EArefL3
+          outcome_question: I have a lot in common with other supporters of the Leaver side
+        3:
+          outcome_var: EArefL4
+          outcome_question: >-
+            When I meet someone who supports the Leaver side, I feel
+            connected with this person
+        4:
+          outcome_var: EArefL5
+          outcome_question: When people praise the Leaver side, it makes me feel good
+
+    - raw: 3
+      condition_num: 2
+      factors: {own_identity: "Conservative"}
+      text: >-
+        You are asked: "Generally speaking, do you think of yourself as
+        Labour, Conservative, Liberal Democrat or what?" You say Conservative.
+      items:
+        0:
+          outcome_var: EApidC1
+          outcome_question: >-
+            When I speak about the Conservative side, I usually say "we"
+            instead of "they"
+        1:
+          outcome_var: EApidC2
+          outcome_question: >-
+            When people criticize the Conservative side, it feels like a
+            personal insult
+        2:
+          outcome_var: EApidC3
+          outcome_question: I have a lot in common with other supporters of the Conservative side
+        3:
+          outcome_var: EApidC4
+          outcome_question: >-
+            When I meet someone who supports the Conservative side, I feel
+            connected with this person
+        4:
+          outcome_var: EApidC5
+          outcome_question: When people praise the Conservative side, it makes me feel good
+
+    - raw: 4
+      condition_num: 3
+      factors: {own_identity: "Labour"}
+      text: >-
+        You are asked: "Generally speaking, do you think of yourself as
+        Labour, Conservative, Liberal Democrat or what?" You say Labour.
+      items:
+        0:
+          outcome_var: EApidLa1
+          outcome_question: >-
+            When I speak about the Labour side, I usually say "we" instead of
+            "they"
+        1:
+          outcome_var: EApidLa2
+          outcome_question: >-
+            When people criticize the Labour side, it feels like a personal
+            insult
+        2:
+          outcome_var: EApidLa3
+          outcome_question: I have a lot in common with other supporters of the Labour side
+        3:
+          outcome_var: EApidLa4
+          outcome_question: >-
+            When I meet someone who supports the Labour side, I feel
+            connected with this person
+        4:
+          outcome_var: EApidLa5
+          outcome_question: When people praise the Labour side, it makes me feel good
+
+outcomes:
+  # Generic wording keeps the paper's own bracket, p.14; every arm overrides it
+  # above with the respondent's own identity filled in.
+  - task_num: 0
+    question: When I speak about the [respondent identity] side, I usually say "we" instead of "they"
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly disagree
+      mid_label: Neither agree nor disagree
+      max_label: Strongly agree
+  - task_num: 1
+    question: When people criticize the [respondent identity] side, it feels like a personal insult
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly disagree
+      mid_label: Neither agree nor disagree
+      max_label: Strongly agree
+  - task_num: 2
+    question: I have a lot in common with other supporters of the [respondent identity] side
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly disagree
+      mid_label: Neither agree nor disagree
+      max_label: Strongly agree
+  - task_num: 3
+    question: When I meet someone who supports the [respondent identity] side, I feel connected with this person
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly disagree
+      mid_label: Neither agree nor disagree
+      max_label: Strongly agree
+  - task_num: 4
+    question: When people praise the [respondent identity] side, it makes me feel good
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly disagree
+      mid_label: Neither agree nor disagree
+      max_label: Strongly agree
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [99]
+
+persona_map:
+  age: Age
+  gender: Gender
+  ethnicity: Ethnicity
+  region: Govt_region
+  mosaic_group: Mosaic_2014_groups
+  interest_in_politics: Interest_in_politics
+  national_identity: English_vs_British
+
+persona_missing: {}

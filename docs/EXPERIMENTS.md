@@ -2,13 +2,13 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**37 experiments.** 9 UK (CC0, redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**39 experiments.** 11 UK (CC0, redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse | 9 | 106,830 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse | 11 | 124,885 | **yes, CC0 1.0** |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **37** | **390,765** | |
+| **Total** | **39** | **408,820** | |
 
 ---
 
@@ -28,6 +28,19 @@ Forced choice between two possible Brexit deals, each described by eight negotia
 - **Rows** — 49,395 from 3,293 respondents
 - **Licence** — CC0 1.0 Universal
 - **Verified against** — the authors' own `cregg::cj()`, 84 estimates agreeing to 1e-6; data/catalog/answer_key_EFXNLX.csv
+
+### `35M5CV_sky`
+
+**Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (Sky emotional attachment battery)**
+
+Five-item battery measuring strength of emotional attachment to one's own Brexit identity (Leaver/Remainer) or party identity (Conservative/Labour) — in-group language, personal offence at criticism, felt commonality, connectedness and pride in one's own side. The in-group-identification component of affective polarization, restricted to respondents with a clean primary identity (excludes 'Neither'/'None' respondents routed into a battery via an undocumented follow-up question).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/35M5CV`
+- **Type** — randomised split ballot (Brexit identity vs party identity elicitation), 5 items per respondent, 2,411 respondents x 5 items
+- **Category** — political identity/polarisation
+- **Rows** — 12,055 from 2,411 respondents
+- **Licence** — CC0 1.0 Universal
+- **Verified against** — the paper's own Table 2 — all four identity-group scale means, weighted by the deposit's own `Weights` column, reproduced to the paper's printed 1dp precision; see scripts/verify_35M5CV_sky.py
 
 ### `PMV0TG`
 
@@ -120,6 +133,19 @@ A split ballot crossing a Leaver/Remainer identity prime with factual informatio
 - **Licence** — >-
 - **Verified against** — the paper's own Table 1 and Figures 4-5 — eight group means and two Ns
 
+### `RJTVG8`
+
+**Support for digitising the ballot box: a systematic review of i-voting pilots and a conjoint experiment**
+
+Forced choice between two hypothetical UK internet-voting (i-voting) policies, differing on ten features — pre-registration, voting method, voting window, where trials succeeded, the pilot's effect on turnout and on fraud risk, who controls the platform, the cost to government, the proposing party and the endorsing body. The respondent judges a PROPOSED POLICY, not a person.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/RJTVG8`
+- **Type** — paired-profile conjoint, 10 attributes (one — platform — a single 6-level draw, not a 2x3 cross), 5 tasks per respondent
+- **Category** — political preferences/policy
+- **Rows** — 6,000 from 1,200 respondents
+- **Licence** — CC0 1.0
+- **Verified against** — the authors' own cregg::mm() marginal means, Table A.4 of the author-accepted manuscript — 51 estimates to within 0.0015
+
 ### `6MRVOM_eu_share`
 
 **Pricing Immigration**
@@ -182,8 +208,8 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | economics/behavioural | 1 | 1 | 9,166 |
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 1 | 6 | 95,879 |
-| political identity/polarisation | 3 | 0 | 22,865 |
-| political preferences/policy | 4 | 0 | 66,570 |
+| political identity/polarisation | 4 | 0 | 34,920 |
+| political preferences/policy | 5 | 0 | 72,570 |
 | survey methodology | 0 | 5 | 51,701 |
 | work/family/gender | 0 | 8 | 88,127 |
 

@@ -63,6 +63,12 @@
       "design": "paired-profile conjoint, 7 attributes, 5 rounds per respondent",
       "verified_against": "the authors' own `cregg::cj()` run over the raw deposit, transcribed to data/catalog/answer_key_35M5CV_lodger.csv"
     },
+    "35M5CV_sky": {
+      "category": "political identity/polarisation",
+      "description": "Five-item battery measuring strength of emotional attachment to one's own Brexit identity (Leaver/Remainer) or party identity (Conservative/Labour) — in-group language, personal offence at criticism, felt commonality, connectedness and pride in one's own side. The in-group-identification component of affective polarization, restricted to respondents with a clean primary identity (excludes 'Neither'/'None' respondents routed into a battery via an undocumented follow-up question).",
+      "design": "randomised split ballot (Brexit identity vs party identity elicitation), 5 items per respondent, 2,411 respondents x 5 items",
+      "verified_against": "the paper's own Table 2 — all four identity-group scale means, weighted by the deposit's own `Weights` column, reproduced to the paper's printed 1dp precision; see scripts/verify_35M5CV_sky.py"
+    },
     "EFXNLX": {
       "category": "political preferences/policy",
       "description": "Forced choice between two possible Brexit deals, each described by eight negotiated terms — immigration, EU citizens' rights, trade, legal jurisdiction, budget contributions, payments, the Irish border and the timeline — followed by a 1-4 acceptability rating of each deal separately.",
@@ -92,6 +98,12 @@
       "description": "A split ballot crossing a Leaver/Remainer identity prime with factual information about UK GDP growth. Outcomes are the respondent's estimate of the UK's growth rank among 34 OECD countries, and whether they think the economy is getting better or worse. Tests motivated reasoning about shared economic facts.",
       "design": "2x2 split ballot (prime x information) plus a true control, 2 outcomes",
       "verified_against": "the paper's own Table 1 and Figures 4-5 — eight group means and two Ns"
+    },
+    "RJTVG8": {
+      "category": "political preferences/policy",
+      "description": "Forced choice between two hypothetical UK internet-voting (i-voting) policies, differing on ten features — pre-registration, voting method, voting window, where trials succeeded, the pilot's effect on turnout and on fraud risk, who controls the platform, the cost to government, the proposing party and the endorsing body. The respondent judges a PROPOSED POLICY, not a person.",
+      "design": "paired-profile conjoint, 10 attributes (one — platform — a single 6-level draw, not a 2x3 cross), 5 tasks per respondent",
+      "verified_against": "the authors' own cregg::mm() marginal means, Table A.4 of the author-accepted manuscript — 51 estimates to within 0.0015"
     }
   }
 }
