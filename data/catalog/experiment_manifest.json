@@ -1,0 +1,85 @@
+{
+  "_about": [
+    "Editorial classification of the UK experiments: category, design type, a one-line",
+    "description, and what each was verified against. This file holds ONLY what cannot be",
+    "derived from the recipes or the data.",
+    "",
+    "The 28 TESS experiments are NOT here. Their category already ships in",
+    "data/catalog/tess_uk_foundation_sources.csv, joined on study_id, and duplicating it",
+    "would create exactly the drift that uk_dataverse_provenance.json just suffered — two",
+    "places holding the same fact, one of them going stale unnoticed. Row counts,",
+    "participant counts, licences and source are likewise derived, never typed.",
+    "",
+    "scripts/experiments_table.py turns this plus those derived facts into",
+    "docs/EXPERIMENTS.md. tests/test_experiment_manifest.py fails if a built recipe has",
+    "neither a TESS category nor an entry here, so an experiment cannot be added without",
+    "being classified."
+  ],
+  "_category_vocabulary": {
+    "_note": [
+      "The first six are TESS's own categories, reused verbatim so coverage can be compared",
+      "across the two layers rather than across two taxonomies. The two political categories",
+      "are additions: the UK layer is overwhelmingly political and TESS's vocabulary has no",
+      "political category at all, which is itself a finding about how different the two",
+      "corpora are. These are judgements, recorded here so they can be argued with.",
+      "",
+      "The dividing line drawn between the two political categories: IDENTITY/POLARISATION",
+      "is about how people regard each OTHER across the Leave/Remain divide, so the outcome",
+      "is a judgement of a person. PREFERENCES/POLICY is about what people want GOVERNMENT",
+      "to do, so the outcome is a judgement of a policy. 35M5CV's two conjoints both ask a",
+      "respondent to pick a PERSON; EFXNLX asks them to pick a DEAL."
+    ],
+    "cross-national": "Same instrument fielded in several countries.",
+    "economics/behavioural": "Risk, money, time preference, economic judgement.",
+    "health communication": "Health messaging, screening, vaccination uptake.",
+    "moral/social/cognition": "Moral judgement, social perception, reasoning.",
+    "political identity/polarisation": "How people regard each other across a political divide — the outcome is a judgement of a person.",
+    "political preferences/policy": "What people want government to do — the outcome is a judgement of a policy.",
+    "survey methodology": "The instrument itself is the object of study.",
+    "work/family/gender": "Employment, caregiving, gender and family roles."
+  },
+  "experiments": {
+    "35M5CV_bbc": {
+      "category": "political identity/polarisation",
+      "description": "Forced choice between two applicants for Director General of the BBC, described by name, age, experience, degree, party politics, EU referendum vote and occupation. Tests whether Leave/Remain identity affects judgement of competence for a public role.",
+      "design": "paired-profile conjoint, 7 attributes, 5 rounds per respondent",
+      "verified_against": "the authors' own `cregg::cj()` run over the raw deposit, transcribed to data/catalog/answer_key_35M5CV_bbc.csv"
+    },
+    "35M5CV_lodger": {
+      "category": "political identity/polarisation",
+      "description": "Forced choice between two prospective lodgers described by name, age, occupation, volunteering, party politics, EU referendum vote and hobby. The classic social-distance measure: would you share your home with someone who voted the other way.",
+      "design": "paired-profile conjoint, 7 attributes, 5 rounds per respondent",
+      "verified_against": "the authors' own `cregg::cj()` run over the raw deposit, transcribed to data/catalog/answer_key_35M5CV_lodger.csv"
+    },
+    "EFXNLX": {
+      "category": "political preferences/policy",
+      "description": "Forced choice between two possible Brexit deals, each described by eight negotiated terms — immigration, EU citizens' rights, trade, legal jurisdiction, budget contributions, payments, the Irish border and the timeline — followed by a 1-4 acceptability rating of each deal separately.",
+      "design": "paired-profile conjoint, 8 attributes, 6 rounds per respondent, 3 outcomes per round (1 choice + 2 ratings)",
+      "verified_against": "the authors' own `cregg::cj()`, 84 estimates agreeing to 1e-6; data/catalog/answer_key_EFXNLX.csv"
+    },
+    "LOGVPZ_brexit_satisfaction": {
+      "category": "political preferences/policy",
+      "description": "Respondents are told to imagine they have won a substantial lottery prize, or told nothing, then asked how satisfied they are that the UK voted to leave the EU. Tests whether unearned wealth shifts Brexit support.",
+      "design": "two-condition between-subject, one outcome on an 11-point scale",
+      "verified_against": "the paper's own Table D.1 — N, control mean and both regression coefficients"
+    },
+    "LOGVPZ_risk_tolerance": {
+      "category": "economics/behavioural",
+      "description": "The same lottery-wealth treatment, with the outcome a 0-3 financial risk-tolerance code built from a branching pair of hypothetical job-gamble questions (would you swap a safe job for one with a 50-50 chance of doubling or cutting your income).",
+      "design": "two-condition between-subject, one DERIVED outcome on a 0-3 scale",
+      "verified_against": "the paper's own Table D.2 — N, control mean and both regression coefficients; the branch logic itself is pinned by tests/test_derive_LOGVPZ.py across all 64 inputs of the instrument's code space"
+    },
+    "PMV0TG": {
+      "category": "moral/social/cognition",
+      "description": "Forced choice between two hypothetical people over who should receive a COVID-19 vaccine first, differing on risk of death, risk of transmitting, income, occupation and age. A rationing problem: who deserves a scarce life-saving good.",
+      "design": "paired-profile conjoint, 5 attributes, 8 rounds per respondent",
+      "verified_against": "the UK column of the authors' own deposited conjoint_combined_results_UNWEIGHTED_ols.tex — 17 coefficients to within 0.006"
+    },
+    "QQM5MC": {
+      "category": "political identity/polarisation",
+      "description": "A split ballot crossing a Leaver/Remainer identity prime with factual information about UK GDP growth. Outcomes are the respondent's estimate of the UK's growth rank among 34 OECD countries, and whether they think the economy is getting better or worse. Tests motivated reasoning about shared economic facts.",
+      "design": "2x2 split ballot (prime x information) plus a true control, 2 outcomes",
+      "verified_against": "the paper's own Table 1 and Figures 4-5 — eight group means and two Ns"
+    }
+  }
+}

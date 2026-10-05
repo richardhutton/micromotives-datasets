@@ -1,0 +1,163 @@
+# Experiments built
+
+**This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
+
+**35 experiments.** 7 UK (CC0, redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+
+| Layer | Experiments | Rows | Redistributable |
+|---|---|---|---|
+| UK — Harvard Dataverse | 7 | 97,161 | **yes, CC0 1.0** |
+| US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
+| **Total** | **35** | **381,096** | |
+
+---
+
+## UK layer — Harvard Dataverse, CC0 1.0
+
+The publishable corpus. Every one of these reproduces a number its own authors printed — a published table, or their own estimator run over the raw deposit — rather than a number we computed and then agreed with.
+
+### `EFXNLX`
+
+**Policy Preferences and Policy Legitimacy After Referendums: Evidence from the Brexit Negotiations**
+
+Forced choice between two possible Brexit deals, each described by eight negotiated terms — immigration, EU citizens' rights, trade, legal jurisdiction, budget contributions, payments, the Irish border and the timeline — followed by a 1-4 acceptability rating of each deal separately.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/EFXNLX`
+- **Type** — paired-profile conjoint, 8 attributes, 6 rounds per respondent, 3 outcomes per round (1 choice + 2 ratings)
+- **Category** — political preferences/policy
+- **Rows** — 49,395 from 3,293 respondents
+- **Licence** — CC0 1.0 Universal
+- **Verified against** — the authors' own `cregg::cj()`, 84 estimates agreeing to 1e-6; data/catalog/answer_key_EFXNLX.csv
+
+### `PMV0TG`
+
+**Citizens from 13 countries share similar preferences for COVID-19 vaccine allocation priorities**
+
+Forced choice between two hypothetical people over who should receive a COVID-19 vaccine first, differing on risk of death, risk of transmitting, income, occupation and age. A rationing problem: who deserves a scarce life-saving good.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/PMV0TG`
+- **Type** — paired-profile conjoint, 5 attributes, 8 rounds per respondent
+- **Category** — moral/social/cognition
+- **Rows** — 9,320 from 1,165 respondents
+- **Licence** — CC0 1.0 Universal
+- **Verified against** — the UK column of the authors' own deposited conjoint_combined_results_UNWEIGHTED_ols.tex — 17 coefficients to within 0.006
+
+### `35M5CV_lodger`
+
+**Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (Lodger conjoint)**
+
+Forced choice between two prospective lodgers described by name, age, occupation, volunteering, party politics, EU referendum vote and hobby. The classic social-distance measure: would you share your home with someone who voted the other way.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/35M5CV`
+- **Type** — paired-profile conjoint, 7 attributes, 5 rounds per respondent
+- **Category** — political identity/polarisation
+- **Rows** — 8,345 from 1,669 respondents
+- **Licence** — CC0 1.0 Universal
+- **Verified against** — the authors' own `cregg::cj()` run over the raw deposit, transcribed to data/catalog/answer_key_35M5CV_lodger.csv
+
+### `35M5CV_bbc`
+
+**Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (BBC conjoint)**
+
+Forced choice between two applicants for Director General of the BBC, described by name, age, experience, degree, party politics, EU referendum vote and occupation. Tests whether Leave/Remain identity affects judgement of competence for a public role.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/35M5CV`
+- **Type** — paired-profile conjoint, 7 attributes, 5 rounds per respondent
+- **Category** — political identity/polarisation
+- **Rows** — 8,175 from 1,635 respondents
+- **Licence** — CC0 1.0 Universal
+- **Verified against** — the authors' own `cregg::cj()` run over the raw deposit, transcribed to data/catalog/answer_key_35M5CV_bbc.csv
+
+### `LOGVPZ_risk_tolerance`
+
+**Mind the Gap: Why Wealthy Voters Support Brexit**
+
+The same lottery-wealth treatment, with the outcome a 0-3 financial risk-tolerance code built from a branching pair of hypothetical job-gamble questions (would you swap a safe job for one with a 50-50 chance of doubling or cutting your income).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/LOGVPZ`
+- **Type** — two-condition between-subject, one DERIVED outcome on a 0-3 scale
+- **Category** — economics/behavioural
+- **Rows** — 8,075 from 8,075 respondents
+- **Licence** — >-
+- **Verified against** — the paper's own Table D.2 — N, control mean and both regression coefficients; the branch logic itself is pinned by tests/test_derive_LOGVPZ.py across all 64 inputs of the instrument's code space
+
+### `LOGVPZ_brexit_satisfaction`
+
+**Mind the Gap: Why Wealthy Voters Support Brexit**
+
+Respondents are told to imagine they have won a substantial lottery prize, or told nothing, then asked how satisfied they are that the UK voted to leave the EU. Tests whether unearned wealth shifts Brexit support.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/LOGVPZ`
+- **Type** — two-condition between-subject, one outcome on an 11-point scale
+- **Category** — political preferences/policy
+- **Rows** — 7,506 from 7,506 respondents
+- **Licence** — >-
+- **Verified against** — the paper's own Table D.1 — N, control mean and both regression coefficients
+
+### `QQM5MC`
+
+**A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote**
+
+A split ballot crossing a Leaver/Remainer identity prime with factual information about UK GDP growth. Outcomes are the respondent's estimate of the UK's growth rank among 34 OECD countries, and whether they think the economy is getting better or worse. Tests motivated reasoning about shared economic facts.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/QQM5MC`
+- **Type** — 2x2 split ballot (prime x information) plus a true control, 2 outcomes
+- **Category** — political identity/polarisation
+- **Rows** — 6,345 from 3,266 respondents
+- **Licence** — >-
+- **Verified against** — the paper's own Table 1 and Figures 4-5 — eight group means and two Ns
+
+---
+
+## US transfer layer — TESS, no licence stated
+
+Fielded in the United States on topics judged universal enough to transfer. **None of this is redistributable**: all 202 deposits in the TESS catalogue were checked individually against the OSF API and 196 state no licence, 6 are unreachable. Usable for research here; not shippable, and not sent to any external service — `embed.py`'s licence gate refuses this text by name.
+
+| Experiment | Title | Category | Rows | Respondents | Reference |
+|---|---|---|---|---|---|
+| `7jt2f` | When Others' Disbelief Engenders Prejudice: Characterizing Anti-Ath… | cross-national | 3,053 | 613 | osf.io/7jt2f |
+| `c5r2f` | Do Policy Defaults Communicate Choice-Relevant Information? | economics/behavioural | 1,091 | 1,091 | osf.io/c5r2f |
+| `a42yg` | Conflict between curative and palliative goals among health care pe… | health communication | 8,022 | 503 | osf.io/a42yg |
+| `a5v96_vignette1` | What fosters patients' acceptance of Clinical Decision Support? (vi… | health communication | 3,621 | 1,211 | osf.io/a5v96 |
+| `bf8p2` | Does Misery Love Company? Exploration of a Strategic Social Comparison | health communication | 1,998 | 1,998 | osf.io/bf8p2 |
+| `dh3nj` | Public Perceptions of Prenatal Alcohol Consumption | health communication | 4,001 | 2,002 | osf.io/dh3nj |
+| `sh4px` | Self-Affirmation and Affect: Effects on Implementation Intentions | health communication | 11,532 | 1,161 | osf.io/sh4px |
+| `z358z` | Randomized Drug Trials without Consent? The Public's Perspective | health communication | 14,702 | 2,130 | osf.io/z358z |
+| `zaqkm` | Causal Attributions, Treatability, and Mental Illness Stigma | health communication | 9,528 | 1,607 | osf.io/zaqkm |
+| `9263n` | To Do, to Have, or to Share? Valuing Experiences and Material Posse… | moral/social/cognition | 6,328 | 814 | osf.io/9263n |
+| `9xw67_conjoint` | Blame and Bias in Trust in Public Policy Algorithms | moral/social/cognition | 20,373 | 2,048 | osf.io/9xw67 |
+| `9xw67_vignette` | Blame and Bias in Trust in Public Policy Algorithms | moral/social/cognition | 5,816 | 1,846 | osf.io/9xw67 |
+| `b87sm` | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | moral/social/cognition | 19,282 | 1,942 | osf.io/b87sm |
+| `es4xw` | Perceptions of Diversity Across Groups | moral/social/cognition | 32,228 | 2,501 | osf.io/es4xw |
+| `zrwjp` | The Barriers of Buying Happier Time | moral/social/cognition | 2,532 | 1,271 | osf.io/zrwjp |
+| `5hqan` | Gender Identity and Diversity | survey methodology | 6,411 | 2,139 | osf.io/5hqan |
+| `a2nbf` | >- | survey methodology | 6,211 | 1,567 | osf.io/a2nbf |
+| `evnyh_Q1a_and_validation` | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | survey methodology | 33,932 | 1,724 | osf.io/evnyh |
+| `rpw4u_RO1` | Cross-National Replication of Question Design Experiments (RO1: oil… | survey methodology | 1,023 | 1,023 | osf.io/rpw4u |
+| `sd7cf` | Framing in Noisy Informational Environments | survey methodology | 4,124 | 2,069 | osf.io/sd7cf |
+| `8ctbk` | Childbearing Preferences in the Face of Work, Family, and Financial… | work/family/gender | 17,464 | 1,794 | osf.io/8ctbk |
+| `cug34_B01_B09` | Public Perceptions of Money in Families | work/family/gender | 15,091 | 4,004 | osf.io/cug34 |
+| `py9q3_vignette1` | Attitudes toward the Employment of Mothers and Fathers | work/family/gender | 6,667 | 1,682 | osf.io/py9q3 |
+| `py9q3_vignette2` | Attitudes toward the Employment of Mothers and Fathers | work/family/gender | 5,005 | 1,682 | osf.io/py9q3 |
+| `py9q3_vignette3` | Attitudes toward the Employment of Mothers and Fathers | work/family/gender | 6,659 | 1,682 | osf.io/py9q3 |
+| `ye2ej` | The Wages of Parenthood: At the Intersection of Sexual Orientation … | work/family/gender | 12,971 | 1,008 | osf.io/ye2ej |
+| `yv2ta_flexible_scheduling` | Opting into Work-Family Policies: Comparing the Effects of Material… | work/family/gender | 12,131 | 2,036 | osf.io/yv2ta |
+| `yv2ta_parental_leave` | Opting into Work-Family Policies: Comparing the Effects of Material… | work/family/gender | 12,139 | 2,036 | osf.io/yv2ta |
+
+---
+
+## By category
+
+Categories are TESS's own six, reused verbatim so the two layers can be compared across one taxonomy, plus two political categories added for the UK layer — which needed them because TESS's vocabulary has no political category at all. That absence is itself a finding about how different the two corpora are. The definitions and the judgement behind the political split are in `data/catalog/experiment_manifest.json`.
+
+| Category | UK | US (TESS) | Rows |
+|---|---|---|---|
+| cross-national | 0 | 1 | 3,053 |
+| economics/behavioural | 1 | 1 | 9,166 |
+| health communication | 0 | 7 | 53,404 |
+| moral/social/cognition | 1 | 6 | 95,879 |
+| political identity/polarisation | 3 | 0 | 22,865 |
+| political preferences/policy | 2 | 0 | 56,901 |
+| survey methodology | 0 | 5 | 51,701 |
+| work/family/gender | 0 | 8 | 88,127 |
+
