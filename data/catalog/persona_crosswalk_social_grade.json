@@ -1,0 +1,54 @@
+{
+  "_about": [
+    "UK National Readership Survey social grade. Four source granularities across",
+    "the corpus: all six letters (4 studies, 36,133 rows); AB/C1/C2/D/E (EFXNLX,",
+    "49,395); AB/C1/C2/DE (both 6MRVOM recipes, 8,923); and PZB01G, which ships",
+    "the same six letters in LOWERCASE for four of them -- the same cosmetic drift",
+    "as its 'onc' for 'ONC'. Case is normalised; nothing else about it is touched.",
+    "",
+    "AB and DE are kept as canonical values in their own right rather than being",
+    "resolved. A study that pre-merged A and B cannot be un-merged, and a canonical",
+    "value must never claim a precision its source lacks."
+  ],
+  "canonical": {
+    "A": "A",
+    "B": "B",
+    "C1": "C1",
+    "C2": "C2",
+    "D": "D",
+    "E": "E",
+    "AB (A and B not distinguished)": "AB (A and B not distinguished)",
+    "DE (D and E not distinguished)": "DE (D and E not distinguished)"
+  },
+  "schemes": {
+    "nrs_six": {
+      "A": "A",
+      "B": "B",
+      "C1": "C1",
+      "C2": "C2",
+      "D": "D",
+      "E": "E"
+    },
+    "nrs_ab_merged": {
+      "C1": "C1",
+      "C2": "C2",
+      "D": "D",
+      "E": "E",
+      "AB": "AB (A and B not distinguished)"
+    },
+    "nrs_ab_de_merged": {
+      "C1": "C1",
+      "C2": "C2",
+      "AB": "AB (A and B not distinguished)",
+      "DE": "DE (D and E not distinguished)"
+    },
+    "nrs_lowercase": {
+      "a": "A",
+      "b": "B",
+      "c1": "C1",
+      "c2": "C2",
+      "d": "D",
+      "e": "E"
+    }
+  }
+}
