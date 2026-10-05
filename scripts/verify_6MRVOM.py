@@ -98,7 +98,9 @@ def load_weights() -> pd.DataFrame:
 def check_eu_share() -> list[str]:
     bad: list[str] = []
     if not EU_SHARE_PARQUET.exists():
-        raise SystemExit(f"{EU_SHARE_PARQUET} not found — run `uv run mmds build recipes/6MRVOM_eu_share.yaml` first")
+        raise SystemExit(
+            f"{EU_SHARE_PARQUET} not found — run `uv run mmds build recipes/6MRVOM_eu_share.yaml` first"
+        )
     rows = pd.read_parquet(EU_SHARE_PARQUET)
     weights = load_weights()
     merged = rows.merge(weights, on="participant_id", how="left", validate="one_to_one")
@@ -120,7 +122,9 @@ def check_eu_share() -> list[str]:
     print(f"  N = {len(merged):,} (expected 2,397: 1,183 Q5T + 1,214 Q5)")
     print(f"  overall weighted mean  {overall:.5f}  (analysis.R: {PUBLISHED_OVERALL}, n={n_all})")
     print(f"  Information (Q5T)      {info:.5f}  (analysis.R: {PUBLISHED_INFO}, n={n_info})")
-    print(f"  Control (Q5)           {control:.5f}  (analysis.R: {PUBLISHED_CONTROL}, n={n_control})")
+    print(
+        f"  Control (Q5)           {control:.5f}  (analysis.R: {PUBLISHED_CONTROL}, n={n_control})"
+    )
 
     if len(merged) != 2397:
         bad.append(f"eu_share: N={len(merged)}, expected 2397 (1,183 Q5T + 1,214 Q5)")
@@ -134,7 +138,9 @@ def check_eu_share() -> list[str]:
         ("Control (Q5)", control, PUBLISHED_CONTROL, TOLERANCE_GROUP),
     ):
         if abs(got - want) > tol:
-            bad.append(f"eu_share: {label} mean={got:.5f}, analysis.R reports {want} (tolerance {tol})")
+            bad.append(
+                f"eu_share: {label} mean={got:.5f}, analysis.R reports {want} (tolerance {tol})"
+            )
     return bad
 
 
@@ -149,6 +155,15 @@ OUTCOME_VARS = {
 ARM_TO_CONDITION_NUM = {1: 0, 2: 1}
 
 
+# Code 12 "Don't know" on the party item (Q6_1/Q6_2) is EXCLUDED here, on the
+# raw/reference side, per the 2026-10-05 ruling recorded in
+# 6MRVOM_brexit_scenario.yaml's notes: it is dropped as a non-answer, the same
+# footing as every other don't-know code in this corpus, not kept as a
+# genuine response. The reference distribution must exclude it too, or this
+# check would simply fail against the (correctly) narrower built parquet.
+PARTY_DONT_KNOW_CODE = 12
+
+
 def raw_distribution() -> dict[tuple[int, int, int], int]:
     """(condition_num, task_num, response) -> count, computed straight from data.sav."""
     df, _meta = pyreadstat.read_sav(str(RAW_SAV))
@@ -161,8 +176,23 @@ def raw_distribution() -> dict[tuple[int, int, int], int]:
             code = int(value)
             if code in (98, 99, 998, 999):
                 continue
+            if task == 0 and code == PARTY_DONT_KNOW_CODE:
+                continue
             out[(cond_num, task, code)] = out.get((cond_num, task, code), 0) + int(count)
     return out
+
+
+def raw_party_dont_know_counts() -> dict[int, int]:
+    """arm (1, 2) -> raw count of code-12 'Don't know' on Q6_1/Q6_2, for the
+    positive exclusion assertion below — computed independently of
+    `raw_distribution`'s own filtering, so a bug in one cannot hide in the
+    other."""
+    df, _meta = pyreadstat.read_sav(str(RAW_SAV))
+    return {
+        arm: int((df.loc[df["ExpSplitQ67"] == arm, var] == PARTY_DONT_KNOW_CODE).sum())
+        for (arm, task), var in OUTCOME_VARS.items()
+        if task == 0
+    }
 
 
 def built_distribution(rows: pd.DataFrame) -> dict[tuple[int, int, int], int]:
@@ -202,19 +232,61 @@ def check_brexit_scenario() -> list[str]:
     else:
         print(f"  MATCH — all {len(want)} (condition, task, response) cells agree exactly.")
 
-    if len(rows) != 7272:
-        bad.append(f"brexit_scenario: N={len(rows)}, expected 7272 (3,636 respondents x 2 outcomes)")
+    if len(rows) != 6526:
+        bad.append(
+            f"brexit_scenario: N={len(rows)}, expected 6526 (2,890 party + 3,636 satisfaction)"
+        )
     else:
-        print(f"  N = {len(rows):,} (expected 7,272: 3,636 respondents x 2 outcomes). Match.")
+        print(f"  N = {len(rows):,} (expected 6,526: 2,890 party + 3,636 satisfaction). Match.")
 
+    # --- Positive assertion that code 12 "Don't know" is EXCLUDED, not just
+    # incidentally absent because it happened to match the mechanical check
+    # above. A check that only compares distributions could pass by accident
+    # if both sides quietly dropped 12 the same way; this asserts the drop
+    # against the raw counts directly, so it would fail if the recipe ever
+    # stopped dropping it, or if it dropped the wrong number of rows.
     party = rows[rows["task_num"] == 0]
-    dk_rows = int((party["response_num"] == 12).sum())
+    satisfaction = rows[rows["task_num"] == 1]
+    dk_in_built = int((party["response_num"] == 12).sum())
+    if dk_in_built:
+        bad.append(
+            f"brexit_scenario: {dk_in_built} built party-choice rows carry response_num=12 "
+            "'Don't know' — the 2026-10-05 ruling requires this code to be EXCLUDED, not kept"
+        )
+
+    raw_dk = raw_party_dont_know_counts()
+    expected_dk = {1: 325, 2: 421}
+    if raw_dk != expected_dk:
+        bad.append(
+            f"brexit_scenario: raw code-12 counts are {raw_dk}, expected {expected_dk} "
+            "(325 on Q6_1/scenario 1, 421 on Q6_2/scenario 2) — the ruling's own "
+            "arithmetic no longer matches the file"
+        )
+    total_dk = sum(raw_dk.values())
     print(
-        f"  party-choice N={len(party):,} includes {dk_rows:,} 'Don't know' (code 12) rows, "
-        "kept as a genuine response — see recipe notes for the judgement."
+        f"  code 12 'Don't know' on the party item: {total_dk:,} raw occurrences "
+        f"({raw_dk.get(1, 0):,} scenario 1 + {raw_dk.get(2, 0):,} scenario 2), "
+        f"EXCLUDED from the build per the 2026-10-05 ruling — confirmed {dk_in_built} "
+        "such rows in the built parquet."
     )
-    if len(party) != 3636:
-        bad.append(f"brexit_scenario: party-choice N={len(party)}, expected 3636 (12 kept as a response)")
+
+    if len(party) != 2890:
+        bad.append(
+            f"brexit_scenario: party-choice N={len(party)}, expected 2890 (12 'Don't know' dropped)"
+        )
+    else:
+        print(
+            f"  party-choice N = {len(party):,} (expected 2,890: 3,636 - 746 'Don't know'). Match."
+        )
+
+    if len(satisfaction) != 3636:
+        bad.append(
+            f"brexit_scenario: satisfaction N={len(satisfaction)}, expected 3636 (untouched by the ruling)"
+        )
+    else:
+        print(
+            f"  satisfaction N = {len(satisfaction):,} (expected 3,636, untouched by the ruling). Match."
+        )
 
     return bad
 

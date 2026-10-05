@@ -6,9 +6,9 @@
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse | 11 | 124,885 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse | 11 | 124,139 | **yes, CC0 1.0** |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **39** | **408,820** | |
+| **Total** | **39** | **408,074** | |
 
 ---
 
@@ -114,9 +114,9 @@ Respondents are told to imagine they have won a substantial lottery prize, or to
 Respondents are told the government will, after Brexit, either keep immigration at roughly current levels or only cut it a little while shifting its source from Europe to beyond Europe. Two outcomes under whichever scenario they met: which party they would support in the next general election, and how satisfied they would feel about the Brexit decision. Tests whether the SOURCE of post-Brexit immigration, not just its level, moves party support and Brexit satisfaction.
 
 - **Source** — Harvard Dataverse, `doi:10.7910/DVN/6MRVOM`
-- **Type** — two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (12-level nominal party choice, 0-10 satisfaction)
+- **Type** — two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (11-level nominal party choice, code 12 'Don't know' dropped per the 2026-10-05 ruling; 0-10 satisfaction)
 - **Category** — political preferences/policy
-- **Rows** — 7,272 from 3,636 respondents
+- **Rows** — 6,526 from 3,636 respondents
 - **Licence** — >-
 - **Verified against** — no author-computed or published reference exists for this block (checked analysis.R and the full 24-page accepted manuscript); scripts/verify_6MRVOM.py instead confirms the built distribution matches data.sav's own frequency tables exactly, cell for cell
 
@@ -209,7 +209,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 1 | 6 | 95,879 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 5 | 0 | 72,570 |
+| political preferences/policy | 5 | 0 | 71,824 |
 | survey methodology | 0 | 5 | 51,701 |
 | work/family/gender | 0 | 8 | 88,127 |
 

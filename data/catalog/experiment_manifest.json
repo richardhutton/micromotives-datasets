@@ -42,7 +42,7 @@
     "6MRVOM_brexit_scenario": {
       "category": "political preferences/policy",
       "description": "Respondents are told the government will, after Brexit, either keep immigration at roughly current levels or only cut it a little while shifting its source from Europe to beyond Europe. Two outcomes under whichever scenario they met: which party they would support in the next general election, and how satisfied they would feel about the Brexit decision. Tests whether the SOURCE of post-Brexit immigration, not just its level, moves party support and Brexit satisfaction.",
-      "design": "two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (12-level nominal party choice, 0-10 satisfaction)",
+      "design": "two-condition between-subject (post-Brexit immigration scenario), 2 outcomes per respondent (11-level nominal party choice, code 12 'Don't know' dropped per the 2026-10-05 ruling; 0-10 satisfaction)",
       "verified_against": "no author-computed or published reference exists for this block (checked analysis.R and the full 24-page accepted manuscript); scripts/verify_6MRVOM.py instead confirms the built distribution matches data.sav's own frequency tables exactly, cell for cell"
     },
     "6MRVOM_eu_share": {

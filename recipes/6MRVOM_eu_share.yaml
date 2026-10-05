@@ -217,6 +217,70 @@ notes: |-
   clustering) — confirmed by reproducing the identical figures directly from
   `data.sav` before the recipe was written, independently of the parquet.
 
+  THE 37% / 50% DISCREPANCY — THE PAPER'S OWN APPENDIX DISAGREES WITH THE
+  FIELDED QUESTIONNAIRE, AND THIS WAS CHECKED EMPIRICALLY RATHER THAN LEFT
+  AS A STANDOFF
+
+  The published accepted manuscript's Appendix D "Question Wordings"
+  (researchonline.lse.ac.uk/103268, p.22 of the PDF) gives the treatment
+  stimulus as "Currently 37% of all immigrants to the UK are from the EU",
+  not the 50% this recipe quotes above. Per `docs/CONVENTIONS.md` "Source
+  authority", the fielded questionnaire (confirmed against `questionnaire.docx`
+  directly, lines ~131-154, quoted in full above) is the only authority on
+  stimulus wording and the paper's appendix never is — so this recipe's 50%
+  text is correct and is NOT changed by this note. But the conflict is also
+  resolvable empirically, independent of which document CONVENTIONS prefers,
+  and that evidence belongs on the record so a future reader who opens
+  Appendix D does not hit the same scare with nothing written down.
+
+  Respondents anchor on the number they are shown: if 50% was really fielded,
+  the Q5T (treatment) arm should show an excess of respondents answering
+  exactly "50" relative to the Q5 (control) arm, which saw no number at all;
+  if 37% was fielded instead, the excess should sit at "37". Reproduced
+  directly from `data.sav`, splitting by the `starttime` interview date (four
+  fielding days: 26 Apr, 27 Apr, 2 May, 3 May 2017 — the two YouGov Omnibus
+  waves each ran over two calendar days), counting raw `Q5T`/`Q5` values
+  (997/998/999 sentinels excluded from the denominator, matching the recode
+  above):
+
+    date        Q5T (treatment) at 50   Q5 (control) at 50   Q5T at 37   Q5 at 37
+    2017-04-26  106/684 = 15.5%         72/695  = 10.4%       3           2
+    2017-04-27   15/129 = 11.6%         15/146  = 10.3%       1           1
+    2017-05-02  104/854 = 12.2%         93/853  = 10.9%       0           1
+    2017-05-03   18/133 = 13.5%         13/142  =  9.2%       0           0
+
+  (Independently recomputed by this agent, not copied from the checker's
+  report — matches the checker's figures to the first decimal on every one
+  of the eight percentages.) Every one of the four days shows the same
+  pattern: a consistent several-point excess of exact-50 answers in the
+  treatment arm over control, on every single fielding day with no
+  exception. There is NO corresponding heap at 37 in either arm on any day —
+  counts of 0-3, indistinguishable between treatment and control, i.e. no
+  anchoring signature at all at that value. An anchoring effect this
+  reliable, present on every day and absent for the other candidate number,
+  is exactly the signature of respondents answering a question that actually
+  told them "50%" — survey respondents round toward a number they were just
+  shown, not toward a number they were not. This is independent evidence,
+  from the response distribution itself, that 50% is what respondents
+  actually saw, and it corroborates the questionnaire text rather than the
+  appendix.
+
+  LIKELY EXPLANATION FOR THE DISCREPANCY: the paper's Appendix D appears
+  stale, carrying an earlier framing from the deposit's own government
+  statistic rather than the number that was actually fielded. The deposit's
+  own materials point to a real baseline of roughly 3 million EU-born
+  immigrants of a total of roughly 5 million+3 million non-UK-born
+  residents, i.e. 3m of (3m+5m) ≈ 37.5% — almost exactly the appendix's 37%.
+  The most plausible account is that an earlier draft of the stimulus used
+  this government figure (≈37.5%, rounded to 37%) and the appendix still
+  carries it, while the figure was simplified to a round, easier-to-process
+  "50%" before fielding (and the fielded instrument and the response data
+  agree on 50% being what was shown). This is offered as the likely
+  explanation, not a proven provenance trail — nothing in the deposit
+  documents the drafting history directly — but it is consistent with
+  every piece of evidence available: the questionnaire text, the data's own
+  anchoring pattern, and the appendix's otherwise-odd choice of 37%.
+
   RISKIEST JUDGEMENT: the condition/outcome SPLIT POINT. The source prints
   stimulus and question as one unbroken paragraph with no structural marker
   between them; I split at the question's own sentence boundary (the brief's

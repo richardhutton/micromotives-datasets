@@ -201,7 +201,7 @@
       "doi": null
     },
     "status": "built",
-    "status_reason": "BUILT 5 Oct 2026 as TWO recipes, ExpSplitQ5 (recipes/6MRVOM_eu_share.yaml, 2,397 rows) and ExpSplitQ67 (recipes/6MRVOM_brexit_scenario.yaml, 7,272 rows) — both are plain discrete-integer outcomes (0-100 and 1-12/0-10) and the earlier note above calling this blocked on a continuous-slider schema gap was wrong about THOSE two; it describes ExpSplit2A, the paper's own main cost-framing experiment, which routes to a genuine 0-165,000 net-migration slider and remains UNBUILT pending a decision from the project owner (see recipes/6MRVOM_eu_share.yaml notes, 'THREE SEPARATE RANDOMISATIONS'). So this deposit is 'built' for two of its three independent randomisations, not fully built.",
+    "status_reason": "BUILT 5 Oct 2026 as TWO recipes, ExpSplitQ5 (recipes/6MRVOM_eu_share.yaml, 2,397 rows) and ExpSplitQ67 (recipes/6MRVOM_brexit_scenario.yaml, 6,526 rows after a 2026-10-05 ruling dropped code 12 'Don't know' from the party-choice outcome, 2,890 party + 3,636 satisfaction; originally built at 7,272 with code 12 kept) — both are plain discrete-integer outcomes (0-100 and 1-11/0-10) and the earlier note above calling this blocked on a continuous-slider schema gap was wrong about THOSE two; it describes ExpSplit2A, the paper's own main cost-framing experiment, which routes to a genuine 0-165,000 net-migration slider and remains UNBUILT pending a decision from the project owner (see recipes/6MRVOM_eu_share.yaml notes, 'THREE SEPARATE RANDOMISATIONS'). So this deposit is 'built' for two of its three independent randomisations, not fully built.",
     "title": "Pricing Immigration"
   },
   "EFXNLX": {

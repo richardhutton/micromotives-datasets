@@ -76,7 +76,10 @@ notes: |-
 
   ROW SHAPE: one row per (respondent, outcome item) — 2 rows per respondent,
   since every respondent answered both Q6 and Q7 under whichever scenario they
-  were routed to. Expected 3,636 x 2 = 7,272.
+  were routed to. Before the code-12 ruling below this was 3,636 x 2 = 7,272;
+  after it, party choice drops 746 "Don't know" rows (code 12 on `Q6_1`/
+  `Q6_2`) and the total is 2,890 + 3,636 = 6,526. See the ruling note below for
+  the reasoning and the exact count reconciliation.
 
   VERIFIED DIRECTLY AGAINST THE FILE — NO 997 (OR ANY OTHER UNDECLARED CODE)
   IN THIS BLOCK, UNLIKE THE SIBLING RECIPE
@@ -103,31 +106,59 @@ notes: |-
   dissatisfied" ... "10 - Very satisfied") with no +1 shift, unlike
   `polAttention` in the sibling recipe.
 
-  THE ONE JUDGEMENT CALL THIS BLOCK DOES REQUIRE: CODE 12 "DON'T KNOW" ON THE
-  PARTY ITEM
+  RULING (2026-10-05): CODE 12 "DON'T KNOW" ON THE PARTY ITEM IS DROPPED
 
   `Q6_1`/`Q6_2` offer "Don't know" as the explicit 12th radio-button option,
   printed in the questionnaire alongside the other 11 and carrying no special
-  scripting (contrast the slider's separate "Not sure" CHECKBOX in the eu_share
-  recipe, which sits outside the 0-100 scale entirely as code 997). This is
-  KEPT as a genuine response, not dropped as a non-answer, for three reasons:
-  (1) it is offered on exactly the same footing as "Would not vote" (code 11),
-  which nobody would argue to drop — both describe a real respondent state
-  under a hypothetical scenario, not a failure to engage with the instrument;
-  (2) dropping it would be inconsistent with every other enumerated-list
-  "Don't know" option kept elsewhere in this corpus whenever it sits inside the
-  substantive option list rather than behind a separate escape hatch; (3) it
-  reconciles the row count exactly — keeping it gives 1,786+1,850=3,636 valid
-  party-choice rows (matching q71l/q72l's unconditional 3,636), for 7,272
-  total; dropping it would cost 746 rows (325 on Q6_1, 421 on Q6_2) and leave
-  the two outcomes at different, un-reconciled Ns for no principled reason tied
-  to the row FORMAT. This is a judgement call, not forced by the schema or by
-  CLAUDE.md's general "drop missing/don't-know codes" rule, which is written
-  with an escape-hatch sentinel in mind (a slider's checkbox, a panel's
-  "Prefer not to say") rather than a labelled option inside a closed list a
-  respondent actively selected. A checker who reads CLAUDE.md's rule literally
-  could reasonably drop code 12 instead; see the maker's report for why this
-  is named as the single riskiest call in both recipes.
+  scripting (contrast the slider's separate "Not sure" CHECKBOX in the
+  eu_share recipe, which sits outside the 0-100 scale entirely as code 997).
+  The maker who built this recipe KEPT code 12 as a valid response, arguing it
+  sits on the same footing as code 11 "Would not vote". An independent
+  checker disagreed, and the ruling is to drop it. The reasoning:
+
+  - CLAUDE.md's "Never fabricate" section is explicit: "Never impute missing
+    responses. Drop missing/don't-know codes." That rule carries no exception
+    for how an option happens to be laid out on screen — it is written at the
+    level of what a code MEANS, not how it is presented.
+  - The maker's argument conflated presentation with substance. "Would not
+    vote" (code 11) is an affirmative behavioural prediction: abstention is a
+    real, determinate stance under the hypothetical scenario, and a model can
+    be right or wrong about predicting it. "Don't know" (code 12) asserts NO
+    stance at all — it is the respondent declining to answer the question,
+    exactly like every other don't-know code dropped elsewhere in this
+    corpus. Sitting at equal visual weight in the same radio list does not
+    make the two the same KIND of thing; one is a response, the other is the
+    absence of one.
+  - The nearest same-corpus precedent points the other way. `recipes/
+    LOGVPZ_brexit_satisfaction.yaml` has an almost identically shaped trap — an
+    unlabelled-as-such 12th code, "Don't know", tacked onto an otherwise
+    1-11 scale on a Brexit-outcome item — and that recipe drops it
+    (`response_recode` lists 1-11 and omits 12; `missing_codes: [12]`),
+    following the authors' own `1-master.do`, which recodes code 12 to
+    missing before combining arms. This recipe should not diverge from that
+    precedent on the strength of a layout argument alone.
+  - The maker's own tie-breaker — that keeping code 12 makes the row count
+    reconcile to a round 7,272 (3,636 x 2) — was non-principled by the
+    maker's own admission ("for no principled reason tied to the row
+    FORMAT" in the original note). A target row count is not an argument for
+    what a code means; it is a consequence that should follow FROM the right
+    answer, not steer it.
+
+  Code 11 "Would not vote" IS KEPT, and that is the distinction doing the
+  work in this ruling: it is an affirmative prediction about behaviour under
+  the hypothetical scenario (the respondent would not cast a vote), not a
+  non-answer, so CLAUDE.md's drop-missing/don't-know rule does not reach it.
+  Code 12 is dropped precisely because it is the thing that rule DOES reach.
+
+  COUNT CHANGE FROM THIS RULING: dropping code 12 costs 746 party-choice rows
+  (325 on `Q6_1`/scenario 1, 421 on `Q6_2`/scenario 2, confirmed directly
+  against `data.sav`: `Q6_1` has 1,786 non-missing responses of which 325 are
+  code 12, leaving 1,461; `Q6_2` has 1,850 of which 421 are code 12, leaving
+  1,429; 1,461+1,429 = 2,890). Party-choice N goes 3,636 -> 2,890. The
+  satisfaction outcome (`q71l`/`q72l`, task 1) is untouched — it was never
+  the subject of this judgement and has no code-12 trap of its own (see
+  "VERIFIED DIRECTLY AGAINST THE FILE" above) — and stays at 3,636. Total
+  row count goes 7,272 -> 6,526 (2,890 + 3,636).
 
   PERSONA — TWO EXCLUSIONS, BOTH RULINGS
 
@@ -194,10 +225,11 @@ notes: |-
   number this project computed itself (which the brief and CLAUDE.md both rule
   out: an answer key we computed and then agreed with is worthless). What the
   script does instead is a MECHANICAL reconciliation: it recomputes, straight
-  from `data.sav`, the per-arm, per-item response distribution (the 1-12 and
-  0-10 frequency tables shown above) and asserts the BUILT parquet's own
-  distribution matches it exactly, cell for cell, plus the 7,272 row count and
-  the three-digit item-level N check above. This is weaker than the
+  from `data.sav`, the per-arm, per-item response distribution (the 1-11 party
+  codes, code 12 excluded per the ruling above, and the 0-10 satisfaction
+  frequency tables) and asserts the BUILT parquet's own distribution matches
+  it exactly, cell for cell, plus the 6,526 row count and the three-digit
+  item-level N check above. This is weaker than the
   `eu_share` check — it proves the melt is faithful to the file, not that the
   file's substantive numbers reproduce a published result, because there is no
   published result to reproduce against. The distinction is stated explicitly
@@ -267,13 +299,14 @@ outcomes:
       means "Scottish National Party (SNP)/ Plaid Cymru"; 6 means "Green"; 7
       means "British National Party (BNP)"; 8 means "Respect"; 9 means
       "Women's Equality Party (WEP)"; 10 means "Some other party"; 11 means
-      "Would not vote"; 12 means "Don't know".
+      "Would not vote".
     scale:
       min: 1
-      max: 12
+      max: 11
       nominal: true
     response_recode:
-      {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12}
+      {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11}
+      # 12 "Don't know" deliberately omitted — see "RULING" in notes above.
 
   - task_num: 1
     question: >-
@@ -288,8 +321,11 @@ outcomes:
       {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
 
 # Study-level fallback; both outcomes declare their own above.
-response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12}
-missing_codes: [98, 99, 998, 999]
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11}
+# 12 is the party item's "Don't know" — dropped per the ruling above, declared
+# here (not only omitted from response_recode) so the drop is an explicit,
+# positive exclusion rather than an incidental "value outside declared scale".
+missing_codes: [12, 98, 99, 998, 999]
 
 persona_map:
   age: age
