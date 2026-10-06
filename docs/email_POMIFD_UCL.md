@@ -1,6 +1,27 @@
 # Email — POMIFD courtesy notice to Jack Blumenau
 
-**Status:** FINAL, for rich to send.
+**Status: SENT 5 Oct 2026. ANSWERED 6 Oct 2026 — permission given.**
+
+> Hi Richard,
+>
+> Of course, very happy for you to use that data. Do let me know how your study
+> turns out!
+>
+> Thanks,
+>
+> Jack
+>
+> *Jack Blumenau, Professor of Political Science, Department of Political
+> Science, University College London*
+
+So the use basis is now **explicit author consent**, not an unanswered courtesy
+notice, and the delete-if-they-object commitment is discharged — there is nothing
+to honour. Recorded in `data/catalog/uk_dataverse_provenance.json`.
+
+Two things that did NOT change. The deposit still carries **no licence**, so
+`redistributable` stays false: he agreed to use, having been told plainly that
+nothing would be redistributed, and that is the footing his yes sits on. And he
+asked to hear how the study turns out, which is worth doing.
 
 Rewritten plainly on rich's instruction: say clearly and simply why we want this data,
 with no jargon he would not want to be asked to explain. "Vignette" and "implementations"
