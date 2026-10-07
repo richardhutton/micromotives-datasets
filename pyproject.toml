@@ -29,6 +29,7 @@ dev = [
     "pandas-stubs>=2.2",
     "types-requests>=2.31",
     "types-pyyaml>=6.0.12",
+    "anthropic>=1.11.0",
 ]
 
 [project.scripts]
