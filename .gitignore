@@ -53,6 +53,12 @@ tmp/
 # Same for any source whose licence forbids redeposit.
 # ---------------------------------------------------------------------------
 data/raw/
+# Person profiles built from UKDS SN 6849. These ARE the licensed microdata,
+# reshaped: one file per person, several hundred of their own survey answers
+# each. Never committed. The scripts that build them live in scripts/ and carry
+# no data; the worked example in EXAMPLE_FULL.md is one real person and is
+# covered by this rule too.
+data/profiles/
 data/processed/*.parquet
 data/processed/*.csv
 !data/processed/.gitkeep
