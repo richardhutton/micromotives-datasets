@@ -240,6 +240,111 @@ class Arm(BaseModel):
     )
 
 
+class Level(BaseModel):
+    """One level of one dimension of a templated factorial condition."""
+
+    level: str = Field(description="Factor level name, for `Arm.factors`.")
+    text: str = Field(description="The clause the respondent read. Verbatim.")
+
+
+class Dimension(BaseModel):
+    """One randomised dimension of a templated factorial condition."""
+
+    var: str = Field(description="Variable holding this dimension's allocated code.")
+    levels: dict[int, Level] = Field(description="Allocated code -> what it said.")
+
+    @model_validator(mode="after")
+    def _non_empty(self) -> Dimension:
+        if not self.levels:
+            raise ValueError(f"dimension on {self.var!r} declares no levels")
+        return self
+
+
+class ConditionTemplate(BaseModel):
+    """A factorial condition declared as a template plus its dimensions.
+
+    For a design whose arms are the full product of several randomised
+    dimensions. Enumerating that product in YAML does not work: IP `9.10`
+    crosses 4 x 3 x 4 x 5 x 2 = 480 arms, and `9xw67` already showed where
+    machine-written arms lead — 455,919 lines, 95% of all recipe text in this
+    repo, which nobody reviewed and nobody could regenerate. The judgment in a
+    factorial design is the dimension list and the clause wording, which is
+    about forty lines; the product is arithmetic, and arithmetic belongs in
+    code.
+
+    `condition_num` is an odometer over `dimensions` in declared order, each
+    dimension's levels in ascending code order, the LAST dimension moving
+    fastest. Declared here rather than per arm, which is the one place rule 2
+    ("the condition mapping is declared, never inferred") is satisfied by a rule
+    instead of a table: the rule is reviewable in a way 480 numbers are not, and
+    it means the same thing in every wave that reuses the template.
+    """
+
+    text: str = Field(
+        description="The stimulus with one `{dimension}` placeholder per dimension, which "
+        "is where that dimension's clause goes. Everything outside the placeholders is "
+        "fixed wording and is verbatim."
+    )
+    dimensions: dict[str, Dimension] = Field(
+        description="Dimension name -> its variable and levels, in the order "
+        "`condition_num` counts them."
+    )
+
+    @model_validator(mode="after")
+    def _placeholders_match(self) -> ConditionTemplate:
+        found = set(re.findall(r"\{(\w+)\}", self.text))
+        declared = set(self.dimensions)
+        if found != declared:
+            raise ValueError(
+                f"template placeholders {sorted(found)} do not match declared dimensions "
+                f"{sorted(declared)} — a dimension with no placeholder would be randomised "
+                "but never shown, and a placeholder with no dimension would ship as "
+                "literal braces into the corpus"
+            )
+        for name in declared:
+            if self.text.count(f"{{{name}}}") != 1:
+                raise ValueError(f"dimension {name!r} appears more than once in the template")
+        if len({d.var for d in self.dimensions.values()}) != len(self.dimensions):
+            raise ValueError("two dimensions share one variable — their levels would collide")
+        return self
+
+    @property
+    def names(self) -> list[str]:
+        """Dimension names, in the order `condition_num` counts them."""
+        return list(self.dimensions)
+
+    @property
+    def variables(self) -> list[str]:
+        """The allocation variables, in dimension order."""
+        return [d.var for d in self.dimensions.values()]
+
+    def cells(self) -> list[dict[str, int]]:
+        """Every cell of the product, as {dimension: code}, in odometer order."""
+        out: list[dict[str, int]] = [{}]
+        for name in self.names:
+            codes = sorted(self.dimensions[name].levels)
+            out = [cell | {name: code} for cell in out for code in codes]
+        return out
+
+    def expand(self) -> list[Arm]:
+        """The product, as arms. One arm per cell, `condition_num` its index."""
+        arms: list[Arm] = []
+        for num, cell in enumerate(self.cells()):
+            levels = {name: self.dimensions[name].levels[cell[name]] for name in self.names}
+            text = self.text
+            for name, level in levels.items():
+                text = text.replace(f"{{{name}}}", level.text)
+            arms.append(
+                Arm(
+                    raw_values={self.dimensions[n].var: cell[n] for n in self.names},
+                    condition_num=num,
+                    factors={n: levels[n].level for n in self.names},
+                    text=text,
+                )
+            )
+        return arms
+
+
 class Condition(BaseModel):
     """The experimental manipulation."""
 
@@ -267,7 +372,16 @@ class Condition(BaseModel):
         "undeclared-assignment screen for that variable, and records the judgment "
         "rather than leaving it implicit.",
     )
-    arms: list[Arm]
+    arms: list[Arm] = Field(
+        default_factory=list,
+        description="The arms, written out. Omit when `template` declares a factorial "
+        "to expand instead; exactly one of the two is required.",
+    )
+    template: ConditionTemplate | None = Field(
+        default=None,
+        description="A factorial declared as a template plus its dimensions, expanded into "
+        "`arms` on load. Use instead of `arms`, never alongside.",
+    )
 
     not_asked_code: int | None = Field(
         default=None,
@@ -303,6 +417,37 @@ class Condition(BaseModel):
         "numbering is the instrument's, not ours -- the deposit's screenshots show 1-6 "
         "down the left of the fielded table.",
     )
+
+    @model_validator(mode="after")
+    def _expand_template(self) -> Condition:
+        """Turn a declared template into arms, and check nothing contradicts it."""
+        if self.template is None:
+            if not self.arms:
+                raise ValueError("condition declares neither `arms` nor `template`")
+            return self
+        if self.arms:
+            raise ValueError(
+                "condition declares both `arms` and `template` — the expansion would "
+                "silently replace the written arms, so say which one is meant"
+            )
+        declared = self.template.variables
+        if self.source_var is not None:
+            raise ValueError("a templated condition is factorial; use `source_vars`, not one var")
+        if self.source_vars and self.source_vars != declared:
+            raise ValueError(
+                f"source_vars {self.source_vars} do not match the template's variables "
+                f"{declared} in the same order — `by_raw` keys arms on that order, so a "
+                "mismatch would look up the wrong cell rather than fail"
+            )
+        if self.factors and self.factors != self.template.names:
+            raise ValueError(
+                f"factors {self.factors} do not match the template's dimensions "
+                f"{self.template.names} in the same order"
+            )
+        self.source_vars = declared
+        self.factors = self.template.names
+        self.arms = self.template.expand()
+        return self
 
     @staticmethod
     def reorder_lines(text: str, positions: list[int]) -> str:
@@ -468,6 +613,15 @@ class Recipe(BaseModel):
         default=True,
         description="False when SocSci210 reconstructed a different scope for this study "
         "(a subset of arms, or arms merged), so a numeric crosscheck is meaningless.",
+    )
+    participant_id_var: str | None = Field(
+        default=None,
+        description="Column holding each respondent's identifier, used in place of the "
+        "row index. For a PANEL, where the same person answers in several waves and each "
+        "wave is its own file: the row index makes them two unrelated participants, and "
+        "the wave-on-wave link is the whole reason a panel is worth building. Must NOT be "
+        "the archive's own person identifier where that identifier links to further "
+        "licensed data — IP 6849 stores a hash of `pidp`, never `pidp`.",
     )
 
     condition: Condition

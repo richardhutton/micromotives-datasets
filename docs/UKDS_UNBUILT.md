@@ -176,7 +176,7 @@ This Wave 4 experiment examines priming effects that impact on the respondent’
 waves 5, 6  
 In Waves 5 and 6 respondents evaluated a set of vignettes related to the sharing of domestic work. The hypothetical arrangements varied along five dimensions: (1) paid work; (2) earnings; (3) presence of children; (4) housework allocations; and (5) use of paid help.
 
-*Assessed:* respondents rate a described couple, not themselves
+*Assessed:* respondents imagine themselves in the arrangement and rate their own satisfaction
 
 **`9.23` Non-resident parents and reasons for separation**  
 wave 10  

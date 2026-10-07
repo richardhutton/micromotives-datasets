@@ -1,0 +1,245 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.10: measuring satisfaction with
+  the division of household labour (wave 5)"
+data_file: vig_housework_w5-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: vig_housework_w5
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.10 in the Innovation Panel User Guide; fielded in waves 5 (2012) and
+  6 (2013). This recipe is wave 5; `ukds_6849_vig_housework_w6.yaml` is wave 6, and
+  the two are identical apart from `data_file` and `experiment`.
+
+  THE CONDITION TEXT IS THE QUESTIONNAIRE'S, NOT THE DATA FILE'S. Every clause in
+  the template below is word-for-word from `6849_ip_wave_5_questionnaires.pdf`,
+  module `Scavignettes_ip5`, items VIGintro and VIG1-3 (extracted with
+  `pdftotext -layout`). The wave 6 specification carries the same text character
+  for character, which is why one template serves both waves.
+
+  The archived value labels could not have been used for this. Three are wrong or
+  unusable:
+
+    - `ff_children = 2` is labelled "one children age 6"; the questionnaire says
+      "one child aged 6 months". Six years and six months are different scenarios.
+    - `ff_housework = 2` ("your partner does three quarters ... you do one quarter")
+      and `ff_housework = 4` ("your partner does one quarter ... you do three
+      quarters") carry the SAME label, "partner 1/4". A builder trusting the labels
+      would render opposite arrangements identically and the housework dimension —
+      the one the study is about — would silently collapse.
+    - `ff_paid_housework = 2` is labelled "o paid work", a truncation of "no paid
+      work" that reads as its opposite.
+
+  Also `vig1`'s code 7 is labelled "Completely satisfied@/" in the file: "@/" is a
+  Blaise line-break directive that leaked into the archived label.
+
+  ALLOCATION IS AT HOUSEHOLD LEVEL, AND SPREAD OVER TWO FILES. The five dimensions
+  live in `e_hhsamp_ip`, joined to the person on `e_hidp`. Four of them are also
+  copied into `e_indresp_ip` but paid help is not, so the household file is the only
+  complete source. `scripts/gen_ip_vig_housework.py` does that join, strips the wave
+  prefix, and writes `data_file`; its `--check` compares the two copies of the four
+  duplicated dimensions across 23,880 comparisons and they agree exactly, which is
+  the evidence that the join is not scrambling who saw what. Wave 6's indresp carries
+  no copy, so no such check is possible there.
+
+  Two people in the same household saw IDENTICAL scenarios. That is the design, and
+  it is the most useful structure in the study: same condition, two people, two
+  different answers. In the first twenty rows a woman of 48 and a man of 58 in one
+  household rate the same three scenarios and he is satisfied where she is not.
+
+  WITHIN-SUBJECT. Each respondent rated three scenarios drawn without replacement
+  from the 480 cells — verified: 0 of 3,156 people who answered all three got the
+  same cell twice. So the arm varies within respondent and each outcome names its own
+  allocation variables through `condition_vars`, the mechanism `b87sm` needed for the
+  same reason.
+
+  `person` is a hash of `pidp`, written by the generator. `pidp` itself is never
+  stored: it is the Understanding Society person identifier and links to the whole
+  study. The hash matches `scripts/build_profiles.py`, so a row here resolves to that
+  person's profile, and it is stable across waves, which is what makes the wave-on-wave
+  comparison possible.
+
+  WHAT THE PERSONA CANNOT CARRY. Neither wave's `indresp` holds `tenure_dv`, a
+  household-size variable or a net income variable, so housing, household size and
+  income are unavailable. `own_children_in_household` is kept as an extra because it
+  bears directly on the condition: a person rating "one child aged 6 months" who has
+  a baby at home is not answering the same question as one who has none.
+
+  THE SAME PEOPLE SAW THE SAME SCENARIOS AGAIN A YEAR LATER, AND THIS IS THE
+  MOST IMPORTANT FACT ABOUT THE STUDY. The User Guide states that "the exact
+  allocation at Wave 5 was replicated at Wave 6", and it is true: of the 1,849
+  people present in both waves, 27,696 of 27,705 allocation cells are identical.
+  So a returning respondent rated the SAME three arrangements in 2012 and in
+  2013. Two consequences, and neither is optional reading:
+
+  1. **It measures the ceiling.** Same person, same scenario, one year apart,
+     3,621 pairs: the answer is IDENTICAL only 27.7% of the time, within one
+     point 57.5% of the time, mean absolute change 1.59 points on a 1-7 scale,
+     correlation 0.329. Against a chance baseline of 14.8% (matching the
+     marginal) and 19.4% (always answering the modal "Neither"), the usable band
+     for any predictor on exact match is roughly 19% to 28% — and the top of it
+     is set by people disagreeing with THEMSELVES, not by the model. A predictor
+     scoring 30% here has not beaten the humans; it has overfitted something.
+  2. **The two waves are NOT independent rows.** Pooled, the two parquets are
+     9,631 rows but only 6,010 distinct (person, cell) pairs: 3,621 rows repeat a
+     person-and-scenario the other wave already contains. Pooling them as if
+     independent inflates n by 60% on the overlap and double-counts the
+     condition. They are built as separate experiments for exactly this reason,
+     and anything that concatenates them should either keep one wave or treat the
+     pair as repeated measures.
+
+  ONE THING A CONSUMER SHOULD KNOW. 32% of respondents gave the same answer to all
+  three scenarios (481 of 1,491 in wave 5, 521 of 1,667 in wave 6). They contribute
+  no within-person variation. The rows are kept — a flat response is a response — but
+  an analysis of how the dimensions move a person's rating should say what it does
+  with them.
+
+condition:
+  shared_context: |-
+    We are interested in the way people feel about how couples share housework. You will be
+    asked about three different scenarios, each describing an imaginary situation relating to
+    different work arrangements between couples. In some of the situations the couple may have
+    children. In these cases you should assume that both partners are involved in their
+    day-to-day care, and that both are happy with the amount of time they spend with their
+    children. We are really only interested in knowing how you feel about the way housework is
+    shared. There are no right or wrong answers!
+
+  # 4 x 3 x 4 x 5 x 2 = 480 arms, every one of which occurs in the data (6 to 39
+  # rows each). `condition_num` is an odometer over these dimensions in this order,
+  # paid_help moving fastest — declared by the template, so it means the same thing
+  # in wave 6.
+  template:
+    text: >-
+      Imagine that you are married or cohabiting, {paid_work} {earnings} You have
+      {children} {housework} {paid_help}
+    dimensions:
+      paid_work:
+        var: ff_paid_work1
+        levels:
+          1:
+            level: both_full_time
+            text: "you and your partner both have full time jobs,"
+          2:
+            level: both_part_time
+            text: "you and your partner have part time jobs and both of you work 2 and a
+              half days per week,"
+          3:
+            level: r_full_partner_part
+            text: "you and your partner both have jobs, you work full time while your
+              partner works 2 and a half days per week,"
+          4:
+            level: r_part_partner_full
+            text: "you and your partner both have jobs, your partner works full time while
+              you work 2 and a half days per week,"
+      earnings:
+        var: ff_earnings1
+        levels:
+          1:
+            level: partner_paid_double
+            text: "and your partner's hourly pay is twice as high as yours."
+          2:
+            level: r_paid_double
+            text: "and your hourly pay is twice as high as your partner's."
+          3:
+            level: equal_pay
+            text: "and your hourly pay is approximately the same as your partner's."
+      children:
+        var: ff_children1
+        levels:
+          1: {level: none, text: "no children,"}
+          2: {level: age_6_months, text: "one child aged 6 months,"}
+          3: {level: age_5, text: "one child aged 5 years,"}
+          4: {level: age_15, text: "one child aged 15 years,"}
+      housework:
+        var: ff_housework1
+        levels:
+          1:
+            level: partner_all
+            text: "your partner does all of the housework while you do none of it,"
+          2:
+            level: partner_three_quarters
+            text: "your partner does three quarters of the housework while you do one
+              quarter of it,"
+          3:
+            level: equal
+            text: "you and your partner share the housework equally,"
+          4:
+            level: partner_one_quarter
+            text: "your partner does one quarter of the housework while you do three
+              quarters of it,"
+          5:
+            level: r_all
+            text: "you do all of the housework while your partner does none of it,"
+      paid_help:
+        var: ff_paid_housework1
+        levels:
+          1:
+            level: paid_help
+            text: "but you employ somebody to help with the housework one morning per week."
+          2:
+            level: no_paid_help
+            text: "and you do not employ anybody to help with the housework."
+
+# Three scenarios per person, each with its own allocation variables. The template's
+# dimensions name the scenario-1 variables, so task 0 needs no override; tasks 1 and 2
+# must list the same five factors in the same order.
+outcomes:
+  - var: vig1
+    task_num: 0
+    question: How satisfied would you say you are with the sharing of housework?
+    scale: &satisfaction
+      min: 1
+      max: 7
+      min_label: Completely dissatisfied
+      mid_label: Neither satisfied nor dissatisfied
+      max_label: Completely satisfied
+  - var: vig2
+    task_num: 1
+    question: How satisfied would you say you are with the sharing of housework?
+    scale: *satisfaction
+    condition_vars: [ff_paid_work2, ff_earnings2, ff_children2, ff_housework2, ff_paid_housework2]
+  - var: vig3
+    task_num: 2
+    question: How satisfied would you say you are with the sharing of housework?
+    scale: *satisfaction
+    condition_vars: [ff_paid_work3, ff_earnings3, ff_children3, ff_housework3, ff_paid_housework3]
+
+# Identity: the questionnaire's 1-7 IS the canonical scale.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+
+# Every negative code in this panel is a non-answer: -9 missing, -8 inapplicable,
+# -7 proxy, -2 refusal, -1 don't know. 99 is the questionnaire's own "I refuse",
+# listed as an option on VIG1-3 and so a real code, not a sentinel the archive added.
+missing_codes: [-9, -8, -7, -2, -1, 99]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

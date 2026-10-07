@@ -223,6 +223,25 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 None if any(_is_blank(c) for c in codes) else [int(float(c)) for c in codes]
             )
 
+        # The respondent's own identifier, where the recipe declares one. A panel
+        # wave is its own file, so the row index would make the same person two
+        # unrelated participants and lose the wave-on-wave link.
+        who_id: str | None = None
+        if recipe.participant_id_var is not None:
+            key = cols.get(recipe.participant_id_var.upper())
+            if key is None:
+                raise ValueError(
+                    f"participant_id_var {recipe.participant_id_var!r} not in data"
+                )
+            raw_id = row[key]
+            if _is_blank(raw_id):
+                raise ValueError(
+                    f"{recipe.study_id}: row {idx} has no {recipe.participant_id_var!r} — "
+                    "an unidentified respondent would silently fall back to the row index "
+                    "and break the panel link for everyone after them"
+                )
+            who_id = str(raw_id).strip()
+
         persona = _persona(ds, row, recipe, cw)
         # Stimulus wording that varies by RESPONDENT, not by arm — a pronoun
         # chosen from the respondent's own recorded sex, say. Resolved per row
@@ -280,7 +299,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 experiment=recipe.experiment,
                 # Namespaced by study: these rows get merged into one corpus, and a
                 # bare row index collapsed 23,464 respondents into 4,010 ids.
-                participant_id=f"{recipe.study_id}:{idx}",
+                participant_id=f"{recipe.study_id}:{who_id if who_id is not None else idx}",
             )
 
     # Checked once the melt has seen every respondent, so the number is the whole

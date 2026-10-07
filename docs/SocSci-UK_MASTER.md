@@ -547,6 +547,65 @@ Three corrections to what this section claimed before the download:
   the Innovation Panel's edge is the time axis (8,078 people, mean 5.09 waves
   each, 216 in all 17) and persona depth.
 
+**FIRST BUILD, 7 Oct 2026: experiment 9.10, waves 5 and 6 — 9,631 rows.**
+`recipes/ukds_6849_vig_housework_w{5,6}.yaml`, both QC PASS. The made-up-scenario
+study on satisfaction with the sharing of housework: five randomised dimensions,
+4 × 3 × 4 × 5 × 2 = 480 cells, all 480 occurring, three scenarios per person drawn
+without replacement. It answers the largest unknown above in the affirmative for
+this experiment — the questionnaire specification (`Scavignettes_ip5`) carries
+every clause word-for-word, and the archived value labels turned out to be not
+merely truncated but WRONG in three places (ledger 119), so building from the PDF
+was not a preference but the only correct route.
+
+Two things the build settled that the desk screen could not:
+
+- **The screen's stated reason was wrong.** It said "respondents rate a described
+  couple, not themselves"; the fielded wording is "Imagine that **you** are
+  married or cohabiting", so the outcome is imagined own satisfaction. Corrected
+  in the catalogue (ledger 120).
+- **Household allocation is an asset, not an obstacle.** Both partners in a couple
+  saw the IDENTICAL three scenarios, so the corpus now holds pairs of rows with
+  the same condition and different answers — the cleanest test there is of whether
+  persona is doing any work, and nothing else in this corpus offers it (ledger 123).
+
+**AND IT MEASURES ITS OWN CEILING — 27.7% (ledger 124).** The User Guide says "the
+exact allocation at Wave 5 was replicated at Wave 6" and it is true: 27,696 of
+27,705 allocation cells are identical for the 1,849 people in both waves, so a
+returning respondent rated the **same three arrangements a year apart**. Across
+those 3,621 pairs the answer is identical only **27.7%** of the time (within one
+point 57.5%, mean absolute change 1.59 on a 1–7 scale, r = 0.329), against chance
+of 14.8% and a modal-class baseline of 19.4%.
+
+**So the usable band on exact match is about 19% to 28%, and the top of it is set
+by people disagreeing with themselves.** Any accuracy figure reported on this
+outcome is uninterpretable without that ceiling printed next to it, and anything
+above ~28% is a bug, not a result. This is the first ceiling in the project
+measured from data rather than borrowed from Park's 0.86, and it is the reason
+this study was worth building first.
+
+Two practical consequences:
+
+- **The two waves are not independent rows.** Pooled they are 9,631 rows but only
+  6,010 distinct (person, cell) pairs. They are built as separate experiments, and
+  anything concatenating them must keep one wave or treat the pair as repeated
+  measures.
+- **No published answer key exists.** The User Guide cites no paper for 9.10, so
+  `verified_against` in the manifest records the design verification it actually
+  has — the replication claim, the household join against wave 5's duplicate copy,
+  cell coverage, marginal balance and two independent row counts — and claims no
+  agreement with any published table.
+
+Two reusable additions came out of it, so the remaining three scenario studies
+(`9.26`, `9.30`, `9.39`) need no new machinery:
+
+- **`Condition.template`** — a factorial declared as a template plus its
+  dimensions, expanded on load. 480 arms from ~40 reviewable lines of YAML,
+  instead of the `9xw67` outcome of 455,919 generated lines nobody reads.
+- **`Recipe.participant_id_var`** — the respondent's own identifier in place of
+  the row index, so one person keeps one id across waves. Without it a panel wave
+  is a separate population and the time axis, the whole reason this source is
+  worth the licence, is unusable.
+
 **Other UK panels / cohorts (forecasting layer, safeguarded on UKDS):**
 UKHLS main study (~40k households, richer than BES on non-political topics);
 birth-cohort studies (NCDS, BCS70, Millennium Cohort, Next Steps); British Social

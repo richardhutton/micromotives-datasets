@@ -102,7 +102,13 @@ JUDGEMENT: dict[str, tuple[str, str, str]] = {
     "9.7": ("question-form", MARGINAL, "the outcome is a preference about survey mode, not a substantive answer"),
     "9.8": ("physical", DROP, "meter readings; no text stimulus"),
     "9.9": ("family-care", BUILD, "context effects in fertility decisions"),
-    "9.10": ("family-care", BUILD, "respondents rate a described couple, not themselves"),
+    # The reason here used to read "respondents rate a described couple, not
+    # themselves". That is wrong, and building the study is what found it: the
+    # questionnaire says "Imagine that YOU are married or cohabiting", so the
+    # respondent is inside the scenario and the outcome is imagined own
+    # satisfaction, not third-party judgement. BUILT — see
+    # recipes/ukds_6849_vig_housework_w{5,6}.yaml.
+    "9.10": ("family-care", BUILD, "respondents imagine themselves in the arrangement and rate their own satisfaction"),
     "9.11": ("work-money", BUILD, "subjective expectations about the returns to higher education"),
     "9.12": ("health", BUILD, "measuring change in self-assessed disability"),
     "9.13": ("work-money", BUILD, "time and risk preference choices"),

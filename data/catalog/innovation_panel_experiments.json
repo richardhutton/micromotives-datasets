@@ -667,7 +667,7 @@
     "category": "family-care",
     "waves": "5, 6",
     "verdict": "build",
-    "reason": "respondents rate a described couple, not themselves",
+    "reason": "respondents imagine themselves in the arrangement and rate their own satisfaction",
     "description": "In Waves 5 and 6 respondents evaluated a set of vignettes related to the sharing of domestic work. The hypothetical arrangements varied along five dimensions: (1) paid work; (2) earnings; (3) presence of children; (4) housework allocations; and (5) use of paid help.",
     "vignette": true,
     "allocation_vars": []
