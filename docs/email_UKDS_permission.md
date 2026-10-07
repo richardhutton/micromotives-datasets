@@ -76,8 +76,10 @@ it is not possible.
 
 - `pidp` and all household identifiers are replaced by a one-way hash and never
   transmitted.
-- The provider's no-training setting, and I will seek zero retention. I can
-  forward their terms if that helps.
+- **The data would not be used to train any model.** My provider (Anthropic)
+  does not train on API inputs unless the customer opts in, and I have not. I
+  can forward their terms, and their retention period for abuse monitoring, if
+  that would help you assess it.
 - One respondent per request. Nothing in bulk, no files uploaded.
 - Nothing published or shared. No derived data leaves my machine.
 
@@ -104,16 +106,27 @@ UKDS registered user
 
 ## Notes for rich, not for sending
 
-**Two things to stand behind before you send:**
+**One thing to stand behind before you send:** "Nothing published or shared."
+True today, and it is what makes the rest credible. If SocSci-UK's plan ever
+changes on that, this email becomes a problem.
 
-1. **The no-training and zero-retention bullet.** Check what your plan actually
-   offers. Anthropic does not train on API inputs by default; zero retention is
-   a separate arrangement and may not be available on a standard account. If it
-   is not, **cut the bullet rather than soften it** — a safeguard you cannot
-   deliver is worse than one you never claimed.
-2. **"Nothing published or shared."** True today, and it is what makes the rest
-   credible. If SocSci-UK's plan ever changes on that, this email becomes a
-   problem.
+**Training vs retention — these are two different things, and the email now says
+only the one that is true.** rich confirmed 7 Oct that Anthropic does not train
+on API data without the customer opting in, and that he has not opted in. So
+no-training is a fact and is stated as one.
+
+An earlier draft also promised to "seek zero retention". That has been removed.
+Zero data retention is a separate contractual arrangement, not the default, and
+is generally not available on a standard account — so it was a safeguard that
+might not have been deliverable, which is worse than one never claimed. Standard
+API requests are retained for a limited period for abuse monitoring. The email
+now offers to forward the provider's terms *including* that retention period,
+which puts the actual number in front of the people whose job it is to judge it,
+rather than having me characterise it.
+
+**If they come back asking for zero retention specifically**, that is a
+reasonable thing for them to want and worth pricing: it is an enterprise
+arrangement. Better to have them ask for it than to have promised it.
 
 **Why the ask got bigger.** The 5 Oct draft asked only to use a local coding
 assistant and promised nothing would go to a hosted service. Narrow asks get
