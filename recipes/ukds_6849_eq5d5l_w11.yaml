@@ -1,0 +1,127 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-5L, asked with or without the EQ-5D-3L earlier (wave 11)"
+data_file: eq5d_w11-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: eq5d5l_w11
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.24 in the Innovation Panel User Guide ("Variations of the EQ-5D
+  questions"); wave 11 (2018) only. The User Guide cites no publication for it.
+  `ukds_6849_eq5d3l_w11.yaml` is the other half: the 3L answers.
+
+  AN ORDER EXPERIMENT, BUILT ON WHAT WAS ASKED BEFORE. `eq5dcond` put the 5L early and
+  the 3L late (1), the 3L early and the 5L late (2), or only the 5L late (3). Built as
+  two experiments, one per form, each conditioned on whether the OTHER form had been
+  asked earlier (ruled by rich, 9 Oct 2026). For this form: arm 1 (5L early) and arm 3 (5L late, alone) are both code 1, "neither form
+  asked before": they differ only in where the module sat, which a row cannot
+  express (docs/CONVENTIONS.md, "Sequence signposting"), so they share one condition.
+  Arm 2 (3L early, then 5L late) is code 2. 70 arm-2 respondents skipped the early
+  self-completion section, so they never saw the 3L before the 5L; "earlier you were
+  asked" would be false for them, and they are excluded (`prior5` = -8).
+  WHAT THE EXCLUSION COSTS, AND WHAT IT BIASES (independent checker): of the 70, only
+  6 answered this form at all, so 30 rows are lost; the rest had declined
+  self-completion and would have produced none. All 70 are face-to-face respondents who
+  declined the EARLY self-completion section. So the "asked earlier" condition holds only
+  respondents who accepted it or were on the web, while the "not asked before" condition
+  also holds face-to-face respondents with no such filter. A selection on something that
+  happened after allocation; small, but a contrast between the two conditions is not
+  purely the treatment. "Interview" in the narration also covers the ~48% who answered
+  on the web.
+  `scripts/gen_ip_eq5d.py` derives `prior5` and merges each item's early and
+  late variables into one, and its `--check` confirms no answer is attributed to an
+  arm that never asked it.
+
+  THE CONDITION IS NARRATED. Code 2 reads "Earlier in the interview you were asked:"
+  followed by the other form's instruction and all five items with their options;
+  code 1 reads "You had not been asked these health questions earlier in the
+  interview." Those two framing sentences, the item-heading colons and the " / "
+  separators are ADDED (docs/CONVENTIONS.md, "Narrating what the respondent did").
+  Every quoted word is from `6849_ip_wave_11_questionnaires.pdf`, modules
+  Scaeq5d3learly/Scaeq5d5learly/Scaeq5d3llate/Scaeq5d5llate_ip11, extracted
+  programmatically; early and late wording is identical for all ten items.
+
+  THE QUESTION LISTS ITS OPTIONS. Each answer is a sentence, and the middle levels
+  ("some" in the 3L; "slight", "moderate", "severe" in the 5L) are the difference
+  this experiment studies, so an instruction naming only the endpoints would hide it
+  (ledger 133). Each question carries its options word-for-word, numbered by their
+  codes. The instruction "Please click the ONE box that best describes your health
+  TODAY." heads the screen in the questionnaire and is repeated on each item. The
+  source's misspelling "Usual Acticities" is kept: words are never normalised.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+  Respondents in arms 1 and 2 answered both forms, so they appear in both experiments.
+
+condition:
+  source_var: prior5
+  considered_and_rejected:
+    prior3: "the exposure code for the other form, which is the sibling experiment
+      ukds_6849_eq5d3l_w11; derived by the same generator, not a second randomisation"
+  factors: [3l_asked_earlier]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {3l_asked_earlier: "no"}
+      text: You had not been asked these health questions earlier in the interview.
+    - raw: 2
+      condition_num: 1
+      factors: {3l_asked_earlier: "yes"}
+      text: "Earlier in the interview you were asked: \"Please click the ONE box that best describes your health TODAY.\" Mobility: \"I have no problems in walking about.\" / \"I have some problems in walking about.\" / \"I am confined to bed.\" Self-Care: \"I have no problems with self-care.\" / \"I have some problems washing or dressing myself.\" / \"I am unable to wash or dress myself.\" Usual Acticities (e.g. work, study, housework, family or leisure activities): \"I have no problems with performing my usual activities.\" / \"I have some problems with performing my usual activities.\" / \"I am unable to perform my usual activities.\" Pain/Discomfort: \"I have no pain or discomfort.\" / \"I have moderate pain or discomfort.\" / \"I have extreme pain or discomfort.\" Anxiety/Depression: \"I am not anxious or depressed.\" / \"I am moderately anxious or depressed.\" / \"I am extremely anxious or depressed.\""
+
+outcomes:
+  - var: eq5l_mob
+    task_num: 0
+    question: "Please click the ONE box that best describes your health TODAY. Mobility: 1 \"I have no problems in walking about.\" 2 \"I have slight problems in walking about.\" 3 \"I have moderate problems in walking about\" 4 \"I have severe problems in walking about\" 5 \"I am unable to walk about\""
+    scale: {min: 1, max: 5, min_label: "I have no problems in walking about.", max_label: "I am unable to walk about"}
+  - var: eq5l_care
+    task_num: 1
+    question: "Please click the ONE box that best describes your health TODAY. Self-Care: 1 \"I have no problems washing or dressing myself.\" 2 \"I have slight problems washing or dressing myself.\" 3 \"I have moderate problems washing or dressing myself.\" 4 \"I have severe problems washing or dressing myself.\" 5 \"I am unable to wash or dress myself.\""
+    scale: {min: 1, max: 5, min_label: "I have no problems washing or dressing myself.", max_label: "I am unable to wash or dress myself."}
+  - var: eq5l_act
+    task_num: 2
+    question: "Please click the ONE box that best describes your health TODAY. Usual Acticities (e.g. work, study, housework, family or leisure activities): 1 \"I have no problems doing my usual activities.\" 2 \"I have slight problems doing my usual activities.\" 3 \"I have moderate problems doing my usual activities.\" 4 \"I have severe problems doing my usual activities.\" 5 \"I am unable to do my usual activities.\""
+    scale: {min: 1, max: 5, min_label: "I have no problems doing my usual activities.", max_label: "I am unable to do my usual activities."}
+  - var: eq5l_pain
+    task_num: 3
+    question: "Please click the ONE box that best describes your health TODAY. Pain/Discomfort: 1 \"I have no pain or discomfort.\" 2 \"I have slight pain or discomfort.\" 3 \"I have moderate pain or discomfort.\" 4 \"I have severe pain or discomfort.\" 5 \"I have extreme pain or discomfort.\""
+    scale: {min: 1, max: 5, min_label: "I have no pain or discomfort.", max_label: "I have extreme pain or discomfort."}
+  - var: eq5l_anx
+    task_num: 4
+    question: "Please click the ONE box that best describes your health TODAY. Anxiety/Depression: 1 \"I am not anxious or depressed.\" 2 \"I am slightly anxious or depressed.\" 3 \"I am moderately anxious or depressed.\" 4 \"I am severely anxious or depressed.\" 5 \"I am extremely anxious or depressed.\""
+    scale: {min: 1, max: 5, min_label: "I am not anxious or depressed.", max_label: "I am extremely anxious or depressed."}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]
