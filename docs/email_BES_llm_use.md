@@ -18,7 +18,8 @@ BES research associates."
 
 I would like to do something similar and narrower. I am measuring how accurately
 language models predict individual survey responses — the UK equivalent of Park
-et al., *"LLM Agents Grounded in Self-Reports"*. For each respondent I would send
+et al., "LLM Agents Grounded in Self-Reports Enable General-Purpose Simulation
+of Individuals" (https://arxiv.org/abs/2411.10109). For each respondent I would send
 one request to a hosted model (Anthropic's API) containing their own coded
 answers with all identifiers removed and replaced by a one-way hash, and ask it
 to predict one answer of theirs that I have withheld. The reply is a single
