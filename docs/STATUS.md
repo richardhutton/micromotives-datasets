@@ -162,39 +162,92 @@ Health and wellbeing are the categories TESS cannot fill: norms around illness,
 drinking, ageing and mental health do not transfer across countries the way an
 attitude-framing experiment does.
 
-## 4. The plan: 16 more experiments
+## 4. The plan: 16 experiments, all triaged
 
-**Tier A (7) + Tier B (5) + Tier C (4) = 16**, in that order.
+**Triage done 9 October. All 16 are buildable. Nothing dropped out.**
 
-### Step 1 — triage, half a session
+That is the opposite of what was expected. This document previously repeated the
+master doc's warning that checking "can only move the count down". It has not
+moved it down at all: the User Guide names an allocation variable, says which
+file it is in, and writes out what each arm means, for every one of the sixteen.
 
-Check all 16 against their wave questionnaire PDFs for whether the condition
-wording actually exists. **Nobody has done this for any experiment except 9.10.**
-`SocSci-UK_MASTER.md` flags it as "the largest unknown left, and resolving it can
-only move the count down". For 9.10 the wording was there word-for-word; for the
-rest it is unverified, and anything that fails drops out and is replaced from the
-next band down.
+`scripts/ip_triage.py` did the data-existence check; the rest was read by hand,
+for reasons given below.
 
-Output: a buildable list, so the 16 are picked from fact rather than hope.
+### Build order
 
-### Step 2 — build, 2–4 sessions
+Reordered from section 3 on one triage finding: **"What do the general
+population regard as 'successful ageing'?"** was listed as a measurement study
+and is in fact a **2⁶ factorial of scenarios across two waves**, with randomised
+names — the same shape as the housework scenarios already built, and covered by
+the existing `Condition.template` machinery. It moves to the front.
 
-Estimated **1–2 hours per experiment** where the wording exists. That is
-extrapolated from a single build, so treat it as a range. 9.10 took a full
-session, but most of that was one-off machinery now reusable:
+| # | id | experiment | wave | allocation variable |
+|---|---|---|---|---|
+| 1 | 9.18 | What do the general population regard as "successful ageing"? | 9, 17 | 2⁶ factorial, allocated in the questionnaire |
+| 2 | 9.39 | Vignettes: measuring flexibility stigma — double whammy or femininity stigma | 16 | `fsvigname1-3`, `fsvigparent1-3`, `fsvighybrid1-3`, `fsvigorguse1-3`, `fsvigorgpol1-3` |
+| 3 | 9.43 | Mental health questions comparisons | 16 | `ff_mhealthexpw16` in `p_hhsamp_ip` |
+| 4 | 9.36 | Alcohol consumption | 15 | located in `o_hhsamp_ip` |
+| 5 | 9.24 | Variations of the EQ-5D questions | 11 | `eq5dcond` in `k_indresp_ip` |
+| 6 | 9.4 | Measuring identity | 2 | located in the wave 2 files |
+| 7 | 9.48 | Labour market expectations | 17 | 7 variables located |
+| 8 | 9.17 | Measuring sexual identity using direct and indirect questioning | 8, 9 | 2 variables located |
+| 9 | 9.31 | Comparison of ReQoL-10 to other scales | 14 | 4 variables located |
+| 10 | 9.12 | Measuring change in self-assessed disability | 6, 7 | dependent interviewing |
+| 11 | 9.42 | Understanding of the long-term future | 16 | 4 variables located |
+| 12 | 9.20 | Presentation of response options in satisfaction questions | 9 | 1 variable located |
+| 13 | 9.13 | Associated Study: measuring time and risk preferences | 6, 7 | 13 variables located |
+| 14 | 9.11 | Subjective expectations about the returns to higher education | 5, 8, 9 | 2 variables located |
+| 15 | 9.9 | Context effects in fertility decisions | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
+| 16 | 9.47 | Identification of informal caregiving | 17 | 3 variables located |
+
+### What the triage script is and is not good for
+
+It reported 9 PASS, 5 CHECK, 2 FAIL. **The passes are grounded and the failures
+are worthless**, and that distinction is written into the script itself so nobody
+later reads a FAIL as a finding.
+
+A PASS means a named variable was located in a real data file — a positive fact.
+A FAIL meant the script's own pattern-matching gave up, and it did that **six
+times for six different reasons**, every one of them its fault rather than the
+data's:
+
+1. `\bff_` never matches inside `d_ff_fertw4`, because `_` is a word character.
+2. Not every allocation variable is `ff_` prefixed — the flexibility-stigma ones
+   are `fsvigname1`, `fsvigparent1` and so on.
+3. Not every arm is written `1 = x`. Fertility context effects writes
+   `Group 1  Version A (before friendship questions)`.
+4. Taking the longest block under a heading picked a contents-table fragment
+   instead of the real section.
+5. `eq5dcond on record k_indresp_ip:` is the guide's other way of naming the
+   controlling variable and was not matched.
+6. `pdftotext` keeps the page margin, so the real heading is
+   `" 9.24 Variations of the EQ-5D questions"` with a leading space, and `^`
+   missed it.
+
+The EQ-5D experiment still reports FAIL after all six fixes, and is completely
+specified when read. **With sixteen short sections, reading them is more reliable
+than another regex**, and that is how the table above was finished.
+
+### Estimated effort
+
+**1–2 hours per experiment** where the wording exists, extrapolated from one
+build, so treat it as a range. The housework scenarios took a full session, but
+most of that was one-off machinery now reusable:
 
 - `Condition.template` — a factorial declared as a template plus dimensions,
   expanded on load. 480 arms from ~40 reviewable lines of YAML.
 - `Recipe.participant_id_var` — one person keeps one id across waves.
 
-Both are inert for every existing study (all 41 rebuilt, zero row-count changes).
-The three remaining scenario studies need no new machinery at all.
+Both are inert for every existing study (all 41 rebuilt, zero row-count
+changes). The scenario studies at positions 1 and 2 need no new machinery.
 
-**Batch by wave where it helps.** The 16 are spread across waves, so the
-per-wave saving is smaller than it would be for a cheapest-first selection — that
-is the cost of choosing on coverage instead of convenience, and it is worth
-paying. The clusters that do exist: waves 8-9 carry 9.17 and 9.18, waves 6-7
-carry 9.12 and 9.13, wave 16 carries 9.39, 9.42 and 9.43.
+**Batching.** The 16 are spread across waves, so the per-wave saving is smaller
+than a cheapest-first list would have given — the cost of choosing on coverage
+rather than convenience, and worth paying. The clusters that do exist: waves 8–9
+carry sexual-identity measurement and successful ageing; waves 6–7 carry
+self-assessed disability and time/risk preferences; wave 16 carries flexibility
+stigma, mental health and the long-term future.
 
 ---
 
