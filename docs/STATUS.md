@@ -408,7 +408,7 @@ factorial declared as a template plus its dimensions, expanded on load) and
 
 ---
 
-## 6. Standing constraints
+## 7. Standing constraints
 
 - **Raw and processed data never enter git.** `data/raw/`, `data/profiles/` and
   `data/processed/*.parquet` are gitignored. `data/catalog/` is tracked.
