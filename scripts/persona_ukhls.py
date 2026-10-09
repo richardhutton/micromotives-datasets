@@ -79,6 +79,50 @@ SCHEMES: dict[str, dict[str, str]] = {
         "Long term sick or disabled": "Disabled",
         "Looking after family or home": "Other",
         "Doing something else": "Other",
+        # `jbstat`'s labels are not stable across waves: wave 9 writes them in
+        # lower case and abbreviated, wave 17 abbreviated in title case, and the
+        # crosswalk matches labels exactly. Same codes, same meanings, so the same
+        # targets as the spellings above. Found building IP 9.18 (2026-10-09).
+        "paid employment(ft/pt)": "Employed (hours not distinguished)",
+        "Paid employment(ft/pt)": "Employed (hours not distinguished)",
+        "self employed": "Self employed",
+        # Title-case "Unemployed" already maps to "Unemployed looking" through
+        # `uk_yougov_8`, and the flattened crosswalk refuses one label meaning two
+        # things, so the lower-case spelling follows it. UKHLS does not say whether
+        # the person is looking; that is a debt of the existing mapping, not added here.
+        "unemployed": "Unemployed looking",
+        "retired": "Retired",
+        "on maternity leave": "Employed (hours not distinguished)",
+        "On shared parental leave": "Employed (hours not distinguished)",
+        "On adoption leave": "Employed (hours not distinguished)",
+        "family care or home": "Other",
+        "Family care or home": "Other",
+        "full-time student": "Full time student",
+        "lt sick or disabled": "Disabled",
+        "LT sick or disabled": "Disabled",
+        "govt training scheme": "Full time student",
+        "Govt training scheme": "Full time student",
+        "unpaid, family business": "Employed (hours not distinguished)",
+        "Unpaid, family business": "Employed (hours not distinguished)",
+        "on apprenticeship": "Employed (hours not distinguished)",
+        "On apprenticeship": "Employed (hours not distinguished)",
+        "doing something else": "Other",
+        # Wave 2 (IP 9.4, 2026-10-09): the full wording, in lower case.
+        "in paid employment (full or part-time)": "Employed (hours not distinguished)",
+        "looking after family or home": "Other",
+        "long term sick or disabled": "Disabled",
+        "on a government training scheme": "Full time student",
+        "unpaid worker in family business": "Employed (hours not distinguished)",
+        # Wave 11 (IP 9.24, 2026-10-09): hyphenated, unlike waves 5-6.
+        "Long-term sick or disabled": "Disabled",
+        # Wave 16 (IP 9.39, 2026-10-09). Furloughed workers keep their job, as on
+        # maternity leave, which is mapped the same way.
+        "In paid employment (ft/pt)": "Employed (hours not distinguished)",
+        "Furloughed/Job Support Scheme": "Employed (hours not distinguished)",
+        # Wave 17 only. One label for two states — laid off (not working) and on
+        # short time (working) — so it straddles canonical values and goes to the
+        # residual rather than asserting either. Merge, never split.
+        "Temporarily laid off/short time working": "Other",
     },
     "ethnicity": {
         "British/English/Scottish/Welsh/Northern Irish/White British/White Scottish (White)": "White",
