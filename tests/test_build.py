@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from micromotives_datasets.pipeline.build import build_rows
 from micromotives_datasets.recipe import Recipe
 from micromotives_datasets.sources import spss
@@ -169,3 +171,91 @@ def test_the_melt_renders_each_respondent_s_own_line_order(tmp_path) -> None:
     )
     rendered = sorted(r.condition for r in build_rows(spss.read(path), recipe))
     assert rendered == ["1. apples\n2. pears", "1. pears\n2. apples"], rendered
+
+
+def _bullet_recipe(order_vars: list[str]):
+    from micromotives_datasets.recipe import Arm, Condition, ItemOverride, Outcome, Recipe, Scale
+
+    return Recipe(
+        study_id="t",
+        source="tess",
+        data_file="o.sav",
+        licence="none stated",
+        condition=Condition(
+            source_var="X",
+            arms=[
+                Arm(
+                    raw=1,
+                    condition_num=0,
+                    text="list",
+                    items={
+                        0: ItemOverride(
+                            outcome_var="Y",
+                            condition_text="I have …\n• apples\n• pears\n• plums",
+                            line_order_vars=order_vars,
+                        )
+                    },
+                )
+            ],
+        ),
+        outcomes=[
+            Outcome(
+                task_num=0,
+                question="How many?",
+                scale=Scale(min=0, max=3, min_label="none", max_label="all"),
+            )
+        ],
+        response_recode={0: 0, 1: 1, 2: 2, 3: 3},
+        persona_map={"age": "AGE"},
+    )
+
+
+def test_an_item_renders_its_own_bullet_order_and_keeps_its_stem(tmp_path) -> None:
+    """IP 9.17: each list has its own order variables and keeps its bullets.
+
+    Three respondents: two orders, and one whose order was not recorded, who must
+    be skipped rather than shown the declared order.
+    """
+    import pandas as pd
+    import pyreadstat
+
+    path = tmp_path / "o.sav"
+    pyreadstat.write_sav(
+        pd.DataFrame(
+            {
+                "X": [1.0, 1.0, 1.0],
+                "P1": [1.0, 3.0, -8.0],
+                "P2": [2.0, 1.0, -8.0],
+                "P3": [3.0, 2.0, -8.0],
+                "Y": [1.0, 2.0, 2.0],
+                "AGE": [40.0, 41.0, 42.0],
+            }
+        ),
+        str(path),
+    )
+    recipe = _bullet_recipe(["P1", "P2", "P3"])
+    # The third respondent ANSWERED with no order recorded: that must stop the
+    # build, not vanish (found by the 9.17 checker; zero such rows in that study).
+    with pytest.raises(ValueError, match="statement order is not recorded"):
+        list(build_rows(spss.read(path), recipe))
+    # Unanswered with no order: nothing to render, nothing lost.
+    df = spss.read(path).df
+    df.loc[2, "Y"] = -8.0
+    pyreadstat.write_sav(df, str(path))
+    rows = list(build_rows(spss.read(path), recipe.model_copy(update={"missing_codes": [-8]})))
+    assert [r.condition for r in rows] == [
+        "I have …\n• apples\n• pears\n• plums",
+        "I have …\n• pears\n• plums\n• apples",
+    ]
+
+
+def test_a_bullet_order_with_the_wrong_number_of_variables_is_refused() -> None:
+    with pytest.raises(ValueError, match="2 line_order_vars for 3 bullet lines"):
+        _bullet_recipe(["P1", "P2"])
+
+
+def test_reorder_bullets_refuses_a_non_permutation() -> None:
+    from micromotives_datasets.recipe import Condition
+
+    with pytest.raises(ValueError, match="not a permutation"):
+        Condition.reorder_bullets("s\n• a\n• b", [1, 1])

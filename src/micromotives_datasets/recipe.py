@@ -146,6 +146,17 @@ class ItemOverride(BaseModel):
         "its 6,211 rows. Set this to what WAS true at that item. The empty string is a "
         "legitimate value and means the shared context alone.",
     )
+    line_order_vars: list[str] | None = Field(
+        default=None,
+        description="One variable per BULLET line ('• ...') of this cell's `condition_text`, "
+        "giving the 1-based position that statement was shown in to this respondent. For "
+        "an item-count list whose statements were shuffled per respondent and whose order "
+        "variables differ per list: IP `9.17` records one per list, and a 5-statement list "
+        "has 120 possible orders. Lines without a bullet (the list's stem) stay where they "
+        "are, and bullets stay bullets — unlike `Condition.line_order_vars`, which "
+        "renumbers. A row whose order is not recorded is skipped, not rendered in a "
+        "guessed order.",
+    )
     scale: Scale | None = Field(default=None, description="Response scale for this cell.")
     response_recode: dict[int, int] | None = Field(
         default=None, description="raw->canonical answer map for this cell."
@@ -245,6 +256,14 @@ class Level(BaseModel):
 
     level: str = Field(description="Factor level name, for `Arm.factors`.")
     text: str = Field(description="The clause the respondent read. Verbatim.")
+    parts: dict[str, str] = Field(
+        default_factory=dict,
+        description="Named fragments that must AGREE with this level elsewhere in the "
+        "text, addressed as `{dimension.part}`. IP `9.18` randomises a name, and the "
+        "pronoun and possessive later in the sentence follow it: 'George ... He ... his' "
+        "against 'Margaret ... She ... her'. Every level of a dimension declares the "
+        "same parts, so no cell can render a fragment another cell lacks.",
+    )
 
 
 class Dimension(BaseModel):
@@ -282,17 +301,28 @@ class ConditionTemplate(BaseModel):
 
     text: str = Field(
         description="The stimulus with one `{dimension}` placeholder per dimension, which "
-        "is where that dimension's clause goes. Everything outside the placeholders is "
-        "fixed wording and is verbatim."
+        "is where that dimension's clause goes. `{dimension.part}` places one of that "
+        "level's `parts`, and may repeat. Everything outside the placeholders is fixed "
+        "wording and is verbatim."
     )
     dimensions: dict[str, Dimension] = Field(
         description="Dimension name -> its variable and levels, in the order "
         "`condition_num` counts them."
     )
+    outcome_questions: dict[int, str] = Field(
+        default_factory=dict,
+        description="`task_num` -> the question for that item, when its wording varies "
+        "with the cell. IP `9.18` asks 'How successfully is George ageing?', naming the "
+        "person the condition described; IP `9.39` asks four questions per candidate, "
+        "each with its own pronouns. Rendered from the same cell as `text`, with the "
+        "same placeholders, and attached to each arm as an `ItemOverride` for exactly "
+        "the tasks named, so a vignette's question never leaks onto another outcome.",
+    )
 
     @model_validator(mode="after")
     def _placeholders_match(self) -> ConditionTemplate:
-        found = set(re.findall(r"\{(\w+)\}", self.text))
+        bare = re.findall(r"\{(\w+)\}", self.text)
+        found = set(bare)
         declared = set(self.dimensions)
         if found != declared:
             raise ValueError(
@@ -302,11 +332,55 @@ class ConditionTemplate(BaseModel):
                 "literal braces into the corpus"
             )
         for name in declared:
-            if self.text.count(f"{{{name}}}") != 1:
+            if bare.count(name) != 1:
                 raise ValueError(f"dimension {name!r} appears more than once in the template")
         if len({d.var for d in self.dimensions.values()}) != len(self.dimensions):
             raise ValueError("two dimensions share one variable — their levels would collide")
+        # A clause or fragment carrying a brace would be filled in, or left
+        # standing, by the rendering of some OTHER placeholder.
+        for name, dim in self.dimensions.items():
+            for code, lv in dim.levels.items():
+                for fragment in (lv.text, *lv.parts.values()):
+                    if "{" in fragment or "}" in fragment:
+                        raise ValueError(f"dimension {name!r} level {code}: braces in {fragment!r}")
+
+        # Parts: every level of a dimension offers the same ones, and every one
+        # offered is placed somewhere. A part only some levels carry would ship
+        # as literal braces in the cells that lack it; a part nobody places is
+        # agreement the template claims and never renders.
+        question = " ".join(self.outcome_questions.values())
+        used = set(re.findall(r"\{(\w+)\.(\w+)\}", self.text + question))
+        for name, dim in self.dimensions.items():
+            offered = {frozenset(lv.parts) for lv in dim.levels.values()}
+            if len(offered) != 1:
+                raise ValueError(
+                    f"dimension {name!r}: levels declare different parts "
+                    f"{sorted(sorted(o) for o in offered)} — every level must offer the same"
+                )
+            for part in next(iter(offered)):
+                if (name, part) not in used:
+                    raise ValueError(f"part {name}.{part} is declared but never placed")
+        for name, part in used:
+            if name not in declared:
+                raise ValueError(f"placeholder {{{name}.{part}}} names no declared dimension")
+            if part not in next(iter(self.dimensions[name].levels.values())).parts:
+                raise ValueError(f"placeholder {{{name}.{part}}} names a part no level declares")
+
+        stray = set(re.findall(r"\{(\w+)\}", question)) - declared
+        if stray:
+            raise ValueError(
+                f"outcome_questions placeholders {sorted(stray)} name no declared dimension"
+            )
         return self
+
+    def render(self, template: str, levels: dict[str, Level]) -> str:
+        """Fill `template` from one cell: parts first, then the bare clauses."""
+        for name, level in levels.items():
+            for part, fragment in level.parts.items():
+                template = template.replace(f"{{{name}.{part}}}", fragment)
+        for name, level in levels.items():
+            template = template.replace(f"{{{name}}}", level.text)
+        return template
 
     @property
     def names(self) -> list[str]:
@@ -331,15 +405,21 @@ class ConditionTemplate(BaseModel):
         arms: list[Arm] = []
         for num, cell in enumerate(self.cells()):
             levels = {name: self.dimensions[name].levels[cell[name]] for name in self.names}
-            text = self.text
-            for name, level in levels.items():
-                text = text.replace(f"{{{name}}}", level.text)
+            text = self.render(self.text, levels)
+            questions = {t: self.render(q, levels) for t, q in self.outcome_questions.items()}
+            items = {t: ItemOverride(outcome_question=q) for t, q in questions.items()}
+            # The backstop for every placeholder shape the checks above do not
+            # parse (`{a.b.c}`, `{a-b}`, `{a }`): nothing with a brace ships.
+            rendered = text + "".join(questions.values())
+            if "{" in rendered or "}" in rendered:
+                raise ValueError(f"cell {cell} rendered with a placeholder left in it")
             arms.append(
                 Arm(
                     raw_values={self.dimensions[n].var: cell[n] for n in self.names},
                     condition_num=num,
                     factors={n: levels[n].level for n in self.names},
                     text=text,
+                    items=items,
                 )
             )
         return arms
@@ -470,6 +550,29 @@ class Condition(BaseModel):
         for line, slot in zip(bare, positions, strict=True):
             ordered[slot - 1] = line
         return "\n".join(f"{i}. {line}" for i, line in enumerate(ordered, 1))
+
+    @staticmethod
+    def reorder_bullets(text: str, positions: list[int]) -> str:
+        """Put each bullet line where this respondent saw it; leave the rest alone.
+
+        `positions[i]` is the 1-based slot the i-th bullet occupied among the
+        bullets. Non-bullet lines keep their own places, so a stem above the list
+        stays above it.
+        """
+        # Lines are kept exactly as written; only the bullet lines move.
+        lines = text.strip().split("\n")
+        slots = [k for k, ln in enumerate(lines) if ln.lstrip().startswith("•")]
+        if len(slots) != len(positions):
+            raise ValueError(f"{len(positions)} positions for {len(slots)} bullet lines")
+        if sorted(positions) != list(range(1, len(slots) + 1)):
+            raise ValueError(f"bullet order is not a permutation of 1..{len(slots)}: {positions}")
+        bullets = [lines[k] for k in slots]
+        ordered = [""] * len(slots)
+        for bullet, slot in zip(bullets, positions, strict=True):
+            ordered[slot - 1] = bullet
+        for k, bullet in zip(slots, ordered, strict=True):
+            lines[k] = bullet
+        return "\n".join(lines)
 
     def render(self, arm: Arm) -> str:
         """shared_context + arm text -> the condition string."""
@@ -786,7 +889,28 @@ class Recipe(BaseModel):
         # unapplied — a typo'd key would leave the blanket arm-level value in
         # force and read, in review, as though the override had taken effect.
         declared_tasks = {o.task_num for o in self.outcomes}
+        # A template's questions are derived from the cell, so an outcome left
+        # out of them ships its fallback wording silently — in 9.39 that was
+        # "[her/him]" on 1,477 rows with QC reporting nothing. All or none.
+        template = self.condition.template
+        if template is not None and template.outcome_questions:
+            uncovered = sorted(declared_tasks - set(template.outcome_questions))
+            if uncovered:
+                raise ValueError(
+                    f"{self.study_id}: template.outcome_questions covers no question for "
+                    f"task_num {uncovered}; those rows would carry the fallback wording"
+                )
         for arm in self.condition.arms:
+            for task, ov in arm.items.items():
+                if ov.line_order_vars is None:
+                    continue
+                text = ov.condition_text or ""
+                bullets = sum(1 for ln in text.split("\n") if ln.strip().startswith("•"))
+                if bullets != len(ov.line_order_vars):
+                    raise ValueError(
+                        f"{self.study_id}: arm {arm.label} task {task} declares "
+                        f"{len(ov.line_order_vars)} line_order_vars for {bullets} bullet lines"
+                    )
             stray = sorted(set(arm.items) - declared_tasks)
             if stray:
                 raise ValueError(
@@ -871,7 +995,11 @@ class Recipe(BaseModel):
         return self.response_recode
 
     def condition_text_for(
-        self, outcome: Outcome, arm: Arm, line_order: list[int] | None = None
+        self,
+        outcome: Outcome,
+        arm: Arm,
+        line_order: list[int] | None = None,
+        bullet_order: list[int] | None = None,
     ) -> str:
         """The condition string for this (arm, item) cell.
 
@@ -887,6 +1015,8 @@ class Recipe(BaseModel):
         # of attributes and has no position to carry.
         if line_order and body:
             body = self.condition.reorder_lines(body, line_order)
+        if bullet_order is not None:
+            body = self.condition.reorder_bullets(body, bullet_order)
         ctx = (self.condition.shared_context or "").strip()
         if ctx and body:
             return f"{ctx} {body}"

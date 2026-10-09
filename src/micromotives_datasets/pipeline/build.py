@@ -264,8 +264,33 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             # where only part of the stimulus has happened yet. And where the
             # instrument randomised the order its attribute rows appeared in,
             # render THIS respondent's order rather than one fixed guess.
+            # A list whose statements were shuffled per respondent, with its own
+            # order variables per (arm, item) cell. Skipped when unrecorded: a
+            # guessed order is the 8ctbk failure again.
+            bullet_order: list[int] | None = None
+            item = recipe.item_for(outcome, arm)
+            if item is not None and item.line_order_vars:
+                unrecorded_vars = [v for v in item.line_order_vars if v.upper() not in cols]
+                if unrecorded_vars:
+                    raise ValueError(f"line_order_vars {unrecorded_vars} not in data")
+                codes = [row[cols[v.upper()]] for v in item.line_order_vars]
+                if any(_is_blank(c) or float(c) < 1 for c in codes):
+                    # No order recorded. A row nobody answered has nothing to
+                    # lose; an ANSWERED one would vanish silently, so it stops
+                    # the build instead (zero today in IP 9.17).
+                    answer_var = recipe.outcome_var_for(outcome, arm)
+                    answer = row[cols[answer_var.upper()]] if answer_var else None
+                    if answer is not None and not _is_blank(answer) and (
+                        int(float(answer)) not in missing
+                    ):
+                        raise ValueError(
+                            f"{recipe.study_id}: row {idx} answered task {outcome.task_num} "
+                            "but its statement order is not recorded"
+                        )
+                    continue
+                bullet_order = [int(float(c)) for c in codes]
             condition_text = _for_respondent(
-                recipe.condition_text_for(outcome, arm, line_order), who
+                recipe.condition_text_for(outcome, arm, line_order, bullet_order), who
             )
             # Both the answer variable and its coding can vary: split-ballot
             # studies ask each arm a different question, option-order designs

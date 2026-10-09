@@ -174,3 +174,158 @@ def test_every_existing_recipe_still_loads() -> None:
     for path in paths:
         rec = recipe.load(path)
         assert rec.condition.arms, f"{path.name} loaded with no arms"
+
+
+# --- parts: fragments that agree with a level, for IP 9.18 -------------------
+
+# A name with the pronoun and possessive that must follow it. The bare `{who}`
+# stays once-only; the parts repeat.
+AGREE: dict = {
+    "text": "{who} is old. {who.subj} sees {who.poss} friends {often}.",
+    "outcome_questions": {0: "How is {who} doing?", 1: "Is {who.subj} well?"},
+    "dimensions": {
+        "who": {
+            "var": "ff_name",
+            "levels": {
+                1: {"level": "George", "text": "George", "parts": {"subj": "He", "poss": "his"}},
+                2: {"level": "Anne", "text": "Anne", "parts": {"subj": "She", "poss": "her"}},
+            },
+        },
+        "often": {
+            "var": "ff_often",
+            "levels": {1: {"level": "regularly", "text": "regularly"},
+                       2: {"level": "rarely", "text": "rarely"}},
+        },
+    },
+}
+
+
+def _agree(**over: object) -> recipe.ConditionTemplate:
+    return recipe.ConditionTemplate.model_validate(AGREE | over)
+
+
+def test_parts_follow_their_level_and_may_repeat() -> None:
+    arms = _agree().expand()
+    assert arms[0].text == "George is old. He sees his friends regularly."
+    assert arms[3].text == "Anne is old. She sees her friends rarely."
+
+
+def test_each_question_is_rendered_from_the_same_cell_for_its_own_task() -> None:
+    arms = _agree().expand()
+    assert set(arms[3].items) == {0, 1}
+    assert arms[3].items[0].outcome_question == "How is Anne doing?"
+    assert arms[3].items[1].outcome_question == "Is She well?"
+    assert arms[0].items[1].outcome_question == "Is He well?"
+
+
+def test_a_part_placed_only_in_a_question_counts_as_placed() -> None:
+    """9.39's object pronoun ("How do you see her ...") appears in no
+    condition text, only in questions."""
+    dims = {k: dict(v) for k, v in AGREE["dimensions"].items()}
+    dims["who"] = {
+        "var": "ff_name",
+        "levels": {
+            1: {
+                "level": "G",
+                "text": "George",
+                "parts": {"subj": "He", "poss": "his", "obj": "him"},
+            },
+            2: {
+                "level": "A",
+                "text": "Anne",
+                "parts": {"subj": "She", "poss": "her", "obj": "her"},
+            },
+        },
+    }
+    arms = _agree(dimensions=dims, outcome_questions={0: "Do you like {who.obj}?"}).expand()
+    assert arms[3].items[0].outcome_question == "Do you like her?"
+
+
+def test_a_template_without_a_question_adds_no_item_overrides() -> None:
+    """The housework template must be untouched by this addition."""
+    assert all(not a.items for a in _template().expand())
+
+
+def test_parts_do_not_relax_the_once_only_rule_for_the_bare_clause() -> None:
+    with pytest.raises(ValidationError, match="appears more than once"):
+        _agree(text="{who} is old. {who.subj} sees {who.poss} friends {often}. {who}.")
+
+
+def test_a_part_only_some_levels_declare_is_refused() -> None:
+    """The cells lacking it would ship literal braces."""
+    dims = {k: dict(v) for k, v in AGREE["dimensions"].items()}
+    dims["who"] = {"var": "ff_name", "levels": {
+        1: {"level": "George", "text": "George", "parts": {"subj": "He", "poss": "his"}},
+        2: {"level": "Anne", "text": "Anne", "parts": {"subj": "She"}},
+    }}
+    with pytest.raises(ValidationError, match="levels declare different parts"):
+        _agree(dimensions=dims)
+
+
+def test_a_declared_part_never_placed_is_refused() -> None:
+    with pytest.raises(ValidationError, match="declared but never placed"):
+        _agree(text="{who} is old. {who.subj} sees friends {often}.")
+
+
+def test_a_part_placeholder_naming_no_part_is_refused() -> None:
+    with pytest.raises(ValidationError, match="names a part no level declares"):
+        _agree(text="{who} is old. {who.subj} sees {who.poss} {who.obj} friends {often}.")
+
+
+def test_a_part_placeholder_naming_no_dimension_is_refused() -> None:
+    with pytest.raises(ValidationError, match="names no declared dimension"):
+        _agree(text="{who} is old. {who.subj} sees {who.poss} friends {often} {x.y}.")
+
+
+def test_a_question_placeholder_naming_no_dimension_is_refused() -> None:
+    with pytest.raises(ValidationError, match="outcome_questions placeholders"):
+        _agree(outcome_questions={0: "How is {whom} doing?"})
+
+
+def test_no_placeholder_survives_into_text_or_question() -> None:
+    for arm in _agree().expand():
+        rendered = [arm.text] + [i.outcome_question or "" for i in arm.items.values()]
+        assert not any("{" in r or "}" in r for r in rendered)
+
+
+@pytest.mark.parametrize(
+    "over",
+    [
+        {"text": "{who} is old. {who.subj} sees {who.poss} friends {often} {who.subj.x}."},
+        {"outcome_questions": {0: "How is {who } doing?"}},
+        {"outcome_questions": {0: "How is {who-x} doing?"}},
+    ],
+)
+def test_no_placeholder_shape_survives_expansion(over: dict) -> None:
+    """Shapes the placeholder regexes do not parse. Found by the 9.18 checker:
+    each validated and shipped literal braces."""
+    with pytest.raises((ValidationError, ValueError), match=r"placeholder left|braces"):
+        _agree(**over).expand()
+
+
+def test_a_clause_carrying_a_placeholder_is_refused() -> None:
+    """Parts render before clauses, so `{who.subj}` inside a clause would be left
+    standing, and `{often}` inside a part would be filled from another dimension."""
+    dims = {k: dict(v) for k, v in AGREE["dimensions"].items()}
+    dims["often"] = {
+        "var": "ff_often",
+        "levels": {
+            1: {"level": "regularly", "text": "regularly {who.subj}"},
+            2: {"level": "rarely", "text": "rarely"},
+        },
+    }
+    with pytest.raises(ValidationError, match="braces in"):
+        _agree(dimensions=dims)
+
+
+def test_a_templated_recipe_must_question_every_outcome() -> None:
+    """Found by the 9.39 checker: dropping one task from `outcome_questions`
+    validated, built, and passed QC with bracketed fallback wording."""
+    import yaml
+
+    path = REPO / "recipes" / "ukds_6849_vig_ageing_w9.yaml"
+    data = yaml.safe_load(path.read_text())
+    recipe.Recipe.model_validate(data)
+    del data["condition"]["template"]["outcome_questions"][2]
+    with pytest.raises(ValidationError, match=r"covers no question for task_num \[2\]"):
+        recipe.Recipe.model_validate(data)
