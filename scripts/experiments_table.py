@@ -46,7 +46,11 @@ MANIFEST = CATALOG / "experiment_manifest.json"
 PROVENANCE = CATALOG / "uk_dataverse_provenance.json"
 TESS = CATALOG / "tess_uk_foundation_sources.csv"
 
-SOURCE_LABEL = {"dataverse": "Harvard Dataverse", "tess": "TESS (OSF)"}
+SOURCE_LABEL = {
+    "dataverse": "Harvard Dataverse",
+    "innovation_panel": "UK Data Service",
+    "tess": "TESS (OSF)",
+}
 
 
 @dataclass
@@ -69,6 +73,11 @@ class Experiment:
     @property
     def is_uk(self) -> bool:
         return self.source == "dataverse"
+
+    @property
+    def is_ukds(self) -> bool:
+        """The UK Data Service layer — the Innovation Panel, under its End User Licence."""
+        return self.source == "innovation_panel"
 
     @property
     def publishable(self) -> bool:
@@ -200,6 +209,8 @@ def collect() -> list[Experiment]:
         if source == "dataverse":
             doi = provenance.get(study_id, {}).get("doi")
             reference = f"doi:{doi}" if doi else None
+        elif source == "innovation_panel":
+            reference = "UKDS SN 6849"
         elif tess_row is not None and isinstance(tess_row.get("osf_code"), str):
             reference = f"osf.io/{tess_row['osf_code']}"
         else:
@@ -234,7 +245,14 @@ def _num(value: int | None) -> str:
 
 def render(experiments: list[Experiment]) -> str:
     uk = [e for e in experiments if e.is_uk]
-    tess = [e for e in experiments if not e.is_uk]
+    ukds = [e for e in experiments if e.is_ukds]
+    # Selected by its own source, not as "everything else": the first UKDS
+    # builds were filed here as TESS (OSF) because this used to read
+    # `not e.is_uk`. A source this does not know now stops the render.
+    tess = [e for e in experiments if e.source == "tess"]
+    unknown = sorted({e.source for e in experiments} - set(SOURCE_LABEL))
+    if unknown:
+        raise ValueError(f"no layer for source(s) {unknown}; add them to SOURCE_LABEL and render()")
     built = [e for e in experiments if e.rows is not None]
     # Every UK Dataverse deposit was CC0 until POMIFD (null licence, usable
     # only under the use_basis recorded in uk_dataverse_provenance.json, never
@@ -248,6 +266,7 @@ def render(experiments: list[Experiment]) -> str:
     tess_rows = sum(e.rows or 0 for e in tess)
     uk_open_rows = sum(e.rows or 0 for e in uk_open)
     uk_restricted_rows = sum(e.rows or 0 for e in uk_restricted)
+    ukds_rows = sum(e.rows or 0 for e in ukds)
 
     lines: list[str] = []
     add = lines.append
@@ -268,7 +287,9 @@ def render(experiments: list[Experiment]) -> str:
     )
     add(
         f"**{len(experiments)} experiments.** "
-        f"{len(uk_open)} UK (CC0, redistributable){restricted_note} and {len(tess)} US transfer "
+        f"{len(uk_open)} UK (CC0, redistributable){restricted_note}, {len(ukds)} UK Data Service "
+        "(End User Licence, **not** redistributable, never sent to any external service) "
+        f"and {len(tess)} US transfer "
         f"layer (TESS, no licence stated — usable for research, **not** redistributable)."
     )
     add("")
@@ -288,10 +309,15 @@ def render(experiments: list[Experiment]) -> str:
             f"| UK — Harvard Dataverse (licence-restricted) | {len(uk_restricted)} | "
             f"{uk_restricted_rows:,} | **no** — see each experiment's own licence note |"
         )
+    if ukds:
+        add(
+            f"| UK — UK Data Service (End User Licence) | {len(ukds)} | {ukds_rows:,} | "
+            "**no** — UKDS End User Licence |"
+        )
     add(f"| US transfer — TESS | {len(tess)} | {tess_rows:,} | **no** — no licence stated |")
     add(
         f"| **Total** | **{len(experiments)}** | "
-        f"**{uk_open_rows + uk_restricted_rows + tess_rows:,}** | |"
+        f"**{uk_open_rows + uk_restricted_rows + ukds_rows + tess_rows:,}** | |"
     )
     add("")
     add("---")
@@ -306,13 +332,13 @@ def render(experiments: list[Experiment]) -> str:
     add("")
     add("| ID | Title | Source | Reference | Rows |")
     add("|---|---|---|---|---|")
-    for e in sorted(experiments, key=lambda x: (not x.is_uk, -(x.rows or 0))):
+    for e in sorted(experiments, key=lambda x: (x.source == "tess", -(x.rows or 0))):
         title = e.title if len(e.title) <= 70 else e.title[:67] + "…"
         # The source is where the data came FROM, which is also what decides
         # whether it may be redistributed — so it earns a column rather than the
         # parenthetical "(US)" it carried before, which told a reader the country
         # and left them to infer the archive and the licence from it.
-        where = "Harvard Dataverse" if e.is_uk else "TESS (OSF)"
+        where = SOURCE_LABEL[e.source]
         flag = "" if e.publishable else " ⚠"
         add(f"| `{e.recipe}`{flag} | {title} | {where} | `{e.reference or '—'}` | {_num(e.rows)} |")
     add("")
@@ -387,6 +413,37 @@ def render(experiments: list[Experiment]) -> str:
         add("---")
         add("")
 
+    if ukds:
+        add("## UK layer — UK Data Service, End User Licence")
+        add("")
+        add(
+            "**None of this is redistributable, and none of it may leave the machine.** The "
+            "UKDS End User Licence covers the documentation as well as the microdata; "
+            '`jev.py` refuses `source="ukds"` outright. Usable for research here only.'
+        )
+        add("")
+        for e in sorted(ukds, key=lambda x: x.recipe):
+            add(f"### `{e.recipe}`")
+            add("")
+            add(f"**{e.title}**")
+            add("")
+            if e.description:
+                add(e.description)
+                add("")
+            add(f"- **Source** — {SOURCE_LABEL[e.source]}, `{e.reference or '—'}`")
+            add(f"- **Type** — {e.design or '—'}")
+            add(f"- **Category** — {e.category}")
+            add(f"- **Rows** — {_num(e.rows)} from {_num(e.participants)} respondents")
+            # The recipe's licence is several sentences of prose; slicing it at a
+            # comma or a line end leaves half a sentence in a bullet.
+            add("- **Licence** — UK Data Service End User Licence; full terms in the recipe")
+            if e.verified_against:
+                add(f"- **Verified against** — {e.verified_against}")
+            add("")
+
+        add("---")
+        add("")
+
     add("## US transfer layer — TESS, no licence stated")
     add("")
     add(
@@ -426,8 +483,8 @@ def render(experiments: list[Experiment]) -> str:
     for category in categories:
         members = [e for e in experiments if e.category == category]
         add(
-            f"| {category} | {len([e for e in members if e.is_uk])} | "
-            f"{len([e for e in members if not e.is_uk])} | "
+            f"| {category} | {len([e for e in members if e.source != 'tess'])} | "
+            f"{len([e for e in members if e.source == 'tess'])} | "
             f"{sum(e.rows or 0 for e in members):,} |"
         )
     add("")

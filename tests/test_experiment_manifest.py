@@ -147,3 +147,27 @@ def test_only_cc0_experiments_are_called_redistributable(experiments: list) -> N
                 f"genuinely has, that needs recording in the catalogue and in embed.py's "
                 f"CLEARED gate, not inferring from a recipe field"
             )
+
+
+def test_every_ukds_experiment_is_filed_under_its_own_layer(experiments: list) -> None:
+    """The first UKDS builds were listed as "TESS (OSF)" because the layer split read
+    `not is_uk`, and `is_uk` meant Dataverse. Asserted on the rendered doc, which is
+    where a reader would be misled."""
+    rendered = _module().render(experiments)
+    ukds = [e for e in experiments if e.source == "innovation_panel"]
+    assert ukds, "no UKDS experiments found; this test would pass vacuously"
+    for e in ukds:
+        for field in ("description", "design", "verified_against"):
+            assert (getattr(e, field) or "").strip(), f"{e.recipe} has no {field}"
+        row = next(line for line in rendered.splitlines() if line.startswith(f"| `{e.recipe}`"))
+        assert "| UK Data Service |" in row and "TESS" not in row, row
+        assert not e.publishable
+
+
+def test_a_source_with_no_layer_stops_the_render(experiments: list) -> None:
+    """Rather than falling into whichever layer is the default."""
+    import dataclasses
+
+    stray = dataclasses.replace(experiments[0], source="somewhere_new")
+    with pytest.raises(ValueError, match="no layer for source"):
+        _module().render([*experiments, stray])
