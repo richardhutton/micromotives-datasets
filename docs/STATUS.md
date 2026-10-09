@@ -166,10 +166,11 @@ attitude-framing experiment does.
 
 **Triage done 9 October. All 16 are buildable. Nothing dropped out.**
 
-That is the opposite of what was expected. This document previously repeated the
-master doc's warning that checking "can only move the count down". It has not
-moved it down at all: the User Guide names an allocation variable, says which
-file it is in, and writes out what each arm means, for every one of the sixteen.
+We expected to lose some. A check like this can only disqualify an experiment,
+never qualify a new one, so sixteen was the ceiling and the real question was how
+far below it we would land. The answer is: not at all. The User Guide names an
+allocation variable, says which file it is in, and writes out what each arm
+means, for every one of the sixteen.
 
 `scripts/ip_triage.py` did the data-existence check; the rest was read by hand,
 for reasons given below.
