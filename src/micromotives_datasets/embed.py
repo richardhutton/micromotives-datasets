@@ -89,8 +89,14 @@ Deliberately NOT in this list, and each for its own reason:
   instrument text only, never respondent rows, enforced structurally because
   every `jev.py` function takes strings rather than a dataframe — and silent
   about what the far end does with it. No respondent data has gone anywhere; the
-  exposure is instrument text from deposits with no redistribution grant. Worth
-  asking TypeSafe directly rather than assuming either way.
+  exposure is instrument text from deposits with no redistribution grant.
+
+  **CLOSED by rich, 9 Oct 2026:** not a concern, because TESS material is freely
+  distributed already — the deposits sit on tessexperiments.org and on OSF, and
+  anyone can download them. "No licence stated" governs what WE may publish; it
+  does not turn question wordings that are already public into something
+  TypeSafe could leak. No enquiry is being sent. Recorded here so this is not
+  reopened as an outstanding question.
 
 - **UKDS safeguarded** — End User Licence. Never, under any circumstance, until
   the EUL has been read, instrument text included. `data/catalog/
