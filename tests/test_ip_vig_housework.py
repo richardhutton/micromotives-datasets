@@ -233,3 +233,31 @@ def test_the_exact_match_ceiling_is_the_number_the_docs_quote() -> None:
     assert 0.26 < got["identical_answer"] < 0.29
     assert 0.55 < got["within_one_point"] < 0.60
     assert 0.30 < got["correlation"] < 0.36
+
+
+# --- 5. the panel link is enforced, not just conventional -------------------
+
+
+@needs_derived
+def test_a_panel_recipe_without_participant_id_var_fails_qc() -> None:
+    """QC rule 19. The convention was written into STATUS.md as load-bearing
+    while nothing checked it, so one recipe omitting the field would have cost
+    that experiment's respondents their link to every other, silently."""
+    from micromotives_datasets.pipeline.qc import check
+
+    rec = recipe.load(RECIPES[5])
+    rows = list(_rows(5))[:200]
+    assert not check(rows, rec).failures
+
+    rec.participant_id_var = None
+    failures = check(rows, rec).failures
+    assert any("participant_id_var" in f for f in failures), failures
+
+
+def test_every_innovation_panel_recipe_declares_it() -> None:
+    """Needs no data: it is a property of the recipes. So it also runs on a
+    fresh clone, where the deposit-dependent tests above all skip."""
+    for path in sorted((REPO / "recipes").glob("*.yaml")):
+        rec = recipe.load(path)
+        if rec.source == "innovation_panel":
+            assert rec.participant_id_var, f"{path.name} is a panel source with no id variable"

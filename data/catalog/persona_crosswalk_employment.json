@@ -1,81 +1,94 @@
 {
-  "canonical": {
-    "employed_full_time": "Employed full time",
-    "employed_part_time": "Employed part time",
-    "employed_unspecified": "Employed (hours not distinguished)",
-    "self_employed": "Self employed",
-    "student_full_time": "Full time student",
-    "retired": "Retired",
-    "unemployed_looking": "Unemployed looking",
-    "unemployed_not_looking": "Unemployed not looking",
-    "disabled": "Disabled",
-    "other_residual": "Other"
+ "canonical": {
+  "employed_full_time": "Employed full time",
+  "employed_part_time": "Employed part time",
+  "employed_unspecified": "Employed (hours not distinguished)",
+  "self_employed": "Self employed",
+  "student_full_time": "Full time student",
+  "retired": "Retired",
+  "unemployed_looking": "Unemployed looking",
+  "unemployed_not_looking": "Unemployed not looking",
+  "disabled": "Disabled",
+  "other_residual": "Other"
+ },
+ "schemes": {
+  "7jt2f+9": {
+   "Working - as a paid employee": "Employed (hours not distinguished)",
+   "Working - self-employed": "Self employed",
+   "Not working - on temporary layoff from a job": "Unemployed not looking",
+   "Not working - looking for work": "Unemployed looking",
+   "Not working - retired": "Retired",
+   "Not working - disabled": "Disabled",
+   "Not working - other": "Other"
   },
-  "schemes": {
-    "7jt2f+9": {
-      "Working - as a paid employee": "Employed (hours not distinguished)",
-      "Working - self-employed": "Self employed",
-      "Not working - on temporary layoff from a job": "Unemployed not looking",
-      "Not working - looking for work": "Unemployed looking",
-      "Not working - retired": "Retired",
-      "Not working - disabled": "Disabled",
-      "Not working - other": "Other"
-    },
-    "b87sm_scenario1+3": {
-      "Working - as a paid employee": "Employed (hours not distinguished)",
-      "Working - self-employed": "Self employed",
-      "Not working - on temporary layoff from a job": "Unemployed not looking",
-      "Not working - looking for work": "Unemployed looking",
-      "Not working - retired": "Retired",
-      "Not working - disabled": "Disabled",
-      "Not working - other": "Other"
-    },
-    "uk_yougov_8": {
-      "Working full time (30 or more hours per week)": "Employed full time",
-      "Working part time (8-29 hours a week)": "Employed part time",
-      "Working part time (Less than 8 hours a week)": "Employed part time",
-      "Full time student": "Full time student",
-      "Retired": "Retired",
-      "Unemployed": "Unemployed looking",
-      "Not working": "Unemployed not looking",
-      "Other": "Other"
-    },
-    "uk_yougov_9_logvpz": {
-      "Working full time (30 or more hours per week)": "Employed full time",
-      "Working part time (8-29 hours a week)": "Employed part time",
-      "Working part time (less than 8 hours a week)": "Employed part time",
-      "Full time university student": "Full time student",
-      "Other full time student": "Full time student",
-      "Retired": "Retired",
-      "Unemployed and looking for work": "Unemployed looking",
-      "Not in paid work for any other reason": "Unemployed not looking",
-      "Other": "Other"
-    }
+  "b87sm_scenario1+3": {
+   "Working - as a paid employee": "Employed (hours not distinguished)",
+   "Working - self-employed": "Self employed",
+   "Not working - on temporary layoff from a job": "Unemployed not looking",
+   "Not working - looking for work": "Unemployed looking",
+   "Not working - retired": "Retired",
+   "Not working - disabled": "Disabled",
+   "Not working - other": "Other"
   },
-  "_about": [
-    "THE TWO LAYERS MEASURE DIFFERENT THINGS, and this field is the first where",
-    "that bites. The US scheme splits employee from self-employed and never asks",
-    "hours; the UK scheme splits full-time from part-time and never asks about",
-    "self-employment. Those are orthogonal dimensions, not a coarse and a fine",
-    "version of one dimension \u2014 neither side can produce the other's distinction.",
-    "",
-    "So, as for social_grade, the canonical keeps BOTH and labels what is missing.",
-    "'Employed (hours not distinguished)' is where the US layer's employees land; it",
-    "is a real value in its own right, not a stand-in for full-time. Mapping it to",
-    "full-time would invent an answer; collapsing the UK's hours into it would throw",
-    "away a distinction 99,768 rows actually carry.",
-    "",
-    "Two values each layer can never produce, which is correct rather than a gap:",
-    "the UK studies never ask about self-employment or disability, and the US studies",
-    "have no student category at all. A US student is somewhere inside 'Working - as",
-    "a paid employee' or 'Not working - other', so the absence of 'Full time student'",
-    "from US rows must NOT be read as the absence of students.",
-    "",
-    "ONE JUDGEMENT, flagged because it is inference rather than transcription. The",
-    "8-value YouGov scheme offers bare 'Unemployed' alongside 'Not working', and does",
-    "not say which means actively seeking. LOGVPZ's 9-value variant of the same",
-    "YouGov family spells it out \u2014 'Unemployed and looking for work' beside 'Not in",
-    "paid work for any other reason' \u2014 so the bare pair is read the same way. If that",
-    "reading is wrong, 'Unemployed' and 'Not working' swap, affecting both."
-  ]
+  "uk_yougov_8": {
+   "Working full time (30 or more hours per week)": "Employed full time",
+   "Working part time (8-29 hours a week)": "Employed part time",
+   "Working part time (Less than 8 hours a week)": "Employed part time",
+   "Full time student": "Full time student",
+   "Retired": "Retired",
+   "Unemployed": "Unemployed looking",
+   "Not working": "Unemployed not looking",
+   "Other": "Other"
+  },
+  "uk_yougov_9_logvpz": {
+   "Working full time (30 or more hours per week)": "Employed full time",
+   "Working part time (8-29 hours a week)": "Employed part time",
+   "Working part time (less than 8 hours a week)": "Employed part time",
+   "Full time university student": "Full time student",
+   "Other full time student": "Full time student",
+   "Retired": "Retired",
+   "Unemployed and looking for work": "Unemployed looking",
+   "Not in paid work for any other reason": "Unemployed not looking",
+   "Other": "Other"
+  },
+  "uk_ukhls_innovation_panel": {
+   "In paid employment (full or part-time)": "Employed (hours not distinguished)",
+   "Self employed": "Self employed",
+   "Working in an apprenticeship": "Employed (hours not distinguished)",
+   "On maternity leave": "Employed (hours not distinguished)",
+   "Unpaid worker in family business": "Employed (hours not distinguished)",
+   "On a government training scheme": "Full time student",
+   "Full-time student": "Full time student",
+   "Retired": "Retired",
+   "Long term sick or disabled": "Disabled",
+   "Looking after family or home": "Other",
+   "Doing something else": "Other"
+  }
+ },
+ "_about": [
+  "THE TWO LAYERS MEASURE DIFFERENT THINGS, and this field is the first where",
+  "that bites. The US scheme splits employee from self-employed and never asks",
+  "hours; the UK scheme splits full-time from part-time and never asks about",
+  "self-employment. Those are orthogonal dimensions, not a coarse and a fine",
+  "version of one dimension — neither side can produce the other's distinction.",
+  "",
+  "So, as for social_grade, the canonical keeps BOTH and labels what is missing.",
+  "'Employed (hours not distinguished)' is where the US layer's employees land; it",
+  "is a real value in its own right, not a stand-in for full-time. Mapping it to",
+  "full-time would invent an answer; collapsing the UK's hours into it would throw",
+  "away a distinction 99,768 rows actually carry.",
+  "",
+  "Two values each layer can never produce, which is correct rather than a gap:",
+  "the UK studies never ask about self-employment or disability, and the US studies",
+  "have no student category at all. A US student is somewhere inside 'Working - as",
+  "a paid employee' or 'Not working - other', so the absence of 'Full time student'",
+  "from US rows must NOT be read as the absence of students.",
+  "",
+  "ONE JUDGEMENT, flagged because it is inference rather than transcription. The",
+  "8-value YouGov scheme offers bare 'Unemployed' alongside 'Not working', and does",
+  "not say which means actively seeking. LOGVPZ's 9-value variant of the same",
+  "YouGov family spells it out — 'Unemployed and looking for work' beside 'Not in",
+  "paid work for any other reason' — so the bare pair is read the same way. If that",
+  "reading is wrong, 'Unemployed' and 'Not working' swap, affecting both."
+ ]
 }

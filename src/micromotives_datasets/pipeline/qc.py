@@ -525,6 +525,31 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             "wrong when it reaches a built row"
         )
 
+    # --- Rule 19: a panel source must identify its respondents ---------------
+    # In a panel the same person answers in several waves, and each wave is its
+    # own file. `Recipe.participant_id_var` exists so one person keeps one id
+    # across all of them; without it the melt falls back to the ROW INDEX and the
+    # same person in two waves becomes two unrelated participants.
+    #
+    # That link is most of why the Innovation Panel is worth its licence. Roughly
+    # the same 2,500 people answer experiment after experiment from 2008 to 2024,
+    # so this corpus can ask whether behaviour in one experiment predicts
+    # behaviour in another — a question SocSci210 cannot pose at all, because its
+    # 210 studies are 210 separate samples of different people.
+    #
+    # A FAILURE rather than a warning, because the loss is silent and total.
+    # Nothing downstream looks wrong: row counts are right, conditions are right,
+    # every other rule passes, and the link is simply gone. The id must also not
+    # be the archive's own person identifier — SN 6849 stores a hash of `pidp`,
+    # never `pidp` itself, which links to the whole of Understanding Society.
+    if recipe.source == "innovation_panel" and recipe.participant_id_var is None:
+        rep.failures.append(
+            "a panel source must declare `participant_id_var`. Without it every "
+            "respondent is keyed by row index, so the same person in two waves "
+            "becomes two unrelated participants, and the wave-on-wave link is lost "
+            "with nothing else looking wrong"
+        )
+
     return rep
 
 

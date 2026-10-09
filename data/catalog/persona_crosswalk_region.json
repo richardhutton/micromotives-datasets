@@ -1,44 +1,59 @@
 {
-  "_about": [
-    "Government Office Regions, identical across all nine UK studies that carry",
-    "them. The ONLY disagreement in 99,784 rows is the capital T in 35M5CV_sky's",
-    "'Yorkshire and The Humber'. That is typography, which CONVENTIONS says may be",
-    "normalised, not wording, which may never be.",
-    "",
-    "Northern Ireland is absent everywhere. That is a property of the YouGov",
-    "studies rather than a gap in this map -- see the 'Great Britain, not the UK'",
-    "note in SocSci-UK_MASTER.md 5a and ledger 101. It is deliberately NOT added as",
-    "a canonical value nobody can produce."
-  ],
-  "canonical": {
-    "East Midlands": "East Midlands",
-    "East of England": "East of England",
-    "London": "London",
-    "North East": "North East",
-    "North West": "North West",
-    "Scotland": "Scotland",
-    "South East": "South East",
-    "South West": "South West",
-    "Wales": "Wales",
-    "West Midlands": "West Midlands",
-    "Yorkshire and the Humber": "Yorkshire and the Humber"
+ "_about": [
+  "Government Office Regions, identical across all nine UK studies that carry",
+  "them. The ONLY disagreement in 99,784 rows is the capital T in 35M5CV_sky's",
+  "'Yorkshire and The Humber'. That is typography, which CONVENTIONS says may be",
+  "normalised, not wording, which may never be.",
+  "",
+  "Northern Ireland is absent everywhere. That is a property of the YouGov",
+  "studies rather than a gap in this map -- see the 'Great Britain, not the UK'",
+  "note in SocSci-UK_MASTER.md 5a and ledger 101. It is deliberately NOT added as",
+  "a canonical value nobody can produce."
+ ],
+ "canonical": {
+  "East Midlands": "East Midlands",
+  "East of England": "East of England",
+  "London": "London",
+  "North East": "North East",
+  "North West": "North West",
+  "Scotland": "Scotland",
+  "South East": "South East",
+  "South West": "South West",
+  "Wales": "Wales",
+  "West Midlands": "West Midlands",
+  "Yorkshire and the Humber": "Yorkshire and the Humber",
+  "Northern Ireland": "Northern Ireland"
+ },
+ "schemes": {
+  "uk_gor": {
+   "East Midlands": "East Midlands",
+   "East of England": "East of England",
+   "London": "London",
+   "North East": "North East",
+   "North West": "North West",
+   "Scotland": "Scotland",
+   "South East": "South East",
+   "South West": "South West",
+   "Wales": "Wales",
+   "West Midlands": "West Midlands",
+   "Yorkshire and the Humber": "Yorkshire and the Humber"
   },
-  "schemes": {
-    "uk_gor": {
-      "East Midlands": "East Midlands",
-      "East of England": "East of England",
-      "London": "London",
-      "North East": "North East",
-      "North West": "North West",
-      "Scotland": "Scotland",
-      "South East": "South East",
-      "South West": "South West",
-      "Wales": "Wales",
-      "West Midlands": "West Midlands",
-      "Yorkshire and the Humber": "Yorkshire and the Humber"
-    },
-    "uk_gor_capital_the": {
-      "Yorkshire and The Humber": "Yorkshire and the Humber"
-    }
+  "uk_gor_capital_the": {
+   "Yorkshire and The Humber": "Yorkshire and the Humber"
+  },
+  "uk_ukhls_innovation_panel": {
+   "North East": "North East",
+   "North West": "North West",
+   "Yorkshire and the Humber": "Yorkshire and the Humber",
+   "East Midlands": "East Midlands",
+   "West Midlands": "West Midlands",
+   "East of England": "East of England",
+   "London": "London",
+   "South East": "South East",
+   "South West": "South West",
+   "Wales": "Wales",
+   "Scotland": "Scotland",
+   "Northern Ireland": "Northern Ireland"
   }
+ }
 }
