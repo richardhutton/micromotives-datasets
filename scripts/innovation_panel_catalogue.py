@@ -109,8 +109,20 @@ JUDGEMENT: dict[str, tuple[str, str, str]] = {
     # satisfaction, not third-party judgement. BUILT — see
     # recipes/ukds_6849_vig_housework_w{5,6}.yaml.
     "9.10": ("family-care", BUILD, "respondents imagine themselves in the arrangement and rate their own satisfaction"),
-    "9.11": ("work-money", BUILD, "subjective expectations about the returns to higher education"),
-    "9.12": ("health", BUILD, "measuring change in self-assessed disability"),
+    # Was BUILD. The treatment is a GRAPH: "Display Earnings graph on screen", the
+    # page handed to face-to-face respondents. The questionnaire carries one
+    # framing sentence; the earnings figures exist only in the image, and the
+    # wave 8 graph is reproduced nowhere in the documentation. A condition
+    # without the numbers omits the treatment; one with them invents it. The
+    # visual-stimulus ruling, applied 9 Oct 2026.
+    "9.11": ("work-money", DROP, "the information treatment is an earnings graph whose figures are not in the instrument text; a visual stimulus"),
+    # Was BUILD. The long-standing-illness question is word-for-word the same in
+    # groups 1 and 3 (group 2 is not asked it): the dependent-interviewing check
+    # fires AFTER the answer, so nothing differs when it is given. The other
+    # outcomes (the difficulties list, the "why did it change" follow-up) are
+    # "code all that apply" lists, the shape 9.43 was dropped for. Dropped by
+    # the 9.43 ruling, 9 Oct 2026.
+    "9.12": ("health", DROP, "the manipulated part follows the answer (a reactive consistency check), and the other outcomes are code-all-that-apply lists"),
     "9.13": ("work-money", BUILD, "time and risk preference choices"),
     "9.14": ("attitudes", BUILD, "how people think about environmental taxes"),
     "9.15": ("health", DROP, "the outcome is the interviewer's rating, not the respondent's answer"),

@@ -259,3 +259,66 @@ def test_reorder_bullets_refuses_a_non_permutation() -> None:
 
     with pytest.raises(ValueError, match="not a permutation"):
         Condition.reorder_bullets("s\n• a\n• b", [1, 1])
+
+
+def test_a_study_with_no_factors_can_be_written(tmp_path) -> None:
+    """IP 9.13 is one condition with `factors: {}` on every row, which Parquet
+    cannot store as an empty struct. The writer must cope, and must leave a
+    study WITH factors exactly as it was."""
+    import pandas as pd
+
+    from micromotives_datasets.cli import _write_parquet
+    from micromotives_datasets.schema import Persona, Row
+
+    def row(factors: dict) -> Row:
+        return Row(
+            persona=Persona(),
+            condition="c",
+            outcome="o",
+            response="1",
+            response_num=1.0,
+            condition_num=0,
+            task_num=0,
+            factors=factors,
+            source="tess",
+            study_id="t",
+        )
+
+    rec = _bullet_recipe(["P1", "P2", "P3"])
+    path = _write_parquet([row({}), row({})], tmp_path / "a", rec)
+    assert pd.read_parquet(path)["factors"].isna().all()
+    path = _write_parquet([row({"x": "1"}), row({"x": "2"})], tmp_path / "b", rec)
+    assert list(pd.read_parquet(path)["factors"].map(lambda f: f["x"])) == ["1", "2"]
+
+
+def test_a_fill_resolving_to_nothing_at_the_end_leaves_no_trailing_space(tmp_path) -> None:
+    """IP 9.13's second appeal is absent for most respondents and sits at the end of
+    the condition; resolving it to nothing used to leave a trailing space."""
+    import pandas as pd
+    import pyreadstat
+
+    from micromotives_datasets.recipe import Arm, Condition, Outcome, Recipe, Scale
+
+    path = tmp_path / "f.sav"
+    pyreadstat.write_sav(
+        pd.DataFrame({"X": [1.0, 1.0], "F": [1.0, 2.0], "Y": [1.0, 1.0], "AGE": [40.0, 41.0]}),
+        str(path),
+    )
+    rec = Recipe(
+        study_id="t",
+        source="tess",
+        data_file="f.sav",
+        licence="none stated",
+        condition=Condition(
+            source_var="X",
+            arms=[Arm(raw=1, condition_num=0, text="Intro. [IF F=1 INSERT: Appeal.]")],
+        ),
+        outcomes=[
+            Outcome(var="Y", task_num=0, question="q", scale=Scale(min=1, max=2, nominal=True))
+        ],
+        response_recode={1: 1, 2: 2},
+        respondent_vars=["F"],
+        persona_map={"age": "AGE"},
+    )
+    rows = list(build_rows(spss.read(path), rec))
+    assert [r.condition for r in rows] == ["Intro. Appeal.", "Intro."]

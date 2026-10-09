@@ -169,7 +169,9 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
         # a double space keeps it — typography normalises, words never do
         # (docs/CONVENTIONS.md).
         out = re.sub(r"[ \t]{2,}", " ", out)
-        return re.sub(r"[ \t]+([,.;:?!])", r"\1", out)
+        # A branch resolving to nothing at the END leaves a trailing space (IP 9.13's
+        # second appeal, absent for most respondents).
+        return re.sub(r"[ \t]+([,.;:?!])", r"\1", out).strip()
 
     def arm_for(row: Any, variables: list[str]) -> Arm | None:
         """The declared arm this respondent saw, by these assignment variables."""

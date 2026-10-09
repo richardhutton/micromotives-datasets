@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**54 experiments.** 12 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 13 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**63 experiments.** 12 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 22 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 12 | 129,472 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 13 | 177,696 | **no** — UKDS End User Licence |
+| UK — UK Data Service (End User Licence) | 22 | 324,392 | **no** — UKDS End User Licence |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **54** | **604,371** | |
+| **Total** | **63** | **751,067** | |
 
 ---
 
@@ -18,10 +18,13 @@
 
 | ID | Title | Source | Reference | Rows |
 |---|---|---|---|---|
+| `ukds_6849_timerisk_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.13: time and r… | UK Data Service | `UKDS SN 6849` | 63,487 |
 | `EFXNLX` | Policy Preferences and Policy Legitimacy After Referendums: Evidenc… | Harvard Dataverse | `doi:10.7910/DVN/EFXNLX` | 49,395 |
 | `ukds_6849_reqol_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: ReQoL-10 a… | UK Data Service | `UKDS SN 6849` | 48,548 |
+| `ukds_6849_timerisk_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.13: time and r… | UK Data Service | `UKDS SN 6849` | 46,283 |
 | `ukds_6849_ghq_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: GHQ-12, as… | UK Data Service | `UKDS SN 6849` | 36,447 |
 | `ukds_6849_vig_flexstigma_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.39: measuring … | UK Data Service | `UKDS SN 6849` | 17,656 |
+| `ukds_6849_caring_activity_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 13,875 |
 | `POMIFD` ⚠ | Replication Data for: The Variable Persuasiveness of Political Rhet… | Harvard Dataverse | `doi:10.7910/DVN/POMIFD` | 13,268 |
 | `ukds_6849_eq5d5l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 13,203 |
 | `ukds_6849_itemcount_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.17: measuring … | UK Data Service | `UKDS SN 6849` | 12,672 |
@@ -32,6 +35,7 @@
 | `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,345 |
 | `35M5CV_bbc` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,175 |
 | `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
+| `ukds_6849_satisfaction_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.20: presentati… | UK Data Service | `UKDS SN 6849` | 8,025 |
 | `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
 | `ukds_6849_vig_ageing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 6,600 |
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
@@ -40,10 +44,15 @@
 | `ukds_6849_vig_ageing_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 5,967 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
 | `ukds_6849_vig_housework_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 5,081 |
+| `ukds_6849_caring_existing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 4,847 |
+| `ukds_6849_numeracy_env_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,638 |
+| `ukds_6849_numeracy_fin_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,602 |
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
 | `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
 | `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
+| `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
+| `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
@@ -275,6 +284,32 @@ Respondents who had drunk alcohol in the past year report how much they drink on
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.36. What IS verified: (a) the household join, by the data's own structure: all 4,208 answers sit in the respondent's own version's variables and none in the other's (scripts/gen_ip_alcohol.py --check), and a scrambled join fails it; (b) on every row, the question is its version's own, word-for-word against a table written from the questionnaire, and the 6-or-8 threshold matches the respondent's sex (0 mismatches in 2,112 binge rows); (c) 4,208 rows, reached by the generator's count and the pipeline. tests/test_ip_alcohol.py
 
+### `ukds_6849_caring_activity_w17`
+
+**Understanding Society Innovation Panel, experiment 9.47: informal caregiving, activity questions, with or without the other set earlier (wave 17)**
+
+Respondents report how many hours a week they spend caring for a sick, disabled or elderly person, on each of six activities (household tasks, personal care, practical support, social and emotional support, travel, other). The condition is whether they had already been asked the existing Understanding Society caring questions earlier in the interview. Wave 17 (2024).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Order experiment by household, built on prior exposure. Six outcomes, hours 0-168. Wording by mode.
+- **Category** — work/family/gender
+- **Rows** — 13,875 from 2,323 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.47. What IS verified: (a) 0 answers outside the allocated module (scripts/gen_ip_caring.py --check); (b) every row's condition against what the respondent was actually asked earlier; (c) every response against the raw value from the module used; (d) recipes regenerated from the questionnaire, every quoted string asserted; (e) 13,875 rows; an independent checker rebuilt every row from raw with 0 mismatches. tests/test_ip_caring.py
+
+### `ukds_6849_caring_existing_w17`
+
+**Understanding Society Innovation Panel, experiment 9.47: informal caregiving, existing questions, with or without the other set earlier (wave 17)**
+
+Respondents answer the existing Understanding Society questions on informal care: whether they look after someone in or outside the household, and how many hours a week. The condition is whether they had already been asked the new activity-based caring questions earlier in the interview. Wave 17 (2024).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Order experiment by household, built on prior exposure. Three single-answer outcomes; the multi-select 'who do you look after', the relationship items and 'how many people' (outside-household only, context a row cannot carry) are not built. Wording by mode.
+- **Category** — work/family/gender
+- **Rows** — 4,847 from 2,440 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication. What IS verified: (a) 0 answers outside the allocated module; (b) every row's condition against what was actually asked earlier; (c) every response against the raw value, 'Other' recoded 97 -> 10; (d) recipes regenerated from the questionnaire; (e) 4,847 rows; an independent checker rebuilt every row from raw with 0 mismatches. tests/test_ip_caring.py
+
 ### `ukds_6849_eq5d3l_w11`
 
 **Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-3L, asked with or without the EQ-5D-5L earlier (wave 11)**
@@ -300,6 +335,32 @@ Respondents describe their own health today on the five EQ-5D items (mobility, s
 - **Rows** — 13,203 from 2,642 respondents
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.24. What IS verified: (a) every row's condition against what the raw file says the respondent was actually routed into, not what was allocated; (b) every response against the raw value in the module its arm used; (c) each question's options against a table written from the questionnaire; (d) 13,203 rows, reached by the generator's count and the pipeline. tests/test_ip_eq5d.py
+
+### `ukds_6849_fertility_w4`
+
+**Understanding Society Innovation Panel, experiment 9.9: expected fertility asked before or after questions about friends (wave 4)**
+
+Respondents of childbearing age say whether they expect to have any (more) children and, if so, how many. The condition is whether they had just been asked a block of questions about their close friends, a test of whether thinking about friends primes fertility intentions. Wave 4 (2011).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Two-version priming order split by household, built on prior exposure: the friends block asked earlier or not. Two outcomes (nominal yes / pregnant / no, and a count). Small: self-completing continuing respondents, men 15-64 and women 15-45.
+- **Category** — work/family/gender
+- **Rows** — 532 from 409 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.9. What IS verified: (a) the household join against indresp's own copy of the allocation, 0 disagreements, and no answer in the other version (scripts/gen_ip_fertility.py --check); (b) every row's condition against which version the respondent answered and whether they reported a close friend; (c) recipes regenerated from the questionnaires, every quoted string asserted to occur in both; (d) 532 rows, reached by the generator and the pipeline. tests/test_ip_fertility.py
+
+### `ukds_6849_fertility_w5`
+
+**Understanding Society Innovation Panel, experiment 9.9: expected fertility asked before or after questions about friends (wave 5)**
+
+Respondents of childbearing age say whether they expect to have any (more) children and, if so, how many. The condition is whether they had just been asked a block of questions about their close friends, a test of whether thinking about friends primes fertility intentions. Wave 5 (2012).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Two-version priming order split by household, built on prior exposure: the friends block asked earlier or not. Two outcomes (nominal yes / pregnant / no, and a count). Small: self-completing continuing respondents, men 15-64 and women 15-45.
+- **Category** — work/family/gender
+- **Rows** — 407 from 309 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.9. What IS verified: (a) the household join against indresp's own copy of the allocation, 0 disagreements, and no answer in the other version (scripts/gen_ip_fertility.py --check); (b) every row's condition against which version the respondent answered and whether they reported a close friend; (c) recipes regenerated from the questionnaires, every quoted string asserted to occur in both; (d) 407 rows, reached by the generator and the pipeline. tests/test_ip_fertility.py
 
 ### `ukds_6849_ghq_w14`
 
@@ -353,6 +414,32 @@ Respondents see six lists of statements about who they have been attracted to, w
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.17. What IS verified: (a) every answer sits in a list the respondent's group was shown and none elsewhere (scripts/gen_ip_itemcount.py --check); (b) every row's list, stem and sensitive statement against wording written from the questionnaire, which wave 8 and wave 9 share word-for-word; (c) every row's statement order against the raw permutation code; (d) 12,320 rows, reached by the generator's count and the pipeline. tests/test_ip_itemcount.py
 
+### `ukds_6849_numeracy_env_w16`
+
+**Understanding Society Innovation Panel, experiment 9.42: compound growth framed as sea-level (environmental), with or without the savings (financial) questions earlier (wave 16)**
+
+Respondents estimate compound growth at 1% a year over 5, 30 and 100 years, framed as an island below sea level, choosing among four bands. The condition is whether they had already answered the savings-account version of the same arithmetic earlier in the interview. A test of how well people grasp the long-term future. Wave 16 (2023).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Framing x order design, built on prior exposure: two conditions, the other frame asked earlier or not. The archive's labels for which set came first are reversed relative to the questionnaire and the data (ledger 138); the build follows the routing. Three outcomes per respondent, each listing its four bands.
+- **Category** — economics/behavioural
+- **Rows** — 4,638 from 1,570 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT compared with the published initial findings (Voorintholt, Soetevent and van den Berg 2024b). What IS verified: (a) 0 answers outside the questionnaire's routing (scripts/gen_ip_numeracy.py --check), and a build trusting the archive label fails the tests; (b) every row's condition against which section the respondent actually answered; (c) every response against the raw value from that section; (d) 4,638 rows, reached by the generator's count and the pipeline. tests/test_ip_numeracy.py
+
+### `ukds_6849_numeracy_fin_w16`
+
+**Understanding Society Innovation Panel, experiment 9.42: compound growth framed as savings (financial), with or without the sea-level (environmental) questions earlier (wave 16)**
+
+Respondents estimate compound growth at 1% a year over 5, 30 and 100 years, framed as a savings account, choosing among four bands. The condition is whether they had already answered the sea-level version of the same arithmetic earlier in the interview. A test of how well people grasp the long-term future. Wave 16 (2023).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Framing x order design, built on prior exposure: two conditions, the other frame asked earlier or not. The archive's labels for which set came first are reversed relative to the questionnaire and the data (ledger 138); the build follows the routing. Three outcomes per respondent, each listing its four bands.
+- **Category** — economics/behavioural
+- **Rows** — 4,602 from 1,562 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT compared with the published initial findings (Voorintholt, Soetevent and van den Berg 2024b). What IS verified: (a) 0 answers outside the questionnaire's routing (scripts/gen_ip_numeracy.py --check), and a build trusting the archive label fails the tests; (b) every row's condition against which section the respondent actually answered; (c) every response against the raw value from that section; (d) 4,602 rows, reached by the generator's count and the pipeline. tests/test_ip_numeracy.py
+
 ### `ukds_6849_reqol_w14`
 
 **Understanding Society Innovation Panel, experiment 9.31: ReQoL-10 and EQ-5D-3L, asked with or without the GHQ-12 earlier (wave 14)**
@@ -365,6 +452,45 @@ Respondents describe their mental and physical wellbeing on the ReQoL-10 (ten it
 - **Rows** — 48,548 from 3,046 respondents
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.31. What IS verified: (a) every row's condition against which early module the respondent actually answered, independent of either allocation variable, and a build trusting the person-level variable fails it; (b) every response against the raw value in the module its arm used; (c) the ReQoL and EQ-5D wording against the respondent's mode; (d) 48,548 rows, reached by the generator's count and the pipeline. (e) an independent checker re-rendered every row from raw with its own transcription; it found the telephone EQ-5D options wrongly in the self-completion wording, since fixed and pinned by a test. tests/test_ip_reqol.py
+
+### `ukds_6849_satisfaction_w9`
+
+**Understanding Society Innovation Panel, experiment 9.20: presentation of response options in satisfaction questions (wave 9)**
+
+Respondents rate their satisfaction with their health, their household's income, their amount of leisure time and their life overall, 1-7. The questions were shown in a grid, one per screen with the options vertical, or one per screen with the options horizontal; no word differs. Wave 9 (2016).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Three-arm layout split by household. Each arm's condition is one sentence of DESCRIPTION, recast from the questionnaire's own scripting note (the CONVENTIONS layout exception, as evnyh). Respondents who heard the questions (telephone, or read out by the interviewer) excluded. Four outcomes per respondent.
+- **Category** — survey methodology
+- **Rows** — 8,025 from 2,010 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.20. What IS verified: (a) every answering respondent matches a household allocation (scripts/gen_ip_satisfaction.py --check); (b) every row's layout against the raw household allocation, and nobody who heard the questions given a layout; (c) wording checked programmatically against the questionnaire; (d) 8,025 rows, reached by the generator and the pipeline. (e) an independent checker re-rendered every row from raw (0 mismatches) and found the 75 read-out respondents, since excluded. tests/test_ip_satisfaction.py
+
+### `ukds_6849_timerisk_w6`
+
+**Understanding Society Innovation Panel, experiment 9.13: time and risk preference choices (wave 6)**
+
+Respondents make 91 incentivised choices: 72 between sums of money at different times (e.g. £100 in 1 month or £100.42 in 2 months) and 19 between lotteries, knowing one in ten will be paid for real on one randomly drawn answer, up to £250. An Associated Study (Galizzi, ES/K001965/1). Wave 6 (2013).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — ONE condition, not an experiment: everyone saw the same preamble and choices; the only randomisation, who was paid, came after the answers. Built by the user's ruling because the choices are real incentivised behaviour. 91 outcomes per respondent, 708 respondents; preamble wording resolved by mode.
+- **Category** — economics/behavioural
+- **Rows** — 63,487 from 708 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication. What IS verified: (a) every answering respondent had begun the questions (scripts/gen_ip_timerisk.py --check); (b) the recipes are regenerated from the questionnaire PDF and every string asserted to occur in it; (c) each row's preamble against the respondent's mode, and the second appeal against who saw it; (d) 63,487 rows, reached by the generator and the pipeline. tests/test_ip_timerisk.py
+
+### `ukds_6849_timerisk_w7`
+
+**Understanding Society Innovation Panel, experiment 9.13: time and risk preference choices (wave 7)**
+
+Respondents make 91 incentivised choices: 72 between sums of money at different times (e.g. £100 in 1 month or £100.42 in 2 months) and 19 between lotteries, knowing one in ten will be paid for real on one randomly drawn answer, up to £250. An Associated Study (Galizzi, ES/K001965/1). Wave 7 (2014).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — ONE condition, not an experiment: everyone saw the same preamble and choices; the only randomisation, who was paid, came after the answers. Built by the user's ruling because the choices are real incentivised behaviour. 91 outcomes per respondent, 518 respondents; preamble wording resolved by mode.
+- **Category** — economics/behavioural
+- **Rows** — 46,283 from 518 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication. What IS verified: (a) every answering respondent had begun the questions (scripts/gen_ip_timerisk.py --check); (b) the recipes are regenerated from the questionnaire PDF and every string asserted to occur in it; (c) each row's preamble against the respondent's mode, and the second appeal against who saw it; (d) 46,283 rows, reached by the generator and the pipeline. tests/test_ip_timerisk.py
 
 ### `ukds_6849_vig_ageing_w17`
 
@@ -477,11 +603,11 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 1 | 1 | 9,166 |
+| economics/behavioural | 5 | 1 | 128,176 |
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 3 | 6 | 108,446 |
 | political identity/polarisation | 4 | 0 | 34,920 |
 | political preferences/policy | 7 | 0 | 90,425 |
-| survey methodology | 8 | 5 | 189,543 |
-| work/family/gender | 3 | 8 | 115,414 |
+| survey methodology | 9 | 5 | 197,568 |
+| work/family/gender | 7 | 8 | 135,075 |
 

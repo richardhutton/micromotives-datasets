@@ -1,0 +1,115 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.42: compound growth framed as
+  sea-level (environmental), with or without the savings (financial) questions earlier (wave 16)"
+data_file: numeracy_w16-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: numeracy_env_w16
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.42 in the Innovation Panel User Guide ("Understanding of the long-term
+  future"); wave 16 (2023). Initial findings: Voorintholt, Soetevent and van den Berg
+  (2024b), not compared. `ukds_6849_numeracy_fin_w16.yaml` is the other half.
+
+  THE SAME ARITHMETIC IN TWO FRAMES. Compounding at 1% a year over 5, 30 and 100 years,
+  asked about a savings account or about an island below sea level. The frame lives in
+  the questions, so it is the OUTCOME; this recipe holds the sea-level (environmental) answers. Built,
+  by rich's ruling for 9.24, on what was asked before: the condition is whether the
+  savings (financial) set had been asked earlier.
+
+  THE ARCHIVE'S LABELS FOR THE ORDER ARE REVERSED (ledger 138). `ff_numeracyw16`'s
+  value labels and the User Guide say 1 = environmental early. The questionnaire routes
+  the early environmental questions on 2, and the data agree with the questionnaire:
+  `scripts/gen_ip_numeracy.py --check` finds 0 answers outside that routing. The
+  generator follows the routing, never the label.
+
+  WHO IS IN EACH CONDITION. "Not asked before": everyone given only this set (early or
+  late, a position the row cannot express), and everyone given both with this set
+  early. "Asked earlier": those given both with the other set early who were routed
+  into the early section. Allocated to have it earlier but not routed: excluded, and
+  in this study nobody in that position answered this set, so the exclusion removes
+  no rows and the rule is not exercised here (it is in 9.24, at 30 and 34 rows). Four
+  respondents from households with no allocation (-9) answered anyway, each one early
+  set and nothing late. Their routing contradicts their missing allocation, so they are
+  excluded rather than assigned (about 11 rows); "not asked before" would in fact have
+  been true for them (independent checker).
+
+  THE CONDITION IS NARRATED: "Earlier in the interview you were asked:" with the other
+  set quoted, every item and option; or "You had not been asked the questions that
+  begin "..." earlier in the interview." The framing words, quotation marks and " / "
+  separators are ADDED (docs/CONVENTIONS.md, "Narrating what the respondent did").
+  Wording from `6849_ip_wave_16_questionnaire.pdf`, modules scaenvnumear/lat and
+  scafinnumear/lat_ip16, checked programmatically against the extracted text. The
+  stem appears in brackets on the second and third items; it is kept on every item,
+  without brackets, as the first item gives it. Telephone wording is the same ("READ
+  OUT" only). Each question lists its options, because they are uneven money and
+  centimetre bands (ledger 133).
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+  Allocated by household, so a participant-level split puts one household's members,
+  who shared a condition, on both sides.
+
+condition:
+  source_var: prior_env
+  factors: [fin_asked_earlier]
+  considered_and_rejected:
+    prior_fin: "the exposure code for the sibling experiment ukds_6849_numeracy_fin_w16; derived by the same generator, not a second randomisation"
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {fin_asked_earlier: "no"}
+      text: "You had not been asked the questions that begin \"Imagine a savings account with a current balance of £100. The interest rate is fixed at 1% per year.\" earlier in the interview."
+    - raw: 2
+      condition_num: 1
+      factors: {fin_asked_earlier: "yes"}
+      text: "Earlier in the interview you were asked: \"Imagine a savings account with a current balance of £100. The interest rate is fixed at 1% per year.\" \"After 5 years, how much money will be in the account if no money is withdrawn?\" \"£101 or less\" / \"More than £101, but no more than £106\" / \"More than £106, but no more than £111\" / \"More than £111\" \"After 30 years, how much money will be in the account if no money is withdrawn?\" \"£110 or less\" / \"More than £110, but no more than £130\" / \"More than £130, but no more than £150\" / \"More than £150\" \"After 100 years, how much money will be in the account if no money is withdrawn?\" \"£150 or less\" / \"More than £150, but no more than £225\" / \"More than £225, but no more than £300\" / \"More than £300\""
+
+outcomes:
+  - var: env5y
+    task_num: 0
+    question: "Imagine a certain island that currently lies 100cm below sea level. As a result of climate change the sea level rises by 1% per year. After 5 years, how many centimetres below sea level will the island be? 1 \"101cm or less\" 2 \"More than 101cm, but no more than 106cm\" 3 \"More than 106cm, but no more than 111cm\" 4 \"More than 111cm\""
+    scale: {min: 1, max: 4, min_label: "101cm or less", max_label: "More than 111cm"}
+  - var: env30y
+    task_num: 1
+    question: "Imagine a certain island that currently lies 100cm below sea level. As a result of climate change the sea level rises by 1% per year. After 30 years, how many centimetres below sea level will the island be? 1 \"110cm or less\" 2 \"More than 110cm, but no more than 130cm\" 3 \"More than 130cm, but no more than 150cm\" 4 \"More than 150cm\""
+    scale: {min: 1, max: 4, min_label: "110cm or less", max_label: "More than 150cm"}
+  - var: env100y
+    task_num: 2
+    question: "Imagine a certain island that currently lies 100cm below sea level. As a result of climate change the sea level rises by 1% per year. After 100 years, how many centimetres below sea level will the island be? 1 \"150cm or less\" 2 \"More than 150cm, but no more than 225cm\" 3 \"More than 225cm, but no more than 300cm\" 4 \"More than 300cm\""
+    scale: {min: 1, max: 4, min_label: "150cm or less", max_label: "More than 300cm"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

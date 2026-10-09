@@ -677,8 +677,8 @@
     "title": "Subjective expectations about the returns to higher education and decisions to attend university",
     "category": "work-money",
     "waves": "5, 8, 9",
-    "verdict": "build",
-    "reason": "",
+    "verdict": "drop",
+    "reason": "the information treatment is an earnings graph whose figures are not in the instrument text; a visual stimulus",
     "description": "This Wave 5 study tested ways of measuring perceptions about the economic returns to higher education, the costs involved, and experimentally tests the effects of information on actual decisions to attend university.",
     "vignette": false,
     "allocation_vars": [
@@ -690,8 +690,8 @@
     "title": "Measuring change in self-assessed disability",
     "category": "health",
     "waves": "6, 7",
-    "verdict": "build",
-    "reason": "",
+    "verdict": "drop",
+    "reason": "the manipulated part follows the answer (a reactive consistency check), and the other outcomes are code-all-that-apply lists",
     "description": "This experimentation uses dependent interviewing to investigate the measurement of change in self-assessed measures of long-standing illness or disability.",
     "vignette": false,
     "allocation_vars": []

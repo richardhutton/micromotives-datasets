@@ -25,14 +25,14 @@ done it for the UK.
 
 ## 2. Where it stands
 
-**604,371 rows across 54 experiments**, all QC-passed and on disk at
+**751,067 rows across 63 experiments**, all QC-passed and on disk at
 `data/processed/`.
 
 | | experiments | rows |
 |---|---|---|
 | US (TESS deposits) | 28 | 283,935 |
-| UK-native | 26 | 320,436 |
-| **total** | **54** | **604,371** |
+| UK-native | 35 | 467,132 |
+| **total** | **63** | **751,067** |
 
 Ten largest: `EFXNLX` 49,395 · `evnyh` 33,932 · `es4xw` 32,228 · `9xw67_conjoint`
 20,373 · `b87sm` 19,282 · `8ctbk` 17,464 · `cug34` 15,091 · `z358z` 14,702 ·
@@ -76,17 +76,17 @@ UKDS SN 6849. 93 experiments across 17 waves, all screened in
 
 | verdict | count |
 |---|---|
-| **build** | 42 |
+| **build** | 40 |
 | marginal | 9 |
-| drop | 42 |
+| drop | 44 |
 
-**8 of the 42 are built**, 177,696 rows in all. 9.10, the housework scenarios: 9,631
+**13 of the 40 are built**, 324,392 rows in all. 9.10, the housework scenarios: 9,631
 rows across waves 5 and 6. 9.18, successful ageing: 12,567 rows across waves 9 and
-17. 9.39, flexibility stigma: 17,656 rows, wave 16. 9.36, alcohol in units or drinks: 4,208 rows, wave 15. 9.24, EQ-5D forms: 21,901 rows, wave 11. 9.4, occupation or profession: 1,746 rows, wave 2. 9.17, sexual identity by item counts: 24,992 rows, waves 8 and 9. 9.31, ReQoL-10 / EQ-5D / GHQ-12 order: 84,995 rows, wave 14. **34 remain.** (9.43 and 9.48 were moved from build to drop on 9
-Oct; see the plan below.)
+17. 9.39, flexibility stigma: 17,656 rows, wave 16. 9.36, alcohol in units or drinks: 4,208 rows, wave 15. 9.24, EQ-5D forms: 21,901 rows, wave 11. 9.4, occupation or profession: 1,746 rows, wave 2. 9.17, sexual identity by item counts: 24,992 rows, waves 8 and 9. 9.31, ReQoL-10 / EQ-5D / GHQ-12 order: 84,995 rows, wave 14. 9.42, compound growth as money or sea level: 9,240 rows, wave 16. 9.20, satisfaction layouts: 8,025 rows, wave 9. 9.13, time and risk choices: 109,770 rows, waves 6 and 7. 9.9, fertility after friends: 939 rows, waves 4 and 5. 9.47, two ways of asking about caring: 18,722 rows, wave 17. **27 remain.** (9.43, 9.48, 9.12 and 9.11 were moved from build to
+drop on 9 Oct; see the plan below.)
 
 `docs/EXPERIMENTS.md` is the generated list of everything built. Each Innovation
-Panel wave counts as its own experiment there, so these eight studies are thirteen
+Panel wave counts as its own experiment there, so these thirteen studies are twenty-two
 entries.
 
 ### The 43, ranked by what fills the gaps in the UK layer
@@ -227,13 +227,13 @@ the existing `Condition.template` machinery. It moves to the front.
 | 7 | 9.48 | Labour market expectations **DROPPED 9 Oct — see below** | work-money | 17 | 7 variables located |
 | 8 | 9.17 | Measuring sexual identity using direct and indirect questioning **BUILT 9 Oct (item counts)** | sensitive | 8, 9 | 2 variables located |
 | 9 | 9.31 | Comparison of ReQoL-10 to other scales **BUILT 9 Oct** | health | 14 | 4 variables located |
-| 10 | 9.12 | Measuring change in self-assessed disability | health | 6, 7 | dependent interviewing |
-| 11 | 9.42 | Understanding of the long-term future | attitudes | 16 | 4 variables located |
-| 12 | 9.20 | Presentation of response options in satisfaction questions | wellbeing | 9 | 1 variable located |
-| 13 | 9.13 | Associated Study: measuring time and risk preferences | work-money | 6, 7 | 13 variables located |
-| 14 | 9.11 | Subjective expectations about the returns to higher education | work-money | 5, 8, 9 | 2 variables located |
-| 15 | 9.9 | Context effects in fertility decisions | family-care | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
-| 16 | 9.47 | Identification of informal caregiving | family-care | 17 | 3 variables located |
+| 10 | 9.12 | Measuring change in self-assessed disability **DROPPED 9 Oct — see below** | health | 6, 7 | dependent interviewing |
+| 11 | 9.42 | Understanding of the long-term future **BUILT 9 Oct** | attitudes | 16 | 4 variables located |
+| 12 | 9.20 | Presentation of response options in satisfaction questions **BUILT 9 Oct** | wellbeing | 9 | 1 variable located |
+| 13 | 9.13 | Associated Study: measuring time and risk preferences **BUILT 9 Oct (one condition)** | work-money | 6, 7 | 13 variables located |
+| 14 | 9.11 | Subjective expectations about the returns to higher education **DROPPED 9 Oct — see below** | work-money | 5, 8, 9 | 2 variables located |
+| 15 | 9.9 | Context effects in fertility decisions **BUILT 9 Oct** | family-care | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
+| 16 | 9.47 | Identification of informal caregiving **BUILT 9 Oct** | family-care | 17 | 3 variables located |
 
 ### Experiment 1, successful ageing — BUILT 9 Oct
 
@@ -428,7 +428,112 @@ block is conditioned on whether the other had been asked earlier.
   behaviour (ledger 137). Its other checks passed: allocation, responses and row
   counts, with 0 mismatches.
 
-**Plan progress: 7 built, 2 dropped, 7 to go.**
+### Experiment 10, self-assessed disability — DROPPED 9 Oct
+
+Dropped by the 9.43 ruling. The long-standing-illness question is word-for-word
+the same in groups 1 and 3 (group 2 is not asked it), and the
+dependent-interviewing check fires only after the answer, and only if it
+contradicts last year's. So nothing differs at the moment of answering. The other
+outcomes, the difficulties list and the follow-up asking why things changed, are
+"code all that apply" lists.
+
+### Experiment 11, compound growth as money or sea level — BUILT 9 Oct
+
+**9,240 rows across two experiments, wave 16 (2023).** Environmental answers 4,638,
+financial 4,602, both QC PASS with no warnings. Recipes
+`recipes/ukds_6849_numeracy_{env,fin}_w16.yaml`, generator
+`scripts/gen_ip_numeracy.py`, tests `tests/test_ip_numeracy.py`. The same
+arithmetic, compounding at 1% a year, framed as savings or as sea level. Built on
+prior exposure: the condition is whether the other frame was asked earlier.
+
+- **The archive's labels for the order are reversed** (ledger 138). They say 1 =
+  environmental first; the questionnaire and the data say 2. The build follows the
+  routing, and 0 answers fall outside it.
+- **Independent checker: PASS.** It rebuilt every row from raw (0 condition,
+  response or arm mismatches across 9,240) and confirmed the label reversal
+  independently. A flipped allocation makes `--check` report 3,132 misrouted
+  answers.
+
+### Experiment 12, satisfaction layouts — BUILT 9 Oct
+
+**8,025 rows, wave 9 (2016).** QC PASS with no warnings. Recipe
+`recipes/ukds_6849_satisfaction_w9.yaml`, generator
+`scripts/gen_ip_satisfaction.py`, tests `tests/test_ip_satisfaction.py`. The same
+four satisfaction questions in a grid, or one per screen with vertical or
+horizontal options. No word differs, so each condition is one sentence of
+description. That is CONVENTIONS' layout exception, as evnyh used it, and the
+sentence is built from the questionnaire's own scripting note. Respondents who
+heard the questions are excluded, because no layout was shown to them: 30 by
+telephone, and 75 whose interviewer read it out.
+
+- **Independent checker: FAIL, then fixed.** It rebuilt every row from raw with 0
+  mismatches, but found the 75 read-out respondents (`scac` = 2, 299 rows) carrying a
+  screen layout they never saw. They are now excluded, the same rule as telephone,
+  with a test that kills the old behaviour.
+
+### Experiment 13, time and risk preference choices — BUILT 9 Oct
+
+**109,770 rows: wave 6 63,487, wave 7 46,283.** Both QC PASS with no warnings.
+Recipes `recipes/ukds_6849_timerisk_w{6,7}.yaml`, generated with the data by
+`scripts/gen_ip_timerisk.py` from the questionnaire PDFs. Tests
+`tests/test_ip_timerisk.py`.
+
+- **One condition, not an experiment** (your ruling). Everyone saw the same
+  preamble and the same 91 choices (72 money-over-time, 19 lotteries). The only
+  randomisation, who was paid for real, came after the answers. Built because
+  these are genuine incentivised choices.
+- **Two small shared-code changes, both first exercised here.** A study with no
+  factors writes its factors column as null (Parquet cannot store an empty
+  struct). Resolved fills are trimmed of trailing whitespace. Every other study
+  using fills rebuilds identically.
+- **Independent checker: PASS.** It re-derived all 109,770 rows from raw with 0
+  condition, outcome or response mismatches. On its advice the second appeal's
+  closing instruction ("…enter 1 or else just return the laptop") is dropped as
+  survey mechanics, because "1" is also an answer code in those rows. The trim
+  change now has its own mutation-tested unit test.
+
+### Experiment 14, returns to higher education — DROPPED 9 Oct
+
+The information treatment is a graph ("Display Earnings graph on screen", a page
+handed to face-to-face respondents). The questionnaire carries only one framing
+sentence. The earnings figures exist only in the image, and the wave 8 graph is
+not reproduced anywhere in the documentation. A condition without the numbers
+leaves out the treatment, and one with them would invent it. Dropped under the
+catalogue's visual-stimulus ruling.
+
+### Experiment 15, fertility asked before or after friends — BUILT 9 Oct
+
+**939 rows: wave 4 532, wave 5 407.** Both QC PASS with no warnings. Recipes
+`recipes/ukds_6849_fertility_w{4,5}.yaml`, generated with the data by
+`scripts/gen_ip_fertility.py`. Tests `tests/test_ip_fertility.py`. A priming order
+experiment: the expected-fertility questions came before or after a block about
+the respondent's close friends. Built on prior exposure. The friends block is a
+loop that can't be quoted whole, so its opening question (and, for those with a
+close friend, the loop's own opening) is quoted behind a narrating clause.
+Small: self-completing continuing respondents of childbearing age.
+
+- **Independent checker: PASS.** 0 condition and 0 response mismatches in both
+  waves, and the module order confirmed in both questionnaires. On its findings,
+  wave 4's Version B carries its printed wording ("will have **and** (more)
+  children?", almost certainly a typo but the source's), and web respondents'
+  friends question omits "Enter number", which is only a box label there.
+
+### Experiment 16, two ways of asking about caring — BUILT 9 Oct
+
+**18,722 rows across two experiments, wave 17 (2024).** Activity-hours answers
+13,875, existing caring questions 4,847, both QC PASS with no warnings. Recipes
+`recipes/ukds_6849_caring_{activity,existing}_w17.yaml`, generated with the data by
+`scripts/gen_ip_caring.py`. Tests `tests/test_ip_caring.py`. Everyone was asked both
+sets, one early and one late. Built on prior exposure, with wording by mode. The
+name-filled "who do you look after" checklist and the computed total are not built.
+
+- **Independent checker: PASS.** It rebuilt every row from raw with 0 mismatches.
+  On its points: "How many people do you care for?" is dropped, because it counts
+  only people outside the household and its row couldn't say so. The "not asked"
+  condition now quotes whichever question opens the respondent's own set. Two
+  in-universe respondents coded −9 now count as asked.
+
+**PLAN COMPLETE: 12 built, 4 dropped (9.43, 9.48, 9.12, 9.11), 0 to go.**
 
 ### What the waves are and are not doing for us
 

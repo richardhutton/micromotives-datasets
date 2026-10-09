@@ -66,6 +66,13 @@ def _write_parquet(rows: list[Row], out_dir: Path, rec: recipe_mod.Recipe) -> Pa
     # overwrite the first.
     stem = f"{rec.study_id}_{rec.experiment}" if rec.experiment else rec.study_id
     path = out_dir / f"{stem}.parquet"
+    # A study with one condition and no factors (docs/CONVENTIONS.md, "A source
+    # with no stimulus": `factors: {}`) gives every row an empty dict, which
+    # Parquet cannot store as a struct with no fields. Written as null instead.
+    # First met by IP 9.13; a study with any factor is unaffected.
+    if flat and all(not d["factors"] for d in flat):
+        for d in flat:
+            d["factors"] = None
     pd.DataFrame(flat).to_parquet(path, index=False)
     return path
 

@@ -633,6 +633,19 @@ findings, not yet compared (the PDF could not be fetched from this machine). Wit
 the Innovation Panel layer is 5 experiments and 39,854 rows; the corpus is 46
 experiments and 466,529 rows.
 
+**THE 16-EXPERIMENT PLAN, FINISHED 9 Oct 2026: 12 built, 4 dropped.** Built: 9.18
+successful ageing, 9.39 flexibility stigma, 9.36 alcohol units or drinks, 9.24 EQ-5D
+forms, 9.4 occupation or profession, 9.17 sexual identity item counts, 9.31 ReQoL / EQ-5D /
+GHQ order, 9.42 compound growth framed as money or sea level, 9.20 satisfaction layouts,
+9.13 time and risk choices (one condition), 9.9 fertility after friends, 9.47 two ways of
+asking about caring. Dropped by ruling, each recorded in the catalogue: 9.43, 9.48, 9.12,
+9.11. Every build was verified by a separate checker agent re-rendering every row from the
+raw files; three checkers failed a build on a real defect, all fixed (ledger 137, 141 and
+the 9.39 schema gap 131). The Innovation Panel layer is now 22 experiments and 324,392 rows;
+the corpus 63 experiments and 751,067 rows. Order experiments are built on prior exposure
+(the 9.24 ruling); recipes for the larger instruments are generated from the questionnaire
+PDFs with every quoted string asserted.
+
 **Other UK panels / cohorts (forecasting layer, safeguarded on UKDS):**
 UKHLS main study (~40k households, richer than BES on non-political topics);
 birth-cohort studies (NCDS, BCS70, Millennium Cohort, Next Steps); British Social

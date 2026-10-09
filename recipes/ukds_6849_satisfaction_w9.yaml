@@ -1,0 +1,117 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.20: presentation of response options in
+  satisfaction questions (wave 9)"
+data_file: satisfaction_w9-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: satisfaction_w9
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.20 in the Innovation Panel User Guide; wave 9 (2016). The User Guide
+  cites no publication.
+
+  A LAYOUT EXPERIMENT: NO WORD DIFFERS BETWEEN ARMS. Households were split three ways
+  (`ff_satisw9`): the satisfaction questions in a grid, one per screen with the options
+  vertical, or one per screen with them horizontal. This is the one exception
+  docs/CONVENTIONS.md makes ("Never invent stimulus text": a layout manipulation with no
+  words anywhere in the source), built as `evnyh` was: the questions and options are
+  word-for-word, and each arm's condition is ONE sentence of DESCRIPTION, not
+  transcription. To keep invention to a minimum, each sentence reuses the words of the
+  questionnaire's own scripting note for the module ("Where ff_satisw9 = 1, arrange items
+  in a grid, with response options across the top and items to be evaluated down the
+  left hand side ... each question should appear on its own screen, with response
+  options vertically / horizontally aligned"), recast from instruction into
+  description. That note is for the programmer, never shown to a respondent.
+
+  RESPONDENTS WHO HEARD THE QUESTIONS ARE EXCLUDED: a screen layout was never shown to
+  them. 30 answered by telephone (whose stem is also different), and 75 face-to-face
+  respondents (299 rows) had the interviewer complete the self-completion for them
+  because of reading or sight problems (`scac` = 2); the second group was found by the
+  independent checker. Five who had translation help (`scac` = 3) still saw the screen
+  and are kept. 85 respondents answered on a smartphone and 300 on a tablet, spread
+  evenly across arms; nothing in the questionnaire or technical report says a grid was
+  reflowed on a small screen, so "grid" is what the source states, unverified for them.
+
+  WORDING from `6849_ip_wave_9_questionnaires.pdf`, module Scasatisfaction_ip9, items
+  Sclfsat1, Sclfsat2, Sclfsat7, Sclfsato; checked programmatically against the extracted
+  text. The stem precedes the first item; it is repeated on every item here, as a row
+  has no first item. Each question lists the seven options, numbered by their codes.
+
+  ALLOCATION is at household level in `i_hhsamp_ip`, joined on `i_hidp` by
+  `scripts/gen_ip_satisfaction.py`; indresp carries no copy, so no row-for-row join
+  check exists. Every answering respondent matched a household allocation. A
+  participant-level split puts one household's members, who shared a layout, on both
+  sides.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+
+condition:
+  source_var: layout
+  factors: [layout]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {layout: grid}
+      text: "The questions were arranged in a grid, with the response options across the top and the items to be evaluated down the left hand side."
+    - raw: 2
+      condition_num: 1
+      factors: {layout: one_per_screen_vertical}
+      text: "Each question appeared on its own screen, with the response options vertically aligned."
+    - raw: 3
+      condition_num: 2
+      factors: {layout: one_per_screen_horizontal}
+      text: "Each question appeared on its own screen, with the response options horizontally aligned."
+
+outcomes:
+  - var: sclfsat1
+    task_num: 0
+    question: "Here are some questions about how you feel about your life. Please choose the number which you feel best describes how dissatisfied or satisfied you are with the following aspects of your current situation. Your health. 1 \"Completely dissatisfied\" 2 \"Mostly dissatisfied\" 3 \"Somewhat dissatisfied\" 4 \"Neither satisfied nor dissatisfied\" 5 \"Somewhat satisfied\" 6 \"Mostly satisfied\" 7 \"Completely satisfied\""
+    scale: {min: 1, max: 7, min_label: Completely dissatisfied, mid_label: Neither satisfied nor dissatisfied, max_label: Completely satisfied}
+  - var: sclfsat2
+    task_num: 1
+    question: "Here are some questions about how you feel about your life. Please choose the number which you feel best describes how dissatisfied or satisfied you are with the following aspects of your current situation. The income of your household. 1 \"Completely dissatisfied\" 2 \"Mostly dissatisfied\" 3 \"Somewhat dissatisfied\" 4 \"Neither satisfied nor dissatisfied\" 5 \"Somewhat satisfied\" 6 \"Mostly satisfied\" 7 \"Completely satisfied\""
+    scale: {min: 1, max: 7, min_label: Completely dissatisfied, mid_label: Neither satisfied nor dissatisfied, max_label: Completely satisfied}
+  - var: sclfsat7
+    task_num: 2
+    question: "Here are some questions about how you feel about your life. Please choose the number which you feel best describes how dissatisfied or satisfied you are with the following aspects of your current situation. The amount of leisure time you have. 1 \"Completely dissatisfied\" 2 \"Mostly dissatisfied\" 3 \"Somewhat dissatisfied\" 4 \"Neither satisfied nor dissatisfied\" 5 \"Somewhat satisfied\" 6 \"Mostly satisfied\" 7 \"Completely satisfied\""
+    scale: {min: 1, max: 7, min_label: Completely dissatisfied, mid_label: Neither satisfied nor dissatisfied, max_label: Completely satisfied}
+  - var: sclfsato
+    task_num: 3
+    question: "Here are some questions about how you feel about your life. Please choose the number which you feel best describes how dissatisfied or satisfied you are with the following aspects of your current situation. Your life overall. 1 \"Completely dissatisfied\" 2 \"Mostly dissatisfied\" 3 \"Somewhat dissatisfied\" 4 \"Neither satisfied nor dissatisfied\" 5 \"Somewhat satisfied\" 6 \"Mostly satisfied\" 7 \"Completely satisfied\""
+    scale: {min: 1, max: 7, min_label: Completely dissatisfied, mid_label: Neither satisfied nor dissatisfied, max_label: Completely satisfied}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

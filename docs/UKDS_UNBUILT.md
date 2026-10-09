@@ -5,9 +5,9 @@ Source: `data/catalog/innovation_panel_experiments.json`, whose titles and waves
 are parsed from the Innovation Panel User Guide (UKDS **SN 6849**, waves 1–17,
 2008–2024). Category and verdict are judgement and are recorded in that file.
 
-**93 experiments.** 42 pass screening, 9 need a ruling, 42 are out.
+**93 experiments.** 40 pass screening, 9 need a ruling, 44 are out.
 
-The 42 that pass span **61 experiment-waves**, because 14 of them ran in two or more waves — which is the time axis the Harvard and TESS layers structurally cannot provide.
+The 40 that pass span **56 experiment-waves**, because 12 of them ran in two or more waves — which is the time axis the Harvard and TESS layers structurally cannot provide.
 
 **Nothing here is claimed to be buildable.** These are desk judgements from the guide's own summaries. The condition text lives only in each wave's questionnaire PDF, and whether it is there word-for-word is unverified. That check will move experiments out of `build`, not into it.
 
@@ -17,16 +17,16 @@ The 42 that pass span **61 experiment-waves**, because 14 of them ran in two or 
 
 | Verdict | Experiments | Experiment-waves |
 |---|---|---|
-| `build` | 42 | 61 |
+| `build` | 40 | 56 |
 | `marginal` | 9 | 22 |
-| `drop` | 42 | 76 |
+| `drop` | 44 | 81 |
 
 | Category | Build | Marginal | Drop |
 |---|---|---|---|
 | Attitudes and politics | 8 | 0 | 0 |
 | Wellbeing and satisfaction | 2 | 2 | 0 |
-| Health | 4 | 0 | 3 |
-| Work, money and expectations | 5 | 2 | 1 |
+| Health | 3 | 0 | 4 |
+| Work, money and expectations | 4 | 2 | 2 |
 | Family, care and the household | 6 | 1 | 0 |
 | Technology and the future | 1 | 0 | 0 |
 | Sensitive questions | 1 | 0 | 0 |
@@ -46,11 +46,9 @@ The same condition, asked of different people in different years. Holding out a 
 | `8.4` | 3, 4, 5, 7 | Dependent interviewing wording |
 | `8.3` | 2, 3, 4 | Impact of question wording and context on measuring change |
 | `8.5` | 3, 4, 5 | Branched vs. unbranched rating scales for measuring attitudes |
-| `9.11` | 5, 8, 9 | Subjective expectations about the returns to higher education and decisions to attend university |
 | `8.11` | 7, 8 | Impact of response scale direction on responses |
 | `9.9` | 4, 5 | Context effects in fertility decisions |
 | `9.10` | 5, 6 | Vignettes: measuring partner satisfaction with division of household labour |
-| `9.12` | 6, 7 | Measuring change in self-assessed disability |
 | `9.13` | 6, 7 | Associated Study: measuring time and risk preferences |
 | `9.16` | 8, 9 | Social desirability bias in attitudes towards immigration |
 | `9.17` | 8, 9 | Measuring sexual identity using direct and indirect questioning |
@@ -112,11 +110,7 @@ Populations are ageing and there is substantial interest among researchers, poli
 wave 9  
 Recent findings suggest a significant drop in health satisfaction across waves of the Understanding Society survey. It is unclear if it is an actual change or artefact of the survey design.
 
-### Health (4)
-
-**`9.12` Measuring change in self-assessed disability**  
-waves 6, 7  
-This experimentation uses dependent interviewing to investigate the measurement of change in self-assessed measures of long-standing illness or disability.
+### Health (3)
 
 **`9.24` Variations of the EQ-5D questions**  
 wave 11  
@@ -134,17 +128,13 @@ This experiment compared the 10-item Recovering Quality of Life questionnaire (R
 wave 15  
 A review of Understanding Society questionnaires identified our usage of the Audit-C alcohol consumption questions differed somewhat from the questions the NHS uses for its measures.
 
-### Work, money and expectations (5)
+### Work, money and expectations (4)
 
 **`9.5` Measures of wealth**  
 wave 3  
 Wave 3 of the Innovation Panel was used to examine four different question designs for collecting the amount of money held in savings and investments: Table: Schematic design of Wave 3 measuring wealth experiment treatments Individual Reporting Financial Reporting Aggregate Amounts Group 1 Group 2 Itemized Amounts Group 3 Group 4 For all groups, an initial question asks respondents to report which specific types of savings or investments they hold.
 
 *Assessed:* wealth asked aggregate vs itemised, 2x2 with who reports
-
-**`9.11` Subjective expectations about the returns to higher education and decisions to attend university**  
-waves 5, 8, 9 · allocation `e_ff_wageinfow5`  
-This Wave 5 study tested ways of measuring perceptions about the economic returns to higher education, the costs involved, and experimentally tests the effects of information on actual decisions to attend university.
 
 **`9.13` Associated Study: measuring time and risk preferences**  
 waves 6, 7  
@@ -356,18 +346,20 @@ In Wave 4 a split-ballot experiment was used to collect information about the pr
 
 Listed compactly. The 28 procedural experiments share one reason and do not repeat it per row.
 
-### Health (3)
+### Health (4)
 
 | ID | Waves | Title | Why not |
 |---|---|---|---|
+| `9.12` | 6, 7 | Measuring change in self-assessed disability | the manipulated part follows the answer (a reactive consistency check), and the other outcomes are code-all-that-apply lists |
 | `9.15` | 8 | Validity of interviewer ratings of respondent health | the outcome is the interviewer's rating, not the respondent's answer |
 | `9.27` | 12 | Reporting of height and weight | the condition is interviewer-asked vs self-completion, which is mode |
 | `9.43` | 16 | Mental health questions comparisons | multi-select checklists that differ between versions; no single question and answer per row without restructuring the instrument |
 
-### Work, money and expectations (1)
+### Work, money and expectations (2)
 
 | ID | Waves | Title | Why not |
 |---|---|---|---|
+| `9.11` | 5, 8, 9 | Subjective expectations about the returns to higher education and decisions to attend university | the information treatment is an earnings graph whose figures are not in the instrument text; a visual stimulus |
 | `9.48` | 17 | Labour market expectations | anchored earnings buckets whose shown £ bounds were computed on screen and are not in the deposit; the exact stimulus cannot be recovered |
 
 ### The form of the question rather than its content (5)
