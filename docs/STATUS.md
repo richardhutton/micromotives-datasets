@@ -202,6 +202,35 @@ the existing `Condition.template` machinery. It moves to the front.
 | 15 | 9.9 | Context effects in fertility decisions | family-care | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
 | 16 | 9.47 | Identification of informal caregiving | family-care | 17 | 3 variables located |
 
+### What the waves are and are not doing for us
+
+The waves are not a time dimension in these rows. An experiment that ran in two
+waves simply yields twice the rows; `(persona, condition, outcome, response)`
+says nothing about when, beyond the fieldwork year sitting in the persona. We are
+mining the Innovation Panel for **experiments**, not for trajectories.
+
+**One thing does carry across, and it should not be lost.**
+`Recipe.participant_id_var` keeps one person's identifier stable across every
+wave and every experiment, and the id is a hash of `pidp` matching
+`scripts/build_profiles.py`. So once these sixteen are built, the same person
+appears in several different experiments, years apart, under one id.
+
+Why that is worth protecting:
+
+- **SocSci210 structurally cannot do it.** Each of its 210 studies is a separate
+  sample of different people. The Innovation Panel is roughly the same 2,500
+  people answering experiment after experiment from 2008 to 2024, so this corpus
+  can ask whether a person's behaviour in one experiment predicts their behaviour
+  in another — a question the US reference dataset cannot pose at all.
+- **It is the bridge back to the parked profile work** (§5). The same hashed id
+  joins a row here to that person's profile there. Building the experiments now
+  costs nothing extra and leaves the profile layer able to plug in later without
+  rework.
+- **It is free, and easy to lose.** The default is the row index, which makes the
+  same person in two waves two unrelated participants. Every Innovation Panel
+  recipe must set `participant_id_var: person`, and the generator must write the
+  hash rather than `pidp`.
+
 ### What the triage script is and is not good for
 
 It reported 9 PASS, 5 CHECK, 2 FAIL. **The passes are grounded and the failures
