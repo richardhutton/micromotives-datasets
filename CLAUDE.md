@@ -209,6 +209,11 @@ A source is done only when **all** of these hold:
 - **UKDS safeguarded** data (Innovation Panel SN 6849, restricted BES) is End
   User Licence: never redistribute, never commit, never send to any external
   service including an LLM API, without checking the EUL first.
+  **This session is such a service.** For UKDS, "merge and read rows" means the
+  condition and outcome text (transcribed from public questionnaires) plus
+  aggregates computed locally — never persona or response values printed into the
+  conversation, and a checker agent is briefed the same way. A build here printed
+  eight full rows before this was written down. (2026-10-09)
 - Missing-value codes in survey microdata are negative (UKHLS `-1`, `-2`, `-7`,
   `-8`, `-9`) or `9999` (BES). Strip before making integer responses.
 - Synthetic quotes are always labelled synthetic, never presented as real

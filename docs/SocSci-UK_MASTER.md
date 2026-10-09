@@ -606,6 +606,33 @@ Two reusable additions came out of it, so the remaining three scenario studies
   is a separate population and the time axis, the whole reason this source is
   worth the licence, is unusable.
 
+**SECOND BUILD, 9 Oct 2026: experiment 9.18, waves 9 and 17 — 12,567 rows.**
+`recipes/ukds_6849_vig_ageing_w{9,17}.yaml`, both QC PASS with no warnings. Three
+descriptions of an imaginary 75-year-old per respondent, each rated 0-10 on how
+successfully they are ageing. Six life dimensions plus a name (4 × 2⁶ = 256 cells,
+all occurring), the name setting the pronouns and appearing in the question. Built
+from the questionnaires (`Scavignettes_ip9`, `scasuccessageing_ip17`); the archived
+labels contradict themselves again ("rarely sees family and friends regularly").
+An independent checker re-rendered all 12,567 rows from the raw files with zero
+disagreements. No publication exists to check against.
+
+- **Wave 17's randomisation partly failed (ledger 125).** 354 respondents share one
+  identical allocation, and 933 share theirs with someone. Wave 9 is clean. The rows
+  are real, but the wave is not a balanced factorial.
+- **Schema:** `Level.parts` (fragments that agree with a level, such as pronouns)
+  and `ConditionTemplate.outcome_questions` (per-task questions that vary with the cell,
+  attached as item overrides). Inert: all 43 earlier experiments rebuild
+  row-identical.
+
+**THIRD BUILD, 9 Oct 2026: experiment 9.39, wave 16 — 17,656 rows.**
+`recipes/ukds_6849_vig_flexstigma_w16.yaml`, QC PASS with no warnings. HR-manager
+vignettes: three job candidates rated on recommendation, commitment, productivity and
+team-playing; gender, parenthood, home working, company prevalence and policy
+randomised (576 arms). Clean allocation. Chung & Wang (2024) published initial
+findings, not yet compared (the PDF could not be fetched from this machine). With it
+the Innovation Panel layer is 5 experiments and 39,854 rows; the corpus is 46
+experiments and 466,529 rows.
+
 **Other UK panels / cohorts (forecasting layer, safeguarded on UKDS):**
 UKHLS main study (~40k households, richer than BES on non-political topics);
 birth-cohort studies (NCDS, BCS70, Millennium Cohort, Next Steps); British Social

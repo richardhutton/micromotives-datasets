@@ -25,14 +25,14 @@ done it for the UK.
 
 ## 2. Where it stands
 
-**436,306 rows across 43 experiments**, all QC-passed and on disk at
+**604,371 rows across 54 experiments**, all QC-passed and on disk at
 `data/processed/`.
 
 | | experiments | rows |
 |---|---|---|
 | US (TESS deposits) | 28 | 283,935 |
-| UK-native | 15 | 152,371 |
-| **total** | **43** | **436,306** |
+| UK-native | 26 | 320,436 |
+| **total** | **54** | **604,371** |
 
 Ten largest: `EFXNLX` 49,395 · `evnyh` 33,932 · `es4xw` 32,228 · `9xw67_conjoint`
 20,373 · `b87sm` 19,282 · `8ctbk` 17,464 · `cug34` 15,091 · `z358z` 14,702 ·
@@ -76,12 +76,18 @@ UKDS SN 6849. 93 experiments across 17 waves, all screened in
 
 | verdict | count |
 |---|---|
-| **build** | 44 |
+| **build** | 42 |
 | marginal | 9 |
-| drop | 40 |
+| drop | 42 |
 
-**1 of the 44 is built** — 9.10, the housework scenarios, 9,631 rows across waves
-5 and 6. **43 remain.**
+**8 of the 42 are built**, 177,696 rows in all. 9.10, the housework scenarios: 9,631
+rows across waves 5 and 6. 9.18, successful ageing: 12,567 rows across waves 9 and
+17. 9.39, flexibility stigma: 17,656 rows, wave 16. 9.36, alcohol in units or drinks: 4,208 rows, wave 15. 9.24, EQ-5D forms: 21,901 rows, wave 11. 9.4, occupation or profession: 1,746 rows, wave 2. 9.17, sexual identity by item counts: 24,992 rows, waves 8 and 9. 9.31, ReQoL-10 / EQ-5D / GHQ-12 order: 84,995 rows, wave 14. **34 remain.** (9.43 and 9.48 were moved from build to drop on 9
+Oct; see the plan below.)
+
+`docs/EXPERIMENTS.md` is the generated list of everything built. Each Innovation
+Panel wave counts as its own experiment there, so these eight studies are thirteen
+entries.
 
 ### The 43, ranked by what fills the gaps in the UK layer
 
@@ -212,15 +218,15 @@ the existing `Condition.template` machinery. It moves to the front.
 
 | # | id | experiment | category | wave | allocation variable |
 |---|---|---|---|---|---|
-| 1 | 9.18 | What do the general population regard as "successful ageing"? | wellbeing | 9, 17 | 2⁶ factorial, allocated in the questionnaire |
-| 2 | 9.39 | Vignettes: measuring flexibility stigma — double whammy or femininity stigma | family-care | 16 | `fsvigname1-3`, `fsvigparent1-3`, `fsvighybrid1-3`, `fsvigorguse1-3`, `fsvigorgpol1-3` |
-| 3 | 9.43 | Mental health questions comparisons | health | 16 | `ff_mhealthexpw16` in `p_hhsamp_ip` |
-| 4 | 9.36 | Alcohol consumption | health | 15 | located in `o_hhsamp_ip` |
-| 5 | 9.24 | Variations of the EQ-5D questions | health | 11 | `eq5dcond` in `k_indresp_ip` |
-| 6 | 9.4 | Measuring identity | attitudes | 2 | located in the wave 2 files |
-| 7 | 9.48 | Labour market expectations | work-money | 17 | 7 variables located |
-| 8 | 9.17 | Measuring sexual identity using direct and indirect questioning | sensitive | 8, 9 | 2 variables located |
-| 9 | 9.31 | Comparison of ReQoL-10 to other scales | health | 14 | 4 variables located |
+| 1 | 9.18 | What do the general population regard as "successful ageing"? **BUILT 9 Oct** | wellbeing | 9, 17 | 2⁶ factorial, allocated in the questionnaire |
+| 2 | 9.39 | Vignettes: measuring flexibility stigma — double whammy or femininity stigma **BUILT 9 Oct** | family-care | 16 | `fsvigname1-3`, `fsvigparent1-3`, `fsvighybrid1-3`, `fsvigorguse1-3`, `fsvigorgpol1-3` |
+| 3 | 9.43 | Mental health questions comparisons **DROPPED 9 Oct — see below** | health | 16 | `ff_mhealthexpw16` in `p_hhsamp_ip` |
+| 4 | 9.36 | Alcohol consumption **BUILT 9 Oct** | health | 15 | located in `o_hhsamp_ip` |
+| 5 | 9.24 | Variations of the EQ-5D questions **BUILT 9 Oct** | health | 11 | `eq5dcond` in `k_indresp_ip` |
+| 6 | 9.4 | Measuring identity **BUILT 9 Oct** | attitudes | 2 | located in the wave 2 files |
+| 7 | 9.48 | Labour market expectations **DROPPED 9 Oct — see below** | work-money | 17 | 7 variables located |
+| 8 | 9.17 | Measuring sexual identity using direct and indirect questioning **BUILT 9 Oct (item counts)** | sensitive | 8, 9 | 2 variables located |
+| 9 | 9.31 | Comparison of ReQoL-10 to other scales **BUILT 9 Oct** | health | 14 | 4 variables located |
 | 10 | 9.12 | Measuring change in self-assessed disability | health | 6, 7 | dependent interviewing |
 | 11 | 9.42 | Understanding of the long-term future | attitudes | 16 | 4 variables located |
 | 12 | 9.20 | Presentation of response options in satisfaction questions | wellbeing | 9 | 1 variable located |
@@ -229,87 +235,200 @@ the existing `Condition.template` machinery. It moves to the front.
 | 15 | 9.9 | Context effects in fertility decisions | family-care | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
 | 16 | 9.47 | Identification of informal caregiving | family-care | 17 | 3 variables located |
 
-### Experiment 1, successful ageing — everything found before building
+### Experiment 1, successful ageing — BUILT 9 Oct
 
-Done 9 Oct, nothing built yet. Pick up here; do not re-derive any of it.
+**12,567 rows: wave 9 5,967, wave 17 6,600.** Both QC PASS with no warnings.
+Recipes `recipes/ukds_6849_vig_ageing_w{9,17}.yaml`, generator
+`scripts/gen_ip_vig_ageing.py` (`--check` verifies every derived name against the
+archive), tests `tests/test_ip_vig_ageing.py`. Verified by a separate checker
+agent that re-transcribed both questionnaires and re-rendered all 12,567 rows from
+the raw files: 0 condition, 0 outcome, 0 name and 0 code disagreements. No
+publication to check against; the User Guide cites none.
 
-**The condition.** Each respondent read three descriptions of a 75-year-old and
-rated each on 0–10 (0 "Not successfully", 10 "Very successfully", shown as an
-eleven-point line scale). Word-for-word from the questionnaire, with the slots
-marked:
+What the build settled, beyond the groundwork recorded before it:
 
-> {name} is 75 years old and has {disease}. {name.pronoun} has {disability},
-> {cognition}, and {physical}. {name.pronoun} sees {name.possessive} family and
-> friends {interpersonal} and {volunteering}. How successfully is {name} ageing?
+- **Wave 17's randomisation partly failed (ledger 125).** 354 web respondents,
+  mostly in December 2024, share one identical allocation; 933 in all share
+  theirs with someone. Wave 9 is clean: 2,010 distinct allocations out of 2,010.
+  The rows are real (the stored codes are what filled the text), but wave 17 is
+  not a balanced factorial. Use wave 9 to estimate a dimension's effect, or drop
+  or down-weight the 354.
+- **The two waves get separate templates, not one.** Wave 17's extra comma is
+  kept: word-for-word, and each wave has its own recipe anyway.
+- **The question names the person**, so it is the outcome, rendered per cell
+  through the new `ConditionTemplate.outcome_questions`. It is not folded into
+  the condition.
+- **The schema addition grew by one field.** `Level.parts` as planned, plus
+  `outcome_questions` (one question template per task), plus a guard that no rendered text or
+  question may contain a brace. All 43 earlier experiments rebuild to
+  row-identical output, personas included.
+- **Wave 17 has 681 rows (10%) with no age and no sex.** These were coded -8 in
+  the deposit, and the rows ship without age and sex rather than a guess.
+- **Neither wave documents a constraint on repeated profiles.** Wave 9 never
+  repeats description 1's six life codes in description 2; wave 17 never repeats
+  them in any pair.
 
-Shared context, also word-for-word: *"We are interested in how people view the
-ageing process. Three different imaginary people will be described and you will
-be asked how successfully you think they are ageing. There are no right or wrong
-answers!"*
+### Experiment 2, flexibility stigma — BUILT 9 Oct
 
-| dimension | code 1 | code 2 |
-|---|---|---|
-| disease | no long-term illness | diabetes |
-| disability | no difficulties climbing stairs | difficulties climbing stairs |
-| cognition | has no problems remembering | has problems remembering |
-| physical | opens food packaging easily | struggles to open food packaging |
-| interpersonal | regularly | rarely |
-| volunteering | often volunteers | doesn't volunteer |
+**17,656 rows, wave 16 (2023).** QC PASS with no warnings. Recipe
+`recipes/ukds_6849_vig_flexstigma_w16.yaml`, generator
+`scripts/gen_ip_vig_flexstigma.py`, tests `tests/test_ip_vig_flexstigma.py`.
+Working respondents aged 18-65 play an HR manager and rate three job candidates on
+four 0-10 questions (recommend, commitment, productivity, team player). Gender (by
+name), parenthood, own home working, company prevalence and company policy vary;
+576 arms, 192 per slot. The allocation is clean: 1,616 distinct among 1,616.
 
-Names: George and Harry take "He/his", Margaret and Anne "She/her". **4 names ×
-2⁶ = 256 arms.** The odd grammar ("has no difficulties climbing stairs, has no
-problems remembering") is the questionnaire's and is kept.
+- **Independent checker: PASS, no defect in the rows.** It transcribed the
+  questionnaire itself and re-rendered all 17,656 rows from the raw file with 0
+  condition, outcome, response, name or pronoun disagreements. It found one latent
+  schema gap: a task left out of `outcome_questions` shipped its bracketed fallback
+  with QC silent. Now refused at load (ledger 131).
+- **A published reference exists and has not been checked:** Chung & Wang (2024),
+  ISER working paper 2024-11, pp. 105-123. The PDF sits behind a browser check this
+  machine cannot pass; download it by hand to `data/raw/ukds_6849/` to compare.
+- **"Candidate 1:" is dropped from the text**, because a row cannot cite its own
+  position. The four questions each name or pronoun the candidate, so each is
+  rendered per cell. That needed `ConditionTemplate.outcome_questions` (one
+  question per task), which replaced 9.18's single-question field the same day.
+- `fsvrecall`, the end-of-module recall check, is not built: it asks about all three
+  candidates at once and has no single condition.
 
-**Sources.** Wave 9 is `i_indresp_ip.dta` (2,263 respondents, 2,010 allocated),
-wave 17 is `q_indresp_ip.dta` (2,494 respondents, 2,220 allocated). Outcomes are
-`i_vign1-3` and `q_vign1-3ip17`; dimensions are `i_vdisease1-3`,
-`i_vdisability1-3`, `i_vcognit1-3`, `i_vphys1-3`, `i_vinterp1-3`, `i_vvolun1-3`
-and the same names with the `q_…ip17` pattern. Expect roughly **13,000 rows**
-across the two waves.
+### Experiment 3, mental health questions — DROPPED 9 Oct
 
-**The User Guide is wrong about the name variable in wave 9, and the data is
-better than the guide.** The guide says `ff_vigname` is in `i_indresp`. It is
-not, under any spelling, in any wave 9 file. What is there is `i_vname1`,
-`i_vname2`, `i_vname3` — the name actually used in each of the three slots,
-which is what a build needs. Wave 17 has only the sequence, `q_vignameip17`.
+Decided by rich after reading the questionnaire. The three versions are "code all
+that apply" lists that differ between versions:
 
-**The six name sequences are confirmed by the data, not taken on trust.** The
-guide's table (1 = George, Margaret, Harry … 6 = Margaret, Anne, George) is
-independently confirmed twice: `q_vignameip17`'s own value labels spell the six
-sequences out, and wave 9's three `vname` variables produce **exactly six
-distinct name triples across 2,010 respondents, exactly the guide's six, with
-nothing unexplained**. So decoding wave 17's sequence into per-slot names rests
-on evidence.
+- **A:** one 20-item list with "Clinical depression".
+- **B:** a list with "An emotional, nervous or psychiatric problem", then a
+  follow-up asking which type.
+- **C:** a separate 18-item mental-health list before the physical one.
 
-**The per-slot codes differ and must be harmonised by the generator.**
-`i_vname1` is 1 = George, 2 = Margaret; `i_vname2` and `i_vname3` are 1 =
-Margaret, 2 = Harry, 3 = George, 4 = Anne. `by_raw` keys arms on codes, so the
-generator must emit one consistent coding across all three slots, and `--check`
-must verify the derived code's name against the archive label for that slot.
+A row is one question and one answer. Every way to build it either turned a tick
+list into yes/no answers nobody gave, or pooled differently worded questions as
+one outcome. Recorded as `drop` in the catalogue with that reason. **The triage's
+PASS was about the data existing, not the outcome's shape** (ledger 132).
 
-**The archived labels are wrong again, the same way as the housework build.**
-`i_vinterp1 = 2` is labelled *"rarely sees family and friends regularly"* and
-`i_vphys1 = 2` *"struggles to open food packaging easily"* — both
-self-contradictory, both the opposite of what the questionnaire says in one
-reading. The questionnaire is the only source for the clause wording. This is now
-twice out of two Innovation Panel scenario studies.
+### Experiment 4, alcohol in units or drinks — BUILT 9 Oct
 
-**Wave 17's allocation is not uniform.** Name sequence 5 was given to 680
-respondents against roughly 305 for each of the other five. Their randomisation,
-not a fault in the join, but it belongs in the recipe notes so nobody reads it as
-a bug later.
+**4,208 rows, wave 15 (2022).** QC PASS with no warnings. Recipe
+`recipes/ukds_6849_alcohol_w15.yaml`, generator `scripts/gen_ip_alcohol.py`, tests
+`tests/test_ip_alcohol.py`. The first question-wording build in the Innovation
+Panel layer: AUDIT-C items 4 and 5 asked in units (NHS wording) or in drinks, split
+by household.
 
-**The two waves' wording differs by one comma** — wave 17 has "family and friends
-regularly, and often volunteers". One template serves both.
+- **The condition is narrated** — `You were asked: "<question>"` — by the `rpw4u`
+  precedent, because the question is the only stimulus. The added words are
+  recorded in the notes.
+- **The binge threshold follows the respondent's sex** (6 for women, 8 for men).
+  It is resolved per row through `respondent_vars` and is not an arm.
+- **Not rendered:** version A's Help definition of a unit. It sits behind a help
+  link, so nobody knows who read it.
+- **Independent checker: PASS, no defect in the rows.** It re-rendered all 4,208
+  rows from the raw files with 0 mismatches and confirmed the sex fill. It corrected
+  three statements in the notes: phone respondents heard the unit definition, the
+  allocation counts were respondents rather than households, and 8 answerers had
+  been routed out of self-completion. All three are now recorded in the recipe.
+- **Endpoint labels only.** The answer instruction names 1 and 5 ("1-2"/"10+",
+  "Never"/"Daily or almost daily"), not the uneven bands between (ledger 133).
 
-**One schema addition is needed first.** The pronouns have to agree with the
-name, so the name dimension needs three slots in the template text where the
-machinery currently allows one, and `ConditionTemplate._placeholders_match`
-refuses a repeated placeholder outright. The addition: `Level.parts`, a dict of
-named fragments, addressed as `{dimension.part}`. Keep the existing once-only
-rule for the bare `{dimension}` placeholder and allow part placeholders to
-repeat, so the guard that rule provides is not weakened. Must be inert for all 43
-existing studies — rebuild and check row counts, as with `Condition.template`.
+### Experiment 5, EQ-5D 3-level and 5-level forms — BUILT 9 Oct
+
+**21,901 rows across two experiments, wave 11 (2018).** 5-level answers 13,203,
+3-level answers 8,698, both QC PASS with no warnings. Recipes
+`recipes/ukds_6849_eq5d{5l,3l}_w11.yaml`, generator `scripts/gen_ip_eq5d.py`, tests
+`tests/test_ip_eq5d.py`.
+
+- **An order experiment, built on prior exposure** (rich's ruling). The condition
+  is whether the other form had been asked earlier, quoting its items
+  word-for-word, or that it had not. Arms that differ only by position share a
+  condition, because a row cannot say where it sat.
+- **Exposure is what happened, not what was allocated.** 70 and 69 respondents
+  whose arm put the other form first, but who skipped the early module, are
+  excluded rather than told something false.
+- **Each question lists its options**, because the middle levels are the
+  difference between the forms (ledger 133).
+- **Independent checker: PASS, no defect in the rows.** It rebuilt both
+  experiments from the raw file with 0 mismatches across 21,901 rows. It sharpened
+  the exclusion: only 6 and 7 of those people answered this form, so 30 and 34 rows
+  were lost. It also showed the exclusion is a small selection after allocation
+  (face-to-face early-module refusers); both points are now in the notes.
+
+### Experiment 6, occupation or profession — BUILT 9 Oct
+
+**1,746 rows, wave 2 (2009).** QC PASS with no warnings. Recipe
+`recipes/ukds_6849_identity_w2.yaml`, generator `scripts/gen_ip_identity.py`, tests
+`tests/test_ip_identity.py`. A one-word split ballot. The first item of an identity
+battery asks how important "Your occupation?" or "Your profession?" is to your sense
+of who you are, split by household. Only that item is built; the other twelve are
+identical in both versions. The older asterisk layout of the wave 2 questionnaire
+needed no parser, because it was read by hand. The household join checks against
+indresp's own copy with 0 disagreements in 1,788 comparisons.
+
+- **Independent checker: PASS, no defect in the rows.** It re-rendered all 1,746 rows
+  from raw with its own join: 0 condition, outcome or response mismatches. It found
+  one test checking a row against itself rather than against the raw allocation;
+  fixed.
+
+### Experiment 7, labour market expectations — DROPPED 9 Oct
+
+Decided by rich. The randomised part asks for a percentage chance over six earnings
+buckets. Each bucket's £ bounds were computed on screen from the respondent's own
+wage, or from their estimate of the market wage ("£ [0.85 x LMEANCHOR]"). The
+deposit stores the anchor but not the bounds shown, and the questionnaire does not
+say how they were rounded or formatted. So the exact stimulus cannot be recovered,
+and every row would carry the respondent's own earnings as stimulus. Recorded as
+`drop` in the catalogue.
+
+### Experiment 8, sexual identity by item counts — BUILT 9 Oct
+
+**24,992 rows: wave 8 12,672, wave 9 12,320.** Both QC PASS with no warnings.
+Recipes `recipes/ukds_6849_itemcount_w{8,9}.yaml`, generator
+`scripts/gen_ip_itemcount.py`, tests `tests/test_ip_itemcount.py`. Six lists per
+respondent per wave, each answered with a count; three carry a sensitive statement,
+which three depending on group, and that assignment flips between the waves.
+
+- **A schema addition: `ItemOverride.line_order_vars`.** Statements were shuffled
+  per respondent, with one order variable per list, so each (arm, list) cell names
+  its own. Bullets stay bullets and the stem stays put. A row with no recorded
+  order is skipped rather than rendered in a guessed order. Inert for every other
+  study (full rebuild).
+- **Built: only the item-count lists.** The direct-question split (ONS against
+  UKHLS wording) is not built: the ONS version is answered by reading a code off a
+  showcard.
+- **Independent checker: PASS, no defect in the rows.** It extracted both
+  questionnaires itself and re-rendered all 24,992 rows from the raw files: 0
+  condition and 0 response mismatches. **The order code's reading is unverifiable**
+  (ledger 135). "3124 = statement 3 shown first" is the natural reading, but no
+  document or data pattern settles it, and about two-thirds of rows depend on it.
+  The statements shown and the responses are right either way. The checker also
+  showed that a row answered without a recorded order would have been dropped
+  silently; it now stops the build.
+
+### Experiment 9, ReQoL-10, EQ-5D and GHQ-12 in order — BUILT 9 Oct
+
+**84,995 rows across two experiments, wave 14 (2021).** ReQoL-10 and EQ-5D answers
+48,548, GHQ-12 answers 36,447, both QC PASS with no warnings. Recipes
+`recipes/ukds_6849_{reqol,ghq}_w14.yaml`, generator `scripts/gen_ip_reqol.py`,
+tests `tests/test_ip_reqol.py`. Your 9.24 ruling applied to the same design: each
+block is conditioned on whether the other had been asked earlier.
+
+- **The allocation variable is wrong for half the sample** (ledger 134). For the
+  refreshment households, `n_req10cond` holds a value that has nothing to do with
+  what they were asked; their arm is in `n_ff_req10cond`. Taken from the right
+  place, 0 answers sit in a module the arm did not use.
+- **Wording follows mode.** Telephone respondents heard different ReQoL and EQ-5D
+  wording, resolved per row. "First, " and "Next, " are dropped from the
+  telephone EQ-5D, because they cite position.
+- **Independent checker: FAIL, then fixed.** It found a real wording defect.
+  Telephone respondents heard the EQ-5D options in the second person ("You have no
+  problems in walking about."), but my extractor never read the telephone options
+  block, so 1,326 telephone EQ-5D rows and 1,786 GHQ conditions carried the
+  self-completion wording ("I have …"). It also found a "Finally, " the sequence
+  rule should have dropped. Both are fixed, with a test that kills the old
+  behaviour (ledger 137). Its other checks passed: allocation, responses and row
+  counts, with 0 mismatches.
+
+**Plan progress: 7 built, 2 dropped, 7 to go.**
 
 ### What the waves are and are not doing for us
 

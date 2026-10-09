@@ -2,14 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**41 experiments.** 12 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**54 experiments.** 12 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 13 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 12 | 129,472 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
+| UK — UK Data Service (End User Licence) | 13 | 177,696 | **no** — UKDS End User Licence |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **41** | **426,675** | |
+| **Total** | **54** | **604,371** | |
 
 ---
 
@@ -18,18 +19,31 @@
 | ID | Title | Source | Reference | Rows |
 |---|---|---|---|---|
 | `EFXNLX` | Policy Preferences and Policy Legitimacy After Referendums: Evidenc… | Harvard Dataverse | `doi:10.7910/DVN/EFXNLX` | 49,395 |
+| `ukds_6849_reqol_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: ReQoL-10 a… | UK Data Service | `UKDS SN 6849` | 48,548 |
+| `ukds_6849_ghq_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: GHQ-12, as… | UK Data Service | `UKDS SN 6849` | 36,447 |
+| `ukds_6849_vig_flexstigma_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.39: measuring … | UK Data Service | `UKDS SN 6849` | 17,656 |
 | `POMIFD` ⚠ | Replication Data for: The Variable Persuasiveness of Political Rhet… | Harvard Dataverse | `doi:10.7910/DVN/POMIFD` | 13,268 |
+| `ukds_6849_eq5d5l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 13,203 |
+| `ukds_6849_itemcount_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.17: measuring … | UK Data Service | `UKDS SN 6849` | 12,672 |
+| `ukds_6849_itemcount_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.17: measuring … | UK Data Service | `UKDS SN 6849` | 12,320 |
 | `35M5CV_sky` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 12,055 |
 | `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
+| `ukds_6849_eq5d3l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 8,698 |
 | `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,345 |
 | `35M5CV_bbc` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,175 |
 | `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
 | `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
+| `ukds_6849_vig_ageing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 6,600 |
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
 | `RJTVG8` | Support for digitising the ballot box: a systematic review of i-vot… | Harvard Dataverse | `doi:10.7910/DVN/RJTVG8` | 6,000 |
+| `ukds_6849_vig_ageing_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 5,967 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
+| `ukds_6849_vig_housework_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 5,081 |
+| `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
+| `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
+| `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
@@ -244,6 +258,181 @@ Respondents see two of 336 political arguments (14 rhetorical elements x 12 poli
 
 ---
 
+## UK layer — UK Data Service, End User Licence
+
+**None of this is redistributable, and none of it may leave the machine.** The UKDS End User Licence covers the documentation as well as the microdata; `jev.py` refuses `source="ukds"` outright. Usable for research here only.
+
+### `ukds_6849_alcohol_w15`
+
+**Understanding Society Innovation Panel, experiment 9.36: alcohol consumption asked in units or in drinks (wave 15)**
+
+Respondents who had drunk alcohol in the past year report how much they drink on a typical drinking day and how often they binge, with the questions worded in UNITS of alcohol (the NHS version) or in ALCOHOLIC DRINKS. The binge threshold is 6 or more for women and 8 or more for men. The rows teach whether the same person reports differently when asked in units, which few people count in. Wave 15 (2022).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Two-version question-wording split, allocated by household (1,367 / 1,352). Two outcomes per respondent, each asked in their own version's wording; the condition is narrated as 'You were asked: "..."' (the rpw4u precedent). 5-point banded answers.
+- **Category** — survey methodology
+- **Rows** — 4,208 from 2,116 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.36. What IS verified: (a) the household join, by the data's own structure: all 4,208 answers sit in the respondent's own version's variables and none in the other's (scripts/gen_ip_alcohol.py --check), and a scrambled join fails it; (b) on every row, the question is its version's own, word-for-word against a table written from the questionnaire, and the 6-or-8 threshold matches the respondent's sex (0 mismatches in 2,112 binge rows); (c) 4,208 rows, reached by the generator's count and the pipeline. tests/test_ip_alcohol.py
+
+### `ukds_6849_eq5d3l_w11`
+
+**Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-3L, asked with or without the EQ-5D-5L earlier (wave 11)**
+
+Respondents describe their own health today on the five EQ-5D items (mobility, self-care, usual activities, pain/discomfort, anxiety/depression) in the 3-level form, the NICE-recommended quality-of-life measure. The condition is whether they had already answered the 5L form earlier in the same interview. Wave 11 (2018).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Order experiment (eq5dcond, three arms) built on prior exposure: two conditions, 5L asked earlier or not. Arms differing only by module position share a condition. 69 respondents allocated to see the 5L first who skipped the early module are excluded. Five outcomes per respondent, each listing its 3 options word-for-word.
+- **Category** — survey methodology
+- **Rows** — 8,698 from 1,743 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.24. What IS verified: (a) every row's condition against what the raw file says the respondent was actually routed into, not what was allocated; (b) every response against the raw value in the module its arm used; (c) each question's options against a table written from the questionnaire; (d) 8,698 rows, reached by the generator's count and the pipeline. tests/test_ip_eq5d.py
+
+### `ukds_6849_eq5d5l_w11`
+
+**Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-5L, asked with or without the EQ-5D-3L earlier (wave 11)**
+
+Respondents describe their own health today on the five EQ-5D items (mobility, self-care, usual activities, pain/discomfort, anxiety/depression) in the 5-level form, the NICE-recommended quality-of-life measure. The condition is whether they had already answered the 3L form earlier in the same interview. Wave 11 (2018).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Order experiment (eq5dcond, three arms) built on prior exposure: two conditions, 3L asked earlier or not. Arms differing only by module position share a condition. 70 respondents allocated to see the 3L first who skipped the early module are excluded. Five outcomes per respondent, each listing its 5 options word-for-word.
+- **Category** — survey methodology
+- **Rows** — 13,203 from 2,642 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.24. What IS verified: (a) every row's condition against what the raw file says the respondent was actually routed into, not what was allocated; (b) every response against the raw value in the module its arm used; (c) each question's options against a table written from the questionnaire; (d) 13,203 rows, reached by the generator's count and the pipeline. tests/test_ip_eq5d.py
+
+### `ukds_6849_ghq_w14`
+
+**Understanding Society Innovation Panel, experiment 9.31: GHQ-12, asked with or without the ReQoL-10 and EQ-5D-3L earlier (wave 14)**
+
+Respondents describe their mental and physical wellbeing on the GHQ-12, standard quality-of-life and psychological-distress measures. The condition is whether they had already answered the ReQoL-10 and EQ-5D-3L earlier in the same interview. Wording follows the respondent's mode (web, face-to-face self-completion or telephone). Wave 14 (2021).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Order experiment (two arms) built on prior exposure: two conditions, the other block asked earlier or not. The arm comes from n_req10cond for continuing households and n_ff_req10cond for the refreshment sample, whose person-level value is meaningless (ledger 134). Each question lists its options word-for-word.
+- **Category** — survey methodology
+- **Rows** — 36,447 from 3,044 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.31. What IS verified: (a) every row's condition against which early module the respondent actually answered, independent of either allocation variable, and a build trusting the person-level variable fails it; (b) every response against the raw value in the module its arm used; (c) the ReQoL and EQ-5D wording against the respondent's mode; (d) 36,447 rows, reached by the generator's count and the pipeline. (e) an independent checker re-rendered every row from raw with its own transcription; it found the telephone EQ-5D options wrongly in the self-completion wording, since fixed and pinned by a test. tests/test_ip_reqol.py
+
+### `ukds_6849_identity_w2`
+
+**Understanding Society Innovation Panel, experiment 9.4: measuring identity, "occupation" or "profession" (wave 2)**
+
+Respondents say how important their occupation, or in the other version their profession, is to their sense of who they are: important, not very important, or not at all important. One word varies between households, from an identity battery adapted from the 2007-08 Citizenship Survey. Interviewer-administered. Wave 2 (2009).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Two-version one-word split ballot, allocated by household. One outcome per respondent (item (a) of a 13-item battery; the other twelve are identical across versions and not built). Condition narrated as 'You were asked: ...'.
+- **Category** — survey methodology
+- **Rows** — 1,746 from 1,746 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.4. What IS verified: (a) the household join against indresp's own copy of the allocation, 1,788 comparisons, zero disagreements, and no answer in the other version's variable (scripts/gen_ip_identity.py --check; a scrambled join fails it); (b) every row's condition and question against the stem and item written from the questionnaire; (c) 1,746 rows, reached by the generator's count and the pipeline. tests/test_ip_identity.py
+
+### `ukds_6849_itemcount_w8`
+
+**Understanding Society Innovation Panel, experiment 9.17: measuring sexual identity by item counts (wave 8)**
+
+Respondents see six lists of statements about who they have been attracted to, who they have had a sexual experience with, and how they would describe themselves, and report only HOW MANY are true for them. Three of the lists carry one extra, sensitive statement ('is the same sex as me'; 'gay, lesbian or bisexual'), a technique for measuring what people will not say directly. Wave 8 (2015).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Item-count (list) experiment: which three lists carry the sensitive statement depends on the household's group and flips between waves 8 and 9. Six outcomes per respondent, each a count; statements rendered in the respondent's own shuffled order (ItemOverride.line_order_vars).
+- **Category** — survey methodology
+- **Rows** — 12,672 from 2,144 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.17. What IS verified: (a) every answer sits in a list the respondent's group was shown and none elsewhere (scripts/gen_ip_itemcount.py --check); (b) every row's list, stem and sensitive statement against wording written from the questionnaire, which wave 8 and wave 9 share word-for-word; (c) every row's statement order against the raw permutation code; (d) 12,672 rows, reached by the generator's count and the pipeline. tests/test_ip_itemcount.py
+
+### `ukds_6849_itemcount_w9`
+
+**Understanding Society Innovation Panel, experiment 9.17: measuring sexual identity by item counts (wave 9)**
+
+Respondents see six lists of statements about who they have been attracted to, who they have had a sexual experience with, and how they would describe themselves, and report only HOW MANY are true for them. Three of the lists carry one extra, sensitive statement ('is the same sex as me'; 'gay, lesbian or bisexual'), a technique for measuring what people will not say directly. Wave 9 (2016).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Item-count (list) experiment: which three lists carry the sensitive statement depends on the household's group and flips between waves 8 and 9. Six outcomes per respondent, each a count; statements rendered in the respondent's own shuffled order (ItemOverride.line_order_vars).
+- **Category** — survey methodology
+- **Rows** — 12,320 from 2,078 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.17. What IS verified: (a) every answer sits in a list the respondent's group was shown and none elsewhere (scripts/gen_ip_itemcount.py --check); (b) every row's list, stem and sensitive statement against wording written from the questionnaire, which wave 8 and wave 9 share word-for-word; (c) every row's statement order against the raw permutation code; (d) 12,320 rows, reached by the generator's count and the pipeline. tests/test_ip_itemcount.py
+
+### `ukds_6849_reqol_w14`
+
+**Understanding Society Innovation Panel, experiment 9.31: ReQoL-10 and EQ-5D-3L, asked with or without the GHQ-12 earlier (wave 14)**
+
+Respondents describe their mental and physical wellbeing on the ReQoL-10 (ten items plus physical health) and EQ-5D-3L, standard quality-of-life and psychological-distress measures. The condition is whether they had already answered the GHQ-12 earlier in the same interview. Wording follows the respondent's mode (web, face-to-face self-completion or telephone). Wave 14 (2021).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — Order experiment (two arms) built on prior exposure: two conditions, the other block asked earlier or not. The arm comes from n_req10cond for continuing households and n_ff_req10cond for the refreshment sample, whose person-level value is meaningless (ledger 134). Each question lists its options word-for-word.
+- **Category** — survey methodology
+- **Rows** — 48,548 from 3,046 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.31. What IS verified: (a) every row's condition against which early module the respondent actually answered, independent of either allocation variable, and a build trusting the person-level variable fails it; (b) every response against the raw value in the module its arm used; (c) the ReQoL and EQ-5D wording against the respondent's mode; (d) 48,548 rows, reached by the generator's count and the pipeline. (e) an independent checker re-rendered every row from raw with its own transcription; it found the telephone EQ-5D options wrongly in the self-completion wording, since fixed and pinned by a test. tests/test_ip_reqol.py
+
+### `ukds_6849_vig_ageing_w17`
+
+**Understanding Society Innovation Panel, experiment 9.18: what do the general population regard as "successful ageing"? (wave 17)**
+
+Respondents read three descriptions of an imaginary 75-year-old and rate how successfully each is ageing, 0-10. Six life dimensions are randomised per description -- long-term illness (none or diabetes), difficulty climbing stairs, problems remembering, opening food packaging, how often they see family and friends, and volunteering -- and the name (George, Harry, Margaret or Anne), which sets the pronouns and is named in the question. The respondent judges ANOTHER person, so the outcome is social perception of ageing, not self-report. Wave 17 (2024). Wording identical to wave 9 but for one comma.
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 4 names x 2^6 = 256 cells, all 256 occurring. Three descriptions per respondent, each with its own allocation; within-subject, so each outcome names its own condition_vars. Self-completion only (web, or face-to-face respondents who took the self-completion section). One outcome, 0-10. ALLOCATION NOT AS DOCUMENTED: 354 of 2,220 respondents (all web, late fieldwork) share one identical allocation, and 933 in all share theirs with someone (1,497 distinct). 681 rows (10%) carry no age or sex. Each row's condition is what that person read, but the design is not a balanced factorial; see the recipe notes.
+- **Category** — moral/social/cognition
+- **Rows** — 6,600 from 2,204 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the Innovation Panel User Guide cites none for 9.18, so no answer key is claimed. What IS verified: (a) every derived per-slot name against the archive's own labels (scripts/gen_ip_vig_ageing.py --check: 6,030 names in wave 9 against each slot's labels, 6,660 in wave 17 against the name-sequence labels, zero disagreements), and wave 9's per-slot names produce exactly the guide's six name sequences; (b) on every built row, the pronouns and the question agree with the name the description opens with, against a table written from the questionnaire rather than the recipe; (c) every factor a row claims is expressed in its condition text; (d) all 256 cells present; (e) row counts, 5,967 and 6,600, reached by the generator's count and by the pipeline; (g) an independent checker re-transcribed both questionnaires and re-rendered every one of the 12,567 rows from the raw files: 0 condition, 0 outcome, 0 name and 0 dimension-code disagreements. (f) the allocation anomaly, recomputed by the generator and pinned in tests. tests/test_ip_vig_ageing.py
+
+### `ukds_6849_vig_ageing_w9`
+
+**Understanding Society Innovation Panel, experiment 9.18: what do the general population regard as "successful ageing"? (wave 9)**
+
+Respondents read three descriptions of an imaginary 75-year-old and rate how successfully each is ageing, 0-10. Six life dimensions are randomised per description -- long-term illness (none or diabetes), difficulty climbing stairs, problems remembering, opening food packaging, how often they see family and friends, and volunteering -- and the name (George, Harry, Margaret or Anne), which sets the pronouns and is named in the question. The respondent judges ANOTHER person, so the outcome is social perception of ageing, not self-report. Wave 9 (2016).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 4 names x 2^6 = 256 cells, all 256 occurring. Three descriptions per respondent, each with its own allocation; within-subject, so each outcome names its own condition_vars. Self-completion only (web, or face-to-face respondents who took the self-completion section). One outcome, 0-10. Allocation clean: 2,010 distinct allocations among 2,010 respondents. Undocumented constraint: descriptions 1 and 2 never share all six life codes.
+- **Category** — moral/social/cognition
+- **Rows** — 5,967 from 1,992 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the Innovation Panel User Guide cites none for 9.18, so no answer key is claimed. What IS verified: (a) every derived per-slot name against the archive's own labels (scripts/gen_ip_vig_ageing.py --check: 6,030 names in wave 9 against each slot's labels, 6,660 in wave 17 against the name-sequence labels, zero disagreements), and wave 9's per-slot names produce exactly the guide's six name sequences; (b) on every built row, the pronouns and the question agree with the name the description opens with, against a table written from the questionnaire rather than the recipe; (c) every factor a row claims is expressed in its condition text; (d) all 256 cells present; (e) row counts, 5,967 and 6,600, reached by the generator's count and by the pipeline; (g) an independent checker re-transcribed both questionnaires and re-rendered every one of the 12,567 rows from the raw files: 0 condition, 0 outcome, 0 name and 0 dimension-code disagreements. tests/test_ip_vig_ageing.py
+
+### `ukds_6849_vig_flexstigma_w16`
+
+**Understanding Society Innovation Panel, experiment 9.39: measuring flexibility stigma — double whammy or femininity stigma (wave 16)**
+
+Respondents in work, aged 18-65, imagine they are an HR manager filling a full-time team-lead post and rate three internal candidates, each on four 0-10 questions: would they recommend the candidate, and how do they see the candidate's work commitment, productivity and team-playing. Each candidate varies on gender (through the name and pronouns), parenthood, their own home working, how common home working is in the company, and the company's hybrid-working policy. The question the design asks is whether home working is stigmatised, and more so for mothers. Wave 16 (2023).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 6 names (two per slot) x 2 x 3 x 4 x 4 = 576 cells, 192 per slot, all occurring. Three candidates per respondent, four outcomes each (twelve tasks), within-subject. Allocation clean: 1,616 distinct allocations among 1,616 respondents.
+- **Category** — work/family/gender
+- **Rows** — 17,656 from 1,543 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT yet verified against the published chapter (Chung & Wang 2024, ISER working paper 2024-11, pp. 105-123): its PDF sits behind a browser check this machine could not pass. What IS verified: (a) every derived name against its slot's own archive labels (scripts/gen_ip_vig_flexstigma.py --check: 4,848 names, zero disagreements); (b) on every row, the description opens with the candidate's name and the pronouns and all twelve questions agree with it, against a table written from the questionnaire rather than the recipe; (c) every factor a row claims is expressed in its condition; (d) all 576 cells present, each slot showing only its own names; (e) 17,656 rows, reached by the generator's count and by the pipeline. (f) an independent checker transcribed the questionnaire itself and re-rendered every row from the raw file: 17,656 = 17,656, 0 condition, 0 outcome, 0 response, 0 name and 0 pronoun disagreements. tests/test_ip_vig_flexstigma.py
+
+### `ukds_6849_vig_housework_w5`
+
+**Understanding Society Innovation Panel, experiment 9.10: measuring satisfaction with the division of household labour (wave 5)**
+
+Respondents imagine themselves in a couple and rate how satisfied they would be with how the housework is shared. Five dimensions are randomised: whose job is full or part time, whose hourly pay is higher, whether there is a child and its age, how the housework splits between them, and whether paid help is employed. The respondent is INSIDE the scenario -- the wording is "Imagine that you are married or cohabiting" -- so the outcome is imagined own satisfaction, not judgement of a described couple. Wave 5 (2012).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 4x3x4x5x2 full factorial = 480 cells, all 480 occurring (6-39 rows each). Three scenarios per respondent, drawn without replacement, allocated per HOUSEHOLD: both partners in a couple rate the identical three arrangements. One outcome, 7-point satisfaction.
+- **Category** — work/family/gender
+- **Rows** — 4,550 from 1,542 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the Innovation Panel User Guide cites none for this experiment, so there is no published answer key and none is claimed. What IS verified: (a) the User Guide's own documented design, including its claim that "the exact allocation at Wave 5 was replicated at Wave 6" -- 27,696 of 27,705 allocation cells identical for the 1,849 people in both waves; (b) the household join, against wave 5's duplicate person-level copy of four of the five dimensions, 23,880 comparisons, zero disagreements (scripts/gen_ip_vig_housework.py --check); (c) all 480 cells present and no respondent drawing one twice; (d) the five marginals flat to within 3 points of uniform in both waves; (e) the row counts, 4,550 and 5,081, reached independently by a standalone builder and by the recipe pipeline. tests/test_ip_vig_housework.py
+
+### `ukds_6849_vig_housework_w6`
+
+**Understanding Society Innovation Panel, experiment 9.10: measuring satisfaction with the division of household labour (wave 6)**
+
+Respondents imagine themselves in a couple and rate how satisfied they would be with how the housework is shared. Five dimensions are randomised: whose job is full or part time, whose hourly pay is higher, whether there is a child and its age, how the housework splits between them, and whether paid help is employed. The respondent is INSIDE the scenario -- the wording is "Imagine that you are married or cohabiting" -- so the outcome is imagined own satisfaction, not judgement of a described couple. Wave 6 (2013).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 4x3x4x5x2 full factorial = 480 cells, all 480 occurring (6-39 rows each). Three scenarios per respondent, drawn without replacement, allocated per HOUSEHOLD: both partners in a couple rate the identical three arrangements. One outcome, 7-point satisfaction.
+- **Category** — work/family/gender
+- **Rows** — 5,081 from 1,721 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — NOT verified against a publication -- the Innovation Panel User Guide cites none for this experiment, so there is no published answer key and none is claimed. What IS verified: (a) the User Guide's own documented design, including its claim that "the exact allocation at Wave 5 was replicated at Wave 6" -- 27,696 of 27,705 allocation cells identical for the 1,849 people in both waves; (b) the household join, against wave 5's duplicate person-level copy of four of the five dimensions, 23,880 comparisons, zero disagreements (scripts/gen_ip_vig_housework.py --check); (c) all 480 cells present and no respondent drawing one twice; (d) the five marginals flat to within 3 points of uniform in both waves; (e) the row counts, 4,550 and 5,081, reached independently by a standalone builder and by the recipe pipeline. tests/test_ip_vig_housework.py
+
+---
+
 ## US transfer layer — TESS, no licence stated
 
 Fielded in the United States on topics judged universal enough to transfer. **None of this is redistributable**: all 202 deposits in the TESS catalogue were checked individually against the OSF API and 196 state no licence, 6 are unreachable. Usable for research here; not shippable, and not sent to any external service — `embed.py`'s licence gate refuses this text by name.
@@ -290,9 +479,9 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 1 | 1 | 9,166 |
 | health communication | 0 | 7 | 53,404 |
-| moral/social/cognition | 1 | 6 | 95,879 |
+| moral/social/cognition | 3 | 6 | 108,446 |
 | political identity/polarisation | 4 | 0 | 34,920 |
 | political preferences/policy | 7 | 0 | 90,425 |
-| survey methodology | 0 | 5 | 51,701 |
-| work/family/gender | 0 | 8 | 88,127 |
+| survey methodology | 8 | 5 | 189,543 |
+| work/family/gender | 3 | 8 | 115,414 |
 
