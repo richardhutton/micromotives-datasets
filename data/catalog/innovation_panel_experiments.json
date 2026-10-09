@@ -1045,8 +1045,8 @@
     "title": "Mental health questions comparisons",
     "category": "health",
     "waves": "16",
-    "verdict": "build",
-    "reason": "",
+    "verdict": "drop",
+    "reason": "multi-select checklists that differ between versions; no single question and answer per row without restructuring the instrument",
     "description": "At IP16, a study was conducted to compare the mental health questions that had been deployed in Understanding Society over the years. The main survey questions about diagnoses of health conditions remained close to static for the first nine waves of the main survey.",
     "vignette": false,
     "allocation_vars": []
@@ -1100,8 +1100,8 @@
     "title": "Labour market expectations",
     "category": "work-money",
     "waves": "17",
-    "verdict": "build",
-    "reason": "",
+    "verdict": "drop",
+    "reason": "anchored earnings buckets whose shown £ bounds were computed on screen and are not in the deposit; the exact stimulus cannot be recovered",
     "description": "This experiment was intended to investigate respondents’ reporting of their labour market expectations.",
     "vignette": false,
     "allocation_vars": []

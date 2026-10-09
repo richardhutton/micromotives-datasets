@@ -141,12 +141,24 @@ JUDGEMENT: dict[str, tuple[str, str, str]] = {
     "9.40": ("attitudes", BUILD, "cognitive reflection and politically motivated reasoning"),
     "9.41": ("attitudes", BUILD, "robustness of climate change worry measurement"),
     "9.42": ("attitudes", BUILD, "understanding of the long-term future"),
-    "9.43": ("health", BUILD, "versions of the mental health questions"),
+    # Was BUILD. Reading the questionnaire found three "code all that apply"
+    # lists that differ between versions (one 20-item list with "Clinical
+    # depression"; one with "An emotional, nervous or psychiatric problem" and a
+    # follow-up; a separate 18-item mental-health list before the physical one).
+    # A row is one question and one answer; any build had to restructure a tick
+    # list into yes/no answers nobody gave. Dropped by rich, 9 Oct 2026.
+    "9.43": ("health", DROP, "multi-select checklists that differ between versions; no single question and answer per row without restructuring the instrument"),
     "9.44": ("physical", DROP, "outcome is whether photographs were supplied"),
     "9.45": ("physical", DROP, "mobile app game"),
     "9.46": ("consent", BUILD, "DWP consent decision process"),
     "9.47": ("family-care", BUILD, "standard vs activity-based identification of informal caregiving"),
-    "9.48": ("work-money", BUILD, "labour market expectations"),
+    # Was BUILD. The randomised part asks for a probability over six earnings
+    # buckets whose bounds the script computed from the respondent's own wage
+    # ("£ [0.85 x LMEANCHOR]"). The deposit stores the anchor, not the bounds,
+    # and the questionnaire does not say how they were rounded or formatted, so
+    # the amounts each person saw cannot be recovered; and every row would carry
+    # the respondent's own earnings as stimulus. Dropped by rich, 9 Oct 2026.
+    "9.48": ("work-money", DROP, "anchored earnings buckets whose shown £ bounds were computed on screen and are not in the deposit; the exact stimulus cannot be recovered"),
     "9.49": ("consent", BUILD, "consent to place in-home sensors"),
     "9.50": ("consent", BUILD, "consent to link smart meter data"),
 }
