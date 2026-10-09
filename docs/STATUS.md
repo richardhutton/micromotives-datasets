@@ -361,6 +361,53 @@ fine-tuning are all permitted today on both sources.
 
 ---
 
+## 6. Groundwork already done — do not redo it
+
+Everything here is finished and tested. It is listed because each one looks like
+an open question until you check.
+
+**The persona crosswalk is complete: nine fields, zero unmapped.**
+`education` · `employment` · `region` · `social_grade` · `income` · `ethnicity` ·
+`marital_status` · `housing_ownership` · `religion`. QC rule 14 reports no
+persona-vocabulary warning anywhere in the corpus. The Innovation Panel's own 58
+labels were added 9 Oct by `scripts/persona_ukhls.py`, which also cleared the
+warning for `QQM5MC`, `EFXNLX` and both `35M5CV` builds — they had been carrying
+it too.
+
+Four decisions inside it that should not be reopened:
+
+- **UK and US do not share a canonical for income or ethnicity.** Currency
+  conversion was rejected on four grounds, decisively that converted bands do not
+  nest — £10,000-£14,999 becomes roughly $13,000-$19,500 and straddles two US
+  boundaries, so it cannot be a union of source categories.
+- **Education follows the YouGov ladder seven UK studies already use.** A-levels
+  and GCSEs both land on `High school`, degrees on `Bachelors to postgraduate`.
+  Choosing differently for UKHLS would make its rows incomparable with what is
+  already built.
+- **`Northern Ireland` was added as a canonical region.** No earlier study
+  sampled there; the Innovation Panel does.
+- **Two coarsenings are deliberate**: civil-partnership dissolution states
+  collapse to one value, and "Looking after family or home" goes to the residual
+  `Other`. The raw `.sav` still holds both.
+
+**QC rule 19 enforces the panel link.** A recipe whose `source` is
+`innovation_panel` must declare `participant_id_var`, and it FAILS rather than
+warns, because the loss is silent — row counts right, conditions right, every
+other rule passing, and the wave-on-wave link simply gone.
+
+**Jev is refused for UKDS and is not needed.** `jev.RESTRICTED` quotes EUL clause
+4 and ends "Map UKDS allocation variables by hand", which is what was done. Jev's
+real job is semantic — deciding that `2+ Races, Non-Hispanic` and `Multiracial`
+are one concept — and the UKHLS labels are self-describing, carrying their own
+census grouping in brackets. It remains the right tool on TESS and Harvard.
+
+**The reusable machinery from the housework build:** `Condition.template` (a
+factorial declared as a template plus its dimensions, expanded on load) and
+`Recipe.participant_id_var`. Both verified inert for every existing study — all
+41 rebuilt with zero row-count changes.
+
+---
+
 ## 6. Standing constraints
 
 - **Raw and processed data never enter git.** `data/raw/`, `data/profiles/` and
