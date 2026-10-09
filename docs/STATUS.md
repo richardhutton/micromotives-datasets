@@ -229,6 +229,88 @@ the existing `Condition.template` machinery. It moves to the front.
 | 15 | 9.9 | Context effects in fertility decisions | family-care | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
 | 16 | 9.47 | Identification of informal caregiving | family-care | 17 | 3 variables located |
 
+### Experiment 1, successful ageing — everything found before building
+
+Done 9 Oct, nothing built yet. Pick up here; do not re-derive any of it.
+
+**The condition.** Each respondent read three descriptions of a 75-year-old and
+rated each on 0–10 (0 "Not successfully", 10 "Very successfully", shown as an
+eleven-point line scale). Word-for-word from the questionnaire, with the slots
+marked:
+
+> {name} is 75 years old and has {disease}. {name.pronoun} has {disability},
+> {cognition}, and {physical}. {name.pronoun} sees {name.possessive} family and
+> friends {interpersonal} and {volunteering}. How successfully is {name} ageing?
+
+Shared context, also word-for-word: *"We are interested in how people view the
+ageing process. Three different imaginary people will be described and you will
+be asked how successfully you think they are ageing. There are no right or wrong
+answers!"*
+
+| dimension | code 1 | code 2 |
+|---|---|---|
+| disease | no long-term illness | diabetes |
+| disability | no difficulties climbing stairs | difficulties climbing stairs |
+| cognition | has no problems remembering | has problems remembering |
+| physical | opens food packaging easily | struggles to open food packaging |
+| interpersonal | regularly | rarely |
+| volunteering | often volunteers | doesn't volunteer |
+
+Names: George and Harry take "He/his", Margaret and Anne "She/her". **4 names ×
+2⁶ = 256 arms.** The odd grammar ("has no difficulties climbing stairs, has no
+problems remembering") is the questionnaire's and is kept.
+
+**Sources.** Wave 9 is `i_indresp_ip.dta` (2,263 respondents, 2,010 allocated),
+wave 17 is `q_indresp_ip.dta` (2,494 respondents, 2,220 allocated). Outcomes are
+`i_vign1-3` and `q_vign1-3ip17`; dimensions are `i_vdisease1-3`,
+`i_vdisability1-3`, `i_vcognit1-3`, `i_vphys1-3`, `i_vinterp1-3`, `i_vvolun1-3`
+and the same names with the `q_…ip17` pattern. Expect roughly **13,000 rows**
+across the two waves.
+
+**The User Guide is wrong about the name variable in wave 9, and the data is
+better than the guide.** The guide says `ff_vigname` is in `i_indresp`. It is
+not, under any spelling, in any wave 9 file. What is there is `i_vname1`,
+`i_vname2`, `i_vname3` — the name actually used in each of the three slots,
+which is what a build needs. Wave 17 has only the sequence, `q_vignameip17`.
+
+**The six name sequences are confirmed by the data, not taken on trust.** The
+guide's table (1 = George, Margaret, Harry … 6 = Margaret, Anne, George) is
+independently confirmed twice: `q_vignameip17`'s own value labels spell the six
+sequences out, and wave 9's three `vname` variables produce **exactly six
+distinct name triples across 2,010 respondents, exactly the guide's six, with
+nothing unexplained**. So decoding wave 17's sequence into per-slot names rests
+on evidence.
+
+**The per-slot codes differ and must be harmonised by the generator.**
+`i_vname1` is 1 = George, 2 = Margaret; `i_vname2` and `i_vname3` are 1 =
+Margaret, 2 = Harry, 3 = George, 4 = Anne. `by_raw` keys arms on codes, so the
+generator must emit one consistent coding across all three slots, and `--check`
+must verify the derived code's name against the archive label for that slot.
+
+**The archived labels are wrong again, the same way as the housework build.**
+`i_vinterp1 = 2` is labelled *"rarely sees family and friends regularly"* and
+`i_vphys1 = 2` *"struggles to open food packaging easily"* — both
+self-contradictory, both the opposite of what the questionnaire says in one
+reading. The questionnaire is the only source for the clause wording. This is now
+twice out of two Innovation Panel scenario studies.
+
+**Wave 17's allocation is not uniform.** Name sequence 5 was given to 680
+respondents against roughly 305 for each of the other five. Their randomisation,
+not a fault in the join, but it belongs in the recipe notes so nobody reads it as
+a bug later.
+
+**The two waves' wording differs by one comma** — wave 17 has "family and friends
+regularly, and often volunteers". One template serves both.
+
+**One schema addition is needed first.** The pronouns have to agree with the
+name, so the name dimension needs three slots in the template text where the
+machinery currently allows one, and `ConditionTemplate._placeholders_match`
+refuses a repeated placeholder outright. The addition: `Level.parts`, a dict of
+named fragments, addressed as `{dimension.part}`. Keep the existing once-only
+rule for the bare `{dimension}` placeholder and allow part placeholders to
+repeat, so the guard that rule provides is not weakened. Must be inert for all 43
+existing studies — rebuild and check row counts, as with `Condition.template`.
+
 ### What the waves are and are not doing for us
 
 The waves are not a time dimension in these rows. An experiment that ran in two
