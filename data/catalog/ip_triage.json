@@ -1,0 +1,468 @@
+[
+  {
+    "id": "9.4",
+    "title": "Measuring identity",
+    "category": "attitudes",
+    "waves": "2",
+    "alloc_named": [
+      "b_ff_identityw2"
+    ],
+    "alloc_found": {
+      "b_ff_identityw2": "b_hhsamp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 2,
+    "questionnaire": {
+      "b": 0
+    },
+    "section_chars": 815,
+    "verdict": "CHECK",
+    "why": "no questionnaire hit on the experiment's own variable names"
+  },
+  {
+    "id": "9.43",
+    "title": "Mental health questions comparisons",
+    "category": "health",
+    "waves": "16",
+    "alloc_named": [
+      "ff_climatechangew16",
+      "ff_gridmodew16",
+      "ff_incentw16",
+      "ff_mhealthexpw16",
+      "ff_numeracyw16"
+    ],
+    "alloc_found": {
+      "ff_climatechangew16": "p_hhsamp_ip",
+      "ff_gridmodew16": "p_hhsamp_ip",
+      "ff_incentw16": "p_hhsamp_ip",
+      "ff_mhealthexpw16": "p_hhsamp_ip",
+      "ff_numeracyw16": "p_hhsamp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 3,
+    "questionnaire": {
+      "p": 4
+    },
+    "section_chars": 1483,
+    "verdict": "PASS",
+    "why": "5 allocation variable(s) located"
+  },
+  {
+    "id": "9.48",
+    "title": "Labour market expectations",
+    "category": "work-money",
+    "waves": "17",
+    "alloc_named": [
+      "allocations",
+      "ff_esensdurw17",
+      "ff_esensfbw17",
+      "ff_esensinfow17",
+      "ff_gridmodew17",
+      "ff_incentw17",
+      "ff_lmeexpw17",
+      "ff_smetinfow17",
+      "scalabourmarketexpectations_ip17"
+    ],
+    "alloc_found": {
+      "ff_esensdurw17": "q_hhsamp_ip",
+      "ff_esensfbw17": "q_hhsamp_ip",
+      "ff_esensinfow17": "q_hhsamp_ip",
+      "ff_gridmodew17": "q_hhsamp_ip",
+      "ff_incentw17": "q_hhsamp_ip",
+      "ff_lmeexpw17": "q_hhsamp_ip",
+      "ff_smetinfow17": "q_hhsamp_ip"
+    },
+    "files_named": [],
+    "arms_documented": 0,
+    "questionnaire": {
+      "q": 7
+    },
+    "section_chars": 5217,
+    "verdict": "CHECK",
+    "why": "fewer than 2 arm meanings written out in the guide"
+  },
+  {
+    "id": "9.17",
+    "title": "Measuring sexual identity using direct and indirect questioning",
+    "category": "sensitive",
+    "waves": "8, 9",
+    "alloc_named": [
+      "ff_ictsexw8",
+      "ff_sexidw8",
+      "question"
+    ],
+    "alloc_found": {
+      "ff_ictsexw8": "h_hhsamp_ip",
+      "ff_sexidw8": "h_hhsamp_ip"
+    },
+    "files_named": [],
+    "arms_documented": 2,
+    "questionnaire": {
+      "h": 3,
+      "i": 3
+    },
+    "section_chars": 4472,
+    "verdict": "PASS",
+    "why": "2 allocation variable(s) located"
+  },
+  {
+    "id": "9.24",
+    "title": "Variations of the EQ-5D questions",
+    "category": "health",
+    "waves": "11",
+    "alloc_named": [],
+    "alloc_found": {},
+    "files_named": [],
+    "arms_documented": 0,
+    "questionnaire": {
+      "k": 0
+    },
+    "section_chars": 0,
+    "verdict": "FAIL",
+    "why": "the guide names no allocation variable"
+  },
+  {
+    "id": "9.18",
+    "title": "What do the general population regard as \u201csuccessful ageing\u201d?",
+    "category": "wellbeing",
+    "waves": "9, 17",
+    "alloc_named": [
+      "ff_vcognit1",
+      "ff_vcognit2",
+      "ff_vcognit3",
+      "ff_vdisability1",
+      "ff_vdisability2",
+      "ff_vdisability3",
+      "ff_vdisease1",
+      "ff_vdisease2",
+      "ff_vdisease3",
+      "ff_vigname",
+      "ff_vinterp1",
+      "ff_vinterp2",
+      "ff_vinterp3",
+      "ff_vphys1",
+      "ff_vphys2",
+      "ff_vphys3",
+      "ff_vvolun1",
+      "ff_vvolun2",
+      "ff_vvolun3"
+    ],
+    "alloc_found": {},
+    "files_named": [],
+    "arms_documented": 6,
+    "questionnaire": {
+      "i": 7,
+      "q": 7
+    },
+    "section_chars": 6289,
+    "verdict": "FAIL",
+    "why": "named 19 variable(s), none found in the data"
+  },
+  {
+    "id": "9.36",
+    "title": "Alcohol consumption",
+    "category": "health",
+    "waves": "15",
+    "alloc_named": [
+      "clothing",
+      "dark",
+      "ff_alcoholw15",
+      "ff_bvfeedback_w15",
+      "ff_bvincentive_w15",
+      "ff_gridmodew15",
+      "ff_incentw15",
+      "ff_infcarew15"
+    ],
+    "alloc_found": {
+      "ff_alcoholw15": "o_hhsamp_ip",
+      "ff_bvfeedback_w15": "o_hhsamp_ip",
+      "ff_bvincentive_w15": "o_hhsamp_ip",
+      "ff_gridmodew15": "o_hhsamp_ip",
+      "ff_incentw15": "o_hhsamp_ip",
+      "ff_infcarew15": "o_hhsamp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 3,
+    "questionnaire": {
+      "o": 6
+    },
+    "section_chars": 13064,
+    "verdict": "PASS",
+    "why": "6 allocation variable(s) located"
+  },
+  {
+    "id": "9.20",
+    "title": "Presentation of response options in satisfaction questions",
+    "category": "wellbeing",
+    "waves": "9",
+    "alloc_named": [
+      "ff_satisw9"
+    ],
+    "alloc_found": {
+      "ff_satisw9": "i_hhsamp_ip"
+    },
+    "files_named": [
+      "hhsamp"
+    ],
+    "arms_documented": 3,
+    "questionnaire": {
+      "i": 1
+    },
+    "section_chars": 1548,
+    "verdict": "PASS",
+    "why": "1 allocation variable(s) located"
+  },
+  {
+    "id": "9.31",
+    "title": "Comparison of ReQoL-10 to other scales",
+    "category": "health",
+    "waves": "14",
+    "alloc_named": [
+      "ff_gridmodew13",
+      "ff_incentw14",
+      "n_ff_req10cond",
+      "n_req10cond"
+    ],
+    "alloc_found": {
+      "ff_gridmodew13": "n_hhsamp_ip",
+      "ff_incentw14": "n_hhsamp_ip",
+      "n_ff_req10cond": "n_hhsamp_ip",
+      "n_req10cond": "n_indresp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 2,
+    "questionnaire": {
+      "n": 1
+    },
+    "section_chars": 2478,
+    "verdict": "PASS",
+    "why": "4 allocation variable(s) located"
+  },
+  {
+    "id": "9.12",
+    "title": "Measuring change in self-assessed disability",
+    "category": "health",
+    "waves": "6, 7",
+    "alloc_named": [
+      "ff_disabilityw6"
+    ],
+    "alloc_found": {
+      "ff_disabilityw6": "f_hhsamp_ip"
+    },
+    "files_named": [],
+    "arms_documented": 3,
+    "questionnaire": {
+      "f": 1,
+      "g": 1
+    },
+    "section_chars": 2490,
+    "verdict": "PASS",
+    "why": "1 allocation variable(s) located"
+  },
+  {
+    "id": "9.42",
+    "title": "Understanding of the long-term future",
+    "category": "attitudes",
+    "waves": "16",
+    "alloc_named": [
+      "ff_climatechangew16",
+      "ff_numeracyw16",
+      "ff_numquesw16",
+      "finnumlat100y"
+    ],
+    "alloc_found": {
+      "ff_climatechangew16": "p_hhsamp_ip",
+      "ff_numeracyw16": "p_hhsamp_ip",
+      "ff_numquesw16": "p_hhsamp_ip",
+      "finnumlat100y": "p_indresp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 3,
+    "questionnaire": {
+      "p": 4
+    },
+    "section_chars": 2433,
+    "verdict": "PASS",
+    "why": "4 allocation variable(s) located"
+  },
+  {
+    "id": "9.39",
+    "title": "Vignettes: measuring flexibility stigma - double whammy or femininity stigma",
+    "category": "family-care",
+    "waves": "16",
+    "alloc_named": [
+      "fsvigname1",
+      "fsvigname2",
+      "fsvigname3",
+      "vignettes"
+    ],
+    "alloc_found": {
+      "fsvigname1": "p_indresp_ip",
+      "fsvigname2": "p_indresp_ip",
+      "fsvigname3": "p_indresp_ip"
+    },
+    "files_named": [
+      "indresp"
+    ],
+    "arms_documented": 4,
+    "questionnaire": {
+      "p": 1
+    },
+    "section_chars": 2775,
+    "verdict": "PASS",
+    "why": "3 allocation variable(s) located"
+  },
+  {
+    "id": "9.13",
+    "title": "Associated Study: measuring time and risk preferences",
+    "category": "work-money",
+    "waves": "6, 7",
+    "alloc_named": [
+      "appear",
+      "f_ff_timeriskw6",
+      "f_ff_trdw6",
+      "f_ff_trqw6",
+      "f_ff_trsel2",
+      "f_ff_trsel3",
+      "f_ff_trsel4",
+      "f_ff_trsel5",
+      "f_ff_trwinw6",
+      "ff_timeriskw6",
+      "ff_trdw7",
+      "ff_trflag",
+      "ff_trqw7",
+      "ff_trwinw7",
+      "trend",
+      "variables"
+    ],
+    "alloc_found": {
+      "f_ff_timeriskw6": "f_hhsamp_ip",
+      "f_ff_trdw6": "f_hhsamp_ip",
+      "f_ff_trqw6": "f_hhsamp_ip",
+      "f_ff_trsel2": "f_hhsamp_ip",
+      "f_ff_trsel3": "f_hhsamp_ip",
+      "f_ff_trsel4": "f_hhsamp_ip",
+      "f_ff_trsel5": "f_hhsamp_ip",
+      "f_ff_trwinw6": "f_hhsamp_ip",
+      "ff_timeriskw6": "f_hhsamp_ip",
+      "trend": "f_indresp_ip",
+      "ff_trdw7": "g_hhsamp_ip",
+      "ff_trqw7": "g_hhsamp_ip",
+      "ff_trwinw7": "g_hhsamp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 0,
+    "questionnaire": {
+      "f": 11,
+      "g": 8
+    },
+    "section_chars": 5320,
+    "verdict": "CHECK",
+    "why": "fewer than 2 arm meanings written out in the guide"
+  },
+  {
+    "id": "9.11",
+    "title": "Subjective expectations about the returns to higher education and decisions to attend university",
+    "category": "work-money",
+    "waves": "5, 8, 9",
+    "alloc_named": [
+      "available",
+      "e_ff_wageinfow5",
+      "e_pearninfo",
+      "ff_paredaboutip8",
+      "ff_paredexpectip8",
+      "ff_wageinfow8",
+      "ff_yahechoiceip8"
+    ],
+    "alloc_found": {
+      "e_ff_wageinfow5": "e_hhsamp_ip",
+      "ff_wageinfow8": "h_hhsamp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 4,
+    "questionnaire": {
+      "e": 2,
+      "h": 2,
+      "i": 4
+    },
+    "section_chars": 4698,
+    "verdict": "PASS",
+    "why": "2 allocation variable(s) located"
+  },
+  {
+    "id": "9.9",
+    "title": "Context effects in fertility decisions",
+    "category": "family-care",
+    "waves": "4, 5",
+    "alloc_named": [
+      "d_ff_fertw4",
+      "d_lchmorn_b",
+      "e_ff_fertw4",
+      "e_lchmorn_b"
+    ],
+    "alloc_found": {
+      "d_ff_fertw4": "d_hhsamp_ip",
+      "d_lchmorn_b": "d_indresp_ip",
+      "e_ff_fertw4": "e_hhsamp_ip",
+      "e_lchmorn_b": "e_indresp_ip"
+    },
+    "files_named": [
+      "hhsamp",
+      "indresp"
+    ],
+    "arms_documented": 2,
+    "questionnaire": {
+      "d": 0,
+      "e": 0
+    },
+    "section_chars": 1560,
+    "verdict": "CHECK",
+    "why": "no questionnaire hit on the experiment's own variable names"
+  },
+  {
+    "id": "9.47",
+    "title": "Identification of informal caregiving",
+    "category": "family-care",
+    "waves": "17",
+    "alloc_named": [
+      "allocations",
+      "ff_careexpw17",
+      "ff_gridmodew17",
+      "ff_incentw17"
+    ],
+    "alloc_found": {
+      "ff_careexpw17": "q_hhsamp_ip",
+      "ff_gridmodew17": "q_hhsamp_ip",
+      "ff_incentw17": "q_hhsamp_ip"
+    },
+    "files_named": [],
+    "arms_documented": 0,
+    "questionnaire": {
+      "q": 2
+    },
+    "section_chars": 1850,
+    "verdict": "CHECK",
+    "why": "fewer than 2 arm meanings written out in the guide"
+  }
+]
