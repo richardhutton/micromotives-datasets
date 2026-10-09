@@ -1,0 +1,206 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.18: what do the general
+  population regard as \"successful ageing\"? (wave 17)"
+data_file: vig_ageing_w17-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: vig_ageing_w17
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.18 in the Innovation Panel User Guide; fielded in waves 9 (2016) and
+  17 (2024). This recipe is wave 17; `ukds_6849_vig_ageing_w9.yaml` is wave 9.
+
+  THE CONDITION TEXT IS THE QUESTIONNAIRE'S, NOT THE DATA FILE'S. Every clause below
+  is word-for-word from `6849_innovation_panel_wave_17_questionnaire.pdf`, module
+  `scasuccessageing_ip17`, items VIGNINTROIP17 and VIGN1IP17-VIGN3IP17 (pp. 415-417).
+  It is wave 9's text with ONE difference: wave 17 has a comma in "family and friends
+  regularly, and often volunteers", in all three items. That comma is kept, so this
+  template is not wave 9's, by one character. Spaces the specification puts before
+  some full stops after a fill (`{if VDISEASE2IP17 = 2} .`) are its markup and are
+  not reproduced.
+
+  The archived value labels are better in this wave than in wave 9 (`vinterp` is
+  "regularly"/"rarely", `vphys = 2` "struggles to open food packaging") but they are
+  still not the source; the questionnaire is.
+
+  THE NAME AND ITS PRONOUNS. Each description names George, Harry, Margaret or Anne,
+  and the "He/She" and "his/her" later in it follow the name; the `name` dimension
+  carries them as `parts`. The question names the person too, so it is rendered from
+  the same cell through `template.outcome_questions`. Wave 17 records only the name
+  SEQUENCE, `q_vignameip17` (1-6). `scripts/gen_ip_vig_ageing.py` decodes it into the
+  name used in each slot through the User Guide's table and writes one coding (1
+  George, 2 Margaret, 3 Harry, 4 Anne) to `vname1-3`. The table is not taken on trust:
+  `q_vignameip17`'s own value labels spell the six sequences out, and `--check`
+  compares all 6,660 decoded names with them — they agree. Wave 9's per-slot names
+  independently produce exactly the same six sequences.
+
+  WITHIN-SUBJECT. Each respondent rated three descriptions, each with its own seven
+  allocation variables, so each outcome names them through `condition_vars`. No pair
+  of descriptions ever shares all six life-dimension codes (0 of 2,220 for every
+  pair) — an undocumented constraint, stricter than wave 9's (slots 1 and 2 only).
+
+  THE RANDOMISATION PARTLY FAILED IN THIS WAVE, AND THIS IS THE MOST IMPORTANT FACT
+  ABOUT IT. The User Guide says each dimension was allocated "1/2 to each condition"
+  and each name sequence "1/6". In the data:
+
+    - 354 of 2,220 allocated respondents share ONE identical allocation — name
+      sequence 5 and the same eighteen life-dimension codes. All 354 answered on the
+      web; none before 9 August 2024; 244 of them in December, when they are 84% of
+      that month's respondents. This is why name sequence 5 has 680 respondents
+      against ~305 for the others, and why every dimension's marginal is ~58/42
+      instead of 50/50.
+    - A further 579 share their allocation with at least one other person, in 209
+      groups of at most 8: 933 in all, 1,497 distinct allocations among 2,220,
+      against 0 of 2,010 in wave 9. 181 of the 209 groups fall on a single start
+      date, 203 across different households, which reads like a random generator
+      seeded from the date. A fixed fallback value cannot be told apart from that.
+    - The 354 are not a deposit artefact: distinct people (354 pidp) across 256
+      households, with varied answers. Their mean ratings (6.85, 6.85, 5.84) are
+      close to what an additive model fitted on everyone else predicts from the
+      stored codes (6.97, 7.24, 5.97), which is the evidence that what is stored is
+      what was shown.
+
+  What this does and does not damage. The stored codes are what the script used to
+  fill the text, so each row's condition is what that person read — the rows are
+  real. What is lost is independence: the design is no longer a balanced factorial,
+  one cell is massively over-represented, and that cell is confounded with being a
+  late web respondent. Anything estimating the effect of a dimension from this wave
+  should drop or down-weight the 354, or use wave 9. `gen_ip_vig_ageing.py --check`
+  recomputes these counts. The survey team does not mention it: the wave 17
+  technical report says only "Vignettes were randomly assigned to respondents within
+  the script", and the User Guide's one wave 17 data-collection error (web data
+  overwritten by blank face-to-face data) is a different fault — it loses responses,
+  where this one repeats allocations.
+
+  ROUTING. Self-completion only, as in wave 9. 2,494 respondents, 2,220 allocated;
+  244 inapplicable and 30 proxy have no row.
+
+  A PERSONA GAP THE ROWS CARRY. 227 respondents who answered (681 rows, 10% of this
+  wave) have `dvage` and `sex` coded -8 in `q_indresp_ip`, and `q_indall_ip` holds no
+  sex for them either. Their rows ship with no age and no sex rather than a guess.
+  The cause was not investigated, and none is claimed.
+
+  `person` is a hash of `pidp`, written by the generator, the same construction as
+  `scripts/build_profiles.py` and the 9.10 build, so the same person keeps one id
+  across this study, the housework scenarios and wave 9 of this one.
+
+  NO PUBLISHED REFERENCE IS CLAIMED. The User Guide cites no publication for 9.18.
+
+condition:
+  shared_context: |-
+    We are interested in how people view the ageing process. Three different imaginary
+    people will be described and you will be asked how successfully you think they are
+    ageing. There are no right or wrong answers!
+
+  # 4 x 2^6 = 256 arms, the same odometer as wave 9. `condition_num` is an odometer over these dimensions in this
+  # order, volunteering moving fastest.
+  template:
+    text: >-
+      {name} is 75 years old and has {disease}. {name.subject} has {disability},
+      {cognition}, and {physical}. {name.subject} sees {name.possessive} family and
+      friends {interpersonal}, and {volunteering}.
+    outcome_questions:
+      0: How successfully is {name} ageing?
+      1: How successfully is {name} ageing?
+      2: How successfully is {name} ageing?
+    dimensions: &dimensions
+      name:
+        var: vname1
+        levels:
+          1: {level: George, text: George, parts: {subject: He, possessive: his}}
+          2: {level: Margaret, text: Margaret, parts: {subject: She, possessive: her}}
+          3: {level: Harry, text: Harry, parts: {subject: He, possessive: his}}
+          4: {level: Anne, text: Anne, parts: {subject: She, possessive: her}}
+      disease:
+        var: vdisease1
+        levels:
+          1: {level: no_illness, text: no long-term illness}
+          2: {level: diabetes, text: diabetes}
+      disability:
+        var: vdisability1
+        levels:
+          1: {level: no_stairs_difficulty, text: no difficulties climbing stairs}
+          2: {level: stairs_difficulty, text: difficulties climbing stairs}
+      cognition:
+        var: vcognit1
+        levels:
+          1: {level: no_memory_problems, text: has no problems remembering}
+          2: {level: memory_problems, text: has problems remembering}
+      physical:
+        var: vphys1
+        levels:
+          1: {level: opens_packaging, text: opens food packaging easily}
+          2: {level: struggles_packaging, text: struggles to open food packaging}
+      interpersonal:
+        var: vinterp1
+        levels:
+          1: {level: regularly, text: regularly}
+          2: {level: rarely, text: rarely}
+      volunteering:
+        var: vvolun1
+        levels:
+          1: {level: volunteers, text: often volunteers}
+          2: {level: no_volunteering, text: "doesn't volunteer"}
+
+# The question text comes from the template, per cell, overriding `question` for
+# every task in `outcome_questions`. `question` is the User Guide's own generic form
+# ("How successfully is [name] ageing?"), and no built row may carry it: the test
+# asserts every rendered question names a person.
+outcomes:
+  - var: vign1
+    task_num: 0
+    question: How successfully is [name] ageing?
+    scale: &successfully
+      min: 0
+      max: 10
+      min_label: Not successfully
+      max_label: Very successfully
+  - var: vign2
+    task_num: 1
+    question: How successfully is [name] ageing?
+    scale: *successfully
+    condition_vars: [vname2, vdisease2, vdisability2, vcognit2, vphys2, vinterp2, vvolun2]
+  - var: vign3
+    task_num: 2
+    question: How successfully is [name] ageing?
+    scale: *successfully
+    condition_vars: [vname3, vdisease3, vdisability3, vcognit3, vphys3, vinterp3, vvolun3]
+
+# Identity: the questionnaire's 0-10 IS the canonical scale.
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+
+# Every negative code in this panel is a non-answer: -9 missing, -8 inapplicable,
+# -7 proxy, -2 refusal, -1 don't know.
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]
