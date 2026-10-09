@@ -1,0 +1,167 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.31: GHQ-12, asked with or without the ReQoL-10 and EQ-5D-3L earlier (wave 14)"
+data_file: reqol_w14-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: ghq_w14
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.31 in the Innovation Panel User Guide ("Comparison of ReQoL-10 to other
+  scales"); wave 14 (2021). The User Guide cites no publication.
+  `ukds_6849_reqol_w14.yaml` is the other half.
+
+  AN ORDER EXPERIMENT, BUILT ON WHAT WAS ASKED BEFORE (rich's ruling for 9.24, applied
+  to the same design). Arm 1 answered the ReQoL-10 and EQ-5D-3L early and the GHQ-12
+  late; arm 2 the reverse. This recipe holds the GHQ-12 answers, conditioned on whether
+  the ReQoL-10 and EQ-5D-3L had been asked earlier.
+
+  THE ALLOCATION IS IN TWO VARIABLES, AND ONE IS WRONG FOR HALF THE SAMPLE (ledger 134).
+  Continuing households: `n_req10cond`, allocated in the script. Refreshment households
+  (`hhorig` = 19): `n_ff_req10cond` in `n_hhsamp_ip`, allocated before fieldwork. For
+  refreshment respondents `n_req10cond` ALSO carries a value, and it has no relation to
+  what they were asked (it splits 253/226 and 252/233 across the two blocks); the
+  household variable matches exactly. `scripts/gen_ip_reqol.py` takes each from the right
+  place, and its `--check` finds 0 answers in a module the arm did not use. Every
+  allocated respondent was routed into their early module (5 refused it, which is still
+  being asked), so nobody is excluded.
+
+  THE CONDITION IS NARRATED. "Earlier in the interview you were asked:" followed by the
+  other block, every item quoted with its options; or "You had not been asked the
+  questions that begin "..." earlier in the interview.", quoting the other block's
+  opening sentence. The framing words, the quotation marks and the " / " separators are
+  ADDED (docs/CONVENTIONS.md, "Narrating what the respondent did"); every quoted word is
+  from `6849_ip_wave_14_questionnaire.pdf`, modules Scareqol10early/late,
+  Scaeq5d3learly/late and Scaghqearly/late_ip14, extracted programmatically. Early and
+  late wording is identical for all 28 items.
+
+  WORDING VARIES BY MODE, AND IS RESOLVED PER ROW. Telephone respondents (`indmode` = 2)
+  heard different ReQoL and EQ-5D wording ("I will now read statements that relate to
+  your quality of life ..."; "Would you say that:"), so condition and question carry an
+  inline directive on `indmode` (`respondent_vars`), the `a2nbf` mechanism. The GHQ has
+  no telephone variant. Two edits to the source, both recorded here: the instruction
+  shown in brackets on items after the first ("(For each of the following statements
+  ...)") is kept on every item without the brackets; and the telephone EQ-5D's "First, ",
+  "Next, " and "Finally, " are dropped, because they cite a position in a sequence
+  (docs/CONVENTIONS.md, "Sequence signposting"). Telephone respondents also heard the
+  EQ-5D OPTIONS in the second person ("You have no problems in walking about."), and get
+  them; the first build gave them the self-completion wording ("I have ..."), and the
+  independent checker caught it (ledger 137).
+
+  Two caveats, from the checker. `indmode` is the interview's mode, not necessarily each
+  block's: one face-to-face respondent answered the early GHQ without being offered
+  early self-completion, and a switch from web to phone cannot be detected. The GHQ has
+  no mode variant, so no text goes wrong for them. And two face-to-face respondents had
+  the self-completion read to them (`scac` = 2); the questionnaire defines no other
+  wording for that, so they get the self-completion text.
+
+  HELD-OUT SPLITS: the refreshment sample was allocated by household, so splitting by
+  participant puts members of one household, who shared a condition, on both sides.
+
+  THE QUESTION LISTS ITS OPTIONS, numbered by their codes, because the GHQ's options
+  differ from item to item and the middle levels carry meaning (ledger 133).
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+
+condition:
+  source_var: prior_ghq
+  factors: [reqol_asked_earlier]
+  considered_and_rejected:
+    prior_reqol: "the exposure code for the sibling experiment ukds_6849_reqol_w14; derived by the same generator, not a second randomisation"
+    arm: "the allocated arm; this recipe's condition is the exposure derived from it"
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {reqol_asked_earlier: "no"}
+      text: "[IF indmode=2 INSERT: You had not been asked the questions that begin \"I will now read statements that relate to your quality of life followed by 5 possible responses.\" earlier in the interview.; IF indmode=1 INSERT: You had not been asked the questions that begin \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK:\" earlier in the interview.; IF indmode=3 INSERT: You had not been asked the questions that begin \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK:\" earlier in the interview.]"
+    - raw: 2
+      condition_num: 1
+      factors: {reqol_asked_earlier: "yes"}
+      text: "[IF indmode=2 INSERT: Earlier in the interview you were asked: \"I will now read statements that relate to your quality of life followed by 5 possible responses. Each time, please let me know which is the best match for how you have been feeling over the LAST WEEK. I found it difficult to get started with everyday tasks.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I felt able to trust others.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I felt unable to cope.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I could do the things I wanted to do.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I felt happy.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I thought my life was not worth living.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I enjoyed what I did.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I felt hopeful about my future.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I felt lonely.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please let me know which is the best match for how you have been feeling over the LAST WEEK. I felt confident in myself.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please describe your physical health (problems with pain, mobility, difficulties caring for yourself or feeling physically unwell) over the LAST WEEK:\" \"No problems\" / \"Slight problems\" / \"Moderate problems\" / \"Severe problems\" / \"Very severe problems\" \"I am going to read out some questions. Each question has a choice of three answers. Please tell me which answer best describes your health TODAY. I would like to ask you about MOBILITY. Would you say that:\" \"You have no problems in walking about.\" / \"You have some problems in walking about.\" / \"You are confined to bed.\" \"Please tell me which answer best describes your health TODAY. I would like to ask you about SELF-CARE. Would you say that:\" \"You have no problems with self-care.\" / \"You have some problems washing or dressing yourself.\" / \"You are unable to wash or dress yourself.\" \"Please tell me which answer best describes your health TODAY. I would like to ask you about USUAL ACTIVITIES, for example work, study, housework, family or leisure activities. Would you say that:\" \"You have no problems with performing your usual activities.\" / \"You have some problems with performing your usual activities.\" / \"You are unable to perform your usual activities.\" \"Please tell me which answer best describes your health TODAY. I would like to ask you about PAIN OR DISCOMFORT. Would you say that:\" \"You have no pain or discomfort.\" / \"You have moderate pain or discomfort.\" / \"You have extreme pain or discomfort.\" \"Please tell me which answer best describes your health TODAY. I would like to ask you about ANXIETY OR DEPRESSION. Would you say that:\" \"You are not anxious or depressed.\" / \"You are moderately anxious or depressed.\" / \"You are extremely anxious or depressed.\"; IF indmode=1 INSERT: Earlier in the interview you were asked: \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I found it difficult to get started with everyday tasks.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt able to trust others.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt unable to cope.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I could do the things I wanted to do.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt happy.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I thought my life was not worth living.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I enjoyed what I did.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt hopeful about my future.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt lonely.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt confident in myself.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please describe your physical health (problems with pain, mobility, difficulties caring for yourself or feeling physically unwell) over the LAST WEEK:\" \"No problems\" / \"Slight problems\" / \"Moderate problems\" / \"Severe problems\" / \"Very severe problems\" \"Please click the ONE box that best describes your health TODAY. Mobility\" \"I have no problems in walking about.\" / \"I have some problems in walking about.\" / \"I am confined to bed.\" \"Please click the ONE box that best describes your health TODAY. Self-Care\" \"I have no problems with self-care.\" / \"I have some problems washing or dressing myself.\" / \"I am unable to wash or dress myself.\" \"Please click the ONE box that best describes your health TODAY. Usual Activities (e.g. work, study, housework, family or leisure activities)\" \"I have no problems with performing my usual activities.\" / \"I have some problems with performing my usual activities.\" / \"I am unable to perform my usual activities.\" \"Please click the ONE box that best describes your health TODAY. Pain/Discomfort\" \"I have no pain or discomfort.\" / \"I have moderate pain or discomfort.\" / \"I have extreme pain or discomfort.\" \"Please click the ONE box that best describes your health TODAY. Anxiety/Depression\" \"I am not anxious or depressed.\" / \"I am moderately anxious or depressed.\" / \"I am extremely anxious or depressed.\"; IF indmode=3 INSERT: Earlier in the interview you were asked: \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I found it difficult to get started with everyday tasks.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt able to trust others.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt unable to cope.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I could do the things I wanted to do.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt happy.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I thought my life was not worth living.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I enjoyed what I did.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt hopeful about my future.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt lonely.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"For each of the following statements, please tick ONE box that best describes your thoughts, feelings and activities over the LAST WEEK: I felt confident in myself.\" \"None of the time\" / \"Only occasionally\" / \"Sometimes\" / \"Often\" / \"Most or all of the time\" \"Please describe your physical health (problems with pain, mobility, difficulties caring for yourself or feeling physically unwell) over the LAST WEEK:\" \"No problems\" / \"Slight problems\" / \"Moderate problems\" / \"Severe problems\" / \"Very severe problems\" \"Please click the ONE box that best describes your health TODAY. Mobility\" \"I have no problems in walking about.\" / \"I have some problems in walking about.\" / \"I am confined to bed.\" \"Please click the ONE box that best describes your health TODAY. Self-Care\" \"I have no problems with self-care.\" / \"I have some problems washing or dressing myself.\" / \"I am unable to wash or dress myself.\" \"Please click the ONE box that best describes your health TODAY. Usual Activities (e.g. work, study, housework, family or leisure activities)\" \"I have no problems with performing my usual activities.\" / \"I have some problems with performing my usual activities.\" / \"I am unable to perform my usual activities.\" \"Please click the ONE box that best describes your health TODAY. Pain/Discomfort\" \"I have no pain or discomfort.\" / \"I have moderate pain or discomfort.\" / \"I have extreme pain or discomfort.\" \"Please click the ONE box that best describes your health TODAY. Anxiety/Depression\" \"I am not anxious or depressed.\" / \"I am moderately anxious or depressed.\" / \"I am extremely anxious or depressed.\"]"
+
+outcomes:
+  - var: scghqa
+    task_num: 0
+    question: "The next questions are about how you have been feeling over the last few weeks. Have you recently been able to concentrate on whatever you're doing? 1 \"Better than usual\" 2 \"Same as usual\" 3 \"Less than usual\" 4 \"Much less than usual\""
+    scale: {min: 1, max: 4, min_label: "Better than usual", max_label: "Much less than usual"}
+  - var: scghqb
+    task_num: 1
+    question: "Have you recently lost much sleep over worry? 1 \"Not at all\" 2 \"No more than usual\" 3 \"Rather more than usual\" 4 \"Much more than usual\""
+    scale: {min: 1, max: 4, min_label: "Not at all", max_label: "Much more than usual"}
+  - var: scghqc
+    task_num: 2
+    question: "Have you recently felt that you were playing a useful part in things? 1 \"More so than usual\" 2 \"Same as usual\" 3 \"Less so than usual\" 4 \"Much less than usual\""
+    scale: {min: 1, max: 4, min_label: "More so than usual", max_label: "Much less than usual"}
+  - var: scghqd
+    task_num: 3
+    question: "Have you recently felt capable of making decisions about things? 1 \"More so than usual\" 2 \"Same as usual\" 3 \"Less so than usual\" 4 \"Much less capable\""
+    scale: {min: 1, max: 4, min_label: "More so than usual", max_label: "Much less capable"}
+  - var: scghqe
+    task_num: 4
+    question: "Have you recently felt constantly under strain? 1 \"Not at all\" 2 \"No more than usual\" 3 \"Rather more than usual\" 4 \"Much more than usual\""
+    scale: {min: 1, max: 4, min_label: "Not at all", max_label: "Much more than usual"}
+  - var: scghqf
+    task_num: 5
+    question: "Have you recently felt you couldn't overcome your difficulties? 1 \"Not at all\" 2 \"No more than usual\" 3 \"Rather more than usual\" 4 \"Much more than usual\""
+    scale: {min: 1, max: 4, min_label: "Not at all", max_label: "Much more than usual"}
+  - var: scghqg
+    task_num: 6
+    question: "Have you recently been able to enjoy your normal day-to-day activities? 1 \"More so than usual\" 2 \"Same as usual\" 3 \"Less so than usual\" 4 \"Much less than usual\""
+    scale: {min: 1, max: 4, min_label: "More so than usual", max_label: "Much less than usual"}
+  - var: scghqh
+    task_num: 7
+    question: "Have you recently been able to face up to problems? 1 \"More so than usual\" 2 \"Same as usual\" 3 \"Less able than usual\" 4 \"Much less able\""
+    scale: {min: 1, max: 4, min_label: "More so than usual", max_label: "Much less able"}
+  - var: scghqi
+    task_num: 8
+    question: "Have you recently been feeling unhappy or depressed? 1 \"Not at all\" 2 \"No more than usual\" 3 \"Rather more than usual\" 4 \"Much more than usual\""
+    scale: {min: 1, max: 4, min_label: "Not at all", max_label: "Much more than usual"}
+  - var: scghqj
+    task_num: 9
+    question: "Have you recently been losing confidence in yourself? 1 \"Not at all\" 2 \"No more than usual\" 3 \"Rather more than usual\" 4 \"Much more than usual\""
+    scale: {min: 1, max: 4, min_label: "Not at all", max_label: "Much more than usual"}
+  - var: scghqk
+    task_num: 10
+    question: "Have you recently been thinking of yourself as a worthless person? 1 \"Not at all\" 2 \"No more than usual\" 3 \"Rather more than usual\" 4 \"Much more than usual\""
+    scale: {min: 1, max: 4, min_label: "Not at all", max_label: "Much more than usual"}
+  - var: scghql
+    task_num: 11
+    question: "Have you recently been feeling reasonably happy, all things considered? 1 \"More so than usual\" 2 \"About the same as usual\" 3 \"Less so than usual\" 4 \"Much less than usual\""
+    scale: {min: 1, max: 4, min_label: "More so than usual", max_label: "Much less than usual"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+respondent_vars: [indmode]
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]
