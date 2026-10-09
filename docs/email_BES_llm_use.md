@@ -1,6 +1,10 @@
 # Draft email — BES, hosted model use
 
-**Status:** draft, not sent. For rich to send, edit or discard.
+**Status: SENT 9 Oct 2026.** Awaiting reply.
+
+Nothing is blocked while it is outstanding. Downloading, extracting, reshaping,
+building rows, running local models and fine-tuning locally are all inside the
+Licensed Use on its plain wording. Only the hosted-model step waits on the answer.
 
 **To:** `BES@Manchester.ac.uk`
 **Subject:** Does the Licensed Use cover sending panel responses to a hosted model?
