@@ -183,24 +183,24 @@ and is in fact a **2⁶ factorial of scenarios across two waves**, with randomis
 names — the same shape as the housework scenarios already built, and covered by
 the existing `Condition.template` machinery. It moves to the front.
 
-| # | id | experiment | wave | allocation variable |
-|---|---|---|---|---|
-| 1 | 9.18 | What do the general population regard as "successful ageing"? | 9, 17 | 2⁶ factorial, allocated in the questionnaire |
-| 2 | 9.39 | Vignettes: measuring flexibility stigma — double whammy or femininity stigma | 16 | `fsvigname1-3`, `fsvigparent1-3`, `fsvighybrid1-3`, `fsvigorguse1-3`, `fsvigorgpol1-3` |
-| 3 | 9.43 | Mental health questions comparisons | 16 | `ff_mhealthexpw16` in `p_hhsamp_ip` |
-| 4 | 9.36 | Alcohol consumption | 15 | located in `o_hhsamp_ip` |
-| 5 | 9.24 | Variations of the EQ-5D questions | 11 | `eq5dcond` in `k_indresp_ip` |
-| 6 | 9.4 | Measuring identity | 2 | located in the wave 2 files |
-| 7 | 9.48 | Labour market expectations | 17 | 7 variables located |
-| 8 | 9.17 | Measuring sexual identity using direct and indirect questioning | 8, 9 | 2 variables located |
-| 9 | 9.31 | Comparison of ReQoL-10 to other scales | 14 | 4 variables located |
-| 10 | 9.12 | Measuring change in self-assessed disability | 6, 7 | dependent interviewing |
-| 11 | 9.42 | Understanding of the long-term future | 16 | 4 variables located |
-| 12 | 9.20 | Presentation of response options in satisfaction questions | 9 | 1 variable located |
-| 13 | 9.13 | Associated Study: measuring time and risk preferences | 6, 7 | 13 variables located |
-| 14 | 9.11 | Subjective expectations about the returns to higher education | 5, 8, 9 | 2 variables located |
-| 15 | 9.9 | Context effects in fertility decisions | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
-| 16 | 9.47 | Identification of informal caregiving | 17 | 3 variables located |
+| # | id | experiment | category | wave | allocation variable |
+|---|---|---|---|---|---|
+| 1 | 9.18 | What do the general population regard as "successful ageing"? | wellbeing | 9, 17 | 2⁶ factorial, allocated in the questionnaire |
+| 2 | 9.39 | Vignettes: measuring flexibility stigma — double whammy or femininity stigma | family-care | 16 | `fsvigname1-3`, `fsvigparent1-3`, `fsvighybrid1-3`, `fsvigorguse1-3`, `fsvigorgpol1-3` |
+| 3 | 9.43 | Mental health questions comparisons | health | 16 | `ff_mhealthexpw16` in `p_hhsamp_ip` |
+| 4 | 9.36 | Alcohol consumption | health | 15 | located in `o_hhsamp_ip` |
+| 5 | 9.24 | Variations of the EQ-5D questions | health | 11 | `eq5dcond` in `k_indresp_ip` |
+| 6 | 9.4 | Measuring identity | attitudes | 2 | located in the wave 2 files |
+| 7 | 9.48 | Labour market expectations | work-money | 17 | 7 variables located |
+| 8 | 9.17 | Measuring sexual identity using direct and indirect questioning | sensitive | 8, 9 | 2 variables located |
+| 9 | 9.31 | Comparison of ReQoL-10 to other scales | health | 14 | 4 variables located |
+| 10 | 9.12 | Measuring change in self-assessed disability | health | 6, 7 | dependent interviewing |
+| 11 | 9.42 | Understanding of the long-term future | attitudes | 16 | 4 variables located |
+| 12 | 9.20 | Presentation of response options in satisfaction questions | wellbeing | 9 | 1 variable located |
+| 13 | 9.13 | Associated Study: measuring time and risk preferences | work-money | 6, 7 | 13 variables located |
+| 14 | 9.11 | Subjective expectations about the returns to higher education | work-money | 5, 8, 9 | 2 variables located |
+| 15 | 9.9 | Context effects in fertility decisions | family-care | 4, 5 | `d_ff_fertw4` in `d_hhsamp_ip`, Group 1 / Group 2 |
+| 16 | 9.47 | Identification of informal caregiving | family-care | 17 | 3 variables located |
 
 ### What the triage script is and is not good for
 
