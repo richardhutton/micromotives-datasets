@@ -1,0 +1,314 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.17: measuring sexual identity by
+  item counts (wave 8)"
+data_file: itemcount_w8-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: itemcount_w8
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.17 in the Innovation Panel User Guide ("Measuring sexual identity using
+  direct and indirect questioning"); waves 8 (2015) and 9 (2016). This recipe is wave
+  8; `ukds_6849_itemcount_w9.yaml` is wave 9. The User Guide cites no
+  publication.
+
+  AN ITEM-COUNT (LIST) EXPERIMENT. Respondents saw six lists of statements and said
+  only HOW MANY were true for them. Three lists carried one extra, sensitive statement
+  — "is the same sex as me" (attraction, experience) or "gay, lesbian or bisexual"
+  (identity). Which three depended on the household's group (`ff_ictsexw8`, in
+  `h_hhsamp_ip`) and flipped between waves 8 and 9. The
+  generator codes it as `sensitive`: 1 = lists B, D and F carried it, 2 = A, C and E.
+  Six outcomes per respondent, one per list (task 0 = A ... task 5 = F), each arm naming
+  per list the variable, the list text, the scale and the statement order.
+  `scripts/gen_ip_itemcount.py --check` confirms every answer sits in a list the code
+  says was shown and none in a list it says was not.
+
+  THE CONDITION IS THE LIST, WORD-FOR-WORD, IN THE RESPONDENT'S OWN ORDER. The
+  statements in each list were shuffled per respondent and recorded as a permutation
+  code; the generator turns it into one position per statement and
+  `ItemOverride.line_order_vars` renders each row in that respondent's order, the stem
+  staying above the bullets. The questionnaire numbers statements in bullet order for
+  all twelve lists (checked programmatically). Wording from
+  `6849_ip_wave_9_questionnaires.pdf`, module Scaitemcount_ip9, extracted
+  programmatically; every stem, bullet, question and the preamble were also found
+  word-for-word in the wave 8 questionnaire. The preamble is the module's own intro
+  item (ICTPre) and is `shared_context`.
+
+  THE ORDER CODE'S READING IS AN ASSUMPTION, NOT A FINDING (ledger 135). The generator
+  reads 3124 as "statement 3 was shown first, then 1, 2, 4". The specification says only
+  "record the random ordering as an integer"; the User Guide, the variable labels and
+  both technical reports say nothing more; and every permutation occurs about equally
+  often, so the data cannot decide it either. Under the other reading ("statement 1 sat
+  in slot 3") about two-thirds of rows would show a different order. Which statements
+  appear, and every response, are right under either reading; only the order is at
+  stake. Found by the independent checker.
+
+  NOT EXPRESSED: which of each PAIR of lists came first (`ictsexabso` and its
+  siblings). A row is one list and cannot say where it sat (docs/CONVENTIONS.md,
+  "Sequence signposting"); declared under `considered_and_rejected`.
+
+  NOT BUILT: the direct sexual-identity question split (`ff_sexidw8`, UKHLS `sexuor`
+  against the ONS `sidqn`). The ONS version is answered by reading a code off a
+  showcard: the wave 9 questionnaire's display notes give the meanings (27
+  heterosexual or straight, 21 gay or lesbian, 24 bisexual, 29 other), but the archive
+  labels carry only the codes, and the answer is read off a card the respondent looked
+  at — a visual stimulus. The item-count lists are the experiment's validation device
+  and are built on their own.
+
+  ROUTING. Self-completion only (web, or face-to-face respondents who accepted it).
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build;
+  most respondents answered in both waves, under one id.
+
+condition:
+  source_var: sensitive
+  factors: [sensitive_lists]
+  shared_context: "The next set of questions will ask you to count the number of statements that are true for you. Please only count the number of statements. We are not interested in knowing which statements are relevant for you."
+  considered_and_rejected:
+    ictsexabso: "which list of a pair came first; a row cannot say where it sat"
+    ictsexasbo: "which list of a pair came first; a row cannot say where it sat"
+    ictsexcdso: "which list of a pair came first; a row cannot say where it sat"
+    ictsexcsdo: "which list of a pair came first; a row cannot say where it sat"
+    ictsexefso: "which list of a pair came first; a row cannot say where it sat"
+    ictsexesfo: "which list of a pair came first; a row cannot say where it sat"
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {sensitive_lists: "B, D, F"}
+      text: |-
+        I have at least once been sexually attracted to someone who …
+        • is the same sex as me
+        • wears the latest trends and fashions
+        • has a tattoo or body piercing
+        • is of a different ethnicity to me
+        • is from a different class background to me
+        I have at least once had an experience of a sexual kind – for example kissing, cuddling or sexual intercourse – with a person who …
+        • is the same sex as me
+        • wears the latest trends and fashions
+        • has a tattoo or body piercing
+        • is of a different ethnicity to me
+        • is from a different class background to me
+        I would describe myself as being …
+        • gay, lesbian or bisexual
+        • healthy
+        • tolerant
+        • European
+        • working class
+      items:
+        0:
+          outcome_var: a
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once been sexually attracted to someone who …
+            • has a disability
+            • is fit and muscular
+            • grew up with me in my local area
+            • is ten or more years older than me
+          line_order_vars: [o_a_1, o_a_2, o_a_3, o_a_4]
+          scale: {min: 0, max: 4, min_label: "None are true", max_label: "Four statements"}
+        1:
+          outcome_var: bs
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once been sexually attracted to someone who …
+            • is the same sex as me
+            • wears the latest trends and fashions
+            • has a tattoo or body piercing
+            • is of a different ethnicity to me
+            • is from a different class background to me
+          line_order_vars: [o_bs_1, o_bs_2, o_bs_3, o_bs_4, o_bs_5]
+          scale: {min: 0, max: 5, min_label: "None are true", max_label: "Five statements"}
+        2:
+          outcome_var: c
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once had an experience of a sexual kind – for example kissing, cuddling or sexual intercourse – with a person who …
+            • has a disability
+            • is fit and muscular
+            • grew up with me in my local area
+            • is ten or more years older than me
+          line_order_vars: [o_c_1, o_c_2, o_c_3, o_c_4]
+          scale: {min: 0, max: 4, min_label: "None are true", max_label: "Four statements"}
+        3:
+          outcome_var: ds
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once had an experience of a sexual kind – for example kissing, cuddling or sexual intercourse – with a person who …
+            • is the same sex as me
+            • wears the latest trends and fashions
+            • has a tattoo or body piercing
+            • is of a different ethnicity to me
+            • is from a different class background to me
+          line_order_vars: [o_ds_1, o_ds_2, o_ds_3, o_ds_4, o_ds_5]
+          scale: {min: 0, max: 5, min_label: "None are true", max_label: "Five statements"}
+        4:
+          outcome_var: e
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I would describe myself as being …
+            • stylish and fashionable
+            • disabled
+            • patient
+            • British
+          line_order_vars: [o_e_1, o_e_2, o_e_3, o_e_4]
+          scale: {min: 0, max: 4, min_label: "None are true", max_label: "Four statements"}
+        5:
+          outcome_var: fs
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I would describe myself as being …
+            • gay, lesbian or bisexual
+            • healthy
+            • tolerant
+            • European
+            • working class
+          line_order_vars: [o_fs_1, o_fs_2, o_fs_3, o_fs_4, o_fs_5]
+          scale: {min: 0, max: 5, min_label: "None are true", max_label: "Five statements"}
+    - raw: 2
+      condition_num: 1
+      factors: {sensitive_lists: "A, C, E"}
+      text: |-
+        I have at least once been sexually attracted to someone who …
+        • is the same sex as me
+        • has a disability
+        • is fit and muscular
+        • grew up with me in my local area
+        • is ten or more years older than me
+        I have at least once had an experience of a sexual kind – for example kissing, cuddling or sexual intercourse – with a person who …
+        • is the same sex as me
+        • has a disability
+        • is fit and muscular
+        • grew up with me in my local area
+        • is ten or more years older than me
+        I would describe myself as being …
+        • gay, lesbian or bisexual
+        • stylish and fashionable
+        • disabled
+        • patient
+        • British
+      items:
+        0:
+          outcome_var: as
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once been sexually attracted to someone who …
+            • is the same sex as me
+            • has a disability
+            • is fit and muscular
+            • grew up with me in my local area
+            • is ten or more years older than me
+          line_order_vars: [o_as_1, o_as_2, o_as_3, o_as_4, o_as_5]
+          scale: {min: 0, max: 5, min_label: "None are true", max_label: "Five statements"}
+        1:
+          outcome_var: b
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once been sexually attracted to someone who …
+            • wears the latest trends and fashions
+            • has a tattoo or body piercing
+            • is of a different ethnicity to me
+            • is from a different class background to me
+          line_order_vars: [o_b_1, o_b_2, o_b_3, o_b_4]
+          scale: {min: 0, max: 4, min_label: "None are true", max_label: "Four statements"}
+        2:
+          outcome_var: cs
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once had an experience of a sexual kind – for example kissing, cuddling or sexual intercourse – with a person who …
+            • is the same sex as me
+            • has a disability
+            • is fit and muscular
+            • grew up with me in my local area
+            • is ten or more years older than me
+          line_order_vars: [o_cs_1, o_cs_2, o_cs_3, o_cs_4, o_cs_5]
+          scale: {min: 0, max: 5, min_label: "None are true", max_label: "Five statements"}
+        3:
+          outcome_var: d
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I have at least once had an experience of a sexual kind – for example kissing, cuddling or sexual intercourse – with a person who …
+            • wears the latest trends and fashions
+            • has a tattoo or body piercing
+            • is of a different ethnicity to me
+            • is from a different class background to me
+          line_order_vars: [o_d_1, o_d_2, o_d_3, o_d_4]
+          scale: {min: 0, max: 4, min_label: "None are true", max_label: "Four statements"}
+        4:
+          outcome_var: es
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I would describe myself as being …
+            • gay, lesbian or bisexual
+            • stylish and fashionable
+            • disabled
+            • patient
+            • British
+          line_order_vars: [o_es_1, o_es_2, o_es_3, o_es_4, o_es_5]
+          scale: {min: 0, max: 5, min_label: "None are true", max_label: "Five statements"}
+        5:
+          outcome_var: f
+          outcome_question: "How many statements are true for you?"
+          condition_text: |-
+            I would describe myself as being …
+            • healthy
+            • tolerant
+            • European
+            • working class
+          line_order_vars: [o_f_1, o_f_2, o_f_3, o_f_4]
+          scale: {min: 0, max: 4, min_label: "None are true", max_label: "Four statements"}
+
+outcomes:
+  - task_num: 0
+    question: "[list A: how many statements are true]"
+    scale: {min: 0, max: 5, min_label: None are true, max_label: Five statements}
+  - task_num: 1
+    question: "[list B: how many statements are true]"
+    scale: {min: 0, max: 5, min_label: None are true, max_label: Five statements}
+  - task_num: 2
+    question: "[list C: how many statements are true]"
+    scale: {min: 0, max: 5, min_label: None are true, max_label: Five statements}
+  - task_num: 3
+    question: "[list D: how many statements are true]"
+    scale: {min: 0, max: 5, min_label: None are true, max_label: Five statements}
+  - task_num: 4
+    question: "[list E: how many statements are true]"
+    scale: {min: 0, max: 5, min_label: None are true, max_label: Five statements}
+  - task_num: 5
+    question: "[list F: how many statements are true]"
+    scale: {min: 0, max: 5, min_label: None are true, max_label: Five statements}
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]
