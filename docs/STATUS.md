@@ -44,12 +44,27 @@ Ten largest: `EFXNLX` 49,395 · `evnyh` 33,932 · `es4xw` 32,228 · `9xw67_conjo
 |---|---|---|
 | 24 TESS deposits | none stated | **No** |
 | 4 Harvard UK deposits | CC0 1.0 | **Yes** |
-| `POMIFD` | none, but author gave written permission to use | No |
+| `POMIFD` | no licence, but **the author gave written permission to use it** (Jack Blumenau, 6 Oct 2026) | No — see below |
 | UKDS SN 6849 (Innovation Panel) | UKDS End User Licence | **No** |
 | BES Internet Panel | BES own terms — grants distribution, share-alike | **Yes, conditionally** |
 
 Most of the corpus cannot be redistributed. That is not a blocker for building or
 for research use; it is a blocker for release.
+
+**On `POMIFD`, because the table cannot hold it.** The deposit states no licence
+— `license` is literally null on Dataverse, re-checked live. Its terms say "You
+may wish to communicate with the Contact(s) specified before use", so rich
+emailed Jack Blumenau at UCL on 5 Oct 2026, before fetching anything, describing
+the project and stating plainly that nothing would be redistributed. He replied
+the next day: *"Of course, very happy for you to use that data. Do let me know
+how your study turns out!"*
+
+So the basis for using it is **explicit consent from the author**, not an
+unanswered courtesy notice, and the delete-if-they-object commitment is
+discharged. What that consent is not: he agreed to USE, having been told nothing
+would be redistributed, so it is not a licence to publish and `redistributable`
+stays false. He also asked to hear how the study turns out, which is worth
+honouring.
 
 ---
 
@@ -340,9 +355,25 @@ fine-tuning are all permitted today on both sources.
   `data/processed/*.parquet` are gitignored. `data/catalog/` is tracked.
 - **Nothing UKDS-derived has left this machine.** `jev.RESTRICTED` refuses
   `source="ukds"`.
-- **The repo has never been pushed.** 80+ commits ahead of `origin/main`. The
-  recipes contain questionnaire wording, which the EUL counts as part of the Data
-  Collection, so a push would be a disclosure. Decide deliberately before pushing.
+- **The repo has never been pushed.** 80+ commits ahead of `origin/main`.
+  **The reason originally given here was wrong and is corrected.** It said the
+  recipes carry questionnaire wording, which the EUL counts as part of the Data
+  Collection, so a push would be a disclosure. Checking rather than assuming
+  found that UKDS publish the Innovation Panel's User Guide AND its
+  questionnaires themselves, at `doc.ukdataservice.ac.uk`, downloadable with no
+  authentication (verified 9 Oct 2026 — User Guide 200/3.5 MB, wave 5 and 16
+  questionnaires 200). Condition text transcribed from those PDFs is therefore
+  already public, published by the rights holder by their own choice.
+
+  What has NOT changed is the only thing that mattered: **no microdata is in
+  git**, and none may ever be. `data/raw/`, `data/profiles/` and
+  `data/processed/*.parquet` are gitignored, so a push would carry recipes,
+  scripts and docs and no respondent's answers.
+
+  So pushing is a decision about the TESS and Harvard material — most of which
+  states no licence — and about whether this work should be public at all, not
+  about the UKDS documentation. Still worth deciding deliberately; just not for
+  the reason given before.
 - **The questionnaire is the authority on stimulus wording**, not the data file's
   labels. In 9.10 the archived labels were not merely truncated but wrong — two
   opposite housework splits shared one label string.
