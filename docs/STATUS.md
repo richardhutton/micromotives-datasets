@@ -187,8 +187,20 @@ far below it we would land. The answer is: not at all. The User Guide names an
 allocation variable, says which file it is in, and writes out what each arm
 means, for every one of the sixteen.
 
-`scripts/ip_triage.py` did the data-existence check; the rest was read by hand,
-for reasons given below.
+`scripts/ip_triage.py` did the data-existence check and `scripts/ip_wording.py`
+the questionnaire check; the rest was read by hand, for reasons given below.
+
+**The wording exists for all sixteen, verified 9 Oct against the actual PDFs.**
+This is the check that decides whether a build renders real stimulus text or an
+invention, and it is separate from the triage: 14 were located automatically, and
+the two that were not — EQ-5D variants and Measuring identity — were read by hand
+and both carry their full wording and response options.
+
+**Wave 2's questionnaire has a different layout from waves 5 onward**, and
+Measuring identity is the one experiment here that uses it: asterisk-delimited
+headings (`*EthExp_A*`), inline universe conditions (`*Universe* IF
+ff_identityw2 = 1`), and no `Text` marker at all. Whatever parses the later waves
+will not parse it.
 
 ### Build order
 
