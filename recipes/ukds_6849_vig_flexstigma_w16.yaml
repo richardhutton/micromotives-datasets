@@ -1,0 +1,251 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.39: measuring flexibility stigma —
+  double whammy or femininity stigma (wave 16)"
+data_file: vig_flexstigma_w16-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: vig_flexstigma_w16
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.39 in the Innovation Panel User Guide; fielded in wave 16 (2023) only.
+  Initial findings: Chung, H. & Wang, S. (2024), "Flexibility stigma in the UK
+  post-pandemic", in Vine et al., Understanding Society Innovation Panel Wave 16:
+  Results from methodological experiments and new data, pp. 105-123 (ISER working
+  paper 2024-11). NOT yet checked against it: the PDF sits behind a browser check
+  that could not be passed from this machine.
+
+  THE CONDITION TEXT IS THE QUESTIONNAIRE'S. Every clause is word-for-word from
+  `6849_ip_wave_16_questionnaire.pdf`, module `scameasuringflexstig_ip16`, items
+  FSTIGINTRO, FSVIG*1-3 (whose OPTIONS are the clauses) and FSVRECOMM1-FSVTEAM3
+  (pp. 816-833). The item text is identical across the three candidates apart from
+  the candidate number, checked by extracting all twelve and comparing. The
+  archived labels agree with the questionnaire here except for a double space in
+  "3-4  days"; the questionnaire's single space is used.
+
+  TWO THINGS DROPPED FROM THE FIELDED TEXT, ON PURPOSE. Each description opens
+  "Candidate 1:", "Candidate 2:" or "Candidate 3:". A row cannot cite its own position
+  in a sequence (CLAUDE.md), so the label is not rendered. Items 2-4 repeat the
+  description in brackets beneath item 1 on the same grid screen; the brackets are
+  layout, not wording. The spaces the specification puts before commas and full
+  stops after a fill are its markup and are not reproduced. "master's" keeps the
+  questionnaire's curly apostrophe, and the first question keeps its own grammar,
+  "How likely is it that would you recommend ... for the job?".
+
+  THE NAME CARRIES GENDER AND THE PRONOUNS. Each slot has its own pair of names
+  (Charlotte Davies/Paul Taylor, Anna Wright/Adam Newton, Sarah Walker/James
+  Harrison), all coded 1/2 in the archive. `scripts/gen_ip_vig_flexstigma.py` writes
+  one six-name coding to `name1-3` through each slot's own labels; `--check`
+  compares all 4,848 derived names with those labels and they agree. So the 576 arms
+  are 6 names x 96 other cells, and each slot uses only its own 192. The questions
+  name the candidate or use her/him and his/her, so each of the twelve is rendered
+  per cell through `template.outcome_questions`.
+
+  WITHIN-SUBJECT, FOUR RATINGS PER CANDIDATE. Twelve outcomes per respondent: tasks
+  0-3 are candidate 1's four questions, 4-7 candidate 2's, 8-11 candidate 3's. All four
+  of a candidate's questions were on one screen with the description, so they share
+  its condition. Each candidate has its own five allocation variables, named through
+  `condition_vars`.
+
+  THE ALLOCATION IS CLEAN. 1,616 allocated respondents, 1,616 distinct allocations;
+  every one of the 192 cells occurs in every slot; repeated profiles between slots
+  occur at chance (16, 13, 19 against ~17); all three candidates are the same gender
+  for 397 people against ~404 by chance. Compare 9.18 wave 17, where it was not.
+
+  ROUTING. Self-completion (web, or face-to-face respondents who took the
+  self-completion section) AND in work or looking for it AND aged 18-65. Of 2,847
+  respondents, 1,616 were allocated; -8 inapplicable (1,208), -7 proxy (22) and -9
+  missing (1) have no rows. Don't know (3.1-7.2% per item) and refusal (2.5-4.1%)
+  together take 6-11% of each item's answers; they are dropped as non-answers, never
+  imputed. One allocated respondent's `dvage` is 17, though routing required PDVAGE
+  18-65; why the two disagree for that person was not investigated. Kept.
+
+  NOT BUILT: `fsvrecall`, the closing manipulation check ("which piece of information
+  has appeared in the candidates' profiles?"). It asks about all three candidates at
+  once, so it has no single condition. 1,504 of the 1,528 who answered it chose the
+  right option ("Working from home status"); the rows of the 24 who did not are kept.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build,
+  so a respondent here keeps their id from 9.10 and 9.18.
+
+condition:
+  shared_context: |-
+    Imagine you are a human resource manager in a company. The company has a job vacancy
+    for a full-time position and you are responsible for selecting a suitable candidate,
+    who needs to be a decisive person with the ability to analyse information. They will
+    lead a team of around 10 people to maintain good relationships with customers and
+    develop new markets. A number of internal candidates have been selected, all of whom
+    have the proper experience and educational background. Now you will be shown three
+    candidates. Please assess the suitability for promotion and work commitment for each
+    candidate.
+
+  # 6 names x 2 x 3 x 4 x 4 = 576 arms; each slot draws from its own two names, so
+  # 192 per slot. `condition_num` is an odometer in this order, orgpol fastest.
+  template:
+    text: >-
+      {name}, aged 35, {parent}, holds a master’s degree in Economics and Management.
+      {name.subject} works full-time and {hybrid}. {orguse} in the company work from home
+      on a regular basis and there {orgpol}
+    outcome_questions:
+      0: How likely is it that would you recommend {name} for the job?
+      1: How do you see {name.object} in terms of {name.possessive} work commitment?
+      2: How do you see {name.object} in terms of {name.possessive} productivity?
+      3: How do you see {name.object} as a team player?
+      4: How likely is it that would you recommend {name} for the job?
+      5: How do you see {name.object} in terms of {name.possessive} work commitment?
+      6: How do you see {name.object} in terms of {name.possessive} productivity?
+      7: How do you see {name.object} as a team player?
+      8: How likely is it that would you recommend {name} for the job?
+      9: How do you see {name.object} in terms of {name.possessive} work commitment?
+      10: How do you see {name.object} in terms of {name.possessive} productivity?
+      11: How do you see {name.object} as a team player?
+    dimensions:
+      name:
+        var: name1
+        levels:
+          1: {level: Charlotte Davies, text: Charlotte Davies, parts: {subject: She, object: her, possessive: her}}
+          2: {level: Paul Taylor, text: Paul Taylor, parts: {subject: He, object: him, possessive: his}}
+          3: {level: Anna Wright, text: Anna Wright, parts: {subject: She, object: her, possessive: her}}
+          4: {level: Adam Newton, text: Adam Newton, parts: {subject: He, object: him, possessive: his}}
+          5: {level: Sarah Walker, text: Sarah Walker, parts: {subject: She, object: her, possessive: her}}
+          6: {level: James Harrison, text: James Harrison, parts: {subject: He, object: him, possessive: his}}
+      parent:
+        var: fsvigparent1
+        levels:
+          1: {level: no_children, text: has no children}
+          2: {level: two_children, text: has two children}
+      hybrid:
+        var: fsvighybrid1
+        levels:
+          1: {level: office_5_days, text: works in the office 5 days a week}
+          2:
+            level: home_1_2_days
+            text: has worked from home 1-2 days a week on a regular basis in the last year
+          3:
+            level: home_3_4_days
+            text: has worked from home 3-4 days a week on a regular basis in the last year
+      orguse:
+        var: fsvigorguse1
+        levels:
+          1: {level: under_20pct_workers, text: Less than 20% of all workers}
+          2: {level: over_half_mothers, text: More than half of all mothers}
+          3: {level: over_half_parents, text: More than half of all parents}
+          4: {level: over_half_workers, text: More than half of all workers}
+      orgpol:
+        var: fsvigorgpol1
+        levels:
+          1:
+            level: none
+            text: are no company level policies that allow for a mix of working from home
+              and in the workplace.
+          2:
+            level: mothers_only
+            text: are company level policies that allow for a mix of working from home and
+              in the workplace but only for mothers.
+          3:
+            level: parents_only
+            text: are company level policies that allow for a mix of working from home and
+              in the workplace but only for parents.
+          4:
+            level: all_workers
+            text: are company level policies that allow for a mix of working from home and
+              in the workplace for all workers.
+
+# Each question below is the fallback the template overrides per cell; it is the
+# questionnaire's own wording with its fill shown in brackets, and no built row may
+# carry a bracket (tested).
+outcomes:
+  - var: fsvrecomm1
+    task_num: 0
+    question: "How likely is it that would you recommend [FSVIGNAME] for the job?"
+    scale: &likely {min: 0, max: 10, min_label: Not at all likely, max_label: Most likely}
+  - var: fsvcommit1
+    task_num: 1
+    question: "How do you see [her/him] in terms of [his/her] work commitment?"
+    scale: &good {min: 0, max: 10, min_label: Very poor, max_label: Very good}
+  - var: fsvproduct1
+    task_num: 2
+    question: "How do you see [him/her] in terms of [his/her] productivity?"
+    scale: *good
+  - var: fsvteam1
+    task_num: 3
+    question: "How do you see [her/him] as a team player?"
+    scale: *good
+  - var: fsvrecomm2
+    task_num: 4
+    question: "How likely is it that would you recommend [FSVIGNAME] for the job?"
+    scale: *likely
+    condition_vars: [name2, fsvigparent2, fsvighybrid2, fsvigorguse2, fsvigorgpol2]
+  - var: fsvcommit2
+    task_num: 5
+    question: "How do you see [her/him] in terms of [his/her] work commitment?"
+    scale: *good
+    condition_vars: [name2, fsvigparent2, fsvighybrid2, fsvigorguse2, fsvigorgpol2]
+  - var: fsvproduct2
+    task_num: 6
+    question: "How do you see [him/her] in terms of [his/her] productivity?"
+    scale: *good
+    condition_vars: [name2, fsvigparent2, fsvighybrid2, fsvigorguse2, fsvigorgpol2]
+  - var: fsvteam2
+    task_num: 7
+    question: "How do you see [her/him] as a team player?"
+    scale: *good
+    condition_vars: [name2, fsvigparent2, fsvighybrid2, fsvigorguse2, fsvigorgpol2]
+  - var: fsvrecomm3
+    task_num: 8
+    question: "How likely is it that would you recommend [FSVIGNAME] for the job?"
+    scale: *likely
+    condition_vars: [name3, fsvigparent3, fsvighybrid3, fsvigorguse3, fsvigorgpol3]
+  - var: fsvcommit3
+    task_num: 9
+    question: "How do you see [her/him] in terms of [his/her] work commitment?"
+    scale: *good
+    condition_vars: [name3, fsvigparent3, fsvighybrid3, fsvigorguse3, fsvigorgpol3]
+  - var: fsvproduct3
+    task_num: 10
+    question: "How do you see [him/her] in terms of [his/her] productivity?"
+    scale: *good
+    condition_vars: [name3, fsvigparent3, fsvighybrid3, fsvigorguse3, fsvigorgpol3]
+  - var: fsvteam3
+    task_num: 11
+    question: "How do you see [her/him] as a team player?"
+    scale: *good
+    condition_vars: [name3, fsvigparent3, fsvighybrid3, fsvigorguse3, fsvigorgpol3]
+
+# Identity: the questionnaire's 0-10 IS the canonical scale.
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+
+# Every negative code in this panel is a non-answer: -9 missing, -8 inapplicable,
+# -7 proxy, -2 refusal, -1 don't know.
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]
