@@ -56,6 +56,12 @@ CLEARED: dict[str, str] = {
         "an OSF project page, a Dataverse record). Public-facing metadata about a "
         "study, not material FROM it."
     ),
+    "ukds-public-documentation": (
+        "A study title or description as UKDS THEMSELVES publish it, at "
+        "doc.ukdataservice.ac.uk, downloadable without authentication. Public "
+        "documentation about a collection, not microdata from it. Verified by "
+        "fetching, not assumed — see the note below. Decided by rich, 9 Oct 2026."
+    ),
 }
 """Licences whose text may cross the wire. Anything absent is refused.
 
@@ -90,6 +96,34 @@ Deliberately NOT in this list, and each for its own reason:
   the EUL has been read, instrument text included. `data/catalog/
   uk_dataverse_candidates.csv` carries three such rows WITH titles and authors,
   so a script that reads that file and forgets this gate would leak them.
+
+  **This is still true of the MICRODATA and is not loosened by the entry above.**
+  The respondents' answers, and the variable and value labels inside the `.dta`
+  files, remain refused. What changed is narrower: UKDS publish the Innovation
+  Panel's own documentation openly, so that documentation is not the thing the
+  gate was built to hold.
+
+- **Why `ukds-public-documentation` was added, 9 Oct 2026.** The question came up
+  while trying to place the 44 Innovation Panel experiments on the coverage map.
+  The gate refused them, correctly on the assumption that had been running all
+  along — that the User Guide is Documentation, the EUL's "Data Collection"
+  includes Documentation, so it cannot cross the wire. Checking rather than
+  assuming found that UKDS serve it themselves, with no authentication:
+
+      doc.ukdataservice.ac.uk/doc/6849/mrdoc/pdf/
+        6849_innovation_panel_user_guide.pdf      200, 3,525,566 bytes
+        6849_ip_wave_5_questionnaires.pdf         200, 7,229,251 bytes
+        6849_ip_wave_16_questionnaire.pdf         200, 5,738,690 bytes
+
+  Fetched 9 Oct 2026 with no credentials. So an experiment title taken from that
+  guide is in the same position as a TESS title on tessexperiments.org: already
+  published by the rights holder, on a public URL, by their own choice.
+
+  Two things this does NOT license, stated because the next person will be
+  tempted. It does not open the microdata, which is the point of the EUL. And it
+  does not generalise to other UKDS collections without the same check — the
+  test is a 200 with no credentials against `doc.ukdataservice.ac.uk`, run for
+  that study, not an inference from this one.
 """
 
 

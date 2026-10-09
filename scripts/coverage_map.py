@@ -42,6 +42,7 @@ from micromotives_datasets import embed
 ROOT = Path(__file__).resolve().parent.parent
 CATALOGUE = ROOT / "data" / "catalog" / "tess_uk_foundation_sources.csv"
 UK_PROVENANCE = ROOT / "data" / "catalog" / "uk_dataverse_provenance.json"
+IP_CATALOGUE = ROOT / "data" / "catalog" / "innovation_panel_experiments.json"
 RECIPES = ROOT / "recipes"
 COORDS = ROOT / "data" / "catalog" / "coverage_map.json"
 FIT = ROOT / "data" / "catalog" / "coverage_map_umap.pkl"
@@ -85,6 +86,32 @@ def sources() -> list[dict[str, Any]]:
                 }
             )
 
+    # The Innovation Panel's 93 experiments. Their titles come from the User
+    # Guide, which UKDS publish themselves at doc.ukdataservice.ac.uk with no
+    # authentication (verified 9 Oct 2026) -- see `ukds-public-documentation` in
+    # embed.py for the check and who decided. The MICRODATA remains refused; this
+    # is the guide's own description of what each experiment was.
+    if IP_CATALOGUE.exists():
+        catalogue = json.loads(IP_CATALOGUE.read_text())
+        experiments = catalogue["experiments"] if isinstance(catalogue, dict) else catalogue
+        for row in experiments:
+            if row["verdict"] != "build":
+                continue
+            out.append(
+                {
+                    "code": f"IP{row['id']}",
+                    "title": row["title"],
+                    "category": f"IP {row['category']}",
+                    "year": "",
+                    "origin": "UK (Innovation Panel)",
+                    # 9.10 is the only one built; its recipes carry study_id
+                    # ukds_6849, which is shared, so the id has to be checked
+                    # against the experiment rather than the study.
+                    "built": row["id"] == "9.10",
+                    "licence": "ukds-public-documentation",
+                }
+            )
+
     return out
 
 
@@ -100,7 +127,10 @@ def place(rows: list[dict[str, Any]], *, refit: bool) -> tuple[list[dict[str, An
     # Titles are public metadata: public listing pages carry them, so they are
     # cleared for the wire. Anything FROM a study — condition text, outcome
     # wording — is a different question and is not cleared.
-    items = [embed.Text(key=r["code"], text=r["title"], licence="public-metadata") for r in rows]
+    items = [
+        embed.Text(key=r["code"], text=r["title"], licence=r.get("licence", "public-metadata"))
+        for r in rows
+    ]
     vectors = embed.embed(items)
     matrix = np.array([vectors[r["code"]] for r in rows], dtype=np.float32)
 

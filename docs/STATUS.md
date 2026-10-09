@@ -68,83 +68,114 @@ UKDS SN 6849. 93 experiments across 17 waves, all screened in
 **1 of the 44 is built** — 9.10, the housework scenarios, 9,631 rows across waves
 5 and 6. **43 remain.**
 
-### The 43, ranked by what they are worth
+### The 43, ranked by what fills the gaps in the UK layer
 
-**Tier 1 — made-up scenarios (3 left).** A described situation, then a judgement.
-The richest condition text available and the closest thing to SocSci210's
-conjoints.
+**`gap` is how far an experiment sits from the nearest UK study already built,
+in topic space.** Every study's title is embedded and projected to a map by
+`scripts/coverage_map.py`; the gap is the distance to the closest UK point on it.
+Two UK studies already built sit **3.28** apart on average, so:
 
-| id | category | wave | what |
-|---|---|---|---|
-| 9.39 | family-care | 16 | Homeworking and flexibility stigma — same CV, name changed from Charlotte Davies to Paul Taylor |
-| 9.26 | attitudes | 11 | Immigration residency rights under competition for public services |
-| 9.30 | technology | 14 | Automation threat × timeframe, 2×2 |
+| gap | means |
+|---|---|
+| ~2.2 | new territory — nothing like it in the dataset |
+| ~1.0 | partly new |
+| under 0.5 | a near-duplicate of something already built |
 
-**Tier 2 — substantive attitudes under a real randomisation (11).**
+**Why this measure and not category counts.** SocSci210's own paper
+(arXiv:2509.05830) treats diversity as spread in embedding space — its Figure 2
+is a projection of question embeddings against SubPop and Psych101 — not as
+counts per bucket. `coverage_map.py` says the same in its docstring: six
+categories "cannot show that two 'moral/social/cognition' studies are about
+completely different things, and the holes worth seeing are finer than a bucket".
 
-| id | category | wave | what |
-|---|---|---|---|
-| 9.40 | attitudes | 16 | Cognitive reflection × politically motivated reasoning |
-| 9.41 | attitudes | 16 | Climate worry, "you" vs "future generations" |
-| 9.42 | attitudes | 16 | Understanding of the long-term future |
-| 9.38 | attitudes | 15 | National identity |
-| 9.14 | attitudes | 7 | Willingness to pay environmental taxes |
-| 9.16 | attitudes | 8, 9 | Immigration attitudes via list experiment |
-| 9.34 | work-money | 15 | Marginal propensity to consume |
-| 9.22 | work-money | 10 | Financial management within couples |
-| 9.17 | sensitive | 8, 9 | Sexual identity, direct vs indirect questioning |
-| 9.9 | family-care | 4, 5 | Fertility intentions under priming |
-| 9.18 | wellbeing | 9, 17 | What counts as "successful ageing" |
+**And the comparison is against the UK layer only.** Measured against the whole
+corpus, the best picks come out as US social-psychology studies — true, and
+useless, because the point is UK representation. TESS supplies experiment
+designs that transfer; it cannot supply UK respondents.
 
-**Tier 3 — measurement variants on substantive topics (14).** Valid rows; the
-condition is a question format rather than a situation. 9.11 (returns to higher
-education) and 9.13 (time and risk preferences) are the strongest, because both
-carry a real decision.
+`wv` is how many waves it ran in. More waves, more rows.
 
-9.11 · 9.13 · 9.5 · 9.48 · 9.43 · 9.36 · 9.24 · 9.31 · 9.12 · 9.35 · 9.47 ·
-9.23 · 9.4 · 9.20
+#### Tier A — build first (7)
 
-**Tier 4 — weakest for this dataset (15).**
+| gap | id | category | wv | title |
+|---|---|---|---|---|
+| 2.22 | 9.4 | attitudes | 1 | Measuring identity |
+| 1.62 | 9.43 | health | 1 | Mental health questions comparisons |
+| 1.41 | 9.48 | work-money | 1 | Labour market expectations |
+| 1.39 | 9.17 | sensitive | 2 | Measuring sexual identity using direct and indirect questioning |
+| 1.33 | 9.24 | health | 1 | Variations of the EQ-5D questions |
+| 1.26 | 9.18 | wellbeing | 2 | What do the general population regard as "successful ageing"? |
+| 1.23 | 9.36 | health | 1 | Alcohol consumption |
 
-- **consent** (8): 9.6, 9.21, 9.25, 9.29, 9.33, 9.46, 9.49, 9.50. Outcome is
-  whether the person agreed to data linkage. A real decision under randomised
-  wording, so legitimate, but narrow and repetitive.
-- **question-form** (7): 8.3, 8.4, 8.5, 8.8, 8.10, 8.11, 8.14. Outcome is
-  response style. This is the panel's own survey-methodology work.
+#### Tier B — build next (5)
 
-### Where the value sits
+| gap | id | category | wv | title |
+|---|---|---|---|---|
+| 1.20 | 9.20 | wellbeing | 1 | Presentation of response options in satisfaction questions |
+| 1.13 | 9.31 | health | 1 | Comparison of ReQoL-10 to other scales |
+| 1.11 | 9.12 | health | 2 | Measuring change in self-assessed disability |
+| 1.10 | 9.42 | attitudes | 1 | Understanding of the long-term future |
+| 1.09 | 9.39 | family-care | 1 | Vignettes: measuring flexibility stigma — double whammy or femininity stigma |
 
-| category | count | Tier 1–2 |
+#### Tier C — good value, and multi-wave so the rows multiply (4)
+
+| gap | id | category | wv | title |
+|---|---|---|---|---|
+| 1.07 | 9.13 | work-money | 2 | Associated Study: measuring time and risk preferences |
+| 1.02 | 9.11 | work-money | 3 | Subjective expectations about the returns to higher education and decisions to attend university |
+| 0.94 | 9.9 | family-care | 2 | Context effects in fertility decisions |
+| 0.88 | 9.47 | family-care | 1 | Identification of informal caregiving |
+
+#### Not selected, and why
+
+Everything below a gap of about 0.85 duplicates ground the UK layer already
+covers. The lowest are **9.40** (cognitive reflection and politically motivated
+reasoning) and **9.38** (national identity) at 0.09, then **9.49**, **9.30**,
+**9.25**, **9.16** — all under 0.2. The UK layer is currently Brexit, immigration
+and party politics almost end to end, so another politics experiment adds the
+least of anything available.
+
+The 8 consent and 7 question-form experiments mostly sit low for the same
+reason, with four exceptions kept in view: **8.14**, **8.3**, **8.11** and
+**8.5** all score 1.24-1.41. They are survey-methodology experiments, so the
+condition is a question format rather than a situation, but they genuinely
+occupy empty space.
+
+#### A correction worth keeping
+
+An earlier version of this section ranked the 44 by how interesting the
+condition text looked, and put 9.40, 9.38, 9.16, 9.30 and 9.26 in the top tier.
+Measured against the UK layer, those are **five of the weakest in the whole
+list**. Ranking by "which experiment is more interesting" and ranking by "what is
+missing" give nearly opposite answers, and only the second one serves a dataset
+whose purpose is UK coverage.
+
+#### What this selection buys
+
+| | now | after the 16 |
 |---|---|---|
-| attitudes | 8 | 7 |
-| consent | 8 | 0 |
-| question-form | 7 | 0 |
-| work-money | 6 | 2 |
-| family-care | 6 | 3 |
-| health | 5 | 0 |
-| wellbeing | 2 | 1 |
-| technology | 1 | 1 |
-| sensitive | 1 | 1 |
+| health experiments in the UK layer | 0 | 5 |
+| wellbeing | 0 | 2 |
+| UK share of corpus rows | 35% | ~40% |
 
-`attitudes` is where the value concentrates. `health` is five instrument
-comparisons — volume, not variety. `consent` and `question-form` are 15 of 44
-and bottom-tier.
+Health and wellbeing are the categories TESS cannot fill: norms around illness,
+drinking, ageing and mental health do not transfer across countries the way an
+attitude-framing experiment does.
 
----
+## 4. The plan: 16 more experiments
 
-## 4. The plan: 17 more experiments
-
-**Tier 1 (3) + Tier 2 (11) + 9.11 and 9.13 from Tier 3 = 16.** Plus one more
-from Tier 3 by wave convenience = **17**.
+**Tier A (7) + Tier B (5) + Tier C (4) = 16**, in that order.
 
 ### Step 1 — triage, half a session
 
-Check all 43 against their wave questionnaire PDFs for whether the condition
-wording actually exists. **Nobody has done this.** `SocSci-UK_MASTER.md` flags it
-as "the largest unknown left, and resolving it can only move the count down". For
-9.10 the wording was there word-for-word; for the other 43 it is unverified.
+Check all 16 against their wave questionnaire PDFs for whether the condition
+wording actually exists. **Nobody has done this for any experiment except 9.10.**
+`SocSci-UK_MASTER.md` flags it as "the largest unknown left, and resolving it can
+only move the count down". For 9.10 the wording was there word-for-word; for the
+rest it is unverified, and anything that fails drops out and is replaced from the
+next band down.
 
-Output: a buildable list, so the 17 are picked from fact rather than hope.
+Output: a buildable list, so the 16 are picked from fact rather than hope.
 
 ### Step 2 — build, 2–4 sessions
 
@@ -159,8 +190,11 @@ session, but most of that was one-off machinery now reusable:
 Both are inert for every existing study (all 41 rebuilt, zero row-count changes).
 The three remaining scenario studies need no new machinery at all.
 
-**Batch by wave.** Wave 16 is the strongest single batch in the panel — 9.39,
-9.40, 9.41, 9.42, 9.43 — one questionnaire, four Tier 1–2 experiments.
+**Batch by wave where it helps.** The 16 are spread across waves, so the
+per-wave saving is smaller than it would be for a cheapest-first selection — that
+is the cost of choosing on coverage instead of convenience, and it is worth
+paying. The clusters that do exist: waves 8-9 carry 9.17 and 9.18, waves 6-7
+carry 9.12 and 9.13, wave 16 carries 9.39, 9.42 and 9.43.
 
 ---
 
