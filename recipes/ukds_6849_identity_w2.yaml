@@ -1,0 +1,119 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.4: measuring identity, \"occupation\"
+  or \"profession\" (wave 2)"
+data_file: identity_w2-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: identity_w2
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.4 in the Innovation Panel User Guide; wave 2 (2009). The User Guide
+  cites no publication. The battery is adapted from the 2007-08 Citizenship Survey.
+
+  A ONE-WORD SPLIT BALLOT. Thirteen things were rated for how important they are to
+  "your sense of who you are"; the first was "Your occupation?" (group 1) or "Your
+  profession?" (group 2), allocated by household. Only that item differs, so only
+  it is built: one row per respondent. Items (b)-(m) are word-for-word identical in
+  both versions (checked programmatically against the questionnaire text) and are not built. They follow item (a), so a carry-over
+  from its wording is conceivable, but the experiment's question is item (a).
+
+  WORDING. From `6849_ip_wave_2_questionnaires.pdf`, items *EthExp_A* and
+  *EthExp_B* (pp. 92-93), the older asterisk-delimited specification layout. Kept: the
+  stem's own question mark after "who you are" and its curly apostrophe in "We’d".
+  NOT rendered: "INTERVIEWER: IF DK PROBE: Is that because you are retired?", an
+  interviewer instruction triggered only by a don't-know, which is dropped as a
+  non-answer anyway; and "READ OUT EACH AND CODE".
+
+  THE CONDITION IS NARRATED, by the `rpw4u` precedent: `You were asked:` and the
+  quotation marks are ADDED (docs/CONVENTIONS.md, "Narrating what the respondent
+  did"). The stem is shared, so it is stated once in `shared_context`, and each arm
+  carries only its item.
+
+  ALLOCATION is at household level in `b_hhsamp_ip`: 938 respondents in occupation
+  households and 932 in profession households (887 and 901 excluding 82 proxies, by
+  indresp's own copy). That copy makes the join checkable: `scripts/gen_ip_identity.py
+  --check` compares the joined allocation with it for 1,788 respondents, with zero
+  disagreements, and finds no answer in the other version's variable. Interviewer-administered (CAPI), unlike the self-completion
+  studies built so far.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+
+condition:
+  source_var: version
+  factors: [word]
+  shared_context: >-
+    You were asked: "We’d like to know how important various things are to your sense
+    of who you are. Please think about each thing I mention, and tell me whether you
+    think it is important, not very important or not at all important to your sense of
+    who you are?"
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {word: occupation}
+      text: '"Your occupation?"'
+      items:
+        0:
+          outcome_var: ethexp_aa
+          outcome_question: >-
+            We’d like to know how important various things are to your sense of who you
+            are. Please think about each thing I mention, and tell me whether you think it
+            is important, not very important or not at all important to your sense of who
+            you are? Your occupation?
+    - raw: 2
+      condition_num: 1
+      factors: {word: profession}
+      text: '"Your profession?"'
+      items:
+        0:
+          outcome_var: ethexp_ba
+          outcome_question: >-
+            We’d like to know how important various things are to your sense of who you
+            are. Please think about each thing I mention, and tell me whether you think it
+            is important, not very important or not at all important to your sense of who
+            you are? Your profession?
+
+outcomes:
+  - task_num: 0
+    question: "[item (a), in the version's own wording]"
+    scale:
+      min: 1
+      max: 3
+      min_label: Important
+      mid_label: Not very important
+      max_label: Not at all important
+
+response_recode: {1: 1, 2: 2, 3: 3}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]
