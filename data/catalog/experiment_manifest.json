@@ -476,6 +476,18 @@
       "description": "The second mover's side of the same hypothetical games: the other person sends $10, $30 or $50 (you receive three times that); how much would you return, and how much would you give from a payoff-equivalent windfall? Game order randomised.",
       "design": "3 (amount sent) x 2 (game order), within-subject 2 decisions, range set per cell ($0-30/90/150)",
       "verified_against": "no published table; an independent checker re-derived all 914 rows from the .sav (0 missing, extra or wrong), matched every text byte-for-byte to the fielded 2003 CATI questionnaire, and matched the deposit's own per-amount frequency printout for all 16 decision variables (10 Oct 2026)"
+    },
+    "ukds_6849_immigsdb_w8": {
+      "category": "survey methodology",
+      "description": "Respondents see a short list of statements about UK policy and report only HOW MANY they agree with. Three of four groups' lists add one statement allowing people from Muslim, Eastern European or Caribbean countries to come and live in the UK: a list experiment for uncovering masked opposition to immigration. Wave 8 (2015).",
+      "design": "item-count (list) experiment, household allocation to control (3 statements) or one of three treatments (4 statements); one count outcome; statements in each respondent's recorded order (reading as 9.17, ledger 135)",
+      "verified_against": "no published reference; an independent checker re-derived all 2,133 rows from the raw files (0 mismatches), confirmed allocation against routing (exactly diagonal; wave 9 uses its own re-allocation), and matched every list to the questionnaire (10 Oct 2026)"
+    },
+    "ukds_6849_immigsdb_w9": {
+      "category": "survey methodology",
+      "description": "Respondents see a short list of statements about UK policy and report only HOW MANY they agree with. Three of four groups' lists add one statement allowing people from Muslim, Eastern European or Caribbean countries to come and live in the UK: a list experiment for uncovering masked opposition to immigration. Wave 9 (2016).",
+      "design": "item-count (list) experiment, household allocation to control (3 statements) or one of three treatments (4 statements); one count outcome; statements in each respondent's recorded order (reading as 9.17, ledger 135)",
+      "verified_against": "no published reference; an independent checker re-derived all 2,071 rows from the raw files (0 mismatches), confirmed allocation against routing (exactly diagonal; wave 9 uses its own re-allocation), and matched every list to the questionnaire (10 Oct 2026)"
     }
   }
 }

@@ -1,0 +1,213 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.16: social desirability bias in
+  attitudes towards immigration, by item count (wave 9)"
+data_file: immigsdb_w9-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: immigsdb_w9
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.16 in the Innovation Panel User Guide ("Social desirability bias in
+  attitudes towards immigration"); waves 8 (2015) and 9 (2016). This recipe is wave
+  9; `ukds_6849_immigsdb_w8.yaml` is wave 8. The User Guide cites no publication;
+  the wave 8 technical report (section 4.3.7, "Masking opposition to immigration")
+  describes the design and cites Park et al. (2012) for the motivation only.
+
+  AN ITEM-COUNT (LIST) EXPERIMENT. Respondents saw a list of statements about UK
+  policy and said only HOW MANY they agreed with. Households were allocated to four
+  groups (`ff_ictimw9`, in `i_hhsamp_ip`, joined on `i_hidp`): 1 control, a list of
+  three statements (`ictimc1`); 2, 3, 4, the same three plus "The UK should allow
+  people from {Muslim / Eastern European / Caribbean} countries to come and live
+  here" (`ictimt1`, `ictimt2`, `ictimt3`). One outcome per respondent (task 0), each
+  arm naming its own answer variable, list text, scale and statement order.
+  `scripts/gen_ip_immigsdb.py --check` cross-tabulates the allocation against which
+  answer variable holds an answer (ledger 134, 138): every answer sits in the list its
+  group was routed to (488 / 531 / 523 / 529), none in another, none without a group.
+  `i_hhsamp_ip` also carries the wave 8 group (`ff_ictimw8`), and it is NOT the wave 9
+  allocation: the User Guide says half of each wave 8 group was moved to one of the
+  other three, and in the data 1,132 of 2,237 allocated respondents kept their wave 8
+  group. Using it would put about half the rows under the wrong list; `--check` and
+  the test both fail if it is used.
+
+  THE CONDITION IS THE LIST, WORD-FOR-WORD, IN THE RESPONDENT'S OWN ORDER. The
+  statements were shuffled per respondent and recorded as a permutation code
+  (`ictimc1o` etc.); the generator turns it into one position per statement and
+  `ItemOverride.line_order_vars` renders each row in that respondent's order, the stem
+  staying above the bullets. The specification numbers the statements in bullet order
+  (sensitive statement = 4). Wording from `6849_ip_wave_8_questionnaires.pdf`, module
+  Scaitemcount_ip8 (ICTImc1, ICTImt1, ICTImt2, ICTImt3); identical word-for-word in
+  the wave 9 module Scaitemcount_ip9. Typography normalised (the curly apostrophe in
+  "don't").
+
+  THE ORDER CODE'S READING IS AN ASSUMPTION, NOT A FINDING (ledger 135). Read as for
+  9.17, whose codes come from the same module under the same specification wording
+  ("record the random ordering as an integer"): 3124 = statement 3 shown first. Which
+  statements appear, and every response, are right under either reading.
+
+  NO PREAMBLE. The module's intro item ICTPre ("The next set of questions will ask you
+  to count the number of statements that are true for you ...") is specified AFTER the
+  four immigration lists and before the sexual-identity lists of 9.17, and its wording
+  ("true for you") is theirs, not this list's ("agree with"). The User Guide and
+  technical report say the ordering of the item counts was randomised across
+  respondents, but no variable records where this list sat among them, so no
+  preamble is attached and no position is stated (docs/CONVENTIONS.md, "Sequence
+  signposting").
+
+  NOT BUILT: the direct questions (`ictimc2`, `ictimc3`, `ictimc4`, module
+  Scaimmdirq_ip8: "Do you think the UK should allow people from Muslim countries to
+  come and live here?", allow / do not allow). They were asked of the CONTROL group
+  only, so nothing randomised varies across the people who answered them; they are a
+  different answer type (ledger 147); and they followed the control list in the same
+  session. The experiment compares them with the treatment lists' implied
+  proportions, which is an analysis, not a row.
+
+  PERSONA: ETHNICITY KEPT, by rich's ruling of 10 Oct 2026. The Caribbean arm's
+  condition names "Caribbean countries", and the harmonised ethnicity category is "Black,
+  Black British, Caribbean or African" (`racel_dv` codes 14-16): 42 answered rows carry
+  those codes, 23 of them in the Caribbean arm. The ruling: docs/CONVENTIONS.md's rule
+  ("The condition must not name the respondent's own persona category") targets
+  conditions that state what a persona group THINKS, where the answer can be copied
+  across by substitution (X08IVC). A policy statement that names a country group does
+  not do that, and ethnicity is a legitimate predictor of the response. Religion is not
+  in the persona.
+
+  ROUTING. Self-completion only: web, or face-to-face respondents who accepted the
+  self-completion instrument (`scac` 1-3). As in 9.17, the 75 answered rows with `scac`
+  = 2 (interviewer completed it for reading/sight problems) and 5 with `scac` = 3
+  (help to translate) are kept: the list's words reached them, though not by screen.
+
+  ROW COUNTS (aggregates). 2,071 answered (0-3 or 0-4) of 2,263 respondents. Dropped:
+  among the households' own lists, -1 don't know (12), -2 refusal (7), -9 missing (5);
+  -7 proxy (63) and -8 not routed (79: no self-completion) were never asked; 26
+  respondents' households carry no wave 9 group, and none of them answered.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build;
+  most respondents answered in both waves, under one id.
+
+condition:
+  source_var: group
+  factors: [sensitive_item]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {sensitive_item: "none (control)"}
+      text: |-
+        Of the following three statements, how many of them do you agree with? We don't want to know which statements, just how many.
+        • The UK should increase assistance to the poor
+        • The UK should decrease the tax on diesel and petrol
+        • The UK should allow large corporations to pollute the environment
+      items:
+        0:
+          outcome_var: c1
+          outcome_question: "With how many items do you agree?"
+          condition_text: |-
+            Of the following three statements, how many of them do you agree with? We don't want to know which statements, just how many.
+            • The UK should increase assistance to the poor
+            • The UK should decrease the tax on diesel and petrol
+            • The UK should allow large corporations to pollute the environment
+          line_order_vars: [o_c1_1, o_c1_2, o_c1_3]
+          scale: {min: 0, max: 3, min_label: "None", max_label: "Three items"}
+    - raw: 2
+      condition_num: 1
+      factors: {sensitive_item: "Muslim countries"}
+      text: |-
+        Of the following four statements, how many of them do you agree with? We don't want to know which statements, just how many.
+        • The UK should increase assistance to the poor
+        • The UK should decrease the tax on diesel and petrol
+        • The UK should allow large corporations to pollute the environment
+        • The UK should allow people from Muslim countries to come and live here
+      items:
+        0:
+          outcome_var: t1
+          outcome_question: "With how many items do you agree?"
+          condition_text: |-
+            Of the following four statements, how many of them do you agree with? We don't want to know which statements, just how many.
+            • The UK should increase assistance to the poor
+            • The UK should decrease the tax on diesel and petrol
+            • The UK should allow large corporations to pollute the environment
+            • The UK should allow people from Muslim countries to come and live here
+          line_order_vars: [o_t1_1, o_t1_2, o_t1_3, o_t1_4]
+          scale: {min: 0, max: 4, min_label: "None", max_label: "Four items"}
+    - raw: 3
+      condition_num: 2
+      factors: {sensitive_item: "Eastern European countries"}
+      text: |-
+        Of the following four statements, how many of them do you agree with? We don't want to know which statements, just how many.
+        • The UK should increase assistance to the poor
+        • The UK should decrease the tax on diesel and petrol
+        • The UK should allow large corporations to pollute the environment
+        • The UK should allow people from Eastern European countries to come and live here
+      items:
+        0:
+          outcome_var: t2
+          outcome_question: "With how many items do you agree?"
+          condition_text: |-
+            Of the following four statements, how many of them do you agree with? We don't want to know which statements, just how many.
+            • The UK should increase assistance to the poor
+            • The UK should decrease the tax on diesel and petrol
+            • The UK should allow large corporations to pollute the environment
+            • The UK should allow people from Eastern European countries to come and live here
+          line_order_vars: [o_t2_1, o_t2_2, o_t2_3, o_t2_4]
+          scale: {min: 0, max: 4, min_label: "None", max_label: "Four items"}
+    - raw: 4
+      condition_num: 3
+      factors: {sensitive_item: "Caribbean countries"}
+      text: |-
+        Of the following four statements, how many of them do you agree with? We don't want to know which statements, just how many.
+        • The UK should increase assistance to the poor
+        • The UK should decrease the tax on diesel and petrol
+        • The UK should allow large corporations to pollute the environment
+        • The UK should allow people from Caribbean countries to come and live here
+      items:
+        0:
+          outcome_var: t3
+          outcome_question: "With how many items do you agree?"
+          condition_text: |-
+            Of the following four statements, how many of them do you agree with? We don't want to know which statements, just how many.
+            • The UK should increase assistance to the poor
+            • The UK should decrease the tax on diesel and petrol
+            • The UK should allow large corporations to pollute the environment
+            • The UK should allow people from Caribbean countries to come and live here
+          line_order_vars: [o_t3_1, o_t3_2, o_t3_3, o_t3_4]
+          scale: {min: 0, max: 4, min_label: "None", max_label: "Four items"}
+
+outcomes:
+  - task_num: 0
+    question: "[immigration list: with how many items do you agree]"
+    scale: {min: 0, max: 4, min_label: None, max_label: Four items}
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

@@ -8,13 +8,13 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total | Rows built |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 36 | 17 | 4 | 6 | 27 | 368,627 |
+| Innovation Panel | UK · not publishable | 38 | 16 | 4 | 6 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 10 | 6 | 5 | 9 | 20 | 94,078 |
 | TESS | US · not publishable | 42 | 41 | 8 | 8 | 57 | 368,659 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **101** | **64** | **29** | **26** | **119** | **974,104** |
+| **Total** | | **103** | **63** | **29** | **26** | **118** | **978,308** |
 
-## Next 33, in build order (25 built, 8 to go)
+## Next 33, in build order (26 built, 7 to go)
 
 - Pool: Buildable candidates only.
 - Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).
@@ -67,7 +67,8 @@ Every experiment we have built and every candidate we could add, from four sourc
 | 25 | Innovation Panel | ukds_6849_sensor_consent_w17_ftf | **Indoor residential environment: consent for in-home sensor (face-to-face)**<br>Consent to place sensors measuring the indoor environment. | survey methodology | 0.21 |
 | 25 | Innovation Panel | ukds_6849_sensor_consent_w17_web | **Indoor residential environment: consent for in-home sensor (web)**<br>Consent to place sensors measuring the indoor environment. | survey methodology | 0.21 |
 | 26 | TESS | vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title). | moral/social/cognition | 0.23 |
-| 27 | Innovation Panel | 9.16 | **Social desirability bias in attitudes towards immigration**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
+| 27 | Innovation Panel | ukds_6849_immigsdb_w8 | **Social desirability bias in attitudes towards immigration (wave 8)**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
+| 27 | Innovation Panel | ukds_6849_immigsdb_w9 | **Social desirability bias in attitudes towards immigration (wave 9)**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
 | 28 | DEL | W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose. | political preferences/policy | 0.24 |
 | 29 | TESS | jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements. | moral/social/cognition | 0.24 |
 | 30 | Innovation Panel | 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen. | survey methodology | 0.19 |
@@ -86,7 +87,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Innovation Panel
 
-UK · not publishable. 36 Built, 17 Buildable, 4 Needs checking, 6 Unlikely.
+UK · not publishable. 38 Built, 16 Buildable, 4 Needs checking, 6 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -103,6 +104,8 @@ UK · not publishable. 36 Built, 17 Buildable, 4 Needs checking, 6 Unlikely.
 | ukds_6849_sensor_consent_w17_ftf | **Indoor residential environment: consent for in-home sensor (face-to-face)**<br>Consent to place sensors measuring the indoor environment.<br>*339 rows; Wave 17; 2x5x2 info x duration x feedback* | survey methodology | Built | 0.21 | 25 |
 | ukds_6849_sensor_consent_w17_web | **Indoor residential environment: consent for in-home sensor (web)**<br>Consent to place sensors measuring the indoor environment.<br>*946 rows; Wave 17; 2x5x2 info x duration x feedback* | survey methodology | Built | 0.21 | 25 |
 | 9.30 | **Vignettes: intentions to prepare for automation**<br>Vignettes: automation threat severity × timeframe, 2×2.<br>*15,020 rows; Wave 14; 2x2 + control, 9 outcomes* | economics/behavioural | Built | 0.20 | 14 |
+| ukds_6849_immigsdb_w8 | **Social desirability bias in attitudes towards immigration (wave 8)**<br>Direct vs indirect questions to uncover masked opposition.<br>*2,133 rows; Wave 8; list experiment, 4 groups* | survey methodology | Built | 0.19 | 27 |
+| ukds_6849_immigsdb_w9 | **Social desirability bias in attitudes towards immigration (wave 9)**<br>Direct vs indirect questions to uncover masked opposition.<br>*2,071 rows; Wave 9; list experiment, 4 groups* | survey methodology | Built | 0.19 | 27 |
 | 9.38 | **National identity**<br>Versions of the national identity questions.<br>*2,472 rows; Wave 15; 2 conditions (identity question asked first or not); outcome: importance of being British* | political identity/polarisation | Built | 0.17 | 7 |
 | ukds_6849_alcohol_w15 | **Alcohol consumption**<br>Respondents who had drunk alcohol in the past year report how much they drink on a typical drinking day and how often they binge, with the questions worded in UNITS of alcohol (the NHS version) or in ALCOHOLIC DRINKS. The binge threshold is 6 or more for women and 8 or more for men. The rows teach whether the same person reports differently when asked in units, which few people count in. Wave 15 (2022).<br>*4,208 rows* | survey methodology | Built |  |  |
 | ukds_6849_caring_activity_w17 | **Identification of informal caregiving**<br>Respondents report how many hours a week they spend caring for a sick, disabled or elderly person, on each of six activities (household tasks, personal care, practical support, social and emotional support, travel, other). The condition is whether they had already been asked the existing Understanding Society caring questions earlier in the interview. Wave 17 (2024).<br>*13,875 rows* | work/family/gender | Built |  |  |
@@ -132,7 +135,6 @@ UK · not publishable. 36 Built, 17 Buildable, 4 Needs checking, 6 Unlikely.
 | 9.21 | **Improving consent to link to the electoral register**<br>How consent was asked, crossed with the wording of the request.<br>*Waves 10, 11* | survey methodology | Buildable | 0.20 |  |
 | 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen.<br>*Wave 11* | survey methodology | Buildable | 0.19 | 30 |
 | 8.4 | **Dependent interviewing wording**<br>Different wording when reminding people of last year's answer.<br>*Waves 3, 4, 5, 7* | survey methodology | Buildable | 0.19 |  |
-| 9.16 | **Social desirability bias in attitudes towards immigration**<br>Direct vs indirect questions to uncover masked opposition.<br>*Waves 8, 9* | survey methodology | Buildable | 0.19 | 27 |
 | 9.50 | **Domestic energy use: consent for smart meter data linkage**<br>Consent to link smart meter energy data.<br>*Wave 17* | survey methodology | Buildable | 0.19 |  |
 | 9.40 | **Cognitive reflection and politically motivated reasoning**<br>A cognitive reflection test varied by political content.<br>*Wave 16* | moral/social/cognition | Buildable | 0.18 |  |
 | 9.41 | **Robustness of climate change worries measurement**<br>Two versions of one climate-worry question.<br>*Wave 16* | survey methodology | Buildable | 0.18 |  |

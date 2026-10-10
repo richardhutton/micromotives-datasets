@@ -164,6 +164,15 @@ a string.
    outweighs the risk, and only if no aggregate score can be reported without the
    mark travelling with it. `X08IVC` was judged not to clear that bar.
 
+**What it does NOT cover** (ruled by rich, 10 Oct 2026, on IP 9.16). A condition
+that merely MENTIONS a group the persona can belong to is not this failure. 9.16's
+list item "The UK should allow people from Caribbean countries to come and live
+here" sits beside a persona ethnicity of "Black, Black British, Caribbean or
+African", but it states no attitude for anyone, so nothing can be matched across:
+ethnicity there is an ordinary predictor, like age, and stays. The test is whether
+the condition says what a persona group THINKS or DOES, so that the answer follows
+by substitution. Naming a country, a nationality or an ethnicity is not enough.
+
 **How to spot it.** Read one rendered condition against the persona fields beside
 it, for one row. This is not detectable numerically — the study verified against
 all four cells of its authors' published table, on both N and mean, while being

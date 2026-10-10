@@ -215,15 +215,29 @@
   },
   {
    "source": "Innovation Panel",
-   "id": "9.16",
-   "title": "Social desirability bias in attitudes towards immigration",
+   "id": "ukds_6849_immigsdb_w8",
+   "title": "Social desirability bias in attitudes towards immigration (wave 8)",
    "description": "Direct vs indirect questions to uncover masked opposition.",
-   "details": "Waves 8, 9",
+   "details": "2,133 rows; Wave 8; list experiment, 4 groups",
    "category": "survey methodology",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.19,
-   "next": 27
+   "next": 27,
+   "recipe": "ukds_6849_immigsdb_w8"
+  },
+  {
+   "source": "Innovation Panel",
+   "id": "ukds_6849_immigsdb_w9",
+   "title": "Social desirability bias in attitudes towards immigration (wave 9)",
+   "description": "Direct vs indirect questions to uncover masked opposition.",
+   "details": "2,071 rows; Wave 9; list experiment, 4 groups",
+   "category": "survey methodology",
+   "status": "Built",
+   "reason": "",
+   "novelty": 0.19,
+   "next": 27,
+   "recipe": "ukds_6849_immigsdb_w9"
   },
   {
    "source": "Innovation Panel",

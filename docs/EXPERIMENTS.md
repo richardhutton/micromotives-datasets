@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**101 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 36 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**103 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 22 | 223,550 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 36 | 368,627 | **no** — UKDS End User Licence |
+| UK — UK Data Service (End User Licence) | 38 | 372,831 | **no** — UKDS End User Licence |
 | US transfer — TESS | 42 | 368,659 | **no** — no licence stated |
-| **Total** | **101** | **974,104** | |
+| **Total** | **103** | **978,308** | |
 
 ---
 
@@ -62,6 +62,8 @@
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
 | `ukds_6849_envtax_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.14: willingnes… | UK Data Service | `UKDS SN 6849` | 2,235 |
+| `ukds_6849_immigsdb_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,133 |
+| `ukds_6849_immigsdb_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,071 |
 | `ukds_6849_immig_vignette_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.26: right to r… | UK Data Service | `UKDS SN 6849` | 1,917 |
 | `del_sandbox_feb2023_abortion` | Development Engagement Lab, Sandbox Great Britain February 2023: ab… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,798 |
 | `del_sandbox_feb2023_wordfeminist` | Development Engagement Lab, Sandbox Great Britain February 2023: na… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,788 |
@@ -634,6 +636,32 @@ Should a Polish-born immigrant (married, three children, renting privately, with
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — no published reference; an independent checker re-derived all 1,917 rows from the raw files (0 mismatches), matched the vignette to the questionnaire, and found the population asymmetry, now fixed (10 Oct 2026)
 
+### `ukds_6849_immigsdb_w8`
+
+**Understanding Society Innovation Panel, experiment 9.16: social desirability bias in attitudes towards immigration, by item count (wave 8)**
+
+Respondents see a short list of statements about UK policy and report only HOW MANY they agree with. Three of four groups' lists add one statement allowing people from Muslim, Eastern European or Caribbean countries to come and live in the UK: a list experiment for uncovering masked opposition to immigration. Wave 8 (2015).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — item-count (list) experiment, household allocation to control (3 statements) or one of three treatments (4 statements); one count outcome; statements in each respondent's recorded order (reading as 9.17, ledger 135)
+- **Category** — survey methodology
+- **Rows** — 2,133 from 2,133 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived all 2,133 rows from the raw files (0 mismatches), confirmed allocation against routing (exactly diagonal; wave 9 uses its own re-allocation), and matched every list to the questionnaire (10 Oct 2026)
+
+### `ukds_6849_immigsdb_w9`
+
+**Understanding Society Innovation Panel, experiment 9.16: social desirability bias in attitudes towards immigration, by item count (wave 9)**
+
+Respondents see a short list of statements about UK policy and report only HOW MANY they agree with. Three of four groups' lists add one statement allowing people from Muslim, Eastern European or Caribbean countries to come and live in the UK: a list experiment for uncovering masked opposition to immigration. Wave 9 (2016).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — item-count (list) experiment, household allocation to control (3 statements) or one of three treatments (4 statements); one count outcome; statements in each respondent's recorded order (reading as 9.17, ledger 135)
+- **Category** — survey methodology
+- **Rows** — 2,071 from 2,071 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived all 2,071 rows from the raw files (0 mismatches), confirmed allocation against routing (exactly diagonal; wave 9 uses its own re-allocation), and matched every list to the questionnaire (10 Oct 2026)
+
 ### `ukds_6849_itemcount_w8`
 
 **Understanding Society Innovation Panel, experiment 9.17: measuring sexual identity by item counts (wave 8)**
@@ -972,6 +1000,6 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | moral/social/cognition | 5 | 12 | 184,516 |
 | political identity/polarisation | 4 | 0 | 34,920 |
 | political preferences/policy | 14 | 0 | 126,112 |
-| survey methodology | 18 | 5 | 216,639 |
+| survey methodology | 20 | 5 | 220,843 |
 | work/family/gender | 8 | 8 | 140,765 |
 
