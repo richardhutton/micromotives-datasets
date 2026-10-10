@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**96 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 34 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 39 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**101 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 36 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 22 | 223,550 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 34 | 367,342 | **no** — UKDS End User Licence |
-| US transfer — TESS | 39 | 362,707 | **no** — no licence stated |
-| **Total** | **96** | **966,867** | |
+| UK — UK Data Service (End User Licence) | 36 | 368,627 | **no** — UKDS End User Licence |
+| US transfer — TESS | 42 | 368,659 | **no** — no licence stated |
+| **Total** | **101** | **974,104** | |
 
 ---
 
@@ -72,9 +72,11 @@
 | `ukds_6849_hmrc_consent_w11_web` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,281 |
 | `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
 | `ukds_6849_mpc_twopart_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,259 |
+| `ukds_6849_sensor_consent_w17_web` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 946 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
+| `ukds_6849_sensor_consent_w17_ftf` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 339 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
@@ -103,6 +105,7 @@
 | `xk9ch_vignette1` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 5,499 |
 | `py9q3_vignette2` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 5,005 |
 | `sd7cf` ⚠ | Framing in Noisy Informational Environments | TESS (OSF) | `osf.io/sd7cf` | 4,124 |
+| `vwn96` ⚠ | What's the Best Way to Motivate Kids? | TESS (OSF) | `osf.io/vwn96` | 4,019 |
 | `dh3nj` ⚠ | Public Perceptions of Prenatal Alcohol Consumption | TESS (OSF) | `osf.io/dh3nj` | 4,001 |
 | `a5v96_vignette1` ⚠ | What fosters patients' acceptance of Clinical Decision Support? (vi… | TESS (OSF) | `osf.io/a5v96` | 3,621 |
 | `e5rfg_six` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 3,608 |
@@ -111,6 +114,8 @@
 | `bf8p2` ⚠ | Does Misery Love Company? Exploration of a Strategic Social Comparison | TESS (OSF) | `osf.io/bf8p2` | 1,998 |
 | `c5r2f` ⚠ | Do Policy Defaults Communicate Choice-Relevant Information? | TESS (OSF) | `osf.io/c5r2f` | 1,091 |
 | `rpw4u_RO1` ⚠ | Cross-National Replication of Question Design Experiments (RO1: oil… | TESS (OSF) | `osf.io/rpw4u` | 1,023 |
+| `gyrp9_send` ⚠ | Game Responses as Survey Instruments: Measuring the Constituents of… | TESS (OSF) | `osf.io/gyrp9` | 1,019 |
+| `gyrp9_return` ⚠ | Game Responses as Survey Instruments: Measuring the Constituents of… | TESS (OSF) | `osf.io/gyrp9` | 914 |
 | `e5rfg_pair` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 323 |
 | `e5rfg_ce` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 281 |
 | `e5rfg_tk` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 264 |
@@ -772,6 +777,32 @@ Respondents rate their satisfaction with their health, their household's income,
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.20. What IS verified: (a) every answering respondent matches a household allocation (scripts/gen_ip_satisfaction.py --check); (b) every row's layout against the raw household allocation, and nobody who heard the questions given a layout; (c) wording checked programmatically against the questionnaire; (d) 8,025 rows, reached by the generator and the pipeline. (e) an independent checker re-rendered every row from raw (0 mismatches) and found the 75 read-out respondents, since excluded. tests/test_ip_satisfaction.py
 
+### `ukds_6849_sensor_consent_w17_ftf`
+
+**Understanding Society Innovation Panel, experiment 9.49: consent to an in-home sensor, varying where the information sat, the stated duration and a promised feedback report, face-to-face (wave 17)**
+
+Households are asked to consent to a sensor measuring their indoor environment. Three things vary: full information in the question or some of it in help text, how long the sensor stays (up to 6 months to up to 2 years), and whether a personalised report is promised. Wave 17 (2024). Face-to-face, read out by the interviewer.
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2 x 5 x 2 between-household (info x duration x feedback), allocated in q_hhsamp_ip; one yes/no consent outcome from the household-questions respondent
+- **Category** — survey methodology
+- **Rows** — 339 from 339 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived every row from the raw wave-17 files (0 mismatches across all 20 cells), matched every cell's text and fills to the questionnaire, and confirmed allocation against routing and the documented CATI error (10 Oct 2026)
+
+### `ukds_6849_sensor_consent_w17_web`
+
+**Understanding Society Innovation Panel, experiment 9.49: consent to an in-home sensor, varying where the information sat, the stated duration and a promised feedback report, web (wave 17)**
+
+Households are asked to consent to a sensor measuring their indoor environment. Three things vary: full information in the question or some of it in help text, how long the sensor stays (up to 6 months to up to 2 years), and whether a personalised report is promised. Wave 17 (2024). Web, read on screen.
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2 x 5 x 2 between-household (info x duration x feedback), allocated in q_hhsamp_ip; one yes/no consent outcome from the household-questions respondent
+- **Category** — survey methodology
+- **Rows** — 946 from 946 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived every row from the raw wave-17 files (0 mismatches across all 20 cells), matched every cell's text and fills to the questionnaire, and confirmed allocation against routing and the documented CATI error (10 Oct 2026)
+
 ### `ukds_6849_timerisk_w6`
 
 **Understanding Society Innovation Panel, experiment 9.13: time and risk preference choices (wave 6)**
@@ -890,6 +921,8 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `e5rfg_pair` | Who has Narrow Brackets? | economics/behavioural | 323 | 216 | osf.io/e5rfg |
 | `e5rfg_six` | Who has Narrow Brackets? | economics/behavioural | 3,608 | 727 | osf.io/e5rfg |
 | `e5rfg_tk` | Who has Narrow Brackets? | economics/behavioural | 264 | 176 | osf.io/e5rfg |
+| `gyrp9_return` | Game Responses as Survey Instruments: Measuring the Constituents of… | economics/behavioural | 914 | 461 | osf.io/gyrp9 |
+| `gyrp9_send` | Game Responses as Survey Instruments: Measuring the Constituents of… | economics/behavioural | 1,019 | 513 | osf.io/gyrp9 |
 | `7tzpe` | Body Size, Illness, and Blame: Causal Attributions and Social Conse… | health communication | 20,308 | 1,380 | osf.io/7tzpe |
 | `a42yg` | Conflict between curative and palliative goals among health care pe… | health communication | 8,022 | 503 | osf.io/a42yg |
 | `a5v96_vignette1` | What fosters patients' acceptance of Clinical Decision Support? (vi… | health communication | 3,621 | 1,211 | osf.io/a5v96 |
@@ -905,6 +938,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `b87sm` | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | moral/social/cognition | 19,282 | 1,942 | osf.io/b87sm |
 | `es4xw` | Perceptions of Diversity Across Groups | moral/social/cognition | 32,228 | 2,501 | osf.io/es4xw |
 | `gh396` | Maintaining a Sense of Belonging among the Socially Isolated | moral/social/cognition | 8,959 | 412 | osf.io/gh396 |
+| `vwn96` | What's the Best Way to Motivate Kids? | moral/social/cognition | 4,019 | 2,013 | osf.io/vwn96 |
 | `xk9ch_identity_threat` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,335 | 2,783 | osf.io/xk9ch |
 | `xk9ch_institution` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,524 | 2,785 | osf.io/xk9ch |
 | `xk9ch_vignette1` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,499 | 2,786 | osf.io/xk9ch |
@@ -933,11 +967,11 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 10 | 5 | 175,052 |
+| economics/behavioural | 10 | 7 | 176,985 |
 | health communication | 0 | 9 | 91,114 |
-| moral/social/cognition | 5 | 11 | 180,497 |
+| moral/social/cognition | 5 | 12 | 184,516 |
 | political identity/polarisation | 4 | 0 | 34,920 |
 | political preferences/policy | 14 | 0 | 126,112 |
-| survey methodology | 16 | 5 | 215,354 |
+| survey methodology | 18 | 5 | 216,639 |
 | work/family/gender | 8 | 8 | 140,765 |
 

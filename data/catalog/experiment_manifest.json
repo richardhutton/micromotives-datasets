@@ -446,6 +446,36 @@
       "description": "Should a Polish-born immigrant (married, three children, renting privately, with a pre-existing health condition) be allowed to remain? He lives either in the respondent's own town or in Glasgow; rated 1-10. England, self-completion only. Wave 11 (2018).",
       "design": "between-subjects, 2 arms, person-level randomisation (k_cjitown); both arms restricted to respondents whose address was confirmed; the own-place town name is a fill not in the deposit, replaced by a clause ruled by rich (CONVENTIONS); the conjoint that precedes it is parked",
       "verified_against": "no published reference; an independent checker re-derived all 1,917 rows from the raw files (0 mismatches), matched the vignette to the questionnaire, and found the population asymmetry, now fixed (10 Oct 2026)"
+    },
+    "ukds_6849_sensor_consent_w17_ftf": {
+      "category": "survey methodology",
+      "description": "Households are asked to consent to a sensor measuring their indoor environment. Three things vary: full information in the question or some of it in help text, how long the sensor stays (up to 6 months to up to 2 years), and whether a personalised report is promised. Wave 17 (2024). Face-to-face, read out by the interviewer.",
+      "design": "2 x 5 x 2 between-household (info x duration x feedback), allocated in q_hhsamp_ip; one yes/no consent outcome from the household-questions respondent",
+      "verified_against": "no published reference; an independent checker re-derived every row from the raw wave-17 files (0 mismatches across all 20 cells), matched every cell's text and fills to the questionnaire, and confirmed allocation against routing and the documented CATI error (10 Oct 2026)"
+    },
+    "ukds_6849_sensor_consent_w17_web": {
+      "category": "survey methodology",
+      "description": "Households are asked to consent to a sensor measuring their indoor environment. Three things vary: full information in the question or some of it in help text, how long the sensor stays (up to 6 months to up to 2 years), and whether a personalised report is promised. Wave 17 (2024). Web, read on screen.",
+      "design": "2 x 5 x 2 between-household (info x duration x feedback), allocated in q_hhsamp_ip; one yes/no consent outcome from the household-questions respondent",
+      "verified_against": "no published reference; an independent checker re-derived every row from the raw wave-17 files (0 mismatches across all 20 cells), matched every cell's text and fills to the questionnaire, and confirmed allocation against routing and the documented CATI error (10 Oct 2026)"
+    },
+    "vwn96": {
+      "category": "moral/social/cognition",
+      "description": "Respondents read about two students who say they are 'giving up', one from a poor inner-city family and one from a moderately wealthy suburban family, in random order; as the student's teacher, they choose which of four motivating statements they would most likely use. GfK, 2013.",
+      "design": "within-subject, 2 vignettes, order randomised between subjects (XTESS137); statement order randomised per respondent and recorded, rendered in each respondent's order; first choice only (later picks exclude the earlier answer)",
+      "verified_against": "no published table; an independent checker re-derived all 4,019 rows (0 missing, extra or wrong), rebuilt every text from the questionnaire's XML, and tested the order-code reading (primacy LR 35.9, p=8e-8, vs 0.59 inverse; holds where nothing is derived) (10 Oct 2026)"
+    },
+    "gyrp9_send": {
+      "category": "economics/behavioural",
+      "description": "A trust game and a dictator game asked as hypothetical dollar questions in a 2003 US phone survey: as first mover with $50, how much would you send? The order of the two games is randomised.",
+      "design": "2-arm game order, within-subject 2 decisions ($0-50)",
+      "verified_against": "no published table; an independent checker re-derived all 1,019 rows from the .sav (0 missing, extra or wrong), matched every text byte-for-byte to the fielded 2003 CATI questionnaire, and matched the deposit's own per-amount frequency printout for all 16 decision variables (10 Oct 2026)"
+    },
+    "gyrp9_return": {
+      "category": "economics/behavioural",
+      "description": "The second mover's side of the same hypothetical games: the other person sends $10, $30 or $50 (you receive three times that); how much would you return, and how much would you give from a payoff-equivalent windfall? Game order randomised.",
+      "design": "3 (amount sent) x 2 (game order), within-subject 2 decisions, range set per cell ($0-30/90/150)",
+      "verified_against": "no published table; an independent checker re-derived all 914 rows from the .sav (0 missing, extra or wrong), matched every text byte-for-byte to the fielded 2003 CATI questionnaire, and matched the deposit's own per-amount frequency printout for all 16 decision variables (10 Oct 2026)"
     }
   }
 }

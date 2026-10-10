@@ -1,0 +1,965 @@
+study_id: gyrp9
+experiment: return
+source: tess
+title: "Game Responses as Survey Instruments: Measuring the Constituents of Social Capital"
+data_file: Houser.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10:
+  registration gyrp9 and its child components t6uwp "Data" and bgp3k "Materials
+  and Methods" have no licence; same finding recorded 2026-10-02 in
+  data/catalog/tess_uk_foundation_sources.csv). TESS states no reuse terms for its
+  archived studies and has since suspended operations. So there is no explicit
+  grant of redistribution rights for this deposit, and none should be assumed.
+
+# Not in SocSci210 (tess_uk_foundation_sources.csv: in_socsci210=no), so there is
+# no answer key to crosscheck against. Verified by re-deriving every row from the
+# .sav and against the deposit's own frequency output (see notes, VERIFICATION).
+comparable_to_socsci210: false
+
+notes: |-
+  gyrp9_return: HOU_COND 3-8, the respondent as SECOND MOVER, a fully crossed 3 x
+  2: amount_sent ($10 sent, $30 received / $30, $90 / $50, $150; condition_num
+  0-1, 2-3, 4-5) x game_order (trust game first = odd HOU_COND / dictator game
+  first = even). condition_num = HOU_COND - 3. Sister recipe gyrp9_send holds
+  conditions 1-2; the notes below are shared between the two recipes except this
+  paragraph, COUNTS and VERIFICATION.
+
+
+  TESS 2003 module 118 (Daniel Houser, George Mason University), "Game Responses
+  as Survey Instruments: Measuring the Constituents of Social Capital". A
+  TELEPHONE survey: the TESS 2003 omnibus, a national RDD sample interviewed by
+  the Indiana University Center for Survey Research with CASES CATI software,
+  interviewers reading every screen aloud (TESS03_final report.doc in the same
+  zip as Q, below); this module's interviews ran 21 Aug - 4 Nov 2003 (IDAT
+  range) in production groups 2-5. The .sav has 1,008 rows, CaseID unique, every one assigned HOU_COND.
+  One deposit, TWO recipes, split by the respondent's ROLE in the game, because
+  role is not crossed with stake (ledger 151): gyrp9_send (conditions 1-2, the
+  first mover / sender, $50 stake) and gyrp9_return (conditions 3-8, the second
+  mover / returner, three amounts received). Both answer types are a dollar
+  amount from $0 to a range the question itself states.
+
+
+  SOURCES AND PROVENANCE
+
+    Q    = TESS03_production_group_2q.doc, the FIELDED CATI programming
+           questionnaire for production group 2 of the TESS 2003 omnibus. NOT in
+           this study's own registration: it is inside TESS2003module.zip in the
+           full TESS 2003 survey node https://osf.io/nuv2j/ (linked from
+           tessexperiments.org/study/houser118; zip https://osf.io/download/xudg8/,
+           823,331 bytes, sha256
+           48b53c82e7bd2b7727ff63bc0a72ca5bae34bc25925a73945c24afaab3e2c7b0; the
+           .doc inside, 290,816 bytes, sha256
+           44845fcf1ba39517247bb274959feb5ef88f9cb7bdc8828a86cdf9e25f9da489).
+           Saved to data/raw/gyrp9/quex/ with the zip, converted with macOS
+           textutil. The Houser module ("TESS MODULE FOR DAN HOUSER", from the
+           module overview through houz_b) is BYTE-IDENTICAL in the text of
+           production groups 2, 3, 4 and 5 (diffed; group 1 has no Houser module,
+           and the .sav's SMPL holds only groups 2-5). Fielded version confirmed
+           against the .sav: every HOUX*/HOU_COND/HOUZ_* variable is a question
+           id in Q with the same codes (0-<range>, 997/998/999; 97/98/99 on
+           houx1d only); HOU_COND is a pure function of the stored random draw
+           HOUX_RAN (1-200) cut at exactly Q's stated probabilities (1-50 -> 1,
+           51-100 -> 2, 101-109 -> 3, 110-118 -> 4, 119-134 -> 5, 135-150 -> 6,
+           151-175 -> 7, 176-200 -> 8 = 25/25/4.5/4.5/8/8/12.5/12.5%); and the
+           skip logic matches (no respondent answers past a "no/R does not
+           understand" or a 997).
+    FREQ = TESS03_Houser_Module.doc, "TESS Production Data Output" (frequency
+           tables with question wording), the only document in this study's
+           registration child bgp3k "Materials and Methods"
+           (https://osf.io/download/8jyxr/, 194,560 bytes, sha256
+           b08e400b305248da2762611c4846f670b9002973ba6ce618608c00a5599cb770; also
+           inside https://osf.io/download/565f323b8c5e4a3875d7543b/,
+           TESS03_Houser_Module.zip, sha256
+           b617f124cb5ccfcf0eeb6b08f5a378f9e883cdef759817a8a028b8b298259fff). Its
+           wording agrees with Q but it OMITS the module introduction (screen
+           "houx", no data) and merges the "NEXT >>" screens houx3d/5d/7d into
+           houx3e/5e/7e, so it is not used for wording. Used as an ANSWER KEY
+           (see VERIFICATION).
+    Data = Houser.sav (OSF component t6uwp, https://osf.io/download/d3ewp/,
+           sha256 265646baaa958cdb6249082d55401ab01e80643f3632b7ad0a4ad3bb167e254c;
+           the copy inside TESS03_Houser_Module.zip has the same sha256).
+
+
+  THE DESIGN (Q, Houser module)
+
+  Q's overview: "Respondents are to be randomly divided into eight different
+  experimental conditions" with probabilities 25/25/4.5/4.5/8/8/12.5/12.5%.
+  Observed 235/288/37/45/76/77/129/121 against expected
+  252/252/45.4/45.4/80.6/80.6/126/126 (chi-square 8.53, 7 df, p = 0.29). The
+  conditions are interleaved across every fieldwork day. Every respondent first
+  heard the module introduction (screen houx), then made TWO hypothetical
+  decisions, both answered as a dollar amount: a trust-game decision and a
+  dictator-game decision, in an order fixed by the condition:
+
+    HOU_COND 1  sender: trust game (send $0-50, tripled, other may return) THEN
+                dictator game (same, other cannot send back)
+    HOU_COND 2  sender: dictator game THEN trust game
+    HOU_COND 3  returner: other sent $10 -> you hold $30, return $0-30; THEN
+                dictator: other has $40, you $50 + $30, give $0-30
+    HOU_COND 4  the same two decisions, dictator first
+    HOU_COND 5/6  as 3/4 with $30 sent -> $90 (dictator: other has $20, +$90)
+    HOU_COND 7/8  as 3/4 with $50 sent -> $150 (dictator: other has $0, +$150)
+
+  The dictator decisions in 3-8 are payoff-equivalent to the trust return
+  (Houser's design: same final allocations, with and without the other's
+  prior choice). A second randomisation, HOUZ_RAN (houz_a / houz_b), moves the
+  GSS generalised-trust question before or after the game module; it is NOT
+  built (see EXCLUDED).
+
+  The task is within-subject, its ORDER randomised and recorded (HOU_COND), so
+  this follows the repeated-measures ruling (CONVENTIONS, "Narrating what the
+  respondent did", ruled 10 Oct 2026): each row's condition is everything read
+  to the respondent in this module up to and including its own decision, in
+  that respondent's order. Task 0 is the trust-game decision and task 1 the
+  dictator-game decision in every arm; in a dictator-first arm task 1's
+  condition is the shorter one.
+
+
+  CONDITION TEXT - WHAT IS WORD-FOR-WORD AND WHAT IS NOT
+
+  Every paragraph is Q's, word-for-word, in Q's order, pulled from Q by screen
+  name by a generator (scratch, not committed) that asserted each screen's
+  boundaries, that each premise sentence "Suppose the other person sends $N so
+  you receive $3N." matches its arm, and that every question states the arm's
+  range. One paragraph per line of Q, blank-line separated. Typography
+  normalised per CONVENTIONS (curly apostrophes straightened, trailing spaces
+  dropped). Q's capitals are kept as written ("TRIPLE THE AMOUNT YOU SENT",
+  "You THEN RECEIVE AN ADDITIONAL $30" in 3 vs "You then receive an additional
+  $150" in 7, "OF THIS MONEY" in 3 and absent in 5): they are interviewer
+  emphasis and are words, not glyphs. "her or him" as written.
+
+  DROPPED, as instrument mechanics (none of it was a stimulus; all of it is
+  the same in every arm): the comprehension prompts "Do you understand so
+  far?" / "Do you still follow me?" ending every description screen, with
+  their interviewer instructions ("INTERVIEWER: IF R DOES NOT UNDERSTAND,
+  REPEAT DESCRIPTION..."), the "NEXT >>" screen breaks, "ENTER AMOUNT FROM $0
+  TO $N:", and the routing. Every respondent who reached a decision had
+  answered "yes/proceed" to every prompt before it (Q: "IF = 2, GOTO
+  hou1_int"; confirmed in the data), so dropping the prompt drops nothing that
+  differed between respondents.
+
+  ADDED, by us (CONVENTIONS, "Narrating what the respondent did"): one
+  sentence before the second decision's screens, of the form
+    You were asked: "<the first decision's question, word-for-word>"
+  e.g. 'You were asked: "What amount of money between $0 and $50 would you
+  send to the other person?"'. It narrates the question as ASKED, never the
+  answer, so it is true for everyone in the arm, including the 5 respondents
+  (1 in arm 1, 1 in 5, 2 in 6, 1 in 7) who answered DK/RF to the first decision
+  and were still asked the second: Q routes only 997 "R does not understand"
+  to the end of the module, and no one answered after a 997. No other words
+  are ours. Without it the second screen's "Imagine the same study I just
+  described" and "Under those conditions" would follow a description with no
+  decision in between, which is not what anyone heard.
+
+  The decision QUESTION is the outcome, word-for-word per (arm, task) through
+  `items` ("What amount of money between $0 and $N would you send to the
+  other person?" when first, "Under those conditions, what amount ..." where
+  Q prints that). The premise "Suppose the other person sends $N so you
+  receive $3N." sits on the question's own screen in Q; it is put in the
+  CONDITION, not the outcome, because it carries the stake and is the last
+  thing read before the question.
+
+  Scale: min 0, max = the range the question itself states (Q's "<0-N>" entry
+  range); no labels, since Q labels none. response_recode is the identity on
+  0..N per (arm, task): an amount outside the stated range is dropped, never
+  clipped (ledger 53: no invented ceilings; the range is the instrument's).
+
+  MISSING AND DROPPED
+
+  missing_codes [997, 998, 999] (997 "R does not understand question (VOL)",
+  998 DK, 999 RF; Jev non_answer 0.92-1.00 on 997/DK, 0.61-0.82 on RF, REVIEW
+  on RF only because Jev's runner-up was "answer"). 998/999 are declared
+  user-missing in the .sav and arrive as blank; 997 arrives as a code. NOT
+  declared: 97/98/99, which are houx1d's own non-answer codes (Q prints
+  <97>/<98>/<99> for that one item) but are real AMOUNTS in every $90 and
+  $150 cell; they are outside houx1d's 0-50 range, so its recode drops them
+  anyway (none occurs). houx1d holds 999 twice, a code Q does not list for
+  that item (FREQ prints them unlabelled, inside the valid percentages):
+  outside 0-50, dropped. Respondents who never reached a decision (said "no"
+  to a comprehension prompt, or 997 earlier) are blank and contribute no row
+  for it.
+
+
+  PERSONA
+
+  This is a 2003 CATI omnibus, not KnowledgePanel: no PP* profile. Its own
+  demographics, asked in the interview (Q "beginning demographics" before the
+  module: gender, marital status, employment, party, ideology; "ending
+  demographics" after it: birth year, education, Hispanic origin, race,
+  religion, income). Built:
+    gender        GENDER  "male, or" -> "Male" and "female" -> "Female"
+                  (persona_label_rewrite): the ", or" is the read-out list's,
+                  and the capital is typography, matching the corpus's
+                  "Male"/"Female" so it does not describe gender two ways
+                  (no crosswalk exists for gender). Coordinator ruling, 10 Oct.
+    party_id      PARTY_A  "a Republican", "a Democrat"; "an Independent, or" ->
+                  "an Independent"; "no preference (VOLUNTEERED)" -> "no
+                  preference" (rewrites). 4 "what (ENTER TEXT)" (an other-party
+                  answer whose text is not in the file; 19 respondents) and DK/RF
+                  are persona_missing. The strength follow-ups (PARTY_B-D) are not
+                  combinable through persona_map and are not used.
+    ideology      IDEOL_A  "a liberal", "a conservative"; "a moderate, or" -> "a
+                  moderate"; "neither/none (VOLUNTEERED)" -> "neither/none".
+                  4 "haven't you thought much about this" (306 respondents, 30%)
+                  is KEPT as a real answer, rewritten to "Haven't thought much
+                  about it" - the corpus's existing spelling (xk9ch, 3,464 rows;
+                  xk9ch_vignette1 rules IDEO 8 a real answer). The label is the
+                  tail of the question as read out ("...or haven't you thought
+                  much about this?"); the respondent's answer is that they have
+                  not, which is a position, not a refusal. Jev called it
+                  non_answer 0.66 (REVIEW); overruled, coordinator ruling 10 Oct,
+                  for consistency with xk9ch and the corpus.
+    year_of_birth BORN (extra; the file has no age), 9998/9999 missing.
+  LEFT OUT because their labels trip QC rule 14 (no scheme in the crosswalks
+  holds this survey's wording, and data/catalog may not be edited in this
+  build): marital_status MAR_CODE ("married", "living with a partner", ...),
+  employment EMPLOY ("working for pay", "keeping house", ...), education
+  EDU_CODE / EDUCAT_A ("0 - 11 years", "12th grade/high school/diploma/GED",
+  ...), income INC_CODE ("under $15,000", "$15,000 but less than $25,000",
+  ...), religion RELIG ("Catholic", "Protestant", "do you have no religious
+  preference", ...), ethnicity (LATINO yes/no + RACE1-9 yes/no checkboxes, no
+  single variable). Region: CREG/CDIV are unlabelled sample-frame codes, not
+  used. Restore these once the crosswalks carry a TESS-2003-CATI scheme.
+  Jev's persona picks (HHINC conf 0.64, LATINO 0.58, CDIV 0.60) were
+  overruled: HHINC is not the respondent's income: it is unlabelled and
+  non-integer and sits with COLGRAD, MEDHOME, WHITE, BLACK, HISP and MEDEDU, which
+  read as area-level figures attached to the sample (percentages and medians);
+  the respondent's own income is INC_CODE.
+
+
+  EXCLUDED, WITH ROW COST
+
+    * The comprehension prompts houx1a/1b, 2a/2c, 3a/3b, 4a/4c/4d, 5a/5b, 6a/
+      6c/6d, 7a/7b, 8a/8c/8d (yes/proceed vs does not understand): checks on
+      whether the description was understood, not behaviour (CONVENTIONS:
+      attention checks are not outcomes). About 2,600 answers, nearly all
+      "yes/proceed".
+    * HOUZ_RAN x houz_a/houz_b, the GSS generalised-trust question asked
+      before or after the game module (1,008 respondents, 993 answers). It is
+      NOT inert for the rows built here: HOUZ_RAN=1 (508) heard the trust
+      question at the end of the beginning demographics, several modules
+      before the games. It is not rendered in their condition, because it was
+      asked several modules earlier and other modules' items are never put in
+      a condition: unmodelled carry-over from a separate randomisation, the
+      same as the global goals believability item. Pooled trust-game send
+      (gyrp9_send task 0): 27.59 asked-before (n=254) vs 25.89 asked-after
+      (n=253), t-test p=0.20 (checker's numbers, reproduced). As its own
+      placement experiment it is not expressible honestly as a row:
+      the "after" arm's condition would be the respondent's own game block
+      (eight versions) plus the other TESS modules between it and houz_b,
+      which differ by production group and are not part of this deposit's
+      Houser module. Recorded in considered_and_rejected. A possible later
+      build if a narration of the intervening modules is ruled acceptable.
+    * hou1a-hou8e (internet use, life events): asked of everyone after the
+      games, no manipulation; not outcomes of this experiment.
+
+
+  JEV (scripts/recipe_prep.py gyrp9 --source tess --file Houser.sav, 2026-10-10)
+
+    assignment: REVIEW, picked HOUZ_RAN at conf 0.12 (runner-ups NONE_OF_THESE
+      0.33, RAND 0.32). OVERRULED: HOU_COND is the game assignment (Q: "IF
+      HOU_COND = 1, GOTO HOUX1A" ...; deterministic from the HOUX_RAN draw).
+      HOUZ_RAN is the second, unbuilt randomisation; RAND (1-12) is the
+      omnibus's own draw and does not predict HOU_COND.
+    persona: GENDER ok 1.00, EMPLOY 1.00, MAR_CODE 0.99, RELIG 1.00 (the last
+      three left out, rule 14); REVIEW: income HHINC 0.64, education EDUCAT_A
+      0.52 (vs EDU_CODE 0.36), ethnicity LATINO 0.58, region CDIV 0.60 (all
+      left out, above). Party and ideology are not among Jev's fields; mapped
+      by reading Q.
+    labels: 134 asked, 61 disagreements with the regex. Decisions: DK/RF and
+      997 as non-answers (Jev agrees); the "no/R does not understand" codes on
+      the comprehension prompts (Jev split, conf 0.10-0.34) are moot, those
+      variables are not built; "divorced, or" / "an Independent, or" called
+      answer_with_boilerplate (0.23 / 0.37, REVIEW) -> rewritten where built
+      (PARTY_A); "what (ENTER TEXT)" answer_with_boilerplate 0.76 -> left
+      missing, the text is not in the file; "haven't you thought much about
+      this" non_answer 0.66 -> overruled, kept as an answer (above).
+    directives: nothing scanned - recipe_prep found no instrument in the data
+      folder at run time (Q was added after). Read by hand: the only routing in
+      the module is HOU_COND's GOTOs, the per-screen "IF = 2 / IF = 997, GOTO
+      hou1_int" exits, and HOUZ_RAN's placement; none gates stimulus WORDING
+      within an arm.
+
+
+  UK TRANSFER
+
+  The games are not US-specific; amounts are in dollars, and "a research
+  organization" is generic. Readable in the UK as is.
+
+  COUNTS
+
+  914 rows from 461 of the 485 respondents in HOU_COND 3-8.
+    arm 0 (3, $10 sent, trust first):      task 0 houx3c 32,  task 1 houx3e 32
+    arm 1 (4, $10 sent, dictator first):   task 0 houx4e 42,  task 1 houx4b 43
+    arm 2 (5, $30 sent, trust first):      task 0 houx5c 69,  task 1 houx5e 69
+    arm 3 (6, $30 sent, dictator first):   task 0 houx6e 74,  task 1 houx6b 75
+    arm 4 (7, $50 sent, trust first):      task 0 houx7c 122, task 1 houx7e 120
+    arm 5 (8, $50 sent, dictator first):   task 0 houx8e 117, task 1 houx8b 119
+  The $10 cells are small by design (4.5% each). Built means, return / dictator
+  give: $30 cells 17.3/18.4 and 13.0/15.5; $90 cells 41.6/41.7 and 39.0/45.7;
+  $150 cells 63.5/68.7 and 70.0/75.7.
+
+  RISKIEST JUDGEMENT
+
+  The narration sentence 'You were asked: "<first question>"' and dropping the
+  "Do you understand so far?" prompts. Together they decide what the second
+  decision's condition says. The alternative readings: (a) leave the first
+  question out, which makes "Imagine the same study I just described ... Under
+  those conditions" follow a bare description, a sequence no one heard; (b)
+  keep the prompts, which turns ten interviewer comprehension checks into
+  stimulus. Second: putting the premise "Suppose the other person sends $N so
+  you receive $3N." in the condition rather than the outcome (it is printed on
+  the question's screen in Q). Third: the persona (five crosswalk fields left out).
+
+
+  VERIFICATION
+
+  scripts/verify_gyrp9.py re-derives every row of BOTH recipes from the .sav
+  with its own design table and its own copies of Q's sentences (each asserted
+  to occur in Q), and reads the BUILT parquets: send 1,019 expected, 1,019
+  built; return 914 expected, 914 built; 0 missing, 0 extra, 0 wrong on
+  (participant, task, condition_num, response, factors, full condition text,
+  full outcome text, persona gender). Second answer key, independent of the
+  .sav: for all 16 decision variables, the per-amount counts printed in the
+  deposit's own frequency output (FREQ) equal the built rows' per-amount counts
+  in that (arm, task) cell, exactly.
+  Mutation-tested (scratch recipes, built over the real parquets, then
+  rebuilt from these recipes and re-verified OK): swapping condition_num 0/1 in
+  gyrp9_send -> FAIL (all 1,019 condition_num wrong, and the frequency
+  output mismatches on houx1c/1d/2b/2d); "OF THIS
+  MONEY" inserted into the $90 dictator screen of gyrp9_return -> FAIL, 69
+  condition texts wrong; recoding 25 -> 24 on houx1c -> FAIL, 86 responses
+  wrong and the frequency check on houx1c. (Swapping raw codes 1/2 instead is
+  refused by the build itself: routing_check finds 517 respondents answering
+  another arm's variables.) The verifier's own first draft was wrong - it gave
+  houx5b/7b the opening sentence of houx3b - and failed 380 rows until
+  corrected against Q, which is the direction that should fail.
+  Added after the checker's pass (10 Oct): the script also checks party_id,
+  ideology and year_of_birth on every row (persona expected from the .sav codes
+  and Q's labels, rewrites written out in the script), and EXECUTES two claims
+  these notes make: HOU_COND equals the cut of HOUX_RAN at Q's probabilities for
+  all 1,008 respondents, and the skip logic (a "no" to a comprehension prompt or
+  a 997 ends the module; DK/RF do not; no one answers another condition's
+  screens) holds with 0 violations, read with user-missing codes kept.
+  Mutation-tested, then restored and re-verified OK: ideology code 4 made
+  missing -> 310 ideology wrong; gender "male" lower case -> 440 wrong; PARTY_A
+  3 made missing -> 285 wrong; BORN 1950 made missing -> 24 wrong; Q's
+  probabilities misordered in a copy of the script -> 131 respondents fail the
+  cut; DK/RF treated as ending the module in a copy -> 10 skip violations.
+  No published table was found: the TESS page cites Leland, Houser & Shachat
+  (2005), "Measuring Trust and Trustworthiness", in Trust and Entrepreneurship:
+  A West-East Perspective (book chapter, not found online). The deposit's
+  frequency output is the only reference.
+
+condition:
+  source_var: HOU_COND
+  factors: [amount_sent, game_order]
+  routing_check: true
+  considered_and_rejected:
+    HOUZ_RAN: "The module's second randomisation, crossed with HOU_COND: HOUZ_RAN=1 (508 respondents) were asked the GSS question 'most people can be trusted, or you can't be too careful' (houz_a) at the end of the beginning demographics, several modules BEFORE the games; HOUZ_RAN=2 were asked it (houz_b) after. NOT inert, but not rendered: it was asked several modules earlier, and other modules' items are never put in a condition. Unmodelled carry-over from a separate randomisation, as with the global goals believability item. Pooled trust-game send (task 0, gyrp9_send) 27.59 (houz_a, n=254) vs 25.89 (houz_b, n=253), t-test p=0.20 (checker's figures, reproduced). Its own outcome is not built (see notes, EXCLUDED)."
+    HOUX_RAN: "The 1-200 random draw from which HOU_COND is cut (1-50 -> 1 ... 176-200 -> 8, Q's probabilities). Not a separate assignment; HOU_COND is a function of it."
+    RAND: "The omnibus's own 1-12 random number, not this module's; it does not predict HOU_COND."
+  arms:
+    - raw: 3
+      condition_num: 0
+      factors: {amount_sent: "$10 sent, $30 received", game_order: "trust game first"}
+      # The whole block as this group met it (= its second item's condition).
+      text: |-
+        Next, I will ask you about how you might behave in a possible research study.
+
+        Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+        Let me describe what will happen and ask your reaction.
+
+        YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization gives both of you $50.
+
+        The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+        Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+        Your task is to decide how much money you will give back to the other person. After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+        You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+        Suppose the other person sends $10 so you receive $30.
+
+        You were asked: "What amount of money between $0 and $30 would you send to the other person?"
+
+        Next, let's consider another situation. Imagine the same study I just described except that THE OTHER PERSON IS INITIALLY GIVEN $40 AND YOU ARE INITIALLY GIVEN $50.
+
+        You THEN RECEIVE AN ADDITIONAL $30. You can choose to keep any amount OF THIS MONEY from $0 to $30 and send the rest to the other person.
+
+        The other person can keep whatever amount you send to her or him.
+      items:
+        0:
+          outcome_var: HOUX3C
+          outcome_question: >-
+            What amount of money between $0 and $30 would you send to the other person?
+          scale: {min: 0, max: 30}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            Your task is to decide how much money you will give back to the other person. After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $10 so you receive $30.
+        1:
+          outcome_var: HOUX3E
+          outcome_question: >-
+            Under those conditions, what amount of money between $0 and $30 would you send to the other person?
+          scale: {min: 0, max: 30}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            Your task is to decide how much money you will give back to the other person. After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $10 so you receive $30.
+
+            You were asked: "What amount of money between $0 and $30 would you send to the other person?"
+
+            Next, let's consider another situation. Imagine the same study I just described except that THE OTHER PERSON IS INITIALLY GIVEN $40 AND YOU ARE INITIALLY GIVEN $50.
+
+            You THEN RECEIVE AN ADDITIONAL $30. You can choose to keep any amount OF THIS MONEY from $0 to $30 and send the rest to the other person.
+
+            The other person can keep whatever amount you send to her or him.
+    - raw: 4
+      condition_num: 1
+      factors: {amount_sent: "$10 sent, $30 received", game_order: "dictator game first"}
+      # The whole block as this group met it (= its second item's condition).
+      text: |-
+        Next, I will ask you about how you might behave in a possible research study.
+
+        Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+        Let me describe what will happen and ask your reaction.
+
+        YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization initially gives the other person $40 and you $50.
+
+        You then receive an additional $30 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $30 to the other person and keep the rest for yourself.
+
+        So, for example, you could keep $18 and send $12.
+
+        The other person can keep whatever amount you send to her or him PLUS THEIR ORIGINAL $40.
+
+        You were asked: "What amount of money between $0 and $30 would you send to the other person?"
+
+        Next, let's consider another situation. YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization gives both of you $50.
+
+        The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+        Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+        After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+        You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+        Suppose the other person sends $10 so you receive $30.
+      items:
+        0:
+          outcome_var: HOUX4E
+          outcome_question: >-
+            What amount of money between $0 and $30 would you send to the other person?
+          scale: {min: 0, max: 30}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization initially gives the other person $40 and you $50.
+
+            You then receive an additional $30 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $30 to the other person and keep the rest for yourself.
+
+            So, for example, you could keep $18 and send $12.
+
+            The other person can keep whatever amount you send to her or him PLUS THEIR ORIGINAL $40.
+
+            You were asked: "What amount of money between $0 and $30 would you send to the other person?"
+
+            Next, let's consider another situation. YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $10 so you receive $30.
+        1:
+          outcome_var: HOUX4B
+          outcome_question: >-
+            What amount of money between $0 and $30 would you send to the other person?
+          scale: {min: 0, max: 30}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization initially gives the other person $40 and you $50.
+
+            You then receive an additional $30 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $30 to the other person and keep the rest for yourself.
+
+            So, for example, you could keep $18 and send $12.
+
+            The other person can keep whatever amount you send to her or him PLUS THEIR ORIGINAL $40.
+    - raw: 5
+      condition_num: 2
+      factors: {amount_sent: "$30 sent, $90 received", game_order: "trust game first"}
+      # The whole block as this group met it (= its second item's condition).
+      text: |-
+        Next, I will ask you about how you might behave in a possible research study.
+
+        Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+        Let me describe what will happen and ask your reaction.
+
+        YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization gives both of you $50.
+
+        The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+        Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+        After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+        You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+        Suppose the other person sends $30 so you receive $90.
+
+        You were asked: "What amount of money between $0 and $90 would you send to the other person?"
+
+        Next, let's consider another situation. Imagine the same study I just described except that THE OTHER PERSON IS INITIALLY GIVEN $20 AND YOU ARE INITIALLY GIVEN $50.
+
+        You THEN RECEIVE AN ADDITIONAL $90. You can choose to keep any amount from $0 to $90 and send the rest to the other person.
+
+        The other person can keep whatever amount you send to her or him.
+      items:
+        0:
+          outcome_var: HOUX5C
+          outcome_question: >-
+            What amount of money between $0 and $90 would you send to the other person?
+          scale: {min: 0, max: 90}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $30 so you receive $90.
+        1:
+          outcome_var: HOUX5E
+          outcome_question: >-
+            Under those conditions, what amount of money between $0 and $90 would you send to the other person?
+          scale: {min: 0, max: 90}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $30 so you receive $90.
+
+            You were asked: "What amount of money between $0 and $90 would you send to the other person?"
+
+            Next, let's consider another situation. Imagine the same study I just described except that THE OTHER PERSON IS INITIALLY GIVEN $20 AND YOU ARE INITIALLY GIVEN $50.
+
+            You THEN RECEIVE AN ADDITIONAL $90. You can choose to keep any amount from $0 to $90 and send the rest to the other person.
+
+            The other person can keep whatever amount you send to her or him.
+    - raw: 6
+      condition_num: 3
+      factors: {amount_sent: "$30 sent, $90 received", game_order: "dictator game first"}
+      # The whole block as this group met it (= its second item's condition).
+      text: |-
+        Next, I will ask you about how you might behave in a possible research study.
+
+        Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+        Let me describe what will happen and ask your reaction.
+
+        YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization initially gives the other person $20 and you $50.
+
+        You then receive an additional $90 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $90 to the other person and keep the rest for yourself.
+
+        So, for example, you could keep $54 and send $36.
+
+        The other person can keep whatever amount you send to her or him PLUS THEIR ORIGINAL $20.
+
+        You were asked: "What amount of money between $0 and $90 would you send to the other person?"
+
+        Next, let's consider another situation. YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization gives both of you $50.
+
+        The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+        Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+        After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+        You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+        Suppose the other person sends $30 so you receive $90.
+      items:
+        0:
+          outcome_var: HOUX6E
+          outcome_question: >-
+            What amount of money between $0 and $90 would you send to the other person?
+          scale: {min: 0, max: 90}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization initially gives the other person $20 and you $50.
+
+            You then receive an additional $90 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $90 to the other person and keep the rest for yourself.
+
+            So, for example, you could keep $54 and send $36.
+
+            The other person can keep whatever amount you send to her or him PLUS THEIR ORIGINAL $20.
+
+            You were asked: "What amount of money between $0 and $90 would you send to the other person?"
+
+            Next, let's consider another situation. YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $30 so you receive $90.
+        1:
+          outcome_var: HOUX6B
+          outcome_question: >-
+            What amount of money between $0 and $90 would you send to the other person?
+          scale: {min: 0, max: 90}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization initially gives the other person $20 and you $50.
+
+            You then receive an additional $90 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $90 to the other person and keep the rest for yourself.
+
+            So, for example, you could keep $54 and send $36.
+
+            The other person can keep whatever amount you send to her or him PLUS THEIR ORIGINAL $20.
+    - raw: 7
+      condition_num: 4
+      factors: {amount_sent: "$50 sent, $150 received", game_order: "trust game first"}
+      # The whole block as this group met it (= its second item's condition).
+      text: |-
+        Next, I will ask you about how you might behave in a possible research study.
+
+        Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+        Let me describe what will happen and ask your reaction.
+
+        YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization gives both of you $50.
+
+        The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+        Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+        After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+        You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+        Suppose the other person sends $50 so you receive $150.
+
+        You were asked: "What amount of money between $0 and $150 would you send to the other person?"
+
+        Next, let's consider another situation. Imagine the same study I just described except that THE OTHER PERSON IS INITIALLY GIVEN NO MONEY AND YOU ARE INITIALLY GIVEN $50.
+
+        You then receive an additional $150. You can choose to keep any amount of this money from $0 to $150 and send the rest to the other person.
+
+        The other person can keep whatever amount you send to her or him.
+      items:
+        0:
+          outcome_var: HOUX7C
+          outcome_question: >-
+            What amount of money between $0 and $150 would you send to the other person?
+          scale: {min: 0, max: 150}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100, 101: 101, 102: 102, 103: 103, 104: 104, 105: 105, 106: 106, 107: 107, 108: 108, 109: 109, 110: 110, 111: 111, 112: 112, 113: 113, 114: 114, 115: 115, 116: 116, 117: 117, 118: 118, 119: 119, 120: 120, 121: 121, 122: 122, 123: 123, 124: 124, 125: 125, 126: 126, 127: 127, 128: 128, 129: 129, 130: 130, 131: 131, 132: 132, 133: 133, 134: 134, 135: 135, 136: 136, 137: 137, 138: 138, 139: 139, 140: 140, 141: 141, 142: 142, 143: 143, 144: 144, 145: 145, 146: 146, 147: 147, 148: 148, 149: 149, 150: 150}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $50 so you receive $150.
+        1:
+          outcome_var: HOUX7E
+          outcome_question: >-
+            Under those conditions, what amount of money between $0 and $150 would you send to the other person?
+          scale: {min: 0, max: 150}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100, 101: 101, 102: 102, 103: 103, 104: 104, 105: 105, 106: 106, 107: 107, 108: 108, 109: 109, 110: 110, 111: 111, 112: 112, 113: 113, 114: 114, 115: 115, 116: 116, 117: 117, 118: 118, 119: 119, 120: 120, 121: 121, 122: 122, 123: 123, 124: 124, 125: 125, 126: 126, 127: 127, 128: 128, 129: 129, 130: 130, 131: 131, 132: 132, 133: 133, 134: 134, 135: 135, 136: 136, 137: 137, 138: 138, 139: 139, 140: 140, 141: 141, 142: 142, 143: 143, 144: 144, 145: 145, 146: 146, 147: 147, 148: 148, 149: 149, 150: 150}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $50 so you receive $150.
+
+            You were asked: "What amount of money between $0 and $150 would you send to the other person?"
+
+            Next, let's consider another situation. Imagine the same study I just described except that THE OTHER PERSON IS INITIALLY GIVEN NO MONEY AND YOU ARE INITIALLY GIVEN $50.
+
+            You then receive an additional $150. You can choose to keep any amount of this money from $0 to $150 and send the rest to the other person.
+
+            The other person can keep whatever amount you send to her or him.
+    - raw: 8
+      condition_num: 5
+      factors: {amount_sent: "$50 sent, $150 received", game_order: "dictator game first"}
+      # The whole block as this group met it (= its second item's condition).
+      text: |-
+        Next, I will ask you about how you might behave in a possible research study.
+
+        Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+        Let me describe what will happen and ask your reaction.
+
+        YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization initially gives the other person no money and you $50.
+
+        You then receive an additional $150 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $150 to the other person and keep the rest for yourself.
+
+        So, for example, you could keep $90 and send $60.
+
+        The other person can keep whatever amount you send to her or him.
+
+        You were asked: "What amount of money between $0 and $150 would you send to the other person?"
+
+        Next, let's consider another situation. YOU BOTH KNOW THE FOLLOWING:
+
+        A research organization gives both of you $50.
+
+        The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+        Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+        After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+        You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+        Suppose the other person sends $50 so you receive $150.
+      items:
+        0:
+          outcome_var: HOUX8E
+          outcome_question: >-
+            What amount of money between $0 and $150 would you send to the other person?
+          scale: {min: 0, max: 150}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100, 101: 101, 102: 102, 103: 103, 104: 104, 105: 105, 106: 106, 107: 107, 108: 108, 109: 109, 110: 110, 111: 111, 112: 112, 113: 113, 114: 114, 115: 115, 116: 116, 117: 117, 118: 118, 119: 119, 120: 120, 121: 121, 122: 122, 123: 123, 124: 124, 125: 125, 126: 126, 127: 127, 128: 128, 129: 129, 130: 130, 131: 131, 132: 132, 133: 133, 134: 134, 135: 135, 136: 136, 137: 137, 138: 138, 139: 139, 140: 140, 141: 141, 142: 142, 143: 143, 144: 144, 145: 145, 146: 146, 147: 147, 148: 148, 149: 149, 150: 150}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization initially gives the other person no money and you $50.
+
+            You then receive an additional $150 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $150 to the other person and keep the rest for yourself.
+
+            So, for example, you could keep $90 and send $60.
+
+            The other person can keep whatever amount you send to her or him.
+
+            You were asked: "What amount of money between $0 and $150 would you send to the other person?"
+
+            Next, let's consider another situation. YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization gives both of you $50.
+
+            The other person can choose to keep any amount from $0 to $50, and send the rest to you.
+
+            Whatever amount is sent to you will be tripled by the organization before you receive it. So, for example, if the other person sends you $20, you actually receive three times $20, or $60.
+
+            After receiving the money, you can send back any amount between $0 and the tripled amount you received.
+
+            You can keep whatever amount you chose not to send PLUS YOUR ORIGINAL $50.
+
+            Suppose the other person sends $50 so you receive $150.
+        1:
+          outcome_var: HOUX8B
+          outcome_question: >-
+            What amount of money between $0 and $150 would you send to the other person?
+          scale: {min: 0, max: 150}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100, 101: 101, 102: 102, 103: 103, 104: 104, 105: 105, 106: 106, 107: 107, 108: 108, 109: 109, 110: 110, 111: 111, 112: 112, 113: 113, 114: 114, 115: 115, 116: 116, 117: 117, 118: 118, 119: 119, 120: 120, 121: 121, 122: 122, 123: 123, 124: 124, 125: 125, 126: 126, 127: 127, 128: 128, 129: 129, 130: 130, 131: 131, 132: 132, 133: 133, 134: 134, 135: 135, 136: 136, 137: 137, 138: 138, 139: 139, 140: 140, 141: 141, 142: 142, 143: 143, 144: 144, 145: 145, 146: 146, 147: 147, 148: 148, 149: 149, 150: 150}
+          condition_text: |-
+            Next, I will ask you about how you might behave in a possible research study.
+
+            Suppose you are participating in the study with another person who you do not know and you will never meet.
+
+            Let me describe what will happen and ask your reaction.
+
+            YOU BOTH KNOW THE FOLLOWING:
+
+            A research organization initially gives the other person no money and you $50.
+
+            You then receive an additional $150 and must decide how much of this amount you will give to the other person. You can give any amount from $0 to $150 to the other person and keep the rest for yourself.
+
+            So, for example, you could keep $90 and send $60.
+
+            The other person can keep whatever amount you send to her or him.
+
+outcomes:
+  # trust game decision (sent as first mover / returned as second mover)
+  - task_num: 0
+    question: >-
+      What amount of money between $0 and $150 would you send to the other person?
+    scale: {min: 0, max: 150}
+  # dictator game decision (the other person cannot send anything back)
+  - task_num: 1
+    question: >-
+      What amount of money between $0 and $150 would you send to the other person?
+    scale: {min: 0, max: 150}
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100, 101: 101, 102: 102, 103: 103, 104: 104, 105: 105, 106: 106, 107: 107, 108: 108, 109: 109, 110: 110, 111: 111, 112: 112, 113: 113, 114: 114, 115: 115, 116: 116, 117: 117, 118: 118, 119: 119, 120: 120, 121: 121, 122: 122, 123: 123, 124: 124, 125: 125, 126: 126, 127: 127, 128: 128, 129: 129, 130: 130, 131: 131, 132: 132, 133: 133, 134: 134, 135: 135, 136: 136, 137: 137, 138: 138, 139: 139, 140: 140, 141: 141, 142: 142, 143: 143, 144: 144, 145: 145, 146: 146, 147: 147, 148: 148, 149: 149, 150: 150}
+
+missing_codes: [997, 998, 999]
+
+persona_missing:
+  GENDER: [9]
+  PARTY_A: [4, 8, 9]
+  IDEOL_A: [8, 9]
+  BORN: [9998, 9999]
+
+persona_label_rewrite:
+  GENDER: {1: "Male", 2: "Female"}
+  PARTY_A: {3: "an Independent", 7: "no preference"}
+  IDEOL_A: {3: "a moderate", 4: "Haven't thought much about it", 7: "neither/none"}
+
+persona_map:
+  gender: GENDER
+  party_id: PARTY_A
+  ideology: IDEOL_A
+  year_of_birth: BORN

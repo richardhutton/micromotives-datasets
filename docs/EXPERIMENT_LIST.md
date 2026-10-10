@@ -8,13 +8,13 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 34 | 18 | 4 | 6 | 28 |
+| Innovation Panel | UK · not publishable | 36 | 17 | 4 | 6 | 27 |
 | DEL | UK · publishable (CC0) | 10 | 6 | 5 | 9 | 20 |
-| TESS | US · not publishable | 39 | 43 | 8 | 8 | 59 |
+| TESS | US · not publishable | 42 | 41 | 8 | 8 | 57 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 |
-| **Total** | | **96** | **67** | **29** | **26** | **122** |
+| **Total** | | **101** | **64** | **29** | **26** | **119** |
 
-## Next 33, in build order (22 built, 11 to go)
+## Next 33, in build order (25 built, 8 to go)
 
 - Pool: Buildable candidates only.
 - Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).
@@ -62,8 +62,10 @@ Every experiment we have built and every candidate we could add, from four sourc
 | 21 | DEL | Feb2023_odasplit | **Gender aid compared to others**<br>No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid. | political preferences/policy | 0.20 |
 | 22 | TESS | 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes. | health communication | 0.15 |
 | 23 | DEL | Feb2023_track7split | **Aid budget with priorities**<br>UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order. Answer: Increase or decrease aid. | political preferences/policy | 0.24 |
-| 24 | TESS | gyrp9 | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital**<br>Trust and cooperation games used as survey questions to measure social capital. | economics/behavioural | 0.21 |
-| 25 | Innovation Panel | 9.49 | **Indoor residential environment: consent for in-home sensor**<br>Consent to place sensors measuring the indoor environment. | survey methodology | 0.21 |
+| 24 | TESS | gyrp9_send | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (sender)**<br>Trust and cooperation games used as survey questions to measure social capital. | economics/behavioural | 0.21 |
+| 24 | TESS | gyrp9_return | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (second mover)**<br>Trust and cooperation games used as survey questions to measure social capital. | economics/behavioural | 0.21 |
+| 25 | Innovation Panel | ukds_6849_sensor_consent_w17_ftf | **Indoor residential environment: consent for in-home sensor (face-to-face)**<br>Consent to place sensors measuring the indoor environment. | survey methodology | 0.21 |
+| 25 | Innovation Panel | ukds_6849_sensor_consent_w17_web | **Indoor residential environment: consent for in-home sensor (web)**<br>Consent to place sensors measuring the indoor environment. | survey methodology | 0.21 |
 | 26 | TESS | vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title). | moral/social/cognition | 0.23 |
 | 27 | Innovation Panel | 9.16 | **Social desirability bias in attitudes towards immigration**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
 | 28 | DEL | W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose. | political preferences/policy | 0.24 |
@@ -84,7 +86,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Innovation Panel
 
-UK · not publishable. 34 Built, 18 Buildable, 4 Needs checking, 6 Unlikely.
+UK · not publishable. 36 Built, 17 Buildable, 4 Needs checking, 6 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -98,6 +100,8 @@ UK · not publishable. 34 Built, 18 Buildable, 4 Needs checking, 6 Unlikely.
 | ukds_6849_nrp_w10_contact | **Non-resident parents and reasons for separation (contact with relatives)**<br>Two versions of the questions on non-resident parents.<br>*5,690 rows; Wave 10* | work/family/gender | Built | 0.22 | 19 |
 | ukds_6849_nrp_w10_fh | **Non-resident parents and reasons for separation (fertility history)**<br>Two versions of the questions on non-resident parents.<br>*7,392 rows; Wave 10* | work/family/gender | Built | 0.22 | 19 |
 | 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes.<br>*2,235 rows; Wave 7; 10 wordings (5 framings x other taxes reduced or not)* | political preferences/policy | Built | 0.21 | 17 |
+| ukds_6849_sensor_consent_w17_ftf | **Indoor residential environment: consent for in-home sensor (face-to-face)**<br>Consent to place sensors measuring the indoor environment.<br>*339 rows; Wave 17; 2x5x2 info x duration x feedback* | survey methodology | Built | 0.21 | 25 |
+| ukds_6849_sensor_consent_w17_web | **Indoor residential environment: consent for in-home sensor (web)**<br>Consent to place sensors measuring the indoor environment.<br>*946 rows; Wave 17; 2x5x2 info x duration x feedback* | survey methodology | Built | 0.21 | 25 |
 | 9.30 | **Vignettes: intentions to prepare for automation**<br>Vignettes: automation threat severity × timeframe, 2×2.<br>*15,020 rows; Wave 14; 2x2 + control, 9 outcomes* | economics/behavioural | Built | 0.20 | 14 |
 | 9.38 | **National identity**<br>Versions of the national identity questions.<br>*2,472 rows; Wave 15; 2 conditions (identity question asked first or not); outcome: importance of being British* | political identity/polarisation | Built | 0.17 | 7 |
 | ukds_6849_alcohol_w15 | **Alcohol consumption**<br>Respondents who had drunk alcohol in the past year report how much they drink on a typical drinking day and how often they binge, with the questions worded in UNITS of alcohol (the NHS version) or in ALCOHOLIC DRINKS. The binge threshold is 6 or more for women and 8 or more for men. The rows teach whether the same person reports differently when asked in units, which few people count in. Wave 15 (2022).<br>*4,208 rows* | survey methodology | Built |  |  |
@@ -125,7 +129,6 @@ UK · not publishable. 34 Built, 18 Buildable, 4 Needs checking, 6 Unlikely.
 | 9.29 | **LinkedIn consent**<br>Consent to link LinkedIn profiles: placement crossed with a motivating statement.<br>*Wave 14* | survey methodology | Buildable | 0.28 |  |
 | 9.46 | **Consent decision process**<br>Prompting people to think a consent request through, and whether it changes consent.<br>*Wave 17* | survey methodology | Buildable | 0.24 |  |
 | 9.6 | **Context of questions about consent to data linkage with administrative records**<br>Consent asked in context vs at the end, 2×2.<br>*Wave 4* | survey methodology | Buildable | 0.22 |  |
-| 9.49 | **Indoor residential environment: consent for in-home sensor**<br>Consent to place sensors measuring the indoor environment.<br>*Wave 17* | survey methodology | Buildable | 0.21 | 25 |
 | 9.21 | **Improving consent to link to the electoral register**<br>How consent was asked, crossed with the wording of the request.<br>*Waves 10, 11* | survey methodology | Buildable | 0.20 |  |
 | 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen.<br>*Wave 11* | survey methodology | Buildable | 0.19 | 30 |
 | 8.4 | **Dependent interviewing wording**<br>Different wording when reminding people of last year's answer.<br>*Waves 3, 4, 5, 7* | survey methodology | Buildable | 0.19 |  |
@@ -190,7 +193,7 @@ UK · publishable (CC0). 10 Built, 6 Buildable, 5 Needs checking, 9 Unlikely.
 
 ## TESS
 
-US · not publishable. 39 Built, 43 Buildable, 8 Needs checking, 8 Unlikely.
+US · not publishable. 42 Built, 41 Buildable, 8 Needs checking, 8 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -198,7 +201,10 @@ US · not publishable. 39 Built, 43 Buildable, 8 Needs checking, 8 Unlikely.
 | e5rfg_pair | **Who has Narrow Brackets? (Example 2 pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*323 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
 | e5rfg_six | **Who has Narrow Brackets? (six-decision modules)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*3,608 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
 | e5rfg_tk | **Who has Narrow Brackets? (Tversky-Kahneman pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*264 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
+| vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title).<br>*4,019 rows; 2013; 2 vignettes, recorded statement order* | moral/social/cognition | Built | 0.23 | 26 |
 | gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong?<br>*8,959 rows; 2005; 2x2, 26 outcomes* | moral/social/cognition | Built | 0.22 | 20 |
+| gyrp9_return | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (second mover)**<br>Trust and cooperation games used as survey questions to measure social capital.<br>*914 rows; 2003 phone survey* | economics/behavioural | Built | 0.21 | 24 |
+| gyrp9_send | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (sender)**<br>Trust and cooperation games used as survey questions to measure social capital.<br>*1,019 rows; 2003 phone survey* | economics/behavioural | Built | 0.21 | 24 |
 | s6urt | **Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk**<br>Three kinds of conflicting nutrition and cancer-risk information, and trust in health science.<br>*17,402 rows; 2021; 8 conditions, 17 outcomes* | health communication | Built | 0.20 | 13 |
 | 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes.<br>*20,308 rows; 2014; 16 conditions, 15 outcomes* | health communication | Built | 0.15 | 22 |
 | xk9ch_identity_threat | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (identity threat)**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*8,335 rows; 2018* | cross-national | Built | 0.15 | 11 |
@@ -236,11 +242,9 @@ US · not publishable. 39 Built, 43 Buildable, 8 Needs checking, 8 Unlikely.
 | pkt6f | **Politeness Theory and Conversational Refusals**<br>How refusal messages that threaten face are judged for effectiveness and appropriateness.<br>*2005; UK priority 0.63; transfers: Full* | moral/social/cognition | Buildable | 0.25 |  |
 | jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements.<br>*2005; UK priority 0.90; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.24 | 29 |
 | phbjd | **Do Collective Memory and Autobiographical Memory Refer to Different Developmental Stages?**<br>Which life stage do people's most important national and personal memories come from? (from title).<br>*2014; UK priority 0.72; transfers: Full* | moral/social/cognition | Buildable | 0.23 |  |
-| vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title).<br>*2013; UK priority 1.01; transfers: Full* | moral/social/cognition | Buildable | 0.23 | 26 |
 | 2tzmb | **Perceptions of Swearing: An Analysis of Perceived Face Threats and Communication Competence**<br>How swearing affects judgements of a speaker's competence.<br>*2008; UK priority 0.81; transfers: Full* | moral/social/cognition | Buildable | 0.22 |  |
 | wrxnz | **When is "bad stronger than good" in decision making**<br>When do losses and bad information weigh more than good in decisions? (from title).<br>*2014; UK priority 0.91; transfers: Full* | moral/social/cognition | Buildable | 0.22 |  |
 | ca9ub | **Nature or Nurture?: Explanations for Observed Gender Differences and their Effect on Gender Ideology and Political Opinions**<br>Innate vs social explanations of gender differences, and their effect on stereotyping and opinions.<br>*2007; UK priority 1.06; transfers: Mechanism only* | work/family/gender | Buildable | 0.21 |  |
-| gyrp9 | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital**<br>Trust and cooperation games used as survey questions to measure social capital.<br>*2003; UK priority 0.98; transfers: Full* | economics/behavioural | Buildable | 0.21 | 24 |
 | h3pc9 | **Moderating the Genetic Interpolation Effect**<br>How genetic explanations shift views of people and behaviour (from title).<br>*2013; UK priority 0.80; transfers: Full* | moral/social/cognition | Buildable | 0.21 |  |
 | u2dbt | **A randomized experiment on the determinants of generosity to the poor**<br>What makes people give to the poor? (from title).<br>*2006; UK priority 0.87; transfers: Mechanism only* | economics/behavioural | Buildable | 0.21 |  |
 | b2srk | **Recall vs. Judgment: Open-Closed Question Differences in Studying Collective Memory**<br>Open vs closed questions about important past national and world events.<br>*2003; UK priority 0.78; transfers: Full* | moral/social/cognition | Buildable | 0.20 |  |
