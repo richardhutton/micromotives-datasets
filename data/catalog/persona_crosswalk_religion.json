@@ -42,7 +42,8 @@
     "Presbyterian or Church of Scotland": "Presbyterian or Church of Scotland",
     "Roman Catholic": "Roman Catholic",
     "Sikh": "Sikh",
-    "United Reformed Church": "United Reformed Church"
+    "United Reformed Church": "United Reformed Church",
+    "Pentecostal": "Pentecostal"
   },
   "schemes": {
     "uk_yougov_religion": {
@@ -62,7 +63,8 @@
       "Yes - Roman Catholic": "Roman Catholic",
       "Yes - Sikhism": "Sikh",
       "Yes - United Reformed Church": "United Reformed Church",
-      "Yes \u2013 Orthodox Christian": "Orthodox Christian"
+      "Yes \u2013 Orthodox Christian": "Orthodox Christian",
+      "Yes - Pentecostal": "Pentecostal"
     }
   }
 }

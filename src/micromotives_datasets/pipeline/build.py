@@ -195,6 +195,33 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             codes[var] = None if _is_blank(value) else int(float(value))
         return recipe.condition.arms_asked(codes)
 
+    # Each arm's OWN outcome variables: the ones only that condition was asked.
+    # A variable shared by several arms proves nothing about routing, so it is
+    # left out rather than read as a second condition.
+    own_vars: dict[int, set[str]] = {}
+    var_arms: dict[str, set[int]] = {}
+    for owner in arms.values():
+        declared = {owner.outcome_var} | {it.outcome_var for it in owner.items.values()}
+        names = {cols.get(n.upper(), n) for n in declared if n}
+        own_vars[id(owner)] = names
+        for n in names:
+            var_arms.setdefault(n, set()).add(id(owner))
+    exclusive = {n for n, owners in var_arms.items() if len(owners) == 1}
+
+    def answered_elsewhere(row: Any, arm: Arm) -> bool:
+        """True when this respondent has ANY code in a variable only another arm was asked.
+
+        Any code, "Don't know" included: a recorded non-answer still means the
+        question was put to them. Only a blank means it was not.
+        """
+        for other in arms.values():
+            if other is arm:
+                continue
+            for var in own_vars[id(other)] & exclusive:
+                if var in row.index and not _is_blank(row[var]):
+                    return True
+        return False
+
     ambiguous = 0
 
     for idx, row in ds.df.iterrows():
@@ -207,6 +234,20 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             study_arm = asked[0] if len(asked) == 1 else None
         else:
             study_arm = arm_for(row, cvars)
+            # The assignment column names one condition, but the respondent may
+            # still have met another: a back-button in a web survey re-assigns,
+            # and the answer to the abandoned condition stays in the file. DEL's
+            # Feb 2023 sandbox has one such person, with page timings on both.
+            # Their answer to the assigned condition may have been given after
+            # seeing the other, so they have no single condition either.
+            if (
+                recipe.condition.routing_check
+                and study_arm is not None
+                and not within_subject
+                and answered_elsewhere(row, study_arm)
+            ):
+                ambiguous += 1
+                continue
         # A between-subjects design can skip the whole respondent on an
         # unassigned code. A within-subject one cannot: missing a vignette in
         # slot 1 says nothing about slots 2-8, and dropping the respondent would
@@ -232,9 +273,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
         if recipe.participant_id_var is not None:
             key = cols.get(recipe.participant_id_var.upper())
             if key is None:
-                raise ValueError(
-                    f"participant_id_var {recipe.participant_id_var!r} not in data"
-                )
+                raise ValueError(f"participant_id_var {recipe.participant_id_var!r} not in data")
             raw_id = row[key]
             if _is_blank(raw_id):
                 raise ValueError(
@@ -242,6 +281,12 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                     "an unidentified respondent would silently fall back to the row index "
                     "and break the panel link for everyone after them"
                 )
+            # SPSS stores a numeric id as a float, so str() gives "120615074968.0".
+            # Another file holding the same person as an integer would then give
+            # them a second id and silently break the cross-file link (DEL's
+            # GUNQID recurs across ten files). A whole number is written whole.
+            if isinstance(raw_id, float) and raw_id.is_integer():
+                raw_id = int(raw_id)
             who_id = str(raw_id).strip()
 
         persona = _persona(ds, row, recipe, cw)
@@ -282,8 +327,10 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                     # the build instead (zero today in IP 9.17).
                     answer_var = recipe.outcome_var_for(outcome, arm)
                     answer = row[cols[answer_var.upper()]] if answer_var else None
-                    if answer is not None and not _is_blank(answer) and (
-                        int(float(answer)) not in missing
+                    if (
+                        answer is not None
+                        and not _is_blank(answer)
+                        and (int(float(answer)) not in missing)
                     ):
                         raise ValueError(
                             f"{recipe.study_id}: row {idx} answered task {outcome.task_num} "

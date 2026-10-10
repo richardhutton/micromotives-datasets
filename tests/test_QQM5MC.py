@@ -202,12 +202,15 @@ def test_a_discarded_respondent_must_say_why() -> None:
         _recipe(_witnessed(1))
 
 
-def test_ambiguous_routing_is_meaningless_without_witnesses(fixture_recipe: Recipe) -> None:
-    """A coded assignment yields one arm by construction, so the field cannot apply."""
+def test_ambiguous_routing_needs_something_to_detect_it_by(fixture_recipe: Recipe) -> None:
+    """A coded assignment can be ambiguous (tests/test_ambiguous_assignment.py), but
+    only an arm's OWN outcome variable can show it. The fixture's arms share their
+    outcomes, so the declaration could never be checked and is refused."""
     data = fixture_recipe.model_dump()
+    data["condition"]["routing_check"] = True
     data["condition"]["ambiguous_routing"] = 1
     data["condition"]["ambiguous_routing_reason"] = "n/a"
-    with pytest.raises(ValueError, match="applies only to the witness design"):
+    with pytest.raises(ValueError, match="no arm has one here"):
         Recipe(**data)
 
 

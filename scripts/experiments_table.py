@@ -208,6 +208,13 @@ def collect() -> list[Experiment]:
 
         if source == "dataverse":
             doi = provenance.get(study_id, {}).get("doi")
+            if not doi:
+                # DEL spans ten deposits under ONE study_id (so a person keeps one
+                # id across them), so the provenance file, keyed by study, cannot
+                # hold a DOI per recipe. Each DEL recipe names its own deposit's
+                # DOI in its licence line, read from the Dataverse API.
+                m = re.search(r"doi:(10\.\d+/[^\s),;]+)", head.get("licence") or "")
+                doi = m.group(1) if m else None
             reference = f"doi:{doi}" if doi else None
         elif source == "innovation_panel":
             reference = "UKDS SN 6849"

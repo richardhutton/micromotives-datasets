@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**63 experiments.** 12 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 22 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**64 experiments.** 13 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 22 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 12 | 129,472 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 13 | 131,260 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 22 | 324,392 | **no** — UKDS End User Licence |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **63** | **751,067** | |
+| **Total** | **64** | **752,855** | |
 
 ---
 
@@ -50,6 +50,7 @@
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
 | `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
+| `del_sandbox_feb2023_wordfeminist` | Development Engagement Lab, Sandbox Great Britain February 2023: na… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,788 |
 | `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
@@ -245,6 +246,19 @@ Respondents are asked what percentage of all immigrants to the UK they would lik
 - **Rows** — 2,397 from 2,397 respondents
 - **Licence** — CC0 1.0
 - **Verified against** — the deposit's own analysis.R — svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding
+
+### `del_sandbox_feb2023_wordfeminist`
+
+**Development Engagement Lab, Sandbox Great Britain February 2023: naming a development policy**
+
+The same development-policy description shown under four names (development, feminist, inclusive, gender-inclusive), or the name 'feminist development policy' alone with no description, then support or oppose on a 5-point scale. The first question in the survey, so nothing earlier primes it.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/XZ1XUZ`
+- **Type** — 5-arm between-subjects wording split, one item per respondent
+- **Category** — political preferences/policy
+- **Rows** — 1,788 from 1,788 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
+- **Verified against** — no published reference; an independent checker re-derived all 1,788 rows from the raw .sav (0 missing, extra, wrong-arm or wrong-response rows), transcribed all five items from the questionnaire (exact match on every condition and outcome), and tabulated every persona code on all rows (10 Oct 2026)
 
 ---
 
@@ -607,7 +621,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 3 | 6 | 108,446 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 7 | 0 | 90,425 |
+| political preferences/policy | 8 | 0 | 92,213 |
 | survey methodology | 9 | 5 | 197,568 |
 | work/family/gender | 7 | 8 | 135,075 |
 

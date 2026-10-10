@@ -86,6 +86,21 @@ def render_md(data: dict) -> str:
         )
     totals = [f"**{n(None, st)}**" for st in STATUSES]
     out.append("| **Total** | | " + " | ".join(totals) + f" | **{len(rows) - n(None, 'Built')}** |")
+    nxt = sorted((r for r in rows if r.get("next")), key=lambda r: r["next"])
+    if nxt:
+        out += ["", f"## Next {len(nxt)}, in build order", ""]
+        out += [f"- {m}" for m in data.get("next_batch", {}).get("method", [])]
+        out += [
+            "",
+            "| Next | Source | ID | Experiment | Category | Novelty |",
+            "| :--- | :--- | :--- | :--- | :--- | :--- |",
+        ]
+        for r in nxt:
+            nov = "" if r.get("novelty") is None else f"{r['novelty']:.2f}"
+            out.append(
+                f"| {r['next']} | {r['source']} | {_cell(r['id'])} | **{_cell(r['title'])}**"
+                f"<br>{_cell(r.get('description', ''))} | {_cell(r['category'])} | {nov} |"
+            )
     out += ["", "## Statuses", ""]
     out += [f"- **{k}:** {v}" for k, v in DEFINITIONS.items()]
     out += [
@@ -102,8 +117,8 @@ def render_md(data: dict) -> str:
             "",
             f"{data['meta'][s]}. {counts}.",
             "",
-            "| ID | Experiment | Category | Status | Novelty |",
-            "| :--- | :--- | :--- | :--- | :--- |",
+            "| ID | Experiment | Category | Status | Novelty | Next |",
+            "| :--- | :--- | :--- | :--- | :--- | :--- |",
         ]
         for r in src_rows:
             exp = f"**{_cell(r['title'])}**"
@@ -113,7 +128,10 @@ def render_md(data: dict) -> str:
                 exp += f"<br>*{_cell(r['details'])}*"
             status = r["status"] + (f": {_cell(r['reason'])}" if r.get("reason") else "")
             nov = "" if r.get("novelty") is None else f"{r['novelty']:.2f}"
-            out.append(f"| {_cell(r['id'])} | {exp} | {_cell(r['category'])} | {status} | {nov} |")
+            out.append(
+                f"| {_cell(r['id'])} | {exp} | {_cell(r['category'])} | {status} | {nov} "
+                f"| {r.get('next', '')} |"
+            )
     return "\n".join(out) + "\n"
 
 

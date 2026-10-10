@@ -78,15 +78,17 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
       <select id="fsrc" aria-label="Source"><option value="">All sources</option></select>
       <select id="fst" aria-label="Status"><option value="">All statuses</option></select>
       <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
+      <select id="fnext" aria-label="Next batch"><option value="">All experiments</option><option value="next">Next 37 only, in build order</option></select>
       <span class="count" id="count"></span>
     </div>
     <div class="scroll">
       <table class="list">
-        <colgroup><col class="c-src"><col class="c-id"><col><col class="c-cat"><col class="c-st"><col class="c-nov"></colgroup>
-        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th></tr></thead>
+        <colgroup><col class="c-src"><col class="c-id"><col><col class="c-cat"><col class="c-st"><col class="c-nov"><col class="c-nov"></colgroup>
+        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th><th>Next</th></tr></thead>
         <tbody id="tb"></tbody>
       </table>
     </div>
+    <p class="note"><b>Next</b> is the build order for the next 37: <span id="method"></span></p>
     <p class="note">Sorted by source, then status, then novelty (highest first). Sources: Innovation Panel (UK Data Service SN 6849), DEL (Harvard Dataverse, CC0), TESS (OSF), Harvard Dataverse (UK deposits and the 10 Oct 2026 sweep).</p>
   </section>
 </div>
@@ -109,7 +111,7 @@ const rows = DATA.rows;
   document.getElementById("sum").innerHTML = h;
 })();
 
-const fsrc = document.getElementById("fsrc"), fst = document.getElementById("fst"), fcat = document.getElementById("fcat");
+const fsrc = document.getElementById("fsrc"), fst = document.getElementById("fst"), fcat = document.getElementById("fcat"), fnext = document.getElementById("fnext");
 SOURCES.forEach(s => fsrc.insertAdjacentHTML("beforeend", `<option>${esc(s)}</option>`));
 STATUSES.forEach(s => fst.insertAdjacentHTML("beforeend", `<option>${esc(s)}</option>`));
 [...new Set(rows.map(r => r.category))].sort().forEach(s => fcat.insertAdjacentHTML("beforeend", `<option>${esc(s)}</option>`));
@@ -117,9 +119,9 @@ STATUSES.forEach(s => fst.insertAdjacentHTML("beforeend", `<option>${esc(s)}</op
 function render(){
   const q = document.getElementById("q").value.toLowerCase();
   const list = rows.filter(r => (!fsrc.value || r.source === fsrc.value) && (!fst.value || r.status === fst.value) &&
-      (!fcat.value || r.category === fcat.value) &&
+      (!fcat.value || r.category === fcat.value) && (!fnext.value || r.next) &&
       (!q || `${r.id} ${r.title} ${r.description} ${r.details}`.toLowerCase().includes(q)))
-    .sort((a, b) => SOURCES.indexOf(a.source) - SOURCES.indexOf(b.source) ||
+    .sort((a, b) => (fnext.value ? a.next - b.next : 0) || SOURCES.indexOf(a.source) - SOURCES.indexOf(b.source) ||
       STATUSES.indexOf(a.status) - STATUSES.indexOf(b.status) || (b.novelty ?? -1) - (a.novelty ?? -1) || a.id.localeCompare(b.id));
   document.getElementById("count").textContent = `${list.length} of ${rows.length} experiments`;
   document.getElementById("tb").innerHTML = list.map(r => `<tr>
@@ -129,9 +131,11 @@ function render(){
     <td>${esc(r.category)}</td>
     <td><span class="pill ${cls(r.status)}">${esc(r.status)}</span>${r.reason ? `<div class="why">${esc(r.reason)}</div>` : ""}</td>
     <td class="num">${r.novelty == null ? "" : r.novelty.toFixed(2)}</td>
+    <td class="num">${r.next ?? ""}</td>
   </tr>`).join("");
 }
 ["q"].forEach(id => document.getElementById(id).addEventListener("input", render));
-[fsrc, fst, fcat].forEach(el => el.addEventListener("input", render));
+[fsrc, fst, fcat, fnext].forEach(el => el.addEventListener("input", render));
+document.getElementById("method").textContent = (DATA.next_batch?.method || []).join(" ");
 render();
 </script>

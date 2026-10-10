@@ -248,6 +248,12 @@
       "description": "Respondents answer the existing Understanding Society questions on informal care: whether they look after someone in or outside the household, and how many hours a week. The condition is whether they had already been asked the new activity-based caring questions earlier in the interview. Wave 17 (2024).",
       "design": "Order experiment by household, built on prior exposure. Three single-answer outcomes; the multi-select 'who do you look after', the relationship items and 'how many people' (outside-household only, context a row cannot carry) are not built. Wording by mode.",
       "verified_against": "NOT verified against a publication. What IS verified: (a) 0 answers outside the allocated module; (b) every row's condition against what was actually asked earlier; (c) every response against the raw value, 'Other' recoded 97 -> 10; (d) recipes regenerated from the questionnaire; (e) 4,847 rows; an independent checker rebuilt every row from raw with 0 mismatches. tests/test_ip_caring.py"
+    },
+    "del_sandbox_feb2023_wordfeminist": {
+      "category": "political preferences/policy",
+      "description": "The same development-policy description shown under four names (development, feminist, inclusive, gender-inclusive), or the name 'feminist development policy' alone with no description, then support or oppose on a 5-point scale. The first question in the survey, so nothing earlier primes it.",
+      "design": "5-arm between-subjects wording split, one item per respondent",
+      "verified_against": "no published reference; an independent checker re-derived all 1,788 rows from the raw .sav (0 missing, extra, wrong-arm or wrong-response rows), transcribed all five items from the questionnaire (exact match on every condition and outcome), and tabulated every persona code on all rows (10 Oct 2026)"
     }
   }
 }

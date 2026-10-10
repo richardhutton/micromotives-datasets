@@ -9,7 +9,8 @@
    "category": "survey methodology",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.3
+   "novelty": 0.3,
+   "next": 12
   },
   {
    "source": "Innovation Panel",
@@ -31,7 +32,8 @@
    "category": "economics/behavioural",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.24
+   "novelty": 0.24,
+   "next": 6
   },
   {
    "source": "Innovation Panel",
@@ -42,7 +44,8 @@
    "category": "survey methodology",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.24
+   "novelty": 0.24,
+   "next": 20
   },
   {
    "source": "Innovation Panel",
@@ -64,7 +67,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.23
+   "novelty": 0.23,
+   "next": 13
   },
   {
    "source": "Innovation Panel",
@@ -86,7 +90,8 @@
    "category": "work/family/gender",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.22
+   "novelty": 0.22,
+   "next": 23
   },
   {
    "source": "Innovation Panel",
@@ -97,7 +102,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.21
+   "novelty": 0.21,
+   "next": 21
   },
   {
    "source": "Innovation Panel",
@@ -108,7 +114,8 @@
    "category": "survey methodology",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.21
+   "novelty": 0.21,
+   "next": 32
   },
   {
    "source": "Innovation Panel",
@@ -119,7 +126,8 @@
    "category": "economics/behavioural",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.2
+   "novelty": 0.2,
+   "next": 16
   },
   {
    "source": "Innovation Panel",
@@ -141,7 +149,8 @@
    "category": "survey methodology",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.19
+   "novelty": 0.19,
+   "next": 34
   },
   {
    "source": "Innovation Panel",
@@ -163,7 +172,8 @@
    "category": "survey methodology",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.19
+   "novelty": 0.19,
+   "next": 37
   },
   {
    "source": "Innovation Panel",
@@ -218,7 +228,8 @@
    "category": "economics/behavioural",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.17
+   "novelty": 0.17,
+   "next": 25
   },
   {
    "source": "Innovation Panel",
@@ -229,7 +240,8 @@
    "category": "political identity/polarisation",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.17
+   "novelty": 0.17,
+   "next": 7
   },
   {
    "source": "Innovation Panel",
@@ -405,7 +417,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.31
+   "novelty": 0.31,
+   "next": 1
   },
   {
    "source": "DEL",
@@ -416,7 +429,8 @@
    "category": "survey methodology",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.31
+   "novelty": 0.31,
+   "next": 8
   },
   {
    "source": "DEL",
@@ -425,8 +439,8 @@
    "description": "How the UK's, the world's or developing countries' economies should be run after COVID. Answer: Single choice.",
    "details": "Panel W2 2020; 3 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "pandemic-framed; ruled out by rich, 10 Oct 2026",
    "novelty": 0.29
   },
   {
@@ -445,11 +459,12 @@
    "id": "Feb2023_wordfeministsplit",
    "title": "Naming a development policy (sandbox)",
    "description": "Development / feminist / inclusive / gender-inclusive policy, or the name only. Answer: Support-oppose.",
-   "details": "Sandbox Feb 2023; 5 conditions",
+   "details": "1,788 rows; Sandbox Feb 2023; 5 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
-   "novelty": 0.29
+   "novelty": 0.29,
+   "next": 3
   },
   {
    "source": "DEL",
@@ -471,7 +486,8 @@
    "category": "economics/behavioural",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.28
+   "novelty": 0.28,
+   "next": 2
   },
   {
    "source": "DEL",
@@ -482,7 +498,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.28
+   "novelty": 0.28,
+   "next": 5
   },
   {
    "source": "DEL",
@@ -493,7 +510,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.28
+   "novelty": 0.28,
+   "next": 10
   },
   {
    "source": "DEL",
@@ -504,7 +522,8 @@
    "category": "economics/behavioural",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.27
+   "novelty": 0.27,
+   "next": 4
   },
   {
    "source": "DEL",
@@ -515,7 +534,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.27
+   "novelty": 0.27,
+   "next": 17
   },
   {
    "source": "DEL",
@@ -524,8 +544,8 @@
    "description": "All / rich / poor countries. Answer: 5-point agree.",
    "details": "Sandbox Apr 2020; 3 conditions",
    "category": "moral/social/cognition",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "pandemic-framed; ruled out by rich, 10 Oct 2026",
    "novelty": 0.25
   },
   {
@@ -535,8 +555,8 @@
    "description": "'These days I am most concerned about' with or without 'because of the COVID-19 pandemic'. Answer: Single choice.",
    "details": "Panel W2 2020; 2 conditions",
    "category": "moral/social/cognition",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "pandemic-framed; ruled out by rich, 10 Oct 2026",
    "novelty": 0.25
   },
   {
@@ -546,8 +566,8 @@
    "description": "Climate change effect on day-to-day life, with or without a COVID comparison first. Answer: 0-10 scale.",
    "details": "Sandbox Apr 2020; 2 conditions",
    "category": "moral/social/cognition",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "pandemic-framed; ruled out by rich, 10 Oct 2026",
    "novelty": 0.25
   },
   {
@@ -559,7 +579,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.25
+   "novelty": 0.25,
+   "next": 18
   },
   {
    "source": "DEL",
@@ -568,8 +589,8 @@
    "description": "The pandemic shows how vulnerable all / rich / poor countries are. Answer: 5-point agree.",
    "details": "Panel W3 2021; 3 conditions",
    "category": "moral/social/cognition",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "pandemic-framed; ruled out by rich, 10 Oct 2026",
    "novelty": 0.24
   },
   {
@@ -581,7 +602,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.24
+   "novelty": 0.24,
+   "next": 31
   },
   {
    "source": "DEL",
@@ -592,7 +614,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.24
+   "novelty": 0.24,
+   "next": 35
   },
   {
    "source": "DEL",
@@ -603,7 +626,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.23
+   "novelty": 0.23,
+   "next": 9
   },
   {
    "source": "DEL",
@@ -614,7 +638,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.23
+   "novelty": 0.23,
+   "next": 15
   },
   {
    "source": "DEL",
@@ -623,8 +648,8 @@
    "description": "No framing, a general tax prompt, or one of 9 COVID inequality facts (women, schools, health, ethnicity, income, young, mental health, older people, disability), then a fair tax share for a middle earner. Answer: Fair tax share, 0-100% slider.",
    "details": "Panel W2 2020; 11 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "pandemic-framed; ruled out by rich, 10 Oct 2026",
    "novelty": 0.21
   },
   {
@@ -636,7 +661,8 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.2
+   "novelty": 0.2,
+   "next": 27
   },
   {
    "source": "DEL",
@@ -658,7 +684,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.15
+   "novelty": 0.15,
+   "next": 36
   },
   {
    "source": "DEL",
@@ -724,7 +751,8 @@
    "category": "economics/behavioural",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.33
+   "novelty": 0.33,
+   "next": 22
   },
   {
    "source": "TESS",
@@ -735,7 +763,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.32
+   "novelty": 0.32,
+   "next": 19
   },
   {
    "source": "TESS",
@@ -757,7 +786,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.24
+   "novelty": 0.24,
+   "next": 33
   },
   {
    "source": "TESS",
@@ -768,7 +798,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.23
+   "novelty": 0.23,
+   "next": 26
   },
   {
    "source": "TESS",
@@ -790,7 +821,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.23
+   "novelty": 0.23,
+   "next": 30
   },
   {
    "source": "TESS",
@@ -823,7 +855,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.22
+   "novelty": 0.22,
+   "next": 24
   },
   {
    "source": "TESS",
@@ -867,7 +900,8 @@
    "category": "economics/behavioural",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.21
+   "novelty": 0.21,
+   "next": 29
   },
   {
    "source": "TESS",
@@ -922,7 +956,8 @@
    "category": "health communication",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.2
+   "novelty": 0.2,
+   "next": 14
   },
   {
    "source": "TESS",
@@ -1063,8 +1098,8 @@
    "description": "Persuading people to follow two contradictory pandemic directives: stay apart, yet queue for treatment.",
    "details": "2008; UK priority 0.99; transfers: Mechanism only",
    "category": "health communication",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "pandemic-framed; ruled out by rich, 10 Oct 2026",
    "novelty": 0.16
   },
   {
@@ -1109,7 +1144,8 @@
    "category": "cross-national",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.15
+   "novelty": 0.15,
+   "next": 11
   },
   {
    "source": "TESS",
@@ -1142,7 +1178,8 @@
    "category": "health communication",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.15
+   "novelty": 0.15,
+   "next": 28
   },
   {
    "source": "TESS",
@@ -2289,5 +2326,16 @@
   "DEL": "UK · publishable (CC0)",
   "TESS": "US · not publishable",
   "Harvard Dataverse": "UK · mostly publishable (CC0)"
+ },
+ "next_batch": {
+  "size": 37,
+  "chosen": "2026-10-10",
+  "method": [
+   "Pool: Buildable candidates only.",
+   "Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).",
+   "Order: greedy diversity. Each pick is the candidate whose title sits furthest from everything built and already picked (Voyage title embeddings), discounted for categories we already hold many of; TESS also weighted by its UK priority score.",
+   "Hand rule: DEL experiments whose conditions vary real numbers (Gender aid compared to others, 5 conditions; Gender gap progress, 4) replace 2-condition wording tests, because the title-only measure cannot see design.",
+   "Excluded: pandemic-framed experiments (6 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment."
+  ]
  }
 }

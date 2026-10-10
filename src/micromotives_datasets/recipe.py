@@ -480,6 +480,16 @@ class Condition(BaseModel):
         "number it finds differs from this, so a second occurrence appearing in a re-fetched "
         "deposit stops the build instead of quietly growing the discard.",
     )
+    routing_check: bool = Field(
+        default=False,
+        description="For a coded assignment: also read every arm's OWN outcome variables, "
+        "and count a respondent with ANY code in another arm's variable as routed to two "
+        "conditions (a back-button re-assigns, and the abandoned answer stays in the file; "
+        "DEL's Feb 2023 sandbox has one). Off by default because deposits mark 'not asked' "
+        "differently: blank in DEL, negative codes in the Innovation Panel, where switching "
+        "it on would read thousands of not-asked codes as answers. Turn it on only where "
+        "'not asked' is blank, and declare what it finds in `ambiguous_routing`.",
+    )
     ambiguous_routing_reason: str | None = Field(
         default=None,
         description="Why those respondents are routed twice, and why dropping them is right. "
@@ -819,11 +829,26 @@ class Recipe(BaseModel):
                 f"{self.study_id}: ambiguous_routing={cond.ambiguous_routing} without a "
                 f"reason — a discarded respondent must say why they were discarded"
             )
-        if cond.ambiguous_routing and not cond.witnessed:
+        if cond.ambiguous_routing and not cond.witnessed and not cond.routing_check:
             raise ValueError(
-                f"{self.study_id}: ambiguous_routing applies only to the witness design; "
-                f"a coded assignment yields one arm by construction"
+                f"{self.study_id}: ambiguous_routing on a coded assignment is only ever "
+                f"counted with `routing_check: true`; without it the declaration is inert"
             )
+        if cond.routing_check and not cond.witnessed:
+            # A coded assignment names one arm, but a respondent can still have
+            # met a second (a back-button re-assigns; DEL Feb 2023 has one). The
+            # melt sees that only through a variable just ONE arm was asked, so
+            # without such variables the check could never fire.
+            owners: dict[str, int] = {}
+            for arm in cond.arms:
+                for v in {arm.outcome_var} | {it.outcome_var for it in arm.items.values()}:
+                    if v:
+                        owners[v.upper()] = owners.get(v.upper(), 0) + 1
+            if not any(n == 1 for n in owners.values()):
+                raise ValueError(
+                    f"{self.study_id}: routing_check reads each arm's OWN outcome variable, "
+                    f"and no arm has one here"
+                )
 
     @model_validator(mode="after")
     def _check(self) -> Recipe:

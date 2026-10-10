@@ -1,0 +1,193 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Sandbox Great Britain February 2023: naming a development policy"
+data_file: DEL_Sandbox_GreatBritain_Feb2023_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/XZ1XUZ, stated on the Harvard Dataverse deposit "DEL
+  Sandbox 2023" and read from the Dataverse API (latestVersion.license) on 10 Oct 2026. The deposit's Readme adds "DEL datasets are a public good and can be used
+  with the appropriate citation."
+
+comparable_to_socsci210: false
+experiment: sandbox_feb2023_wordfeminist
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin; Torres-Raposo, Felipe,
+  2024, "DEL Sandbox 2023", https://doi.org/10.7910/DVN/XZ1XUZ, Harvard Dataverse, V1;
+  DEL_Sandbox_GreatBritain_Feb2023_Data.sav. Fielded online by YouGov, 20-28 February
+  2023, n = 2,007 adults in Great Britain (the deposit's Readme). The first DEL build.
+
+  THE DESIGN. `wordfeministsplit`, assigned by YouGov's `panman.assign_treatment(5, ...)`,
+  splits the sample five ways: 397 / 398 / 404 / 404 / 404. Four conditions show the same
+  policy description under a different name (development / feminist / inclusive /
+  gender-inclusive); the fifth shows no description and asks about "a feminist
+  development policy" by name alone. It is the FIRST question in the survey: the script's
+  own comment says the client wanted it answered "before being primed to think about
+  feminism or gender equality", so nothing earlier in the interview bears on it.
+
+  WORDING. From DEL_Sandbox_GreatBritain_Feb2023_Survey.docx, items `wordfeminist_1` to
+  `wordfeminist_5`, word-for-word. The script's `**...**` marks bold on screen; the
+  asterisks are formatting, not words, and are dropped. The `<<br/>>` line breaks become
+  the join between condition and outcome. Condition 5's "or  oppose" double space is
+  typography and is normalised to one space (docs/CONVENTIONS.md).
+
+  THE CONDITION IS NARRATED. Arms 1-4: "You were shown this policy description:" and the
+  quotation marks are ADDED (docs/CONVENTIONS.md, "Narrating what the respondent did").
+  Arm 5: "You were shown no policy description." is ADDED, and is true for everyone in
+  that arm: the item has no description, only the name inside the question. The policy
+  name sits at the START of the description, so nothing can be hoisted into
+  shared_context (it is a prefix); each arm carries its whole paragraph.
+
+  THE OUTCOME follows the arm: arms 1-4 were asked "Please read the following policy
+  description and indicate the extent to which you support or oppose this policy.", arm 5
+  "Please indicate the extent to which you support or oppose a feminist development
+  policy." Scale 1 Strongly support ... 5 Strongly oppose, as fielded (1 is support).
+  6 "Don't know", 8 "Skipped" and 9 "Not Asked" are dropped as non-answers. On screen
+  the instruction "Please read the following policy description" came BEFORE the
+  description; in the row the description sits in the condition, above it. The words
+  are the source's and QC rule 15 accepts "the following" within a row, so they stay.
+
+  VERIFIED, 10 Oct 2026, by an independent checker using its own scripts: all five items
+  transcribed from the questionnaire match every condition and outcome string exactly;
+  all 1,788 rows re-derived from the .sav with 0 missing, extra, wrong-arm or
+  wrong-response rows; every persona code tabulated on all rows, no non-answer rendered;
+  exactly one respondent (GUNQID 120781886359) answered two conditions, and only that
+  one has page timings on two. No published reference exists to compare against.
+
+  ONE RESPONDENT IS DROPPED: routed to two conditions. Assigned condition 1, they also
+  answered condition 5's question, with page timings on both (9.96s and 6.19s), almost
+  certainly a back-button re-assignment. Which they saw first is not recorded, so their
+  condition-1 answer may have been given after seeing condition 5, and they have no
+  single condition. `routing_check` (added for this build) reads every arm's own outcome
+  variable and counts them; `ambiguous_routing: 1` declares it, so a second such person
+  in a re-fetched deposit stops the build. In this deposit "not asked" is blank, which
+  is what `routing_check` requires.
+
+  PERSONA: the standard YouGov profile block, confirmed by `scripts/recipe_prep.py del
+  --source dataverse --file DEL_Sandbox_GreatBritain_Feb2023` (persona section, every
+  field at confidence 1.00): age, gender, education_level, gross_household, ethnicity_new,
+  region_GOR, religion, plus socialgrade_cie added by hand. `income` maps to HOUSEHOLD
+  income (`gross_household`), as TESS's PPINCIMP is household income; the file carries
+  no personal income. Past general-election and EU-referendum vote go to `extra`.
+  Non-answer codes are declared below from each variable's own value labels: region 13
+  "Non UK & Invalid" is a non-answer, region 12 Northern Ireland is a real region.
+
+  PERSON ID: `GUNQID` is YouGov's panellist id. It recurs across all ten DEL files (the
+  panel waves share 4,300-5,500 people pairwise; each sandbox shares 86-420 with each
+  panel wave), so every DEL recipe uses `study_id: del` and `GUNQID`, giving one
+  participant id per person across DEL, and all DEL experiments belong on the same side
+  of a person split. Unique and never blank in this file.
+
+condition:
+  source_var: wordfeministsplit
+  factors: [policy_name]
+  routing_check: true
+  ambiguous_routing: 1
+  ambiguous_routing_reason: >-
+    One respondent assigned condition 1 also answered condition 5's question, with page
+    timings on both: a back-button re-assignment. Which they saw first is unrecorded, so
+    their answer cannot be attributed to a single condition.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {policy_name: development}
+      text: >-
+        You were shown this policy description: "A development policy that secures a
+        sustainable future for the planet, tackles the root causes of injustice, and
+        promotes human rights, equal opportunities, and representation for all people in
+        social, political and economic life – regardless of gender, sexual orientation,
+        ethnicity, disability, etc."
+      outcome_var: wordfeminist_1
+      outcome_question: >-
+        Please read the following policy description and indicate the extent to which you
+        support or oppose this policy.
+    - raw: 2
+      condition_num: 1
+      factors: {policy_name: feminist}
+      text: >-
+        You were shown this policy description: "A feminist development policy that
+        secures a sustainable future for the planet, tackles the root causes of injustice,
+        and promotes human rights, equal opportunities, and representation for all people
+        in social, political and economic life – regardless of gender, sexual orientation,
+        ethnicity, disability, etc."
+      outcome_var: wordfeminist_2
+      outcome_question: >-
+        Please read the following policy description and indicate the extent to which you
+        support or oppose this policy.
+    - raw: 3
+      condition_num: 2
+      factors: {policy_name: inclusive}
+      text: >-
+        You were shown this policy description: "An inclusive development policy that
+        secures a sustainable future for the planet, tackles the root causes of injustice,
+        and promotes human rights, equal opportunities, and representation for all people
+        in social, political and economic life – regardless of gender, sexual orientation,
+        ethnicity, disability, etc."
+      outcome_var: wordfeminist_3
+      outcome_question: >-
+        Please read the following policy description and indicate the extent to which you
+        support or oppose this policy.
+    - raw: 4
+      condition_num: 3
+      factors: {policy_name: gender-inclusive}
+      text: >-
+        You were shown this policy description: "A gender-inclusive development policy
+        that secures a sustainable future for the planet, tackles the root causes of
+        injustice, and promotes human rights, equal opportunities, and representation for
+        all people in social, political and economic life – regardless of gender, sexual
+        orientation, ethnicity, disability, etc."
+      outcome_var: wordfeminist_4
+      outcome_question: >-
+        Please read the following policy description and indicate the extent to which you
+        support or oppose this policy.
+    - raw: 5
+      condition_num: 4
+      factors: {policy_name: feminist (name only)}
+      text: You were shown no policy description.
+      outcome_var: wordfeminist_5
+      outcome_question: >-
+        Please indicate the extent to which you support or oppose a feminist development
+        policy.
+
+outcomes:
+  - task_num: 0
+    question: "[the support question, in the condition's own wording]"
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly support
+      mid_label: Neither support nor oppose
+      max_label: Strongly oppose
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # SPSS cut this label at 120 characters in every DEL file and codebook ("...New
+  # Testament Church of God, Redeemed Christian Chur"), so the full wording exists
+  # nowhere in the deposit. Kept: its complete head, the source's own words; lost:
+  # the example list. Mapped to "Pentecostal" by scripts/persona_del.py.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education_level: [19, 20, 98, 99]
+  gross_household: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]

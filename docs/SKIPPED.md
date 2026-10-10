@@ -4,7 +4,7 @@
 
 24 of 202 catalogued sources are built. The remaining 178 are listed below, grouped by the reason.
 
-A further 10 source(s) are built from OUTSIDE this catalogue, and so are in neither number above: `35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `POMIFD`, `PZB01G`, `QQM5MC`, `RJTVG8`, `ukds`. The UK studies come from Harvard Dataverse rather than the TESS foundation set. 8 of them (`35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `PZB01G`, `QQM5MC`, `RJTVG8`) state a CC0 licence and are the only material here that can be republished; 2 (`POMIFD`, `ukds`) state no licence and are usable for research only, under the basis recorded per-study in `uk_dataverse_provenance.json`'s `use_basis`, never redistributed.
+A further 11 source(s) are built from OUTSIDE this catalogue, and so are in neither number above: `35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `POMIFD`, `PZB01G`, `QQM5MC`, `RJTVG8`, `del`, `ukds`. The UK studies come from Harvard Dataverse rather than the TESS foundation set. 8 of them (`35M5CV`, `6MRVOM`, `EFXNLX`, `LOGVPZ`, `PMV0TG`, `PZB01G`, `QQM5MC`, `RJTVG8`) state a CC0 licence and are the only material here that can be republished; 3 (`POMIFD`, `del`, `ukds`) state no licence and are usable for research only, under the basis recorded per-study in `uk_dataverse_provenance.json`'s `use_basis`, never redistributed.
 
 A reason here is a *decision*, and decisions can be revisited: a source with no questionnaire becomes buildable the moment an instrument turns up, and a screen verdict is a queue order rather than a ruling.
 
@@ -85,16 +85,19 @@ A reason here is a *decision*, and decisions can be revisited: a source with no 
 | `ysqex` | 2024 | Membership in a stigmatized religious minority and political support |
 | `zyqcj` | 2020 | Does Self-affirmation Influence Health Message Processing through Changes in |
 
-## Outcome Needs Local Knowledge — 2
+## Outcome Needs Local Knowledge — 5
 
 **The outcome needs US knowledge.** Answering requires knowing US law, politics or institutions, so a UK respondent has no view to predict. Not rescuable by re-setting the scenario. Screened by `scripts/uk_content_screen.py`; a verdict here is the SCREEN's, and the screen agrees with hand reading on 12 of 16, so treat it as a queue order, not a ruling.
 
 | code | year | title |
 |---|---|---|
 | `4kjtn` | 2011 | Assessing the Breadth of Framing Effects |
+| `ht243` | 2005 | Value Choices in the Mass Public: Testing for Framing Effects and Hierarchic |
 | `n8azj` | 2019 | Evangelical or Born-Again Christian: Unpacking a Double-Barreled Question |
+| `pkfdr` | 2005 | Studying the Effect of Income on Punitive Attitudes with a Two-List Factoria |
+| `u8bhg` | 2015 | Prosocial Motivation, Social Position, and Support for Social Welfare Policy |
 
-## Not Yet Reached — 113
+## Not Yet Reached — 110
 
 **Not yet reached.** Buildable, in scope, simply not built — the plan targets 20% of the catalogue chosen for value, not 100%.
 
