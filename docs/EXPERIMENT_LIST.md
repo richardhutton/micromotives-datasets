@@ -6,13 +6,13 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Summary
 
-| Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 36 | 17 | 4 | 6 | 27 |
-| DEL | UK · publishable (CC0) | 10 | 6 | 5 | 9 | 20 |
-| TESS | US · not publishable | 42 | 41 | 8 | 8 | 57 |
-| Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 |
-| **Total** | | **101** | **64** | **29** | **26** | **119** |
+| Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total | Rows built |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Innovation Panel | UK · not publishable | 36 | 17 | 4 | 6 | 27 | 368,627 |
+| DEL | UK · publishable (CC0) | 10 | 6 | 5 | 9 | 20 | 94,078 |
+| TESS | US · not publishable | 42 | 41 | 8 | 8 | 57 | 368,659 |
+| Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
+| **Total** | | **101** | **64** | **29** | **26** | **119** | **974,104** |
 
 ## Next 33, in build order (25 built, 8 to go)
 
@@ -88,8 +88,8 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 UK · not publishable. 36 Built, 17 Buildable, 4 Needs checking, 6 Unlikely.
 
-| ID | Experiment | Category | Status | Novelty | Next |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| ID | Experiment | Category | Status | Novelty | Next | Rows |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 9.33 | **Twitter consent**<br>Repeats the wave 10 request to link Twitter data, testing how it is asked.<br>*527 rows; Wave 15; 2 conditions (help links on the same page or not); web only* | survey methodology | Built | 0.30 | 8 |
 | ukds_6849_hmrc_consent_w11 | **HMRC data linkage consent experiment (wave 11 face-to-face)**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*1,326 rows; Waves 11, 15* | survey methodology | Built | 0.24 | 16 |
 | ukds_6849_hmrc_consent_w11_web | **HMRC data linkage consent experiment (wave 11 web)**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*1,281 rows; Waves 11, 15* | survey methodology | Built | 0.24 | 16 |
@@ -158,8 +158,8 @@ UK · not publishable. 36 Built, 17 Buildable, 4 Needs checking, 6 Unlikely.
 
 UK · publishable (CC0). 10 Built, 6 Buildable, 5 Needs checking, 9 Unlikely.
 
-| ID | Experiment | Category | Status | Novelty | Next |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| ID | Experiment | Category | Status | Novelty | Next | Rows |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Feb2023_wordfeministsplit | **Naming a development policy (sandbox)**<br>Development / feminist / inclusive / gender-inclusive policy, or the name only. Answer: Support-oppose.<br>*1,788 rows; Sandbox Feb 2023; 5 conditions* | political preferences/policy | Built | 0.29 | 1 |
 | W4_connectstorysplit | **Climate harm stories**<br>No story, or one of three stories linking climate change to everyday life. Answer: Harm rating per group.<br>*28,109 rows; Panel W4 2022; 4 conditions (a fifth assigned group had no question)* | moral/social/cognition | Built | 0.28 | 4 |
 | W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree.<br>*7,356 rows; Panel W5 2023; 2 conditions* | moral/social/cognition | Built | 0.28 | 10 |
@@ -195,8 +195,8 @@ UK · publishable (CC0). 10 Built, 6 Buildable, 5 Needs checking, 9 Unlikely.
 
 US · not publishable. 42 Built, 41 Buildable, 8 Needs checking, 8 Unlikely.
 
-| ID | Experiment | Category | Status | Novelty | Next |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| ID | Experiment | Category | Status | Novelty | Next | Rows |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | e5rfg_ce | **Who has Narrow Brackets? (certainty equivalents)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*281 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
 | e5rfg_pair | **Who has Narrow Brackets? (Example 2 pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*323 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
 | e5rfg_six | **Who has Narrow Brackets? (six-decision modules)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*3,608 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
@@ -301,8 +301,8 @@ US · not publishable. 42 Built, 41 Buildable, 8 Needs checking, 8 Unlikely.
 
 UK · mostly publishable (CC0). 13 Built, 0 Buildable, 12 Needs checking, 3 Unlikely.
 
-| ID | Experiment | Category | Status | Novelty | Next |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| ID | Experiment | Category | Status | Novelty | Next | Rows |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 35M5CV_bbc | **Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (BBC conjoint)**<br>Forced choice between two applicants for Director General of the BBC, described by name, age, experience, degree, party politics, EU referendum vote and occupation. Tests whether Leave/Remain identity affects judgement of competence for a public role.<br>*8,175 rows* | political identity/polarisation | Built |  |  |
 | 35M5CV_lodger | **Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (Lodger conjoint)**<br>Forced choice between two prospective lodgers described by name, age, occupation, volunteering, party politics, EU referendum vote and hobby. The classic social-distance measure: would you share your home with someone who voted the other way.<br>*8,345 rows* | political identity/polarisation | Built |  |  |
 | 35M5CV_sky | **Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (Sky emotional attachment battery)**<br>Five-item battery measuring strength of emotional attachment to one's own Brexit identity (Leaver/Remainer) or party identity (Conservative/Labour) — in-group language, personal offence at criticism, felt commonality, connectedness and pride in one's own side. The in-group-identification component of affective polarization, restricted to respondents with a clean primary identity (excludes 'Neither'/'None' respondents routed into a battery via an undocumented follow-up question).<br>*12,055 rows* | political identity/polarisation | Built |  |  |

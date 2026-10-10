@@ -25,6 +25,8 @@ import json
 import subprocess
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "catalog" / "experiment_list.json"
 MD = ROOT / "docs" / "EXPERIMENT_LIST.md"
@@ -69,8 +71,10 @@ def render_md(data: dict) -> str:
         "",
         "## Summary",
         "",
-        "| Source | People and licence | " + " | ".join(STATUSES) + " | Not built, total |",
-        "| :--- | :--- | " + " | ".join([":---"] * len(STATUSES)) + " | :--- |",
+        "| Source | People and licence | "
+        + " | ".join(STATUSES)
+        + " | Not built, total | Rows built |",
+        "| :--- | :--- | " + " | ".join([":---"] * len(STATUSES)) + " | :--- | :--- |",
     ]
 
     def n(src: str | None = None, st: str | None = None) -> int:
@@ -83,10 +87,16 @@ def render_md(data: dict) -> str:
     for s in SOURCES:
         cells = [str(n(s, st)) for st in STATUSES]
         out.append(
-            f"| {s} | {data['meta'][s]} | " + " | ".join(cells) + f" | {n(s) - n(s, 'Built')} |"
+            f"| {s} | {data['meta'][s]} | "
+            + " | ".join(cells)
+            + f" | {n(s) - n(s, 'Built')} | {rows_built(rows, s):,} |"
         )
     totals = [f"**{n(None, st)}**" for st in STATUSES]
-    out.append("| **Total** | | " + " | ".join(totals) + f" | **{len(rows) - n(None, 'Built')}** |")
+    out.append(
+        "| **Total** | | "
+        + " | ".join(totals)
+        + f" | **{len(rows) - n(None, 'Built')}** | **{rows_built(rows, None):,}** |"
+    )
     nxt = sorted((r for r in rows if r.get("next")), key=lambda r: r["next"])
     if nxt:
         ranks = {r["next"] for r in nxt}
@@ -124,8 +134,8 @@ def render_md(data: dict) -> str:
             "",
             f"{data['meta'][s]}. {counts}.",
             "",
-            "| ID | Experiment | Category | Status | Novelty | Next |",
-            "| :--- | :--- | :--- | :--- | :--- | :--- |",
+            "| ID | Experiment | Category | Status | Novelty | Next | Rows |",
+            "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
         ]
         for r in src_rows:
             exp = f"**{_cell(r['title'])}**"
@@ -140,6 +150,51 @@ def render_md(data: dict) -> str:
                 f"| {r.get('next', '')} |"
             )
     return "\n".join(out) + "\n"
+
+
+def _rows(r: dict) -> str:
+    return f"{r['rows']:,}" if r.get("rows") is not None else ""
+
+
+def rows_built(rows: list[dict], src: str | None) -> int:
+    return sum(r.get("rows") or 0 for r in rows if src is None or r["source"] == src)
+
+
+def attach_row_counts(data: dict) -> None:
+    """Give every Built row its experiment's row count, read from the built parquet.
+
+    Each Built row names its recipe; the recipe names its study and experiment, and
+    the parquet holding that (study, experiment) supplies the count. A Built row with
+    no recipe, or a committed recipe no Built row names, stops the page: the count on
+    it would otherwise be wrong without looking wrong.
+    """
+    import pandas as pd
+
+    committed = set(
+        subprocess.run(
+            ["git", "ls-files", "recipes/*.yaml"], cwd=ROOT, capture_output=True, text=True
+        ).stdout.split()
+    )
+    sizes: dict[tuple[str, str | None], int] = {}
+    for pq in (ROOT / "data" / "processed").glob("*.parquet"):
+        df = pd.read_parquet(pq, columns=["study_id", "experiment"])
+        for (sid, exp), n in df.groupby(["study_id", "experiment"], dropna=False).size().items():
+            sizes[(str(sid), None if pd.isna(exp) else str(exp))] = int(n)
+    named = set()
+    for r in data["rows"]:
+        if r["status"] != "Built":
+            continue
+        path = f"recipes/{r.get('recipe')}.yaml"
+        if path not in committed:
+            raise SystemExit(f"Built row {r['id']} names no committed recipe ({path})")
+        named.add(path)
+        rec = yaml.safe_load((ROOT / path).read_text())
+        key = (str(rec["study_id"]), rec.get("experiment"))
+        if key not in sizes:
+            raise SystemExit(f"{path}: no built parquet holds {key}")
+        r["rows"] = sizes[key]
+    if unnamed := sorted(committed - named):
+        raise SystemExit(f"committed recipes with no Built row: {unnamed}")
 
 
 def corpus_experiments() -> int:
@@ -174,6 +229,7 @@ def main() -> None:
             f"{built} rows are Built but {n_exp} recipes are committed — give each built "
             "experiment its own row"
         )
+    attach_row_counts(data)
     MD.write_text(render_md(data))
     HTML.write_text(render_html(data))
     print(

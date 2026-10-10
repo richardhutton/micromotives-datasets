@@ -84,7 +84,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
     <div class="scroll">
       <table class="list">
         <colgroup><col class="c-src"><col class="c-id"><col><col class="c-cat"><col class="c-st"><col class="c-nov"><col class="c-nov"></colgroup>
-        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th><th>Next</th></tr></thead>
+        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th><th>Next</th><th>Rows</th></tr></thead>
         <tbody id="tb"></tbody>
       </table>
     </div>
@@ -103,11 +103,12 @@ const rows = DATA.rows;
 
 (function summary(){
   const n = (src, st) => rows.filter(r => (!src || r.source === src) && (!st || r.status === st)).length;
-  let h = `<thead><tr><th>Source</th><th>People · licence</th>${STATUSES.map(s => `<th class="n">${s}</th>`).join("")}<th class="n">Not built, total</th></tr></thead><tbody>`;
+  const rb = src => rows.filter(r => !src || r.source === src).reduce((a, r) => a + (r.rows || 0), 0);
+  let h = `<thead><tr><th>Source</th><th>People · licence</th>${STATUSES.map(s => `<th class="n">${s}</th>`).join("")}<th class="n">Not built, total</th><th class="n">Rows built</th></tr></thead><tbody>`;
   for (const s of SOURCES) {
-    h += `<tr><td>${esc(s)}</td><td>${esc(DATA.meta[s])}</td>${STATUSES.map(st => `<td class="num">${n(s, st)}</td>`).join("")}<td class="num">${n(s) - n(s, "Built")}</td></tr>`;
+    h += `<tr><td>${esc(s)}</td><td>${esc(DATA.meta[s])}</td>${STATUSES.map(st => `<td class="num">${n(s, st)}</td>`).join("")}<td class="num">${n(s) - n(s, "Built")}</td><td class="num">${rb(s).toLocaleString("en-GB")}</td></tr>`;
   }
-  h += `<tr class="total"><td>Total</td><td></td>${STATUSES.map(st => `<td class="num">${n("", st)}</td>`).join("")}<td class="num">${rows.length - n("", "Built")}</td></tr></tbody>`;
+  h += `<tr class="total"><td>Total</td><td></td>${STATUSES.map(st => `<td class="num">${n("", st)}</td>`).join("")}<td class="num">${rows.length - n("", "Built")}</td><td class="num">${rb("").toLocaleString("en-GB")}</td></tr></tbody>`;
   document.getElementById("sum").innerHTML = h;
 })();
 
@@ -132,6 +133,7 @@ function render(){
     <td><span class="pill ${cls(r.status)}">${esc(r.status)}</span>${r.reason ? `<div class="why">${esc(r.reason)}</div>` : ""}</td>
     <td class="num">${r.novelty == null ? "" : r.novelty.toFixed(2)}</td>
     <td class="num">${r.next ?? ""}</td>
+    <td class="num">${r.rows == null ? "" : r.rows.toLocaleString("en-GB")}</td>
   </tr>`).join("");
 }
 ["q"].forEach(id => document.getElementById(id).addEventListener("input", render));
