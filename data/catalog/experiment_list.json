@@ -404,8 +404,8 @@
    "description": "A module redesign with an income summary screen.",
    "details": "Wave 9",
    "category": "economics/behavioural",
-   "status": "Needs checking",
-   "reason": "do the conditions share an outcome?",
+   "status": "Unlikely",
+   "reason": "a reporting-accuracy experiment, not a judgement or choice: the income summary screen shows the respondent's own derived income and the outcome is a corrected £ income, which a persona field already holds; the gross/net flows version yields open £ amounts across many benefit-unit variables (the 9.5 shape) (rich, 10 Oct 2026)",
    "novelty": 0.28
   },
   {
@@ -1554,8 +1554,8 @@
    "description": "Recalling rejection by one partner, and feeling accepted by others.",
    "details": "2005",
    "category": "moral/social/cognition",
-   "status": "Needs checking",
-   "reason": "main data file missing",
+   "status": "Unlikely",
+   "reason": "no assignment record: the OSF deposit holds a completion report and an open-ends spreadsheet only (free-text Q18-Q24), not the main data file (rich, 10 Oct 2026)",
    "novelty": 0.18
   },
   {

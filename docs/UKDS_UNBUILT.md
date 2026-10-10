@@ -5,7 +5,7 @@ Source: `data/catalog/innovation_panel_experiments.json`, whose titles and waves
 are parsed from the Innovation Panel User Guide (UKDS **SN 6849**, waves 1–17,
 2008–2024). Category and verdict are judgement and are recorded in that file.
 
-**93 experiments.** 39 pass screening, 9 need a ruling, 45 are out.
+**93 experiments.** 39 pass screening, 8 need a ruling, 46 are out.
 
 The 39 that pass span **55 experiment-waves**, because 12 of them ran in two or more waves — which is the time axis the Harvard and TESS layers structurally cannot provide.
 
@@ -18,15 +18,15 @@ The 39 that pass span **55 experiment-waves**, because 12 of them ran in two or 
 | Verdict | Experiments | Experiment-waves |
 |---|---|---|
 | `build` | 39 | 55 |
-| `marginal` | 9 | 22 |
-| `drop` | 45 | 82 |
+| `marginal` | 8 | 21 |
+| `drop` | 46 | 83 |
 
 | Category | Build | Marginal | Drop |
 |---|---|---|---|
 | Attitudes and politics | 8 | 0 | 0 |
 | Wellbeing and satisfaction | 2 | 2 | 0 |
 | Health | 3 | 0 | 4 |
-| Work, money and expectations | 3 | 2 | 3 |
+| Work, money and expectations | 3 | 1 | 4 |
 | Family, care and the household | 6 | 1 | 0 |
 | Technology and the future | 1 | 0 | 0 |
 | Sensitive questions | 1 | 0 | 0 |
@@ -288,19 +288,13 @@ At Wave 5, an experiment examined the comparison groups women have in mind when 
 
 *Assessed:* X08IVC: the condition asks the respondent to compare themselves to others of their own gender or education, naming their own persona category
 
-### Work, money and expectations (2)
+### Work, money and expectations (1)
 
 **`9.1` Measures of consumption and expenditure**  
 waves 1, 6 · allocation `f_consexpw6`  
 At Wave 1, an experiment was conducted to help develop efficient data collection instruments concerning household consumption. There is methodological concern about whether respondents consider all possible categories of expenditure to arrive at reports of household consumption.
 
 *Assessed:* one condition uses a showcard to trigger recall, so part of the stimulus is visual
-
-**`9.19` Benefits unit finances module**  
-wave 9  
-The first experiment presented respondents with an income summary screen, which displayed the person’s derived monthly net income based on their responses to previous answers in the survey. The second experiment was part of the Benefit Unit Finances module.
-
-*Assessed:* a module redesign; needs checking that conditions share an outcome
 
 ### Family, care and the household (1)
 
@@ -349,12 +343,13 @@ Listed compactly. The 28 procedural experiments share one reason and do not repe
 | `9.27` | 12 | Reporting of height and weight | the condition is interviewer-asked vs self-completion, which is mode |
 | `9.43` | 16 | Mental health questions comparisons | multi-select checklists that differ between versions; no single question and answer per row without restructuring the instrument |
 
-### Work, money and expectations (3)
+### Work, money and expectations (4)
 
 | ID | Waves | Title | Why not |
 |---|---|---|---|
 | `9.5` | 3 | Measures of wealth | outcomes are open £ amounts with no range in the instrument (ledger 53) and differ between aggregate and itemised; the only item every group answers is a code-all-that-apply list that differs by group (the 9.43 ruling). Revisit if a numeric outcome type exists |
 | `9.11` | 5, 8, 9 | Subjective expectations about the returns to higher education and decisions to attend university | the information treatment is an earnings graph whose figures are not in the instrument text; a visual stimulus |
+| `9.19` | 9 | Benefits unit finances module | a reporting-accuracy experiment, not a judgement or choice: the income summary screen shows the respondent's own derived income and the outcome is a corrected £ income, which a persona field already holds; the gross/net flows version yields open £ amounts across many benefit-unit variables (the 9.5 shape) (rich, 10 Oct 2026) |
 | `9.48` | 17 | Labour market expectations | anchored earnings buckets whose shown £ bounds were computed on screen and are not in the deposit; the exact stimulus cannot be recovered |
 
 ### The form of the question rather than its content (5)

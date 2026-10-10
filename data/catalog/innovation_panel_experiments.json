@@ -771,8 +771,8 @@
     "title": "Benefits unit finances module",
     "category": "work-money",
     "waves": "9",
-    "verdict": "marginal",
-    "reason": "a module redesign; needs checking that conditions share an outcome",
+    "verdict": "drop",
+    "reason": "a reporting-accuracy experiment, not a judgement or choice: the income summary screen shows the respondent's own derived income and the outcome is a corrected £ income, which a persona field already holds; the gross/net flows version yields open £ amounts across many benefit-unit variables (the 9.5 shape) (rich, 10 Oct 2026)",
     "description": "The first experiment presented respondents with an income summary screen, which displayed the person’s derived monthly net income based on their responses to previous answers in the survey. The second experiment was part of the Benefit Unit Finances module.",
     "vignette": false,
     "allocation_vars": []

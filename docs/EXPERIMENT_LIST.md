@@ -8,11 +8,11 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total | Rows built |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 38 | 16 | 4 | 6 | 26 | 372,831 |
+| Innovation Panel | UK · not publishable | 38 | 16 | 3 | 7 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 12 | 6 | 3 | 9 | 18 | 125,779 |
-| TESS | US · not publishable | 42 | 41 | 6 | 10 | 57 | 368,659 |
+| TESS | US · not publishable | 42 | 41 | 5 | 11 | 57 | 368,659 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **105** | **63** | **25** | **28** | **116** | **1,010,009** |
+| **Total** | | **105** | **63** | **23** | **30** | **116** | **1,010,009** |
 
 ## Next 35, in build order (28 built, 7 to go)
 
@@ -91,7 +91,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Innovation Panel
 
-UK · not publishable. 38 Built, 16 Buildable, 4 Needs checking, 6 Unlikely.
+UK · not publishable. 38 Built, 16 Buildable, 3 Needs checking, 7 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -149,10 +149,10 @@ UK · not publishable. 38 Built, 16 Buildable, 4 Needs checking, 6 Unlikely.
 | 9.35 | **Informal care**<br>Ways of asking about caring for others.<br>*Wave 15* | work/family/gender | Buildable | 0.12 |  |
 | 8.5 | **Branched vs. unbranched rating scales for measuring attitudes**<br>One-step vs two-step attitude scales.<br>*Waves 3, 4, 5* | survey methodology | Buildable | 0.10 |  |
 | 8.11 | **Impact of response scale direction on responses**<br>Answer scales shown in reverse order.<br>*Waves 7, 8* | survey methodology | Buildable | 0.06 |  |
-| 9.19 | **Benefits unit finances module**<br>A module redesign with an income summary screen.<br>*Wave 9* | economics/behavioural | Needs checking: do the conditions share an outcome? | 0.28 |  |
 | 9.32 | **Proxy nomination**<br>Ways of asking people to nominate a proxy.<br>*Wave 14* | work/family/gender | Needs checking: is the outcome the person's own answer? | 0.28 |  |
 | 8.12 | **Enhancing respondent engagement with the survey through tailored interesting questions**<br>Extra questions matched to the respondent's interests.<br>*Wave 7* | survey methodology | Needs checking: is there a shared outcome? | 0.18 |  |
 | 9.3 | **Reference groups in measuring satisfaction**<br>Compare yourself to people of your own gender or education.<br>*Wave 5* | moral/social/cognition | Needs checking: needs your ruling | 0.15 |  |
+| 9.19 | **Benefits unit finances module**<br>A module redesign with an income summary screen.<br>*Wave 9* | economics/behavioural | Unlikely: a reporting-accuracy experiment, not a judgement or choice: the income summary screen shows the respondent's own derived income and the outcome is a corrected £ income, which a persona field already holds; the gross/net flows version yields open £ amounts across many benefit-unit variables (the 9.5 shape) (rich, 10 Oct 2026) | 0.28 |  |
 | 9.1 | **Measures of consumption and expenditure**<br>Spending questions; one condition uses a printed card.<br>*Waves 1, 6* | economics/behavioural | Unlikely: part of the condition is a printed card | 0.20 |  |
 | 8.9 | **Separating systematic measurement error components using MTMM in longitudinal studies**<br>Repeated measures under different methods.<br>*Waves 7, 8, 9* | survey methodology | Unlikely: the condition is a measurement method, not text | 0.19 |  |
 | 8.1 | **Subsetting the questionnaire content**<br>Random subsets of questionnaire content.<br>*Waves 1-5* | survey methodology | Unlikely: no shared outcome | 0.17 |  |
@@ -199,7 +199,7 @@ UK · publishable (CC0). 12 Built, 6 Buildable, 3 Needs checking, 9 Unlikely.
 
 ## TESS
 
-US · not publishable. 42 Built, 41 Buildable, 6 Needs checking, 10 Unlikely.
+US · not publishable. 42 Built, 41 Buildable, 5 Needs checking, 11 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -287,7 +287,6 @@ US · not publishable. 42 Built, 41 Buildable, 6 Needs checking, 10 Unlikely.
 | agbrd | **The impact of genetic causation of mental illness on attitudes and beliefs toward the illness**<br>Do genetic explanations of mental illness change how serious and lasting it seems?<br>*2006; UK priority 0.96; transfers: Mechanism only* | health communication | Buildable | 0.09 |  |
 | wrdm4 | **Shame, Blame and Contamination: Mental Illness Stigma and the Family**<br>How the public view family members of people with mental illness or addiction.<br>*2004; UK priority 1.14; transfers: Full* | health communication | Buildable | 0.09 |  |
 | ctp8n | **Capitalization, self-esteem, and building social resources**<br>Sharing good news with others, self-esteem and building relationships.<br>*2005* | moral/social/cognition | Needs checking: main data file missing | 0.20 |  |
-| k5hpv | **Effects of Rejection on Multiple Relationships**<br>Recalling rejection by one partner, and feeling accepted by others.<br>*2005* | moral/social/cognition | Needs checking: main data file missing | 0.18 |  |
 | 7dc8s | **Testing the Generalizability of the Moral Mandate Effect Under Conditions of Personal Voice**<br>Does having a say make people accept moral decisions they disagree with?<br>*2006* | moral/social/cognition | Needs checking: main data file missing | 0.16 |  |
 | 36wjy | **Exploring the Social Bases of Attitude Strength**<br>How mixed social networks make people scrutinise persuasive messages.<br>*2004* | moral/social/cognition | Needs checking: main data file missing | 0.15 |  |
 | 5jua2 | **Reducing Intergroup Bias: Does Dual Identification Help or Harm?**<br>Threats to the ingroup and intergroup attitudes, by ethnic and national identity.<br>*2006* | moral/social/cognition | Needs checking: main data file missing | 0.13 |  |
@@ -298,6 +297,7 @@ US · not publishable. 42 Built, 41 Buildable, 6 Needs checking, 10 Unlikely.
 | pkfdr | **Studying the Effect of Income on Punitive Attitudes with a Two-List Factorial**<br>Is the link between income and punitive attitudes due to experience of the US justice system?<br>*2005; UK priority 0.68; transfers: US-specific* | economics/behavioural | Unlikely: answering needs US knowledge | 0.20 |  |
 | u8bhg | **Prosocial Motivation, Social Position, and Support for Social Welfare Policy**<br>Prosocial motivation, social position and support for welfare policy (from title).<br>*2015; UK priority 0.73; transfers: US-specific* | economics/behavioural | Unlikely: answering needs US knowledge | 0.19 |  |
 | y3m7j | **Effect of mood on creativity**<br>Does a good mood make people more creative?<br>*2005* | moral/social/cognition | Unlikely: no assignment record: the OSF deposit holds a completion report and an open-ends spreadsheet only (the mood essays and free-text word associations), not the main data file, so who got the happy or sad condition is unknown; the outcome is a free-text word needing a creativity score, not a coded answer (rich, 10 Oct 2026) | 0.19 |  |
+| k5hpv | **Effects of Rejection on Multiple Relationships**<br>Recalling rejection by one partner, and feeling accepted by others.<br>*2005* | moral/social/cognition | Unlikely: no assignment record: the OSF deposit holds a completion report and an open-ends spreadsheet only (free-text Q18-Q24), not the main data file (rich, 10 Oct 2026) | 0.18 |  |
 | m8y47 | **Measuring Perceptions and Attitudes about Overweight and Obesity**<br>At what body size do people call someone overweight or obese? Uses altered images.<br>*2004; UK priority 0.99; transfers: Mechanism only* | health communication | Unlikely: the condition is an image | 0.18 |  |
 | 5fu2b | **Two-Sided Messages and Pandemic Flu: Persuading the Public to Follow Contradictory Government Directives**<br>Persuading people to follow two contradictory pandemic directives: stay apart, yet queue for treatment.<br>*2008; UK priority 0.99; transfers: Mechanism only* | health communication | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.16 |  |
 | ujw87 | **The Impact of Information from similar or different advisors on judgment**<br>Advice from someone similar or different: how much does it count?<br>*2006* | moral/social/cognition | Unlikely: no respondent-level data: the OSF deposit holds only frequency tables (Shang_Codebook_Final.xls) and a figure, and the Shang module is absent from the TESS 2005 telephone-survey data file (osf.io/fr3eg); questions are mostly about NPR, the Red Cross and US public TV; the 'similar advisor' condition is built from the respondent's own persona (rich, 10 Oct 2026) | 0.16 |  |
