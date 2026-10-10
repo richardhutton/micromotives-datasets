@@ -1,0 +1,327 @@
+{
+  "_about": [
+    "Development Engagement Lab (Harvard Dataverse, CC0 1.0), Great Britain files. Candidate experiments read from the YouGov survey scripts on 2026-10-10, before triage.",
+    "status: take = looks ready; check = versions sit in page or module blocks and need reading. Image and video experiments (Sandbox Jun 2021, Oct 2023) are parked, not listed here."
+  ],
+  "experiments": [
+    {
+      "id": "DEL_W2_taxsplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_2_2020",
+      "split_var": "taxsplit",
+      "title": "Tax and COVID inequality",
+      "versions": 11,
+      "what_varies": "No framing, a general tax prompt, or one of 9 COVID inequality facts (women, schools, health, ethnicity, income, young, mental health, older people, disability), then a fair tax share for a middle earner",
+      "answer": "Fair tax share, 0-100% slider",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W2_buildbackbetter",
+      "survey": "DEL_Panel_GreatBritain_Wave_2_2020",
+      "split_var": "buildbackbetter",
+      "title": "Build back better",
+      "versions": 3,
+      "what_varies": "How the UK's, the world's or developing countries' economies should be run after COVID",
+      "answer": "Single choice",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W2_globloc",
+      "survey": "DEL_Panel_GreatBritain_Wave_2_2020",
+      "split_var": "globloc",
+      "title": "Global or local concern",
+      "versions": 2,
+      "what_varies": "'These days I am most concerned about' with or without 'because of the COVID-19 pandemic'",
+      "answer": "Single choice",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W3_leadershipsplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_3_2021",
+      "split_var": "leadershipsplit",
+      "title": "Leadership messages",
+      "versions": 5,
+      "what_varies": "Five text pages on UK global leadership",
+      "answer": "To read",
+      "status": "check",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W3_ngoconjointsplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_3_2021",
+      "split_var": "ngoconjointsplit",
+      "title": "NGO conjoint",
+      "versions": 2,
+      "what_varies": "Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs",
+      "answer": "Pick one NGO",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W3_ngosplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_3_2021",
+      "split_var": "ngosplit",
+      "title": "Large or small NGOs",
+      "versions": 2,
+      "what_varies": "Rating statements about large vs small development NGOs",
+      "answer": "Agree scale per statement",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W3_vulnsplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_3_2021",
+      "split_var": "vulnsplit",
+      "title": "Who COVID shows is vulnerable",
+      "versions": 3,
+      "what_varies": "The pandemic shows how vulnerable all / rich / poor countries are",
+      "answer": "5-point agree",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W4_CoLSplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_4_2022",
+      "split_var": "CoLSplit",
+      "title": "Cost of living",
+      "versions": 4,
+      "what_varies": "Control plus three cost-of-living treatment modules",
+      "answer": "To read",
+      "status": "check",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W4_split_sample",
+      "survey": "DEL_Panel_GreatBritain_Wave_4_2022",
+      "split_var": "split_sample",
+      "title": "Climate aid conjoint",
+      "versions": 2,
+      "what_varies": "Climate aid profiles with 8 or 6 attributes, 3 screens",
+      "answer": "Pick one",
+      "status": "check",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W4_DonationSplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_4_2022",
+      "split_var": "DonationSplit",
+      "title": "Ukraine donation follow-up",
+      "versions": 5,
+      "what_varies": "Five reasons to give elsewhere, shown to people who said they would donate to Ukraine",
+      "answer": "Single choice",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W4_connectstorysplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_4_2022",
+      "split_var": "connectstorysplit",
+      "title": "Climate harm stories",
+      "versions": 4,
+      "what_varies": "No story, or one of three stories linking climate change to everyday life",
+      "answer": "Harm rating per group",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W4_climatescenariosplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_4_2022",
+      "split_var": "climatescenariosplit",
+      "title": "Extreme weather news",
+      "versions": 4,
+      "what_varies": "Greenland ice melt, Pakistan floods, China heatwave, or UK 40C",
+      "answer": "Question after the story",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W4_EAsplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_4_2022",
+      "split_var": "EAsplit",
+      "title": "East Africa drought",
+      "versions": 4,
+      "what_varies": "Drought alone, or blamed on climate change in three ways",
+      "answer": "Choice, randomised order",
+      "status": "check",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W5_changesplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_5_2023",
+      "split_var": "changesplit",
+      "title": "Who must change for climate",
+      "versions": 2,
+      "what_varies": "'I will need to change' vs 'the UK Government will need to change'",
+      "answer": "5-point agree",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_W5_wordfeministsplit",
+      "survey": "DEL_Panel_GreatBritain_Wave_5_2023",
+      "split_var": "wordfeministsplit",
+      "title": "Naming a development policy (panel)",
+      "versions": 3,
+      "what_varies": "A development / inclusive / gender-inclusive development policy",
+      "answer": "Support-oppose",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Apr2020_climatesplitgroup",
+      "survey": "DEL_Sandbox_GreatBritain_Apr2020",
+      "split_var": "climatesplitgroup",
+      "title": "Climate and daily life",
+      "versions": 2,
+      "what_varies": "Climate change effect on day-to-day life, with or without a COVID comparison first",
+      "answer": "0-10 scale",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Apr2020_tracksplitgroup",
+      "survey": "DEL_Sandbox_GreatBritain_Apr2020",
+      "split_var": "tracksplitgroup",
+      "title": "Developing countries affect me",
+      "versions": 2,
+      "what_varies": "Two wordings of 'what happens in developing countries affects people like me'",
+      "answer": "Agree scale",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Apr2020_vulnsplitgroup",
+      "survey": "DEL_Sandbox_GreatBritain_Apr2020",
+      "split_var": "vulnsplitgroup",
+      "title": "Who COVID shows is vulnerable (sandbox)",
+      "versions": 3,
+      "what_varies": "All / rich / poor countries",
+      "answer": "5-point agree",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Apr2020_orgrolessplitgroup",
+      "survey": "DEL_Sandbox_GreatBritain_Apr2020",
+      "split_var": "orgrolessplitgroup",
+      "title": "Role of organisations",
+      "versions": 2,
+      "what_varies": "To read",
+      "answer": "To read",
+      "status": "check",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Apr2020_exp_Screen",
+      "survey": "DEL_Sandbox_GreatBritain_Apr2020",
+      "split_var": "exp_Screen",
+      "title": "Aid statement pairs",
+      "versions": 10,
+      "what_varies": "Two aid statements drawn at random from a bank, ten screens",
+      "answer": "Which do you agree with more",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Jul2020_experimentsplit",
+      "survey": "DEL_Sandbox_GreatBritain_Jul2020",
+      "split_var": "experimentsplit",
+      "title": "Global goals messages",
+      "versions": 12,
+      "what_varies": "Water, child deaths and poverty goals, each told as progress, failure or mixed, in rotated orders",
+      "answer": "0-10 support",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Jun2022_list",
+      "survey": "DEL_Sandbox_GreatBritain_Jun2022",
+      "split_var": "list",
+      "title": "Ukraine list experiment",
+      "versions": 3,
+      "what_varies": "Statement lists with and without a sensitive item about the Russia-Ukraine war",
+      "answer": "How many you agree with",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Jun2022_choice",
+      "survey": "DEL_Sandbox_GreatBritain_Jun2022",
+      "split_var": "choice",
+      "title": "Why Ukraine matters, me or others",
+      "versions": 2,
+      "what_varies": "Asked about yourself or about other people in the UK, with random statement pairs",
+      "answer": "Pick one statement",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Feb2023_wordfeministsplit",
+      "survey": "DEL_Sandbox_GreatBritain_Feb2023",
+      "split_var": "wordfeministsplit",
+      "title": "Naming a development policy (sandbox)",
+      "versions": 5,
+      "what_varies": "Development / feminist / inclusive / gender-inclusive policy, or the name only",
+      "answer": "Support-oppose",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Feb2023_track7split",
+      "survey": "DEL_Sandbox_GreatBritain_Feb2023",
+      "split_var": "track7split",
+      "title": "Aid budget with priorities",
+      "versions": 3,
+      "what_varies": "UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order",
+      "answer": "Increase or decrease aid",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Feb2023_equalgsplit",
+      "survey": "DEL_Sandbox_GreatBritain_Feb2023",
+      "split_var": "equalgsplit",
+      "title": "Gender equality, UK or abroad",
+      "versions": 2,
+      "what_varies": "Have women and men become more equal in the UK vs in developing countries",
+      "answer": "More or less equal",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Feb2023_odasplit",
+      "survey": "DEL_Sandbox_GreatBritain_Feb2023",
+      "split_var": "odasplit",
+      "title": "Gender aid compared to others",
+      "versions": 5,
+      "what_varies": "No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%",
+      "answer": "Increase or decrease aid",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Feb2023_progsplit",
+      "survey": "DEL_Sandbox_GreatBritain_Feb2023",
+      "split_var": "progsplit",
+      "title": "Gender gap progress",
+      "versions": 4,
+      "what_varies": "Overall gender gap index, or education 94%, economy 60%, politics 22% closed",
+      "answer": "Believable; more or less optimistic",
+      "status": "take",
+      "licence": "CC0 1.0"
+    },
+    {
+      "id": "DEL_Feb2023_abortsplit",
+      "survey": "DEL_Sandbox_GreatBritain_Feb2023",
+      "split_var": "abortsplit",
+      "title": "Abortion access, UK or abroad",
+      "versions": 2,
+      "what_varies": "Protect women's access to abortion in developing countries vs in the UK",
+      "answer": "Importance scale",
+      "status": "take",
+      "licence": "CC0 1.0"
+    }
+  ]
+}

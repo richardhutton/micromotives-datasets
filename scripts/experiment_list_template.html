@@ -1,0 +1,137 @@
+<title>SocSci-UK Experiment List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: full-width working list. Summary grid on top, filters, then one table using the whole screen. */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#18212b; --muted:#5d6a78; --rule:#dfe4ea; --soft:#eef1f5;
+  --built:#3b4a5a; --buildable:#1d7f4e; --check:#a8650a; --unlikely:#b23a3a; --focus:#2f6fb5;
+  --f-ui:"Libre Franklin", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111519; --panel:#171c22; --ink:#e7ebef; --muted:#9aa5b1; --rule:#2a323c; --soft:#1e252d;
+  --built:#a9b6c4; --buildable:#4cc58a; --check:#e2a64a; --unlikely:#ec7a7a; --focus:#6ea8ea; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111519; --panel:#171c22; --ink:#e7ebef; --muted:#9aa5b1; --rule:#2a323c; --soft:#1e252d;
+  --built:#a9b6c4; --buildable:#4cc58a; --check:#e2a64a; --unlikely:#ec7a7a; --focus:#6ea8ea; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.45}
+.wrap{padding-inline:24px;padding-block:24px 48px;display:grid;gap:20px}
+h1{font-size:24px;font-weight:700;margin:0}
+h2{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px}
+.lede{color:var(--muted);margin:4px 0 0;max-width:90ch}
+.top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:1000px){.top{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px;min-width:0}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.num{font-family:var(--f-data);font-variant-numeric:tabular-nums}
+.sum td.num,.sum th.n{text-align:left}
+.sum tr.total td{font-weight:700;border-bottom:none}
+.defs{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.defs li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;align-items:baseline}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid currentColor}
+.s-Built{color:var(--built)} .s-Buildable{color:var(--buildable)} .s-Needs{color:var(--check)} .s-Unlikely{color:var(--unlikely)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.controls input,.controls select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:7px 9px}
+.controls input{flex:1 1 260px;min-width:0}
+.controls :focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.count{color:var(--muted);margin-left:auto}
+.list{min-width:980px}
+.list td.id{font-family:var(--f-data);font-size:12px;white-space:nowrap}
+.list .t{font-weight:600}
+.list .d{color:var(--ink);margin-top:2px}
+.list .x{color:var(--muted);font-size:12.5px;margin-top:2px}
+.list .why{color:var(--muted);font-size:12.5px;margin-top:4px}
+.list col.c-src{width:150px} .list col.c-id{width:190px} .list col.c-cat{width:210px} .list col.c-st{width:230px} .list col.c-nov{width:80px}
+.note{color:var(--muted);font-size:12.5px;margin:10px 0 0}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>SocSci-UK Experiment List</h1>
+    <p class="lede">Every experiment we have built and every candidate we could add, from four sources, in one list with one set of columns.</p>
+  </header>
+
+  <section class="top">
+    <div class="panel">
+      <h2>By source and status</h2>
+      <div class="scroll"><table class="sum" id="sum"></table></div>
+    </div>
+    <div class="panel">
+      <h2>What the statuses mean</h2>
+      <ul class="defs">
+        <li><span><span class="pill s-Built">Built</span></span><span>Already in the corpus, checked and on disk.</span></li>
+        <li><span><span class="pill s-Buildable">Buildable</span></span><span>Not built. The condition text, the outcome and the record of who saw which condition all appear to exist. Still gets the full check when built.</span></li>
+        <li><span><span class="pill s-Needs">Needs checking</span></span><span>Not built. Something must be read or found first; the row says what.</span></li>
+        <li><span><span class="pill s-Unlikely">Unlikely</span></span><span>Not built. Probably breaks one of our rules (an image condition, no shared outcome, needs US knowledge, no data); the row says which.</span></li>
+      </ul>
+      <p class="note"><b>Novelty</b> (0 to 0.33) is how far a candidate's title sits from the nearest built title. Higher means less like anything we already hold.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search titles and descriptions" aria-label="Search">
+      <select id="fsrc" aria-label="Source"><option value="">All sources</option></select>
+      <select id="fst" aria-label="Status"><option value="">All statuses</option></select>
+      <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="scroll">
+      <table class="list">
+        <colgroup><col class="c-src"><col class="c-id"><col><col class="c-cat"><col class="c-st"><col class="c-nov"></colgroup>
+        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th></tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+    <p class="note">Sorted by source, then status, then novelty (highest first). Sources: Innovation Panel (UK Data Service SN 6849), DEL (Harvard Dataverse, CC0), TESS (OSF), Harvard Dataverse (UK deposits and the 10 Oct 2026 sweep).</p>
+  </section>
+</div>
+
+<script>
+const DATA = __DATA__;
+const SOURCES = ["Innovation Panel","DEL","TESS","Harvard Dataverse"];
+const STATUSES = ["Built","Buildable","Needs checking","Unlikely"];
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cls = s => "s-" + s.split(" ")[0];
+const rows = DATA.rows;
+
+(function summary(){
+  const n = (src, st) => rows.filter(r => (!src || r.source === src) && (!st || r.status === st)).length;
+  let h = `<thead><tr><th>Source</th><th>People · licence</th>${STATUSES.map(s => `<th class="n">${s}</th>`).join("")}<th class="n">Not built, total</th></tr></thead><tbody>`;
+  for (const s of SOURCES) {
+    h += `<tr><td>${esc(s)}</td><td>${esc(DATA.meta[s])}</td>${STATUSES.map(st => `<td class="num">${n(s, st)}</td>`).join("")}<td class="num">${n(s) - n(s, "Built")}</td></tr>`;
+  }
+  h += `<tr class="total"><td>Total</td><td></td>${STATUSES.map(st => `<td class="num">${n("", st)}</td>`).join("")}<td class="num">${rows.length - n("", "Built")}</td></tr></tbody>`;
+  document.getElementById("sum").innerHTML = h;
+})();
+
+const fsrc = document.getElementById("fsrc"), fst = document.getElementById("fst"), fcat = document.getElementById("fcat");
+SOURCES.forEach(s => fsrc.insertAdjacentHTML("beforeend", `<option>${esc(s)}</option>`));
+STATUSES.forEach(s => fst.insertAdjacentHTML("beforeend", `<option>${esc(s)}</option>`));
+[...new Set(rows.map(r => r.category))].sort().forEach(s => fcat.insertAdjacentHTML("beforeend", `<option>${esc(s)}</option>`));
+
+function render(){
+  const q = document.getElementById("q").value.toLowerCase();
+  const list = rows.filter(r => (!fsrc.value || r.source === fsrc.value) && (!fst.value || r.status === fst.value) &&
+      (!fcat.value || r.category === fcat.value) &&
+      (!q || `${r.id} ${r.title} ${r.description} ${r.details}`.toLowerCase().includes(q)))
+    .sort((a, b) => SOURCES.indexOf(a.source) - SOURCES.indexOf(b.source) ||
+      STATUSES.indexOf(a.status) - STATUSES.indexOf(b.status) || (b.novelty ?? -1) - (a.novelty ?? -1) || a.id.localeCompare(b.id));
+  document.getElementById("count").textContent = `${list.length} of ${rows.length} experiments`;
+  document.getElementById("tb").innerHTML = list.map(r => `<tr>
+    <td>${esc(r.source)}</td>
+    <td class="id">${esc(r.id)}</td>
+    <td><div class="t">${esc(r.title)}</div>${r.description ? `<div class="d">${esc(r.description)}</div>` : ""}${r.details ? `<div class="x">${esc(r.details)}</div>` : ""}</td>
+    <td>${esc(r.category)}</td>
+    <td><span class="pill ${cls(r.status)}">${esc(r.status)}</span>${r.reason ? `<div class="why">${esc(r.reason)}</div>` : ""}</td>
+    <td class="num">${r.novelty == null ? "" : r.novelty.toFixed(2)}</td>
+  </tr>`).join("");
+}
+["q"].forEach(id => document.getElementById(id).addEventListener("input", render));
+[fsrc, fst, fcat].forEach(el => el.addEventListener("input", render));
+render();
+</script>

@@ -420,6 +420,8 @@ def test_no_prompt_here_can_be_handed_a_dataframe() -> None:
         "ordinal_span",
         "screen_uk_transfer",
         "score_uk_priority",
+        "screen_deposit",
+        "categorise_experiment",
     ):
         params = list(inspect.signature(getattr(jev, name)).parameters.values())
         for p in params[1:]:  # the client itself is exempt
@@ -427,3 +429,58 @@ def test_no_prompt_here_can_be_handed_a_dataframe() -> None:
                 f"jev.{name} takes {p.name}: {p.annotation} — every argument after the "
                 "client must be text or labels, never a dataframe"
             )
+
+
+# --------------------------------------------------------------------------
+# the Dataverse sweep and corpus overview prompts (moved here 2026-10-10)
+# --------------------------------------------------------------------------
+
+
+def _deposit(uk: _Answer, design: _Answer) -> tuple[PromptStub, jev.DepositReading]:
+    stub = PromptStub({"uk_sample": uk, "design": design})
+    reading = jev.screen_deposit(
+        stub,
+        title="Pay to pollute",
+        description="Survey experiments with Britons",
+        keywords="survey experiment",
+        geography="United Kingdom",
+        publication="BJPolS 2017",
+        files="data.tab, questionnaire.pdf",
+    )
+    return stub, reading
+
+
+def test_a_deposit_is_asked_both_questions_from_its_own_metadata() -> None:
+    stub, reading = _deposit(
+        _Answer("uk_only", 0.95, {"uk_only": 0.95}),
+        _Answer("survey_experiment", 0.9, {"survey_experiment": 0.9}),
+    )
+    assert set(stub.questions[0]) == {"uk_sample", "design"}
+    assert set(stub.questions[0]["uk_sample"].criteria) == set(jev.DEPOSIT_UK_SAMPLE)
+    assert set(stub.questions[0]["design"].criteria) == set(jev.DEPOSIT_DESIGN)
+    assert "Pay to pollute" in stub.states[0] and "questionnaire.pdf" in stub.states[0]
+    assert (reading.uk_sample.value, reading.design.value) == ("uk_only", "survey_experiment")
+    assert not reading.needs_review
+
+
+def test_an_unsure_reading_on_either_question_asks_for_review() -> None:
+    """One confident answer must not cover for an unsure one."""
+    _, reading = _deposit(
+        _Answer("uk_only", 0.95, {"uk_only": 0.95}),
+        _Answer("conjoint", 0.40, {"conjoint": 0.40, "survey_experiment": 0.35}),
+    )
+    assert reading.needs_review
+
+
+def test_a_category_can_always_be_none_of_these() -> None:
+    """DEL's aid studies had no slot in the vocabulary: saying so must be possible."""
+    stub = PromptStub({"category": _Answer(jev.NONE_OF_THESE, 0.8, {})})
+    v = jev.categorise_experiment(stub, "Aid budget", "UK aid", ("health",), ("health messaging",))
+    criteria = stub.questions[0]["category"].criteria
+    assert jev.NONE_OF_THESE in criteria and criteria["health"] == "health messaging"
+    assert v.value == jev.NONE_OF_THESE and v.needs_review
+
+
+def test_categories_and_meanings_must_pair_up() -> None:
+    with pytest.raises(ValueError):
+        jev.categorise_experiment(PromptStub({}), "t", "d", ("a", "b"), ("only one",))

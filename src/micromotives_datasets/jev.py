@@ -1016,3 +1016,118 @@ def score_uk_priority(cli: Any, title: str, questions: str) -> PriorityReading:
         evergreen_conf=float(ever.confidence),
         domain=_verdict(r.answers["domain"]),
     )
+
+
+# --------------------------------------------------------------------------
+# deposits and categories: the Dataverse sweep and corpus overview prompts
+# --------------------------------------------------------------------------
+
+DEPOSIT_UK_SAMPLE = {
+    "uk_only": "respondents were sampled in the United Kingdom (or one of its nations) only",
+    "uk_among_others": (
+        "a multi-country study in which the UK, Britain or one of its nations is one of the samples"
+    ),
+    "not_uk": "respondents were sampled outside the United Kingdom",
+    "cannot_tell": "the text does not say where respondents were sampled",
+}
+DEPOSIT_DESIGN = {
+    "survey_experiment": (
+        "a survey in which respondents were randomly assigned to different question wordings, "
+        "frames, vignettes or information"
+    ),
+    "conjoint": "a conjoint or discrete-choice experiment with randomised profile attributes",
+    "list_experiment": "a list experiment (item count technique) with randomised lists",
+    "field_or_lab_experiment": (
+        "a randomised experiment carried out in the field or a lab, not inside a survey"
+    ),
+    "observational": "a survey, panel, text corpus or other data with no randomised assignment",
+    "other": "anything else, including software, simulations or aggregate data",
+}
+
+
+@dataclass
+class DepositReading:
+    """Where a data deposit's respondents were, and what kind of study made it."""
+
+    uk_sample: Verdict
+    design: Verdict
+
+    @property
+    def needs_review(self) -> bool:
+        return self.uk_sample.needs_review or self.design.needs_review
+
+
+def screen_deposit(
+    cli: Any,
+    title: str,
+    description: str,
+    keywords: str,
+    geography: str,
+    publication: str,
+    files: str,
+) -> DepositReading:
+    """Read a Dataverse deposit's own metadata: UK sample? randomised design?
+
+    Everything sent is the deposit's public record (title, description, keywords,
+    coverage, citation, file NAMES). Never a data file's contents. A keyword
+    heuristic is run beside this by `scripts/dataverse_sweep.py`, and the two
+    are reported where they disagree; this ranks a reading queue, never decides.
+    """
+    from typesafe_sdk import Choice
+
+    state = (
+        f'Research data deposit: "{title}"\n\n'
+        f"Description: {description or '(none)'}\n\n"
+        f"Keywords: {keywords or '(none)'}\n"
+        f"Geographic coverage: {geography or '(none)'}\n"
+        f"Publication: {publication or '(none)'}\n"
+        f"Files: {files or '(none)'}"
+    )
+    r = cli.system_one(
+        state=state,
+        questions={
+            "uk_sample": Choice(
+                criteria=DEPOSIT_UK_SAMPLE,
+                instructions="Where were the respondents in this study sampled?",
+            ),
+            "design": Choice(
+                criteria=DEPOSIT_DESIGN,
+                instructions="What kind of study produced this data?",
+            ),
+        },
+    )
+    return DepositReading(
+        uk_sample=_verdict(r.answers["uk_sample"]), design=_verdict(r.answers["design"])
+    )
+
+
+def categorise_experiment(
+    cli: Any,
+    title: str,
+    description: str,
+    categories: tuple[str, ...],
+    meanings: tuple[str, ...],
+) -> Verdict:
+    """Pick one of the corpus's categories for an experiment, or NONE_OF_THESE.
+
+    `categories` and `meanings` are the manifest's vocabulary, paired by
+    position. NONE_OF_THESE is always offered, because a topic the vocabulary has
+    no slot for (DEL's aid and climate studies, 2026-10-10) should say so rather
+    than be forced into the least-bad wrong bucket.
+    """
+    from typesafe_sdk import Choice
+
+    # strict=True is the check: a mismatched pair raises rather than silently
+    # dropping categories off the end (tests/test_jev.py mutation-tests it).
+    criteria = dict(zip(categories, meanings, strict=True))
+    criteria[NONE_OF_THESE] = "none of these categories fits"
+    r = cli.system_one(
+        state=f'Survey experiment: "{title}"\n\n{description}',
+        questions={
+            "category": Choice(
+                criteria=criteria,
+                instructions="Which category best describes what this experiment studies?",
+            )
+        },
+    )
+    return _verdict(r.answers["category"])
