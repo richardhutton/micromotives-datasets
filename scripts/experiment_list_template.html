@@ -39,7 +39,8 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .controls input{flex:1 1 260px;min-width:0}
 .controls :focus-visible{outline:2px solid var(--focus);outline-offset:1px}
 .count{color:var(--muted);margin-left:auto}
-.list{min-width:980px}
+.list{min-width:980px;table-layout:fixed}
+.list td{overflow-wrap:anywhere}
 .list td.id{font-family:var(--f-data);font-size:12px;white-space:nowrap}
 .list .t{font-weight:600}
 .list .d{color:var(--ink);margin-top:2px}
@@ -83,6 +84,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
     </div>
     <div class="scroll">
       <table class="list">
+        <colgroup><col style="width:9%"><col style="width:10%"><col style="width:47%"><col style="width:11%"><col style="width:10%"><col style="width:5%"><col style="width:3.5%"><col style="width:4.5%"></colgroup>
         <colgroup><col class="c-src"><col class="c-id"><col><col class="c-cat"><col class="c-st"><col class="c-nov"><col class="c-nov"></colgroup>
         <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th><th>Next</th><th>Rows</th></tr></thead>
         <tbody id="tb"></tbody>
