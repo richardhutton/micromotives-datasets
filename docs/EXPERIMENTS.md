@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**64 experiments.** 13 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 22 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**66 experiments.** 15 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 22 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 13 | 131,260 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 15 | 156,103 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 22 | 324,392 | **no** — UKDS End User Licence |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **64** | **752,855** | |
+| **Total** | **66** | **777,698** | |
 
 ---
 
@@ -28,6 +28,8 @@
 | `POMIFD` ⚠ | Replication Data for: The Variable Persuasiveness of Political Rhet… | Harvard Dataverse | `doi:10.7910/DVN/POMIFD` | 13,268 |
 | `ukds_6849_eq5d5l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 13,203 |
 | `ukds_6849_itemcount_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.17: measuring … | UK Data Service | `UKDS SN 6849` | 12,672 |
+| `del_panel_w3_ngo_conjoint_donate` | Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO … | Harvard Dataverse | `doi:10.7910/DVN/CCUZYI` | 12,438 |
+| `del_panel_w3_ngo_conjoint_petition` | Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO … | Harvard Dataverse | `doi:10.7910/DVN/CCUZYI` | 12,405 |
 | `ukds_6849_itemcount_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.17: measuring … | UK Data Service | `UKDS SN 6849` | 12,320 |
 | `35M5CV_sky` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 12,055 |
 | `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
@@ -103,6 +105,32 @@ Forced choice between two possible Brexit deals, each described by eight negotia
 - **Rows** — 49,395 from 3,293 respondents
 - **Licence** — CC0 1.0 Universal
 - **Verified against** — the authors' own `cregg::cj()`, 84 estimates agreeing to 1e-6; data/catalog/answer_key_EFXNLX.csv
+
+### `del_panel_w3_ngo_conjoint_donate`
+
+**Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO conjoint, which would you donate to**
+
+Paired-profile conjoint: two development NGOs per screen, each described by size, headquarters, region of work and issue focus, randomised per screen; which would you be more likely to donate to. Three screens per person; the donate half of a donate/petition split.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/CCUZYI`
+- **Type** — paired-profile conjoint, 4 attributes (2x2x5x5), 3 screens per respondent, forced choice
+- **Category** — economics/behavioural
+- **Rows** — 12,438 from 4,146 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/CCUZYI
+- **Verified against** — no published reference; an independent checker re-derived all 12,438 rows from the raw .sav (0 missing, extra or wrong rows; every condition string, factor and response matched) and found the age-as-code defect, then re-confirmed age against the value labels on every row after the fix (10 Oct 2026)
+
+### `del_panel_w3_ngo_conjoint_petition`
+
+**Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO conjoint, which would you sign a petition for**
+
+Paired-profile conjoint: two development NGOs per screen, each described by size, headquarters, region of work and issue focus, randomised per screen; which would you be more likely to sign a petition for. Three screens per person; the petition half of a donate/petition split.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/CCUZYI`
+- **Type** — paired-profile conjoint, 4 attributes (2x2x5x5), 3 screens per respondent, forced choice
+- **Category** — economics/behavioural
+- **Rows** — 12,405 from 4,135 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/CCUZYI
+- **Verified against** — no published reference; an independent checker re-derived all 12,405 rows from the raw .sav (0 missing, extra or wrong rows; every condition string, factor and response matched) and found the age-as-code defect, then re-confirmed age against the value labels on every row after the fix (10 Oct 2026)
 
 ### `35M5CV_sky`
 
@@ -617,7 +645,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 5 | 1 | 128,176 |
+| economics/behavioural | 7 | 1 | 153,019 |
 | health communication | 0 | 7 | 53,404 |
 | moral/social/cognition | 3 | 6 | 108,446 |
 | political identity/polarisation | 4 | 0 | 34,920 |

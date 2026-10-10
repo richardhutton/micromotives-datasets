@@ -1,0 +1,134 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO conjoint, which would you donate to"
+data_file: DEL_Panel_GreatBritain_Wave_3_2021_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/CCUZYI, stated on the Harvard Dataverse deposit "DEL
+  Panel 2021" and read from the Dataverse API (latestVersion.license) on 10 Oct 2026.
+
+comparable_to_socsci210: false
+experiment: panel_w3_ngo_conjoint_donate
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; et al., "DEL Panel 2021", Harvard Dataverse,
+  https://doi.org/10.7910/DVN/CCUZYI; DEL_Panel_GreatBritain_Wave_3_2021_Data.sav.
+  YouGov online panel, wave 3, n = 8,281 adults in Great Britain.
+
+  THE DESIGN. A paired-profile conjoint. `ngoconjointsplit` (assign_treatment(2, ...))
+  sends half the sample to a DONATE framing (this recipe, 4,146 people, screens 1-3) and
+  half to a PETITION framing (del_panel_w3_ngo_conjoint_petition.yaml, 4,135, screens
+  4-6). Each screen shows two development NGOs, A and B, each described by four
+  attributes, levels drawn per screen: size (2), headquarters (2), region of work (5),
+  issue focus (5). `src_<screen>_attribut<k>_<1|2>` records every level shown, for A (_1)
+  and B (_2). Everyone in the framing answered all three screens; no one answered both
+  framings; no screen ever shows two identical NGOs.
+
+  WHAT IS TRANSCRIBED AND WHAT IS NOT. The level texts are word-for-word from the
+  questionnaire's `attribut1_list` .. `attribut4_list` (DEL_Panel_GreatBritain_Wave_3_
+  2021_Survey.docx) and match the data's value labels. The intro sentence and the final
+  question are word-for-word from `ngo_donate`. The comparison TABLE, however, is built
+  by script code (`$screen1_table.raw`) that the exported questionnaire does not
+  include, so two things cannot be determined from the source:
+    - the row headings beside each level. The codebook's variable labels read "Size of
+      NGO", "Location of Headquarters", "Region of work", "Issue focus", but those are
+      documentation, not the screen, so they are NOT rendered (docs/CONVENTIONS.md,
+      "Never invent stimulus text");
+    - whether the attribute rows were shown in a fixed or shuffled order. Wave 3
+      records no order variable and its exported script has no shuffle, BUT the same
+      team's wave 4 conjoint builds its table with `attr_order = random_shuffle([1..8])`
+      and an "Attribute" heading column, which is positive evidence that wave 3 may
+      have shuffled too. If it did, nothing recorded the order.
+  So the table is NOT reproduced as a table. Each NGO is narrated as the four texts its
+  column held, in the list order 1-4; the added narration ("You were then shown two:",
+  "described as", "and", the semicolon) is ours (docs/CONVENTIONS.md, "Narrating what
+  the respondent did"). This is the EFXNLX risk (ledger 114) handled by not claiming a
+  layout, and it is the riskiest judgement in this recipe.
+
+  "PAIR 1/2/3" before the intro is DROPPED: a row cannot cite its position
+  (docs/CONVENTIONS.md, "Sequence signposting"). The `<br/>` breaks become spaces.
+
+  OUTCOME. 1 = "Development NGO/Charity A", 2 = "Development NGO/Charity B", a forced
+  choice; no non-answer code occurs. The options are enumerated in the question ("1
+  means ...; 2 means ...", our words, the PZB01G convention) because a nominal scale may
+  not carry end labels. Three tasks per person (screens 1-3).
+
+  AGE IS A CODE IN THIS FILE: 1 = "18" ... 77 = "94" (the Feb 2023 sandbox stores real
+  ages). The first build rendered the code, every row 17 years too young; the
+  independent checker caught it, and the pipeline now reads age through its value
+  labels, with QC rule 20 failing any age outside 16-120 (ledger 145).
+
+  PERSONA and PERSON ID as in del_sandbox_feb2023_wordfeminist.yaml (study_id `del`,
+  `GUNQID`), with this file's own non-answer codes: here past 2019 vote codes 8 "Other"
+  and 9 "Don't know" (the Feb 2023 file used 98 and 99), so only 9 is declared.
+
+condition:
+  template:
+    # 10,000 cells, 12,438 screens: drawn, not crossed (ConditionTemplate.sparse).
+    sparse: true
+    text: >-
+      Thinking about development NGOs/charities that work to reduce poverty in poor
+      countries, we are now going to present to you two NGOs. Please indicate which of
+      the following NGOs/charities you would be more likely to donate to if asked. You
+      were then shown two: Development NGO/Charity A, described as "{size_A}",
+      "{hq_A}", "{region_A}" and "{focus_A}"; and Development NGO/Charity B, described as
+      "{size_B}", "{hq_B}", "{region_B}" and "{focus_B}".
+    dimensions:
+      size_A: {var: src_1_attribut1_1, levels: &size {1: {level: large, text: Large NGO/charity}, 2: {level: small, text: Small NGO/charity}}}
+      hq_A: {var: src_1_attribut2_1, levels: &hq {1: {level: uk, text: Headquarters in the UK}, 2: {level: poor_country, text: Headquarters in a poor country}}}
+      region_A: {var: src_1_attribut3_1, levels: &region {1: {level: eeca, text: Eastern Europe/Central Asia}, 2: {level: ssa, text: Sub-Saharan Africa}, 3: {level: mena, text: Middle East and North Africa}, 4: {level: sa_sea, text: South Asia/Southeast Asia}, 5: {level: latam, text: Latin America}}}
+      focus_A: {var: src_1_attribut4_1, levels: &focus {1: {level: wash, text: "Water, sanitation and hygiene"}, 2: {level: women_girls, text: Women and girls}, 3: {level: education, text: Education}, 4: {level: health, text: Health}, 5: {level: range, text: A range of issues}}}
+      size_B: {var: src_1_attribut1_2, levels: *size}
+      hq_B: {var: src_1_attribut2_2, levels: *hq}
+      region_B: {var: src_1_attribut3_2, levels: *region}
+      focus_B: {var: src_1_attribut4_2, levels: *focus}
+
+outcomes:
+  - var: ngo_donate
+    task_num: 0
+    question: &q >-
+      Which of the following NGOs/charities are you more likely to donate to? 1 means
+      "Development NGO/Charity A"; 2 means "Development NGO/Charity B".
+    scale: &scale
+      min: 1
+      max: 2
+      nominal: true
+  - var: ngo_donate2
+    task_num: 1
+    question: *q
+    scale: *scale
+    condition_vars: [src_2_attribut1_1, src_2_attribut2_1, src_2_attribut3_1, src_2_attribut4_1, src_2_attribut1_2, src_2_attribut2_2, src_2_attribut3_2, src_2_attribut4_2]
+  - var: ngo_donate3
+    task_num: 2
+    question: *q
+    scale: *scale
+    condition_vars: [src_3_attribut1_1, src_3_attribut2_1, src_3_attribut3_1, src_3_attribut4_1, src_3_attribut1_2, src_3_attribut2_2, src_3_attribut3_2, src_3_attribut4_2]
+
+response_recode: {1: 1, 2: 2}
+missing_codes: [8, 9]
+
+persona_label_rewrite:
+  # Truncated by SPSS in every DEL file; see del_sandbox_feb2023_wordfeminist.yaml.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  education_level: [19, 20]
+  gross_household: [16, 17]
+  ethnicity_new: [19]
+  region_GOR: [13]
+  religion: [16]
+  socialgrade_cie: [7, 8]
+  pastvote_ge_2019: [9]
+  pastvote_EURef: [4]

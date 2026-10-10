@@ -254,6 +254,18 @@
       "description": "The same development-policy description shown under four names (development, feminist, inclusive, gender-inclusive), or the name 'feminist development policy' alone with no description, then support or oppose on a 5-point scale. The first question in the survey, so nothing earlier primes it.",
       "design": "5-arm between-subjects wording split, one item per respondent",
       "verified_against": "no published reference; an independent checker re-derived all 1,788 rows from the raw .sav (0 missing, extra, wrong-arm or wrong-response rows), transcribed all five items from the questionnaire (exact match on every condition and outcome), and tabulated every persona code on all rows (10 Oct 2026)"
+    },
+    "del_panel_w3_ngo_conjoint_donate": {
+      "category": "economics/behavioural",
+      "description": "Paired-profile conjoint: two development NGOs per screen, each described by size, headquarters, region of work and issue focus, randomised per screen; which would you be more likely to donate to. Three screens per person; the donate half of a donate/petition split.",
+      "design": "paired-profile conjoint, 4 attributes (2x2x5x5), 3 screens per respondent, forced choice",
+      "verified_against": "no published reference; an independent checker re-derived all 12,438 rows from the raw .sav (0 missing, extra or wrong rows; every condition string, factor and response matched) and found the age-as-code defect, then re-confirmed age against the value labels on every row after the fix (10 Oct 2026)"
+    },
+    "del_panel_w3_ngo_conjoint_petition": {
+      "category": "economics/behavioural",
+      "description": "Paired-profile conjoint: two development NGOs per screen, each described by size, headquarters, region of work and issue focus, randomised per screen; which would you be more likely to sign a petition for. Three screens per person; the petition half of a donate/petition split.",
+      "design": "paired-profile conjoint, 4 attributes (2x2x5x5), 3 screens per respondent, forced choice",
+      "verified_against": "no published reference; an independent checker re-derived all 12,405 rows from the raw .sav (0 missing, extra or wrong rows; every condition string, factor and response matched) and found the age-as-code defect, then re-confirmed age against the value labels on every row after the fix (10 Oct 2026)"
     }
   }
 }

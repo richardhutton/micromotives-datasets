@@ -10,7 +10,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.3,
-   "next": 12
+   "next": 7
   },
   {
    "source": "Innovation Panel",
@@ -33,7 +33,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 6
+   "next": 4
   },
   {
    "source": "Innovation Panel",
@@ -45,7 +45,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 20
+   "next": 16
   },
   {
    "source": "Innovation Panel",
@@ -68,7 +68,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 13
+   "next": 8
   },
   {
    "source": "Innovation Panel",
@@ -91,7 +91,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.22,
-   "next": 23
+   "next": 20
   },
   {
    "source": "Innovation Panel",
@@ -103,7 +103,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 21
+   "next": 17
   },
   {
    "source": "Innovation Panel",
@@ -115,7 +115,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 32
+   "next": 28
   },
   {
    "source": "Innovation Panel",
@@ -127,7 +127,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.2,
-   "next": 16
+   "next": 13
   },
   {
    "source": "Innovation Panel",
@@ -150,7 +150,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.19,
-   "next": 34
+   "next": 30
   },
   {
    "source": "Innovation Panel",
@@ -173,7 +173,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.19,
-   "next": 37
+   "next": 33
   },
   {
    "source": "Innovation Panel",
@@ -229,7 +229,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.17,
-   "next": 25
+   "next": 23
   },
   {
    "source": "Innovation Panel",
@@ -241,7 +241,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.17,
-   "next": 7
+   "next": 6
   },
   {
    "source": "Innovation Panel",
@@ -415,10 +415,9 @@
    "description": "Two aid statements drawn at random from a bank, ten screens. Answer: Which do you agree with more.",
    "details": "Sandbox Apr 2020; 10 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
-   "reason": "",
-   "novelty": 0.31,
-   "next": 1
+   "status": "Unlikely",
+   "reason": "pandemic-framed: the 131-statement bank is April 2020 COVID messaging; ruled out by rich, 10 Oct 2026",
+   "novelty": 0.31
   },
   {
    "source": "DEL",
@@ -427,10 +426,9 @@
    "description": "Two wordings of 'what happens in developing countries affects people like me'. Answer: Agree scale.",
    "details": "Sandbox Apr 2020; 2 conditions",
    "category": "survey methodology",
-   "status": "Buildable",
-   "reason": "",
-   "novelty": 0.31,
-   "next": 8
+   "status": "Unlikely",
+   "reason": "pandemic-framed: condition 2 adds \"with respect to the Covid-19/coronavirus outbreak\"; ruled out by rich, 10 Oct 2026",
+   "novelty": 0.31
   },
   {
    "source": "DEL",
@@ -452,7 +450,8 @@
    "category": "moral/social/cognition",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.29
+   "novelty": 0.29,
+   "next": 34
   },
   {
    "source": "DEL",
@@ -464,7 +463,7 @@
    "status": "Built",
    "reason": "",
    "novelty": 0.29,
-   "next": 3
+   "next": 0
   },
   {
    "source": "DEL",
@@ -475,19 +474,20 @@
    "category": "political preferences/policy",
    "status": "Buildable",
    "reason": "",
-   "novelty": 0.28
+   "novelty": 0.28,
+   "next": 36
   },
   {
    "source": "DEL",
    "id": "W3_ngoconjointsplit",
    "title": "NGO conjoint",
    "description": "Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO.",
-   "details": "Panel W3 2021; 2 conditions",
+   "details": "24,843 rows as two experiments (donate 12,438; petition 12,405); Panel W3 2021",
    "category": "economics/behavioural",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.28,
-   "next": 2
+   "next": 1
   },
   {
    "source": "DEL",
@@ -499,7 +499,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.28,
-   "next": 5
+   "next": 3
   },
   {
    "source": "DEL",
@@ -511,7 +511,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.28,
-   "next": 10
+   "next": 9
   },
   {
    "source": "DEL",
@@ -523,7 +523,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.27,
-   "next": 4
+   "next": 2
   },
   {
    "source": "DEL",
@@ -535,7 +535,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.27,
-   "next": 17
+   "next": 14
   },
   {
    "source": "DEL",
@@ -580,7 +580,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.25,
-   "next": 18
+   "next": 15
   },
   {
    "source": "DEL",
@@ -603,7 +603,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 31
+   "next": 26
   },
   {
    "source": "DEL",
@@ -615,7 +615,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 35
+   "next": 31
   },
   {
    "source": "DEL",
@@ -627,7 +627,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 9
+   "next": 5
   },
   {
    "source": "DEL",
@@ -639,7 +639,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 15
+   "next": 11
   },
   {
    "source": "DEL",
@@ -662,7 +662,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.2,
-   "next": 27
+   "next": 22
   },
   {
    "source": "DEL",
@@ -685,7 +685,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.15,
-   "next": 36
+   "next": 35
   },
   {
    "source": "DEL",
@@ -752,7 +752,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.33,
-   "next": 22
+   "next": 19
   },
   {
    "source": "TESS",
@@ -764,7 +764,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.32,
-   "next": 19
+   "next": 18
   },
   {
    "source": "TESS",
@@ -787,7 +787,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 33
+   "next": 32
   },
   {
    "source": "TESS",
@@ -799,7 +799,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 26
+   "next": 24
   },
   {
    "source": "TESS",
@@ -822,7 +822,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 30
+   "next": 29
   },
   {
    "source": "TESS",
@@ -856,7 +856,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.22,
-   "next": 24
+   "next": 21
   },
   {
    "source": "TESS",
@@ -901,7 +901,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 29
+   "next": 27
   },
   {
    "source": "TESS",
@@ -957,7 +957,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.2,
-   "next": 14
+   "next": 12
   },
   {
    "source": "TESS",
@@ -1145,7 +1145,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.15,
-   "next": 11
+   "next": 10
   },
   {
    "source": "TESS",
@@ -1179,7 +1179,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.15,
-   "next": 28
+   "next": 25
   },
   {
    "source": "TESS",
@@ -2335,7 +2335,7 @@
    "Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).",
    "Order: greedy diversity. Each pick is the candidate whose title sits furthest from everything built and already picked (Voyage title embeddings), discounted for categories we already hold many of; TESS also weighted by its UK priority score.",
    "Hand rule: DEL experiments whose conditions vary real numbers (Gender aid compared to others, 5 conditions; Gender gap progress, 4) replace 2-condition wording tests, because the title-only measure cannot see design.",
-   "Excluded: pandemic-framed experiments (6 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment."
+   "Excluded: pandemic-framed experiments (8 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment. Two were caught only on reading the instrument: the Apr 2020 aid statement bank and the Apr 2020 \"developing countries\" split."
   ]
  }
 }

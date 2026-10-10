@@ -95,8 +95,14 @@ def _persona(ds: Dataset, row: Any, recipe: Recipe, cw: Crosswalk | None = None)
         if field in known:
             # age / household_size are ints on the model; everything else is text.
             if field in {"age", "household_size"}:
+                # Read the LABEL, not the raw value: DEL's wave 3 panel stores age as
+                # a code (1 = "18" ... 77 = "94"), and the raw code made every adult
+                # 17 years younger, 1,735 of them minors. An unlabelled value's label
+                # is the value itself, so files holding real ages are unchanged. A
+                # label that is not a number (a band such as "18-24") is dropped
+                # rather than rendered as its code.
                 try:
-                    fields[field] = int(float(raw))
+                    fields[field] = int(float(label))
                 except (TypeError, ValueError):
                     continue
             else:

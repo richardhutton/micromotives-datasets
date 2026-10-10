@@ -309,6 +309,15 @@ class ConditionTemplate(BaseModel):
         description="Dimension name -> its variable and levels, in the order "
         "`condition_num` counts them."
     )
+    sparse: bool = Field(
+        default=False,
+        description="The design is drawn, not crossed: each respondent sees a random cell "
+        "of a product far larger than the sample, so most cells never occur (DEL's NGO "
+        "conjoint declares 2x2x5x5 per profile, 10,000 cells, and 12,438 screens fill "
+        "7,052). QC rule 2 then checks that every declared LEVEL of every dimension "
+        "occurs, instead of every cell: a level that never appears is still a defect "
+        "(a wrong code, a dead variable), while an empty cell is just arithmetic.",
+    )
     outcome_questions: dict[int, str] = Field(
         default_factory=dict,
         description="`task_num` -> the question for that item, when its wording varies "

@@ -173,7 +173,19 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     # --- Rule 2: every declared arm must appear -----------------------------
     declared = {a.condition_num for a in recipe.condition.arms}
     produced = set(rep.rows_per_condition)
-    if missing := declared - produced:
+    template = recipe.condition.template
+    if template is not None and template.sparse:
+        # A drawn design leaves most cells empty by arithmetic; what must still
+        # occur is every LEVEL of every dimension (ConditionTemplate.sparse).
+        levels_seen: dict[str, set[str]] = {}
+        for r in rows:
+            for dim, level in (r.factors or {}).items():
+                levels_seen.setdefault(dim, set()).add(level)
+        for dim, d in template.dimensions.items():
+            declared_levels = {lv.level for lv in d.levels.values()}
+            if absent := declared_levels - levels_seen.get(dim, set()):
+                rep.warnings.append(f"sparse design: {dim} levels with no rows: {sorted(absent)}")
+    elif missing := declared - produced:
         rep.warnings.append(f"declared arms with no rows: {sorted(missing)}")
     if extra := produced - declared:
         rep.failures.append(f"rows in undeclared arms: {sorted(extra)}")
@@ -548,6 +560,21 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             "respondent is keyed by row index, so the same person in two waves "
             "becomes two unrelated participants, and the wave-on-wave link is lost "
             "with nothing else looking wrong"
+        )
+
+    # --- Rule 20: a persona age must be an adult's age ----------------------
+    # Every source here samples adults (the Innovation Panel from 16). DEL's wave 3
+    # panel stores age as a code (1 = "18"), and the build rendered the code: every
+    # row 17 years too young, 1,735 adults shown as minors, with every other rule
+    # passing. An impossible age is a decoding defect, so it FAILS. The ceiling is
+    # the recorded human lifespan, not plausibility: 35M5CV_lodger (115) and POMIFD
+    # (118, 119) carry four such ages as YouGov recorded them, which are the
+    # source's values rather than our decoding, and are kept (ledger 145).
+    ages = [r.persona.age for r in rows if r.persona.age is not None]
+    if bad_ages := sorted({a for a in ages if a < 16 or a > 120}):
+        rep.failures.append(
+            f"persona ages outside 16-120: {bad_ages[:10]} — age is probably a code; "
+            "read it through its value labels"
         )
 
     return rep
