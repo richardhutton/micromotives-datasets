@@ -1,0 +1,694 @@
+study_id: 7tzpe
+source: tess
+title: "Body Size, Illness, and Blame: Causal Attributions and Social Consequences"
+data_file: TESS3_156_Powroznik_Client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10:
+  registration 7tzpe and its child components 593gb "Data" and yt6xg "Materials
+  and Methods" all have node_license null and no license relationship; same
+  finding recorded 2026-10-02 in data/catalog/tess_uk_foundation_sources.csv).
+  TESS states no reuse terms for its archived studies and has since suspended
+  operations. So there is no explicit grant of redistribution rights for this
+  deposit, and none should be assumed.
+
+# Not in SocSci210 (tess_uk_foundation_sources.csv: in_socsci210=no), so there is
+# no answer key to crosscheck against, and no published table was found (see
+# notes, VERIFICATION). Verified by re-deriving every row from the .sav.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS3 156 (Powroznik, Northwestern University), "Public Knowledge of Health
+  Related Issues", fielded by GfK KnowledgePanel 4-24 Feb 2014: 2,132 fielded,
+  1,387 completes (response rate report). The .sav has 1,387 rows, CaseID unique.
+  One experiment, one recipe.
+
+
+  SOURCES AND PROVENANCE
+
+    Q    = TESS3_156_Powroznik_Final_Questionnaire.docx, the FIELDED GfK
+           programming questionnaire (SNO 18431, "January 2014"). Not in the data
+           component: it is in the OSF child component yt6xg "Materials and
+           Methods" of registration 7tzpe (https://osf.io/download/m52fj/,
+           1,263,574 bytes, sha256
+           3558ab17eadaba45cfe7515b89a540f5aac55377dd3a72aff75aabc8b4bfbdc5),
+           fetched 2026-10-10 into data/raw/7tzpe/quex/ and converted with macOS
+           textutil (line numbers below are 1-based into that .txt, blank lines
+           kept). Fielded version confirmed against the .sav: every built variable
+           (XTESS156, Q5-Q21, Q11_* fields) is a question id in Q with the same
+           wording and the same codes; XTESS156 labels match Q 32-33; and the
+           respondents' own manipulation-check answers reproduce Q's design table
+           (Q 50-151) arm by arm. Per-arm agreement, refusals excluded, lowest
+           arm shown: Q6 patient gender >= 94.9% (arm 11); Q7 race >= 90.8% (arm
+           5); Q8 weight class, exact code (4 "Moderately Obese" in obese arms, 2
+           "Normal weight" in normal arms) >= 78.2% (arm 11), and >= 91.8% (arm
+           16) when any of 3/4/5 (overweight / moderately / severely obese)
+           counts as a match in the obese arms (>= 92.3%, arm 11, over the obese
+           arms alone). The open-ended Q5 (name of the condition) mentions
+           diabetes in 601 diabetes-arm answers and in 1 lymphoma-arm answer,
+           and lymphoma/Hodgkin in 515 lymphoma-arm answers and 0 diabetes-arm
+           answers.
+    IMG  = word/media/image2.png (diabetes) and image3.png (lymphoma) inside Q,
+           the disease description cards (see WORD-FOR-WORD below).
+    RR   = TESS3_156_Powroznik_Response_Rate_Report.doc
+           (https://osf.io/download/nkjhm/, sha256
+           fef11b773f8f8911d2021b6dd19ad7f87459a76bf7f9e9914a53b56df3f0f94f):
+           field dates and N only.
+    GfK  = "GfK Methodology (English Samples).pdf" (https://osf.io/download/rd759/,
+           sha256 a97feaed1ffde1d82a270e1731253fb08ddb2aa1171ee25e157691eea69a3661).
+    Data = TESS3_156_Powroznik_Client.sav (OSF component 593gb,
+           https://osf.io/download/muvnw/, sha256
+           6a329e285da0dde92af6e4409df52b57fa6e1486dfca0294fdccb87d27a2b50a).
+
+
+  THE DESIGN (Q 48-178)
+
+  A 2 x 2 x 2 x 2 between-subject vignette: disease (type II diabetes /
+  non-Hodgkin lymphoma) x patient race (white / African American) x patient
+  gender (female / male) x patient weight (moderately obese / normal weight).
+  XTESS156 holds the 16 cells in Q's table order; condition_num = raw - 1.
+  Counts 1..16: 89/88/99/97/89/84/81/88/85/77/79/87/85/87/86/86, all 1,387
+  assigned. Every respondent saw ONE vignette and answered every outcome about it.
+
+  Screens, in order (Q 157-255): a general instruction ([display], Q 158); the
+  disease description card (an image, [display if DOV_DISEASE=n]); a
+  disease-specific instruction (Q 184 / Q 223) on its own screen ("please display
+  description of disease and instructions on separate screens", Q 181/219); the
+  patient vignette ([display if XTESS156=n], one paragraph per cell). Then the
+  manipulation checks Q5-Q9 on one page, then the outcomes Q10-Q21.
+
+  The weight manipulation is entirely TEXT: height, weight in lbs and "the
+  patient is moderately obese" / "the patient is of normal weight". There is no
+  picture of the patient (the only images in Q are the two disease cards and the
+  GfK logo in the page header), so this does not fail on ledger 142.
+
+
+  CONDITION TEXT - WHAT IS WORD-FOR-WORD AND WHAT IS NOT
+
+  Each arm = general instruction (Q 158, identical in all 16 arms) + blank line +
+  disease card + blank line + disease instruction (Q 184 or Q 223) + blank line +
+  the arm's vignette (Q 188, 192, ..., 216 for arms 1-8; Q 227, ..., 255 for
+  9-16), each word-for-word. The general instruction is REPEATED in every arm
+  rather than put in shared_context: the pipeline joins shared_context to the
+  arm text with a single space, which ran the card's title into the
+  instruction's last sentence ("...with that condition. Non-Hodgkin Lymphoma"),
+  a line no screen showed. Same ruling as cug34's repeated sentence: the screens
+  as read beat de-duplication. A generator (scratch, not committed) pulled every
+  transcribed line from Q by line number, asserted each vignette's gate line
+  "[display if XTESS156=n]", and asserted each vignette's disease, race, gender
+  and weight words against Q's design table row for that cell.
+
+  Typography normalised per CONVENTIONS: curly apostrophes straightened,
+  non-breaking spaces and doubled spaces after full stops made single spaces.
+  Source wording kept as is, including "Recently has felt exhausted" (no subject;
+  the four female diabetes arms only), "34-year old", "205lbs", "swollen
+  lymphoid", "non-Hodgkin Lymphoma" (instruction) vs "non-Hodgkin lymphoma"
+  (vignette), and "There will be comprehension check questions about the profile
+  at the end of the study" (they came straight after the vignette, Q5-Q9; the
+  sentence is what respondents read, and it points to nothing the row claims).
+  "On the next page you will read the case study" points forward to the
+  vignette, which is in the same condition string, so it is not sequence
+  signposting.
+
+  THE DISEASE CARDS ARE TRANSCRIBED FROM IMAGES. Q embeds each card as a PNG
+  (877x490 and 881x499) in place of text: a title, a stock photo (pill bottle,
+  tablets, syringe; the same photo on both cards) and labelled fields. The card's
+  WORDS are transcribed here, typed by eye from the image (read at 2.3x zoom),
+  one line per card field, the title first. The photo is not rendered and not
+  described, since the source has no words for it. Transcription choices, all
+  typography: the title is set in small caps in the image and is written
+  "Type II Diabetes" / "Non-Hodgkin Lymphoma" in title case; "≥7.0" and
+  "≥ 11.1" keep the image's own spacing and the "≥" sign; "mg/dl" and "mg/dL"
+  both kept as printed; "fever/night" without the kerning gap. On the lymphoma
+  card "Classification of a variety of blood cancers" begins a new line under
+  "Condition/Disease: Non-Hodgkin Lymphoma" with a capital C, so it is kept as
+  its own line; wrapped lines elsewhere are joined.
+
+
+  OUTCOMES - 15 BUILT (Q 296-416)
+
+    task 0   Q10  under / outside the patient's control, 2 options, 1-2
+    task 1-4 Q11  % contributed by environment / lifestyle / genetics / bad luck,
+                  0-100 each (one row per number box)
+    task 5   Q12  responsible        1-5
+    task 6   Q13  to blame           1-5
+    task 7   Q14  sympathy           1-5
+    task 8   Q15  compassion         1-5
+    task 9   Q16  recommend for a job at your employer   1-5
+    task 10  Q17  choose to work with                    1-5
+    task 11  Q18  have as a neighbor                     1-5
+    task 12  Q19  provide physical care                  1-5
+    task 13  Q20  employer justified in raising premiums 1-5
+    task 14  Q21  priority for scarce medical care       1-5
+
+  Question wording word-for-word from Q (question number dropped), "his/her" as
+  printed (Q has no insert directive for it). Q10 is a 2-point scale with both
+  options as min/max labels. The 5-point items are fully labelled in Q; the
+  scale carries labels 1, 3 and 5 (min/mid/max), as the other TESS builds do;
+  labels 2 and 4 are not rendered (e.g. Q16-Q19 2 = "Mostly not willing", 4 =
+  "Mostly willing"). Response codes = Q's codes = the .sav's codes.
+
+  Q11 is one screen with four number boxes and a running total ("[number boxes;
+  range 0-100; prompt twice if responses do not add to 100%]", Q 304-313). Built
+  per CONVENTIONS "One stem, several labelled answer fields": one outcome per box,
+  the stem and the four box labels word-for-word (the "______ % [range 0-100]"
+  blanks dropped), then ONE ADDED SENTENCE, not sourced:
+  'Report only the percentage for "<box label>".' with the box label quoted from
+  Q. The auto-summing "Total" box is a display, not an answer, and is not built
+  (Q11_TOTAL: 100 for 1,358 respondents, 65 for one, blank for 28). The one
+  respondent whose boxes sum to 65 was accepted by the survey after its prompts;
+  their four answers are real and are kept. 28 respondents left all four boxes
+  blank (Q11_*_Refused = -1, value NaN): dropped.
+
+  Missing: -1 "Refused" is the only non-answer code on Q10, Q12-Q21 (Jev: non_answer
+  conf 1.00 on every one) -> missing_codes. Dropped per outcome: Q10 42, Q12 61,
+  Q13 63, Q14 18, Q15 19, Q16 30, Q17 28, Q18 31, Q19 33, Q20 27, Q21 33; Q11 28
+  per box (NaN).
+
+
+  EXCLUDED, WITH ROW COST
+
+  * Q5-Q9 manipulation/recall checks (condition name, patient gender, race,
+    weight class, smoking history). Answers are recoverable from the condition
+    text (CONVENTIONS: attention and recall checks are not outcomes). Cost:
+    Q5 1,252 open-ended answers (free text, unbuildable anyway) + Q6-Q9 up to
+    1,387 each less refusals.
+  * Q11_TOTAL (see above).
+  * Q22-Q34 (own diabetes and other diagnoses) and PARTY1-4/IDEO/REL1/REL2:
+    missing-profile re-asks after the experiment, not in the .sav as such
+    (only the merged X* profile variables are).
+
+
+  PERSONA
+
+  GfK KnowledgePanel standard profile, as 5hqan (TESS3 176, same panel and year):
+  PPAGE, PPGENDER, PPEDUCAT, PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE,
+  PPHOUSE, PPRENT, PPMSACAT, PPNET, plus the study's profile pulls XPARTY7,
+  XIDEO, XREL2. XREL1 (religion) is LEFT OUT: its labels ("Baptist-any
+  denomination", "Catholic", "Eastern Orthodox", ...) are not in the religion
+  crosswalk's us_amerispeak scheme, so QC rule 14 warns; adding them means
+  writing data/catalog/, which this build may not. Restore religion: XREL1 (with
+  persona_missing XREL1: [-1, 14]) once the crosswalk covers this list.
+  Q's samvar block (Q 20-30) says these X* variables are profile preloads with a "missing" code (XPARTY7 9, XIDEO 9, XREL1 14, XREL2 9),
+  re-asked in-survey AFTER the outcomes for panelists whose profile lacked them
+  (Q 439-629) and merged (DOV_*); no missing code survives in the .sav, so the
+  file holds the merged values and does not say which came from the re-ask (the
+  same caveat as s6urt and xk9ch). "Dummy" (XPARTY7 8, XREL2 7/8) and "Missing"
+  codes are declared in persona_missing although none occurs (Jev: non_answer
+  0.58 / 0.51 for Dummy, REVIEW); -1 Refused occurs on XIDEO 7, XREL2 3.
+  (For when XREL1 is restored: 13 "None" is a real answer, no religion. Jev
+  called it non_answer at 0.30 vs answer 0.47, REVIEW, disagreeing with the
+  regex; the regex and the reading agree it is an answer.) PPEDUCAT used, not Jev's PPEDUC
+  (conf 1.00), as every KN/GfK recipe does, since the crosswalk harmonises it.
+  PPREG4 used (Jev REVIEW 0.69 vs ppreg9 0.23), as every other TESS recipe does.
+
+  NOT in the persona, deliberately:
+  * XPPH1BMI (respondent's own BMI, profile) and XPH1DIAB (respondent's own
+    diabetes diagnosis, profile). The thing JUDGED in this study is the
+    PATIENT's body size and illness, which are in the condition, not the
+    respondent's; so these would not be the judged attribute and the rule
+    against that does not bar them. They are left out anyway because the
+    schema has no named field for either (they would go to free-form `extra`,
+    which the persona crosswalk does not cover for them - religious_attendance,
+    which this recipe and other TESS recipes also put in `extra`, does have a
+    crosswalk scheme), and because the
+    respondent's own weight and diabetes sit in the same domain as the
+    manipulation (body size, diabetes) - the condition states "moderately
+    obese"/"diabetic" and the persona would state the respondent's BMI/diagnosis,
+    which is the shape CONVENTIONS warns about even if the outcome is not
+    derivable from it. A reviewer may want them added as moderators later; they
+    were measured before the stimulus.
+  Considered and judged NOT a "condition names the persona category" case: the
+  condition names the patient's race (white / African American) and gender
+  (female / male), and the persona carries the respondent's own ethnicity and
+  gender. The outcomes (control, blame, sympathy, willingness, priority) cannot
+  be derived from those strings by substitution; the respondent's race/gender is
+  a moderator, as religion is in xk9ch_vignette1. Kept.
+
+
+  UK TRANSFER
+
+  Mostly transferable: diabetes, lymphoma, blame and sympathy are not
+  US-specific, and heights/weights in feet/inches/lbs are readable in the UK.
+  Two outcomes lean on US institutions: Q20 (employer raising the patient's
+  annual health insurance premiums - an employer-insurance arrangement with no
+  UK equivalent) and, less so, Q16 ("a job at your employer"). The patient race
+  levels are US census-style categories.
+
+
+  JEV (scripts/recipe_prep.py 7tzpe --source tess, 2026-10-10)
+
+    assignment: XTESS156, conf 0.98 (runner-up NONE_OF_THESE 0.01). Accepted:
+      Q 48 "[Create XTESS156 variable ...]" and the gate lines.
+    persona: all ok except region (REVIEW, above); education PPEDUC overruled
+      for PPEDUCAT (above).
+    labels: 195 asked; one Jev/regex disagreement, XREL1 "None" (above, field
+      not built); REVIEW
+      on the "Dummy" codes (declared missing; zero occurrences).
+    directives: quex recognised 0 of 42 loose routing matches - this GfK
+      instrument writes "[display if XTESS156=n]" / "Show ... if ...", a syntax
+      quex does not read. Read by hand: the stimulus gates are the
+      [display if DOV_DISEASE=n] / [display if XTESS156=n] lines, all resolved
+      above; the rest route Q22-Q34 and the party/ideology/religion re-asks,
+      none of which gates text built here.
+
+
+  RISKIEST JUDGEMENT
+
+  Transcribing the two disease cards from images. They are what respondents
+  read first and they carry the disease manipulation's content (the cards are
+  the only place "risk factor", "Precondition: Impaired glucose tolerance" etc.
+  appear), so dropping them would leave a condition less true to the screen; but
+  every other word in this recipe is pulled from Q's text layer and asserted,
+  while these ~90 words were typed from a picture and can only be checked by a
+  reader looking at IMG. A checker should compare the two card blocks with
+  word/media/image2.png and image3.png character by character. If transcription
+  from an image is ruled out, delete the card block (and its blank line) from all
+  16 arms: the disease factor stays expressed by the instruction and vignette, so
+  QC rule 5 still passes.
+  Second: Q11's added sentence and listing all four box labels in each of its
+  four outcomes.
+
+
+  VERIFICATION
+
+  scripts/verify_7tzpe.py re-derives every row from the .sav with its own
+  cell table (built from Q's design table, not the recipe) and reads the BUILT
+  parquet: 20,308 expected, 20,308 built, 0 missing, 0 extra, 0 wrong on
+  (participant, task, condition_num, response); all 16 condition strings carry
+  their cell's disease / race / gender / weight wording and no other; one
+  outcome string per task; persona age and gender match the .sav on every row.
+  Mutation-tested: swapping arms 1 and 2's raw codes in a scratch copy of the
+  recipe made it report 2,570 wrong rows and FAIL; restored and rebuilt, OK.
+  Card check: the script holds both cards' full text as constants (typed from
+  the PNGs) and asserts each arm carries its own disease's card as a paragraph
+  and not the other's; changing one card word ("hunger" -> "appetite") in a
+  scratch recipe made it FAIL on that arm, restored and rebuilt, OK. Direction
+  check: flipping the expected sign for Q14 in a scratch copy made it FAIL.
+  Rows: 20,308 from 1,380 participants (7 of 1,387 answered no outcome).
+  Per task: Q10 1,345; Q11 boxes 1,359 each; Q12 1,326; Q13 1,324; Q14 1,369;
+  Q15 1,368; Q16 1,357; Q17 1,359; Q18 1,356; Q19 1,354; Q20 1,360; Q21 1,354. No published table was found to
+  compare against (the TESS abstract reports directions only: obese patients
+  blamed more, for both diseases; less sympathy; less willingness to help; more
+  support for penalties); scripts/verify_7tzpe.py ASSERTS that direction
+  on the built rows (direction only, no magnitude; part of its pass/fail), as a
+  sanity check, not as an answer key. Built
+  means, normal weight vs moderately obese: Q12 responsible 1.95 vs 2.66, Q13
+  blame 1.60 vs 2.41, Q14 sympathy 3.82 vs 3.48, Q20 premiums 1.96 vs 2.27;
+  Q10 "under the patient's control" 13.0% vs 44.6%. All in the abstract's
+  direction.
+
+condition:
+  source_var: XTESS156
+  factors: [disease, patient_race, patient_gender, patient_weight]
+  considered_and_rejected:
+    Q8: "Manipulation check (patient weight classification as the respondent recalled it), asked after the vignette; agrees with XTESS156 per arm for at least 78.2% on the exact code and at least 91.8% counting any overweight/obese answer as obese (see notes). A response, not the assignment."
+  arms:
+    # Q 188
+    - raw: 1
+      condition_num: 0
+      factors: {disease: type_2_diabetes, patient_race: white, patient_gender: female, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white female. Recently has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. She has also noticed that she now takes more frequent trips to the bathroom during the day. When the patient visited her physician she was told that tests of her fasting glucose and glucose tolerance indicated that she was diabetic and that her symptoms were most likely caused by her diabetes. At 5'5" and weighing 205lbs, the patient is moderately obese. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 192
+    - raw: 2
+      condition_num: 1
+      factors: {disease: type_2_diabetes, patient_race: white, patient_gender: female, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white female. Recently has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. She has also noticed that she now takes more frequent trips to the bathroom during the day. When the patient visited her physician she was told that tests of her fasting glucose and glucose tolerance indicated that she was diabetic and that her symptoms were most likely caused by her diabetes. At 5'5" and weighing 130lbs, the patient is of normal weight. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 196
+    - raw: 3
+      condition_num: 2
+      factors: {disease: type_2_diabetes, patient_race: african_american, patient_gender: female, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American female. Recently has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. She has also noticed that she now takes more frequent trips to the bathroom during the day. When the patient visited her physician she was told that tests of her fasting glucose and glucose tolerance indicated that she was diabetic and that her symptoms were most likely caused by her diabetes. At 5'5" and weighing 205lbs, the patient is moderately obese. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 200
+    - raw: 4
+      condition_num: 3
+      factors: {disease: type_2_diabetes, patient_race: african_american, patient_gender: female, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American female. Recently has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. She has also noticed that she now takes more frequent trips to the bathroom during the day. When the patient visited her physician she was told that tests of her fasting glucose and glucose tolerance indicated that she was diabetic and that her symptoms were most likely caused by her diabetes. At 5'5" and weighing 130lbs, the patient is of normal weight. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 204
+    - raw: 5
+      condition_num: 4
+      factors: {disease: type_2_diabetes, patient_race: white, patient_gender: male, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white male. Recently he has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. He has also noticed that he now takes more frequent trips to the bathroom during the day. When the patient visited his physician he was told that tests of his fasting glucose and glucose tolerance indicated that he was diabetic and that his symptoms were most likely caused by his diabetes. At 5'10" and weighing 240lbs, the patient is moderately obese. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 208
+    - raw: 6
+      condition_num: 5
+      factors: {disease: type_2_diabetes, patient_race: white, patient_gender: male, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white male. Recently he has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. He has also noticed that he now takes more frequent trips to the bathroom during the day. When the patient visited his physician he was told that tests of his fasting glucose and glucose tolerance indicated that he was diabetic and that his symptoms were most likely caused by his diabetes. At 5'10" and weighing 150lbs, the patient is of normal weight. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 212
+    - raw: 7
+      condition_num: 6
+      factors: {disease: type_2_diabetes, patient_race: african_american, patient_gender: male, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American male. Recently he has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. He has also noticed that he now takes more frequent trips to the bathroom during the day. When the patient visited his physician he was told that tests of his fasting glucose and glucose tolerance indicated that he was diabetic and that his symptoms were most likely caused by his diabetes. At 5'10" and weighing 240lbs, the patient is moderately obese. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 216
+    - raw: 8
+      condition_num: 7
+      factors: {disease: type_2_diabetes, patient_race: african_american, patient_gender: male, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Type II Diabetes
+        Condition/Disease: Type II Diabetes Mellitus
+        Diagnosis: Fasting plasma glucose level ≥7.0 mmol/l (126 mg/dl); Plasma ≥ 11.1 mmol/l (200 mg/dL) 2 hours after a glucose tolerance test
+        Symptoms: Frequent urination; increased thirst and hunger; blurred vision
+        Precondition: Impaired glucose tolerance or impaired fasting glucose
+        Complications: Diabetes is a risk factor for stroke, cardiovascular disease, neuropathy, and kidney failure
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with type II diabetes. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American male. Recently he has felt exhausted at work and has had to leave early several days because of severe headaches and blurry vision. He has also noticed that he now takes more frequent trips to the bathroom during the day. When the patient visited his physician he was told that tests of his fasting glucose and glucose tolerance indicated that he was diabetic and that his symptoms were most likely caused by his diabetes. At 5'10" and weighing 150lbs, the patient is of normal weight. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 227
+    - raw: 9
+      condition_num: 8
+      factors: {disease: non_hodgkin_lymphoma, patient_race: white, patient_gender: female, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white female. Over the past few months she has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under her armpit that has not gone away for several weeks. When she visited her physician the doctor suggested that she undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that she has non-Hodgkin lymphoma. At 5'5" and weighing 205lbs, the patient is moderately obese. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 231
+    - raw: 10
+      condition_num: 9
+      factors: {disease: non_hodgkin_lymphoma, patient_race: white, patient_gender: female, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white female. Over the past few months she has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under her armpit that has not gone away for several weeks. When she visited her physician the doctor suggested that she undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that she has non-Hodgkin lymphoma. At 5'5" and weighing 130lbs, the patient is of normal weight. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 235
+    - raw: 11
+      condition_num: 10
+      factors: {disease: non_hodgkin_lymphoma, patient_race: african_american, patient_gender: female, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American female. Over the past few months she has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under her armpit that has not gone away for several weeks. When she visited her physician the doctor suggested that she undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that she has non-Hodgkin lymphoma. At 5'5" and weighing 205lbs, the patient is moderately obese. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 239
+    - raw: 12
+      condition_num: 11
+      factors: {disease: non_hodgkin_lymphoma, patient_race: african_american, patient_gender: female, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American female. Over the past few months she has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under her armpit that has not gone away for several weeks. When she visited her physician the doctor suggested that she undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that she has non-Hodgkin lymphoma. At 5'5" and weighing 130lbs, the patient is of normal weight. She is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 243
+    - raw: 13
+      condition_num: 12
+      factors: {disease: non_hodgkin_lymphoma, patient_race: white, patient_gender: male, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white male. Over the past few months he has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under his armpit that has not gone away for several weeks. When he visited his physician the doctor suggested that he undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that he has non-Hodgkin lymphoma. At 5'10" and weighing 240lbs, the patient is moderately obese. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 247
+    - raw: 14
+      condition_num: 13
+      factors: {disease: non_hodgkin_lymphoma, patient_race: white, patient_gender: male, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old white male. Over the past few months he has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under his armpit that has not gone away for several weeks. When he visited his physician the doctor suggested that he undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that he has non-Hodgkin lymphoma. At 5'10" and weighing 150lbs, the patient is of normal weight. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 251
+    - raw: 15
+      condition_num: 14
+      factors: {disease: non_hodgkin_lymphoma, patient_race: african_american, patient_gender: male, patient_weight: moderately_obese}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American male. Over the past few months he has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under his armpit that has not gone away for several weeks. When he visited his physician the doctor suggested that he undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that he has non-Hodgkin lymphoma. At 5'10" and weighing 240lbs, the patient is moderately obese. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+    # Q 255
+    - raw: 16
+      condition_num: 15
+      factors: {disease: non_hodgkin_lymphoma, patient_race: african_american, patient_gender: male, patient_weight: normal_weight}
+      text: |-
+        Instructions: In this study we are interested in gathering information about the public's knowledge and beliefs concerning different illnesses and diseases to understand how people think about rare and common medical conditions. You will first read about a specific medical condition, followed by a brief vignette of a patient with that condition.
+
+        Non-Hodgkin Lymphoma
+        Condition/Disease: Non-Hodgkin Lymphoma
+        Classification of a variety of blood cancers
+        Description: Overproduction of abnormal lymphocytes (white blood cells)
+        Symptoms: Swollen lymph nodes; abdominal pain or swelling; fatigue; fever/night sweats; chest pains
+        Diagnosis: Examination of lymph nodes; Imaging tests: x-ray, CT scan, MRI scan, or ultrasound; Biopsy of lymph node tissue or bone marrow
+
+        Instructions: On the next page you will read the case study of a patient who has been diagnosed with non-Hodgkin Lymphoma. Please read the profile carefully. There will be comprehension check questions about the profile at the end of the study.
+
+        The patient is a 34-year old African American male. Over the past few months he has felt exhausted at work and has had difficulty sleeping through the night due to feeling feverish and sweating. The patient has also noticed a large swelling under his armpit that has not gone away for several weeks. When he visited his physician the doctor suggested that he undergo several tests to examine potential causes. A biopsy of the patient's swollen lymphoid indicated that he has non-Hodgkin lymphoma. At 5'10" and weighing 150lbs, the patient is of normal weight. He is a non-smoker and reports occasional social drinking (3 - 5 drinks per week).
+
+outcomes:
+  - var: Q10
+    task_num: 0
+    question: "To what extent do you think the patient's illness was caused by factors under his/her control?"
+    scale: {min: 1, max: 2, min_label: "Mostly caused by factors under the patient's control", max_label: "Mostly caused by factors outside of the patient's control"}
+  - var: Q11_Environment
+    task_num: 1
+    question: |-
+      Please estimate, to the nearest %, how much each of the following factors contributed to the patient's illness (NOTE: the total should equal 100%).
+      The patient's environment (example: workplace, neighborhood)
+      The patient's lifestyle choices (example: diet, exercise, sleep, smoking)
+      The patient's genetics
+      Bad Luck
+      Report only the percentage for "The patient's environment (example: workplace, neighborhood)".
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q11_Lifestyle
+    task_num: 2
+    question: |-
+      Please estimate, to the nearest %, how much each of the following factors contributed to the patient's illness (NOTE: the total should equal 100%).
+      The patient's environment (example: workplace, neighborhood)
+      The patient's lifestyle choices (example: diet, exercise, sleep, smoking)
+      The patient's genetics
+      Bad Luck
+      Report only the percentage for "The patient's lifestyle choices (example: diet, exercise, sleep, smoking)".
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q11_Genetics
+    task_num: 3
+    question: |-
+      Please estimate, to the nearest %, how much each of the following factors contributed to the patient's illness (NOTE: the total should equal 100%).
+      The patient's environment (example: workplace, neighborhood)
+      The patient's lifestyle choices (example: diet, exercise, sleep, smoking)
+      The patient's genetics
+      Bad Luck
+      Report only the percentage for "The patient's genetics".
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q11_BadLuck
+    task_num: 4
+    question: |-
+      Please estimate, to the nearest %, how much each of the following factors contributed to the patient's illness (NOTE: the total should equal 100%).
+      The patient's environment (example: workplace, neighborhood)
+      The patient's lifestyle choices (example: diet, exercise, sleep, smoking)
+      The patient's genetics
+      Bad Luck
+      Report only the percentage for "Bad Luck".
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q12
+    task_num: 5
+    question: "How responsible is the patient for his/her illness?"
+    scale: {min: 1, max: 5, min_label: "Not at all responsible", mid_label: "Somewhat responsible", max_label: "Completely responsible"}
+  - var: Q13
+    task_num: 6
+    question: "How much is the patient to blame for his/her illness?"
+    scale: {min: 1, max: 5, min_label: "Not at all to blame", mid_label: "Somewhat to blame", max_label: "Completely to blame"}
+  - var: Q14
+    task_num: 7
+    question: "How much sympathy do you feel towards the patient?"
+    scale: {min: 1, max: 5, min_label: "Not at all", mid_label: "Somewhat", max_label: "Extremely"}
+  - var: Q15
+    task_num: 8
+    question: "How much compassion do you feel towards the patient?"
+    scale: {min: 1, max: 5, min_label: "Not at all", mid_label: "Somewhat", max_label: "Extremely"}
+  - var: Q16
+    task_num: 9
+    question: "How willing would you be to recommend this patient for a job at your employer?"
+    scale: {min: 1, max: 5, min_label: "Not at all willing", mid_label: "Somewhat willing", max_label: "Completely willing"}
+  - var: Q17
+    task_num: 10
+    question: "How willing would you be to choose to work with this patient?"
+    scale: {min: 1, max: 5, min_label: "Not at all willing", mid_label: "Somewhat willing", max_label: "Completely willing"}
+  - var: Q18
+    task_num: 11
+    question: "How willing would you be to choose to have this patient as a neighbor?"
+    scale: {min: 1, max: 5, min_label: "Not at all willing", mid_label: "Somewhat willing", max_label: "Completely willing"}
+  - var: Q19
+    task_num: 12
+    question: "How willing would you be to provide physical care for this patient?"
+    scale: {min: 1, max: 5, min_label: "Not at all willing", mid_label: "Somewhat willing", max_label: "Completely willing"}
+  - var: Q20
+    task_num: 13
+    question: "Given the increased costs of the patient's medical care, how justified is his/her employer in raising his/her annual premiums?"
+    scale: {min: 1, max: 5, min_label: "Not at all justified", mid_label: "Somewhat justified", max_label: "Completely justified"}
+  - var: Q21
+    task_num: 14
+    question: "If medical resources were scarce, what should the patient's priority for medical care be compared to other patients?"
+    scale: {min: 1, max: 5, min_label: "Much lower priority than other patients", mid_label: "About the same priority", max_label: "Much higher priority than other patients"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+# -1 Refused is the only non-answer code on Q10, Q12-Q21; Q11's boxes are NaN when left blank.
+missing_codes: [-1]
+
+persona_missing:
+  XPARTY7: [8, 9]
+  XIDEO: [-1]
+  XREL2: [-1, 7, 8, 9]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religious_attendance: XREL2

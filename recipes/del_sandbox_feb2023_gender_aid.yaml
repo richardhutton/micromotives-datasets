@@ -1,0 +1,213 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Sandbox Great Britain February 2023: gender-equality aid compared to others"
+data_file: DEL_Sandbox_GreatBritain_Feb2023_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/XZ1XUZ, stated on the Harvard Dataverse deposit "DEL
+  Sandbox 2023" and read from the Dataverse API (latestVersion.license) on 10 Oct 2026. The deposit's Readme adds "DEL datasets are a public good and can be used
+  with the appropriate citation."
+
+comparable_to_socsci210: false
+experiment: sandbox_feb2023_gender_aid
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin; Torres-Raposo, Felipe,
+  2024, "DEL Sandbox 2023", https://doi.org/10.7910/DVN/XZ1XUZ, Harvard Dataverse, V1;
+  DEL_Sandbox_GreatBritain_Feb2023_Data.sav. Fielded online by YouGov, 20-28 February
+  2023, n = 2,007 adults in Great Britain (the deposit's Readme). The same file as
+  `del_sandbox_feb2023_wordfeminist` and `del_sandbox_feb2023_abortion`, whose licence,
+  person id and persona block carry over unchanged (re-checked against this file's value
+  labels: every declared persona missing code is still a non-answer label).
+
+  THE DESIGN. An information-provision split. `odasplit`, assigned by YouGov's
+  `panman.assign_treatment(5, [wordfeministsplit, femsynsplit, areasplit, track7split,
+  equalgsplit], "odasplit")` (balanced against the survey's five earlier splits), sends
+  388 / 399 / 399 / 414 / 407 respondents to items `oda_control`, `oda_percent`,
+  `oda_DAC`, `oda_top`, `oda_bottom`. Everyone in the file has a code; no "Skipped" or
+  "Not Asked" assignment occurs. Arm 1 gets the bare question; arm 2 is told the UK
+  spends around 68% of its development assistance budget on policies promoting gender
+  equality; arms 3-5 get the same 68% with a comparison: the average of other major
+  donors (44%), Canada (90%), Poland (3%). The figure and the comparator are the
+  manipulation; the script gives no source attribution for any figure, and none is
+  rendered. No piped text: every item is literal.
+
+  THE ARMS DIFFER IN MORE THAN THE COMPARATOR, as fielded, and the rows keep it:
+  (a) arm 4's statement drops "in developing countries" ("...promote gender equality,
+  compared to Canada..."); (b) arm 5 says "gender equality and women's empowerment" in
+  both the statement and the question, while its comparison clause still says "to
+  gender equality"; (c) arm 1's question reads "the amount of aid THAT it allocates",
+  arms 2-5 "the amount of aid it allocates". So the outcome question is set per arm, in
+  the arm's own words, and a model cannot attribute arm 5's difference to Poland alone.
+
+  WORDING. From DEL_Sandbox_GreatBritain_Feb2023_Survey.docx, items `oda_control` to
+  `oda_bottom`, word-for-word; the .sav variable labels carry the same text up to SPSS's
+  256-character cut. On screen the statement and the question are one item, separated
+  by `<<br/>><<br/>>` (a blank line); that break is the join between condition (the
+  statement) and outcome (the question). The curly apostrophe in "women's" (arm 5) is
+  straightened (docs/CONVENTIONS.md); the trailing space after each "?" is dropped.
+
+  THE CONDITION IS NARRATED, by the `del_panel_w4_climate_harm_stories` precedent. ADDED
+  by us (docs/CONVENTIONS.md, "Narrating what the respondent did"): "Before the
+  question, you were shown this text:" and the quotation marks around the statement
+  (arms 2-5), and the whole control sentence "You were shown no text before the
+  question." (arm 1), true for everyone in arm 1: their item is the bare question.
+  Every other word is the instrument's. "Before" is reading order on one screen: the
+  statement sits above the question on the same page.
+
+  WHAT CAME BEFORE, the same for all arms, none of it rendered. `oda` is item 5 of the
+  "GENERAL" block. Earlier in the interview, everyone met: the `wordfeminist` naming
+  split (the survey's first question) and the feminism block (`fdp_focus`, `femsyn`);
+  the `area` aid-priority ranking split; the `track7` split, which told respondents the
+  UK "currently allocates 1.1 percent, or £11.5 billion, to overseas aid to poor
+  countries" (with, in arms 2-3, a list of development priorities, arm 3 including
+  "Addressing gender inequality") and asked whether to increase or decrease it, on this
+  same five-point scale; `goveff_1` (how much the UK government should do to promote
+  gender equality at home and worldwide); the `equal` grid; the `equalg` UK-versus-
+  developing-countries split; and the `genderatt` grid on gender inequality and global
+  poverty. So every respondent had already answered an aid increase/decrease question
+  with a figure in it and several gender-equality items before this one; it was not
+  asked cold. The `abort` item comes AFTER (`abortsplit` is balanced against
+  `odasplit`) and is irrelevant here.
+
+  OUTCOME. Scale 1 "Increase a great deal", 2 "Increase somewhat", 3 "Stay the same",
+  4 "Decrease somewhat", 5 "Decrease a great deal", identical in all five items, as
+  fielded (1 is increase). 6 "Don't know" is dropped as a non-answer (67 / 85 / 52 / 90
+  / 58 by arm, 352 in all); 8 "Skipped" and 9 "Not Asked" are labelled but never occur,
+  and are declared so a re-fetched deposit that has them drops them.
+
+  ROUTING. Clean: every respondent answered exactly one oda item, the one their
+  `odasplit` names (crosstab: 0 off-diagonal), and the page timings agree (each item's
+  page timing is non-zero for exactly its own arm and 0 for all others). `routing_check:
+  true` with the default `ambiguous_routing: 0`, so a back-button double answer in a
+  re-fetched deposit stops the build. "Not asked" is blank in this file, which is what
+  `routing_check` requires. (The one doubly-routed respondent of the wordfeminist build
+  is not doubly routed here, and keeps their row.)
+
+  COUNTS. 2,007 respondents; 352 "Don't know" dropped; 1,655 rows: 321 control, 314
+  68%, 347 vs donor average, 324 vs Canada, 349 vs Poland. No published reference
+  exists to compare against.
+
+  RISKIEST JUDGEMENT. Rendering each arm's question in its own wording (outcome set per
+  arm) rather than one shared outcome. The five questions ask the same thing, so one
+  outcome id is right (same answer type, same scale, ledger 147 does not apply), but the
+  wording differs in arm 5 ("and women's empowerment") and trivially in arm 1 ("that");
+  copying one wording to all arms would put words in front of respondents they never
+  saw. Second: the statements are rendered whole in the condition, not compressed to a
+  shared prefix, because arms 4 and 5 change words inside the shared-looking sentence.
+
+  PERSONA: the standard YouGov profile block, confirmed for this file by
+  `scripts/recipe_prep.py del --source dataverse --file DEL_Sandbox_GreatBritain_Feb2023`
+  for the wordfeminist build (every field at confidence 1.00): age (real ages in this
+  file, not codes; ledger 145), gender, education_level, gross_household,
+  ethnicity_new, region_GOR, religion, plus socialgrade_cie. `income` is HOUSEHOLD
+  income. Past general-election and EU-referendum vote go to `extra`. Nothing in the
+  condition is derivable from a persona field.
+
+  PERSON ID: `GUNQID`, YouGov's panellist id, shared across all ten DEL files; every DEL
+  recipe uses `study_id: del`. Unique and never blank in this file.
+
+condition:
+  source_var: odasplit
+  factors: [information]
+  routing_check: true
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {information: none}
+      text: You were shown no text before the question.
+      outcome_var: oda_control
+      outcome_question: >-
+        Do you think that the UK government should increase or decrease the amount of aid
+        that it allocates to promoting gender equality in developing countries?
+    - raw: 2
+      condition_num: 1
+      factors: {information: UK spends around 68%}
+      text: >-
+        Before the question, you were shown this text: "The UK government spends around
+        68% of its development assistance budget on policies that promote gender equality
+        in developing countries."
+      outcome_var: oda_percent
+      outcome_question: >-
+        Do you think that the UK government should increase or decrease the amount of aid
+        it allocates to promoting gender equality in developing countries?
+    - raw: 3
+      condition_num: 2
+      factors: {information: UK 68% vs other major donors' average 44%}
+      text: >-
+        Before the question, you were shown this text: "The UK government spends around
+        68% of its development assistance budget on policies that promote gender equality
+        in developing countries, compared to an average of 44% for other major donor
+        countries."
+      outcome_var: oda_DAC
+      outcome_question: >-
+        Do you think that the UK government should increase or decrease the amount of aid
+        it allocates to promoting gender equality in developing countries?
+    - raw: 4
+      condition_num: 3
+      factors: {information: "UK 68% vs Canada 90% (without 'in developing countries')"}
+      text: >-
+        Before the question, you were shown this text: "The UK government spends around
+        68% of its development assistance budget on policies that promote gender
+        equality, compared to Canada which allocates 90% of its aid budget to gender
+        equality."
+      outcome_var: oda_top
+      outcome_question: >-
+        Do you think that the UK government should increase or decrease the amount of aid
+        it allocates to promoting gender equality in developing countries?
+    - raw: 5
+      condition_num: 4
+      factors: {information: "UK 68% vs Poland 3% (+ 'and women's empowerment', statement and question)"}
+      text: >-
+        Before the question, you were shown this text: "The UK government spends around
+        68% of its development assistance budget on policies that promote gender equality
+        and women's empowerment, compared to Poland which allocates 3% of its aid budget
+        to gender equality."
+      outcome_var: oda_bottom
+      outcome_question: >-
+        Do you think that the UK government should increase or decrease the amount of aid
+        it allocates to promoting gender equality and women's empowerment in developing
+        countries?
+
+outcomes:
+  - task_num: 0
+    question: "[the increase-or-decrease question, in the condition's own wording]"
+    scale:
+      min: 1
+      max: 5
+      min_label: Increase a great deal
+      mid_label: Stay the same
+      max_label: Decrease a great deal
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # SPSS cut this label at 120 characters in every DEL file and codebook ("...New
+  # Testament Church of God, Redeemed Christian Chur"), so the full wording exists
+  # nowhere in the deposit. Kept: its complete head, the source's own words; lost:
+  # the example list. Mapped to "Pentecostal" by scripts/persona_del.py.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education_level: [19, 20, 98, 99]
+  gross_household: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]

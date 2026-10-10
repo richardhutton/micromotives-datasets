@@ -356,6 +356,90 @@
       "description": "Working respondents read that experts predict new technology could do 50% or 10% of all jobs within 20 or 5 years, or a balanced control ('Some experts think... Other experts think...'), then rate nine statements about their own work: replacement worry, opportunity, importance of skills, willingness to retrain. Wave 14 (2021).",
       "design": "2x2 between-household (severity x timeframe) plus control, 5 cells, allocated in n_hhsamp_ip (n_ff_techworkw14); 9 outcomes, 1-5 agree; condition is the vignette word-for-word with no narration",
       "verified_against": "no published reference; an independent checker rebuilt all 15,020 rows from the raw files (0 mismatches), matched every cell's vignette byte-for-byte to the questionnaire page's fill boxes, confirmed routing equals the module universe, and confirmed the five dropped items precede the vignette (10 Oct 2026)"
+    },
+    "ukds_6849_envtax_w7": {
+      "category": "survey methodology",
+      "description": "How willing would you be to pay higher taxes to protect the environment? Asked in one of ten wordings: the plain question, the extra money spent on the environment, a government promise to spend it so, taxes on things you buy that pollute, and the same naming petrol or electricity, each with and without 'if the government reduced other taxes you pay by the same amount'. Wave 7 (2014).",
+      "design": "ten-version question-wording split (5 framings x other taxes reduced or not), allocated by household (ff_envtaxqw7); one outcome, 4-point willingness; condition narrated as the question asked; one doubly-routed respondent dropped (one G answer lost)",
+      "verified_against": "no published reference; an independent checker re-derived all 2,235 rows from the raw files (0 mismatches), matched all ten wordings byte-for-byte to the questionnaire, and confirmed allocation against routing in every cell (10 Oct 2026)"
+    },
+    "del_sandbox_feb2023_gender_aid": {
+      "category": "political preferences/policy",
+      "description": "Should the UK increase or decrease the aid it allocates to gender equality in developing countries? Respondents saw no figure, or that the UK spends around 68% of its development aid on gender equality, alone or compared with the major-donor average (44%), Canada (90%) or Poland (3%). The Canada and Poland statements also differ in wording. DEL sandbox, February 2023.",
+      "design": "between-subjects information provision, 5 arms; one 5-point increase/decrease outcome, each arm's question in its own fielded wording",
+      "verified_against": "no published reference; an independent checker re-derived all 1,655 rows from the .sav (0 missing, extra or wrong), matched all five items word-for-word, and confirmed personas identical to the same people in the abortion and naming-policy builds (10 Oct 2026)"
+    },
+    "e5rfg_tk": {
+      "category": "economics/behavioural",
+      "description": "Hypothetical large-stakes gambles, Knowledge Networks 2005. Tversky-Kahneman pair of choices shown as two separate decisions (narrow) or as one combined choice (broad): do people pick a combination that is worse overall?",
+      "design": "between-subjects, modules 1 vs 2; every decision previewed before answering; nominal choices",
+      "verified_against": "Rabin & Weizsacker (IZA DP 3040) Table 4 and appendix Tables 8.1/8.2: 10 of 11 choice cells match, M6D1's A&C/B&C cells transposed relative to the paper (asserted as a known difference); an independent checker re-derived all 264 rows from the .sav (0 missing or extra) and matched every condition and outcome to the fielded questionnaire (OSF 5jsqd) (10 Oct 2026). Choice option order was randomised and not recorded; options are listed in questionnaire order without position words (kept pending rich's ruling)"
+    },
+    "e5rfg_ce": {
+      "category": "economics/behavioural",
+      "description": "Hypothetical large-stakes gambles, Knowledge Networks 2005. Certainty equivalents for gambles, asked as two separate amounts or as one: the smallest sure amount you would accept instead.",
+      "design": "between-subjects, modules 3 vs 4; dollar amounts within the instrument's stated ranges",
+      "verified_against": "Rabin & Weizsacker (IZA DP 3040) Table 4 and appendix Tables 8.1/8.2: 10 of 11 choice cells match, M6D1's A&C/B&C cells transposed relative to the paper (asserted as a known difference); an independent checker re-derived all 281 rows from the .sav (0 missing or extra) and matched every condition and outcome to the fielded questionnaire (OSF 5jsqd) (10 Oct 2026). Choice option order was randomised and not recorded; options are listed in questionnaire order without position words (kept pending rich's ruling)"
+    },
+    "e5rfg_pair": {
+      "category": "economics/behavioural",
+      "description": "Hypothetical large-stakes gambles, Knowledge Networks 2005. The paper's Example 2: two choices shown separately (narrow) or as one four-way combined choice (broad).",
+      "design": "between-subjects, modules 5 vs 6; every decision previewed before answering; nominal choices",
+      "verified_against": "Rabin & Weizsacker (IZA DP 3040) Table 4 and appendix Tables 8.1/8.2: 10 of 11 choice cells match, M6D1's A&C/B&C cells transposed relative to the paper (asserted as a known difference); an independent checker re-derived all 323 rows from the .sav (0 missing or extra) and matched every condition and outcome to the fielded questionnaire (OSF 5jsqd) (10 Oct 2026). Choice option order was randomised and not recorded; options are listed in questionnaire order without position words (kept pending rich's ruling)"
+    },
+    "e5rfg_six": {
+      "category": "economics/behavioural",
+      "description": "Hypothetical large-stakes gambles, Knowledge Networks 2005. Six decisions per module mixing gamble choices and certainty equivalents, across four module versions.",
+      "design": "between-subjects, modules 7-10; 20 outcomes; every decision previewed before answering",
+      "verified_against": "Rabin & Weizsacker (IZA DP 3040) Table 4 and appendix Tables 8.1/8.2: 10 of 11 choice cells match, M6D1's A&C/B&C cells transposed relative to the paper (asserted as a known difference); an independent checker re-derived all 3,608 rows from the .sav (0 missing or extra) and matched every condition and outcome to the fielded questionnaire (OSF 5jsqd) (10 Oct 2026). Choice option order was randomised and not recorded; options are listed in questionnaire order without position words (kept pending rich's ruling)"
+    },
+    "del_sandbox_feb2023_aid_priorities": {
+      "category": "political preferences/policy",
+      "description": "Should the UK increase or decrease overseas aid? Shown with the aid budget figure alone, or after the government's development priorities: three listed, or four including addressing gender inequality. The priorities' order was randomised per respondent and not recorded; rows list them in the script's order. DEL sandbox, February 2023.",
+      "design": "between-subjects information provision, 3 arms (track7split); one 5-point increase/decrease outcome; one doubly-routed respondent excluded (ledger 143)",
+      "verified_against": "no published reference; an independent checker re-derived all 1,706 rows from the .sav (0 missing, extra or wrong), matched all three items byte-for-byte, searched every column and the codebook for the list order (none recorded), and confirmed personas identical to the same people in the other Feb 2023 builds (10 Oct 2026)"
+    },
+    "ukds_6849_hmrc_consent_w11": {
+      "category": "survey methodology",
+      "description": "Face-to-face respondents are asked to consent to linking their HMRC tax records, with the standard or an easy-to-read wording, placed early or late in the interview. Wave 11 (2018).",
+      "design": "2x2 between-subjects (wording x placement), person-level allocation; one consent outcome; 227 late rows excluded for a documented script error that may have left them self-completing (tech report table 5.1)",
+      "verified_against": "an independent checker re-derived every row from the raw files (0 arm or response mismatches) and matched every cell's consent text block to the questionnaire (10 Oct 2026); no published reference"
+    },
+    "ukds_6849_hmrc_consent_w11_web": {
+      "category": "survey methodology",
+      "description": "Web respondents are asked to consent to linking their HMRC tax records, with the standard or an easy-to-read wording. Wave 11 (2018).",
+      "design": "2-arm wording experiment, person-level allocation; one consent outcome; the two versions also linked different flowchart images (not rendered)",
+      "verified_against": "an independent checker re-derived every row from the raw files (0 arm or response mismatches) and matched every cell's consent text block to the questionnaire (10 Oct 2026); no published reference"
+    },
+    "ukds_6849_hmrc_consent_w15": {
+      "category": "survey methodology",
+      "description": "Consent to link HMRC records (easy wording) asked by the interviewer, by laptop self-completion, or by a card read out with a private answer; on the web with or without a photo of and message from the study director. Wave 15 (2022).",
+      "design": "between-household allocation, 3 face-to-face and 2 web delivery versions; one consent outcome; self-completion cells exclude helped or interviewer-completed answers (ledger 141)",
+      "verified_against": "an independent checker re-derived every row from the raw files (0 arm or response mismatches) and matched every cell's consent text block to the questionnaire (10 Oct 2026); no published reference"
+    },
+    "gh396": {
+      "category": "moral/social/cognition",
+      "description": "Respondents report how many close friends they have, then see a pie chart ('Johnson, 1999') whose friend-count categories make that number look socially isolated or socially embedded; crossed with whether belonging-restoring questions (a favourite TV character, groups, a past group task) come before or after loneliness, friendship and life-satisfaction questions. Knowledge Networks, 2005.",
+      "design": "2x2 between-subjects (connection feedback x item order), D_VERS; 26 outcomes; the chart's own labels and percentages rendered as text; TV-character items limited to the 291 respondents who named one (121 who named none dropped from those items only)",
+      "verified_against": "no published cell table; an independent checker decoded the four chart objects (slice geometry and percentage labels), re-derived every row from the .sav, and found the blank-Q5 defect, now fixed; the maker's re-derivation from the original deposit gives 8,959 rows, 0 missing, extra or wrong (10 Oct 2026)"
+    },
+    "7tzpe": {
+      "category": "health communication",
+      "description": "A patient vignette varies the disease (type 2 diabetes or non-Hodgkin lymphoma, each with an information card), the patient's race, gender and weight (moderately obese or normal); respondents judge control over the illness, its causes, responsibility, blame, sympathy, and whether they would work with, live near or care for the patient. GfK, 2014.",
+      "design": "2x2x2x2 between-subjects text vignette (XTESS156), 16 conditions, 15 outcomes; disease card words transcribed from the questionnaire's card images",
+      "verified_against": "no published cell table; an independent checker re-derived all 20,308 rows from the .sav (0 missing, extra or wrong), rebuilt all 16 conditions byte-for-byte, and transcribed both disease cards from the PNGs identically; verify_7tzpe.py asserts the card text and the abstract's directions (obese blamed more, less sympathy) (10 Oct 2026)"
+    },
+    "ukds_6849_nrp_w10_fh": {
+      "category": "survey methodology",
+      "description": "Ever adopted a child, ever lived with step-children, ever had biological children: asked with or without the questions about relatives living elsewhere asked earlier in the interview. Wave 10 (2017).",
+      "design": "2-arm module-order experiment, allocated by household (j_ff_nonresw10); 3 yes/no outcomes; condition narrated from what was asked before",
+      "verified_against": "no published reference; an independent checker re-derived every row from the raw files (0 mismatches), matched every condition and outcome to the questionnaire, confirmed allocation against routing and that the identifier loop followed the 'A' modules, and measured post-treatment selection (10 Oct 2026)"
+    },
+    "ukds_6849_nrp_w10_contact": {
+      "category": "work/family/gender",
+      "description": "How often you see and contact your mother, father and an adult child living elsewhere: asked with or without the questions about all your children asked earlier. Wave 10 (2017).",
+      "design": "2-arm module-order experiment, allocated by household; 6 outcomes on a 6-point frequency scale, each reached through the respondent's own relatives answers (selection by order 1-2pp, not significant)",
+      "verified_against": "no published reference; an independent checker re-derived every row from the raw files (0 mismatches), matched every condition and outcome to the questionnaire, confirmed allocation against routing and that the identifier loop followed the 'A' modules, and measured post-treatment selection (10 Oct 2026)"
     }
   }
 }

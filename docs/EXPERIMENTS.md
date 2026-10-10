@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**81 experiments.** 20 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 27 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 33 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**95 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 33 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 39 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 20 | 220,189 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 22 | 223,550 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 27 | 344,948 | **no** — UKDS End User Licence |
-| US transfer — TESS | 33 | 328,964 | **no** — no licence stated |
-| **Total** | **81** | **907,369** | |
+| UK — UK Data Service (End User Licence) | 33 | 365,425 | **no** — UKDS End User Licence |
+| US transfer — TESS | 39 | 362,707 | **no** — no licence stated |
+| **Total** | **95** | **964,950** | |
 
 ---
 
@@ -43,12 +43,14 @@
 | `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
 | `ukds_6849_satisfaction_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.20: presentati… | UK Data Service | `UKDS SN 6849` | 8,025 |
 | `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
+| `ukds_6849_nrp_w10_fh` ⚠ | Understanding Society Innovation Panel, experiment 9.23: ever adopt… | UK Data Service | `UKDS SN 6849` | 7,392 |
 | `del_panel_w5_who_must_change` | Development Engagement Lab, Panel Great Britain wave 5 (2023): who … | Harvard Dataverse | `doi:10.7910/DVN/FTRXFO` | 7,356 |
 | `ukds_6849_vig_ageing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 6,600 |
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
 | `RJTVG8` | Support for digitising the ballot box: a systematic review of i-vot… | Harvard Dataverse | `doi:10.7910/DVN/RJTVG8` | 6,000 |
 | `ukds_6849_vig_ageing_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 5,967 |
+| `ukds_6849_nrp_w10_contact` ⚠ | Understanding Society Innovation Panel, experiment 9.23: how often … | UK Data Service | `UKDS SN 6849` | 5,690 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
 | `ukds_6849_vig_housework_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 5,081 |
 | `ukds_6849_caring_existing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 4,847 |
@@ -56,11 +58,17 @@
 | `ukds_6849_numeracy_fin_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,602 |
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
 | `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
+| `ukds_6849_hmrc_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 2,553 |
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
+| `ukds_6849_envtax_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.14: willingnes… | UK Data Service | `UKDS SN 6849` | 2,235 |
 | `del_sandbox_feb2023_abortion` | Development Engagement Lab, Sandbox Great Britain February 2023: ab… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,798 |
 | `del_sandbox_feb2023_wordfeminist` | Development Engagement Lab, Sandbox Great Britain February 2023: na… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,788 |
 | `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
+| `del_sandbox_feb2023_aid_priorities` | Development Engagement Lab, Sandbox Great Britain February 2023: ai… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,706 |
+| `del_sandbox_feb2023_gender_aid` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,655 |
+| `ukds_6849_hmrc_consent_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,326 |
+| `ukds_6849_hmrc_consent_w11_web` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,281 |
 | `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
 | `ukds_6849_mpc_twopart_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,259 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
@@ -69,6 +77,7 @@
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
+| `7tzpe` ⚠ | Body Size, Illness, and Blame: Causal Attributions and Social Conse… | TESS (OSF) | `osf.io/7tzpe` | 20,308 |
 | `b87sm` ⚠ | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | TESS (OSF) | `osf.io/b87sm` | 19,282 |
 | `8ctbk` ⚠ | Childbearing Preferences in the Face of Work, Family, and Financial… | TESS (OSF) | `osf.io/8ctbk` | 17,464 |
 | `s6urt` ⚠ | Understanding Effects of Communicating Different Types of Conflicti… | TESS (OSF) | `osf.io/s6urt` | 17,402 |
@@ -79,6 +88,7 @@
 | `yv2ta_flexible_scheduling` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material… | TESS (OSF) | `osf.io/yv2ta` | 12,131 |
 | `sh4px` ⚠ | Self-Affirmation and Affect: Effects on Implementation Intentions | TESS (OSF) | `osf.io/sh4px` | 11,532 |
 | `zaqkm` ⚠ | Causal Attributions, Treatability, and Mental Illness Stigma | TESS (OSF) | `osf.io/zaqkm` | 9,528 |
+| `gh396` ⚠ | Maintaining a Sense of Belonging among the Socially Isolated | TESS (OSF) | `osf.io/gh396` | 8,959 |
 | `xk9ch_identity_threat` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,335 |
 | `xk9ch_vignette2` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,269 |
 | `a42yg` ⚠ | Conflict between curative and palliative goals among health care pe… | TESS (OSF) | `osf.io/a42yg` | 8,022 |
@@ -94,11 +104,15 @@
 | `sd7cf` ⚠ | Framing in Noisy Informational Environments | TESS (OSF) | `osf.io/sd7cf` | 4,124 |
 | `dh3nj` ⚠ | Public Perceptions of Prenatal Alcohol Consumption | TESS (OSF) | `osf.io/dh3nj` | 4,001 |
 | `a5v96_vignette1` ⚠ | What fosters patients' acceptance of Clinical Decision Support? (vi… | TESS (OSF) | `osf.io/a5v96` | 3,621 |
+| `e5rfg_six` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 3,608 |
 | `7jt2f` ⚠ | When Others' Disbelief Engenders Prejudice: Characterizing Anti-Ath… | TESS (OSF) | `osf.io/7jt2f` | 3,053 |
 | `zrwjp` ⚠ | The Barriers of Buying Happier Time | TESS (OSF) | `osf.io/zrwjp` | 2,532 |
 | `bf8p2` ⚠ | Does Misery Love Company? Exploration of a Strategic Social Comparison | TESS (OSF) | `osf.io/bf8p2` | 1,998 |
 | `c5r2f` ⚠ | Do Policy Defaults Communicate Choice-Relevant Information? | TESS (OSF) | `osf.io/c5r2f` | 1,091 |
 | `rpw4u_RO1` ⚠ | Cross-National Replication of Question Design Experiments (RO1: oil… | TESS (OSF) | `osf.io/rpw4u` | 1,023 |
+| `e5rfg_pair` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 323 |
+| `e5rfg_ce` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 281 |
+| `e5rfg_tk` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 264 |
 
 ⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows without the mark are CC0 and may be published; the TESS layer is unmarked only because none of it is redistributable, as the table above says.
 
@@ -368,6 +382,32 @@ The same development-policy description shown under four names (development, fem
 - **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
 - **Verified against** — no published reference; an independent checker re-derived all 1,788 rows from the raw .sav (0 missing, extra, wrong-arm or wrong-response rows), transcribed all five items from the questionnaire (exact match on every condition and outcome), and tabulated every persona code on all rows (10 Oct 2026)
 
+### `del_sandbox_feb2023_aid_priorities`
+
+**Development Engagement Lab, Sandbox Great Britain February 2023: aid budget with or without the government's development priorities**
+
+Should the UK increase or decrease overseas aid? Shown with the aid budget figure alone, or after the government's development priorities: three listed, or four including addressing gender inequality. The priorities' order was randomised per respondent and not recorded; rows list them in the script's order. DEL sandbox, February 2023.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/XZ1XUZ`
+- **Type** — between-subjects information provision, 3 arms (track7split); one 5-point increase/decrease outcome; one doubly-routed respondent excluded (ledger 143)
+- **Category** — political preferences/policy
+- **Rows** — 1,706 from 1,706 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
+- **Verified against** — no published reference; an independent checker re-derived all 1,706 rows from the .sav (0 missing, extra or wrong), matched all three items byte-for-byte, searched every column and the codebook for the list order (none recorded), and confirmed personas identical to the same people in the other Feb 2023 builds (10 Oct 2026)
+
+### `del_sandbox_feb2023_gender_aid`
+
+**Development Engagement Lab, Sandbox Great Britain February 2023: gender-equality aid compared to others**
+
+Should the UK increase or decrease the aid it allocates to gender equality in developing countries? Respondents saw no figure, or that the UK spends around 68% of its development aid on gender equality, alone or compared with the major-donor average (44%), Canada (90%) or Poland (3%). The Canada and Poland statements also differ in wording. DEL sandbox, February 2023.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/XZ1XUZ`
+- **Type** — between-subjects information provision, 5 arms; one 5-point increase/decrease outcome, each arm's question in its own fielded wording
+- **Category** — political preferences/policy
+- **Rows** — 1,655 from 1,655 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
+- **Verified against** — no published reference; an independent checker re-derived all 1,655 rows from the .sav (0 missing, extra or wrong), matched all five items word-for-word, and confirmed personas identical to the same people in the abortion and naming-policy builds (10 Oct 2026)
+
 ---
 
 ## UK layer — Harvard Dataverse, licence-restricted
@@ -445,6 +485,19 @@ Respondents answer the existing Understanding Society questions on informal care
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication. What IS verified: (a) 0 answers outside the allocated module; (b) every row's condition against what was actually asked earlier; (c) every response against the raw value, 'Other' recoded 97 -> 10; (d) recipes regenerated from the questionnaire; (e) 4,847 rows; an independent checker rebuilt every row from raw with 0 mismatches. tests/test_ip_caring.py
 
+### `ukds_6849_envtax_w7`
+
+**Understanding Society Innovation Panel, experiment 9.14: willingness to pay higher environmental taxes, ten question wordings (wave 7)**
+
+How willing would you be to pay higher taxes to protect the environment? Asked in one of ten wordings: the plain question, the extra money spent on the environment, a government promise to spend it so, taxes on things you buy that pollute, and the same naming petrol or electricity, each with and without 'if the government reduced other taxes you pay by the same amount'. Wave 7 (2014).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — ten-version question-wording split (5 framings x other taxes reduced or not), allocated by household (ff_envtaxqw7); one outcome, 4-point willingness; condition narrated as the question asked; one doubly-routed respondent dropped (one G answer lost)
+- **Category** — survey methodology
+- **Rows** — 2,235 from 2,235 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived all 2,235 rows from the raw files (0 mismatches), matched all ten wordings byte-for-byte to the questionnaire, and confirmed allocation against routing in every cell (10 Oct 2026)
+
 ### `ukds_6849_eq5d3l_w11`
 
 **Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-3L, asked with or without the EQ-5D-5L earlier (wave 11)**
@@ -509,6 +562,45 @@ Respondents describe their mental and physical wellbeing on the GHQ-12, standard
 - **Rows** — 36,447 from 3,044 respondents
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.31. What IS verified: (a) every row's condition against which early module the respondent actually answered, independent of either allocation variable, and a build trusting the person-level variable fails it; (b) every response against the raw value in the module its arm used; (c) the ReQoL and EQ-5D wording against the respondent's mode; (d) 36,447 rows, reached by the generator's count and the pipeline. (e) an independent checker re-rendered every row from raw with its own transcription; it found the telephone EQ-5D options wrongly in the self-completion wording, since fixed and pinned by a test. tests/test_ip_reqol.py
+
+### `ukds_6849_hmrc_consent_w11`
+
+**Understanding Society Innovation Panel, experiment 9.25: consent to link HMRC records, standard or easy wording, asked early or late in the interview (wave 11, face-to-face)**
+
+Face-to-face respondents are asked to consent to linking their HMRC tax records, with the standard or an easy-to-read wording, placed early or late in the interview. Wave 11 (2018).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2x2 between-subjects (wording x placement), person-level allocation; one consent outcome; 227 late rows excluded for a documented script error that may have left them self-completing (tech report table 5.1)
+- **Category** — survey methodology
+- **Rows** — 1,326 from 1,326 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — an independent checker re-derived every row from the raw files (0 arm or response mismatches) and matched every cell's consent text block to the questionnaire (10 Oct 2026); no published reference
+
+### `ukds_6849_hmrc_consent_w11_web`
+
+**Understanding Society Innovation Panel, experiment 9.25: consent to link HMRC records, standard or easy wording (wave 11, web)**
+
+Web respondents are asked to consent to linking their HMRC tax records, with the standard or an easy-to-read wording. Wave 11 (2018).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2-arm wording experiment, person-level allocation; one consent outcome; the two versions also linked different flowchart images (not rendered)
+- **Category** — survey methodology
+- **Rows** — 1,281 from 1,281 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — an independent checker re-derived every row from the raw files (0 arm or response mismatches) and matched every cell's consent text block to the questionnaire (10 Oct 2026); no published reference
+
+### `ukds_6849_hmrc_consent_w15`
+
+**Understanding Society Innovation Panel, experiment 9.25: consent to link HMRC records, asked by the interviewer or on the laptop, and on the web with or without a message from the study director (wave 15)**
+
+Consent to link HMRC records (easy wording) asked by the interviewer, by laptop self-completion, or by a card read out with a private answer; on the web with or without a photo of and message from the study director. Wave 15 (2022).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — between-household allocation, 3 face-to-face and 2 web delivery versions; one consent outcome; self-completion cells exclude helped or interviewer-completed answers (ledger 141)
+- **Category** — survey methodology
+- **Rows** — 2,553 from 2,553 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — an independent checker re-derived every row from the raw files (0 arm or response mismatches) and matched every cell's consent text block to the questionnaire (10 Oct 2026); no published reference
 
 ### `ukds_6849_identity_w2`
 
@@ -587,6 +679,32 @@ Respondents rate how important being British is to them (0-10), either before or
 - **Rows** — 2,472 from 2,472 respondents
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — no published reference; an independent checker rebuilt all 2,472 rows from the raw .dta files (0 condition or response mismatches), confirmed the allocation against routing in every cell, and confirmed condition 0's 'not asked earlier' is true for every row (10 Oct 2026)
+
+### `ukds_6849_nrp_w10_contact`
+
+**Understanding Society Innovation Panel, experiment 9.23: how often you see and contact your mother, father and adult child, asked before or after the questions about all your children (wave 10)**
+
+How often you see and contact your mother, father and an adult child living elsewhere: asked with or without the questions about all your children asked earlier. Wave 10 (2017).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2-arm module-order experiment, allocated by household; 6 outcomes on a 6-point frequency scale, each reached through the respondent's own relatives answers (selection by order 1-2pp, not significant)
+- **Category** — work/family/gender
+- **Rows** — 5,690 from 1,869 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived every row from the raw files (0 mismatches), matched every condition and outcome to the questionnaire, confirmed allocation against routing and that the identifier loop followed the 'A' modules, and measured post-treatment selection (10 Oct 2026)
+
+### `ukds_6849_nrp_w10_fh`
+
+**Understanding Society Innovation Panel, experiment 9.23: ever adopted, ever lived with step-children, ever had biological children, asked before or after the questions about relatives living elsewhere (wave 10)**
+
+Ever adopted a child, ever lived with step-children, ever had biological children: asked with or without the questions about relatives living elsewhere asked earlier in the interview. Wave 10 (2017).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2-arm module-order experiment, allocated by household (j_ff_nonresw10); 3 yes/no outcomes; condition narrated from what was asked before
+- **Category** — survey methodology
+- **Rows** — 7,392 from 2,470 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived every row from the raw files (0 mismatches), matched every condition and outcome to the questionnaire, confirmed allocation against routing and that the identifier loop followed the 'A' modules, and measured post-treatment selection (10 Oct 2026)
 
 ### `ukds_6849_numeracy_env_w16`
 
@@ -754,6 +872,11 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 |---|---|---|---|---|---|
 | `7jt2f` | When Others' Disbelief Engenders Prejudice: Characterizing Anti-Ath… | cross-national | 3,053 | 613 | osf.io/7jt2f |
 | `c5r2f` | Do Policy Defaults Communicate Choice-Relevant Information? | economics/behavioural | 1,091 | 1,091 | osf.io/c5r2f |
+| `e5rfg_ce` | Who has Narrow Brackets? | economics/behavioural | 281 | 192 | osf.io/e5rfg |
+| `e5rfg_pair` | Who has Narrow Brackets? | economics/behavioural | 323 | 216 | osf.io/e5rfg |
+| `e5rfg_six` | Who has Narrow Brackets? | economics/behavioural | 3,608 | 727 | osf.io/e5rfg |
+| `e5rfg_tk` | Who has Narrow Brackets? | economics/behavioural | 264 | 176 | osf.io/e5rfg |
+| `7tzpe` | Body Size, Illness, and Blame: Causal Attributions and Social Conse… | health communication | 20,308 | 1,380 | osf.io/7tzpe |
 | `a42yg` | Conflict between curative and palliative goals among health care pe… | health communication | 8,022 | 503 | osf.io/a42yg |
 | `a5v96_vignette1` | What fosters patients' acceptance of Clinical Decision Support? (vi… | health communication | 3,621 | 1,211 | osf.io/a5v96 |
 | `bf8p2` | Does Misery Love Company? Exploration of a Strategic Social Comparison | health communication | 1,998 | 1,998 | osf.io/bf8p2 |
@@ -767,6 +890,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `9xw67_vignette` | Blame and Bias in Trust in Public Policy Algorithms | moral/social/cognition | 5,816 | 1,846 | osf.io/9xw67 |
 | `b87sm` | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | moral/social/cognition | 19,282 | 1,942 | osf.io/b87sm |
 | `es4xw` | Perceptions of Diversity Across Groups | moral/social/cognition | 32,228 | 2,501 | osf.io/es4xw |
+| `gh396` | Maintaining a Sense of Belonging among the Socially Isolated | moral/social/cognition | 8,959 | 412 | osf.io/gh396 |
 | `xk9ch_identity_threat` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,335 | 2,783 | osf.io/xk9ch |
 | `xk9ch_institution` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,524 | 2,785 | osf.io/xk9ch |
 | `xk9ch_vignette1` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,499 | 2,786 | osf.io/xk9ch |
@@ -795,11 +919,11 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 10 | 1 | 170,576 |
-| health communication | 0 | 8 | 70,806 |
-| moral/social/cognition | 5 | 10 | 171,538 |
+| economics/behavioural | 10 | 5 | 175,052 |
+| health communication | 0 | 9 | 91,114 |
+| moral/social/cognition | 5 | 11 | 180,497 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 11 | 0 | 120,834 |
-| survey methodology | 11 | 5 | 200,567 |
-| work/family/gender | 7 | 8 | 135,075 |
+| political preferences/policy | 13 | 0 | 124,195 |
+| survey methodology | 16 | 5 | 215,354 |
+| work/family/gender | 8 | 8 | 140,765 |
 

@@ -1,0 +1,242 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Sandbox Great Britain February 2023: aid budget with or without the government's development priorities"
+data_file: DEL_Sandbox_GreatBritain_Feb2023_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/XZ1XUZ, stated on the Harvard Dataverse deposit "DEL
+  Sandbox 2023" and read from the Dataverse API (latestVersion.license) on 10 Oct 2026. The deposit's Readme adds "DEL datasets are a public good and can be used
+  with the appropriate citation."
+
+comparable_to_socsci210: false
+experiment: sandbox_feb2023_aid_priorities
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin; Torres-Raposo, Felipe,
+  2024, "DEL Sandbox 2023", https://doi.org/10.7910/DVN/XZ1XUZ, Harvard Dataverse, V1;
+  DEL_Sandbox_GreatBritain_Feb2023_Data.sav. Fielded online by YouGov, 20-28 February
+  2023, n = 2,007 adults in Great Britain (the deposit's Readme). The same file as
+  `del_sandbox_feb2023_wordfeminist`, `del_sandbox_feb2023_abortion` and
+  `del_sandbox_feb2023_gender_aid`, whose licence, person id and persona block carry over
+  unchanged (re-checked against this file's value labels on 10 Oct 2026: every declared
+  persona missing code is still a non-answer label, no other non-answer label exists on
+  those variables, and `age` holds real ages 18-90).
+
+  THE DESIGN. An information-provision split ("Track7 - development policy priorities",
+  item 2 of the survey's GENERAL block). `track7split`, assigned by YouGov's
+  `panman.assign_treatment(3, [wordfeministsplit, femsynsplit, areasplit],
+  "track7split")`, sends 667 / 670 / 670 respondents to items `track7_sp1`,
+  `track7_sp2`, `track7_sp3`. Everyone in the file has a code; no "Skipped" (-8) or
+  "Not Asked" (-9) assignment occurs. All three arms give the same budget sentence
+  ("Of its total budget of nearly £1,060 billion, the UK government currently allocates
+  1.1 percent, or £11.5 billion, to overseas aid to poor countries."). Arm 1 gets that
+  sentence alone; arm 2 first reads that the government's announced development policy
+  priorities include three items (global health and pandemic prevention; poverty,
+  hunger, economic inequality; climate protection and global energy transition); arm 3
+  the same plus a fourth, "Addressing gender inequality". So arm 2 vs 1 is the
+  priorities list, arm 3 vs 2 is the gender item. Every figure is literal in the script
+  (no piped text): "£1,060 billion", "1.1 percent", "£11.5 billion" are written into the
+  item, not filled from data, and are rendered as written. The script names no source
+  for them and none is rendered.
+
+  THE PRIORITY ORDER WAS RANDOMISED AND IS NOT RECORDED. The script builds the list in
+  code: `temp sp2texts=[...]`, `sp2_list=random_shuffle([0,1,2])`, `sp2_txt1 =
+  sp2texts[sp2_list[0]]` ... (and the four-item `sp3_list` likewise), then pipes
+  `$sp2_txt1`..`$sp2_txt3` / `$sp3_txt1`..`$sp3_txt4` into `<li>` bullets; the
+  programmer note reads "can you randomise the order with which the policy priority list
+  appears?". None of `sp2_list`, `sp3_list`, `sp2_txt*`, `sp3_txt*` is in the deposit:
+  all 270 columns of the .sav were listed and none holds an order or a piped text (the
+  only candidates, `page_implicit_page_0_timing` / `page_implicit_page_1_timing`, are
+  the code blocks' page timings and are 0 for all 2,007); the Codebook's Variables and
+  Values sheets name none either; the .sav labels of `track7_sp2` / `track7_sp3` still
+  show the unresolved `$sp2_txt1` placeholders. So no row can say which priority came
+  first. The priorities are rendered as bullets in the script's own list order (the
+  order of `sp2texts` / `sp3texts`), with NO numbers or position words; that order is a
+  listing, not a claim about what any respondent saw first (the `e5rfg` precedent).
+  With 3! = 6 and 4! = 24 orders, the script's order is the one shown to about 1 in 6
+  (arm 2) and 1 in 24 (arm 3) respondents. `line_order_vars` cannot be used: there is
+  nothing to point it at. Note that in arm 3 "Addressing gender inequality" is listed
+  FIRST in `sp3texts` and so first here; for about three quarters of arm 3 it was not
+  first on screen.
+
+  WORDING. From DEL_Sandbox_GreatBritain_Feb2023_Survey.docx (`textutil -convert txt`),
+  items `track7_sp1`, `track7_sp2`, `track7_sp3`, word-for-word; the .sav variable labels
+  carry the same text up to SPSS's 256-character cut. The stem, the bullets and the
+  budget sentence are one HTML item: "include: <br/><br/><ul><li>...</li></ul>Of its
+  total budget ...". Rendered as: the stem line, one "• " line per `<li>`, then the
+  budget sentence on its own line (the `</ul>` ends the list, so the sentence starts a
+  new line on screen). Arm 2's script reads "</ul>>Of its" and both arms 2 and 3 read
+  "include: <<br/><br/><ul>"; this is the script's `<<...>>` HTML-escape wrapper (the oda
+  items use `<<br/>>` the same way), not words, and the .sav label of `track7_sp2`
+  shows "</ul>Of its". All of it is dropped; the on-screen blank line becomes one
+  newline. The trailing space after each "?" is dropped. No curly characters occur.
+
+  CONDITION vs OUTCOME. The statement and the question share one screen. The condition
+  is everything before the question (the stem and list, arms 2-3, and the budget
+  sentence, all arms); the outcome is the question. The questions differ: arm 1 asks
+  "Do you think that the government should increase ...", arms 2-3 "Thinking about
+  these policy priorities, do you think that the government should increase ...". The
+  wording difference is part of the manipulation and is kept, so the outcome question
+  is set per arm, in the arm's own words, under one outcome id: same answer type and
+  scale throughout, so ledger 147 does not apply. "Thinking about these policy
+  priorities" refers back to the list in the condition, which every arm-2/3 row
+  carries.
+
+  THE CONDITION IS NARRATED, by the `del_sandbox_feb2023_gender_aid` precedent. ADDED by
+  us (docs/CONVENTIONS.md, "Narrating what the respondent did"): "Before the question,
+  you were shown this text:" and the quotation marks around the shown text, in all three
+  arms. True for everyone in each arm: the text sits above the question on the same
+  page. Every other word is the instrument's. Arm 1 is NOT a no-stimulus control: it
+  shows the budget sentence, and says so.
+
+  WHAT CAME BEFORE, the same for all arms, none of it rendered. Earlier in the
+  interview everyone met the `wordfeminist` naming split (the survey's first question),
+  `fdp_focus`, the `femsyn` word-association split and the `area` aid-priority ranking
+  split (rank the three most important areas of overseas aid spending, from eleven
+  including education, health, climate). So every respondent had ranked aid areas just
+  before this item; it was not asked cold. Nothing between `area` and `track7` refers to
+  the budget. Later items (`goveff_1`, `equal`, `equalg`, `genderatt`, the `oda` split,
+  which repeats this item's five-point scale) come AFTER and are irrelevant here. Not a
+  repeated measure: each respondent answers one track7 item.
+
+  OUTCOME. Scale 1 "Increase a great deal", 2 "Increase somewhat", 3 "Stay the same",
+  4 "Decrease somewhat", 5 "Decrease a great deal", identical in all three items (arms
+  2-3 share the list `[[l1]]`, arm 1 lists the same labels), as fielded: 1 is increase.
+  6 "Don't know" is dropped as a non-answer (73 / 120 / 107 by arm, 300 in all); 8
+  "Skipped" and 9 "Not Asked" are labelled but never occur, and are declared so a
+  re-fetched deposit that has them drops them.
+
+  ROUTING. One respondent (row 1,450 of the .sav) is assigned arm 1 and answered both
+  `track7_sp1` and `track7_sp3` (arm 3's item), with page timings on both (6.1 s and
+  73.1 s); the arm-2 and arm-3 page timings are otherwise non-zero for exactly their own
+  arm. This is the same person as the wordfeminist build's doubly-routed respondent
+  (ledger 143), who is doubly routed there too (`wordfeminist_1` and `_5`) but not on
+  `oda`: a back-button re-assignment. Which item they saw first is unrecorded, so
+  neither answer can be attributed to one condition; `routing_check: true` with
+  `ambiguous_routing: 1` drops them and stops the build if a re-fetched deposit has a
+  second. Otherwise clean: every other respondent answered exactly the item their
+  `track7split` names (crosstab: 0 off-diagonal). "Not asked" is blank in this file,
+  which is what `routing_check` requires.
+
+  COUNTS. 2,007 respondents; 300 "Don't know" dropped; 1 doubly-routed respondent
+  dropped (answered 3 "Stay the same" to both items, not a Don't know); 1,706 rows: 593
+  budget only, 550 with three priorities, 563 with four priorities. No published
+  reference exists to compare against.
+
+  RISKIEST JUDGEMENT. Listing the priorities at all, in the script's order, when the
+  on-screen order was randomised and not recorded. Any written list has an order, and
+  the one here is the order of the script's `sp2texts` / `sp3texts`, which most
+  respondents did not see (5 in 6 in arm 2, 23 in 24 in arm 3); it puts "Addressing
+  gender inequality" first in every arm-3 row. The alternative, dropping the list,
+  would delete the manipulation itself (arms 2 and 3 would read like arm 1 plus "these
+  policy priorities" with nothing to refer to). Mitigation: bullets without numbers or
+  position words, and this note. A reader of the rows must not use list position in
+  arms 2-3 as information. Second: treating arm 1 as a stimulus arm (budget figure
+  shown) rather than a control with no text: the figure is shown in all three arms and
+  is rendered in all three.
+
+  PERSONA: the standard YouGov profile block, confirmed for this file by
+  `scripts/recipe_prep.py del --source dataverse --file DEL_Sandbox_GreatBritain_Feb2023`
+  for the wordfeminist build (every field at confidence 1.00): age (real ages in this
+  file, not codes; ledger 145), gender, education_level, gross_household,
+  ethnicity_new, region_GOR, religion, plus socialgrade_cie. `income` is HOUSEHOLD
+  income. Past general-election and EU-referendum vote go to `extra`. Nothing in the
+  condition is derivable from a persona field.
+
+  PERSON ID: `GUNQID`, YouGov's panellist id, shared across all ten DEL files; every DEL
+  recipe uses `study_id: del`. Unique and never blank in this file.
+
+condition:
+  source_var: track7split
+  factors: [priorities]
+  routing_check: true
+  ambiguous_routing: 1
+  ambiguous_routing_reason: >-
+    One respondent assigned arm 1 also answered arm 3's question, with page timings on
+    both: a back-button re-assignment (the same person is doubly routed in the
+    wordfeminist split, ledger 143). Which they saw first is unrecorded, so their answer
+    cannot be attributed to a single condition.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {priorities: "none (budget figure only)"}
+      text: >-
+        Before the question, you were shown this text: "Of its total budget of nearly
+        £1,060 billion, the UK government currently allocates 1.1 percent, or £11.5
+        billion, to overseas aid to poor countries."
+      outcome_var: track7_sp1
+      outcome_question: >-
+        Do you think that the government should increase or decrease the amount of money
+        that it spends on overseas aid to poor countries?
+    - raw: 2
+      condition_num: 1
+      factors: {priorities: "three listed (health, poverty, climate)"}
+      text: |-
+        Before the question, you were shown this text: "The UK government has announced that its development policy priorities include:
+        • Global health and pandemic prevention
+        • Poverty, hunger, economic inequality
+        • Climate protection and global energy transition
+        Of its total budget of nearly £1,060 billion, the UK government currently allocates 1.1 percent, or £11.5 billion, to overseas aid to poor countries."
+      outcome_var: track7_sp2
+      outcome_question: >-
+        Thinking about these policy priorities, do you think that the government should
+        increase or decrease the amount of money that it spends on overseas aid to poor
+        countries?
+    - raw: 3
+      condition_num: 2
+      factors: {priorities: "four listed (adds addressing gender inequality)"}
+      text: |-
+        Before the question, you were shown this text: "The UK government has announced that its development policy priorities include:
+        • Addressing gender inequality
+        • Global health and pandemic prevention
+        • Poverty, hunger, economic inequality
+        • Climate protection and global energy transition
+        Of its total budget of nearly £1,060 billion, the UK government currently allocates 1.1 percent, or £11.5 billion, to overseas aid to poor countries."
+      outcome_var: track7_sp3
+      outcome_question: >-
+        Thinking about these policy priorities, do you think that the government should
+        increase or decrease the amount of money that it spends on overseas aid to poor
+        countries?
+
+outcomes:
+  - task_num: 0
+    question: "[the increase-or-decrease question, in the condition's own wording]"
+    scale:
+      min: 1
+      max: 5
+      min_label: Increase a great deal
+      mid_label: Stay the same
+      max_label: Decrease a great deal
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # SPSS cut this label at 120 characters in every DEL file and codebook ("...New
+  # Testament Church of God, Redeemed Christian Chur"), so the full wording exists
+  # nowhere in the deposit. Kept: its complete head, the source's own words; lost:
+  # the example list. Mapped to "Pentecostal" by scripts/persona_del.py.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education_level: [19, 20, 98, 99]
+  gross_household: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]

@@ -1,0 +1,205 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.25: consent to link HMRC records, standard or easy wording, asked early or late in the interview (wave 11, face-to-face)"
+data_file: hmrc_w11-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: hmrc_consent_w11
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.25 in the Innovation Panel User Guide ("HMRC data linkage consent
+  experiment"); wave 11 (2018), FACE-TO-FACE. The User Guide cites no publication. Wave
+  11's web respondents are a separate experiment, `ukds_6849_hmrc_consent_w11_web.yaml`
+  (wording only: they had no placement allocation). They were split out after the
+  independent check, so every factor declared here is randomised and fully crossed.
+  Wave 15 carries the same number with a different design: `ukds_6849_hmrc_consent_w15.yaml`.
+
+  WHAT WAS RANDOMISED (User Guide 9.25; module Experimentalvariables_ip11). Per
+  RESPONDENT, in `k_indresp_ip`, so no household join. Wording, `condiffcapi`: 1 "Standard
+  HMRC consent question", 2 "Easy HMRC consent question". Placement, allocated within
+  wording: `conlocstand` (standard version) and `conloceasy` (easy version), 1 early, 2
+  late. Cells as allocated: 437 standard early, 389 standard late, 391 easy early, 379
+  easy late. Proxies (94) were never asked.
+
+  THE LABELS WERE NOT TRUSTED (ledger 138). `scripts/gen_ip_hmrc.py --check` cross-tabulates
+  each cell against the four consent variables. Every respondent in a cell was asked
+  their own version's variable (`consentq1` standard early, `consentq2` easy early,
+  `consentq3` standard late, `consentq4` easy late) and no other, and no consent answer
+  falls outside the cells (web included). The questionnaire's own universe comments for
+  the late module are wrong: ConsentQ3's comment says "easy" where its condition says
+  CONDIFFCAPI = 1, ConsentQ4's says the reverse, and ConsentQ4's condition has a
+  misplaced parenthesis that, read literally, would exclude every face-to-face
+  respondent. The data follow the evident intent in every cell, and the generator follows
+  the data.
+
+  EXCLUDED: THE SCRIPT ERROR (Innovation Panel Wave 11 Technical Report,
+  `6849_ip_wave_11_tech_report.pdf`, section 5.3, Table 5.1, script version active 26
+  July - 21 October). "An error was identified that meant the 'CASI early end' module was
+  not appearing for some respondents ... respondents may have continued to self-complete
+  some of the sections that followed the 'CASI early end' module that were intended to be
+  interviewer-administered. This error impacted around 200 interviews." A respondent
+  placed LATE who went through the early self-completion section (`eq5dcond` 1 or 2, the
+  9.24 allocation) and has no self-completion interviewer number recorded for it
+  (`casiintnoearly` = -9) may have read and answered the late consent on the laptop. For
+  them "The interviewer then read out this text:" cannot be verified, so they are
+  excluded through the derived `scripterr` (1 = affected; the arms require 0). The flag is
+  set only for face-to-face late respondents. It costs 227 answered rows, 124 standard
+  late and 103 easy late. `--check` declares both numbers and fails if either changes.
+  Early-placed respondents are not affected: their consent came before the early
+  self-completion section. CONSEQUENCE: the late cells lose the respondents who did the
+  early self-completion during the faulty script and the early cells keep theirs. So the
+  two placements differ slightly in fieldwork date and 9.24 allocation, as well as in
+  placement. Found by the independent checker.
+
+  THE WORDING FACTOR, AS FIELDED (`6849_ip_wave_11_questionnaires.pdf`, modules
+  Hmrcconsentearly_ip11 and Hmrcconsentlate_ip11). The interviewer reads the text
+  ("Display recording icon on-screen"). Standard: two sentences on what HMRC holds and
+  who may use it, then "Please read this leaflet explaining how ... and let me know if you
+  have any questions." Easy: "If you agree:" and seven bullets, then "Please read this
+  leaflet for further information. Let me know if you have any questions." Early and late
+  wording are identical. Codes are the source's own, 1 = consent.
+
+  THE STANDARD CELLS' ANSWER OPTIONS ARE INTERVIEWER CODES (independent checker). 1
+  "Respondent has read leaflet and is happy to give consent" and 2 "Respondent does not
+  want to give consent" are what the interviewer recorded. They were never read out: the
+  respondent heard the question and answered it. They are kept because they are the
+  source's only statement of what the codes mean. But code 1's "has read leaflet" is not
+  a claim about every row. Against the interviewer's own later observation (Intcread1/2,
+  "Whether read information leaflet"), 105 of the 560 code-1 answers in the standard
+  version were coded "No, did not read the leaflet" (89) or "Did not have a leaflet" (16).
+  After the script-error exclusion that is 88 of 484 (73 and 15). Easy cells: "Yes" /
+  "No".
+
+  PLACEMENT, NARRATED WITHOUT A POSITION (docs/CONVENTIONS.md, "Sequence signposting" and
+  "Narrating what the respondent did"; the 9.24/9.42/9.47 pattern, built on what was asked
+  before). The early module sits after the demographic, education and annual-event-history
+  modules. The late module sits after health, employment, the income and benefits module
+  (Benefits_w10) and household finances, just before the self-completion section. What
+  reliably distinguishes the two is the income and benefits questions, the same content
+  HMRC records hold. Health and employment cannot be named, because the annual event
+  history before the early module also asks about health conditions and job changes. The
+  late condition opens 'Earlier in the interview you were asked the questions that begin
+  "<Intbenefit>"'. The early condition opens 'You had not been asked the questions that
+  begin "<Intbenefit>" earlier in the interview.' The quote is the first three sentences
+  of the benefits module's introduction, which carry no mode fill. In the EARLY condition
+  the quoted text is something the respondent had NOT yet seen. It is quoted rather than
+  paraphrased because a paraphrase would be false: a generic "you had not been asked about
+  benefits" is untrue for respondents who answered the household questionnaire, which
+  comes before both placements and asks about housing costs and Housing Benefit. Quoting
+  the module's own opening names exactly which questions had not yet come. The natid w15
+  precedent does the same ('You had not been asked the question "..." earlier in the
+  interview.'). The module has no universe condition, and `--check` confirms every
+  late-placed respondent was asked both `benbase1` (the first benefits question, after
+  the introduction) and `finnow` (household finances): 0 exceptions.
+
+  WORD-FOR-WORD VS OURS. Inside the double quotes, every word is the questionnaire's,
+  typography normalised; `--check` asserts each quoted string occurs in the PDF. ADDED BY
+  US: the framing of the two placement sentences ("You had not been asked the questions
+  that begin", "earlier in the interview.", "Earlier in the interview you were asked the
+  questions that begin") and "The interviewer then read out this text:". The leaflet
+  hand-over is not narrated: interviewers recorded "Did not have a leaflet" for 59
+  respondents, so "you were handed a leaflet" would be false for some rows. The flowchart
+  showcard ("IF YOU USE THE FLOWCHART SHOWCARD - PLEASE USE VERSION A", both versions) is
+  not narrated either. Its use is recorded only afterwards by the interviewer, and the
+  source does not contain its content as text.
+
+  NOT BUILT. The interviewer observations Intcread/Intflread: recorded by the interviewer,
+  after the answer. The follow-up self-completion questions (Csundstd, Ccnfdnc, Cinfo,
+  Cdcsn and others): asked only of those who accepted self-completion, and several refer
+  to "the decision you made", so their condition would follow the respondent's own
+  previous answer (the reason 9.12 was dropped, ledger 142). The keystroke paradata
+  (`k_keystroke_paradata`): timings, not answers.
+
+  ROW COUNTS (aggregates). Don't know and refusal dropped, script-error rows excluded.
+  Standard early 426, standard late 251, easy early 383, easy late 266: 1,326 rows, one per
+  respondent.
+
+  PERSONA. The same spine as every Innovation Panel build. `person` is a hash of `pidp`,
+  the same construction as every Innovation Panel build.
+
+condition:
+  source_vars: [indmode, wording, placement, scripterr]
+  factors: [wording, placement]
+  arms:
+    - raw_values: {indmode: 1, wording: 1, placement: 1, scripterr: 0}
+      condition_num: 0
+      factors: {wording: "standard", placement: "early"}
+      text: "You had not been asked the questions that begin \"One of the most important parts of our research is how people are getting by financially these days. We have found that we need to ask about a number of different types of income, otherwise our results could be misleading. Please think about ALL of the extra sources of income you receive, as well as any benefits or tax credits.\" earlier in the interview. The interviewer then read out this text: \"We would like to add records held by HM Revenue and Customs, or HMRC, containing information on your employment and self-employment history, your income, National Insurance contributions and tax credits. All information will be used for research purposes only by academic or policy researchers under restricted access arrangements which make sure that the information is used responsibly and safely. Please read this leaflet explaining how we would like to attach your HMRC records to the answers you have given in this study and let me know if you have any questions.\""
+      items:
+        0:
+          outcome_var: consentq1
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Respondent has read leaflet and is happy to give consent\" 2 \"Respondent does not want to give consent\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {indmode: 1, wording: 1, placement: 2, scripterr: 0}
+      condition_num: 1
+      factors: {wording: "standard", placement: "late"}
+      text: "Earlier in the interview you were asked the questions that begin \"One of the most important parts of our research is how people are getting by financially these days. We have found that we need to ask about a number of different types of income, otherwise our results could be misleading. Please think about ALL of the extra sources of income you receive, as well as any benefits or tax credits.\" The interviewer then read out this text: \"We would like to add records held by HM Revenue and Customs, or HMRC, containing information on your employment and self-employment history, your income, National Insurance contributions and tax credits. All information will be used for research purposes only by academic or policy researchers under restricted access arrangements which make sure that the information is used responsibly and safely. Please read this leaflet explaining how we would like to attach your HMRC records to the answers you have given in this study and let me know if you have any questions.\""
+      items:
+        0:
+          outcome_var: consentq3
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Respondent has read leaflet and is happy to give consent\" 2 \"Respondent does not want to give consent\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {indmode: 1, wording: 2, placement: 1, scripterr: 0}
+      condition_num: 2
+      factors: {wording: "easy", placement: "early"}
+      text: "You had not been asked the questions that begin \"One of the most important parts of our research is how people are getting by financially these days. We have found that we need to ask about a number of different types of income, otherwise our results could be misleading. Please think about ALL of the extra sources of income you receive, as well as any benefits or tax credits.\" earlier in the interview. The interviewer then read out this text: \"We would like to add records held by HM Revenue and Customs, or HMRC, to the answers you have given in this study. If you agree: • We will send HMRC your name, address, sex and date of birth so that they can identify the records they have about you. The HMRC records contain information about your current and previous employment, your income, National Insurance contributions and tax credits. • We will not send HMRC the answers you have given in this study. • HMRC will send us your records. These will contain an anonymous identification number but not your name, address, sex or date of birth. • We will add the HMRC records to the answers you have given in this study. • We will make the combined anonymous data available for academic and policy research purposes only. • Access to the data will be restricted and controlled, to make sure that researchers use the information responsibly and safely. • This will not affect the way that you deal with HMRC in any way. Please read this leaflet for further information. Let me know if you have any questions.\""
+      items:
+        0:
+          outcome_var: consentq2
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Yes\" 2 \"No\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {indmode: 1, wording: 2, placement: 2, scripterr: 0}
+      condition_num: 3
+      factors: {wording: "easy", placement: "late"}
+      text: "Earlier in the interview you were asked the questions that begin \"One of the most important parts of our research is how people are getting by financially these days. We have found that we need to ask about a number of different types of income, otherwise our results could be misleading. Please think about ALL of the extra sources of income you receive, as well as any benefits or tax credits.\" The interviewer then read out this text: \"We would like to add records held by HM Revenue and Customs, or HMRC, to the answers you have given in this study. If you agree: • We will send HMRC your name, address, sex and date of birth so that they can identify the records they have about you. The HMRC records contain information about your current and previous employment, your income, National Insurance contributions and tax credits. • We will not send HMRC the answers you have given in this study. • HMRC will send us your records. These will contain an anonymous identification number but not your name, address, sex or date of birth. • We will add the HMRC records to the answers you have given in this study. • We will make the combined anonymous data available for academic and policy research purposes only. • Access to the data will be restricted and controlled, to make sure that researchers use the information responsibly and safely. • This will not affect the way that you deal with HMRC in any way. Please read this leaflet for further information. Let me know if you have any questions.\""
+      items:
+        0:
+          outcome_var: consentq4
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Yes\" 2 \"No\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+
+# No `var`: each arm names its own. The question here is a fallback every arm
+# overrides; no built row may carry it.
+outcomes:
+  - task_num: 0
+    question: "[consent to link HMRC records, in the version's own wording]"
+    scale: {min: 1, max: 2, nominal: true}
+
+response_recode: {1: 1, 2: 2}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

@@ -5,9 +5,9 @@ Source: `data/catalog/innovation_panel_experiments.json`, whose titles and waves
 are parsed from the Innovation Panel User Guide (UKDS **SN 6849**, waves 1–17,
 2008–2024). Category and verdict are judgement and are recorded in that file.
 
-**93 experiments.** 40 pass screening, 9 need a ruling, 44 are out.
+**93 experiments.** 39 pass screening, 9 need a ruling, 45 are out.
 
-The 40 that pass span **56 experiment-waves**, because 12 of them ran in two or more waves — which is the time axis the Harvard and TESS layers structurally cannot provide.
+The 39 that pass span **55 experiment-waves**, because 12 of them ran in two or more waves — which is the time axis the Harvard and TESS layers structurally cannot provide.
 
 **Nothing here is claimed to be buildable.** These are desk judgements from the guide's own summaries. The condition text lives only in each wave's questionnaire PDF, and whether it is there word-for-word is unverified. That check will move experiments out of `build`, not into it.
 
@@ -17,16 +17,16 @@ The 40 that pass span **56 experiment-waves**, because 12 of them ran in two or 
 
 | Verdict | Experiments | Experiment-waves |
 |---|---|---|
-| `build` | 40 | 56 |
+| `build` | 39 | 55 |
 | `marginal` | 9 | 22 |
-| `drop` | 44 | 81 |
+| `drop` | 45 | 82 |
 
 | Category | Build | Marginal | Drop |
 |---|---|---|---|
 | Attitudes and politics | 8 | 0 | 0 |
 | Wellbeing and satisfaction | 2 | 2 | 0 |
 | Health | 3 | 0 | 4 |
-| Work, money and expectations | 4 | 2 | 2 |
+| Work, money and expectations | 3 | 2 | 3 |
 | Family, care and the household | 6 | 1 | 0 |
 | Technology and the future | 1 | 0 | 0 |
 | Sensitive questions | 1 | 0 | 0 |
@@ -128,13 +128,7 @@ This experiment compared the 10-item Recovering Quality of Life questionnaire (R
 wave 15  
 A review of Understanding Society questionnaires identified our usage of the Audit-C alcohol consumption questions differed somewhat from the questions the NHS uses for its measures.
 
-### Work, money and expectations (4)
-
-**`9.5` Measures of wealth**  
-wave 3  
-Wave 3 of the Innovation Panel was used to examine four different question designs for collecting the amount of money held in savings and investments: Table: Schematic design of Wave 3 measuring wealth experiment treatments Individual Reporting Financial Reporting Aggregate Amounts Group 1 Group 2 Itemized Amounts Group 3 Group 4 For all groups, an initial question asks respondents to report which specific types of savings or investments they hold.
-
-*Assessed:* wealth asked aggregate vs itemised, 2x2 with who reports
+### Work, money and expectations (3)
 
 **`9.13` Associated Study: measuring time and risk preferences**  
 waves 6, 7  
@@ -355,10 +349,11 @@ Listed compactly. The 28 procedural experiments share one reason and do not repe
 | `9.27` | 12 | Reporting of height and weight | the condition is interviewer-asked vs self-completion, which is mode |
 | `9.43` | 16 | Mental health questions comparisons | multi-select checklists that differ between versions; no single question and answer per row without restructuring the instrument |
 
-### Work, money and expectations (2)
+### Work, money and expectations (3)
 
 | ID | Waves | Title | Why not |
 |---|---|---|---|
+| `9.5` | 3 | Measures of wealth | outcomes are open £ amounts with no range in the instrument (ledger 53) and differ between aggregate and itemised; the only item every group answers is a code-all-that-apply list that differs by group (the 9.43 ruling). Revisit if a numeric outcome type exists |
 | `9.11` | 5, 8, 9 | Subjective expectations about the returns to higher education and decisions to attend university | the information treatment is an earnings graph whose figures are not in the instrument text; a visual stimulus |
 | `9.48` | 17 | Labour market expectations | anchored earnings buckets whose shown £ bounds were computed on screen and are not in the deposit; the exact stimulus cannot be recovered |
 

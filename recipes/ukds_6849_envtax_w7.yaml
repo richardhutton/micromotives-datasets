@@ -1,0 +1,217 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.14: willingness to pay higher
+  environmental taxes, ten question wordings (wave 7)"
+data_file: envtax_w7-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: envtax_w7
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.14 in the Innovation Panel User Guide ("Assessing how people think about
+  environmental taxes"); wave 7 (2014) only. The User Guide cites no publication, so
+  there is no independent numeric reference to verify against.
+
+  DESIGN. Ten question versions, A to J, allocated by household within PSUs
+  (`ff_envtaxqw7` on `g_hhsamp_ip`, codes 1-10 = "Question Version A" ... "J"); "Each
+  respondent receives a single question concerning willingness to pay an environmental
+  tax" (User Guide). Sampled households per code: 300 / 300 / 295 / 290 / 301 / 312 /
+  299 / 296 / 297 / 289, and 23 with no allocation (none of them responded). The ten
+  are five pairs (User Guide overview table: "For each of 5 question pairs, one variant
+  makes no mention of tax reductions elsewhere, while the other variant does"), so the
+  arms carry two factors: `framing`, the five base wordings (A/B "in order to protect
+  the environment", C/D the extra money spent on the environment, E/F the government
+  promising to spend it so, G/H taxes on things that pollute, I/J the same naming
+  petrol or electricity), and `other_taxes`, whether other taxes are reduced by the same
+  amount. The factor labels are ours; the arm text is the instrument's.
+
+  ONE ANSWER TYPE, SO ONE EXPERIMENT AND ONE OUTCOME (ledger 147). All ten items share
+  one four-point scale, 1 "Very willing", 2 "Fairly willing", 3 "Not very willing", 4
+  "Not at all willing". Each version's answer sits in its own variable (`envtax_a` ...
+  `envtax_j`), so each arm names its own through `items` (ledger 146: no arm-level
+  outcome override).
+
+  A QUESTION-WORDING EXPERIMENT, SO THE CONDITION IS NARRATED, BY THE `rpw4u`, IP 9.36
+  AND 9.34 PRECEDENT. Each row's condition reads `You were asked: "<that version's
+  question>"`. The words `You were asked:` and the quotation marks are ADDED
+  (docs/CONVENTIONS.md, "Narrating what the respondent did"); everything inside the
+  quotes is word-for-word from `6849_ip_wave_7_questionnaires.pdf`, module
+  `Environmentaltax_ip7`, items Envtax_a ... Envtax_j, field "Text". The outcome
+  question is the same text; the condition and the outcome carry the same words on
+  every row (the 9.36 shape). The interviewer instruction "READ OUT" (deleted for web,
+  per the item's own mixed-mode note) is survey mechanics and not rendered. The scale's
+  middle labels ("Fairly willing", "Not very willing") cannot be carried (ledger 133;
+  `Scale` has endpoint labels only); the four points are the source's own and evenly
+  worded.
+
+  ALLOCATION = ROUTING (ledger 134, 138). `scripts/gen_ip_envtax.py` joins the version on
+  `g_hidp` and its `--check` cross-tabulates it against which of the ten variables holds
+  a code. Every one of the 2,337 non-proxy respondents holds a code in their own
+  version's variable (none is coded -8 there), and the 76 proxy interviews hold -7 in
+  all ten. ONE respondent, allocated to version C, also holds an answer in version G's
+  variable (`envtax_g`), which their household's code never routed them to. Nothing
+  records which question they actually met (their C code is a non-answer), so they have
+  no single condition and are dropped (`ambiguous_routing: 1`), losing one G answer. To let the melt see it, the derived file writes "not
+  asked" (-8 inapplicable, -7 proxy) as blank and every other code as it stands, and the
+  recipe switches on `routing_check` (ledger 143). `--check` also asserts each version's
+  question occurs in its own item's Text block of the questionnaire PDF, routed on the
+  matching code (`If (ff_envtaxqw7=N)`), with the four options, and that this recipe's
+  arms carry exactly those questions.
+
+  MODES. Main interview, asked of every adult respondent: face-to-face (CAPI, 1,581),
+  web (752) and telephone (4). The wording is the same in every mode; only the
+  interviewer instruction differs. All modes are kept: the manipulation is the words,
+  which every mode delivered.
+
+  Codes -1 (don't know), -2 (refused) and -9 (missing) are dropped: 83 don't know, 4
+  refused and 15 missing across the ten versions.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+  Allocated by household, so a participant-level split puts one household's members,
+  who shared a condition, on both sides.
+
+  RISKIEST JUDGEMENT: dropping the one doubly-routed respondent. Their own version-C
+  variable holds a NON-ANSWER code (don't know, refused or missing); their only
+  substantive answer is in version G's variable. That pattern fits "the household
+  actually ran version G, and the C code is an artefact" at least as well as "they saw
+  both wordings", and nothing in the deposit records which. Keeping the G answer would
+  overrule the household's recorded allocation; keeping a C row is impossible (there is
+  no C answer). Dropping is the conservative choice, by the DEL Feb 2023 precedent (a
+  respondent with two conditions has none), and it DISCARDS ONE REAL ANSWER, to version
+  G. Second: the factor split of the ten versions into 5 x 2 rests on the User Guide's
+  own description and the wording, not on any variable.
+
+condition:
+  source_var: version
+  factors: [framing, other_taxes]
+  routing_check: true
+  ambiguous_routing: 1
+  ambiguous_routing_reason: >-
+    One respondent allocated to version C (ff_envtaxqw7 = 3) holds a non-answer code in
+    envtax_c and a substantive answer in version G's variable envtax_g, which only code
+    7 routes to. Whether the household actually ran version G or the respondent met both
+    wordings is not recorded, so no single condition can be written for them; dropping
+    them discards their one G answer.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {framing: "to protect the environment", other_taxes: "not mentioned"}
+      text: "You were asked: \"How willing would you be to pay higher taxes in order to protect the environment?\""
+      items:
+        0:
+          outcome_var: envtax_a
+          outcome_question: "How willing would you be to pay higher taxes in order to protect the environment?"
+    - raw: 2
+      condition_num: 1
+      factors: {framing: "to protect the environment", other_taxes: "reduced by the same amount"}
+      text: "You were asked: \"How willing would you be to pay higher taxes in order to protect the environment, if the government reduced other taxes you pay by the same amount?\""
+      items:
+        0:
+          outcome_var: envtax_b
+          outcome_question: "How willing would you be to pay higher taxes in order to protect the environment, if the government reduced other taxes you pay by the same amount?"
+    - raw: 3
+      condition_num: 2
+      factors: {framing: "extra money spent on the environment", other_taxes: "not mentioned"}
+      text: "You were asked: \"How willing would you be to pay higher taxes, if the government spent the extra money on protecting the environment?\""
+      items:
+        0:
+          outcome_var: envtax_c
+          outcome_question: "How willing would you be to pay higher taxes, if the government spent the extra money on protecting the environment?"
+    - raw: 4
+      condition_num: 3
+      factors: {framing: "extra money spent on the environment", other_taxes: "reduced by the same amount"}
+      text: "You were asked: \"How willing would you be to pay higher taxes, if the government spent the extra money on protecting the environment and reduced other taxes you pay by the same amount?\""
+      items:
+        0:
+          outcome_var: envtax_d
+          outcome_question: "How willing would you be to pay higher taxes, if the government spent the extra money on protecting the environment and reduced other taxes you pay by the same amount?"
+    - raw: 5
+      condition_num: 4
+      factors: {framing: "government promises to spend on the environment", other_taxes: "not mentioned"}
+      text: "You were asked: \"How willing would you be to pay higher taxes, if the government promised it would spend the extra money on protecting the environment?\""
+      items:
+        0:
+          outcome_var: envtax_e
+          outcome_question: "How willing would you be to pay higher taxes, if the government promised it would spend the extra money on protecting the environment?"
+    - raw: 6
+      condition_num: 5
+      factors: {framing: "government promises to spend on the environment", other_taxes: "reduced by the same amount"}
+      text: "You were asked: \"How willing would you be to pay higher taxes, if the government promised it would spend the extra money on protecting the environment and reduce other taxes you pay by the same amount?\""
+      items:
+        0:
+          outcome_var: envtax_f
+          outcome_question: "How willing would you be to pay higher taxes, if the government promised it would spend the extra money on protecting the environment and reduce other taxes you pay by the same amount?"
+    - raw: 7
+      condition_num: 6
+      factors: {framing: "taxes on things that pollute", other_taxes: "not mentioned"}
+      text: "You were asked: \"How willing would you be to pay higher taxes on things you buy that pollute the environment?\""
+      items:
+        0:
+          outcome_var: envtax_g
+          outcome_question: "How willing would you be to pay higher taxes on things you buy that pollute the environment?"
+    - raw: 8
+      condition_num: 7
+      factors: {framing: "taxes on things that pollute", other_taxes: "reduced by the same amount"}
+      text: "You were asked: \"How willing would you be to pay higher taxes on things you buy that pollute the environment, if the government reduced other taxes you pay by the same amount?\""
+      items:
+        0:
+          outcome_var: envtax_h
+          outcome_question: "How willing would you be to pay higher taxes on things you buy that pollute the environment, if the government reduced other taxes you pay by the same amount?"
+    - raw: 9
+      condition_num: 8
+      factors: {framing: "taxes on things that pollute, petrol or electricity named", other_taxes: "not mentioned"}
+      text: "You were asked: \"How willing would you be to pay higher taxes on things you buy that pollute the environment, like petrol or electricity?\""
+      items:
+        0:
+          outcome_var: envtax_i
+          outcome_question: "How willing would you be to pay higher taxes on things you buy that pollute the environment, like petrol or electricity?"
+    - raw: 10
+      condition_num: 9
+      factors: {framing: "taxes on things that pollute, petrol or electricity named", other_taxes: "reduced by the same amount"}
+      text: "You were asked: \"How willing would you be to pay higher taxes on things you buy that pollute the environment, like petrol or electricity, if the government reduced other taxes you pay by the same amount?\""
+      items:
+        0:
+          outcome_var: envtax_j
+          outcome_question: "How willing would you be to pay higher taxes on things you buy that pollute the environment, like petrol or electricity, if the government reduced other taxes you pay by the same amount?"
+
+# No `var`: each arm names its own through `items`. The question here is a fallback
+# every arm overrides; no built row may carry it (QC rule 21, and tested).
+outcomes:
+  - task_num: 0
+    question: "[willingness to pay, in the version's own wording]"
+    scale: {min: 1, max: 4, min_label: Very willing, max_label: Not at all willing}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

@@ -600,11 +600,13 @@
     "title": "Measures of wealth",
     "category": "work-money",
     "waves": "3",
-    "verdict": "build",
-    "reason": "wealth asked aggregate vs itemised, 2x2 with who reports",
+    "verdict": "drop",
+    "reason": "outcomes are open £ amounts with no range in the instrument (ledger 53) and differ between aggregate and itemised; the only item every group answers is a code-all-that-apply list that differs by group (the 9.43 ruling). Revisit if a numeric outcome type exists",
     "description": "Wave 3 of the Innovation Panel was used to examine four different question designs for collecting the amount of money held in savings and investments: Table: Schematic design of Wave 3 measuring wealth experiment treatments Individual Reporting Financial Reporting Aggregate Amounts Group 1 Group 2 Itemized Amounts Group 3 Group 4 For all groups, an initial question asks respondents to report which specific types of savings or investments they hold.",
     "vignette": false,
-    "allocation_vars": []
+    "allocation_vars": [
+      "c_ff_hhdaw3"
+    ]
   },
   {
     "id": "9.6",

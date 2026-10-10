@@ -25,18 +25,28 @@ done it for the UK.
 
 ## 2. Where it stands
 
-**751,067 rows across 63 experiments**, all QC-passed and on disk at
-`data/processed/`.
+**964,950 rows across 95 experiments** (10 Oct 2026), all QC-passed and checked by an
+independent agent, on disk at `data/processed/`. `docs/EXPERIMENTS.md` is the generated
+list; `docs/experiment_list.html` tracks the build queue.
 
 | | experiments | rows |
 |---|---|---|
-| US (TESS deposits) | 28 | 283,935 |
-| UK-native | 35 | 467,132 |
-| **total** | **63** | **751,067** |
+| US (TESS deposits) | 39 | 362,707 |
+| UK-native: Harvard Dataverse incl. DEL | 23 | 236,818 |
+| UK-native: Innovation Panel | 33 | 365,425 |
+| **total** | **95** | **964,950** |
 
-Ten largest: `EFXNLX` 49,395 · `evnyh` 33,932 · `es4xw` 32,228 · `9xw67_conjoint`
-20,373 · `b87sm` 19,282 · `8ctbk` 17,464 · `cug34` 15,091 · `z358z` 14,702 ·
-`POMIFD` 13,268 · `ye2ej` 12,971.
+Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_reqol_w14`
+48,548 · `ukds_6849_timerisk_w7` 46,283 · `ukds_6849_ghq_w14` 36,447 · `evnyh` 33,932 ·
+`es4xw` 32,228 · `del_panel_w4_climate_harm_stories` 28,109 · `9xw67_conjoint` 20,373 ·
+`7tzpe` 20,308.
+
+**The "next 37" batch** (chosen 10 Oct, now 33 after rich removed four and two were
+dropped on reading the instrument): 21 built. Built but not yet committed: IP 9.26 vignette (awaiting rich's ruling on
+the own-place clause). Parked for a pipeline change: DEL Ukraine donation follow-up and the
+9.26 conjoint (a sparse template must not enumerate every cell). Open ruling: lists
+shown in a randomised order that was not recorded (e5rfg gamble options, DEL aid
+priorities) are kept in questionnaire order without position words, pending rich.
 
 ### The licence position, which shapes everything
 
@@ -82,7 +92,7 @@ UKDS SN 6849. 93 experiments across 17 waves, all screened in
 
 **13 of the 40 are built**, 324,392 rows in all. 9.10, the housework scenarios: 9,631
 rows across waves 5 and 6. 9.18, successful ageing: 12,567 rows across waves 9 and
-17. 9.39, flexibility stigma: 17,656 rows, wave 16. 9.36, alcohol in units or drinks: 4,208 rows, wave 15. 9.24, EQ-5D forms: 21,901 rows, wave 11. 9.4, occupation or profession: 1,746 rows, wave 2. 9.17, sexual identity by item counts: 24,992 rows, waves 8 and 9. 9.31, ReQoL-10 / EQ-5D / GHQ-12 order: 84,995 rows, wave 14. 9.42, compound growth as money or sea level: 9,240 rows, wave 16. 9.20, satisfaction layouts: 8,025 rows, wave 9. 9.13, time and risk choices: 109,770 rows, waves 6 and 7. 9.9, fertility after friends: 939 rows, waves 4 and 5. 9.47, two ways of asking about caring: 18,722 rows, wave 17. **27 remain.** (9.43, 9.48, 9.12 and 9.11 were moved from build to
+17. 9.39, flexibility stigma: 17,656 rows, wave 16. 9.36, alcohol in units or drinks: 4,208 rows, wave 15. 9.24, EQ-5D forms: 21,901 rows, wave 11. 9.4, occupation or profession: 1,746 rows, wave 2. 9.17, sexual identity by item counts: 24,992 rows, waves 8 and 9. 9.31, ReQoL-10 / EQ-5D / GHQ-12 order: 84,995 rows, wave 14. 9.42, compound growth as money or sea level: 9,240 rows, wave 16. 9.20, satisfaction layouts: 8,025 rows, wave 9. 9.13, time and risk choices: 109,770 rows, waves 6 and 7. 9.9, fertility after friends: 939 rows, waves 4 and 5. 9.47, two ways of asking about caring: 18,722 rows, wave 17. **27 remain.** *(Update 10 Oct 2026: since this paragraph, 9.34, 9.38, 9.33, 9.30, 9.14, 9.25 and 9.23 are built (13 experiments), 9.5 was dropped on reading the instrument, and the 9.26 vignette is built but not yet committed; see `docs/EXPERIMENTS.md` for the live list.)* (9.43, 9.48, 9.12 and 9.11 were moved from build to
 drop on 9 Oct; see the plan below.)
 
 `docs/EXPERIMENTS.md` is the generated list of everything built. Each Innovation

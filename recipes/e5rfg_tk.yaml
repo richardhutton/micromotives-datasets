@@ -1,0 +1,287 @@
+study_id: e5rfg
+experiment: tk
+source: tess
+title: "Who has Narrow Brackets?"
+data_file: TESS56_client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10:
+  registration e5rfg and its child components 2h7rt "Data" and 5jsqd "Materials
+  and Methods" all have node_license null and no license relationship; same
+  finding recorded 2026-10-02 in data/catalog/tess_uk_foundation_sources.csv).
+  TESS states no reuse terms for its archived studies and has since suspended
+  operations. So there is no explicit grant of redistribution rights for this
+  deposit, and none should be assumed.
+
+# Not in SocSci210 (tess_uk_foundation_sources.csv: in_socsci210=no), so there is
+# no answer key to crosscheck against. Verified instead against the authors' own
+# Table 4 (see notes, VERIFICATION) and by re-deriving every row from the .sav.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 56 (Weizsacker; Rabin & Weizsacker, "Narrow Bracketing and Dominated
+  Choices", AER 99(4) 2009, 1508-43), fielded by Knowledge Networks 31 Oct - 9 Nov
+  2005, 1,910 fielded, 1,322 completes (completion report). The .sav has 1,322
+  rows. One deposit, FOUR recipes, split along the design's own contrasts:
+  e5rfg_tk (modules 1-2), e5rfg_ce (3-4), e5rfg_pair (5-6), e5rfg_six (7-10).
+
+
+  SOURCES AND PROVENANCE
+
+    Q    = "TESS 56 Final Questionnaire.doc" (Knowledge Networks file
+           TESS56_Weizsacker_QuexV2.doc, last saved 10/26/2005), the FIELDED
+           instrument. Not in the data component: it is in the OSF child component
+           5jsqd "Materials and Methods" of registration e5rfg
+           (https://osf.io/download/565db7518c5e4a3875d74ee9/, 223,232 bytes, sha256
+           209002eff60b466f8830988d7cbe63290c0eb58ffbc636814e0892c82cc0cbc2),
+           fetched 2026-10-10 into data/raw/e5rfg/quex/ and converted with macOS
+           textutil. The recipes were generated from transcribed text by a
+           maker script that asserted every line occurs in Q. Fielded version confirmed against the .sav: the MODULE
+           variable carries the questionnaire's ten modules, every M*D* variable
+           name in the .sav is a question id in Q, and every choice item's value
+           labels list the options in Q's order (e.g. M2D1 1-4 = Q's A-D, M7D3
+           1-4 = Q's four Decision 3 options).
+    KN   = "Knowledge Networks Methodology.pdf" (same component,
+           https://osf.io/download/565db7518c5e4a3875d74ee8/, sha256
+           8ec3ce15a3d24dc0b527c0907553de900861358756af7025f323f5c835bc01ba).
+    CR   = "TESS 56 Completion Report.doc" (https://osf.io/download/565db74f8c5e4a3877d7647a/,
+           sha256 268191ed9c345b2b911cfc32cc8c41245f8869ef02b83a92d1c16ef7397761a4):
+           field dates and N only.
+    Data = TESS56_client.sav (OSF component 2h7rt, https://osf.io/download/3562b/,
+           sha256 a3831a94572da8ccc6045a4c00a17af4b3f7f6fa536bf4eb10f51e4b6616ea8b).
+    REF  = Rabin & Weizsacker, IZA DP 3040 (Sept 2007), https://docs.iza.org/dp3040.pdf
+           (sha256 6c950e33edc9905743e4d84842d0d380d28334968c593006f2ba8dc6a9ab80ac),
+           Table 4 and appendix Tables 8.1/8.2. Used ONLY as a numeric answer key.
+           Its appendix reprints the instrument with relabelled options ("the labels
+           of choice options were changed from the instructions, for the sake of
+           the exposition"), so it is no authority on wording.
+
+
+  THE DESIGN (Q lines 7-20)
+
+  A weighted random draw put each respondent into ONE of ten modules (MODULE:
+  90/87/92/106/108/111/175/188/179/186), then everyone took Module M (numeracy).
+  Each module shows ALL its decisions first, then asks for the answers on later
+  screens ("You will read about both/all six decisions before deciding how to
+  answer them"). That preview is the narrow-bracketing manipulation, so every
+  row's condition is the module's whole preview up to and including the "Now
+  please answer ..." line, and the outcome is the answer-screen wording of that
+  one decision. Nothing a respondent answered is narrated: every decision is in
+  the preview before any answering starts.
+
+  Two kinds of decision:
+    choice  "Choose between:" 2 or 4 gambles, nominal, codes 1..n.
+    CE      "Consider the following:" a 50/50 lottery and an unknown amount; the
+            respondent types a dollar amount in a number box with a stated RANGE.
+
+  All M*D* responses are NaN when not asked or skipped (no -1/-2 occurs in any
+  outcome; missing_codes [-1, -2] declares the labelled codes anyway). All
+  answered values are integers inside their questionnaire RANGE (checked).
+
+
+  WORD-FOR-WORD vs WHAT WE CHANGED
+
+  Every line of every condition and outcome is transcribed from Q; the generator
+  asserted each of 188 transcribed lines occurs in Q (typography normalised:
+  curly quotes straightened). Source typos kept: M7 Decision 5 says the unknown
+  amount for option L lies "between $100 and $1600" while its range is $850-$2350
+  (Q 367, 437); M10 Decision 5 "You win be given" (Q 913, 985). Preview and
+  answer screens differ in places and each keeps its own words (M3/M4: preview
+  "need to be given in Option B", answer screen "have to be given in option B").
+  What is NOT word-for-word, all deliberate:
+    1. Programmer notes in brackets, "SINGLE PUNCH ANSWER", number-box blanks
+       ("________") and question ids are dropped.
+    2. OPTION ORDER (the riskiest judgement, see below). Every choice item says
+       "[RANDOMIZE ANSWER LIST ...]" / "[Randomize the order of options ...]", and
+       no variable records the order shown. Options are therefore listed in the
+       .sav's code order (= Q's order), with NO letters, both in the condition
+       preview and in the outcome. The letters (typed "A." / "B." in modules
+       1, 2, 5, 6) are dropped because a letter names a screen position that
+       was randomised; no text anywhere refers to a choice option by letter, so
+       dropping them loses nothing a respondent could use. In the outcome the
+       options follow the corpus answer-key form for nominal items ('Decision 1:
+       Choose between:' then '1 means "..."; 2 means "..."'), keyed by the .sav
+       codes - an answer key, not a claim of display order.
+    3. CE OPTION LETTERS. The CE lines in modules 3, 4 and 7-10 are not typed
+       with letters in Q's text; Q's Word file auto-numbers them as a lettered
+       list (decoded from the .doc's list tables: upper-letter format), and the
+       question text refers to them by letter ("in option J ... over taking your
+       chances with option I"). The letters used here are the ones the text's own
+       references fix, which agree with Q's programmer notes ("options A and B in
+       decision 1", "C-F in decision 2", "M and N in decision 6"). Q's Word
+       numbering agrees with the text everywhere: where "Rules" lines sit in the
+       same list they are at list level 1 (ilvl 1), which does not advance the
+       level-0 letters. (A first decode ignored ilvl and wrongly reported
+       disagreements; corrected after checking.) Rules are rendered as bullets
+       ("•").
+    4. Layout: paragraph breaks kept as newlines. The shared introduction of
+       modules 7-10 is shared_context, and the pipeline joins it to the arm text
+       with a space, so Q's paragraph break before "Decision 1" becomes a space
+       (cosmetic, pipeline behaviour).
+
+
+  EXCLUDED, WITH ROW COST
+
+    * Two-box CE items, where the respondent types EITHER "losing ___" OR
+      "winning ___" (M7D6_1/_2, M8D5_1/_2, M9D4_1/_2, M9D5_1/_2). The answer is
+      a box choice plus an amount spread over two variables; the pipeline reads
+      one variable per outcome, and a row from one box alone would hide which box
+      was chosen. Many respondents also filled both boxes against "(Please make
+      one entry)" (e.g. M7D6: 109 losing + 117 winning entries from 175
+      respondents), so the answer is ambiguous for them. Cost: 4 items, 704
+      answered respondent-items, 189 of them with both boxes filled. Their decisions still appear in the
+      condition preview of modules 7-9, because respondents read them.
+    * Module M (MM1-MM5): numeracy test with right answers, asked after the
+      experiment; not behaviour and not persona (measured after the stimulus).
+    * Persona fields marital_status (PPMARIT), employment (PPWORK) and
+      housing_ownership (PPRENT): this 2005 file's labels ("Single (never
+      married)", "I am disabled", "Own"/"Rent"/"Do not pay for housing", ...)
+      are not in the persona crosswalks, so QC rule 14 warns. Adding them needs
+      scripts/persona_harmonise.py to write data/catalog/, which this build may
+      not touch. Restore all three once the crosswalk covers them.
+    * INCLUDE (0 = refused more than a third of the variables, 23 respondents)
+      is NOT used as a filter: their answered items are real answers (36 rows
+      across the four recipes). REF's counts include them (Table 4 N matches).
+
+
+  PERSONA
+
+  Knowledge Networks standard profile, as c5r2f/7jt2f: PPAGE, PPGENDER, PPEDUCAT,
+  PPETHM, PPINCIMP, PPREG4, PPHHSIZE, PPHOUSE, PPMSACAT, PPNET. No party, ideology
+  or religion in this file. No field shares a domain with the outcome (risky
+  choice) and no condition names a persona category. Jev (recipe_prep) picked
+  PPEDUC for education (conf 1.00); PPEDUCAT is used instead, as every other
+  KN-era recipe does, since the crosswalk harmonises that one.
+
+
+  JEV (scripts/recipe_prep.py e5rfg --source tess)
+
+    assignment: MODULE, conf 0.73, REVIEW (runner-up NONE_OF_THESE 0.18).
+      Accepted: Q line 7 "do a weighted probability selection to one of 10
+      survey modules", and MODULE's labels are "Module 1".."Module 10".
+    labels: the one Jev/regex disagreement is INCLUDE (Jev: both labels
+      non-answers, conf 0.41/0.43, REVIEW). Irrelevant: INCLUDE is neither
+      persona nor outcome here.
+    directives: "ppeduc = 4 - 9" (routing_only, conf 0.39, REVIEW) gates MM5,
+      which is not built.
+
+
+  RISKIEST JUDGEMENT
+
+  Building the choice items at all. Their option order was randomised per
+  respondent and not recorded (ledger #114, xk9ch's excluded pick-three items),
+  so any listed order is one that half of respondents (2 options) or 23 in 24 (4
+  options: M2D1, M6D1, M7D3, M10D2) did not see. Mitigation: no letters, no
+  position words, code order = the instrument's own order; the outcome's
+  '1 means "..."' legend is the answer key. The alternative, building only the CE items,
+  would drop the dominated-choice experiment the study exists for. A checker
+  should rule on this (kept on 2026-10-10 on the independent checker's verdict, pending rich's ruling); if it is overruled, e5rfg_tk and e5rfg_pair go entirely
+  and e5rfg_six keeps only its 9 CE outcomes.
+
+
+  VERIFICATION
+
+  Re-derived every row from the .sav with an independent script
+  (scripts/verify_e5rfg.py: its own module -> variable -> range table, not the
+  recipe; reads the built parquets): 0 missing, 0 extra, 0 wrong (participant, task, condition, response)
+  across all four recipes; persona age and gender match the .sav on every row;
+  exactly one condition string per (condition, task) and one outcome string per
+  task; no "[", "]" or "___" left in any text. Against REF Table 4, computed
+  from the BUILT rows: 10 of 11 rows match to the printed two decimals (largest
+  gap 0.01; N equal where REF prints one). Of those 0.01 gaps, T5's A&C is a
+  rounding artefact; T7 Example 4 and T8 Example 3 differ because REF uses each
+  treatment's common sample (respondents answering all of that treatment's
+  choices: 171 and 186) while each row here stands alone. The exception is
+  treatment 6 (module 6,
+  Example 2 broad), where REF's "A and C" (0.09) and "B and C" (0.12) are our
+  0.12 and 0.09. Module 10's M10D2 has the identical four options with
+  identical value labels and matches REF exactly under the same mapping, so a
+  transposition in REF's table is the likelier explanation; a swap of codes 2/3
+  in the deposit's M6D1 cannot be ruled out from the source (23 rows affected
+  if so). scripts/verify_e5rfg.py asserts this as a KNOWN difference: REF's
+  printed values are stored, and the check requires that they fail directly and
+  pass with exactly cells A&C/B&C swapped. Appendix Tables 8.1/8.2 (CE % at min, mean net CE, % at EV, % at max)
+  match all 9 CE items built (REF reports losses sign-flipped with min/max
+  swapped), except that two means differ by exactly 1.00 (M10D4 302.51 vs REF
+  303.51; M10D5 -194.82 vs -195.82). REF itself warns the CE data are "probably
+  unreliable" (about a third of answers sit at a range boundary).
+
+  THIS RECIPE: e5rfg_tk - Tversky & Kahneman (1981) replication, REF "Example 1".
+    arm 0 = MODULE 1 "narrow": two binary choices, M1D1 (task 0) and M1D2 (task 1).
+    arm 1 = MODULE 2 "broad": the same pair as one four-way choice of the
+            combined gambles, M2D1 (task 2). Codes 1-4 = A&D (dominated), A&C,
+            B&C, B&D in REF's labelling.
+    Factor presentation: narrow / broad. Each outcome exists in one arm only.
+    Rows: 264 = M1D1 90 + M1D2 88 (2 NaN) + M2D1 86 (1 NaN).
+    Q lines (textutil .txt, blank lines kept): module 1 31-70, module 2 73-98.
+
+condition:
+  source_var: MODULE
+  factors: [presentation]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {presentation: narrow}
+      text: |-
+        The following page describes two decisions that you will be asked to make about winning or losing money. You will read about both decisions before deciding how to answer them. When it is time to decide, please make your decisions as though you were actually going to win or lose the money in all cases.
+
+        Please keep in mind that to win or lose in one decision does not make it more or less likely that you win or lose in another decision, as though the outcome of each decision were decided with a separate coin flip.
+
+        Decision 1: Choose between:
+        winning $240
+        a 25% chance of winning $1000 and a 75% chance of not winning or losing any money
+
+        Before answering, read the next decision.
+
+        Decision 2: Choose between:
+        losing $750
+        a 75% chance of losing $1000, and a 25% chance of not winning or losing any money
+
+        Now please answer both questions.
+    - raw: 2
+      condition_num: 1
+      factors: {presentation: broad}
+      text: |-
+        The following page describes a decision that you will be asked to make about winning or losing money. You will read about the decision before deciding how to answer it. When it is time to decide, please make your decisions as though you were actually going to win or lose the money.
+
+        Choose between:
+        a 25% chance of winning $240 and a 75% chance of losing $760
+        losing $510
+        a 25% chance of winning $250 and a 75% chance of losing $750
+        a 6.25% chance of winning $1000, a 37.5% chance of not winning or losing any money, and a 56.25% chance of losing $1000
+
+        Now please answer the question.
+
+outcomes:
+  - var: M1D1
+    task_num: 0
+    question: |-
+      Decision 1: Choose between:
+      1 means "winning $240"; 2 means "a 25% chance of winning $1000 and a 75% chance of not winning or losing any money".
+    scale: {min: 1, max: 2, nominal: true}
+  - var: M1D2
+    task_num: 1
+    question: |-
+      Decision 2: Choose between:
+      1 means "losing $750"; 2 means "a 75% chance of losing $1000, and a 25% chance of not winning or losing any money".
+    scale: {min: 1, max: 2, nominal: true}
+  - var: M2D1
+    task_num: 2
+    question: |-
+      Choose between:
+      1 means "a 25% chance of winning $240 and a 75% chance of losing $760"; 2 means "losing $510"; 3 means "a 25% chance of winning $250 and a 75% chance of losing $750"; 4 means "a 6.25% chance of winning $1000, a 37.5% chance of not winning or losing any money, and a 56.25% chance of losing $1000".
+    scale: {min: 1, max: 4, nominal: true}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+missing_codes: [-1, -2]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  urban_rural: PPMSACAT
+  internet_access: PPNET

@@ -1,0 +1,192 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.25: consent to link HMRC records, asked by the interviewer or on the laptop, and on the web with or without a message from the study director (wave 15)"
+data_file: hmrc_w15-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: hmrc_consent_w15
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.25 in the Innovation Panel User Guide ("HMRC data linkage consent
+  experiment"), the wave 15 (2022) follow-up. The User Guide cites no publication. NOT the
+  wave 11 design: there is no wording factor (every version uses wave 11's "easy" wording)
+  and no early/late placement. It asks why consent is lower on the web than face-to-face,
+  by varying HOW the request was delivered. `ukds_6849_hmrc_consent_w11.yaml` is wave 11.
+
+  WHAT WAS RANDOMISED (User Guide 9.25). Per HOUSEHOLD, on `o_hhsamp_ip`, joined on
+  `o_hidp`. Face-to-face, `ff_consentcasiw15`, a third each: 1 "CAPI" (the last
+  interviewer-administered question before the self-completion section), 2 "CASI" (the
+  first self-completion question, read and answered on the laptop), 3 "Partial CASI" (the
+  interviewer reads the text from a showcard; the respondent enters the answer on the
+  laptop). Web, `ff_consentwebw15`, half each: 1 "Consent question only", 2 "Consent
+  question includes photo of and message from study director". Both variables are set for
+  every household; the questionnaire applies the first to face-to-face respondents and the
+  second to web ones (GRIDVARIABLES.MODETYPE), and so does the generator, through the
+  derived `casi` and `photo` (-8 in the other mode). The 53 telephone respondents were not
+  in the experiment and were not asked; 34 proxies were not asked.
+
+  THE LABELS WERE NOT TRUSTED (ledger 138). `scripts/gen_ip_hmrc.py --check` cross-tabulates
+  every cell against the four consent variables (`hmrcconsentq1` CAPI, `hmrcconsentq2`
+  CASI and web without photo, `hmrcconsentq3` partial CASI, `hmrcconsentq4` web with
+  photo): every respondent in each cell was asked their own variable and none another.
+
+  WHO HEARD AND WHO READ (ledger 141). The CASI and partial-CASI versions were asked only
+  of those who accepted self-completion (`scac` / `scac2` = 1-3, asked BEFORE the consent
+  question in those versions, and narrated, since the interviewer's words differ between
+  them). The condition says the respondent read and answered on the laptop, or entered
+  the answer themselves, which is false where the interviewer completed it for reading or
+  sight problems (code 2) or someone helped translate (code 3). Those are excluded: 36
+  answered respondents (`selfcomp` must be 1). Four more CASI-version respondents answered
+  the self-completion consent question although coded "Not able to do self-completion";
+  their routing contradicts their record, so they are excluded too, a count `--check`
+  declares and fails on if it changes. The CAPI version is NOT filtered on `scac`: there
+  self-completion was offered only after the consent answer, so filtering on it would
+  select on something that happened afterwards. CONSEQUENCE: the CAPI cell (255) includes the
+  37 face-to-face respondents who would go on to need help with, refuse or be unable to
+  do self-completion, and the CASI cells exclude their counterparts; a contrast between
+  them is not purely the delivery.
+
+  THE CONDITIONS (`6849_ip_wave_15_questionnaire.pdf`, modules Hmrcconsent1/4_ip15,
+  Casistart_ip15, Scahmrcconsent2/3_ip15). The consent text is the same in all five, with
+  the mode's own ending. CAPI: the interviewer reads it, ending "Please read this leaflet
+  for further information. Let me know if you have any questions.", and asks the question.
+  CASI: the interviewer's introduction to self-completion, word-for-word; the text on the
+  laptop, ending "Please read this leaflet for further information.", then the question.
+  Partial CASI: the interviewer's longer introduction ("For the first one, I will read the
+  question to you but do not tell me your answer ..."), word-for-word; the showcard text,
+  read out (Hmrcconsentq3intro); the question alone on the laptop (Hmrcconsentq3 has no
+  other text). Web: the text as in CASI; in version 2, above it, a photo of the study
+  director and her message, word-for-word from the scripting note ("Display photo of the
+  study director and message above the question text. Message: ...").
+
+  WORD-FOR-WORD VS OURS. Inside the double quotes, every word is the questionnaire's,
+  typography normalised; `--check` asserts each quoted string occurs in the PDF. ADDED BY
+  US (narration and the layout exception, docs/CONVENTIONS.md): "The interviewer read out
+  this text:"; "The interviewer said"; "You then read this text on the laptop and answered
+  the question that followed yourself:"; "The interviewer then read out this text from a
+  card and handed you the card:"; "The question that followed was on the laptop, and you
+  entered your answer yourself."; "You were shown this text on the web:"; "You were shown,
+  on the web, a photo of the study director with this message:"; "Below it you were shown
+  this text:"; and, on every screen-read version, 'The screen also gave a link to the
+  leaflet and a link, "How will my data be linked?", to a flowchart.' The PDF prints the
+  leaflet URL and "How will my data be linked? [URL]" after the leaflet sentence; the
+  URLs are not rendered (QC rule 21), nor is anything behind them, nor the photo itself.
+  For the CASI version the same question object serves the laptop and the web, so it
+  shows the same lines; whether a link opened on an interviewer's laptop is not recorded.
+  Interviewer instructions (handing the leaflet, "HAND RESPONDENT THE DATA LINKAGE
+  FLOWCHART IF NECESSARY") are not narrated: what was handed over is not recorded per
+  respondent, except the partial-CASI card, which the instruction says to read out and
+  hand over.
+
+  ONE OUTCOME. "Do you give permission for us to pass your name, address, sex and date of
+  birth to HMRC for this purpose?" 1 "Yes" 2 "No", identical in every version, read from
+  each version's own variable.
+
+  NOT BUILT. The follow-up self-completion questions (Cdcsn, Cfactors, Coundstd2b-g,
+  Linkrsrc2 and others): several are code-all-that-apply lists, the understanding items
+  test recall of the consent text (attention and recall checks are not outcomes,
+  docs/CONVENTIONS.md), and the decision items refer to the respondent's own answer.
+
+  ROW COUNTS (aggregates). Don't know and refusal dropped. CAPI 252, CASI 217, partial CASI
+  208, web without photo 949, web with photo 927: 2,553 rows, one per respondent.
+
+  PERSONA. The same spine as every Innovation Panel build. `person` is a hash of `pidp`.
+  Allocated by household, so a participant-level split puts one household's members, who
+  shared a condition, on both sides.
+
+condition:
+  source_vars: [indmode, casi, photo, selfcomp]
+  factors: [delivery, director_message]
+  arms:
+    - raw_values: {indmode: 1, casi: 1, photo: -8, selfcomp: -8}
+      condition_num: 0
+      factors: {delivery: "interviewer", director_message: "no"}
+      text: "The interviewer read out this text: \"We would like to add records held by HM Revenue and Customs, or HMRC, to the answers you have given in this study. If you agree: • We will send HMRC your name, address, sex and date of birth so that they can identify the records they have about you. The HMRC records contain information about your current and previous employment, your income, National Insurance contributions and tax credits. • We will not send HMRC the answers you have given in this study. • HMRC will send us your records. These will contain an anonymous identification number but not your name, address, sex or date of birth. • We will add the HMRC records to the answers you have given in this study. • We will make the combined anonymous data available for academic and policy research purposes only. • Access to the data will be restricted and controlled, to make sure that researchers use the information responsibly and safely. • This will not affect the way that you deal with HMRC in any way. Please read this leaflet for further information. Let me know if you have any questions.\""
+      items:
+        0:
+          outcome_var: hmrcconsentq1
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Yes\" 2 \"No\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {indmode: 1, casi: 2, photo: -8, selfcomp: 1}
+      condition_num: 1
+      factors: {delivery: "self_completion", director_message: "no"}
+      text: "The interviewer said \"I now have some questions for you to answer yourself on the computer.\" You then read this text on the laptop and answered the question that followed yourself: \"We would like to add records held by HM Revenue and Customs, or HMRC, to the answers you have given in this study. If you agree: • We will send HMRC your name, address, sex and date of birth so that they can identify the records they have about you. The HMRC records contain information about your current and previous employment, your income, National Insurance contributions and tax credits. • We will not send HMRC the answers you have given in this study. • HMRC will send us your records. These will contain an anonymous identification number but not your name, address, sex or date of birth. • We will add the HMRC records to the answers you have given in this study. • We will make the combined anonymous data available for academic and policy research purposes only. • Access to the data will be restricted and controlled, to make sure that researchers use the information responsibly and safely. • This will not affect the way that you deal with HMRC in any way. Please read this leaflet for further information.\" The screen also gave a link to the leaflet and a link, \"How will my data be linked?\", to a flowchart."
+      items:
+        0:
+          outcome_var: hmrcconsentq2
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Yes\" 2 \"No\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {indmode: 1, casi: 3, photo: -8, selfcomp: 1}
+      condition_num: 2
+      factors: {delivery: "card_read_out_answer_on_laptop", director_message: "no"}
+      text: "The interviewer said \"I now have some questions for you to answer yourself on the computer. For the first one, I will read the question to you but do not tell me your answer. After reading the question, I will pass you the laptop so that you can enter your answer confidentially.\" The interviewer then read out this text from a card and handed you the card: \"We would like to add records held by HM Revenue and Customs, or HMRC, to the answers you have given in this study. If you agree: • We will send HMRC your name, address, sex and date of birth so that they can identify the records they have about you. The HMRC records contain information about your current and previous employment, your income, National Insurance contributions and tax credits. • We will not send HMRC the answers you have given in this study. • HMRC will send us your records. These will contain an anonymous identification number but not your name, address, sex or date of birth. • We will add the HMRC records to the answers you have given in this study. • We will make the combined anonymous data available for academic and policy research purposes only. • Access to the data will be restricted and controlled, to make sure that researchers use the information responsibly and safely. • This will not affect the way that you deal with HMRC in any way. Please read this leaflet for further information. Let me know if you have any questions.\" The question that followed was on the laptop, and you entered your answer yourself."
+      items:
+        0:
+          outcome_var: hmrcconsentq3
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Yes\" 2 \"No\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {indmode: 3, casi: -8, photo: 1, selfcomp: -8}
+      condition_num: 3
+      factors: {delivery: "web", director_message: "no"}
+      text: "You were shown this text on the web: \"We would like to add records held by HM Revenue and Customs, or HMRC, to the answers you have given in this study. If you agree: • We will send HMRC your name, address, sex and date of birth so that they can identify the records they have about you. The HMRC records contain information about your current and previous employment, your income, National Insurance contributions and tax credits. • We will not send HMRC the answers you have given in this study. • HMRC will send us your records. These will contain an anonymous identification number but not your name, address, sex or date of birth. • We will add the HMRC records to the answers you have given in this study. • We will make the combined anonymous data available for academic and policy research purposes only. • Access to the data will be restricted and controlled, to make sure that researchers use the information responsibly and safely. • This will not affect the way that you deal with HMRC in any way. Please read this leaflet for further information.\" The screen also gave a link to the leaflet and a link, \"How will my data be linked?\", to a flowchart."
+      items:
+        0:
+          outcome_var: hmrcconsentq2
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Yes\" 2 \"No\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {indmode: 3, casi: -8, photo: 2, selfcomp: -8}
+      condition_num: 4
+      factors: {delivery: "web", director_message: "yes"}
+      text: "You were shown, on the web, a photo of the study director with this message: \"Hello, I am Professor Michaela Benzeval, Director of Understanding Society. Linking your survey answers with administrative records while preserving the confidentiality of your data increases the value of the information you provide. Please read the following carefully.\" Below it you were shown this text: \"We would like to add records held by HM Revenue and Customs, or HMRC, to the answers you have given in this study. If you agree: • We will send HMRC your name, address, sex and date of birth so that they can identify the records they have about you. The HMRC records contain information about your current and previous employment, your income, National Insurance contributions and tax credits. • We will not send HMRC the answers you have given in this study. • HMRC will send us your records. These will contain an anonymous identification number but not your name, address, sex or date of birth. • We will add the HMRC records to the answers you have given in this study. • We will make the combined anonymous data available for academic and policy research purposes only. • Access to the data will be restricted and controlled, to make sure that researchers use the information responsibly and safely. • This will not affect the way that you deal with HMRC in any way. Please read this leaflet for further information.\" The screen also gave a link to the leaflet and a link, \"How will my data be linked?\", to a flowchart."
+      items:
+        0:
+          outcome_var: hmrcconsentq4
+          outcome_question: "Do you give permission for us to pass your name, address, sex and date of birth to HMRC for this purpose? 1 \"Yes\" 2 \"No\""
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+
+# No `var`: each arm names its own. The question here is a fallback every arm
+# overrides; no built row may carry it.
+outcomes:
+  - task_num: 0
+    question: "[consent to link HMRC records, in the version's own wording]"
+    scale: {min: 1, max: 2, nominal: true}
+
+response_recode: {1: 1, 2: 2}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

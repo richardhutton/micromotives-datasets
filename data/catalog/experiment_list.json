@@ -40,9 +40,9 @@
    "id": "9.25",
    "title": "HMRC data linkage consent experiment",
    "description": "Consent to link tax records: placement and easy vs difficult wording.",
-   "details": "Waves 11, 15",
+   "details": "5,160 rows as three experiments (w11 face-to-face 1,326; w11 web 1,281; w15 2,553); Waves 11, 15",
    "category": "survey methodology",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.24,
    "next": 16
@@ -86,9 +86,9 @@
    "id": "9.23",
    "title": "Non-resident parents and reasons for separation",
    "description": "Two versions of the questions on non-resident parents.",
-   "details": "Wave 10",
+   "details": "13,082 rows as two experiments (fertility history 7,392; contact 5,690); Wave 10",
    "category": "work/family/gender",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.22,
    "next": 19
@@ -98,9 +98,9 @@
    "id": "9.14",
    "title": "Assessing how people think about environmental taxes",
    "description": "Different wordings of willingness to pay environmental taxes.",
-   "details": "Wave 7",
+   "details": "2,235 rows; Wave 7; 10 wordings (5 framings x other taxes reduced or not)",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.21,
    "next": 17
@@ -115,7 +115,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 27
+   "next": 25
   },
   {
    "source": "Innovation Panel",
@@ -150,7 +150,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.19,
-   "next": 29
+   "next": 27
   },
   {
    "source": "Innovation Panel",
@@ -173,7 +173,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.19,
-   "next": 32
+   "next": 30
   },
   {
    "source": "Innovation Panel",
@@ -226,10 +226,10 @@
    "description": "Savings asked as one total vs itemised, 2×2 with who reports.",
    "details": "Wave 3",
    "category": "economics/behavioural",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "Dropped 10 Oct 2026 on reading the instrument: outcomes are open £ amounts with no range in the instrument (ledger 53) and differ between aggregate and itemised; the only item every group answers is a code-all-that-apply list that differs by group (the 9.43 ruling). Revisit if a numeric outcome type exists.",
    "novelty": 0.17,
-   "next": 22
+   "next": null
   },
   {
    "source": "Innovation Panel",
@@ -451,7 +451,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.29,
-   "next": 33
+   "next": 31
   },
   {
    "source": "DEL",
@@ -475,7 +475,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.28,
-   "next": 35
+   "next": 33
   },
   {
    "source": "DEL",
@@ -598,12 +598,12 @@
    "id": "Feb2023_track7split",
    "title": "Aid budget with priorities",
    "description": "UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order. Answer: Increase or decrease aid.",
-   "details": "Sandbox Feb 2023; 3 conditions",
+   "details": "1,706 rows; Sandbox Feb 2023; 3 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.24,
-   "next": 25
+   "next": 23
   },
   {
    "source": "DEL",
@@ -615,7 +615,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 30
+   "next": 28
   },
   {
    "source": "DEL",
@@ -657,9 +657,9 @@
    "id": "Feb2023_odasplit",
    "title": "Gender aid compared to others",
    "description": "No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid.",
-   "details": "Sandbox Feb 2023; 5 conditions",
+   "details": "1,655 rows; Sandbox Feb 2023; 5 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.2,
    "next": 21
@@ -685,7 +685,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.15,
-   "next": 34
+   "next": 32
   },
   {
    "source": "DEL",
@@ -747,9 +747,9 @@
    "id": "e5rfg",
    "title": "Who has Narrow Brackets?",
    "description": "Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.",
-   "details": "2005; UK priority 0.76; transfers: Full",
+   "details": "4,476 rows as four experiments (tk 264; ce 281; pair 323; six 3,608); 2005",
    "category": "economics/behavioural",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.33,
    "next": 18
@@ -787,7 +787,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 31
+   "next": 29
   },
   {
    "source": "TESS",
@@ -796,10 +796,10 @@
    "description": "Do people agree on how much punishment different crimes deserve?",
    "details": "2006; UK priority 1.00; transfers: Full",
    "category": "moral/social/cognition",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "Dropped 10 Oct 2026 on build: no fielded instrument on OSF (data and a Polimetrix codebook only); the scenario wording exists only in the paper's appendix (Robinson & Kurzban 2007), which is not an authority on stimulus wording. Also a ranking task, a new outcome shape.",
    "novelty": 0.23,
-   "next": 23
+   "next": null
   },
   {
    "source": "TESS",
@@ -822,7 +822,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 28
+   "next": 26
   },
   {
    "source": "TESS",
@@ -851,9 +851,9 @@
    "id": "gh396",
    "title": "Maintaining a Sense of Belonging among the Socially Isolated",
    "description": "Do socially isolated people inflate past group ties to feel they belong?",
-   "details": "2005; UK priority 1.07; transfers: Full",
+   "details": "8,959 rows; 2005; 2x2, 26 outcomes",
    "category": "moral/social/cognition",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.22,
    "next": 20
@@ -901,7 +901,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 26
+   "next": 24
   },
   {
    "source": "TESS",
@@ -1174,12 +1174,12 @@
    "id": "7tzpe",
    "title": "Body Size, Illness, and Blame: Causal Attributions and Social Consequences",
    "description": "Are overweight people blamed more for illness, and treated worse as a result? Vignettes.",
-   "details": "2014; UK priority 1.14; transfers: Full",
+   "details": "20,308 rows; 2014; 16 conditions, 15 outcomes",
    "category": "health communication",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.15,
-   "next": 24
+   "next": 22
   },
   {
    "source": "TESS",
@@ -2337,7 +2337,9 @@
    "Hand rule: DEL experiments whose conditions vary real numbers (Gender aid compared to others, 5 conditions; Gender gap progress, 4) replace 2-condition wording tests, because the title-only measure cannot see design.",
    "Excluded: pandemic-framed experiments (8 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment. Two were caught only on reading the instrument: the Apr 2020 aid statement bank and the Apr 2020 \"developing countries\" split.",
    "Removed: With God on Our Side (TESS ga53m), ruled out by rich on 10 Oct 2026; later picks moved up one.",
-   "Removed: Ukraine list experiment (DEL Jun2022_list), ruled out by rich on 10 Oct 2026 for a COVID filler statement; later picks moved up one."
+   "Removed: Ukraine list experiment (DEL Jun2022_list), ruled out by rich on 10 Oct 2026 for a COVID filler statement; later picks moved up one.",
+   "Dropped on build: Measures of wealth (IP 9.5) — no honest single outcome; later picks moved up one.",
+   "Dropped on build: How much punishment fits crimes (TESS pmuag) — no fielded instrument; later picks moved up one."
   ]
  }
 }
