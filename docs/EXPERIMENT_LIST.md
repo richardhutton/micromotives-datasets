@@ -8,13 +8,13 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 33 | 19 | 4 | 6 | 29 |
+| Innovation Panel | UK · not publishable | 34 | 18 | 4 | 6 | 28 |
 | DEL | UK · publishable (CC0) | 10 | 6 | 5 | 9 | 20 |
 | TESS | US · not publishable | 39 | 43 | 8 | 8 | 59 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 |
-| **Total** | | **95** | **68** | **29** | **26** | **123** |
+| **Total** | | **96** | **67** | **29** | **26** | **122** |
 
-## Next 33, in build order (21 built, 12 to go)
+## Next 33, in build order (22 built, 11 to go)
 
 - Pool: Buildable candidates only.
 - Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).
@@ -38,7 +38,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 | 6 | DEL | Feb2023_abortsplit | **Abortion access, UK or abroad**<br>Protect women's access to abortion in developing countries vs in the UK. Answer: Importance scale. | political preferences/policy | 0.23 |
 | 7 | Innovation Panel | 9.38 | **National identity**<br>Versions of the national identity questions. | political identity/polarisation | 0.17 |
 | 8 | Innovation Panel | 9.33 | **Twitter consent**<br>Repeats the wave 10 request to link Twitter data, testing how it is asked. | survey methodology | 0.30 |
-| 9 | Innovation Panel | 9.26 | **Does competition over public services decrease support for residency rights of immigrants?**<br>A conjoint and a set of vignettes on residency rights for immigrants. | political preferences/policy | 0.23 |
+| 9 | Innovation Panel | ukds_6849_immig_vignette_w11 | **Does competition over public services decrease support for residency rights of immigrants? (vignette)**<br>A conjoint and a set of vignettes on residency rights for immigrants. | political preferences/policy | 0.23 |
 | 10 | DEL | W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree. | moral/social/cognition | 0.28 |
 | 11 | TESS | xk9ch_vignette1 | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (person vignette 1)**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
 | 11 | TESS | xk9ch_institution | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (institutions)**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
@@ -84,7 +84,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Innovation Panel
 
-UK · not publishable. 33 Built, 19 Buildable, 4 Needs checking, 6 Unlikely.
+UK · not publishable. 34 Built, 18 Buildable, 4 Needs checking, 6 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -94,6 +94,7 @@ UK · not publishable. 33 Built, 19 Buildable, 4 Needs checking, 6 Unlikely.
 | ukds_6849_hmrc_consent_w15 | **HMRC data linkage consent experiment (wave 15)**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*2,553 rows; Waves 11, 15* | survey methodology | Built | 0.24 | 16 |
 | ukds_6849_mpc_direct_w15 | **Marginal propensity to consume (direct £ question)**<br>How people would spend, save or repay debt after an income change.<br>*1,278 rows; Wave 15; 2x2 amount x period* | economics/behavioural | Built | 0.24 | 5 |
 | ukds_6849_mpc_twopart_w15 | **Marginal propensity to consume (two-part question)**<br>How people would spend, save or repay debt after an income change.<br>*1,259 rows; Wave 15; 2x2 amount x period* | economics/behavioural | Built | 0.24 | 5 |
+| ukds_6849_immig_vignette_w11 | **Does competition over public services decrease support for residency rights of immigrants? (vignette)**<br>A conjoint and a set of vignettes on residency rights for immigrants.<br>*1,917 rows; Wave 11; own place vs Glasgow. The conjoint part is parked (needs a pipeline change)* | political preferences/policy | Built | 0.23 | 9 |
 | ukds_6849_nrp_w10_contact | **Non-resident parents and reasons for separation (contact with relatives)**<br>Two versions of the questions on non-resident parents.<br>*5,690 rows; Wave 10* | work/family/gender | Built | 0.22 | 19 |
 | ukds_6849_nrp_w10_fh | **Non-resident parents and reasons for separation (fertility history)**<br>Two versions of the questions on non-resident parents.<br>*7,392 rows; Wave 10* | work/family/gender | Built | 0.22 | 19 |
 | 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes.<br>*2,235 rows; Wave 7; 10 wordings (5 framings x other taxes reduced or not)* | political preferences/policy | Built | 0.21 | 17 |
@@ -123,7 +124,6 @@ UK · not publishable. 33 Built, 19 Buildable, 4 Needs checking, 6 Unlikely.
 | ukds_6849_vig_housework_w6 | **Vignettes: measuring partner satisfaction with division of household labour**<br>Respondents imagine themselves in a couple and rate how satisfied they would be with how the housework is shared. Five dimensions are randomised: whose job is full or part time, whose hourly pay is higher, whether there is a child and its age, how the housework splits between them, and whether paid help is employed. The respondent is INSIDE the scenario -- the wording is "Imagine that you are married or cohabiting" -- so the outcome is imagined own satisfaction, not judgement of a described couple. Wave 6 (2013).<br>*5,081 rows* | work/family/gender | Built |  |  |
 | 9.29 | **LinkedIn consent**<br>Consent to link LinkedIn profiles: placement crossed with a motivating statement.<br>*Wave 14* | survey methodology | Buildable | 0.28 |  |
 | 9.46 | **Consent decision process**<br>Prompting people to think a consent request through, and whether it changes consent.<br>*Wave 17* | survey methodology | Buildable | 0.24 |  |
-| 9.26 | **Does competition over public services decrease support for residency rights of immigrants?**<br>A conjoint and a set of vignettes on residency rights for immigrants.<br>*Wave 11* | political preferences/policy | Buildable | 0.23 | 9 |
 | 9.6 | **Context of questions about consent to data linkage with administrative records**<br>Consent asked in context vs at the end, 2×2.<br>*Wave 4* | survey methodology | Buildable | 0.22 |  |
 | 9.49 | **Indoor residential environment: consent for in-home sensor**<br>Consent to place sensors measuring the indoor environment.<br>*Wave 17* | survey methodology | Buildable | 0.21 | 25 |
 | 9.21 | **Improving consent to link to the electoral register**<br>How consent was asked, crossed with the wording of the request.<br>*Waves 10, 11* | survey methodology | Buildable | 0.20 |  |

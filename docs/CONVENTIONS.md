@@ -224,6 +224,24 @@ respondent who answered Don't know did not rate anything — the first draft's
 "rated" was false for 1,593 rows. The order must be fixed by the assignment;
 an order randomised and not recorded cannot be narrated at all.
 
+## A per-respondent fill the deposit does not hold
+
+Ruled by rich, 10 Oct 2026, on IP 9.26's own-place vignette. The screen named the
+respondent's own town (a fill from their address, `ff_post_code`), and the deposit
+does not contain it. The row keeps the instrument's words on either side and puts
+one clause of ours in the fill's place: *"(here the screen named the place where you
+live)"*. Three conditions, all required:
+
+- the clause must be true for every row it appears in — 9.26 builds the arm only
+  for respondents whose address on record was confirmed (`addrchck` = 1), and the
+  comparison arm is restricted the same way so both come from one population;
+- it claims no more than the evidence shows — "place", not "town", because nothing
+  proves the screen printed a town name rather than a postcode or district;
+- `notes` records the clause word-for-word and says it was added.
+
+A fill whose content matters to the outcome and cannot be stated truthfully this way
+fails the study instead.
+
 ## Attention and recall checks are not outcomes
 
 **Do not build post-stimulus recall or attention checks as outcomes.** "Thinking

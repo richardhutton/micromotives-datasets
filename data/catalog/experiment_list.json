@@ -96,12 +96,12 @@
   },
   {
    "source": "Innovation Panel",
-   "id": "9.26",
-   "title": "Does competition over public services decrease support for residency rights of immigrants?",
+   "id": "ukds_6849_immig_vignette_w11",
+   "title": "Does competition over public services decrease support for residency rights of immigrants? (vignette)",
    "description": "A conjoint and a set of vignettes on residency rights for immigrants.",
-   "details": "Wave 11",
+   "details": "1,917 rows; Wave 11; own place vs Glasgow. The conjoint part is parked (needs a pipeline change)",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.23,
    "next": 9

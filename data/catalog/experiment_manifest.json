@@ -440,6 +440,12 @@
       "description": "How often you see and contact your mother, father and an adult child living elsewhere: asked with or without the questions about all your children asked earlier. Wave 10 (2017).",
       "design": "2-arm module-order experiment, allocated by household; 6 outcomes on a 6-point frequency scale, each reached through the respondent's own relatives answers (selection by order 1-2pp, not significant)",
       "verified_against": "no published reference; an independent checker re-derived every row from the raw files (0 mismatches), matched every condition and outcome to the questionnaire, confirmed allocation against routing and that the identifier loop followed the 'A' modules, and measured post-treatment selection (10 Oct 2026)"
+    },
+    "ukds_6849_immig_vignette_w11": {
+      "category": "political preferences/policy",
+      "description": "Should a Polish-born immigrant (married, three children, renting privately, with a pre-existing health condition) be allowed to remain? He lives either in the respondent's own town or in Glasgow; rated 1-10. England, self-completion only. Wave 11 (2018).",
+      "design": "between-subjects, 2 arms, person-level randomisation (k_cjitown); both arms restricted to respondents whose address was confirmed; the own-place town name is a fill not in the deposit, replaced by a clause ruled by rich (CONVENTIONS); the conjoint that precedes it is parked",
+      "verified_against": "no published reference; an independent checker re-derived all 1,917 rows from the raw files (0 mismatches), matched the vignette to the questionnaire, and found the population asymmetry, now fixed (10 Oct 2026)"
     }
   }
 }

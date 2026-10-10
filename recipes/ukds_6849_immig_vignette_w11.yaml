@@ -1,0 +1,227 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.26: right to remain for an immigrant
+  applicant living in the place where the respondent lives or in Glasgow (wave 11)"
+data_file: immig_w11-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: immig_vignette_w11
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.26 in the Innovation Panel User Guide, "Does competition over public
+  services decrease support for residency rights of immigrants?"; wave 11 (2018) only.
+  Also section 4.3.5 of the wave 11 technical report. Neither cites a publication, and
+  the deposit carries no results paper for it, so there is NO independent numeric
+  reference to verify against.
+
+  THE TWO PARTS OF 9.26. Both sit in the self-completion module
+  `Scaconjointimmigration_ip11` (`6849_ip_wave_11_questionnaires.pdf`, pp. 511-516),
+  asked only "If ((HHGRID.REGION = 1) & ((GRIDVARIABLES.modetype = 1 & CASISTART.scac =
+  1) | GRIDVARIABLES.modetype = 3)) // Respondent lives in England and Mode is
+  face-to-face and has agreed to self-completion (completing without help or
+  translation) or mode is web". (1) A paired-profile conjoint on three screens; (2) this
+  vignette, on the screen after them. THIS RECIPE BUILDS (2) ONLY. The conjoint is not
+  built; see NOT BUILT below.
+
+  WHAT WAS RANDOMISED. `k_cjitown` on `k_indresp_ip`, PERSON level ("Compute as random
+  allocation equally split across sample"), named by the User Guide: 1 = "TOWN OF
+  RESIDENCE from ff_post_code", 2 = "Glasgow". It is computed for every non-proxy
+  respondent, routed or not. Routed respondents: 1,179 own place, 1,130 Glasgow. The
+  label could NOT be verified against routing in the ledger-138 sense: both arms answer
+  the same variable (`cjivig`), so which arm was asked what leaves no trace in the data.
+  What does agree: the deposit's value labels, the questionnaire's option list for
+  `Cjitown`, and the fill directive in the vignette text itself ("GLASGOW {if cjitown =
+  2}"); `scripts/gen_ip_immig.py --check` asserts the first two match.
+
+  THE ROUTING (`--check`). `HHGRID.REGION` is not in the deposit; `gor_dv` 1-9 stands in
+  for England. 2,309 respondents were routed; every one holds an allocation; none was
+  telephone or interviewer-assisted. Against `gor_dv`, 1 routed respondent is recorded
+  outside England and 3 web respondents recorded in England were not routed; both
+  counts are declared in the generator and any change fails `--check`. The one routed
+  respondent recorded outside England (Scotland, Glasgow arm) has no confirmed address
+  and so is not built (see SYMMETRY below); every built row's region is England.
+
+  THE CONDITION. The vignette, word-for-word inside the double quotes, typography
+  normalised. The questionnaire's fill: "in ff_post_code {if cjitown = 1 &
+  HHGRID.ADDRCHCK = 1} / HHGRID.TOWNADD {if cjitown = 1 & HHGRID.ADDRCHCK = 2 &
+  HHGRID.TOWNADD DOES NOT EQUAL DK/REF/MIS} / ff_post_code {if cjitown = 1 &
+  HHGRID.ADDRCHCK = 2 & HHGRID.TOWNADD = DK/REF/MIS} / GLASGOW {if cjitown = 2}".
+  "GLASGOW" is specification notation (every fill in that directive is in capitals);
+  rendered "Glasgow", the spelling of the allocation's own label.
+
+  RISKIEST JUDGEMENT: THE OWN-PLACE ARM CANNOT QUOTE ITS PLACE. The respondent read a
+  place derived from their own address; the deposit does not carry it (address is
+  withheld). Arm 0 therefore splits the quotation around the fill and puts ONE clause
+  of ours in its place, outside the quotes: "(here the screen named the place where you
+  live)". This is DESCRIPTION, not transcription, on the model of the layout exception
+  (docs/CONVENTIONS.md): the source's words for the slot are a respondent-specific fill
+  whose value we do not have. WHY "PLACE" AND NOT "TOWN": the fill directive is
+  literally `ff_post_code`. The allocation's label ("Town of residence from
+  ff_postcode") and the User Guide ("TOWN OF RESIDENCE from ff_post_code") say a town
+  was derived from it, but nothing in the deposit or the documentation shows what the
+  screen actually printed: a town name, a post town, a district or the postcode itself.
+  "Place" is true of every one of those; "town" would claim a rendering we cannot see.
+  (The coordinator is taking the general ruling to rich; no CONVENTIONS entry is made
+  here.)
+
+  The clause is true only where the fill took its first branch (`ADDRCHCK` = 1, still
+  resident at the address on record), joined from `k_hhresp_ip` on `k_hidp`. Where
+  `ADDRCHCK` = 2 the screen showed a typed new town, the old place, or (face-to-face,
+  where `TOWNADD` is never asked) possibly nothing, and `TOWNADD` is not in the deposit;
+  where the household has no `k_hhresp_ip` record the branch cannot be known.
+
+  SYMMETRY: BOTH ARMS ARE RESTRICTED TO `ADDRCHCK` = 1. The Glasgow text is fixed, so
+  Glasgow movers could have been built, but the excluded group (moved, or no household
+  record) is not like the rest: its mean rating is about 0.8-0.9 points higher in BOTH
+  arms (own place 6.98 against 6.21; Glasgow 7.16 against 6.27, computed locally).
+  Keeping it in one arm only would add a spurious difference of about +0.05 between the
+  arms, so both arms come from the same population. NOT BUILT, answered: own place 55
+  (34 moved, 21 no household record), Glasgow 56 (39 moved, 17 no household record).
+  Routed and not built: 68 and 61.
+
+  ADDED BY US, word-for-word: the shared opening "After being asked to compare pairs of
+  applicants for permanent residency in the United Kingdom, you were shown this text:"
+  (docs/CONVENTIONS.md, "Narrating what the respondent did"; true for every routed
+  respondent, since the three conjoint screens precede the vignette unconditionally in
+  the module, and it carries no count or position) and arm 0's parenthesis above.
+
+  ANCHORING, NOT IN THE ROW. Immediately before the vignette each respondent saw three
+  conjoint screens, six randomised applicant profiles in all (gender, marital status,
+  children in state school, housing, health, employment, years of residency, country
+  of origin), and rated each one on the same 1-10 right-to-remain scale. Those six
+  profiles are in the deposit (`cji*1a` .. `cji*3b`), but the row's condition says only
+  that pairs were compared, not which applicants. A rating of this applicant may be
+  anchored on those profiles; nothing in the row lets a model see that.
+
+  OUTCOME. `Cjivig`'s question, word-for-word, including its own inconsistency ("grant
+  the person" ... "the applicant"): on the same screen as the vignette, below it. Scale
+  1-10, end labels from the questionnaire and the deposit (which agree, `--check`);
+  2-9 are "display number only, no label". Shown "horizontally, with labels at end
+  points".
+
+  NOT BUILT: THE CONJOINT (`cjimmig1-3`, forced choice "Applicant 1" / "Applicant 2";
+  `cji1app1` .. `cji3app2`, a 1-10 rating of each applicant). About 5,900 choices and
+  12,150 ratings. Reasons, in order of weight:
+    1. THE SCHEMA CANNOT HOLD THE CONDITION WITHOUT A PIPELINE CHANGE. A screen shows
+       two applicants on eight independently randomised attributes, 2 x 3 x 5 x 3 x 2 x 4
+       x 4 x 8 = 23,040 profiles each, so one screen is a cell of a 530,841,600-cell
+       product. `ConditionTemplate.expand()` enumerates the whole product even when
+       `sparse: true` (DEL's NGO conjoint was 10,000 cells), so the template cannot be
+       loaded. The 9xw67/8ctbk alternative, arms written out for the OBSERVED cells, is
+       closed here twice over: it is the machine-written-recipe pattern the template
+       replaced, and the observed 16-code draws are columns of the licensed deposit,
+       nearly unique per respondent, in a file tracked in git. Building the rating with
+       only the rated applicant's profile (9xw67's scope) was also rejected: each rating
+       was made on the same screen as the other applicant and directly below a forced
+       choice between them, and in the data the rating difference agrees with the
+       choice for 86-94% of respondents, so the comparator is part of what was rated.
+       The fix is a `src/` change: render sparse-template arms lazily for the cells that
+       occur, `condition_num` computed as the odometer index rather than enumerated.
+    2. TWO OF THE SIX RATING QUESTIONS NAME THE WRONG APPLICANT. In the questionnaire,
+       `Cji2app2` and `Cji3app2` (the second rating on screens 2 and 3) read "Applicant
+       1", where screen 1's `Cji1app2` reads "Applicant 2". The data suggest it was
+       fielded so: among those who chose applicant 2, the mean (applicant 2 minus
+       applicant 1) rating gap falls from +2.06 on screen 1 to +1.60 and +1.37 on
+       screens 2-3, while among those who chose applicant 1 it stays at -2.05, -1.97,
+       -1.87. Whatever a later build does, those two items cannot carry a question
+       naming applicant 2, and should be dropped.
+    3. The table itself was an image (`cjimmig1-v3.png`, `cjimmig2.png`,
+       `cjimmig3.png`) not in the deposit (the URLs return 403). The scripting note
+       names the rows in a fixed order ("Gender, Marital Status, Number children in
+       state school, Housing situation, Health condition, Employment history, Years of
+       residency in U.K., Country of origin ... vertically within a table with Applicant
+       1 and Applicant 2 as column headings") and no order variable exists, so a later
+       build can render a fixed order without the EFXNLX risk, but the on-screen row
+       headings are the scripting note's description, not seen text.
+  For a later build: attribute codes match the questionnaire's option lists and the
+  User Guide's Appendix A in all 48 variables; applicant "a" is column "Applicant 1"
+  (when Applicant 1 is employed and Applicant 2 unemployed on benefits, 82-88% choose
+  Applicant 1, against 15-20% the other way round); two screens in the whole file show
+  two identical profiles.
+
+  OTHER RANDOMISATIONS IN WAVE 11. `dkcond` (User Guide 8.14, DK / prefer-not-to-answer
+  presentation) is person-level and touches CASI modules, but its listed variables do
+  not include this module; not in the derived file.
+
+  PERSONA. Same spine as every Innovation Panel build. Region is England on every
+  built row (see ROUTING). Country of birth and ethnicity: ethnicity (`racel_dv`) is kept
+  as in every IP build; the condition names Poland and Glasgow, neither of which any
+  persona field distinguishes.
+
+  ROW COUNTS (aggregates). Answered 1-10 with the address confirmed: own place 968,
+  Glasgow 949. 1,917 rows. Dropped as non-answers (-9 missing, -2 refusal, -1 don't know):
+  within routed respondents, 2,309 routed less 2,028 answered = 281.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+
+condition:
+  source_var: town_shown
+  factors: [town]
+  shared_context: >-
+    After being asked to compare pairs of applicants for permanent residency in the
+    United Kingdom, you were shown this text:
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {town: own_place}
+      text: >-
+        "A male born in Poland who lives in a private rental property in" (here the screen
+        named the place where you live) "has put in an application for the right to remain
+        in the United Kingdom indefinitely. He has a pre-existing health condition, is
+        married and has three children in state school."
+    - raw: 2
+      condition_num: 1
+      factors: {town: glasgow}
+      text: >-
+        "A male born in Poland who lives in a private rental property in Glasgow has put in
+        an application for the right to remain in the United Kingdom indefinitely. He has a
+        pre-existing health condition, is married and has three children in state school."
+
+outcomes:
+  - var: cjivig
+    task_num: 0
+    question: >-
+      On a scale from 1 to 10, where 1 indicates that the government should not grant the
+      person the right to remain in the United Kingdom and 10 indicates that the applicant
+      should be granted the right to remain in the United Kingdom, how would you rate the
+      applicant?
+    scale:
+      min: 1
+      max: 10
+      min_label: Do not grant the applicant the right to remain
+      max_label: Grant the applicant the right to remain
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

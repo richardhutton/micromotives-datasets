@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**95 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 33 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 39 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**96 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 34 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 39 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 22 | 223,550 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 33 | 365,425 | **no** — UKDS End User Licence |
+| UK — UK Data Service (End User Licence) | 34 | 367,342 | **no** — UKDS End User Licence |
 | US transfer — TESS | 39 | 362,707 | **no** — no licence stated |
-| **Total** | **95** | **964,950** | |
+| **Total** | **96** | **966,867** | |
 
 ---
 
@@ -62,6 +62,7 @@
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
 | `ukds_6849_envtax_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.14: willingnes… | UK Data Service | `UKDS SN 6849` | 2,235 |
+| `ukds_6849_immig_vignette_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.26: right to r… | UK Data Service | `UKDS SN 6849` | 1,917 |
 | `del_sandbox_feb2023_abortion` | Development Engagement Lab, Sandbox Great Britain February 2023: ab… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,798 |
 | `del_sandbox_feb2023_wordfeminist` | Development Engagement Lab, Sandbox Great Britain February 2023: na… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,788 |
 | `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
@@ -615,6 +616,19 @@ Respondents say how important their occupation, or in the other version their pr
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.4. What IS verified: (a) the household join against indresp's own copy of the allocation, 1,788 comparisons, zero disagreements, and no answer in the other version's variable (scripts/gen_ip_identity.py --check; a scrambled join fails it); (b) every row's condition and question against the stem and item written from the questionnaire; (c) 1,746 rows, reached by the generator's count and the pipeline. tests/test_ip_identity.py
 
+### `ukds_6849_immig_vignette_w11`
+
+**Understanding Society Innovation Panel, experiment 9.26: right to remain for an immigrant applicant living in the place where the respondent lives or in Glasgow (wave 11)**
+
+Should a Polish-born immigrant (married, three children, renting privately, with a pre-existing health condition) be allowed to remain? He lives either in the respondent's own town or in Glasgow; rated 1-10. England, self-completion only. Wave 11 (2018).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — between-subjects, 2 arms, person-level randomisation (k_cjitown); both arms restricted to respondents whose address was confirmed; the own-place town name is a fill not in the deposit, replaced by a clause ruled by rich (CONVENTIONS); the conjoint that precedes it is parked
+- **Category** — political preferences/policy
+- **Rows** — 1,917 from 1,917 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived all 1,917 rows from the raw files (0 mismatches), matched the vignette to the questionnaire, and found the population asymmetry, now fixed (10 Oct 2026)
+
 ### `ukds_6849_itemcount_w8`
 
 **Understanding Society Innovation Panel, experiment 9.17: measuring sexual identity by item counts (wave 8)**
@@ -923,7 +937,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 9 | 91,114 |
 | moral/social/cognition | 5 | 11 | 180,497 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 13 | 0 | 124,195 |
+| political preferences/policy | 14 | 0 | 126,112 |
 | survey methodology | 16 | 5 | 215,354 |
 | work/family/gender | 8 | 8 | 140,765 |
 
