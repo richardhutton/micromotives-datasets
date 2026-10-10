@@ -87,13 +87,13 @@ def render_md(data: dict) -> str:
         )
     totals = [f"**{n(None, st)}**" for st in STATUSES]
     out.append("| **Total** | | " + " | ".join(totals) + f" | **{len(rows) - n(None, 'Built')}** |")
-    out += ["", built_line(data)]
     nxt = sorted((r for r in rows if r.get("next")), key=lambda r: r["next"])
     if nxt:
-        done = sum(r["status"] == "Built" for r in nxt)
+        ranks = {r["next"] for r in nxt}
+        done = sum(all(x["status"] == "Built" for x in nxt if x["next"] == k) for k in ranks)
         out += [
             "",
-            f"## Next {len(nxt)}, in build order ({done} built, {len(nxt) - done} to go)",
+            f"## Next {len(ranks)}, in build order ({done} built, {len(ranks) - done} to go)",
             "",
         ]
         out += [f"- {m}" for m in data.get("next_batch", {}).get("method", [])]
@@ -155,15 +155,6 @@ def corpus_experiments() -> int:
     return len(out.stdout.split())
 
 
-def built_line(data: dict) -> str:
-    studies = sum(r["status"] == "Built" for r in data["rows"])
-    return (
-        f"**{studies} studies built, making {data['corpus_experiments']} experiments in the "
-        "corpus.** Some studies are built as several experiments (one per answer type or "
-        "sub-design), so the two numbers differ."
-    )
-
-
 def render_html(data: dict) -> str:
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return TEMPLATE.read_text().replace("__DATA__", payload)
@@ -174,10 +165,20 @@ def main() -> None:
     bad = {r["status"] for r in data["rows"]} - set(STATUSES)
     if bad:
         raise SystemExit(f"unknown status in {DATA.name}: {sorted(bad)}")
-    data["corpus_experiments"] = corpus_experiments()
+    # One row per experiment, as the list has always been: a study built in several
+    # parts gets a row per part (35M5CV, py9q3). On 10 Oct new multi-part builds were
+    # entered as one row each and the page drifted to 84 Built against 95 experiments.
+    built = sum(r["status"] == "Built" for r in data["rows"])
+    if built != (n_exp := corpus_experiments()):
+        raise SystemExit(
+            f"{built} rows are Built but {n_exp} recipes are committed — give each built "
+            "experiment its own row"
+        )
     MD.write_text(render_md(data))
     HTML.write_text(render_html(data))
-    print(f"wrote {MD.relative_to(ROOT)} and {HTML.relative_to(ROOT)}: {len(data['rows'])} studies")
+    print(
+        f"wrote {MD.relative_to(ROOT)} and {HTML.relative_to(ROOT)}: {len(data['rows'])} experiments"
+    )
 
 
 if __name__ == "__main__":

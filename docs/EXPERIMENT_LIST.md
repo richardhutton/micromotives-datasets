@@ -8,13 +8,11 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 29 | 19 | 4 | 6 | 29 |
-| DEL | UK · publishable (CC0) | 9 | 6 | 5 | 9 | 20 |
-| TESS | US · not publishable | 33 | 43 | 8 | 8 | 59 |
+| Innovation Panel | UK · not publishable | 33 | 19 | 4 | 6 | 29 |
+| DEL | UK · publishable (CC0) | 10 | 6 | 5 | 9 | 20 |
+| TESS | US · not publishable | 39 | 43 | 8 | 8 | 59 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 |
-| **Total** | | **84** | **68** | **29** | **26** | **123** |
-
-**84 studies built, making 95 experiments in the corpus.** Some studies are built as several experiments (one per answer type or sub-design), so the two numbers differ.
+| **Total** | | **95** | **68** | **29** | **26** | **123** |
 
 ## Next 33, in build order (21 built, 12 to go)
 
@@ -31,24 +29,35 @@ Every experiment we have built and every candidate we could add, from four sourc
 | Next | Source | ID | Experiment | Category | Novelty |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | DEL | Feb2023_wordfeministsplit | **Naming a development policy (sandbox)**<br>Development / feminist / inclusive / gender-inclusive policy, or the name only. Answer: Support-oppose. | political preferences/policy | 0.29 |
-| 2 | DEL | W3_ngoconjointsplit | **NGO conjoint**<br>Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO. | economics/behavioural | 0.28 |
+| 2 | DEL | del_panel_w3_ngo_conjoint_donate | **NGO conjoint (donate)**<br>Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO. | economics/behavioural | 0.28 |
+| 2 | DEL | del_panel_w3_ngo_conjoint_petition | **NGO conjoint (petition)**<br>Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO. | economics/behavioural | 0.28 |
 | 3 | DEL | W4_DonationSplit | **Ukraine donation follow-up**<br>People who chose Ukraine over one of 7 other crises are told part of their donation (unspecified, or 10-50%) will go to that crisis. Answer: Still donate, yes or no. | economics/behavioural | 0.27 |
 | 4 | DEL | W4_connectstorysplit | **Climate harm stories**<br>No story, or one of three stories linking climate change to everyday life. Answer: Harm rating per group. | moral/social/cognition | 0.28 |
-| 5 | Innovation Panel | 9.34 | **Marginal propensity to consume**<br>How people would spend, save or repay debt after an income change. | economics/behavioural | 0.24 |
+| 5 | Innovation Panel | ukds_6849_mpc_twopart_w15 | **Marginal propensity to consume (two-part question)**<br>How people would spend, save or repay debt after an income change. | economics/behavioural | 0.24 |
+| 5 | Innovation Panel | ukds_6849_mpc_direct_w15 | **Marginal propensity to consume (direct £ question)**<br>How people would spend, save or repay debt after an income change. | economics/behavioural | 0.24 |
 | 6 | DEL | Feb2023_abortsplit | **Abortion access, UK or abroad**<br>Protect women's access to abortion in developing countries vs in the UK. Answer: Importance scale. | political preferences/policy | 0.23 |
 | 7 | Innovation Panel | 9.38 | **National identity**<br>Versions of the national identity questions. | political identity/polarisation | 0.17 |
 | 8 | Innovation Panel | 9.33 | **Twitter consent**<br>Repeats the wave 10 request to link Twitter data, testing how it is asked. | survey methodology | 0.30 |
 | 9 | Innovation Panel | 9.26 | **Does competition over public services decrease support for residency rights of immigrants?**<br>A conjoint and a set of vignettes on residency rights for immigrants. | political preferences/policy | 0.23 |
 | 10 | DEL | W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree. | moral/social/cognition | 0.28 |
-| 11 | TESS | xk9ch | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
+| 11 | TESS | xk9ch_vignette1 | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (person vignette 1)**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
+| 11 | TESS | xk9ch_institution | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (institutions)**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
+| 11 | TESS | xk9ch_vignette2 | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (person vignette 2)**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
+| 11 | TESS | xk9ch_identity_threat | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (identity threat)**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
 | 12 | DEL | Jul2020_experimentsplit | **Global goals messages**<br>Support for three UN goals (water, child deaths, poverty aid), each rated alone, after facts, and after a counter-claim; the order is randomised. Answer: 0-10 support. | political preferences/policy | 0.23 |
 | 13 | TESS | s6urt | **Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk**<br>Three kinds of conflicting nutrition and cancer-risk information, and trust in health science. | health communication | 0.20 |
 | 14 | Innovation Panel | 9.30 | **Vignettes: intentions to prepare for automation**<br>Vignettes: automation threat severity × timeframe, 2×2. | economics/behavioural | 0.20 |
 | 15 | DEL | Jun2022_choice | **Why Ukraine matters, me or others**<br>Asked about yourself or about other people in the UK, with random statement pairs. Answer: Pick one statement. | moral/social/cognition | 0.27 |
-| 16 | Innovation Panel | 9.25 | **HMRC data linkage consent experiment**<br>Consent to link tax records: placement and easy vs difficult wording. | survey methodology | 0.24 |
+| 16 | Innovation Panel | ukds_6849_hmrc_consent_w11 | **HMRC data linkage consent experiment (wave 11 face-to-face)**<br>Consent to link tax records: placement and easy vs difficult wording. | survey methodology | 0.24 |
+| 16 | Innovation Panel | ukds_6849_hmrc_consent_w11_web | **HMRC data linkage consent experiment (wave 11 web)**<br>Consent to link tax records: placement and easy vs difficult wording. | survey methodology | 0.24 |
+| 16 | Innovation Panel | ukds_6849_hmrc_consent_w15 | **HMRC data linkage consent experiment (wave 15)**<br>Consent to link tax records: placement and easy vs difficult wording. | survey methodology | 0.24 |
 | 17 | Innovation Panel | 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes. | political preferences/policy | 0.21 |
-| 18 | TESS | e5rfg | **Who has Narrow Brackets?**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices. | economics/behavioural | 0.33 |
-| 19 | Innovation Panel | 9.23 | **Non-resident parents and reasons for separation**<br>Two versions of the questions on non-resident parents. | work/family/gender | 0.22 |
+| 18 | TESS | e5rfg_tk | **Who has Narrow Brackets? (Tversky-Kahneman pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices. | economics/behavioural | 0.33 |
+| 18 | TESS | e5rfg_ce | **Who has Narrow Brackets? (certainty equivalents)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices. | economics/behavioural | 0.33 |
+| 18 | TESS | e5rfg_pair | **Who has Narrow Brackets? (Example 2 pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices. | economics/behavioural | 0.33 |
+| 18 | TESS | e5rfg_six | **Who has Narrow Brackets? (six-decision modules)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices. | economics/behavioural | 0.33 |
+| 19 | Innovation Panel | ukds_6849_nrp_w10_fh | **Non-resident parents and reasons for separation (fertility history)**<br>Two versions of the questions on non-resident parents. | work/family/gender | 0.22 |
+| 19 | Innovation Panel | ukds_6849_nrp_w10_contact | **Non-resident parents and reasons for separation (contact with relatives)**<br>Two versions of the questions on non-resident parents. | work/family/gender | 0.22 |
 | 20 | TESS | gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong? | moral/social/cognition | 0.22 |
 | 21 | DEL | Feb2023_odasplit | **Gender aid compared to others**<br>No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid. | political preferences/policy | 0.20 |
 | 22 | TESS | 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes. | health communication | 0.15 |
@@ -75,14 +84,18 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Innovation Panel
 
-UK · not publishable. 29 Built, 19 Buildable, 4 Needs checking, 6 Unlikely.
+UK · not publishable. 33 Built, 19 Buildable, 4 Needs checking, 6 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 9.33 | **Twitter consent**<br>Repeats the wave 10 request to link Twitter data, testing how it is asked.<br>*527 rows; Wave 15; 2 conditions (help links on the same page or not); web only* | survey methodology | Built | 0.30 | 8 |
-| 9.25 | **HMRC data linkage consent experiment**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*5,160 rows as three experiments (w11 face-to-face 1,326; w11 web 1,281; w15 2,553); Waves 11, 15* | survey methodology | Built | 0.24 | 16 |
-| 9.34 | **Marginal propensity to consume**<br>How people would spend, save or repay debt after an income change.<br>*2,537 rows as two experiments (two-part 1,259; direct £ 1,278); Wave 15; 2x2 amount x period* | economics/behavioural | Built | 0.24 | 5 |
-| 9.23 | **Non-resident parents and reasons for separation**<br>Two versions of the questions on non-resident parents.<br>*13,082 rows as two experiments (fertility history 7,392; contact 5,690); Wave 10* | work/family/gender | Built | 0.22 | 19 |
+| ukds_6849_hmrc_consent_w11 | **HMRC data linkage consent experiment (wave 11 face-to-face)**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*1,326 rows; Waves 11, 15* | survey methodology | Built | 0.24 | 16 |
+| ukds_6849_hmrc_consent_w11_web | **HMRC data linkage consent experiment (wave 11 web)**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*1,281 rows; Waves 11, 15* | survey methodology | Built | 0.24 | 16 |
+| ukds_6849_hmrc_consent_w15 | **HMRC data linkage consent experiment (wave 15)**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*2,553 rows; Waves 11, 15* | survey methodology | Built | 0.24 | 16 |
+| ukds_6849_mpc_direct_w15 | **Marginal propensity to consume (direct £ question)**<br>How people would spend, save or repay debt after an income change.<br>*1,278 rows; Wave 15; 2x2 amount x period* | economics/behavioural | Built | 0.24 | 5 |
+| ukds_6849_mpc_twopart_w15 | **Marginal propensity to consume (two-part question)**<br>How people would spend, save or repay debt after an income change.<br>*1,259 rows; Wave 15; 2x2 amount x period* | economics/behavioural | Built | 0.24 | 5 |
+| ukds_6849_nrp_w10_contact | **Non-resident parents and reasons for separation (contact with relatives)**<br>Two versions of the questions on non-resident parents.<br>*5,690 rows; Wave 10* | work/family/gender | Built | 0.22 | 19 |
+| ukds_6849_nrp_w10_fh | **Non-resident parents and reasons for separation (fertility history)**<br>Two versions of the questions on non-resident parents.<br>*7,392 rows; Wave 10* | work/family/gender | Built | 0.22 | 19 |
 | 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes.<br>*2,235 rows; Wave 7; 10 wordings (5 framings x other taxes reduced or not)* | political preferences/policy | Built | 0.21 | 17 |
 | 9.30 | **Vignettes: intentions to prepare for automation**<br>Vignettes: automation threat severity × timeframe, 2×2.<br>*15,020 rows; Wave 14; 2x2 + control, 9 outcomes* | economics/behavioural | Built | 0.20 | 14 |
 | 9.38 | **National identity**<br>Versions of the national identity questions.<br>*2,472 rows; Wave 15; 2 conditions (identity question asked first or not); outcome: importance of being British* | political identity/polarisation | Built | 0.17 | 7 |
@@ -140,14 +153,15 @@ UK · not publishable. 29 Built, 19 Buildable, 4 Needs checking, 6 Unlikely.
 
 ## DEL
 
-UK · publishable (CC0). 9 Built, 6 Buildable, 5 Needs checking, 9 Unlikely.
+UK · publishable (CC0). 10 Built, 6 Buildable, 5 Needs checking, 9 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Feb2023_wordfeministsplit | **Naming a development policy (sandbox)**<br>Development / feminist / inclusive / gender-inclusive policy, or the name only. Answer: Support-oppose.<br>*1,788 rows; Sandbox Feb 2023; 5 conditions* | political preferences/policy | Built | 0.29 | 1 |
-| W3_ngoconjointsplit | **NGO conjoint**<br>Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO.<br>*24,843 rows as two experiments (donate 12,438; petition 12,405); Panel W3 2021* | economics/behavioural | Built | 0.28 | 2 |
 | W4_connectstorysplit | **Climate harm stories**<br>No story, or one of three stories linking climate change to everyday life. Answer: Harm rating per group.<br>*28,109 rows; Panel W4 2022; 4 conditions (a fifth assigned group had no question)* | moral/social/cognition | Built | 0.28 | 4 |
 | W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree.<br>*7,356 rows; Panel W5 2023; 2 conditions* | moral/social/cognition | Built | 0.28 | 10 |
+| del_panel_w3_ngo_conjoint_donate | **NGO conjoint (donate)**<br>Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO.<br>*12,438 rows; Panel W3 2021* | economics/behavioural | Built | 0.28 | 2 |
+| del_panel_w3_ngo_conjoint_petition | **NGO conjoint (petition)**<br>Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO.<br>*12,405 rows; Panel W3 2021* | economics/behavioural | Built | 0.28 | 2 |
 | Jun2022_choice | **Why Ukraine matters, me or others**<br>Asked about yourself or about other people in the UK, with random statement pairs. Answer: Pick one statement.<br>*10,935 rows; Sandbox Jun 2022; self vs others x 5 random statement pairs* | moral/social/cognition | Built | 0.27 | 15 |
 | Feb2023_track7split | **Aid budget with priorities**<br>UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order. Answer: Increase or decrease aid.<br>*1,706 rows; Sandbox Feb 2023; 3 conditions* | political preferences/policy | Built | 0.24 | 23 |
 | Feb2023_abortsplit | **Abortion access, UK or abroad**<br>Protect women's access to abortion in developing countries vs in the UK. Answer: Importance scale.<br>*1,798 rows; Sandbox Feb 2023; 2 conditions* | political preferences/policy | Built | 0.23 | 6 |
@@ -176,15 +190,21 @@ UK · publishable (CC0). 9 Built, 6 Buildable, 5 Needs checking, 9 Unlikely.
 
 ## TESS
 
-US · not publishable. 33 Built, 43 Buildable, 8 Needs checking, 8 Unlikely.
+US · not publishable. 39 Built, 43 Buildable, 8 Needs checking, 8 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| e5rfg | **Who has Narrow Brackets?**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*4,476 rows as four experiments (tk 264; ce 281; pair 323; six 3,608); 2005* | economics/behavioural | Built | 0.33 | 18 |
+| e5rfg_ce | **Who has Narrow Brackets? (certainty equivalents)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*281 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
+| e5rfg_pair | **Who has Narrow Brackets? (Example 2 pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*323 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
+| e5rfg_six | **Who has Narrow Brackets? (six-decision modules)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*3,608 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
+| e5rfg_tk | **Who has Narrow Brackets? (Tversky-Kahneman pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*264 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
 | gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong?<br>*8,959 rows; 2005; 2x2, 26 outcomes* | moral/social/cognition | Built | 0.22 | 20 |
 | s6urt | **Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk**<br>Three kinds of conflicting nutrition and cancer-risk information, and trust in health science.<br>*17,402 rows; 2021; 8 conditions, 17 outcomes* | health communication | Built | 0.20 | 13 |
 | 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes.<br>*20,308 rows; 2014; 16 conditions, 15 outcomes* | health communication | Built | 0.15 | 22 |
-| xk9ch | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*27,627 rows as four experiments (vignette1 5,499; institution 5,524; vignette2 8,269; identity threat 8,335); 2018* | cross-national | Built | 0.15 | 11 |
+| xk9ch_identity_threat | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (identity threat)**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*8,335 rows; 2018* | cross-national | Built | 0.15 | 11 |
+| xk9ch_institution | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (institutions)**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*5,524 rows; 2018* | cross-national | Built | 0.15 | 11 |
+| xk9ch_vignette1 | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (person vignette 1)**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*5,499 rows; 2018* | cross-national | Built | 0.15 | 11 |
+| xk9ch_vignette2 | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (person vignette 2)**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*8,269 rows; 2018* | cross-national | Built | 0.15 | 11 |
 | 5hqan | **Gender Identity and Diversity**<br>*6,411 rows* | survey methodology | Built |  |  |
 | 7jt2f | **When Others' Disbelief Engenders Prejudice: Characterizing Anti-Atheist Prejudice**<br>*3,053 rows* | cross-national | Built |  |  |
 | 8ctbk | **Childbearing Preferences in the Face of Work, Family, and Financial Constraints**<br>*17,464 rows* | work/family/gender | Built |  |  |
