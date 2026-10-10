@@ -850,10 +850,11 @@
    "description": "Control, or rating your own place on a world wealth scale in 2019 and today (alone, then also your local community, or a poor country). Answer: split an imaginary £1,000 between yourself, your local community and a poor country (3 amounts).",
    "details": "Panel W4 2022; 4 conditions",
    "category": "economics/behavioural",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.19,
-   "next": 35
+   "next": 35,
+   "recipe": "del_panel_w4_cost_of_living"
   },
   {
    "source": "TESS",

@@ -25,24 +25,24 @@ done it for the UK.
 
 ## 2. Where it stands
 
-**985,985 rows across 104 experiments** (10 Oct 2026), all QC-passed and checked by an
+**1,010,009 rows across 105 experiments** (10 Oct 2026), all QC-passed and checked by an
 independent agent, on disk at `data/processed/`. `docs/EXPERIMENTS.md` is the generated
 list; `docs/experiment_list.html` tracks the build queue.
 
 | | experiments | rows |
 |---|---|---|
 | US (TESS deposits) | 42 | 368,659 |
-| UK-native: Harvard Dataverse incl. DEL | 24 | 244,495 |
+| UK-native: Harvard Dataverse incl. DEL | 25 | 268,519 |
 | UK-native: Innovation Panel | 38 | 372,831 |
-| **total** | **104** | **985,985** |
+| **total** | **105** | **1,010,009** |
 
 Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_reqol_w14`
 48,548 · `ukds_6849_timerisk_w7` 46,283 · `ukds_6849_ghq_w14` 36,447 · `evnyh` 33,932 ·
-`es4xw` 32,228 · `del_panel_w4_climate_harm_stories` 28,109 · `9xw67_conjoint` 20,373 ·
-`7tzpe` 20,308.
+`es4xw` 32,228 · `del_panel_w4_climate_harm_stories` 28,109 · `del_panel_w4_cost_of_living`
+24,024.
 
 **The "next 37" batch** (chosen 10 Oct, now 33 after rich removed four and two were
-dropped on reading the instrument): 27 built (DEL leadership messages added by rich; IP 9.26 vignette added after rich ruled the own-place clause, see
+dropped on reading the instrument): 28 built (DEL leadership messages and cost of living added by rich; cost of living keeps arm 4 with its recap script error, pending rich's ruling; IP 9.26 vignette added after rich ruled the own-place clause, see
 CONVENTIONS). Parked for a pipeline change: DEL Ukraine donation follow-up and the
 9.26 conjoint (a sparse template must not enumerate every cell). Open ruling: lists
 shown in a randomised order that was not recorded (e5rfg gamble options, DEL aid

@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**104 experiments.** 23 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**105 experiments.** 24 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 23 | 231,227 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 24 | 255,251 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 38 | 372,831 | **no** — UKDS End User Licence |
 | US transfer — TESS | 42 | 368,659 | **no** — no licence stated |
-| **Total** | **104** | **985,985** | |
+| **Total** | **105** | **1,010,009** | |
 
 ---
 
@@ -24,6 +24,7 @@
 | `ukds_6849_timerisk_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.13: time and r… | UK Data Service | `UKDS SN 6849` | 46,283 |
 | `ukds_6849_ghq_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: GHQ-12, as… | UK Data Service | `UKDS SN 6849` | 36,447 |
 | `del_panel_w4_climate_harm_stories` | Development Engagement Lab, Panel Great Britain wave 4 (2022): clim… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 28,109 |
+| `del_panel_w4_cost_of_living` | Development Engagement Lab, Panel Great Britain wave 4 (2022): cost… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 24,024 |
 | `ukds_6849_vig_flexstigma_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.39: measuring … | UK Data Service | `UKDS SN 6849` | 17,656 |
 | `del_sandbox_jul2020_global_goals` | Development Engagement Lab, Sandbox Great Britain July 2020: global… | Harvard Dataverse | `doi:10.7910/DVN/LLM8VW` | 15,888 |
 | `ukds_6849_automation_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.30: intentions… | UK Data Service | `UKDS SN 6849` | 15,020 |
@@ -156,6 +157,19 @@ Before rating how much climate change will harm themselves, their family, people
 - **Rows** — 28,109 from 5,801 respondents
 - **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
 - **Verified against** — no published reference; an independent checker re-derived all 28,109 rows from the raw .sav (0 missing, extra or duplicate), matched every condition and outcome string to the questionnaire, and compared all 403 columns to confirm the fifth group answered no story variable (10 Oct 2026)
+
+### `del_panel_w4_cost_of_living`
+
+**Development Engagement Lab, Panel Great Britain wave 4 (2022): cost-of-living allocation**
+
+How people split an imaginary £1,000 between themselves or their household, their local community and a poor country, after no questions or after placing themselves on a 1-100 world wealth scale in 2019 and today (alone, also their local community, or also an average person in a poor country). Three amounts per person that sum to £1,000. DEL panel wave 4 (2022).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/WZPNNU`
+- **Type** — between-subjects, 4 arms (control + 3 self-placement sequences, CoLSplit), three £0-1000 allocation outcomes per respondent; the questions asked are narrated, the piped own answers never rendered; arm 4 keeps a recap-line script error word-for-word (an extension of ledger 150, pending rich's ruling)
+- **Category** — economics/behavioural
+- **Rows** — 24,024 from 8,008 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
+- **Verified against** — no published reference; an independent checker (Sonnet 5.5) rebuilt the conditions blind from the questionnaire and diffed them against the build, matched all 24,024 responses to their source variables in all 12 arm-task cells, confirmed every allocation sums to 1000 and ages for all 8,008 people; its notes and position-claim findings were fixed and the build re-derived (10 Oct 2026)
 
 ### `del_sandbox_jul2020_global_goals`
 
@@ -1009,7 +1023,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 10 | 7 | 176,985 |
+| economics/behavioural | 11 | 7 | 201,009 |
 | health communication | 0 | 9 | 91,114 |
 | moral/social/cognition | 5 | 12 | 184,516 |
 | political identity/polarisation | 4 | 0 | 34,920 |
