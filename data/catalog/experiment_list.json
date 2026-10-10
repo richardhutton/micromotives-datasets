@@ -847,12 +847,13 @@
    "source": "DEL",
    "id": "W4_CoLSplit",
    "title": "Cost of living",
-   "description": "Control plus three cost-of-living treatment modules. Answer: not yet read.",
+   "description": "Control, or rating your own place on a world wealth scale in 2019 and today (alone, then also your local community, or a poor country). Answer: split an imaginary £1,000 between yourself, your local community and a poor country (3 amounts).",
    "details": "Panel W4 2022; 4 conditions",
    "category": "economics/behavioural",
-   "status": "Needs checking",
-   "reason": "conditions sit in modules not yet read",
-   "novelty": 0.19
+   "status": "Buildable",
+   "reason": "",
+   "novelty": 0.19,
+   "next": 35
   },
   {
    "source": "TESS",
@@ -2613,7 +2614,8 @@
    "Removed: Ukraine list experiment (DEL Jun2022_list), ruled out by rich on 10 Oct 2026 for a COVID filler statement; later picks moved up one.",
    "Dropped on build: Measures of wealth (IP 9.5) — no honest single outcome; later picks moved up one.",
    "Dropped on build: How much punishment fits crimes (TESS pmuag) — no fielded instrument; later picks moved up one.",
-   "Added by rich on 10 Oct 2026: Leadership messages (DEL W3_leadershipsplit), a persuasion experiment, as the last pick."
+   "Added by rich on 10 Oct 2026: Leadership messages (DEL W3_leadershipsplit), a persuasion experiment, as the last pick.",
+   "Added by rich on 10 Oct 2026: Cost of living (DEL W4_CoLSplit), scheduled next."
   ]
  }
 }
