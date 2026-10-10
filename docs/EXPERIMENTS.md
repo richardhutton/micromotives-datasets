@@ -165,7 +165,7 @@ Before rating how much climate change will harm themselves, their family, people
 How people split an imaginary £1,000 between themselves or their household, their local community and a poor country, after no questions or after placing themselves on a 1-100 world wealth scale in 2019 and today (alone, also their local community, or also an average person in a poor country). Three amounts per person that sum to £1,000. DEL panel wave 4 (2022).
 
 - **Source** — Harvard Dataverse, `doi:10.7910/DVN/WZPNNU`
-- **Type** — between-subjects, 4 arms (control + 3 self-placement sequences, CoLSplit), three £0-1000 allocation outcomes per respondent; the questions asked are narrated, the piped own answers never rendered; arm 4 keeps a recap-line script error word-for-word (an extension of ledger 150, pending rich's ruling)
+- **Type** — between-subjects, 4 arms (control + 3 self-placement sequences, CoLSplit), three £0-1000 allocation outcomes per respondent; the questions asked are narrated, the piped own answers never rendered; arm 4 keeps a recap-line script error word-for-word (kept by rich's ruling, ledger 156)
 - **Category** — economics/behavioural
 - **Rows** — 24,024 from 8,008 respondents
 - **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU

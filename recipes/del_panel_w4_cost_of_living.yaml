@@ -81,8 +81,8 @@ notes: |-
   the script does not show. This is an EXTENSION of ledger 150 ("a documented script
   error is a data defect"), not 150 applied: 150's case (9.25) EXCLUDED rows whose
   condition could not be verified for a subset; here every arm-4 row saw the same
-  error, so the treatment is keep-and-flag, and nothing is excluded. KEEP VS EXCLUDE IS
-  PENDING rich's ruling. The evidence is the exported script only: the deposit's Readme
+  error, so the treatment is keep-and-flag, and nothing is excluded. KEPT: rich ruled keep
+  over exclude on 10 Oct 2026 (ledger 156). The evidence is the exported script only: the deposit's Readme
   does not mention it, and no technical report was consulted (none is in the deposit
   as downloaded). The defect is in the STIMULUS. It does
   mean arm 4 is not a clean "poor country" contrast: one recap line also invoked "your

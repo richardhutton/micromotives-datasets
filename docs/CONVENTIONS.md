@@ -251,6 +251,15 @@ live)"*. Three conditions, all required:
 A fill whose content matters to the outcome and cannot be stated truthfully this way
 fails the study instead.
 
+## A script error on screen
+
+Ruled by rich, 10 Oct 2026, on DEL wave 4 cost of living (ledger 156). If every
+respondent in an arm saw the same error, keep the arm. Render the erroneous words
+word-for-word, add one clause saying what the screen actually showed, and state in
+`notes` that the arm is not a clean contrast. If the error reached only some
+respondents and the rows cannot tell which, those rows' condition is unverifiable;
+exclude them with a declared count (ledger 150).
+
 ## Attention and recall checks are not outcomes
 
 **Do not build post-stimulus recall or attention checks as outcomes.** "Thinking

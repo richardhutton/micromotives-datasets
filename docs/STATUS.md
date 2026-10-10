@@ -42,7 +42,7 @@ Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_req
 24,024.
 
 **The "next 37" batch** (chosen 10 Oct, now 33 after rich removed four and two were
-dropped on reading the instrument): 28 built (DEL leadership messages and cost of living added by rich; cost of living keeps arm 4 with its recap script error, pending rich's ruling; IP 9.26 vignette added after rich ruled the own-place clause, see
+dropped on reading the instrument): 28 built (DEL leadership messages and cost of living added by rich; cost of living keeps arm 4 with its recap script error, ruled by rich (ledger 156); IP 9.26 vignette added after rich ruled the own-place clause, see
 CONVENTIONS). Parked for a pipeline change: DEL Ukraine donation follow-up and the
 9.26 conjoint (a sparse template must not enumerate every cell). Open ruling: lists
 shown in a randomised order that was not recorded (e5rfg gamble options, DEL aid
