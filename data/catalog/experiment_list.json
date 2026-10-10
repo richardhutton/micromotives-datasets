@@ -415,8 +415,8 @@
    "description": "Ways of asking people to nominate a proxy.",
    "details": "Wave 14",
    "category": "work/family/gender",
-   "status": "Needs checking",
-   "reason": "is the outcome the person's own answer?",
+   "status": "Unlikely",
+   "reason": "a consent-wording duplicate with little variety: six consent experiments are already built (HMRC x3, Twitter, sensors x2); the manipulation is two reassurance sentences plus a module-order switch, and the question (may the panel ask a relative about you) is specific to tracking survey respondents (rich, 10 Oct 2026)",
    "novelty": 0.28
   },
   {

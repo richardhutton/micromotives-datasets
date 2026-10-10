@@ -923,8 +923,8 @@
     "title": "Proxy nomination",
     "category": "family-care",
     "waves": "14",
-    "verdict": "marginal",
-    "reason": "proxy nomination; needs checking that a respondent answer is the outcome",
+    "verdict": "drop",
+    "reason": "a consent-wording duplicate with little variety: six consent experiments are already built (HMRC x3, Twitter, sensors x2); the manipulation is two reassurance sentences plus a module-order switch, and the question (may the panel ask a relative about you) is specific to tracking survey respondents (rich, 10 Oct 2026)",
     "description": "This experiment tested different ways of asking respondents to nominate a proxy who could complete a short questionnaire on their behalf in future waves, if they themselves were unable to complete it or moved into an institution.",
     "vignette": false,
     "allocation_vars": [

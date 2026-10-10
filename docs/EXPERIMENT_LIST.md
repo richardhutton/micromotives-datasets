@@ -8,11 +8,11 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total | Rows built |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 38 | 16 | 3 | 7 | 26 | 372,831 |
+| Innovation Panel | UK · not publishable | 38 | 16 | 2 | 8 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 12 | 6 | 3 | 9 | 18 | 125,779 |
 | TESS | US · not publishable | 42 | 41 | 5 | 11 | 57 | 368,659 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **105** | **63** | **23** | **30** | **116** | **1,010,009** |
+| **Total** | | **105** | **63** | **22** | **31** | **116** | **1,010,009** |
 
 ## Next 35, in build order (28 built, 7 to go)
 
@@ -91,7 +91,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Innovation Panel
 
-UK · not publishable. 38 Built, 16 Buildable, 3 Needs checking, 7 Unlikely.
+UK · not publishable. 38 Built, 16 Buildable, 2 Needs checking, 8 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -149,10 +149,10 @@ UK · not publishable. 38 Built, 16 Buildable, 3 Needs checking, 7 Unlikely.
 | 9.35 | **Informal care**<br>Ways of asking about caring for others.<br>*Wave 15* | work/family/gender | Buildable | 0.12 |  |
 | 8.5 | **Branched vs. unbranched rating scales for measuring attitudes**<br>One-step vs two-step attitude scales.<br>*Waves 3, 4, 5* | survey methodology | Buildable | 0.10 |  |
 | 8.11 | **Impact of response scale direction on responses**<br>Answer scales shown in reverse order.<br>*Waves 7, 8* | survey methodology | Buildable | 0.06 |  |
-| 9.32 | **Proxy nomination**<br>Ways of asking people to nominate a proxy.<br>*Wave 14* | work/family/gender | Needs checking: is the outcome the person's own answer? | 0.28 |  |
 | 8.12 | **Enhancing respondent engagement with the survey through tailored interesting questions**<br>Extra questions matched to the respondent's interests.<br>*Wave 7* | survey methodology | Needs checking: is there a shared outcome? | 0.18 |  |
 | 9.3 | **Reference groups in measuring satisfaction**<br>Compare yourself to people of your own gender or education.<br>*Wave 5* | moral/social/cognition | Needs checking: needs your ruling | 0.15 |  |
 | 9.19 | **Benefits unit finances module**<br>A module redesign with an income summary screen.<br>*Wave 9* | economics/behavioural | Unlikely: a reporting-accuracy experiment, not a judgement or choice: the income summary screen shows the respondent's own derived income and the outcome is a corrected £ income, which a persona field already holds; the gross/net flows version yields open £ amounts across many benefit-unit variables (the 9.5 shape) (rich, 10 Oct 2026) | 0.28 |  |
+| 9.32 | **Proxy nomination**<br>Ways of asking people to nominate a proxy.<br>*Wave 14* | work/family/gender | Unlikely: a consent-wording duplicate with little variety: six consent experiments are already built (HMRC x3, Twitter, sensors x2); the manipulation is two reassurance sentences plus a module-order switch, and the question (may the panel ask a relative about you) is specific to tracking survey respondents (rich, 10 Oct 2026) | 0.28 |  |
 | 9.1 | **Measures of consumption and expenditure**<br>Spending questions; one condition uses a printed card.<br>*Waves 1, 6* | economics/behavioural | Unlikely: part of the condition is a printed card | 0.20 |  |
 | 8.9 | **Separating systematic measurement error components using MTMM in longitudinal studies**<br>Repeated measures under different methods.<br>*Waves 7, 8, 9* | survey methodology | Unlikely: the condition is a measurement method, not text | 0.19 |  |
 | 8.1 | **Subsetting the questionnaire content**<br>Random subsets of questionnaire content.<br>*Waves 1-5* | survey methodology | Unlikely: no shared outcome | 0.17 |  |
