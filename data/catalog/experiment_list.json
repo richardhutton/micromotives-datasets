@@ -834,12 +834,14 @@
    "source": "DEL",
    "id": "W3_leadershipsplit",
    "title": "Leadership messages",
-   "description": "Five text pages on UK global leadership. Answer: not yet read.",
+   "description": "No message, or one of four arguments for UK climate leadership (moral, fair share, economic opportunity, national values). Answer: agree that the UK Government should show leadership on climate change, 5-point.",
    "details": "Panel W3 2021; 5 conditions",
    "category": "political preferences/policy",
-   "status": "Needs checking",
-   "reason": "outcome not yet identified",
-   "novelty": 0.22
+   "status": "Built",
+   "reason": "",
+   "novelty": 0.22,
+   "next": 34,
+   "recipe": "del_panel_w3_leadership"
   },
   {
    "source": "DEL",
@@ -2610,7 +2612,8 @@
    "Removed: With God on Our Side (TESS ga53m), ruled out by rich on 10 Oct 2026; later picks moved up one.",
    "Removed: Ukraine list experiment (DEL Jun2022_list), ruled out by rich on 10 Oct 2026 for a COVID filler statement; later picks moved up one.",
    "Dropped on build: Measures of wealth (IP 9.5) — no honest single outcome; later picks moved up one.",
-   "Dropped on build: How much punishment fits crimes (TESS pmuag) — no fielded instrument; later picks moved up one."
+   "Dropped on build: How much punishment fits crimes (TESS pmuag) — no fielded instrument; later picks moved up one.",
+   "Added by rich on 10 Oct 2026: Leadership messages (DEL W3_leadershipsplit), a persuasion experiment, as the last pick."
   ]
  }
 }

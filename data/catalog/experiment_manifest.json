@@ -488,6 +488,12 @@
       "description": "Respondents see a short list of statements about UK policy and report only HOW MANY they agree with. Three of four groups' lists add one statement allowing people from Muslim, Eastern European or Caribbean countries to come and live in the UK: a list experiment for uncovering masked opposition to immigration. Wave 9 (2016).",
       "design": "item-count (list) experiment, household allocation to control (3 statements) or one of three treatments (4 statements); one count outcome; statements in each respondent's recorded order (reading as 9.17, ledger 135)",
       "verified_against": "no published reference; an independent checker re-derived all 2,071 rows from the raw files (0 mismatches), confirmed allocation against routing (exactly diagonal; wave 9 uses its own re-allocation), and matched every list to the questionnaire (10 Oct 2026)"
+    },
+    "del_panel_w3_leadership": {
+      "category": "political preferences/policy",
+      "description": "Agreement that the UK Government should show leadership on climate change, after no message or one of four one-sentence arguments for UK climate leadership: moral duty, fair share, economic opportunity, or national values. A persuasion experiment. DEL panel wave 3 (2021).",
+      "design": "between-subjects, 5 arms (control + 4 messages), one 5-point agree/disagree outcome; message narrated as shown before the question",
+      "verified_against": "no published reference; an independent checker re-derived all 7,677 rows from the .sav (0 missing, extra or wrong), matched all five items byte-for-byte, confirmed ages via labels and personas identical to the same people in the NGO conjoint builds, and found no COVID framing (10 Oct 2026)"
     }
   }
 }

@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**103 experiments.** 22 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**104 experiments.** 23 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 22 | 223,550 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 23 | 231,227 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 38 | 372,831 | **no** — UKDS End User Licence |
 | US transfer — TESS | 42 | 368,659 | **no** — no licence stated |
-| **Total** | **103** | **978,308** | |
+| **Total** | **104** | **985,985** | |
 
 ---
 
@@ -42,6 +42,7 @@
 | `35M5CV_bbc` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,175 |
 | `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
 | `ukds_6849_satisfaction_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.20: presentati… | UK Data Service | `UKDS SN 6849` | 8,025 |
+| `del_panel_w3_leadership` | Development Engagement Lab, Panel Great Britain wave 3 (2021): clim… | Harvard Dataverse | `doi:10.7910/DVN/CCUZYI` | 7,677 |
 | `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
 | `ukds_6849_nrp_w10_fh` ⚠ | Understanding Society Innovation Panel, experiment 9.23: ever adopt… | UK Data Service | `UKDS SN 6849` | 7,392 |
 | `del_panel_w5_who_must_change` | Development Engagement Lab, Panel Great Britain wave 5 (2023): who … | Harvard Dataverse | `doi:10.7910/DVN/FTRXFO` | 7,356 |
@@ -272,6 +273,19 @@ The same lottery-wealth treatment, with the outcome a 0-3 financial risk-toleran
 - **Rows** — 8,075 from 8,075 respondents
 - **Licence** — CC0 1.0 Universal
 - **Verified against** — the paper's own Table D.2 — N, control mean and both regression coefficients; the branch logic itself is pinned by tests/test_derive_LOGVPZ.py across all 64 inputs of the instrument's code space
+
+### `del_panel_w3_leadership`
+
+**Development Engagement Lab, Panel Great Britain wave 3 (2021): climate leadership messages**
+
+Agreement that the UK Government should show leadership on climate change, after no message or one of four one-sentence arguments for UK climate leadership: moral duty, fair share, economic opportunity, or national values. A persuasion experiment. DEL panel wave 3 (2021).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/CCUZYI`
+- **Type** — between-subjects, 5 arms (control + 4 messages), one 5-point agree/disagree outcome; message narrated as shown before the question
+- **Category** — political preferences/policy
+- **Rows** — 7,677 from 7,677 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/CCUZYI
+- **Verified against** — no published reference; an independent checker re-derived all 7,677 rows from the .sav (0 missing, extra or wrong), matched all five items byte-for-byte, confirmed ages via labels and personas identical to the same people in the NGO conjoint builds, and found no COVID framing (10 Oct 2026)
 
 ### `LOGVPZ_brexit_satisfaction`
 
@@ -999,7 +1013,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | health communication | 0 | 9 | 91,114 |
 | moral/social/cognition | 5 | 12 | 184,516 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 14 | 0 | 126,112 |
+| political preferences/policy | 15 | 0 | 133,789 |
 | survey methodology | 20 | 5 | 220,843 |
 | work/family/gender | 8 | 8 | 140,765 |
 

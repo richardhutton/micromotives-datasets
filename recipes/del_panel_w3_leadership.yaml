@@ -1,0 +1,233 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Panel Great Britain wave 3 (2021): climate leadership messages"
+data_file: DEL_Panel_GreatBritain_Wave_3_2021_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/CCUZYI, stated on the Harvard Dataverse deposit "DEL
+  Panel 2021" and read from the Dataverse API (latestVersion.license) on 10 Oct 2026. The
+  deposit's Readme adds "DEL datasets are a public good and can be used with the
+  appropriate citation."
+
+comparable_to_socsci210: false
+experiment: panel_w3_leadership
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin, 2024, "DEL Panel 2021",
+  https://doi.org/10.7910/DVN/CCUZYI, Harvard Dataverse, V1;
+  DEL_Panel_GreatBritain_Wave_3_2021_Data.sav. YouGov online panel, wave 3, fielded 23
+  September - 25 October 2021, n = 8,281 adults in Great Britain (the deposit's Readme).
+  The same file as del_panel_w3_ngo_conjoint_donate / _petition, whose licence, person id
+  and persona block carry over (re-checked against this file's value labels below).
+
+  THE DESIGN. A five-arm message split. `leadershipsplit`, assigned by
+  `panman.assign_treatment(5, [afghanistansplit, netzerosplit, changesplit, nfesplit],
+  "leadershipsplit")` (stratified on the four earlier splits), sends 1,664 / 1,656 / 1,659
+  / 1,654 / 1,648 respondents to pages `c_lead_text_0` .. `c_lead_text_4`. Everyone in the
+  file has a code. Page 0 holds the bare item; pages 1-4 hold one argument for UK climate
+  leadership above the same item, on the same page: 1 the right thing to do / protect the
+  most vulnerable (moral), 2 not going it alone, doing our bit and sharing the burden (fair
+  share), 3 economic opportunity, jobs and exports, 4 what the UK values and stands for,
+  protecting our landscape (national values). The factor level names are ours; the source
+  names the arms only by number.
+
+  WORDING. From DEL_Panel_GreatBritain_Wave_3_2021_Survey.docx, pages `c_lead_text_0` ..
+  `c_lead_text_4`, word-for-word. Typography normalised (docs/CONVENTIONS.md): the curly
+  apostrophe in arm 2's "it's" is straightened; the trailing `<br><br>` after each
+  argument is dropped (it is the break between the argument and the item); arm 4's
+  argument ends "everything that lives here.." in the source, a doubled full stop, rendered
+  as one: punctuation that changes no sentence. Every arm's argument opens "Leading the world
+  in tackling and adapting to climate change is", but `shared_context` is a prefix of EVERY
+  arm and the control arm has no argument, so each argument arm carries its whole text (the
+  del_panel_w4_climate_harm_stories precedent).
+
+  THE CONDITION IS NARRATED, by the del_panel_w4_climate_harm_stories /
+  del_sandbox_feb2023_gender_aid precedent. ADDED by us (docs/CONVENTIONS.md, "Narrating
+  what the respondent did"): "Before the question, you were shown this text:" and the
+  quotation marks around the argument (arms 2-5), and the whole control sentence "You were
+  shown no text before the question." (arm 1), true for everyone in arm 1: their page is
+  the bare item. "Before" is reading order on one screen: the argument sits above the item
+  on the same page. Every other word is the instrument's.
+
+  THE OUTCOME. One outcome, identical in every arm: the stem "To what extent do you agree
+  or disagree with the below statement?" and the statement "It is important that the UK
+  Government shows leadership in tackling the causes and consequences of climate change.",
+  joined on screen by `<<br/>>` (rendered as a space). The five items were compared word by
+  word: they differ only in a leading space before the statement in arms 2-5 (typography),
+  so one question serves all arms; each arm reads its own variable (`c_lead_0` ..
+  `c_lead_4`), whose .sav value labels and codebook labels agree with the questionnaire.
+  "The below statement" is the item's own phrase and refers to the statement that follows
+  in the same outcome, not to the argument. Scale 1 "Strongly agree", 2 "Agree", 3 "Neither
+  agree nor disagree", 4 "Disagree", 5 "Strongly disagree", as fielded (1 is agree). 6
+  "Don't know" is dropped as a non-answer (102 / 135 / 134 / 109 / 124 by arm, 604 in
+  all); 8 "Skipped" and 9 "Not Asked" are in the codebook but never occur (not asked is
+  blank in this file) and are declared so a re-fetched deposit that has them drops them.
+
+  WHAT CAME BEFORE, the same for all arms or balanced by the stratified assignment, none
+  of it rendered. The exported questionnaire jumps from `cos1_w3` straight to `corp_w3` and
+  the split; the four modules that `leadershipsplit` is stratified on are NOT in the
+  exported docx, only in the .sav and the codebook, whose column order puts them between
+  `cos1_w3` and `corp_w3`. From the codebook: `ggan` and the Afghanistan aid split
+  (`afghanistansplit`, `afg_gov`/`afg_hum`/`afg_ref`/`afg_grl`, 4 arms); the net-zero
+  meaning split (`netzerosplit`, `net_1`/`net_2`); then, for everyone, COP26 awareness
+  (`cop`), `copaims`, `domore_rank` (including "The UK government should do more to try to
+  do more to reduce the negative effects of climate change", a ranking), `climatered`,
+  `conseq_rank`, `cc_impact` and `conseq_single`; the lifestyle-versus-society change split
+  (`changesplit`, `change_1`/`change_2`, the latter on the UK Government making big
+  changes); the `nfesplit` free-text block and `nfe_2`/`nfe_3`; and `corp_w3`. So every
+  respondent had answered a run of climate items, including one on what the UK government
+  should do, shortly before this item; it was not asked cold. `leadershipsplit` is
+  balanced across all four earlier splits (every cell 399-424, 813-849, 811-837 and
+  314-348). COVID: nothing in the preceding modules or in this item mentions COVID or the
+  pandemic (codebook and questionnaire searched). The only earlier mention is the survey's
+  first item, `track1_w3`, which lists "Global diseases and pandemics" as one of ten issues
+  to rank, asked of everyone; the COVID items (`coop`, `vulnsplit`) come later.
+
+  WHAT FOLLOWS, NOT BUILT. `lead_how`, asked of everyone straight after, ranks the "first,
+  second, and third best ways to be a climate change leader" from six options. A
+  three-slot ranking is a different answer type from this agree/disagree item (ledger 147),
+  and is not built here. `ngoconjointsplit`, `ngosplit` and `vulnsplit` come later and are
+  balanced against this split.
+
+  ROUTING. `routing_check: true`: every respondent answered exactly one `c_lead_*` item,
+  the one their `leadershipsplit` names (crosstab: 0 off-diagonal, 0 cross-answers among
+  8,281), so `ambiguous_routing` is the default 0. "Not asked" is blank in this file, which
+  is what `routing_check` requires.
+
+  RISKIEST JUDGEMENT. Narrating the argument as "shown before the question" when, on the
+  page, it sits above an item that itself begins "To what extent do you agree or disagree
+  with the below statement?": a reader could take "the below statement" to point at the
+  argument. Kept word-for-word because it is the instrument's phrase and, in the row, the
+  statement it refers to immediately follows it in the outcome. Second: normalising arm 4's
+  ".." to "." as typography.
+
+  COUNTS (built 10 Oct 2026). 8,281 respondents; 604 "Don't know" dropped; 7,677 rows:
+  1,562 control, 1,521 moral, 1,525 fair share, 1,545 economic opportunity, 1,524 national
+  values. The maker re-derived all 7,677 (person, arm, response) tuples from the .sav with
+  its own script, 0 missing, 0 extra, 0 wrong; ages match the .sav through their labels on
+  every person. No published reference exists to compare against.
+
+  AGE IS A CODE IN THIS FILE: 1 = "18" ... 77 = "94"; the pipeline reads it through its
+  value labels (ledger 145).
+
+  PERSONA and PERSON ID as in del_panel_w3_ngo_conjoint_donate.yaml (study_id `del`,
+  `GUNQID`, unique and never blank here), re-checked against this file's value labels:
+  education 19 "Don't know" / 20 "Prefer not to say"; household income 16 "Don't know" / 17
+  "Prefer not to answer"; ethnicity 19 "Prefer not to say"; region 13 "Non UK & Invalid"
+  (12 Northern Ireland is a real region and stays; none occur); religion 16 "Prefer not to
+  say"; social grade 7 "Refused" / 8 "Unknown"; past 2019 vote 9 "Don't know" (8 "Other" is
+  a real answer, kept); EU referendum 4 "Can't remember" (3 "I did not vote" is kept).
+  Gender has no non-answer code in this file. Nothing in the condition names a persona
+  category.
+
+condition:
+  source_var: leadershipsplit
+  factors: [argument]
+  routing_check: true
+  considered_and_rejected:
+    afghanistansplit: >-
+      An earlier, separate experiment (Afghanistan aid statements), asked before this item;
+      leadershipsplit is stratified on it and balanced across it.
+    netzerosplit: >-
+      An earlier, separate experiment (what "net zero" means), asked before this item;
+      leadershipsplit is stratified on it and balanced across it.
+    changesplit: >-
+      An earlier, separate experiment (personal lifestyle versus UK Government changes for
+      the climate crisis), asked before this item; leadershipsplit is stratified on it and
+      balanced across it.
+    nfesplit: >-
+      An earlier, separate experiment (free-text recall tasks), asked before this item;
+      leadershipsplit is stratified on it and balanced across it.
+    ngoconjointsplit: >-
+      A later, separate experiment (the NGO conjoint), randomised after this item was
+      answered.
+    ngosplit: >-
+      A later, separate experiment (large versus small NGO ratings), randomised after this
+      item was answered.
+    vulnsplit: >-
+      A later, separate experiment (COVID-19 vulnerability statements), randomised after
+      this item was answered.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {argument: none}
+      text: You were shown no text before the question.
+      outcome_var: c_lead_0
+    - raw: 2
+      condition_num: 1
+      factors: {argument: moral}
+      text: >-
+        Before the question, you were shown this text: "Leading the world in tackling and
+        adapting to climate change is the right thing to do; the UK can help protect those
+        who live in the places that are most vulnerable to the effects of climate change now
+        and those who will have to live with the damage caused in the future."
+      outcome_var: c_lead_1
+    - raw: 3
+      condition_num: 2
+      factors: {argument: fair_share}
+      text: >-
+        Before the question, you were shown this text: "Leading the world in tackling and
+        adapting to climate change is not about the UK going it alone and doing more than
+        other countries, it's about doing our bit in collaboration with others and sharing
+        the burden."
+      outcome_var: c_lead_2
+    - raw: 4
+      condition_num: 3
+      factors: {argument: economic_opportunity}
+      text: >-
+        Before the question, you were shown this text: "Leading the world in tackling and
+        adapting to climate change is a major economic opportunity for the UK, that will
+        create new skilled jobs across the country as well as export opportunities for our
+        firms."
+      outcome_var: c_lead_3
+    - raw: 5
+      condition_num: 4
+      factors: {argument: national_values}
+      text: >-
+        Before the question, you were shown this text: "Leading the world in tackling and
+        adapting to climate change is in line with what we in the UK value and stand for; we
+        take pride in protecting our landscape, waters, seas, air and everything that lives
+        here."
+      outcome_var: c_lead_4
+
+outcomes:
+  - task_num: 0
+    question: >-
+      To what extent do you agree or disagree with the below statement? It is important
+      that the UK Government shows leadership in tackling the causes and consequences of
+      climate change.
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly agree
+      mid_label: Neither agree nor disagree
+      max_label: Strongly disagree
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # Truncated by SPSS in every DEL file; see del_sandbox_feb2023_wordfeminist.yaml.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  education_level: [19, 20]
+  gross_household: [16, 17]
+  ethnicity_new: [19]
+  region_GOR: [13]
+  religion: [16]
+  socialgrade_cie: [7, 8]
+  pastvote_ge_2019: [9]
+  pastvote_EURef: [4]

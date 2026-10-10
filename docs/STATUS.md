@@ -25,16 +25,16 @@ done it for the UK.
 
 ## 2. Where it stands
 
-**978,308 rows across 103 experiments** (10 Oct 2026), all QC-passed and checked by an
+**985,985 rows across 104 experiments** (10 Oct 2026), all QC-passed and checked by an
 independent agent, on disk at `data/processed/`. `docs/EXPERIMENTS.md` is the generated
 list; `docs/experiment_list.html` tracks the build queue.
 
 | | experiments | rows |
 |---|---|---|
 | US (TESS deposits) | 42 | 368,659 |
-| UK-native: Harvard Dataverse incl. DEL | 23 | 236,818 |
+| UK-native: Harvard Dataverse incl. DEL | 24 | 244,495 |
 | UK-native: Innovation Panel | 38 | 372,831 |
-| **total** | **103** | **978,308** |
+| **total** | **104** | **985,985** |
 
 Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_reqol_w14`
 48,548 · `ukds_6849_timerisk_w7` 46,283 · `ukds_6849_ghq_w14` 36,447 · `evnyh` 33,932 ·
@@ -42,7 +42,7 @@ Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_req
 `7tzpe` 20,308.
 
 **The "next 37" batch** (chosen 10 Oct, now 33 after rich removed four and two were
-dropped on reading the instrument): 26 built (IP 9.26 vignette added after rich ruled the own-place clause, see
+dropped on reading the instrument): 27 built (DEL leadership messages added by rich; IP 9.26 vignette added after rich ruled the own-place clause, see
 CONVENTIONS). Parked for a pipeline change: DEL Ukraine donation follow-up and the
 9.26 conjoint (a sparse template must not enumerate every cell). Open ruling: lists
 shown in a randomised order that was not recorded (e5rfg gamble options, DEL aid
