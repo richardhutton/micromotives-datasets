@@ -672,10 +672,15 @@ fine-tuning are all permitted today on both sources.
 Everything here is finished and tested. It is listed because each one looks like
 an open question until you check.
 
-**The persona crosswalk is complete: nine fields, zero unmapped.**
+**The persona crosswalk covers nine fields, with one known gap.**
 `education` · `employment` · `region` · `social_grade` · `income` · `ethnicity` ·
-`marital_status` · `housing_ownership` · `religion`. QC rule 14 reports no
-persona-vocabulary warning anywhere in the corpus. The Innovation Panel's own 58
+`marital_status` · `housing_ownership` · `religion`. Until 10 Oct this said rule 14
+was clean corpus-wide; it was not — every AmeriSpeak (TESS) source warned on
+marital status, region, housing and religion, because those four files held UK
+schemes only and the warning shows three labels of 25. `scripts/persona_amerispeak.py`
+added a `us_amerispeak` scheme beside the UK ones (additions only; US regions,
+housing and most US religion options are their own values, never mapped onto UK
+ones). Remaining gap: `a42yg` uses a different US religion list and still warns. The Innovation Panel's own 58
 labels were added 9 Oct by `scripts/persona_ukhls.py`, which also cleared the
 warning for `QQM5MC`, `EFXNLX` and both `35M5CV` builds — they had been carrying
 it too.

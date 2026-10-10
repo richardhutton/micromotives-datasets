@@ -1,0 +1,173 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Panel Great Britain wave 5 (2023): who must change for the climate"
+data_file: DEL_Panel_GreatBritain_Wave_5_2023_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/FTRXFO, stated on the Harvard Dataverse deposit "DEL
+  Panel 2023" and read from the Dataverse API (latestVersion.license, version 2) on 10 Oct
+  2026. The deposit's Readme adds "DEL datasets are a public good and can be used with the
+  appropriate citation."
+
+comparable_to_socsci210: false
+experiment: panel_w5_who_must_change
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin; Torres-Raposo, Felipe, 2024,
+  "DEL Panel 2023", https://doi.org/10.7910/DVN/FTRXFO, Harvard Dataverse;
+  DEL_Panel_GreatBritain_Wave_5_2023_Data.sav. YouGov online panel, wave 5, fielded 15
+  September - 18 October 2023, n = 8,018 adults in Great Britain (the deposit's Readme).
+
+  THE DESIGN. A two-version statement split. `changesplit`, assigned by
+  `panman.assign_treatment(2, [], "changesplit")` (the wave's first split, stratified on
+  nothing), sends 4,006 respondents to `change_1` and 4,012 to `change_2`. Everyone in the
+  file has a code; no "Skipped" or "Not Asked" assignment occurs. Each version's answer
+  sits in its own variable, named per arm by `outcome_var`. Both items are single
+  questions (`{single}`), not grids, so there is one outcome.
+
+  THE TWO VERSIONS DIFFER IN MORE THAN THE ACTOR. Version 1: "The climate crisis means
+  that I will need to make big changes to my lifestyle to reduce my personal impact on the
+  environment." Version 2: "The climate crisis means that the UK Government will need to
+  make big changes to society to reduce the impact on the environment." Who changes (I /
+  the UK Government), what changes (my lifestyle / society) and whose impact (my personal
+  impact / the impact) move together, so the single factor `who_changes` names the whole
+  bundle, and a model cannot attribute a difference to the actor alone. That is the design
+  as fielded.
+
+  WORDING. From DEL_Panel_GreatBritain_Wave_5_2023_Survey.docx, items `change_1` and
+  `change_2`, word-for-word; the .sav variable labels carry the same text. On screen the
+  item read "Please indicate the extent to which you agree or disagree with the following
+  statement.<<br/>><<br/>>" followed by the statement; the line breaks are layout and the
+  trailing spaces after each statement are dropped. No curly characters occur in either
+  statement.
+
+  CONDITION AND OUTCOME, BY THE `del_sandbox_feb2023_wordfeminist` PRECEDENT. The item is
+  an instruction followed by the varying text, so the condition is the statement and the
+  outcome is the instruction: condition `You were shown this statement: "<that version's
+  statement>"`, outcome "Please indicate the extent to which you agree or disagree with
+  the following statement." The words `You were shown this statement:` and the quotation
+  marks are ADDED (docs/CONVENTIONS.md, "Narrating what the respondent did"); everything
+  inside the quotes, and the whole outcome, is the instrument's. The outcome is identical
+  in both versions, so it is declared once on the outcome (no placeholder) and each arm
+  names only its `outcome_var`. "the following statement" is the instrument's phrase; in
+  the row the statement sits in the condition, as in the wordfeminist build.
+
+  WHAT CAME BEFORE, the same for both arms (the split is the first in the wave, so nothing
+  before it is randomised). The item closes the climate block. Immediately before it,
+  everyone answered `deny_single`, the same agree-disagree format on "Recent heat waves,
+  fires, and floods are evidence that it is no longer possible to deny the devastating
+  consequences of climate change."; before that, `climatered` (ranking actions they would
+  personally take), and before that `domore_rank`, which ranked "The UK government should do
+  more ...", "I personally should do more ..." and "In general, people in the UK should do
+  more ..." to reduce the negative effects of climate change. So every respondent had
+  already ranked themselves against the UK government on climate action a few screens
+  earlier. Before that: `cc_impact`, `challenge`, `ccemot`, `conseq_rank`, `net_1`, `cop`.
+  None of this varies between arms and none is rendered; `domore_rank` and the other climate
+  items are pre-treatment measures in the outcome's own domain and are deliberately not
+  persona fields.
+
+  OUTCOME. Scale 1 "Strongly agree" ... 5 "Strongly disagree", as fielded (1 is most
+  agreement), identical in both versions. 6 "Don't know" is dropped as a non-answer (322 in
+  arm 1, 340 in arm 2); 8 "Skipped" and 9 "Not Asked" are labelled but never occur (not
+  asked is blank in this file), and are declared so a re-fetched deposit that has them
+  drops them.
+
+  ROUTING. Clean: every arm-1 respondent has a `change_1` code and no `change_2`, and the
+  reverse for arm 2; 0 respondents answered both. `routing_check: true` with the default
+  `ambiguous_routing: 0`, so a back-button double answer in a re-fetched deposit stops the
+  build.
+
+  COUNTS (built 10 Oct 2026). 8,018 respondents; 662 "Don't know" dropped; 7,356 rows:
+  3,684 in arm 1 (I / my lifestyle), 3,672 in arm 2 (the UK Government / society). The
+  maker re-derived every (person, arm, response) tuple from the .sav with its own script.
+  No published reference exists to compare against.
+
+  RISKIEST JUDGEMENT. Treating the statement as the condition and the agree-disagree
+  instruction as the outcome (the wordfeminist precedent) rather than narrating the whole
+  item as `You were asked: "..."` (the abortion precedent). The instrument itself separates
+  instruction from statement, and the instruction is identical across arms, so this keeps
+  the outcome one shared question; the cost is an outcome that says "the following
+  statement" about text that sits in the condition. Second: the single bundled factor,
+  which cannot separate the actor from the object of change.
+
+  PERSONA and PERSON ID as in del_panel_w4_climate_harm_stories.yaml (study_id `del`,
+  `GUNQID`, unique and never blank here), with this file's own variable names and codes,
+  read from its value labels: education is `education` and household income is `income`
+  ("Income - gross household"), as in wave 4; AGE IS STORED AS REAL YEARS (18-94; its only
+  value labels are -9 "Not Asked" and -8 "Skipped"), not as wave 3's codes. Non-answer
+  codes: education 19 "Don't know", 20 "Prefer not to say"; income 16 "Don't know", 17
+  "Prefer not to answer" (39 blank); ethnicity 19 "Prefer not to say"; religion 16 "Prefer
+  not to say" (106 blank); region 12 Northern Ireland is a real region (none occur), 13
+  "Non UK & Invalid" a non-answer (none occur); social grade 7 "Refused", 8 "Unknown" (none
+  occur); past 2019 vote 98 "Other" is a real answer (kept), 99 "Don't know"; EU referendum
+  4 "Can't remember". 98/99, 998/999 and 8/9 are each variable's own Skipped/Not Asked.
+  Nothing in the condition names a persona category.
+
+condition:
+  source_var: changesplit
+  factors: [who_changes]
+  routing_check: true
+  considered_and_rejected:
+    wordfeministsplit: >-
+      A later, separate experiment (naming a development policy), randomised after this
+      item was answered and stratified on changesplit.
+    synsplit: >-
+      A later, separate experiment, randomised after this item was answered and stratified
+      on changesplit and wordfeministsplit.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {who_changes: "I, my lifestyle"}
+      text: >-
+        You were shown this statement: "The climate crisis means that I will need to make
+        big changes to my lifestyle to reduce my personal impact on the environment."
+      outcome_var: change_1
+    - raw: 2
+      condition_num: 1
+      factors: {who_changes: "the UK Government, society"}
+      text: >-
+        You were shown this statement: "The climate crisis means that the UK Government will
+        need to make big changes to society to reduce the impact on the environment."
+      outcome_var: change_2
+
+outcomes:
+  - task_num: 0
+    question: >-
+      Please indicate the extent to which you agree or disagree with the following
+      statement.
+    scale:
+      min: 1
+      max: 5
+      min_label: Strongly agree
+      mid_label: Neither agree nor disagree
+      max_label: Strongly disagree
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # Truncated by SPSS in every DEL file; see del_sandbox_feb2023_wordfeminist.yaml.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education
+  income: income
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education: [19, 20, 98, 99]
+  income: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]

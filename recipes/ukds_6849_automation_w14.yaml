@@ -1,0 +1,260 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.30: intentions to prepare for
+  automation, threat severity x timeframe vignette (wave 14)"
+data_file: automation_w14-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: automation_w14
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.30 in the Innovation Panel User Guide, "Vignettes: intentions to prepare
+  for automation"; wave 14 (2021) only. Also section 3.2 of the wave 14 technical report
+  (Kantar), which lists the same five groups and prints no vignette text. Neither cites
+  a publication and the deposit carries no results paper for it, so there is NO
+  independent numeric reference to verify against.
+
+  DESIGN. 2 x 2 (prospected severity: 50% vs 10% of all jobs; timeframe: next 20 years
+  vs next 5 years) plus a control text, five cells controlled by one HOUSEHOLD-level
+  variable, `n_ff_techworkw14` on `n_hhsamp_ip` ("1/5 of households allocated to each
+  group"), joined to `n_indresp_ip` on `n_hidp` by `scripts/gen_ip_automation.py`.
+  Codes, as the User Guide, the technical report and the deposit's own labels all give
+  them: 1 major severity, long-term; 2 major, short-term; 3 minor, long-term; 4 minor,
+  short-term; 5 control group. Households: 1,655 / 1,644 / 1,654 / 1,658 / 1,651. There
+  is no person-level copy of the allocation in `n_indresp_ip`, so ledger 134's trap
+  (a second variable that is noise for part of the sample) does not arise.
+
+  ALLOCATION AGAINST ROUTING (ledger 138). All five cells answer the SAME fourteen
+  variables, so which cell a respondent met leaves no trace in the routing and the
+  label cannot be confirmed the way 9.42's was. What `--check` does assert: every one of
+  the 1,699 routed respondents holds exactly one of codes 1-5 (314 / 355 / 332 / 354 /
+  344), every household in the person file has a household record, and the deposit's
+  labels equal the User Guide's. An aggregate consistent with the labels, not proof:
+  mean agreement with "My job could be replaced by new technology" (1-5) is 1.94 in
+  cell 1 and 1.75 in the control, the highest and lowest of the five.
+
+  ROUTING. Module `Scaworktech_ip14`: "If (((GRIDVARIABLES.ModeType = 1 &
+  CASISTART.scac = 1 Thru 3) | GRIDVARIABLES.ModeType = 2|3) & (CURRENTEMPLOYMENT.JBHAS =
+  1 | CURRENTEMPLOYMENT.JBOFF = 1))". Every term is in the deposit; routing equals the
+  universe exactly (0 routed outside it, 0 eligible and not routed), and all fourteen
+  module items are routed identically. Of 1,699 routed: 1,590 web, 108 telephone, 1
+  face-to-face with the interviewer completing the self-completion (`scac` = 2).
+
+  MODE. This is a TEXT condition, not a layout one, and the telephone specification has
+  no alternative wording: the interviewer instruction is "READ OUT" on the vignette's
+  item and "REPEAT RESPONSE OPTIONS IF NECESSARY" on the others. So telephone
+  respondents heard the same words, and are kept. The condition is therefore written
+  with NO narration at all ("you were shown" would be false for 109 respondents): it is
+  the vignette, and nothing else.
+
+  THE CONDITION: WORD-FOR-WORD, AND HOW THE FILLS WERE READ. The vignette is the first
+  part of `Techreplace`'s Text (`6849_ip_wave_14_questionnaire.pdf`, p. 661 of 739,
+  PDF page 665), repeated in parentheses at the head of `Techimport` and `Techtrain`,
+  the first statements of the second and third grid screens:
+    Some experts think {if ff_techworkw14 = 5} Experts predict {if ff_techworkw14w14 =
+    1 | 2 | 3 | 4} that in the next 20 years {if ff_techworkw14 = 1 | 3} next 5 years
+    {if ff_techworkw14 = 2 | 4} future {if ff_techworkw14 = 5} , 50% of all {if
+    ff_techworkw14 = 1 | 2} 10% of all {if ff_techworkw14 = 3 | 4} jobs now being done
+    by humans could be done by new technology (e.g., robots, artificial intelligence, or
+    algorithms). Other experts think that new technology cannot replace work by humans,
+    or only to limited extent {if ff_techworkw14 = 5} . When you think about your own
+    work or organisation, to what extent do you agree or disagree with the following
+    statements?
+  The plain-text extraction cannot tell which words belong to a fill. The PDF can: each
+  conditional fill is drawn in its own box. Read from the rendered page, the boxes are
+  exactly "Some experts think", "Experts predict", "next 20 years", "next 5 years",
+  "future", "50% of all", "10% of all" and "Other experts think that new technology
+  cannot replace work by humans, or only to limited extent"; "that in the", the comma,
+  "jobs now being done ... algorithms)." and the final full stop are unboxed, i.e. shown
+  to every cell. "ff_techworkw14w14" in one directive is the specification's typo. The
+  sentence beginning "When you think about your own work or organisation" is the
+  question stem and goes in each outcome, not in the condition.
+
+  RISKIEST JUDGEMENT: THE STRAY FULL STOP IN CELLS 1-4. Taken literally, the fills give
+  cells 1-4 "... or algorithms). . When you think ...": the full stop after the control's
+  closing box survives when that box is empty. Rendered here as ONE full stop, treated
+  as typography in the way `ukds_6849_vig_flexstigma_w16` treats the space the
+  specification puts before punctuation after a fill. Whether respondents saw ". ." is
+  not knowable from the deposit; no word changes either way. Second-riskiest: the fill
+  boundaries above, which rest on the boxes in the PDF; "that in the" read as shared is
+  the only reading under which the control text ("Some experts think that in the
+  future, ...") is a sentence.
+
+  ADDED BY US: nothing. Every word of every condition and outcome is the questionnaire's.
+
+  OUTCOMES. The nine agree/disagree statements on three grid screens after the
+  vignette, each built as the stem plus the statement, word-for-word, scale 1-5
+  "Totally disagree" .. "Totally agree" (the questionnaire's options; the deposit's
+  labels agree, `--check`). The vignette was on the first screen for everyone, and is
+  repeated in parentheses on the second and third, so it preceded every outcome either
+  way; the stem's parentheses there are layout and are not reproduced. Middle labels
+  (2 "Somewhat disagree", 3 "Neither disagree nor agree", 4 "Somewhat agree") are not
+  carried, as for every banded outcome (ledger 133).
+
+  NOT BUILT: `datawork`, `algorithmwork`, `robotwork`, `losejob`, `losejoblong`. The
+  User Guide lists them among "the variables affected by this experiment", but the
+  questionnaire asks them BEFORE the vignette ("Additional questions about the
+  respondent's current job skills and security were included before the vignette for
+  controls", User Guide 9.30), so no respondent had seen any condition when answering
+  them. Attaching a vignette to those rows would attach a stimulus to rows that had
+  none. 8,334 answers.
+
+  PERSONA. Same spine as every Innovation Panel build. `jbstat` is near-constant here
+  (the module is for people in work) but is kept: it is the respondent's own record and
+  the condition does not name it.
+
+  ROW COUNTS (aggregates). 1,699 routed respondents; answered 1-5 per outcome:
+  techreplace 1,669, techdoes 1,669, techopp 1,665, techimport 1,671, techoutdate 1,671,
+  techskills 1,671, techtrain 1,668, techtime 1,668, techchange 1,668: 15,020 rows from
+  1,673 respondents. Per cell: 1 major/long-term 2,777; 2 major/short-term 3,130; 3
+  minor/long-term 2,950; 4 minor/short-term 3,130; 5 control 3,033. Dropped as
+  non-answers (-9 missing, -2 refusal, -1 don't know): 271 item-answers of 15,291; 26
+  routed respondents answered none of the nine.
+
+  Respondents in one household share a cell (household allocation) and are not
+  independent rows. `person` is a hash of `pidp`, the same construction as every
+  Innovation Panel build.
+
+condition:
+  source_var: techworkw14
+  factors: [severity, timeframe]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {severity: major, timeframe: long_term}
+      text: >-
+        Experts predict that in the next 20 years, 50% of all jobs now being done by humans
+        could be done by new technology (e.g., robots, artificial intelligence, or
+        algorithms).
+    - raw: 2
+      condition_num: 1
+      factors: {severity: major, timeframe: short_term}
+      text: >-
+        Experts predict that in the next 5 years, 50% of all jobs now being done by humans
+        could be done by new technology (e.g., robots, artificial intelligence, or
+        algorithms).
+    - raw: 3
+      condition_num: 2
+      factors: {severity: minor, timeframe: long_term}
+      text: >-
+        Experts predict that in the next 20 years, 10% of all jobs now being done by humans
+        could be done by new technology (e.g., robots, artificial intelligence, or
+        algorithms).
+    - raw: 4
+      condition_num: 3
+      factors: {severity: minor, timeframe: short_term}
+      text: >-
+        Experts predict that in the next 5 years, 10% of all jobs now being done by humans
+        could be done by new technology (e.g., robots, artificial intelligence, or
+        algorithms).
+    - raw: 5
+      condition_num: 4
+      factors: {severity: control, timeframe: control}
+      text: >-
+        Some experts think that in the future, jobs now being done by humans could be done
+        by new technology (e.g., robots, artificial intelligence, or algorithms). Other
+        experts think that new technology cannot replace work by humans, or only to limited
+        extent.
+
+outcomes:
+  - var: techreplace
+    task_num: 0
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? My job could be replaced by new technology.
+    scale: &agree5
+      min: 1
+      max: 5
+      min_label: Totally disagree
+      max_label: Totally agree
+  - var: techdoes
+    task_num: 1
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? I am worried that what I do in my job can be
+      done by new technology.
+    scale: *agree5
+  - var: techopp
+    task_num: 2
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? New technology offers me new job
+      opportunities.
+    scale: *agree5
+  - var: techimport
+    task_num: 3
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? It is important to keep up with new
+      technological developments at work.
+    scale: *agree5
+  - var: techoutdate
+    task_num: 4
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? I am worried that new technology will make
+      my skills outdated.
+    scale: *agree5
+  - var: techskills
+    task_num: 5
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? New technology offers me the opportunity to
+      acquire new skills.
+    scale: *agree5
+  - var: techtrain
+    task_num: 6
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? I need further training to keep up with
+      technological developments at work.
+    scale: *agree5
+  - var: techtime
+    task_num: 7
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? I am willing to spend extra time learning
+      new technological skills for my work.
+    scale: *agree5
+  - var: techchange
+    task_num: 8
+    question: >-
+      When you think about your own work or organisation, to what extent do you agree or
+      disagree with the following statements? I am considering training for a different
+      job because new technology is replacing my work.
+    scale: *agree5
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

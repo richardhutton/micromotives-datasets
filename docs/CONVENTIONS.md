@@ -212,6 +212,18 @@ self-affirmation factor from the text — which QC rule 5 correctly fails as a
 declared factor that does not express — or to present a two-screen task as one
 undifferentiated block, which would be less true, not more.
 
+**Repeated measures within one block** (ruled by rich, 10 Oct 2026). When a
+respondent answers the same question several times as a block unfolds, and the
+ORDER of the screens is what was randomised, each row's condition is everything
+shown in that block up to and including its own screen, in that respondent's
+order. Later screens are never named. `del_sandbox_jul2020_global_goals` is the
+worked example (conditions of 26-370 words), and it is the only way both
+randomised orders reach the text. Earlier answers are narrated as asked, never
+as given: *"You were asked to rate..."*, not *"You rated..."*, because a
+respondent who answered Don't know did not rate anything — the first draft's
+"rated" was false for 1,593 rows. The order must be fixed by the assignment;
+an order randomised and not recorded cannot be narrated at all.
+
 ## Attention and recall checks are not outcomes
 
 **Do not build post-stimulus recall or attention checks as outcomes.** "Thinking

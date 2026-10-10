@@ -48,6 +48,14 @@
    "Separated from civil partner": "Civil Partnership",
    "A former civil partner": "Civil Partnership",
    "A surviving civil partner": "Civil Partnership"
+  },
+  "us_amerispeak": {
+   "Married": "Married",
+   "Widowed": "Widowed",
+   "Divorced": "Divorced",
+   "Separated": "Separated (after being married)",
+   "Never married": "Never married",
+   "Living with partner": "Living as married"
   }
  }
 }

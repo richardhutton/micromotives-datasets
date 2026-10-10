@@ -1,0 +1,459 @@
+study_id: s6urt
+source: tess
+title: "Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk"
+data_file: "8041.078 TESS Iles_final data.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10:
+  https://api.osf.io/v2/nodes/s6urt/ -> attributes.node_license null,
+  relationships.license null; same finding recorded 2026-10-02 in
+  data/catalog/tess_uk_foundation_sources.csv). TESS archived its post-2009
+  projects through the Roper Center and its own site states no reuse terms; TESS
+  has since suspended operations. So there is no explicit grant of
+  redistribution rights for this deposit, and none should be assumed.
+
+# s6urt is not in SocSci210 (tess_uk_foundation_sources.csv: in_socsci210=no),
+# so there is no answer key to crosscheck against.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 078 / TESS-1294 (Iles, Gillman, O'Connor, Ferrer, Klein; National Cancer
+  Institute), fielded by NORC on AmeriSpeak, 15 Apr - 3 May 2021, web only,
+  English only (SURV_MODE=2 and SURV_LANG=1 for all 1,027). N=1,027 completes
+  (Project Report p.2: "In field, NORC collected 1027 interviews"; the .sav has
+  1,027 rows, CaseId unique). No row-level exclusion.
+
+  Files read (all in data/raw/s6urt/):
+    PROG   = "8041.078 TESS Iles_Programming Questionnaire.docx" (the fielded
+             instrument; authority on wording)
+    SIMPLE = "8041.078 TESS Iles_Simple Questionnaire.docx"
+    PR     = "8041.078 TESS Iles_Project Report.pdf" (field dates, N, weighting)
+    PROP   = "TESS-1294.R1 description 2.docx" (the proposal; used ONLY for
+             factor names and arm order, never for wording - see below)
+    DATA   = "8041.078 TESS Iles_final data.sav"
+  Both .docx were converted with macOS textutil.
+
+  PANDEMIC GATE: passed. Fielded April 2021, but no condition, outcome, consent
+  or debrief text mentions COVID, coronavirus or the pandemic (grep of both
+  questionnaires: 0 hits). The topic is red meat and cancer.
+
+
+  DESIGN - ONE ASSIGNMENT VARIABLE, 2 x 4 BETWEEN SUBJECTS
+
+  P_EXP ("DATA ONLY: Experimental Conditions", values 1-8 labelled
+  "Experimental condition 1".."8"). PROG: "Participants are then randomly
+  assigned to only ONE of the following eight experimental conditions ...
+  please record what experimental condition each participant was assigned to
+  using the condition numbers below", followed by eight "[INSERT IF P_EXP=n"
+  blocks. PROP names the design "2 (direction of baseline recommendation: limit
+  vs. do not limit red meat) X 4 (conflicting information type: conflict in
+  evidence; conflict between sources about the evidence; conflict within the
+  same source; no conflict control)" and numbers its eight conditions in the
+  same order as PROG's P_EXP blocks. Factor levels below are PROP's names;
+  which arm is which was read from the TEXT of each fielded block, not taken
+  from PROP's numbering:
+    P_EXP  baseline recommendation   conflict type                     n
+      1    limit red meat            conflict in evidence  ("mixed")  130
+      2    limit red meat            conflict between sources          127
+      3    limit red meat            conflict within the same source   137
+      4    limit red meat            no conflict                       130
+      5    do not limit red meat     conflict in evidence  ("mixed")  125
+      6    do not limit red meat     conflict between sources          127
+      7    do not limit red meat     conflict within the same source   123
+      8    do not limit red meat     no conflict                       128
+  Total 1,027. Jev (recipe_prep.py) named P_EXP the assignment at conf 0.99
+  (runner-up NONE_OF_THESE 0.01); agrees with the questionnaire.
+
+  Note that arms 1 and 5 share a headline word-for-word ("...agree the evidence
+  is mixed"), as do 2 and 6 ("...disagree"); the article bodies differ. All 8
+  rendered conditions are distinct.
+
+
+  CONDITION TEXT - WORD-FOR-WORD, NOTHING NARRATED
+
+  shared_context is PROG's DISPLAY_EXP lead-in, shown to every arm,
+  word-for-word: "Imagine you came across the following news article while
+  browsing the internet." Each arm's text is its whole P_EXP block - headline,
+  then the article's two paragraphs - word-for-word, with paragraph breaks
+  where PROG has [SPACE]. Removed only: programming markup (<UNBOLD>, <i>,
+  <END UNBOLD>, [SPACE], the enclosing "[INSERT IF P_EXP=n" ... "]").
+  Typography normalised per CONVENTIONS (curly quotes in arms 3 and 7's
+  headlines and the apostrophe in "Society's" -> ASCII). No words added.
+
+  Arm texts were derived by script from BOTH PROG and SIMPLE independently and
+  asserted equal (all 8 identical after markup removal), per CONVENTIONS
+  "Source authority" 4.
+
+  Source wording kept as fielded, including its inconsistencies:
+    - arm 2: "no good reason to limit red meat intake reduce cancer risk"
+      (missing "to"; arm 6's parallel sentence has it);
+    - arms 3, 4, 7, 8 say "4-6 cooked ounces per week" where 1, 2, 5, 6 say
+      "4-6 cooked ounces of red meat per week";
+    - arms 7 and 8 say "Harvard" where the others say "Harvard University";
+    - arm 8 has no serial comma in "horse and goat";
+    - arms 3 and 7 use past tense ("concluded", "recommended").
+
+  PROPOSAL VS FIELDED (ledger #35): PROP's conditions 3 and 7 read "concludes
+  ... currently recommend" / "concludes ... recommend" where the fielded text
+  says "concluded ... recommended"; PROP's consensus item reads "The scientific
+  community is in agreement that individuals should/should not limit their red
+  meat consumption?" where the fielded Q1G reads "...in agreement about the
+  amount of red meat you should consume."; and PROP's Q3 scales run
+  1=collaborative..7=non-collaborative, the reverse of the fielded instrument
+  and of the .sav labels (1 - Non-collaborative ... 7 - Collaborative). The
+  fielded wording and direction are used throughout.
+
+  Dropped from the condition: INTRO_EXP ("...the passage on the next screen
+  ... you will not be able to go back to the previous screen...") - survey
+  mechanics and sequence signposting (CONVENTIONS "Sequence signposting").
+  The consent form (titled "Red meat intake and cancer risk", National Cancer
+  Institute) and the pre-treatment items B1/B2 were seen by every arm before
+  the article and are not part of the manipulation; not transcribed. The
+  DEBRIEF came after all outcomes and is irrelevant to them.
+
+
+  US-SPECIFIC CONTENT (flag for transfer)
+
+  Stimulus: "Cancer is the second leading cause of death in the U.S.",
+  "important for all Americans", "Americans should limit..."; the American
+  Cancer Society (a US body) and Harvard University as the two sources;
+  quantities in ounces ("12-18 ounces", "4-6 cooked ounces", "12-18 oz.") and
+  "1-2 decks of cards". The manipulation itself (type of conflict between an
+  established recommender and new research) is not US-specific, but every arm
+  carries these US references. Outcomes Q1-Q5 contain nothing US-specific.
+  The debrief told respondents the article was created for the study and did
+  not reflect real ACS recommendations or Harvard research - so the stimulus
+  is fictional content attributed to real institutions.
+
+
+  OUTCOMES - 17, ALL ASKED OF EVERY RESPONDENT AFTER THE ARTICLE
+
+  Each battery item is its own outcome. Question = the source stem
+  word-for-word plus the item (Q1 items quoted after the stem; Q2 and Q3 items
+  after " ... ", Q3's item written as the codebook's own "[Non-collaborative/
+  Collaborative]" pair). Scale endpoint/mid labels are the instrument's own.
+    task 0-7   Q1A-Q1H  agree/disagree, 1-7 (mid "Neither disagree, nor agree")
+    task 8-10  Q2A-Q2C  emotions Frustrated/Annoyed/Distressed, 1-5
+               ("Very slightly or not at all" .. "Extremely"; 2-4 unlabelled)
+    task 11-14 Q3A-Q3D  "scientists or science experts are:" semantic
+               differentials, 1-7, poles as labelled in the .sav
+    task 15    Q4       red meat plans next month, 1-7 (mid "I will not change
+               how much red meat I eat")
+    task 16    Q5       five or more servings of fruit and vegetables, 1-5
+               (mid "Neither unlikely, nor likely")
+  Grid item order was randomised (PROG "RANDOMIZE [RECORD RANDOMIZATION
+  ORDER]") but no order variable is in the .sav; there is nothing to render
+  and no row cites a position.
+
+  Q2's stem says "as a result of the article you read" - that refers to the
+  row's own condition, not to a sequence position, and is kept word-for-word.
+
+  Q4 CODE 8 DROPPED (48 rows): "I don't eat red meat now and will not eat red
+  meat in the future" is a real answer but sits outside the 1-7 "less ... more"
+  ordering, so it cannot be placed on the scale and merging it into 4 ("will
+  not change") would be harmonising. Excluded via Q4's own response_recode
+  (1-7 only). Per arm: 3, 4, 10, 5, 5, 5, 10, 6. Recorded so the cost is
+  visible: Q4 rows describe red-meat eaters (and non-eaters who chose 1-7).
+
+  Missing codes 77/98/99 (DON'T KNOW / SKIPPED ON WEB / REFUSED; Jev called
+  each a non-answer at conf >= 0.97 on every outcome). Only 98 occurs: one each
+  on Q1A-Q1F, Q2A, Q2C, Q5 (9 rows).
+
+
+  NOT BUILT
+
+  - B1 (red-meat frequency in the past year) and B2_* (cancer diagnoses in
+    one's life) are PRE-treatment measures but are NOT outcomes (asked before
+    the manipulation) and NOT persona: B1 sits in the same domain as Q4 (red
+    meat consumption), so it fails the persona domain rule; B2 is
+    cancer-specific and adjacent to Q1H. Left out of both.
+  - Q6 (compound interest) and NEW3 (self-rated numeracy) and Q3NEW_* (doctor
+    diagnoses) are post-treatment background items the proposal lists as
+    "profile variables"; not outcomes of the manipulation, and as
+    post-treatment answers not admissible as persona.
+  - Timing variables, WEIGHT (rows are unweighted, as everywhere here).
+
+
+  PERSONA
+
+  Standard AmeriSpeak preloads, same field set and variable choices as 8ctbk
+  (richest non-derived variable per construct): AGE (years), GENDER,
+  EDUC5 (this file has no EDUC), RACETHNICITY, INCOME (18 bands), MARITAL,
+  EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE,
+  PartyID7, IDEO, RELIG, ATTEND.
+  Jev: every field ok at conf 1.00 except region, REVIEW: REGION9 0.44 vs
+  REGION4 0.42 (close call). Resolved to REGION4 by corpus convention (dh3nj,
+  8ctbk, bf8p2 all map REGION4), so AmeriSpeak studies share one region
+  scheme; not a judgement Jev was asked to make.
+  persona_missing (counts from DATA): PartyID7 -1 "Unknown" n=4; IDEO -1 n=17;
+  RELIG 98 n=6 (77/99 declared, 0 occur); ATTEND 98 n=8 (77/99 declared, 0
+  occur; Jev REVIEW on ATTEND 98 "SKIPPED ON WEB": non_answer conf 0.77,
+  runner-up answer 0.15 - accepted as non-answer, it is the panel's skip code
+  and carries no attendance); GENDER 0 "Unknown" declared, 0 occur.
+  RELIG code 14 "Something else - please specify:" is a real answer wearing
+  the text-box instruction (Jev: answer_with_boilerplate 0.91; QC rule 12
+  flagged it on the first dry run). persona_label_rewrite gives it
+  "Something else" - the label minus the instruction, and the same plain
+  label 9xw67's .sav carries for its code 14. RELIG code 1's label is truncated in the .sav at "...Church"; restored
+  word-for-word from this deposit's own questionnaire via
+  persona_label_rewrite.
+  Caveat: PROG asks PID1/D3/RELIG/ATTEND in-survey, AFTER the outcomes, only
+  "[SHOW IF MISSING P_PARTYID7]" etc. - i.e. for panelists whose profile lacked
+  them. For those few, the persona value was collected post-treatment. The
+  file does not say which respondents they are. Same as every AmeriSpeak
+  recipe here.
+
+
+  JEV / recipe_prep.py
+
+  Run 2026-10-10 on the .sav (the .dta is the same data in another format).
+  Assignment, persona and label sections as quoted above. Section 4 (quex
+  directives) scanned NOTHING: the deposit ships its questionnaires only as
+  .docx, which the script does not read. Read by hand instead: the only
+  directives gating stimulus text are the eight "[INSERT IF P_EXP=n" blocks,
+  resolved as arms; no stimulus or outcome text varies by respondent
+  attribute. The "[SHOW IF ...]" directives gate only the post-treatment
+  background items (PID/IDEO/RELIG/ATTEND), none built as outcomes.
+
+
+  RISKIEST JUDGEMENT
+
+  Keeping Q1G ("The scientific community is in agreement about the amount of
+  red meat you should consume.") as an outcome. It is the item closest to a
+  manipulation check: the conflict-type factor is precisely about whether
+  experts agree, so the answer is partly predictable from the condition text.
+  Kept because it asks about the scientific community in general, not about
+  what the article said, so it is a belief rather than a recall item (contrast
+  CONVENTIONS "Attention and recall checks are not outcomes"), and the
+  instrument presents it as one of eight grid statements, not flagged as a
+  check. If a checker judges it a manipulation check, drop task 6 (1,027 rows).
+  Second: dropping Q4 code 8 (above).
+
+
+  VERIFICATION
+
+  No independent numeric reference: s6urt is not in SocSci210, and the Project
+  Report publishes no outcome statistics (only N=1,027, field dates, response
+  rates). Checks available and run: N against PR; arm text derived from PROG
+  and SIMPLE and asserted equal; every built row re-derived from the raw .sav
+  by an independent script.
+
+condition:
+  source_var: P_EXP
+  factors: [baseline_recommendation, conflict_type]
+  considered_and_rejected:
+    Q3NEW_6: "Post-treatment health-history checkbox ('[None of the above] Has a doctor ever told you that you had any of the following conditions?'), asked of everyone in the background block after the outcomes. A respondent's answer, not an assignment; the balance the screen saw is chance (2 levels, a yes/no item)."
+  shared_context: "Imagine you came across the following news article while browsing the internet."
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {baseline_recommendation: "limit red meat", conflict_type: "conflict in evidence"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society and Harvard agree the evidence is mixed
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse, and goat). The American Cancer Society concludes that diets high in red meat probably increase our risk for cancer, so they currently recommend that people should eat less than 12-18 ounces of red meat per week. This means no more than three portions of 4-6 cooked ounces of red meat per week (or about the same size as 1-2 decks of cards).
+
+        However, new research from Harvard University published this year found no link between high red meat intake and greater cancer risk. In a comment on the findings, both the American Cancer Society and the Harvard team agreed that the majority of evidence on red meat and cancer is mixed and that more convincing research is needed before changing the existing American Cancer Society recommendation.
+    - raw: 2
+      condition_num: 1
+      factors: {baseline_recommendation: "limit red meat", conflict_type: "conflict between sources"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society and Harvard disagree
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse, and goat). The American Cancer Society concludes that diets high in red meat probably increase our risk for cancer, so they currently recommend that people should eat less than 12-18 ounces of red meat per week. This means no more than three portions of 4-6 cooked ounces of red meat per week (or about the same size as 1-2 decks of cards).
+
+        However, new research from Harvard University published this year found no link between high red meat intake and greater cancer risk. In a comment on the findings, the American Cancer Society stated that while this new research challenges their recommendation, the majority of evidence suggests a link between high red meat intake and greater cancer risk, and maintained their recommendation that Americans should limit red meat intake to 12-18 oz. per week to reduce cancer risk. Responding to this comment, the Harvard scientists disagreed with the American Cancer Society's conclusion, stating that the new findings provide strong evidence that there is no good reason to limit red meat intake reduce cancer risk.
+    - raw: 3
+      condition_num: 2
+      factors: {baseline_recommendation: "limit red meat", conflict_type: "conflict within the same source"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society said "yes", then "no"
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse, and goat). The American Cancer Society concluded that diets high in red meat probably increase our risk for cancer, so they recommended that people should eat less than 12-18 ounces of red meat per week. This means no more than three portions of 4-6 cooked ounces per week (or about the same size as 1-2 decks of cards).
+
+        However, new research from Harvard University published this year found no link between high red meat intake and greater cancer risk. In a comment on these findings, the American Cancer Society stated that in light of these new findings, they have changed their previous recommendation and are now recommending that there is no need for Americans to limit red meat intake to reduce cancer risk.
+    - raw: 4
+      condition_num: 3
+      factors: {baseline_recommendation: "limit red meat", conflict_type: "no conflict"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society and Harvard agree it is
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse, and goat). The American Cancer Society concludes that diets high in red meat probably increase our risk for cancer, so they currently recommend that people should eat less than 12-18 ounces of red meat per week. This means no more than three portions of 4-6 cooked ounces per week (or about the same size as 1-2 decks of cards).
+
+        New research from Harvard University published this year also found a link between high red meat intake and greater cancer risk. In a comment on the findings, the American Cancer Society stated that these findings provide additional support for their previous recommendation that Americans should limit red meat intake to 12-18 oz. per week to reduce cancer risk.
+    - raw: 5
+      condition_num: 4
+      factors: {baseline_recommendation: "do not limit red meat", conflict_type: "conflict in evidence"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society and Harvard agree the evidence is mixed
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse, and goat). The American Cancer Society concludes that diets high in red meat probably do not increase our risk for cancer, so they recommend that people do not need to limit how much red meat they eat.
+
+        However, new research from Harvard University published this year found a link between high red meat intake and greater cancer risk. In a comment on the findings, both the American Cancer Society and the Harvard team agreed that the majority of evidence on red meat and cancer is mixed and that more convincing research is needed before changing the existing American Cancer Society recommendation.
+    - raw: 6
+      condition_num: 5
+      factors: {baseline_recommendation: "do not limit red meat", conflict_type: "conflict between sources"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society and Harvard disagree
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse, and goat). The American Cancer Society concludes that diets high in red meat probably do not increase our risk for cancer, so they recommend that people do not need to limit how much red meat they eat.
+
+        However, new research from Harvard University published this year found a link between high red meat intake and greater cancer risk. In a comment on the findings, the American Cancer Society stated that while this new research challenges their recommendation, the majority of evidence suggests no link between high red meat intake and greater cancer risk, and maintained their recommendation that there is no need for Americans to limit red meat intake to reduce cancer risk. Responding to this comment, the Harvard scientists disagreed with the American Cancer Society's conclusion, stating that the new findings provide strong evidence that there is good reason to limit red meat intake to reduce cancer risk.
+    - raw: 7
+      condition_num: 6
+      factors: {baseline_recommendation: "do not limit red meat", conflict_type: "conflict within the same source"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society said "no", then "yes"
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse, and goat). The American Cancer Society concluded that diets high in red meat probably do not increase our risk for cancer, so they recommended that people do not need to limit how much red meat they eat.
+
+        However, new research from Harvard published this year found a link between high red meat intake and greater cancer risk. In a comment on these findings, the American Cancer Society stated that in light of these new findings, they have changed their previous recommendation and are now recommending that Americans should limit red meat intake to 12-18 oz. per week to reduce cancer risk.
+    - raw: 8
+      condition_num: 7
+      factors: {baseline_recommendation: "do not limit red meat", conflict_type: "no conflict"}
+      text: |-
+        Is red meat linked to cancer? The American Cancer Society and Harvard agree it is not
+
+        Cancer is the second leading cause of death in the U.S., so understanding what we can do to prevent cancer is important for all Americans. For that reason, the American Cancer Society provides recommendations to the public based on all available evidence about how we as individuals can take action to reduce our cancer risk. One important part of this is how the foods we eat affect our chances of getting cancer, including how much red meat we eat (red meat includes all types of beef, veal, pork, lamb, mutton, horse and goat). The American Cancer Society concludes that diets high in red meat probably do not increase our risk for cancer, so they recommend that people do not need to limit how much red meat they eat.
+
+        New research from Harvard published this year also found no link between high red meat intake and greater cancer risk. In a comment on the findings, the American Cancer Society stated that these findings provide additional support for their previous recommendation that there is no need for Americans to limit red meat intake to reduce cancer risk.
+
+outcomes:
+  # Q1 - one grid, eight statements, each its own outcome.
+  - var: Q1A
+    task_num: 0
+    question: 'Please indicate the degree to which you agree or disagree with the following statements: "It is not always clear to me what foods are best for me to eat."'
+    scale: &agree
+      min: 1
+      max: 7
+      min_label: "Strongly disagree"
+      mid_label: "Neither disagree, nor agree"
+      max_label: "Strongly agree"
+  - var: Q1B
+    task_num: 1
+    question: 'Please indicate the degree to which you agree or disagree with the following statements: "I find nutrition recommendations to be confusing."'
+    scale: *agree
+  - var: Q1C
+    task_num: 2
+    question: 'Please indicate the degree to which you agree or disagree with the following statements: "Nutrition research findings make sense to me."'
+    scale: *agree
+  - var: Q1D
+    task_num: 3
+    question: 'Please indicate the degree to which you agree or disagree with the following statements: "I know what I should be eating to stay healthy."'
+    scale: *agree
+  - var: Q1E
+    task_num: 4
+    question: 'Please indicate the degree to which you agree or disagree with the following statements: "I find nutrition research studies hard to follow."'
+    scale: *agree
+  - var: Q1F
+    task_num: 5
+    question: "Please indicate the degree to which you agree or disagree with the following statements: \"I understand scientists' recommendations about what foods I should eat.\""
+    scale: *agree
+  - var: Q1G
+    task_num: 6
+    question: 'Please indicate the degree to which you agree or disagree with the following statements: "The scientific community is in agreement about the amount of red meat you should consume."'
+    scale: *agree
+  - var: Q1H
+    task_num: 7
+    question: "Please indicate the degree to which you agree or disagree with the following statements: \"There's not much you can do to lower your chances of getting cancer.\""
+    scale: *agree
+  # Q2 - emotions grid, 1-5, only the endpoints labelled.
+  - var: Q2A
+    task_num: 8
+    question: "How much of each of the following emotions are you feeling as a result of the article you read? ... Frustrated"
+    scale: &emotion
+      min: 1
+      max: 5
+      min_label: "Very slightly or not at all"
+      max_label: "Extremely"
+    response_recode: &five {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q2B
+    task_num: 9
+    question: "How much of each of the following emotions are you feeling as a result of the article you read? ... Annoyed"
+    scale: *emotion
+    response_recode: *five
+  - var: Q2C
+    task_num: 10
+    question: "How much of each of the following emotions are you feeling as a result of the article you read? ... Distressed"
+    scale: *emotion
+    response_recode: *five
+  # Q3 - four 1-7 semantic differentials; poles as labelled in the .sav.
+  - var: Q3A
+    task_num: 11
+    question: "In your opinion, scientists or science experts are: ... Non-collaborative/Collaborative"
+    scale: {min: 1, max: 7, min_label: "Non-collaborative", max_label: "Collaborative"}
+  - var: Q3B
+    task_num: 12
+    question: "In your opinion, scientists or science experts are: ... Incompetent/Competent"
+    scale: {min: 1, max: 7, min_label: "Incompetent", max_label: "Competent"}
+  - var: Q3C
+    task_num: 13
+    question: "In your opinion, scientists or science experts are: ... Untrustworthy/Trustworthy"
+    scale: {min: 1, max: 7, min_label: "Untrustworthy", max_label: "Trustworthy"}
+  - var: Q3D
+    task_num: 14
+    question: "In your opinion, scientists or science experts are: ... Not protective of public interest/Protective of public interest"
+    scale: {min: 1, max: 7, min_label: "Not protective of public interest", max_label: "Protective of public interest"}
+  - var: Q4
+    task_num: 15
+    question: "Choose the option that best describes your plans about red meat in your diet over the next month:"
+    scale:
+      min: 1
+      max: 7
+      min_label: "I will eat a lot less red meat"
+      mid_label: "I will not change how much red meat I eat"
+      max_label: "I will eat a lot more red meat"
+    # Code 8 "I don't eat red meat now and will not eat red meat in the
+    # future" is off the 1-7 ordering; deliberately not listed, so dropped
+    # (48 rows; see notes "Q4 CODE 8 DROPPED").
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q5
+    task_num: 16
+    question: "How likely is it that you will have five or more servings of fruits and vegetables most days in the next month?"
+    scale:
+      min: 1
+      max: 5
+      min_label: "Very unlikely"
+      mid_label: "Neither unlikely, nor likely"
+      max_label: "Very likely"
+    response_recode: *five
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [77, 98, 99]
+
+persona_label_rewrite:
+  # SPSS severed this value label at the writer's ceiling ("...Reformed,
+  # Church"). Restored word-for-word from this deposit's own questionnaire
+  # (PROG/SIMPLE RELIG), spelled as dh3nj and 8ctbk restore it (curly apostrophe; 9xw67_conjoint and
+  # xk9ch carry a straight one, so the corpus holds two spellings of this label).
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+    # Real answer; the .sav label carries the text-box instruction
+    # "- please specify:". Instruction removed, answer kept.
+    14: "Something else"
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND
+
+persona_missing:
+  PartyID7: [-1]
+  IDEO: [-1]
+  RELIG: [77, 98, 99]
+  ATTEND: [77, 98, 99]
+  GENDER: [0]

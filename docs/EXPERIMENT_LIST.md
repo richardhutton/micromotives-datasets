@@ -8,13 +8,13 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Innovation Panel | UK · not publishable | 25 | 24 | 4 | 5 | 33 |
-| DEL | UK · publishable (CC0) | 4 | 12 | 5 | 8 | 25 |
-| TESS | US · not publishable | 28 | 49 | 8 | 7 | 64 |
+| Innovation Panel | UK · not publishable | 26 | 23 | 4 | 5 | 32 |
+| DEL | UK · publishable (CC0) | 7 | 8 | 5 | 9 | 22 |
+| TESS | US · not publishable | 30 | 47 | 8 | 7 | 62 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 |
-| **Total** | | **70** | **85** | **29** | **23** | **137** |
+| **Total** | | **76** | **78** | **29** | **24** | **131** |
 
-## Next 36, in build order (7 built, 29 to go)
+## Next 35, in build order (13 built, 22 to go)
 
 - Pool: Buildable candidates only.
 - Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).
@@ -22,6 +22,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 - Hand rule: DEL experiments whose conditions vary real numbers (Gender aid compared to others, 5 conditions; Gender gap progress, 4) replace 2-condition wording tests, because the title-only measure cannot see design.
 - Excluded: pandemic-framed experiments (8 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment. Two were caught only on reading the instrument: the Apr 2020 aid statement bank and the Apr 2020 "developing countries" split.
 - Removed: With God on Our Side (TESS ga53m), ruled out by rich on 10 Oct 2026; later picks moved up one.
+- Removed: Ukraine list experiment (DEL Jun2022_list), ruled out by rich on 10 Oct 2026 for a COVID filler statement; later picks moved up one.
 
 | Next | Source | ID | Experiment | Category | Novelty |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -36,31 +37,30 @@ Every experiment we have built and every candidate we could add, from four sourc
 | 9 | Innovation Panel | 9.26 | **Does competition over public services decrease support for residency rights of immigrants?**<br>A conjoint and a set of vignettes on residency rights for immigrants. | political preferences/policy | 0.23 |
 | 10 | DEL | W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree. | moral/social/cognition | 0.28 |
 | 11 | TESS | xk9ch | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists**<br>Are religions, and the people in them, seen as masculine or feminine? | cross-national | 0.15 |
-| 12 | DEL | Jul2020_experimentsplit | **Global goals messages**<br>Water, child deaths and poverty goals, each told as progress, failure or mixed, in rotated orders. Answer: 0-10 support. | political preferences/policy | 0.23 |
+| 12 | DEL | Jul2020_experimentsplit | **Global goals messages**<br>Support for three UN goals (water, child deaths, poverty aid), each rated alone, after facts, and after a counter-claim; the order is randomised. Answer: 0-10 support. | political preferences/policy | 0.23 |
 | 13 | TESS | s6urt | **Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk**<br>Three kinds of conflicting nutrition and cancer-risk information, and trust in health science. | health communication | 0.20 |
 | 14 | Innovation Panel | 9.30 | **Vignettes: intentions to prepare for automation**<br>Vignettes: automation threat severity × timeframe, 2×2. | economics/behavioural | 0.20 |
 | 15 | DEL | Jun2022_choice | **Why Ukraine matters, me or others**<br>Asked about yourself or about other people in the UK, with random statement pairs. Answer: Pick one statement. | moral/social/cognition | 0.27 |
-| 16 | DEL | Jun2022_list | **Ukraine list experiment**<br>Statement lists with and without a sensitive item about the Russia-Ukraine war. Answer: How many you agree with. | political preferences/policy | 0.25 |
-| 17 | Innovation Panel | 9.25 | **HMRC data linkage consent experiment**<br>Consent to link tax records: placement and easy vs difficult wording. | survey methodology | 0.24 |
-| 18 | Innovation Panel | 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes. | political preferences/policy | 0.21 |
-| 19 | TESS | e5rfg | **Who has Narrow Brackets?**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices. | economics/behavioural | 0.33 |
-| 20 | Innovation Panel | 9.23 | **Non-resident parents and reasons for separation**<br>Two versions of the questions on non-resident parents. | work/family/gender | 0.22 |
-| 21 | TESS | gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong? | moral/social/cognition | 0.22 |
-| 22 | DEL | Feb2023_odasplit | **Gender aid compared to others**<br>No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid. | political preferences/policy | 0.20 |
-| 23 | Innovation Panel | 9.5 | **Measures of wealth**<br>Savings asked as one total vs itemised, 2×2 with who reports. | economics/behavioural | 0.17 |
-| 24 | TESS | pmuag | **Do People Agree on how much Punishment fits Crimes?**<br>Do people agree on how much punishment different crimes deserve? | moral/social/cognition | 0.23 |
-| 25 | TESS | 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes. | health communication | 0.15 |
-| 26 | DEL | Feb2023_track7split | **Aid budget with priorities**<br>UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order. Answer: Increase or decrease aid. | political preferences/policy | 0.24 |
-| 27 | TESS | gyrp9 | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital**<br>Trust and cooperation games used as survey questions to measure social capital. | economics/behavioural | 0.21 |
-| 28 | Innovation Panel | 9.49 | **Indoor residential environment: consent for in-home sensor**<br>Consent to place sensors measuring the indoor environment. | survey methodology | 0.21 |
-| 29 | TESS | vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title). | moral/social/cognition | 0.23 |
-| 30 | Innovation Panel | 9.16 | **Social desirability bias in attitudes towards immigration**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
-| 31 | DEL | W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose. | political preferences/policy | 0.24 |
-| 32 | TESS | jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements. | moral/social/cognition | 0.24 |
-| 33 | Innovation Panel | 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen. | survey methodology | 0.19 |
-| 34 | DEL | W3_ngosplit | **Large or small NGOs**<br>Rating statements about large vs small development NGOs. Answer: Agree scale per statement. | moral/social/cognition | 0.29 |
-| 35 | DEL | Feb2023_progsplit | **Gender gap progress**<br>Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic. | moral/social/cognition | 0.15 |
-| 36 | DEL | W4_climatescenariosplit | **Extreme weather news**<br>Greenland ice melt, Pakistan floods, China heatwave, or UK 40C. Answer: Question after the story. | political preferences/policy | 0.28 |
+| 16 | Innovation Panel | 9.25 | **HMRC data linkage consent experiment**<br>Consent to link tax records: placement and easy vs difficult wording. | survey methodology | 0.24 |
+| 17 | Innovation Panel | 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes. | political preferences/policy | 0.21 |
+| 18 | TESS | e5rfg | **Who has Narrow Brackets?**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices. | economics/behavioural | 0.33 |
+| 19 | Innovation Panel | 9.23 | **Non-resident parents and reasons for separation**<br>Two versions of the questions on non-resident parents. | work/family/gender | 0.22 |
+| 20 | TESS | gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong? | moral/social/cognition | 0.22 |
+| 21 | DEL | Feb2023_odasplit | **Gender aid compared to others**<br>No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid. | political preferences/policy | 0.20 |
+| 22 | Innovation Panel | 9.5 | **Measures of wealth**<br>Savings asked as one total vs itemised, 2×2 with who reports. | economics/behavioural | 0.17 |
+| 23 | TESS | pmuag | **Do People Agree on how much Punishment fits Crimes?**<br>Do people agree on how much punishment different crimes deserve? | moral/social/cognition | 0.23 |
+| 24 | TESS | 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes. | health communication | 0.15 |
+| 25 | DEL | Feb2023_track7split | **Aid budget with priorities**<br>UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order. Answer: Increase or decrease aid. | political preferences/policy | 0.24 |
+| 26 | TESS | gyrp9 | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital**<br>Trust and cooperation games used as survey questions to measure social capital. | economics/behavioural | 0.21 |
+| 27 | Innovation Panel | 9.49 | **Indoor residential environment: consent for in-home sensor**<br>Consent to place sensors measuring the indoor environment. | survey methodology | 0.21 |
+| 28 | TESS | vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title). | moral/social/cognition | 0.23 |
+| 29 | Innovation Panel | 9.16 | **Social desirability bias in attitudes towards immigration**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
+| 30 | DEL | W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose. | political preferences/policy | 0.24 |
+| 31 | TESS | jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements. | moral/social/cognition | 0.24 |
+| 32 | Innovation Panel | 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen. | survey methodology | 0.19 |
+| 33 | DEL | W3_ngosplit | **Large or small NGOs**<br>Rating statements about large vs small development NGOs. Answer: Agree scale per statement. | moral/social/cognition | 0.29 |
+| 34 | DEL | Feb2023_progsplit | **Gender gap progress**<br>Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic. | moral/social/cognition | 0.15 |
+| 35 | DEL | W4_climatescenariosplit | **Extreme weather news**<br>Greenland ice melt, Pakistan floods, China heatwave, or UK 40C. Answer: Question after the story. | political preferences/policy | 0.28 |
 
 ## Statuses
 
@@ -73,12 +73,13 @@ Every experiment we have built and every candidate we could add, from four sourc
 
 ## Innovation Panel
 
-UK · not publishable. 25 Built, 24 Buildable, 4 Needs checking, 5 Unlikely.
+UK · not publishable. 26 Built, 23 Buildable, 4 Needs checking, 5 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 9.33 | **Twitter consent**<br>Repeats the wave 10 request to link Twitter data, testing how it is asked.<br>*527 rows; Wave 15; 2 conditions (help links on the same page or not); web only* | survey methodology | Built | 0.30 | 8 |
 | 9.34 | **Marginal propensity to consume**<br>How people would spend, save or repay debt after an income change.<br>*2,537 rows as two experiments (two-part 1,259; direct £ 1,278); Wave 15; 2x2 amount x period* | economics/behavioural | Built | 0.24 | 5 |
+| 9.30 | **Vignettes: intentions to prepare for automation**<br>Vignettes: automation threat severity × timeframe, 2×2.<br>*15,020 rows; Wave 14; 2x2 + control, 9 outcomes* | economics/behavioural | Built | 0.20 | 14 |
 | 9.38 | **National identity**<br>Versions of the national identity questions.<br>*2,472 rows; Wave 15; 2 conditions (identity question asked first or not); outcome: importance of being British* | political identity/polarisation | Built | 0.17 | 7 |
 | ukds_6849_alcohol_w15 | **Alcohol consumption**<br>Respondents who had drunk alcohol in the past year report how much they drink on a typical drinking day and how often they binge, with the questions worded in UNITS of alcohol (the NHS version) or in ALCOHOLIC DRINKS. The binge threshold is 6 or more for women and 8 or more for men. The rows teach whether the same person reports differently when asked in units, which few people count in. Wave 15 (2022).<br>*4,208 rows* | survey methodology | Built |  |  |
 | ukds_6849_caring_activity_w17 | **Identification of informal caregiving**<br>Respondents report how many hours a week they spend caring for a sick, disabled or elderly person, on each of six activities (household tasks, personal care, practical support, social and emotional support, travel, other). The condition is whether they had already been asked the existing Understanding Society caring questions earlier in the interview. Wave 17 (2024).<br>*13,875 rows* | work/family/gender | Built |  |  |
@@ -103,23 +104,22 @@ UK · not publishable. 25 Built, 24 Buildable, 4 Needs checking, 5 Unlikely.
 | ukds_6849_vig_housework_w5 | **Vignettes: measuring partner satisfaction with division of household labour**<br>Respondents imagine themselves in a couple and rate how satisfied they would be with how the housework is shared. Five dimensions are randomised: whose job is full or part time, whose hourly pay is higher, whether there is a child and its age, how the housework splits between them, and whether paid help is employed. The respondent is INSIDE the scenario -- the wording is "Imagine that you are married or cohabiting" -- so the outcome is imagined own satisfaction, not judgement of a described couple. Wave 5 (2012).<br>*4,550 rows* | work/family/gender | Built |  |  |
 | ukds_6849_vig_housework_w6 | **Vignettes: measuring partner satisfaction with division of household labour**<br>Respondents imagine themselves in a couple and rate how satisfied they would be with how the housework is shared. Five dimensions are randomised: whose job is full or part time, whose hourly pay is higher, whether there is a child and its age, how the housework splits between them, and whether paid help is employed. The respondent is INSIDE the scenario -- the wording is "Imagine that you are married or cohabiting" -- so the outcome is imagined own satisfaction, not judgement of a described couple. Wave 6 (2013).<br>*5,081 rows* | work/family/gender | Built |  |  |
 | 9.29 | **LinkedIn consent**<br>Consent to link LinkedIn profiles: placement crossed with a motivating statement.<br>*Wave 14* | survey methodology | Buildable | 0.28 |  |
-| 9.25 | **HMRC data linkage consent experiment**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*Waves 11, 15* | survey methodology | Buildable | 0.24 | 17 |
+| 9.25 | **HMRC data linkage consent experiment**<br>Consent to link tax records: placement and easy vs difficult wording.<br>*Waves 11, 15* | survey methodology | Buildable | 0.24 | 16 |
 | 9.46 | **Consent decision process**<br>Prompting people to think a consent request through, and whether it changes consent.<br>*Wave 17* | survey methodology | Buildable | 0.24 |  |
 | 9.26 | **Does competition over public services decrease support for residency rights of immigrants?**<br>A conjoint and a set of vignettes on residency rights for immigrants.<br>*Wave 11* | political preferences/policy | Buildable | 0.23 | 9 |
-| 9.23 | **Non-resident parents and reasons for separation**<br>Two versions of the questions on non-resident parents.<br>*Wave 10* | work/family/gender | Buildable | 0.22 | 20 |
+| 9.23 | **Non-resident parents and reasons for separation**<br>Two versions of the questions on non-resident parents.<br>*Wave 10* | work/family/gender | Buildable | 0.22 | 19 |
 | 9.6 | **Context of questions about consent to data linkage with administrative records**<br>Consent asked in context vs at the end, 2×2.<br>*Wave 4* | survey methodology | Buildable | 0.22 |  |
-| 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes.<br>*Wave 7* | political preferences/policy | Buildable | 0.21 | 18 |
-| 9.49 | **Indoor residential environment: consent for in-home sensor**<br>Consent to place sensors measuring the indoor environment.<br>*Wave 17* | survey methodology | Buildable | 0.21 | 28 |
+| 9.14 | **Assessing how people think about environmental taxes**<br>Different wordings of willingness to pay environmental taxes.<br>*Wave 7* | political preferences/policy | Buildable | 0.21 | 17 |
+| 9.49 | **Indoor residential environment: consent for in-home sensor**<br>Consent to place sensors measuring the indoor environment.<br>*Wave 17* | survey methodology | Buildable | 0.21 | 27 |
 | 9.21 | **Improving consent to link to the electoral register**<br>How consent was asked, crossed with the wording of the request.<br>*Waves 10, 11* | survey methodology | Buildable | 0.20 |  |
-| 9.30 | **Vignettes: intentions to prepare for automation**<br>Vignettes: automation threat severity × timeframe, 2×2.<br>*Wave 14* | economics/behavioural | Buildable | 0.20 | 14 |
-| 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen.<br>*Wave 11* | survey methodology | Buildable | 0.19 | 33 |
+| 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen.<br>*Wave 11* | survey methodology | Buildable | 0.19 | 32 |
 | 8.4 | **Dependent interviewing wording**<br>Different wording when reminding people of last year's answer.<br>*Waves 3, 4, 5, 7* | survey methodology | Buildable | 0.19 |  |
-| 9.16 | **Social desirability bias in attitudes towards immigration**<br>Direct vs indirect questions to uncover masked opposition.<br>*Waves 8, 9* | survey methodology | Buildable | 0.19 | 30 |
+| 9.16 | **Social desirability bias in attitudes towards immigration**<br>Direct vs indirect questions to uncover masked opposition.<br>*Waves 8, 9* | survey methodology | Buildable | 0.19 | 29 |
 | 9.50 | **Domestic energy use: consent for smart meter data linkage**<br>Consent to link smart meter energy data.<br>*Wave 17* | survey methodology | Buildable | 0.19 |  |
 | 9.40 | **Cognitive reflection and politically motivated reasoning**<br>A cognitive reflection test varied by political content.<br>*Wave 16* | moral/social/cognition | Buildable | 0.18 |  |
 | 9.41 | **Robustness of climate change worries measurement**<br>Two versions of one climate-worry question.<br>*Wave 16* | survey methodology | Buildable | 0.18 |  |
 | 8.8 | **Methods of reducing item non-response in web surveys**<br>Prompts worded to cut skipped questions.<br>*Wave 6* | survey methodology | Buildable | 0.17 |  |
-| 9.5 | **Measures of wealth**<br>Savings asked as one total vs itemised, 2×2 with who reports.<br>*Wave 3* | economics/behavioural | Buildable | 0.17 | 23 |
+| 9.5 | **Measures of wealth**<br>Savings asked as one total vs itemised, 2×2 with who reports.<br>*Wave 3* | economics/behavioural | Buildable | 0.17 | 22 |
 | 8.10 | **Replicating classic response order experiments across countries**<br>Schuman and Presser's order experiments, replicated.<br>*Wave 7* | survey methodology | Buildable | 0.13 |  |
 | 9.22 | **Financial management within couples**<br>Two ways of asking couples how they manage money.<br>*Wave 10* | economics/behavioural | Buildable | 0.13 |  |
 | 8.3 | **Impact of question wording and context on measuring change**<br>Wording and context that reduce false reports of change.<br>*Waves 2, 3, 4* | survey methodology | Buildable | 0.12 |  |
@@ -138,26 +138,25 @@ UK · not publishable. 25 Built, 24 Buildable, 4 Needs checking, 5 Unlikely.
 
 ## DEL
 
-UK · publishable (CC0). 4 Built, 12 Buildable, 5 Needs checking, 8 Unlikely.
+UK · publishable (CC0). 7 Built, 8 Buildable, 5 Needs checking, 9 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Feb2023_wordfeministsplit | **Naming a development policy (sandbox)**<br>Development / feminist / inclusive / gender-inclusive policy, or the name only. Answer: Support-oppose.<br>*1,788 rows; Sandbox Feb 2023; 5 conditions* | political preferences/policy | Built | 0.29 | 1 |
 | W3_ngoconjointsplit | **NGO conjoint**<br>Pairs of development NGO profiles, asked as donate or as sign a petition, 3 pairs. Answer: Pick one NGO.<br>*24,843 rows as two experiments (donate 12,438; petition 12,405); Panel W3 2021* | economics/behavioural | Built | 0.28 | 2 |
 | W4_connectstorysplit | **Climate harm stories**<br>No story, or one of three stories linking climate change to everyday life. Answer: Harm rating per group.<br>*28,109 rows; Panel W4 2022; 4 conditions (a fifth assigned group had no question)* | moral/social/cognition | Built | 0.28 | 4 |
+| W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree.<br>*7,356 rows; Panel W5 2023; 2 conditions* | moral/social/cognition | Built | 0.28 | 10 |
+| Jun2022_choice | **Why Ukraine matters, me or others**<br>Asked about yourself or about other people in the UK, with random statement pairs. Answer: Pick one statement.<br>*10,935 rows; Sandbox Jun 2022; self vs others x 5 random statement pairs* | moral/social/cognition | Built | 0.27 | 15 |
 | Feb2023_abortsplit | **Abortion access, UK or abroad**<br>Protect women's access to abortion in developing countries vs in the UK. Answer: Importance scale.<br>*1,798 rows; Sandbox Feb 2023; 2 conditions* | political preferences/policy | Built | 0.23 | 6 |
-| W3_ngosplit | **Large or small NGOs**<br>Rating statements about large vs small development NGOs. Answer: Agree scale per statement.<br>*Panel W3 2021; 2 conditions* | moral/social/cognition | Buildable | 0.29 | 34 |
-| W4_climatescenariosplit | **Extreme weather news**<br>Greenland ice melt, Pakistan floods, China heatwave, or UK 40C. Answer: Question after the story.<br>*Panel W4 2022; 4 conditions* | political preferences/policy | Buildable | 0.28 | 36 |
-| W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree.<br>*Panel W5 2023; 2 conditions* | moral/social/cognition | Buildable | 0.28 | 10 |
-| Jun2022_choice | **Why Ukraine matters, me or others**<br>Asked about yourself or about other people in the UK, with random statement pairs. Answer: Pick one statement.<br>*Sandbox Jun 2022; 2 conditions* | moral/social/cognition | Buildable | 0.27 | 15 |
+| Jul2020_experimentsplit | **Global goals messages**<br>Support for three UN goals (water, child deaths, poverty aid), each rated alone, after facts, and after a counter-claim; the order is randomised. Answer: 0-10 support.<br>*15,888 rows; Sandbox Jul 2020; 12 order conditions* | political preferences/policy | Built | 0.23 | 12 |
+| W3_ngosplit | **Large or small NGOs**<br>Rating statements about large vs small development NGOs. Answer: Agree scale per statement.<br>*Panel W3 2021; 2 conditions* | moral/social/cognition | Buildable | 0.29 | 33 |
+| W4_climatescenariosplit | **Extreme weather news**<br>Greenland ice melt, Pakistan floods, China heatwave, or UK 40C. Answer: Question after the story.<br>*Panel W4 2022; 4 conditions* | political preferences/policy | Buildable | 0.28 | 35 |
 | W4_DonationSplit | **Ukraine donation follow-up**<br>People who chose Ukraine over one of 7 other crises are told part of their donation (unspecified, or 10-50%) will go to that crisis. Answer: Still donate, yes or no.<br>*Panel W4 2022; 5 conditions* | economics/behavioural | Buildable: Parked 10 Oct 2026: needs a pipeline change (one condition across several codes in several columns; one outcome read from whichever of four columns holds it). | 0.27 | 3 |
-| Jun2022_list | **Ukraine list experiment**<br>Statement lists with and without a sensitive item about the Russia-Ukraine war. Answer: How many you agree with.<br>*Sandbox Jun 2022; 3 conditions* | political preferences/policy | Buildable | 0.25 | 16 |
-| Feb2023_track7split | **Aid budget with priorities**<br>UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order. Answer: Increase or decrease aid.<br>*Sandbox Feb 2023; 3 conditions* | political preferences/policy | Buildable | 0.24 | 26 |
-| W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose.<br>*Panel W5 2023; 3 conditions* | political preferences/policy | Buildable | 0.24 | 31 |
-| Jul2020_experimentsplit | **Global goals messages**<br>Water, child deaths and poverty goals, each told as progress, failure or mixed, in rotated orders. Answer: 0-10 support.<br>*Sandbox Jul 2020; 12 conditions* | political preferences/policy | Buildable | 0.23 | 12 |
-| Feb2023_odasplit | **Gender aid compared to others**<br>No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid.<br>*Sandbox Feb 2023; 5 conditions* | political preferences/policy | Buildable | 0.20 | 22 |
+| Feb2023_track7split | **Aid budget with priorities**<br>UK aid budget figure alone, or with 3 or 4 listed policy priorities in random order. Answer: Increase or decrease aid.<br>*Sandbox Feb 2023; 3 conditions* | political preferences/policy | Buildable | 0.24 | 25 |
+| W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose.<br>*Panel W5 2023; 3 conditions* | political preferences/policy | Buildable | 0.24 | 30 |
+| Feb2023_odasplit | **Gender aid compared to others**<br>No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid.<br>*Sandbox Feb 2023; 5 conditions* | political preferences/policy | Buildable | 0.20 | 21 |
 | Feb2023_equalgsplit | **Gender equality, UK or abroad**<br>Have women and men become more equal in the UK vs in developing countries. Answer: More or less equal.<br>*Sandbox Feb 2023; 2 conditions* | moral/social/cognition | Buildable | 0.17 |  |
-| Feb2023_progsplit | **Gender gap progress**<br>Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic.<br>*Sandbox Feb 2023; 4 conditions* | moral/social/cognition | Buildable | 0.15 | 35 |
+| Feb2023_progsplit | **Gender gap progress**<br>Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic.<br>*Sandbox Feb 2023; 4 conditions* | moral/social/cognition | Buildable | 0.15 | 34 |
 | W4_EAsplit | **East Africa drought**<br>Drought alone, or blamed on climate change in three ways. Answer: Choice, randomised order.<br>*Panel W4 2022; 4 conditions* | political preferences/policy | Needs checking: outcome options are shown in random order | 0.32 |  |
 | W4_split_sample | **Climate aid conjoint**<br>Climate aid profiles with 8 or 6 attributes, 3 screens. Answer: Pick one.<br>*Panel W4 2022; 2 conditions* | political preferences/policy | Needs checking: conjoint attributes sit in script code | 0.27 |  |
 | Apr2020_orgrolessplitgroup | **Role of organisations**<br>Not yet read.<br>*Sandbox Apr 2020; 2 conditions* | moral/social/cognition | Needs checking: conditions not yet read | 0.22 |  |
@@ -168,16 +167,19 @@ UK · publishable (CC0). 4 Built, 12 Buildable, 5 Needs checking, 8 Unlikely.
 | W2_buildbackbetter | **Build back better**<br>How the UK's, the world's or developing countries' economies should be run after COVID. Answer: Single choice.<br>*Panel W2 2020; 3 conditions* | political preferences/policy | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.29 |  |
 | Apr2020_climatesplitgroup | **Climate and daily life**<br>Climate change effect on day-to-day life, with or without a COVID comparison first. Answer: 0-10 scale.<br>*Sandbox Apr 2020; 2 conditions* | moral/social/cognition | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.25 |  |
 | Apr2020_vulnsplitgroup | **Who COVID shows is vulnerable (sandbox)**<br>All / rich / poor countries. Answer: 5-point agree.<br>*Sandbox Apr 2020; 3 conditions* | moral/social/cognition | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.25 |  |
+| Jun2022_list | **Ukraine list experiment**<br>Statement lists with and without a sensitive item about the Russia-Ukraine war. Answer: How many you agree with.<br>*Sandbox Jun 2022; 3 conditions* | political preferences/policy | Unlikely: Ruled out by rich on 10 Oct 2026: one filler statement mentions the NHS during COVID. | 0.25 | None |
 | W2_globloc | **Global or local concern**<br>'These days I am most concerned about' with or without 'because of the COVID-19 pandemic'. Answer: Single choice.<br>*Panel W2 2020; 2 conditions* | moral/social/cognition | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.25 |  |
 | W3_vulnsplit | **Who COVID shows is vulnerable**<br>The pandemic shows how vulnerable all / rich / poor countries are. Answer: 5-point agree.<br>*Panel W3 2021; 3 conditions* | moral/social/cognition | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.24 |  |
 | W2_taxsplit | **Tax and COVID inequality**<br>No framing, a general tax prompt, or one of 9 COVID inequality facts (women, schools, health, ethnicity, income, young, mental health, older people, disability), then a fair tax share for a middle earner. Answer: Fair tax share, 0-100% slider.<br>*Panel W2 2020; 11 conditions* | political preferences/policy | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.21 |  |
 
 ## TESS
 
-US · not publishable. 28 Built, 49 Buildable, 8 Needs checking, 7 Unlikely.
+US · not publishable. 30 Built, 47 Buildable, 8 Needs checking, 7 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| s6urt | **Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk**<br>Three kinds of conflicting nutrition and cancer-risk information, and trust in health science.<br>*17,402 rows; 2021; 8 conditions, 17 outcomes* | health communication | Built | 0.20 | 13 |
+| xk9ch | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*27,627 rows as four experiments (vignette1 5,499; institution 5,524; vignette2 8,269; identity threat 8,335); 2018* | cross-national | Built | 0.15 | 11 |
 | 5hqan | **Gender Identity and Diversity**<br>*6,411 rows* | survey methodology | Built |  |  |
 | 7jt2f | **When Others' Disbelief Engenders Prejudice: Characterizing Anti-Atheist Prejudice**<br>*3,053 rows* | cross-national | Built |  |  |
 | 8ctbk | **Childbearing Preferences in the Face of Work, Family, and Financial Constraints**<br>*17,464 rows* | work/family/gender | Built |  |  |
@@ -206,23 +208,22 @@ US · not publishable. 28 Built, 49 Buildable, 8 Needs checking, 7 Unlikely.
 | z358z | **Randomized Drug Trials without Consent? The Public's Perspective**<br>*14,702 rows* | health communication | Built |  |  |
 | zaqkm | **Causal Attributions, Treatability, and Mental Illness Stigma**<br>*9,528 rows* | health communication | Built |  |  |
 | zrwjp | **The Barriers of Buying Happier Time**<br>*2,532 rows* | moral/social/cognition | Built |  |  |
-| e5rfg | **Who has Narrow Brackets?**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*2005; UK priority 0.76; transfers: Full* | economics/behavioural | Buildable | 0.33 | 19 |
+| e5rfg | **Who has Narrow Brackets?**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*2005; UK priority 0.76; transfers: Full* | economics/behavioural | Buildable | 0.33 | 18 |
 | pkt6f | **Politeness Theory and Conversational Refusals**<br>How refusal messages that threaten face are judged for effectiveness and appropriateness.<br>*2005; UK priority 0.63; transfers: Full* | moral/social/cognition | Buildable | 0.25 |  |
-| jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements.<br>*2005; UK priority 0.90; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.24 | 32 |
+| jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements.<br>*2005; UK priority 0.90; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.24 | 31 |
 | phbjd | **Do Collective Memory and Autobiographical Memory Refer to Different Developmental Stages?**<br>Which life stage do people's most important national and personal memories come from? (from title).<br>*2014; UK priority 0.72; transfers: Full* | moral/social/cognition | Buildable | 0.23 |  |
-| pmuag | **Do People Agree on how much Punishment fits Crimes?**<br>Do people agree on how much punishment different crimes deserve?<br>*2006; UK priority 1.00; transfers: Full* | moral/social/cognition | Buildable | 0.23 | 24 |
-| vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title).<br>*2013; UK priority 1.01; transfers: Full* | moral/social/cognition | Buildable | 0.23 | 29 |
+| pmuag | **Do People Agree on how much Punishment fits Crimes?**<br>Do people agree on how much punishment different crimes deserve?<br>*2006; UK priority 1.00; transfers: Full* | moral/social/cognition | Buildable | 0.23 | 23 |
+| vwn96 | **What's the Best Way to Motivate Kids?**<br>Which way of motivating children do people favour? (from title).<br>*2013; UK priority 1.01; transfers: Full* | moral/social/cognition | Buildable | 0.23 | 28 |
 | 2tzmb | **Perceptions of Swearing: An Analysis of Perceived Face Threats and Communication Competence**<br>How swearing affects judgements of a speaker's competence.<br>*2008; UK priority 0.81; transfers: Full* | moral/social/cognition | Buildable | 0.22 |  |
-| gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong?<br>*2005; UK priority 1.07; transfers: Full* | moral/social/cognition | Buildable | 0.22 | 21 |
+| gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong?<br>*2005; UK priority 1.07; transfers: Full* | moral/social/cognition | Buildable | 0.22 | 20 |
 | wrxnz | **When is "bad stronger than good" in decision making**<br>When do losses and bad information weigh more than good in decisions? (from title).<br>*2014; UK priority 0.91; transfers: Full* | moral/social/cognition | Buildable | 0.22 |  |
 | ca9ub | **Nature or Nurture?: Explanations for Observed Gender Differences and their Effect on Gender Ideology and Political Opinions**<br>Innate vs social explanations of gender differences, and their effect on stereotyping and opinions.<br>*2007; UK priority 1.06; transfers: Mechanism only* | work/family/gender | Buildable | 0.21 |  |
-| gyrp9 | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital**<br>Trust and cooperation games used as survey questions to measure social capital.<br>*2003; UK priority 0.98; transfers: Full* | economics/behavioural | Buildable | 0.21 | 27 |
+| gyrp9 | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital**<br>Trust and cooperation games used as survey questions to measure social capital.<br>*2003; UK priority 0.98; transfers: Full* | economics/behavioural | Buildable | 0.21 | 26 |
 | h3pc9 | **Moderating the Genetic Interpolation Effect**<br>How genetic explanations shift views of people and behaviour (from title).<br>*2013; UK priority 0.80; transfers: Full* | moral/social/cognition | Buildable | 0.21 |  |
 | u2dbt | **A randomized experiment on the determinants of generosity to the poor**<br>What makes people give to the poor? (from title).<br>*2006; UK priority 0.87; transfers: Mechanism only* | economics/behavioural | Buildable | 0.21 |  |
 | b2srk | **Recall vs. Judgment: Open-Closed Question Differences in Studying Collective Memory**<br>Open vs closed questions about important past national and world events.<br>*2003; UK priority 0.78; transfers: Full* | moral/social/cognition | Buildable | 0.20 |  |
 | g6y8s | **Motivational Mechanisms and Hazing Behavior**<br>What motivates support for hazing new group members?<br>*2006; UK priority 0.85; transfers: Full* | moral/social/cognition | Buildable | 0.20 |  |
 | k2mw3 | **From the Eye of the Beholder:Attitudes about Physical Attractiveness and their Social and Demographic Correlates**<br>Attitudes to physical attractiveness and weight, and their link to work outcomes.<br>*2006; UK priority 0.85; transfers: Full* | moral/social/cognition | Buildable | 0.20 |  |
-| s6urt | **Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk**<br>Three kinds of conflicting nutrition and cancer-risk information, and trust in health science.<br>*2021; UK priority 1.12; transfers: Full* | health communication | Buildable | 0.20 | 13 |
 | v52yu | **Discomfort in Disagreement with God**<br>Does disagreeing with what God believes make people uncomfortable, and change their stated beliefs?<br>*2008; UK priority 0.84; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.20 |  |
 | z2vmq | **The Appropriateness of Retaliatory Violence: Effects of Gender and Relationship**<br>Is hitting back appropriate? Vignettes vary the genders of those involved and whether they are married.<br>*2006; UK priority 0.94; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.20 |  |
 | w8ezk | **Examining How Message Characteristics Influence Support for Gasoline Tax Increases**<br>Which message features raise support for fuel tax increases (from title).<br>*2013; UK priority 1.01; transfers: Mechanism only* | economics/behavioural | Buildable | 0.19 |  |
@@ -240,10 +241,9 @@ US · not publishable. 28 Built, 49 Buildable, 8 Needs checking, 7 Unlikely.
 | n96j5 | **Personality and Resistance to Persuasion**<br>Which personality traits make people resist persuasion (from title).<br>*2013; UK priority 0.77; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.16 |  |
 | 3uq9a | **Effects of Outgroup Friendship Salience on Outgroup Attitudes and Moderating Conditions**<br>Does being reminded of a friend from another group improve attitudes to that group?<br>*2006; UK priority 1.11; transfers: Full* | moral/social/cognition | Buildable | 0.15 |  |
 | 6gq25 | **Exploring the Generality of "Naive Realism": Perceptions of Bias in Others who Disagree with our Opinions**<br>Do people think those who disagree with them are biased?<br>*2005; UK priority 0.90; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.15 |  |
-| 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes.<br>*2014; UK priority 1.14; transfers: Full* | health communication | Buildable | 0.15 | 25 |
+| 7tzpe | **Body Size, Illness, and Blame: Causal Attributions and Social Consequences**<br>Are overweight people blamed more for illness, and treated worse as a result? Vignettes.<br>*2014; UK priority 1.14; transfers: Full* | health communication | Buildable | 0.15 | 24 |
 | k5zqm | **General Prejudice Versus Discrete Emotions: Understanding Patterns of Intergroup Emotions**<br>Distinct emotions (fear, disgust, anger) towards different groups.<br>*2004; UK priority 0.98; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.15 |  |
 | r8u7c | **Generalization of the Valence Framing Effect**<br>Does framing an attitude as opposing rather than supporting change certainty and intentions?<br>*2005; UK priority 0.76; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.15 |  |
-| xk9ch | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*2018; UK priority 0.96; transfers: Full* | cross-national | Buildable | 0.15 | 11 |
 | tu95h | **Clarifying the Ideal Worker Norm: Workplace Evaluations of Women by Motherhood Status, Level of Involvement, and Race**<br>Workplace evaluations of women by motherhood status, involvement and race (from title).<br>*2013; UK priority 1.10; transfers: Full* | work/family/gender | Buildable | 0.14 |  |
 | wmfe6 | **Perception of Synergistic Risk: Adjusted Anchoring Vignettes for Optimized Measurement**<br>Anchoring vignettes for judging combined health risks such as smoking plus radon.<br>*2005; UK priority 0.82; transfers: Full* | moral/social/cognition | Buildable | 0.14 |  |
 | 8snrf | **Regulatory Focus as a Determinant of Feelings of Ambivalence and Ambivalence Reduction**<br>Where feelings of ambivalence come from, and how people reduce them.<br>*2008; UK priority 0.67; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.13 |  |

@@ -302,6 +302,60 @@
       "description": "Web respondents with a personal Twitter account are asked to consent to linking their public Twitter information with their survey answers. In one version eight help links sit on the same page as the request; in the other no links are shown, and the question offers \"Not sure, I would like more information.\" Does where the help sits change consent? Wave 15 (2022).",
       "design": "two-version layout split, allocated by household (o_ff_twithelpw15), web only (interviewer modes never saw the layout), one outcome per respondent with each version's own options; the consent texts also differ in one sentence, transcribed as fielded",
       "verified_against": "no published reference; an independent checker re-derived all 527 rows from the raw files (0 mismatches), confirmed allocation against routing in every cell, and matched every condition, outcome and per-person text fill to the questionnaire (10 Oct 2026)"
+    },
+    "del_panel_w5_who_must_change": {
+      "category": "moral/social/cognition",
+      "description": "Agreement that the climate crisis means \"I will need to make big changes to my lifestyle to reduce my personal impact on the environment\", or that \"the UK Government will need to make big changes to society to reduce the impact on the environment\". Who, what and whose impact vary together. DEL panel wave 5 (2023).",
+      "design": "two-version statement split (changesplit, 4,006 / 4,012), one outcome per respondent, 5-point agree-disagree; condition narrated as the statement shown",
+      "verified_against": "no published reference; an independent checker re-derived all 7,356 rows from the raw .sav (0 missing, extra or wrong), matched both statements and the instruction to the questionnaire, and confirmed person ids, ages and genders agree with the same people in the other DEL builds (10 Oct 2026)"
+    },
+    "del_sandbox_jul2020_global_goals": {
+      "category": "political preferences/policy",
+      "description": "Support (0-10) for the government's efforts on three UN 2030 goals: safe drinking water, deaths of newborns and children under 5, and aid to reduce extreme poverty. Each goal is rated on its own, after supporting facts, and after a counter-claim (\"some people say...\"). DEL sandbox, July 2020.",
+      "design": "within-subject, 3 goals x 3 screens; the order is randomised between subjects: 6 goal orders x 2 follow-up orders = 12 groups; each row's condition is everything shown in the block up to its screen, in that group's order",
+      "verified_against": "no published reference; an independent checker rebuilt all 108 cell conditions from the fielded script byte-for-byte, re-derived all 15,888 rows (0 missing or extra), confirmed no screen order was randomised within groups, and found the 'You rated' narration false for 1,593 rows, now 'You were asked to rate' (10 Oct 2026). Not pandemic-framed; 376 respondents saw a pandemic-and-poverty statement one screen earlier from a separate randomisation (rich: keep)"
+    },
+    "xk9ch_vignette1": {
+      "category": "moral/social/cognition",
+      "description": "How feminine and how masculine is a committed Christian, Muslim, Jewish or atheist woman (Sarah) or man (Adam)? 4x2 vignette, AmeriSpeak 2018.",
+      "design": "between-subjects 4 religions x 2 genders, 2 outcomes (feminine, masculine), 1-7",
+      "verified_against": "no published reference; an independent checker re-derived all 5,499 rows from the .sav and the fielded NORC questionnaire (OSF 6sfc7), 0 missing, extra or wrong, and confirmed the deposit's Q9_INS is wrong on 705 rows while answers follow P_TESS14_2 (10 Oct 2026)"
+    },
+    "xk9ch_institution": {
+      "category": "moral/social/cognition",
+      "description": "How feminine and how masculine are Christianity, Judaism, Islam, Atheism, Religion or Spirituality, in general? AmeriSpeak 2018.",
+      "design": "between-subjects, 6 conditions, 2 outcomes, 1-7",
+      "verified_against": "no published reference; an independent checker re-derived all 5,524 rows from the .sav and the fielded NORC questionnaire (OSF 6sfc7), 0 missing, extra or wrong, and confirmed the deposit's Q9_INS is wrong on 705 rows while answers follow P_TESS14_2 (10 Oct 2026)"
+    },
+    "xk9ch_vignette2": {
+      "category": "moral/social/cognition",
+      "description": "Femininity, masculinity and liberal-conservative placement of a man (Jacob) or woman (Hannah) described as religious or not and dogmatic or open. 2x2x2 vignette, AmeriSpeak 2018.",
+      "design": "between-subjects 2x2x2, 3 outcomes, 1-7; conditions from P_TESS14_2 (the deposit's Q9_INS insert variable is wrong on 705 rows)",
+      "verified_against": "no published reference; an independent checker re-derived all 8,269 rows from the .sav and the fielded NORC questionnaire (OSF 6sfc7), 0 missing, extra or wrong, and confirmed the deposit's Q9_INS is wrong on 705 rows while answers follow P_TESS14_2 (10 Oct 2026)"
+    },
+    "xk9ch_identity_threat": {
+      "category": "moral/social/cognition",
+      "description": "After answering gender self-rating questions, respondents are shown a bogus 'Masculinity/Femininity Score' of 16 (threatened) or 39 (affirmed) on a 0-50 index, then report their own religious comfort, religiosity and certainty. The fielded graph with an 'average range' band is not rendered. AmeriSpeak 2018.",
+      "design": "between-subjects 2 conditions, 3 outcomes; religion left out of the persona (outcomes are own religiosity)",
+      "verified_against": "no published reference; an independent checker re-derived all 8,335 rows from the .sav and the fielded NORC questionnaire (OSF 6sfc7), 0 missing, extra or wrong, and confirmed the deposit's Q9_INS is wrong on 705 rows while answers follow P_TESS14_2 (10 Oct 2026)"
+    },
+    "s6urt": {
+      "category": "health communication",
+      "description": "A news article on red meat and cancer, starting from 'limit red meat' or 'do not limit', with conflicting information as mixed evidence, disagreement between sources, a source reversing itself, or no conflict; effects on confusion, frustration, trust in scientists and diet intentions. AmeriSpeak 2021.",
+      "design": "between-subjects 2x4 (8 arms), 17 outcomes; Q1G (scientific community agrees) kept but close to a manipulation check",
+      "verified_against": "no published outcome statistics (the Project Report gives N = 1,027, matched); an independent checker re-derived all 17,402 rows from the .sav (0 missing, extra or wrong) and matched all 8 article texts byte-for-byte to the fielded Programming Questionnaire (10 Oct 2026)"
+    },
+    "del_sandbox_jun2022_ukraine_choice": {
+      "category": "political preferences/policy",
+      "description": "Why the war in Ukraine matters: asked why they personally, or why other people in the UK, take an interest in it, respondents pick between two statements drawn at random from 14, or say no interest, on five screens. DEL sandbox, June 2022.",
+      "design": "between-subjects self vs others question (2 groups) x within-subject paired choice (5 screens, pair drawn per screen, display order not recorded and not claimed); nominal 3-option answer including an opt-out",
+      "verified_against": "no published reference; an independent checker re-derived all 10,935 rows from the .sav (0 missing, extra or wrong), confirmed each group's on-screen pair from the piped answer labels, and confirmed no COVID or NHS wording in the experiment (10 Oct 2026)"
+    },
+    "ukds_6849_automation_w14": {
+      "category": "economics/behavioural",
+      "description": "Working respondents read that experts predict new technology could do 50% or 10% of all jobs within 20 or 5 years, or a balanced control ('Some experts think... Other experts think...'), then rate nine statements about their own work: replacement worry, opportunity, importance of skills, willingness to retrain. Wave 14 (2021).",
+      "design": "2x2 between-household (severity x timeframe) plus control, 5 cells, allocated in n_hhsamp_ip (n_ff_techworkw14); 9 outcomes, 1-5 agree; condition is the vignette word-for-word with no narration",
+      "verified_against": "no published reference; an independent checker rebuilt all 15,020 rows from the raw files (0 mismatches), matched every cell's vignette byte-for-byte to the questionnaire page's fill boxes, confirmed routing equals the module universe, and confirmed the five dropped items precede the vignette (10 Oct 2026)"
     }
   }
 }

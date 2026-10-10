@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**72 experiments.** 17 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 26 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**81 experiments.** 20 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 27 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 33 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 17 | 186,010 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 20 | 220,189 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 26 | 329,928 | **no** — UKDS End User Licence |
-| US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **72** | **813,141** | |
+| UK — UK Data Service (End User Licence) | 27 | 344,948 | **no** — UKDS End User Licence |
+| US transfer — TESS | 33 | 328,964 | **no** — no licence stated |
+| **Total** | **81** | **907,369** | |
 
 ---
 
@@ -25,6 +25,8 @@
 | `ukds_6849_ghq_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: GHQ-12, as… | UK Data Service | `UKDS SN 6849` | 36,447 |
 | `del_panel_w4_climate_harm_stories` | Development Engagement Lab, Panel Great Britain wave 4 (2022): clim… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 28,109 |
 | `ukds_6849_vig_flexstigma_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.39: measuring … | UK Data Service | `UKDS SN 6849` | 17,656 |
+| `del_sandbox_jul2020_global_goals` | Development Engagement Lab, Sandbox Great Britain July 2020: global… | Harvard Dataverse | `doi:10.7910/DVN/LLM8VW` | 15,888 |
+| `ukds_6849_automation_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.30: intentions… | UK Data Service | `UKDS SN 6849` | 15,020 |
 | `ukds_6849_caring_activity_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 13,875 |
 | `POMIFD` ⚠ | Replication Data for: The Variable Persuasiveness of Political Rhet… | Harvard Dataverse | `doi:10.7910/DVN/POMIFD` | 13,268 |
 | `ukds_6849_eq5d5l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 13,203 |
@@ -33,6 +35,7 @@
 | `del_panel_w3_ngo_conjoint_petition` | Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO … | Harvard Dataverse | `doi:10.7910/DVN/CCUZYI` | 12,405 |
 | `ukds_6849_itemcount_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.17: measuring … | UK Data Service | `UKDS SN 6849` | 12,320 |
 | `35M5CV_sky` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 12,055 |
+| `del_sandbox_jun2022_ukraine_choice` | Development Engagement Lab, Sandbox Great Britain June 2022: why th… | Harvard Dataverse | `doi:10.7910/DVN/ELT7M0` | 10,935 |
 | `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
 | `ukds_6849_eq5d3l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 8,698 |
 | `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,345 |
@@ -40,6 +43,7 @@
 | `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
 | `ukds_6849_satisfaction_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.20: presentati… | UK Data Service | `UKDS SN 6849` | 8,025 |
 | `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
+| `del_panel_w5_who_must_change` | Development Engagement Lab, Panel Great Britain wave 5 (2023): who … | Harvard Dataverse | `doi:10.7910/DVN/FTRXFO` | 7,356 |
 | `ukds_6849_vig_ageing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 6,600 |
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
@@ -67,6 +71,7 @@
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
 | `b87sm` ⚠ | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | TESS (OSF) | `osf.io/b87sm` | 19,282 |
 | `8ctbk` ⚠ | Childbearing Preferences in the Face of Work, Family, and Financial… | TESS (OSF) | `osf.io/8ctbk` | 17,464 |
+| `s6urt` ⚠ | Understanding Effects of Communicating Different Types of Conflicti… | TESS (OSF) | `osf.io/s6urt` | 17,402 |
 | `cug34_B01_B09` ⚠ | Public Perceptions of Money in Families | TESS (OSF) | `osf.io/cug34` | 15,091 |
 | `z358z` ⚠ | Randomized Drug Trials without Consent? The Public's Perspective | TESS (OSF) | `osf.io/z358z` | 14,702 |
 | `ye2ej` ⚠ | The Wages of Parenthood: At the Intersection of Sexual Orientation … | TESS (OSF) | `osf.io/ye2ej` | 12,971 |
@@ -74,6 +79,8 @@
 | `yv2ta_flexible_scheduling` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material… | TESS (OSF) | `osf.io/yv2ta` | 12,131 |
 | `sh4px` ⚠ | Self-Affirmation and Affect: Effects on Implementation Intentions | TESS (OSF) | `osf.io/sh4px` | 11,532 |
 | `zaqkm` ⚠ | Causal Attributions, Treatability, and Mental Illness Stigma | TESS (OSF) | `osf.io/zaqkm` | 9,528 |
+| `xk9ch_identity_threat` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,335 |
+| `xk9ch_vignette2` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,269 |
 | `a42yg` ⚠ | Conflict between curative and palliative goals among health care pe… | TESS (OSF) | `osf.io/a42yg` | 8,022 |
 | `py9q3_vignette1` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 6,667 |
 | `py9q3_vignette3` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 6,659 |
@@ -81,6 +88,8 @@
 | `9263n` ⚠ | To Do, to Have, or to Share? Valuing Experiences and Material Posse… | TESS (OSF) | `osf.io/9263n` | 6,328 |
 | `a2nbf` ⚠ | An Experiment Testing Possible Question-Wording Effects on Key Gene… | TESS (OSF) | `osf.io/a2nbf` | 6,211 |
 | `9xw67_vignette` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 5,816 |
+| `xk9ch_institution` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 5,524 |
+| `xk9ch_vignette1` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 5,499 |
 | `py9q3_vignette2` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 5,005 |
 | `sd7cf` ⚠ | Framing in Noisy Informational Environments | TESS (OSF) | `osf.io/sd7cf` | 4,124 |
 | `dh3nj` ⚠ | Public Perceptions of Prenatal Alcohol Consumption | TESS (OSF) | `osf.io/dh3nj` | 4,001 |
@@ -125,6 +134,19 @@ Before rating how much climate change will harm themselves, their family, people
 - **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
 - **Verified against** — no published reference; an independent checker re-derived all 28,109 rows from the raw .sav (0 missing, extra or duplicate), matched every condition and outcome string to the questionnaire, and compared all 403 columns to confirm the fifth group answered no story variable (10 Oct 2026)
 
+### `del_sandbox_jul2020_global_goals`
+
+**Development Engagement Lab, Sandbox Great Britain July 2020: global goals messages**
+
+Support (0-10) for the government's efforts on three UN 2030 goals: safe drinking water, deaths of newborns and children under 5, and aid to reduce extreme poverty. Each goal is rated on its own, after supporting facts, and after a counter-claim ("some people say..."). DEL sandbox, July 2020.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/LLM8VW`
+- **Type** — within-subject, 3 goals x 3 screens; the order is randomised between subjects: 6 goal orders x 2 follow-up orders = 12 groups; each row's condition is everything shown in the block up to its screen, in that group's order
+- **Category** — political preferences/policy
+- **Rows** — 15,888 from 1,932 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/LLM8VW
+- **Verified against** — no published reference; an independent checker rebuilt all 108 cell conditions from the fielded script byte-for-byte, re-derived all 15,888 rows (0 missing or extra), confirmed no screen order was randomised within groups, and found the 'You rated' narration false for 1,593 rows, now 'You were asked to rate' (10 Oct 2026). Not pandemic-framed; 376 respondents saw a pandemic-and-poverty statement one screen earlier from a separate randomisation (rich: keep)
+
 ### `del_panel_w3_ngo_conjoint_donate`
 
 **Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO conjoint, which would you donate to**
@@ -163,6 +185,19 @@ Five-item battery measuring strength of emotional attachment to one's own Brexit
 - **Rows** — 12,055 from 2,411 respondents
 - **Licence** — CC0 1.0 Universal
 - **Verified against** — the paper's own Table 2 — all four identity-group scale means, weighted by the deposit's own `Weights` column, reproduced to the paper's printed 1dp precision; see scripts/verify_35M5CV_sky.py
+
+### `del_sandbox_jun2022_ukraine_choice`
+
+**Development Engagement Lab, Sandbox Great Britain June 2022: why the war in Ukraine matters, me or others**
+
+Why the war in Ukraine matters: asked why they personally, or why other people in the UK, take an interest in it, respondents pick between two statements drawn at random from 14, or say no interest, on five screens. DEL sandbox, June 2022.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/ELT7M0`
+- **Type** — between-subjects self vs others question (2 groups) x within-subject paired choice (5 screens, pair drawn per screen, display order not recorded and not claimed); nominal 3-option answer including an opt-out
+- **Category** — political preferences/policy
+- **Rows** — 10,935 from 2,187 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/ELT7M0
+- **Verified against** — no published reference; an independent checker re-derived all 10,935 rows from the .sav (0 missing, extra or wrong), confirmed each group's on-screen pair from the piped answer labels, and confirmed no COVID or NHS wording in the experiment (10 Oct 2026)
 
 ### `PMV0TG`
 
@@ -228,6 +263,19 @@ Respondents are told to imagine they have won a substantial lottery prize, or to
 - **Rows** — 7,506 from 7,506 respondents
 - **Licence** — CC0 1.0 Universal
 - **Verified against** — the paper's own Table D.1 — N, control mean and both regression coefficients
+
+### `del_panel_w5_who_must_change`
+
+**Development Engagement Lab, Panel Great Britain wave 5 (2023): who must change for the climate**
+
+Agreement that the climate crisis means "I will need to make big changes to my lifestyle to reduce my personal impact on the environment", or that "the UK Government will need to make big changes to society to reduce the impact on the environment". Who, what and whose impact vary together. DEL panel wave 5 (2023).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/FTRXFO`
+- **Type** — two-version statement split (changesplit, 4,006 / 4,012), one outcome per respondent, 5-point agree-disagree; condition narrated as the statement shown
+- **Category** — moral/social/cognition
+- **Rows** — 7,356 from 7,356 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/FTRXFO
+- **Verified against** — no published reference; an independent checker re-derived all 7,356 rows from the raw .sav (0 missing, extra or wrong), matched both statements and the instruction to the questionnaire, and confirmed person ids, ages and genders agree with the same people in the other DEL builds (10 Oct 2026)
 
 ### `6MRVOM_brexit_scenario`
 
@@ -357,6 +405,19 @@ Respondents who had drunk alcohol in the past year report how much they drink on
 - **Rows** — 4,208 from 2,116 respondents
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.36. What IS verified: (a) the household join, by the data's own structure: all 4,208 answers sit in the respondent's own version's variables and none in the other's (scripts/gen_ip_alcohol.py --check), and a scrambled join fails it; (b) on every row, the question is its version's own, word-for-word against a table written from the questionnaire, and the 6-or-8 threshold matches the respondent's sex (0 mismatches in 2,112 binge rows); (c) 4,208 rows, reached by the generator's count and the pipeline. tests/test_ip_alcohol.py
+
+### `ukds_6849_automation_w14`
+
+**Understanding Society Innovation Panel, experiment 9.30: intentions to prepare for automation, threat severity x timeframe vignette (wave 14)**
+
+Working respondents read that experts predict new technology could do 50% or 10% of all jobs within 20 or 5 years, or a balanced control ('Some experts think... Other experts think...'), then rate nine statements about their own work: replacement worry, opportunity, importance of skills, willingness to retrain. Wave 14 (2021).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2x2 between-household (severity x timeframe) plus control, 5 cells, allocated in n_hhsamp_ip (n_ff_techworkw14); 9 outcomes, 1-5 agree; condition is the vignette word-for-word with no narration
+- **Category** — economics/behavioural
+- **Rows** — 15,020 from 1,673 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker rebuilt all 15,020 rows from the raw files (0 mismatches), matched every cell's vignette byte-for-byte to the questionnaire page's fill boxes, confirmed routing equals the module universe, and confirmed the five dropped items precede the vignette (10 Oct 2026)
 
 ### `ukds_6849_caring_activity_w17`
 
@@ -697,6 +758,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `a5v96_vignette1` | What fosters patients' acceptance of Clinical Decision Support? (vi… | health communication | 3,621 | 1,211 | osf.io/a5v96 |
 | `bf8p2` | Does Misery Love Company? Exploration of a Strategic Social Comparison | health communication | 1,998 | 1,998 | osf.io/bf8p2 |
 | `dh3nj` | Public Perceptions of Prenatal Alcohol Consumption | health communication | 4,001 | 2,002 | osf.io/dh3nj |
+| `s6urt` | Understanding Effects of Communicating Different Types of Conflicti… | health communication | 17,402 | 1,027 | osf.io/s6urt |
 | `sh4px` | Self-Affirmation and Affect: Effects on Implementation Intentions | health communication | 11,532 | 1,161 | osf.io/sh4px |
 | `z358z` | Randomized Drug Trials without Consent? The Public's Perspective | health communication | 14,702 | 2,130 | osf.io/z358z |
 | `zaqkm` | Causal Attributions, Treatability, and Mental Illness Stigma | health communication | 9,528 | 1,607 | osf.io/zaqkm |
@@ -705,6 +767,10 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `9xw67_vignette` | Blame and Bias in Trust in Public Policy Algorithms | moral/social/cognition | 5,816 | 1,846 | osf.io/9xw67 |
 | `b87sm` | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | moral/social/cognition | 19,282 | 1,942 | osf.io/b87sm |
 | `es4xw` | Perceptions of Diversity Across Groups | moral/social/cognition | 32,228 | 2,501 | osf.io/es4xw |
+| `xk9ch_identity_threat` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,335 | 2,783 | osf.io/xk9ch |
+| `xk9ch_institution` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,524 | 2,785 | osf.io/xk9ch |
+| `xk9ch_vignette1` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,499 | 2,786 | osf.io/xk9ch |
+| `xk9ch_vignette2` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,269 | 2,786 | osf.io/xk9ch |
 | `zrwjp` | The Barriers of Buying Happier Time | moral/social/cognition | 2,532 | 1,271 | osf.io/zrwjp |
 | `5hqan` | Gender Identity and Diversity | survey methodology | 6,411 | 2,139 | osf.io/5hqan |
 | `a2nbf` | An Experiment Testing Possible Question-Wording Effects on Key Gene… | survey methodology | 6,211 | 1,567 | osf.io/a2nbf |
@@ -729,11 +795,11 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 9 | 1 | 155,556 |
-| health communication | 0 | 7 | 53,404 |
-| moral/social/cognition | 4 | 6 | 136,555 |
+| economics/behavioural | 10 | 1 | 170,576 |
+| health communication | 0 | 8 | 70,806 |
+| moral/social/cognition | 5 | 10 | 171,538 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 9 | 0 | 94,011 |
+| political preferences/policy | 11 | 0 | 120,834 |
 | survey methodology | 11 | 5 | 200,567 |
 | work/family/gender | 7 | 8 | 135,075 |
 

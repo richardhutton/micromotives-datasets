@@ -1,0 +1,247 @@
+study_id: xk9ch
+experiment: identity_threat
+source: tess
+title: "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists"
+data_file: PN8041_TESS14Schnabel.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10: node xk9ch
+  and its child component 6sfc7 "Data and Materials" both have node_license null and
+  no license relationship). TESS archived its post-2009 projects through the Roper
+  Center and its own site states no reuse terms; TESS has since suspended
+  operations. So there is no explicit grant of redistribution rights for this
+  deposit, and none should be assumed.
+
+# Not in SocSci210 (catalogue in_socsci210 = no), so there is no answer key to
+# crosscheck against. Verified instead by an independent re-derivation of every
+# row from the .sav (see notes, VERIFICATION).
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 014 (Schnabel, Indiana University; NORC AmeriSpeak, web only, English
+  only), fielded 8 Mar - 11 Apr 2018, 2,789 completes. One of FOUR independent
+  experiments in this deposit, each its own recipe: xk9ch_vignette1,
+  xk9ch_institution, xk9ch_vignette2, xk9ch_identity_threat (this file). Sources,
+  provenance and Jev resolutions are as recorded in xk9ch_vignette1's notes and
+  are repeated here only where this experiment differs.
+
+  Q = 8041_TESS014_Schnabel_v6clean.docx, the FIELDED programming questionnaire,
+  from OSF component 6sfc7 (https://osf.io/download/4v6yu/, sha256
+  dd7260463ecb91ffabb4dbdc9c688ef34ff176cc8bc15c65a4998aa0f1a4c127), fetched
+  2026-10-10 to data/raw/xk9ch/quex/; NOT in the deposit zip. Line numbers are
+  1-based into its textutil .txt with blank lines removed.
+
+
+  THE DESIGN
+
+  Bogus gender-identity feedback. After rating themselves on eight personality
+  characteristics (Q14-Q21) and on femininity and masculinity (Q22/Q23), every
+  respondent is shown DISPLAY5 (Q 696-708): an invented "gender identity score"
+  on a 0-50 index, framed as masculinity for men and femininity for women. The
+  score is NOT computed from the answers; it is assigned at random by P_TESS14_4
+  (Q 298-301: 1 = threatened, 2 = affirmed) as 16 or 39 (Q 699: "[IF
+  P_TEST14_4=1, INSERT: 16; IF P_TEST14_4=2, INSERT: 39]" - the questionnaire
+  spells the variable P_TEST14_4 there and P_TESS14_4 in its preload table; the
+  .sav has only P_TESS14_4, labelled 1 'threatened' 2 'affirmed', which matches
+  16 = low = threat). The proposal says the same in a researcher note ("arbitrary
+  scores assigned at random ... Half of respondents should see a score of 16 and
+  half a score of 39"); it is cited for the design only, not for wording.
+  Between-subject. Counts: 1,399 threatened / 1,390 affirmed, all 2,789
+  populated; crossed with GENDER 638/761 and 654/736.
+
+  CONDITION MAPPING (declared): raw 1 -> 0 (threatened, 16), raw 2 -> 1
+  (affirmed, 39).
+
+
+  CONDITION TEXT
+
+  The display wording depends on the RESPONDENT's gender (masculinity/men for
+  GENDER=1, femininity/women for GENDER=2). That is not a manipulation - it is
+  the same screen phrased for who is reading it - so it is resolved per row from
+  GENDER via `respondent_vars`, the a2nbf mechanism, never as an arm. GENDER is
+  1 or 2 for all 2,789 respondents (the label's 0 "Unknown" does not occur), so
+  every row resolves. The directives are the questionnaire's own, respelled from
+  "[IF GENDER=1, INSERT: x; ...]" to "[IF GENDER=1 INSERT: x; ...]" (comma
+  dropped): with the comma `sources.quex` resolves the branch to ": x", leaving a
+  stray colon in the row. Directive syntax only; no word a respondent read
+  changes. Reported to the caller as a quex grammar gap; src/ not touched.
+
+  shared_context, in three parts:
+    1. NARRATION, added by us (CONVENTIONS, narrating what the respondent did),
+       word-for-word: "You had just been asked questions about yourself: how
+       well a number of personality characteristics describe you, and how
+       feminine and how masculine you see yourself. You were then shown:". True
+       for every respondent in both arms (Q14-Q23 immediately precede DISPLAY5
+       for everyone, Q 583-694), no numbers, no position. "been asked", not
+       "answered": 4 respondents skipped all of Q14-Q23 (all ten coded 98); 1 of
+       them answered a Q24-Q26 item and so has a row here, for which "answered"
+       would be false. Without it, the display's
+       "your responses to the previous questions" and "based on your responses"
+       point at questions the row never mentions.
+    2. Q 697, word-for-word: "People are often interested in how their responses
+       to the previous questions relate to how other people answered them."
+    3. Q 698, word-for-word with the gender directives: "The following is your
+       gender identity score based on your responses. It has been placed on a 0
+       to 50 index running from "low ..." to "high ...." Those lower on the scale
+       have less ... gender identities, those higher on the scale have more ...
+       gender identities." (curly quotes straightened).
+  Arm text is Q 699 with the arm's score: "Your [Masculinity/Femininity] Score:
+  16" or "... Score: 39".
+
+  NOT RENDERED, AND THIS IS THE RECIPE'S RISKIEST JUDGEMENT: Q 700, "Below is a
+  line graph of average scores for [men/women]. We have indicated your score
+  with an "X" on the line.", and the graph itself.
+
+  The graph DOES exist in the fielded questionnaire. The .txt conversion keeps
+  only the four placeholders ("THREATENED MALE [SHOW IF GENDER=1 and
+  P_TEST14_4=1]", "AFFIRMED MALE ...", "THREATENED FEMALE ...", "AFFIRMED
+  FEMALE ...", Q 701-708), but the .docx embeds the four images directly under
+  them, in that order: word/media/image3.png .. image6.png (rId10-rId13;
+  image1/image2 are earlier in the document). Read by eye, 2026-10-10: each is a
+  dashed horizontal 0-50 line labelled "Low Masculinity" / "High Masculinity"
+  (or "Low Femininity" / "High Femininity"), with ticks at 0, 25 and 50 and an
+  "X" at the respondent's score. Beneath it a bracket labelled "Average Male
+  Range" (or "Average Female Range") runs from about 15 to about 45. So the
+  threatened respondent's X at 16 sits right at the bottom edge of the average
+  band, and the affirmed respondent's X at 39 sits well inside it, near its top.
+  (An earlier version of these notes said the images were not in the deposit.
+  That was wrong: the textutil conversion had dropped them.)
+
+  Why it is still not rendered: the row format carries text, and turning the
+  picture into words would mean writing a description of a stimulus that
+  respondents saw as an image. That description would be ours, not the
+  instrument's ("Never invent stimulus text", CONVENTIONS). Keeping only the Q 700
+  sentence would point the row at a graph it does not contain. So both the
+  sentence and the graph are left out. The arm-varying element, the score (16
+  vs 39), IS in the row, along with the display's own 0-50 framing. What is
+  lost is the band: the "Average Male/Female Range" bracket was what placed 16
+  at the bottom edge of normal and 39 comfortably inside it. A model sees "16 on
+  a 0 to 50 index" without that reference, so the manipulation is expressed but
+  more weakly than respondents experienced it. A checker may prefer to drop the
+  experiment.
+
+  "Considered: condition names the respondent's own persona category". The
+  rendered condition says "masculinity"/"men" to men and "femininity"/"women" to
+  women, and the persona carries gender. The outcomes are religiosity items, not
+  derivable from that by substitution, so this is not the X08IVC case; gender is
+  kept.
+
+
+  OUTCOMES - 3 BUILT (Q24-Q26, Q 710-732, immediately after DISPLAY5)
+
+    task 0  Q24  "How often do you find comfort in your religion or
+                 spirituality?" 1 "Many times a day" .. 7 "Never"
+    task 1  Q25  "To what extent do you consider yourself a religious person?
+                 Are you...?" 1 "Very religious" .. 4 "Not religious at all"
+    task 2  Q26  "To what extent are you certain that your views about religion
+                 are right and that other views are wrong?" 1 "Very certain" ..
+                 4 "Not certain at all"
+
+  Every option is labelled in the source, so each is enumerated word-for-word in
+  the question, numbered (EQ-5D precedent). Q24's screen opens "Now we have just
+  a few more questions." - survey mechanics, dropped. "Are you…?" has its
+  ellipsis character normalised to "...". Codes are kept as fielded (Q24 1 =
+  most often; Q25/Q26 1 = most religious/certain) - no reversal.
+
+  Missing: 98 SKIPPED ON WEB (Q24 6, Q25 11, Q26 15) dropped; 77/99 labelled,
+  do not occur.
+
+  These are the only outcomes after the treatment: the remaining items (RELIG,
+  ATTEND, D6, D8, QPA014A, QPA015A, Q27) are panel-profile re-asks shown only
+  where the profile is missing, or are not religiosity/identity outcomes of the
+  design. Q25 is also a panel-profile item (PA025, asked pre-study, 197 missing);
+  PA025 is NOT put in the persona, for the reason below.
+
+
+  PERSONA - RELIGION EXCLUDED
+
+  Same map as xk9ch_vignette1 EXCEPT religion (RELIG), which is removed: all
+  three outcomes are the respondent's own religiosity, and a persona naming
+  their religion ("Atheist (do not believe in God)", "Nothing in particular")
+  sits in the outcome's own domain (EFXNLX ruling) and largely answers Q25. For
+  the same reason PA025, D8 and ATTEND are not added. Ideology and party ID are
+  kept: correlated with religiosity, but not the same construct.
+
+
+  UK TRANSFER
+
+  Transfers: the feedback screen and the three religiosity items carry no
+  US-specific content.
+
+
+  VERIFICATION
+
+  Every built row re-derived independently from the .sav (scratchpad
+  verify_xk9ch.py), including the gender-resolved condition text: 0 missing, 0
+  extra, 0 wrong. Counts in the maker report.
+
+condition:
+  source_var: P_TESS14_4
+  factors: [feedback]
+  considered_and_rejected:
+    P_TESS14_1: "The Vignette 1 assignment; an independent experiment built as xk9ch_vignette1, administered well before DISPLAY5."
+    P_TESS14_2: "The Vignette 2 assignment; an independent experiment built as xk9ch_vignette2."
+    P_TESS14_3: "The institution-term assignment; an independent experiment built as xk9ch_institution."
+    RND_00: "Routes the open-ended Q3/Q8/Q11, all before DISPLAY5; no effect on this display or its outcomes."
+    RND_01: "Reverses grid row order in Q1/Q2, Q6/Q7, Q9/Q10, Q22/Q23 (Q 309), all before DISPLAY5; no effect on this display or its outcomes."
+  shared_context: >-
+    You had just been asked questions about yourself: how well a number of
+    personality characteristics describe you, and how feminine and how masculine
+    you see yourself. You were then shown: People are often interested in how
+    their responses to the previous questions relate to how other people answered
+    them. The following is your gender identity score based on your responses. It
+    has been placed on a 0 to 50 index running from "low [IF GENDER=1 INSERT: masculinity; IF GENDER=2 INSERT: femininity]" to "high [IF GENDER=1 INSERT: masculinity; IF GENDER=2 INSERT: femininity]."
+    Those lower on the scale have less [IF GENDER=1 INSERT: masculine; IF GENDER=2 INSERT: feminine] gender identities, those higher on
+    the scale have more [IF GENDER=1 INSERT: masculine; IF GENDER=2 INSERT: feminine] gender identities.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {feedback: threatened}
+      text: "Your [IF GENDER=1 INSERT: Masculinity; IF GENDER=2 INSERT: Femininity] Score: 16"
+    - raw: 2
+      condition_num: 1
+      factors: {feedback: affirmed}
+      text: "Your [IF GENDER=1 INSERT: Masculinity; IF GENDER=2 INSERT: Femininity] Score: 39"
+
+outcomes:
+  - var: Q24
+    task_num: 0
+    question: "How often do you find comfort in your religion or spirituality? 1 \"Many times a day\" 2 \"Every day\" 3 \"Most days\" 4 \"Some days\" 5 \"Once in a while\" 6 \"Almost never\" 7 \"Never\""
+    scale: {min: 1, max: 7, min_label: "Many times a day", max_label: "Never"}
+  - var: Q25
+    task_num: 1
+    question: "To what extent do you consider yourself a religious person? Are you...? 1 \"Very religious\" 2 \"Moderately religious\" 3 \"Slightly religious\" 4 \"Not religious at all\""
+    scale: {min: 1, max: 4, min_label: "Very religious", max_label: "Not religious at all"}
+  - var: Q26
+    task_num: 2
+    question: "To what extent are you certain that your views about religion are right and that other views are wrong? 1 \"Very certain\" 2 \"Moderately certain\" 3 \"Slightly certain\" 4 \"Not certain at all\""
+    scale: {min: 1, max: 4, min_label: "Very certain", max_label: "Not certain at all"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+# 98 SKIPPED ON WEB; 77 DON'T KNOW and 99 REFUSED are labelled on Q24-Q26 but do
+# not occur.
+missing_codes: [77, 98, 99]
+
+# GENDER resolves the masculinity/femininity wording of DISPLAY5, which varies by
+# respondent, not by arm. Declared so nothing resolves silently.
+respondent_vars: [GENDER]
+
+persona_missing:
+  IDEO: [-1]
+  PartyID7: [-1]
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO

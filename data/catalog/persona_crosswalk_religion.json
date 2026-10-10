@@ -43,7 +43,15 @@
     "Roman Catholic": "Roman Catholic",
     "Sikh": "Sikh",
     "United Reformed Church": "United Reformed Church",
-    "Pentecostal": "Pentecostal"
+    "Pentecostal": "Pentecostal",
+    "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah\u2019s Witness, etc.)": "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah\u2019s Witness, etc.)",
+    "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)": "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)",
+    "Atheist (do not believe in God)": "Atheist (do not believe in God)",
+    "Agnostic (not sure if there is a God)": "Agnostic (not sure if there is a God)",
+    "Nothing in particular": "Nothing in particular",
+    "Just Christian": "Just Christian",
+    "Unitarian (Universalist)": "Unitarian (Universalist)",
+    "Something else": "Something else"
   },
   "schemes": {
     "uk_yougov_religion": {
@@ -65,6 +73,35 @@
       "Yes - United Reformed Church": "United Reformed Church",
       "Yes \u2013 Orthodox Christian": "Orthodox Christian",
       "Yes - Pentecostal": "Pentecostal"
+    },
+    "us_amerispeak": {
+      "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah\u2019s Witness, etc.)": "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah\u2019s Witness, etc.)",
+      "Roman Catholic (Catholic)": "Roman Catholic",
+      "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)": "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)",
+      "Orthodox (Greek, Russian, or some other orthodox church)": "Orthodox Christian",
+      "Jewish (Judaism)": "Jewish",
+      "Muslim (Islam)": "Muslim",
+      "Buddhist": "Buddhist",
+      "Hindu": "Hindu",
+      "Atheist (do not believe in God)": "Atheist (do not believe in God)",
+      "Agnostic (not sure if there is a God)": "Agnostic (not sure if there is a God)",
+      "Nothing in particular": "Nothing in particular",
+      "Just Christian": "Just Christian",
+      "Unitarian (Universalist)": "Unitarian (Universalist)",
+      "Something else": "Something else"
+    },
+    "us_amerispeak_quoted": {
+      "\"Roman Catholic (Catholic)\u201d": "Roman Catholic",
+      "\"Mormon (Church of Jesus Christ of Latter-day Saints/LDS)\u201d": "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)",
+      "\"Orthodox (Greek, Russian, or some other orthodox church)\u201d": "Orthodox Christian",
+      "\"Jewish (Judaism)\u201d": "Jewish",
+      "\"Muslim (Islam)\u201d": "Muslim",
+      "\"Buddhist\u201d": "Buddhist",
+      "\"Hindu\u201d": "Hindu",
+      "\"Atheist (do not believe in God)\u201d": "Atheist (do not believe in God)"
+    },
+    "us_amerispeak_straight_apostrophe": {
+      "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)": "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah\u2019s Witness, etc.)"
     }
   }
 }

@@ -22,7 +22,11 @@
   "Wales": "Wales",
   "West Midlands": "West Midlands",
   "Yorkshire and the Humber": "Yorkshire and the Humber",
-  "Northern Ireland": "Northern Ireland"
+  "Northern Ireland": "Northern Ireland",
+  "Northeast": "Northeast",
+  "Midwest": "Midwest",
+  "South": "South",
+  "West": "West"
  },
  "schemes": {
   "uk_gor": {
@@ -54,6 +58,12 @@
    "Wales": "Wales",
    "Scotland": "Scotland",
    "Northern Ireland": "Northern Ireland"
+  },
+  "us_amerispeak": {
+   "Northeast": "Northeast",
+   "Midwest": "Midwest",
+   "South": "South",
+   "West": "West"
   }
  }
 }

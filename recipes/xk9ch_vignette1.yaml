@@ -1,0 +1,329 @@
+study_id: xk9ch
+experiment: vignette1
+source: tess
+title: "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists"
+data_file: PN8041_TESS14Schnabel.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10: node xk9ch
+  and its child component 6sfc7 "Data and Materials" both have node_license null and
+  no license relationship). TESS archived its post-2009 projects through the Roper
+  Center and its own site states no reuse terms; TESS has since suspended
+  operations. So there is no explicit grant of redistribution rights for this
+  deposit, and none should be assumed.
+
+# Not in SocSci210 (catalogue in_socsci210 = no), so there is no answer key to
+# crosscheck against. Verified instead by an independent re-derivation of every
+# row from the .sav (see notes, VERIFICATION).
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 014 (Schnabel, Indiana University; NORC AmeriSpeak, web only, English
+  only), fielded 8 Mar - 11 Apr 2018, 2,789 completes (field report pp. 2-3).
+  One of FOUR independent experiments in this deposit, each built as its own
+  recipe: xk9ch_vignette1 (this file), xk9ch_institution, xk9ch_vignette2,
+  xk9ch_identity_threat.
+
+
+  SOURCES AND PROVENANCE
+
+    Q  = 8041_TESS014_Schnabel_v6clean.docx, the FIELDED programming
+         questionnaire (NORC "Final programming questionnaire in Word document",
+         field report p. 4). NOT in the deposit zip: it is the second file of the
+         OSF component 6sfc7 "Data and Materials" under node xk9ch
+         (https://osf.io/download/4v6yu/, 124,796 bytes, sha256
+         dd7260463ecb91ffabb4dbdc9c688ef34ff176cc8bc15c65a4998aa0f1a4c127),
+         fetched 2026-10-10 into data/raw/xk9ch/quex/ and converted with macOS
+         textutil. Line numbers below are 1-based into that .txt with blank lines
+         removed (`grep -v '^\s*$'`).
+    PR = "2017-12-04 - Revised and with typo corrected - Schnabel Project
+         Description.docx", the PROPOSAL. Not used for any wording. It differs
+         from Q in ways that matter (Q5 "We'd like you to indicate" vs fielded
+         "Please indicate"; Q6 lacks the fielded "In general,"; the vignette
+         intro's first paragraph is different), which is the ledger #35 point
+         made again: the proposal is not the instrument.
+    CB = PN8041_TESS14_Codebook.xlsx and the .sav's own labels.
+    Data = PN8041_TESS14Schnabel.sav (2,789 rows x 104 columns), inside
+         Schnabel903.zip (https://osf.io/download/kvw3x/).
+
+
+  THE DESIGN
+
+  Q 218-245 (preload table): P_TESS14_1 is the Vignette 1 assignment, 8 versions,
+  religion (Christian / Muslim / Jewish / atheist) x gender of the person
+  described (woman "Sarah" / man "Adam"). Each respondent saw ONE version: this is
+  a between-subject 4 x 2 design. Counts 1..8: 353/348/350/316/348/360/359/355,
+  all 2,789 populated.
+
+  The vignette text (Q 344-367) is gated `[SHOW IF P_TESS14_1=n]`, one sentence
+  per version, transcribed word-for-word below. The follow-up questions insert
+  "Sarah" for versions 1-4 and "Adam" for 5-8 (Q 371, 404), carried here as
+  per-arm `items` overrides of the outcome wording.
+
+  Assignment checked against the data four ways: (1) the .sav's own
+  data-only insert variable Q1_INS (1 Sarah / 2 Adam) agrees with P_TESS14_1
+  in all 2,789 rows (1-4 -> Sarah, 5-8 -> Adam, zero off-diagonal); (2) mean
+  Feminine rating is 4.54 for the Sarah arms vs 2.41 for Adam, Masculine 2.24 vs
+  4.38; (3) the open-ended Q3 answers name the arm's own religion and no other
+  (e.g. arm 2 "Muslim": 5 mentions of muslim/islam, 0 of christ/jew; arm 8
+  "atheist": 13 of athe-, 0 of the others); (4) P_TESS14_1 is crossed with the
+  other three assignments with every cell non-empty (min 31 against P_TESS14_2).
+
+  CONDITION MAPPING (declared): condition_num = raw - 1, in the questionnaire's
+  version order.
+
+
+  CONDITION TEXT - WHAT IS WORD-FOR-WORD AND WHAT IS NOT
+
+  shared_context is Q 340, the second paragraph of DISPLAY1, word-for-word: "We
+  would like to know what you think about the following person. ..." It is
+  identical for every respondent.
+
+  DROPPED - the first paragraph of DISPLAY1 (Q 339 / Q 341). Its wording depends
+  on whether this vignette block was shown FIRST or SECOND: "We all develop quick
+  first impressions of people and things, often in less than a second and without
+  us realizing we're forming an impression. We often have limited information
+  when we make these first impressions." if first, "As we said earlier, people
+  often have limited information when they make first impressions." if second.
+  Q 331 randomises the order of the Vignette 1 and Vignette 2 blocks, and that
+  order is NOT recorded in the deposit: no variable in the .sav holds it (the
+  questionnaire's RND_02, Q 310, has no associated question and is absent from
+  the file; RND_00 and RND_01 are accounted for below). Rendering either version
+  would assert a block position that is wrong for about half the rows, so neither
+  is rendered (CONVENTIONS, sequence signposting; ledger #114).
+
+  Arm text is the single DISPLAY2 sentence, word-for-word. Nothing is narrated or
+  added. Typography normalised per CONVENTIONS (none needed in these sentences).
+
+
+  OUTCOMES - 2 BUILT
+
+    task 0  Q1  Feminine   1 "Not at all" .. 7 "Very Well"
+    task 1  Q2  Masculine  1 "Not at all" .. 7 "Very Well"
+
+  One grid (Q 369-397), stem "How well do you think the following terms describe
+  [Sarah/Adam]?". The stem's name insert varies by ARM, so it is set per arm via
+  `items[task].outcome_question`; the Outcome-level `question` is the Sarah form
+  and is overridden on every arm. The grid row's term is appended to the stem in
+  double quotes ("... describe Sarah? "Feminine""): the quotes are layout, added
+  by us to separate the row label from the stem; every word is the source's. The grid's two rows are shown in order or
+  reversed by RND_01 (Q 372); the columns Q1/Q2 are label-anchored (one column per
+  term regardless of display position, CB labels "[Feminine]"/"[Masculine]"), so
+  no recode is needed, and since each row carries one term, no row claims a
+  display position.
+
+  Missing: 98 "SKIPPED ON WEB" (43 on Q1, 36 on Q2) dropped; 77/99 are declared
+  per the panel's coding note (Q 316-318) but do not occur on these items.
+
+
+  EXCLUDED, WITH ROW COST
+
+  Q4_1..Q4_8 "Which three of the following characteristics best describe
+  [Sarah/Adam]?" - a pick-exactly-three multiple choice over 8 traits ([MP-3],
+  Q 402-421), stored as eight 0/1 columns. EXCLUDED. A row needs one question
+  and one answer; each 0/1 is only meaningful relative to the other seven
+  options, so a per-trait row would have to restate the option list, and Q 405
+  randomises that option order per respondent ("RANDOMIZE RESPONSE OPTIONS")
+  with no variable recording it. Any listed order would be one most respondents
+  did not see (ledger #114, #132). Cost: 8 x 2,789 = 22,312 potential 0/1 rows
+  (less 17 Q4_SKP respondents).
+
+  Q3OE (open-ended "Please write a few sentences about why you view ...", asked
+  of the RND_00=0 third) - free text, no bounded scale; not built.
+
+
+  PERSONA
+
+  AmeriSpeak standard demographics, as in b87sm/zaqkm/dh3nj. RELIG is a TESS
+  panel preload (Q 171-187, re-asked only if missing, Q 733-752), i.e. measured
+  before or independently of the stimulus. RELIG 1's SPSS label is severed at
+  "...Reformed, Church"; restored word-for-word from the fielded OSF questionnaire
+  (Q 173 and Q 739 agree) via persona_label_rewrite. RELIG 14 is a real answer
+  whose .sav label carries the text-box instruction ("Something else - Please
+  Specify:"); rewritten to "Something else", the label the fielded OSF
+  questionnaire's preload table gives it (Q 186; not in the deposit zip), as s6urt does. Caveat, as in s6urt: RELIG is
+  re-asked in-survey, AFTER the outcomes, only for panelists whose profile lacked
+  it (Q 734 "[SHOW IF MISSING P_RELIG]"); the .sav does not say which source each
+  value came from. RELIG 98 (2 respondents),
+  IDEO -1 (1), PartyID7 -1 (0 here; declared because the label is "Unknown")
+  are left empty. IDEO 8 "Haven't thought much about it" is a real answer and is
+  kept.
+
+  Considered and judged NOT a "condition names the persona category" case
+  (CONVENTIONS): the condition names a religion (Christian / Muslim / Jew /
+  atheist) and the persona carries the respondent's own religion. The outcome is
+  how feminine/masculine the described person is, which cannot be derived from
+  the religion string by substitution; the respondent's religion is a moderator
+  the study was designed around (PR: Jews, Muslims and atheists oversampled), so
+  it stays.
+
+  Not in the persona: D6/D8/ATTEND/PA025/QPA014A/QPA015A (study-requested
+  religiosity and vote items, kept out for parity with the other TESS builds and
+  because several are asked AFTER the stimulus); Q14-Q26 (post-stimulus).
+
+
+  UK TRANSFER
+
+  Catalogue says transfers fully. Agreed: the vignette needs no US-specific
+  knowledge (a named person, a religion, everyday activities). One caveat
+  recorded rather than acted on: the religious composition and salience of the
+  four groups differ between the US and UK, which affects what a respondent
+  brings, not what the item asks.
+
+
+  JEV (scripts/recipe_prep.py xk9ch --source tess, 2026-10-10)
+
+  Assignment: REVIEW, P_TESS14_4 0.41 vs RND_00 0.37. Both wrong for THIS
+  experiment, and the question itself is the wrong shape (ledger #87): the deposit
+  has four independent assignment columns, P_TESS14_1..4, so "which ONE column"
+  cannot have a single answer. Resolved from Q 218-301 (preload table) and the
+  [SHOW IF P_TESS14_1=n] gates: P_TESS14_1 here. RND_00 routes the three
+  open-ended questions (Q 398, 484, 549), RND_01 reverses grid rows (Q 372).
+  Persona: all ok at 1.00 except region, REVIEW REGION9 0.40 vs REGION4 0.47 -
+  REGION4 chosen, matching every other AmeriSpeak recipe (b87sm, zaqkm, dh3nj).
+  Labels: 135 asked, 0 Jev/regex disagreements; 'SKIPPED ON WEB' non-answer on
+  every outcome (conf >= 0.98) -> missing_codes. Directives quex refuses: three,
+  all routing for open-ended Q3/Q11 and the D6 born-again item, none gating
+  stimulus text built here.
+
+
+  VERIFICATION
+
+  Every built row re-derived independently from the .sav by a separate script
+  (scratchpad verify_xk9ch.py, not part of the pipeline): 0 missing, 0 extra, 0
+  wrong on (participant, condition_num, task, response, condition text, outcome
+  text). Counts in the maker report.
+
+condition:
+  source_var: P_TESS14_1
+  factors: [religion, gender]
+  considered_and_rejected:
+    P_TESS14_2: "The Vignette 2 assignment (Jacob/Hannah, religiousness x dogmatism x gender); an independent experiment built as xk9ch_vignette2. Crossed with P_TESS14_1, every cell non-empty."
+    P_TESS14_3: "The institution-term assignment (Christianity/Judaism/Islam/Atheism/Religion/Spirituality); an independent experiment built as xk9ch_institution."
+    P_TESS14_4: "Gender-identity score feedback (threatened 16 / affirmed 39), shown at DISPLAY5 (Q 696-708), AFTER every outcome of this recipe; built as xk9ch_identity_threat."
+    RND_00: "Routes which third of the sample gets which open-ended question (Q3 if 0, Q8 if 1, Q11 if 2; Q 398, 484, 549). Open-ended items are not built, and the text shown before Q1/Q2 does not depend on it."
+    RND_01: "Reverses the on-screen row order of the Feminine/Masculine grids (Q 372). Label-anchored columns, one term per row, so it changes no row's text or response coding."
+    Q1_INS: "Data-only record of the Sarah/Adam insert; a deterministic function of P_TESS14_1 (agrees in all 2,789 rows), not a separate randomisation."
+  shared_context: >-
+    We would like to know what you think about the following person. Please take
+    a moment to form an impression after reading about them. Then, answer the
+    questions that follow based on your impressions of the person.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {religion: Christian, gender: woman}
+      text: >-
+        Sarah is a committed Christian who enjoys spending time with her family
+        and friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Sarah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Sarah? \"Masculine\""}
+    - raw: 2
+      condition_num: 1
+      factors: {religion: Muslim, gender: woman}
+      text: >-
+        Sarah is a committed Muslim who enjoys spending time with her family and
+        friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Sarah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Sarah? \"Masculine\""}
+    - raw: 3
+      condition_num: 2
+      factors: {religion: Jewish, gender: woman}
+      text: >-
+        Sarah is a committed Jew who enjoys spending time with her family and
+        friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Sarah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Sarah? \"Masculine\""}
+    - raw: 4
+      condition_num: 3
+      factors: {religion: atheist, gender: woman}
+      text: >-
+        Sarah is a committed atheist who enjoys spending time with her family and
+        friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Sarah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Sarah? \"Masculine\""}
+    - raw: 5
+      condition_num: 4
+      factors: {religion: Christian, gender: man}
+      text: >-
+        Adam is a committed Christian who enjoys spending time with his family
+        and friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Adam? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Adam? \"Masculine\""}
+    - raw: 6
+      condition_num: 5
+      factors: {religion: Muslim, gender: man}
+      text: >-
+        Adam is a committed Muslim who enjoys spending time with his family and
+        friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Adam? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Adam? \"Masculine\""}
+    - raw: 7
+      condition_num: 6
+      factors: {religion: Jewish, gender: man}
+      text: >-
+        Adam is a committed Jew who enjoys spending time with his family and
+        friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Adam? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Adam? \"Masculine\""}
+    - raw: 8
+      condition_num: 7
+      factors: {religion: atheist, gender: man}
+      text: >-
+        Adam is a committed atheist who enjoys spending time with his family and
+        friends, watching TV, and going out to eat.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Adam? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Adam? \"Masculine\""}
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: "How well do you think the following terms describe Sarah? \"Feminine\""
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Very Well"}
+  - var: Q2
+    task_num: 1
+    question: "How well do you think the following terms describe Sarah? \"Masculine\""
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Very Well"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+# 98 SKIPPED ON WEB (the only one present on Q1/Q2); 77 DON'T KNOW and 99 REFUSED
+# per the panel's coding convention (Q 316-318).
+missing_codes: [77, 98, 99]
+
+persona_missing:
+  IDEO: [-1]
+  PartyID7: [-1]
+  RELIG: [77, 98, 99]
+persona_label_rewrite:
+  # SPSS severed this value label at "...Reformed, Church". Restored word-for-word
+  # from the fielded OSF questionnaire (Q 173, and again Q 739).
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+    # Real answer; the .sav label carries the text-box instruction "- Please
+    # Specify:". The OSF questionnaire's preload table (Q 186) labels it "Something
+    # else", which is what is used (same as s6urt).
+    14: "Something else"
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG

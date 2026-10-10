@@ -45,7 +45,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 17
+   "next": 16
   },
   {
    "source": "Innovation Panel",
@@ -91,7 +91,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.22,
-   "next": 20
+   "next": 19
   },
   {
    "source": "Innovation Panel",
@@ -103,7 +103,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 18
+   "next": 17
   },
   {
    "source": "Innovation Panel",
@@ -115,16 +115,16 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 28
+   "next": 27
   },
   {
    "source": "Innovation Panel",
    "id": "9.30",
    "title": "Vignettes: intentions to prepare for automation",
    "description": "Vignettes: automation threat severity × timeframe, 2×2.",
-   "details": "Wave 14",
+   "details": "15,020 rows; Wave 14; 2x2 + control, 9 outcomes",
    "category": "economics/behavioural",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.2,
    "next": 14
@@ -150,7 +150,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.19,
-   "next": 30
+   "next": 29
   },
   {
    "source": "Innovation Panel",
@@ -173,7 +173,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.19,
-   "next": 33
+   "next": 32
   },
   {
    "source": "Innovation Panel",
@@ -229,7 +229,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.17,
-   "next": 23
+   "next": 22
   },
   {
    "source": "Innovation Panel",
@@ -451,7 +451,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.29,
-   "next": 34
+   "next": 33
   },
   {
    "source": "DEL",
@@ -475,7 +475,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.28,
-   "next": 36
+   "next": 35
   },
   {
    "source": "DEL",
@@ -506,9 +506,9 @@
    "id": "W5_changesplit",
    "title": "Who must change for climate",
    "description": "'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree.",
-   "details": "Panel W5 2023; 2 conditions",
+   "details": "7,356 rows; Panel W5 2023; 2 conditions",
    "category": "moral/social/cognition",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.28,
    "next": 10
@@ -530,9 +530,9 @@
    "id": "Jun2022_choice",
    "title": "Why Ukraine matters, me or others",
    "description": "Asked about yourself or about other people in the UK, with random statement pairs. Answer: Pick one statement.",
-   "details": "Sandbox Jun 2022; 2 conditions",
+   "details": "10,935 rows; Sandbox Jun 2022; self vs others x 5 random statement pairs",
    "category": "moral/social/cognition",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.27,
    "next": 15
@@ -577,10 +577,10 @@
    "description": "Statement lists with and without a sensitive item about the Russia-Ukraine war. Answer: How many you agree with.",
    "details": "Sandbox Jun 2022; 3 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "Ruled out by rich on 10 Oct 2026: one filler statement mentions the NHS during COVID.",
    "novelty": 0.25,
-   "next": 16
+   "next": null
   },
   {
    "source": "DEL",
@@ -603,7 +603,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 26
+   "next": 25
   },
   {
    "source": "DEL",
@@ -615,7 +615,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 31
+   "next": 30
   },
   {
    "source": "DEL",
@@ -633,10 +633,10 @@
    "source": "DEL",
    "id": "Jul2020_experimentsplit",
    "title": "Global goals messages",
-   "description": "Water, child deaths and poverty goals, each told as progress, failure or mixed, in rotated orders. Answer: 0-10 support.",
-   "details": "Sandbox Jul 2020; 12 conditions",
+   "description": "Support for three UN goals (water, child deaths, poverty aid), each rated alone, after facts, and after a counter-claim; the order is randomised. Answer: 0-10 support.",
+   "details": "15,888 rows; Sandbox Jul 2020; 12 order conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.23,
    "next": 12
@@ -662,7 +662,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.2,
-   "next": 22
+   "next": 21
   },
   {
    "source": "DEL",
@@ -685,7 +685,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.15,
-   "next": 35
+   "next": 34
   },
   {
    "source": "DEL",
@@ -752,7 +752,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.33,
-   "next": 19
+   "next": 18
   },
   {
    "source": "TESS",
@@ -787,7 +787,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 32
+   "next": 31
   },
   {
    "source": "TESS",
@@ -799,7 +799,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 24
+   "next": 23
   },
   {
    "source": "TESS",
@@ -822,7 +822,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 29
+   "next": 28
   },
   {
    "source": "TESS",
@@ -856,7 +856,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.22,
-   "next": 21
+   "next": 20
   },
   {
    "source": "TESS",
@@ -901,7 +901,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 27
+   "next": 26
   },
   {
    "source": "TESS",
@@ -952,9 +952,9 @@
    "id": "s6urt",
    "title": "Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk",
    "description": "Three kinds of conflicting nutrition and cancer-risk information, and trust in health science.",
-   "details": "2021; UK priority 1.12; transfers: Full",
+   "details": "17,402 rows; 2021; 8 conditions, 17 outcomes",
    "category": "health communication",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.2,
    "next": 13
@@ -1140,9 +1140,9 @@
    "id": "xk9ch",
    "title": "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists",
    "description": "Are religions, and the people in them, seen as masculine or feminine?",
-   "details": "2018; UK priority 0.96; transfers: Full",
+   "details": "27,627 rows as four experiments (vignette1 5,499; institution 5,524; vignette2 8,269; identity threat 8,335); 2018",
    "category": "cross-national",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.15,
    "next": 11
@@ -1179,7 +1179,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.15,
-   "next": 25
+   "next": 24
   },
   {
    "source": "TESS",
@@ -2336,7 +2336,8 @@
    "Order: greedy diversity. Each pick is the candidate whose title sits furthest from everything built and already picked (Voyage title embeddings), discounted for categories we already hold many of; TESS also weighted by its UK priority score.",
    "Hand rule: DEL experiments whose conditions vary real numbers (Gender aid compared to others, 5 conditions; Gender gap progress, 4) replace 2-condition wording tests, because the title-only measure cannot see design.",
    "Excluded: pandemic-framed experiments (8 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment. Two were caught only on reading the instrument: the Apr 2020 aid statement bank and the Apr 2020 \"developing countries\" split.",
-   "Removed: With God on Our Side (TESS ga53m), ruled out by rich on 10 Oct 2026; later picks moved up one."
+   "Removed: With God on Our Side (TESS ga53m), ruled out by rich on 10 Oct 2026; later picks moved up one.",
+   "Removed: Ukraine list experiment (DEL Jun2022_list), ruled out by rich on 10 Oct 2026 for a COVID filler statement; later picks moved up one."
   ]
  }
 }

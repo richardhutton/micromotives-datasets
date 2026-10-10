@@ -29,7 +29,10 @@
     "Own with a mortgage": "Own with a mortgage",
     "Rent from a housing association": "Rent from a housing association",
     "Rent from a private landlord": "Rent from a private landlord",
-    "Rent from the local authority": "Rent from the local authority"
+    "Rent from the local authority": "Rent from the local authority",
+    "Owned or being bought by you or someone in your household": "Owned or being bought by you or someone in your household",
+    "Rented for cash": "Rented for cash",
+    "Occupied without payment of cash rent": "Occupied without payment of cash rent"
   },
   "schemes": {
     "uk_yougov_tenure": {
@@ -42,6 +45,11 @@
       "Neither \u2013 I live rent-free with my parents, family or friends": "Lives with family or friends, rent free",
       "Neither \u2013 I live with my parents, family or friends but pay some rent to them": "Lives with family or friends, paying rent",
       "Other": "Other"
+    },
+    "us_amerispeak": {
+      "Owned or being bought by you or someone in your household": "Owned or being bought by you or someone in your household",
+      "Rented for cash": "Rented for cash",
+      "Occupied without payment of cash rent": "Occupied without payment of cash rent"
     }
   }
 }

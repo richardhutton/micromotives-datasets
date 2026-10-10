@@ -1,0 +1,281 @@
+study_id: xk9ch
+experiment: vignette2
+source: tess
+title: "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists"
+data_file: PN8041_TESS14Schnabel.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10: node xk9ch
+  and its child component 6sfc7 "Data and Materials" both have node_license null and
+  no license relationship). TESS archived its post-2009 projects through the Roper
+  Center and its own site states no reuse terms; TESS has since suspended
+  operations. So there is no explicit grant of redistribution rights for this
+  deposit, and none should be assumed.
+
+# Not in SocSci210 (catalogue in_socsci210 = no), so there is no answer key to
+# crosscheck against. Verified instead by an independent re-derivation of every
+# row from the .sav (see notes, VERIFICATION).
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 014 (Schnabel, Indiana University; NORC AmeriSpeak, web only, English
+  only), fielded 8 Mar - 11 Apr 2018, 2,789 completes (field report pp. 2-3).
+  One of FOUR independent experiments in this deposit, each its own recipe:
+  xk9ch_vignette1, xk9ch_institution, xk9ch_vignette2 (this file),
+  xk9ch_identity_threat. Sources, provenance, persona and Jev resolutions are
+  as recorded in xk9ch_vignette1's notes and are repeated here only where this
+  experiment differs.
+
+  Q = 8041_TESS014_Schnabel_v6clean.docx, the FIELDED programming questionnaire,
+  from OSF component 6sfc7 (https://osf.io/download/4v6yu/, sha256
+  dd7260463ecb91ffabb4dbdc9c688ef34ff176cc8bc15c65a4998aa0f1a4c127), fetched
+  2026-10-10 to data/raw/xk9ch/quex/; NOT in the deposit zip. Line numbers are
+  1-based into its textutil .txt with blank lines removed. The proposal .docx is
+  not used for any wording.
+
+
+  THE DESIGN
+
+  Q 246-281 (preload table): P_TESS14_2 is the Vignette 2 assignment, a 2 x 2 x 2
+  of religiousness (not religious / very religious) x dogmatism (dogmatic / not
+  dogmatic) x gender of the person described (man "Jacob" / woman "Hannah").
+  Between-subject: one version per respondent. Counts 1..8:
+  346/352/354/348/343/332/347/367, all 2,789 populated.
+
+  Arm text is the DISPLAY4 paragraph gated [SHOW IF P_TESS14_2=n], Q 495-518,
+  word-for-word (curly apostrophes in "wouldn't" straightened per CONVENTIONS).
+  Factors are the questionnaire's own version labels (Q 249-281). Rule 5 minimal
+  pairs hold by construction: religiousness swaps the first two sentences,
+  dogmatism the last two, gender the name and pronouns.
+
+  CONDITION MAPPING (declared): condition_num = raw - 1, questionnaire order.
+
+  shared_context is Q 491 (second paragraph of DISPLAY3), word-for-word. DROPPED:
+  the first paragraph of DISPLAY3 (Q 490 / Q 492), whose wording depends on
+  whether this block was shown first or second (Q 331 randomises the order of the
+  two vignette blocks). That order is not recorded anywhere in the .sav, so
+  neither version is rendered (CONVENTIONS, sequence signposting; ledger #114).
+
+
+  Q9_INS - THE DEPOSIT'S OWN INSERT VARIABLE IS WRONG, AND IS NOT USED
+
+  The .sav carries Q9_INS, "DATA ONLY VARIABLE: Q9 INSERT" (1 Jacob / 2 Hannah),
+  and the codebook labels Q9/Q10/Q12/Q13 as describing "[INSERT: Q9_INS]". It
+  DISAGREES with P_TESS14_2 on 705 of 2,789 rows: in every one of the 8 arms
+  about a quarter carry the other name (arm 1: 265 Jacob / 81 Hannah; arm 8: 96
+  Jacob / 271 Hannah). The mismatch is unrelated to every other variable checked
+  (other assignments, RND_00, RND_01, gender, device, field date).
+
+  Which one did respondents see? P_TESS14_2, on two independent lines of
+  evidence:
+    - ratings: mean Feminine/Masculine follow P_TESS14_2's gender and are flat
+      across Q9_INS (P_TESS14_2 man: 2.27/4.31 where Q9_INS says Hannah, 2.34/
+      4.40 where it says Jacob; P_TESS14_2 woman: 4.20/2.69 and 4.20/2.59);
+    - the open-ended Q11 text: among the 136 P_TESS14_2-man respondents whose
+      Q9_INS says Hannah, 26 write "Jacob", 0 write "Hannah", 79 use he/him/his
+      and 0 she/her; mirror-image for the 128 P_TESS14_2-woman / Q9_INS-Jacob
+      respondents (18 "Hannah", 0 "Jacob", 68 she/her, 0 he).
+  The questionnaire also gates the vignette AND the follow-up insert on
+  P_TESS14_2 directly (Q 496-518, 522, 552, 555, 575). So Q9_INS is a defective
+  derived variable, and an analysis that conditioned on it would misgender a
+  quarter of the sample. By contrast vignette 1's Q1_INS agrees with P_TESS14_1
+  in all 2,789 rows.
+
+
+  OUTCOMES - 3 BUILT
+
+    task 0  Q9   Feminine   1 "Not at all" .. 7 "Very Well"
+    task 1  Q10  Masculine  1 "Not at all" .. 7 "Very Well"
+    task 2  Q13  political placement, 1 "Extremely Liberal" .. 7 "Extremely
+                 Conservative", every option labelled (Q 574-582)
+
+  Q9/Q10: one grid (Q 520-548), stem "How well do you think the following terms
+  describe [Jacob/Hannah]?", name set per arm via items[task].outcome_question.
+  The row's term is appended in double quotes - layout added by us, words the
+  source's. Rows reversed by RND_01, label-anchored, no order claimed.
+
+  Q13: "Where would you place [Jacob/Hannah] on the following political views
+  scale?" with its seven options enumerated word-for-word in the question as
+  numbered (EQ-5D precedent) and "Moderate" as the scale's labelled midpoint.
+  Q13 follows the pick-three Q12 (not built) and, for the RND_00=2 third, the
+  open-ended Q11 (not built); the row does not narrate either, as neither
+  changes what Q13 asks.
+
+  Missing: 98 SKIPPED ON WEB (Q9 39, Q10 42, Q13 16) and 77 DON'T KNOW (Q13 1)
+  dropped.
+
+
+  EXCLUDED, WITH ROW COST
+
+  Q12_1..Q12_8 (pick exactly three of eight traits, option order randomised per
+  respondent with no record - Q 553-572 "[KEEP SAME RANDOMIZED ORDER AS Q4]") -
+  same reasoning as vignette1's Q4: 22,312 potential 0/1 rows. Q11OE free text.
+
+
+  PERSONA - AND ONE JUDGEMENT ABOUT IDEOLOGY
+
+  Same map and declarations as xk9ch_vignette1. Ideology (IDEO) and party
+  identification (PartyID7) are KEPT although Q13 asks the respondent to place
+  the described person on a liberal-conservative scale that is near-identical to
+  IDEO's own. Reasoning: the domain rule (EFXNLX) excludes a persona attribute
+  that restates the respondent's OWN position on the outcome; Q13 asks for a
+  perception of a third party, which a respondent's ideology moderates but does
+  not answer - an atheist and a believer, a liberal and a conservative all place
+  a "very religious ... dogmatic" Jacob, and nothing about the answer is
+  derivable by substitution. This is the recipe's riskiest persona call and is
+  flagged for the checker; the alternative is to drop IDEO/PartyID7 from this
+  recipe (losing them for Q9/Q10 too) or split Q13 into its own recipe.
+
+
+  UK TRANSFER
+
+  Transfers. Q9/Q10 need no US knowledge. Q13's "Liberal ... Conservative" scale
+  is the US ideological axis; "liberal" and "conservative" exist in UK usage but
+  "Liberal" there also names a party family and the axis is more usually
+  left-right. Flagged, not excluded: the item is still answerable by a UK
+  respondent, but its meaning shifts.
+
+
+  VERIFICATION
+
+  Every built row re-derived independently from the .sav (scratchpad
+  verify_xk9ch.py): 0 missing, 0 extra, 0 wrong. Counts in the maker report.
+
+
+condition:
+  source_var: P_TESS14_2
+  factors: [religiousness, dogmatism, gender]
+  considered_and_rejected:
+    P_TESS14_1: "The Vignette 1 assignment (Sarah/Adam x four religions); an independent experiment built as xk9ch_vignette1. Crossed with P_TESS14_2, every cell non-empty."
+    P_TESS14_3: "The institution-term assignment; an independent experiment built as xk9ch_institution."
+    P_TESS14_4: "Gender-identity score feedback (threatened 16 / affirmed 39), shown at DISPLAY5 (Q 696-708), AFTER every outcome of this recipe; built as xk9ch_identity_threat."
+    RND_00: "Routes which third of the sample gets which open-ended question (Q3 if 0, Q8 if 1, Q11 if 2; Q 398, 484, 549). Open-ended items are not built and the vignette text does not depend on it. Q11 sits between Q9/Q10 and Q13 for the RND_00=2 third; see notes."
+    RND_01: "Reverses the on-screen row order of the Feminine/Masculine grids (Q 523). Label-anchored columns, one term per row, so it changes no row's text or response coding."
+    Q9_INS: "NOT a randomisation and NOT used: the .sav's data-only 'Q9 INSERT' (1 Jacob / 2 Hannah) DISAGREES with P_TESS14_2 on 705 of 2,789 rows (about a quarter of every arm), while the ratings and the open-ended Q11 text follow P_TESS14_2 in every case checked (see notes, Q9_INS). It is a defective derived variable."
+  shared_context: >-
+    We would like to know what you think about the following person. Please take
+    a moment to form an impression after reading about them. Then, answer the
+    questions that follow based on your impressions of the person.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {religiousness: not religious, dogmatism: dogmatic, gender: man}
+      text: >-
+        Jacob is not religious at all. He never attends religious services, reads scripture, or prays. He knows his views on religion are right and thinks other views are wrong and harmful to society. Jacob is certain things would be better if everyone else thought like him, and believes his views on religion should be privileged in society.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Jacob? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Jacob? \"Masculine\""}
+        2: {outcome_question: "Where would you place Jacob on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+    - raw: 2
+      condition_num: 1
+      factors: {religiousness: religious, dogmatism: dogmatic, gender: man}
+      text: >-
+        Jacob is very religious. He attends religious services every week, regularly reads scripture, and prays all the time. He knows his views on religion are right and thinks other views are wrong and harmful to society. Jacob is certain things would be better if everyone else thought like him, and believes his views on religion should be privileged in society.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Jacob? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Jacob? \"Masculine\""}
+        2: {outcome_question: "Where would you place Jacob on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+    - raw: 3
+      condition_num: 2
+      factors: {religiousness: not religious, dogmatism: not dogmatic, gender: man}
+      text: >-
+        Jacob is not religious at all. He never attends religious services, reads scripture, or prays. He is open to reconsidering his views on religion and thinks different perspectives can be beneficial to society. Jacob wouldn't want other people to have to think the same way he does, and feels that other views on religion should be equally respected.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Jacob? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Jacob? \"Masculine\""}
+        2: {outcome_question: "Where would you place Jacob on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+    - raw: 4
+      condition_num: 3
+      factors: {religiousness: religious, dogmatism: not dogmatic, gender: man}
+      text: >-
+        Jacob is very religious. He attends religious services every week, regularly reads scripture, and prays all the time. He is open to reconsidering his views on religion and thinks different perspectives can be beneficial to society. Jacob wouldn't want other people to have to think the same way he does, and feels that other views on religion should be equally respected.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Jacob? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Jacob? \"Masculine\""}
+        2: {outcome_question: "Where would you place Jacob on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+    - raw: 5
+      condition_num: 4
+      factors: {religiousness: not religious, dogmatism: dogmatic, gender: woman}
+      text: >-
+        Hannah is not religious at all. She never attends religious services, reads scripture, or prays. She knows her views on religion are right and thinks other views are wrong and harmful to society. Hannah is certain things would be better if everyone else thought like her, and believes her views on religion should be privileged in society.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Hannah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Hannah? \"Masculine\""}
+        2: {outcome_question: "Where would you place Hannah on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+    - raw: 6
+      condition_num: 5
+      factors: {religiousness: religious, dogmatism: dogmatic, gender: woman}
+      text: >-
+        Hannah is very religious. She attends religious services every week, regularly reads scripture, and prays all the time. She knows her views on religion are right and thinks other views are wrong and harmful to society. Hannah is certain things would be better if everyone else thought like her, and believes her views on religion should be privileged in society.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Hannah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Hannah? \"Masculine\""}
+        2: {outcome_question: "Where would you place Hannah on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+    - raw: 7
+      condition_num: 6
+      factors: {religiousness: not religious, dogmatism: not dogmatic, gender: woman}
+      text: >-
+        Hannah is not religious at all. She never attends religious services, reads scripture, or prays. She is open to reconsidering her views on religion and thinks different perspectives can be beneficial to society. Hannah wouldn't want other people to have to think the same way she does, and feels that other views on religion should be equally respected.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Hannah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Hannah? \"Masculine\""}
+        2: {outcome_question: "Where would you place Hannah on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+    - raw: 8
+      condition_num: 7
+      factors: {religiousness: religious, dogmatism: not dogmatic, gender: woman}
+      text: >-
+        Hannah is very religious. She attends religious services every week, regularly reads scripture, and prays all the time. She is open to reconsidering her views on religion and thinks different perspectives can be beneficial to society. Hannah wouldn't want other people to have to think the same way she does, and feels that other views on religion should be equally respected.
+      items:
+        0: {outcome_question: "How well do you think the following terms describe Hannah? \"Feminine\""}
+        1: {outcome_question: "How well do you think the following terms describe Hannah? \"Masculine\""}
+        2: {outcome_question: "Where would you place Hannah on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""}
+
+outcomes:
+  - var: Q9
+    task_num: 0
+    question: "How well do you think the following terms describe Jacob? \"Feminine\""
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Very Well"}
+  - var: Q10
+    task_num: 1
+    question: "How well do you think the following terms describe Jacob? \"Masculine\""
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Very Well"}
+  - var: Q13
+    task_num: 2
+    question: "Where would you place Jacob on the following political views scale? 1 \"Extremely Liberal\" 2 \"Liberal\" 3 \"Slightly Liberal\" 4 \"Moderate\" 5 \"Slightly Conservative\" 6 \"Conservative\" 7 \"Extremely Conservative\""
+    scale: {min: 1, max: 7, min_label: "Extremely Liberal", mid_label: "Moderate", max_label: "Extremely Conservative"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+# 98 SKIPPED ON WEB (the only one present on Q1/Q2); 77 DON'T KNOW and 99 REFUSED
+# per the panel's coding convention (Q 316-318).
+missing_codes: [77, 98, 99]
+
+persona_missing:
+  IDEO: [-1]
+  PartyID7: [-1]
+  RELIG: [77, 98, 99]
+persona_label_rewrite:
+  # SPSS severed this value label at "...Reformed, Church". Restored word-for-word
+  # from the fielded OSF questionnaire (Q 173, and again Q 739).
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+    # Real answer; the .sav label carries the text-box instruction "- Please
+    # Specify:". The OSF questionnaire's preload table (Q 186) labels it "Something
+    # else", which is what is used (same as s6urt).
+    14: "Something else"
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG

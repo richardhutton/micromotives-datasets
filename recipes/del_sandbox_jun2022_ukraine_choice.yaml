@@ -1,0 +1,239 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Sandbox Great Britain June 2022: why the war in Ukraine matters, me or others"
+data_file: DEL_Sandbox_GreatBritain_Jun2022_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/ELT7M0, stated on the Harvard Dataverse deposit "DEL
+  Sandbox 2022" and read from the Dataverse API (latestVersion.license, version 2) on 10 Oct
+  2026. The deposit's Readme adds "DEL datasets are a public good and can be used with the
+  appropriate citation."
+
+comparable_to_socsci210: false
+experiment: sandbox_jun2022_ukraine_choice
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin, 2024, "DEL Sandbox 2022",
+  https://doi.org/10.7910/DVN/ELT7M0, Harvard Dataverse; DEL_Sandbox_GreatBritain_Jun2022_
+  Data.sav. Fielded online by YouGov, 23-28 June 2022, n = 2,187 adults in Great Britain
+  (the deposit's Readme).
+
+  PANDEMIC CHECK. Nothing in this experiment (both questions, all 14 statements, both
+  opt-out options) mentions Covid-19, the coronavirus, the pandemic or lockdown. The list
+  experiment that follows it in the same survey does ("The NHS was heroic in response to
+  the Coronavirus/COVID-19 pandemic"); it is a separate experiment and is not rendered.
+
+  THE DESIGN. `split_choice_experiment` (labels only -9 "Not Asked" / -8 "Skipped",
+  neither occurring; `split_choice_experiment_check` agrees on every respondent: 1 "Choice
+  ME", 2 "Choice THEM") sends 1,094 people to group 1, asked five times why "you
+  personally" take an interest in the war, and 1,093 to group 2, asked five times why "you
+  think other people in the UK" take an interest. Each of the five screens shows two
+  statements, A and B, drawn from a list of 14 ("Randomly select for each tradeoff - with
+  replacement, but never the same statement against itself", the script's comment), plus a
+  third, fixed option: "I do not personally take interest in it" (group 1) or "Other
+  people in the UK do not take an interest in it" (group 2). What each screen showed is
+  recorded: `src_<screen>_attribut1_1` / `_2` (A / B) for group 1 and `src_<screen>_
+  attribut1_1m` / `_2m` for group 2 (the codebook's variable labels, "Party - Screen 1
+  Group A", are a template leftover; the value labels are the 14 statements). Both sets
+  are filled for every respondent, but only the group's own set was shown: `choice_me<k>`
+  answer codes 1 and 2 are labelled "$src_<k>_attribut1_1" / "$src_<k>_attribut1_2" (the
+  piped statement), and `choice_them<k>` codes 1 and 2 "$src_<k>_attribut1_1m" /
+  "$src_<k>_attribut1_2m". A never equals B on any of the 20 screen variables pairs (0 of
+  2,187 x 10). All 182 ordered pairs of distinct statements are possible.
+  `me_<k>_<j>` / `them_<k>_<j>` are derived indicators (statement j appeared on screen k)
+  and are not used.
+
+  ROWS. The self/others split changes the QUESTION, not the screen's content, so it is
+  carried by the outcome, not the condition: tasks 0-4 are `choice_me1`-`5` (group 1),
+  tasks 5-9 `choice_them1`-`5` (group 2), each with that group's own question and opt-out.
+  Each task names its own screen's pair through `condition_vars`. The condition is the
+  pair: a sparse template over A x B (196 declared cells, the 14 diagonal ones impossible
+  by design). Factors `statement_A` and `statement_B`. Everyone answered all five of
+  their own group's screens and none of the other group's (0 cross-answers among 2,187),
+  and no "Skipped" (8) or "Not Asked" (9) answer occurs.
+
+  WORD-FOR-WORD vs NARRATION. Questions: word-for-word from DEL_Sandbox_GreatBritain_
+  Jun2022_Survey.docx (`[choice_me]`, `[choice_them]`); the .sav variable labels carry
+  the same text with "**you personally**" / "**other people**" bolded, unbolded here.
+  Statements: word-for-word from the VALUE LABELS of the `src_*` variables (identical on
+  all 20), not from the questionnaire, because the answer labels show the screen piped
+  those labels ("$src_1_attribut1_1"). They differ from the questionnaire's list in one
+  word and in whitespace only: the questionnaire says "an indefensible attack on Ukraine
+  by Putin", the data "by Vladimir Putin"; three questionnaire lines carry a trailing
+  space. The curly apostrophe in "don’t" is the label's own. Opt-outs: word-for-word, and
+  identical in the questionnaire and the answer labels. ADDED by us
+  (docs/CONVENTIONS.md, "Narrating what the respondent did"), and nothing else: the
+  condition's "You were shown two statements:", "and", the full stop and the quotation
+  marks; and in the question, the enumeration "1 means "..."; 2 means "..."; 3 means
+  "..."." (the NGO conjoint / PZB01G convention: a nominal scale may not carry end
+  labels, so the options are listed in the question). The condition claims no position:
+  it says neither "first", "second", "left", "right", "above" nor "below". The script
+  has no randomise directive on these options and codes A as 1 and B as 2, but no
+  display order is recorded, so none is asserted.
+
+  OUTCOME. 1 = statement A, 2 = statement B, 3 = the opt-out, nominal. The opt-out is a
+  real, substantive answer (no interest), not a non-answer, and is kept: 984 of group 1's
+  5,470 answers and 468 of group 2's 5,465. 8 "Skipped" / 9 "Not Asked" are labelled and
+  never occur; declared so a re-fetched deposit that has them drops them.
+
+  RISKIEST JUDGEMENT. Each screen's condition is its own pair only, not the block so far.
+  The "Repeated measures within one block" ruling (docs/CONVENTIONS.md) renders earlier
+  screens when the ORDER of a fixed set of screens is what was randomised; here each
+  screen's content is an independent draw, which is the NGO conjoint's design
+  (del_panel_w3_ngo_conjoint_donate.yaml), and that precedent renders each screen alone.
+  The earlier pairs are recorded and are unmodelled carry-over: a respondent at screen 5
+  had already weighed eight statements (with repeats). Rendering them is not expressible
+  with this pipeline's template (one text, one dimension width for every task) without
+  changing src/, and is flagged for rich rather than forced. Second: the statements are
+  taken from the data's labels ("by Vladimir Putin"), not the questionnaire ("by Putin"),
+  on the ledger 148 principle that the data says what was fielded. Third: the self/others
+  split lives in the outcome (two questions), so it is not a condition factor; a
+  held-out-outcome split separates the two groups.
+
+  WHAT CAME BEFORE, the same for both groups (the split is assigned here; nothing before
+  it depends on it): the engagement battery, donation tracking (incl. donations for
+  Ukraine), the humanitarian-crises items (`crises`, `doncrises`, `govrole`, `humaid`,
+  each listing the war in Ukraine), a funding-scheme conjoint about financial assistance
+  to Ukraine (`fundingpair_1`-`3`, its own random draws), the 0.7% aid commitment split,
+  the narrative conjoints, `concern`, `scope`, `devworld`. These are separate, earlier
+  randomisations, independent of this one, and none is rendered.
+
+  COUNTS (built 10 Oct 2026). 2,187 respondents x 5 screens = 10,935 rows, none dropped:
+  tasks 0-4 (me) 1,094 each; tasks 5-9 (them) 1,093 each. All 14 statements occur on
+  both sides of the pair. The maker re-derived every (person, task, A, B, response) tuple
+  and every condition and question string from the .sav with its own script (not in the
+  repository): 0 missing, 0 extra, 0 wrong. No published reference exists to compare
+  against.
+
+  PERSONA and PERSON ID as in del_sandbox_jul2020_global_goals.yaml (study_id `del`,
+  `GUNQID`, unique and never blank here), whose variable names and non-answer codes this
+  file shares, each read again from this file's own value labels. AGE IS REAL YEARS
+  (18-89; its only value labels are -9 "Not Asked" / -8 "Skipped"; ledger 145).
+  education 19 "Don't know", 20 "Prefer not to say"; income (`gross_household`, HOUSEHOLD)
+  16 "Don't know", 17 "Prefer not to answer" (45 blank); ethnicity 19 "Prefer not to
+  say"; region 12 Northern Ireland is a real region (none occur), 13 "Non UK & Invalid" a
+  non-answer (none occur); religion 16 "Prefer not to say" (139 blank); social grade 7
+  "Refused", 8 "Unknown" (none occur); past 2019 vote 98 "Other" is a real answer (kept),
+  99 "Don't know" (474 blank: did not vote); EU referendum 4 "Can't remember"; 8/9,
+  98/99, 998/999 are each variable's own Skipped/Not Asked. Nothing in the condition
+  names a persona category.
+
+condition:
+  considered_and_rejected:
+    split_choice_experiment: >-
+      The self/others split. It changes the question asked, so it is carried by the
+      outcome (tasks 0-4 `choice_me*`, tasks 5-9 `choice_them*`), not the condition.
+    split_choice_experiment_check: A copy of split_choice_experiment (agrees on all 2,187).
+    split_aidcommitment_experiment: A separate, earlier experiment (the 0.7% aid commitment).
+    split_aidcommitment_experiment_check: A copy of split_aidcommitment_experiment.
+    split_list_experiment: A separate, later experiment (the list experiment).
+    split_connect: A separate, later experiment (connect_dom / connect_world).
+    split_semdif: A separate, later experiment.
+  template:
+    # 196 cells (14 x 14, the diagonal impossible), 10,935 screens: drawn, not crossed.
+    sparse: true
+    text: >-
+      You were shown two statements: "{statement_A}" and "{statement_B}".
+    dimensions:
+      statement_A:
+        var: src_1_attribut1_1
+        levels: &statements
+          1: {level: close_to_home, text: Because it is happening close to home}
+          2: {level: in_europe, text: Because it is happening in Europe}
+          3: {level: threat_to_democracy, text: Because it is a threat to democracy}
+          4: {level: threat_to_peace_and_security, text: Because it is a threat to peace and security}
+          5: {level: attack_by_russia, text: Because it was an indefensible attack on Ukraine by Russia}
+          6: {level: attack_by_putin, text: Because it was an indefensible attack on Ukraine by Vladimir Putin}
+          7: {level: help_suffering, text: Because of a desire to help and alleviate their suffering}
+          8: {level: more_immigrants, text: "Because it will mean more immigrants to the UK if we don’t do something"}
+          9: {level: women_and_children, text: Because many of the refugees are women and children}
+          10: {level: media_coverage, text: Because of the extensive media coverage}
+          11: {level: everyone_talking, text: Because everyone is talking about it with each other}
+          12: {level: just_like_us, text: Because the people of Ukraine are just like us}
+          13: {level: uk_economy, text: "Because of the economic implications for the UK, e.g. petrol and food prices"}
+          14: {level: poor_countries_economy, text: "Because of the economic implications for poor countries, e.g. food shortages"}
+      statement_B:
+        var: src_1_attribut1_2
+        levels: *statements
+    outcome_questions:
+      0: &me >-
+        Thinking about the war between Russia and Ukraine, which of the following two
+        statements comes closest to explaining why you personally take an interest in it?
+        1 means "{statement_A}"; 2 means "{statement_B}"; 3 means "I do not personally
+        take interest in it".
+      1: *me
+      2: *me
+      3: *me
+      4: *me
+      5: &them >-
+        Thinking about the war between Russia and Ukraine, which of the following two
+        statements comes closest to explaining why you think other people in the UK take
+        an interest in it? 1 means "{statement_A}"; 2 means "{statement_B}"; 3 means
+        "Other people in the UK do not take an interest in it".
+      6: *them
+      7: *them
+      8: *them
+      9: *them
+
+# The questions here are placeholders: every arm overrides them per task from
+# `template.outcome_questions`. The brackets are deliberate, so a dead override
+# fails QC rule 21 instead of shipping.
+outcomes:
+  - var: choice_me1
+    task_num: 0
+    question: &qme >-
+      Thinking about the war between Russia and Ukraine, which of the following two
+      statements comes closest to explaining why you personally take an interest in it?
+      1 means "[statement A]"; 2 means "[statement B]"; 3 means "I do not personally take
+      interest in it".
+    scale: &scale
+      min: 1
+      max: 3
+      nominal: true
+  - {var: choice_me2, task_num: 1, question: *qme, scale: *scale, condition_vars: [src_2_attribut1_1, src_2_attribut1_2]}
+  - {var: choice_me3, task_num: 2, question: *qme, scale: *scale, condition_vars: [src_3_attribut1_1, src_3_attribut1_2]}
+  - {var: choice_me4, task_num: 3, question: *qme, scale: *scale, condition_vars: [src_4_attribut1_1, src_4_attribut1_2]}
+  - {var: choice_me5, task_num: 4, question: *qme, scale: *scale, condition_vars: [src_5_attribut1_1, src_5_attribut1_2]}
+  - var: choice_them1
+    task_num: 5
+    question: &qthem >-
+      Thinking about the war between Russia and Ukraine, which of the following two
+      statements comes closest to explaining why you think other people in the UK take an
+      interest in it? 1 means "[statement A]"; 2 means "[statement B]"; 3 means "Other
+      people in the UK do not take an interest in it".
+    scale: *scale
+    condition_vars: [src_1_attribut1_1m, src_1_attribut1_2m]
+  - {var: choice_them2, task_num: 6, question: *qthem, scale: *scale, condition_vars: [src_2_attribut1_1m, src_2_attribut1_2m]}
+  - {var: choice_them3, task_num: 7, question: *qthem, scale: *scale, condition_vars: [src_3_attribut1_1m, src_3_attribut1_2m]}
+  - {var: choice_them4, task_num: 8, question: *qthem, scale: *scale, condition_vars: [src_4_attribut1_1m, src_4_attribut1_2m]}
+  - {var: choice_them5, task_num: 9, question: *qthem, scale: *scale, condition_vars: [src_5_attribut1_1m, src_5_attribut1_2m]}
+
+response_recode: {1: 1, 2: 2, 3: 3}
+missing_codes: [8, 9]
+
+persona_label_rewrite:
+  # Truncated by SPSS in every DEL file; see del_sandbox_feb2023_wordfeminist.yaml.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education_level: [19, 20, 98, 99]
+  gross_household: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]

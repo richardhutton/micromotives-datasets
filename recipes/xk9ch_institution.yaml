@@ -1,0 +1,225 @@
+study_id: xk9ch
+experiment: institution
+source: tess
+title: "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists"
+data_file: PN8041_TESS14Schnabel.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10: node xk9ch
+  and its child component 6sfc7 "Data and Materials" both have node_license null and
+  no license relationship). TESS archived its post-2009 projects through the Roper
+  Center and its own site states no reuse terms; TESS has since suspended
+  operations. So there is no explicit grant of redistribution rights for this
+  deposit, and none should be assumed.
+
+# Not in SocSci210 (catalogue in_socsci210 = no), so there is no answer key to
+# crosscheck against. Verified instead by an independent re-derivation of every
+# row from the .sav (see notes, VERIFICATION).
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 014 (Schnabel, Indiana University; NORC AmeriSpeak, web only, English
+  only), fielded 8 Mar - 11 Apr 2018, 2,789 completes. One of FOUR independent
+  experiments in this deposit, each its own recipe: xk9ch_vignette1,
+  xk9ch_institution (this file), xk9ch_vignette2, xk9ch_identity_threat. Sources,
+  provenance, persona and Jev resolutions are as recorded in xk9ch_vignette1's
+  notes and are repeated here only where this experiment differs.
+
+  Q = 8041_TESS014_Schnabel_v6clean.docx, the FIELDED programming questionnaire,
+  from OSF component 6sfc7 (https://osf.io/download/4v6yu/, sha256
+  dd7260463ecb91ffabb4dbdc9c688ef34ff176cc8bc15c65a4998aa0f1a4c127), fetched
+  2026-10-10 to data/raw/xk9ch/quex/; NOT in the deposit zip. Line numbers are
+  1-based into its textutil .txt with blank lines removed. The proposal is not
+  used for any wording - and differs here: it has "We'd like you to indicate"
+  where the fielded Q5 has "Please indicate", and lacks the fielded Q6's "In
+  general,".
+
+
+  THE DESIGN
+
+  Q 282-297 (preload table) and the GLOBAL PROGRAMMING NOTE for Q5-Q8 (Q 423-429):
+  P_TESS14_3 inserts ONE of six terms - Christianity, Judaism, Islam, Atheism,
+  Religion, Spirituality - into every question of the institution block.
+  Between-subject. Counts 1..6: 463/473/441/456/484/472, all 2,789 populated. The
+  .sav's data-only Q5_INS equals P_TESS14_3 on all 2,789 rows; and the open-ended
+  Q8 text names the arm's own term (arm 2 Judaism: 38 mentions of jew/juda, 0 of
+  christ/muslim; arm 4 Atheism: 66 of athe-, 0 of the others).
+
+  CONDITION MAPPING (declared): condition_num = raw - 1, questionnaire order.
+
+
+  CONDITION TEXT - THE MANIPULATION IS ONE WORD, AND THE JUDGEMENT IS WHICH
+  SENTENCE CARRIES IT
+
+  There is no vignette: the stimulus is the term itself. The block opens (Q 432,
+  the first line of the Q5 screen) with: "Moving on from impressions of an
+  individual, we'd now like to get your general impression of [P_TESS14_3
+  INSERT]." The arm text is that sentence from "we'd" on, word-for-word, with the
+  arm's term inserted ("we’d" straightened per CONVENTIONS).
+
+  DROPPED, deliberately: the opening clause "Moving on from impressions of an
+  individual,". It points back at the vignette block the respondent had just
+  finished (the institution block always sits between the two vignette blocks,
+  Q 332-335), which this row does not contain - the same ruling as "on the
+  previous page" (CONVENTIONS, sequence signposting). Keeping it would tell the
+  model about an "individual" it never sees. The lowercase "we'd" that opens the
+  arm text is the source's own; it is not recapitalised. This is the recipe's
+  riskiest judgement: a reader could reasonably hold that the clause is not a
+  position citation and should be kept, in which case only the arm text changes.
+
+  Between that sentence and the outcomes the respondent also answered Q5, the
+  pick-three item about the same term (not built, see below). The row does not
+  narrate it.
+
+
+  OUTCOMES - 2 BUILT
+
+    task 0  Q6  Feminine   1 "Not at all" .. 7 "Very Well"
+    task 1  Q7  Masculine  1 "Not at all" .. 7 "Very Well"
+
+  One grid (Q 451-479), stem "In general, how well do you think the following
+  terms describe [term]?", term set per arm via items[task].outcome_question
+  (the term is in the stem itself, so the outcome necessarily names it; the
+  condition carries it too). The row's term ("Feminine"/"Masculine") is appended
+  in double quotes - layout added by us, words the source's. Rows reversed by
+  RND_01 (Q 454), label-anchored, no order claimed.
+
+  Missing: 98 SKIPPED ON WEB (Q6 37, Q7 17) dropped.
+
+
+  EXCLUDED, WITH ROW COST
+
+  Q5_1..Q5_8 (pick exactly three of eight traits; option order randomised per
+  respondent and unrecorded - Q 434 "[KEEP SAME RANDOMIZED ORDER AS Q4]", Q4 being
+  "RANDOMIZE RESPONSE OPTIONS") - same reasoning as vignette1's Q4: 22,312
+  potential 0/1 rows. Q8OE free text (RND_00=1 third).
+
+
+  PERSONA
+
+  Same map and declarations as xk9ch_vignette1, religion included: the outcome is
+  how feminine/masculine a religion is perceived to be, and the respondent's own
+  religion is the moderator the study oversampled for (Jews, Muslims, atheists).
+  The condition names a religion and the persona carries the respondent's; the
+  answer is not derivable from that by substitution, so this is not the X08IVC
+  case.
+
+
+  UK TRANSFER
+
+  Transfers: six abstract terms, no US-specific knowledge needed. The terms'
+  connotations differ between countries (an established church in England), which
+  is what a UK respondent brings, not what the item asks.
+
+
+  VERIFICATION
+
+  Every built row re-derived independently from the .sav (scratchpad
+  verify_xk9ch.py): 0 missing, 0 extra, 0 wrong. Counts in the maker report.
+
+condition:
+  source_var: P_TESS14_3
+  factors: [term]
+  considered_and_rejected:
+    P_TESS14_1: "The Vignette 1 assignment; an independent experiment built as xk9ch_vignette1. Crossed with P_TESS14_3, every cell non-empty."
+    P_TESS14_2: "The Vignette 2 assignment; an independent experiment built as xk9ch_vignette2."
+    P_TESS14_4: "Gender-identity score feedback, shown at DISPLAY5 (Q 696-708), AFTER every outcome of this recipe; built as xk9ch_identity_threat."
+    RND_00: "Routes which third of the sample gets which open-ended question (Q8 if 1; Q 484). Q8 comes after Q6/Q7 and is not built."
+    RND_01: "Reverses the on-screen row order of the Feminine/Masculine grid (Q 454). Label-anchored columns, one term per row."
+    Q5_INS: "Data-only record of the term insert; equals P_TESS14_3 on all 2,789 rows, not a separate randomisation."
+    Q8_INS: "Data-only insert for the open-ended Q8, COMPUTED from the respondent's own Q6 vs Q7 answers (Q 480-483); a response, not an assignment."
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {term: Christianity}
+      text: >-
+        we'd now like to get your general impression of Christianity.
+      items:
+        0: {outcome_question: "In general, how well do you think the following terms describe Christianity? \"Feminine\""}
+        1: {outcome_question: "In general, how well do you think the following terms describe Christianity? \"Masculine\""}
+    - raw: 2
+      condition_num: 1
+      factors: {term: Judaism}
+      text: >-
+        we'd now like to get your general impression of Judaism.
+      items:
+        0: {outcome_question: "In general, how well do you think the following terms describe Judaism? \"Feminine\""}
+        1: {outcome_question: "In general, how well do you think the following terms describe Judaism? \"Masculine\""}
+    - raw: 3
+      condition_num: 2
+      factors: {term: Islam}
+      text: >-
+        we'd now like to get your general impression of Islam.
+      items:
+        0: {outcome_question: "In general, how well do you think the following terms describe Islam? \"Feminine\""}
+        1: {outcome_question: "In general, how well do you think the following terms describe Islam? \"Masculine\""}
+    - raw: 4
+      condition_num: 3
+      factors: {term: Atheism}
+      text: >-
+        we'd now like to get your general impression of Atheism.
+      items:
+        0: {outcome_question: "In general, how well do you think the following terms describe Atheism? \"Feminine\""}
+        1: {outcome_question: "In general, how well do you think the following terms describe Atheism? \"Masculine\""}
+    - raw: 5
+      condition_num: 4
+      factors: {term: Religion}
+      text: >-
+        we'd now like to get your general impression of Religion.
+      items:
+        0: {outcome_question: "In general, how well do you think the following terms describe Religion? \"Feminine\""}
+        1: {outcome_question: "In general, how well do you think the following terms describe Religion? \"Masculine\""}
+    - raw: 6
+      condition_num: 5
+      factors: {term: Spirituality}
+      text: >-
+        we'd now like to get your general impression of Spirituality.
+      items:
+        0: {outcome_question: "In general, how well do you think the following terms describe Spirituality? \"Feminine\""}
+        1: {outcome_question: "In general, how well do you think the following terms describe Spirituality? \"Masculine\""}
+
+outcomes:
+  - var: Q6
+    task_num: 0
+    question: "In general, how well do you think the following terms describe Christianity? \"Feminine\""
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Very Well"}
+  - var: Q7
+    task_num: 1
+    question: "In general, how well do you think the following terms describe Christianity? \"Masculine\""
+    scale: {min: 1, max: 7, min_label: "Not at all", max_label: "Very Well"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+# 98 SKIPPED ON WEB (the only one present on Q1/Q2); 77 DON'T KNOW and 99 REFUSED
+# per the panel's coding convention (Q 316-318).
+missing_codes: [77, 98, 99]
+
+persona_missing:
+  IDEO: [-1]
+  PartyID7: [-1]
+  RELIG: [77, 98, 99]
+persona_label_rewrite:
+  # SPSS severed this value label at "...Reformed, Church". Restored word-for-word
+  # from the fielded OSF questionnaire (Q 173, and again Q 739).
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+    # Real answer; the .sav label carries the text-box instruction "- Please
+    # Specify:". The OSF questionnaire's preload table (Q 186) labels it "Something
+    # else", which is what is used (same as s6urt).
+    14: "Something else"
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG
