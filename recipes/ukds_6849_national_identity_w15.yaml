@@ -1,0 +1,151 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.38: importance of being British,
+  with or without the national identity question asked first (wave 15)"
+data_file: natid_w15-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: national_identity_w15
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.38 in the Innovation Panel User Guide ("National identity"); wave 15
+  (2022). The User Guide cites no publication; no published numbers compared. Data file
+  derived by `scripts/gen_ip_natid.py --write`.
+
+  AN ORDER EXPERIMENT, BUILT ON WHAT WAS ASKED BEFORE (rich's 9.24 ruling, as 9.42 and
+  9.47). Self-completion module Scaidentityexp_ip15 asks two questions, allocated by
+  household (`o_ff_identityw15` in `o_hhsamp_ip`): group 1 (version A) the importance of
+  being British, then the national identity list; group 2 (version B) the national
+  identity list (with "What other national identity is that?" after "Other"), then the
+  importance of being British. This recipe holds the importance-of-being-British answer,
+  conditioned on whether the national identity question had been asked earlier.
+
+  NOT BUILT: the national identity question itself ("You may choose as many or as few
+  as apply", stored as seven 0/1 "mentioned" variables, scnatida1-97 / scnatidb1-97).
+  It is a code-all-that-apply checklist; turning it into seven yes/no rows is the
+  restructuring the 9.43 ruling declines (applied to a list identical across versions in
+  9.47 too). It is the experiment's other primary outcome, so this is a scope decision
+  rich may want to revisit: the list IS word-for-word identical in both versions here,
+  so only the shape, not a version difference, stands in the way. Also not built: the
+  write-in "other" identity (free text), and the follow-ups asked of everyone after both
+  versions (scwhorurac, vote*, eumempast, scotuk2), whose preceding questions are the
+  same set in both arms.
+
+  ALLOCATION, READ FROM THE ROUTING (ledger 138). The archive labels 1 = "Importance of
+  being British first", 2 = "National identity first", and the questionnaire routes
+  version A (Scbritida, then Scnatida) on 1 and version B (Scnatidb, Scnatidob, then
+  Scbritidb) on 2. The data agree: `gen_ip_natid.py --check` finds 1,311 group-1
+  respondents routed into version A and 0 into version B, 1,345 group-2 respondents
+  routed into B and 0 into A, 0 routed respondents from the one unallocated household,
+  and within each version the two questions share one universe exactly (0
+  disagreements). Order WITHIN a version comes from the questionnaire alone; the data
+  cannot show it.
+
+  NEW ENTRANTS EXCLUDED, BOTH ARMS. The main interview's Ethnicity and National Identity
+  module asks the SAME question (NatID, same wording and options) of new entrants never
+  interviewed before. In group 1, "had not been asked earlier in the interview" would be
+  false for them; in group 2 they met it twice. Excluded on routing into `o_natid1`
+  (a pre-allocation characteristic, so the randomised contrast is kept): 64 group-1 and
+  82 group-2 respondents routed into the experiment; 63 and 79 of them gave an in-scale
+  answer, i.e. 142 rows. The exclusion is per person, not per household: new entrants
+  are excluded while the other members of their household are kept (136 kept
+  respondents share a household with an excluded new entrant, in 107 of the 134 such
+  households), since only the new entrant was asked NatID in the main interview.
+
+  THE CONDITION IS NARRATED: "Earlier in the interview you were asked:" with the
+  national identity question and its seven options quoted; or "You had not been asked
+  the question "..." earlier in the interview." The framing words, quotation marks and
+  " / " separators are ADDED (docs/CONVENTIONS.md, "Narrating what the respondent did").
+  Everything inside the quotation marks is word-for-word from
+  `6849_ip_wave_15_questionnaire.pdf`, module Scaidentityexp_ip15 (pp. 765-768). Not
+  rendered: the help text ("This is your own definition of your nationality, regardless
+  of legal nationality or citizenship"), the telephone interviewer instructions (READ
+  OUT / CODE ALL THAT APPLY / PROBE FOR ANY OTHERS), and the "What other national
+  identity is that?" follow-up, which only those who chose "Other" saw; quoting it would
+  put their answer into the condition. "Earlier in the interview" rather than "just
+  before" because for those respondents the follow-up sat in between.
+
+  OUTCOME, word-for-word (Scbritida and Scbritidb are identical, checked against the
+  extracted text). 0-10, end labels only; 1-9 are numbers with no label on screen. NOT
+  in the scale: code 11, "I do not consider myself to be British", a SPONTANEOUS option
+  the scripting note puts beside don't know and refused; the specification lists it as a
+  telephone alternative in version A. It is a real answer but not a point on the 0-10
+  scale, so it is dropped (unmapped in response_recode), not recoded: 1 respondent, in
+  group 2, web. Don't know / refused / missing dropped: group 1 3 / 7 / 9, group 2 6 / 6
+  / 10 (counts include the excluded new entrants).
+
+  MODE, among the 2,472 built rows: 1,764 web, 660 face-to-face, 48 telephone. Of the
+  face-to-face, 599 self-completed (scac 1), 49 were completed by the interviewer or with
+  translation help (scac 2-3), and 12 are coded "Not able to do self-completion" (scac
+  5) yet hold answers, outside the module's stated universe. All are kept: the condition
+  is which question came first, which is the same whoever read the screen (contrast
+  ledger 141, a layout condition). Wording identical in every mode.
+
+  ROWS: 1,229 "not asked earlier", 1,243 "asked earlier" (2,472).
+
+  RISKIEST JUDGEMENT: excluding the 142 new-entrant rows rather than recoding group-1
+  new entrants to "asked earlier" (which is literally true for them, but at a much
+  greater distance and by self-selection). Second: not building the checklist outcome.
+  The persona carries ethnicity, crosswalked to coarse groups ("White", "Asian or Asian
+  British", ...): the archive's racel_dv code 1 reads "British/English/Scottish/Welsh/
+  Northern Irish/White British..." but renders as "White", so the persona does not state
+  a national identity. Region (gor_dv) separates England, Wales and Scotland: correlated
+  with the outcome, not derivable from the prompt, and kept.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+  Allocated by household, so a participant-level split puts one household's members,
+  who shared a condition, on both sides.
+
+condition:
+  source_var: natid_prior
+  factors: [natid_asked_earlier]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {natid_asked_earlier: "no"}
+      text: "You had not been asked the question \"What do you consider your national identity to be? You may choose as many or as few as apply.\" earlier in the interview."
+    - raw: 2
+      condition_num: 1
+      factors: {natid_asked_earlier: "yes"}
+      text: "Earlier in the interview you were asked: \"What do you consider your national identity to be? You may choose as many or as few as apply.\" \"English\" / \"Welsh\" / \"Scottish\" / \"Northern Irish\" / \"British\" / \"Irish\" / \"Other\""
+
+outcomes:
+  - var: brit
+    task_num: 0
+    question: "Most people who live in the UK may think of themselves as being British in some way. On a scale of 0 to 10 where 0 means 'not at all important' and 10 means 'extremely important', how important is being British to you?"
+    scale: {min: 0, max: 10, min_label: "Not at all important", max_label: "Extremely important"}
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

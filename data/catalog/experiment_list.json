@@ -5,12 +5,12 @@
    "id": "9.33",
    "title": "Twitter consent",
    "description": "Repeats the wave 10 request to link Twitter data, testing how it is asked.",
-   "details": "Wave 15",
+   "details": "527 rows; Wave 15; 2 conditions (help links on the same page or not); web only",
    "category": "survey methodology",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.3,
-   "next": 7
+   "next": 8
   },
   {
    "source": "Innovation Panel",
@@ -28,12 +28,12 @@
    "id": "9.34",
    "title": "Marginal propensity to consume",
    "description": "How people would spend, save or repay debt after an income change.",
-   "details": "Wave 15",
+   "details": "2,537 rows as two experiments (two-part 1,259; direct £ 1,278); Wave 15; 2x2 amount x period",
    "category": "economics/behavioural",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.24,
-   "next": 4
+   "next": 5
   },
   {
    "source": "Innovation Panel",
@@ -45,7 +45,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.24,
-   "next": 16
+   "next": 17
   },
   {
    "source": "Innovation Panel",
@@ -68,7 +68,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 8
+   "next": 9
   },
   {
    "source": "Innovation Panel",
@@ -103,7 +103,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.21,
-   "next": 17
+   "next": 18
   },
   {
    "source": "Innovation Panel",
@@ -127,7 +127,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.2,
-   "next": 13
+   "next": 14
   },
   {
    "source": "Innovation Panel",
@@ -236,12 +236,12 @@
    "id": "9.38",
    "title": "National identity",
    "description": "Versions of the national identity questions.",
-   "details": "Wave 15",
+   "details": "2,472 rows; Wave 15; 2 conditions (identity question asked first or not); outcome: importance of being British",
    "category": "political identity/polarisation",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.17,
-   "next": 6
+   "next": 7
   },
   {
    "source": "Innovation Panel",
@@ -463,7 +463,7 @@
    "status": "Built",
    "reason": "",
    "novelty": 0.29,
-   "next": 0
+   "next": 1
   },
   {
    "source": "DEL",
@@ -487,19 +487,19 @@
    "status": "Built",
    "reason": "",
    "novelty": 0.28,
-   "next": 1
+   "next": 2
   },
   {
    "source": "DEL",
    "id": "W4_connectstorysplit",
    "title": "Climate harm stories",
    "description": "No story, or one of three stories linking climate change to everyday life. Answer: Harm rating per group.",
-   "details": "Panel W4 2022; 4 conditions",
+   "details": "28,109 rows; Panel W4 2022; 4 conditions (a fifth assigned group had no question)",
    "category": "moral/social/cognition",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.28,
-   "next": 3
+   "next": 4
   },
   {
    "source": "DEL",
@@ -511,19 +511,19 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.28,
-   "next": 9
+   "next": 10
   },
   {
    "source": "DEL",
    "id": "W4_DonationSplit",
    "title": "Ukraine donation follow-up",
-   "description": "Five reasons to give elsewhere, shown to people who said they would donate to Ukraine. Answer: Single choice.",
+   "description": "People who chose Ukraine over one of 7 other crises are told part of their donation (unspecified, or 10-50%) will go to that crisis. Answer: Still donate, yes or no.",
    "details": "Panel W4 2022; 5 conditions",
    "category": "economics/behavioural",
    "status": "Buildable",
-   "reason": "",
+   "reason": "Parked 10 Oct 2026: needs a pipeline change (one condition across several codes in several columns; one outcome read from whichever of four columns holds it).",
    "novelty": 0.27,
-   "next": 2
+   "next": 3
   },
   {
    "source": "DEL",
@@ -535,7 +535,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.27,
-   "next": 14
+   "next": 15
   },
   {
    "source": "DEL",
@@ -580,7 +580,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.25,
-   "next": 15
+   "next": 16
   },
   {
    "source": "DEL",
@@ -622,12 +622,12 @@
    "id": "Feb2023_abortsplit",
    "title": "Abortion access, UK or abroad",
    "description": "Protect women's access to abortion in developing countries vs in the UK. Answer: Importance scale.",
-   "details": "Sandbox Feb 2023; 2 conditions",
+   "details": "1,798 rows; Sandbox Feb 2023; 2 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.23,
-   "next": 5
+   "next": 6
   },
   {
    "source": "DEL",
@@ -639,7 +639,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.23,
-   "next": 11
+   "next": 12
   },
   {
    "source": "DEL",
@@ -761,10 +761,10 @@
    "description": "Do people project their own beliefs onto God more than onto the average American?",
    "details": "2007; UK priority 0.83; transfers: Mechanism only",
    "category": "moral/social/cognition",
-   "status": "Buildable",
-   "reason": "",
+   "status": "Unlikely",
+   "reason": "Ruled out by rich on 10 Oct 2026: the comparison is God vs \"the average American\"; only the mechanism transfers.",
    "novelty": 0.32,
-   "next": 18
+   "next": null
   },
   {
    "source": "TESS",
@@ -957,7 +957,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.2,
-   "next": 12
+   "next": 13
   },
   {
    "source": "TESS",
@@ -1145,7 +1145,7 @@
    "status": "Buildable",
    "reason": "",
    "novelty": 0.15,
-   "next": 10
+   "next": 11
   },
   {
    "source": "TESS",
@@ -2335,7 +2335,8 @@
    "Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).",
    "Order: greedy diversity. Each pick is the candidate whose title sits furthest from everything built and already picked (Voyage title embeddings), discounted for categories we already hold many of; TESS also weighted by its UK priority score.",
    "Hand rule: DEL experiments whose conditions vary real numbers (Gender aid compared to others, 5 conditions; Gender gap progress, 4) replace 2-condition wording tests, because the title-only measure cannot see design.",
-   "Excluded: pandemic-framed experiments (8 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment. Two were caught only on reading the instrument: the Apr 2020 aid statement bank and the Apr 2020 \"developing countries\" split."
+   "Excluded: pandemic-framed experiments (8 DEL, 1 TESS), ruled out by rich on 10 Oct 2026 as tied to one moment. Two were caught only on reading the instrument: the Apr 2020 aid statement bank and the Apr 2020 \"developing countries\" split.",
+   "Removed: With God on Our Side (TESS ga53m), ruled out by rich on 10 Oct 2026; later picks moved up one."
   ]
  }
 }

@@ -1,0 +1,173 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.34: marginal propensity to consume,
+  the two-part question: would you spend more, the same or less, after a hypothetical £500 or £2500 windfall over 3 or 12 months (wave 15)"
+data_file: mpc_w15-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: mpc_twopart_w15
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.34 in the Innovation Panel User Guide ("Marginal propensity to
+  consume"); wave 15 (2022) only. The User Guide cites no publication, so there is no
+  independent numeric reference to verify against. `ukds_6849_mpc_direct_w15.yaml` is the other half.
+
+  DESIGN. A 2 x 2 x 2 between-household factorial, three allocations in `o_hhsamp_ip`,
+  each half and half (User Guide): `ff_mpctreatment` (1 two-part question, 2 direct
+  question), `ff_mpcduration` (1 "3 months", 2 "12 months"), `ff_mpcamount` (1 "£500", 2
+  "£2500"). Household-level, so everyone in a household met the same cell.
+  ONE RECIPE PER QUESTION FORMAT, by the DEL wave 3 NGO donate/petition precedent: the
+  two formats ask different questions with different answer types (a direction code
+  and an amount in pounds), so sharing one outcome id would put both under one
+  question in any outcome-level split. This recipe holds the two-part arms
+  (`ff_mpctreatment` = 1); `mpctreatment` stays in each arm's `raw_values` so the
+  other format's respondents match no arm and are not read at all. Households in this
+  format: 376 / 383 / 376 / 369 (3m £500, 3m £2500, 12m £500, 12m £2500); 1 household in the sample has no allocation.
+  `scripts/gen_ip_mpc.py` joins the three allocations on `o_hidp` and its `--check`
+  cross-tabulates each against the routing it should have caused (ledger 134, 138):
+  - treatment: 1,272 respondents answered a two-part variable, all under 1; 1,278
+    answered a direct variable, all under 2;
+  - amount, direct: the £500 item (`t2mpc1500`, 643 answers) only under 1, the £2500
+    item (`t2mpc12500`, 635) only under 2;
+  - amount, two-part: the follow-up `t1mpc3same` is routed on whether a stated
+    increase is below the payment; for all 241 who stated an increase the routing
+    agrees with the amount code;
+  - duration: changes the wording and never the routing, so THE DATA CANNOT CONFIRM
+    IT. Its value labels, the User Guide and the questionnaire's fill conditions all
+    agree (1 = "3 months", 2 = "12 months"), which is the only evidence there is.
+
+  A QUESTION-WORDING EXPERIMENT, SO THE CONDITION IS NARRATED, BY THE `rpw4u` AND IP
+  9.36 PRECEDENT. The windfall and the period exist only inside the question, so each
+  row's condition reads `You were asked: "<that cell's question>"`. The words `You
+  were asked:` and the quotation marks are ADDED (docs/CONVENTIONS.md, "Narrating what
+  the respondent did"); everything inside the quotes is word-for-word from
+  `6849_ip_wave_15_questionnaire.pdf`, module `Scampc_ip15`, item T1mpc1, with each
+  `{if ff_mpcamount = ...}` / `{if ff_mpcduration = ...}` fill resolved to the cell's
+  allocated value. The item is two paragraphs on one screen, joined here with a single space.
+
+  OUTCOME. T1mpc1, "would you..." spend more / the same / less. Ordered, 1-3, all
+  three options (the questionnaire's long option text, filled with the cell's amount)
+  carried in the scale's min/mid/max labels, set per arm because the amount is in
+  them; the question is also set per arm, filled for the cell, through an item
+  override (`items`), because an arm-level question does not reach an outcome that
+  names its own `var`.
+  Telephone wording is the same, with "READ OUT" only. Codes -1, -2, -7, -8, -9 are
+  dropped (25 "don't know").
+
+  NOT BUILT, AND WHY:
+  - T1mpc2inc / T1mpc2red ("How much more / less would you spend than if you hadn't
+    received the £500?"), the second part of the two-part question: 241 and 37
+    answers. The instrument's range is 0..99999, which the pipeline can only express
+    as a 100,000-entry identity recode (ledger 53). Capping the scale at what the
+    data hold would put a ceiling in the answer instruction that no respondent was
+    given. Debt, counted: 278 rows, waiting on a numeric outcome type.
+  - T1mpc3same (what else would you do with the amount not spent): "select all that
+    apply", stored as four 0/1 indicators. A row needs one question and one answer;
+    the 9.43 ruling (ledger 132) applies. 1,129 respondents.
+  - Mpcsustain, Save, Saved: asked of everyone after the experiment and not
+    manipulated by it. Building them under these conditions would assert the
+    windfall question as their stimulus.
+
+  ROUTING NOTES. Self-completion module (web, or face-to-face self-completion;
+  telephone read out). Across both formats 12 answerers are face-to-face respondents
+  coded `scac` = 5 ("not able to do self-completion"), whom the questionnaire routes
+  out of this module, and 51 had the interviewer complete it (`scac` = 2). The
+  wording, not the layout, is the manipulation, so both are kept, as in 9.36. 13
+  respondents who answered "don't know" to T1mpc1 were nevertheless routed into
+  T1mpc3same, contrary to the specification; their T1mpc1 is dropped as a non-answer
+  and T1mpc3same is not built, so no row is affected.
+
+  RISKIEST JUDGEMENT: the duration factor. Unlike treatment and amount, nothing in the
+  data can show that code 1 delivered "3 months" and code 2 "12 months"; it rests on
+  the labels, the User Guide and the questionnaire agreeing, and ledger 138 is a case
+  where label and User Guide agreed and were both wrong. Second: the condition and
+  the outcome carry the same words on every row (the 9.36 shape).
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+  Allocated by household, so a participant-level split puts one household's members,
+  who shared a condition, on both sides.
+
+condition:
+  source_vars: [mpctreatment, mpcduration, mpcamount]
+  factors: [duration, amount]
+  arms:
+    - raw_values: {mpctreatment: 1, mpcduration: 1, mpcamount: 1}
+      condition_num: 0
+      factors: {duration: "3 months", amount: "£500"}
+      text: "You were asked: \"Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 3 months. If you received the one-time £500 payment, over the next 3 months would you...\""
+      items:
+        0:
+          outcome_var: t1mpc1
+          outcome_question: "Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 3 months. If you received the one-time £500 payment, over the next 3 months would you..."
+          scale: {min: 1, max: 3, min_label: "Spend more than if I hadn't received the £500.", mid_label: "Spend the same as if I hadn't received the £500.", max_label: "Spend less than if I hadn't received the £500."}
+    - raw_values: {mpctreatment: 1, mpcduration: 1, mpcamount: 2}
+      condition_num: 1
+      factors: {duration: "3 months", amount: "£2500"}
+      text: "You were asked: \"Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £2500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 3 months. If you received the one-time £2500 payment, over the next 3 months would you...\""
+      items:
+        0:
+          outcome_var: t1mpc1
+          outcome_question: "Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £2500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 3 months. If you received the one-time £2500 payment, over the next 3 months would you..."
+          scale: {min: 1, max: 3, min_label: "Spend more than if I hadn't received the £2500.", mid_label: "Spend the same as if I hadn't received the £2500.", max_label: "Spend less than if I hadn't received the £2500."}
+    - raw_values: {mpctreatment: 1, mpcduration: 2, mpcamount: 1}
+      condition_num: 2
+      factors: {duration: "12 months", amount: "£500"}
+      text: "You were asked: \"Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 12 months. If you received the one-time £500 payment, over the next 12 months would you...\""
+      items:
+        0:
+          outcome_var: t1mpc1
+          outcome_question: "Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 12 months. If you received the one-time £500 payment, over the next 12 months would you..."
+          scale: {min: 1, max: 3, min_label: "Spend more than if I hadn't received the £500.", mid_label: "Spend the same as if I hadn't received the £500.", max_label: "Spend less than if I hadn't received the £500."}
+    - raw_values: {mpctreatment: 1, mpcduration: 2, mpcamount: 2}
+      condition_num: 3
+      factors: {duration: "12 months", amount: "£2500"}
+      text: "You were asked: \"Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £2500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 12 months. If you received the one-time £2500 payment, over the next 12 months would you...\""
+      items:
+        0:
+          outcome_var: t1mpc1
+          outcome_question: "Now consider a hypothetical situation where you unexpectedly receive a one-time payment of £2500 today. We would like to know whether this extra income would cause you to change your spending, borrowing and saving behaviour in any way over the next 12 months. If you received the one-time £2500 payment, over the next 12 months would you..."
+          scale: {min: 1, max: 3, min_label: "Spend more than if I hadn't received the £2500.", mid_label: "Spend the same as if I hadn't received the £2500.", max_label: "Spend less than if I hadn't received the £2500."}
+
+# No `var`: each arm names its own variable, filled question and scale through
+# `items`. An ARM-level `outcome_question` is ignored when the outcome names its own
+# `var` (found here: the fallback reached all 1,259 rows with QC passing). The
+# question and scale here are fallbacks every arm overrides; no built row may carry them.
+outcomes:
+  - task_num: 0
+    question: "[the two-part question, in the cell's own wording]"
+    scale: {min: 1, max: 3}
+
+response_recode: {1: 1, 2: 2, 3: 3}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

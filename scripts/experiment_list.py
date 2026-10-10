@@ -88,7 +88,12 @@ def render_md(data: dict) -> str:
     out.append("| **Total** | | " + " | ".join(totals) + f" | **{len(rows) - n(None, 'Built')}** |")
     nxt = sorted((r for r in rows if r.get("next")), key=lambda r: r["next"])
     if nxt:
-        out += ["", f"## Next {len(nxt)}, in build order", ""]
+        done = sum(r["status"] == "Built" for r in nxt)
+        out += [
+            "",
+            f"## Next {len(nxt)}, in build order ({done} built, {len(nxt) - done} to go)",
+            "",
+        ]
         out += [f"- {m}" for m in data.get("next_batch", {}).get("method", [])]
         out += [
             "",

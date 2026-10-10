@@ -1,0 +1,236 @@
+study_id: ukds_6849
+source: innovation_panel
+title: "Understanding Society Innovation Panel, experiment 9.33: consent to link Twitter data,
+  help links on the consent page or on a separate page (wave 15)"
+data_file: twitter_w15-derived.sav
+licence: |-
+  UK Data Service End User Licence (UKDS SN 6849). NOT redistributable. The EUL's
+  definition of "Data Collection" includes the Documentation, so the variable and value
+  labels are part of the collection as much as the microdata is. Nothing built from this
+  recipe may leave the machine: `data/raw/` and `data/processed/*.parquet` are gitignored,
+  and `src/micromotives_datasets/jev.py` refuses `source="ukds"` outright.
+
+comparable_to_socsci210: false
+experiment: twitter_consent_w15
+participant_id_var: person
+
+notes: |-
+  University of Essex, Institute for Social and Economic Research, "Understanding
+  Society: Innovation Panel, Waves 1-17, 2008-2024", UK Data Service SN 6849.
+  Experiment 9.33 in the Innovation Panel User Guide; wave 15 (2022) only. The User
+  Guide cites no publication for it. It repeats, with new wording, a consent asked of
+  everyone at wave 10 (User Guide 10.5, "There was no experimental allocation"); the
+  wave 10 version is NOT an experiment and is not built.
+
+  WHAT WAS RANDOMISED. The catalogue named no allocation variable; the User Guide does:
+  `o_ff_twithelpw15` on `o_hhsamp_ip`, household level, half and half, stratified by
+  sample origin, incentive, mode and the previous wave's household mode. 1 = "Help links
+  on same page", 2 = "Help links on separate page". Households: 1,507 / 1,519 / 1
+  missing. Respondents with a personal Twitter account (`twithave` = 1): 347 / 328.
+  The value labels were NOT trusted (ledger 138): `scripts/gen_ip_twitter.py --check`
+  cross-tabulates the allocation against the routing, and every version-1 respondent
+  was routed to `twitlinka` and none to `twitlinkb`, every version-2 respondent the
+  reverse, and `twitlinkinfo` was asked only after `twitlinkb` = 3. The labels agree
+  with the questionnaire's universes ("If (Ff_twithelpw15 = 1 And Twithave = 1) // In
+  Twitter consent group A") and with the data in every cell.
+
+  THE DESIGN (`6849_ip_wave_15_questionnaire.pdf`, module `Twitterconsent_ip15`, pp.
+  203-206). Everyone was asked Twithave, "Do you have a personal Twitter account?";
+  only those answering Yes went on. Version A (Twitlinka) showed the consent text, then
+  eight help links on the same page, then the question with Yes / No. Version B
+  (Twitlinkb) showed the consent text with no links, then the question with an added
+  ", or would you like more information?" and three options listed in the order
+  "Not sure, I would like more information." (code 3), "Yes" (1), "No" (2). Choosing
+  3 led to a separate page (Twitlinkinfo) with "What additional information can we
+  provide you with?", the eight links, and the version-A question with Yes / No.
+  NOTE: the two versions' consent texts also differ in one sentence, beyond the links:
+  A says "add publicly available information from your Twitter account ... to the
+  information you have provided for this study", B says "add the information you have
+  provided for this study to publicly available information from your Twitter account
+  ...". The User Guide mentions only the link placement. Both are transcribed as
+  fielded, so the condition carries both differences, as the respondent met them.
+
+  ONE OUTCOME, TWO WORDINGS (the split-ballot pattern of `ukds_6849_alcohol_w15`). The
+  outcome is the consent question each version put on the consent page, word-for-word,
+  with its own options in displayed order: Yes / No in A, and in B the three options
+  with "Not sure, I would like more information." first. Codes are the source's own
+  (1 Yes, 2 No, 3 Not sure), scale nominal, per (arm, item) cell.
+
+  RISKIEST JUDGEMENT: KEEPING "Not sure, I would like more information." AS AN ANSWER.
+  CLAUDE.md says to drop don't-know codes. This option is kept because it is not a
+  non-response code but the manipulation itself: it is how version B delivers its help
+  links, and choosing it is an act (asking for the information) that version A's
+  respondents had no way to take. Dropping it would remove from version B exactly the
+  respondents the experiment is about and leave its remaining rows selected on their
+  answer. 11 rows carry it. If the reviewer rules otherwise, delete code 3 from the B
+  cell's recode; nothing else changes.
+
+  NOT BUILT: TWITLINKINFO, the second consent question asked of those who chose "Not
+  sure" (14 respondents in all modes; 11 on the web, of whom 10 answered Yes or No).
+  Its condition would follow the respondent's own previous answer (the reason 9.12 was
+  dropped, ledger 142), and as a final-consent outcome it would mean merging two
+  answers to two differently worded questions into one response. Considered and
+  rejected: a derived "final consent" (Twitlinka, else Twitlinkb if Yes/No, else
+  Twitlinkinfo). The instrument does treat the three as one consent (Twitname is asked
+  "If (TwitLinkA = 1 | TwitLinkB = 1 | TwitLinkInfo = 1) // Consents to Twitter
+  Linkage"), but the row would pair one response with a question it was not the answer
+  to for the 11. Also not built: Twithave (asked of everyone before the split, so the
+  experiment cannot have moved it) and Twitname (a username, not a choice).
+
+  WEB ONLY (ledger 141). The manipulation is where links sat on a screen. The module has
+  no self-completion routing and no mixed-mode alternatives: face-to-face (`indmode` = 1)
+  and telephone (2) respondents had it read by an interviewer, and on the telephone a
+  link cannot be seen at all. Every respondent built here completed it on the web
+  (`indmode` = 3), selected in the recipe through `source_vars: [version, indmode]` so
+  the restriction is visible here, not hidden in the generator. Dropped: 132
+  face-to-face and 12 telephone Twitter users (A 71 + 6, B 61 + 6), 136 of whom answered.
+  Web Twitter users: 270 A, 261 B.
+
+  WORD-FOR-WORD VS OURS. Inside the double quotes in each condition, everything is
+  word-for-word from the questionnaire, typography normalised (curly quotes and
+  apostrophes straightened). ADDED BY US, by "Narrating what the respondent did" and the
+  layout exception (docs/CONVENTIONS.md): the shared opening 'You were asked "Do you
+  have a personal Twitter account?" and answered "Yes". You were then shown this text:'
+  (true for every row: it is the module's own filter); in version A, 'Between this text
+  and the question, the same page showed eight help links, each opening further
+  information:' followed by the eight link labels word-for-word, joined by " / "; in
+  version B, 'No help links were shown with this text.'. These two clauses are
+  DESCRIPTION of the layout, not transcription: the source has no words for where the
+  links sat. Version B's clause originally went on 'They were on a separate page,
+  reached by answering "Not sure, I would like more information."'; CUT on the
+  independent checker's flag (coordinator's ruling, 10 Oct 2026), because it told the
+  model something the respondent did not know at that point: the consent page says
+  nothing about where choosing "Not sure" leads, so stating it narrated the
+  instrument's routing rather than what the respondent saw. The option itself is still
+  in the outcome's own wording. The text behind the links is NOT rendered (who opened which link is
+  not recorded; the `ukds_6849_alcohol_w15` precedent). The questionnaire's "HELP
+  SCREEN:" prefix on each label is specification notation and is dropped; the label
+  after it is kept.
+
+  THE FILL. Both versions open their second sentence "As you have completed surveys with
+  us in the past, we {if ff_everint =1} / We {if ff_everint <>1} would like to add ...".
+  `ff_everint` is not in the person file; `o_indsamp_ip.o_everint` ("Interview status:
+  previous waves") is, written to the derived file as `everint` and resolved per row
+  through `respondent_vars`. Web Twitter users: 495 code 1, 29 code 2, 7 code -8
+  (inapplicable). The -8s are resolved to the "<> 1" branch, which is the script's own
+  test, and only because the Initial Conditions question Ukborn, asked only "If
+  (Ff_ivlolw <> 1 & Ff_everint <> 1) // new entrant never interviewed", was asked of all
+  seven. The generator's `--check` confirms the record and the Ukborn routing agree for
+  every respondent in the built population.
+
+  PERSONA. Same spine as every Innovation Panel build. Twitter use is NOT in the persona:
+  every row has a personal Twitter account (it is the filter, stated in the condition),
+  so a persona field would be a constant, and it sits in the outcome's own domain.
+
+  ROW COUNTS (aggregates). Web Twitter users answering the consent page: A 267 (3 don't
+  know dropped), B 260 (1 refusal dropped). 527 rows.
+
+  `person` is a hash of `pidp`, the same construction as every Innovation Panel build.
+
+condition:
+  source_vars: [version, indmode]
+  factors: [help_links]
+  shared_context: >-
+    You were asked "Do you have a personal Twitter account?" and answered "Yes". You were
+    then shown this text:
+  arms:
+    - raw_values: {version: 1, indmode: 3}
+      condition_num: 0
+      factors: {help_links: same_page}
+      text: >-
+        "As social media plays an increasing role in society, who uses Twitter, how they
+        use it, and what they say on it can provide useful information for social
+        researchers trying to understand society. [IF everint=1 INSERT: As you have
+        completed surveys with us in the past, we; IF everint=2 INSERT: We] would like to
+        add publicly available information from your Twitter account such as your profile
+        information, tweets in the past and in future, and information about how you use
+        your account to the information you have provided for this study. By doing so, we
+        will be able to get a more well-rounded understanding of people's lives. For
+        example, in a survey we can ask people's views on a particular issue, but by
+        adding their Twitter information we can get a deeper understanding by seeing what
+        news accounts they follow, how they talk about the issue (if at all), and whether
+        they are connected to people with similar or different views. Your Twitter
+        information will be treated as confidential and given the same protections as the
+        other information you give us in accordance with GDPR. Researchers who wish to see
+        your detailed Twitter information will have to apply to do so and give reasons for
+        that access." Between this text and the question, the same page showed eight help
+        links, each opening further information: "What information will you collect from
+        my Twitter account?" / "What will the information be used for?" / "Why is my
+        Twitter information useful for researchers?" / "What if what I do on Twitter isn't
+        the 'real' me?" / "Who will be able to access the information?" / "What will you
+        do to keep my information safe?" / "How long will you collect and store my
+        information for?" / "What if I change my mind?"
+      items:
+        0:
+          outcome_var: twitlinka
+          outcome_question: >-
+            Are you willing to tell us the username for your personal Twitter account, and
+            for your Twitter information to be collected and added to the information you
+            have provided for this study? 1 "Yes" 2 "No"
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    - raw_values: {version: 2, indmode: 3}
+      condition_num: 1
+      factors: {help_links: separate_page}
+      text: >-
+        "As social media plays an increasing role in society, who uses Twitter, how they
+        use it, and what they say on it can provide useful information for social
+        researchers trying to understand society. [IF everint=1 INSERT: As you have
+        completed surveys with us in the past, we; IF everint=2 INSERT: We] would like to
+        add the information you have provided for this study to publicly available
+        information from your Twitter account such as your profile information, tweets in
+        the past and in future, and information about how you use your account. By doing
+        so, we will be able to get a more well-rounded understanding of people's lives.
+        For example, in a survey we can ask people's views on a particular issue, but by
+        adding their Twitter information we can get a deeper understanding by seeing what
+        news accounts they follow, how they talk about the issue (if at all), and whether
+        they are connected to people with similar or different views. Your Twitter
+        information will be treated as confidential and given the same protections as the
+        other information you give us in accordance with GDPR. Researchers who wish to see
+        your detailed Twitter information will have to apply to do so and give reasons for
+        that access." No help links were shown with this text.
+      items:
+        0:
+          outcome_var: twitlinkb
+          outcome_question: >-
+            Are you willing to tell us the username for your personal Twitter account, and
+            for your Twitter information to be collected and added to the information you
+            have provided for this study, or would you like more information? 3 "Not sure,
+            I would like more information." 1 "Yes" 2 "No"
+          scale: {min: 1, max: 3, nominal: true}
+          response_recode: {1: 1, 2: 2, 3: 3}
+
+# No `var`: each arm names its own. The question here is a fallback both arms
+# override; no built row may carry it.
+outcomes:
+  - task_num: 0
+    question: "[consent to link Twitter data, in the version's own wording]"
+    scale: {min: 1, max: 3, nominal: true}
+
+response_recode: {1: 1, 2: 2, 3: 3}
+
+missing_codes: [-9, -8, -7, -2, -1]
+
+respondent_vars: [everint]
+
+persona_map:
+  age: dvage
+  sex: sex
+  region: gor_dv
+  employment: jbstat
+  education: hiqual_dv
+  marital_status: mastat_dv
+  ethnicity: racel_dv
+  own_children_in_household: nchild_dv
+  wave: wave
+  year: year
+
+persona_missing:
+  dvage: [-9, -8, -7, -2, -1]
+  sex: [-9, -8, -7, -2, -1]
+  gor_dv: [-9, -8, -7, -2, -1]
+  jbstat: [-9, -8, -7, -2, -1]
+  hiqual_dv: [-9, -8, -7, -2, -1]
+  mastat_dv: [-9, -8, -7, -2, -1]
+  racel_dv: [-9, -8, -7, -2, -1]
+  nchild_dv: [-9, -8, -7, -2, -1]

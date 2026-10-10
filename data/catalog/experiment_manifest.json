@@ -266,6 +266,42 @@
       "description": "Paired-profile conjoint: two development NGOs per screen, each described by size, headquarters, region of work and issue focus, randomised per screen; which would you be more likely to sign a petition for. Three screens per person; the petition half of a donate/petition split.",
       "design": "paired-profile conjoint, 4 attributes (2x2x5x5), 3 screens per respondent, forced choice",
       "verified_against": "no published reference; an independent checker re-derived all 12,405 rows from the raw .sav (0 missing, extra or wrong rows; every condition string, factor and response matched) and found the age-as-code defect, then re-confirmed age against the value labels on every row after the fix (10 Oct 2026)"
+    },
+    "del_panel_w4_climate_harm_stories": {
+      "category": "moral/social/cognition",
+      "description": "Before rating how much climate change will harm themselves, their family, people in the UK, people in all countries and future generations, respondents read no story or one of three cumulative stories: heatwaves and drought; plus food insecurity; plus \"you will pay more\". Does making the harm concrete change who people think it will harm? DEL panel wave 4 (2022).",
+      "design": "between-subjects, 4 conditions (a fifth assigned group has no question in the deposit and is excluded), 5 outcomes per respondent (grid rows, order randomised and not recorded), 4-point harm scale",
+      "verified_against": "no published reference; an independent checker re-derived all 28,109 rows from the raw .sav (0 missing, extra or duplicate), matched every condition and outcome string to the questionnaire, and compared all 403 columns to confirm the fifth group answered no story variable (10 Oct 2026)"
+    },
+    "del_sandbox_feb2023_abortion": {
+      "category": "political preferences/policy",
+      "description": "How important is it that the UK government helps protect women's access to abortion: through diplomatic, foreign policy and aid efforts in developing countries, or in the United Kingdom? DEL sandbox, February 2023.",
+      "design": "two-version question-wording split (963 / 1,044), one outcome per respondent, 5-point importance scale; condition narrated as the question asked",
+      "verified_against": "no published reference; an independent checker re-derived all 1,798 rows from the raw .sav (0 wrong-arm or wrong-response rows, no cross-answers), matched both questions word-for-word to the questionnaire, and confirmed person ids and personas agree with the same people in the naming-a-development-policy build (10 Oct 2026)"
+    },
+    "ukds_6849_national_identity_w15": {
+      "category": "survey methodology",
+      "description": "Respondents rate how important being British is to them (0-10), either before or after being asked what they consider their national identity to be (English, Welsh, Scottish, Northern Irish, British, Irish, Other). Does naming a national identity first change how much being British matters? Wave 15 (2022).",
+      "design": "question-order split, allocated by household (o_ff_identityw15), 2 conditions, one outcome per respondent; new entrants (asked national identity earlier in their interview) excluded; the tick-all identity list itself is not built",
+      "verified_against": "no published reference; an independent checker rebuilt all 2,472 rows from the raw .dta files (0 condition or response mismatches), confirmed the allocation against routing in every cell, and confirmed condition 0's 'not asked earlier' is true for every row (10 Oct 2026)"
+    },
+    "ukds_6849_mpc_twopart_w15": {
+      "category": "economics/behavioural",
+      "description": "Imagine a one-off payment of £500 or £2,500: over the next 3 or 12 months, would you spend more, the same or less than you otherwise would? The two-part half of a marginal-propensity-to-consume question-format experiment. Wave 15 (2022).",
+      "design": "2x2 between-household split (amount x period) within the two-part format, allocated in o_hhsamp_ip; one outcome, 3 options; condition narrated as the question asked",
+      "verified_against": "no published reference; an independent checker re-derived all 1,259 rows from the raw files (0 mismatches), matched every cell's question to the questionnaire, and confirmed amount against routing; the period labels are supported by behaviour (12-month cells spend a larger share) but cannot be checked from routing (10 Oct 2026)"
+    },
+    "ukds_6849_mpc_direct_w15": {
+      "category": "economics/behavioural",
+      "description": "Imagine a one-off payment of £500 or £2,500: how much of it would you spend over the next 3 or 12 months, in pounds? The direct half of a marginal-propensity-to-consume question-format experiment. Wave 15 (2022).",
+      "design": "2x2 between-household split (amount x period) within the direct format, allocated in o_hhsamp_ip; one outcome in whole pounds (0-500 or 0-2,500, the instrument's own range); condition narrated as the question asked",
+      "verified_against": "no published reference; an independent checker re-derived all 1,278 rows from the raw files (0 mismatches), matched every cell's question to the questionnaire, and confirmed amount against routing; the period labels are supported by behaviour (12-month cells spend a larger share) but cannot be checked from routing (10 Oct 2026)"
+    },
+    "ukds_6849_twitter_consent_w15": {
+      "category": "survey methodology",
+      "description": "Web respondents with a personal Twitter account are asked to consent to linking their public Twitter information with their survey answers. In one version eight help links sit on the same page as the request; in the other no links are shown, and the question offers \"Not sure, I would like more information.\" Does where the help sits change consent? Wave 15 (2022).",
+      "design": "two-version layout split, allocated by household (o_ff_twithelpw15), web only (interviewer modes never saw the layout), one outcome per respondent with each version's own options; the consent texts also differ in one sentence, transcribed as fielded",
+      "verified_against": "no published reference; an independent checker re-derived all 527 rows from the raw files (0 mismatches), confirmed allocation against routing in every cell, and matched every condition, outcome and per-person text fill to the questionnaire (10 Oct 2026)"
     }
   }
 }

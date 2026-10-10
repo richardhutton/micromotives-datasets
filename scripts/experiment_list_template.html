@@ -78,7 +78,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
       <select id="fsrc" aria-label="Source"><option value="">All sources</option></select>
       <select id="fst" aria-label="Status"><option value="">All statuses</option></select>
       <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
-      <select id="fnext" aria-label="Next batch"><option value="">All experiments</option><option value="next">Next 37 only, in build order</option></select>
+      <select id="fnext" aria-label="Next batch"><option value="">All experiments</option><option value="next" id="fnextlabel">Next batch only, in build order</option></select>
       <span class="count" id="count"></span>
     </div>
     <div class="scroll">
@@ -88,7 +88,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
         <tbody id="tb"></tbody>
       </table>
     </div>
-    <p class="note"><b>Next</b> is the build order for the next 37: <span id="method"></span></p>
+    <p class="note"><b>Next</b> is the build order for the <span id="batchsize"></span>: <span id="method"></span></p>
     <p class="note">Sorted by source, then status, then novelty (highest first). Sources: Innovation Panel (UK Data Service SN 6849), DEL (Harvard Dataverse, CC0), TESS (OSF), Harvard Dataverse (UK deposits and the 10 Oct 2026 sweep).</p>
   </section>
 </div>
@@ -137,5 +137,8 @@ function render(){
 ["q"].forEach(id => document.getElementById(id).addEventListener("input", render));
 [fsrc, fst, fcat, fnext].forEach(el => el.addEventListener("input", render));
 document.getElementById("method").textContent = (DATA.next_batch?.method || []).join(" ");
+const BATCH = DATA.rows.filter(r => r.next), BATCH_BUILT = BATCH.filter(r => r.status === "Built").length;
+document.getElementById("fnextlabel").textContent = `Next ${BATCH.length} only, in build order (${BATCH_BUILT} built)`;
+document.getElementById("batchsize").textContent = `next ${BATCH.length} (${BATCH_BUILT} built, ${BATCH.length - BATCH_BUILT} to go)`;
 render();
 </script>

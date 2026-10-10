@@ -918,6 +918,25 @@ class Recipe(BaseModel):
                     f"outcome task_num={outcome.task_num} has no `var`, and neither every "
                     "arm's `outcome_var` nor every arm's item override supplies one"
                 )
+        # An arm-level outcome override applies only to an outcome with no `var`
+        # of its own (see `scale_for`). Where every outcome names one, the arm's
+        # question and scale are never read: 9.34's first draft put its filled
+        # question on each arm, and all 1,259 rows shipped the placeholder
+        # "[the two-part question, ...]" with QC reporting nothing. Per-cell
+        # wording on an outcome that names its `var` belongs in `items`.
+        if all(o.var for o in self.outcomes):
+            for arm in self.condition.arms:
+                dead = [
+                    f
+                    for f in ("outcome_var", "outcome_question", "scale")
+                    if getattr(arm, f) is not None
+                ]
+                if dead:
+                    raise ValueError(
+                        f"{self.study_id}: arm {arm.label} declares {dead}, but every "
+                        "outcome names its own `var`, so they would never apply — "
+                        "put per-arm wording in `items`"
+                    )
         # An item override keyed by a task_num no outcome has is dead text that
         # looks live. Silently ignoring it is how an answer variable goes
         # unapplied — a typo'd key would leave the blanket arm-level value in

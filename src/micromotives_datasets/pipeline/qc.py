@@ -577,6 +577,24 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             "read it through its value labels"
         )
 
+    # --- Rule 21: no bracketed placeholder or unresolved fill in a row ---------
+    # Recipes write a per-cell outcome's fallback as "[the ... question, in the
+    # cell's own wording]", and questionnaires write fills as "[her/him]". Either
+    # reaching a row means an override never applied: 9.34 shipped 1,259 rows of
+    # its placeholder with every other rule passing, and deleting one arm's item
+    # override still did so after the validator learned the first route (ledger
+    # 146). Measured before writing: none of the 72 built files has a "[...]" in
+    # any condition or outcome, so a bracket pair is always a defect here.
+    placeholder = re.compile(r"\[[^\]]*\]")
+    for part in ("condition", "outcome"):
+        hits = {m.group(0) for r in rows for m in placeholder.finditer(getattr(r, part))}
+        if hits:
+            n = sum(1 for r in rows if placeholder.search(getattr(r, part)))
+            rep.failures.append(
+                f"{n} row(s) carry a bracketed placeholder or unresolved fill in the "
+                f"{part}: {sorted(hits)[:3]} — an override or fill did not apply"
+            )
+
     return rep
 
 

@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**66 experiments.** 15 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 22 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**72 experiments.** 17 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 26 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 28 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 15 | 156,103 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 17 | 186,010 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 22 | 324,392 | **no** — UKDS End User Licence |
+| UK — UK Data Service (End User Licence) | 26 | 329,928 | **no** — UKDS End User Licence |
 | US transfer — TESS | 28 | 283,935 | **no** — no licence stated |
-| **Total** | **66** | **777,698** | |
+| **Total** | **72** | **813,141** | |
 
 ---
 
@@ -23,6 +23,7 @@
 | `ukds_6849_reqol_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: ReQoL-10 a… | UK Data Service | `UKDS SN 6849` | 48,548 |
 | `ukds_6849_timerisk_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.13: time and r… | UK Data Service | `UKDS SN 6849` | 46,283 |
 | `ukds_6849_ghq_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: GHQ-12, as… | UK Data Service | `UKDS SN 6849` | 36,447 |
+| `del_panel_w4_climate_harm_stories` | Development Engagement Lab, Panel Great Britain wave 4 (2022): clim… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 28,109 |
 | `ukds_6849_vig_flexstigma_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.39: measuring … | UK Data Service | `UKDS SN 6849` | 17,656 |
 | `ukds_6849_caring_activity_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 13,875 |
 | `POMIFD` ⚠ | Replication Data for: The Variable Persuasiveness of Political Rhet… | Harvard Dataverse | `doi:10.7910/DVN/POMIFD` | 13,268 |
@@ -51,10 +52,15 @@
 | `ukds_6849_numeracy_fin_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,602 |
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
 | `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
+| `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
+| `del_sandbox_feb2023_abortion` | Development Engagement Lab, Sandbox Great Britain February 2023: ab… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,798 |
 | `del_sandbox_feb2023_wordfeminist` | Development Engagement Lab, Sandbox Great Britain February 2023: na… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,788 |
 | `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
+| `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
+| `ukds_6849_mpc_twopart_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,259 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
+| `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
@@ -105,6 +111,19 @@ Forced choice between two possible Brexit deals, each described by eight negotia
 - **Rows** — 49,395 from 3,293 respondents
 - **Licence** — CC0 1.0 Universal
 - **Verified against** — the authors' own `cregg::cj()`, 84 estimates agreeing to 1e-6; data/catalog/answer_key_EFXNLX.csv
+
+### `del_panel_w4_climate_harm_stories`
+
+**Development Engagement Lab, Panel Great Britain wave 4 (2022): climate harm stories**
+
+Before rating how much climate change will harm themselves, their family, people in the UK, people in all countries and future generations, respondents read no story or one of three cumulative stories: heatwaves and drought; plus food insecurity; plus "you will pay more". Does making the harm concrete change who people think it will harm? DEL panel wave 4 (2022).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/WZPNNU`
+- **Type** — between-subjects, 4 conditions (a fifth assigned group has no question in the deposit and is excluded), 5 outcomes per respondent (grid rows, order randomised and not recorded), 4-point harm scale
+- **Category** — moral/social/cognition
+- **Rows** — 28,109 from 5,801 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
+- **Verified against** — no published reference; an independent checker re-derived all 28,109 rows from the raw .sav (0 missing, extra or duplicate), matched every condition and outcome string to the questionnaire, and compared all 403 columns to confirm the fifth group answered no story variable (10 Oct 2026)
 
 ### `del_panel_w3_ngo_conjoint_donate`
 
@@ -274,6 +293,19 @@ Respondents are asked what percentage of all immigrants to the UK they would lik
 - **Rows** — 2,397 from 2,397 respondents
 - **Licence** — CC0 1.0
 - **Verified against** — the deposit's own analysis.R — svymean(eushare), overall and by condition, reproduced from the built parquet to within rounding
+
+### `del_sandbox_feb2023_abortion`
+
+**Development Engagement Lab, Sandbox Great Britain February 2023: abortion access, UK or abroad**
+
+How important is it that the UK government helps protect women's access to abortion: through diplomatic, foreign policy and aid efforts in developing countries, or in the United Kingdom? DEL sandbox, February 2023.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/XZ1XUZ`
+- **Type** — two-version question-wording split (963 / 1,044), one outcome per respondent, 5-point importance scale; condition narrated as the question asked
+- **Category** — political preferences/policy
+- **Rows** — 1,798 from 1,798 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
+- **Verified against** — no published reference; an independent checker re-derived all 1,798 rows from the raw .sav (0 wrong-arm or wrong-response rows, no cross-answers), matched both questions word-for-word to the questionnaire, and confirmed person ids and personas agree with the same people in the naming-a-development-policy build (10 Oct 2026)
 
 ### `del_sandbox_feb2023_wordfeminist`
 
@@ -456,6 +488,45 @@ Respondents see six lists of statements about who they have been attracted to, w
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication -- the User Guide cites none for 9.17. What IS verified: (a) every answer sits in a list the respondent's group was shown and none elsewhere (scripts/gen_ip_itemcount.py --check); (b) every row's list, stem and sensitive statement against wording written from the questionnaire, which wave 8 and wave 9 share word-for-word; (c) every row's statement order against the raw permutation code; (d) 12,320 rows, reached by the generator's count and the pipeline. tests/test_ip_itemcount.py
 
+### `ukds_6849_mpc_direct_w15`
+
+**Understanding Society Innovation Panel, experiment 9.34: marginal propensity to consume, the direct question: how much of it would you spend, after a hypothetical £500 or £2500 windfall over 3 or 12 months (wave 15)**
+
+Imagine a one-off payment of £500 or £2,500: how much of it would you spend over the next 3 or 12 months, in pounds? The direct half of a marginal-propensity-to-consume question-format experiment. Wave 15 (2022).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2x2 between-household split (amount x period) within the direct format, allocated in o_hhsamp_ip; one outcome in whole pounds (0-500 or 0-2,500, the instrument's own range); condition narrated as the question asked
+- **Category** — economics/behavioural
+- **Rows** — 1,278 from 1,278 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived all 1,278 rows from the raw files (0 mismatches), matched every cell's question to the questionnaire, and confirmed amount against routing; the period labels are supported by behaviour (12-month cells spend a larger share) but cannot be checked from routing (10 Oct 2026)
+
+### `ukds_6849_mpc_twopart_w15`
+
+**Understanding Society Innovation Panel, experiment 9.34: marginal propensity to consume, the two-part question: would you spend more, the same or less, after a hypothetical £500 or £2500 windfall over 3 or 12 months (wave 15)**
+
+Imagine a one-off payment of £500 or £2,500: over the next 3 or 12 months, would you spend more, the same or less than you otherwise would? The two-part half of a marginal-propensity-to-consume question-format experiment. Wave 15 (2022).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — 2x2 between-household split (amount x period) within the two-part format, allocated in o_hhsamp_ip; one outcome, 3 options; condition narrated as the question asked
+- **Category** — economics/behavioural
+- **Rows** — 1,259 from 1,259 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived all 1,259 rows from the raw files (0 mismatches), matched every cell's question to the questionnaire, and confirmed amount against routing; the period labels are supported by behaviour (12-month cells spend a larger share) but cannot be checked from routing (10 Oct 2026)
+
+### `ukds_6849_national_identity_w15`
+
+**Understanding Society Innovation Panel, experiment 9.38: importance of being British, with or without the national identity question asked first (wave 15)**
+
+Respondents rate how important being British is to them (0-10), either before or after being asked what they consider their national identity to be (English, Welsh, Scottish, Northern Irish, British, Irish, Other). Does naming a national identity first change how much being British matters? Wave 15 (2022).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — question-order split, allocated by household (o_ff_identityw15), 2 conditions, one outcome per respondent; new entrants (asked national identity earlier in their interview) excluded; the tick-all identity list itself is not built
+- **Category** — survey methodology
+- **Rows** — 2,472 from 2,472 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker rebuilt all 2,472 rows from the raw .dta files (0 condition or response mismatches), confirmed the allocation against routing in every cell, and confirmed condition 0's 'not asked earlier' is true for every row (10 Oct 2026)
+
 ### `ukds_6849_numeracy_env_w16`
 
 **Understanding Society Innovation Panel, experiment 9.42: compound growth framed as sea-level (environmental), with or without the savings (financial) questions earlier (wave 16)**
@@ -533,6 +604,19 @@ Respondents make 91 incentivised choices: 72 between sums of money at different 
 - **Rows** — 46,283 from 518 respondents
 - **Licence** — UK Data Service End User Licence; full terms in the recipe
 - **Verified against** — NOT verified against a publication. What IS verified: (a) every answering respondent had begun the questions (scripts/gen_ip_timerisk.py --check); (b) the recipes are regenerated from the questionnaire PDF and every string asserted to occur in it; (c) each row's preamble against the respondent's mode, and the second appeal against who saw it; (d) 46,283 rows, reached by the generator and the pipeline. tests/test_ip_timerisk.py
+
+### `ukds_6849_twitter_consent_w15`
+
+**Understanding Society Innovation Panel, experiment 9.33: consent to link Twitter data, help links on the consent page or on a separate page (wave 15)**
+
+Web respondents with a personal Twitter account are asked to consent to linking their public Twitter information with their survey answers. In one version eight help links sit on the same page as the request; in the other no links are shown, and the question offers "Not sure, I would like more information." Does where the help sits change consent? Wave 15 (2022).
+
+- **Source** — UK Data Service, `UKDS SN 6849`
+- **Type** — two-version layout split, allocated by household (o_ff_twithelpw15), web only (interviewer modes never saw the layout), one outcome per respondent with each version's own options; the consent texts also differ in one sentence, transcribed as fielded
+- **Category** — survey methodology
+- **Rows** — 527 from 527 respondents
+- **Licence** — UK Data Service End User Licence; full terms in the recipe
+- **Verified against** — no published reference; an independent checker re-derived all 527 rows from the raw files (0 mismatches), confirmed allocation against routing in every cell, and matched every condition, outcome and per-person text fill to the questionnaire (10 Oct 2026)
 
 ### `ukds_6849_vig_ageing_w17`
 
@@ -645,11 +729,11 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 7 | 1 | 153,019 |
+| economics/behavioural | 9 | 1 | 155,556 |
 | health communication | 0 | 7 | 53,404 |
-| moral/social/cognition | 3 | 6 | 108,446 |
+| moral/social/cognition | 4 | 6 | 136,555 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 8 | 0 | 92,213 |
-| survey methodology | 9 | 5 | 197,568 |
+| political preferences/policy | 9 | 0 | 94,011 |
+| survey methodology | 11 | 5 | 200,567 |
 | work/family/gender | 7 | 8 | 135,075 |
 

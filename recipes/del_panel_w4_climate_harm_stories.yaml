@@ -1,0 +1,248 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Panel Great Britain wave 4 (2022): climate harm stories"
+data_file: DEL_Panel_GreatBritain_Wave_4_2022_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/WZPNNU, stated on the Harvard Dataverse deposit "DEL
+  Panel 2022" and read from the Dataverse API (latestVersion.license, version 2) on 10 Oct
+  2026. The deposit's Readme adds "DEL datasets are a public good and can be used with the
+  appropriate citation."
+
+comparable_to_socsci210: false
+experiment: panel_w4_climate_harm_stories
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin, 2024, "DEL Panel 2022",
+  https://doi.org/10.7910/DVN/WZPNNU, Harvard Dataverse; DEL_Panel_GreatBritain_Wave_4_
+  2022_Data.sav. YouGov online panel, wave 4, fielded 30 September - 28 October 2022,
+  n = 8,008 adults in Great Britain (the deposit's Readme).
+
+  THE DESIGN. `connectstorysplit`, assigned by `panman.assign_treatment(5, [CoLSplit,
+  DonationSplit], "connectstorysplit")` (stratified on the two earlier splits), splits the
+  sample five ways: 1,603 / 1,596 / 1,608 / 1,595 / 1,606. The script's comment says
+  "split sample into 5 groups - control, T1, T2, T3, and T4", but only four items exist:
+  `story_control` (group 1, no story), `story_T1` (2, heatwaves), `story_T2` (3, + food
+  insecurity), `story_T3` (4, + "you will pay more"). Each is a 5-row grid, roworder
+  randomised.
+
+  GROUP 5 IS NOT PART OF THIS EXPERIMENT AND IS EXCLUDED (1,606 people, 0 rows). There
+  is no `story_T4` item in the exported script and no variable in the .sav that group 5
+  answered and the others did not: comparing every one of the file's 403 columns, the
+  only ones whose answer rate differs between group 5 and groups 1-4 by more than 2.5
+  points are the 24 story variables, which group 5 never answered (all blank) and every
+  other group answered for its own arm only. Whatever T4 was meant to be, it was either
+  not fielded or not exported; nothing records what group 5 saw at this point, so it is
+  NOT rendered as a "no story" arm (that would claim a condition nobody can verify). The
+  arm list below therefore declares raw codes 1-4 only.
+
+  THE CONDITION. Arms T1-T3 are the item's preamble, word-for-word from the questionnaire
+  (DEL_Panel_GreatBritain_Wave_4_2022_Survey.docx, `story_T1` .. `story_T3`), everything
+  before the shared stem "How much, if at all, do you think climate change will harm ...?".
+  The stories are cumulative: T2 = T1 + a food-insecurity paragraph, T3 = T2 + "Food
+  insecurity means you will pay more ...". The shared opening cannot go in
+  `shared_context`, because that is a prefix of EVERY arm and the control arm has none, so
+  each story arm carries its whole text. The `<<br/>><<br/>>` paragraph breaks become single
+  spaces; the en dashes in T2/T3's "around the world - that is - the" are normalised to
+  "-" (docs/CONVENTIONS.md); "U.S., UK" and "shrinking/unstable" are the source's own.
+  ADDED by us (docs/CONVENTIONS.md, "Narrating what the respondent did"): "Before the
+  question, you were shown this text:" and the quotation marks around the story (arms 1-3),
+  and the whole control sentence "You were shown no text before the question." (arm 0),
+  which is true for everyone in group 1: their item is the bare stem.
+
+  THE OUTCOME. One outcome per grid row, task_num 0-4: "You personally", "Your family",
+  "People in the UK", "People in all countries", "Future generations", each arm with its
+  own variables (story_1..5 for control, story_T1_1..5, story_T2_1..5, story_T3_1..5;
+  the row-to-variable mapping is the questionnaire's `-[story_T1_1] You personally` etc.
+  and matches the .sav's variable labels). The question is the stem with the row label put
+  where its ellipsis was: "How much, if at all, do you think climate change will harm ...
+  You personally?". That join is OURS: on screen the stem ended "...?" above a grid whose
+  rows carried the labels; we keep both word-for-word, the label in its own capitalisation,
+  and move the question mark after it. The rows were shown in a randomised order that the
+  file does not record, so no row says where it sat or what was beside it. Scale 1 "A
+  great deal of harm", 2 "Moderate harm", 3 "Very little harm", 4 "No harm at all", as
+  fielded (1 is most harm; four points, no midpoint). 5 "Don't know" is dropped as a
+  non-answer; 8 "Skipped" and 9 "Not Asked" are declared but never occur (not asked is
+  blank in this file).
+
+  WHAT CAME BEFORE (all asked of every respondent, or balanced by the stratified
+  assignment). Earlier in wave 4: the cost-of-living allocation experiment (`CoLSplit`, 4
+  arms), the aid-project conjoint (`split_sample`), the Ukraine donation follow-up
+  (`DonationSplit`, 5 arms) and then, for everyone, `action` (urgency of UK government
+  climate action), `cc_impact` ("How much do you think climate change will impact ..." on
+  almost the same five rows, "People in other countries" for "People in all countries"),
+  `access`, `challenge`, `climpolicy`, `conseq_rank`, `domore_rank` and `ccemot`. So every
+  respondent had answered a near-identical climate-IMPACT grid shortly before this HARM
+  grid; that is common to all arms and is not narrated. `connectstorysplit` is stratified
+  on CoLSplit and DonationSplit and is balanced across both (every cell 392-404 and
+  317-324). `cc_impact` is a pre-treatment measure in the outcome's own domain and is
+  deliberately not used as a persona field.
+
+  ROUTING. `routing_check: true`: every respondent answered only their own arm's variables
+  (0 cross-answers among 6,402 respondents in arms 1-4), so `ambiguous_routing` is 0.
+
+  RISKIEST JUDGEMENT: excluding group 5 rather than treating it as a further no-story
+  group. The questionnaire names it "T4"; if T4 had a story that YouGov simply did not
+  export, group 5 still has no outcome variable, so no row could be built for it either
+  way. Second: the stem-plus-label join of the outcome, which is our wording.
+
+  COUNTS (built 10 Oct 2026). 32,010 response cells in arms 1-4 (6,402 x 5); 3,901 are
+  "Don't know" and are dropped, leaving 28,109 rows from 5,801 people (601 answered
+  "Don't know" on all five rows and contribute none). Per arm 7,002 / 6,995 / 7,009 /
+  7,103; per row 5,608 / 5,583 / 5,662 / 5,597 / 5,659. The maker re-derived all 28,109
+  (person, arm, row, response) tuples from the .sav with its own script, 0 missing and 0
+  extra; ages match the .sav on every person; the three story texts match the
+  questionnaire after the stated normalisation. No published reference exists to compare
+  against.
+
+  PERSONA and PERSON ID as in del_sandbox_feb2023_wordfeminist.yaml (study_id `del`,
+  `GUNQID`, unique and never blank here), with this file's own variable names and codes:
+  education is `education` and household income is `income` ("Income - gross household")
+  in this file, not `education_level` / `gross_household`; AGE IS STORED AS REAL YEARS
+  here (18-94; its only value labels are -9 "Not Asked" and -8 "Skipped"), unlike wave 3.
+  Non-answer codes are declared from each variable's own value labels: past 2019 vote
+  uses 98 "Other" (a real answer, kept), 99 "Don't know", 998/999; region 12 Northern
+  Ireland is a real region (none occur), 13 "Non UK & Invalid" a non-answer.
+
+condition:
+  source_var: connectstorysplit
+  factors: [story]
+  routing_check: true
+  considered_and_rejected:
+    CoLSplit: >-
+      An earlier, separate experiment (cost-of-living allocation), asked before this item;
+      connectstorysplit is stratified on it and balanced across it.
+    DonationSplit: >-
+      An earlier, separate experiment (Ukraine donation follow-up), asked before this item;
+      connectstorysplit is stratified on it and balanced across it.
+    split_sample: >-
+      An earlier, separate experiment (the aid-project conjoint), asked before this item.
+    climatescenariosplit: >-
+      A later, separate experiment, randomised after this item was answered.
+    EAsplit: >-
+      A later, separate experiment, randomised after this item was answered.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {story: none}
+      text: You were shown no text before the question.
+      items:
+        0: {outcome_var: story_1}
+        1: {outcome_var: story_2}
+        2: {outcome_var: story_3}
+        3: {outcome_var: story_4}
+        4: {outcome_var: story_5}
+    - raw: 2
+      condition_num: 1
+      factors: {story: heatwaves}
+      text: >-
+        Before the question, you were shown this text: "Climate change is impacting our
+        everyday lives. The increase in greenhouse gases due to human activity has warmed
+        the climate beyond what would occur naturally. The evidence shows that the Earth
+        will continue to warm to dangerous levels if no action is taken to reduce
+        greenhouse gas emissions. One impact of climate change is the increasing number and
+        intensity of heatwaves across the globe. Recent heatwaves in the U.S., UK, France,
+        Germany, China, and India have produced extreme drought conditions, severely
+        impacting the availability of water for homes, businesses, livestock and crops."
+      items:
+        0: {outcome_var: story_T1_1}
+        1: {outcome_var: story_T1_2}
+        2: {outcome_var: story_T1_3}
+        3: {outcome_var: story_T1_4}
+        4: {outcome_var: story_T1_5}
+    - raw: 3
+      condition_num: 2
+      factors: {story: food_insecurity}
+      text: >-
+        Before the question, you were shown this text: "Climate change is impacting our
+        everyday lives. The increase in greenhouse gases due to human activity has warmed
+        the climate beyond what would occur naturally. The evidence shows that the Earth
+        will continue to warm to dangerous levels if no action is taken to reduce
+        greenhouse gas emissions. One impact of climate change is the increasing number and
+        intensity of heatwaves across the globe. Recent heatwaves in the U.S., UK, France,
+        Germany, China, and India have produced extreme drought conditions, severely
+        impacting the availability of water for homes, businesses, livestock and crops. The
+        lack of water for livestock and crops has resulted in food insecurity around the
+        world - that is - the reduction in quantity and quality of food due to shortages
+        created by drought conditions."
+      items:
+        0: {outcome_var: story_T2_1}
+        1: {outcome_var: story_T2_2}
+        2: {outcome_var: story_T2_3}
+        3: {outcome_var: story_T2_4}
+        4: {outcome_var: story_T2_5}
+    - raw: 4
+      condition_num: 3
+      factors: {story: pay_more}
+      text: >-
+        Before the question, you were shown this text: "Climate change is impacting our
+        everyday lives. The increase in greenhouse gases due to human activity has warmed
+        the climate beyond what would occur naturally. The evidence shows that the Earth
+        will continue to warm to dangerous levels if no action is taken to reduce
+        greenhouse gas emissions. One impact of climate change is the increasing number and
+        intensity of heatwaves across the globe. Recent heatwaves in the U.S., UK, France,
+        Germany, China, and India have produced extreme drought conditions, severely
+        impacting the availability of water for homes, businesses, livestock and crops. The
+        lack of water for livestock and crops has resulted in food insecurity around the
+        world - that is - the reduction in quantity and quality of food due to shortages
+        created by drought conditions. Food insecurity means you will pay more because of
+        the shrinking/unstable supply of food."
+      items:
+        0: {outcome_var: story_T3_1}
+        1: {outcome_var: story_T3_2}
+        2: {outcome_var: story_T3_3}
+        3: {outcome_var: story_T3_4}
+        4: {outcome_var: story_T3_5}
+
+outcomes:
+  - task_num: 0
+    question: How much, if at all, do you think climate change will harm ... You personally?
+    scale: &scale
+      min: 1
+      max: 4
+      min_label: A great deal of harm
+      max_label: No harm at all
+  - task_num: 1
+    question: How much, if at all, do you think climate change will harm ... Your family?
+    scale: *scale
+  - task_num: 2
+    question: How much, if at all, do you think climate change will harm ... People in the UK?
+    scale: *scale
+  - task_num: 3
+    question: >-
+      How much, if at all, do you think climate change will harm ... People in all
+      countries?
+    scale: *scale
+  - task_num: 4
+    question: How much, if at all, do you think climate change will harm ... Future generations?
+    scale: *scale
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+missing_codes: [5, 8, 9]
+
+persona_label_rewrite:
+  # Truncated by SPSS in every DEL file; see del_sandbox_feb2023_wordfeminist.yaml.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education
+  income: income
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education: [19, 20, 98, 99]
+  income: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]
