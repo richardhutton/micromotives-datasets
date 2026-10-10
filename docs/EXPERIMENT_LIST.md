@@ -10,9 +10,9 @@ Every experiment we have built and every candidate we could add, from four sourc
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Innovation Panel | UK · not publishable | 38 | 16 | 4 | 6 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 12 | 6 | 3 | 9 | 18 | 125,779 |
-| TESS | US · not publishable | 42 | 41 | 8 | 8 | 57 | 368,659 |
+| TESS | US · not publishable | 42 | 41 | 7 | 9 | 57 | 368,659 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **105** | **63** | **27** | **26** | **116** | **1,010,009** |
+| **Total** | | **105** | **63** | **26** | **27** | **116** | **1,010,009** |
 
 ## Next 35, in build order (28 built, 7 to go)
 
@@ -199,7 +199,7 @@ UK · publishable (CC0). 12 Built, 6 Buildable, 3 Needs checking, 9 Unlikely.
 
 ## TESS
 
-US · not publishable. 42 Built, 41 Buildable, 8 Needs checking, 8 Unlikely.
+US · not publishable. 42 Built, 41 Buildable, 7 Needs checking, 9 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -290,7 +290,6 @@ US · not publishable. 42 Built, 41 Buildable, 8 Needs checking, 8 Unlikely.
 | y3m7j | **Effect of mood on creativity**<br>Does a good mood make people more creative?<br>*2005* | moral/social/cognition | Needs checking: main data file missing | 0.19 |  |
 | k5hpv | **Effects of Rejection on Multiple Relationships**<br>Recalling rejection by one partner, and feeling accepted by others.<br>*2005* | moral/social/cognition | Needs checking: main data file missing | 0.18 |  |
 | 7dc8s | **Testing the Generalizability of the Moral Mandate Effect Under Conditions of Personal Voice**<br>Does having a say make people accept moral decisions they disagree with?<br>*2006* | moral/social/cognition | Needs checking: main data file missing | 0.16 |  |
-| ujw87 | **The Impact of Information from similar or different advisors on judgment**<br>Advice from someone similar or different: how much does it count?<br>*2006* | moral/social/cognition | Needs checking: main data file missing | 0.16 |  |
 | 36wjy | **Exploring the Social Bases of Attitude Strength**<br>How mixed social networks make people scrutinise persuasive messages.<br>*2004* | moral/social/cognition | Needs checking: main data file missing | 0.15 |  |
 | 5jua2 | **Reducing Intergroup Bias: Does Dual Identification Help or Harm?**<br>Threats to the ingroup and intergroup attitudes, by ethnic and national identity.<br>*2006* | moral/social/cognition | Needs checking: main data file missing | 0.13 |  |
 | etqdx | **Estimating Number of Lifetime Sexual Partners: A Strategy Activation Study**<br>Why men report more sexual partners than women: prompting different ways of counting.<br>*2006* | moral/social/cognition | Needs checking: download refused | 0.11 |  |
@@ -301,6 +300,7 @@ US · not publishable. 42 Built, 41 Buildable, 8 Needs checking, 8 Unlikely.
 | u8bhg | **Prosocial Motivation, Social Position, and Support for Social Welfare Policy**<br>Prosocial motivation, social position and support for welfare policy (from title).<br>*2015; UK priority 0.73; transfers: US-specific* | economics/behavioural | Unlikely: answering needs US knowledge | 0.19 |  |
 | m8y47 | **Measuring Perceptions and Attitudes about Overweight and Obesity**<br>At what body size do people call someone overweight or obese? Uses altered images.<br>*2004; UK priority 0.99; transfers: Mechanism only* | health communication | Unlikely: the condition is an image | 0.18 |  |
 | 5fu2b | **Two-Sided Messages and Pandemic Flu: Persuading the Public to Follow Contradictory Government Directives**<br>Persuading people to follow two contradictory pandemic directives: stay apart, yet queue for treatment.<br>*2008; UK priority 0.99; transfers: Mechanism only* | health communication | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.16 |  |
+| ujw87 | **The Impact of Information from similar or different advisors on judgment**<br>Advice from someone similar or different: how much does it count?<br>*2006* | moral/social/cognition | Unlikely: no respondent-level data: the OSF deposit holds only frequency tables (Shang_Codebook_Final.xls) and a figure, and the Shang module is absent from the TESS 2005 telephone-survey data file (osf.io/fr3eg); questions are mostly about NPR, the Red Cross and US public TV; the 'similar advisor' condition is built from the respondent's own persona (rich, 10 Oct 2026) | 0.16 |  |
 | ht243 | **Value Choices in the Mass Public: Testing for Framing Effects and Hierarchical Structure**<br>Are people's value priorities stable, or changed by how the choice is framed?<br>*2005; UK priority 0.35; transfers: US-specific* | survey methodology | Unlikely: answering needs US knowledge | 0.15 |  |
 
 ## Harvard Dataverse

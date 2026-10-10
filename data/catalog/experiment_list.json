@@ -1565,8 +1565,8 @@
    "description": "Advice from someone similar or different: how much does it count?",
    "details": "2006",
    "category": "moral/social/cognition",
-   "status": "Needs checking",
-   "reason": "main data file missing",
+   "status": "Unlikely",
+   "reason": "no respondent-level data: the OSF deposit holds only frequency tables (Shang_Codebook_Final.xls) and a figure, and the Shang module is absent from the TESS 2005 telephone-survey data file (osf.io/fr3eg); questions are mostly about NPR, the Red Cross and US public TV; the 'similar advisor' condition is built from the respondent's own persona (rich, 10 Oct 2026)",
    "novelty": 0.16
   },
   {
