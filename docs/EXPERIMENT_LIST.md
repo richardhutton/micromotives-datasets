@@ -14,6 +14,8 @@ Every experiment we have built and every candidate we could add, from four sourc
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 |
 | **Total** | | **84** | **68** | **29** | **26** | **123** |
 
+**84 studies built, making 95 experiments in the corpus.** Some studies are built as several experiments (one per answer type or sub-design), so the two numbers differ.
+
 ## Next 33, in build order (21 built, 12 to go)
 
 - Pool: Buildable candidates only.

@@ -22,6 +22,7 @@ Statuses, defined once and used everywhere:
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -86,6 +87,7 @@ def render_md(data: dict) -> str:
         )
     totals = [f"**{n(None, st)}**" for st in STATUSES]
     out.append("| **Total** | | " + " | ".join(totals) + f" | **{len(rows) - n(None, 'Built')}** |")
+    out += ["", built_line(data)]
     nxt = sorted((r for r in rows if r.get("next")), key=lambda r: r["next"])
     if nxt:
         done = sum(r["status"] == "Built" for r in nxt)
@@ -140,6 +142,28 @@ def render_md(data: dict) -> str:
     return "\n".join(out) + "\n"
 
 
+def corpus_experiments() -> int:
+    """Experiments in the committed corpus: one per tracked recipe.
+
+    A built study can be several experiments (one per answer type or sub-design),
+    so this differs from the Built count above, which counts studies. Untracked
+    recipes are work in progress and are not counted.
+    """
+    out = subprocess.run(
+        ["git", "ls-files", "recipes/*.yaml"], cwd=ROOT, capture_output=True, text=True
+    )
+    return len(out.stdout.split())
+
+
+def built_line(data: dict) -> str:
+    studies = sum(r["status"] == "Built" for r in data["rows"])
+    return (
+        f"**{studies} studies built, making {data['corpus_experiments']} experiments in the "
+        "corpus.** Some studies are built as several experiments (one per answer type or "
+        "sub-design), so the two numbers differ."
+    )
+
+
 def render_html(data: dict) -> str:
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return TEMPLATE.read_text().replace("__DATA__", payload)
@@ -150,11 +174,10 @@ def main() -> None:
     bad = {r["status"] for r in data["rows"]} - set(STATUSES)
     if bad:
         raise SystemExit(f"unknown status in {DATA.name}: {sorted(bad)}")
+    data["corpus_experiments"] = corpus_experiments()
     MD.write_text(render_md(data))
     HTML.write_text(render_html(data))
-    print(
-        f"wrote {MD.relative_to(ROOT)} and {HTML.relative_to(ROOT)}: {len(data['rows'])} experiments"
-    )
+    print(f"wrote {MD.relative_to(ROOT)} and {HTML.relative_to(ROOT)}: {len(data['rows'])} studies")
 
 
 if __name__ == "__main__":

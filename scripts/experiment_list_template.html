@@ -59,6 +59,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
     <div class="panel">
       <h2>By source and status</h2>
       <div class="scroll"><table class="sum" id="sum"></table></div>
+      <p class="note" id="builtline"></p>
     </div>
     <div class="panel">
       <h2>What the statuses mean</h2>
@@ -109,6 +110,7 @@ const rows = DATA.rows;
   }
   h += `<tr class="total"><td>Total</td><td></td>${STATUSES.map(st => `<td class="num">${n("", st)}</td>`).join("")}<td class="num">${rows.length - n("", "Built")}</td></tr></tbody>`;
   document.getElementById("sum").innerHTML = h;
+  document.getElementById("builtline").innerHTML = `<b>${n("", "Built")} studies built, making ${DATA.corpus_experiments} experiments in the corpus.</b> Some studies are built as several experiments (one per answer type or sub-design), so the two numbers differ.`;
 })();
 
 const fsrc = document.getElementById("fsrc"), fst = document.getElementById("fst"), fcat = document.getElementById("fcat"), fnext = document.getElementById("fnext");
