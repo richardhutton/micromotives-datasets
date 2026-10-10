@@ -1543,8 +1543,8 @@
    "description": "Does a good mood make people more creative?",
    "details": "2005",
    "category": "moral/social/cognition",
-   "status": "Needs checking",
-   "reason": "main data file missing",
+   "status": "Unlikely",
+   "reason": "no assignment record: the OSF deposit holds a completion report and an open-ends spreadsheet only (the mood essays and free-text word associations), not the main data file, so who got the happy or sad condition is unknown; the outcome is a free-text word needing a creativity score, not a coded answer (rich, 10 Oct 2026)",
    "novelty": 0.19
   },
   {
