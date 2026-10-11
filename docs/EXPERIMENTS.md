@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**105 experiments.** 24 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 42 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**106 experiments.** 24 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 43 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 24 | 255,251 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 38 | 372,831 | **no** — UKDS End User Licence |
-| US transfer — TESS | 42 | 368,659 | **no** — no licence stated |
-| **Total** | **105** | **1,010,009** | |
+| US transfer — TESS | 43 | 374,137 | **no** — no licence stated |
+| **Total** | **106** | **1,015,487** | |
 
 ---
 
@@ -107,6 +107,7 @@
 | `9xw67_vignette` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 5,816 |
 | `xk9ch_institution` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 5,524 |
 | `xk9ch_vignette1` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 5,499 |
+| `jxdu8` ⚠ | Moral Luck, Loss of Chance, and Legal Liability | TESS (OSF) | `osf.io/jxdu8` | 5,478 |
 | `py9q3_vignette2` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 5,005 |
 | `sd7cf` ⚠ | Framing in Noisy Informational Environments | TESS (OSF) | `osf.io/sd7cf` | 4,124 |
 | `vwn96` ⚠ | What's the Best Way to Motivate Kids? | TESS (OSF) | `osf.io/vwn96` | 4,019 |
@@ -994,6 +995,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `b87sm` | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | moral/social/cognition | 19,282 | 1,942 | osf.io/b87sm |
 | `es4xw` | Perceptions of Diversity Across Groups | moral/social/cognition | 32,228 | 2,501 | osf.io/es4xw |
 | `gh396` | Maintaining a Sense of Belonging among the Socially Isolated | moral/social/cognition | 8,959 | 412 | osf.io/gh396 |
+| `jxdu8` | Moral Luck, Loss of Chance, and Legal Liability | moral/social/cognition | 5,478 | 371 | osf.io/jxdu8 |
 | `vwn96` | What's the Best Way to Motivate Kids? | moral/social/cognition | 4,019 | 2,013 | osf.io/vwn96 |
 | `xk9ch_identity_threat` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,335 | 2,783 | osf.io/xk9ch |
 | `xk9ch_institution` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,524 | 2,785 | osf.io/xk9ch |
@@ -1025,7 +1027,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 11 | 7 | 201,009 |
 | health communication | 0 | 9 | 91,114 |
-| moral/social/cognition | 5 | 12 | 184,516 |
+| moral/social/cognition | 5 | 13 | 189,994 |
 | political identity/polarisation | 4 | 0 | 34,920 |
 | political preferences/policy | 15 | 0 | 133,789 |
 | survey methodology | 20 | 5 | 220,843 |

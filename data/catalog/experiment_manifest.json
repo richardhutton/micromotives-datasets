@@ -500,6 +500,12 @@
       "description": "How people split an imaginary £1,000 between themselves or their household, their local community and a poor country, after no questions or after placing themselves on a 1-100 world wealth scale in 2019 and today (alone, also their local community, or also an average person in a poor country). Three amounts per person that sum to £1,000. DEL panel wave 4 (2022).",
       "design": "between-subjects, 4 arms (control + 3 self-placement sequences, CoLSplit), three £0-1000 allocation outcomes per respondent; the questions asked are narrated, the piped own answers never rendered; arm 4 keeps a recap-line script error word-for-word (kept by rich's ruling, ledger 156)",
       "verified_against": "no published reference; an independent checker (Sonnet 5.5) rebuilt the conditions blind from the questionnaire and diffed them against the build, matched all 24,024 responses to their source variables in all 12 arm-task cells, confirmed every allocation sums to 1000 and ages for all 8,008 people; its notes and position-claim findings were fixed and the build re-derived (10 Oct 2026)"
+    },
+    "jxdu8": {
+      "category": "moral/social/cognition",
+      "description": "A company boss lets a chemical leak and a man, Kyle, inhales it, raising his stroke risk. The boss acted knowingly, negligently or innocently; Kyle has had the stroke or has not (only his risk rose, a 'loss of chance'); and his risk was under or over 50%. Respondents judge as a jury: moral outrage, whether and how compensation is owed, non-economic and punitive damages, a fine, prison, and which factors mattered. US tort frame. TESS, 2005.",
+      "design": "3 x 2 x 2 between-subjects (state of mind x stroke or loss of chance x risk level), 12 cells all occurring; 17 outcomes per respondent, mostly 1-7; the compensation-owed and remedy items differ between the stroke and no-stroke versions and are four separate outcomes, each in 6 of 12 cells (ledger 147); manipulation and recall checks and open $ / years amounts dropped",
+      "verified_against": "no published reference table; an independent checker (Sonnet 5.5) fetched the fielded questionnaire from OSF itself, rebuilt all 12 conditions blind (0 word differences), re-derived all 5,478 responses from the .sav (0 missing, extra or mismatched) and confirmed the cell mapping against respondents' own risk recall (11 Oct 2026)"
     }
   }
 }

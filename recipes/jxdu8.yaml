@@ -1,0 +1,900 @@
+study_id: jxdu8
+source: tess
+title: "Moral Luck, Loss of Chance, and Legal Liability"
+data_file: TESS45_client.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-10:
+  registration jxdu8 and its child components h8qyj "Data" and qr7gc
+  "Materials and Methods" all have node_license null and no license
+  relationship; same finding recorded 2026-10-02 in
+  data/catalog/tess_uk_foundation_sources.csv). TESS states no reuse terms for
+  its archived studies, so there is no explicit grant of redistribution rights
+  and none should be assumed.
+
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 45 (Darley), "Moral Luck, Loss of Chance, and Legal Liability", fielded
+  by Knowledge Networks 17-24 Aug 2005: 554 fielded, 373 completed (completion
+  report). The .sav has 373 rows, CASEID unique (DT_START 20050817-20050824).
+  One experiment, one recipe. A US tort frame throughout: "punitive damages",
+  juries, "American states have different laws", dollar figures. Kept exactly as
+  fielded; a UK reader meets an unfamiliar legal institution (punitive damages
+  are rare in UK law), so the transfer is the mechanism, not the legal detail.
+
+
+  SOURCES AND PROVENANCE
+
+    Q    = tess45_darley_FinalQuex.doc, the FIELDED Knowledge Networks
+           questionnaire ("August 2005", footer "Knowledge Networks, Inc. FILENAME
+           tess45_darley_finalquex.doc", last saved 9/1/2005). In the OSF child
+           component qr7gc "Materials and Methods" of registration jxdu8
+           (https://osf.io/download/565bbed38c5e4a3875d741b3/, 142,848 bytes,
+           sha256 568ad916261f179b19c4e44737546fe254867218513dc6abb84f1b7c5a33a551),
+           fetched 2026-10-10 into the maker's scratch folder and converted with
+           macOS textutil (line numbers below are 1-based into that .txt, blank
+           lines kept). Its title line reads "TESS 46 - Darley"; the file name,
+           footer, data file and completion report all say TESS 45, and the
+           content matches the .sav item for item, so the "46" is a typo in the
+           header. (The completion report's own document metadata is titled "TESS
+           46 Delton ..." while its text says "TESS 45 - Darley": a reused template.)
+    CR   = "TESS 45 - Darley Completion Report.doc" (https://osf.io/download/zt6xp/,
+           root of the registration): field dates and N only.
+    OE   = TESS45_darley_openend.xls (https://osf.io/download/565bbed28c5e4a3875d741b0/,
+           sha256 2c525665bf6b76684350e4cb1c2176449731354c335517f06efc127d6073c416):
+           the open-ended follow-ups (NS6c/SS6c, NS9b/SS9b); not built.
+    Data = TESS45_client.sav (component h8qyj "Data",
+           https://osf.io/download/565bbed28c5e4a3875d741b1/, sha256
+           e587bb2962be7e678e14dc506c57aed7b95d4e3f316a473194fd09f646131ae1, the
+           same bytes as data/raw/jxdu8/).
+    There is no separate proposal in the deposit; nothing here is taken from one.
+
+    Fielded version confirmed against the .sav: every built variable is a
+    question in Q with the same wording and the same codes, and the
+    respondents' own recall answers reproduce the design arm by arm. NS2a/SS2a
+    ("likelihood ... before he was exposed") has median AND mode 5 in MANI2 = 1
+    and 3 and 11 in MANI2 = 2 and 4; NS2b/SS2b ("after he breathed in the
+    chemical") has median and mode 25 and 55 respectively: exactly the risk
+    figures in Q 83/85, 101/103, 117/119, 131/133. NS1/SS1 ("Has Kyle had a
+    stroke?"): "Yes" from 165 of 188 answering stroke-arm respondents, "Not yet,
+    but he might" from 165 of 178 answering loss-of-chance respondents.
+    NS4/SS4 (culpability description) is modal at "knew he was doing something
+    wrong" in MANI1 = 1 (66 of 127 answering), at "recklessly ignored"/"careless" in
+    MANI1 = 2, and at "acted acceptably" in MANI1 = 3 (75 of 124 answering).
+
+
+  THE DESIGN (Q 6-21, 43-133)
+
+  Q: "A BETWEEN SUBJECTS 3 BY 4 DESIGN, CREATING 12 CELLS". State of mind (MANI1:
+  1 knowing, 2 negligent, 3 innocent; Q 47-60) crossed with an outcome
+  manipulation (MANI2) that Q calls one 4-state "nested" dimension and that is in
+  fact two fully crossed factors: outcome_type (1/2 stroke, 3/4 loss of chance:
+  no stroke yet) x risk_level (1/3 under 50%, 2/4 over 50%; Q 73-133). Declared
+  here as three factors so each is tested by QC rule 5. The risk levels are the
+  instrument's own headings: baseline 5% -> total 25% ("LESS THAN 50%"), baseline
+  11% -> total 55% ("MORE THAN 50%"), both "quintupled". The outcome block's
+  programming note (Q 71) says "RANDOMLY SELECT ONE OF THE FOLLOWING THREE STATE
+  OF MIND MANIPULATIONS" - a copy of Q 45; four outcome blocks follow it and
+  MANI2 takes four values, so it is a slip in the note, not a design fact.
+
+  condition_num = (MANI1 - 1) * 4 + (MANI2 - 1). All 12 cells occur, all 373
+  respondents are assigned (no -1/-2 on MANI1 or MANI2). Cell counts, MANI1 rows x
+  MANI2 columns 1..4: knowing 27/38/34/29, negligent 24/36/36/24, innocent
+  40/26/32/27.
+
+  ROUTING. Q 17-21: the stroke cells get the "VICTIM SUFFERED STROKE" set (SS*),
+  the loss-of-chance cells the "VICTIM DID NOT SUFFER STROKE" set (NS*). The data
+  route exactly by MANI2: every NS* variable is -2 "Not asked" for all 191
+  respondents with MANI2 in {1, 2}, and every SS* variable is -2 for all 182 with
+  MANI2 in {3, 4}. Cross-routing: 0 respondents. No kept item is -2 for anyone
+  inside its own block. No routing_check is declared because the assignment is
+  two coded variables and the build reads exactly one block per arm through
+  `items`; the cross-routing count above was computed directly from the .sav.
+
+  Within a block, the only conditional items are follow-ups, and none is built:
+  "SHOW NS6B IF CHOICE 3", "SHOW NS6C/SS6C IF CHOICE 3/4", "SHOW xS7B/8B/12B/13B
+  IF NOT 'NO ...'" and "SHOW xS9B IF 'SOMETHING ELSE' RATED 5-7" (Q 193-313,
+  370-483). The data honour them exactly (e.g. NS7B is -2 for precisely the 34
+  who answered NS7A "No damages"). Every BUILT item was asked of everyone in its
+  block: NS6a/SS6a and NS7a/SS7a were asked whatever the answer to NS5/SS5 (all
+  46 who said Pilling owed nothing answered NS6a), and NS10/SS10 whatever the
+  answer to the punitive damages question. So no condition or outcome here
+  narrates a follow-up as if everyone saw it.
+
+
+  CONDITION TEXT - WHAT IS WORD-FOR-WORD AND WHAT IS NOT
+
+  Each arm = the common prefix + its state-of-mind paragraph (Q 50 / 55 / 60) +
+  the Kyle paragraph (Q 65, "[DISPLAY; SHOW ALL]") + its outcome block (Q 76-87 /
+  94-105 / 112-119 / 126-133, both [DISPLAY] screens of the block), each
+  [DISPLAY] screen its own paragraph (blank line between). The common prefix is
+  Q 26 (task instruction), Q 29-30 ("Pilling's Company" screen, heading kept as a
+  line), Q 32-34 ("The Manufacturing Danger" screen), Q 37 and Q 39 (detection
+  and the buffer): identical in all 12 cells.
+
+  The prefix is NOT in shared_context, deliberately, and is repeated in every
+  arm. The renderer joins shared_context to the arm text with a single space
+  (Recipe.condition_text_for: f"{ctx} {body}" after strip(); Condition.render
+  the same), so the state-of-mind screen ("However, last month ...") would run
+  on as part of the buffer paragraph, a paragraph no screen showed. Q puts a
+  [DISPLAY] screen break there (Q 49/54/59), so each arm carries the prefix,
+  then a blank line, then the state-of-mind paragraph. Same ruling and reason as
+  7tzpe (CONVENTIONS: the screens as read beat de-duplication). The Kyle
+  paragraph is shared too but sits between the two manipulations, so it could
+  never have been hoisted. A scratch generator (not committed) pulled every line
+  from Q by line number, asserted each block's heading and [DISPLAY] gate lines,
+  asserted nothing but blank lines and [DISPLAY] sits between the pulled
+  paragraphs, and asserted the 5/25 and 11/55 risk figures against each block's
+  heading. Programming notes, block headings ("MANIPULATION 1: ...", "STROKE -
+  LESS THAN 50%") and [DISPLAY] tags are not rendered: respondents did not see
+  them.
+
+  Typography normalised per CONVENTIONS (curly quotes straightened, doubled
+  spaces after full stops made single). Words kept as fielded, including the
+  source's own inconsistencies, which no respondent could have compared because
+  each saw one cell:
+    * The wife is "Dana" (Q 65, all arms) but "Sue" in the stroke-over-50% block
+      (Q 94: "He and Sue are very upset") and "his wife" in both loss-of-chance
+      blocks. So arms 1, 5, 9 name two different wives in one story.
+    * The agent of the risk is "the chemical" (under-50% blocks), "the carpet
+      glue" (stroke over 50%) and "the glue" (loss of chance over 50%).
+    * "it is about 5% percent over a 5 year period" (loss of chance under 50%,
+      Q 117); "a total 25% risk" in the under-50% blocks vs "a 55% risk" in the
+      over-50% blocks.
+    * "Pilling does not want anyone, even his employees to know" (no comma),
+      "which has been in successful business".
+  "Some people have asked us for information ... so we are giving that
+  information to everyone. Here it is." is on screen in every block (Q 81 etc.)
+  and is kept: it says nothing about other versions, only that everyone gets
+  the risk figures.
+
+
+  OUTCOMES - 17 BUILT
+
+    task 0   NS3 / SS3     moral outrage at Pilling's conduct       1-7
+    task 1   NS5           does Pilling owe compensation (no stroke) 1-2, NS arms only
+    task 2   SS5           does Pilling owe compensation (stroke)    1-2, SS arms only
+    task 3   NS6a          best way to deal with the $575,000        1-4 nominal, NS only
+    task 4   SS6a          best way to deal with the $575,000        1-3 nominal, SS only
+    task 5   NS7a / SS7a   non-economic (pain and suffering) damages 1-7
+    task 6   NS8a / SS8a   punitive damages                          1-7
+    task 7-12 NS9A_1-6 / SS9A_1-6  importance of six factors in setting
+                           punitive damages                          1-7
+    task 13  NS10 / SS10   % of punitive damages directly to Kyle    0-100
+    task 14  NS11 / SS11   % of punitive damages to the agency       0-100
+    task 15  NS12a / SS12a fine                                      1-7
+    task 16  NS13a / SS13a prison                                    1-7
+
+  Question wording word-for-word from Q, question number dropped, except for
+  the sequence wording removed under CONVENTIONS "Sequence signposting" (which
+  also drops survey mechanics), listed under SEQUENCE WORDING DROPPED below. Where NS and
+  SS wording is identical (tasks 0, 6-12, 15, 16; asserted by the generator)
+  the outcome carries it and each arm's `items` names only its variable. Where
+  it differs, each arm's `items` carries its own block's wording and the
+  outcome's own `question` is a bracketed placeholder that QC rule 21 would fail
+  if it ever reached a row: task 5 ("resulting from the possible stroke" NS /
+  "resulting from the stroke" SS) and tasks 13-14 (the SS stem misspells
+  "vicitims", Q 443, kept).
+
+  ONE OUTCOME ID, ONE ANSWER TYPE (ledger 147). NS5/SS5 and NS6a/SS6a are the
+  remedy questions, and their options differ between the two blocks: NS5 offers
+  "should pay for Kyle's expenses caused by his increased risk", SS5 "owe
+  compensation for Kyle's financial losses caused by the stroke"; NS6a has four
+  remedies (pay now / escrow deposit / a percentage now / a better way), SS6a
+  three (lump sum now / annual payments / a better way). Different questions with
+  different answer sets, so each is its OWN outcome, existing only in the six
+  cells that asked it (the other block's respondents carry -2 and drop). They
+  are not merged under one id. NS6a/SS6a are nominal (Scale.nominal), options
+  enumerated in the question in Q's code order (no randomisation directive);
+  NS5/SS5 are two-point, the options as the end labels (7tzpe Q10 pattern), 1 =
+  no liability.
+
+  SCALES, read from the full value labels and Q: every 7-point item labels all
+  seven points ("No / Slight / Modest / Moderate / High / Very high / Maximal"
+  + outrage, damages, fine, prison). The scale renders 1, 4 and 7 as
+  min/mid/max; 2, 3, 5, 6 are not rendered (Scale has no field for them; ledger
+  133). The NS9a/SS9a grid labels only the ends in the value labels ("Not at
+  all important1", "Extremely important7"); Q's stem says "4 being in the
+  middle", which is kept in the question rather than repeated as a mid_label.
+  It is a clean 1-7 scale on every one of its six substantive items.
+
+  NS9a/SS9a: "[RANDOMIZE RESPONSES EXCEPT 'SOMETHING ELSE' ...]" - the six
+  factors were shown in a per-respondent order that is not recorded. Each row
+  carries the stem and its OWN factor only, so no order is asserted. Item 5 is
+  transcribed from Q (with its parenthesis "(the notion is that ...)"); the
+  .sav's label for SS9A_5 is truncated.
+
+  NS10/NS11 (and SS10/SS11): one screen with two number boxes that must sum to
+  100 ("[GRID - NUMBER BOXES THAT SUM TO 100; SHOW TOTAL BOX]", Q 272), so they
+  are bounded 0-100 by the instrument and are not open amounts. Built per
+  CONVENTIONS "One stem, several labelled answer fields": the two-paragraph stem
+  and both box questions word-for-word, then ONE ADDED SENTENCE, not sourced:
+  'Report only the percentage for "<box question>".' with the box question
+  quoted from Q. The pair sums to 100 for 332 respondents and to 0 (both boxes
+  0) for 12; those 12 answers are real and kept. NS11 has 26 refusals against
+  NS10's 11 (some filled only the first box).
+
+  Missing: -1 REFUSED and -2 Not asked are SPSS user-missing on every variable
+  -> missing_codes [-1, -2]. Jev called both non_answer (conf 1.00) on every
+  variable. Dropped as refused, per outcome: task 0 5, task 1 3, task 2 1,
+  task 3 2, task 4 1, task 5 4, task 6 5, tasks 7-12 7/7/11/7/8/6, task 13 11,
+  task 14 26, task 15 7, task 16 6 (117 in all). Tasks 1-4 also drop the other
+  block's -2 by design (191 / 182 per item).
+
+  INCLUDE (0 = refused more than a third of all variables, 4 respondents) is
+  NOT used as a filter, as in e5rfg: their answered items are real answers.
+  Two of the four answered no built item at all and so contribute no rows
+  (371 participants), the other two contribute 6 rows.
+
+
+  EXCLUDED, WITH ROW COST (answered respondent-items)
+
+    * NS1/SS1 (has Kyle had a stroke) and NS2a/b, SS2a/b (baseline and exposed
+      risk %): recall checks, answerable from the condition (CONVENTIONS:
+      attention and recall checks are not outcomes). 366 + 364 + 362.
+    * NS4/SS4 (which description best fits Pilling's conduct: purpose /
+      knowledge / recklessness / negligence / acceptable): the state-of-mind
+      manipulation check. Its five options are the levels the manipulation
+      writes into the story, and its answers track MANI1 (above). 370.
+    * NS7b, NS8b, NS12b (open $, "[NUMBER BOX WITH RANGE 0 TO 999999999; DO NOT
+      SHOW RANGE IN INSTRUCTIONS]") and NS13b (open years), and the SS
+      equivalents: open amounts with no range shown to the respondent (ledger
+      53 / IP 9.5 precedent), and each asked only of those who did not answer
+      "No ..." on the item before. 305 + 293 + 285 + 145.
+    * NS6b (percentage of costs, 0-100): asked only of the 19 who chose option 3
+      in NS6a, with no SS counterpart; its premise ("You told us that ...") is
+      the respondent's own earlier answer. 19.
+    * NS9A_7 / SS9A_7 "Something else": the factor rated is whatever the
+      respondent had in mind (written in NS9b/SS9b only when rated 5-7), so a
+      row cannot say what was rated. 308.
+    * NS6c, SS6c, NS9b, SS9b: open text (in OE, not the .sav).
+    * Survey mechanics not rendered: "Here are some beginning questions ...",
+      "Now, here are some questions about your reaction to the story."
+
+
+  SEQUENCE WORDING DROPPED FROM OUTCOME STEMS (word-for-word; asserted present
+  exactly once by the scratch generator before removal)
+
+  A row carries one question and cannot say what came before or after it, so
+  sentences that only describe the instrument's sequence are removed (CONVENTIONS
+  "Sequence signposting"); the question itself stays word-for-word.
+    * Task 1 (NS5), two sentences: "The law creates a number of possible ways
+      and we will ask you about all of them." and "Finally we will ask you if
+      you want anyone in the company to be fined or get a prison sentence."
+    * Task 2 (SS5), three sentences: "The law creates a number of possible ways
+      and we will ask you about all of them.", "You will have a chance to say
+      whether or not Pilling and the company owe Kyle money for the costs of his
+      illness, pain and suffering damages, and damages as punishment for bad
+      conduct." and "Finally we will ask you if you want anyone in the company
+      to get a prison sentence." Tasks 1 and 2 now both read "How should
+      Pilling and the company compensate Kyle?"; the options (the scale
+      labels) still differ, so they stay separate outcomes. Borderline: "The
+      law creates a number of possible ways" is a clause of context, but it is
+      one sentence with "we will ask you about all of them" and its only job
+      there is to announce the later items, so the sentence goes whole rather
+      than being cut mid-sentence.
+    * Tasks 13-14 (NS10/11, SS10/11): "You set the punitive damages before."
+      and the leading "Now" of the next sentence, which becomes "Decide on how
+      they should be divided between Kyle and the independent agency." ("they"
+      still has its antecedent, "the punitive damages", in the stem's first
+      paragraph.)
+    * Task 6 (NS8a/SS8a): the leading "Now" of "Now decide about punitive
+      damages." -> "Decide about punitive damages."
+    * Task 16 (NS13a/SS13a): the leading "Finally," of "Finally, if you think
+      the conduct of Pilling deserves it, ..." -> "If you think the conduct of
+      Pilling deserves it, ..."
+    In each of the three "Now"/"Finally" cuts the next word's first letter is
+    capitalised ("decide" -> "Decide", "if" -> "If"): the only character in
+    this recipe changed rather than removed, forced by the cut, recorded here.
+  KEPT on purpose, flagged for rich: task 15 (fine) "If you think that
+  Pilling's conduct deserves it, you can fine the company for their conduct over
+  and above the compensation you already assigned to Kyle." The back-reference
+  defines what the fine is (a sum on top of compensation), so it is meaning, not
+  sequence; it presupposes that compensation was assigned, which is not true of
+  every respondent (46 + 7 said nothing was owed in NS5/SS5), but it is what
+  every respondent read. Also kept: task 5's "Decide about this. Over and above
+  those direct costs ..." (the costs are the $575,000 in the condition), and
+  NS6a/SS6a's "Mark the solution below you would prefer and add any comments
+  you would wish." ("below" points to the options in the same row; the comment
+  box is not rendered).
+
+
+  PERSONA
+
+  Knowledge Networks standard profile, as e5rfg (TESS 56, same panel and year,
+  same labels): PPAGE, PPGENDER, PPEDUCAT, PPETHM, PPINCIMP, PPREG4, PPHHSIZE,
+  PPHOUSE, PPMSACAT, PPNET. No party, ideology or religion in this file.
+  PPAGE is the respondent's age in years (18-90, no missing), not a code; the
+  coded band is AGEGROUP (value labels "18-24" ... "75 and over"), which is not
+  used, and PPAGE falls inside its own AGEGROUP band for all 373. No persona
+  value is -1/-2 on any mapped variable, so no persona_missing is declared.
+  LEFT OUT, as in e5rfg: marital_status (PPMARIT), employment (PPWORK) and
+  housing_ownership (PPRENT). Their 2005 labels ("Single (never married)", "I
+  am disabled", "Own"/"Rent"/"Do not pay for housing", ...) are not in the
+  persona crosswalks and QC rule 14 warns on them (checked: the first draft
+  mapped them and warned). Adding them needs scripts/persona_harmonise.py to
+  write data/catalog/, which this build may not. Restore all three once the
+  crosswalk covers them. Jev (recipe_prep) picked PPEDUC for education (conf
+  1.00); PPEDUCAT is used instead, as every KN-era recipe does, since the
+  crosswalk harmonises it.
+
+  No persona field shares a domain with the outcomes (legal liability,
+  punishment), and the condition names no persona category: Kyle is 59 and
+  takes blood-pressure medication, which is not something any persona field
+  states about the respondent.
+
+
+  JEV (scripts/recipe_prep.py jxdu8 --source tess, 2026-10-10)
+
+    assignment: MANI1, conf 0.86 (runner-up NONE_OF_THESE 0.09). Accepted, and
+      MANI2 added: the call returns one column and the design has two (Q 45,
+      Q 71). MANI2's labels name the four outcome blocks.
+    persona: all ok; education overruled (above); religion not in the file.
+    labels: 233 asked, 0 Jev/regex disagreements; "Not asked" and "REFUSED"
+      non_answer at 1.00 everywhere.
+    directives: the script found no instrument (Q lives in the maker's scratch
+      folder, not data/raw/), so section 4 printed NOTHING SCANNED. Run by hand
+      over Q with quex's own patterns: 0 directives recognised and 0 loose
+      "[... if" matches, because this instrument writes routing as plain
+      "SHOW NS6B IF CHOICE 3 SELECTED IN NS6A." lines. All 13 such lines were
+      read: every one gates a follow-up item that is not built (ROUTING above);
+      none gates stimulus text. The stimulus gates are the two "RANDOMLY SELECT"
+      programming notes, resolved by MANI1/MANI2.
+
+
+  RISKIEST JUDGEMENT
+
+  Building NS5/SS5 and NS6a/SS6a as four block-specific outcomes rather than
+  dropping them. They are real remedy choices and are kept apart under separate
+  ids, so no id mixes two answer sets; but each exists in only six of the
+  twelve cells, so a per-outcome comparison across the outcome_type factor is
+  not possible for them, and a reader of the corpus has to know that tasks 1-4
+  are confounded with outcome_type by construction. If the ruling is that a
+  block-specific outcome does not belong in a factorial experiment, delete
+  tasks 1-4 (739 rows); nothing else depends on them.
+  Second: keeping NS10/NS11 (the 0-100 split of punitive damages), which the
+  brief's keep list did not name. They are bounded by the instrument (two boxes
+  summing to 100), asked of everyone in the block, and built with the
+  CONVENTIONS added sentence; NS11 is 100 - NS10 for 332 of 344 respondents
+  who answered both, so the two rows of a respondent are near-redundant.
+  Third: the common prefix and the Kyle paragraph repeated in every arm rather
+  than held in shared_context (the renderer's single-space join would merge two
+  screens), and the sequence sentences cut from five outcome stems (listed
+  above).
+
+
+  VERIFICATION
+
+  Not in SocSci210 (tess_uk_foundation_sources.csv in_socsci210 = no), and no
+  published table was located, so there is no numeric answer key. Verified by
+  re-deriving every (participant, task, condition, response) from the .sav with
+  an independent script (scratch, not committed) that builds its own cell table
+  from Q and its own NS/SS variable map, and reads the BUILT parquet: see the
+  maker's report.
+condition:
+  source_vars: [MANI1, MANI2]
+  factors: [state_of_mind, outcome_type, risk_level]
+  arms:
+    # Q 50 + Q 65 + Q 76, 78, 81, 83, 85, 87
+    - raw_values: {MANI1: 1, MANI2: 1}
+      condition_num: 0
+      factors: {state_of_mind: knowing, outcome_type: stroke, risk_level: under_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, a batch of cement was made in a dangerous manner that allowed the chemical to escape into the air with Pilling's knowledge. Pilling had failed to add the neutralizing chemical to the filtering system. When he saw what he had done, he decided not to stop the process, because it would cost a great deal of money finding a way to dispose of the toxic batch legally. This may have required him to shut down the plant for a few days, losing even more money. Instead, he decided just to pretend that the problem didn't occur.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        Quickly thereafter, Kyle had a stroke. He remains partly paralyzed, his speech is slurred, and little or no additional improvement is expected. Tests showed that the chemical combined with his medicine to induce the stroke. Kyle's doctors explained the studies to him, and he now knows what caused the stroke. He and Dana are very upset, and have been unable to sleep since learning of this fact. Also, Kyle can no longer work.
+
+        It would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss will amount to $575,000.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 5% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a total 25% risk over a 5 year period. Inhaling the chemical has quintupled people like Kyle's risk of having a stroke.
+
+        Of course, Kyle had the stroke. Its severity was typical of what could be expected for people who have this sort of stroke.
+      items: &ss_items
+        0: {outcome_var: SS3}
+        5: {outcome_var: SS7A, outcome_question: "Decide about this. Over and above those direct costs resulting from the stroke, Pilling may also owe Kyle and his wife money for the pain, sleeplessness, suffering and worry that Kyle and his wife have already experienced and will continue to experience. How much, if anything, do you think Kyle and his wife should be compensated for these non-economic reductions in the quality of their lives?"}
+        6: {outcome_var: SS8A}
+        7: {outcome_var: SS9A_1}
+        8: {outcome_var: SS9A_2}
+        9: {outcome_var: SS9A_3}
+        10: {outcome_var: SS9A_4}
+        11: {outcome_var: SS9A_5}
+        12: {outcome_var: SS9A_6}
+        13: {outcome_var: SS10, outcome_question: "American states have different laws about who receives punitive damages. Some give it to the injured party, in this case, Kyle. Others have created an independent non-profit agency that collects the punitive damages and uses the funds to pay out compensation to victims of accidents who are injured by parties who do not have the assets to compensate the vicitims. These agencies have a good record of being careful with the money they have, and using almost all of it to compensate victims of accidents caused by other people's carelessness.\n\nDecide on how they should be divided between Kyle and the independent agency. Do this by assigning different percentages to both possible recipients. If you want it all to go to one of them, that one gets 100% and the other 0%.\nWhat percent of the punitive damages (if any) should go directly to Kyle?\nWhat percent of the punitive damages (if any) should go to such an agency?\nReport only the percentage for \"What percent of the punitive damages (if any) should go directly to Kyle?\"."}
+        14: {outcome_var: SS11, outcome_question: "American states have different laws about who receives punitive damages. Some give it to the injured party, in this case, Kyle. Others have created an independent non-profit agency that collects the punitive damages and uses the funds to pay out compensation to victims of accidents who are injured by parties who do not have the assets to compensate the vicitims. These agencies have a good record of being careful with the money they have, and using almost all of it to compensate victims of accidents caused by other people's carelessness.\n\nDecide on how they should be divided between Kyle and the independent agency. Do this by assigning different percentages to both possible recipients. If you want it all to go to one of them, that one gets 100% and the other 0%.\nWhat percent of the punitive damages (if any) should go directly to Kyle?\nWhat percent of the punitive damages (if any) should go to such an agency?\nReport only the percentage for \"What percent of the punitive damages (if any) should go to such an agency?\"."}
+        15: {outcome_var: SS12A}
+        16: {outcome_var: SS13A}
+    # Q 50 + Q 65 + Q 94, 96, 99, 101, 103, 105
+    - raw_values: {MANI1: 1, MANI2: 2}
+      condition_num: 1
+      factors: {state_of_mind: knowing, outcome_type: stroke, risk_level: over_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, a batch of cement was made in a dangerous manner that allowed the chemical to escape into the air with Pilling's knowledge. Pilling had failed to add the neutralizing chemical to the filtering system. When he saw what he had done, he decided not to stop the process, because it would cost a great deal of money finding a way to dispose of the toxic batch legally. This may have required him to shut down the plant for a few days, losing even more money. Instead, he decided just to pretend that the problem didn't occur.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        Quickly thereafter, Kyle had a stroke. He remains partly paralyzed, his speech is slurred, and little or no additional improvement is expected. Tests showed that the chemical combined with his medicine to induce the stroke. Kyle's doctors explained the studies to him, and he now knows what caused the stroke. He and Sue are very upset, and have been unable to sleep since learning of this fact. Also, Kyle can no longer work.
+
+        It would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss will amount to $575,000.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 11% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a 55% risk over a 5 year period. Inhaling the carpet glue has quintupled people like Kyle's risk of having a stroke.
+
+        Of course, Kyle had the stroke. Its severity was typical of what could be expected for people who have this sort of stroke.
+      items: *ss_items
+    # Q 50 + Q 65 + Q 112, 115, 117, 119
+    - raw_values: {MANI1: 1, MANI2: 3}
+      condition_num: 2
+      factors: {state_of_mind: knowing, outcome_type: loss_of_chance, risk_level: under_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, a batch of cement was made in a dangerous manner that allowed the chemical to escape into the air with Pilling's knowledge. Pilling had failed to add the neutralizing chemical to the filtering system. When he saw what he had done, he decided not to stop the process, because it would cost a great deal of money finding a way to dispose of the toxic batch legally. This may have required him to shut down the plant for a few days, losing even more money. Instead, he decided just to pretend that the problem didn't occur.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        If Kyle has a stroke, the most likely outcome is that he will be partly paralyzed, his speech will be slurred, and little or no additional improvement can be expected. He and his wife are very upset, and have been unable to sleep since learning of this fact. If Kyle has a stroke in the next year, it would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss would be around $575,000, depending on precisely when the stroke occurs.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 5% percent over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a total 25% risk over a 5 year period. Inhaling the chemical has quintupled people like Kyle's risk of having a stroke.
+      items: &ns_items
+        0: {outcome_var: NS3}
+        5: {outcome_var: NS7A, outcome_question: "Decide about this. Over and above those direct costs resulting from the possible stroke, Pilling may also owe Kyle and his wife money for the pain, sleeplessness, suffering and worry that Kyle and his wife have already experienced and will continue to experience. How much, if anything, do you think Kyle and his wife should be compensated for these non-economic reductions in the quality of their lives?"}
+        6: {outcome_var: NS8A}
+        7: {outcome_var: NS9A_1}
+        8: {outcome_var: NS9A_2}
+        9: {outcome_var: NS9A_3}
+        10: {outcome_var: NS9A_4}
+        11: {outcome_var: NS9A_5}
+        12: {outcome_var: NS9A_6}
+        13: {outcome_var: NS10, outcome_question: "American states have different laws about who receives punitive damages. Some give it to the injured party, in this case, Kyle. Others have created an independent non-profit agency that collects the punitive damages and uses the funds to pay out compensation to victims of accidents who are injured by parties who do not have the assets to compensate the victims. These agencies have a good record of being careful with the money they have, and using almost all of it to compensate victims of accidents caused by other people's carelessness.\n\nDecide on how they should be divided between Kyle and the independent agency. Do this by assigning different percentages to both possible recipients. If you want it all to go to one of them, that one gets 100% and the other 0%.\nWhat percent of the punitive damages (if any) should go directly to Kyle?\nWhat percent of the punitive damages (if any) should go to such an agency?\nReport only the percentage for \"What percent of the punitive damages (if any) should go directly to Kyle?\"."}
+        14: {outcome_var: NS11, outcome_question: "American states have different laws about who receives punitive damages. Some give it to the injured party, in this case, Kyle. Others have created an independent non-profit agency that collects the punitive damages and uses the funds to pay out compensation to victims of accidents who are injured by parties who do not have the assets to compensate the victims. These agencies have a good record of being careful with the money they have, and using almost all of it to compensate victims of accidents caused by other people's carelessness.\n\nDecide on how they should be divided between Kyle and the independent agency. Do this by assigning different percentages to both possible recipients. If you want it all to go to one of them, that one gets 100% and the other 0%.\nWhat percent of the punitive damages (if any) should go directly to Kyle?\nWhat percent of the punitive damages (if any) should go to such an agency?\nReport only the percentage for \"What percent of the punitive damages (if any) should go to such an agency?\"."}
+        15: {outcome_var: NS12A}
+        16: {outcome_var: NS13A}
+    # Q 50 + Q 65 + Q 126, 129, 131, 133
+    - raw_values: {MANI1: 1, MANI2: 4}
+      condition_num: 3
+      factors: {state_of_mind: knowing, outcome_type: loss_of_chance, risk_level: over_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, a batch of cement was made in a dangerous manner that allowed the chemical to escape into the air with Pilling's knowledge. Pilling had failed to add the neutralizing chemical to the filtering system. When he saw what he had done, he decided not to stop the process, because it would cost a great deal of money finding a way to dispose of the toxic batch legally. This may have required him to shut down the plant for a few days, losing even more money. Instead, he decided just to pretend that the problem didn't occur.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        If Kyle has a stroke, the most likely outcome is that he will be partly paralyzed, his speech will be slurred, and little or no additional improvement can be expected. He and his wife are very upset, and have been unable to sleep since learning of this fact. If Kyle has a stroke in the next year, it would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss would be around $575,000, depending on precisely when the stroke occurs.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 11% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a 55% risk over a 5 year period. Inhaling the glue has quintupled people like Kyle's risk of having a stroke.
+      items: *ns_items
+    # Q 55 + Q 65 + Q 76, 78, 81, 83, 85, 87
+    - raw_values: {MANI1: 2, MANI2: 1}
+      condition_num: 4
+      factors: {state_of_mind: negligent, outcome_type: stroke, risk_level: under_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, because of a mistake, a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Pilling had failed to add the neutralizing chemical to the filtering system. Pilling would have discovered the potential danger and stopped the process if he had been at the plant, but he had left to take a major customer out for lunch. Pilling had never given any of his employees information that would have allowed someone else to detect the problem. By the time he returned from lunch it was too late.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        Quickly thereafter, Kyle had a stroke. He remains partly paralyzed, his speech is slurred, and little or no additional improvement is expected. Tests showed that the chemical combined with his medicine to induce the stroke. Kyle's doctors explained the studies to him, and he now knows what caused the stroke. He and Dana are very upset, and have been unable to sleep since learning of this fact. Also, Kyle can no longer work.
+
+        It would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss will amount to $575,000.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 5% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a total 25% risk over a 5 year period. Inhaling the chemical has quintupled people like Kyle's risk of having a stroke.
+
+        Of course, Kyle had the stroke. Its severity was typical of what could be expected for people who have this sort of stroke.
+      items: *ss_items
+    # Q 55 + Q 65 + Q 94, 96, 99, 101, 103, 105
+    - raw_values: {MANI1: 2, MANI2: 2}
+      condition_num: 5
+      factors: {state_of_mind: negligent, outcome_type: stroke, risk_level: over_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, because of a mistake, a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Pilling had failed to add the neutralizing chemical to the filtering system. Pilling would have discovered the potential danger and stopped the process if he had been at the plant, but he had left to take a major customer out for lunch. Pilling had never given any of his employees information that would have allowed someone else to detect the problem. By the time he returned from lunch it was too late.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        Quickly thereafter, Kyle had a stroke. He remains partly paralyzed, his speech is slurred, and little or no additional improvement is expected. Tests showed that the chemical combined with his medicine to induce the stroke. Kyle's doctors explained the studies to him, and he now knows what caused the stroke. He and Sue are very upset, and have been unable to sleep since learning of this fact. Also, Kyle can no longer work.
+
+        It would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss will amount to $575,000.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 11% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a 55% risk over a 5 year period. Inhaling the carpet glue has quintupled people like Kyle's risk of having a stroke.
+
+        Of course, Kyle had the stroke. Its severity was typical of what could be expected for people who have this sort of stroke.
+      items: *ss_items
+    # Q 55 + Q 65 + Q 112, 115, 117, 119
+    - raw_values: {MANI1: 2, MANI2: 3}
+      condition_num: 6
+      factors: {state_of_mind: negligent, outcome_type: loss_of_chance, risk_level: under_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, because of a mistake, a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Pilling had failed to add the neutralizing chemical to the filtering system. Pilling would have discovered the potential danger and stopped the process if he had been at the plant, but he had left to take a major customer out for lunch. Pilling had never given any of his employees information that would have allowed someone else to detect the problem. By the time he returned from lunch it was too late.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        If Kyle has a stroke, the most likely outcome is that he will be partly paralyzed, his speech will be slurred, and little or no additional improvement can be expected. He and his wife are very upset, and have been unable to sleep since learning of this fact. If Kyle has a stroke in the next year, it would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss would be around $575,000, depending on precisely when the stroke occurs.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 5% percent over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a total 25% risk over a 5 year period. Inhaling the chemical has quintupled people like Kyle's risk of having a stroke.
+      items: *ns_items
+    # Q 55 + Q 65 + Q 126, 129, 131, 133
+    - raw_values: {MANI1: 2, MANI2: 4}
+      condition_num: 7
+      factors: {state_of_mind: negligent, outcome_type: loss_of_chance, risk_level: over_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month, because of a mistake, a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Pilling had failed to add the neutralizing chemical to the filtering system. Pilling would have discovered the potential danger and stopped the process if he had been at the plant, but he had left to take a major customer out for lunch. Pilling had never given any of his employees information that would have allowed someone else to detect the problem. By the time he returned from lunch it was too late.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        If Kyle has a stroke, the most likely outcome is that he will be partly paralyzed, his speech will be slurred, and little or no additional improvement can be expected. He and his wife are very upset, and have been unable to sleep since learning of this fact. If Kyle has a stroke in the next year, it would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss would be around $575,000, depending on precisely when the stroke occurs.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 11% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a 55% risk over a 5 year period. Inhaling the glue has quintupled people like Kyle's risk of having a stroke.
+      items: *ns_items
+    # Q 60 + Q 65 + Q 76, 78, 81, 83, 85, 87
+    - raw_values: {MANI1: 3, MANI2: 1}
+      condition_num: 8
+      factors: {state_of_mind: innocent, outcome_type: stroke, risk_level: under_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Through no fault of Pilling, the machinery used in the plant malfunctioned and did not distribute the buffering chemical, which Pilling had diligently added to the filtering system. Pilling was a responsible person. Had he known of the danger he would have shut down the process and called environmental authorities to find out how to dispose of the bad batch of glue without putting anyone at risk.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        Quickly thereafter, Kyle had a stroke. He remains partly paralyzed, his speech is slurred, and little or no additional improvement is expected. Tests showed that the chemical combined with his medicine to induce the stroke. Kyle's doctors explained the studies to him, and he now knows what caused the stroke. He and Dana are very upset, and have been unable to sleep since learning of this fact. Also, Kyle can no longer work.
+
+        It would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss will amount to $575,000.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 5% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a total 25% risk over a 5 year period. Inhaling the chemical has quintupled people like Kyle's risk of having a stroke.
+
+        Of course, Kyle had the stroke. Its severity was typical of what could be expected for people who have this sort of stroke.
+      items: *ss_items
+    # Q 60 + Q 65 + Q 94, 96, 99, 101, 103, 105
+    - raw_values: {MANI1: 3, MANI2: 2}
+      condition_num: 9
+      factors: {state_of_mind: innocent, outcome_type: stroke, risk_level: over_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Through no fault of Pilling, the machinery used in the plant malfunctioned and did not distribute the buffering chemical, which Pilling had diligently added to the filtering system. Pilling was a responsible person. Had he known of the danger he would have shut down the process and called environmental authorities to find out how to dispose of the bad batch of glue without putting anyone at risk.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        Quickly thereafter, Kyle had a stroke. He remains partly paralyzed, his speech is slurred, and little or no additional improvement is expected. Tests showed that the chemical combined with his medicine to induce the stroke. Kyle's doctors explained the studies to him, and he now knows what caused the stroke. He and Sue are very upset, and have been unable to sleep since learning of this fact. Also, Kyle can no longer work.
+
+        It would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss will amount to $575,000.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 11% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a 55% risk over a 5 year period. Inhaling the carpet glue has quintupled people like Kyle's risk of having a stroke.
+
+        Of course, Kyle had the stroke. Its severity was typical of what could be expected for people who have this sort of stroke.
+      items: *ss_items
+    # Q 60 + Q 65 + Q 112, 115, 117, 119
+    - raw_values: {MANI1: 3, MANI2: 3}
+      condition_num: 10
+      factors: {state_of_mind: innocent, outcome_type: loss_of_chance, risk_level: under_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Through no fault of Pilling, the machinery used in the plant malfunctioned and did not distribute the buffering chemical, which Pilling had diligently added to the filtering system. Pilling was a responsible person. Had he known of the danger he would have shut down the process and called environmental authorities to find out how to dispose of the bad batch of glue without putting anyone at risk.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        If Kyle has a stroke, the most likely outcome is that he will be partly paralyzed, his speech will be slurred, and little or no additional improvement can be expected. He and his wife are very upset, and have been unable to sleep since learning of this fact. If Kyle has a stroke in the next year, it would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss would be around $575,000, depending on precisely when the stroke occurs.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 5% percent over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a total 25% risk over a 5 year period. Inhaling the chemical has quintupled people like Kyle's risk of having a stroke.
+      items: *ns_items
+    # Q 60 + Q 65 + Q 126, 129, 131, 133
+    - raw_values: {MANI1: 3, MANI2: 4}
+      condition_num: 11
+      factors: {state_of_mind: innocent, outcome_type: loss_of_chance, risk_level: over_50}
+      text: |-
+        Your task is to read the following story. In it a small, one-person owned manufacturing firm has a chemical leak. The leak puts some people in the neighborhood at risk of having a stroke. After reading the story, you will be asked a series of questions about what sorts of actions should be taken to compensate the possible victims.
+
+        Pilling's Company
+        The Glu-Tight Cement Company is owned and run by Henry Pilling, who invented a glue for installing wall-to-wall carpets. Pilling manufactures the glue through Glu-Tight, which has been in successful business for 25 years. Last year, Glu-Tight made about $1 million in profits. It has assets of about $4 million. Pilling is very secretive about manufacturing his glue. He insists on mixing the chemicals and controlling the process himself. Pilling does not want anyone, even his employees to know these manufacturing secrets.
+
+        The Manufacturing Danger
+        Because Glu-Tight has only one product and distributes it narrowly, it was only recently discovered that Glu-Tight's manufacturing process emits a chemical which, when inhaled, is toxic to people who take Tridoxin. Tridoxin is common medication for high blood pressure, and its users are more likely to suffer a stroke when they inhale the fumes. Inhaling the chemical does not always cause a stroke, but it significantly increases the likelihood of a stroke. People who do not take Tridoxin are not at increased risk.
+        These chemically-induced strokes can occur up to five years from the time the chemicals are inhaled, and sometimes happen as quickly as within one month. After five years, the concentration of the chemical in the blood stream decreases enough so that earlier exposure to the chemical is no longer a factor in the risk of having a stroke.
+
+        When a patient does have a stroke as a result of inhaling this chemical, doctors can tell that the chemical was involved if they do a brain scan. It is also possible to detect the presence and concentration of the chemical in the blood stream even if a stroke has not occurred.
+
+        Once Pilling learned that his manufacturing process emitted the dangerous chemical, he worked out a way to make the process safe. He revised the process to include adding a buffer that neutralizes all of the dangerous molecules, preventing them from ever reaching the air through the plant's smokestacks. Pilling regards this buffering process as a trade secret and insists that he be the only one to operate this aspect of the process.
+
+        However, last month a batch of Glu-Tight cement was made in a dangerous manner that allowed the chemical to escape into the air. Through no fault of Pilling, the machinery used in the plant malfunctioned and did not distribute the buffering chemical, which Pilling had diligently added to the filtering system. Pilling was a responsible person. Had he known of the danger he would have shut down the process and called environmental authorities to find out how to dispose of the bad batch of glue without putting anyone at risk.
+
+        Kyle and Dana Jackson live a few blocks from the Glu-Tight factory. Kyle, who is 59, takes Tridoxin to treat his high blood pressure. Two weeks after the emission of the toxic chemical, a local newspaper reporter heard that people in Kyle's neighborhood had detected a strange smell in the air. The reporter wrote an article that linked the smell to toxic emissions and mentioned their connection to Tridoxin. When Kyle read the article, he went to a specialist, who found high concentrations of the chemical in Kyle's blood, and confirmed that he was at an increased risk of stroke.
+
+        If Kyle has a stroke, the most likely outcome is that he will be partly paralyzed, his speech will be slurred, and little or no additional improvement can be expected. He and his wife are very upset, and have been unable to sleep since learning of this fact. If Kyle has a stroke in the next year, it would take $300,000 to make up for the income that Kyle will lose as a result of the stroke, and an additional $275,000 to cover other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. Thus, Kyle's total financial loss would be around $575,000, depending on precisely when the stroke occurs.
+
+        Some people have asked us for information about how much the chemical increases the risk of stroke, so we are giving that information to everyone. Here it is.
+
+        Even without exposure to the chemicals emitted by the plant, older people with high blood pressure are already at some risk of having a stroke. For those who control their high blood pressure with Tridoxin, it is about 11% over a 5 year period.
+
+        The risk increases for people who have been exposed, as was Kyle. Doctors have estimated that the interaction of the chemical contained in the air in the concentrations emitted at the Glu-Tight plant and the Tridoxin that many take to reduce blood pressure lifts the risk of stroke to a 55% risk over a 5 year period. Inhaling the glue has quintupled people like Kyle's risk of having a stroke.
+      items: *ns_items
+
+
+outcomes:
+  # NS3 / SS3 (Q 160 / 338); var per arm in items
+  - task_num: 0
+    question: "How morally outraged are you at Pilling's conduct?"
+    scale: {min: 1, max: 7, min_label: "No outrage", mid_label: "Moderate outrage", max_label: "Maximal outrage"}
+  # NS5 (Q 180-183): loss-of-chance arms only; SS arms read -2 Not asked
+  - task_num: 1
+    var: NS5
+    question: "How should Pilling and the company compensate Kyle?"
+    scale: {min: 1, max: 2, min_label: "I don't think that Pilling or his company did anything for which Kyle should be compensated.", max_label: "Pilling and the company should pay for Kyle's expenses caused by his increased risk of having a stroke because of his exposure to the chemical."}
+    response_recode: {1: 1, 2: 2}
+  # SS5 (Q 358-361): stroke arms only; NS arms read -2 Not asked
+  - task_num: 2
+    var: SS5
+    question: "How should Pilling and the company compensate Kyle?"
+    scale: {min: 1, max: 2, min_label: "I don't think that Pilling or his company did anything that creates liability.", max_label: "Pilling and the company owe compensation for Kyle's financial losses caused by the stroke. (Remember that we know the chemical discharge caused the stroke.)"}
+    response_recode: {1: 1, 2: 2}
+  # NS6a (Q 186-191): loss-of-chance arms only
+  - task_num: 3
+    var: NS6A
+    question: |-
+      Kyle hasn't had a stroke, but if he suffers a stroke now, his total financial losses will amount to $575,000. People have suggested several ways of dealing with this. Which strikes you as best? Mark the solution below you would prefer and add any comments you would wish.
+      1 means "Right now, Pilling and the company should pay Kyle enough money to compensate him for his total financial losses for the stroke he might have, which will be about $575,000."; 2 means "Pilling and the company should be required to deposit in a special account enough money to compensate Kyle for the stroke he might later have. This money would be paid to Kyle if he has a stroke and if the medical evidence shows that the chemical caused the stroke. The money should be enough to pay Kyle both for his lost income and other costs, including medical expenses not covered by insurance, home care, and rehabilitation that he will have to undergo. If Kyle doesn't suffer a stroke, or if he suffers a stroke much later so that money remains in the account after he has been taken care of during his disability, any left over money will be returned to the company."; 3 means "Pilling and the company put Kyle at risk of having a stroke. Even though he has not had a stroke I think that they should now pay him a percentage of the costs he will have ($575,000) if he eventually does have a stroke."; 4 means "I have a better way of doing this.".
+    scale: {min: 1, max: 4, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  # SS6a (Q 364-368): stroke arms only
+  - task_num: 4
+    var: SS6A
+    question: |-
+      Kyle had the stroke and his total financial losses will amount to $575,000. People have suggested several ways of dealing with this. Which strikes you as best? Mark the solution below you would prefer and add any comments you would wish.
+      1 means "Right now, Pilling and the company should pay Kyle enough money to compensate him for his total financial losses, which will be about $575,000. (It will actually be somewhat lower than $575,000 because Kyle will be expected to put it into an account that earns some interest so he can draw on the account each year to pay his expenses. But it will eventually pay Kyle $575,000 over his estimated lifetime.)"; 2 means "Pilling and the company should be required to put into a special account enough money to compensate Kyle for the stroke, paying it out each year. (It will be somewhat lower than $575,000 because it will earn some interest each year. But it will eventually pay Kyle $575,000 over his estimated lifetime.)"; 3 means "I have a better way of doing this.".
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  # NS7a / SS7a (Q 206 / 376): wording differs by arm ('the possible stroke' / 'the stroke')
+  - task_num: 5
+    question: "[per-arm wording: every arm supplies this item's question in `items`]"
+    scale: {min: 1, max: 7, min_label: "No damages", mid_label: "Moderate damages", max_label: "Maximal damages"}
+  # NS8a / SS8a (Q 222 / 392)
+  - task_num: 6
+    question: "Decide about punitive damages. This is additional money paid in order to punish Pilling and the company for what they did. Some also say that punitive damages are intended to deter this defendant and others from acting in a socially unacceptable manner. According to the law, punitive damages are awarded when a jury finds that a person acted recklessly or the person acted with callous disregard for the rights of others. How much in punitive damages should be awarded?"
+    scale: {min: 1, max: 7, min_label: "No damages", mid_label: "Moderate damages", max_label: "Maximal damages"}
+  # NS9A_1 / SS9A_1 (Q 259 / 429)
+  - task_num: 7
+    question: |-
+      Courts have suggested several factors that may be considered when a person (like you) is asked to set these punitive damages. In making your decision, which of these factors were more or less important? Please use a 1-7 scale, with 1 being not at all important, 4 being in the middle, and 7 being extremely important.
+      Degree of moral wrongfulness of the conduct
+    scale: {min: 1, max: 7, min_label: "Not at all important", max_label: "Extremely important"}
+  # NS9A_2 / SS9A_2 (Q 260 / 430)
+  - task_num: 8
+    question: |-
+      Courts have suggested several factors that may be considered when a person (like you) is asked to set these punitive damages. In making your decision, which of these factors were more or less important? Please use a 1-7 scale, with 1 being not at all important, 4 being in the middle, and 7 being extremely important.
+      The defendant's assets
+    scale: {min: 1, max: 7, min_label: "Not at all important", max_label: "Extremely important"}
+  # NS9A_3 / SS9A_3 (Q 261 / 431)
+  - task_num: 9
+    question: |-
+      Courts have suggested several factors that may be considered when a person (like you) is asked to set these punitive damages. In making your decision, which of these factors were more or less important? Please use a 1-7 scale, with 1 being not at all important, 4 being in the middle, and 7 being extremely important.
+      The defendant's income
+    scale: {min: 1, max: 7, min_label: "Not at all important", max_label: "Extremely important"}
+  # NS9A_4 / SS9A_4 (Q 262 / 432)
+  - task_num: 10
+    question: |-
+      Courts have suggested several factors that may be considered when a person (like you) is asked to set these punitive damages. In making your decision, which of these factors were more or less important? Please use a 1-7 scale, with 1 being not at all important, 4 being in the middle, and 7 being extremely important.
+      The amount of actual and potential harm that the defendant caused
+    scale: {min: 1, max: 7, min_label: "Not at all important", max_label: "Extremely important"}
+  # NS9A_5 / SS9A_5 (Q 263 / 433)
+  - task_num: 11
+    question: |-
+      Courts have suggested several factors that may be considered when a person (like you) is asked to set these punitive damages. In making your decision, which of these factors were more or less important? Please use a 1-7 scale, with 1 being not at all important, 4 being in the middle, and 7 being extremely important.
+      Your assessment of the likelihood that the wrongful conduct would not be discovered (the notion is that actions more likely to escape detection should be punished more harshly)
+    scale: {min: 1, max: 7, min_label: "Not at all important", max_label: "Extremely important"}
+  # NS9A_6 / SS9A_6 (Q 264 / 434)
+  - task_num: 12
+    question: |-
+      Courts have suggested several factors that may be considered when a person (like you) is asked to set these punitive damages. In making your decision, which of these factors were more or less important? Please use a 1-7 scale, with 1 being not at all important, 4 being in the middle, and 7 being extremely important.
+      The degree to which the wrongdoer tried to conceal what he did
+    scale: {min: 1, max: 7, min_label: "Not at all important", max_label: "Extremely important"}
+  # NS10 / SS10 (Q 273-280 / 443-450): stem differs by arm (SS 'vicitims')
+  - task_num: 13
+    question: "[per-arm wording: every arm supplies this item's question in `items`]"
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  # NS11 / SS11 (Q 273-281 / 443-451)
+  - task_num: 14
+    question: "[per-arm wording: every arm supplies this item's question in `items`]"
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  # NS12a / SS12a (Q 284 / 454)
+  - task_num: 15
+    question: "Sometimes, even when there is a lawsuit brought by an injured person, the government steps in and brings a criminal prosecution, or some kind of administrative proceeding against a wrongdoer. This prosecution can result in fines and/or imprisonment. The fines would be paid to the government. If you think that Pilling's conduct deserves it, you can fine the company for their conduct over and above the compensation you already assigned to Kyle. Do you think there should be a fine? If so, how much?"
+    scale: {min: 1, max: 7, min_label: "No fine", mid_label: "Moderate fine", max_label: "Maximal fine"}
+  # NS13a / SS13a (Q 300 / 470)
+  - task_num: 16
+    question: "If you think the conduct of Pilling deserves it, you can sentence him to a term in prison. What is your view?"
+    scale: {min: 1, max: 7, min_label: "No prison", mid_label: "Moderate prison", max_label: "Maximal prison"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+# -1 REFUSED and -2 Not asked (SPSS user-missing on every variable).
+missing_codes: [-1, -2]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  urban_rural: PPMSACAT
+  internet_access: PPNET

@@ -10,11 +10,11 @@ Every experiment we have built and every candidate we could add, from four sourc
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Innovation Panel | UK · not publishable | 38 | 16 | 2 | 8 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 12 | 6 | 3 | 9 | 18 | 125,779 |
-| TESS | US · not publishable | 42 | 41 | 5 | 11 | 57 | 368,659 |
+| TESS | US · not publishable | 43 | 40 | 5 | 11 | 56 | 374,137 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **105** | **63** | **22** | **31** | **116** | **1,010,009** |
+| **Total** | | **106** | **62** | **22** | **31** | **115** | **1,015,487** |
 
-## Next 35, in build order (28 built, 7 to go)
+## Next 35, in build order (29 built, 6 to go)
 
 - Pool: Buildable candidates only.
 - Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).
@@ -72,7 +72,7 @@ Every experiment we have built and every candidate we could add, from four sourc
 | 27 | Innovation Panel | ukds_6849_immigsdb_w8 | **Social desirability bias in attitudes towards immigration (wave 8)**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
 | 27 | Innovation Panel | ukds_6849_immigsdb_w9 | **Social desirability bias in attitudes towards immigration (wave 9)**<br>Direct vs indirect questions to uncover masked opposition. | survey methodology | 0.19 |
 | 28 | DEL | W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose. | political preferences/policy | 0.24 |
-| 29 | TESS | jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements. | moral/social/cognition | 0.24 |
+| 29 | TESS | jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Factorial vignette: a company boss acting knowingly, negligently or innocently exposes Kyle to a chemical; Kyle has had a stroke or only a raised risk, under or over 50% (12 conditions). Answer: moral outrage, compensation, damages, fine and prison, mostly 1-7. | moral/social/cognition | 0.24 |
 | 30 | Innovation Panel | 8.14 | **Don’t know/prefer not to answer response presentation**<br>How non-answer options are shown on screen. | survey methodology | 0.19 |
 | 31 | DEL | W3_ngosplit | **Large or small NGOs**<br>Rating statements about large vs small development NGOs. Answer: Agree scale per statement. | moral/social/cognition | 0.29 |
 | 32 | DEL | Feb2023_progsplit | **Gender gap progress**<br>Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic. | moral/social/cognition | 0.15 |
@@ -199,7 +199,7 @@ UK · publishable (CC0). 12 Built, 6 Buildable, 3 Needs checking, 9 Unlikely.
 
 ## TESS
 
-US · not publishable. 42 Built, 41 Buildable, 5 Needs checking, 11 Unlikely.
+US · not publishable. 43 Built, 40 Buildable, 5 Needs checking, 11 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -207,6 +207,7 @@ US · not publishable. 42 Built, 41 Buildable, 5 Needs checking, 11 Unlikely.
 | e5rfg_pair | **Who has Narrow Brackets? (Example 2 pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*323 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
 | e5rfg_six | **Who has Narrow Brackets? (six-decision modules)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*3,608 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
 | e5rfg_tk | **Who has Narrow Brackets? (Tversky-Kahneman pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*264 rows; 2005* | economics/behavioural | Built | 0.33 | 18 |
+| jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Factorial vignette: a company boss acting knowingly, negligently or innocently exposes Kyle to a chemical; Kyle has had a stroke or only a raised risk, under or over 50% (12 conditions). Answer: moral outrage, compensation, damages, fine and prison, mostly 1-7.<br>*2005; UK priority 0.90; transfers: Mechanism only* | moral/social/cognition | Built | 0.24 | 29 |
 | vwn96 | **What's the Best Way to Motivate Kids?**<br>Whether a teacher first imagines motivating a student from a poor inner-city family or a wealthy suburban one, then the other (2 conditions). Answer: which of four motivating statements you would use first, for each student (4 options).<br>*4,019 rows; 2013; 2 vignettes, recorded statement order* | moral/social/cognition | Built | 0.23 | 26 |
 | gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong?<br>*8,959 rows; 2005; 2x2, 26 outcomes* | moral/social/cognition | Built | 0.22 | 20 |
 | gyrp9_return | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (second mover)**<br>Trust and cooperation games used as survey questions to measure social capital.<br>*914 rows; 2003 phone survey* | economics/behavioural | Built | 0.21 | 24 |
@@ -246,7 +247,6 @@ US · not publishable. 42 Built, 41 Buildable, 5 Needs checking, 11 Unlikely.
 | zaqkm | **Causal Attributions, Treatability, and Mental Illness Stigma**<br>Factorial vignette: David has subclinical distress, alcohol use disorder, major depression, opioid use disorder or schizophrenia, with no, environmental, genetic or both causes, and treatability mentioned or not (40 conditions). Answer: danger, willingness to socialise, and prospects, 1-5 (6 questions).<br>*9,528 rows* | health communication | Built |  |  |
 | zrwjp | **The Barriers of Buying Happier Time**<br>After giving your work hours and earnings, you are shown your approximate hourly wage or not, before estimating outsourcing a disliked task (2 conditions). Answer: monthly cost of outsourcing it (dollars, 0-2,500) and monthly time saved (minutes, 0-3,000).<br>*2,532 rows* | moral/social/cognition | Built |  |  |
 | pkt6f | **Politeness Theory and Conversational Refusals**<br>How refusal messages that threaten face are judged for effectiveness and appropriateness.<br>*2005; UK priority 0.63; transfers: Full* | moral/social/cognition | Buildable | 0.25 |  |
-| jxdu8 | **Moral Luck, Loss of Chance, and Legal Liability**<br>Should someone exposed to risk, but never injured, be compensated? Legal liability judgements.<br>*2005; UK priority 0.90; transfers: Mechanism only* | moral/social/cognition | Buildable | 0.24 | 29 |
 | phbjd | **Do Collective Memory and Autobiographical Memory Refer to Different Developmental Stages?**<br>Which life stage do people's most important national and personal memories come from? (from title).<br>*2014; UK priority 0.72; transfers: Full* | moral/social/cognition | Buildable | 0.23 |  |
 | 2tzmb | **Perceptions of Swearing: An Analysis of Perceived Face Threats and Communication Competence**<br>How swearing affects judgements of a speaker's competence.<br>*2008; UK priority 0.81; transfers: Full* | moral/social/cognition | Buildable | 0.22 |  |
 | wrxnz | **When is "bad stronger than good" in decision making**<br>When do losses and bad information weigh more than good in decisions? (from title).<br>*2014; UK priority 0.91; transfers: Full* | moral/social/cognition | Buildable | 0.22 |  |

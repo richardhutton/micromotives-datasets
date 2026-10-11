@@ -935,13 +935,14 @@
    "source": "TESS",
    "id": "jxdu8",
    "title": "Moral Luck, Loss of Chance, and Legal Liability",
-   "description": "Should someone exposed to risk, but never injured, be compensated? Legal liability judgements.",
+   "description": "Factorial vignette: a company boss acting knowingly, negligently or innocently exposes Kyle to a chemical; Kyle has had a stroke or only a raised risk, under or over 50% (12 conditions). Answer: moral outrage, compensation, damages, fine and prison, mostly 1-7.",
    "details": "2005; UK priority 0.90; transfers: Mechanism only",
    "category": "moral/social/cognition",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.24,
-   "next": 29
+   "next": 29,
+   "recipe": "jxdu8"
   },
   {
    "source": "TESS",

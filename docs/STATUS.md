@@ -25,16 +25,16 @@ done it for the UK.
 
 ## 2. Where it stands
 
-**1,010,009 rows across 105 experiments** (10 Oct 2026), all QC-passed and checked by an
+**1,015,487 rows across 106 experiments** (11 Oct 2026), all QC-passed and checked by an
 independent agent, on disk at `data/processed/`. `docs/EXPERIMENTS.md` is the generated
 list; `docs/experiment_list.html` tracks the build queue.
 
 | | experiments | rows |
 |---|---|---|
-| US (TESS deposits) | 42 | 368,659 |
+| US (TESS deposits) | 43 | 374,137 |
 | UK-native: Harvard Dataverse incl. DEL | 25 | 268,519 |
 | UK-native: Innovation Panel | 38 | 372,831 |
-| **total** | **105** | **1,010,009** |
+| **total** | **106** | **1,015,487** |
 
 Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_reqol_w14`
 48,548 · `ukds_6849_timerisk_w7` 46,283 · `ukds_6849_ghq_w14` 36,447 · `evnyh` 33,932 ·
@@ -42,7 +42,7 @@ Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_req
 24,024.
 
 **The "next 37" batch** (chosen 10 Oct, now 33 after rich removed four and two were
-dropped on reading the instrument): 28 built (DEL leadership messages and cost of living added by rich; cost of living keeps arm 4 with its recap script error, ruled by rich (ledger 156); IP 9.26 vignette added after rich ruled the own-place clause, see
+dropped on reading the instrument): 29 built (DEL leadership messages, cost of living and TESS jxdu8 moral luck added by rich; cost of living keeps arm 4 with its recap script error, ruled by rich (ledger 156); IP 9.26 vignette added after rich ruled the own-place clause, see
 CONVENTIONS). Parked for a pipeline change: DEL Ukraine donation follow-up and the
 9.26 conjoint (a sparse template must not enumerate every cell). Open ruling: lists
 shown in a randomised order that was not recorded (e5rfg gamble options, DEL aid
