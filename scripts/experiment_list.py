@@ -134,8 +134,8 @@ def render_md(data: dict) -> str:
             "",
             f"{data['meta'][s]}. {counts}.",
             "",
-            "| ID | Experiment | Category | Status | Novelty | Next | Rows |",
-            "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
+            "| ID | Experiment | Category | Status | Study (split) | Novelty | Next | Rows |",
+            "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
         ]
         for r in src_rows:
             exp = f"**{_cell(r['title'])}**"
@@ -145,9 +145,10 @@ def render_md(data: dict) -> str:
                 exp += f"<br>*{_cell(r['details'])}*"
             status = r["status"] + (f": {_cell(r['reason'])}" if r.get("reason") else "")
             nov = "" if r.get("novelty") is None else f"{r['novelty']:.2f}"
+            study = f"{r['study']} ({r['split']})" if r.get("study") else ""
             out.append(
-                f"| {_cell(r['id'])} | {exp} | {_cell(r['category'])} | {status} | {nov} "
-                f"| {r.get('next', '')} |"
+                f"| {_cell(r['id'])} | {exp} | {_cell(r['category'])} | {status} | {study} "
+                f"| {nov} | {r.get('next', '')} | {_rows(r)} |"
             )
     return "\n".join(out) + "\n"
 
@@ -180,6 +181,9 @@ def attach_row_counts(data: dict) -> None:
         df = pd.read_parquet(pq, columns=["study_id", "experiment"])
         for (sid, exp), n in df.groupby(["study_id", "experiment"], dropna=False).size().items():
             sizes[(str(sid), None if pd.isna(exp) else str(exp))] = int(n)
+    splits = ROOT / "data" / "catalog" / "splits"
+    study_of = json.loads((splits / "study_of_recipe.json").read_text())
+    unseen = set(json.loads((splits / "participant_mapping.json").read_text())["unseen"])
     named = set()
     for r in data["rows"]:
         if r["status"] != "Built":
@@ -193,6 +197,10 @@ def attach_row_counts(data: dict) -> None:
         if key not in sizes:
             raise SystemExit(f"{path}: no built parquet holds {key}")
         r["rows"] = sizes[key]
+        # The study id the seen/unseen split uses, and its side, so the page and the
+        # split speak the same identifiers (rich, 12 Oct 2026).
+        r["study"] = study_of[r["recipe"]]
+        r["split"] = "unseen" if r["study"] in unseen else "seen"
     if unnamed := sorted(committed - named):
         raise SystemExit(f"committed recipes with no Built row: {unnamed}")
 

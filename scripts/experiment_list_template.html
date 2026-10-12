@@ -74,7 +74,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 
   <section class="panel">
     <div class="controls">
-      <input id="q" type="search" placeholder="Search titles and descriptions" aria-label="Search">
+      <input id="q" type="search" placeholder="Search titles, descriptions, study ids (e.g. 9.13) or seen/unseen" aria-label="Search">
       <select id="fsrc" aria-label="Source"><option value="">All sources</option></select>
       <select id="fst" aria-label="Status"><option value="">All statuses</option></select>
       <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
@@ -84,7 +84,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
     <div class="scroll">
       <table class="list">
         <colgroup><col style="width:140px"><col style="width:150px"><col><col style="width:190px"><col style="width:220px"><col style="width:72px"><col style="width:52px"><col style="width:76px"></colgroup>
-        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th><th>Next</th><th>Rows</th></tr></thead>
+        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Study · split</th><th>Novelty</th><th>Next</th><th>Rows</th></tr></thead>
         <tbody id="tb"></tbody>
       </table>
     </div>
@@ -121,7 +121,7 @@ function render(){
   const q = document.getElementById("q").value.toLowerCase();
   const list = rows.filter(r => (!fsrc.value || r.source === fsrc.value) && (!fst.value || r.status === fst.value) &&
       (!fcat.value || r.category === fcat.value) && (!fnext.value || r.next) &&
-      (!q || `${r.id} ${r.title} ${r.description} ${r.details}`.toLowerCase().includes(q)))
+      (!q || `${r.id} ${r.title} ${r.description} ${r.details} ${r.study || ""} ${r.split || ""}`.toLowerCase().includes(q)))
     .sort((a, b) => (fnext.value ? a.next - b.next : 0) || SOURCES.indexOf(a.source) - SOURCES.indexOf(b.source) ||
       STATUSES.indexOf(a.status) - STATUSES.indexOf(b.status) || (b.novelty ?? -1) - (a.novelty ?? -1) || a.id.localeCompare(b.id));
   document.getElementById("count").textContent = `${list.length} of ${rows.length} experiments`;
@@ -131,6 +131,7 @@ function render(){
     <td><div class="t">${esc(r.title)}</div>${r.description ? `<div class="d">${esc(r.description)}</div>` : ""}${r.details ? `<div class="x">${esc(r.details)}</div>` : ""}</td>
     <td>${esc(r.category)}</td>
     <td><span class="pill ${cls(r.status)}">${esc(r.status)}</span>${r.reason ? `<div class="why">${esc(r.reason)}</div>` : ""}</td>
+    <td class="id">${r.study ? `${esc(r.study)}<div class="why">${esc(r.split)}</div>` : ""}</td>
     <td class="num">${r.novelty == null ? "" : r.novelty.toFixed(2)}</td>
     <td class="num">${r.next ?? ""}</td>
     <td class="num">${r.rows == null ? "" : r.rows.toLocaleString("en-GB")}</td>
