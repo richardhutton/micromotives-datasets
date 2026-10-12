@@ -366,4 +366,10 @@ SocSci210's file of that name: `{"seen": [study], "unseen": [study]}`.
 - First draw: 70 studies, 56 seen, 14 unseen; 21.8% of rows unseen. Innovation Panel's
   unseen share is 38% of its rows, because 9.13 (time and risk, the largest
   experiment) was drawn. A study split weighs studies, not rows; recorded, not corrected.
+- **Excluded for now (rich, 12 Oct 2026): IP 9.13 and 9.31, on neither side.**
+  9.13 (time and risk) is 91 items per person, 109,770 rows and one condition, so no
+  experimental contrast; 9.31 (ReQoL + GHQ) is 28 items per person. Both outweigh
+  whole studies elsewhere. Listed with reasons in `excluded.json` (`EXCLUDED` in the
+  script). They are removed after the draw, so excluding them moved no other study;
+  a test checks that. Now 68 studies: 55 seen, 13 unseen.
 - The split changes only by a new ruling here. Never redraw to improve a result.

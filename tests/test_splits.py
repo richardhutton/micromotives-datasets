@@ -25,8 +25,10 @@ def test_committed_split_is_what_the_script_makes() -> None:
 
 def test_every_recipe_is_on_exactly_one_side() -> None:
     seen, unseen = set(MAPPING["seen"]), set(MAPPING["unseen"])
+    excluded = set(make_splits.EXCLUDED)
     assert not seen & unseen
-    assert set(STUDY_OF.values()) == seen | unseen
+    assert not (seen | unseen) & excluded
+    assert set(STUDY_OF.values()) == seen | unseen | excluded
     assert {p.stem for p in (ROOT / "recipes").glob("*.yaml")} == set(STUDY_OF)
 
 
@@ -59,3 +61,16 @@ def test_every_source_is_in_the_test_set_at_about_the_set_share() -> None:
         held = [s for s in ids if s in MAPPING["unseen"]]
         assert held, f"no {source} study is unseen"
         assert abs(len(held) / len(ids) - make_splits.UNSEEN_SHARE) < 0.1, source
+
+
+def test_excluding_a_study_moves_no_other_study() -> None:
+    studies = make_splits.experiments_by_study()
+    with_all = make_splits.split(studies)
+    saved = dict(make_splits.EXCLUDED)
+    make_splits.EXCLUDED.clear()
+    try:
+        without = make_splits.split(studies)
+    finally:
+        make_splits.EXCLUDED.update(saved)
+    for side in ("seen", "unseen"):
+        assert set(with_all[side]) == set(without[side]) - set(saved), side

@@ -184,6 +184,7 @@ def attach_row_counts(data: dict) -> None:
     splits = ROOT / "data" / "catalog" / "splits"
     study_of = json.loads((splits / "study_of_recipe.json").read_text())
     unseen = set(json.loads((splits / "participant_mapping.json").read_text())["unseen"])
+    excluded = set(json.loads((splits / "excluded.json").read_text()))
     named = set()
     for r in data["rows"]:
         if r["status"] != "Built":
@@ -200,7 +201,9 @@ def attach_row_counts(data: dict) -> None:
         # The study id the seen/unseen split uses, and its side, so the page and the
         # split speak the same identifiers (rich, 12 Oct 2026).
         r["study"] = study_of[r["recipe"]]
-        r["split"] = "unseen" if r["study"] in unseen else "seen"
+        r["split"] = (
+            "excluded" if r["study"] in excluded else "unseen" if r["study"] in unseen else "seen"
+        )
     if unnamed := sorted(committed - named):
         raise SystemExit(f"committed recipes with no Built row: {unnamed}")
 

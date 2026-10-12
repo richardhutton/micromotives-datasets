@@ -17,6 +17,8 @@ were chosen. Ours, ruled 12 Oct 2026 (docs/CONVENTIONS.md, "Unseen studies"):
   model are compared on studies neither trained on.
 - Everything else: UNSEEN_SHARE of each source's studies, drawn at random from a
   fixed seed, so every source is represented in the test set.
+- EXCLUDED studies are on neither side (excluded.json says why). They are removed
+  after the draw, so excluding one never moves another study between sides.
 
 Reads only recipe headers, so it runs without the data.
 """
@@ -259,6 +261,13 @@ SOCSCI210_SEEN = frozenset(
     ]
 )
 
+# On neither side for now (rich, 12 Oct 2026). Removed after the draw: see split().
+EXCLUDED = {
+    "ukds_6849:9.13": "time and risk: 91 items per person, 109,770 rows, one condition "
+    "(no experimental contrast); the largest study by far",
+    "ukds_6849:9.31": "ReQoL and GHQ: 28 items per person, so one study outweighs most others",
+}
+
 _HEADER = re.compile(r"^(study_id|source|experiment|title):\s*(.*)$")
 _IP_NUMBER = re.compile(r"\bexperiment (\d+\.\d+)\b")
 
@@ -317,7 +326,9 @@ def split(studies: dict[str, dict[str, object]]) -> dict[str, list[str]]:
         extra = max(0, target - len(forced_unseen))
         unseen.update(rng.sample(free, min(extra, len(free))))
 
-    all_ids = sorted(studies)
+    # Draw over every study, then drop the excluded ones, so the draw is the same
+    # with or without them.
+    all_ids = sorted(s for s in studies if s not in EXCLUDED)
     return {
         "seen": [s for s in all_ids if s not in unseen],
         "unseen": [s for s in all_ids if s in unseen],
@@ -330,6 +341,7 @@ def outputs() -> dict[str, str]:
     recipes = {r: s for s, e in studies.items() for r in e["recipes"]}  # type: ignore[attr-defined]
     return {
         "participant_mapping.json": json.dumps(mapping, indent=2) + "\n",
+        "excluded.json": json.dumps(dict(sorted(EXCLUDED.items())), indent=2) + "\n",
         "study_of_recipe.json": json.dumps(dict(sorted(recipes.items())), indent=2) + "\n",
     }
 
