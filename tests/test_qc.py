@@ -101,12 +101,19 @@ def _rows_for(recipe):
             condition_num=a.condition_num,
             task_num=0,
             response_num=0.0,
+            **_scale_columns(recipe, recipe.outcomes[0], a),
             participant_id=str(a.raw),
             study_id=recipe.study_id,
             source="tess",
         )
         for a in recipe.condition.arms
     ]
+
+
+def _scale_columns(recipe, outcome, arm) -> dict:
+    """What the melt stores for a row: the scale its own instruction states."""
+    scale = recipe.scale_for(outcome, arm)
+    return {"scale_min": scale.min, "scale_max": scale.max, "scale_nominal": scale.nominal}
 
 
 def test_declared_factor_absent_from_all_arm_text_fails() -> None:
@@ -682,6 +689,7 @@ def _rows_for_two_arms(recipe):
                     condition_num=arm.condition_num,
                     task_num=outcome.task_num,
                     response_num=1.0,
+                    **_scale_columns(recipe, outcome, arm),
                     participant_id=f"p{arm.condition_num}",
                     study_id="t",
                     source="tess",
@@ -728,3 +736,43 @@ def test_rule1_fails_when_only_one_side_declares_it() -> None:
     rows = _rows_for_two_arms(recipe)
     rep = check(rows, recipe)
     assert not rep.passed, "an undeclared side must still fail"
+
+
+def test_rows_carry_the_scale_their_instruction_states(fixture_sav) -> None:
+    """The scale columns come from the same `scale_for` call as the instruction."""
+    recipe = _mixed_scale_recipe()
+    rows = list(build_rows(spss.read(fixture_sav), recipe))
+    arms = {a.condition_num: a for a in recipe.condition.arms}
+    outcomes = {o.task_num: o for o in recipe.outcomes}
+    assert {r.task_num for r in rows} == {0, 1}
+    for r in rows:
+        assert r.task_num is not None and r.condition_num is not None
+        scale = recipe.scale_for(outcomes[r.task_num], arms[r.condition_num])
+        assert (r.scale_min, r.scale_max, r.scale_nominal) == (
+            scale.min,
+            scale.max,
+            scale.nominal,
+        )
+        # The outcome that names its own var keeps its own -3..3, not the arm's 1-5.
+        if r.task_num == 1:
+            assert (r.scale_min, r.scale_max) == (-3, 3), r
+
+
+def test_rule22_catches_a_row_with_no_scale_columns(fixture_sav, fixture_recipe) -> None:
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    rows[0].scale_max = None
+    rep = check(rows, fixture_recipe)
+    assert _fails(rep, "carry no scale_min/scale_max/scale_nominal"), rep.failures
+
+
+@pytest.mark.parametrize(
+    "field_, value", [("scale_min", -99), ("scale_max", 99), ("scale_nominal", True)]
+)
+def test_rule22_catches_scale_columns_that_disagree_with_the_instruction(
+    fixture_sav, fixture_recipe, field_, value
+) -> None:
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    assert getattr(rows[0], field_) != value
+    setattr(rows[0], field_, value)
+    rep = check(rows, fixture_recipe)
+    assert _fails(rep, "scale columns disagree"), rep.failures

@@ -68,6 +68,19 @@ class Row(BaseModel):
     response_num: float | None = Field(
         default=None, description="Numeric response, when the answer is a scale/choice code."
     )
+    # The answer scale this row's outcome instruction states, as data. Filled from
+    # `recipe.scale_for`, the same call that renders the instruction, so the two
+    # cannot disagree (QC rule 22 enforces it). A consumer needs these without
+    # parsing English: which answers are valid, and whether the codes are ORDERED
+    # (an agreement scale) or an UNORDERED choice (1 = people like me, 2 = the
+    # government, 3 = both), where distance between codes means nothing.
+    scale_min: int | None = Field(default=None, description="Lowest valid answer code.")
+    scale_max: int | None = Field(default=None, description="Highest valid answer code.")
+    scale_nominal: bool | None = Field(
+        default=None,
+        description="True when the codes are an unordered choice, not a scale. Every "
+        "code from scale_min to scale_max is valid either way.",
+    )
     factors: dict[str, str] = Field(
         default_factory=dict,
         description="The design factor levels this row's arm expressed, e.g. "

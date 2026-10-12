@@ -323,7 +323,15 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
     by_cond = {a.condition_num: a for a in recipe.condition.arms}
     by_task = {o.task_num: o for o in recipe.outcomes}
     outside: Counter[tuple[int, int]] = Counter()
+    # --- Rule 22 (same loop): the row's scale COLUMNS must be that same scale --
+    # Training reads scale_min/scale_max/scale_nominal instead of parsing the
+    # instruction text, so a row whose columns disagree with its own instruction
+    # would be validated and scored against a scale the model was never told.
+    unstated = 0
+    mismatched: Counter[tuple[int, int]] = Counter()
     for r in rows:
+        if r.scale_min is None or r.scale_max is None or r.scale_nominal is None:
+            unstated += 1
         r_arm = by_cond.get(r.condition_num) if r.condition_num is not None else None
         r_out = by_task.get(r.task_num) if r.task_num is not None else None
         if r_arm is None or r_out is None or r.response_num is None:
@@ -331,6 +339,18 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
         scale = recipe.scale_for(r_out, r_arm)
         if not scale.min <= r.response_num <= scale.max:
             outside[(r.condition_num, r.task_num)] += 1  # type: ignore[index]
+        if (r.scale_min, r.scale_max, r.scale_nominal) != (scale.min, scale.max, scale.nominal):
+            mismatched[(r.condition_num, r.task_num)] += 1  # type: ignore[index]
+    if unstated:
+        rep.failures.append(
+            f"{unstated} row(s) carry no scale_min/scale_max/scale_nominal — a consumer "
+            "would have to parse the answer instruction to know the valid answers"
+        )
+    if mismatched:
+        rep.failures.append(
+            "scale columns disagree with the scale the row's own outcome text states, "
+            f"per (condition, task): {dict(sorted(mismatched.items()))}"
+        )
     if outside:
         rep.failures.append(
             "responses outside the scale their own outcome text states, per "

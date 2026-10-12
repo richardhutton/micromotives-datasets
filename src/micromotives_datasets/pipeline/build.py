@@ -364,6 +364,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             if ivalue not in recode:
                 continue  # value outside the declared scale -> drop, don't guess
             response = recode[ivalue]
+            scale = recipe.scale_for(outcome, arm)
 
             yield Row(
                 persona=persona,
@@ -371,6 +372,9 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 outcome=_for_respondent(recipe.outcome_text_for(outcome, arm), who),
                 response=str(response),
                 response_num=float(response),
+                scale_min=scale.min,
+                scale_max=scale.max,
+                scale_nominal=scale.nominal,
                 condition_num=arm.condition_num,
                 task_num=outcome.task_num,
                 factors=dict(arm.factors),
