@@ -60,6 +60,8 @@ data/raw/
 # covered by this rule too.
 data/profiles/
 data/processed/*.parquet
+# Train/eval exports for the training project (scripts/export.py): respondent rows.
+data/processed/exports/
 data/processed/*.csv
 !data/processed/.gitkeep
 

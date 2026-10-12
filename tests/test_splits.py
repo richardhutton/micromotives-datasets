@@ -105,3 +105,17 @@ def test_numbers_sharing_text_are_one_unit() -> None:
 
     df = pd.DataFrame({"n": [0, 1, 2, 3, 4], "t": ["a", "a", "b", "c", "b"]})
     assert make_splits.units(df, "n", "t").tolist() == [0, 0, 2, 3, 2]
+
+
+def test_export_puts_each_study_on_its_split_side() -> None:
+    import sys
+
+    import pandas as pd
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import export
+
+    mapping = {"seen": ["a", "b"], "unseen": ["c"]}
+    sides = export.side_of(pd.Series(["a", "c", "b", "x"]), mapping).tolist()
+    assert sides[:3] == ["train", "eval", "train"]
+    assert pd.isna(sides[3])  # in neither list (excluded): in neither file
