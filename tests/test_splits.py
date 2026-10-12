@@ -74,3 +74,24 @@ def test_excluding_a_study_moves_no_other_study() -> None:
         make_splits.EXCLUDED.update(saved)
     for side in ("seen", "unseen"):
         assert set(with_all[side]) == set(without[side]) - set(saved), side
+
+
+def test_hidden_conditions_never_reach_train() -> None:
+    mapping = json.loads((SPLITS / "condition_mapping.json").read_text())
+    rows = make_splits.rows_by_experiment()
+    for experiment, sides in mapping.items():
+        df = make_splits.numbered_rows(rows[experiment])
+        train = set(df.loc[sides["train"], "condition_num"])
+        held = set(df.loc[sides["eval"], "condition_num"])
+        assert not train & held, experiment  # a hidden condition is hidden whole
+        assert sorted(sides["train"] + sides["eval"]) == list(range(len(df))), experiment
+        n = df["condition_num"].nunique()
+        assert n >= make_splits.MIN_CONDITIONS, experiment
+        assert len(held) == max(1, int(make_splits.HIDDEN_SHARE * n + 0.5)), experiment
+    eligible = {
+        e
+        for e, df in rows.items()
+        if df["condition_num"].nunique() >= make_splits.MIN_CONDITIONS
+        and STUDY_OF[e] not in make_splits.EXCLUDED
+    }
+    assert set(mapping) == eligible

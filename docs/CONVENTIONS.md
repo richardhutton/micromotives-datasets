@@ -373,3 +373,20 @@ SocSci210's file of that name: `{"seen": [study], "unseen": [study]}`.
   script). They are removed after the draw, so excluding them moved no other study;
   a test checks that. Now 68 studies: 55 seen, 13 unseen.
 - The split changes only by a new ruling here. Never redraw to improve a result.
+
+## Hidden conditions (condition_mapping.json)
+
+rich, 12 Oct 2026. SocSci210's second test: can the model predict a condition it never
+trained on? Made by `scripts/make_splits.py`, checked by `tests/test_splits.py`.
+
+- A separate test from the study split, over every experiment whichever side its study
+  is on (SocSci210 does the same), except the excluded studies.
+- Only experiments with 4 or more randomised conditions (`condition_num`); 69 qualify.
+  Counted by randomised condition, not by text: an experiment whose text varies inside
+  its 2 conditions (item counts, conjoint profiles) has 2.
+- A quarter of each experiment's conditions (rounded half up, at least one) are hidden,
+  drawn from a seed of the experiment's own name, so no experiment's draw moves another.
+- Every row of a hidden condition is in `eval`; every other row in `train`. Rows are
+  numbered within the experiment in (person, condition, outcome) order.
+- Keyed by experiment, not study: conditions belong to one experiment.
+- First draw: 655,981 rows, 163,859 (25%) eval.

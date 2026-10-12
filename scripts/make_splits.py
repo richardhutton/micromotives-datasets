@@ -1,4 +1,8 @@
-"""Make the unseen-studies split: which studies are held out from training entirely.
+"""Make the held-out splits, in SocSci210's metadata formats.
+
+participant_mapping.json: which studies are held out from training entirely.
+condition_mapping.json: within each experiment, which rows are held out because their
+condition is (see "Hidden conditions" below).
 
     uv run python scripts/make_splits.py          # write data/catalog/splits/
     uv run python scripts/make_splits.py --check  # fail if the files would change
@@ -20,7 +24,21 @@ were chosen. Ours, ruled 12 Oct 2026 (docs/CONVENTIONS.md, "Unseen studies"):
 - EXCLUDED studies are on neither side (excluded.json says why). They are removed
   after the draw, so excluding one never moves another study between sides.
 
-Reads only recipe headers, so it runs without the data.
+Hidden conditions (condition_mapping.json, SocSci210's file of that name; rich, 12 Oct
+2026). A separate test from the study split, as in SocSci210, where 26 of the 129 studies
+in its condition mapping are unseen in its participant mapping:
+
+1. Every experiment (recipe) with at least MIN_CONDITIONS conditions, except EXCLUDED
+   studies. Keyed by experiment, not study: conditions belong to one experiment, and a
+   DEL survey holds several with different conditions.
+2. Its rows are numbered 0, 1, 2, ... in ROW_ORDER (person, condition, outcome; never
+   repeated), so a number always means the same answer, whatever order a parquet is in.
+3. HIDDEN_SHARE of its conditions, rounded half up and at least one, drawn at random from
+   a seed made of SEED and the experiment's name, so adding or changing one experiment
+   never changes another's draw.
+4. A row whose condition was drawn goes to "eval"; every other row to "train".
+
+The study split reads only recipe headers; the condition mapping reads the built rows.
 """
 
 from __future__ import annotations
@@ -33,11 +51,17 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+import pandas as pd
+
 ROOT = Path(__file__).resolve().parent.parent
 RECIPES = ROOT / "recipes"
 OUT = ROOT / "data" / "catalog" / "splits"
 
 UNSEEN_SHARE = 0.20
+MIN_CONDITIONS = 4
+HIDDEN_SHARE = 0.25
+ROW_ORDER = ["participant_id", "condition_num", "task_num"]
+PROCESSED = ROOT / "data" / "processed"
 SEED = 20261012
 
 # SocSci210 metadata/participant_mapping.json (huggingface.co/datasets/socratesft/
@@ -335,6 +359,67 @@ def split(studies: dict[str, dict[str, object]]) -> dict[str, list[str]]:
     }
 
 
+def numbered_rows(df: pd.DataFrame) -> pd.DataFrame:
+    """One experiment's rows in ROW_ORDER, numbered 0..n-1 by position. The export
+    numbers rows with this same function, so the mapping and the files agree."""
+    if df.duplicated(ROW_ORDER).any():
+        raise ValueError("rows repeat a (person, condition, outcome): cannot number them")
+    return df.sort_values(ROW_ORDER, kind="stable").reset_index(drop=True)
+
+
+def rows_by_experiment() -> dict[str, pd.DataFrame]:
+    """recipe -> its built rows (the columns the splits need)."""
+    recipe_of = {}
+    for path in RECIPES.glob("*.yaml"):
+        h = recipe_header(path)
+        recipe_of[(h["study_id"], h.get("experiment") or None)] = path.stem
+    out: dict[str, pd.DataFrame] = {}
+    for pq in sorted(PROCESSED.glob("*.parquet")):
+        df = pd.read_parquet(pq, columns=["study_id", "experiment", *ROW_ORDER])
+        for (sid, exp), g in df.groupby(["study_id", "experiment"], dropna=False):
+            exp = None if pd.isna(exp) or exp == "" else str(exp)
+            out[recipe_of[(str(sid), exp)]] = g[ROW_ORDER]
+    if missing := sorted(set(recipe_of.values()) - set(out)):
+        raise ValueError(f"recipes with no built rows: {missing}")
+    return out
+
+
+def hidden_conditions(experiment: str, conditions: list[int]) -> list[int]:
+    """Step 3 of "Hidden conditions": HIDDEN_SHARE of them, at least one."""
+    k = max(1, int(HIDDEN_SHARE * len(conditions) + 0.5))
+    return sorted(random.Random(f"{SEED}:{experiment}").sample(sorted(conditions), k))
+
+
+def condition_mapping(rows: dict[str, pd.DataFrame], study: dict[str, str]) -> dict:
+    mapping = {}
+    for experiment in sorted(rows):
+        if study[experiment] in EXCLUDED:
+            continue
+        df = numbered_rows(rows[experiment])
+        conditions = [int(c) for c in df["condition_num"].unique()]
+        if len(conditions) < MIN_CONDITIONS:
+            continue
+        hidden = df["condition_num"].isin(hidden_conditions(experiment, conditions))
+        mapping[experiment] = {
+            "train": df.index[~hidden].tolist(),
+            "eval": df.index[hidden].tolist(),
+        }
+    return mapping
+
+
+def _compact(mapping: dict) -> str:
+    """One line per list: the row lists run to hundreds of thousands of numbers."""
+    lines = ["{"]
+    for i, (name, sides) in enumerate(mapping.items()):
+        comma = "," if i < len(mapping) - 1 else ""
+        lines.append(f'  "{name}": {{')
+        lines.append(f'    "train": {json.dumps(sides["train"])},')
+        lines.append(f'    "eval": {json.dumps(sides["eval"])}')
+        lines.append(f"  }}{comma}")
+    lines.append("}")
+    return "\n".join(lines) + "\n"
+
+
 def outputs() -> dict[str, str]:
     studies = experiments_by_study()
     mapping = split(studies)
@@ -343,6 +428,7 @@ def outputs() -> dict[str, str]:
         "participant_mapping.json": json.dumps(mapping, indent=2) + "\n",
         "excluded.json": json.dumps(dict(sorted(EXCLUDED.items())), indent=2) + "\n",
         "study_of_recipe.json": json.dumps(dict(sorted(recipes.items())), indent=2) + "\n",
+        "condition_mapping.json": _compact(condition_mapping(rows_by_experiment(), recipes)),
     }
 
 
@@ -367,6 +453,10 @@ def main() -> None:
             per_source[str(studies[s]["source"])] += 1
         print(f"{side}: {len(mapping[side])} studies {dict(sorted(per_source.items()))}")
     print("unseen:", mapping["unseen"])
+    cm = json.loads(files["condition_mapping.json"])
+    n_eval = sum(len(v["eval"]) for v in cm.values())
+    n_all = n_eval + sum(len(v["train"]) for v in cm.values())
+    print(f"condition_mapping: {len(cm)} experiments, {n_all:,} rows, {n_eval:,} eval")
 
 
 if __name__ == "__main__":
