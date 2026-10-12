@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**108 experiments.** 26 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 43 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**70 studies (108 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 26 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 43 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
-| Layer | Experiments | Rows | Redistributable |
-|---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 26 | 264,321 | **yes, CC0 1.0** |
-| UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
-| UK — UK Data Service (End User Licence) | 38 | 372,831 | **no** — UKDS End User Licence |
-| US transfer — TESS | 43 | 374,137 | **no** — no licence stated |
-| **Total** | **108** | **1,024,557** | |
+| Layer | Studies | Experiments | Rows | Redistributable |
+|---|---|---|---|---|
+| UK — Harvard Dataverse (CC0) | 14 | 26 | 264,321 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
+| UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
+| US transfer — TESS | 32 | 43 | 374,137 | **no** — no licence stated |
+| **Total** | **70** | **108** | **1,024,557** | |
 
 ---
 

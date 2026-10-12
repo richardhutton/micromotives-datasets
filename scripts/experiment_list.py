@@ -22,6 +22,7 @@ Statuses, defined once and used everywhere:
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -54,8 +55,36 @@ def _cell(text: str) -> str:
 
 
 def _sort_key(r: dict) -> tuple:
+    # Study before novelty, so one study's experiments sit together (rich, 12 Oct 2026).
     nov = r.get("novelty")
-    return (STATUSES.index(r["status"]), -(nov if nov is not None else -1.0), r["id"])
+    return (
+        STATUSES.index(r["status"]),
+        r.get("study") or "",
+        -(nov if nov is not None else -1.0),
+        _experiment_id(r),
+    )
+
+
+def _experiment_id(r: dict) -> str:
+    """The recipe name once built (the name the code, parquets and split use);
+    the source's own id before that, as there is no recipe yet."""
+    return r.get("recipe") or r["id"]
+
+
+_DEL_WAVE = re.compile(r"^(W\d+|[A-Z][a-z]{2}\d{4})_")
+
+
+def candidate_study(r: dict) -> str | None:
+    """The study an unbuilt candidate would fall in, named as make_splits.study_of
+    names it, read from the source's own id. None when the id does not say."""
+    if r["source"] == "Innovation Panel" and re.fullmatch(r"\d+\.\d+", r["id"]):
+        return f"ukds_6849:{r['id']}"
+    if r["source"] == "DEL" and (m := _DEL_WAVE.match(r["id"])):
+        wave = m.group(1).lower()
+        return f"del:panel_{wave}" if wave.startswith("w") else f"del:sandbox_{wave}"
+    if r["source"] in ("TESS", "Harvard Dataverse") and re.fullmatch(r"[0-9A-Za-z]+", r["id"]):
+        return r["id"]
+    return None
 
 
 def render_md(data: dict) -> str:
@@ -134,8 +163,9 @@ def render_md(data: dict) -> str:
             "",
             f"{data['meta'][s]}. {counts}.",
             "",
-            "| ID | Experiment | Category | Status | Study (split) | Novelty | Next | Rows |",
-            "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
+            "| Study ID | Split | Experiment ID | Experiment | Category | Status | Novelty | Next"
+            " | Rows |",
+            "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
         ]
         for r in src_rows:
             exp = f"**{_cell(r['title'])}**"
@@ -145,10 +175,10 @@ def render_md(data: dict) -> str:
                 exp += f"<br>*{_cell(r['details'])}*"
             status = r["status"] + (f": {_cell(r['reason'])}" if r.get("reason") else "")
             nov = "" if r.get("novelty") is None else f"{r['novelty']:.2f}"
-            study = f"{r['study']} ({r['split']})" if r.get("study") else ""
             out.append(
-                f"| {_cell(r['id'])} | {exp} | {_cell(r['category'])} | {status} | {study} "
-                f"| {nov} | {r.get('next', '')} | {_rows(r)} |"
+                f"| {r.get('study') or ''} | {r.get('split', '')} | {_cell(_experiment_id(r))} "
+                f"| {exp} | {_cell(r['category'])} | {status} | {nov} | {r.get('next', '')} "
+                f"| {_rows(r)} |"
             )
     return "\n".join(out) + "\n"
 
@@ -204,8 +234,17 @@ def attach_row_counts(data: dict) -> None:
         r["split"] = (
             "excluded" if r["study"] in excluded else "unseen" if r["study"] in unseen else "seen"
         )
+        # Where a built row still carries its source id, reading the study from it must
+        # agree with the split's own mapping, or candidates' study ids can't be trusted.
+        if (guess := candidate_study(r)) is not None and guess != r["study"]:
+            raise SystemExit(
+                f"{r['id']}: study read from its id is {guess}, split says {r['study']}"
+            )
     if unnamed := sorted(committed - named):
         raise SystemExit(f"committed recipes with no Built row: {unnamed}")
+    for r in data["rows"]:
+        if r["status"] != "Built":
+            r["study"] = candidate_study(r)  # no split: unbuilt work is in no split
 
 
 def corpus_experiments() -> int:

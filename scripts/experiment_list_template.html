@@ -83,8 +83,8 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
     </div>
     <div class="scroll">
       <table class="list">
-        <colgroup><col style="width:140px"><col style="width:150px"><col><col style="width:190px"><col style="width:220px"><col style="width:72px"><col style="width:52px"><col style="width:76px"></colgroup>
-        <thead><tr><th>Source</th><th>ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Study · split</th><th>Novelty</th><th>Next</th><th>Rows</th></tr></thead>
+        <colgroup><col style="width:130px"><col style="width:130px"><col style="width:76px"><col style="width:170px"><col><col style="width:170px"><col style="width:200px"><col style="width:72px"><col style="width:52px"><col style="width:76px"></colgroup>
+        <thead><tr><th>Source</th><th>Study ID</th><th>Split</th><th>Experiment ID</th><th>Experiment</th><th>Category</th><th>Status</th><th>Novelty</th><th>Next</th><th>Rows</th></tr></thead>
         <tbody id="tb"></tbody>
       </table>
     </div>
@@ -121,17 +121,18 @@ function render(){
   const q = document.getElementById("q").value.toLowerCase();
   const list = rows.filter(r => (!fsrc.value || r.source === fsrc.value) && (!fst.value || r.status === fst.value) &&
       (!fcat.value || r.category === fcat.value) && (!fnext.value || r.next) &&
-      (!q || `${r.id} ${r.title} ${r.description} ${r.details} ${r.study || ""} ${r.split || ""}`.toLowerCase().includes(q)))
+      (!q || `${r.id} ${r.recipe || ""} ${r.title} ${r.description} ${r.details} ${r.study || ""} ${r.split || ""}`.toLowerCase().includes(q)))
     .sort((a, b) => (fnext.value ? a.next - b.next : 0) || SOURCES.indexOf(a.source) - SOURCES.indexOf(b.source) ||
-      STATUSES.indexOf(a.status) - STATUSES.indexOf(b.status) || (b.novelty ?? -1) - (a.novelty ?? -1) || a.id.localeCompare(b.id));
+      STATUSES.indexOf(a.status) - STATUSES.indexOf(b.status) || (a.study || "").localeCompare(b.study || "") || (b.novelty ?? -1) - (a.novelty ?? -1) || (a.recipe || a.id).localeCompare(b.recipe || b.id));
   document.getElementById("count").textContent = `${list.length} of ${rows.length} experiments`;
   document.getElementById("tb").innerHTML = list.map(r => `<tr>
     <td>${esc(r.source)}</td>
-    <td class="id">${esc(r.id)}</td>
+    <td class="id">${esc(r.study || "")}</td>
+    <td>${esc(r.split || "")}</td>
+    <td class="id">${esc(r.recipe || r.id)}</td>
     <td><div class="t">${esc(r.title)}</div>${r.description ? `<div class="d">${esc(r.description)}</div>` : ""}${r.details ? `<div class="x">${esc(r.details)}</div>` : ""}</td>
     <td>${esc(r.category)}</td>
     <td><span class="pill ${cls(r.status)}">${esc(r.status)}</span>${r.reason ? `<div class="why">${esc(r.reason)}</div>` : ""}</td>
-    <td class="id">${r.study ? `${esc(r.study)}<div class="why">${esc(r.split)}</div>` : ""}</td>
     <td class="num">${r.novelty == null ? "" : r.novelty.toFixed(2)}</td>
     <td class="num">${r.next ?? ""}</td>
     <td class="num">${r.rows == null ? "" : r.rows.toLocaleString("en-GB")}</td>

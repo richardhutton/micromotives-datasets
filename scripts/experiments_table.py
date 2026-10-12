@@ -44,6 +44,10 @@ OUT = REPO / "docs" / "EXPERIMENTS.md"
 
 MANIFEST = CATALOG / "experiment_manifest.json"
 PROVENANCE = CATALOG / "uk_dataverse_provenance.json"
+# recipe -> study, as the seen/unseen split groups them (scripts/make_splits.py).
+# Counts lead with studies because that is SocSci210's unit: its "210" is studies,
+# and "108 experiments" beside it misled (rich, 12 Oct 2026).
+STUDY_OF = CATALOG / "splits" / "study_of_recipe.json"
 TESS = CATALOG / "tess_uk_foundation_sources.csv"
 
 SOURCE_LABEL = {
@@ -275,6 +279,11 @@ def render(experiments: list[Experiment]) -> str:
     uk_restricted_rows = sum(e.rows or 0 for e in uk_restricted)
     ukds_rows = sum(e.rows or 0 for e in ukds)
 
+    study_of: dict[str, str] = json.loads(STUDY_OF.read_text())
+
+    def studies(group: list[Experiment]) -> int:
+        return len({study_of[e.recipe] for e in group})
+
     lines: list[str] = []
     add = lines.append
 
@@ -293,7 +302,11 @@ def render(experiments: list[Experiment]) -> str:
         else ""
     )
     add(
-        f"**{len(experiments)} experiments.** "
+        f"**{studies(experiments)} studies ({len(experiments)} experiments).** A study is the "
+        "unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are "
+        "studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel "
+        "experiment number across its waves. An experiment is one randomised design within a "
+        "study, one recipe here. By experiment: "
         f"{len(uk_open)} UK (CC0, redistributable){restricted_note}, {len(ukds)} UK Data Service "
         "(End User Licence, **not** redistributable, never sent to any external service) "
         f"and {len(tess)} US transfer "
@@ -308,22 +321,30 @@ def render(experiments: list[Experiment]) -> str:
         )
         add("")
 
-    add("| Layer | Experiments | Rows | Redistributable |")
-    add("|---|---|---|---|")
-    add(f"| UK — Harvard Dataverse (CC0) | {len(uk_open)} | {uk_open_rows:,} | **yes, CC0 1.0** |")
+    add("| Layer | Studies | Experiments | Rows | Redistributable |")
+    add("|---|---|---|---|---|")
+    add(
+        f"| UK — Harvard Dataverse (CC0) | {studies(uk_open)} | {len(uk_open)} | "
+        f"{uk_open_rows:,} | **yes, CC0 1.0** |"
+    )
     if uk_restricted:
         add(
-            f"| UK — Harvard Dataverse (licence-restricted) | {len(uk_restricted)} | "
+            f"| UK — Harvard Dataverse (licence-restricted) | {studies(uk_restricted)} | "
+            f"{len(uk_restricted)} | "
             f"{uk_restricted_rows:,} | **no** — see each experiment's own licence note |"
         )
     if ukds:
         add(
-            f"| UK — UK Data Service (End User Licence) | {len(ukds)} | {ukds_rows:,} | "
+            f"| UK — UK Data Service (End User Licence) | {studies(ukds)} | {len(ukds)} | "
+            f"{ukds_rows:,} | "
             "**no** — UKDS End User Licence |"
         )
-    add(f"| US transfer — TESS | {len(tess)} | {tess_rows:,} | **no** — no licence stated |")
     add(
-        f"| **Total** | **{len(experiments)}** | "
+        f"| US transfer — TESS | {studies(tess)} | {len(tess)} | {tess_rows:,} | "
+        "**no** — no licence stated |"
+    )
+    add(
+        f"| **Total** | **{studies(experiments)}** | **{len(experiments)}** | "
         f"**{uk_open_rows + uk_restricted_rows + ukds_rows + tess_rows:,}** | |"
     )
     add("")
