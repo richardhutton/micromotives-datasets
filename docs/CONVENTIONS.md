@@ -347,3 +347,23 @@ Where our number legitimately differs from the published one, assert the
 difference rather than widening the tolerance to swallow it. `QQM5MC`'s N is
 exactly two below the paper's because we drop a doubly-routed respondent the
 authors count twice, so the script checks for `published - 2` and says why.
+
+## Unseen studies (the held-out test split)
+
+rich, 12 Oct 2026. `data/catalog/splits/participant_mapping.json`, made by
+`scripts/make_splits.py` and checked by `tests/test_splits.py`. Same format as
+SocSci210's file of that name: `{"seen": [study], "unseen": [study]}`.
+`study_of_recipe.json` maps every recipe to its study.
+
+- **A study is held out whole.** TESS and Dataverse: the study id, as SocSci210.
+  DEL: the survey file (`del:panel_w4`), because one survey's experiments were answered
+  by the same people in one sitting. Innovation Panel: the IP experiment number
+  (`ukds_6849:9.10`), so an experiment fielded in two waves stays on one side.
+- **TESS studies shared with SocSci210 keep SocSci210's side** (6 unseen, 18 seen), so
+  our model and Socrates are compared on studies neither trained on.
+- **The rest: 20% of each source's studies, drawn from a fixed seed** (SocSci210 held
+  out 40 of 210, 19%, and does not say how it chose them).
+- First draw: 70 studies, 56 seen, 14 unseen; 21.8% of rows unseen. Innovation Panel's
+  unseen share is 38% of its rows, because 9.13 (time and risk, the largest
+  experiment) was drawn. A study split weighs studies, not rows; recorded, not corrected.
+- The split changes only by a new ruling here. Never redraw to improve a result.
