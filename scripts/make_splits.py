@@ -3,6 +3,7 @@
 participant_mapping.json: which studies are held out from training entirely.
 condition_mapping.json: within each experiment, which rows are held out because their
 condition is (see "Hidden conditions" below).
+task_mapping.json: the same, for outcomes (questions) instead of conditions.
 
     uv run python scripts/make_splits.py          # write data/catalog/splits/
     uv run python scripts/make_splits.py --check  # fail if the files would change
@@ -28,7 +29,7 @@ Hidden conditions (condition_mapping.json, SocSci210's file of that name; rich, 
 2026). A separate test from the study split, as in SocSci210, where 26 of the 129 studies
 in its condition mapping are unseen in its participant mapping:
 
-1. Every experiment (recipe) with at least MIN_CONDITIONS conditions, except EXCLUDED
+1. Every experiment (recipe) with at least MIN_GROUPS conditions, except EXCLUDED
    studies. Keyed by experiment, not study: conditions belong to one experiment, and a
    DEL survey holds several with different conditions.
 2. Its rows are numbered 0, 1, 2, ... in ROW_ORDER (person, condition, outcome; never
@@ -37,6 +38,16 @@ in its condition mapping are unseen in its participant mapping:
    a seed made of SEED and the experiment's name, so adding or changing one experiment
    never changes another's draw.
 4. A row whose condition was drawn goes to "eval"; every other row to "train".
+
+A condition number is not always a distinct text (a sequence of messages can show one
+text under several numbers), so numbers that share any text are hidden together as one
+unit, and "conditions" above means these units. The rule this guarantees, and the test
+checks: no text in eval appears in train.
+
+Hidden outcomes (task_mapping.json): the same four steps with the outcome (`task_num`)
+in place of the condition (a question asked about five profiles in turn has five task
+numbers and one wording: one unit, so it cannot be hidden from itself), and "task" added to each experiment's seed so its draw is
+independent of the condition draw.
 
 The study split reads only recipe headers; the condition mapping reads the built rows.
 """
@@ -58,9 +69,10 @@ RECIPES = ROOT / "recipes"
 OUT = ROOT / "data" / "catalog" / "splits"
 
 UNSEEN_SHARE = 0.20
-MIN_CONDITIONS = 4
+MIN_GROUPS = 4  # conditions (or outcomes) an experiment needs to take part
 HIDDEN_SHARE = 0.25
 ROW_ORDER = ["participant_id", "condition_num", "task_num"]
+TEXTS = ["condition", "outcome"]
 PROCESSED = ROOT / "data" / "processed"
 SEED = 20261012
 
@@ -375,31 +387,68 @@ def rows_by_experiment() -> dict[str, pd.DataFrame]:
         recipe_of[(h["study_id"], h.get("experiment") or None)] = path.stem
     out: dict[str, pd.DataFrame] = {}
     for pq in sorted(PROCESSED.glob("*.parquet")):
-        df = pd.read_parquet(pq, columns=["study_id", "experiment", *ROW_ORDER])
+        df = pd.read_parquet(pq, columns=["study_id", "experiment", *ROW_ORDER, *TEXTS])
         for (sid, exp), g in df.groupby(["study_id", "experiment"], dropna=False):
             exp = None if pd.isna(exp) or exp == "" else str(exp)
-            out[recipe_of[(str(sid), exp)]] = g[ROW_ORDER]
+            out[recipe_of[(str(sid), exp)]] = g[[*ROW_ORDER, *TEXTS]]
     if missing := sorted(set(recipe_of.values()) - set(out)):
         raise ValueError(f"recipes with no built rows: {missing}")
     return out
 
 
-def hidden_conditions(experiment: str, conditions: list[int]) -> list[int]:
+# What each mapping hides, and the seed prefix of its draw. The condition prefix is
+# empty so condition_mapping.json is unchanged from its first draw.
+HIDE = {
+    "condition_mapping.json": ("condition_num", "condition", ""),
+    "task_mapping.json": ("task_num", "outcome", "task:"),
+}
+
+
+def units(df: pd.DataFrame, number: str, text: str) -> pd.Series:
+    """Each row's hiding unit: its `number`, joined with every other number that shares
+    any `text` with it, so hiding a unit hides its text completely. Named by the
+    smallest number in it, so a number that shares no text is its own unit, unchanged.
+
+    Needed because a number is not always a distinct text: a question asked about five
+    profiles in turn has five task numbers and one wording; in a sequence of messages
+    one text appears under several condition numbers (rich, 12 Oct 2026).
+    """
+    parent: dict[int, int] = {}
+
+    def root(x: int) -> int:
+        while parent.setdefault(x, x) != x:
+            x = parent[x]
+        return x
+
+    for numbers in df.groupby(text)[number].unique():
+        first = root(int(numbers[0]))
+        for n in numbers[1:]:
+            a, b = sorted((first, root(int(n))))
+            parent[b] = a
+            first = a
+    return df[number].map(lambda n: root(int(n)))
+
+
+def hidden_values(seed: str, values: list[int]) -> list[int]:
     """Step 3 of "Hidden conditions": HIDDEN_SHARE of them, at least one."""
-    k = max(1, int(HIDDEN_SHARE * len(conditions) + 0.5))
-    return sorted(random.Random(f"{SEED}:{experiment}").sample(sorted(conditions), k))
+    k = max(1, int(HIDDEN_SHARE * len(values) + 0.5))
+    return sorted(random.Random(seed).sample(sorted(values), k))
 
 
-def condition_mapping(rows: dict[str, pd.DataFrame], study: dict[str, str]) -> dict:
+def hidden_mapping(
+    rows: dict[str, pd.DataFrame], study: dict[str, str], number: str, text: str, prefix: str
+) -> dict:
+    """Steps 1-4 of "Hidden conditions", hiding whole units of `number` (see units())."""
     mapping = {}
     for experiment in sorted(rows):
         if study[experiment] in EXCLUDED:
             continue
         df = numbered_rows(rows[experiment])
-        conditions = [int(c) for c in df["condition_num"].unique()]
-        if len(conditions) < MIN_CONDITIONS:
+        unit = units(df, number, text)
+        values = [int(v) for v in unit.unique()]
+        if len(values) < MIN_GROUPS:
             continue
-        hidden = df["condition_num"].isin(hidden_conditions(experiment, conditions))
+        hidden = unit.isin(hidden_values(f"{SEED}:{prefix}{experiment}", values))
         mapping[experiment] = {
             "train": df.index[~hidden].tolist(),
             "eval": df.index[hidden].tolist(),
@@ -424,12 +473,15 @@ def outputs() -> dict[str, str]:
     studies = experiments_by_study()
     mapping = split(studies)
     recipes = {r: s for s, e in studies.items() for r in e["recipes"]}  # type: ignore[attr-defined]
-    return {
+    files = {
         "participant_mapping.json": json.dumps(mapping, indent=2) + "\n",
         "excluded.json": json.dumps(dict(sorted(EXCLUDED.items())), indent=2) + "\n",
         "study_of_recipe.json": json.dumps(dict(sorted(recipes.items())), indent=2) + "\n",
-        "condition_mapping.json": _compact(condition_mapping(rows_by_experiment(), recipes)),
     }
+    rows = rows_by_experiment()
+    for name, (number, text, prefix) in HIDE.items():
+        files[name] = _compact(hidden_mapping(rows, recipes, number, text, prefix))
+    return files
 
 
 def main() -> None:
@@ -453,10 +505,11 @@ def main() -> None:
             per_source[str(studies[s]["source"])] += 1
         print(f"{side}: {len(mapping[side])} studies {dict(sorted(per_source.items()))}")
     print("unseen:", mapping["unseen"])
-    cm = json.loads(files["condition_mapping.json"])
-    n_eval = sum(len(v["eval"]) for v in cm.values())
-    n_all = n_eval + sum(len(v["train"]) for v in cm.values())
-    print(f"condition_mapping: {len(cm)} experiments, {n_all:,} rows, {n_eval:,} eval")
+    for name in HIDE:
+        cm = json.loads(files[name])
+        n_eval = sum(len(v["eval"]) for v in cm.values())
+        n_all = n_eval + sum(len(v["train"]) for v in cm.values())
+        print(f"{name}: {len(cm)} experiments, {n_all:,} rows, {n_eval:,} eval")
 
 
 if __name__ == "__main__":

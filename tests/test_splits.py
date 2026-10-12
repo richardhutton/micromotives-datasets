@@ -76,22 +76,32 @@ def test_excluding_a_study_moves_no_other_study() -> None:
         assert set(with_all[side]) == set(without[side]) - set(saved), side
 
 
-def test_hidden_conditions_never_reach_train() -> None:
-    mapping = json.loads((SPLITS / "condition_mapping.json").read_text())
+def test_hidden_text_never_reaches_train() -> None:
     rows = make_splits.rows_by_experiment()
-    for experiment, sides in mapping.items():
-        df = make_splits.numbered_rows(rows[experiment])
-        train = set(df.loc[sides["train"], "condition_num"])
-        held = set(df.loc[sides["eval"], "condition_num"])
-        assert not train & held, experiment  # a hidden condition is hidden whole
-        assert sorted(sides["train"] + sides["eval"]) == list(range(len(df))), experiment
-        n = df["condition_num"].nunique()
-        assert n >= make_splits.MIN_CONDITIONS, experiment
-        assert len(held) == max(1, int(make_splits.HIDDEN_SHARE * n + 0.5)), experiment
-    eligible = {
-        e
-        for e, df in rows.items()
-        if df["condition_num"].nunique() >= make_splits.MIN_CONDITIONS
-        and STUDY_OF[e] not in make_splits.EXCLUDED
-    }
-    assert set(mapping) == eligible
+    for name, (number, text, _) in make_splits.HIDE.items():
+        mapping = json.loads((SPLITS / name).read_text())
+        for experiment, sides in mapping.items():
+            df = make_splits.numbered_rows(rows[experiment])
+            train = set(df.loc[sides["train"], text])
+            held = set(df.loc[sides["eval"], text])
+            assert not train & held, (name, experiment)  # the rule itself, on the text
+            assert sorted(sides["train"] + sides["eval"]) == list(range(len(df))), experiment
+            unit = make_splits.units(df, number, text)
+            n = unit.nunique()
+            assert n >= make_splits.MIN_GROUPS, (name, experiment)
+            hidden = unit[sides["eval"]].nunique()
+            assert hidden == max(1, int(make_splits.HIDDEN_SHARE * n + 0.5)), experiment
+        eligible = {
+            e
+            for e, df in rows.items()
+            if make_splits.units(df, number, text).nunique() >= make_splits.MIN_GROUPS
+            and STUDY_OF[e] not in make_splits.EXCLUDED
+        }
+        assert set(mapping) == eligible, name
+
+
+def test_numbers_sharing_text_are_one_unit() -> None:
+    import pandas as pd
+
+    df = pd.DataFrame({"n": [0, 1, 2, 3, 4], "t": ["a", "a", "b", "c", "b"]})
+    assert make_splits.units(df, "n", "t").tolist() == [0, 0, 2, 3, 2]

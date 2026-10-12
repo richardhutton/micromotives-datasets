@@ -374,19 +374,24 @@ SocSci210's file of that name: `{"seen": [study], "unseen": [study]}`.
   a test checks that. Now 68 studies: 55 seen, 13 unseen.
 - The split changes only by a new ruling here. Never redraw to improve a result.
 
-## Hidden conditions (condition_mapping.json)
+## Hidden conditions and outcomes (condition_mapping.json, task_mapping.json)
 
-rich, 12 Oct 2026. SocSci210's second test: can the model predict a condition it never
-trained on? Made by `scripts/make_splits.py`, checked by `tests/test_splits.py`.
+rich, 12 Oct 2026. SocSci210's second and third tests: can the model predict a condition,
+or a question, it never trained on? Made by `scripts/make_splits.py`, checked by
+`tests/test_splits.py`.
 
-- A separate test from the study split, over every experiment whichever side its study
-  is on (SocSci210 does the same), except the excluded studies.
-- Only experiments with 4 or more randomised conditions (`condition_num`); 69 qualify.
-  Counted by randomised condition, not by text: an experiment whose text varies inside
-  its 2 conditions (item counts, conjoint profiles) has 2.
-- A quarter of each experiment's conditions (rounded half up, at least one) are hidden,
-  drawn from a seed of the experiment's own name, so no experiment's draw moves another.
-- Every row of a hidden condition is in `eval`; every other row in `train`. Rows are
-  numbered within the experiment in (person, condition, outcome) order.
-- Keyed by experiment, not study: conditions belong to one experiment.
-- First draw: 655,981 rows, 163,859 (25%) eval.
+- **The rule: no text in eval appears in train.** The test checks it on the text itself.
+- Separate tests from the study split, over every experiment whichever side its study is
+  on (SocSci210 does the same), except the excluded studies. Keyed by experiment.
+- The unit hidden is a randomised condition (`condition_num`) or an outcome (`task_num`),
+  joined with any other number that shares its text. A question asked about five profiles
+  in turn is five task numbers and one wording, so one unit; a sequence of messages can
+  show one text under several condition numbers. Hiding a number alone would leave its
+  text in training (first draw: 39% of task_mapping's eval rows, 0.7% of
+  condition_mapping's, found before use and fixed the same day).
+- Only experiments with 4 or more units; a quarter of them (rounded half up, at least
+  one) hidden whole, drawn from a seed of the experiment's own name ("task:" added for
+  outcomes), so no experiment's draw moves another.
+- Rows are numbered within the experiment in (person, condition, outcome) order.
+- Conditions: 68 experiments, 640,093 rows, 159,051 eval. Outcomes: 30 experiments,
+  375,096 rows, 94,030 eval.
