@@ -9,12 +9,12 @@ Every experiment we have built and every candidate we could add, from four sourc
 | Source | People and licence | Built | Buildable | Needs checking | Unlikely | Not built, total | Rows built |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Innovation Panel | UK · not publishable | 38 | 16 | 2 | 8 | 26 | 372,831 |
-| DEL | UK · publishable (CC0) | 12 | 5 | 3 | 10 | 18 | 125,779 |
+| DEL | UK · publishable (CC0) | 14 | 4 | 2 | 10 | 16 | 134,849 |
 | TESS | US · not publishable | 43 | 40 | 5 | 11 | 56 | 374,137 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **106** | **61** | **22** | **32** | **115** | **1,015,487** |
+| **Total** | | **108** | **60** | **21** | **32** | **113** | **1,024,557** |
 
-## Next 34, in build order (29 built, 5 to go)
+## Next 34, in build order (30 built, 4 to go)
 
 - Pool: Buildable candidates only.
 - Quotas: 15 DEL, 12 Innovation Panel, 10 TESS (UK first; TESS fills topic gaps).
@@ -161,10 +161,11 @@ UK · not publishable. 38 Built, 16 Buildable, 2 Needs checking, 8 Unlikely.
 
 ## DEL
 
-UK · publishable (CC0). 12 Built, 5 Buildable, 3 Needs checking, 10 Unlikely.
+UK · publishable (CC0). 14 Built, 4 Buildable, 2 Needs checking, 10 Unlikely.
 
 | ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| W4_EAsplit | **East Africa drought**<br>Drought alone, or blamed on climate change in three ways. Answer: who should act — people like me, the UK government, or both.<br>*Panel W4 2022; 4 conditions* | political preferences/policy | Built | 0.32 |  |
 | Feb2023_wordfeministsplit | **Naming a development policy (sandbox)**<br>Development / feminist / inclusive / gender-inclusive policy, or the name only. Answer: Support-oppose.<br>*1,788 rows; Sandbox Feb 2023; 5 conditions* | political preferences/policy | Built | 0.29 | 1 |
 | W4_connectstorysplit | **Climate harm stories**<br>No story, or one of three stories linking climate change to everyday life. Answer: Harm rating per group.<br>*28,109 rows; Panel W4 2022; 4 conditions (a fifth assigned group had no question)* | moral/social/cognition | Built | 0.28 | 4 |
 | W5_changesplit | **Who must change for climate**<br>'I will need to change' vs 'the UK Government will need to change'. Answer: 5-point agree.<br>*7,356 rows; Panel W5 2023; 2 conditions* | moral/social/cognition | Built | 0.28 | 10 |
@@ -177,12 +178,11 @@ UK · publishable (CC0). 12 Built, 5 Buildable, 3 Needs checking, 10 Unlikely.
 | W3_leadershipsplit | **Leadership messages**<br>No message, or one of four arguments for UK climate leadership (moral, fair share, economic opportunity, national values). Answer: agree that the UK Government should show leadership on climate change, 5-point.<br>*Panel W3 2021; 5 conditions* | political preferences/policy | Built | 0.22 | 34 |
 | Feb2023_odasplit | **Gender aid compared to others**<br>No figure, UK spends 68%, vs donor average 44%, vs Canada 90%, vs Poland 3%. Answer: Increase or decrease aid.<br>*1,655 rows; Sandbox Feb 2023; 5 conditions* | political preferences/policy | Built | 0.20 | 21 |
 | W4_CoLSplit | **Cost of living**<br>Control, or rating your own place on a world wealth scale in 2019 and today (alone, then also your local community, or a poor country). Answer: split an imaginary £1,000 between yourself, your local community and a poor country (3 amounts).<br>*Panel W4 2022; 4 conditions* | economics/behavioural | Built | 0.19 | 35 |
+| Feb2023_progsplit | **Gender gap progress**<br>Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic.<br>*Sandbox Feb 2023; 4 conditions* | moral/social/cognition | Built | 0.15 | 32 |
 | W4_climatescenariosplit | **Extreme weather news**<br>Greenland ice melt, Pakistan floods, China heatwave, or UK 40C. Answer: Question after the story.<br>*Panel W4 2022; 4 conditions* | political preferences/policy | Buildable | 0.28 | 33 |
 | W4_DonationSplit | **Ukraine donation follow-up**<br>People who chose Ukraine over one of 7 other crises are told part of their donation (unspecified, or 10-50%) will go to that crisis. Answer: Still donate, yes or no.<br>*Panel W4 2022; 5 conditions* | economics/behavioural | Buildable: Parked 10 Oct 2026: needs a pipeline change (one condition across several codes in several columns; one outcome read from whichever of four columns holds it). | 0.27 | 3 |
 | W5_wordfeministsplit | **Naming a development policy (panel)**<br>A development / inclusive / gender-inclusive development policy. Answer: Support-oppose.<br>*Panel W5 2023; 3 conditions* | political preferences/policy | Buildable | 0.24 | 28 |
 | Feb2023_equalgsplit | **Gender equality, UK or abroad**<br>Have women and men become more equal in the UK vs in developing countries. Answer: More or less equal.<br>*Sandbox Feb 2023; 2 conditions* | moral/social/cognition | Buildable | 0.17 |  |
-| Feb2023_progsplit | **Gender gap progress**<br>Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic.<br>*Sandbox Feb 2023; 4 conditions* | moral/social/cognition | Buildable | 0.15 | 32 |
-| W4_EAsplit | **East Africa drought**<br>Drought alone, or blamed on climate change in three ways. Answer: Choice, randomised order.<br>*Panel W4 2022; 4 conditions* | political preferences/policy | Needs checking: outcome options are shown in random order | 0.32 |  |
 | W4_split_sample | **Climate aid conjoint**<br>Conjoint: Climate aid profiles with 8 or 6 attributes, 3 screens. Answer: Pick one.<br>*Panel W4 2022; 2 conditions* | political preferences/policy | Needs checking: conjoint attributes sit in script code | 0.27 |  |
 | Apr2020_orgrolessplitgroup | **Role of organisations**<br>Not yet read.<br>*Sandbox Apr 2020; 2 conditions* | moral/social/cognition | Needs checking: conditions not yet read | 0.22 |  |
 | Apr2020_exp_Screen | **Aid statement pairs**<br>Two aid statements drawn at random from a bank, ten screens. Answer: Which do you agree with more.<br>*Sandbox Apr 2020; 10 conditions* | political preferences/policy | Unlikely: pandemic-framed: the 131-statement bank is April 2020 COVID messaging; ruled out by rich, 10 Oct 2026 | 0.31 |  |

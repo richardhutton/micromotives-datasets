@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**106 experiments.** 24 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 43 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**108 experiments.** 26 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 43 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Experiments | Rows | Redistributable |
 |---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 24 | 255,251 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 26 | 264,321 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 38 | 372,831 | **no** — UKDS End User Licence |
 | US transfer — TESS | 43 | 374,137 | **no** — no licence stated |
-| **Total** | **106** | **1,015,487** | |
+| **Total** | **108** | **1,024,557** | |
 
 ---
 
@@ -52,6 +52,7 @@
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
 | `RJTVG8` | Support for digitising the ballot box: a systematic review of i-vot… | Harvard Dataverse | `doi:10.7910/DVN/RJTVG8` | 6,000 |
 | `ukds_6849_vig_ageing_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 5,967 |
+| `del_panel_w4_east_africa_drought` | Development Engagement Lab, Panel Great Britain wave 4 (2022): East… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 5,796 |
 | `ukds_6849_nrp_w10_contact` ⚠ | Understanding Society Innovation Panel, experiment 9.23: how often … | UK Data Service | `UKDS SN 6849` | 5,690 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
 | `ukds_6849_vig_housework_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 5,081 |
@@ -60,6 +61,7 @@
 | `ukds_6849_numeracy_fin_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,602 |
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
 | `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
+| `del_sandbox_feb2023_gender_progress` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 3,274 |
 | `ukds_6849_hmrc_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 2,553 |
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
@@ -367,6 +369,19 @@ Forced choice between two hypothetical UK internet-voting (i-voting) policies, d
 - **Licence** — CC0 1.0
 - **Verified against** — the authors' own cregg::mm() marginal means, Table A.4 of the author-accepted manuscript — 51 estimates to within 0.0015
 
+### `del_panel_w4_east_africa_drought`
+
+**Development Engagement Lab, Panel Great Britain wave 4 (2022): East Africa drought**
+
+Who has a responsibility to take urgent action on famine in East Africa: people like me, the UK government, or both. Respondents read that East Africa faces its worst drought in 40 years, alone or with climate change named as a key factor, plus either the US-versus-Africa share of CO2 emissions or the Russian invasion of Ukraine disrupting food supply. DEL panel wave 4 (2022).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/WZPNNU`
+- **Type** — between-subjects framing, 4 arms (EAsplit); one nominal 3-option outcome, each arm's item merged; options 1-2 were shuffled per respondent and not recorded, listed in questionnaire order (rich, 12 Oct 2026, ledger 155)
+- **Category** — political preferences/policy
+- **Rows** — 5,796 from 5,796 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
+- **Verified against** — no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 5,796 rows back to raw by respondent id (0 mismatches); personas identical to the cost of living build (12 Oct 2026)
+
 ### `PZB01G`
 
 **For and Against Brexit: A Survey Experiment of the Impact of Campaign Effects on Public Attitudes toward EU Membership**
@@ -379,6 +394,19 @@ Respondents are shown a campaign vignette combining a pro- or anti-EU cultural f
 - **Rows** — 5,333 from 5,333 respondents
 - **Licence** — CC0 1.0
 - **Verified against** — the paper's own Appendix Table A6 (nine group sizes, reproduced exactly) and its own text (p.8, the control group's published Wave 2 Remain/Leave/Don't-know-or-would-not-vote shares, reproduced to 0.1 percentage point); scripts/verify_PZB01G.py
+
+### `del_sandbox_feb2023_gender_progress`
+
+**Development Engagement Lab, Sandbox Great Britain February 2023: gender gap progress statements**
+
+How believable a statement about the gender gap is, and whether it makes people more optimistic or pessimistic about efforts to close it. Respondents saw one of four statements: the Global Gender Gap Index will take another 132 years to close, or over the past 16 years the education gap has closed by 94%, the economic gap by 60%, or the political gap by 22%. DEL sandbox, February 2023.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/XZ1XUZ`
+- **Type** — between-subjects framing, 4 arms (progsplit); two 5-point outcomes asked of everyone under the same statement; arm 1 (overall index, years to close) is not a clean contrast with the three % closed arms, as fielded
+- **Category** — moral/social/cognition
+- **Rows** — 3,274 from 1,736 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
+- **Verified against** — no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted arms and Don't-know drops from the .sav and joined all 3,274 rows back to raw by respondent id (0 mismatches); personas identical to the gender aid build (12 Oct 2026)
 
 ### `6MRVOM_eu_share`
 
@@ -1027,9 +1055,9 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 11 | 7 | 201,009 |
 | health communication | 0 | 9 | 91,114 |
-| moral/social/cognition | 5 | 13 | 189,994 |
+| moral/social/cognition | 6 | 13 | 193,268 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 15 | 0 | 133,789 |
+| political preferences/policy | 16 | 0 | 139,585 |
 | survey methodology | 20 | 5 | 220,843 |
 | work/family/gender | 8 | 8 | 140,765 |
 

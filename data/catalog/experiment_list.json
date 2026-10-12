@@ -791,21 +791,23 @@
    "description": "Overall gender gap index, or education 94%, economy 60%, politics 22% closed. Answer: Believable; more or less optimistic.",
    "details": "Sandbox Feb 2023; 4 conditions",
    "category": "moral/social/cognition",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.15,
-   "next": 32
+   "next": 32,
+   "recipe": "del_sandbox_feb2023_gender_progress"
   },
   {
    "source": "DEL",
    "id": "W4_EAsplit",
    "title": "East Africa drought",
-   "description": "Drought alone, or blamed on climate change in three ways. Answer: Choice, randomised order.",
+   "description": "Drought alone, or blamed on climate change in three ways. Answer: who should act — people like me, the UK government, or both.",
    "details": "Panel W4 2022; 4 conditions",
    "category": "political preferences/policy",
-   "status": "Needs checking",
-   "reason": "outcome options are shown in random order",
-   "novelty": 0.32
+   "status": "Built",
+   "reason": "",
+   "novelty": 0.32,
+   "recipe": "del_panel_w4_east_africa_drought"
   },
   {
    "source": "DEL",

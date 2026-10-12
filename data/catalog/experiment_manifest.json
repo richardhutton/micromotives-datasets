@@ -506,6 +506,18 @@
       "description": "A company boss lets a chemical leak and a man, Kyle, inhales it, raising his stroke risk. The boss acted knowingly, negligently or innocently; Kyle has had the stroke or has not (only his risk rose, a 'loss of chance'); and his risk was under or over 50%. Respondents judge as a jury: moral outrage, whether and how compensation is owed, non-economic and punitive damages, a fine, prison, and which factors mattered. US tort frame. TESS, 2005.",
       "design": "3 x 2 x 2 between-subjects (state of mind x stroke or loss of chance x risk level), 12 cells all occurring; 17 outcomes per respondent, mostly 1-7; the compensation-owed and remedy items differ between the stroke and no-stroke versions and are four separate outcomes, each in 6 of 12 cells (ledger 147); manipulation and recall checks and open $ / years amounts dropped",
       "verified_against": "no published reference table; an independent checker (Sonnet 5.5) fetched the fielded questionnaire from OSF itself, rebuilt all 12 conditions blind (0 word differences), re-derived all 5,478 responses from the .sav (0 missing, extra or mismatched) and confirmed the cell mapping against respondents' own risk recall (11 Oct 2026)"
+    },
+    "del_sandbox_feb2023_gender_progress": {
+      "category": "moral/social/cognition",
+      "description": "How believable a statement about the gender gap is, and whether it makes people more optimistic or pessimistic about efforts to close it. Respondents saw one of four statements: the Global Gender Gap Index will take another 132 years to close, or over the past 16 years the education gap has closed by 94%, the economic gap by 60%, or the political gap by 22%. DEL sandbox, February 2023.",
+      "design": "between-subjects framing, 4 arms (progsplit); two 5-point outcomes asked of everyone under the same statement; arm 1 (overall index, years to close) is not a clean contrast with the three % closed arms, as fielded",
+      "verified_against": "no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted arms and Don't-know drops from the .sav and joined all 3,274 rows back to raw by respondent id (0 mismatches); personas identical to the gender aid build (12 Oct 2026)"
+    },
+    "del_panel_w4_east_africa_drought": {
+      "category": "political preferences/policy",
+      "description": "Who has a responsibility to take urgent action on famine in East Africa: people like me, the UK government, or both. Respondents read that East Africa faces its worst drought in 40 years, alone or with climate change named as a key factor, plus either the US-versus-Africa share of CO2 emissions or the Russian invasion of Ukraine disrupting food supply. DEL panel wave 4 (2022).",
+      "design": "between-subjects framing, 4 arms (EAsplit); one nominal 3-option outcome, each arm's item merged; options 1-2 were shuffled per respondent and not recorded, listed in questionnaire order (rich, 12 Oct 2026, ledger 155)",
+      "verified_against": "no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 5,796 rows back to raw by respondent id (0 mismatches); personas identical to the cost of living build (12 Oct 2026)"
     }
   }
 }

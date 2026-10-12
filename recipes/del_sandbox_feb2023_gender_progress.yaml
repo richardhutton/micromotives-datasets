@@ -1,0 +1,190 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Sandbox Great Britain February 2023: gender gap progress statements"
+data_file: DEL_Sandbox_GreatBritain_Feb2023_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/XZ1XUZ, stated on the Harvard Dataverse deposit "DEL
+  Sandbox 2023" and read from the Dataverse API (latestVersion.license) on 10 Oct 2026. The deposit's Readme adds "DEL datasets are a public good and can be used
+  with the appropriate citation."
+
+comparable_to_socsci210: false
+experiment: sandbox_feb2023_gender_progress
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin; Torres-Raposo, Felipe,
+  2024, "DEL Sandbox 2023", https://doi.org/10.7910/DVN/XZ1XUZ, Harvard Dataverse, V1;
+  DEL_Sandbox_GreatBritain_Feb2023_Data.sav. Fielded online by YouGov, 20-28 February
+  2023, n = 2,007 adults in Great Britain (the deposit's Readme). The same file as
+  `del_sandbox_feb2023_wordfeminist`, `del_sandbox_feb2023_abortion` and
+  `del_sandbox_feb2023_gender_aid`, whose licence, person id and persona block carry over
+  unchanged.
+
+  THE DESIGN. An information-provision split. `progsplit`, assigned by YouGov's
+  `panman.assign_treatment(4, [wordfeministsplit, femsynsplit, areasplit, track7split,
+  equalgsplit, odasplit], "progsplit")` (balanced against the survey's six earlier
+  splits), sends 494 / 509 / 504 / 500 respondents to one of four statements on page
+  `p_progstatements`. Everyone in the file has a code; no "Skipped" or "Not Asked"
+  assignment occurs. Arm 1 describes the Global Gender Gap Index's four dimensions and
+  says it will take another 132 years to close the global gender gap; arms 2-4 each say
+  that over the past 16 years one dimension's gender gap has been closed by a given
+  share: Educational Attainment 94%, Economic Participation and Opportunity 60%,
+  Political Empowerment 22%. Arm 1 is not a fourth dimension: it is a different kind of
+  statement (a global, pessimistic time-to-close figure, no "past 16 years"), so the
+  factor is the statement, not the dimension. The script names no source (the Global
+  Gender Gap Index is named in arm 1's own words only); none is added. No piped text.
+
+  WORDING. From DEL_Sandbox_GreatBritain_Feb2023_Survey.docx, page `p_progstatements`,
+  word-for-word. Each statement is wrapped in `**...**` (bold), which is presentation and
+  is not rendered. The two questions are the .sav variable labels and the script's
+  question text, identical.
+
+  DROPPED as survey mechanics: the page heading "Please read the statement and answer
+  the two questions below." It describes the screen (one statement, two questions),
+  which the row format does not reproduce (docs/CONVENTIONS.md, sequence signposting /
+  survey mechanics); "the two questions" would be wrong for a row that holds one.
+
+  THE CONDITION IS NARRATED, by the `del_sandbox_feb2023_gender_aid` and
+  `del_panel_w4_climate_harm_stories` precedent. ADDED by us (docs/CONVENTIONS.md,
+  "Narrating what the respondent did"): "Before the question, you were shown this text:"
+  and the quotation marks around the statement. Every word inside the quotation marks is
+  the instrument's. "Before" is reading order on one screen: the statement sits above
+  both questions on the same page. Both outcome stems say "this statement", which
+  points at the quoted text in the same row's condition; there is no numbered or
+  position self-reference. The four statements share no prefix, so each arm carries its
+  whole statement.
+
+  ONE SCREEN, TWO QUESTIONS. progress_believe and progress_opt sit on the same page, in
+  that order, both under the statement. The condition of the second does not mention
+  the first, by the climate_harm_stories precedent (several items on one screen under
+  one text): the row's stimulus is the statement, and the first question is not part of
+  what was manipulated.
+
+  WHAT CAME BEFORE, the same for all arms, none of it rendered. `progress` is item 6 of
+  the "GENERAL" block. Earlier in the interview everyone met the wordfeminist naming
+  split, the feminism block, the `area` aid-priority split, the `track7` aid-level split,
+  `goveff_1`, the `equal` grid, the `equalg` split, the `genderatt` grid and the `oda`
+  gender-aid split (see `del_sandbox_feb2023_gender_aid`), so every respondent had
+  already answered several gender-equality items before this one. `inereas` and
+  `abort` come after and are irrelevant here.
+
+  OUTCOMES, both asked of every respondent (shared variables, so `routing_check` does not
+  apply: there is no other arm's variable to find an answer in). The page timing
+  `page_p_progstatements_timing` is positive for all 2,007 (min 1.9 s).
+  progress_believe: 1 "Very believable", 2 "Fairly believable", 3 "Neither believable
+  nor unbelievable", 4 "Fairly unbelievable", 5 "Very unbelievable" (1 is believable).
+  progress_opt: 1 "A lot more optimistic", 2 "A little more optimistic", 3 "Neither more
+  optimistic nor pessimistic", 4 "A little more pessimistic", 5 "A lot more pessimistic"
+  (1 is optimistic). For each, 6 "Don't know" is dropped as a non-answer; 8 "Skipped"
+  and 9 "Not Asked" are labelled but never occur, and are declared so a re-fetched
+  deposit that has them drops them. No blanks.
+
+  COUNTS. 2,007 respondents. progress_believe: 398 "Don't know" dropped (102 / 109 / 84
+  / 103 by arm), 1,609 rows. progress_opt: 342 "Don't know" dropped (94 / 91 / 69 /
+  88), 1,665 rows. 3,274 rows in all: 792 / 818 / 855 / 809 by arm. No published
+  reference exists to compare against.
+
+  RISKIEST JUDGEMENT. Treating arm 1 as one level of a single "statement" factor
+  alongside three dimension-specific progress figures. It is the design as fielded, but
+  arm 1 differs from arms 2-4 in kind (global time-to-close vs per-dimension share
+  closed), so arm 1 vs the rest is not a clean contrast on any one attribute; the factor
+  labels say what each arm showed rather than implying a dimension contrast.
+
+  PERSONA: the standard YouGov profile block, confirmed for this file by
+  `scripts/recipe_prep.py del --source dataverse --file DEL_Sandbox_GreatBritain_Feb2023`
+  for the wordfeminist build (every field at confidence 1.00): age (real ages in this
+  file, not codes; ledger 145), gender, education_level, gross_household,
+  ethnicity_new, region_GOR, religion, plus socialgrade_cie. `income` is HOUSEHOLD
+  income. Past general-election and EU-referendum vote go to `extra`. Nothing in the
+  condition is derivable from a persona field.
+
+  PERSON ID: `GUNQID`, YouGov's panellist id, shared across all ten DEL files; every DEL
+  recipe uses `study_id: del`. Unique and never blank in this file.
+
+condition:
+  source_var: progsplit
+  factors: [statement]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {statement: "Global Gender Gap Index: another 132 years to close"}
+      text: >-
+        Before the question, you were shown this text: "The Global Gender Gap Index
+        measures gender parity across four key dimensions (Economic Participation and
+        Opportunity, Educational Attainment, Health and Survival, and Political
+        Empowerment). It has been estimated that it will take another 132 years to close
+        the global gender gap."
+    - raw: 2
+      condition_num: 1
+      factors: {statement: "Educational Attainment gap closed by 94% over 16 years"}
+      text: >-
+        Before the question, you were shown this text: "Over the past 16 years, it has
+        been estimated that the Educational Attainment gender gap has been closed by 94%."
+    - raw: 3
+      condition_num: 2
+      factors: {statement: "Economic Participation and Opportunity gap closed by 60% over 16 years"}
+      text: >-
+        Before the question, you were shown this text: "Over the past 16 years, it has
+        been estimated that the Economic Participation and Opportunity gender gap has been
+        closed by 60%."
+    - raw: 4
+      condition_num: 3
+      factors: {statement: "Political Empowerment gap closed by 22% over 16 years"}
+      text: >-
+        Before the question, you were shown this text: "Over the past 16 years, it has
+        been estimated that the Political Empowerment gender gap has been closed by 22%."
+
+outcomes:
+  - var: progress_believe
+    task_num: 0
+    question: How believable or unbelievable do you think this statement is?
+    scale:
+      min: 1
+      max: 5
+      min_label: Very believable
+      mid_label: Neither believable nor unbelievable
+      max_label: Very unbelievable
+  - var: progress_opt
+    task_num: 1
+    question: >-
+      Does this statement make you more optimistic or more pessimistic about the
+      effectiveness of efforts to tackle the gender gap?
+    scale:
+      min: 1
+      max: 5
+      min_label: A lot more optimistic
+      mid_label: Neither more optimistic nor pessimistic
+      max_label: A lot more pessimistic
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # SPSS cut this label at 120 characters in every DEL file and codebook ("...New
+  # Testament Church of God, Redeemed Christian Chur"), so the full wording exists
+  # nowhere in the deposit. Kept: its complete head, the source's own words; lost:
+  # the example list. Mapped to "Pentecostal" by scripts/persona_del.py.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education_level: [19, 20, 98, 99]
+  gross_household: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]

@@ -1,0 +1,204 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Panel Great Britain wave 4 (2022): East Africa drought"
+data_file: DEL_Panel_GreatBritain_Wave_4_2022_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/WZPNNU, stated on the Harvard Dataverse deposit "DEL
+  Panel 2022" and read from the Dataverse API (latestVersion.license, version 2) on 10 Oct
+  2026. The deposit's Readme adds "DEL datasets are a public good and can be used with the
+  appropriate citation."
+
+comparable_to_socsci210: false
+experiment: panel_w4_east_africa_drought
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin, 2024, "DEL Panel 2022",
+  https://doi.org/10.7910/DVN/WZPNNU, Harvard Dataverse; DEL_Panel_GreatBritain_Wave_4_
+  2022_Data.sav. YouGov online panel, wave 4, fielded 30 September - 28 October 2022,
+  n = 8,008 adults in Great Britain (the deposit's Readme).
+
+  THE DESIGN. `EAsplit = panman.assign_treatment(4,[CoLSplit, DonationSplit,
+  connectstorysplit,climatescenariosplit], "EAsplit")` (stratified on the wave's four
+  earlier splits) sends 2,003 / 1,998 / 2,003 / 2,004 respondents to items `ea0` .. `ea3`
+  (DEL_Panel_GreatBritain_Wave_4_2022_Survey.docx, `[ea0 if EAsplit==1]` ..
+  `[ea3 if EAsplit==4]`). Everyone in the file has a code; -9 "Not Asked" / -8 "Skipped"
+  are labelled on EAsplit and never occur. Each item is a single-choice question: a short
+  text about the East Africa drought, then the same question and the same four answer
+  options. Arm 1: the drought alone. Arm 2: the drought attributed to climate change
+  ("Climate change is a key factor in contributing to ..."). Arm 3: arm 2 plus the US 23%
+  vs Africa 4% CO2 sentence. Arm 4: arm 2 plus the Russian-invasion-of-Ukraine food supply
+  sentence. One factor, `framing`, four levels.
+
+  THE CONDITION. Each arm's text is everything before the item's `<br><br>`, word-for-word
+  from the questionnaire. The .sav variable labels of ea0 and ea1 carry the same text and
+  question in full; ea2's and ea3's are truncated by SPSS (at "total carbon" and "greater
+  food i") and agree up to there. Every arm
+  has a text, so there is no "no text" arm; the arms do not share a common prefix (arm 1
+  opens "Countries in East Africa ...", arms 2-4 "Climate change is ..."), so there is no
+  `shared_context` and each arm carries its whole text. Typography only: arm 3's en dashes
+  in "a single country – the United States – produces" become "-", and the curly
+  apostrophe in "world’s" is straightened (docs/CONVENTIONS.md). Arm 4's space before the
+  `<br><br>` is whitespace and is dropped. ADDED by us (docs/CONVENTIONS.md, "Narrating
+  what the respondent did"; the climate harm stories precedent): "Before the question, you
+  were shown this text:" and the quotation marks.
+
+  THE OUTCOME. One outcome, task_num 0, merged across arms: the question and the four
+  options are identical in all four items, so it is declared once and each arm names only
+  its own variable (`outcome_var` ea0 .. ea3; the W5 who-must-change precedent). The
+  question is the text after the `<br><br>`, word-for-word: "Which of the following
+  statements, if any, best reflects how you feel?" (its trailing space dropped). The
+  options are listed in the question as '1 means "..."; 2 means "..."; 3 means "..."'
+  (the NGO conjoint / PZB01G / Jun 2022 Ukraine choice convention: a nominal scale carries
+  no end labels). Those words, the semicolons and the quotation marks are ADDED by us; the
+  option texts are the questionnaire's and the .sav's value labels (identical; option 2's
+  trailing space in the questionnaire is whitespace). Scale 1-3, nominal: 1 "People like
+  me ...", 2 "The UK government ...", 3 "Both ...". 4 "Don't know" is dropped as a
+  non-answer (2,212 of 8,008: 616 / 609 / 480 / 507 by arm); 8 "Skipped" and 9 "Not
+  Asked" are labelled and never occur (not asked is blank in this file), and are declared
+  so a re-fetched deposit that has them drops them.
+
+  OPTION ORDER WAS RANDOMISED AND IS NOT RECORDED (rich, 12 Oct 2026; ledger 155). Each
+  item carries `{order=randomize}`, with options 3 ("Both ...") and 4 ("Don't know")
+  `fixed`, so options 1 and 2 were shown in a per-respondent random order. No column in
+  the .sav records it (EAsplit and ea0 .. ea3 are the only variables of this item). As
+  ruled, the options are listed in questionnaire order (1, 2, 3) with no position words:
+  the numbers are the answer codes, and nothing in the row says "first", "second",
+  "above", "below" or "last". The questionnaire order is the order about half the
+  respondents saw.
+
+  WHAT CAME BEFORE (every respondent, or balanced by the stratified assignment). The
+  cost-of-living allocation (`CoLSplit`), the aid-project conjoint, the Ukraine donation
+  follow-up (`DonationSplit`; some respondents had "East Africa" piped into
+  `don_follow*` as the place part of their donation would go, through `donation_to_pipe`
+  == 1, which is balanced across EAsplit: 296 / 285 / 280 / 281), the climate block
+  (`access`, `challenge` incl. drought-related items, `climpolicy`, `conseq_rank`,
+  `domore_rank` on who needs to take more action - the UK government, "I personally",
+  people in the UK - and `ccemot`), the climate harm stories (`connectstorysplit`) and the
+  climate scenarios (`climatescenariosplit`, Greenland / Pakistan flooding / China
+  heatwave / UK 40C). EAsplit is stratified on all four splits and balanced on each (every
+  cell 393-408, 494-507). None of this is rendered. Immediately after: `odavax`, then the
+  `change` grid whose row 5 is "Severe drought and food insecurity in East Africa" - a
+  later item, not part of this experiment.
+
+  ROUTING. `routing_check: true`: every respondent answered only their own arm's item (0
+  cross-answers among 8,008; each ea* is answered by exactly its own arm, all of it), so
+  `ambiguous_routing` is 0.
+
+  COUNTS (built 12 Oct 2026). 8,008 respondents; 2,212 "Don't know" dropped; 5,796 rows:
+  1,387 / 1,389 / 1,523 / 1,497 by arm (drought / climate change / + US emissions /
+  + Ukraine invasion). The maker re-derived the per-arm counts from the .sav directly. No
+  published reference exists to compare against.
+
+  RISKIEST JUDGEMENT. Listing options 1 and 2 in questionnaire order when their on-screen
+  order was randomised and not recorded (ruled by rich, ledger 155 approach). The nominal
+  "1 means ..." enumeration gives each option a number; those are the answer codes, not
+  positions, but a reader could take them as an order. Second: splitting the item at its
+  `<br><br>` into condition (the varying text) and outcome (the shared question), so the
+  outcome's "the following statements" refers to options the question itself lists.
+
+  PERSONA and PERSON ID as in del_panel_w4_climate_harm_stories.yaml (same file): study_id
+  `del`, `GUNQID` (unique, never blank); education is `education`, household income
+  `income`; AGE IS REAL YEARS here (18-94; only labels -9/-8). The persona_missing block
+  is copied from del_panel_w4_cost_of_living.yaml, whose every code was re-read against
+  this file's value labels on 10 Oct 2026. Nothing in the condition names a persona
+  category.
+
+condition:
+  source_var: EAsplit
+  factors: [framing]
+  routing_check: true
+  considered_and_rejected:
+    CoLSplit: >-
+      An earlier, separate experiment (cost-of-living allocation); EAsplit is stratified
+      on it and balanced across it.
+    split_sample: >-
+      An earlier, separate experiment (the aid-project conjoint).
+    DonationSplit: >-
+      An earlier, separate experiment (Ukraine donation follow-up); EAsplit is stratified
+      on it and balanced across it.
+    connectstorysplit: >-
+      An earlier, separate experiment (climate harm stories); EAsplit is stratified on it
+      and balanced across it.
+    climatescenariosplit: >-
+      An earlier, separate experiment (climate scenarios); EAsplit is stratified on it and
+      balanced across it.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {framing: drought}
+      text: >-
+        Before the question, you were shown this text: "Countries in East Africa are
+        experiencing the worst drought in 40 years and millions of people now face the
+        threat of famine."
+      outcome_var: ea0
+    - raw: 2
+      condition_num: 1
+      factors: {framing: climate_change}
+      text: >-
+        Before the question, you were shown this text: "Climate change is a key factor in
+        contributing to the worst drought in East Africa in 40 years and millions of people
+        now face the threat of famine."
+      outcome_var: ea1
+    - raw: 3
+      condition_num: 2
+      factors: {framing: climate_change_us_emissions}
+      text: >-
+        Before the question, you were shown this text: "Climate change is a key factor in
+        contributing to the worst drought in East Africa in 40 years and millions of people
+        now face the threat of famine. It is estimated that a single country - the United
+        States - produces 23% of the world's total carbon dioxide (CO2), compared to just
+        4% produced by the entire African continent."
+      outcome_var: ea2
+    - raw: 4
+      condition_num: 3
+      factors: {framing: climate_change_ukraine_invasion}
+      text: >-
+        Before the question, you were shown this text: "Climate change is a key factor in
+        contributing to the worst drought in East Africa in 40 years and millions of people
+        now face the threat of famine. At the same time, the Russian invasion of Ukraine
+        has disrupted food supply chains, causing greater food insecurity and higher prices
+        which further contribute to problems in East Africa."
+      outcome_var: ea3
+
+outcomes:
+  - task_num: 0
+    question: >-
+      Which of the following statements, if any, best reflects how you feel? 1 means
+      "People like me have a responsibility to take urgent action to help"; 2 means "The UK
+      government has a responsibility to take urgent action to help"; 3 means "Both people
+      like me and the UK government have a responsibility to take urgent action to help".
+    scale:
+      min: 1
+      max: 3
+      nominal: true
+
+response_recode: {1: 1, 2: 2, 3: 3}
+missing_codes: [4, 8, 9]
+
+persona_label_rewrite:
+  # Truncated by SPSS in every DEL file; see del_sandbox_feb2023_wordfeminist.yaml.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education
+  income: income
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education: [19, 20, 98, 99]
+  income: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]
