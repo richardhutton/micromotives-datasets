@@ -1,24 +1,23 @@
 <title>SocSci-UK Experiment List</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: full-width working list. Summary grid on top, filters, then one table using the whole screen. */
 :root{
-  --bg:#f6f7f9; --panel:#ffffff; --ink:#18212b; --muted:#5d6a78; --rule:#dfe4ea; --soft:#eef1f5;
-  --built:#3b4a5a; --buildable:#1d7f4e; --check:#a8650a; --unlikely:#b23a3a; --focus:#2f6fb5;
-  --f-ui:"Libre Franklin", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-data:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1c1a17; --muted:#6f6a61; --rule:#e5e1d8; --soft:#f3f0e9;
+  --built:#6f6a61; --buildable:#047857; --check:#c68f1e; --unlikely:#b23a3a; --focus:#047857; --accent:#047857;
+  --f-ui:system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-data:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111519; --panel:#171c22; --ink:#e7ebef; --muted:#9aa5b1; --rule:#2a323c; --soft:#1e252d;
-  --built:#a9b6c4; --buildable:#4cc58a; --check:#e2a64a; --unlikely:#ec7a7a; --focus:#6ea8ea; color-scheme:dark}}
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#111519; --panel:#171c22; --ink:#e7ebef; --muted:#9aa5b1; --rule:#2a323c; --soft:#1e252d;
-  --built:#a9b6c4; --buildable:#4cc58a; --check:#e2a64a; --unlikely:#ec7a7a; --focus:#6ea8ea; color-scheme:dark}
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.45}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .wrap{padding-inline:24px;padding-block:24px 48px;display:grid;gap:20px}
-h1{font-size:24px;font-weight:700;margin:0}
-h2{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px}
+h1{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:700;letter-spacing:-0.01em;line-height:1.15;margin:0}
+h2{font-family:var(--f-data);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0 0 10px}
 .lede{color:var(--muted);margin:4px 0 0;max-width:90ch}
 .top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:1000px){.top{grid-template-columns:minmax(0,1fr)}}
