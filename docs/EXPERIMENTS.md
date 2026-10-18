@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**70 studies (108 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 26 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 43 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**70 studies (110 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 28 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 43 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 14 | 26 | 264,321 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 14 | 28 | 273,233 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
 | US transfer — TESS | 32 | 43 | 374,137 | **no** — no licence stated |
-| **Total** | **70** | **108** | **1,024,557** | |
+| **Total** | **70** | **110** | **1,033,469** | |
 
 ---
 
@@ -47,6 +47,7 @@
 | `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
 | `ukds_6849_nrp_w10_fh` ⚠ | Understanding Society Innovation Panel, experiment 9.23: ever adopt… | UK Data Service | `UKDS SN 6849` | 7,392 |
 | `del_panel_w5_who_must_change` | Development Engagement Lab, Panel Great Britain wave 5 (2023): who … | Harvard Dataverse | `doi:10.7910/DVN/FTRXFO` | 7,356 |
+| `del_panel_w4_extreme_weather` | Development Engagement Lab, Panel Great Britain wave 4 (2022): extr… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 7,276 |
 | `ukds_6849_vig_ageing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 6,600 |
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
@@ -74,6 +75,7 @@
 | `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
 | `del_sandbox_feb2023_aid_priorities` | Development Engagement Lab, Sandbox Great Britain February 2023: ai… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,706 |
 | `del_sandbox_feb2023_gender_aid` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,655 |
+| `del_sandbox_feb2023_gender_equality` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,636 |
 | `ukds_6849_hmrc_consent_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,326 |
 | `ukds_6849_hmrc_consent_w11_web` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,281 |
 | `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
@@ -330,6 +332,19 @@ Agreement that the climate crisis means "I will need to make big changes to my l
 - **Licence** — CC0 1.0 doi:10.7910/DVN/FTRXFO
 - **Verified against** — no published reference; an independent checker re-derived all 7,356 rows from the raw .sav (0 missing, extra or wrong), matched both statements and the instruction to the questionnaire, and confirmed person ids, ages and genders agree with the same people in the other DEL builds (10 Oct 2026)
 
+### `del_panel_w4_extreme_weather`
+
+**Development Engagement Lab, Panel Great Britain wave 4 (2022): extreme weather news**
+
+How urgent it is that the UK government take action on climate change, after reading one of four news items about extreme weather: ice melt in Greenland, floods in Pakistan, a heatwave in China, or the UK passing 40C for the first time. DEL panel wave 4 (2022).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/WZPNNU`
+- **Type** — between-subjects, 4 arms (climatescenariosplit), no control; one 5-point outcome, each arm's item merged; everyone had answered the identical question (action) earlier in the survey before any news item, not narrated and kept out of the persona (rich, 18 Oct 2026; as climate harm stories)
+- **Category** — political preferences/policy
+- **Rows** — 7,276 from 7,276 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
+- **Verified against** — no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 7,276 rows back to raw by respondent id (0 mismatches); persona block identical to the East Africa drought build (18 Oct 2026)
+
 ### `6MRVOM_brexit_scenario`
 
 **Pricing Immigration**
@@ -472,6 +487,19 @@ Should the UK increase or decrease the aid it allocates to gender equality in de
 - **Rows** — 1,655 from 1,655 respondents
 - **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
 - **Verified against** — no published reference; an independent checker re-derived all 1,655 rows from the .sav (0 missing, extra or wrong), matched all five items word-for-word, and confirmed personas identical to the same people in the abortion and naming-policy builds (10 Oct 2026)
+
+### `del_sandbox_feb2023_gender_equality`
+
+**Development Engagement Lab, Sandbox Great Britain February 2023: gender equality, UK or abroad**
+
+Whether women and men have become more or less equal compared to 10 years ago, asked either about the United Kingdom or about developing countries. DEL sandbox, February 2023.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/XZ1XUZ`
+- **Type** — between-subjects, 2 arms (equalgsplit; code 1 is the UK, the reverse of abortsplit); the arms differ only in the place named in the question, narrated as the condition as in the abortion build; one 5-point outcome, Don't know dropped (8.6% UK vs 28.4% developing countries); one doubly-routed respondent dropped as ambiguous (wordfeminist ruling)
+- **Category** — moral/social/cognition
+- **Rows** — 1,636 from 1,636 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/XZ1XUZ
+- **Verified against** — no published reference; an independent checker (Sonnet 5.5) read both questions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 1,636 rows back to raw by respondent id (0 mismatches); personas identical to the abortion build (17 Oct 2026)
 
 ---
 
@@ -1055,9 +1083,9 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 11 | 7 | 201,009 |
 | health communication | 0 | 9 | 91,114 |
-| moral/social/cognition | 6 | 13 | 193,268 |
+| moral/social/cognition | 7 | 13 | 194,904 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 16 | 0 | 139,585 |
+| political preferences/policy | 17 | 0 | 146,861 |
 | survey methodology | 20 | 5 | 220,843 |
 | work/family/gender | 8 | 8 | 140,765 |
 

@@ -1,0 +1,194 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Sandbox Great Britain February 2023: gender equality, UK or abroad"
+data_file: DEL_Sandbox_GreatBritain_Feb2023_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/XZ1XUZ, stated on the Harvard Dataverse deposit "DEL
+  Sandbox 2023" and read from the Dataverse API (latestVersion.license) on 10 Oct 2026. The deposit's Readme adds "DEL datasets are a public good and can be used
+  with the appropriate citation."
+
+comparable_to_socsci210: false
+experiment: sandbox_feb2023_gender_equality
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin; Torres-Raposo, Felipe,
+  2024, "DEL Sandbox 2023", https://doi.org/10.7910/DVN/XZ1XUZ, Harvard Dataverse, V1;
+  DEL_Sandbox_GreatBritain_Feb2023_Data.sav. Fielded online by YouGov, 20-28 February
+  2023, n = 2,007 adults in Great Britain (the deposit's Readme). The same file as
+  `del_sandbox_feb2023_wordfeminist` and `del_sandbox_feb2023_abortion`, whose licence,
+  person id and persona block carry over unchanged.
+
+  THE DESIGN. A two-version question-wording split. `equalgsplit`, assigned by YouGov's
+  `panman.assign_treatment(2, [wordfeministsplit, femsynsplit, areasplit, track7split],
+  "equalgsplit")` (balanced against the survey's four earlier splits), sends 1,009
+  respondents to `equalg1` (the United Kingdom) and 998 to `equalg2` (developing
+  countries). Everyone in the file has a code; the "Skipped" (-8) and "Not Asked" (-9)
+  assignment labels never occur. The question IS the treatment, so each version's answer
+  sits in its own variable, named per arm by `outcome_var`. NOTE the arm numbering is the
+  reverse of `abortsplit`'s: here code 1 is the UK and code 2 is abroad. condition_num
+  follows the raw code, as in the abortion recipe.
+
+  THE TWO VERSIONS DIFFER IN ONE PHRASE ONLY: "the United Kingdom" vs "developing
+  countries". Everything else in the question is identical (checked character by
+  character against the script and the .sav variable labels). Unlike the abortion split,
+  there is no second difference riding along, so the factor `target` is a clean
+  place contrast.
+
+  WORDING. From DEL_Sandbox_GreatBritain_Feb2023_Survey.docx, items `equalg1` and
+  `equalg2`, word-for-word (the .sav variable labels carry the same text). The script's
+  `**...**` marks bold on screen ("**the United Kingdom**", "**developing countries**");
+  the asterisks are formatting, not words, and are dropped. No typography needed
+  normalising. No survey mechanics or back-references in the item.
+
+  THE CONDITION IS NARRATED, BY THE `del_sandbox_feb2023_abortion` PRECEDENT (itself
+  following `rpw4u` / `ukds_6849_alcohol_w15`). The two recipes are the same design on
+  the same file and are written to agree. There is no stimulus but the question, so each
+  row's condition reads `You were asked: "<that version's question>"`. The words `You
+  were asked:` and the quotation marks are ADDED (docs/CONVENTIONS.md, "Narrating what
+  the respondent did"); everything inside the quotes is the instrument's. The outcome is
+  the same question, in the arm's own wording, so outcome is not collapsed into
+  condition: the condition says which wording was met, the outcome is what was
+  answered.
+
+  WHAT CAME BEFORE, the same for both arms. `equalg` is the fourth item of the "GENERAL"
+  block. Immediately before the split, everyone answered `goveff_1` ("Thinking of the UK
+  government's role in promoting gender equality, at home and worldwide, which statement
+  best describes how much your government should do?") and the `equal` grid ("Generally
+  speaking, do you think it is or is not possible for men and women to be equal in the
+  following ways?" socially / politically / economically, rows in random order). Earlier
+  still came the feminism block (`wordfeminist`, `fdp_focus`, `femsyn`) and the `area`
+  and `track7` aid splits, all of which name developing countries or overseas aid. So
+  every respondent had been primed on gender equality "at home and worldwide" one or two
+  screens earlier. None of this varies between arms and none of it is rendered; it is
+  recorded here because an analyst reading the arm difference should know the item was
+  not asked cold. The later `inereas` split (UK vs developing countries again) and
+  `abort` split come AFTER this item and cannot have influenced it.
+
+  OUTCOME. Scale 1 "Significantly more equal", 2 "Somewhat more equal", 3 "More or less
+  the same", 4 "Somewhat less equal", 5 "Significantly less equal", as fielded (1 is
+  most equal), identical in both versions; options in fixed order in the script (no
+  randomisation, so ledger 155 does not apply). 6 "Don't know" is dropped as a
+  non-answer (87 in arm 1, 283 in arm 2 -- the abroad version draws over three times the
+  Don't knows, itself a finding an analyst should know, since the dropped share differs
+  by arm: 8.6% vs 28.4%). 8 "Skipped" and 9 "Not Asked" are labelled but never occur,
+  and are declared so a re-fetched deposit that has them drops them.
+
+  ROUTING. One respondent (row 1450 of the .sav) was assigned `equalgsplit` 1 but has
+  answers in BOTH `equalg1` and `equalg2` (both 3), with non-zero page timings on both
+  pages (5.3 s and 24.8 s). This is the same person as the one doubly-routed respondent
+  of `del_sandbox_feb2023_wordfeminist` (assigned 1, answered wordfeminist_1 and _5): a
+  back-button re-assignment that recurs at each split. Which wording they met first is
+  unrecorded, so their answer has no single condition; `routing_check: true` with
+  `ambiguous_routing: 1` drops them with a declared count, and a second such person in a
+  re-fetched deposit stops the build. Otherwise clean: every other arm-1 respondent has
+  an `equalg1` code and no `equalg2`, and the reverse for arm 2 (page timings: equalg1 is
+  0.000 for exactly the 998 arm-2 respondents; equalg2 for 1,008 of the 1,009 arm-1
+  respondents). "Not asked" is blank in this file, which is what `routing_check`
+  requires.
+
+  COUNTS. 2,007 respondents; 1 doubly routed dropped; 370 "Don't know" dropped; 1,636
+  rows: 921 in arm 1 (the United Kingdom: 118 / 474 / 244 / 61 / 24 across codes 1-5;
+  the .sav's 245 code-3 answers include the doubly-routed respondent), 715 in arm 2
+  (developing countries: 33 / 236 / 282 / 117 / 47). Reconciled against the build's QC
+  (responses 151 / 710 / 526 / 178 / 71). No published reference exists to compare
+  against.
+
+  RISKIEST JUDGEMENT. That the condition carries the arm's whole question, narrated as
+  "You were asked:", rather than only the varying phrase. Here the alternative is
+  tempting, because only the place phrase differs, so a condition naming only "the
+  United Kingdom" / "developing countries" would be accurate. It is not taken, so that
+  this recipe and `del_sandbox_feb2023_abortion` (same file, same design) render the same
+  way; the cost is the question appearing twice per row. Second: dropping the one
+  doubly-routed respondent, whose two answers happen to agree (both 3), rather than
+  keeping one -- kept to the wordfeminist ruling, which drops a person with two
+  conditions regardless of what they answered.
+
+  PERSONA: the standard YouGov profile block, confirmed for this file by
+  `scripts/recipe_prep.py del --source dataverse --file DEL_Sandbox_GreatBritain_Feb2023`
+  for the wordfeminist build (every field at confidence 1.00): age (real ages in this
+  file, not codes; ledger 145), gender, education_level, gross_household,
+  ethnicity_new, region_GOR, religion, plus socialgrade_cie. `income` is HOUSEHOLD
+  income. Past general-election and EU-referendum vote go to `extra`. The condition
+  names "women and men", and `gender` is a persona field; that is not the derivable-by-
+  substitution case of docs/CONVENTIONS.md (the condition says nothing about what any
+  gender thinks), so it stays.
+
+  PERSON ID: `GUNQID`, YouGov's panellist id, shared across all ten DEL files; every DEL
+  recipe uses `study_id: del`. Unique and never blank in this file.
+
+condition:
+  source_var: equalgsplit
+  factors: [target]
+  routing_check: true
+  ambiguous_routing: 1
+  ambiguous_routing_reason: >-
+    One respondent assigned condition 0 (the United Kingdom) also answered condition 1's
+    question (developing countries), with page timings on both: a back-button
+    re-assignment, the same person who is doubly routed in the wordfeminist split. Which
+    wording they met first is unrecorded, so their answer cannot be attributed to a
+    single condition.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {target: the United Kingdom}
+      text: >-
+        You were asked: "In your opinion, compared to 10 years ago, have women and men in
+        the United Kingdom become more or less equal?"
+      outcome_var: equalg1
+      outcome_question: >-
+        In your opinion, compared to 10 years ago, have women and men in the United
+        Kingdom become more or less equal?
+    - raw: 2
+      condition_num: 1
+      factors: {target: developing countries}
+      text: >-
+        You were asked: "In your opinion, compared to 10 years ago, have women and men in
+        developing countries become more or less equal?"
+      outcome_var: equalg2
+      outcome_question: >-
+        In your opinion, compared to 10 years ago, have women and men in developing
+        countries become more or less equal?
+
+outcomes:
+  - task_num: 0
+    question: "[the more-or-less-equal question, in the condition's own wording]"
+    scale:
+      min: 1
+      max: 5
+      min_label: Significantly more equal
+      mid_label: More or less the same
+      max_label: Significantly less equal
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # SPSS cut this label at 120 characters in every DEL file and codebook ("...New
+  # Testament Church of God, Redeemed Christian Chur"), so the full wording exists
+  # nowhere in the deposit. Kept: its complete head, the source's own words; lost:
+  # the example list. Mapped to "Pentecostal" by scripts/persona_del.py.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education_level: [19, 20, 98, 99]
+  gross_household: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]

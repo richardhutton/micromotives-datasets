@@ -557,13 +557,14 @@
    "source": "DEL",
    "id": "W4_climatescenariosplit",
    "title": "Extreme weather news",
-   "description": "Greenland ice melt, Pakistan floods, China heatwave, or UK 40C. Answer: Question after the story.",
+   "description": "A news item on Greenland ice melt, Pakistan floods, a China heatwave, or the UK passing 40C. Answer: how urgent UK government climate action is, 5-point.",
    "details": "Panel W4 2022; 4 conditions",
    "category": "political preferences/policy",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
    "novelty": 0.28,
-   "next": 33
+   "next": 33,
+   "recipe": "del_panel_w4_extreme_weather"
   },
   {
    "source": "DEL",
@@ -777,12 +778,13 @@
    "source": "DEL",
    "id": "Feb2023_equalgsplit",
    "title": "Gender equality, UK or abroad",
-   "description": "Have women and men become more equal in the UK vs in developing countries. Answer: More or less equal.",
+   "description": "Asked about the UK or about developing countries: have women and men become more or less equal over 10 years. Answer: significantly more to significantly less equal, 5-point.",
    "details": "Sandbox Feb 2023; 2 conditions",
    "category": "moral/social/cognition",
-   "status": "Buildable",
+   "status": "Built",
    "reason": "",
-   "novelty": 0.17
+   "novelty": 0.17,
+   "recipe": "del_sandbox_feb2023_gender_equality"
   },
   {
    "source": "DEL",

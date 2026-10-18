@@ -1,0 +1,122 @@
+IMAGE DATA REQUESTS: draft emails (not sent)
+IDs refer to docs/IMAGE_CANDIDATES.md. Contact addresses: take them from each
+paper's "corresponding author" line or the project page linked there. None are
+filled in here, so none can be wrong.
+
+
+========================================================================
+1. Cambridge / Bristol warning-label team (IMG01, IMG02, IMG03)
+To: corresponding author, https://pmc.ncbi.nlm.nih.gov/articles/PMC7114781/
+Subject: Reuse of your health warning label data (OSF pr8zu, k7tw5)
+========================================================================
+
+Dear Dr Pechey,
+
+I came across your health warning label studies on alcohol and energy-dense
+snacks, and the data and label images you shared on OSF (pr8zu and k7tw5).
+
+I am building a research dataset of UK survey experiments to train a model that
+predicts how people respond to what they are shown. Your studies are among the
+very few UK experiments with randomised images, which is exactly what I need.
+
+The OSF projects don't state a licence, so I wanted to ask whether you are happy
+for me to use the data and images for this. Your work would be fully credited.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com
+
+
+========================================================================
+2. Development Engagement Lab (IMG06, IMG07, IMG08)
+To: DEL team contact, via https://doi.org/10.7910/DVN/XZ1XUZ
+Subject: Image files for the DEL Sandbox image experiments
+========================================================================
+
+Dear DEL team,
+
+I am building a research dataset of UK survey experiments to train a model that
+predicts how people respond to what they are shown, and I already use several of
+your CC0 Sandbox and Panel splits.
+
+Your image experiments would be very valuable, but the images themselves are not
+in the Dataverse deposits:
+
+- Sandbox October 2023: the partner and photographer charity appeal images
+- Sandbox February 2023: the ten paired images (e.g. M_EMP, W_WORK, W_PARENT)
+- Sandbox June 2021: the image bank pairs
+
+Would you be able to share these image files? Your work would be fully credited.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com
+
+
+========================================================================
+3. Sheffield political ads team (IMG09)
+To: corresponding author, https://www.nature.com/articles/s41599-025-05114-1
+Subject: Ad screenshots for "What makes online political ads unacceptable?"
+========================================================================
+
+Dear Dr Dommett,
+
+I am building a research dataset of UK survey experiments to train a model that
+predicts how people respond to what they are shown. Your study of 2019 election
+Facebook ads is one of the best UK examples, and the data on Dataverse
+(DQT7CA) is excellent.
+
+The image links in the data point to a Google Drive folder that is no longer
+public. Would you be able to share the ad screenshots? Your work would be fully
+credited.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com
+
+
+========================================================================
+4. Winton Centre, Cambridge (IMG05)
+To: corresponding author, https://pmc.ncbi.nlm.nih.gov/articles/PMC9731905/
+Subject: Reuse of your BRCA icon array data (OSF y5fm6)
+========================================================================
+
+Dear Dr Recchia,
+
+I am building a research dataset of UK survey experiments to train a model that
+predicts how people respond to what they are shown. Your BRCA icon array
+experiment and its data on OSF (y5fm6) would be a valuable part of it.
+
+The OSF project doesn't state a licence. Are you happy for me to use the data
+and the full set of icon array images (only four examples are on OSF)? Your work
+would be fully credited.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com
+
+
+========================================================================
+5. Studies with no public data (IMG14 to IMG18)
+One email each; change the bracketed parts.
+- IMG14 NatCen front-of-pack labels: corresponding author, https://pmc.ncbi.nlm.nih.gov/articles/PMC7999818/
+- IMG15 Will Allen, migration charts: https://imcc.web.ox.ac.uk/node/2483471
+- IMG16 Climate Outreach, Climate Visuals image pairs: https://climateoutreach.org/
+- IMG17 Create Streets / Deltapoll, architecture image pairs: https://worksinprogress.co/issue/do-people-prefer-traditional-architecture/
+- IMG18 Behavioural Insights Team, slot-game adverts: https://bi.team/
+Subject: Request for respondent-level data from [study name]
+========================================================================
+
+Dear [name],
+
+I am building a research dataset of UK survey experiments to train a model that
+predicts how people respond to what they are shown. Your [study name], where
+people were shown [the images], is one of the few UK experiments of its kind.
+
+Would you be willing to share the respondent-level data (answers, the image each
+person saw, and basic demographics) together with the images? I would use them
+for research only, not redistribute them, and credit your work fully.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com

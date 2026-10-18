@@ -518,6 +518,18 @@
       "description": "Who has a responsibility to take urgent action on famine in East Africa: people like me, the UK government, or both. Respondents read that East Africa faces its worst drought in 40 years, alone or with climate change named as a key factor, plus either the US-versus-Africa share of CO2 emissions or the Russian invasion of Ukraine disrupting food supply. DEL panel wave 4 (2022).",
       "design": "between-subjects framing, 4 arms (EAsplit); one nominal 3-option outcome, each arm's item merged; options 1-2 were shuffled per respondent and not recorded, listed in questionnaire order (rich, 12 Oct 2026, ledger 155)",
       "verified_against": "no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 5,796 rows back to raw by respondent id (0 mismatches); personas identical to the cost of living build (12 Oct 2026)"
+    },
+    "del_sandbox_feb2023_gender_equality": {
+      "category": "moral/social/cognition",
+      "description": "Whether women and men have become more or less equal compared to 10 years ago, asked either about the United Kingdom or about developing countries. DEL sandbox, February 2023.",
+      "design": "between-subjects, 2 arms (equalgsplit; code 1 is the UK, the reverse of abortsplit); the arms differ only in the place named in the question, narrated as the condition as in the abortion build; one 5-point outcome, Don't know dropped (8.6% UK vs 28.4% developing countries); one doubly-routed respondent dropped as ambiguous (wordfeminist ruling)",
+      "verified_against": "no published reference; an independent checker (Sonnet 5.5) read both questions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 1,636 rows back to raw by respondent id (0 mismatches); personas identical to the abortion build (17 Oct 2026)"
+    },
+    "del_panel_w4_extreme_weather": {
+      "category": "political preferences/policy",
+      "description": "How urgent it is that the UK government take action on climate change, after reading one of four news items about extreme weather: ice melt in Greenland, floods in Pakistan, a heatwave in China, or the UK passing 40C for the first time. DEL panel wave 4 (2022).",
+      "design": "between-subjects, 4 arms (climatescenariosplit), no control; one 5-point outcome, each arm's item merged; everyone had answered the identical question (action) earlier in the survey before any news item, not narrated and kept out of the persona (rich, 18 Oct 2026; as climate harm stories)",
+      "verified_against": "no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 7,276 rows back to raw by respondent id (0 mismatches); persona block identical to the East Africa drought build (18 Oct 2026)"
     }
   }
 }

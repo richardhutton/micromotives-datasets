@@ -25,21 +25,21 @@ done it for the UK.
 
 ## 2. Where it stands
 
-**1,024,557 rows across 70 studies (108 experiments)** (12 Oct 2026), all QC-passed and checked by an
+**1,033,469 rows across 70 studies (110 experiments)** (18 Oct 2026), all QC-passed and checked by an
 independent agent, on disk at `data/processed/`. `docs/EXPERIMENTS.md` is the generated
 list; `docs/experiment_list.html` tracks the build queue.
 
 | | studies | experiments | rows |
 |---|---|---|---|
 | US (TESS deposits) | 32 | 43 | 374,137 |
-| UK-native: Harvard Dataverse incl. DEL | 15 | 27 | 277,589 |
+| UK-native: Harvard Dataverse incl. DEL | 15 | 29 | 286,501 |
 | UK-native: Innovation Panel | 23 | 38 | 372,831 |
-| **total** | **70** | **108** | **1,024,557** |
+| **total** | **70** | **110** | **1,033,469** |
 
 A study is SocSci210's unit (its 210 are studies) and what the seen/unseen split holds
 out whole; an experiment is one randomised design within a study, one recipe. Compare
 studies with studies: 70 here against SocSci210's 210. The split leaves IP 9.13 and 9.31
-out for now, so 68 studies (55 seen, 13 unseen) and 829,792 rows; see CONVENTIONS.
+out for now, so 68 studies (55 seen, 13 unseen) and 838,704 rows; see CONVENTIONS.
 
 Ten largest: `ukds_6849_timerisk_w6` 63,487 · `EFXNLX` 49,395 · `ukds_6849_reqol_w14`
 48,548 · `ukds_6849_timerisk_w7` 46,283 · `ukds_6849_ghq_w14` 36,447 · `evnyh` 33,932 ·

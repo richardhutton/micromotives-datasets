@@ -1,0 +1,199 @@
+study_id: del
+source: dataverse
+title: "Development Engagement Lab, Panel Great Britain wave 4 (2022): extreme weather news"
+data_file: DEL_Panel_GreatBritain_Wave_4_2022_Data.sav
+licence: CC0 1.0 doi:10.7910/DVN/WZPNNU, stated on the Harvard Dataverse deposit "DEL
+  Panel 2022" and read from the Dataverse API (latestVersion.license, version 2) on 10 Oct
+  2026. The deposit's Readme adds "DEL datasets are a public good and can be used with the
+  appropriate citation."
+
+comparable_to_socsci210: false
+experiment: panel_w4_extreme_weather
+participant_id_var: GUNQID
+
+notes: |-
+  Hudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin, 2024, "DEL Panel 2022",
+  https://doi.org/10.7910/DVN/WZPNNU, Harvard Dataverse; DEL_Panel_GreatBritain_Wave_4_
+  2022_Data.sav. YouGov online panel, wave 4, fielded 30 September - 28 October 2022,
+  n = 8,008 adults in Great Britain (the deposit's Readme).
+
+  THE DESIGN. `climatescenariosplit = panman.assign_treatment(4,[CoLSplit, DonationSplit,
+  connectstorysplit], "climatescenariosplit")` (stratified on the wave's three earlier
+  splits) sends 2,003 / 1,992 / 2,004 / 2,009 respondents to items
+  `climatescenarios_greenland`, `_pakistan`, `_china` and `_uk`
+  (DEL_Panel_GreatBritain_Wave_4_2022_Survey.docx, `[climatescenarios_greenland if
+  climatescenariosplit==1]` .. `[climatescenarios_uk if climatescenariosplit==4]`).
+  Everyone in the file has a code; -9 "Not Asked" / -8 "Skipped" are labelled on the split
+  and never occur. Each item is one single-choice screen: "Please read the below and answer
+  the question that follows." (arm 4: "...follows:"), a short news text about one extreme
+  weather event, then the same question and the same five-point scale. One factor, `event`,
+  four levels: Greenland ice melt, Pakistan floods, China heatwave, UK passing 40C. The
+  questionnaire also holds commented-out (`#`) items for Germany (in German), the US and
+  France - the other countries' version of arm 4; they were not fielded in GB, and no such
+  variable exists in the .sav.
+
+  THE CONDITION. Each arm's text is the news paragraph between the item's two
+  `<<br/>><<br/>>` breaks, word-for-word from the questionnaire. The .sav variable labels
+  carry the same opening and agree with it up to SPSS's truncation point (at "jobs, and bu",
+  "estimated loss o", "most extreme climatic" and "This kind of extreme he"). DROPPED as
+  survey mechanics: the opening instruction "Please read the below and answer the question
+  that follows." / "...follows:". Typography/whitespace only: arm 2's and arm 3's space
+  before the break is dropped. "110,000,000,000,000 tons", "1 foot", "$10 billion", "40C",
+  "Last month" and "In July" are the source's own; "Last month" is left as fielded (the
+  screen said it; the row does not re-date it). The arms share no common prefix, so there
+  is no `shared_context`. ADDED by us (docs/CONVENTIONS.md, "Narrating what the respondent
+  did"; the East Africa drought and climate harm stories precedents): "Before the question,
+  you were shown this text:" and the quotation marks. There are no images, no fills and no
+  pandemic content in the item.
+
+  THE OUTCOME. One outcome, task_num 0, merged across arms: the question and the five
+  options are identical in all four items, so it is declared once and each arm names only
+  its own variable (`outcome_var`; the East Africa drought precedent). The question is the
+  text after the second break, word-for-word: "In your opinion, how urgent, if at all, is
+  it that the UK government take action on climate change?". Scale 1-5, ordered, as fielded
+  and as the .sav's value labels: 1 "Not at all urgent", 2 "Not very urgent", 3 "Fairly
+  urgent", 4 "Very urgent", 5 "Extremely urgent" (option 5's trailing space in the
+  questionnaire is whitespace). The instruction names 1, 3 and 5 (min/mid/max labels, the
+  source's own words; 3 is the middle code, as in the other DEL five-point recipes). The
+  options carry no `{order=randomize}`, so they were shown in this fixed order. 6 "Don't
+  know" is dropped as a non-answer (732 of 8,008: 188 / 191 / 189 / 164 by arm); 8
+  "Skipped" and 9 "Not Asked" are labelled and never occur (not asked is blank in this
+  file), and are declared so a re-fetched deposit that has them drops them.
+
+  WHAT CAME BEFORE (every respondent, or balanced by the stratified assignment). The
+  cost-of-living allocation (`CoLSplit`), the aid-project conjoint (`split_sample`), the
+  Ukraine donation follow-up (`DonationSplit`), then, for everyone, the climate block that
+  OPENS WITH THE SAME QUESTION: `action` ("In your opinion, how urgent, if at all, is it
+  that the UK government take action on climate change?", same five options plus Don't
+  know), then `cc_impact`, `access`, `challenge`, `climpolicy`, `conseq_rank`,
+  `domore_rank`, `ccemot`, and the climate harm stories (`connectstorysplit`). So every
+  respondent had answered this exact question, unprompted by any news item, some screens
+  earlier; that is common to all four arms and is not rendered (the climate harm stories
+  precedent for `cc_impact`). `action` is a pre-treatment measure of the outcome itself and
+  is deliberately not used as a persona field. climatescenariosplit is stratified on
+  CoLSplit, DonationSplit and connectstorysplit and balanced on each (every cell 494-508,
+  396-404, 396-406). Immediately after: `EAsplit` (East Africa drought), a later, separate
+  experiment.
+
+  ROUTING. `routing_check: true`: every respondent answered only their own arm's item (0
+  cross-answers among 8,008; each item is answered by exactly its own arm, all of it; every
+  respondent has exactly one of the four items non-blank), so `ambiguous_routing` is 0.
+
+  COUNTS (built 17 Oct 2026). 8,008 respondents; 732 "Don't know" dropped; 7,276 rows:
+  1,815 / 1,801 / 1,815 / 1,845 by arm (Greenland / Pakistan / China / UK). The maker
+  re-derived the per-arm counts from the .sav directly. No published reference exists to
+  compare against.
+
+  RISKIEST JUDGEMENT. Not rendering that every respondent had already answered this exact
+  question (`action`) earlier in the same survey. It is true of all four arms alike, so it
+  does not distort the contrast between them, but a row reads as a first answer when it is a
+  second one. Second: the condition drops "Please read the below and answer the question
+  that follows." as mechanics, and the outcome is the text after the item's final break.
+
+  PERSONA and PERSON ID as in del_panel_w4_climate_harm_stories.yaml (same file): study_id
+  `del`, `GUNQID` (unique, never blank); education is `education`, household income
+  `income`; AGE IS REAL YEARS here (18-94; only labels -9/-8). The persona_missing block
+  is copied from del_panel_w4_cost_of_living.yaml, whose every code was re-read against
+  this file's value labels on 10 Oct 2026. Nothing in the condition names a persona
+  category.
+
+condition:
+  source_var: climatescenariosplit
+  factors: [event]
+  routing_check: true
+  considered_and_rejected:
+    CoLSplit: >-
+      An earlier, separate experiment (cost-of-living allocation); climatescenariosplit is
+      stratified on it and balanced across it.
+    split_sample: >-
+      An earlier, separate experiment (the aid-project conjoint).
+    DonationSplit: >-
+      An earlier, separate experiment (Ukraine donation follow-up); climatescenariosplit is
+      stratified on it and balanced across it.
+    connectstorysplit: >-
+      An earlier, separate experiment (climate harm stories); climatescenariosplit is
+      stratified on it and balanced across it.
+    EAsplit: >-
+      A later, separate experiment (East Africa drought), randomised after this item was
+      answered.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {event: greenland_ice_melt}
+      text: >-
+        Before the question, you were shown this text: "A recent study has concluded that
+        110,000,000,000,000 tons of ice will melt in Greenland as a result of climate
+        change. This will raise sea levels by 1 foot, putting people, jobs, and businesses
+        at risk in low-lying areas."
+      outcome_var: climatescenarios_greenland
+    - raw: 2
+      condition_num: 1
+      factors: {event: pakistan_floods}
+      text: >-
+        Before the question, you were shown this text: "Last month, extreme flooding in
+        Pakistan claimed more than 1,300 lives, displaced more than 50 million people,
+        washed away more than 1 million houses, and resulted in an estimated loss of $10
+        billion to the economy."
+      outcome_var: climatescenarios_pakistan
+    - raw: 3
+      condition_num: 2
+      factors: {event: china_heatwave}
+      text: >-
+        Before the question, you were shown this text: "Last month, China experienced the
+        longest and hottest heatwave on national record. The intensity, length and area
+        affected by the heatwave has been described as the most extreme climatic change in
+        history."
+      outcome_var: climatescenarios_china
+    - raw: 4
+      condition_num: 3
+      factors: {event: uk_40c}
+      text: >-
+        Before the question, you were shown this text: "In July, temperatures in the UK
+        surpassed 40C for the first time on record. The heatwave increased
+        hospitalisations, triggered wildfires, and disrupted transport. This kind of extreme
+        heat event is made 10 times more likely because of human caused greenhouse gas
+        emissions."
+      outcome_var: climatescenarios_uk
+
+outcomes:
+  - task_num: 0
+    question: >-
+      In your opinion, how urgent, if at all, is it that the UK government take action on
+      climate change?
+    scale:
+      min: 1
+      max: 5
+      min_label: Not at all urgent
+      mid_label: Fairly urgent
+      max_label: Extremely urgent
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [6, 8, 9]
+
+persona_label_rewrite:
+  # Truncated by SPSS in every DEL file; see del_sandbox_feb2023_wordfeminist.yaml.
+  religion:
+    18: "Yes - Pentecostal"
+
+persona_map:
+  age: age
+  gender: gender
+  education: education
+  income: income
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+
+persona_missing:
+  gender: [8, 9]
+  education: [19, 20, 98, 99]
+  income: [16, 17, 98, 99]
+  ethnicity_new: [19, 98, 99]
+  region_GOR: [13, 98, 99]
+  religion: [16, 98, 99]
+  socialgrade_cie: [7, 8, 98, 99]
+  pastvote_ge_2019: [99, 998, 999]
+  pastvote_EURef: [4, 8, 9]
