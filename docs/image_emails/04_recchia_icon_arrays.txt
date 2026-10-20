@@ -1,0 +1,15 @@
+To: glr29@cam.ac.uk
+Cc: wintoncentre@maths.cam.ac.uk
+Subject: Reuse of your icon array trial data (OSF y5fm6)
+
+Dear Gabriel Recchia,
+
+I am building a dataset of UK survey experiments, for non-commercial research, to train a model that predicts how people respond to what they are shown.
+
+Your paper "Investigating the presentation of uncertainty in an icon array: A randomized trial" (2022) would be a valuable part of it. The data is on OSF (https://osf.io/y5fm6), but no licence is stated, and only four example images are there.
+
+Would you be happy for me to use the data for this research, and could you share the full set of icon array images shown to participants? I would not redistribute them, and your work would be fully credited.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com

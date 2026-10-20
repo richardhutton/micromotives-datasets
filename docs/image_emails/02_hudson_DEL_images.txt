@@ -1,0 +1,18 @@
+To: jennifer.hudson@ucl.ac.uk
+Subject: Image files for the DEL Sandbox image experiments
+
+Dear Jennifer Hudson,
+
+I am building a dataset of UK survey experiments, for non-commercial research, to train a model that predicts how people respond to what they are shown.
+
+I already use several of DEL's CC0 Panel and Sandbox experiments, and your image experiments would be especially valuable. The images themselves are not in the Dataverse deposits:
+
+- DEL Sandbox 2023 (doi:10.7910/DVN/XZ1XUZ), October 2023: the partner and photographer charity appeal images
+- DEL Sandbox 2023, February 2023: the ten paired images (e.g. M_EMP, W_WORK, W_PARENT)
+- DEL Sandbox 2021 (doi:10.7910/DVN/DUUPRY): the image bank pairs
+
+Would you be able to share these image files? I would not redistribute them, and DEL's work would be fully credited.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com

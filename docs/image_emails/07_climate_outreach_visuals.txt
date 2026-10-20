@@ -1,0 +1,14 @@
+To: visuals@climateoutreach.org
+Subject: Data request: Climate Visuals survey
+
+Dear Climate Visuals team,
+
+I am building a dataset of UK survey experiments, for non-commercial research, to train a model that predicts how people respond to what they are shown.
+
+Your report "Climate Visuals: Seven principles for visual climate change communication", based on a survey of 3,014 people in the UK, Germany and the US who chose between pairs of climate images, is one of the few studies of its kind.
+
+Would you be willing to share the respondent-level data (the image pairs each person saw, their choices and basic demographics) together with the images? I would use them for research only, not redistribute them, and credit your work fully.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com

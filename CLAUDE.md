@@ -209,6 +209,13 @@ A source is done only when **all** of these hold:
 - **UKDS safeguarded** data (Innovation Panel SN 6849, restricted BES) is End
   User Licence: never redistribute, never commit, never send to any external
   service including an LLM API, without checking the EUL first.
+  **Innovation Panel permission (UKDS, written, Oct 2026, EUL clause 5.5; `docs/ukds_permission_granted.md`):** the
+  derived rows MAY go to rich's private Hugging Face repo and to a RunPod Secure
+  Cloud pod (EU region, MFA, SSH key only, no persistent volume, terminated after
+  each run) for fine-tuning; the trained model stays private and is never
+  published. That permission names nothing else — not Jev, Voyage, public repos or
+  other clouds. It covers the AI coding assistant **only on questionnaire text and
+  summary counts, not respondent-level data**, so the rule below still holds.
   **This session is such a service.** For UKDS, "merge and read rows" means the
   condition and outcome text (transcribed from public questionnaires) plus
   aggregates computed locally — never persona or response values printed into the

@@ -1,0 +1,14 @@
+To: lauren.leak-smith@bi.team
+Subject: Data request: slot game advert features experiment
+
+Dear Lauren Leak-Smith,
+
+I am building a dataset of UK survey experiments, for non-commercial research, to train a model that predicts how people respond to what they are shown.
+
+BIT's study "How do slot game advert features impact gambling behaviour? An exploratory study" (September 2023) is one of the few UK experiments where people were randomly shown different adverts.
+
+Would you be willing to share the respondent-level data (the advert each person saw, their answers and basic demographics) together with the advert images? I would use them for research only, not redistribute them, and credit your work fully.
+
+Kind regards,
+Rich Hutton
+rich.hutton@googlemail.com

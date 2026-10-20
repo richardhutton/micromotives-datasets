@@ -1,4 +1,4 @@
-# Draft email to UKDS (not sent)
+# Email to UKDS (sent 12 Oct 2026; permission granted, see ukds_permission_granted.md)
 
 **To:** UK Data Service helpdesk form, https://ukdataservice.ac.uk/contact/
 **Subject:** Permission request under EUL clause 5.5, SN 6849
