@@ -403,7 +403,7 @@ def build_recipe() -> dict[str, Any]:
             "region": "Region_2GOR",
             "social_grade": "SocialGrade",
             "education": "Education_Level",
-            "income": "Income_GrossPersonal",
+            "income_personal": "Income_GrossPersonal",
             "employment": "Work_status",
         },
         "persona_missing": {

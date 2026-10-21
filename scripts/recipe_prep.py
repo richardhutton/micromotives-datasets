@@ -62,6 +62,7 @@ PERSONA_FIELDS = {
     "age": "the respondent's age in years",
     "gender": "the respondent's sex or gender",
     "income": "household income",
+    "income_personal": "personal (individual, not household) income",
     "education": "highest level of education completed",
     "ethnicity": "race or ethnicity",
     "employment": "current employment status",

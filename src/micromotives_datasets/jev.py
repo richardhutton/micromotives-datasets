@@ -639,6 +639,7 @@ def screen_condition(cli: Any, condition: str, outcome: str, *, study: str = "")
 # records ___ — as a fact about the person answering the survey."
 PERSONA_WANTED = {
     "income": "the respondent's own total household income",
+    "income_personal": "the respondent's own gross personal (individual, not household) income",
     "education": "the respondent's own highest level of education completed",
     "ethnicity": "the respondent's own race or ethnicity",
     "employment": "the respondent's own current employment status",

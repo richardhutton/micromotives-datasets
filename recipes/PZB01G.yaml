@@ -789,8 +789,8 @@ persona_map:
   ethnicity: profile_ethnicity
   education: profile_education_level
   education_age: profile_education_age
-  income: profile_gross_personal
-  household_income: profile_gross_household
+  income_personal: profile_gross_personal
+  income: profile_gross_household
   household_size: profile_household_size
   marital_status: profile_marital_stat
   housing_ownership: profile_house_tenure

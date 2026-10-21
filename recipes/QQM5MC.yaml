@@ -320,7 +320,7 @@ persona_map:
   age: age
   gender: gender
   education: education_level
-  income: gross_personal_income
+  income_personal: gross_personal_income
   region: Region_GOR
   social_grade: socialgrade_cie
   employment: work_stat

@@ -65,11 +65,26 @@ class Crosswalk:
 
     def apply(self, field_name: str, label: str) -> str:
         """The canonical label, or the original when this field has no mapping."""
-        return self.maps.get(field_name, {}).get(label, label)
+        return self.maps.get(_shares(field_name), {}).get(label, label)
 
     def unmapped(self, field_name: str, label: str) -> bool:
         """True when we have a vocabulary for this field and the label is outside it."""
+        field_name = _shares(field_name)
         known = self.maps.get(field_name)
         if not known:
             return False
         return label not in known and label not in self.vocab.get(field_name, set())
+
+
+# Fields measured in another field's units, so they share its crosswalk. Personal
+# and household income are banded by the same panels with the same labels; they
+# were one field until 21 Oct 2026, when 37,518 rows of PERSONAL income were found
+# rendering as plain "Income" beside household income from every other source.
+# `income_level` is for a source that does not say which: PMV0TG's `ind_inc` is a
+# High/Low split its codebook never ties to the personal (Q22.7) or household
+# (Q22.8) question, so it is labelled neither. It lives in `extra`.
+SHARED_CROSSWALK = {"income_personal": "income", "income_level": "income"}
+
+
+def _shares(field_name: str) -> str:
+    return SHARED_CROSSWALK.get(field_name, field_name)

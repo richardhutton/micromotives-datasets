@@ -467100,6 +467100,6 @@ persona_map:
   age: age
   gender: gender
   ideology: ideology
-  income: ind_inc
+  income_level: ind_inc
   education: education
 persona_missing: {}

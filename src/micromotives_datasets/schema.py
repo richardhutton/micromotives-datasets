@@ -28,7 +28,8 @@ class Persona(BaseModel):
     sex: str | None = None
     gender: str | None = None
     education: str | None = None
-    income: str | None = None
+    income: str | None = None  # household income
+    income_personal: str | None = None  # the respondent's own personal income
     ethnicity: str | None = None
     marital_status: str | None = None
     employment: str | None = None
