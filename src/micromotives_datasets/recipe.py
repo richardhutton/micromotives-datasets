@@ -206,6 +206,11 @@ class Arm(BaseModel):
         "Used by QC to check every factor is actually expressed in the text.",
     )
     text: str = Field(description="What this arm saw. Verbatim for what varies.")
+    images: list[str] = Field(
+        default_factory=list,
+        description="Image-catalogue IDs this arm showed, one per `<image>` marker in "
+        "`text`, in order. QC checks the count matches and every file is intact.",
+    )
 
     @property
     def label(self) -> str:

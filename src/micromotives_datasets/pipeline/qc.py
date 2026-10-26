@@ -13,6 +13,7 @@ from collections import Counter
 from dataclasses import dataclass, field
 from typing import Any
 
+from .. import images as images_mod
 from ..recipe import Recipe
 from ..schema import Row
 
@@ -150,11 +151,16 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
         for task, item in arm.items.items()
         if item.condition_text is not None
     }
+    # What a respondent saw is the text AND any pictures. `k7tw5` shows three
+    # different photographs under the same words ("Excess calories cause obesity
+    # which causes bowel cancer"), so comparing text alone would call three real
+    # arms one; the image IDs are part of the key.
     by_item: dict[int, dict[int, set[str]]] = {}
     for r in rows:
         if r.condition_num is None or r.task_num is None:
             continue
-        by_item.setdefault(r.task_num, {}).setdefault(r.condition_num, set()).add(r.condition)
+        seen_as = r.condition + "".join(f"\x00{i}" for i in r.condition_images)
+        by_item.setdefault(r.task_num, {}).setdefault(r.condition_num, set()).add(seen_as)
     for task, per_condition in sorted(by_item.items()):
         seen: dict[str, int] = {}
         for cond, texts in sorted(per_condition.items()):
@@ -303,8 +309,15 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
                 "so its effect on the text could not be tested"
             )
             continue
-        # split() so reflowing a YAML block does not read as a difference.
-        same = [(a.label, b.label) for a, b in pairs if a.text.split() == b.text.split()]
+        # split() so reflowing a YAML block does not read as a difference. A
+        # factor may be expressed by the picture rather than the words: `k7tw5`'s
+        # `photo` is three photographs under one wording, so a pair counts as the
+        # same only when its words AND its images match.
+        same = [
+            (a.label, b.label)
+            for a, b in pairs
+            if a.text.split() == b.text.split() and a.images == b.images
+        ]
         if same:
             rep.failures.append(
                 f"factor {factor!r} does not change the arm text for {same} "
@@ -614,6 +627,26 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
                 f"{n} row(s) carry a bracketed placeholder or unresolved fill in the "
                 f"{part}: {sorted(hits)[:3]} — an override or fill did not apply"
             )
+
+    # --- Rule 23: every image a row cites is catalogued, intact and placed -----
+    # A row stores an image's ID, not the picture (images.py). Three ways that
+    # silently trains on the wrong thing, all checked here: an ID with no
+    # catalogue entry, a file that is missing or no longer matches its recorded
+    # hash, and a condition whose `<image>` markers do not match its IDs one for
+    # one, which would put a picture in the wrong place or drop it.
+    cited = {i for r in rows for i in r.condition_images}
+    if cited:
+        catalog = images_mod.load()
+        for image_id in sorted(cited):
+            rep.failures.extend(images_mod.problems(image_id, catalog))
+    misplaced = sum(
+        1 for r in rows if r.condition.count(images_mod.IMAGE_MARKER) != len(r.condition_images)
+    )
+    if misplaced:
+        rep.failures.append(
+            f"{misplaced} row(s) whose condition has a different number of "
+            f"{images_mod.IMAGE_MARKER} markers from its image IDs"
+        )
 
     return rep
 

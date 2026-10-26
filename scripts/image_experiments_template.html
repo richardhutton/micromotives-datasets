@@ -1,0 +1,138 @@
+<title>Image Experiments</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: full-width working list, same family as the other trackers. Summary on top, filters, one table. */
+:root{
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1c1a17; --muted:#6f6a61; --rule:#e5e1d8; --soft:#f3f0e9;
+  --todo:#6f6a61; --ready:#2563eb; --sent:#c68f1e; --yes:#047857; --no:#b23a3a; --accent:#047857;
+  --f-ui:system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-data:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --todo:#a49d90; --ready:#7aa7ff; --sent:#e7b654; --yes:#34d399; --no:#ec7a7a; --accent:#34d399; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --todo:#a49d90; --ready:#7aa7ff; --sent:#e7b654; --yes:#34d399; --no:#ec7a7a; --accent:#34d399; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:20px}
+h1{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:700;letter-spacing:-0.01em;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--f-data);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0 0 10px}
+.lede{color:var(--muted);margin:4px 0 0;max-width:90ch}
+.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px;align-items:start}
+@media (max-width:1000px){.top{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px;min-width:0}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.num{font-family:var(--f-data);font-variant-numeric:tabular-nums}
+.sum tr.total td{font-weight:700;border-bottom:none}
+.defs{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.defs li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;align-items:baseline}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid currentColor}
+.s-Built{color:var(--todo)} .s-Buildable{color:var(--yes)} .s-Waiting{color:var(--sent)} .s-Needs{color:var(--ready)} .s-Unlikely{color:var(--no)}
+.p-Yes{color:var(--yes)} .p-Asked{color:var(--sent)} .p-Not{color:var(--todo)} .p-No{color:var(--no)}
+.s-todo{color:var(--todo)} .s-ready{color:var(--ready)} .s-sent{color:var(--sent)} .s-chased{color:var(--sent)} .s-yes{color:var(--yes)} .s-no{color:var(--no)} .s-notneeded{color:var(--todo)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:6px 8px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.controls input{flex:1 1 260px;min-width:0}
+.list td{font-size:13.5px}
+.who b{display:block}
+.email{font-family:var(--f-data);font-size:12.5px;word-break:break-all}
+.cc{color:var(--muted);font-size:12px}
+.copy{font:inherit;font-size:11px;color:var(--accent);background:none;border:1px solid var(--rule);border-radius:4px;padding:1px 6px;cursor:pointer;margin-left:4px}
+.exps{display:grid;gap:3px;margin:0;padding:0;list-style:none}
+.exps a{color:var(--ink)}
+.exps .id{font-family:var(--f-data);font-size:12px;color:var(--muted);margin-right:6px}
+.ask{color:var(--muted);font-size:12.5px;max-width:34ch}
+.draft{font-size:12.5px;color:var(--muted)}
+.mail{min-width:220px;max-width:46ch}
+.subj{font-weight:600;margin-bottom:4px}
+.mail .copy{margin:0 4px 4px 0}
+.mail summary{cursor:pointer;color:var(--accent);font-size:12.5px}
+.mail pre{white-space:pre-wrap;font-family:var(--f-ui);font-size:12.5px;background:var(--soft);border-radius:6px;padding:8px;margin:6px 0 0}
+.list select{min-width:140px}
+.notes{min-width:180px;max-width:40ch;font-size:12.5px;color:var(--muted)}
+.note{color:var(--muted);font-size:12.5px}
+.err{color:var(--no)}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Image Experiments</h1>
+    <p class="lede">Every image experiment we have found, its build status, and whether we have permission to use it. Training set 2 (text and images) draws on the Built rows. Generated from <span class="num">data/catalog/image_experiment_list.json</span>; emails live in Image Data Requests.</p>
+  </header>
+
+  <div class="top">
+    <section class="panel">
+      <h2>Summary</h2>
+      <div class="scroll"><table class="sum" id="sum"></table></div>
+    </section>
+    <section class="panel">
+      <h2>Statuses</h2>
+      <ul class="defs" id="defs"></ul>
+    </section>
+  </div>
+
+  <section class="panel">
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search id, title, description, contact" aria-label="Search">
+      <select id="fs" aria-label="Filter by status"><option value="">All statuses</option></select>
+      <select id="fp" aria-label="Filter by permission"><option value="">All permissions</option></select>
+    </div>
+    <p id="msg" class="note" hidden></p>
+    <div class="scroll">
+      <table class="list"><thead><tr><th>ID</th><th>Experiment</th><th>Status</th><th>Permission</th><th>Rows</th></tr></thead><tbody id="rows"></tbody></table>
+    </div>
+  </section>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const STATUSES=[
+  ["Built","Built","In the corpus: built, QC passed, checked against published numbers."],
+  ["Buildable","Buildable","Data and images in hand; ready to build."],
+  ["Waiting for images","Waiting","Data public, images not; we have asked or need to ask."],
+  ["Needs checking","Needs","Not reviewed yet."],
+  ["Unlikely","Unlikely","Dropped on review; the reason is in IMAGE_CANDIDATES.md."],
+];
+const PERMS=["Yes","Asked","Not asked yet","Not needed","No"];
+const $=id=>document.getElementById(id);
+const rows=JSON.parse($("data").textContent).rows;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const scls=s=>"s-"+(STATUSES.find(x=>x[0]===s)||[0,s])[1].split(" ")[0];
+const pcls=p=>"p-"+String(p).split(" ")[0];
+
+$("defs").innerHTML=STATUSES.map(([s,k,d])=>`<li><span><span class="pill ${scls(s)}">${s}</span></span><span>${d}</span></li>`).join("");
+$("fs").insertAdjacentHTML("beforeend",STATUSES.map(([s])=>`<option>${s}</option>`).join(""));
+$("fp").insertAdjacentHTML("beforeend",PERMS.map(p=>`<option>${p}</option>`).join(""));
+["q","fs","fp"].forEach(i=>$(i).addEventListener(i==="q"?"input":"change",render));
+
+function summary(){
+  const n=(s,p)=>rows.filter(r=>(!s||r.status===s)&&(!p||r.permission===p)).length;
+  let h=`<thead><tr><th>Status</th>${PERMS.map(p=>`<th>${p}</th>`).join("")}<th>Total</th><th>Rows built</th></tr></thead><tbody>`;
+  for(const [s] of STATUSES){ if(!n(s)) continue;
+    const rb=rows.filter(r=>r.status===s).reduce((a,r)=>a+(r.rows||0),0);
+    h+=`<tr><td><span class="pill ${scls(s)}">${s}</span></td>${PERMS.map(p=>`<td class="num">${n(s,p)||""}</td>`).join("")}<td class="num">${n(s)}</td><td class="num">${rb?rb.toLocaleString("en-GB"):""}</td></tr>`;}
+  const tot=rows.reduce((a,r)=>a+(r.rows||0),0);
+  h+=`<tr class="total"><td>Total</td>${PERMS.map(p=>`<td class="num">${n("",p)||""}</td>`).join("")}<td class="num">${rows.length}</td><td class="num">${tot.toLocaleString("en-GB")}</td></tr></tbody>`;
+  $("sum").innerHTML=h;
+}
+
+function render(){
+  const q=$("q").value.trim().toLowerCase(), fs=$("fs").value, fp=$("fp").value;
+  const vis=rows.filter(r=>(!fs||r.status===fs)&&(!fp||r.permission===fp)&&(!q||JSON.stringify(r).toLowerCase().includes(q)));
+  $("msg").hidden=vis.length>0; $("msg").textContent="No experiments match.";
+  $("rows").innerHTML=vis.map(r=>`<tr>
+    <td class="num">${esc(r.id)}${r.recipe?`<div class="cc">${esc(r.recipe)}</div>`:""}</td>
+    <td><b>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a>`:esc(r.title)}</b><div class="ask" style="max-width:80ch">${esc(r.description)}</div></td>
+    <td><span class="pill ${scls(r.status)}">${esc(r.status)}</span>${r.reason?`<div class="notes">${esc(r.reason)}</div>`:""}</td>
+    <td><span class="pill ${pcls(r.permission)}">${esc(r.permission)}</span>${r.contact?`<div class="cc">${esc(r.contact)}</div>`:""}</td>
+    <td class="num">${r.rows?r.rows.toLocaleString("en-GB"):""}</td>
+  </tr>`).join("");
+}
+summary(); render();
+</script>

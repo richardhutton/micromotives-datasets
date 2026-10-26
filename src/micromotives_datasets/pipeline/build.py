@@ -369,6 +369,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
             yield Row(
                 persona=persona,
                 condition=condition_text,
+                condition_images=list(arm.images),
                 outcome=_for_respondent(recipe.outcome_text_for(outcome, arm), who),
                 response=str(response),
                 response_num=float(response),

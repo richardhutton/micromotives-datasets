@@ -54,6 +54,13 @@ class Row(BaseModel):
     # --- the tuple ---------------------------------------------------------
     persona: Persona
     condition: str = Field(description="Rendered stimulus text of the arm shown.")
+    condition_images: list[str] = Field(
+        default_factory=list,
+        description="IDs (in data/catalog/images.json) of the pictures this arm showed, "
+        "in the order the condition text's `<image>` markers place them. Empty for a "
+        "text-only condition. The ID, not the picture, is stored; the training export "
+        "resolves it and checks the file's hash.",
+    )
     outcome: str = Field(description="The outcome question wording.")
     response: str = Field(description="The respondent's answer (as text).")
 

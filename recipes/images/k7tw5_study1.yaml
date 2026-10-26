@@ -1,0 +1,295 @@
+study_id: k7tw5
+source: osf
+experiment: study1
+title: 'Pictorial health warning labels on a chocolate bar: 18 labels (6 harms x 3 photographs)'
+data_file: Food labelling study 1 final dataset.xlsx
+licence: none stated (OSF deposit k7tw5). Permission requested from the authors 26 Oct 2026; not for any
+  training export until granted.
+comparable_to_socsci210: false
+participant_id_var: PID
+notes: "Write recipes/images/k7tw5_study1.yaml: the first image experiment (IMG02).\n\nHollands, Clarke,\
+  \ Pechey et al., Cambridge: \"The impact of health warning labels\non snack selection: two online experimental\
+  \ studies\", OSF k7tw5, Study 1. Results\nin Pechey et al. 2020, BMC Public Health 20:376 (PMC7114781).\n\
+  \n4,618 UK adults who eat energy-dense snacks weekly and like chocolate were\nrandomised to \"view an\
+  \ image of a chocolate bar accompanied by one of 18 different\npictorial HWLs\" (protocol v1.8, Study\
+  \ 1 procedure) and rated it on six items.\n\nEvery judgement is here, in code, so the recipe can be\
+  \ re-derived and reviewed:\n\n* ARMS. The data's `Label ` column holds text (\"Bowel cancer 2\"); `sources.excel`\n\
+  \  codes it like a .sav. Each arm's code is looked up BY LABEL, never typed. The 18\n  labels are 6\
+  \ harms x 3 photographs. Their images were matched to captions by\n  document order in \"Additional\
+  \ File Food HWLs.docx\" (each caption sits below its\n  image) and every caption was read against the\
+  \ words printed on the image; the\n  per-label means then reproduce the paper's (Bowel cancer 1 and\
+  \ 2 both 4.59\n  negative arousal, Obesity 1 lowest at 3.12, Type 2 diabetes 3 most supported at\n \
+  \ 4.55), which ties data labels to captions.\n* CONDITION. The words printed on the label are quoted\
+  \ word-for-word in the text,\n  and the label itself is the image. The chocolate bar it sat beside is\
+  \ not in\n  the deposit, so the text says it was there and the image is the label alone.\n* OUTCOMES.\
+  \ Wording and endpoint labels from the protocol's Appendix 1. Support\n  is asked a (Strongly support)\
+  \ .. g (Strongly oppose) but the deposit holds it\n  \"scored 1-7\"; the paper classes ratings above\
+  \ 4 as acceptable and reports the\n  bowel-cancer labels least acceptable, so 7 = Strongly support.\
+  \ A judgement:\n  flagged for the checker.\n* PERSONA. Income is stored as letters A-O; the key is a\
+  \ table image in the\n  protocol (data/raw/k7tw5/protocol_media/image5.jpeg), transcribed below per\n\
+  \  year. Education's Bachelor label is mis-encoded in the deposit (\"Bachelorâ€™s\");\n  restored to\
+  \ the protocol's own curly apostrophe. BMI is NOT mapped: the deposit\n  stores it unrounded to 15 digits\
+  \ and the melt renders raw values (debt: 4,618\n  people). \"Consumption Frequency\" (Daily/Weekly)\
+  \ is not mapped: the deposit does\n  not say what it summarises. Education is blank for 262 people and\
+  \ -888 for 24;\n  the protocol offered \"None\" and \"Prefer not to say\" and the data has neither,\
+  \ so\n  a blank MAY mean no qualifications. Left absent rather than guessed.\n* PHOTO is a factor (1-3\
+  \ within each harm), expressed only by the picture: the\n  three photographs of a harm share their words.\
+  \ QC rules 1 and 5 compare words\n  AND images. Split on condition_num or the image id, never the condition\
+  \ string.\n\n    uv run python scripts/gen_k7tw5_study1.py            # write the recipe\n    uv run\
+  \ python scripts/gen_k7tw5_study1.py --check    # exit 1 if it differs"
+condition:
+  source_var: 'Label '
+  factors:
+  - harm
+  - photo
+  shared_context: You are shown a picture of a chocolate bar accompanied by a health warning label.
+  arms:
+  - raw: 4
+    condition_num: 0
+    factors:
+      harm: bowel cancer
+      photo: '1'
+    text: 'The label reads: "Excess calories cause obesity which causes bowel cancer". <image>'
+    images:
+    - k7tw5_s1_bowel_cancer_1
+  - raw: 5
+    condition_num: 1
+    factors:
+      harm: bowel cancer
+      photo: '2'
+    text: 'The label reads: "Excess calories cause obesity which causes bowel cancer". <image>'
+    images:
+    - k7tw5_s1_bowel_cancer_2
+  - raw: 6
+    condition_num: 2
+    factors:
+      harm: bowel cancer
+      photo: '3'
+    text: 'The label reads: "Excess calories cause obesity which causes bowel cancer". <image>'
+    images:
+    - k7tw5_s1_bowel_cancer_3
+  - raw: 10
+    condition_num: 3
+    factors:
+      harm: cancer
+      photo: '1'
+    text: 'The label reads: "Excess calories cause obesity which causes cancer". <image>'
+    images:
+    - k7tw5_s1_nonspecified_cancer_1
+  - raw: 11
+    condition_num: 4
+    factors:
+      harm: cancer
+      photo: '2'
+    text: 'The label reads: "Excess calories cause obesity which causes cancer". <image>'
+    images:
+    - k7tw5_s1_nonspecified_cancer_2
+  - raw: 12
+    condition_num: 5
+    factors:
+      harm: cancer
+      photo: '3'
+    text: 'The label reads: "Excess calories cause obesity which causes cancer". <image>'
+    images:
+    - k7tw5_s1_nonspecified_cancer_3
+  - raw: 1
+    condition_num: 6
+    factors:
+      harm: 13 types of cancer
+      photo: '1'
+    text: 'The label reads: "Excess calories cause obesity which causes 13 types of cancer". <image>'
+    images:
+    - k7tw5_s1_13_types_of_cancer_1
+  - raw: 2
+    condition_num: 7
+    factors:
+      harm: 13 types of cancer
+      photo: '2'
+    text: 'The label reads: "Excess calories cause obesity which causes 13 types of cancer". <image>'
+    images:
+    - k7tw5_s1_13_types_of_cancer_2
+  - raw: 3
+    condition_num: 8
+    factors:
+      harm: 13 types of cancer
+      photo: '3'
+    text: 'The label reads: "Excess calories cause obesity which causes 13 types of cancer". <image>'
+    images:
+    - k7tw5_s1_13_types_of_cancer_3
+  - raw: 16
+    condition_num: 9
+    factors:
+      harm: type 2 diabetes
+      photo: '1'
+    text: 'The label reads: "Excess calories cause obesity which causes Type 2 diabetes". <image>'
+    images:
+    - k7tw5_s1_type_2_diabetes_1
+  - raw: 17
+    condition_num: 10
+    factors:
+      harm: type 2 diabetes
+      photo: '2'
+    text: 'The label reads: "Excess calories cause obesity which causes Type 2 diabetes". <image>'
+    images:
+    - k7tw5_s1_type_2_diabetes_2
+  - raw: 18
+    condition_num: 11
+    factors:
+      harm: type 2 diabetes
+      photo: '3'
+    text: 'The label reads: "Excess calories cause obesity which causes Type 2 diabetes". <image>'
+    images:
+    - k7tw5_s1_type_2_diabetes_3
+  - raw: 7
+    condition_num: 12
+    factors:
+      harm: heart disease
+      photo: '1'
+    text: 'The label reads: "Excess calories cause obesity which causes heart disease". <image>'
+    images:
+    - k7tw5_s1_heart_disease_1
+  - raw: 8
+    condition_num: 13
+    factors:
+      harm: heart disease
+      photo: '2'
+    text: 'The label reads: "Excess calories cause obesity which causes heart disease". <image>'
+    images:
+    - k7tw5_s1_heart_disease_2
+  - raw: 9
+    condition_num: 14
+    factors:
+      harm: heart disease
+      photo: '3'
+    text: 'The label reads: "Excess calories cause obesity which causes heart disease". <image>'
+    images:
+    - k7tw5_s1_heart_disease_3
+  - raw: 13
+    condition_num: 15
+    factors:
+      harm: obesity only
+      photo: '1'
+    text: 'The label reads: "Excess calories cause obesity". <image>'
+    images:
+    - k7tw5_s1_obesity_1
+  - raw: 14
+    condition_num: 16
+    factors:
+      harm: obesity only
+      photo: '2'
+    text: 'The label reads: "Excess calories cause obesity". <image>'
+    images:
+    - k7tw5_s1_obesity_2
+  - raw: 15
+    condition_num: 17
+    factors:
+      harm: obesity only
+      photo: '3'
+    text: 'The label reads: "Excess calories cause obesity". <image>'
+    images:
+    - k7tw5_s1_obesity_3
+outcomes:
+- var: N.E.A 'afraid' (1-7)
+  task_num: 0
+  question: How afraid does the label on this snack make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all afraid
+    max_label: Very afraid
+- var: N.E.A 'worried' (1-7)
+  task_num: 1
+  question: How worried does the label on this snack make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all worried
+    max_label: Very worried
+- var: N.E.A 'uncomfortable' (1-7)
+  task_num: 2
+  question: How uncomfortable does the label on this snack make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all uncomfortable
+    max_label: Very uncomfortable
+- var: N.E.A 'disgusted' (1-7)
+  task_num: 3
+  question: How disgusted does the label on this snack make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all disgusted
+    max_label: Very disgusted
+- var: Desirability (scored 1-7)
+  task_num: 4
+  question: How much do you want to eat this snack right now?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: Acceptability (scored 1-7)
+  task_num: 5
+  question: Do you support or oppose putting this label on high calorie snacks?
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly oppose
+    max_label: Strongly support
+    mid_label: Neither oppose nor support
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+missing_codes:
+- -888
+- -999
+persona_map:
+  age: Age
+  gender: Gender
+  ethnicity: Ethnicity
+  education: 'Education '
+  income: Income
+  biscuits_and_cookies_as_a_snack: Biscuits and cookies
+  cakes,_muffins_and_pastries_as_a_snack: Cakes, muffins and pastries
+  chocolate_bars_as_a_snack: Chocolate bars (or other chocolate-based snacks, e.g. pack of m&ms)
+  sweets_as_a_snack: Sweets (e.g. bag of skittles, packet of fruit pastilles)
+  crisps_as_a_snack: Packets of crisps
+persona_missing:
+  Gender:
+  - -888
+  - -999
+  Ethnicity:
+  - -888
+  - -999
+  'Education ':
+  - -888
+  - -999
+  Income:
+  - -888
+  - -999
+persona_label_rewrite:
+  Income:
+    1: up to £4,499 per year
+    2: £4,500 to £6,499 per year
+    3: £6,500 to £7,499 per year
+    4: £7,500 to £9,499 per year
+    5: £9,500 to £11,499 per year
+    6: £11,500 to £13,499 per year
+    7: £13,500 to £15,499 per year
+    8: £15,500 to £17,499 per year
+    9: £17,500 to £24,999 per year
+    10: £25,000 to £29,999 per year
+    11: £30,000 to £39,999 per year
+    12: £40,000 to £49,999 per year
+    13: £50,000 to £74,999 per year
+    14: £75,000 to £99,999 per year
+    15: £100,000 or more per year
+  'Education ':
+    3: Bachelor’s degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher
+      level or equivalent)

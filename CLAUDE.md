@@ -418,6 +418,17 @@ built, verified". Timestamps are evidence; sequence is an assumption.
   maker should name its own riskiest judgement before being asked — the two
   times that happened here, one of the flags exposed a real pipeline bug.
   (2026-10-01)
+- **Image experiments are built exactly like text ones**: same recipe, melt, QC,
+  persona harmonisation (Jev for category meaning, arithmetic for bands), answer-key
+  crosscheck and maker/checker. The only addition is that a condition may cite
+  pictures: `Arm.images` → `Row.condition_images` holds IDs resolved through
+  `data/catalog/images.json` (file, sha256, source, licence, word-for-word
+  `text_in_image`, and a `description` that is ours and therefore checked). QC rule 1
+  compares words AND images; rule 23 checks every ID is catalogued, intact and
+  placed by an `<image>` marker. Image recipes live in `recipes/images/` and build to
+  `data/processed/images/`, so every text tool (splits, export, coverage) keeps
+  reading only the text corpus: training set 1 stays text-only by construction.
+  (2026-10-26, rich: two training sets, text-only and text+image.)
 - **Word-for-word for what varies, compressed for what is shared.** Context identical
   across arms is stated once; each arm carries only its varying remainder,
   word-for-word. A declared factor that does not change the text between arms is a

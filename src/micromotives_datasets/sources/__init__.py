@@ -18,7 +18,7 @@ from collections.abc import Iterator
 from pathlib import Path
 
 from ..schema import Row
-from . import delimited, spss
+from . import delimited, excel, spss
 
 SourceIterator = Iterator[Row]
 
@@ -47,7 +47,9 @@ def read_any(path: str | Path) -> spss.Dataset:
         return spss.read(path)
     if suffix in delimited.SEPARATORS:
         return delimited.read(path)
+    if suffix in excel.SUFFIXES:
+        return excel.read(path)
     raise ValueError(
         f"no reader for {Path(path).name} — expected one of "
-        f"{sorted(_BINARY | set(delimited.SEPARATORS))}"
+        f"{sorted(_BINARY | set(delimited.SEPARATORS) | excel.SUFFIXES)}"
     )

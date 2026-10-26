@@ -191,6 +191,19 @@ def rows_built(rows: list[dict], src: str | None) -> int:
     return sum(r.get("rows") or 0 for r in rows if src is None or r["source"] == src)
 
 
+def text_recipes() -> set[str]:
+    """Committed recipes for TEXT experiments: every tracked recipe, less image ones.
+
+    Image experiments live in recipes/images/ and are listed on their own page
+    (scripts/image_experiments.py), so they are neither rows here nor counted here.
+    """
+    out = subprocess.run(
+        ["git", "ls-files", "recipes/*.yaml"], cwd=ROOT, capture_output=True, text=True
+    )
+    # git's pathspec "*" crosses "/", so recipes/images/ would otherwise be included.
+    return {p for p in out.stdout.split() if not p.startswith("recipes/images/")}
+
+
 def attach_row_counts(data: dict) -> None:
     """Give every Built row its experiment's row count, read from the built parquet.
 
@@ -201,11 +214,7 @@ def attach_row_counts(data: dict) -> None:
     """
     import pandas as pd
 
-    committed = set(
-        subprocess.run(
-            ["git", "ls-files", "recipes/*.yaml"], cwd=ROOT, capture_output=True, text=True
-        ).stdout.split()
-    )
+    committed = text_recipes()
     sizes: dict[tuple[str, str | None], int] = {}
     for pq in (ROOT / "data" / "processed").glob("*.parquet"):
         df = pd.read_parquet(pq, columns=["study_id", "experiment"])
@@ -254,10 +263,7 @@ def corpus_experiments() -> int:
     so this differs from the Built count above, which counts studies. Untracked
     recipes are work in progress and are not counted.
     """
-    out = subprocess.run(
-        ["git", "ls-files", "recipes/*.yaml"], cwd=ROOT, capture_output=True, text=True
-    )
-    return len(out.stdout.split())
+    return len(text_recipes())
 
 
 def render_html(data: dict) -> str:

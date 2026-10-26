@@ -106,6 +106,26 @@
    "Any Other Black Background (Black/African/Caribbean/Black British)": "Black, Black British, Caribbean or African",
    "Arab (Other Ethnic Group)": "Other ethnic group",
    "Any Other Ethnic Group (Other Ethnic Group)": "Other ethnic group"
+  },
+  "uk_k7tw5_osf": {
+   "African": "Black, Black British, Caribbean or African",
+   "Any other Asian Background": "Asian or Asian British",
+   "Any other Black/African/Caribbean Background": "Black, Black British, Caribbean or African",
+   "Any other ethnic group": "Other ethnic group",
+   "Any other mixed/multiple ethnic group background": "Mixed or Multiple ethnic groups",
+   "Arab": "Other ethnic group",
+   "Bangladeshi": "Asian or Asian British",
+   "Caribbean": "Black, Black British, Caribbean or African",
+   "Chinese": "Asian or Asian British",
+   "Indian": "Asian or Asian British",
+   "Pakistani": "Asian or Asian British",
+   "White (English/Welsh/Scottish/Northern Irish/British)": "White",
+   "White (Gypsy or Irish Traveller)": "White",
+   "White (Irish)": "White",
+   "White (any other White background)": "White",
+   "White and Asian": "Mixed or Multiple ethnic groups",
+   "White and Black African": "Mixed or Multiple ethnic groups",
+   "White and Black Caribbean": "Mixed or Multiple ethnic groups"
   }
  },
  "_about": [
@@ -132,6 +152,11 @@
   "",
   "Chinese sits under Asian, per the 2011 ONS classification onwards (it was Other",
   "before 2011); both detailed schemes here are 2011-or-later. Arab sits under",
-  "Other, per ONS."
+  "Other, per ONS.",
+  "",
+  "uk_k7tw5_osf (26 Oct 2026, IMG02): ONS-2011-style detailed labels from the k7tw5 snack warning-label study.",
+  "Eleven labels were already mapped by other schemes and keep that mapping; the seven new ones were classified by Jev",
+  "(category_concept, confidence 0.78-1.0) and reviewed. Jev flagged \"Any other mixed/multiple ethnic group background\" as",
+  "the residual; overruled, the residual is \"Any other ethnic group\". No canonical value added; no other scheme changed."
  ]
 }

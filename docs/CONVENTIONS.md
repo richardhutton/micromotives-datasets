@@ -395,3 +395,43 @@ or a question, it never trained on? Made by `scripts/make_splits.py`, checked by
 - Rows are numbered within the experiment in (person, condition, outcome) order.
 - Conditions: 68 experiments, 640,093 rows, 159,051 eval. Outcomes: 30 experiments,
   375,096 rows, 94,030 eval.
+
+## Persona bands that straddle the canonical edges
+
+Ruled 26 Oct 2026 (rich), on the first image experiment, `k7tw5` (IMG02).
+
+Harmonising may only merge (CLAUDE.md, Decisions). For CATEGORIES that is done by
+mapping a label into a coarser canonical value, and where a source label spans two
+canonical values it goes to the existing merged value (education: "Below degree
+level (not further distinguished)").
+
+For income BANDS the literal rule (canonical edges = the intersection of every
+scheme's edges) would let one new survey coarsen every existing UK study's income.
+`k7tw5` has 15 bands such as £17,500 to £24,999 against YouGov's £15,000 to £19,999
+and £20,000 to £24,999; intersecting would merge every UK row below £25,000 into one
+band and force a rebuild of about 60 studies. So:
+
+- a source band that sits inside one existing canonical band maps to it (a merge);
+- a source band that STRADDLES an existing edge keeps its own label as a canonical
+  value of its own, as "£100,000 and over (not further distinguished)" did first;
+- no existing scheme is coarsened by a new one.
+
+The cost, stated: the UK canonical income list is no longer a partition. A
+respondent earning £6,000 reads "£5,000 to £9,999 per year" if their survey used
+YouGov's bands and "£4,500 to £6,499 per year" if it used k7tw5's. Each label is
+true to what that respondent was asked; neither claims a precision the source did
+not record. Anything comparing income ACROSS sources must use band intervals, not
+label equality.
+
+## Image conditions
+
+Ruled 26 Oct 2026. An image experiment is built exactly like a text one (CLAUDE.md,
+Decisions). The condition text says what surrounded the picture and quotes any
+words printed on it word-for-word; `<image>` marks where the picture sits, and the
+row cites it by ID (`data/catalog/images.json`). Where the deposit holds only part
+of what was shown (k7tw5: the label, not the chocolate bar beside it), the text
+says what else was there and the image is the part we have; it never stands in for
+the whole. A factor expressed only by the picture (k7tw5's `photo`) is legitimate:
+QC rules 1 and 5 compare words AND images. Held-out splits must key on
+`condition_num` or the image ID, never the condition string, which is shared by
+the photographs of one wording.
