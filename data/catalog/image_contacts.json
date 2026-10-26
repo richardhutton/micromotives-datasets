@@ -320,9 +320,9 @@
     "ask": "The chart images for IMG45 (data is CC0), and the data and charts for IMG15.",
     "subject": "Charts from your COVID and migration experiments",
     "body": "Hi William,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nTwo of your experiments would be really useful:\n- \"Worst of the bunch\" COVID deaths chart (Dataverse VMZIPF). Thanks for the CC0 data. Could you share the chart images people saw?\n- The migration chart experiments. Is the respondent-level data available, along with the charts?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
-    "notes": "26 Oct: Oxford address bounced (recipient unknown). Resend to Southampton address from his staff profile."
+    "status": "sent",
+    "sent": "2026-10-26",
+    "notes": "26 Oct: Oxford address bounced (recipient unknown). Resent the same day to his Southampton address."
   },
   {
     "id": "turnbull",
