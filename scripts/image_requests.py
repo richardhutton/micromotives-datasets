@@ -6,11 +6,11 @@ with no remote copy. One data file, one generated page:
 
     data/catalog/image_contacts.json   one row per person emailed (study metadata,
                                        public researcher addresses, our emails)
-    docs/trackers/email_tracker.html   generated page
+    docs/trackers/image_requests.html  generated page
 
 Statuses: todo, ready, sent, chased, yes, no, notneeded.
 
-    uv run python scripts/email_tracker.py
+    uv run python scripts/image_requests.py
 """
 
 from __future__ import annotations
@@ -20,8 +20,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "catalog" / "image_contacts.json"
-HTML = ROOT / "docs" / "trackers" / "email_tracker.html"
-TEMPLATE = ROOT / "scripts" / "email_tracker_template.html"
+HTML = ROOT / "docs" / "trackers" / "image_requests.html"
+TEMPLATE = ROOT / "scripts" / "image_requests_template.html"
 
 STATUSES = {"todo", "ready", "sent", "chased", "yes", "no", "notneeded"}
 

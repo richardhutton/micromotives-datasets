@@ -7,7 +7,7 @@ copies. Both outputs come from one data file so they cannot drift apart:
 
     data/catalog/experiment_list.json   the rows (study metadata only)
     docs/EXPERIMENT_LIST.md             generated Markdown
-    docs/trackers/experiment_list.html  generated full-width page
+    docs/trackers/text_experiments.html generated full-width page
 
 Statuses, defined once and used everywhere:
 
@@ -31,7 +31,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "catalog" / "experiment_list.json"
 MD = ROOT / "docs" / "EXPERIMENT_LIST.md"
-HTML = ROOT / "docs" / "trackers" / "experiment_list.html"
+HTML = ROOT / "docs" / "trackers" / "text_experiments.html"
 TEMPLATE = ROOT / "scripts" / "experiment_list_template.html"
 
 SOURCES = ["Innovation Panel", "DEL", "TESS", "Harvard Dataverse"]

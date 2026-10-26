@@ -27,7 +27,7 @@ done it for the UK.
 
 **1,033,469 rows across 70 studies (110 experiments)** (18 Oct 2026), all QC-passed and checked by an
 independent agent, on disk at `data/processed/`. `docs/EXPERIMENTS.md` is the generated
-list; `docs/trackers/experiment_list.html` tracks the build queue.
+list; `docs/trackers/text_experiments.html` tracks the build queue.
 
 | | studies | experiments | rows |
 |---|---|---|---|
