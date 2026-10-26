@@ -1,46 +1,105 @@
 # Image-stimulus candidates (UK)
 
 Survey experiments where people were randomly shown an IMAGE, found by a web search on
-18 Oct 2026. Nothing here is built. "Verified" means the deposit itself was opened.
+18 Oct 2026 and reviewed one by one from 26 Oct 2026. Nothing here is built. Emails and their
+status live in the tracker: https://claude.ai/artifact/NWWKv2ZXxcQEzSJULq1j9y
 
-## Usable now: data and images public
+## Keep: reviewed, email for licence or images
+
+| ID | Description | What they found | Link | Email | Draft | Sent | Reply |
+|---|---|---|---|---|---|---|---|
+| IMG01 | Alcohol warning labels: each person sees 1 of 21 image-and-text labels ("Alcohol causes …", 7 harms × 3 photos) on beer or wine; rates upset, desire to drink, support (1–7). UK, Dynata, n=5,528. Data and images on OSF; no licence stated. | Bowel cancer labels upset most and cut desire most, but were least supported. Only the 3 liver labels won support. | https://osf.io/pr8zu/ · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC7114781/ | gareth.hollands@ucl.ac.uk (cc n.clarke@bathspa.ac.uk) | in tracker | | |
+| IMG02 | Snack warning labels: 1 of 18 labels ("Excess calories cause obesity, which causes …", 6 harms × 3 photos) on a chocolate bar; same outcomes as IMG01. UK, Dynata, n=4,618 people who eat snacks weekly. Data and all 18 label images downloaded to `data/raw/osf_k7tw5/`; data reproduces the paper. | Bowel cancer labels upset most (4.44) and cut desire most, but were least supported (3.78). Type 2 diabetes labels were most supported. 13 of 18 labels won support. | https://osf.io/k7tw5/ · same paper | same as IMG01 | same | | |
+| IMG03 | Vending machine (Study 2 of IMG01 and IMG02): pick one product from a shelf of 12, with no label, calories, a text warning or an image warning. Snacks n=4,134, alcohol ~6,024. | Snacks: high-calorie picks fell from 59% with no label to 37% with an image warning. | https://osf.io/pr8zu/ · https://osf.io/k7tw5/ | same as IMG01 | same | | |
+| IMG06 | Charity appeal photos: 5 random real photos per person, from one of two sets (116 charity photos, or professional photographers' photos); emotions, urgency, sense of difference, find out more, donate yes/no and £. YouGov GB, n=3,538, CC0. Photos not in deposit. | Best photo (a boy in flood water) got 41% to donate; the worst (calm daily life) got 3%. Visible emergencies, children and distress won; urgency was the main route to giving. | https://doi.org/10.7910/DVN/XZ1XUZ · deck https://developmentengagementlab.org/storage/imagery-sandbox-draft-deck-gb-1698677348.pdf | jennifer.hudson@ucl.ac.uk | `02_hudson_DEL_images.txt` | | |
+| IMG09 | Online political ads: 4 random real Facebook ads from the 2019 general election per person, from 2,384 ads by 46 pages (parties, leaders, campaign groups, unions); legal, decent, honest, truthful, acceptable. Prolific UK, n=1,881, CC0. Image links point to a private Google Drive. | Our counts from the data: 35% of ads judged unacceptable; Labour ads 20% vs Conservative ads 43%; attack ads worst. People judge by their own side (Conservative ads: 20% unacceptable to Conservative voters, 51% to Labour voters). | https://doi.org/10.7910/DVN/DQT7CA · paper https://www.nature.com/articles/s41599-025-05114-1 | k.dommett@sheffield.ac.uk (cc junyan.zhu@utoronto.ca) | in tracker | | |
+| IMG28 | Online supermarket (Oxford "Woods", real products shown as photos): green tick "healthier choice" badge on lower-calorie products (yes/no) × shelves with a third vs two thirds lower-calorie products. 10-item shopping list (biscuits, bread, pizza, ice cream, ready meal, sausages, crisps, cheese, yogurt, jam). Prolific UK main shoppers, n=899. Outcome per basket: calories per 100 g, total kcal, cost. | The tick cut about 4 kcal/100 g; stocking more lower-calorie products cut about 17 kcal/100 g and 852 kcal per basket. Same for richer and poorer shoppers. The tick only worked on people who care about health. | https://osf.io/kq9c8/ · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC7760499/ | eric.robinson@liv.ac.uk | in tracker | | |
+| IMG31 | Online supermarket (Oxford "Woods", about 20,000 products): environmental labels on product images, 4 arms: none, A–E traffic-light grade, "petal" label (carbon, water, nature, pollution), both. 10-item shopping list. Prolific UK, n=1,051 (vegetarians excluded). Outcome per basket: environmental impact score. Corrected 2024 paper (the 2022 version was retracted over Study 2). | Every label made baskets about 15% greener on carbon and nature damage and up to 26% on water. Both labels worked about equally well; showing both was no better than one. Cost barely changed. Worked best on younger shoppers. | https://osf.io/byztm/ · paper data link https://osf.io/rn5za · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC11371233/ | rachel.pechey@phc.ox.ac.uk | in tracker | | |
+
+**IMG09 backup:** each ad's Meta Ad Library ID is in the data. Meta keeps political ads for
+7 years, so the 2019 ads may go soon. Facebook blocks automated checks, so test one by hand:
+https://www.facebook.com/ads/library/?id=497242307539002
+
+## Not yet reviewed
 
 | ID | Description | Source / authors | Link | Next step |
 |---|---|---|---|---|
-| IMG01 | Alcohol health warning labels: each person shown 1 of 21 image-and-text labels; rated fear, disgust, desire to drink, acceptability (1–7). UK, Dynata, n=5,528. Images verified in deposit. | Cambridge / Bristol; Pechey, Clarke et al. 2020 | https://osf.io/pr8zu/ · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC7114781/ | No licence stated: ask authors |
-| IMG02 | Snack health warning labels: 1 of 18 labels, same outcomes as IMG01. UK, Dynata, n=4,618. Images verified. | same team | https://osf.io/k7tw5/ | No licence stated: ask authors |
-| IMG03 | Product choice with or without warning labels (alcohol ~6,024 rows, snacks ~4,134): pick a product from a set of images. | same team, Study 2 | https://osf.io/pr8zu/ · https://osf.io/k7tw5/ | Harder shape (choice from a shelf of images) |
-| IMG04 | Food photos (CROCUFID): each rater saw 60 random food images; rated appeal, healthiness, desire to eat (0–100). UK n=266 (+ US, Japan). CC BY 4.0. | Toet et al. 2019 | https://osf.io/5jtqx | Small UK sample, thin demographics |
-| IMG05 | Risk icon arrays (BRCA): chart style varied vs text only; outcome is understanding of the risk. UK, n=1,300. | Winton Centre, Cambridge; Recchia, Lawrence, Freeman 2022 | https://osf.io/y5fm6 · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC9731905/ | Comprehension, not taste; no licence stated |
-
-## Good data, images not deposited: email for the images
-
-| ID | Description | Source / authors | Link | Next step |
-|---|---|---|---|---|
-| IMG06 | Charity appeal photos: ~250 images in two sets, 5 random per person; emotions, urgency, donate yes/no and £. YouGov GB. CC0. | DEL Sandbox Oct 2023 | https://doi.org/10.7910/DVN/XZ1XUZ | Ask DEL for the image bank |
-| IMG07 | Paired photos (man/woman × framing, 10 images), 4 random pairs: "which person needs / deserves help most". YouGov GB. CC0. Same survey as our gender equality build. | DEL Sandbox Feb 2023 | https://doi.org/10.7910/DVN/XZ1XUZ | Ask DEL for the 10 images |
-| IMG08 | 9 charity video appeals, plus 4 random image pairs rated on a donation slider. YouGov GB. CC0. | DEL Sandbox Jun 2021 | https://doi.org/10.7910/DVN/DUUPRY | Ask DEL; videos are a poor fit |
-| IMG09 | Online political ads: 4 random real Facebook ads (2019 general election) per person; legal, honest, acceptable. Prolific UK, n=1,881. CC0 / CC BY. Image links now private. | Sheffield; Zhu, Dommett, Stafford 2025 | https://doi.org/10.7910/DVN/DQT7CA · https://orda.shef.ac.uk/articles/dataset/What_makes_online_political_ads_unacceptable_Interrogating_public_attitudes_to_inform_regulatory_responses/24982200 · paper https://www.nature.com/articles/s41599-025-05114-1 | Ask authors for the screenshots (Meta may drop 2019 ads soon) |
-
-## Weaker fits
-
-| ID | Description | Source / authors | Link | Why weak |
-|---|---|---|---|---|
+| IMG07 | Paired photos (man/woman × framing, 10 images), 4 random pairs: "which person needs / deserves help most". YouGov GB. CC0. Same survey as our gender equality build. | DEL Sandbox Feb 2023 | https://doi.org/10.7910/DVN/XZ1XUZ | Already asked for in the Hudson email |
+| IMG08 | 9 charity video appeals, plus 4 random image pairs rated on a donation slider. YouGov GB. CC0. | DEL Sandbox Jun 2021 | https://doi.org/10.7910/DVN/DUUPRY | Already asked for in the Hudson email; videos are a poor fit |
 | IMG10 | Face ratings (Chicago Face Database), 120 faces per rater, 1 of 13 traits. CC BY 4.0. UK raters n=361, mostly students. | Psychological Science Accelerator PSA001 | https://osf.io/f7v3n | Small, non-representative UK sample |
 | IMG11 | 102 London faces rated for attractiveness by 2,513 raters. CC BY 4.0. | Face Research Lab London Set | https://figshare.com/articles/Face_Research_Lab_London_Set/5047666 | No randomisation; raters' country unknown |
 | IMG12 | E-cigarette shop displays, 2×2 design, 12 photos. CC BY 4.0. | Bristol 2022 | data.bris doi 10.5523/bris.glkgioxkg9ue2gidk6gktm7pd · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC10423515/ | Ages 13–17; images in deposit not confirmed |
 | IMG13 | EU flag / symbol images vs none, YouGov 2011, n=8,599. | Cram, Patrikios, Mitchell | https://reshare.ukdataservice.ac.uk/852380/ | UKDS licence; no images |
-| IMG14 | Front-of-pack food labels on mock packs, 5 label types, n=4,504 GB. | NatCen 2020 | https://osf.io/k9v2p/ · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC7999818/ | Data on request only |
+| IMG14 | Front-of-pack food labels on mock packs, 5 label types, n=4,504 GB. | NatCen 2020 | https://osf.io/k9v2p/ · paper https://pmc.ncbi.nlm.nih.gov/articles/PMC7999818/ | Data on request only (in tracker) |
+| IMG15 | Migration charts: chart type, colour, framing, source varied. GB, n=3,889 and 3,082. | Will Allen, Oxford | https://imcc.web.ox.ac.uk/node/2483471 | No public data (in tracker) |
+| IMG16 | Climate image pairs, forced choice. UK/DE/US, n=3,014. | Climate Outreach, Climate Visuals | https://climateoutreach.org/reports/climate-visuals-seven-principles-for-visual-climate-change-communication/ | No public data (in tracker) |
+| IMG17 | Architecture paired-image preferences. UK, n≈2,095. Published tables only. | Create Streets / Deltapoll | https://worksinprogress.co/issue/do-people-prefer-traditional-architecture/ | No public data (in tracker) |
+| IMG18 | Slot-game advert features. UK, n=5,975. | Behavioural Insights Team | https://bi.team/wp-content/uploads/2023/05/2023-09-Exploring-the-impact-of-slot-game-advert-features-Experiment-1-Results.pdf | No public data (in tracker) |
+| IMG19 | Safer-gambling ads (video). | Newall et al. | https://cronfa.swan.ac.uk/Record/cronfa71039/Details | No public data |
 
-## Found, no public data: worth an email
+## New finds, 26 Oct 2026: food and alcohol labs (Liverpool, Cambridge, Oxford, Durham, Cardiff, Bristol)
 
-| ID | Description | Source | Link |
+Each deposit was opened, with a respondent-level data file confirmed and a UK sample.
+The n is the rows in the deposited file. "Images" says whether the stimuli are in the
+deposit; "in protocol" means they are embedded in the protocol .docx or PDF.
+
+| ID | Description | Authors | Link | Images | Persona | Licence | Email |
+|---|---|---|---|---|---|---|---|
+| IMG20 | Salt warning labels: 1 of 5 (red/black × triangle/octagon "high in salt", or control); 6 choices from packaged-food and menu screens (KFC, Wagamama, Bella Italia); rates label effectiveness, policy support. Prolific, n=2,391. | Evans … Robinson, Lancet Public Health 2025 | https://osf.io/vyh2x/ | 38 in protocol | age, sex, education, ethnicity, BMI, income, household | none stated | r.k.evans@liverpool.ac.uk |
+| IMG21 | Climate traffic-light labels on canteen meal photos: 4 arms; 20 meal choices; appeal, intention, anxiety, credibility, policy support. Prolific, meat eaters, n=1,300. | Hughes, Weick, Vasiljevic, Appetite 2024 | https://osf.io/gm3pr/ | examples in supplement | gender, age, ethnicity, qualifications, NRS grade, income, BMI | **CC BY 4.0** | jack.p.hughes@durham.ac.uk |
+| IMG22 | Alcohol label acceptability: health warning / calorie / both × description alone vs description plus an example label image on a bottle; acceptability, effectiveness (1–7). Prolific, n=994. | Clarke … Hollands, preprint 2026 | https://osf.io/h6bzx/ | 2 in protocol | age, gender, education, AUDIT-C | none stated | n.clarke@bathspa.ac.uk |
+| IMG23 | Calorie / PACE (minutes of walking) labels on 4 drink images (beer, cider, wine, G&T); drinking intention, calorie estimate, support. Prolific drinkers, n=1,084. | Robinson, Smith, Jones, BJHP 2021 | https://osf.io/aydum/ | no | gender, age, ethnicity, employment, income, education, BMI, AUDIT | none stated | eric.robinson@liv.ac.uk |
+| IMG24 | Warning and calorie labels on 64 drink images in a mock online shop, then a real Tesco purchase; 3×2. Units selected and bought, arousal, acceptability. England and Wales drinkers, n=615. | Clarke … Marteau, Hollands, Addiction 2023 | https://osf.io/w5xf8/ | 14 in protocol | age, gender, qualification, ethnicity, BMI, household, AUDIT | none stated | n.clarke@bathspa.ac.uk |
+| IMG25 | Alcohol calorie labels on pub and Pizza Express menus, present vs absent; units and kcal ordered. Prolific, n=2,001 (Study 1 only). | Gough … Robinson; paper not found | https://osf.io/29q8c/ | 1 in protocol | age, sex, ethnicity, education, income, BMI, AUDIT-C | none stated | unknown |
+| IMG26 | Alcohol calorie labels on a restaurant menu; kcal ordered by course. E1 n=325 randomised; E2 n=1,081 (one arm self-selected, use the no-choice arms only). | Jones, Gough, Robinson, Appetite 2024 | https://osf.io/y2hbc/ | no | age, gender, education, income, BMI, AUDIT-C | none stated | a.jones@ljmu.ac.uk |
+| IMG27 | Portion choice from food photos: 4 label arms; 18 dishes, each served by stepping through 50 portion photos. 1,667 people, 30,006 rows. | Marty … Robinson, Appetite 2021 | https://osf.io/k369t/ | 34 in protocol | age, gender, ethnicity, employment, education, income, social status, BMI | none stated | eric.robinson@liv.ac.uk |
+| IMG29 | Fast-food menu boards: calorie labels × availability; choose main, side, drink; kcal ordered. Prolific, n=1,743. | Marty, Jones, Robinson, IJBNPA 2020 | https://osf.io/ajcr6/ | 4 in protocol | **education only** | none stated | eric.robinson@liv.ac.uk |
+| IMG30 | Mock delivery app (Costa, Subway, McDonald's menus with pictures): calorie labels × pricing; size chosen, kcal, price. Prolific, n=1,126. | Finlay … Robinson, IJBNPA 2023 | https://osf.io/kaju5/ | 2 in protocol | gender, age, ethnicity, BMI, social status, education, income | protocol says CC BY 4.0 | afinlay@liverpool.ac.uk |
+| IMG32 | Ecolabels on canteen meal images, varying the range of labels; 5 themed meal choices. Dynata, census quotas, n=2,604. | Biggs, Garnett, Pechey, BMC Public Health 2025 | https://osf.io/69xct/ | 12 in protocol | gender, age band, education, income, meat frequency | none stated | rachel.pechey@phc.ox.ac.uk |
+| IMG33 | Nature vs urban photo (30 s "view from your hotel room"), then food choice and desire for 10 fruit and veg images. UK residents, mixed recruitment, n=925. | Clarke K, Gough, Hardman, Appetite 2026 | https://osf.io/qxbyt/ | 4 in protocol | age, gender, ethnicity, employment, qualification, urban/rural, BMI | none stated | katie.clarke@liverpool.ac.uk |
+| IMG34 | Restrain Food Database: 1 of 52 random sets of 10 food photos; craving, healthiness, taste, positivity, calorie estimates. Prolific UK, 23,180 ratings from ~2,300 people. | Randle … Chambers (Cardiff), R Soc Open Sci 2022 | https://osf.io/wsqyn/ · https://osf.io/7gcsk/ | **yes, full set** | age, sex, ethnicity, BMI, diet, hunger | **CC BY 4.0** | randlem@cardiff.ac.uk |
+| IMG35 | Bristol "Know Your Limits" alcohol labels: 1 of 4 unit-label formats on bottle images (estimate units, choose a beer), then 1 of 8 health warnings on a beer bottle (cancer/mental health × general/specific × positive/negative); reactance, believability, motivation to cut down, craving, support. Prolific drinkers, n=1,884. | Blackwell, Drax, Attwood, Munafò, Maynard 2018 | https://data.bris.ac.uk/data/dataset/2l19s5lmdoh7k2jc5n8l2ta95i | unit labels + 8 warning texts in protocol | age, gender, UK nation, education, student, AUDIT | Non-Commercial Government Licence | olivia.maynard@bristol.ac.uk |
+| IMG36 | Eco-label vs social-nudge label vs none on a Deliveroo-style burrito menu; choose beef, chicken or veg; reactance, support. Prolific, n=1,399. | De-loyde … Maynard 2022 | https://data.bris.ac.uk/data/dataset/2scid2vyz8jh82aj85guyzqrz6 | examples in protocol | age, gender, education, ethnicity, meat meals per week | Non-Commercial Government Licence | olivia.maynard@bristol.ac.uk |
+| IMG37 | Plant milk cartons labelled "milk" vs "drink": 20 carton photos each; would add to tea, from an animal, would buy. n=352. | De-loyde … Maynard 2023 | https://data.bris.ac.uk/data/dataset/2fx58ht2n92uy2isojba82wv3p | **yes, carton photos in protocol** | age, sex, education, dairy and plant-milk use, diet | Non-Commercial Government Licence | olivia.maynard@bristol.ac.uk |
+| IMG38 | Carbon traffic-light vs standard label on product images: 36 two-product choices (mince, sandwiches, sausages). n=128, small. | Sachdev, Dyer, Attwood 2026 | https://data.bris.ac.uk/data/dataset/14o3valslbq962x24o0xwod5az | example in protocol | age, gender, education | Non-Commercial Government Licence | angela.attwood@bristol.ac.uk |
+| IMG39 | Health warnings with snack images: image+text, image only, text only, none; snack and voucher choice, attitudes. Agency general-population sample, n=1,184 (UK-coded demographics; residence not stated). | Asbridge, Pechey, Marteau, Hollands 2021 | https://osf.io/5gecb/ | **yes, 15 images** | age, gender, ethnicity, education, BMI, snack intake | none stated | gareth.hollands@ucl.ac.uk |
+| IMG40 | Chocolate-bar images with health warnings vs irrelevant unpleasant labels vs none; liking and wanting before and after, snack choice. Prolific, n=1,382 (Study 2). | Ventsel, Pechey … Hollands, Fletcher 2022 | https://osf.io/xsfev/ | 36 in protocols | age, gender, ethnicity, education, income, BMI, snack frequency | none stated | pcf22@cam.ac.uk |
+| IMG41 | Pictorial warning labels on meal images: control, climate, health, pandemic; 20 four-way meal choices (meat/fish/veg/vegan), appeal. Prolific meat eaters, n=1,001. | Hughes, Weick, Vasiljevic, Appetite 2023 | https://osf.io/vghp6/ | 40 in supplement | age, gender, ethnicity, qualifications, NRS grade, income, BMI, meat intake | none stated | jack.p.hughes@durham.ac.uk |
+| IMG42 | Online supermarket (Woods): product positioning with or without health or sustainability labels, 5 arms; basket Nutri-Score and eco-score. n=2,220. | Jostock … Pechey, Appetite 2026 | https://osf.io/tcwr5/ | no | gender, age group, education, income, household, meat and dairy intake | none stated | rachel.pechey@phc.ox.ac.uk |
+| IMG43 | Online supermarket (Woods): price-promotion badges on snacks shown vs removed; basket kcal. n=511. | Luick … Jebb, Piernas, Appetite 2023 | https://osf.io/9ru3e/ | no | age group, gender, ethnicity, education, income, BMI group | none stated | unknown |
+
+Supermarket studies (IMG28, 31, 42, 43; 28 and 31 now under Keep) score a whole basket rather than one answer about
+one image, so they need a different row shape.
+
+Borderline, not numbered: data.bris 1dnhjcw6w4m1n29u2yuxjywde1 and osf.io/xu5pt (randomised on drink availability or shelf layout, not on a label); osf.io/x9tps (Swansea, 16 food photos, CC BY 4.0 with photos, but UK and Ireland not separable, n=206); osf.io/x726n and osf.io/puydx (Cambridge, randomised on how many alcohol-free or meat-free options are offered, not on the image).
+
+## New finds, 26 Oct 2026: politics, charts, misinformation, adverts (repository sweep)
+
+Each deposit was opened, with a respondent-level data file confirmed. The other 13 DEL
+waves were checked: none has an image experiment.
+
+| ID | Description | Authors | Link | Images | Persona | Licence | Email |
+|---|---|---|---|---|---|---|---|
+| IMG44 | Political ad disclaimers: 4 Facebook-style ads from a fictional party, with or without sponsorship/targeting disclaimers; party competence, integrity, ad trust, manipulativeness, agree (1–7). UK, n=1,249. | Hazel Gordon (Sheffield), 2023 | https://osf.io/gybnm | **yes, all 8** | age, gender, education, party, left–right, political interest, social media use, trust | **CC0** | unknown |
+| IMG45 | "Worst of the bunch" COVID deaths chart: no chart / UK deaths chart / same chart with European countries; rating of the government's COVID response, worry, policy support. Prolific UK, July 2020, n=3,114. Files hold raw Prolific IDs. | Allen & Ahlstrom-Vij (Oxford), 2024 | https://doi.org/10.7910/DVN/VMZIPF | no (maybe in appendix) | age, gender, education, ethnicity, income, party, EU vote, numeracy, trust | **CC0** | william.allen@politics.ox.ac.uk |
+| IMG46 | Heroes and villains visual conjoint: 7 pairs of film/TV character pictures (86 characters: Disney, Marvel, Harry Potter, Star Wars…); which character supports party X, left–right placement. UK n=1,594 (22,316 rows). | Turnbull-Dugarte & Wagner, 2025 | https://doi.org/10.7910/DVN/X2WKUZ | no (names only; stills likely copyrighted) | gender, sexuality, age, ethnicity, degree, party, left–right, Leave vote, party feelings, income | **CC0** | s.turnbull-dugarte@soton.ac.uk |
+| IMG47 | COVID personal risk graphs (Winton Centre): randomised graph designs (log vs linear, frequency vs percentage, risk scales); understanding, perceived risk, trust, behaviour. UK quota samples, n=702 / 1,822 / 2,577 across 3 surveys. | Freeman, Kerr, Recchia et al., 2020–21 | https://osf.io/auf8h · paper https://doi.org/10.1098/rsos.201721 | **yes, in questionnaire PDFs** | age, sex, income, education, health; politics in survey 4 | **CC BY 4.0** | unknown |
+| IMG48 | Flood risk matrices (Winton): 3 colour designs × 2; comprehension, risk perception, willingness to pay. UK, n=4,866. | Proto, Recchia, Dryhurst, Freeman, 2022 | https://osf.io/3krjz | **yes, all stimulus images** | gender, age, ethnicity, income, education, flood experience | **CC BY 4.0** | unknown |
+| IMG49 | Mock social-media feed: 30 posts (image posts, memes, text, video; half misinformation); control vs false tags vs inoculation checklist; like, react, share each post. Prolific UK, n=2,430. | McPhedran, Ratajczak et al., Sci Rep 2023 | https://github.com/MichaelRatajczak92/Misinformation_Project · paper https://doi.org/10.1038/s41598-023-32962-1 | no | demographic block (check codebook) | none stated | unknown |
+| IMG50 | COVID headline cards (image + headline + source), 20 of 45 per person; share only / accuracy prompt / accuracy rating / literacy tips; sharing intention or accuracy. UK subsample of a 16-country study, n=2,893. | Arechar … Pennycook, Rand, Nat Hum Behav 2023 | https://osf.io/g65qu · paper https://doi.org/10.1038/s41562-023-01641-6 | 49 in UK survey .docx | age, sex, education, social status, urban/rural, religion, social media use | none stated | unknown |
+| IMG51 | Celebrity conservation advert: 1 of 4 (Beckham, Packham, Prince William, non-celebrity); click to find out more, recall, trait ratings. n=379, snowball sample, country not stated. | Duthie, Veríssimo, Keane, Knight, PLoS One 2017 | https://doi.org/10.6084/m9.figshare.5184781 | redrawings only | gender, age band, settlement, degree, employment, charity memberships | **CC BY 4.0** | lizzie_duthie@mac.com |
+| IMG52 | Body-positive Instagram posts: travel images / average-size model / plus-size model; mood, body satisfaction, lunch calories. Women, n=167. | Simon & Hurst (Sussex), 2021 | https://sussex.figshare.com/articles/dataset/9885644 | unknown | age band, BMI, Instagram use, diet | CC BY-NC-SA 4.0 | unknown |
+| IMG53 | Restaurant menu: control / carbon labels / animal pictures; meat vs non-meat choices from 12 items. Prolific UK, n=150 (student project). | Schmidtke & Mukhanova (Warwick), 2022 | https://osf.io/n7yw6 | likely in questionnaire PDF | age, sex, ethnicity, religion, meat intake | **CC BY 4.0** | unknown |
+
+Not yet checked: Turnbull-Dugarte far-right dating conjoint (Dataverse FYZANZ, did profiles have photos?);
+Taylor et al. 2024 weather-warning formats (UK n=550, no data link found).
+
+## Dropped
+
+| ID | Description | Link | Why dropped (26 Oct 2026) |
 |---|---|---|---|
-| IMG15 | Migration charts: chart type, colour, framing, source varied. GB, n=3,889 and 3,082. | Will Allen, Oxford | https://imcc.web.ox.ac.uk/node/2483471 |
-| IMG16 | Climate image pairs, forced choice. UK/DE/US, n=3,014. | Climate Outreach, Climate Visuals | https://climateoutreach.org/reports/climate-visuals-seven-principles-for-visual-climate-change-communication/ |
-| IMG17 | Architecture paired-image preferences. UK, n≈2,095. Published tables only. | Create Streets / Deltapoll | https://worksinprogress.co/issue/do-people-prefer-traditional-architecture/ |
-| IMG18 | Slot-game advert features. UK, n=5,975. | Behavioural Insights Team | https://bi.team/wp-content/uploads/2023/05/2023-09-Exploring-the-impact-of-slot-game-advert-features-Experiment-1-Results.pdf |
-| IMG19 | Safer-gambling ads (video). | Newall et al. | https://cronfa.swan.ac.uk/Record/cronfa71039/Details |
+| IMG04 | Food photos (CROCUFID): 60 random food images per rater; appeal, healthiness, desire to eat. UK n=266. CC BY 4.0. | https://osf.io/5jtqx | Deposit holds only per-image averages by country: no individual ratings, no persona |
+| IMG05 | Risk icon arrays (BRCA): chart style vs text. UK, n=1,300. | https://osf.io/y5fm6 | Outcomes are mostly memory and understanding tests; public data has no age, sex or other demographics (education only) |
 
 ## Gaps
 
