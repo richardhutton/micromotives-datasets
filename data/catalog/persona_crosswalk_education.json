@@ -104,6 +104,14 @@
    "Other vocational/work-related qualifications": "Some college to associate",
    "Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional qualifications e.g. teaching, nursing, accountancy or equivalent)": "Bachelors to postgraduate",
    "Up to 4 GCSEs (Including 1-4 O Levels/CSE/GCSEs (any grades), Foundation Diploma, NVQ level 1, Foundation GNVQ or equivalent)": "Below degree level (not further distinguished)"
+  },
+  "uk_pr8zu_osf": {
+   "2 or more A-levels (Including 2+ A Levels, 4+ AS Levels, NVQ Level 3, Advanced GNVQ, City and Guilds Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma or equivalent)": "Below degree level (not further distinguished)",
+   "5 or more GCSEs or 1 A-level (Including 5+ GCSEs (Grades A*-C),1 A Level/ 2-3 AS Levels, NVQ level 2, Intermediate GNVQ, City and Guilds Craft, BTEC First/General Diploma, RSA Diploma, Apprenticeship or equivalent)": "Below degree level (not further distinguished)",
+   "Bachelor’s degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher level or equivalent)": "Bachelors to postgraduate",
+   "Other vocational/work-related qualifications": "Some college to associate",
+   "Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional qualifications e.g. teaching, nursing, accountancy or equivalent)": "Bachelors to postgraduate",
+   "Up to 4 GCSEs (Including 1-4 O Levels/CSE/GCSEs (any grades), Foundation Diploma, NVQ level 1, Foundation GNVQ or equivalent)": "Below degree level (not further distinguished)"
   }
  },
  "_about": [
@@ -129,6 +137,10 @@
   "further distinguished)\", the existing merged value. Post-graduate goes to Bachelors to postgraduate. \"Bachelor’s degree",
   "(Including ... HNC, HND ...)\" also spans (some college to bachelors) but no merged value covers it; mapped by its headline to",
   "Bachelors to postgraduate, a disclosed judgement (1,293 people). \"Other vocational/work-related qualifications\" Jev declined;",
-  "mapped Some college to associate as UKHLS maps \"Other qualification\". No canonical value added; no other scheme changed."
+  "mapped Some college to associate as UKHLS maps \"Other qualification\". No canonical value added; no other scheme changed.",
+  "",
+  "uk_pr8zu_osf (28 Oct 2026, IMG01): the k7tw5 lab's alcohol sibling, same instrument. Its six labels (after the same",
+  "Bachelor mojibake repair) are the same strings as uk_k7tw5_osf's, checked by set equality in code; mapping copied, the",
+  "Bachelor's headline judgement included. No canonical value added."
  ]
 }

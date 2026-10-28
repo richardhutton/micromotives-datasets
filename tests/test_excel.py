@@ -61,3 +61,21 @@ def test_a_number_colliding_with_a_code_is_refused(tmp_path: Path) -> None:
     p = _xlsx(tmp_path, {"Mixed": ["Yes", 1, "No"]})
     with pytest.raises(ValueError, match="collide"):
         excel.read(p)
+
+
+def test_a_cell_of_spaces_is_blank_and_the_column_stays_numeric(tmp_path: Path) -> None:
+    """pr8zu: one cell of spaces in a 1..7 column made it 'text' and its 1 collide."""
+    p = _xlsx(tmp_path, {"Score": [4, "     ", 1, 7]})
+    ds = excel.read(p)
+    assert "Score" not in ds.value_labels, "no label may be invented for an empty cell"
+    assert ds.df["Score"].dtype == "float64"
+    s = ds.df["Score"].tolist()
+    assert s[0] == 4.0 and s[2] == 1.0 and s[3] == 7.0 and pd.isna(s[1])
+
+
+def test_a_cell_of_spaces_in_a_text_column_gets_no_code(tmp_path: Path) -> None:
+    """The blank must not become an arm, and real text beside it still codes."""
+    p = _xlsx(tmp_path, {"Label": ["Obesity 2", "  ", "Obesity 3"]})
+    ds = excel.read(p)
+    assert ds.value_labels["Label"] == {1.0: "Obesity 2", 2.0: "Obesity 3"}
+    assert pd.isna(ds.df["Label"].tolist()[1])

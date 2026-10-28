@@ -138,6 +138,23 @@
       "\u00a350,000 to \u00a374,999 per year": "\u00a350,000 to \u00a374,999 per year",
       "\u00a375,000 to \u00a399,999 per year": "\u00a370,000 to \u00a399,999 per year",
       "\u00a3100,000 or more per year": "\u00a3100,000 and over (not further distinguished)"
+    },
+    "uk_pr8zu_osf": {
+      "up to \u00a34,499 per year": "under \u00a35,000 per year",
+      "\u00a34,500 to \u00a36,499 per year": "\u00a34,500 to \u00a36,499 per year",
+      "\u00a36,500 to \u00a37,499 per year": "\u00a35,000 to \u00a39,999 per year",
+      "\u00a37,500 to \u00a39,499 per year": "\u00a35,000 to \u00a39,999 per year",
+      "\u00a39,500 to \u00a311,499 per year": "\u00a39,500 to \u00a311,499 per year",
+      "\u00a311,500 to \u00a313,499 per year": "\u00a310,000 to \u00a314,999 per year",
+      "\u00a313,500 to \u00a315,499 per year": "\u00a313,500 to \u00a315,499 per year",
+      "\u00a315,500 to \u00a317,499 per year": "\u00a315,000 to \u00a319,999 per year",
+      "\u00a317,500 to \u00a324,999 per year": "\u00a317,500 to \u00a324,999 per year",
+      "\u00a325,000 to \u00a329,999 per year": "\u00a325,000 to \u00a329,999 per year",
+      "\u00a330,000 to \u00a339,999 per year": "\u00a330,000 to \u00a339,999 per year",
+      "\u00a340,000 to \u00a349,999 per year": "\u00a340,000 to \u00a349,999 per year",
+      "\u00a350,000 to \u00a374,999 per year": "\u00a350,000 to \u00a374,999 per year",
+      "\u00a375,000 to \u00a399,999 per year": "\u00a370,000 to \u00a399,999 per year",
+      "\u00a3100,000 or more per year": "\u00a3100,000 and over (not further distinguished)"
     }
   },
   "_about": [
@@ -174,6 +191,9 @@
     "uk_k7tw5_osf (26 Oct 2026, IMG02): 15 letter bands (A-O) from the k7tw5 protocol's income table, per year.",
     "Arithmetic, no model. A band that sits inside one existing UK band maps to it (a merge). A band that straddles an",
     "existing edge cannot map without splitting it, so it keeps its own label as a canonical value, the same way",
-    "\"\u00a3100,000 and over (not further distinguished)\" entered: no existing scheme is coarsened. Kept as own labels: \u00a34,500 to \u00a36,499 per year; \u00a39,500 to \u00a311,499 per year; \u00a313,500 to \u00a315,499 per year; \u00a317,500 to \u00a324,999 per year; \u00a330,000 to \u00a339,999 per year; \u00a340,000 to \u00a349,999 per year; \u00a350,000 to \u00a374,999 per year."
+    "\"\u00a3100,000 and over (not further distinguished)\" entered: no existing scheme is coarsened. Kept as own labels: \u00a34,500 to \u00a36,499 per year; \u00a39,500 to \u00a311,499 per year; \u00a313,500 to \u00a315,499 per year; \u00a317,500 to \u00a324,999 per year; \u00a330,000 to \u00a339,999 per year; \u00a340,000 to \u00a349,999 per year; \u00a350,000 to \u00a374,999 per year.",
+    "",
+    "uk_pr8zu_osf (28 Oct 2026, IMG01): the alcohol sibling of k7tw5. Its protocol prints the same A-O table (same per-year",
+    "bands, checked against the image), so the mapping is copied. No canonical value added."
   ]
 }

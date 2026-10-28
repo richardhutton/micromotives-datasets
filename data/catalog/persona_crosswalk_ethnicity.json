@@ -126,6 +126,26 @@
    "White and Asian": "Mixed or Multiple ethnic groups",
    "White and Black African": "Mixed or Multiple ethnic groups",
    "White and Black Caribbean": "Mixed or Multiple ethnic groups"
+  },
+  "uk_pr8zu_osf": {
+   "African": "Black, Black British, Caribbean or African",
+   "Any other Asian Background": "Asian or Asian British",
+   "Any other Black/African/Caribbean Background": "Black, Black British, Caribbean or African",
+   "Any other ethnic group": "Other ethnic group",
+   "Any other mixed/multiple ethnic group background": "Mixed or Multiple ethnic groups",
+   "Arab": "Other ethnic group",
+   "Bangladeshi": "Asian or Asian British",
+   "Caribbean": "Black, Black British, Caribbean or African",
+   "Chinese": "Asian or Asian British",
+   "Indian": "Asian or Asian British",
+   "Pakistani": "Asian or Asian British",
+   "White (English/Welsh/Scottish/Northern Irish/British)": "White",
+   "White (Gypsy or Irish Traveller)": "White",
+   "White (Irish)": "White",
+   "White (any other White background)": "White",
+   "White and Asian": "Mixed or Multiple ethnic groups",
+   "White and Black African": "Mixed or Multiple ethnic groups",
+   "White and Black Caribbean": "Mixed or Multiple ethnic groups"
   }
  },
  "_about": [
@@ -157,6 +177,9 @@
   "uk_k7tw5_osf (26 Oct 2026, IMG02): ONS-2011-style detailed labels from the k7tw5 snack warning-label study.",
   "Eleven labels were already mapped by other schemes and keep that mapping; the seven new ones were classified by Jev",
   "(category_concept, confidence 0.78-1.0) and reviewed. Jev flagged \"Any other mixed/multiple ethnic group background\" as",
-  "the residual; overruled, the residual is \"Any other ethnic group\". No canonical value added; no other scheme changed."
+  "the residual; overruled, the residual is \"Any other ethnic group\". No canonical value added; no other scheme changed.",
+  "",
+  "uk_pr8zu_osf (28 Oct 2026, IMG01): the k7tw5 lab's alcohol sibling. Its 18 labels are the same strings as uk_k7tw5_osf's",
+  "(checked by set equality in code), so the mapping is copied and no new judgement was needed. No canonical value added."
  ]
 }

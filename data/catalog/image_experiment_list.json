@@ -3,14 +3,14 @@
     {
       "id": "IMG01",
       "title": "Alcohol warning labels",
-      "description": "Alcohol warning labels: each person sees 1 of 21 image-and-text labels (\"Alcohol causes …\", 7 harms × 3 photos) on beer or wine; rates upset, desire to drink, support (1–7). UK, Dynata, n=5,528. Data and images on OSF; no licence stated.",
+      "description": "Alcohol warning labels: each person sees 1 of 21 image-and-text labels (\"Alcohol causes …\", 7 harms × 3 photos) on beer or wine; rates upset, desire to drink, support (1–7). UK, Dynata, n=5,537 in the deposit (paper 5,528). Data and all 21 label images downloaded to `data/raw/pr8zu/`.",
       "link": "https://osf.io/pr8zu/",
-      "status": "Buildable",
-      "reason": "label images in the OSF deposit",
+      "status": "Built",
+      "reason": "27,683 rows (5,537 people x 5 questions, 42 arms: 21 labels x beer/wine). QC clean; 40 of 42 label means within 0.01 of the paper; independent checker: no blockers. Desire to drink not built: codes 1-5, 8, 9 with no key (asked the authors).",
       "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
-      "rows": null,
-      "recipe": ""
+      "rows": 27683,
+      "recipe": "pr8zu_study1"
     },
     {
       "id": "IMG02",
@@ -18,7 +18,7 @@
       "description": "Snack warning labels: 1 of 18 labels (\"Excess calories cause obesity, which causes …\", 6 harms × 3 photos) on a chocolate bar; same outcomes as IMG01. UK, Dynata, n=4,618 people who eat snacks weekly. Data and all 18 label images downloaded to `data/raw/k7tw5/`; data reproduces the paper.",
       "link": "https://osf.io/k7tw5/",
       "status": "Built",
-      "reason": "27,708 rows (4,618 people x 6 questions, 18 labels). QC clean; all 54 label means match the paper; independent checker: no blockers. Not for training export until the authors say yes.",
+      "reason": "27,708 rows (4,618 people x 6 questions, 18 labels). QC clean; all 54 label means match the paper; independent checker: no blockers.",
       "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": 27708,
@@ -459,10 +459,10 @@
     {
       "id": "IMG39",
       "title": "Health warnings with snack images",
-      "description": "Health warnings with snack images: image+text, image only, text only, none; snack and voucher choice, attitudes. Agency general-population sample, n=1,184 (UK-coded demographics; residence not stated).",
+      "description": "Health warnings with snack images: image+text, image only, text only, none; snack and voucher choice, attitudes. Agency general-population sample, n=1,184 (UK general population, Dynata; Asbridge et al. 2020, Appetite).",
       "link": "https://osf.io/5gecb/",
-      "status": "Buildable",
-      "reason": "15 label images in the deposit",
+      "status": "Needs checking",
+      "reason": "Labels and data ready (15 images extracted; control and image-only arms match the paper exactly). The on-screen wording of the voucher and selection questions is not in the deposit: asking the authors for the Inquisit script.",
       "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,

@@ -5,7 +5,7 @@
     "source": "https://osf.io/k7tw5/ (Study1/Additional File Food HWLs.docx, embedded image1.jpeg, captioned \"Bowel Cancer 1\")",
     "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
     "text_in_image": "Excess calories cause obesity which causes bowel cancer",
-    "description": "A health warning label: the words \"Excess calories cause obesity which causes bowel cancer\" in black on white, above a photograph of an endoscope view inside a bowel with a large red growth."
+    "description": "A health warning label: the words \"Excess calories cause obesity which causes bowel cancer\" in black on white, above a close-up image of the inside of a bowel with a large red growth."
   },
   "k7tw5_s1_bowel_cancer_2": {
     "file": "raw/k7tw5/labels_s1/image2.jpeg",
@@ -13,7 +13,7 @@
     "source": "https://osf.io/k7tw5/ (Study1/Additional File Food HWLs.docx, embedded image2.jpeg, captioned \"Bowel Cancer 2\")",
     "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
     "text_in_image": "Excess calories cause obesity which causes bowel cancer",
-    "description": "A health warning label: the words \"Excess calories cause obesity which causes bowel cancer\" in black on white, above a photograph of an endoscope view inside a bowel with red tumours along its wall."
+    "description": "A health warning label: the words \"Excess calories cause obesity which causes bowel cancer\" in black on white, above a close-up image of the inside of a bowel with red tumours along its wall."
   },
   "k7tw5_s1_bowel_cancer_3": {
     "file": "raw/k7tw5/labels_s1/image3.jpeg",
@@ -21,7 +21,7 @@
     "source": "https://osf.io/k7tw5/ (Study1/Additional File Food HWLs.docx, embedded image3.jpeg, captioned \"Bowel Cancer 3\")",
     "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
     "text_in_image": "Excess calories cause obesity which causes bowel cancer",
-    "description": "A health warning label: the words \"Excess calories cause obesity which causes bowel cancer\" in black on white, above a photograph of an endoscope view inside a bowel with a dark round growth."
+    "description": "A health warning label: the words \"Excess calories cause obesity which causes bowel cancer\" in black on white, above a close-up image of the inside of a bowel with a dark round growth."
   },
   "k7tw5_s1_nonspecified_cancer_1": {
     "file": "raw/k7tw5/labels_s1/image4.jpeg",
@@ -142,5 +142,173 @@
     "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
     "text_in_image": "Excess calories cause obesity",
     "description": "A health warning label: the words \"Excess calories cause obesity\" in black on white, above a photograph of a close-up of yellow fatty tissue streaked with blood."
+  },
+  "pr8zu_s1_bowel_cancer_1": {
+    "file": "raw/pr8zu/labels_s1/image1.jpeg",
+    "sha256": "8de02030cbe5a3c3bf9f1e3deaa61ff4d63f8f2bcab740d6c0691821e50b827b",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image1.jpeg, captioned \"Bowel Cancer 1\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes bowel cancer",
+    "description": "A health warning label: the words \"Alcohol causes bowel cancer\" in black on white, above a close-up image of the inside of a bowel with large red growths around its wall."
+  },
+  "pr8zu_s1_bowel_cancer_2": {
+    "file": "raw/pr8zu/labels_s1/image2.jpeg",
+    "sha256": "7b9c2f70085e3cc558334e0e4def8a488fa2fed36cb3c5e9186b6af7226f5ddc",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image2.jpeg, captioned \"Bowel Cancer 2\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes bowel cancer",
+    "description": "A health warning label: the words \"Alcohol causes bowel cancer\" in black on white, above a close-up image of the inside of a bowel with a cluster of red growths along its lower wall."
+  },
+  "pr8zu_s1_bowel_cancer_3": {
+    "file": "raw/pr8zu/labels_s1/image3.jpeg",
+    "sha256": "6da37022cdbb489e3d7e0c5b9ab10072f7ce066baea50b7a01f0dc2b6ea36bf9",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image3.jpeg, captioned \"Bowel Cancer 3\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes bowel cancer",
+    "description": "A health warning label: the words \"Alcohol causes bowel cancer\" in black on white, above a close-up image of the inside of a bowel with a dark round growth."
+  },
+  "pr8zu_s1_breast_cancer_1": {
+    "file": "raw/pr8zu/labels_s1/image4.jpeg",
+    "sha256": "1324bb27c75b764a4c72ed715b000d9218452d39b2ab3d8cd226ff2d024fe1e7",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image4.jpeg, captioned \"Breast Cancer 1\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes breast cancer",
+    "description": "A health warning label: the words \"Alcohol causes breast cancer\" in black on white, above a photograph of a chest and underarm crossed by long healed surgical scars."
+  },
+  "pr8zu_s1_breast_cancer_2": {
+    "file": "raw/pr8zu/labels_s1/image5.jpeg",
+    "sha256": "cf86383b23c7cad8de4f780962c03b0abbafe754075d71dbadee930690ea06dd",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image5.jpeg, captioned \"Breast Cancer 2\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes breast cancer",
+    "description": "A health warning label: the words \"Alcohol causes breast cancer\" in black on white, above a photograph of a bare chest with a horizontal surgical scar across it where the breasts would be."
+  },
+  "pr8zu_s1_breast_cancer_3": {
+    "file": "raw/pr8zu/labels_s1/image6.jpeg",
+    "sha256": "2412072b26b09141cb5f552f988c8d52ae9fb1f1a8fb5e2dc42baf83632e6a67",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image6.jpeg, captioned \"Breast Cancer 3\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes breast cancer",
+    "description": "A health warning label: the words \"Alcohol causes breast cancer\" in black on white, above a photograph of a person in a white vest top pulled down to show a surgical scar on her chest."
+  },
+  "pr8zu_s1_liver_cirrhosis_1": {
+    "file": "raw/pr8zu/labels_s1/image7.jpeg",
+    "sha256": "b3559ef5007c019ae6f0802122605b44a26fa4f000b7177146e6e454a3b9072f",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image7.jpeg, captioned \"Liver Cirrhosis 1\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver cirrhosis",
+    "description": "A health warning label: the words \"Alcohol causes liver cirrhosis\" in black on white, above an image of a dark brown liver with a lumpy surface, on white."
+  },
+  "pr8zu_s1_liver_cirrhosis_2": {
+    "file": "raw/pr8zu/labels_s1/image8.jpeg",
+    "sha256": "7a5d43841ac194ef9e3dd3d6ea67f9ddb8058da8c0ebad102c53e9cf969db09c",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image8.jpeg, captioned \"Liver Cirrhosis 2\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver cirrhosis",
+    "description": "A health warning label: the words \"Alcohol causes liver cirrhosis\" in black on white, above a photograph of a discoloured liver with a bumpy surface, on white."
+  },
+  "pr8zu_s1_liver_cirrhosis_3": {
+    "file": "raw/pr8zu/labels_s1/image9.jpeg",
+    "sha256": "53b10eec954a54efaf95aed948301eff1646782bafaa35827748334a07d1fa71",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image9.jpeg, captioned \"Liver Cirrhosis 3\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver cirrhosis",
+    "description": "A health warning label: the words \"Alcohol causes liver cirrhosis\" in black on white, above a photograph of two hands on a white towel, one of them yellowed."
+  },
+  "pr8zu_s1_heart_disease_1": {
+    "file": "raw/pr8zu/labels_s1/image10.jpeg",
+    "sha256": "2ab7fae5f045ad5352a5a98519c555d2c1d0e7fa567e808fd535b2396a2f4805",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image10.jpeg, captioned \"Heart Disease 1\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes heart disease",
+    "description": "A health warning label: the words \"Alcohol causes heart disease\" in black on white, above a photograph of a cut-open artery whose channel is narrowed by yellow fatty deposits."
+  },
+  "pr8zu_s1_heart_disease_2": {
+    "file": "raw/pr8zu/labels_s1/image11.jpeg",
+    "sha256": "15b9c80fbaece87c84b62e9e73251de06f0e653c698057e382fed453ae2dcce8",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image11.jpeg, captioned \"Heart Disease 2\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes heart disease",
+    "description": "A health warning label: the words \"Alcohol causes heart disease\" in black on white, above a photograph of a yellowish heart with a dark red patch, on black."
+  },
+  "pr8zu_s1_heart_disease_3": {
+    "file": "raw/pr8zu/labels_s1/image12.jpeg",
+    "sha256": "16a1e10550f743de16b5d367b74af9b5ea9cbb89721acf20b43cb8ae75f8d4a6",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image12.jpeg, captioned \"Heart Disease 3\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes heart disease",
+    "description": "A health warning label: the words \"Alcohol causes heart disease\" in black on white, above a photograph of open-heart surgery, with clamps and instruments in an exposed chest."
+  },
+  "pr8zu_s1_liver_cancer_1": {
+    "file": "raw/pr8zu/labels_s1/image13.jpeg",
+    "sha256": "4d1f59ace48f4e8849bc574d7bca436f478520fd69c3f14f5349869be379d3be",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image13.jpeg, captioned \"Liver Cancer 1\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver cancer",
+    "description": "A health warning label: the words \"Alcohol causes liver cancer\" in black on white, above an image of a reddish-brown liver with a few dark marks, on white."
+  },
+  "pr8zu_s1_liver_cancer_2": {
+    "file": "raw/pr8zu/labels_s1/image14.jpeg",
+    "sha256": "8b071e10aaf358df4b9a360f546c42925d796e9e38db36a39b9bdf9c1f5534e0",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image14.jpeg, captioned \"Liver Cancer 2\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver cancer",
+    "description": "A health warning label: the words \"Alcohol causes liver cancer\" in black on white, above a photograph of a cut surface of a liver with many pale round tumours, on black."
+  },
+  "pr8zu_s1_liver_cancer_3": {
+    "file": "raw/pr8zu/labels_s1/image15.jpeg",
+    "sha256": "640937276153967e3262bbd8b63ba6adadabde6924aa85e298c129ed7b438e1a",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image15.jpeg, captioned \"Liver Cancer 3\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver cancer",
+    "description": "A health warning label: the words \"Alcohol causes liver cancer\" in black on white, above a photograph of a liver covered in raised pale lumps, on white."
+  },
+  "pr8zu_s1_liver_disease_1": {
+    "file": "raw/pr8zu/labels_s1/image16.jpeg",
+    "sha256": "498989e8fcddd78e404217e0e2a3698097fccac178cd9490b3c8da6650e9cf87",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image16.jpeg, captioned \"Liver Disease 1\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver disease",
+    "description": "A health warning label: the words \"Alcohol causes liver disease\" in black on white, above a photograph of a close-up of a swollen abdomen with stretch marks and a protruding navel."
+  },
+  "pr8zu_s1_liver_disease_2": {
+    "file": "raw/pr8zu/labels_s1/image17.jpeg",
+    "sha256": "aed85364fb408cd98427e8213036a10d18a4a1e915a225db7a6dff7f6f21a505",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image17.jpeg, captioned \"Liver Disease 2\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver disease",
+    "description": "A health warning label: the words \"Alcohol causes liver disease\" in black on white, above a photograph of a man lying down with a greatly swollen abdomen."
+  },
+  "pr8zu_s1_liver_disease_3": {
+    "file": "raw/pr8zu/labels_s1/image18.jpeg",
+    "sha256": "955eda280c4ef89bfeae8ccaafca48ec7c6865e3f58a59259c5c5ebd5ae005a0",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image18.jpeg, captioned \"Liver Disease 3\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes liver disease",
+    "description": "A health warning label: the words \"Alcohol causes liver disease\" in black on white, above a photograph of a shirtless man with a large swollen belly, against a green background."
+  },
+  "pr8zu_s1_7_types_of_cancer_1": {
+    "file": "raw/pr8zu/labels_s1/image19.jpeg",
+    "sha256": "b1b2a8acd83ec0eb47ebdb4885c26ebf5e70a528f67626a0c3d7150b5ef7a1e2",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image19.jpeg, captioned \"7 Types Cancer 1\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes 7 types of cancer",
+    "description": "A health warning label: the words \"Alcohol causes 7 types of cancer\" in black on white, above a photograph of surgeons' gloved hands with instruments over an open surgical wound."
+  },
+  "pr8zu_s1_7_types_of_cancer_2": {
+    "file": "raw/pr8zu/labels_s1/image20.jpeg",
+    "sha256": "e59905fc36d87f1a0c35dbef8ff3dfe4d2f809c523f8a62fd4333b2897d9146c",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image20.jpeg, captioned \"7 Types Cancer 2\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes 7 types of cancer",
+    "description": "A health warning label: the words \"Alcohol causes 7 types of cancer\" in black on white, above a photograph of a patient in a hospital gown sitting in a chair with drip bags on their lap and tubes attached."
+  },
+  "pr8zu_s1_7_types_of_cancer_3": {
+    "file": "raw/pr8zu/labels_s1/image21.jpeg",
+    "sha256": "7f04a38d451083d67b152f4d76529a3de98e8ee1edbca258a20626ea5fd04a2d",
+    "source": "https://osf.io/pr8zu/ (Study 1/Additional File Alcohol HWLs.docx, embedded image21.jpeg, captioned \"7 Types Cancer 3\")",
+    "licence": "None stated on OSF. Permission granted by the authors for research use (see data/catalog/image_contacts.json, hollands).",
+    "text_in_image": "Alcohol causes 7 types of cancer",
+    "description": "A health warning label: the words \"Alcohol causes 7 types of cancer\" in black on white, above a photograph of surgeons' gloved hands with instruments over an open surgical wound, a different photograph from label 1."
   }
 }

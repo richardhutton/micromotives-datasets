@@ -1,0 +1,655 @@
+study_id: pr8zu
+source: osf
+experiment: study1
+title: 'Pictorial health warning labels on beer or wine: 21 labels (7 harms x 3 photographs)'
+data_file: Full dataset alcohol labelling study 1.xlsx
+licence: none stated (OSF deposit pr8zu). Permission granted by the authors for research use (data/catalog/image_contacts.json,
+  hollands).
+comparable_to_socsci210: false
+participant_id_var: Participant ID
+notes: "Write recipes/images/pr8zu_study1.yaml: alcohol health warning labels (IMG01).\n\nClarke, Pechey,\
+  \ Hollands et al., Cambridge: \"The impact of health warning labels\non alcohol selection: two online\
+  \ experimental studies\", OSF pr8zu, Study 1. Results\nin Pechey et al. 2020, BMC Public Health 20:376\
+  \ (PMC7114781), Table 3. The\nsibling of IMG02 (k7tw5, snacks): same lab, same design, same paper.\n\
+  \nUK adults who drink beer or wine at least weekly were asked which they prefer;\neach then saw \"an\
+  \ image of beer or wine (depending on preference) accompanied by\none of 21 different pictorial HWLs\"\
+  \ (protocol v1.7, Study 1 procedure) and rated\nit. The deposit holds 5,537 people; the paper reports\
+  \ 5,528.\n\nEvery judgement is here, in code, so the recipe can be re-derived and reviewed:\n\n* ARMS.\
+  \ Two columns jointly define what a person saw. `Label Condition` (text,\n  \"Bowel cancer 2\"; coded\
+  \ like a .sav by `sources.excel`) is the randomised label:\n  7 harms x 3 photographs. `Which alcohol\
+  \ do you prefer?` (Beer/Wine) is NOT\n  randomised, but the protocol says it decided which drink the\
+  \ label was shown on,\n  so it is part of the condition and a factor: 21 x 2 = 42 arms, every code looked\n\
+  \  up BY LABEL. The images were matched to captions by document order in\n  \"Additional File Alcohol\
+  \ HWLs.docx\" (each caption sits below its image), and\n  every caption was read against the words printed\
+  \ on its image. The per-label\n  means reproduce the paper's Table 3 under the same names (Bowel Cancer\
+  \ 1 highest\n  arousal, 4.76 vs 4.77; Breast Cancer 3 lowest, 3.65 vs 3.65; Bowel Cancer 1 least\n \
+  \ supported, 3.50 vs 3.51), which ties the data's label names to the paper's.\n  Which photograph is\
+  \ which within a harm rests on the caption order alone.\n  Because the drink follows preference, the\
+  \ `drink` factor equals the persona's\n  alcohol preference for every participant: it is not a randomised\
+  \ contrast.\n* CONDITION. The protocol calls the drink \"an image of an alcoholic beverage\n  (either\
+  \ beer or wine)\"; the deposit does not hold that picture, nor the brand,\n  so the text says which\
+  \ drink it was and the image is the label alone. The words\n  on the label are quoted word-for-word.\
+  \ \"The drink is beer.\" / \"The drink is\n  wine.\" are our words, true for every row in their arm.\n\
+  * OUTCOMES. Wording and endpoint labels from the protocol's Appendix 1, Study 1.\n  The arousal items\
+  \ say \"the label on this bottle\" for beer and wine alike; that\n  is the protocol's wording and is\
+  \ kept. Support is listed a (Strongly support) ..\n  g (Strongly oppose) but the deposit holds it \"\
+  scored 1-7\"; the paper classes\n  ratings above 4 as acceptable and reports the bowel-cancer labels\
+  \ least\n  acceptable, and in the deposit people answering 7 have the highest arousal\n  (mean 5.09\
+  \ against 3.73 at 1) and the lowest AUDIT score, so 7 = Strongly\n  support. A judgement: flagged for\
+  \ the checker. One `uncomfortable` cell holds\n  only spaces; `sources.excel` reads it as blank and\
+  \ the row is dropped.\n* DESIRE TO DRINK IS NOT BUILT. \"How much do you want to drink this wine/beer\n\
+  \  right now?\" is stored as codes 1, 2, 3, 4, 5, 8, 9: seven answers, no 6 or 7.\n  The paper's means\
+  \ (e.g. Breast Cancer 3, 3.73) are the means of those raw codes,\n  so the paper averaged an 8 and a\
+  \ 9 on a 7-point scale and cannot say which code\n  is which point. The deposit cannot either: drinking\
+  \ measures rise with code from\n  1 to 4, then run 9 < 8 ~ 5 (AUDIT Q2 1.25, 1.40, 1.68, 1.76; median\
+  \ units 14,\n  18, 29, 28), which suggests the order 1,2,3,4,9,8,5 rather than 1..5,8,9. No\n  mapping\
+  \ is supported by the source, so none is written (Never fabricate).\n  Recoverable if the authors confirm\
+  \ their Qualtrics coding.\n* PERSONA. The income key is a table image in the protocol\n  (data/raw/pr8zu/protocol_media/image4.jpeg),\
+  \ identical to k7tw5's; transcribed\n  below per year. Education's Bachelor label is mis-encoded in\
+  \ the deposit\n  (\"Bachelorâ€™s\"); restored to the protocol's own curly apostrophe. Education is\n\
+  \  blank for 235 people; the protocol offered \"None\" and \"Prefer not to say\" and\n  the data has\
+  \ neither as a label, so a blank MAY mean no qualifications. Left\n  absent rather than guessed. The\
+  \ three AUDIT-C answers and the drink preference\n  are mapped as recorded. NOT mapped: BMI (unrounded\
+  \ floats, as in k7tw5), weekly\n  units consumed and purchased (unrounded floats to 4 dp), the AUDIT\
+  \ scores and\n  `Ethnicity Code` (derived from mapped answers), `Date`, and `Health condition\n  group`\
+  \ (an Excel fill-down artefact: \"Bowel cancer\" ... then \"7 types of\n  cancer\", \"8 types of cancer\"\
+  , ... \"800 types of cancer\").\n* PHOTO is a factor (1-3 within each harm), expressed only by the picture:\
+  \ the\n  three photographs of a harm share their words. QC rules 1 and 5 compare words\n  AND images.\
+  \ Split on condition_num or the image id, never the condition string.\n\n    uv run python scripts/gen_pr8zu_study1.py\
+  \            # write the recipe\n    uv run python scripts/gen_pr8zu_study1.py --check    # exit 1 if\
+  \ it differs"
+condition:
+  source_vars:
+  - Label Condition
+  - Which alcohol do you prefer?
+  factors:
+  - harm
+  - photo
+  - drink
+  shared_context: You are shown a picture of an alcoholic drink accompanied by a health warning label.
+  arms:
+  - raw_values:
+      Label Condition: 4
+      Which alcohol do you prefer?: 1
+    condition_num: 0
+    factors:
+      harm: bowel cancer
+      photo: '1'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes bowel cancer". <image>'
+    images:
+    - pr8zu_s1_bowel_cancer_1
+  - raw_values:
+      Label Condition: 4
+      Which alcohol do you prefer?: 2
+    condition_num: 1
+    factors:
+      harm: bowel cancer
+      photo: '1'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes bowel cancer". <image>'
+    images:
+    - pr8zu_s1_bowel_cancer_1
+  - raw_values:
+      Label Condition: 5
+      Which alcohol do you prefer?: 1
+    condition_num: 2
+    factors:
+      harm: bowel cancer
+      photo: '2'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes bowel cancer". <image>'
+    images:
+    - pr8zu_s1_bowel_cancer_2
+  - raw_values:
+      Label Condition: 5
+      Which alcohol do you prefer?: 2
+    condition_num: 3
+    factors:
+      harm: bowel cancer
+      photo: '2'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes bowel cancer". <image>'
+    images:
+    - pr8zu_s1_bowel_cancer_2
+  - raw_values:
+      Label Condition: 6
+      Which alcohol do you prefer?: 1
+    condition_num: 4
+    factors:
+      harm: bowel cancer
+      photo: '3'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes bowel cancer". <image>'
+    images:
+    - pr8zu_s1_bowel_cancer_3
+  - raw_values:
+      Label Condition: 6
+      Which alcohol do you prefer?: 2
+    condition_num: 5
+    factors:
+      harm: bowel cancer
+      photo: '3'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes bowel cancer". <image>'
+    images:
+    - pr8zu_s1_bowel_cancer_3
+  - raw_values:
+      Label Condition: 7
+      Which alcohol do you prefer?: 1
+    condition_num: 6
+    factors:
+      harm: breast cancer
+      photo: '1'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes breast cancer". <image>'
+    images:
+    - pr8zu_s1_breast_cancer_1
+  - raw_values:
+      Label Condition: 7
+      Which alcohol do you prefer?: 2
+    condition_num: 7
+    factors:
+      harm: breast cancer
+      photo: '1'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes breast cancer". <image>'
+    images:
+    - pr8zu_s1_breast_cancer_1
+  - raw_values:
+      Label Condition: 8
+      Which alcohol do you prefer?: 1
+    condition_num: 8
+    factors:
+      harm: breast cancer
+      photo: '2'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes breast cancer". <image>'
+    images:
+    - pr8zu_s1_breast_cancer_2
+  - raw_values:
+      Label Condition: 8
+      Which alcohol do you prefer?: 2
+    condition_num: 9
+    factors:
+      harm: breast cancer
+      photo: '2'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes breast cancer". <image>'
+    images:
+    - pr8zu_s1_breast_cancer_2
+  - raw_values:
+      Label Condition: 9
+      Which alcohol do you prefer?: 1
+    condition_num: 10
+    factors:
+      harm: breast cancer
+      photo: '3'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes breast cancer". <image>'
+    images:
+    - pr8zu_s1_breast_cancer_3
+  - raw_values:
+      Label Condition: 9
+      Which alcohol do you prefer?: 2
+    condition_num: 11
+    factors:
+      harm: breast cancer
+      photo: '3'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes breast cancer". <image>'
+    images:
+    - pr8zu_s1_breast_cancer_3
+  - raw_values:
+      Label Condition: 16
+      Which alcohol do you prefer?: 1
+    condition_num: 12
+    factors:
+      harm: liver cirrhosis
+      photo: '1'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver cirrhosis". <image>'
+    images:
+    - pr8zu_s1_liver_cirrhosis_1
+  - raw_values:
+      Label Condition: 16
+      Which alcohol do you prefer?: 2
+    condition_num: 13
+    factors:
+      harm: liver cirrhosis
+      photo: '1'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver cirrhosis". <image>'
+    images:
+    - pr8zu_s1_liver_cirrhosis_1
+  - raw_values:
+      Label Condition: 17
+      Which alcohol do you prefer?: 1
+    condition_num: 14
+    factors:
+      harm: liver cirrhosis
+      photo: '2'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver cirrhosis". <image>'
+    images:
+    - pr8zu_s1_liver_cirrhosis_2
+  - raw_values:
+      Label Condition: 17
+      Which alcohol do you prefer?: 2
+    condition_num: 15
+    factors:
+      harm: liver cirrhosis
+      photo: '2'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver cirrhosis". <image>'
+    images:
+    - pr8zu_s1_liver_cirrhosis_2
+  - raw_values:
+      Label Condition: 18
+      Which alcohol do you prefer?: 1
+    condition_num: 16
+    factors:
+      harm: liver cirrhosis
+      photo: '3'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver cirrhosis". <image>'
+    images:
+    - pr8zu_s1_liver_cirrhosis_3
+  - raw_values:
+      Label Condition: 18
+      Which alcohol do you prefer?: 2
+    condition_num: 17
+    factors:
+      harm: liver cirrhosis
+      photo: '3'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver cirrhosis". <image>'
+    images:
+    - pr8zu_s1_liver_cirrhosis_3
+  - raw_values:
+      Label Condition: 10
+      Which alcohol do you prefer?: 1
+    condition_num: 18
+    factors:
+      harm: heart disease
+      photo: '1'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes heart disease". <image>'
+    images:
+    - pr8zu_s1_heart_disease_1
+  - raw_values:
+      Label Condition: 10
+      Which alcohol do you prefer?: 2
+    condition_num: 19
+    factors:
+      harm: heart disease
+      photo: '1'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes heart disease". <image>'
+    images:
+    - pr8zu_s1_heart_disease_1
+  - raw_values:
+      Label Condition: 11
+      Which alcohol do you prefer?: 1
+    condition_num: 20
+    factors:
+      harm: heart disease
+      photo: '2'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes heart disease". <image>'
+    images:
+    - pr8zu_s1_heart_disease_2
+  - raw_values:
+      Label Condition: 11
+      Which alcohol do you prefer?: 2
+    condition_num: 21
+    factors:
+      harm: heart disease
+      photo: '2'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes heart disease". <image>'
+    images:
+    - pr8zu_s1_heart_disease_2
+  - raw_values:
+      Label Condition: 12
+      Which alcohol do you prefer?: 1
+    condition_num: 22
+    factors:
+      harm: heart disease
+      photo: '3'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes heart disease". <image>'
+    images:
+    - pr8zu_s1_heart_disease_3
+  - raw_values:
+      Label Condition: 12
+      Which alcohol do you prefer?: 2
+    condition_num: 23
+    factors:
+      harm: heart disease
+      photo: '3'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes heart disease". <image>'
+    images:
+    - pr8zu_s1_heart_disease_3
+  - raw_values:
+      Label Condition: 13
+      Which alcohol do you prefer?: 1
+    condition_num: 24
+    factors:
+      harm: liver cancer
+      photo: '1'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver cancer". <image>'
+    images:
+    - pr8zu_s1_liver_cancer_1
+  - raw_values:
+      Label Condition: 13
+      Which alcohol do you prefer?: 2
+    condition_num: 25
+    factors:
+      harm: liver cancer
+      photo: '1'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver cancer". <image>'
+    images:
+    - pr8zu_s1_liver_cancer_1
+  - raw_values:
+      Label Condition: 14
+      Which alcohol do you prefer?: 1
+    condition_num: 26
+    factors:
+      harm: liver cancer
+      photo: '2'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver cancer". <image>'
+    images:
+    - pr8zu_s1_liver_cancer_2
+  - raw_values:
+      Label Condition: 14
+      Which alcohol do you prefer?: 2
+    condition_num: 27
+    factors:
+      harm: liver cancer
+      photo: '2'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver cancer". <image>'
+    images:
+    - pr8zu_s1_liver_cancer_2
+  - raw_values:
+      Label Condition: 15
+      Which alcohol do you prefer?: 1
+    condition_num: 28
+    factors:
+      harm: liver cancer
+      photo: '3'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver cancer". <image>'
+    images:
+    - pr8zu_s1_liver_cancer_3
+  - raw_values:
+      Label Condition: 15
+      Which alcohol do you prefer?: 2
+    condition_num: 29
+    factors:
+      harm: liver cancer
+      photo: '3'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver cancer". <image>'
+    images:
+    - pr8zu_s1_liver_cancer_3
+  - raw_values:
+      Label Condition: 19
+      Which alcohol do you prefer?: 1
+    condition_num: 30
+    factors:
+      harm: liver disease
+      photo: '1'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver disease". <image>'
+    images:
+    - pr8zu_s1_liver_disease_1
+  - raw_values:
+      Label Condition: 19
+      Which alcohol do you prefer?: 2
+    condition_num: 31
+    factors:
+      harm: liver disease
+      photo: '1'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver disease". <image>'
+    images:
+    - pr8zu_s1_liver_disease_1
+  - raw_values:
+      Label Condition: 20
+      Which alcohol do you prefer?: 1
+    condition_num: 32
+    factors:
+      harm: liver disease
+      photo: '2'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver disease". <image>'
+    images:
+    - pr8zu_s1_liver_disease_2
+  - raw_values:
+      Label Condition: 20
+      Which alcohol do you prefer?: 2
+    condition_num: 33
+    factors:
+      harm: liver disease
+      photo: '2'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver disease". <image>'
+    images:
+    - pr8zu_s1_liver_disease_2
+  - raw_values:
+      Label Condition: 21
+      Which alcohol do you prefer?: 1
+    condition_num: 34
+    factors:
+      harm: liver disease
+      photo: '3'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes liver disease". <image>'
+    images:
+    - pr8zu_s1_liver_disease_3
+  - raw_values:
+      Label Condition: 21
+      Which alcohol do you prefer?: 2
+    condition_num: 35
+    factors:
+      harm: liver disease
+      photo: '3'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes liver disease". <image>'
+    images:
+    - pr8zu_s1_liver_disease_3
+  - raw_values:
+      Label Condition: 1
+      Which alcohol do you prefer?: 1
+    condition_num: 36
+    factors:
+      harm: 7 types of cancer
+      photo: '1'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes 7 types of cancer". <image>'
+    images:
+    - pr8zu_s1_7_types_of_cancer_1
+  - raw_values:
+      Label Condition: 1
+      Which alcohol do you prefer?: 2
+    condition_num: 37
+    factors:
+      harm: 7 types of cancer
+      photo: '1'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes 7 types of cancer". <image>'
+    images:
+    - pr8zu_s1_7_types_of_cancer_1
+  - raw_values:
+      Label Condition: 2
+      Which alcohol do you prefer?: 1
+    condition_num: 38
+    factors:
+      harm: 7 types of cancer
+      photo: '2'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes 7 types of cancer". <image>'
+    images:
+    - pr8zu_s1_7_types_of_cancer_2
+  - raw_values:
+      Label Condition: 2
+      Which alcohol do you prefer?: 2
+    condition_num: 39
+    factors:
+      harm: 7 types of cancer
+      photo: '2'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes 7 types of cancer". <image>'
+    images:
+    - pr8zu_s1_7_types_of_cancer_2
+  - raw_values:
+      Label Condition: 3
+      Which alcohol do you prefer?: 1
+    condition_num: 40
+    factors:
+      harm: 7 types of cancer
+      photo: '3'
+      drink: beer
+    text: 'The drink is beer. The label reads: "Alcohol causes 7 types of cancer". <image>'
+    images:
+    - pr8zu_s1_7_types_of_cancer_3
+  - raw_values:
+      Label Condition: 3
+      Which alcohol do you prefer?: 2
+    condition_num: 41
+    factors:
+      harm: 7 types of cancer
+      photo: '3'
+      drink: wine
+    text: 'The drink is wine. The label reads: "Alcohol causes 7 types of cancer". <image>'
+    images:
+    - pr8zu_s1_7_types_of_cancer_3
+outcomes:
+- var: N.E.A 'afraid' (1-7)
+  task_num: 0
+  question: How afraid does the label on this bottle make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all afraid
+    max_label: Very afraid
+- var: N.E.A 'worried' (1-7)
+  task_num: 1
+  question: How worried does the label on this bottle make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all worried
+    max_label: Very worried
+- var: N.E.A 'uncomfortable' (1-7)
+  task_num: 2
+  question: How uncomfortable does the label on this bottle make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all uncomfortable
+    max_label: Very uncomfortable
+- var: N.E.A 'disgusted' (1-7)
+  task_num: 3
+  question: How disgusted does the label on this bottle make you feel?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all disgusted
+    max_label: Very disgusted
+- var: Acceptability (scored 1-7)
+  task_num: 4
+  question: Do you support or oppose putting this label on alcohol?
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly oppose
+    max_label: Strongly support
+    mid_label: Neither oppose nor support
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+missing_codes:
+- -888
+- -999
+persona_map:
+  age: How old are you?
+  gender: Gender
+  ethnicity: Ethnicity
+  education: 'What is
+
+    the highest grade or level of school that you have completed, or the highest
+
+    degree you have received?'
+  income: 'Please select the letter for the row in which
+
+    you would place your total household income per year, from all sources, before
+
+    tax and other deductions'
+  alcohol_preference: Which alcohol do you prefer?
+  how_often_has_a_drink_containing_alcohol: 'AUDIT Q1: How often do you have a drink containing alcohol?'
+  units_of_alcohol_on_a_typical_day_when_drinking: 'AUDIT Q2: How many units of alcohol do you drink on
+    a typical day when you are drinking?'
+  how_often_6_or_more_units_if_female_or_8_or_more_if_male_on_a_single_occasion_in_the_last_year: 'AUDIT
+    Q3: How often have you drunk 6 or more units (if female) or 8 or more units (if male), on a single
+    occasion in the last year?'
+persona_missing:
+  Gender:
+  - -888
+  - -999
+  Ethnicity:
+  - -888
+  - -999
+  ? 'What is
+
+    the highest grade or level of school that you have completed, or the highest
+
+    degree you have received?'
+  : - -888
+    - -999
+  ? 'Please select the letter for the row in which
+
+    you would place your total household income per year, from all sources, before
+
+    tax and other deductions'
+  : - -888
+    - -999
+persona_label_rewrite:
+  ? 'Please select the letter for the row in which
+
+    you would place your total household income per year, from all sources, before
+
+    tax and other deductions'
+  : 1: up to £4,499 per year
+    2: £4,500 to £6,499 per year
+    3: £6,500 to £7,499 per year
+    4: £7,500 to £9,499 per year
+    5: £9,500 to £11,499 per year
+    6: £11,500 to £13,499 per year
+    7: £13,500 to £15,499 per year
+    8: £15,500 to £17,499 per year
+    9: £17,500 to £24,999 per year
+    10: £25,000 to £29,999 per year
+    11: £30,000 to £39,999 per year
+    12: £40,000 to £49,999 per year
+    13: £50,000 to £74,999 per year
+    14: £75,000 to £99,999 per year
+    15: £100,000 or more per year
+  ? 'What is
+
+    the highest grade or level of school that you have completed, or the highest
+
+    degree you have received?'
+  : 3: Bachelor’s degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher
+      level or equivalent)

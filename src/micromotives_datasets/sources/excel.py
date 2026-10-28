@@ -25,6 +25,12 @@ Two details the k7tw5 file forced:
   code, unlabelled, so the recipe's `missing_codes` sees exactly the source's -888
   and nothing is relabelled.
 
+One the `pr8zu` file (alcohol labels) forced: a cell holding only spaces. Its
+`N.E.A 'uncomfortable'` column is 1..7 except one cell of nothing but spaces, which made
+the column "text" and its digits collide with the codes for that text. A cell of
+nothing but whitespace is an empty cell, so it is read as blank; a column left
+with only numbers is then numeric again and passes through like any other.
+
 Purely numeric columns pass through untouched.
 """
 
@@ -42,6 +48,10 @@ SUFFIXES = {".xlsx"}
 
 def _is_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _is_blank(value: Any) -> bool:
+    return isinstance(value, str) and not value.strip()
 
 
 def _encode(column: pd.Series) -> tuple[pd.Series, dict[float, str]]:
@@ -73,6 +83,10 @@ def read(path: str | Path, *, sheet: str | int = 0) -> Dataset:
     df = pd.read_excel(Path(path), sheet_name=sheet)
     value_labels: dict[str, dict[float, str]] = {}
     for col in df.columns:
+        if not pd.api.types.is_numeric_dtype(df[col]) and any(_is_blank(v) for v in df[col]):
+            # A cell holding only spaces is an empty cell that was typed into,
+            # not an answer: blank it, so a numeric column stays numeric.
+            df[col] = df[col].map(lambda v: None if _is_blank(v) else v)
         if not pd.api.types.is_numeric_dtype(df[col]) and any(
             not _is_number(v) for v in df[col].dropna()
         ):
