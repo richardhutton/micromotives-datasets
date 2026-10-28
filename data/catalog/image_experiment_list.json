@@ -7,7 +7,7 @@
       "link": "https://osf.io/pr8zu/",
       "status": "Buildable",
       "reason": "label images in the OSF deposit",
-      "permission": "Asked",
+      "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
       "recipe": ""
@@ -15,11 +15,11 @@
     {
       "id": "IMG02",
       "title": "Snack warning labels",
-      "description": "Snack warning labels: 1 of 18 labels (\"Excess calories cause obesity, which causes …\", 6 harms × 3 photos) on a chocolate bar; same outcomes as IMG01. UK, Dynata, n=4,618 people who eat snacks weekly. Data and all 18 label images downloaded to `data/raw/osf_k7tw5/`; data reproduces the paper.",
+      "description": "Snack warning labels: 1 of 18 labels (\"Excess calories cause obesity, which causes …\", 6 harms × 3 photos) on a chocolate bar; same outcomes as IMG01. UK, Dynata, n=4,618 people who eat snacks weekly. Data and all 18 label images downloaded to `data/raw/k7tw5/`; data reproduces the paper.",
       "link": "https://osf.io/k7tw5/",
       "status": "Built",
       "reason": "27,708 rows (4,618 people x 6 questions, 18 labels). QC clean; all 54 label means match the paper; independent checker: no blockers. Not for training export until the authors say yes.",
-      "permission": "Asked",
+      "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": 27708,
       "recipe": "k7tw5_study1"
@@ -31,7 +31,7 @@
       "link": "https://osf.io/pr8zu/",
       "status": "Buildable",
       "reason": "stimuli document in the OSF deposit",
-      "permission": "Asked",
+      "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
       "recipe": ""
@@ -259,7 +259,7 @@
       "link": "https://osf.io/h6bzx/",
       "status": "Waiting for images",
       "reason": "images not in the deposit; asked the authors",
-      "permission": "Asked",
+      "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
       "recipe": ""
@@ -283,7 +283,7 @@
       "link": "https://osf.io/w5xf8/",
       "status": "Waiting for images",
       "reason": "images not in the deposit; asked the authors",
-      "permission": "Asked",
+      "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
       "recipe": ""
@@ -463,7 +463,7 @@
       "link": "https://osf.io/5gecb/",
       "status": "Buildable",
       "reason": "15 label images in the deposit",
-      "permission": "Asked",
+      "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
       "recipe": ""
@@ -475,7 +475,7 @@
       "link": "https://osf.io/xsfev/",
       "status": "Waiting for images",
       "reason": "images not in the deposit; asked the authors",
-      "permission": "Asked",
+      "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
       "recipe": ""
