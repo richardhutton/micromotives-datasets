@@ -222,7 +222,7 @@ def attach_row_counts(data: dict) -> None:
             sizes[(str(sid), None if pd.isna(exp) else str(exp))] = int(n)
     splits = ROOT / "data" / "catalog" / "splits"
     study_of = json.loads((splits / "study_of_recipe.json").read_text())
-    unseen = set(json.loads((splits / "participant_mapping.json").read_text())["unseen"])
+    unseen = set(json.loads((splits / "studies_mapping.json").read_text())["unseen"])
     excluded = set(json.loads((splits / "excluded.json").read_text()))
     named = set()
     for r in data["rows"]:

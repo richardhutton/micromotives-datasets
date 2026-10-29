@@ -348,11 +348,25 @@ difference rather than widening the tolerance to swallow it. `QQM5MC`'s N is
 exactly two below the paper's because we drop a doubly-routed respondent the
 authors count twice, so the script checks for `published - 2` and says why.
 
+## Split files are named for what they hold out
+
+rich, 29 Oct 2026. Our split files keep SocSci210's JSON formats but not its names,
+where "participant" names a split of studies and "task" an outcome:
+
+| Ours | SocSci210 | Holds out |
+|---|---|---|
+| `studies_mapping.json` | `participant_mapping.json` | whole studies |
+| `condition_mapping.json` | `condition_mapping.json` (same) | 25% of conditions per experiment |
+| `outcome_mapping.json` | `task_mapping.json` | 25% of outcomes per experiment |
+
+Code written for SocSci210's files runs on ours after a rename. Exports from v2 on are
+named by split (`exports/v2/studies/`); v1's `participant` folders stay as made.
+
 ## Unseen studies (the held-out test split)
 
-rich, 12 Oct 2026. `data/catalog/splits/participant_mapping.json`, made by
+rich, 12 Oct 2026. `data/catalog/splits/studies_mapping.json`, made by
 `scripts/make_splits.py` and checked by `tests/test_splits.py`. Same format as
-SocSci210's file of that name: `{"seen": [study], "unseen": [study]}`.
+SocSci210's `participant_mapping.json`: `{"seen": [study], "unseen": [study]}`.
 `study_of_recipe.json` maps every recipe to its study.
 
 - **A study is held out whole.** TESS and Dataverse: the study id, as SocSci210.
@@ -374,7 +388,7 @@ SocSci210's file of that name: `{"seen": [study], "unseen": [study]}`.
   a test checks that. Now 68 studies: 55 seen, 13 unseen.
 - The split changes only by a new ruling here. Never redraw to improve a result.
 
-## Hidden conditions and outcomes (condition_mapping.json, task_mapping.json)
+## Hidden conditions and outcomes (condition_mapping.json, outcome_mapping.json)
 
 rich, 12 Oct 2026. SocSci210's second and third tests: can the model predict a condition,
 or a question, it never trained on? Made by `scripts/make_splits.py`, checked by
@@ -387,7 +401,7 @@ or a question, it never trained on? Made by `scripts/make_splits.py`, checked by
   joined with any other number that shares its text. A question asked about five profiles
   in turn is five task numbers and one wording, so one unit; a sequence of messages can
   show one text under several condition numbers. Hiding a number alone would leave its
-  text in training (first draw: 39% of task_mapping's eval rows, 0.7% of
+  text in training (first draw: 39% of outcome_mapping's eval rows, 0.7% of
   condition_mapping's, found before use and fixed the same day).
 - Only experiments with 4 or more units; a quarter of them (rounded half up, at least
   one) hidden whole, drawn from a seed of the experiment's own name ("task:" added for

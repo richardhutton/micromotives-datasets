@@ -1,7 +1,7 @@
 """Write a versioned train/eval export for the training project.
 
-    uv run python scripts/export.py v1 participant
-    uv run python scripts/export.py v1 participant --without-ukds   # for cloud / the repo
+    uv run python scripts/export.py v2 studies
+    uv run python scripts/export.py v2 studies --without-ukds   # for cloud / the repo
 
 Writes data/processed/exports/<version>/<split>/ (gitignored: respondent rows):
 
@@ -9,8 +9,9 @@ Writes data/processed/exports/<version>/<split>/ (gitignored: respondent rows):
     eval.parquet     rows of the unseen studies
     manifest.json    what went in: counts, file hashes, the split file's hash, git commit
 
-Only the participant split (unseen studies, data/catalog/splits/participant_mapping.json)
-for now; rich, 12 Oct 2026. Excluded studies are in neither file. A version is never
+Only the unseen-studies split (data/catalog/splits/studies_mapping.json) for now; rich,
+12 Oct 2026. Exports v1 were written before the rename (29 Oct 2026) and keep their
+folder name, `participant`. Excluded studies are in neither file. A version is never
 overwritten: a changed row or split makes a new version, so "trained on export vN"
 always names the same rows.
 """
@@ -80,7 +81,7 @@ def _git_commit() -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("version")
-    parser.add_argument("split", choices=["participant"])
+    parser.add_argument("split", choices=["studies"])
     parser.add_argument(
         "--without-ukds",
         action="store_true",
@@ -93,7 +94,7 @@ def main() -> None:
     if out.exists():
         sys.exit(f"{out} exists: a version is never overwritten; use a new version")
 
-    mapping_file = SPLITS / "participant_mapping.json"
+    mapping_file = SPLITS / "studies_mapping.json"
     mapping = json.loads(mapping_file.read_text())
     rows = all_rows()
     if args.without_ukds:

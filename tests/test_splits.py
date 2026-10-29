@@ -14,7 +14,7 @@ assert _spec and _spec.loader
 make_splits = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(make_splits)
 
-MAPPING = json.loads((SPLITS / "participant_mapping.json").read_text())
+MAPPING = json.loads((SPLITS / "studies_mapping.json").read_text())
 STUDY_OF = json.loads((SPLITS / "study_of_recipe.json").read_text())
 
 

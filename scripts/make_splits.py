@@ -1,9 +1,11 @@
-"""Make the held-out splits, in SocSci210's metadata formats.
+"""Make the held-out splits, in SocSci210's metadata formats under our own names.
 
-participant_mapping.json: which studies are held out from training entirely.
-condition_mapping.json: within each experiment, which rows are held out because their
+studies_mapping.json (SocSci210: participant_mapping.json): which studies are held out
+from training entirely.
+condition_mapping.json (as SocSci210): within each experiment, which rows are held out because their
 condition is (see "Hidden conditions" below).
-task_mapping.json: the same, for outcomes (questions) instead of conditions.
+outcome_mapping.json (SocSci210: task_mapping.json): the same, for outcomes instead of
+conditions.
 
     uv run python scripts/make_splits.py          # write data/catalog/splits/
     uv run python scripts/make_splits.py --check  # fail if the files would change
@@ -44,7 +46,7 @@ text under several numbers), so numbers that share any text are hidden together 
 unit, and "conditions" above means these units. The rule this guarantees, and the test
 checks: no text in eval appears in train.
 
-Hidden outcomes (task_mapping.json): the same four steps with the outcome (`task_num`)
+Hidden outcomes (outcome_mapping.json): the same four steps with the outcome (`task_num`)
 in place of the condition (a question asked about five profiles in turn has five task
 numbers and one wording: one unit, so it cannot be hidden from itself), and "task" added to each experiment's seed so its draw is
 independent of the condition draw.
@@ -400,7 +402,7 @@ def rows_by_experiment() -> dict[str, pd.DataFrame]:
 # empty so condition_mapping.json is unchanged from its first draw.
 HIDE = {
     "condition_mapping.json": ("condition_num", "condition", ""),
-    "task_mapping.json": ("task_num", "outcome", "task:"),
+    "outcome_mapping.json": ("task_num", "outcome", "task:"),
 }
 
 
@@ -474,7 +476,7 @@ def outputs() -> dict[str, str]:
     mapping = split(studies)
     recipes = {r: s for s, e in studies.items() for r in e["recipes"]}  # type: ignore[attr-defined]
     files = {
-        "participant_mapping.json": json.dumps(mapping, indent=2) + "\n",
+        "studies_mapping.json": json.dumps(mapping, indent=2) + "\n",
         "excluded.json": json.dumps(dict(sorted(EXCLUDED.items())), indent=2) + "\n",
         "study_of_recipe.json": json.dumps(dict(sorted(recipes.items())), indent=2) + "\n",
     }
@@ -497,7 +499,7 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for name, text in files.items():
         (OUT / name).write_text(text)
-    mapping = json.loads(files["participant_mapping.json"])
+    mapping = json.loads(files["studies_mapping.json"])
     studies = experiments_by_study()
     for side in ("seen", "unseen"):
         per_source: dict[str, int] = defaultdict(int)
