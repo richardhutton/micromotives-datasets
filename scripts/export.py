@@ -20,10 +20,13 @@ folder name, `participant`. Excluded studies are in neither file. A version is n
 overwritten: a changed row or split makes a new version, so "trained on export vN"
 always names the same rows.
 
-`--fraction F` keeps a fraction F of each study's rows, on both sides, drawn with a
-fixed seed, into its own folder (`..._10pct`). It exists to test the training setup
-end to end on a small, quick export (rich, 29 Oct 2026); its scores mean nothing.
-Every study stays on the side the split puts it, so the held-out property is unchanged.
+`--fraction F` keeps a fraction F of each training study's respondents, with all of
+their rows, drawn with a fixed seed, into its own folder (`..._10pct`). eval.parquet
+is always complete. This follows SocSci210 (Kolluri et al., §5.5), which sampled 10% of
+respondents in training only and scored held-out studies in full: sampling eval rows
+leaves most (condition, outcome) pairs with one or two responses, too few to compare
+distributions (micromotives-training LEDGER 5, 29 Oct 2026). Every study stays on the
+side the split puts it, so the held-out property is unchanged.
 """
 
 from __future__ import annotations
@@ -76,20 +79,22 @@ def all_rows() -> pd.DataFrame:
 SAMPLE_SEED = 3407
 
 
-def sample_fraction(frame: pd.DataFrame, fraction: float) -> pd.DataFrame:
-    """A fraction of each study's rows, drawn with a fixed seed, in the original order.
+def sample_respondents(frame: pd.DataFrame, fraction: float) -> pd.DataFrame:
+    """A fraction of each study's respondents with ALL their rows, fixed seed, original order.
 
-    Per study, so every study on a side is still on it and keeps its share; at least
-    one row per study, so a small study is not silently dropped.
+    Per study, so every study keeps its share; at least one respondent per study, so a
+    small study is not silently dropped. Whole respondents, so each one sampled still
+    answers every outcome they answered.
     """
     if not 0 < fraction <= 1:
         raise ValueError(f"fraction must be in (0, 1], got {fraction}")
     keep = []
     for _, rows in frame.groupby("study", sort=True):
-        n = max(1, round(len(rows) * fraction))
-        keep.append(rows.sample(n=n, random_state=SAMPLE_SEED))
-    picked = pd.concat(keep)
-    return frame.loc[frame.index.isin(picked.index)]
+        people = pd.Series(sorted(rows["participant_id"].unique()))
+        n = max(1, round(len(people) * fraction))
+        chosen = set(people.sample(n=n, random_state=SAMPLE_SEED))
+        keep.append(rows.index[rows["participant_id"].isin(chosen)])
+    return frame.loc[frame.index.isin(pd.Index([]).append(keep))]
 
 
 def _sha256(path: Path) -> str:
@@ -121,7 +126,8 @@ def main() -> None:
         "--fraction",
         type=float,
         default=1.0,
-        help="keep this fraction of each study's rows (e.g. 0.1), for a small test export",
+        help="keep this fraction of each training study's respondents (e.g. 0.1), "
+        "for a small test export; eval is always complete",
     )
     args = parser.parse_args()
 
@@ -145,8 +151,7 @@ def main() -> None:
     train = rows[rows["side"] == "train"].drop(columns="side")
     held = rows[rows["side"] == "eval"].drop(columns="side")
     if args.fraction != 1.0:
-        train = sample_fraction(train, args.fraction)
-        held = sample_fraction(held, args.fraction)
+        train = sample_respondents(train, args.fraction)
     if overlap := set(train["study"]) & set(held["study"]):
         sys.exit(f"studies on both sides: {sorted(overlap)}")
     # Panels (Innovation Panel, the DEL panel waves) put the same person in several
