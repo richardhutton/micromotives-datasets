@@ -1,7 +1,12 @@
 """Write a versioned train/eval export for the training project.
 
     uv run python scripts/export.py v2 studies
-    uv run python scripts/export.py v2 studies --without-ukds   # for cloud / the repo
+    uv run python scripts/export.py v2 studies                  # for the private HF repo / RunPod
+    uv run python scripts/export.py v2 studies --fraction 0.1   # small test export
+
+UKDS granted permission (Oct 2026, docs/ukds_permission_granted.md) for Innovation
+Panel rows on rich's private Hugging Face repo and RunPod, so exports include them by
+default. --without-ukds is only for a destination that permission does not cover.
 
 Writes data/processed/exports/<version>/<split>/ (gitignored: respondent rows):
 
@@ -14,6 +19,11 @@ Only the unseen-studies split (data/catalog/splits/studies_mapping.json) for now
 folder name, `participant`. Excluded studies are in neither file. A version is never
 overwritten: a changed row or split makes a new version, so "trained on export vN"
 always names the same rows.
+
+`--fraction F` keeps a fraction F of each study's rows, on both sides, drawn with a
+fixed seed, into its own folder (`..._10pct`). It exists to test the training setup
+end to end on a small, quick export (rich, 29 Oct 2026); its scores mean nothing.
+Every study stays on the side the split puts it, so the held-out property is unchanged.
 """
 
 from __future__ import annotations
@@ -63,6 +73,25 @@ def all_rows() -> pd.DataFrame:
     return rows.sort_values(["study", "recipe", *make_splits.ROW_ORDER], kind="stable")
 
 
+SAMPLE_SEED = 3407
+
+
+def sample_fraction(frame: pd.DataFrame, fraction: float) -> pd.DataFrame:
+    """A fraction of each study's rows, drawn with a fixed seed, in the original order.
+
+    Per study, so every study on a side is still on it and keeps its share; at least
+    one row per study, so a small study is not silently dropped.
+    """
+    if not 0 < fraction <= 1:
+        raise ValueError(f"fraction must be in (0, 1], got {fraction}")
+    keep = []
+    for _, rows in frame.groupby("study", sort=True):
+        n = max(1, round(len(rows) * fraction))
+        keep.append(rows.sample(n=n, random_state=SAMPLE_SEED))
+    picked = pd.concat(keep)
+    return frame.loc[frame.index.isin(picked.index)]
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -85,12 +114,21 @@ def main() -> None:
     parser.add_argument(
         "--without-ukds",
         action="store_true",
-        help="leave out Innovation Panel rows: the set that may go to a cloud GPU or a "
-        "private repo before UKDS grants permission (EUL 5.5)",
+        help="leave out Innovation Panel rows, only for a destination the UKDS permission "
+        "does not cover (it covers rich's private HF repo and RunPod)",
+    )
+    parser.add_argument(
+        "--fraction",
+        type=float,
+        default=1.0,
+        help="keep this fraction of each study's rows (e.g. 0.1), for a small test export",
     )
     args = parser.parse_args()
 
-    out = EXPORTS / args.version / (args.split + ("_without_ukds" if args.without_ukds else ""))
+    folder = args.split + ("_without_ukds" if args.without_ukds else "")
+    if args.fraction != 1.0:
+        folder += f"_{round(args.fraction * 100):g}pct"
+    out = EXPORTS / args.version / folder
     if out.exists():
         sys.exit(f"{out} exists: a version is never overwritten; use a new version")
 
@@ -106,6 +144,9 @@ def main() -> None:
         sys.exit("rows on neither side are not exactly the excluded studies")
     train = rows[rows["side"] == "train"].drop(columns="side")
     held = rows[rows["side"] == "eval"].drop(columns="side")
+    if args.fraction != 1.0:
+        train = sample_fraction(train, args.fraction)
+        held = sample_fraction(held, args.fraction)
     if overlap := set(train["study"]) & set(held["study"]):
         sys.exit(f"studies on both sides: {sorted(overlap)}")
     # Panels (Innovation Panel, the DEL panel waves) put the same person in several
@@ -130,6 +171,8 @@ def main() -> None:
     manifest = {
         "version": args.version,
         "split": args.split,
+        "fraction": args.fraction,
+        "sample_seed": SAMPLE_SEED if args.fraction != 1.0 else None,
         "created": datetime.now(UTC).isoformat(timespec="seconds"),
         "git_commit": _git_commit(),
         "split_file": {
