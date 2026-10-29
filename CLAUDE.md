@@ -221,6 +221,11 @@ A source is done only when **all** of these hold:
   aggregates computed locally — never persona or response values printed into the
   conversation, and a checker agent is briefed the same way. A build here printed
   eight full rows before this was written down. (2026-10-09)
+- **BES Internet Panel, hosted-model use (BES reply 29 Oct 2026; `docs/email_BES_llm_use.md`):**
+  "within normal usage" for exactly what was asked — one request per respondent to
+  Anthropic's API, that respondent's coded answers only, identifiers replaced by a
+  one-way hash, predicting one withheld answer, single-digit reply, no free text,
+  nothing in bulk, nothing published. Anything wider needs its own check. (2026-10-29)
 - Missing-value codes in survey microdata are negative (UKHLS `-1`, `-2`, `-7`,
   `-8`, `-9`) or `9999` (BES). Strip before making integer responses.
 - Synthetic quotes are always labelled synthetic, never presented as real

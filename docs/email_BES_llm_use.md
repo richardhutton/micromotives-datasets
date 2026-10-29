@@ -1,10 +1,15 @@
 # Draft email — BES, hosted model use
 
-**Status: SENT 9 Oct 2026.** Awaiting reply.
+**Status: SENT 9 Oct 2026. ANSWERED 29 Oct 2026: within normal usage.** BES (James)
+replied that, having spoken to the team, what the email describes "appears to be within
+normal usage of our data". The reply is copied word-for-word under "## Reply" below.
 
-Nothing is blocked while it is outstanding. Downloading, extracting, reshaping,
-building rows, running local models and fine-tuning locally are all inside the
-Licensed Use on its plain wording. Only the hosted-model step waits on the answer.
+**What the answer covers is what the email describes, and no more:** one request per
+respondent to Anthropic's API, holding only that respondent's coded answers, with
+identifiers removed and replaced by a one-way hash, asking for one withheld answer;
+the reply is a single digit; no free text, nothing in bulk, nothing published or
+shared. Anything wider (free text, batches of respondents, other providers, publishing
+results at respondent level) was not asked about and needs its own check.
 
 **To:** `BES@Manchester.ac.uk`
 **Subject:** Does the Licensed Use cover sending panel responses to a hosted model?
@@ -43,6 +48,21 @@ With thanks,
 
 rich hutton
 rich.hutton@googlemail.com
+
+---
+
+## Reply (BES, 29 Oct 2026, word-for-word)
+
+> Hi Richard,
+>
+> Thank you for your email, and apologies for the delayed response.
+>
+> I have spoken to the team, and this appears to be within normal usage of our data.
+>
+> Again, apologies for the delayed response, and good luck with your research.
+>
+> Best wishes,
+> James
 
 ---
 
