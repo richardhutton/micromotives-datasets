@@ -115,7 +115,9 @@ def find_file(given: str | None) -> Path:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--file", help="path to the panel file (default: largest in data/raw/bes_panel)")
+    ap.add_argument(
+        "--file", help="path to the panel file (default: largest in data/raw/bes_panel)"
+    )
     ap.add_argument("--show", type=int, default=12, help="how many examples to print")
     args = ap.parse_args()
 
@@ -166,8 +168,10 @@ def main() -> None:
     repeated = {s: w for s, w in stems.items() if len(w) > 1}
     print("\nWAVE STRUCTURE")
     print(f"  {len(stems):,} distinct measures carry a wave suffix")
-    print(f"  {len(repeated):,} of them appear in MORE THAN ONE wave  <- the ceiling is "
-          f"measurable on these")
+    print(
+        f"  {len(repeated):,} of them appear in MORE THAN ONE wave  <- the ceiling is "
+        f"measurable on these"
+    )
     print(f"  {len(unwaved):,} columns carry no wave suffix (persona, weights, ids)")
     if repeated:
         deepest = sorted(repeated.items(), key=lambda kv: -len(kv[1]))[: args.show]

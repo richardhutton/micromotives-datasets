@@ -252,9 +252,7 @@ def ceiling() -> dict[str, float]:
             cells_same += int((agree & allocated).sum())
             cells_diff += int((~agree & allocated).sum())
             usable &= agree
-        pairs.append(
-            pd.DataFrame({"a": both[f"e_vig{i}"][usable], "b": both[f"f_vig{i}"][usable]})
-        )
+        pairs.append(pd.DataFrame({"a": both[f"e_vig{i}"][usable], "b": both[f"f_vig{i}"][usable]}))
     r = pd.concat(pairs)
     gap = (r["a"] - r["b"]).abs()
     out = {

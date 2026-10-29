@@ -49,6 +49,7 @@ def guide_text() -> list[str]:
         subprocess.run(["pdftotext", "-layout", str(GUIDE), str(UG)], check=True)
     return UG.read_text().splitlines()
 
+
 # Waves the table parse could not reach, read from each experiment's own section.
 WAVES_BY_HAND = {
     "9.3": "5",
@@ -77,7 +78,11 @@ VIGNETTES = {"9.10", "9.26", "9.30", "9.39"}
 # one; section 7 is ruled out as a class and says so once.
 JUDGEMENT: dict[str, tuple[str, str, str]] = {
     # -- section 8: the form of the question rather than its content -----------
-    "8.1": ("question-form", MARGINAL, "random subsets get different content, so there is no shared outcome to compare"),
+    "8.1": (
+        "question-form",
+        MARGINAL,
+        "random subsets get different content, so there is no shared outcome to compare",
+    ),
     "8.2": ("question-form", DROP, "showcards are a visual stimulus, not text"),
     "8.3": ("question-form", BUILD, "question wording and context, varied in words"),
     "8.4": ("question-form", BUILD, "dependent interviewing wording"),
@@ -85,21 +90,49 @@ JUDGEMENT: dict[str, tuple[str, str, str]] = {
     "8.6": ("question-form", DROP, "smiley faces are a visual stimulus, not text"),
     "8.7": ("question-form", DROP, "the condition is the interview mode, not words"),
     "8.8": ("question-form", BUILD, "prompts to reduce item non-response, varied in words"),
-    "8.9": ("question-form", MARGINAL, "MTMM repeated-measures design; the condition is a measurement model, not a wording"),
+    "8.9": (
+        "question-form",
+        MARGINAL,
+        "MTMM repeated-measures design; the condition is a measurement model, not a wording",
+    ),
     "8.10": ("question-form", BUILD, "classic response-order effects"),
     "8.11": ("question-form", BUILD, "answer scale direction reversed"),
-    "8.12": ("question-form", MARGINAL, "tailored question selection; needs checking that a shared outcome exists"),
+    "8.12": (
+        "question-form",
+        MARGINAL,
+        "tailored question selection; needs checking that a shared outcome exists",
+    ),
     "8.13": ("question-form", DROP, "mobile grid layout is a visual stimulus, not text"),
     "8.14": ("question-form", BUILD, "presentation of don't know / prefer not to answer"),
-    "8.15": ("question-form", DROP, "outcome is whether a phone number was given, not a survey answer"),
+    "8.15": (
+        "question-form",
+        DROP,
+        "outcome is whether a phone number was given, not a survey answer",
+    ),
     # -- section 9: substantive topics ----------------------------------------
-    "9.1": ("work-money", MARGINAL, "one condition uses a showcard to trigger recall, so part of the stimulus is visual"),
-    "9.2": ("wellbeing", MARGINAL, "mixes scale points and labelling (buildable) with showcards and mode (not)"),
-    "9.3": ("wellbeing", MARGINAL, "X08IVC: the condition asks the respondent to compare themselves to others of their own gender or education, naming their own persona category"),
+    "9.1": (
+        "work-money",
+        MARGINAL,
+        "one condition uses a showcard to trigger recall, so part of the stimulus is visual",
+    ),
+    "9.2": (
+        "wellbeing",
+        MARGINAL,
+        "mixes scale points and labelling (buildable) with showcards and mode (not)",
+    ),
+    "9.3": (
+        "wellbeing",
+        MARGINAL,
+        "X08IVC: the condition asks the respondent to compare themselves to others of their own gender or education, naming their own persona category",
+    ),
     "9.4": ("attitudes", BUILD, "asked about your profession vs your occupation; pure wording"),
     "9.5": ("work-money", BUILD, "wealth asked aggregate vs itemised, 2x2 with who reports"),
     "9.6": ("consent", BUILD, "consent asked in context vs at the end, 2x2"),
-    "9.7": ("question-form", MARGINAL, "the outcome is a preference about survey mode, not a substantive answer"),
+    "9.7": (
+        "question-form",
+        MARGINAL,
+        "the outcome is a preference about survey mode, not a substantive answer",
+    ),
     "9.8": ("physical", DROP, "meter readings; no text stimulus"),
     "9.9": ("family-care", BUILD, "context effects in fertility decisions"),
     # The reason here used to read "respondents rate a described couple, not
@@ -108,41 +141,73 @@ JUDGEMENT: dict[str, tuple[str, str, str]] = {
     # respondent is inside the scenario and the outcome is imagined own
     # satisfaction, not third-party judgement. BUILT — see
     # recipes/ukds_6849_vig_housework_w{5,6}.yaml.
-    "9.10": ("family-care", BUILD, "respondents imagine themselves in the arrangement and rate their own satisfaction"),
+    "9.10": (
+        "family-care",
+        BUILD,
+        "respondents imagine themselves in the arrangement and rate their own satisfaction",
+    ),
     # Was BUILD. The treatment is a GRAPH: "Display Earnings graph on screen", the
     # page handed to face-to-face respondents. The questionnaire carries one
     # framing sentence; the earnings figures exist only in the image, and the
     # wave 8 graph is reproduced nowhere in the documentation. A condition
     # without the numbers omits the treatment; one with them invents it. The
     # visual-stimulus ruling, applied 9 Oct 2026.
-    "9.11": ("work-money", DROP, "the information treatment is an earnings graph whose figures are not in the instrument text; a visual stimulus"),
+    "9.11": (
+        "work-money",
+        DROP,
+        "the information treatment is an earnings graph whose figures are not in the instrument text; a visual stimulus",
+    ),
     # Was BUILD. The long-standing-illness question is word-for-word the same in
     # groups 1 and 3 (group 2 is not asked it): the dependent-interviewing check
     # fires AFTER the answer, so nothing differs when it is given. The other
     # outcomes (the difficulties list, the "why did it change" follow-up) are
     # "code all that apply" lists, the shape 9.43 was dropped for. Dropped by
     # the 9.43 ruling, 9 Oct 2026.
-    "9.12": ("health", DROP, "the manipulated part follows the answer (a reactive consistency check), and the other outcomes are code-all-that-apply lists"),
+    "9.12": (
+        "health",
+        DROP,
+        "the manipulated part follows the answer (a reactive consistency check), and the other outcomes are code-all-that-apply lists",
+    ),
     "9.13": ("work-money", BUILD, "time and risk preference choices"),
     "9.14": ("attitudes", BUILD, "how people think about environmental taxes"),
-    "9.15": ("health", DROP, "the outcome is the interviewer's rating, not the respondent's answer"),
+    "9.15": (
+        "health",
+        DROP,
+        "the outcome is the interviewer's rating, not the respondent's answer",
+    ),
     "9.16": ("attitudes", BUILD, "social desirability bias in attitudes towards immigration"),
     "9.17": ("sensitive", BUILD, "sexual identity asked directly vs indirectly"),
     "9.18": ("wellbeing", BUILD, "a substantive attitude, asked eight years apart"),
-    "9.19": ("work-money", MARGINAL, "a module redesign; needs checking that conditions share an outcome"),
+    "9.19": (
+        "work-money",
+        MARGINAL,
+        "a module redesign; needs checking that conditions share an outcome",
+    ),
     "9.20": ("wellbeing", BUILD, "presentation of response options in satisfaction questions"),
     "9.21": ("consent", BUILD, "consent to link to the electoral register"),
     "9.22": ("work-money", BUILD, "financial management within couples"),
-    "9.23": ("family-care", BUILD, "two versions of questions on non-resident parents and separation"),
+    "9.23": (
+        "family-care",
+        BUILD,
+        "two versions of questions on non-resident parents and separation",
+    ),
     "9.24": ("health", BUILD, "EQ-5D-3L and EQ-5D-5L variants, three groups"),
     "9.25": ("consent", BUILD, "HMRC linkage consent, easy vs difficult wording"),
     "9.26": ("attitudes", BUILD, "two sets of questions: a conjoint and a set of vignettes"),
-    "9.27": ("health", DROP, "the condition is interviewer-asked vs self-completion, which is mode"),
+    "9.27": (
+        "health",
+        DROP,
+        "the condition is interviewer-asked vs self-completion, which is mode",
+    ),
     "9.28": ("physical", DROP, "blood, blood spot and hair samples"),
     "9.29": ("consent", BUILD, "LinkedIn consent, placement crossed with a motivational statement"),
     "9.30": ("technology", BUILD, "automation threat severity x timeframe, 2x2"),
     "9.31": ("health", BUILD, "ReQoL-10 against other scales, randomised order"),
-    "9.32": ("family-care", MARGINAL, "proxy nomination; needs checking that a respondent answer is the outcome"),
+    "9.32": (
+        "family-care",
+        MARGINAL,
+        "proxy nomination; needs checking that a respondent answer is the outcome",
+    ),
     "9.33": ("consent", BUILD, "Twitter consent"),
     "9.34": ("work-money", BUILD, "marginal propensity to consume"),
     "9.35": ("family-care", BUILD, "informal care"),
@@ -159,18 +224,30 @@ JUDGEMENT: dict[str, tuple[str, str, str]] = {
     # follow-up; a separate 18-item mental-health list before the physical one).
     # A row is one question and one answer; any build had to restructure a tick
     # list into yes/no answers nobody gave. Dropped by rich, 9 Oct 2026.
-    "9.43": ("health", DROP, "multi-select checklists that differ between versions; no single question and answer per row without restructuring the instrument"),
+    "9.43": (
+        "health",
+        DROP,
+        "multi-select checklists that differ between versions; no single question and answer per row without restructuring the instrument",
+    ),
     "9.44": ("physical", DROP, "outcome is whether photographs were supplied"),
     "9.45": ("physical", DROP, "mobile app game"),
     "9.46": ("consent", BUILD, "DWP consent decision process"),
-    "9.47": ("family-care", BUILD, "standard vs activity-based identification of informal caregiving"),
+    "9.47": (
+        "family-care",
+        BUILD,
+        "standard vs activity-based identification of informal caregiving",
+    ),
     # Was BUILD. The randomised part asks for a probability over six earnings
     # buckets whose bounds the script computed from the respondent's own wage
     # ("£ [0.85 x LMEANCHOR]"). The deposit stores the anchor, not the bounds,
     # and the questionnaire does not say how they were rounded or formatted, so
     # the amounts each person saw cannot be recovered; and every row would carry
     # the respondent's own earnings as stimulus. Dropped by rich, 9 Oct 2026.
-    "9.48": ("work-money", DROP, "anchored earnings buckets whose shown £ bounds were computed on screen and are not in the deposit; the exact stimulus cannot be recovered"),
+    "9.48": (
+        "work-money",
+        DROP,
+        "anchored earnings buckets whose shown £ bounds were computed on screen and are not in the deposit; the exact stimulus cannot be recovered",
+    ),
     "9.49": ("consent", BUILD, "consent to place in-home sensors"),
     "9.50": ("consent", BUILD, "consent to link smart meter data"),
 }

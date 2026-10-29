@@ -211,8 +211,7 @@ def apply_to(field: str, data: dict[str, Any]) -> tuple[dict[str, Any], list[str
         for source, target in SCHEMES[field].items():
             if source in mapping and mapping[source] != target:
                 problems.append(
-                    f"{field}: {source!r} is {mapping[source]!r} in {scheme} "
-                    f"but {target!r} here"
+                    f"{field}: {source!r} is {mapping[source]!r} in {scheme} but {target!r} here"
                 )
 
     out = dict(data)

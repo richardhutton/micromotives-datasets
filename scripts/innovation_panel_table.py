@@ -138,7 +138,7 @@ def render(records: list[Experiment]) -> str:
         "the bundle is gitignored. The descriptions below are nonetheless quoted, because "
         "the User Guide is separately published on the open web — it says so itself: "
         '*"we recommend using the web-based version of the Innovation Panel User Guide as '
-        'the documentation will develop over time, with the latest versions updated to '
+        "the documentation will develop over time, with the latest versions updated to "
         'these pages"*. Quoting an openly published guide is not redistributing a '
         "safeguarded collection. **No variable label, value label or row from the data "
         "files appears in this file or its catalogue**, and that is the line to hold.\n"

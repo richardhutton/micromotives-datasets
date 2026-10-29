@@ -411,7 +411,9 @@ def compare_estimates(ours: pd.DataFrame) -> tuple[list[str], float]:
     expected = {(f, lvl) for f, levels in TABLE_A4.items() for lvl in levels}
     missing = expected - seen
     if missing:
-        bad.append(f"mm() output is missing {len(missing)} published level(s): {sorted(missing)[:5]}")
+        bad.append(
+            f"mm() output is missing {len(missing)} published level(s): {sorted(missing)[:5]}"
+        )
     return bad, max_diff
 
 

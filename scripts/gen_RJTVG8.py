@@ -208,7 +208,13 @@ TABLE_A3_LEVELS: dict[str, set[str]] = {
         "- £1 (one pound less)",  # data: "-£1 (one pound less)"
         "- £5 (five pounds less)",  # data: "-£5 (five pounds less)"
     },
-    "party": {"Cross-party coalition", "Conservatives", "Labour", "Liberal Democrats", "the Greens"},
+    "party": {
+        "Cross-party coalition",
+        "Conservatives",
+        "Labour",
+        "Liberal Democrats",
+        "the Greens",
+    },
     "endorse": {
         "None",
         "UK Electoral Commission",
@@ -348,7 +354,9 @@ def build_wide(df: pd.DataFrame, persona_levels: dict[str, dict[int, str]]) -> p
             a_row = task_rows[task_rows["profile"] == 1]
             b_row = task_rows[task_rows["profile"] == 2]
             if len(a_row) != 1 or len(b_row) != 1:
-                raise ValueError(f"{resp_id} task {t}: not exactly one profile-1 and one profile-2 row")
+                raise ValueError(
+                    f"{resp_id} task {t}: not exactly one profile-1 and one profile-2 row"
+                )
             a_row, b_row = a_row.iloc[0], b_row.iloc[0]
             for attr, _ in ATTRS:
                 rec[f"{attr}_A_t{t}"] = int(a_row[f"{attr}_num"])
@@ -413,8 +421,7 @@ def build_arms(wide: pd.DataFrame, levels: dict[str, dict[int, str]]) -> list[di
 
 
 _CHOICE_Q = (
-    "Which of these two i-voting policies do you prefer? "
-    '1 means "Policy A"; 2 means "Policy B".'
+    'Which of these two i-voting policies do you prefer? 1 means "Policy A"; 2 means "Policy B".'
 )
 
 

@@ -98,57 +98,130 @@ class Item:
 # a concept overlaps (nobody owns "how is your health"), the wording is ours and
 # the option sets are deliberately not the panel's.
 ITEMS: list[Item] = [
-    Item("stairs", "Climbing two flights of stairs leaves you out of breath.",
-         ["never", "rarely", "sometimes", "often", "always"], ("health",), ascending=False),
-    Item("walk", "How far can you walk before you need to stop and rest?",
-         ["a few steps", "to the end of the road", "half a mile", "two miles", "as far as I like"],
-         ("health",)),
-    Item("sleep", "In a usual week, how many nights do you sleep badly?",
-         ["none", "one or two", "three or four", "five or six", "every night"],
-         ("health", "optimism"), ascending=False),
-    Item("doctor", "How often have you seen a doctor about your own health this year?",
-         ["not at all", "once", "two or three times", "four to six times", "more than six"],
-         ("health",), ascending=False),
-    Item("nextyear", "Do you expect next year to be better or worse than this one?",
-         ["much worse", "a little worse", "about the same", "a little better", "much better"],
-         ("optimism",)),
-    Item("worry", "How much of the day do you spend worrying about things?",
-         ["none of it", "a little", "some of it", "most of it", "all of it"],
-         ("optimism",), ascending=False),
-    Item("plans", "When something goes wrong, do you expect it to work out in the end?",
-         ["never", "rarely", "sometimes", "usually", "always"], ("optimism", "trust")),
-    Item("strangers", "Most people would take advantage of you if they got the chance.",
-         ["strongly agree", "agree", "neither", "disagree", "strongly disagree"], ("trust",)),
-    Item("lend", "Would you lend fifty pounds to a neighbour you had met twice?",
-         ["certainly not", "probably not", "not sure", "probably", "certainly"],
-         ("trust", "sociability")),
-    Item("institutions", "How much do you trust large organisations to treat you fairly?",
-         ["not at all", "a little", "somewhat", "a lot", "completely"], ("trust",)),
-    Item("saving", "What do you do with money left over at the end of the month?",
-         ["spend it", "mostly spend it", "half and half", "mostly save it", "save all of it"],
-         ("thrift",)),
-    Item("bargain", "How often do you compare prices before buying something ordinary?",
-         ["never", "rarely", "sometimes", "usually", "every time"], ("thrift",)),
-    Item("debt", "How comfortable are you borrowing money for something you want now?",
-         ["very comfortable", "comfortable", "neither", "uncomfortable", "very uncomfortable"],
-         ("thrift",)),
-    Item("oldways", "The way things were done thirty years ago was generally better.",
-         ["strongly disagree", "disagree", "neither", "agree", "strongly agree"], ("tradition",)),
-    Item("change", "How do you feel when a familiar place in your town is redeveloped?",
-         ["pleased", "mostly pleased", "indifferent", "mostly sorry", "sorry"], ("tradition",)),
-    Item("duty", "People have a duty to keep up the customs they were raised with.",
-         ["strongly disagree", "disagree", "neither", "agree", "strongly agree"],
-         ("tradition", "trust")),
-    Item("evenings", "In a usual week, how many evenings do you spend with other people?",
-         ["none", "one", "two or three", "four or five", "most evenings"], ("sociability",)),
-    Item("party", "You are invited to a party where you will know almost nobody.",
-         ["definitely not going", "probably not", "might go", "probably going", "definitely going"],
-         ("sociability",)),
-    Item("talk", "How easily do you start a conversation with someone you have just met?",
-         ["not at all easily", "not very easily", "fairly easily", "easily", "very easily"],
-         ("sociability", "trust")),
-    Item("alone", "How much do you enjoy a day entirely on your own?",
-         ["enormously", "a lot", "somewhat", "a little", "not at all"], ("sociability",)),
+    Item(
+        "stairs",
+        "Climbing two flights of stairs leaves you out of breath.",
+        ["never", "rarely", "sometimes", "often", "always"],
+        ("health",),
+        ascending=False,
+    ),
+    Item(
+        "walk",
+        "How far can you walk before you need to stop and rest?",
+        ["a few steps", "to the end of the road", "half a mile", "two miles", "as far as I like"],
+        ("health",),
+    ),
+    Item(
+        "sleep",
+        "In a usual week, how many nights do you sleep badly?",
+        ["none", "one or two", "three or four", "five or six", "every night"],
+        ("health", "optimism"),
+        ascending=False,
+    ),
+    Item(
+        "doctor",
+        "How often have you seen a doctor about your own health this year?",
+        ["not at all", "once", "two or three times", "four to six times", "more than six"],
+        ("health",),
+        ascending=False,
+    ),
+    Item(
+        "nextyear",
+        "Do you expect next year to be better or worse than this one?",
+        ["much worse", "a little worse", "about the same", "a little better", "much better"],
+        ("optimism",),
+    ),
+    Item(
+        "worry",
+        "How much of the day do you spend worrying about things?",
+        ["none of it", "a little", "some of it", "most of it", "all of it"],
+        ("optimism",),
+        ascending=False,
+    ),
+    Item(
+        "plans",
+        "When something goes wrong, do you expect it to work out in the end?",
+        ["never", "rarely", "sometimes", "usually", "always"],
+        ("optimism", "trust"),
+    ),
+    Item(
+        "strangers",
+        "Most people would take advantage of you if they got the chance.",
+        ["strongly agree", "agree", "neither", "disagree", "strongly disagree"],
+        ("trust",),
+    ),
+    Item(
+        "lend",
+        "Would you lend fifty pounds to a neighbour you had met twice?",
+        ["certainly not", "probably not", "not sure", "probably", "certainly"],
+        ("trust", "sociability"),
+    ),
+    Item(
+        "institutions",
+        "How much do you trust large organisations to treat you fairly?",
+        ["not at all", "a little", "somewhat", "a lot", "completely"],
+        ("trust",),
+    ),
+    Item(
+        "saving",
+        "What do you do with money left over at the end of the month?",
+        ["spend it", "mostly spend it", "half and half", "mostly save it", "save all of it"],
+        ("thrift",),
+    ),
+    Item(
+        "bargain",
+        "How often do you compare prices before buying something ordinary?",
+        ["never", "rarely", "sometimes", "usually", "every time"],
+        ("thrift",),
+    ),
+    Item(
+        "debt",
+        "How comfortable are you borrowing money for something you want now?",
+        ["very comfortable", "comfortable", "neither", "uncomfortable", "very uncomfortable"],
+        ("thrift",),
+    ),
+    Item(
+        "oldways",
+        "The way things were done thirty years ago was generally better.",
+        ["strongly disagree", "disagree", "neither", "agree", "strongly agree"],
+        ("tradition",),
+    ),
+    Item(
+        "change",
+        "How do you feel when a familiar place in your town is redeveloped?",
+        ["pleased", "mostly pleased", "indifferent", "mostly sorry", "sorry"],
+        ("tradition",),
+    ),
+    Item(
+        "duty",
+        "People have a duty to keep up the customs they were raised with.",
+        ["strongly disagree", "disagree", "neither", "agree", "strongly agree"],
+        ("tradition", "trust"),
+    ),
+    Item(
+        "evenings",
+        "In a usual week, how many evenings do you spend with other people?",
+        ["none", "one", "two or three", "four or five", "most evenings"],
+        ("sociability",),
+    ),
+    Item(
+        "party",
+        "You are invited to a party where you will know almost nobody.",
+        ["definitely not going", "probably not", "might go", "probably going", "definitely going"],
+        ("sociability",),
+    ),
+    Item(
+        "talk",
+        "How easily do you start a conversation with someone you have just met?",
+        ["not at all easily", "not very easily", "fairly easily", "easily", "very easily"],
+        ("sociability", "trust"),
+    ),
+    Item(
+        "alone",
+        "How much do you enjoy a day entirely on your own?",
+        ["enormously", "a lot", "somewhat", "a little", "not at all"],
+        ("sociability",),
+    ),
 ]
 
 YEARS = tuple(range(2008, 2025))
@@ -165,8 +238,16 @@ class Person:
     answers: list[dict[str, Any]] = field(default_factory=list)
 
 
-REGIONS = ("Scotland", "Wales", "North East", "North West", "London", "South West",
-           "West Midlands", "Yorkshire and the Humber")
+REGIONS = (
+    "Scotland",
+    "Wales",
+    "North East",
+    "North West",
+    "London",
+    "South West",
+    "West Midlands",
+    "Yorkshire and the Humber",
+)
 
 
 def make_person(rng: random.Random) -> Person:
@@ -202,8 +283,12 @@ def make_person(rng: random.Random) -> Person:
             if not item.ascending:
                 index = len(item.options) - 1 - index
             person.answers.append(
-                {"year": year, "key": item.key, "question": item.question,
-                 "answer": item.options[index]}
+                {
+                    "year": year,
+                    "key": item.key,
+                    "question": item.question,
+                    "answer": item.options[index],
+                }
             )
     return person
 
@@ -269,10 +354,15 @@ def ask(client: anthropic.Anthropic, model: str, prompt: str, n_options: int) ->
 
 def ask_local(prompt: str, n_options: int) -> int | None:
     """One prediction from ollama, with holdout3's exact decoding settings."""
-    body = json.dumps({
-        "model": LOCAL_MODEL, "prompt": prompt, "stream": False, "think": False,
-        "options": {"temperature": 0, "num_predict": 8},
-    }).encode()
+    body = json.dumps(
+        {
+            "model": LOCAL_MODEL,
+            "prompt": prompt,
+            "stream": False,
+            "think": False,
+            "options": {"temperature": 0, "num_predict": 8},
+        }
+    ).encode()
     try:
         req = urllib.request.Request(
             OLLAMA, data=body, headers={"Content-Type": "application/json"}
@@ -330,16 +420,19 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--n", type=int, default=40, help="how many held-out questions")
     ap.add_argument("--model", default=MODEL)
-    ap.add_argument("--local", action="store_true",
-                    help=f"use {LOCAL_MODEL} via ollama instead of the API")
+    ap.add_argument(
+        "--local", action="store_true", help=f"use {LOCAL_MODEL} via ollama instead of the API"
+    )
     ap.add_argument("--oracle", action="store_true", help="print the ceiling and stop")
     ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
 
     if args.oracle:
         got = oracle_ceiling()
-        print(f"oracle over {got['n']:,} held-out questions (knows the latent traits): "
-              f"exact {got['exact']:.1%}, within one {got['within_one']:.1%}")
+        print(
+            f"oracle over {got['n']:,} held-out questions (knows the latent traits): "
+            f"exact {got['exact']:.1%}, within one {got['within_one']:.1%}"
+        )
         return
 
     client = None
@@ -379,10 +472,19 @@ def main() -> None:
 
         full = predict(shown)
         bare = predict([])
-        results.append({"key": key, "truth": truth, "profile": full, "demographics": bare,
-                        "n_options": len(item.options), "shown": len(shown)})
-        print(f"  {n + 1}/{args.n}  {key:<12} truth {truth}  profile {full}  demo {bare}",
-              flush=True)
+        results.append(
+            {
+                "key": key,
+                "truth": truth,
+                "profile": full,
+                "demographics": bare,
+                "n_options": len(item.options),
+                "shown": len(shown),
+            }
+        )
+        print(
+            f"  {n + 1}/{args.n}  {key:<12} truth {truth}  profile {full}  demo {bare}", flush=True
+        )
 
     def score(arm: str) -> tuple[int, float, float]:
         got = [r for r in results if r[arm] is not None]
@@ -393,8 +495,10 @@ def main() -> None:
     chance = statistics.fmean(1 / r["n_options"] for r in results)
     ceiling = oracle_ceiling()
     name = LOCAL_MODEL if args.local else args.model
-    print(f"\nmodel {name} — {len(results)} held-out questions, "
-          f"mean {statistics.fmean(r['shown'] for r in results):.0f} answers shown")
+    print(
+        f"\nmodel {name} — {len(results)} held-out questions, "
+        f"mean {statistics.fmean(r['shown'] for r in results):.0f} answers shown"
+    )
     print(f"\n{'arm':<16}{'answered':>10}{'exact':>9}{'within 1':>10}{'of range':>11}")
     print(f"{'chance':<16}{'-':>10}{chance:>8.1%}{'-':>10}{'-':>11}")
     for arm in ("demographics", "profile"):
@@ -402,16 +506,20 @@ def main() -> None:
         span = ceiling["exact"] - chance
         share = f"{(exact - chance) / span:>10.0%}" if span > 0 else f"{'-':>11}"
         print(f"{arm:<16}{got:>10}{exact:>8.1%}{near:>9.1%}{share}")
-    print(f"{'ORACLE ceiling':<16}{ceiling['n']:>10,}{ceiling['exact']:>8.1%}"
-          f"{ceiling['within_one']:>9.1%}{'100%':>11}")
+    print(
+        f"{'ORACLE ceiling':<16}{ceiling['n']:>10,}{ceiling['exact']:>8.1%}"
+        f"{ceiling['within_one']:>9.1%}{'100%':>11}"
+    )
     # An arm that failed to answer some questions is scored on a different
     # subset, so the two columns stop being comparable. Said out loud rather
     # than left to be inferred from the `answered` column.
     for arm in ("demographics", "profile"):
         missed = sum(r[arm] is None for r in results)
         if missed:
-            print(f"\n*** {arm}: {missed} of {len(results)} questions returned no usable "
-                  f"answer, so its score is over the other {len(results) - missed} ***")
+            print(
+                f"\n*** {arm}: {missed} of {len(results)} questions returned no usable "
+                f"answer, so its score is over the other {len(results) - missed} ***"
+            )
     print(
         "\nA good score here does NOT predict a good score on real data: these people "
         "were generated to be predictable.\nWhat a BAD score here would prove is that "

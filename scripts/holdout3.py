@@ -60,12 +60,14 @@ NOT_SELF_REPORT = re.compile(
     r"|decision heuristics|app (request|log-?in)|installing app|email sent"
     r"|outcome .*request|preamble|item count|panel conditioning"
     r"|environmental numeracy|perceived political influence"
-    r"|environment and transport choice", re.I,
+    r"|environment and transport choice",
+    re.I,
 )
 MEANINGLESS = re.compile(r"^(value \d+|v\d+|item \d+|code \d+|\d+)$", re.I)
 ROUTING = re.compile(
     r"^(h?ousehold (not )?selected|not selected|selected|inapplicable|proxy"
-    r"|skipped|not asked|routed)$", re.I,
+    r"|skipped|not asked|routed)$",
+    re.I,
 )
 NOISE = [
     (re.compile(r",?\s+or$", re.I), ""),
@@ -91,7 +93,8 @@ def tidy(text: str) -> str:
 
 
 SCALE_WORDS = {
-    "does not apply to me at all": 1, "applies to me perfectly": 7,
+    "does not apply to me at all": 1,
+    "applies to me perfectly": 7,
 }
 
 
@@ -276,10 +279,11 @@ BATTERY_SPLITS = [
     # battery on the word "with" — neither uses the colon the first version
     # assumed, so seven personality items and six discussion items sat as
     # thirteen unrelated lines.
-    (re.compile(r"^(i see my self as a person who)\.\.\.\s*(.+)$", re.I),
-     "Personality — I see myself as a person who..."),
-    (re.compile(r"^(talk about politics) with\s+(.+)$", re.I),
-     "Talks about politics with"),
+    (
+        re.compile(r"^(i see my self as a person who)\.\.\.\s*(.+)$", re.I),
+        "Personality — I see myself as a person who...",
+    ),
+    (re.compile(r"^(talk about politics) with\s+(.+)$", re.I), "Talks about politics with"),
 ]
 
 
@@ -376,8 +380,13 @@ def render_history(lines: dict[str, tuple[str, str]], order: list[str]) -> str:
     return "\n".join(sorted(singles) + ([""] if singles and out else []) + out)
 
 
-def build_prompt(profile: dict, shown: list[dict], question: dict,
-                 options: list[str], same_topic_last: bool = True) -> str:
+def build_prompt(
+    profile: dict,
+    shown: list[dict],
+    question: dict,
+    options: list[str],
+    same_topic_last: bool = True,
+) -> str:
     year = question["year"]
     who = dict(profile["demographics"])
     if (age := age_at(profile, year)) is not None:
@@ -413,12 +422,19 @@ def build_prompt(profile: dict, shown: list[dict], question: dict,
 
 
 def ask(prompt: str) -> int | None:
-    body = json.dumps({
-        "model": MODEL, "prompt": prompt, "stream": False, "think": False,
-        "options": {"temperature": 0, "num_predict": 8},
-    }).encode()
+    body = json.dumps(
+        {
+            "model": MODEL,
+            "prompt": prompt,
+            "stream": False,
+            "think": False,
+            "options": {"temperature": 0, "num_predict": 8},
+        }
+    ).encode()
     try:
-        req = urllib.request.Request(OLLAMA, data=body, headers={"Content-Type": "application/json"})
+        req = urllib.request.Request(
+            OLLAMA, data=body, headers={"Content-Type": "application/json"}
+        )
         with urllib.request.urlopen(req, timeout=300) as r:
             text = str(json.loads(r.read())["response"])
     except (urllib.error.URLError, TimeoutError, OSError):
@@ -434,8 +450,9 @@ def block_of(root: str) -> str | None:
     return None
 
 
-def tasks_for(profile: dict, pooled: dict, rng: random.Random,
-              mode: str = "inference") -> list[dict]:
+def tasks_for(
+    profile: dict, pooled: dict, rng: random.Random, mode: str = "inference"
+) -> list[dict]:
     """Hold out whole QUESTIONS, not whole topics.
 
     The profile keeps the rest of the topic, which is the point: knowing someone
@@ -472,19 +489,31 @@ def tasks_for(profile: dict, pooled: dict, rng: random.Random,
         if mode == "block":
             blocks = {b for r in roots_of[key] if (b := block_of(r))}
             if blocks:
-                hide |= {k for k, rs in roots_of.items()
-                         if any(block_of(r) in blocks for r in rs if block_of(r))}
+                hide |= {
+                    k
+                    for k, rs in roots_of.items()
+                    if any(block_of(r) in blocks for r in rs if block_of(r))
+                }
         if mode == "panel":
             # Keep their earlier answers to this very question; remove only the
             # year being predicted. Everything else stays as normal.
-            shown = [a for a in usable_answers
-                     if group_key(a) not in hide or a["year"] < target["year"]]
+            shown = [
+                a for a in usable_answers if group_key(a) not in hide or a["year"] < target["year"]
+            ]
         else:
             shown = [a for a in usable_answers if group_key(a) not in hide]
         if len(shown) < MIN_REMAINING:
             continue
-        out.append({"p": profile, "shown": shown, "q": target, "options": options,
-                    "topic": target["topic"], "hidden": len(usable_answers) - len(shown)})
+        out.append(
+            {
+                "p": profile,
+                "shown": shown,
+                "q": target,
+                "options": options,
+                "topic": target["topic"],
+                "hidden": len(usable_answers) - len(shown),
+            }
+        )
         if len(out) >= HELD_PER_PERSON:
             break
     return out
@@ -494,9 +523,13 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--show", action="store_true")
-    ap.add_argument("--mode", choices=MODES, default="inference",
-                    help="what the holdout removes; see MODES. The three are "
-                         "different experiments and their numbers do not compare.")
+    ap.add_argument(
+        "--mode",
+        choices=MODES,
+        default="inference",
+        help="what the holdout removes; see MODES. The three are "
+        "different experiments and their numbers do not compare.",
+    )
     args = ap.parse_args()
 
     profiles = [json.loads(p.read_text()) for p in sorted(PROFILES.glob("ip_*.json"))]
@@ -517,20 +550,29 @@ def main() -> None:
         prompt = build_prompt(t["p"], t["shown"], t["q"], t["options"])
         (PROFILES / "PROMPT_EXAMPLE.txt").write_text(prompt)
         print(prompt)
-        print(f"\n[{len(prompt):,} chars | topic {t['topic']} | "
-              f"{t['hidden']} answers hidden, {len(t['shown'])} shown]")
-        print(f"[TRUE ANSWER: {t['options'].index(canonical(t['q']['answer'])) + 1}. "
-              f"{canonical(t['q']['answer'])}]")
+        print(
+            f"\n[{len(prompt):,} chars | topic {t['topic']} | "
+            f"{t['hidden']} answers hidden, {len(t['shown'])} shown]"
+        )
+        print(
+            f"[TRUE ANSWER: {t['options'].index(canonical(t['q']['answer'])) + 1}. "
+            f"{canonical(t['q']['answer'])}]"
+        )
         return
 
     print(f"MODE: {args.mode}", flush=True)
-    print(f"{len(profiles)} people, {len(tasks)} questions, {len(tasks) * 2} predictions", flush=True)
+    print(
+        f"{len(profiles)} people, {len(tasks)} questions, {len(tasks) * 2} predictions", flush=True
+    )
     out = PROFILES / OUT_TEMPLATE.format(mode=args.mode)
     results, started = [], time.time()
     for i, t in enumerate(tasks, 1):
         rec = {
-            "id": t["p"]["id"], "topic": t["topic"], "year": t["q"]["year"],
-            "question": tidy(t["q"]["question"]), "n_options": len(t["options"]),
+            "id": t["p"]["id"],
+            "topic": t["topic"],
+            "year": t["q"]["year"],
+            "question": tidy(t["q"]["question"]),
+            "n_options": len(t["options"]),
             "truth": t["options"].index(canonical(t["q"]["answer"])) + 1,
         }
         rec["profile"] = ask(build_prompt(t["p"], t["shown"], t["q"], t["options"]))
@@ -539,7 +581,10 @@ def main() -> None:
         out.write_text(json.dumps(results, indent=1))
         if i % 10 == 0 or i == len(tasks):
             rate = (time.time() - started) / i
-            print(f"  {i}/{len(tasks)}  {rate:.1f}s/q  ~{rate * (len(tasks) - i) / 60:.0f} min left", flush=True)
+            print(
+                f"  {i}/{len(tasks)}  {rate:.1f}s/q  ~{rate * (len(tasks) - i) / 60:.0f} min left",
+                flush=True,
+            )
 
     chance = sum(1 / r["n_options"] for r in results) / len(results)
     print(f"\n{'arm':<22} {'answered':>9} {'correct':>9}")
@@ -554,14 +599,20 @@ def main() -> None:
         repeats = [r for r in results if r.get("last_year") is not None]
         if repeats:
             acc = sum(r["last_year"] == r["truth"] for r in repeats) / len(repeats)
-            print(f"{'repeat last year':<22} {len(repeats):>9} {acc:>8.1%}  <- beat this or it is noise")
+            print(
+                f"{'repeat last year':<22} {len(repeats):>9} {acc:>8.1%}  <- beat this or it is noise"
+            )
     print("\nby topic:")
     for topic in sorted({r["topic"] for r in results}):
         rows = [r for r in results if r["topic"] == topic]
         line = f"  {topic:<20}"
         for arm in ("demographics", "profile"):
             got = [r for r in rows if r[arm] is not None]
-            line += f"  {arm[:4]} {sum(r[arm] == r['truth'] for r in got) / len(got):>6.1%}" if got else "    -  "
+            line += (
+                f"  {arm[:4]} {sum(r[arm] == r['truth'] for r in got) / len(got):>6.1%}"
+                if got
+                else "    -  "
+            )
         print(line + f"  (n={len(rows)})")
 
 

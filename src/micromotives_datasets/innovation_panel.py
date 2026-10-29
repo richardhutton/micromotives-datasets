@@ -23,10 +23,7 @@ from pathlib import Path
 from typing import TypedDict
 
 CATALOGUE = (
-    Path(__file__).resolve().parents[2]
-    / "data"
-    / "catalog"
-    / "innovation_panel_experiments.json"
+    Path(__file__).resolve().parents[2] / "data" / "catalog" / "innovation_panel_experiments.json"
 )
 
 #: What a verdict means. `marginal` is "assessed and not decided", deliberately

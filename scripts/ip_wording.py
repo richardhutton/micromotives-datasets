@@ -40,8 +40,22 @@ CATALOGUE = REPO / "data" / "catalog" / "innovation_panel_experiments.json"
 WAVES = "abcdefghijklmnopq"
 
 SELECTED = [
-    "9.18", "9.39", "9.43", "9.36", "9.24", "9.4", "9.48", "9.17",
-    "9.31", "9.12", "9.42", "9.20", "9.13", "9.11", "9.9", "9.47",
+    "9.18",
+    "9.39",
+    "9.43",
+    "9.36",
+    "9.24",
+    "9.4",
+    "9.48",
+    "9.17",
+    "9.31",
+    "9.12",
+    "9.42",
+    "9.20",
+    "9.13",
+    "9.11",
+    "9.9",
+    "9.47",
 ]
 
 # A variable name as the guide writes it: bare, wave-prefixed, or in a list of
@@ -52,16 +66,84 @@ NAME = re.compile(r"\b([a-z][a-z0-9_]{3,})\b", re.I)
 # Words that look like variables but are prose. Kept deliberately short: the
 # real filter is whether the name turns up in the questionnaire at all.
 STOP = {
-    "this", "that", "with", "from", "were", "where", "which", "respondent",
-    "respondents", "experiment", "question", "questions", "variable", "variables",
-    "wave", "waves", "file", "record", "allocated", "allocation", "group", "groups",
-    "version", "versions", "about", "their", "they", "there", "these", "those",
-    "been", "have", "each", "both", "same", "also", "more", "most", "some", "such",
-    "than", "then", "them", "when", "what", "will", "would", "could", "should",
-    "study", "studies", "data", "survey", "answer", "answers", "asked", "household",
-    "households", "individual", "individuals", "level", "sample", "random", "randomly",
-    "treatment", "conditions", "condition", "between", "within", "first", "second",
-    "third", "half", "whether", "included", "include", "using", "used",
+    "this",
+    "that",
+    "with",
+    "from",
+    "were",
+    "where",
+    "which",
+    "respondent",
+    "respondents",
+    "experiment",
+    "question",
+    "questions",
+    "variable",
+    "variables",
+    "wave",
+    "waves",
+    "file",
+    "record",
+    "allocated",
+    "allocation",
+    "group",
+    "groups",
+    "version",
+    "versions",
+    "about",
+    "their",
+    "they",
+    "there",
+    "these",
+    "those",
+    "been",
+    "have",
+    "each",
+    "both",
+    "same",
+    "also",
+    "more",
+    "most",
+    "some",
+    "such",
+    "than",
+    "then",
+    "them",
+    "when",
+    "what",
+    "will",
+    "would",
+    "could",
+    "should",
+    "study",
+    "studies",
+    "data",
+    "survey",
+    "answer",
+    "answers",
+    "asked",
+    "household",
+    "households",
+    "individual",
+    "individuals",
+    "level",
+    "sample",
+    "random",
+    "randomly",
+    "treatment",
+    "conditions",
+    "condition",
+    "between",
+    "within",
+    "first",
+    "second",
+    "third",
+    "half",
+    "whether",
+    "included",
+    "include",
+    "using",
+    "used",
 }
 
 # How the questionnaires mark the wording itself. Formats differ by wave -- the
@@ -136,9 +218,7 @@ def main() -> None:
         exp = exps[eid]
         section = sections.get(eid, "")
         names = candidates(section)
-        waves = [
-            int(w) for w in str(exp["waves"]).replace(" ", "").split(",") if w.isdigit()
-        ]
+        waves = [int(w) for w in str(exp["waves"]).replace(" ", "").split(",") if w.isdigit()]
         hits: dict[str, str] = {}
         for wave in waves:
             q = text_for(wave)
@@ -151,8 +231,7 @@ def main() -> None:
                 if block:
                     hits[name] = block
         print(
-            f"{eid:<6}{str(exp['waves'])[:8]:<9}{len(names):>6}{len(hits):>7}  "
-            f"{exp['title'][:46]}"
+            f"{eid:<6}{str(exp['waves'])[:8]:<9}{len(names):>6}{len(hits):>7}  {exp['title'][:46]}"
         )
         summary.append((eid, len(names), len(hits)))
         if args.show and hits:

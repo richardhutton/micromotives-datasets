@@ -121,7 +121,9 @@ def ask(prompt: str, max_tokens: int, temperature: float = 0.3) -> str | None:
         }
     ).encode()
     try:
-        req = urllib.request.Request(OLLAMA, data=body, headers={"Content-Type": "application/json"})
+        req = urllib.request.Request(
+            OLLAMA, data=body, headers={"Content-Type": "application/json"}
+        )
         with urllib.request.urlopen(req, timeout=900) as r:
             return str(json.loads(r.read())["response"]).strip()
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
@@ -163,7 +165,7 @@ def check(data: str, note: str) -> tuple[bool, str]:
     """
     out = ask(
         f"{data}\n\n=====\n\n"
-        f"A researcher wrote this note about the person above:\n\n  \"{note}\"\n\n"
+        f'A researcher wrote this note about the person above:\n\n  "{note}"\n\n'
         "Your job is to BREAK it. Assume it is wrong until the data proves otherwise. "
         "Finding nothing wrong is a failure of your check, not a pass.\n\n"
         "Check in particular:\n"
@@ -202,7 +204,10 @@ def main() -> None:
         data = render(profile)
         changed, steady = histories(profile)
         print(f"{path.name}  ({profile['n_answers']} answers)", flush=True)
-        print(f"  computed: {len(changed)} questions changed, {len(steady)} never changed\n", flush=True)
+        print(
+            f"  computed: {len(changed)} questions changed, {len(steady)} never changed\n",
+            flush=True,
+        )
 
         kept: dict[str, list[dict]] = {}
         dropped: list[dict] = []

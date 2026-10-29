@@ -197,13 +197,23 @@ def test_an_answer_is_always_paired_with_the_scenario_it_answered() -> None:
 
 @needs_derived
 def test_the_persona_never_carries_a_sentinel_as_an_answer() -> None:
-    """"Employment: refusal" is worse than no employment."""
+    """ "Employment: refusal" is worse than no employment."""
     for wave in (5, 6):
         for row in _rows(wave):
             values = [v for v in row.persona.model_dump().values() if isinstance(v, str)]
             for value in values + list(row.persona.extra.values()):
-                assert value.lower() not in {"missing", "inapplicable", "proxy", "refusal",
-                                             "don't know", "-9", "-8", "-7", "-2", "-1"}
+                assert value.lower() not in {
+                    "missing",
+                    "inapplicable",
+                    "proxy",
+                    "refusal",
+                    "don't know",
+                    "-9",
+                    "-8",
+                    "-7",
+                    "-2",
+                    "-1",
+                }
 
 
 # --- 4. the ceiling ---------------------------------------------------------

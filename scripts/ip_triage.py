@@ -55,9 +55,22 @@ WAVES = "abcdefghijklmnopq"
 
 # The selection in docs/STATUS.md section 3, in build order.
 SELECTED = [
-    "9.4", "9.43", "9.48", "9.17", "9.24", "9.18", "9.36",
-    "9.20", "9.31", "9.12", "9.42", "9.39",
-    "9.13", "9.11", "9.9", "9.47",
+    "9.4",
+    "9.43",
+    "9.48",
+    "9.17",
+    "9.24",
+    "9.18",
+    "9.36",
+    "9.20",
+    "9.31",
+    "9.12",
+    "9.42",
+    "9.39",
+    "9.13",
+    "9.11",
+    "9.9",
+    "9.47",
 ]
 
 # A variable the guide names.
@@ -92,9 +105,9 @@ FILE_REF = re.compile(r"\b([a-q]|w)_(hhsamp|indresp|indall|hhresp)_ip\b", re.I)
 # friendship questions)", which is as clear a condition as anything in the
 # document and was being scored as undocumented.
 ARM = re.compile(
-    r"^[ \t]*(?:(\d)[ \t]*[=:][ \t]*\S"        # 1 = Wave 8 version
-    r"|Group[ \t]+(\d)[ \t]+\S"                  # Group 1  Version A
-    r"|(\d)[ \t]{2,}[A-Z]\S)",                    # 1    Version A
+    r"^[ \t]*(?:(\d)[ \t]*[=:][ \t]*\S"  # 1 = Wave 8 version
+    r"|Group[ \t]+(\d)[ \t]+\S"  # Group 1  Version A
+    r"|(\d)[ \t]{2,}[A-Z]\S)",  # 1    Version A
     re.M,
 )
 

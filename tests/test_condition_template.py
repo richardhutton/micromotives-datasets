@@ -31,14 +31,18 @@ TOY: dict = {
     "dimensions": {
         "work": {
             "var": "ff_work",
-            "levels": {1: {"level": "full", "text": "work full time"},
-                       2: {"level": "part", "text": "work part time"}},
+            "levels": {
+                1: {"level": "full", "text": "work full time"},
+                2: {"level": "part", "text": "work part time"},
+            },
         },
         "pay": {
             "var": "ff_pay",
-            "levels": {1: {"level": "low", "text": "are paid less"},
-                       2: {"level": "same", "text": "are paid the same"},
-                       3: {"level": "high", "text": "are paid more"}},
+            "levels": {
+                1: {"level": "low", "text": "are paid less"},
+                2: {"level": "same", "text": "are paid the same"},
+                3: {"level": "high", "text": "are paid more"},
+            },
         },
     },
 }
@@ -122,8 +126,9 @@ def test_two_dimensions_sharing_a_variable_are_refused() -> None:
 
 def test_a_dimension_with_no_levels_is_refused() -> None:
     with pytest.raises(ValidationError, match="declares no levels"):
-        _template(dimensions={"work": {"var": "ff_work", "levels": {}},
-                              "pay": TOY["dimensions"]["pay"]})
+        _template(
+            dimensions={"work": {"var": "ff_work", "levels": {}}, "pay": TOY["dimensions"]["pay"]}
+        )
 
 
 def test_arms_and_a_template_together_are_refused() -> None:
@@ -193,8 +198,10 @@ AGREE: dict = {
         },
         "often": {
             "var": "ff_often",
-            "levels": {1: {"level": "regularly", "text": "regularly"},
-                       2: {"level": "rarely", "text": "rarely"}},
+            "levels": {
+                1: {"level": "regularly", "text": "regularly"},
+                2: {"level": "rarely", "text": "rarely"},
+            },
         },
     },
 }
@@ -254,10 +261,13 @@ def test_parts_do_not_relax_the_once_only_rule_for_the_bare_clause() -> None:
 def test_a_part_only_some_levels_declare_is_refused() -> None:
     """The cells lacking it would ship literal braces."""
     dims = {k: dict(v) for k, v in AGREE["dimensions"].items()}
-    dims["who"] = {"var": "ff_name", "levels": {
-        1: {"level": "George", "text": "George", "parts": {"subj": "He", "poss": "his"}},
-        2: {"level": "Anne", "text": "Anne", "parts": {"subj": "She"}},
-    }}
+    dims["who"] = {
+        "var": "ff_name",
+        "levels": {
+            1: {"level": "George", "text": "George", "parts": {"subj": "He", "poss": "his"}},
+            2: {"level": "Anne", "text": "Anne", "parts": {"subj": "She"}},
+        },
+    }
     with pytest.raises(ValidationError, match="levels declare different parts"):
         _agree(dimensions=dims)
 

@@ -138,8 +138,13 @@ def profile_id(pidp: int) -> str:
 
 
 DEMO = {
-    "age": "dvage", "sex": "sex", "region": "gor_dv", "employment": "jbstat",
-    "education": "hiqual_dv", "marital_status": "mastat_dv", "housing": "tenure_dv",
+    "age": "dvage",
+    "sex": "sex",
+    "region": "gor_dv",
+    "employment": "jbstat",
+    "education": "hiqual_dv",
+    "marital_status": "mastat_dv",
+    "housing": "tenure_dv",
     "children_in_household": "nchild_dv",
 }
 
@@ -262,7 +267,9 @@ def main() -> None:
     deepest = sorted(built, key=lambda p: -built[p]["n_answers"])
     sizes = pd.Series([built[p]["n_answers"] for p in deepest])
     print(f"people: {len(years):,}   with self-report: {len(answers):,}")
-    print(f"answers per profile after cleaning: median {int(sizes.median())}, max {int(sizes.max())}")
+    print(
+        f"answers per profile after cleaning: median {int(sizes.median())}, max {int(sizes.max())}"
+    )
     print(f"profiles with 221+ (the paper's size): {int((sizes >= 221).sum()):,}\n")
 
     if args.one:

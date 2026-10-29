@@ -102,10 +102,13 @@ def main() -> None:
         if s.get("n", 0) >= MIN_PAIRS
     }
 
-    print(f"MODE {args.mode} — {len(results):,} questions, "
-          f"{len({r['id'] for r in results}):,} people")
-    print(f"ceiling from {ceil['people']:,} profiles, {ceil['overall']['n']:,} repeated pairs, "
-          f"mean gap {ceil['overall']['mean_gap_years']:.1f} years")
+    print(
+        f"MODE {args.mode} — {len(results):,} questions, {len({r['id'] for r in results}):,} people"
+    )
+    print(
+        f"ceiling from {ceil['people']:,} profiles, {ceil['overall']['n']:,} repeated pairs, "
+        f"mean gap {ceil['overall']['mean_gap_years']:.1f} years"
+    )
     print()
     head = f"{'topic':<20}{'n':>5}{'chance':>8}{'demo':>8}{'profile':>9}{'CEILING':>9}"
     print(head + f"{'demo':>8}{'prof':>7}   <- share of the gettable range")
@@ -128,8 +131,9 @@ def main() -> None:
             out += f"{share:>8.0%}" if share is not None else f"{'-':>8}"
         print(out)
 
-    topics = sorted({r["topic"] for r in results}, key=lambda t: -len(
-        [r for r in results if r["topic"] == t]))
+    topics = sorted(
+        {r["topic"] for r in results}, key=lambda t: -len([r for r in results if r["topic"] == t])
+    )
     for topic in topics:
         rows = [r for r in results if r["topic"] == topic]
         line(topic, rows, ceilings.get(topic))

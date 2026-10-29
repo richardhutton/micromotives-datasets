@@ -164,12 +164,16 @@ def report(result: dict[str, Any]) -> None:
     print(f"mean gap between the two answers: {o['mean_gap_years']:.1f} years")
     print()
     print(f"{'':<22}{'n':>8}{'chance':>9}{'CEILING':>9}{'±1 opt':>9}{'options':>9}")
-    print(f"{'overall':<22}{o['n']:>8,}{o['chance']:>8.1%}{o['repeat_previous']:>9.1%}"
-          f"{o['within_one_option']:>9.1%}{o['mean_options']:>9.1f}")
+    print(
+        f"{'overall':<22}{o['n']:>8,}{o['chance']:>8.1%}{o['repeat_previous']:>9.1%}"
+        f"{o['within_one_option']:>9.1%}{o['mean_options']:>9.1f}"
+    )
     print()
     for topic, s in sorted(result["by_topic"].items(), key=lambda kv: -kv[1]["n"]):
-        print(f"  {topic:<20}{s['n']:>8,}{s['chance']:>8.1%}{s['repeat_previous']:>9.1%}"
-              f"{s['within_one_option']:>9.1%}{s['mean_options']:>9.1f}")
+        print(
+            f"  {topic:<20}{s['n']:>8,}{s['chance']:>8.1%}{s['repeat_previous']:>9.1%}"
+            f"{s['within_one_option']:>9.1%}{s['mean_options']:>9.1f}"
+        )
     print()
     print("CEILING = how often a person's latest answer matches their own previous one.")
     print("Read the model's score between `chance` and `CEILING`, not against chance alone.")
