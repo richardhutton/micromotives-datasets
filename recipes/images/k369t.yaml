@@ -1,0 +1,6409 @@
+study_id: k369t
+source: osf
+title: 'kcal and PACE (minutes of walking) labelling and self-served portion size: 4 labelling groups
+  x 18 dishes'
+data_file: kcal_pace_data_OSF_final.xlsx
+licence: none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data,
+  26 Oct 2026 (data/catalog/image_contacts.json, robinson).
+comparable_to_socsci210: false
+participant_id_var: subject
+notes: "Write recipes/images/k369t.yaml: kcal and PACE labelling and portion choice (IMG27).\n\nMarty,\
+  \ Franzon, Jones & Robinson (Liverpool), \"Socioeconomic position, energy\nlabelling and portion size\
+  \ selection: an online study comparing calorie and\nphysical activity calorie equivalent (PACE) labelling\
+  \ in UK adults\", OSF k369t;\npublished in Appetite 2021. Answer key: the deposit's pre-print (Table\
+  \ 2,\nFigure 3). Instrument: the pre-registered protocol in the deposit, whose task\ntext the pre-print's\
+  \ Additional file section 1 repeats.\n\n1,667 UK adults (Prolific, April-May 2020) were randomised between\
+  \ subjects to\none of four labelling groups, then served themselves 18 dishes in random order.\nEach\
+  \ dish was a set of 50 photographs, 20 kcal apart (20 to 1000 kcal); the\nfirst photograph shown was\
+  \ the smallest, the right arrow stepped to the next\nlarger one, the left arrow back, and the space\
+  \ bar confirmed. The deposit is\nLONG: one row per person per dish, 30,006 rows, with `portion` naming\
+  \ the\nphotograph confirmed (e.g. \"BB17\" = beef in black bean sauce, photograph 17).\n\nEvery judgement\
+  \ is here, in code, so the recipe can be re-derived and reviewed:\n\n* ARMS. `condition` (4 labelling\
+  \ groups, between subjects) x `food name` (18\n  dishes, within subject): 72 arms, each data row one\
+  \ (person, dish) trial, both\n  codes looked up BY LABEL. condition_num = group * 18 + dish. The person\
+  \ id is\n  `subject`, so one person's 18 rows share one participant_id.\n* IMAGES. The deposit does\
+  \ not hold the 900 task photographs. It holds, in the\n  protocol's Appendix K (familiarity task), one\
+  \ small picture of each of the 18\n  dishes; the protocol and the pre-print (section 2.4, Table S1)\
+  \ say those are\n  the 600 kcal portion, the 30th photograph. The pre-print's Figure 1 shows the\n \
+  \ fielded tortellini screen at 600 kcal (\"600 kcal\", \"120 min\") and its plate\n  matches the Appendix\
+  \ K tortellini picture. Each arm cites its dish's picture,\n  and the text says it is photograph 30\
+  \ of the 50; it does not stand in for the\n  photograph the person confirmed, which the deposit does\
+  \ not hold. The pictures\n  are 126-190 px, much smaller than on screen. Each dish's picture was matched\n\
+  \  to the data's dish by the caption printed on it.\n  NOT cited: the example labels (protocol image1-3,\
+  \ 10, 12, 14) and the beef\n  screenshots (image8, 9, 11, 13, 15) all show 500 kcal / 100 min, a value\
+  \ that\n  belongs to one photograph of one dish; the label is described in words.\n* CONDITION. The\
+  \ task instructions, word-for-word from protocol Appendix H, with\n  each group's own label sentence\
+  \ where the protocol puts it (mid-paragraph, so\n  the instructions are repeated per arm, not hoisted).\
+  \ Two sentences dropped as\n  survey mechanics: \"In this task, you will be shown pictures of 18 different\n\
+  \  dishes.\" and \"Tap the spacebar to start.\" The on-screen line below the photo\n  is quoted from\
+  \ the protocol's screenshots. The recommendation sentences are\n  quoted word-for-word (protocol Appendix\
+  \ H, \"During the task\"; pre-print 2.3.2);\n  where on screen they sat is not recorded, so the text\
+  \ says only that they were\n  shown. Words that are OURS, all description of the documented display:\n\
+  \    \"The dish was shown as one of 50 photographs of increasing portion size,\n    captioned ...\"\
+  , \"The first photograph showed the smallest portion; each tap\n    of the right arrow showed the next\
+  \ larger one, up to the 50th.\", \"Photograph\n    30 of the 50:\", and per labelled group the label\
+  \ clause (\"To the left of\n    each photograph a label showed ...\"). The label values are arithmetic\
+  \ from\n    the protocol: 20 kcal per photograph, and 4 minutes of walking per 20 kcal\n    (500 kcal\
+  \ = 100 min in the protocol, 600 kcal = 120 min in the pre-print);\n    only \"600 kcal\" and \"120\
+  \ min\" are quoted, because only those were seen\n    beside photograph 30. The no-label group's text\
+  \ names no calories.\n* OUTCOME. \"How much would you like to eat?\" is the screen's own question\n\
+  \  (protocol screenshots). The response is the number of the photograph\n  confirmed, 1-50, read from\
+  \ `portion` through a per-arm recode built from that\n  arm's own dish prefix. In every row kcal = 20\
+  \ x that number (checked below), so\n  it is a 1:1 of the paper's kcal outcome. Scale labels are ours:\
+  \ \"Photograph 1,\n  the smallest portion\" / \"Photograph 50, the largest portion\". One row is\n \
+  \ dropped: a \"Biryani\" trial whose `portion` is \"TO31\", a tortellini photograph,\n  so which dish\
+  \ was on screen cannot be told (the per-arm recode does not list\n  it). 1,178 rows confirm photograph\
+  \ 1 although the instructions required one\n  increase first; going up and back down satisfies that,\
+  \ so they are kept.\n* PERSONA. Baseline questionnaire (protocol Appendix G), all asked BEFORE the\n\
+  \  task. Mapped: age, gender, ethnicity (five ONS groups, already in the\n  crosswalk), employment and\
+  \ highest qualification (scheme uk_k369t_osf), years\n  of study after leaving school at 16 (the question\
+  \ counts A levels, so not\n  named \"higher education\"), subjective social status (MacArthur ladder\
+  \ 1-10),\n  currently dieting, and hunger (0-100). Qualification is stored as codes 1-9;\n  labels are\
+  \ the questionnaire's, and the code order is the protocol's 1-9\n  coding, confirmed by the pre-print's\
+  \ Table 1 counts. The question asks students\n  for the diploma being studied for, so for 52 students\
+  \ education is the\n  qualification sought. NOT mapped: equivalised income (an OECD-equivalised\n  float,\
+  \ not household income), BMI (unrounded floats, as in k7tw5), the\n  derived education composite and\
+  \ binary, COVID-19 items (where they sat in the\n  flow is not recorded), and everything measured after\
+  \ the task: executive\n  function, food choice motives, IPAQ, familiarity, liking, aim guessing.\n\n\
+  \    uv run python scripts/gen_k369t.py            # write the recipe\n    uv run python scripts/gen_k369t.py\
+  \ --check    # exit 1 if it differs"
+condition:
+  source_vars:
+  - condition
+  - food name
+  factors:
+  - label
+  - dish
+  arms:
+  - raw_values:
+      condition: 3
+      food name: 2
+    condition_num: 0
+    factors:
+      label: no label
+      dish: Beef in black bean sauce with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef in black
+      bean sauce with rice". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_black_bean_rice
+    response_recode:
+      1: 1
+      2: 2
+      3: 3
+      4: 4
+      5: 5
+      6: 6
+      7: 7
+      8: 8
+      9: 9
+      10: 10
+      11: 11
+      12: 12
+      13: 13
+      14: 14
+      15: 15
+      16: 16
+      17: 17
+      18: 18
+      19: 19
+      20: 20
+      21: 21
+      22: 22
+      23: 23
+      24: 24
+      25: 25
+      26: 26
+      27: 27
+      28: 28
+      29: 29
+      30: 30
+      31: 31
+      32: 32
+      33: 33
+      34: 34
+      35: 35
+      36: 36
+      37: 37
+      38: 38
+      39: 39
+      40: 40
+      41: 42
+      42: 44
+      43: 45
+      44: 46
+      45: 50
+  - raw_values:
+      condition: 3
+      food name: 1
+    condition_num: 1
+    factors:
+      label: no label
+      dish: Beef stew with dumplings
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef stew with
+      dumplings". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_stew_dumplings
+    response_recode:
+      46: 1
+      47: 2
+      48: 3
+      49: 4
+      50: 5
+      51: 6
+      52: 7
+      53: 8
+      54: 9
+      55: 10
+      56: 11
+      57: 12
+      58: 13
+      59: 14
+      60: 15
+      61: 16
+      62: 17
+      63: 18
+      64: 19
+      65: 20
+      66: 21
+      67: 22
+      68: 23
+      69: 24
+      70: 25
+      71: 26
+      72: 27
+      73: 28
+      74: 29
+      75: 30
+      76: 31
+      77: 32
+      78: 33
+      79: 34
+      80: 35
+      81: 36
+      82: 37
+      83: 38
+      84: 39
+      85: 40
+      86: 41
+      87: 42
+      88: 43
+      89: 44
+      90: 45
+      91: 46
+      92: 47
+      93: 48
+      94: 49
+      95: 50
+  - raw_values:
+      condition: 3
+      food name: 7
+    condition_num: 2
+    factors:
+      label: no label
+      dish: Chicken and bacon pasta bake
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken and bacon
+      pasta bake". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_bacon_pasta_bake
+    response_recode:
+      96: 1
+      97: 2
+      98: 3
+      99: 4
+      100: 5
+      101: 6
+      102: 7
+      103: 8
+      104: 9
+      105: 10
+      106: 11
+      107: 12
+      108: 13
+      109: 14
+      110: 15
+      111: 16
+      112: 17
+      113: 18
+      114: 19
+      115: 20
+      116: 21
+      117: 22
+      118: 23
+      119: 24
+      120: 25
+      121: 26
+      122: 27
+      123: 28
+      124: 29
+      125: 30
+      126: 31
+      127: 32
+      128: 33
+      129: 34
+      130: 35
+      131: 36
+      132: 37
+      133: 38
+      134: 39
+      135: 40
+      136: 41
+      137: 42
+      138: 43
+      139: 44
+      140: 45
+      141: 46
+      142: 47
+      143: 48
+      144: 49
+      145: 50
+  - raw_values:
+      condition: 3
+      food name: 10
+    condition_num: 3
+    factors:
+      label: no label
+      dish: Cous cous and salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Cous cous and
+      salad". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_couscous_salad
+    response_recode:
+      146: 1
+      147: 2
+      148: 3
+      149: 4
+      150: 5
+      151: 6
+      152: 7
+      153: 8
+      154: 9
+      155: 10
+      156: 11
+      157: 12
+      158: 13
+      159: 14
+      160: 15
+      161: 16
+      162: 17
+      163: 18
+      164: 19
+      165: 20
+      166: 21
+      167: 22
+      168: 23
+      169: 24
+      170: 25
+      171: 26
+      172: 27
+      173: 28
+      174: 29
+      175: 30
+      176: 31
+      177: 33
+      178: 34
+      179: 39
+      180: 40
+      181: 48
+      182: 50
+  - raw_values:
+      condition: 3
+      food name: 9
+    condition_num: 4
+    factors:
+      label: no label
+      dish: Chicken, chips and baked beans
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken, chips
+      and baked beans". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_chips_beans
+    response_recode:
+      183: 1
+      184: 2
+      185: 3
+      186: 4
+      187: 5
+      188: 6
+      189: 7
+      190: 8
+      191: 9
+      192: 10
+      193: 11
+      194: 12
+      195: 13
+      196: 14
+      197: 15
+      198: 16
+      199: 17
+      200: 18
+      201: 19
+      202: 20
+      203: 21
+      204: 22
+      205: 23
+      206: 24
+      207: 25
+      208: 26
+      209: 27
+      210: 28
+      211: 29
+      212: 30
+      213: 31
+      214: 32
+      215: 33
+      216: 34
+      217: 35
+      218: 36
+      219: 37
+      220: 38
+      221: 39
+      222: 40
+      223: 41
+      224: 42
+      225: 43
+      226: 44
+      227: 45
+      228: 46
+      229: 47
+      230: 48
+      231: 49
+      232: 50
+  - raw_values:
+      condition: 3
+      food name: 6
+    condition_num: 5
+    factors:
+      label: no label
+      dish: Chicken korma with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken korma
+      with rice". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_korma_rice
+    response_recode:
+      233: 1
+      234: 2
+      235: 3
+      236: 4
+      237: 5
+      238: 6
+      239: 7
+      240: 8
+      241: 9
+      242: 10
+      243: 11
+      244: 12
+      245: 13
+      246: 14
+      247: 15
+      248: 16
+      249: 17
+      250: 18
+      251: 19
+      252: 20
+      253: 21
+      254: 22
+      255: 23
+      256: 24
+      257: 25
+      258: 26
+      259: 27
+      260: 28
+      261: 29
+      262: 30
+      263: 31
+      264: 32
+      265: 33
+      266: 34
+      267: 35
+      268: 36
+      269: 37
+      270: 38
+      271: 40
+      272: 41
+      273: 42
+      274: 43
+      275: 44
+      276: 45
+      277: 47
+      278: 49
+      279: 50
+  - raw_values:
+      condition: 3
+      food name: 8
+    condition_num: 6
+    factors:
+      label: no label
+      dish: Chicken salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken salad".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_salad
+    response_recode:
+      280: 1
+      281: 2
+      282: 3
+      283: 4
+      284: 5
+      285: 6
+      286: 7
+      287: 8
+      288: 9
+      289: 10
+      290: 11
+      291: 12
+      292: 13
+      293: 14
+      294: 15
+      295: 16
+      296: 17
+      297: 18
+      298: 19
+      299: 20
+      300: 21
+      301: 22
+      302: 23
+      303: 24
+      304: 25
+      305: 26
+      306: 27
+      307: 28
+      308: 29
+      309: 30
+      310: 31
+      311: 33
+      312: 34
+      313: 35
+      314: 37
+      315: 39
+      316: 40
+      317: 50
+  - raw_values:
+      condition: 3
+      food name: 11
+    condition_num: 7
+    factors:
+      label: no label
+      dish: Fish, chips and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Fish, chips and
+      peas". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_fish_chips_peas
+    response_recode:
+      318: 1
+      319: 2
+      320: 3
+      321: 4
+      322: 5
+      323: 6
+      324: 7
+      325: 8
+      326: 9
+      327: 10
+      328: 11
+      329: 12
+      330: 13
+      331: 14
+      332: 15
+      333: 16
+      334: 17
+      335: 18
+      336: 19
+      337: 20
+      338: 21
+      339: 22
+      340: 23
+      341: 24
+      342: 25
+      343: 26
+      344: 27
+      345: 28
+      346: 29
+      347: 30
+      348: 31
+      349: 32
+      350: 33
+      351: 34
+      352: 35
+      353: 36
+      354: 37
+      355: 38
+      356: 39
+      357: 40
+      358: 41
+      359: 42
+      360: 43
+      361: 44
+      362: 45
+      363: 46
+      364: 47
+      365: 48
+      366: 49
+      367: 50
+  - raw_values:
+      condition: 3
+      food name: 12
+    condition_num: 8
+    factors:
+      label: no label
+      dish: Grilled white fish with tomato and bean salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Grilled white
+      fish with tomato and bean salad". The first photograph showed the smallest portion; each tap of
+      the right arrow showed the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_grilled_fish_bean_salad
+    response_recode:
+      368: 1
+      369: 2
+      370: 3
+      371: 4
+      372: 5
+      373: 6
+      374: 7
+      375: 8
+      376: 9
+      377: 10
+      378: 11
+      379: 12
+      380: 13
+      381: 14
+      382: 15
+      383: 16
+      384: 17
+      385: 18
+      386: 19
+      387: 20
+      388: 21
+      389: 22
+      390: 23
+      391: 24
+      392: 25
+      393: 26
+      394: 27
+      395: 28
+      396: 29
+      397: 30
+      398: 31
+      399: 32
+      400: 33
+      401: 35
+      402: 36
+      403: 37
+      404: 38
+      405: 39
+      406: 40
+      407: 42
+      408: 44
+      409: 50
+  - raw_values:
+      condition: 3
+      food name: 5
+    condition_num: 9
+    factors:
+      label: no label
+      dish: Ham and mushroom carbonara
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Ham and mushroom
+      carbonara". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_ham_mushroom_carbonara
+    response_recode:
+      410: 1
+      411: 2
+      412: 3
+      413: 4
+      414: 5
+      415: 6
+      416: 7
+      417: 8
+      418: 9
+      419: 10
+      420: 11
+      421: 12
+      422: 13
+      423: 14
+      424: 15
+      425: 16
+      426: 17
+      427: 18
+      428: 19
+      429: 20
+      430: 21
+      431: 22
+      432: 23
+      433: 24
+      434: 25
+      435: 26
+      436: 27
+      437: 28
+      438: 29
+      439: 30
+      440: 31
+      441: 32
+      442: 33
+      443: 34
+      444: 35
+      445: 36
+      446: 37
+      447: 38
+      448: 39
+      449: 40
+      450: 41
+      451: 42
+      452: 43
+      453: 44
+      454: 45
+      455: 46
+      456: 47
+      457: 48
+      458: 49
+      459: 50
+  - raw_values:
+      condition: 3
+      food name: 13
+    condition_num: 10
+    factors:
+      label: no label
+      dish: Lasagne and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Lasagne and peas".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_lasagne_peas
+    response_recode:
+      460: 1
+      461: 2
+      462: 3
+      463: 4
+      464: 5
+      465: 6
+      466: 7
+      467: 8
+      468: 9
+      469: 10
+      470: 11
+      471: 12
+      472: 13
+      473: 14
+      474: 15
+      475: 16
+      476: 17
+      477: 18
+      478: 19
+      479: 20
+      480: 21
+      481: 22
+      482: 23
+      483: 24
+      484: 25
+      485: 26
+      486: 27
+      487: 28
+      488: 29
+      489: 30
+      490: 31
+      491: 32
+      492: 33
+      493: 34
+      494: 35
+      495: 36
+      496: 37
+      497: 38
+      498: 39
+      499: 40
+      500: 41
+      501: 42
+      502: 43
+      503: 44
+      504: 45
+      505: 46
+      506: 47
+      507: 48
+      508: 49
+      509: 50
+  - raw_values:
+      condition: 3
+      food name: 14
+    condition_num: 11
+    factors:
+      label: no label
+      dish: Macaroni cheese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Macaroni cheese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_macaroni_cheese
+    response_recode:
+      510: 1
+      511: 2
+      512: 3
+      513: 4
+      514: 5
+      515: 6
+      516: 7
+      517: 8
+      518: 9
+      519: 10
+      520: 11
+      521: 12
+      522: 13
+      523: 14
+      524: 15
+      525: 16
+      526: 17
+      527: 18
+      528: 19
+      529: 20
+      530: 21
+      531: 22
+      532: 23
+      533: 24
+      534: 25
+      535: 26
+      536: 27
+      537: 28
+      538: 29
+      539: 30
+      540: 31
+      541: 32
+      542: 33
+      543: 34
+      544: 35
+      545: 36
+      546: 37
+      547: 38
+      548: 39
+      549: 40
+      550: 41
+      551: 42
+      552: 43
+      553: 44
+      554: 46
+      555: 49
+      556: 50
+  - raw_values:
+      condition: 3
+      food name: 16
+    condition_num: 12
+    factors:
+      label: no label
+      dish: Mushroom risotto
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Mushroom risotto".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_mushroom_risotto
+    response_recode:
+      557: 1
+      558: 2
+      559: 3
+      560: 4
+      561: 5
+      562: 6
+      563: 7
+      564: 8
+      565: 9
+      566: 10
+      567: 11
+      568: 12
+      569: 13
+      570: 14
+      571: 15
+      572: 16
+      573: 17
+      574: 18
+      575: 19
+      576: 20
+      577: 21
+      578: 22
+      579: 23
+      580: 24
+      581: 25
+      582: 26
+      583: 27
+      584: 28
+      585: 29
+      586: 30
+      587: 31
+      588: 32
+      589: 33
+      590: 34
+      591: 35
+      592: 36
+      593: 37
+      594: 38
+      595: 39
+      596: 40
+      597: 41
+      598: 42
+      599: 43
+      600: 44
+      601: 45
+      602: 46
+      603: 47
+      604: 50
+  - raw_values:
+      condition: 3
+      food name: 15
+    condition_num: 13
+    factors:
+      label: no label
+      dish: Pepperoni pizza
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Pepperoni pizza".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_pepperoni_pizza
+    response_recode:
+      605: 1
+      606: 2
+      607: 3
+      608: 4
+      609: 5
+      610: 6
+      611: 7
+      612: 8
+      613: 9
+      614: 10
+      615: 11
+      616: 12
+      617: 13
+      618: 14
+      619: 15
+      620: 16
+      621: 17
+      622: 18
+      623: 19
+      624: 20
+      625: 21
+      626: 22
+      627: 23
+      628: 24
+      629: 25
+      630: 26
+      631: 27
+      632: 28
+      633: 29
+      634: 30
+      635: 31
+      636: 32
+      637: 33
+      638: 34
+      639: 35
+      640: 37
+      641: 38
+      642: 39
+      643: 40
+      644: 43
+      645: 44
+      646: 45
+      647: 48
+      648: 50
+  - raw_values:
+      condition: 3
+      food name: 4
+    condition_num: 14
+    factors:
+      label: no label
+      dish: Spaghetti bolognese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spaghetti bolognese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_spaghetti_bolognese
+    response_recode:
+      649: 1
+      650: 2
+      651: 3
+      652: 4
+      653: 5
+      654: 6
+      655: 7
+      656: 8
+      657: 9
+      658: 10
+      659: 11
+      660: 12
+      661: 13
+      662: 14
+      663: 15
+      664: 16
+      665: 17
+      666: 18
+      667: 19
+      668: 20
+      669: 21
+      670: 22
+      671: 23
+      672: 24
+      673: 25
+      674: 26
+      675: 27
+      676: 28
+      677: 29
+      678: 30
+      679: 31
+      680: 32
+      681: 33
+      682: 34
+      683: 35
+      684: 36
+      685: 37
+      686: 38
+      687: 39
+      688: 40
+      689: 41
+      690: 42
+      691: 43
+      692: 44
+      693: 45
+      694: 46
+      695: 50
+  - raw_values:
+      condition: 3
+      food name: 17
+    condition_num: 15
+    factors:
+      label: no label
+      dish: Sausage, mashed potato and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Sausage, mashed
+      potato and peas". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_sausage_mash_peas
+    response_recode:
+      696: 1
+      697: 2
+      698: 3
+      699: 4
+      700: 5
+      701: 6
+      702: 7
+      703: 8
+      704: 9
+      705: 10
+      706: 11
+      707: 12
+      708: 13
+      709: 14
+      710: 15
+      711: 16
+      712: 17
+      713: 18
+      714: 19
+      715: 20
+      716: 21
+      717: 22
+      718: 23
+      719: 24
+      720: 25
+      721: 26
+      722: 27
+      723: 28
+      724: 29
+      725: 30
+      726: 31
+      727: 33
+      728: 35
+      729: 36
+      730: 37
+      731: 38
+      732: 39
+      733: 40
+      734: 41
+      735: 43
+      736: 44
+      737: 45
+      738: 50
+  - raw_values:
+      condition: 3
+      food name: 18
+    condition_num: 16
+    factors:
+      label: no label
+      dish: Spinach & ricotta tortellini with tomato sauce
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spinach & ricotta
+      tortellini with tomato sauce". The first photograph showed the smallest portion; each tap of the
+      right arrow showed the next larger one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_tortellini
+    response_recode:
+      739: 1
+      740: 2
+      741: 3
+      742: 4
+      743: 5
+      744: 6
+      745: 7
+      746: 8
+      747: 9
+      748: 10
+      749: 11
+      750: 12
+      751: 13
+      752: 14
+      753: 15
+      754: 16
+      755: 17
+      756: 18
+      757: 19
+      758: 20
+      759: 21
+      760: 22
+      761: 23
+      762: 24
+      763: 25
+      764: 26
+      765: 27
+      766: 28
+      767: 29
+      768: 30
+      769: 31
+      770: 32
+      771: 33
+      772: 34
+      773: 35
+      774: 36
+      775: 37
+      776: 38
+      777: 39
+      778: 40
+      779: 41
+      780: 42
+      781: 43
+      782: 44
+      783: 45
+      784: 46
+      785: 47
+      786: 48
+      787: 49
+      788: 50
+  - raw_values:
+      condition: 3
+      food name: 3
+    condition_num: 17
+    factors:
+      label: no label
+      dish: Vegetable biryani
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Vegetable biryani".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_vegetable_biryani
+    response_recode:
+      789: 1
+      790: 2
+      791: 3
+      792: 4
+      793: 5
+      794: 6
+      795: 7
+      796: 8
+      797: 9
+      798: 10
+      799: 11
+      800: 12
+      801: 13
+      802: 14
+      803: 15
+      804: 16
+      805: 17
+      806: 18
+      807: 19
+      808: 20
+      809: 21
+      810: 22
+      811: 23
+      812: 24
+      813: 25
+      814: 26
+      815: 27
+      816: 28
+      817: 29
+      818: 30
+      819: 31
+      820: 32
+      821: 33
+      822: 34
+      823: 35
+      824: 36
+      825: 37
+      826: 38
+      827: 39
+      828: 40
+      829: 41
+      830: 42
+      831: 43
+      832: 45
+      833: 46
+      834: 47
+      835: 48
+      836: 50
+  - raw_values:
+      condition: 2
+      food name: 2
+    condition_num: 18
+    factors:
+      label: kcal
+      dish: Beef in black bean sauce with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef in black
+      bean sauce with rice". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_black_bean_rice
+    response_recode:
+      1: 1
+      2: 2
+      3: 3
+      4: 4
+      5: 5
+      6: 6
+      7: 7
+      8: 8
+      9: 9
+      10: 10
+      11: 11
+      12: 12
+      13: 13
+      14: 14
+      15: 15
+      16: 16
+      17: 17
+      18: 18
+      19: 19
+      20: 20
+      21: 21
+      22: 22
+      23: 23
+      24: 24
+      25: 25
+      26: 26
+      27: 27
+      28: 28
+      29: 29
+      30: 30
+      31: 31
+      32: 32
+      33: 33
+      34: 34
+      35: 35
+      36: 36
+      37: 37
+      38: 38
+      39: 39
+      40: 40
+      41: 42
+      42: 44
+      43: 45
+      44: 46
+      45: 50
+  - raw_values:
+      condition: 2
+      food name: 1
+    condition_num: 19
+    factors:
+      label: kcal
+      dish: Beef stew with dumplings
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef stew with
+      dumplings". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_stew_dumplings
+    response_recode:
+      46: 1
+      47: 2
+      48: 3
+      49: 4
+      50: 5
+      51: 6
+      52: 7
+      53: 8
+      54: 9
+      55: 10
+      56: 11
+      57: 12
+      58: 13
+      59: 14
+      60: 15
+      61: 16
+      62: 17
+      63: 18
+      64: 19
+      65: 20
+      66: 21
+      67: 22
+      68: 23
+      69: 24
+      70: 25
+      71: 26
+      72: 27
+      73: 28
+      74: 29
+      75: 30
+      76: 31
+      77: 32
+      78: 33
+      79: 34
+      80: 35
+      81: 36
+      82: 37
+      83: 38
+      84: 39
+      85: 40
+      86: 41
+      87: 42
+      88: 43
+      89: 44
+      90: 45
+      91: 46
+      92: 47
+      93: 48
+      94: 49
+      95: 50
+  - raw_values:
+      condition: 2
+      food name: 7
+    condition_num: 20
+    factors:
+      label: kcal
+      dish: Chicken and bacon pasta bake
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken and bacon
+      pasta bake". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_bacon_pasta_bake
+    response_recode:
+      96: 1
+      97: 2
+      98: 3
+      99: 4
+      100: 5
+      101: 6
+      102: 7
+      103: 8
+      104: 9
+      105: 10
+      106: 11
+      107: 12
+      108: 13
+      109: 14
+      110: 15
+      111: 16
+      112: 17
+      113: 18
+      114: 19
+      115: 20
+      116: 21
+      117: 22
+      118: 23
+      119: 24
+      120: 25
+      121: 26
+      122: 27
+      123: 28
+      124: 29
+      125: 30
+      126: 31
+      127: 32
+      128: 33
+      129: 34
+      130: 35
+      131: 36
+      132: 37
+      133: 38
+      134: 39
+      135: 40
+      136: 41
+      137: 42
+      138: 43
+      139: 44
+      140: 45
+      141: 46
+      142: 47
+      143: 48
+      144: 49
+      145: 50
+  - raw_values:
+      condition: 2
+      food name: 10
+    condition_num: 21
+    factors:
+      label: kcal
+      dish: Cous cous and salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Cous cous and
+      salad". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_couscous_salad
+    response_recode:
+      146: 1
+      147: 2
+      148: 3
+      149: 4
+      150: 5
+      151: 6
+      152: 7
+      153: 8
+      154: 9
+      155: 10
+      156: 11
+      157: 12
+      158: 13
+      159: 14
+      160: 15
+      161: 16
+      162: 17
+      163: 18
+      164: 19
+      165: 20
+      166: 21
+      167: 22
+      168: 23
+      169: 24
+      170: 25
+      171: 26
+      172: 27
+      173: 28
+      174: 29
+      175: 30
+      176: 31
+      177: 33
+      178: 34
+      179: 39
+      180: 40
+      181: 48
+      182: 50
+  - raw_values:
+      condition: 2
+      food name: 9
+    condition_num: 22
+    factors:
+      label: kcal
+      dish: Chicken, chips and baked beans
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken, chips
+      and baked beans". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_chips_beans
+    response_recode:
+      183: 1
+      184: 2
+      185: 3
+      186: 4
+      187: 5
+      188: 6
+      189: 7
+      190: 8
+      191: 9
+      192: 10
+      193: 11
+      194: 12
+      195: 13
+      196: 14
+      197: 15
+      198: 16
+      199: 17
+      200: 18
+      201: 19
+      202: 20
+      203: 21
+      204: 22
+      205: 23
+      206: 24
+      207: 25
+      208: 26
+      209: 27
+      210: 28
+      211: 29
+      212: 30
+      213: 31
+      214: 32
+      215: 33
+      216: 34
+      217: 35
+      218: 36
+      219: 37
+      220: 38
+      221: 39
+      222: 40
+      223: 41
+      224: 42
+      225: 43
+      226: 44
+      227: 45
+      228: 46
+      229: 47
+      230: 48
+      231: 49
+      232: 50
+  - raw_values:
+      condition: 2
+      food name: 6
+    condition_num: 23
+    factors:
+      label: kcal
+      dish: Chicken korma with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken korma
+      with rice". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_korma_rice
+    response_recode:
+      233: 1
+      234: 2
+      235: 3
+      236: 4
+      237: 5
+      238: 6
+      239: 7
+      240: 8
+      241: 9
+      242: 10
+      243: 11
+      244: 12
+      245: 13
+      246: 14
+      247: 15
+      248: 16
+      249: 17
+      250: 18
+      251: 19
+      252: 20
+      253: 21
+      254: 22
+      255: 23
+      256: 24
+      257: 25
+      258: 26
+      259: 27
+      260: 28
+      261: 29
+      262: 30
+      263: 31
+      264: 32
+      265: 33
+      266: 34
+      267: 35
+      268: 36
+      269: 37
+      270: 38
+      271: 40
+      272: 41
+      273: 42
+      274: 43
+      275: 44
+      276: 45
+      277: 47
+      278: 49
+      279: 50
+  - raw_values:
+      condition: 2
+      food name: 8
+    condition_num: 24
+    factors:
+      label: kcal
+      dish: Chicken salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken salad".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_salad
+    response_recode:
+      280: 1
+      281: 2
+      282: 3
+      283: 4
+      284: 5
+      285: 6
+      286: 7
+      287: 8
+      288: 9
+      289: 10
+      290: 11
+      291: 12
+      292: 13
+      293: 14
+      294: 15
+      295: 16
+      296: 17
+      297: 18
+      298: 19
+      299: 20
+      300: 21
+      301: 22
+      302: 23
+      303: 24
+      304: 25
+      305: 26
+      306: 27
+      307: 28
+      308: 29
+      309: 30
+      310: 31
+      311: 33
+      312: 34
+      313: 35
+      314: 37
+      315: 39
+      316: 40
+      317: 50
+  - raw_values:
+      condition: 2
+      food name: 11
+    condition_num: 25
+    factors:
+      label: kcal
+      dish: Fish, chips and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Fish, chips and
+      peas". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_fish_chips_peas
+    response_recode:
+      318: 1
+      319: 2
+      320: 3
+      321: 4
+      322: 5
+      323: 6
+      324: 7
+      325: 8
+      326: 9
+      327: 10
+      328: 11
+      329: 12
+      330: 13
+      331: 14
+      332: 15
+      333: 16
+      334: 17
+      335: 18
+      336: 19
+      337: 20
+      338: 21
+      339: 22
+      340: 23
+      341: 24
+      342: 25
+      343: 26
+      344: 27
+      345: 28
+      346: 29
+      347: 30
+      348: 31
+      349: 32
+      350: 33
+      351: 34
+      352: 35
+      353: 36
+      354: 37
+      355: 38
+      356: 39
+      357: 40
+      358: 41
+      359: 42
+      360: 43
+      361: 44
+      362: 45
+      363: 46
+      364: 47
+      365: 48
+      366: 49
+      367: 50
+  - raw_values:
+      condition: 2
+      food name: 12
+    condition_num: 26
+    factors:
+      label: kcal
+      dish: Grilled white fish with tomato and bean salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Grilled white
+      fish with tomato and bean salad". The first photograph showed the smallest portion; each tap of
+      the right arrow showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_grilled_fish_bean_salad
+    response_recode:
+      368: 1
+      369: 2
+      370: 3
+      371: 4
+      372: 5
+      373: 6
+      374: 7
+      375: 8
+      376: 9
+      377: 10
+      378: 11
+      379: 12
+      380: 13
+      381: 14
+      382: 15
+      383: 16
+      384: 17
+      385: 18
+      386: 19
+      387: 20
+      388: 21
+      389: 22
+      390: 23
+      391: 24
+      392: 25
+      393: 26
+      394: 27
+      395: 28
+      396: 29
+      397: 30
+      398: 31
+      399: 32
+      400: 33
+      401: 35
+      402: 36
+      403: 37
+      404: 38
+      405: 39
+      406: 40
+      407: 42
+      408: 44
+      409: 50
+  - raw_values:
+      condition: 2
+      food name: 5
+    condition_num: 27
+    factors:
+      label: kcal
+      dish: Ham and mushroom carbonara
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Ham and mushroom
+      carbonara". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_ham_mushroom_carbonara
+    response_recode:
+      410: 1
+      411: 2
+      412: 3
+      413: 4
+      414: 5
+      415: 6
+      416: 7
+      417: 8
+      418: 9
+      419: 10
+      420: 11
+      421: 12
+      422: 13
+      423: 14
+      424: 15
+      425: 16
+      426: 17
+      427: 18
+      428: 19
+      429: 20
+      430: 21
+      431: 22
+      432: 23
+      433: 24
+      434: 25
+      435: 26
+      436: 27
+      437: 28
+      438: 29
+      439: 30
+      440: 31
+      441: 32
+      442: 33
+      443: 34
+      444: 35
+      445: 36
+      446: 37
+      447: 38
+      448: 39
+      449: 40
+      450: 41
+      451: 42
+      452: 43
+      453: 44
+      454: 45
+      455: 46
+      456: 47
+      457: 48
+      458: 49
+      459: 50
+  - raw_values:
+      condition: 2
+      food name: 13
+    condition_num: 28
+    factors:
+      label: kcal
+      dish: Lasagne and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Lasagne and peas".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_lasagne_peas
+    response_recode:
+      460: 1
+      461: 2
+      462: 3
+      463: 4
+      464: 5
+      465: 6
+      466: 7
+      467: 8
+      468: 9
+      469: 10
+      470: 11
+      471: 12
+      472: 13
+      473: 14
+      474: 15
+      475: 16
+      476: 17
+      477: 18
+      478: 19
+      479: 20
+      480: 21
+      481: 22
+      482: 23
+      483: 24
+      484: 25
+      485: 26
+      486: 27
+      487: 28
+      488: 29
+      489: 30
+      490: 31
+      491: 32
+      492: 33
+      493: 34
+      494: 35
+      495: 36
+      496: 37
+      497: 38
+      498: 39
+      499: 40
+      500: 41
+      501: 42
+      502: 43
+      503: 44
+      504: 45
+      505: 46
+      506: 47
+      507: 48
+      508: 49
+      509: 50
+  - raw_values:
+      condition: 2
+      food name: 14
+    condition_num: 29
+    factors:
+      label: kcal
+      dish: Macaroni cheese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Macaroni cheese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_macaroni_cheese
+    response_recode:
+      510: 1
+      511: 2
+      512: 3
+      513: 4
+      514: 5
+      515: 6
+      516: 7
+      517: 8
+      518: 9
+      519: 10
+      520: 11
+      521: 12
+      522: 13
+      523: 14
+      524: 15
+      525: 16
+      526: 17
+      527: 18
+      528: 19
+      529: 20
+      530: 21
+      531: 22
+      532: 23
+      533: 24
+      534: 25
+      535: 26
+      536: 27
+      537: 28
+      538: 29
+      539: 30
+      540: 31
+      541: 32
+      542: 33
+      543: 34
+      544: 35
+      545: 36
+      546: 37
+      547: 38
+      548: 39
+      549: 40
+      550: 41
+      551: 42
+      552: 43
+      553: 44
+      554: 46
+      555: 49
+      556: 50
+  - raw_values:
+      condition: 2
+      food name: 16
+    condition_num: 30
+    factors:
+      label: kcal
+      dish: Mushroom risotto
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Mushroom risotto".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_mushroom_risotto
+    response_recode:
+      557: 1
+      558: 2
+      559: 3
+      560: 4
+      561: 5
+      562: 6
+      563: 7
+      564: 8
+      565: 9
+      566: 10
+      567: 11
+      568: 12
+      569: 13
+      570: 14
+      571: 15
+      572: 16
+      573: 17
+      574: 18
+      575: 19
+      576: 20
+      577: 21
+      578: 22
+      579: 23
+      580: 24
+      581: 25
+      582: 26
+      583: 27
+      584: 28
+      585: 29
+      586: 30
+      587: 31
+      588: 32
+      589: 33
+      590: 34
+      591: 35
+      592: 36
+      593: 37
+      594: 38
+      595: 39
+      596: 40
+      597: 41
+      598: 42
+      599: 43
+      600: 44
+      601: 45
+      602: 46
+      603: 47
+      604: 50
+  - raw_values:
+      condition: 2
+      food name: 15
+    condition_num: 31
+    factors:
+      label: kcal
+      dish: Pepperoni pizza
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Pepperoni pizza".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_pepperoni_pizza
+    response_recode:
+      605: 1
+      606: 2
+      607: 3
+      608: 4
+      609: 5
+      610: 6
+      611: 7
+      612: 8
+      613: 9
+      614: 10
+      615: 11
+      616: 12
+      617: 13
+      618: 14
+      619: 15
+      620: 16
+      621: 17
+      622: 18
+      623: 19
+      624: 20
+      625: 21
+      626: 22
+      627: 23
+      628: 24
+      629: 25
+      630: 26
+      631: 27
+      632: 28
+      633: 29
+      634: 30
+      635: 31
+      636: 32
+      637: 33
+      638: 34
+      639: 35
+      640: 37
+      641: 38
+      642: 39
+      643: 40
+      644: 43
+      645: 44
+      646: 45
+      647: 48
+      648: 50
+  - raw_values:
+      condition: 2
+      food name: 4
+    condition_num: 32
+    factors:
+      label: kcal
+      dish: Spaghetti bolognese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spaghetti bolognese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_spaghetti_bolognese
+    response_recode:
+      649: 1
+      650: 2
+      651: 3
+      652: 4
+      653: 5
+      654: 6
+      655: 7
+      656: 8
+      657: 9
+      658: 10
+      659: 11
+      660: 12
+      661: 13
+      662: 14
+      663: 15
+      664: 16
+      665: 17
+      666: 18
+      667: 19
+      668: 20
+      669: 21
+      670: 22
+      671: 23
+      672: 24
+      673: 25
+      674: 26
+      675: 27
+      676: 28
+      677: 29
+      678: 30
+      679: 31
+      680: 32
+      681: 33
+      682: 34
+      683: 35
+      684: 36
+      685: 37
+      686: 38
+      687: 39
+      688: 40
+      689: 41
+      690: 42
+      691: 43
+      692: 44
+      693: 45
+      694: 46
+      695: 50
+  - raw_values:
+      condition: 2
+      food name: 17
+    condition_num: 33
+    factors:
+      label: kcal
+      dish: Sausage, mashed potato and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Sausage, mashed
+      potato and peas". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_sausage_mash_peas
+    response_recode:
+      696: 1
+      697: 2
+      698: 3
+      699: 4
+      700: 5
+      701: 6
+      702: 7
+      703: 8
+      704: 9
+      705: 10
+      706: 11
+      707: 12
+      708: 13
+      709: 14
+      710: 15
+      711: 16
+      712: 17
+      713: 18
+      714: 19
+      715: 20
+      716: 21
+      717: 22
+      718: 23
+      719: 24
+      720: 25
+      721: 26
+      722: 27
+      723: 28
+      724: 29
+      725: 30
+      726: 31
+      727: 33
+      728: 35
+      729: 36
+      730: 37
+      731: 38
+      732: 39
+      733: 40
+      734: 41
+      735: 43
+      736: 44
+      737: 45
+      738: 50
+  - raw_values:
+      condition: 2
+      food name: 18
+    condition_num: 34
+    factors:
+      label: kcal
+      dish: Spinach & ricotta tortellini with tomato sauce
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spinach & ricotta
+      tortellini with tomato sauce". The first photograph showed the smallest portion; each tap of the
+      right arrow showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_tortellini
+    response_recode:
+      739: 1
+      740: 2
+      741: 3
+      742: 4
+      743: 5
+      744: 6
+      745: 7
+      746: 8
+      747: 9
+      748: 10
+      749: 11
+      750: 12
+      751: 13
+      752: 14
+      753: 15
+      754: 16
+      755: 17
+      756: 18
+      757: 19
+      758: 20
+      759: 21
+      760: 22
+      761: 23
+      762: 24
+      763: 25
+      764: 26
+      765: 27
+      766: 28
+      767: 29
+      768: 30
+      769: 31
+      770: 32
+      771: 33
+      772: 34
+      773: 35
+      774: 36
+      775: 37
+      776: 38
+      777: 39
+      778: 40
+      779: 41
+      780: 42
+      781: 43
+      782: 44
+      783: 45
+      784: 46
+      785: 47
+      786: 48
+      787: 49
+      788: 50
+  - raw_values:
+      condition: 2
+      food name: 3
+    condition_num: 35
+    factors:
+      label: kcal
+      dish: Vegetable biryani
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Vegetable biryani".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label showed the calorie content of that portion: 20 kcal for the
+      first photograph, 20 kcal more for each one after it, and 1000 kcal for the 50th. Beside photograph
+      30 the label read "600 kcal".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_vegetable_biryani
+    response_recode:
+      789: 1
+      790: 2
+      791: 3
+      792: 4
+      793: 5
+      794: 6
+      795: 7
+      796: 8
+      797: 9
+      798: 10
+      799: 11
+      800: 12
+      801: 13
+      802: 14
+      803: 15
+      804: 16
+      805: 17
+      806: 18
+      807: 19
+      808: 20
+      809: 21
+      810: 22
+      811: 23
+      812: 24
+      813: 25
+      814: 26
+      815: 27
+      816: 28
+      817: 29
+      818: 30
+      819: 31
+      820: 32
+      821: 33
+      822: 34
+      823: 35
+      824: 36
+      825: 37
+      826: 38
+      827: 39
+      828: 40
+      829: 41
+      830: 42
+      831: 43
+      832: 45
+      833: 46
+      834: 47
+      835: 48
+      836: 50
+  - raw_values:
+      condition: 4
+      food name: 2
+    condition_num: 36
+    factors:
+      label: PACE
+      dish: Beef in black bean sauce with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef in black
+      bean sauce with rice". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_black_bean_rice
+    response_recode:
+      1: 1
+      2: 2
+      3: 3
+      4: 4
+      5: 5
+      6: 6
+      7: 7
+      8: 8
+      9: 9
+      10: 10
+      11: 11
+      12: 12
+      13: 13
+      14: 14
+      15: 15
+      16: 16
+      17: 17
+      18: 18
+      19: 19
+      20: 20
+      21: 21
+      22: 22
+      23: 23
+      24: 24
+      25: 25
+      26: 26
+      27: 27
+      28: 28
+      29: 29
+      30: 30
+      31: 31
+      32: 32
+      33: 33
+      34: 34
+      35: 35
+      36: 36
+      37: 37
+      38: 38
+      39: 39
+      40: 40
+      41: 42
+      42: 44
+      43: 45
+      44: 46
+      45: 50
+  - raw_values:
+      condition: 4
+      food name: 1
+    condition_num: 37
+    factors:
+      label: PACE
+      dish: Beef stew with dumplings
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef stew with
+      dumplings". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_stew_dumplings
+    response_recode:
+      46: 1
+      47: 2
+      48: 3
+      49: 4
+      50: 5
+      51: 6
+      52: 7
+      53: 8
+      54: 9
+      55: 10
+      56: 11
+      57: 12
+      58: 13
+      59: 14
+      60: 15
+      61: 16
+      62: 17
+      63: 18
+      64: 19
+      65: 20
+      66: 21
+      67: 22
+      68: 23
+      69: 24
+      70: 25
+      71: 26
+      72: 27
+      73: 28
+      74: 29
+      75: 30
+      76: 31
+      77: 32
+      78: 33
+      79: 34
+      80: 35
+      81: 36
+      82: 37
+      83: 38
+      84: 39
+      85: 40
+      86: 41
+      87: 42
+      88: 43
+      89: 44
+      90: 45
+      91: 46
+      92: 47
+      93: 48
+      94: 49
+      95: 50
+  - raw_values:
+      condition: 4
+      food name: 7
+    condition_num: 38
+    factors:
+      label: PACE
+      dish: Chicken and bacon pasta bake
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken and bacon
+      pasta bake". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_bacon_pasta_bake
+    response_recode:
+      96: 1
+      97: 2
+      98: 3
+      99: 4
+      100: 5
+      101: 6
+      102: 7
+      103: 8
+      104: 9
+      105: 10
+      106: 11
+      107: 12
+      108: 13
+      109: 14
+      110: 15
+      111: 16
+      112: 17
+      113: 18
+      114: 19
+      115: 20
+      116: 21
+      117: 22
+      118: 23
+      119: 24
+      120: 25
+      121: 26
+      122: 27
+      123: 28
+      124: 29
+      125: 30
+      126: 31
+      127: 32
+      128: 33
+      129: 34
+      130: 35
+      131: 36
+      132: 37
+      133: 38
+      134: 39
+      135: 40
+      136: 41
+      137: 42
+      138: 43
+      139: 44
+      140: 45
+      141: 46
+      142: 47
+      143: 48
+      144: 49
+      145: 50
+  - raw_values:
+      condition: 4
+      food name: 10
+    condition_num: 39
+    factors:
+      label: PACE
+      dish: Cous cous and salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Cous cous and
+      salad". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_couscous_salad
+    response_recode:
+      146: 1
+      147: 2
+      148: 3
+      149: 4
+      150: 5
+      151: 6
+      152: 7
+      153: 8
+      154: 9
+      155: 10
+      156: 11
+      157: 12
+      158: 13
+      159: 14
+      160: 15
+      161: 16
+      162: 17
+      163: 18
+      164: 19
+      165: 20
+      166: 21
+      167: 22
+      168: 23
+      169: 24
+      170: 25
+      171: 26
+      172: 27
+      173: 28
+      174: 29
+      175: 30
+      176: 31
+      177: 33
+      178: 34
+      179: 39
+      180: 40
+      181: 48
+      182: 50
+  - raw_values:
+      condition: 4
+      food name: 9
+    condition_num: 40
+    factors:
+      label: PACE
+      dish: Chicken, chips and baked beans
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken, chips
+      and baked beans". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_chips_beans
+    response_recode:
+      183: 1
+      184: 2
+      185: 3
+      186: 4
+      187: 5
+      188: 6
+      189: 7
+      190: 8
+      191: 9
+      192: 10
+      193: 11
+      194: 12
+      195: 13
+      196: 14
+      197: 15
+      198: 16
+      199: 17
+      200: 18
+      201: 19
+      202: 20
+      203: 21
+      204: 22
+      205: 23
+      206: 24
+      207: 25
+      208: 26
+      209: 27
+      210: 28
+      211: 29
+      212: 30
+      213: 31
+      214: 32
+      215: 33
+      216: 34
+      217: 35
+      218: 36
+      219: 37
+      220: 38
+      221: 39
+      222: 40
+      223: 41
+      224: 42
+      225: 43
+      226: 44
+      227: 45
+      228: 46
+      229: 47
+      230: 48
+      231: 49
+      232: 50
+  - raw_values:
+      condition: 4
+      food name: 6
+    condition_num: 41
+    factors:
+      label: PACE
+      dish: Chicken korma with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken korma
+      with rice". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_korma_rice
+    response_recode:
+      233: 1
+      234: 2
+      235: 3
+      236: 4
+      237: 5
+      238: 6
+      239: 7
+      240: 8
+      241: 9
+      242: 10
+      243: 11
+      244: 12
+      245: 13
+      246: 14
+      247: 15
+      248: 16
+      249: 17
+      250: 18
+      251: 19
+      252: 20
+      253: 21
+      254: 22
+      255: 23
+      256: 24
+      257: 25
+      258: 26
+      259: 27
+      260: 28
+      261: 29
+      262: 30
+      263: 31
+      264: 32
+      265: 33
+      266: 34
+      267: 35
+      268: 36
+      269: 37
+      270: 38
+      271: 40
+      272: 41
+      273: 42
+      274: 43
+      275: 44
+      276: 45
+      277: 47
+      278: 49
+      279: 50
+  - raw_values:
+      condition: 4
+      food name: 8
+    condition_num: 42
+    factors:
+      label: PACE
+      dish: Chicken salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken salad".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_salad
+    response_recode:
+      280: 1
+      281: 2
+      282: 3
+      283: 4
+      284: 5
+      285: 6
+      286: 7
+      287: 8
+      288: 9
+      289: 10
+      290: 11
+      291: 12
+      292: 13
+      293: 14
+      294: 15
+      295: 16
+      296: 17
+      297: 18
+      298: 19
+      299: 20
+      300: 21
+      301: 22
+      302: 23
+      303: 24
+      304: 25
+      305: 26
+      306: 27
+      307: 28
+      308: 29
+      309: 30
+      310: 31
+      311: 33
+      312: 34
+      313: 35
+      314: 37
+      315: 39
+      316: 40
+      317: 50
+  - raw_values:
+      condition: 4
+      food name: 11
+    condition_num: 43
+    factors:
+      label: PACE
+      dish: Fish, chips and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Fish, chips and
+      peas". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_fish_chips_peas
+    response_recode:
+      318: 1
+      319: 2
+      320: 3
+      321: 4
+      322: 5
+      323: 6
+      324: 7
+      325: 8
+      326: 9
+      327: 10
+      328: 11
+      329: 12
+      330: 13
+      331: 14
+      332: 15
+      333: 16
+      334: 17
+      335: 18
+      336: 19
+      337: 20
+      338: 21
+      339: 22
+      340: 23
+      341: 24
+      342: 25
+      343: 26
+      344: 27
+      345: 28
+      346: 29
+      347: 30
+      348: 31
+      349: 32
+      350: 33
+      351: 34
+      352: 35
+      353: 36
+      354: 37
+      355: 38
+      356: 39
+      357: 40
+      358: 41
+      359: 42
+      360: 43
+      361: 44
+      362: 45
+      363: 46
+      364: 47
+      365: 48
+      366: 49
+      367: 50
+  - raw_values:
+      condition: 4
+      food name: 12
+    condition_num: 44
+    factors:
+      label: PACE
+      dish: Grilled white fish with tomato and bean salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Grilled white
+      fish with tomato and bean salad". The first photograph showed the smallest portion; each tap of
+      the right arrow showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_grilled_fish_bean_salad
+    response_recode:
+      368: 1
+      369: 2
+      370: 3
+      371: 4
+      372: 5
+      373: 6
+      374: 7
+      375: 8
+      376: 9
+      377: 10
+      378: 11
+      379: 12
+      380: 13
+      381: 14
+      382: 15
+      383: 16
+      384: 17
+      385: 18
+      386: 19
+      387: 20
+      388: 21
+      389: 22
+      390: 23
+      391: 24
+      392: 25
+      393: 26
+      394: 27
+      395: 28
+      396: 29
+      397: 30
+      398: 31
+      399: 32
+      400: 33
+      401: 35
+      402: 36
+      403: 37
+      404: 38
+      405: 39
+      406: 40
+      407: 42
+      408: 44
+      409: 50
+  - raw_values:
+      condition: 4
+      food name: 5
+    condition_num: 45
+    factors:
+      label: PACE
+      dish: Ham and mushroom carbonara
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Ham and mushroom
+      carbonara". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_ham_mushroom_carbonara
+    response_recode:
+      410: 1
+      411: 2
+      412: 3
+      413: 4
+      414: 5
+      415: 6
+      416: 7
+      417: 8
+      418: 9
+      419: 10
+      420: 11
+      421: 12
+      422: 13
+      423: 14
+      424: 15
+      425: 16
+      426: 17
+      427: 18
+      428: 19
+      429: 20
+      430: 21
+      431: 22
+      432: 23
+      433: 24
+      434: 25
+      435: 26
+      436: 27
+      437: 28
+      438: 29
+      439: 30
+      440: 31
+      441: 32
+      442: 33
+      443: 34
+      444: 35
+      445: 36
+      446: 37
+      447: 38
+      448: 39
+      449: 40
+      450: 41
+      451: 42
+      452: 43
+      453: 44
+      454: 45
+      455: 46
+      456: 47
+      457: 48
+      458: 49
+      459: 50
+  - raw_values:
+      condition: 4
+      food name: 13
+    condition_num: 46
+    factors:
+      label: PACE
+      dish: Lasagne and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Lasagne and peas".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_lasagne_peas
+    response_recode:
+      460: 1
+      461: 2
+      462: 3
+      463: 4
+      464: 5
+      465: 6
+      466: 7
+      467: 8
+      468: 9
+      469: 10
+      470: 11
+      471: 12
+      472: 13
+      473: 14
+      474: 15
+      475: 16
+      476: 17
+      477: 18
+      478: 19
+      479: 20
+      480: 21
+      481: 22
+      482: 23
+      483: 24
+      484: 25
+      485: 26
+      486: 27
+      487: 28
+      488: 29
+      489: 30
+      490: 31
+      491: 32
+      492: 33
+      493: 34
+      494: 35
+      495: 36
+      496: 37
+      497: 38
+      498: 39
+      499: 40
+      500: 41
+      501: 42
+      502: 43
+      503: 44
+      504: 45
+      505: 46
+      506: 47
+      507: 48
+      508: 49
+      509: 50
+  - raw_values:
+      condition: 4
+      food name: 14
+    condition_num: 47
+    factors:
+      label: PACE
+      dish: Macaroni cheese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Macaroni cheese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_macaroni_cheese
+    response_recode:
+      510: 1
+      511: 2
+      512: 3
+      513: 4
+      514: 5
+      515: 6
+      516: 7
+      517: 8
+      518: 9
+      519: 10
+      520: 11
+      521: 12
+      522: 13
+      523: 14
+      524: 15
+      525: 16
+      526: 17
+      527: 18
+      528: 19
+      529: 20
+      530: 21
+      531: 22
+      532: 23
+      533: 24
+      534: 25
+      535: 26
+      536: 27
+      537: 28
+      538: 29
+      539: 30
+      540: 31
+      541: 32
+      542: 33
+      543: 34
+      544: 35
+      545: 36
+      546: 37
+      547: 38
+      548: 39
+      549: 40
+      550: 41
+      551: 42
+      552: 43
+      553: 44
+      554: 46
+      555: 49
+      556: 50
+  - raw_values:
+      condition: 4
+      food name: 16
+    condition_num: 48
+    factors:
+      label: PACE
+      dish: Mushroom risotto
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Mushroom risotto".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_mushroom_risotto
+    response_recode:
+      557: 1
+      558: 2
+      559: 3
+      560: 4
+      561: 5
+      562: 6
+      563: 7
+      564: 8
+      565: 9
+      566: 10
+      567: 11
+      568: 12
+      569: 13
+      570: 14
+      571: 15
+      572: 16
+      573: 17
+      574: 18
+      575: 19
+      576: 20
+      577: 21
+      578: 22
+      579: 23
+      580: 24
+      581: 25
+      582: 26
+      583: 27
+      584: 28
+      585: 29
+      586: 30
+      587: 31
+      588: 32
+      589: 33
+      590: 34
+      591: 35
+      592: 36
+      593: 37
+      594: 38
+      595: 39
+      596: 40
+      597: 41
+      598: 42
+      599: 43
+      600: 44
+      601: 45
+      602: 46
+      603: 47
+      604: 50
+  - raw_values:
+      condition: 4
+      food name: 15
+    condition_num: 49
+    factors:
+      label: PACE
+      dish: Pepperoni pizza
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Pepperoni pizza".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_pepperoni_pizza
+    response_recode:
+      605: 1
+      606: 2
+      607: 3
+      608: 4
+      609: 5
+      610: 6
+      611: 7
+      612: 8
+      613: 9
+      614: 10
+      615: 11
+      616: 12
+      617: 13
+      618: 14
+      619: 15
+      620: 16
+      621: 17
+      622: 18
+      623: 19
+      624: 20
+      625: 21
+      626: 22
+      627: 23
+      628: 24
+      629: 25
+      630: 26
+      631: 27
+      632: 28
+      633: 29
+      634: 30
+      635: 31
+      636: 32
+      637: 33
+      638: 34
+      639: 35
+      640: 37
+      641: 38
+      642: 39
+      643: 40
+      644: 43
+      645: 44
+      646: 45
+      647: 48
+      648: 50
+  - raw_values:
+      condition: 4
+      food name: 4
+    condition_num: 50
+    factors:
+      label: PACE
+      dish: Spaghetti bolognese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spaghetti bolognese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_spaghetti_bolognese
+    response_recode:
+      649: 1
+      650: 2
+      651: 3
+      652: 4
+      653: 5
+      654: 6
+      655: 7
+      656: 8
+      657: 9
+      658: 10
+      659: 11
+      660: 12
+      661: 13
+      662: 14
+      663: 15
+      664: 16
+      665: 17
+      666: 18
+      667: 19
+      668: 20
+      669: 21
+      670: 22
+      671: 23
+      672: 24
+      673: 25
+      674: 26
+      675: 27
+      676: 28
+      677: 29
+      678: 30
+      679: 31
+      680: 32
+      681: 33
+      682: 34
+      683: 35
+      684: 36
+      685: 37
+      686: 38
+      687: 39
+      688: 40
+      689: 41
+      690: 42
+      691: 43
+      692: 44
+      693: 45
+      694: 46
+      695: 50
+  - raw_values:
+      condition: 4
+      food name: 17
+    condition_num: 51
+    factors:
+      label: PACE
+      dish: Sausage, mashed potato and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Sausage, mashed
+      potato and peas". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_sausage_mash_peas
+    response_recode:
+      696: 1
+      697: 2
+      698: 3
+      699: 4
+      700: 5
+      701: 6
+      702: 7
+      703: 8
+      704: 9
+      705: 10
+      706: 11
+      707: 12
+      708: 13
+      709: 14
+      710: 15
+      711: 16
+      712: 17
+      713: 18
+      714: 19
+      715: 20
+      716: 21
+      717: 22
+      718: 23
+      719: 24
+      720: 25
+      721: 26
+      722: 27
+      723: 28
+      724: 29
+      725: 30
+      726: 31
+      727: 33
+      728: 35
+      729: 36
+      730: 37
+      731: 38
+      732: 39
+      733: 40
+      734: 41
+      735: 43
+      736: 44
+      737: 45
+      738: 50
+  - raw_values:
+      condition: 4
+      food name: 18
+    condition_num: 52
+    factors:
+      label: PACE
+      dish: Spinach & ricotta tortellini with tomato sauce
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spinach & ricotta
+      tortellini with tomato sauce". The first photograph showed the smallest portion; each tap of the
+      right arrow showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_tortellini
+    response_recode:
+      739: 1
+      740: 2
+      741: 3
+      742: 4
+      743: 5
+      744: 6
+      745: 7
+      746: 8
+      747: 9
+      748: 10
+      749: 11
+      750: 12
+      751: 13
+      752: 14
+      753: 15
+      754: 16
+      755: 17
+      756: 18
+      757: 19
+      758: 20
+      759: 21
+      760: 22
+      761: 23
+      762: 24
+      763: 25
+      764: 26
+      765: 27
+      766: 28
+      767: 29
+      768: 30
+      769: 31
+      770: 32
+      771: 33
+      772: 34
+      773: 35
+      774: 36
+      775: 37
+      776: 38
+      777: 39
+      778: 40
+      779: 41
+      780: 42
+      781: 43
+      782: 44
+      783: 45
+      784: 46
+      785: 47
+      786: 48
+      787: 49
+      788: 50
+  - raw_values:
+      condition: 4
+      food name: 3
+    condition_num: 53
+    factors:
+      label: PACE
+      dish: Vegetable biryani
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the physical activity calorie equivalent, as the number of minutes of walking needed to burn
+      off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Vegetable biryani".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph a label with a walking figure showed the minutes of walking needed
+      to burn off the calories in that portion: 4 minutes for the first photograph, 4 minutes more for
+      each one after it, and 200 minutes for the 50th. Beside photograph 30 the label read "120 min".
+
+
+      You were also shown: "According to physical activity recommendations, adults should aim to take
+      part in at least 150 minutes of moderate intensity physical activity per week (brisk walk, swim,
+      cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_vegetable_biryani
+    response_recode:
+      789: 1
+      790: 2
+      791: 3
+      792: 4
+      793: 5
+      794: 6
+      795: 7
+      796: 8
+      797: 9
+      798: 10
+      799: 11
+      800: 12
+      801: 13
+      802: 14
+      803: 15
+      804: 16
+      805: 17
+      806: 18
+      807: 19
+      808: 20
+      809: 21
+      810: 22
+      811: 23
+      812: 24
+      813: 25
+      814: 26
+      815: 27
+      816: 28
+      817: 29
+      818: 30
+      819: 31
+      820: 32
+      821: 33
+      822: 34
+      823: 35
+      824: 36
+      825: 37
+      826: 38
+      827: 39
+      828: 40
+      829: 41
+      830: 42
+      831: 43
+      832: 45
+      833: 46
+      834: 47
+      835: 48
+      836: 50
+  - raw_values:
+      condition: 1
+      food name: 2
+    condition_num: 54
+    factors:
+      label: kcal and PACE
+      dish: Beef in black bean sauce with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef in black
+      bean sauce with rice". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_black_bean_rice
+    response_recode:
+      1: 1
+      2: 2
+      3: 3
+      4: 4
+      5: 5
+      6: 6
+      7: 7
+      8: 8
+      9: 9
+      10: 10
+      11: 11
+      12: 12
+      13: 13
+      14: 14
+      15: 15
+      16: 16
+      17: 17
+      18: 18
+      19: 19
+      20: 20
+      21: 21
+      22: 22
+      23: 23
+      24: 24
+      25: 25
+      26: 26
+      27: 27
+      28: 28
+      29: 29
+      30: 30
+      31: 31
+      32: 32
+      33: 33
+      34: 34
+      35: 35
+      36: 36
+      37: 37
+      38: 38
+      39: 39
+      40: 40
+      41: 42
+      42: 44
+      43: 45
+      44: 46
+      45: 50
+  - raw_values:
+      condition: 1
+      food name: 1
+    condition_num: 55
+    factors:
+      label: kcal and PACE
+      dish: Beef stew with dumplings
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Beef stew with
+      dumplings". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_beef_stew_dumplings
+    response_recode:
+      46: 1
+      47: 2
+      48: 3
+      49: 4
+      50: 5
+      51: 6
+      52: 7
+      53: 8
+      54: 9
+      55: 10
+      56: 11
+      57: 12
+      58: 13
+      59: 14
+      60: 15
+      61: 16
+      62: 17
+      63: 18
+      64: 19
+      65: 20
+      66: 21
+      67: 22
+      68: 23
+      69: 24
+      70: 25
+      71: 26
+      72: 27
+      73: 28
+      74: 29
+      75: 30
+      76: 31
+      77: 32
+      78: 33
+      79: 34
+      80: 35
+      81: 36
+      82: 37
+      83: 38
+      84: 39
+      85: 40
+      86: 41
+      87: 42
+      88: 43
+      89: 44
+      90: 45
+      91: 46
+      92: 47
+      93: 48
+      94: 49
+      95: 50
+  - raw_values:
+      condition: 1
+      food name: 7
+    condition_num: 56
+    factors:
+      label: kcal and PACE
+      dish: Chicken and bacon pasta bake
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken and bacon
+      pasta bake". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_bacon_pasta_bake
+    response_recode:
+      96: 1
+      97: 2
+      98: 3
+      99: 4
+      100: 5
+      101: 6
+      102: 7
+      103: 8
+      104: 9
+      105: 10
+      106: 11
+      107: 12
+      108: 13
+      109: 14
+      110: 15
+      111: 16
+      112: 17
+      113: 18
+      114: 19
+      115: 20
+      116: 21
+      117: 22
+      118: 23
+      119: 24
+      120: 25
+      121: 26
+      122: 27
+      123: 28
+      124: 29
+      125: 30
+      126: 31
+      127: 32
+      128: 33
+      129: 34
+      130: 35
+      131: 36
+      132: 37
+      133: 38
+      134: 39
+      135: 40
+      136: 41
+      137: 42
+      138: 43
+      139: 44
+      140: 45
+      141: 46
+      142: 47
+      143: 48
+      144: 49
+      145: 50
+  - raw_values:
+      condition: 1
+      food name: 10
+    condition_num: 57
+    factors:
+      label: kcal and PACE
+      dish: Cous cous and salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Cous cous and
+      salad". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_couscous_salad
+    response_recode:
+      146: 1
+      147: 2
+      148: 3
+      149: 4
+      150: 5
+      151: 6
+      152: 7
+      153: 8
+      154: 9
+      155: 10
+      156: 11
+      157: 12
+      158: 13
+      159: 14
+      160: 15
+      161: 16
+      162: 17
+      163: 18
+      164: 19
+      165: 20
+      166: 21
+      167: 22
+      168: 23
+      169: 24
+      170: 25
+      171: 26
+      172: 27
+      173: 28
+      174: 29
+      175: 30
+      176: 31
+      177: 33
+      178: 34
+      179: 39
+      180: 40
+      181: 48
+      182: 50
+  - raw_values:
+      condition: 1
+      food name: 9
+    condition_num: 58
+    factors:
+      label: kcal and PACE
+      dish: Chicken, chips and baked beans
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken, chips
+      and baked beans". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_chips_beans
+    response_recode:
+      183: 1
+      184: 2
+      185: 3
+      186: 4
+      187: 5
+      188: 6
+      189: 7
+      190: 8
+      191: 9
+      192: 10
+      193: 11
+      194: 12
+      195: 13
+      196: 14
+      197: 15
+      198: 16
+      199: 17
+      200: 18
+      201: 19
+      202: 20
+      203: 21
+      204: 22
+      205: 23
+      206: 24
+      207: 25
+      208: 26
+      209: 27
+      210: 28
+      211: 29
+      212: 30
+      213: 31
+      214: 32
+      215: 33
+      216: 34
+      217: 35
+      218: 36
+      219: 37
+      220: 38
+      221: 39
+      222: 40
+      223: 41
+      224: 42
+      225: 43
+      226: 44
+      227: 45
+      228: 46
+      229: 47
+      230: 48
+      231: 49
+      232: 50
+  - raw_values:
+      condition: 1
+      food name: 6
+    condition_num: 59
+    factors:
+      label: kcal and PACE
+      dish: Chicken korma with rice
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken korma
+      with rice". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_korma_rice
+    response_recode:
+      233: 1
+      234: 2
+      235: 3
+      236: 4
+      237: 5
+      238: 6
+      239: 7
+      240: 8
+      241: 9
+      242: 10
+      243: 11
+      244: 12
+      245: 13
+      246: 14
+      247: 15
+      248: 16
+      249: 17
+      250: 18
+      251: 19
+      252: 20
+      253: 21
+      254: 22
+      255: 23
+      256: 24
+      257: 25
+      258: 26
+      259: 27
+      260: 28
+      261: 29
+      262: 30
+      263: 31
+      264: 32
+      265: 33
+      266: 34
+      267: 35
+      268: 36
+      269: 37
+      270: 38
+      271: 40
+      272: 41
+      273: 42
+      274: 43
+      275: 44
+      276: 45
+      277: 47
+      278: 49
+      279: 50
+  - raw_values:
+      condition: 1
+      food name: 8
+    condition_num: 60
+    factors:
+      label: kcal and PACE
+      dish: Chicken salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Chicken salad".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_chicken_salad
+    response_recode:
+      280: 1
+      281: 2
+      282: 3
+      283: 4
+      284: 5
+      285: 6
+      286: 7
+      287: 8
+      288: 9
+      289: 10
+      290: 11
+      291: 12
+      292: 13
+      293: 14
+      294: 15
+      295: 16
+      296: 17
+      297: 18
+      298: 19
+      299: 20
+      300: 21
+      301: 22
+      302: 23
+      303: 24
+      304: 25
+      305: 26
+      306: 27
+      307: 28
+      308: 29
+      309: 30
+      310: 31
+      311: 33
+      312: 34
+      313: 35
+      314: 37
+      315: 39
+      316: 40
+      317: 50
+  - raw_values:
+      condition: 1
+      food name: 11
+    condition_num: 61
+    factors:
+      label: kcal and PACE
+      dish: Fish, chips and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Fish, chips and
+      peas". The first photograph showed the smallest portion; each tap of the right arrow showed the
+      next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_fish_chips_peas
+    response_recode:
+      318: 1
+      319: 2
+      320: 3
+      321: 4
+      322: 5
+      323: 6
+      324: 7
+      325: 8
+      326: 9
+      327: 10
+      328: 11
+      329: 12
+      330: 13
+      331: 14
+      332: 15
+      333: 16
+      334: 17
+      335: 18
+      336: 19
+      337: 20
+      338: 21
+      339: 22
+      340: 23
+      341: 24
+      342: 25
+      343: 26
+      344: 27
+      345: 28
+      346: 29
+      347: 30
+      348: 31
+      349: 32
+      350: 33
+      351: 34
+      352: 35
+      353: 36
+      354: 37
+      355: 38
+      356: 39
+      357: 40
+      358: 41
+      359: 42
+      360: 43
+      361: 44
+      362: 45
+      363: 46
+      364: 47
+      365: 48
+      366: 49
+      367: 50
+  - raw_values:
+      condition: 1
+      food name: 12
+    condition_num: 62
+    factors:
+      label: kcal and PACE
+      dish: Grilled white fish with tomato and bean salad
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Grilled white
+      fish with tomato and bean salad". The first photograph showed the smallest portion; each tap of
+      the right arrow showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_grilled_fish_bean_salad
+    response_recode:
+      368: 1
+      369: 2
+      370: 3
+      371: 4
+      372: 5
+      373: 6
+      374: 7
+      375: 8
+      376: 9
+      377: 10
+      378: 11
+      379: 12
+      380: 13
+      381: 14
+      382: 15
+      383: 16
+      384: 17
+      385: 18
+      386: 19
+      387: 20
+      388: 21
+      389: 22
+      390: 23
+      391: 24
+      392: 25
+      393: 26
+      394: 27
+      395: 28
+      396: 29
+      397: 30
+      398: 31
+      399: 32
+      400: 33
+      401: 35
+      402: 36
+      403: 37
+      404: 38
+      405: 39
+      406: 40
+      407: 42
+      408: 44
+      409: 50
+  - raw_values:
+      condition: 1
+      food name: 5
+    condition_num: 63
+    factors:
+      label: kcal and PACE
+      dish: Ham and mushroom carbonara
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Ham and mushroom
+      carbonara". The first photograph showed the smallest portion; each tap of the right arrow showed
+      the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_ham_mushroom_carbonara
+    response_recode:
+      410: 1
+      411: 2
+      412: 3
+      413: 4
+      414: 5
+      415: 6
+      416: 7
+      417: 8
+      418: 9
+      419: 10
+      420: 11
+      421: 12
+      422: 13
+      423: 14
+      424: 15
+      425: 16
+      426: 17
+      427: 18
+      428: 19
+      429: 20
+      430: 21
+      431: 22
+      432: 23
+      433: 24
+      434: 25
+      435: 26
+      436: 27
+      437: 28
+      438: 29
+      439: 30
+      440: 31
+      441: 32
+      442: 33
+      443: 34
+      444: 35
+      445: 36
+      446: 37
+      447: 38
+      448: 39
+      449: 40
+      450: 41
+      451: 42
+      452: 43
+      453: 44
+      454: 45
+      455: 46
+      456: 47
+      457: 48
+      458: 49
+      459: 50
+  - raw_values:
+      condition: 1
+      food name: 13
+    condition_num: 64
+    factors:
+      label: kcal and PACE
+      dish: Lasagne and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Lasagne and peas".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_lasagne_peas
+    response_recode:
+      460: 1
+      461: 2
+      462: 3
+      463: 4
+      464: 5
+      465: 6
+      466: 7
+      467: 8
+      468: 9
+      469: 10
+      470: 11
+      471: 12
+      472: 13
+      473: 14
+      474: 15
+      475: 16
+      476: 17
+      477: 18
+      478: 19
+      479: 20
+      480: 21
+      481: 22
+      482: 23
+      483: 24
+      484: 25
+      485: 26
+      486: 27
+      487: 28
+      488: 29
+      489: 30
+      490: 31
+      491: 32
+      492: 33
+      493: 34
+      494: 35
+      495: 36
+      496: 37
+      497: 38
+      498: 39
+      499: 40
+      500: 41
+      501: 42
+      502: 43
+      503: 44
+      504: 45
+      505: 46
+      506: 47
+      507: 48
+      508: 49
+      509: 50
+  - raw_values:
+      condition: 1
+      food name: 14
+    condition_num: 65
+    factors:
+      label: kcal and PACE
+      dish: Macaroni cheese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Macaroni cheese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_macaroni_cheese
+    response_recode:
+      510: 1
+      511: 2
+      512: 3
+      513: 4
+      514: 5
+      515: 6
+      516: 7
+      517: 8
+      518: 9
+      519: 10
+      520: 11
+      521: 12
+      522: 13
+      523: 14
+      524: 15
+      525: 16
+      526: 17
+      527: 18
+      528: 19
+      529: 20
+      530: 21
+      531: 22
+      532: 23
+      533: 24
+      534: 25
+      535: 26
+      536: 27
+      537: 28
+      538: 29
+      539: 30
+      540: 31
+      541: 32
+      542: 33
+      543: 34
+      544: 35
+      545: 36
+      546: 37
+      547: 38
+      548: 39
+      549: 40
+      550: 41
+      551: 42
+      552: 43
+      553: 44
+      554: 46
+      555: 49
+      556: 50
+  - raw_values:
+      condition: 1
+      food name: 16
+    condition_num: 66
+    factors:
+      label: kcal and PACE
+      dish: Mushroom risotto
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Mushroom risotto".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_mushroom_risotto
+    response_recode:
+      557: 1
+      558: 2
+      559: 3
+      560: 4
+      561: 5
+      562: 6
+      563: 7
+      564: 8
+      565: 9
+      566: 10
+      567: 11
+      568: 12
+      569: 13
+      570: 14
+      571: 15
+      572: 16
+      573: 17
+      574: 18
+      575: 19
+      576: 20
+      577: 21
+      578: 22
+      579: 23
+      580: 24
+      581: 25
+      582: 26
+      583: 27
+      584: 28
+      585: 29
+      586: 30
+      587: 31
+      588: 32
+      589: 33
+      590: 34
+      591: 35
+      592: 36
+      593: 37
+      594: 38
+      595: 39
+      596: 40
+      597: 41
+      598: 42
+      599: 43
+      600: 44
+      601: 45
+      602: 46
+      603: 47
+      604: 50
+  - raw_values:
+      condition: 1
+      food name: 15
+    condition_num: 67
+    factors:
+      label: kcal and PACE
+      dish: Pepperoni pizza
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Pepperoni pizza".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_pepperoni_pizza
+    response_recode:
+      605: 1
+      606: 2
+      607: 3
+      608: 4
+      609: 5
+      610: 6
+      611: 7
+      612: 8
+      613: 9
+      614: 10
+      615: 11
+      616: 12
+      617: 13
+      618: 14
+      619: 15
+      620: 16
+      621: 17
+      622: 18
+      623: 19
+      624: 20
+      625: 21
+      626: 22
+      627: 23
+      628: 24
+      629: 25
+      630: 26
+      631: 27
+      632: 28
+      633: 29
+      634: 30
+      635: 31
+      636: 32
+      637: 33
+      638: 34
+      639: 35
+      640: 37
+      641: 38
+      642: 39
+      643: 40
+      644: 43
+      645: 44
+      646: 45
+      647: 48
+      648: 50
+  - raw_values:
+      condition: 1
+      food name: 4
+    condition_num: 68
+    factors:
+      label: kcal and PACE
+      dish: Spaghetti bolognese
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spaghetti bolognese".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_spaghetti_bolognese
+    response_recode:
+      649: 1
+      650: 2
+      651: 3
+      652: 4
+      653: 5
+      654: 6
+      655: 7
+      656: 8
+      657: 9
+      658: 10
+      659: 11
+      660: 12
+      661: 13
+      662: 14
+      663: 15
+      664: 16
+      665: 17
+      666: 18
+      667: 19
+      668: 20
+      669: 21
+      670: 22
+      671: 23
+      672: 24
+      673: 25
+      674: 26
+      675: 27
+      676: 28
+      677: 29
+      678: 30
+      679: 31
+      680: 32
+      681: 33
+      682: 34
+      683: 35
+      684: 36
+      685: 37
+      686: 38
+      687: 39
+      688: 40
+      689: 41
+      690: 42
+      691: 43
+      692: 44
+      693: 45
+      694: 46
+      695: 50
+  - raw_values:
+      condition: 1
+      food name: 17
+    condition_num: 69
+    factors:
+      label: kcal and PACE
+      dish: Sausage, mashed potato and peas
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Sausage, mashed
+      potato and peas". The first photograph showed the smallest portion; each tap of the right arrow
+      showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_sausage_mash_peas
+    response_recode:
+      696: 1
+      697: 2
+      698: 3
+      699: 4
+      700: 5
+      701: 6
+      702: 7
+      703: 8
+      704: 9
+      705: 10
+      706: 11
+      707: 12
+      708: 13
+      709: 14
+      710: 15
+      711: 16
+      712: 17
+      713: 18
+      714: 19
+      715: 20
+      716: 21
+      717: 22
+      718: 23
+      719: 24
+      720: 25
+      721: 26
+      722: 27
+      723: 28
+      724: 29
+      725: 30
+      726: 31
+      727: 33
+      728: 35
+      729: 36
+      730: 37
+      731: 38
+      732: 39
+      733: 40
+      734: 41
+      735: 43
+      736: 44
+      737: 45
+      738: 50
+  - raw_values:
+      condition: 1
+      food name: 18
+    condition_num: 70
+    factors:
+      label: kcal and PACE
+      dish: Spinach & ricotta tortellini with tomato sauce
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Spinach & ricotta
+      tortellini with tomato sauce". The first photograph showed the smallest portion; each tap of the
+      right arrow showed the next larger one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_tortellini
+    response_recode:
+      739: 1
+      740: 2
+      741: 3
+      742: 4
+      743: 5
+      744: 6
+      745: 7
+      746: 8
+      747: 9
+      748: 10
+      749: 11
+      750: 12
+      751: 13
+      752: 14
+      753: 15
+      754: 16
+      755: 17
+      756: 18
+      757: 19
+      758: 20
+      759: 21
+      760: 22
+      761: 23
+      762: 24
+      763: 25
+      764: 26
+      765: 27
+      766: 28
+      767: 29
+      768: 30
+      769: 31
+      770: 32
+      771: 33
+      772: 34
+      773: 35
+      774: 36
+      775: 37
+      776: 38
+      777: 39
+      778: 40
+      779: 41
+      780: 42
+      781: 43
+      782: 44
+      783: 45
+      784: 46
+      785: 47
+      786: 48
+      787: 49
+      788: 50
+  - raw_values:
+      condition: 1
+      food name: 3
+    condition_num: 71
+    factors:
+      label: kcal and PACE
+      dish: Vegetable biryani
+    text: 'The instructions read: "For each dish, you will be asked to decide how much you would like
+      to eat as if you were eating it as main meal. For each portion, the label on the left will show
+      you the calorie content and the physical activity calorie equivalent, as the number of minutes of
+      walking needed to burn off the calories in the meal.
+
+      You can change the quantity using the arrow keys on your keyboard:
+
+      - tap on the right arrow to increase the quantity, on the left one to decrease the quantity
+
+      - use the space bar to select the portion size you would like to eat.
+
+      Before you make your choice, take the time to explore the full range of portion sizes.
+
+      You need to increase the amount of food at least once to be able to select a portion and continue."
+
+
+      The dish was shown as one of 50 photographs of increasing portion size, captioned "Vegetable biryani".
+      The first photograph showed the smallest portion; each tap of the right arrow showed the next larger
+      one, up to the 50th.
+
+
+      To the left of each photograph two labels, one above the other, showed the calorie content of that
+      portion and, with a walking figure, the minutes of walking needed to burn it off: 20 kcal and 4
+      minutes for the first photograph, 20 kcal and 4 minutes more for each one after it, and 1000 kcal
+      and 200 minutes for the 50th. Beside photograph 30 the labels read "600 kcal" and "120 min".
+
+
+      You were also shown: "On average women need 2,000 kcal per day and men need 2,500 kcal per day."
+      "According to physical activity recommendations, adults should aim to take part in at least 150
+      minutes of moderate intensity physical activity per week (brisk walk, swim, cycle)."
+
+
+      Photograph 30 of the 50: <image> Below the photograph: "Use the arrow keys to change the portion
+      size. Use the spacebar to select the amount you would like to eat."'
+    images:
+    - k369t_vegetable_biryani
+    response_recode:
+      789: 1
+      790: 2
+      791: 3
+      792: 4
+      793: 5
+      794: 6
+      795: 7
+      796: 8
+      797: 9
+      798: 10
+      799: 11
+      800: 12
+      801: 13
+      802: 14
+      803: 15
+      804: 16
+      805: 17
+      806: 18
+      807: 19
+      808: 20
+      809: 21
+      810: 22
+      811: 23
+      812: 24
+      813: 25
+      814: 26
+      815: 27
+      816: 28
+      817: 29
+      818: 30
+      819: 31
+      820: 32
+      821: 33
+      822: 34
+      823: 35
+      824: 36
+      825: 37
+      826: 38
+      827: 39
+      828: 40
+      829: 41
+      830: 42
+      831: 43
+      832: 45
+      833: 46
+      834: 47
+      835: 48
+      836: 50
+outcomes:
+- var: portion
+  task_num: 0
+  question: How much would you like to eat?
+  scale:
+    min: 1
+    max: 50
+    min_label: Photograph 1, the smallest portion
+    max_label: Photograph 50, the largest portion
+response_recode: {}
+persona_map:
+  age: age
+  gender: gender
+  ethnicity: ethnicity
+  employment: employment status
+  education: highest qualification
+  years_of_study_after_leaving_school_at_16: years of higher education
+  subjective_social_status: subjective social status
+  currently_dieting: dieting status
+  hunger: hunger
+persona_label_rewrite:
+  highest qualification:
+    1: No qualification
+    2: 1-3 GCSEs
+    3: 4+ GCSEs
+    4: A level
+    5: CertHE
+    6: DipHE
+    7: Higher education or Bachelor’s degree
+    8: Post-Graduate degree
+    9: Doctoral or professional degree
+  subjective social status:
+    1: 1 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    2: 2 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    3: 3 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    4: 4 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    5: 5 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    6: 6 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    7: 7 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    8: 8 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    9: 9 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+    10: 10 on a ladder of where people stand in society, from 1 (worst off) to 10 (best off)
+  hunger:
+    0: 0 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    1: 1 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    2: 2 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    3: 3 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    4: 4 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    5: 5 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    6: 6 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    7: 7 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    8: 8 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    9: 9 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    10: 10 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    11: 11 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    12: 12 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    13: 13 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    14: 14 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    15: 15 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    16: 16 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    17: 17 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    18: 18 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    19: 19 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    20: 20 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    21: 21 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    22: 22 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    23: 23 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    24: 24 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    25: 25 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    26: 26 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    27: 27 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    28: 28 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    29: 29 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    30: 30 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    31: 31 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    32: 32 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    33: 33 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    34: 34 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    35: 35 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    36: 36 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    37: 37 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    38: 38 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    39: 39 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    40: 40 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    41: 41 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    42: 42 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    43: 43 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    44: 44 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    45: 45 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    46: 46 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    47: 47 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    48: 48 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    49: 49 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    50: 50 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    51: 51 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    52: 52 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    53: 53 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    54: 54 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    55: 55 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    56: 56 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    57: 57 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    58: 58 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    59: 59 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    60: 60 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    61: 61 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    62: 62 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    63: 63 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    64: 64 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    65: 65 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    66: 66 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    67: 67 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    68: 68 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    69: 69 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    70: 70 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    71: 71 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    72: 72 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    73: 73 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    74: 74 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    75: 75 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    76: 76 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    77: 77 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    78: 78 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    79: 79 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    80: 80 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    81: 81 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    82: 82 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    83: 83 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    84: 84 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    85: 85 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    86: 86 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    87: 87 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    88: 88 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    89: 89 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    90: 90 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    91: 91 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    92: 92 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    93: 93 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    94: 94 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    95: 95 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    96: 96 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    97: 97 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    98: 98 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    99: 99 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)
+    100: 100 on a scale from 0 (Not at all hungry) to 100 (Extremely hungry)

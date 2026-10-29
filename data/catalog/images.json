@@ -310,5 +310,149 @@
     "licence": "None stated on OSF. Permission requested from the authors 26 Oct 2026, no reply yet (see data/catalog/image_contacts.json, hollands).",
     "text_in_image": "Alcohol causes 7 types of cancer",
     "description": "A health warning label: the words \"Alcohol causes 7 types of cancer\" in black on white, above a photograph of surgeons' gloved hands with instruments over an open surgical wound, a different photograph from label 1."
+  },
+  "k369t_beef_black_bean_rice": {
+    "file": "raw/k369t/images/k369t_beef_black_bean_rice.jpeg",
+    "sha256": "7c2f2dfacb2b08907400759cfefbcb29023d06481db3b0083a52684f817bebd4",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image16.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Beef in black bean sauce with rice",
+    "description": "Overhead photograph of a white plate of food: egg-fried rice with peas on the left and pieces of beef with red and green peppers in a dark sauce on the right. The caption \"Beef in black bean sauce with rice\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_beef_stew_dumplings": {
+    "file": "raw/k369t/images/k369t_beef_stew_dumplings.jpeg",
+    "sha256": "692c831bdbc8e8321beb09f9c8b84bbf281ff47c0075e8027e8581219a833e24",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image17.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Beef stew with dumplings",
+    "description": "Overhead photograph of a white plate of food: beef and carrot stew in a red-brown sauce with two round dumplings at the top. The caption \"Beef stew with dumplings\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_chicken_bacon_pasta_bake": {
+    "file": "raw/k369t/images/k369t_chicken_bacon_pasta_bake.jpeg",
+    "sha256": "824857dabd39b5c9aa4bfc81d54d9215a94c6521e10b38191999d3982c93cb5a",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image18.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Chicken and bacon pasta bake",
+    "description": "Overhead photograph of a white plate of food: penne pasta in a white creamy sauce with pieces of chicken and bacon, some browned at the edges. The caption \"Chicken and bacon pasta bake\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_couscous_salad": {
+    "file": "raw/k369t/images/k369t_couscous_salad.jpeg",
+    "sha256": "e4ded119efa68b19bedca4388c8ed8b2c5903a40c495f20d4cfcc71fe0bda8a1",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image19.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Cous cous and salad",
+    "description": "Overhead photograph of a white plate of food: mixed salad leaves on the left and yellow couscous with pieces of red vegetable on the right. The caption \"Cous cous and salad\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_chicken_chips_beans": {
+    "file": "raw/k369t/images/k369t_chicken_chips_beans.jpeg",
+    "sha256": "fd7924af1f195a3dc70580c2a3a5a3166fe24ac7e09fc06d59c13eaff8f84675",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image20.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Chicken, chips and baked beans",
+    "description": "Overhead photograph of a white plate of food: a breaded chicken fillet at the top right, chips on the left and baked beans in tomato sauce at the bottom right. The caption \"Chicken, chips and baked beans\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_chicken_korma_rice": {
+    "file": "raw/k369t/images/k369t_chicken_korma_rice.jpeg",
+    "sha256": "f7990b4ec5c0eb6d30480196d678db9e0052970c6e4a3608de8c5e167abfbe67",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image21.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Chicken korma with rice",
+    "description": "Overhead photograph of a white plate of food: plain rice on the left and pieces of chicken in a pale orange curry sauce on the right. The caption \"Chicken korma with rice\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_chicken_salad": {
+    "file": "raw/k369t/images/k369t_chicken_salad.jpeg",
+    "sha256": "85f164fe69a794a5eb8589292bdea96d5b38caddf762817ff0e7ba4ac023fd51",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image22.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Chicken salad",
+    "description": "Overhead photograph of a white plate of food: chopped lettuce and cucumber with pieces of chicken, croutons and grated cheese. The caption \"Chicken salad\" in white on a grey bar at the top left. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_fish_chips_peas": {
+    "file": "raw/k369t/images/k369t_fish_chips_peas.jpeg",
+    "sha256": "9a85989e746f7d90a535f0c9b236098fbddcf4853cda177714001f2aa6572e09",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image23.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Fish, chips and peas",
+    "description": "Overhead photograph of a white plate of food: a battered fish fillet at the top left, chips below it and peas on the right. The caption \"Fish, chips and peas\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_grilled_fish_bean_salad": {
+    "file": "raw/k369t/images/k369t_grilled_fish_bean_salad.jpeg",
+    "sha256": "18a1831bff57bdfa612d29039a96711b8ea7b5280e4951879964f012c0ae4861",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image24.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Grilled white fish with tomato and bean salad",
+    "description": "Overhead photograph of a white plate of food: grilled white fish fillets on the right and a salad of beans, sweetcorn and cherry tomatoes on the left. The caption \"Grilled white fish with tomato and bean salad\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_ham_mushroom_carbonara": {
+    "file": "raw/k369t/images/k369t_ham_mushroom_carbonara.jpeg",
+    "sha256": "4434569766ce8334811072a683b01c143382a6a59672357470e108da02265f6b",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image25.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Ham and mushroom carbonara",
+    "description": "Overhead photograph of a white plate of food: tagliatelle in a white creamy sauce with pieces of ham and mushroom. The caption \"Ham and mushroom carbonara\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_lasagne_peas": {
+    "file": "raw/k369t/images/k369t_lasagne_peas.jpeg",
+    "sha256": "b1006e272cfe37e1fc75a1a791ddb8299200b0bccbe2af6321c25820d1425394",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image26.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Lasagne and peas",
+    "description": "Overhead photograph of a white plate of food: a rectangular slice of lasagne with a browned top and peas above it. The caption \"Lasagne and peas\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_macaroni_cheese": {
+    "file": "raw/k369t/images/k369t_macaroni_cheese.jpeg",
+    "sha256": "7581a73b1c5cd006ab777ecec654d91820562102f586e5ad481775217fbfe368",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image27.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Macaroni cheese",
+    "description": "Overhead photograph of a white plate of food: macaroni in a pale cheese sauce. The caption \"Macaroni cheese\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_mushroom_risotto": {
+    "file": "raw/k369t/images/k369t_mushroom_risotto.jpeg",
+    "sha256": "8ed83a8983e48bedf3de03ae6af8e2c6a13dd5b8ebdd6c5ed9be5aecfc43dbbf",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image28.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Mushroom risotto",
+    "description": "Overhead photograph of a white plate of food: risotto rice with pieces of mushroom. The caption \"Mushroom risotto\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_pepperoni_pizza": {
+    "file": "raw/k369t/images/k369t_pepperoni_pizza.jpeg",
+    "sha256": "0051557d2496b55a935cfabc2ec56b02d5e97318c225509bb073f6b77ecd7fe8",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image29.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Pepperoni pizza",
+    "description": "Overhead photograph of a white plate of food: pepperoni pizza slices covering most of the plate, with one wedge-shaped gap showing the plate. The caption \"Pepperoni pizza\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_spaghetti_bolognese": {
+    "file": "raw/k369t/images/k369t_spaghetti_bolognese.jpeg",
+    "sha256": "0650fb2e56109c09ec320d3b688817a0dafde0d2967264729a00b05fed56af4b",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image30.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Spaghetti bolognese",
+    "description": "Overhead photograph of a white plate of food: spaghetti mixed with a red meat sauce. The caption \"Spaghetti bolognese\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_sausage_mash_peas": {
+    "file": "raw/k369t/images/k369t_sausage_mash_peas.jpeg",
+    "sha256": "99ee5f6fa99340a36198ef86c56e0effd22ed1e44a758aa5a249a78783fbad04",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image31.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Sausage, mashed potato and peas",
+    "description": "Overhead photograph of a white plate of food: mashed potato at the top left, peas at the top right and browned sausages below. The caption \"Sausage, mashed potato and peas\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_tortellini": {
+    "file": "raw/k369t/images/k369t_tortellini.jpeg",
+    "sha256": "9bcf1f4784efc80e909acdf686d1da6a4c5792c60af5d557dfb2a7bb00b37262",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image32.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Spinach & ricotta tortellini with tomato sauce",
+    "description": "Overhead photograph of a white plate of food: tortellini pasta in a red tomato sauce. The caption \"Spinach & ricotta tortellini with tomato sauce\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
+  },
+  "k369t_vegetable_biryani": {
+    "file": "raw/k369t/images/k369t_vegetable_biryani.jpeg",
+    "sha256": "723302185bb0e0cc7250bddc4871fc7bbbc641820034d855ec3444beebf399fb",
+    "source": "https://osf.io/k369t/ (PACE_Kcal_labelling_protocol LMARTY pre-registered.docx, Appendix K (familiarity), embedded image33.jpeg: the 30th of the dish's 50 portion-size photographs, the 600 kcal portion)",
+    "licence": "none stated (OSF deposit k369t). Eric Robinson gave permission for research use of the OSF data, 26 Oct 2026 (data/catalog/image_contacts.json, robinson).",
+    "text_in_image": "Vegetable biryani",
+    "description": "Overhead photograph of a white plate of food: orange-coloured rice mixed with pieces of vegetable. The caption \"Vegetable biryani\" in white on a grey bar at the top left; a small picture of a product pack in the bottom right corner, its words too small to read. A small, low-resolution copy of the picture shown in the task."
   }
 }

@@ -317,12 +317,12 @@
       "title": "Portion choice from food photos",
       "description": "Portion choice from food photos: 4 label arms; 18 dishes, each served by stepping through 50 portion photos. 1,667 people, 30,006 rows.",
       "link": "https://osf.io/k369t/",
-      "status": "Waiting for images",
-      "reason": "images not in the deposit; asked the authors",
+      "status": "Built",
+      "reason": "30,005 rows (1,667 people x 18 dishes, 72 arms: 4 label groups x 18 dishes). Each dish shown as its 600 kcal photo (the other 49 portion photos are not in the deposit). All 8 published cells match the paper exactly; independent checker: no blockers.",
       "permission": "Yes",
       "contact": "Eric Robinson",
-      "rows": null,
-      "recipe": ""
+      "rows": 30005,
+      "recipe": "k369t"
     },
     {
       "id": "IMG28",

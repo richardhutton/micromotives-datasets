@@ -112,6 +112,17 @@
    "Other vocational/work-related qualifications": "Some college to associate",
    "Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional qualifications e.g. teaching, nursing, accountancy or equivalent)": "Bachelors to postgraduate",
    "Up to 4 GCSEs (Including 1-4 O Levels/CSE/GCSEs (any grades), Foundation Diploma, NVQ level 1, Foundation GNVQ or equivalent)": "Below degree level (not further distinguished)"
+  },
+  "uk_k369t_osf": {
+   "No qualification": "Less than high school",
+   "1-3 GCSEs": "Below degree level (not further distinguished)",
+   "4+ GCSEs": "High school",
+   "A level": "High school",
+   "CertHE": "Some college to associate",
+   "DipHE": "Some college to associate",
+   "Higher education or Bachelor’s degree": "Bachelors to postgraduate",
+   "Post-Graduate degree": "Bachelors to postgraduate",
+   "Doctoral or professional degree": "Bachelors to postgraduate"
   }
  },
  "_about": [
@@ -141,6 +152,15 @@
   "",
   "uk_pr8zu_osf (28 Oct 2026, IMG01): the k7tw5 lab's alcohol sibling, same instrument. Its six labels (after the same",
   "Bachelor mojibake repair) are the same strings as uk_k7tw5_osf's, checked by set equality in code; mapping copied, the",
-  "Bachelor's headline judgement included. No canonical value added."
+  "Bachelor's headline judgement included. No canonical value added.",
+  "",
+  "uk_k369t_osf (29 Oct 2026, IMG27): the Liverpool kcal/PACE portion study's nine levels. The deposit holds codes 1-9 only;",
+  "labels are the questionnaire's own (protocol Appendix G), the code order fixed by the protocol's 1-9 coding and the paper's",
+  "Table 1 counts. Jev (ordinal_span) read every level as one rung except \"1-3 GCSEs\" (high school 0.54/0.70, runner-up less",
+  "than high school 0.37/0.24): like k7tw5's \"Up to 4 GCSEs (any grades)\" it spans, so it goes to \"Below degree level (not",
+  "further distinguished)\". CertHE (Jev split some college/associate) and DipHE (associate) both land in Some college to",
+  "associate. \"Higher education or Bachelor’s degree\" mapped by its headline to Bachelors to postgraduate, as k7tw5's",
+  "Bachelor's was: a disclosed judgement (486 people). The question tells students to select the diploma being studied for,",
+  "so for its 52 students this is the qualification sought, not held. No canonical value added; no other scheme changed."
  ]
 }

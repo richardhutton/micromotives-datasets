@@ -92,6 +92,14 @@
    "In paid employment (ft/pt)": "Employed (hours not distinguished)",
    "Furloughed/Job Support Scheme": "Employed (hours not distinguished)",
    "Temporarily laid off/short time working": "Other"
+  },
+  "uk_k369t_osf": {
+   "Full or part-time": "Employed (hours not distinguished)",
+   "Student": "Full time student",
+   "Retired": "Retired",
+   "Temporary or permanently sick or disabled": "Disabled",
+   "Looking after home/family": "Other",
+   "Other unemployed": "Other"
   }
  },
  "_about": [
@@ -118,6 +126,14 @@
   "not say which means actively seeking. LOGVPZ's 9-value variant of the same",
   "YouGov family spells it out — 'Unemployed and looking for work' beside 'Not in",
   "paid work for any other reason' — so the bare pair is read the same way. If that",
-  "reading is wrong, 'Unemployed' and 'Not working' swap, affecting both."
+  "reading is wrong, 'Unemployed' and 'Not working' swap, affecting both.",
+  "",
+  "uk_k369t_osf (29 Oct 2026, IMG27): six options from the Liverpool kcal/PACE portion study (protocol Appendix G).",
+  "Jev (category_concept): 'Full or part-time' employed_unspecified 0.74; Student, Retired, sick or disabled (0.97) and",
+  "'Looking after home/family' (homemaker 1.0) unambiguous. 'Looking after home/family' goes to Other, as UKHLS's 'Looking",
+  "after family or home' does: the canonical has no homemaker value. 'Student' goes to Full time student, the only student",
+  "value, though the option does not say full time (52 people). 'Other unemployed' was split by Jev (unemployed_looking",
+  "0.47, other_residual 0.36); mapped to Other (135 people): it is the residual after the named statuses and says nothing",
+  "about seeking work (checker, 29 Oct 2026). No canonical value added; no other scheme changed."
  ]
 }
