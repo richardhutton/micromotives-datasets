@@ -342,7 +342,7 @@
       "description": "Fast-food menu boards: calorie labels × availability; choose main, side, drink; kcal ordered. Prolific, n=1,743.",
       "link": "https://osf.io/ajcr6/",
       "status": "Waiting for images",
-      "reason": "images not in the deposit; asked the authors",
+      "reason": "Deposit has no menu boards (its 4 images are diagrams, a logo and a ladder), only total kcal (no items chosen), and education as the only persona. Ask Eric: menu-board screenshots per arm, item-level choices, order-screen wording, demographics.",
       "permission": "Yes",
       "contact": "Eric Robinson",
       "rows": null,
@@ -401,12 +401,12 @@
       "title": "Restrain Food Database",
       "description": "Restrain Food Database: 1 of 52 random sets of 10 food photos; craving, healthiness, taste, positivity, calorie estimates. Prolific UK, 23,180 ratings from ~2,300 people.",
       "link": "https://osf.io/wsqyn/",
-      "status": "Buildable",
-      "reason": "full photo set in the deposit (CC BY)",
+      "status": "Built",
+      "reason": "279,500 rows (2,150 people x 10 of 521 food photos x 13 questions; 853 arms). Matches the authors' data file cell for cell; Tables 4-5 within 0.02; independent checker: no blockers. Per-photo licences recorded (3 CC BY-NC-SA). Held-out splits must group by food (data/catalog/wsqyn_food_groups.json).",
       "permission": "Not needed",
       "contact": "Mark Randle",
-      "rows": null,
-      "recipe": ""
+      "rows": 279500,
+      "recipe": "wsqyn"
     },
     {
       "id": "IMG35",
@@ -569,12 +569,12 @@
       "title": "Flood risk matrices",
       "description": "Flood risk matrices (Winton): 3 colour designs × 2; comprehension, risk perception, willingness to pay. UK, n=4,866.",
       "link": "https://osf.io/3krjz",
-      "status": "Buildable",
-      "reason": "all stimulus images in the deposit (CC BY)",
+      "status": "Built",
+      "reason": "42,637 rows (4,107 people; 6 risk-choice items x 3 colour formats + 5 willingness-to-pay sliders x 5 groups; 43 arms). All nine Table 1 slopes reproduce to 3 decimals; independent checker: no blockers.",
       "permission": "Not needed",
       "contact": "Winton Centre (Freeman, Recchia)",
-      "rows": null,
-      "recipe": ""
+      "rows": 42637,
+      "recipe": "3krjz"
     },
     {
       "id": "IMG49",

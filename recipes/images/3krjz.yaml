@@ -1,0 +1,3800 @@
+study_id: 3krjz
+source: osf
+title: 'Colour in flood risk matrices: 3 colour formats x boundary crossing; which risk to reduce (6 items)
+  and willingness to pay (5 items)'
+data_file: 3krjz_coded.xlsx
+licence: CC-By Attribution 4.0 International (OSF project 3krjz; data, code and stimuli in its component
+  9nvk3).
+comparable_to_socsci210: false
+participant_id_var: tic
+notes: "Write recipes/images/3krjz.yaml: colour in flood risk matrices (IMG48).\n\nProto, Recchia, Dryhurst\
+  \ & Freeman (Winton Centre, Cambridge), \"Do colored cells\nin risk matrices affect decision-making\
+  \ and risk perception? Insights from\nrandomized controlled studies\", Risk Analysis 43 (2023) 2114-2128,\n\
+  doi:10.1111/risa.14091 (open access, UCL Discovery 10164990). OSF project 3krjz\n(\"Risk Matrix Comprehension\
+  \ (Study 4)\", CC-By Attribution 4.0 International);\ndata, R code and every stimulus picture are in\
+  \ its component 9nvk3\n(`project.zip`), the fielded Qualtrics questionnaire is `survey.docx` there.\n\
+  The paper is the answer key, executed in tests/test_gen_3krjz.py on the BUILT\nrows: the paper's exclusions\
+  \ give its 2,249; Levene F = 0.674 as printed; all\nnine Table 1 simple slopes (colour format on the\
+  \ risk comparison score at low,\nmean and high numeracy) reproduce to the third decimal (e.g. banding\
+  \ vs no colour\nat mean numeracy -0.399); the Experiment 2 missing counts are the printed 67, 45\nand\
+  \ 36; and the crossing groups pay more in both colour formats, as Table 3 has\nit. Table 3's multilevel\
+  \ coefficients are not recomputed (lme4 model, no\nequivalent here); the within-person level means differ\
+  \ by 5.47 / 18.20 / 12.73\nagainst the paper's multilevel 5.534 / 18.357 / 12.823.\n\n5,791 UK adults\
+  \ (Respondi, quotas on age and gender) opened the survey; 4,864\nwere randomised. One survey held two\
+  \ experiments. Experiment 1: six \"which risk\nwould you reduce?\" choices, each shown as two risk matrices\
+  \ side by side.\nExperiment 2: five \"how much would you pay?\" sliders, each one matrix. The\nmatrix's\
+  \ colour format was randomised between subjects (`colour_cond`: 0 no\ncolour, 1 cell shading, 2 colour\
+  \ banding) and, independently, whether the\nExperiment 2 risk reductions crossed a colour boundary (`cross_cond`:\
+  \ 1 crosses).\n`cross_cond` is drawn for the no-colour group too but changes nothing there: the\ndeposit\
+  \ has one no-colour picture per slider, and the authors' own cleaning\nscript (0_cleaning.R) blanks\
+  \ it for that group. So the paper's \"3 x 2\" is five\ngroups for Experiment 2 and three for Experiment\
+  \ 1, whose pictures do not depend\non `cross_cond` at all. Code meanings are from 0_cleaning.R and confirmed\
+  \ by the\npaper's results (crosscheck): colour banding scores lowest on Experiment 1, the\ncrossing\
+  \ groups pay more on Experiment 2.\n\nEvery judgement is here, in code, so the recipe can be re-derived\
+  \ and reviewed:\n\n* DATA. The deposit's `data/data_raw.csv` is a Qualtrics export: two header rows\n\
+  \  under the column names (question text, import ids) and every answer as text.\n  `--prep` writes `3krjz_coded.xlsx`\
+  \ beside it: the header rows dropped, only the\n  4,864 randomised people, only the columns used here\
+  \ (no IP address or\n  location columns), plus one `stim_<item>` column per outcome. The six\n  Experiment\
+  \ 1 answers are coded there in the questionnaire's option order (1\n  Risk A, 2 Risk B, 3 Impossible\
+  \ to choose; any other text stops the run); the\n  `.xlsx` reader codes the remaining text columns as\
+  \ it codes any spreadsheet's.\n* ARMS. Within subject: one ARM per distinct picture-and-format a question\
+  \ was\n  shown with, and each outcome's `condition_var` is its `stim_<item>` column,\n  holding that\
+  \ person's arm for that item (the `b87sm` pattern). The six\n  Experiment 1 items x 3 formats = 18 arms\
+  \ (cn 0-17); the five Experiment 2 items\n  x 5 groups (no colour; cell shading without / with crossing;\
+  \ colour banding\n  without / with crossing) = 25 arms (cn 18-42). `stim_<item>` is arithmetic on\n\
+  \  `colour_cond` and `cross_cond`, nothing else. The Experiment 1 arms are shared\n  by both `cross_cond`\
+  \ groups of a format, because their pictures are the same;\n  so on those rows the `boundary` factor\
+  \ reads \"same picture for both boundary\n  groups\". Held-out splits must key on condition_num or the\
+  \ image ids.\n* WHICH PICTURE. The questionnaire names each block's folder and file stem\n  (x_comp1_no-col/cells/bands\
+  \ ... x_wtp_low/med/high_..._cross/no-cross(_imp1));\n  the item variables are the block names (comp1,\
+  \ wtp_low_imp2 ...), so file and\n  item pair by name: `_imp1` files belong to the `*_imp1` items, the\
+  \ files without\n  it to `*_imp2`. Checked against the paper, both ways: (a) for every\n  Experiment\
+  \ 1 picture, the option the authors' cleaning script scores as the\n  greater absolute reduction (comp1\
+  \ A, comp3 A, comp4 B, comp5 A, dist1 A, dist2\n  A) is the one whose marked move, read off the picture\
+  \ as likelihood x impact,\n  is the larger (POSITIONS below; asserted in code); (b) the three `_imp2`\n\
+  \  sliders reduce likelihood 0.6%->0.2%, 1.8%->0.6%, 16.2%->5.4%, exactly the\n  paper's low, medium\
+  \ and high levels. The positions were read by eye from all\n  49 pictures and are the same in every\
+  \ colour version of a picture.\n  Consequence (checker, 29 Oct 2026): in Experiment 1 the keyed answer\
+  \ can be\n  worked out from these stated positions alone, so for those items the picture\n  adds only\
+  \ the colour; in Experiment 2 the colour boundary is carried by the\n  picture only.\n* NOT BUILT. `comp2`:\
+  \ \"THIS SET OF STIMULI WERE NOT DISPLAYED CORRECTLY TO\n  PARTICIPANTS\" (questionnaire; the paper\
+  \ drops it too). What was on screen is\n  unknown, so its 3,930 answers are not built. The attention\
+  \ check (\"please\n  select 80\"), an instruction check, not an outcome (CONVENTIONS). `rm_use_exp`\n\
+  \  (\"Have you encountered or used a risk matrix before?\"): asked after the format\n  was explained,\
+  \ so neither a clean persona attribute nor an outcome of the\n  manipulation. The numeracy items and\
+  \ the free-text questions.\n* CONDITION. Every row carries the whole explanation of the format the person\
+  \ was\n  given, word-for-word from survey.docx, with that format's two explanation\n  pictures (`x_intro1_*`,\
+  \ `x_intro2_*`), then Q269 (the task description), then\n  the item's own picture. The questionnaire's\
+  \ block order puts Q269 before both\n  experiments. NOT narrated: the other items. The paper says the\
+  \ item order\n  within Experiment 1 and the order of the two experiments were both randomised,\n  and\
+  \ the deposit records neither, so a row cannot say what came before it\n  (CONVENTIONS, sequence signposting).\
+  \ Dropped as survey mechanics: \"A set of 7\n  questions will now begin. Would you like to see the instructions\
+  \ ... again?\"\n  (the count includes the broken comp2), and Q131, \"You will be able to revisit\n \
+  \ your previous answers in this section ...\".\n  Words that are OURS, all description of the pictures:\
+  \ \"The screen read:\",\n  \"Below that was this grid:\", the sentence naming the axis labels (each\
+  \ label\n  quoted as printed), \"The grid marks \"A\" in the cell at likelihood 3 and impact\n  9.\"\
+  \ and the like for each marked cell (positions are the grid's own printed\n  numbers), \"Below the grid:\"\
+  , \"The next screen showed:\", \"Below it:\", \"Then the\n  screen read:\", \"For this question the\
+  \ screen showed two grids side by side,\n  labelled as the first was:\" / \"a grid labelled as the first\
+  \ was:\". The colours\n  are NOT described in the text: they are the manipulation and the picture\n\
+  \  carries them (QC rules 1 and 5 compare words and images).\n* OUTCOMES. Wording word-for-word from\
+  \ survey.docx. Experiment 1: \"Risk A\" /\n  \"Risk B\" / \"Impossible to choose\", an unordered choice,\
+  \ enumerated in the\n  question as 1/2/3 (nominal). These items have a correct answer by the authors'\n\
+  \  scoring; the response is the option chosen, recorded as asked. Experiment 2: a\n  0-100 slider, \"\
+  1 unit = £1k\", kept as given (all values are whole numbers); an\n  untouched slider is blank in the\
+  \ export and builds no row.\n* WHO. Everyone randomised who answered the item: 4,107 people. That includes\
+  \ the\n  473 who answered some items but did not finish (their answers are real; most\n  have no end-of-survey\
+  \ demographics), the 1,326 the authors count as failing\n  the attention check, and the colour-blind\
+  \ in coloured groups (persona\n  `colour_blindness`). The paper's analytic sample (2,249) excludes all\
+  \ three;\n  the crosscheck applies the paper's exclusions to these rows to reproduce it.\n  Numeric\
+  \ age, ethnicity, income, education and ideology are absent for 434\n  people (2,741 rows), nearly all\
+  \ non-finishers; their quota age band exists\n  but is not mapped.\n* PERSONA. Pre-treatment, asked\
+  \ before the format was explained: gender and age\n  band (quota questions; the band is not mapped because\
+  \ numeric age is), colour\n  blindness, perceived flood risk where you live (1-7), personal experience\
+  \ of\n  flooding, and the four risk-perception items (1-7, each with its own endpoint\n  labels, rewritten\
+  \ into the label as k369t does). Asked at the END of the\n  survey, mapped as stable facts no flood-matrix\
+  \ question could change: numeric\n  age, ethnicity, household income, highest qualification, and left-right\n\
+  \  self-placement (`ideology`). Crosswalk schemes uk_3krjz_osf (education, Jev\n  ordinal_span; ethnicity,\
+  \ Jev category_concept, ONS five groups; income,\n  arithmetic). Gender's third option, \"Other / Prefer\
+  \ not to say\", is an answer\n  and a refusal in one code and cannot be split, so it is left absent\
+  \ (19\n  people). NOT mapped: nationality and native language (free text), the\n  numeracy items (a\
+  \ test, taken after the tasks).\n\n    uv run python scripts/gen_3krjz.py --prep     # (re)write the\
+  \ coded .xlsx\n    uv run python scripts/gen_3krjz.py            # write the recipe\n    uv run python\
+  \ scripts/gen_3krjz.py --check    # exit 1 if it differs"
+condition:
+  source_var: stim_comp1
+  factors:
+  - format
+  - boundary
+  - task
+  arms:
+  - raw: 0
+    condition_num: 0
+    factors:
+      format: no colour
+      boundary: same picture for both boundary groups
+      task: comp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 27 and "A2" in the cell at likelihood
+      27 and impact 27. The right grid marks "B1" in the cell at likelihood 27 and impact 27 and "B2"
+      in the cell at likelihood 1 and impact 27.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_comp1_no_colour
+  - raw: 1
+    condition_num: 1
+    factors:
+      format: cell shading
+      boundary: same picture for both boundary groups
+      task: comp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 27 and "A2" in the cell at likelihood
+      27 and impact 27. The right grid marks "B1" in the cell at likelihood 27 and impact 27 and "B2"
+      in the cell at likelihood 1 and impact 27.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_comp1_cells
+  - raw: 2
+    condition_num: 2
+    factors:
+      format: colour banding
+      boundary: same picture for both boundary groups
+      task: comp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 27 and "A2" in the cell at likelihood
+      27 and impact 27. The right grid marks "B1" in the cell at likelihood 27 and impact 27 and "B2"
+      in the cell at likelihood 1 and impact 27.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_comp1_bands
+  - raw: 3
+    condition_num: 3
+    factors:
+      format: no colour
+      boundary: same picture for both boundary groups
+      task: comp3
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 27 and "A2" in the cell at likelihood
+      9 and impact 9. The right grid marks "B1" in the cell at likelihood 9 and impact 9 and "B2" in the
+      cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_comp3_no_colour
+  - raw: 4
+    condition_num: 4
+    factors:
+      format: cell shading
+      boundary: same picture for both boundary groups
+      task: comp3
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 27 and "A2" in the cell at likelihood
+      9 and impact 9. The right grid marks "B1" in the cell at likelihood 9 and impact 9 and "B2" in the
+      cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_comp3_cells
+  - raw: 5
+    condition_num: 5
+    factors:
+      format: colour banding
+      boundary: same picture for both boundary groups
+      task: comp3
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 27 and "A2" in the cell at likelihood
+      9 and impact 9. The right grid marks "B1" in the cell at likelihood 9 and impact 9 and "B2" in the
+      cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_comp3_bands
+  - raw: 6
+    condition_num: 6
+    factors:
+      format: no colour
+      boundary: same picture for both boundary groups
+      task: comp4
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood
+      3 and impact 3. The right grid marks "B1" in the cell at likelihood 27 and impact 3 and "B2" in
+      the cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_comp4_no_colour
+  - raw: 7
+    condition_num: 7
+    factors:
+      format: cell shading
+      boundary: same picture for both boundary groups
+      task: comp4
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood
+      3 and impact 3. The right grid marks "B1" in the cell at likelihood 27 and impact 3 and "B2" in
+      the cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_comp4_cells
+  - raw: 8
+    condition_num: 8
+    factors:
+      format: colour banding
+      boundary: same picture for both boundary groups
+      task: comp4
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood
+      3 and impact 3. The right grid marks "B1" in the cell at likelihood 27 and impact 3 and "B2" in
+      the cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_comp4_bands
+  - raw: 9
+    condition_num: 9
+    factors:
+      format: no colour
+      boundary: same picture for both boundary groups
+      task: comp5
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood
+      27 and impact 3. The right grid marks "B1" in the cell at likelihood 27 and impact 3 and "B2" in
+      the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_comp5_no_colour
+  - raw: 10
+    condition_num: 10
+    factors:
+      format: cell shading
+      boundary: same picture for both boundary groups
+      task: comp5
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood
+      27 and impact 3. The right grid marks "B1" in the cell at likelihood 27 and impact 3 and "B2" in
+      the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_comp5_cells
+  - raw: 11
+    condition_num: 11
+    factors:
+      format: colour banding
+      boundary: same picture for both boundary groups
+      task: comp5
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood
+      27 and impact 3. The right grid marks "B1" in the cell at likelihood 27 and impact 3 and "B2" in
+      the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_comp5_bands
+  - raw: 12
+    condition_num: 12
+    factors:
+      format: no colour
+      boundary: same picture for both boundary groups
+      task: dist1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 9 and "A2" in the cell at likelihood
+      27 and impact 9. The right grid marks "B1" in the cell at likelihood 27 and impact 9 and "B2" in
+      the cell at likelihood 9 and impact 9.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_dist1_no_colour
+  - raw: 13
+    condition_num: 13
+    factors:
+      format: cell shading
+      boundary: same picture for both boundary groups
+      task: dist1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 9 and "A2" in the cell at likelihood
+      27 and impact 9. The right grid marks "B1" in the cell at likelihood 27 and impact 9 and "B2" in
+      the cell at likelihood 9 and impact 9.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_dist1_cells
+  - raw: 14
+    condition_num: 14
+    factors:
+      format: colour banding
+      boundary: same picture for both boundary groups
+      task: dist1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 81 and impact 9 and "A2" in the cell at likelihood
+      27 and impact 9. The right grid marks "B1" in the cell at likelihood 27 and impact 9 and "B2" in
+      the cell at likelihood 9 and impact 9.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_dist1_bands
+  - raw: 15
+    condition_num: 15
+    factors:
+      format: no colour
+      boundary: same picture for both boundary groups
+      task: dist2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 27 and "A2" in the cell at likelihood
+      9 and impact 3. The right grid marks "B1" in the cell at likelihood 9 and impact 9 and "B2" in the
+      cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_dist2_no_colour
+  - raw: 16
+    condition_num: 16
+    factors:
+      format: cell shading
+      boundary: same picture for both boundary groups
+      task: dist2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 27 and "A2" in the cell at likelihood
+      9 and impact 3. The right grid marks "B1" in the cell at likelihood 9 and impact 9 and "B2" in the
+      cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_dist2_cells
+  - raw: 17
+    condition_num: 17
+    factors:
+      format: colour banding
+      boundary: same picture for both boundary groups
+      task: dist2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed two grids side by side, labelled as the first was: <image> The
+      left grid marks "A1" in the cell at likelihood 9 and impact 27 and "A2" in the cell at likelihood
+      9 and impact 3. The right grid marks "B1" in the cell at likelihood 9 and impact 9 and "B2" in the
+      cell at likelihood 9 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_dist2_bands
+  - raw: 18
+    condition_num: 18
+    factors:
+      format: no colour
+      boundary: no colour boundaries
+      task: wtp_low_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 3 and "A2" in the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_wtp_low_imp2_no_colour
+  - raw: 19
+    condition_num: 19
+    factors:
+      format: cell shading
+      boundary: does not cross a colour boundary
+      task: wtp_low_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 3 and "A2" in the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_low_imp2_cells_no_cross
+  - raw: 20
+    condition_num: 20
+    factors:
+      format: cell shading
+      boundary: crosses a colour boundary
+      task: wtp_low_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 3 and "A2" in the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_low_imp2_cells_cross
+  - raw: 21
+    condition_num: 21
+    factors:
+      format: colour banding
+      boundary: does not cross a colour boundary
+      task: wtp_low_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 3 and "A2" in the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_low_imp2_bands_no_cross
+  - raw: 22
+    condition_num: 22
+    factors:
+      format: colour banding
+      boundary: crosses a colour boundary
+      task: wtp_low_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 3 and "A2" in the cell at likelihood 1 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_low_imp2_bands_cross
+  - raw: 23
+    condition_num: 23
+    factors:
+      format: no colour
+      boundary: no colour boundaries
+      task: wtp_med_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood 3 and impact 3.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_wtp_med_imp2_no_colour
+  - raw: 24
+    condition_num: 24
+    factors:
+      format: cell shading
+      boundary: does not cross a colour boundary
+      task: wtp_med_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood 3 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_med_imp2_cells_no_cross
+  - raw: 25
+    condition_num: 25
+    factors:
+      format: cell shading
+      boundary: crosses a colour boundary
+      task: wtp_med_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood 3 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_med_imp2_cells_cross
+  - raw: 26
+    condition_num: 26
+    factors:
+      format: colour banding
+      boundary: does not cross a colour boundary
+      task: wtp_med_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood 3 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_med_imp2_bands_no_cross
+  - raw: 27
+    condition_num: 27
+    factors:
+      format: colour banding
+      boundary: crosses a colour boundary
+      task: wtp_med_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 3 and "A2" in the cell at likelihood 3 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_med_imp2_bands_cross
+  - raw: 28
+    condition_num: 28
+    factors:
+      format: no colour
+      boundary: no colour boundaries
+      task: wtp_high_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood 27 and impact 3.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_wtp_high_imp2_no_colour
+  - raw: 29
+    condition_num: 29
+    factors:
+      format: cell shading
+      boundary: does not cross a colour boundary
+      task: wtp_high_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood 27 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_high_imp2_cells_no_cross
+  - raw: 30
+    condition_num: 30
+    factors:
+      format: cell shading
+      boundary: crosses a colour boundary
+      task: wtp_high_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood 27 and impact 3.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_high_imp2_cells_cross
+  - raw: 31
+    condition_num: 31
+    factors:
+      format: colour banding
+      boundary: does not cross a colour boundary
+      task: wtp_high_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood 27 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_high_imp2_bands_no_cross
+  - raw: 32
+    condition_num: 32
+    factors:
+      format: colour banding
+      boundary: crosses a colour boundary
+      task: wtp_high_imp2
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 81 and impact 3 and "A2" in the cell at likelihood 27 and impact 3.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_high_imp2_bands_cross
+  - raw: 33
+    condition_num: 33
+    factors:
+      format: no colour
+      boundary: no colour boundaries
+      task: wtp_low_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 1 and "A2" in the cell at likelihood 1 and impact 1.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_wtp_low_imp1_no_colour
+  - raw: 34
+    condition_num: 34
+    factors:
+      format: cell shading
+      boundary: does not cross a colour boundary
+      task: wtp_low_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 1 and "A2" in the cell at likelihood 1 and impact 1.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_low_imp1_cells_no_cross
+  - raw: 35
+    condition_num: 35
+    factors:
+      format: cell shading
+      boundary: crosses a colour boundary
+      task: wtp_low_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 1 and "A2" in the cell at likelihood 1 and impact 1.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_low_imp1_cells_cross
+  - raw: 36
+    condition_num: 36
+    factors:
+      format: colour banding
+      boundary: does not cross a colour boundary
+      task: wtp_low_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 1 and "A2" in the cell at likelihood 1 and impact 1.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_low_imp1_bands_no_cross
+  - raw: 37
+    condition_num: 37
+    factors:
+      format: colour banding
+      boundary: crosses a colour boundary
+      task: wtp_low_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 3 and impact 1 and "A2" in the cell at likelihood 1 and impact 1.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_low_imp1_bands_cross
+  - raw: 38
+    condition_num: 38
+    factors:
+      format: no colour
+      boundary: no colour boundaries
+      task: wtp_med_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 1 and "A2" in the cell at likelihood 3 and impact 1.'
+    images:
+    - 3krjz_intro1_no_colour
+    - 3krjz_intro2_no_colour
+    - 3krjz_wtp_med_imp1_no_colour
+  - raw: 39
+    condition_num: 39
+    factors:
+      format: cell shading
+      boundary: does not cross a colour boundary
+      task: wtp_med_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 1 and "A2" in the cell at likelihood 3 and impact 1.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_med_imp1_cells_no_cross
+  - raw: 40
+    condition_num: 40
+    factors:
+      format: cell shading
+      boundary: crosses a colour boundary
+      task: wtp_med_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 1 and "A2" in the cell at likelihood 3 and impact 1.'
+    images:
+    - 3krjz_intro1_cells
+    - 3krjz_intro2_cells
+    - 3krjz_wtp_med_imp1_cells_cross
+  - raw: 41
+    condition_num: 41
+    factors:
+      format: colour banding
+      boundary: does not cross a colour boundary
+      task: wtp_med_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 1 and "A2" in the cell at likelihood 3 and impact 1.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_med_imp1_bands_no_cross
+  - raw: 42
+    condition_num: 42
+    factors:
+      format: colour banding
+      boundary: crosses a colour boundary
+      task: wtp_med_imp1
+    text: 'The screen read: "Please read the information provided here carefully, even if you have seen
+      risks displayed like this before. You will need it to complete the rest of the study.
+
+      Take as long as you need to read this information before moving onto the next page.
+
+      Thank you for your patience!" Below that was this grid: <image>
+
+
+      Up the left side the grid is labelled "Impact", with the rows "Minor 1", "Limited 3", "Moderate
+      9", "Significant 27" and "Catastrophic 81" from bottom to top; along the bottom it is labelled "Likelihood",
+      with the columns "1", "3", "9", "27" and "81" from left to right, and below each column its chance
+      as a percentage and as a frequency: "0.2%" and "1 in 500", "0.6%" and "3 in 500", "1.8%" and "9
+      in 500", "5.4%" and "27 in 500", "16.2%" and "81 in 500". The grid marks "A" in the cell at likelihood
+      3 and impact 9.
+
+
+      Below the grid: "Information about risks can be communicated in many different ways. One risk communication
+      format is shown above.
+
+      Along the bottom of the grid is the likelihood of a risk - "How likely is this risk to happen?".
+      This is shown on a 1 to 81 scale, where each increase of a level on the scale means the likelihood
+      is three times greater (e.g., "3" is three times more likely than "1"). The chances of an event
+      happening, for each level of the scale, are shown below the grid. They are shown both as a percentage
+      and as a frequency.
+
+      Up the left side of the grid is the potential impact of a risk - "If this risk happens, how bad
+      will it be?". This is shown on a 1 to 81 scale, where each increase of a level on the scale means
+      the potential impact is three times worse (e.g., "9" is a potential impact three times worse than
+      "3").
+
+      By putting a risk in a particular place on the grid (here, shown by the A, to stand for e.g., the
+      risk of a flood in town A), we can communicate both the likelihood and impact of that risk at the
+      same time."
+
+
+      The next screen showed: <image> It marks "A1" in the cell at likelihood 1 and impact 1 and "A2"
+      in the cell at likelihood 1 and impact 3. Below it: "This risk presentation format can also be used
+      to show a change in risk, as shown above. Risk A (e.g., the risk of a flood in Town A) has increased
+      from its initial level (A1) to a new level (A2) after something has changed about the situation
+      (e.g., the risk of a flood in Town A after flood barriers have been compromised). The initial risk
+      level (A1) is presented in a darker colour than the new risk level (A2)."
+
+
+      Then the screen read: "You will now be asked to use the format you have just seen to make some decisions
+      about different flood risks.
+
+      Please don''t worry if you find the questions hard, or think you have answered some questions wrong
+      - some of them are designed to be challenging, and not all of the questions have one right answer.
+
+      Remember that your answers are very important as they will help us explore how useful this risk
+      presentation format is in helping people understand and make decisions about risk.
+
+      All of the flood risk scenarios you are about to see are hypothetical, and have been invented specifically
+      for this study. They do not reflect any actual flood risks anywhere in the UK or abroad."
+
+
+      For this question the screen showed a grid labelled as the first was: <image> It marks "A1" in the
+      cell at likelihood 9 and impact 1 and "A2" in the cell at likelihood 3 and impact 1.'
+    images:
+    - 3krjz_intro1_bands
+    - 3krjz_intro2_bands
+    - 3krjz_wtp_med_imp1_bands_cross
+outcomes:
+- var: comp1
+  task_num: 0
+  question: There are two different flood risks in two different parts of the country, risk A and risk
+    B. You only have the resources to reduce one of these risks (either A from A1 to A2 or B from B1 to
+    B2), as shown above. Reducing either risk costs the same amount of resources. Which risk would you
+    reduce? 1 means "Risk A"; 2 means "Risk B"; 3 means "Impossible to choose".
+  scale:
+    min: 1
+    max: 3
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+  condition_var: stim_comp1
+- var: comp3
+  task_num: 1
+  question: There are two different flood risks in two different parts of the country, risk A and risk
+    B. You only have the resources to reduce one of these risks (either A from A1 to A2 or B from B1 to
+    B2), as shown above. Reducing either risk costs the same amount of resources. Which risk would you
+    reduce? 1 means "Risk A"; 2 means "Risk B"; 3 means "Impossible to choose".
+  scale:
+    min: 1
+    max: 3
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+  condition_var: stim_comp3
+- var: comp4
+  task_num: 2
+  question: There are two different flood risks in two different parts of the country, risk A and risk
+    B. You only have the resources to reduce one of these risks (either A from A1 to A2 or B from B1 to
+    B2), as shown above. Reducing either risk costs the same amount of resources. Which risk would you
+    reduce? 1 means "Risk A"; 2 means "Risk B"; 3 means "Impossible to choose".
+  scale:
+    min: 1
+    max: 3
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+  condition_var: stim_comp4
+- var: comp5
+  task_num: 3
+  question: There are two different flood risks in two different parts of the country, risk A and risk
+    B. You only have the resources to reduce one of these risks (either A from A1 to A2 or B from B1 to
+    B2), as shown above. Reducing either risk costs the same amount of resources. Which risk would you
+    reduce? 1 means "Risk A"; 2 means "Risk B"; 3 means "Impossible to choose".
+  scale:
+    min: 1
+    max: 3
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+  condition_var: stim_comp5
+- var: dist1
+  task_num: 4
+  question: There are two different flood risks in two different parts of the country, risk A and risk
+    B. You only have the resources to reduce one of these risks (either A from A1 to A2 or B from B1 to
+    B2), as shown above. Reducing either risk costs the same amount of resources. Which risk would you
+    reduce? 1 means "Risk A"; 2 means "Risk B"; 3 means "Impossible to choose".
+  scale:
+    min: 1
+    max: 3
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+  condition_var: stim_dist1
+- var: dist2
+  task_num: 5
+  question: There are two different flood risks in two different parts of the country, risk A and risk
+    B. You only have the resources to reduce one of these risks (either A from A1 to A2 or B from B1 to
+    B2), as shown above. Reducing either risk costs the same amount of resources. Which risk would you
+    reduce? 1 means "Risk A"; 2 means "Risk B"; 3 means "Impossible to choose".
+  scale:
+    min: 1
+    max: 3
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+  condition_var: stim_dist2
+- var: wtp_low_imp2_1
+  task_num: 6
+  question: 'You are an emergency planner for the local government and you have some money you can use
+    to decrease the likelihood of risk A (from A1 to A2), as shown above. The total budget available is
+    £100k. However, spending to further reduce this risk means this money is not available for other important
+    governmental projects.
+
+    How much would you be willing to pay to move risk A from A1 to A2? Indicate the amount below:
+
+    1 unit = £1k'
+  scale:
+    min: 0
+    max: 100
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+  condition_var: stim_wtp_low_imp2
+- var: wtp_med_imp2_1
+  task_num: 7
+  question: 'You are an emergency planner for the local government and you have some money you can use
+    to decrease the likelihood of risk A (from A1 to A2), as shown above. The total budget available is
+    £100k. However, spending to further reduce this risk means this money is not available for other important
+    governmental projects.
+
+    How much would you be willing to pay to move risk A from A1 to A2? Indicate the amount below:
+
+    1 unit = £1k'
+  scale:
+    min: 0
+    max: 100
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+  condition_var: stim_wtp_med_imp2
+- var: wtp_high_imp2_1
+  task_num: 8
+  question: 'You are an emergency planner for the local government and you have some money you can use
+    to decrease the likelihood of risk A (from A1 to A2), as shown above. The total budget available is
+    £100k. However, spending to further reduce this risk means this money is not available for other important
+    governmental projects.
+
+    How much would you be willing to pay to move risk A from A1 to A2? Indicate the amount below:
+
+    1 unit = £1k'
+  scale:
+    min: 0
+    max: 100
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+  condition_var: stim_wtp_high_imp2
+- var: wtp_low_imp1_1
+  task_num: 9
+  question: 'You are an emergency planner for the local government and you have some money you can use
+    to decrease the likelihood of risk A (from A1 to A2), as shown above. The total budget available is
+    £100k. However, spending to further reduce this risk means this money is not available for other important
+    governmental projects.
+
+    How much would you be willing to pay to move risk A from A1 to A2? Indicate the amount below:
+
+    1 unit = £1k'
+  scale:
+    min: 0
+    max: 100
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+  condition_var: stim_wtp_low_imp1
+- var: wtp_med_imp1_1
+  task_num: 10
+  question: 'You are an emergency planner for the local government and you have some money you can use
+    to decrease the likelihood of risk A (from A1 to A2), as shown above. The total budget available is
+    £100k. However, spending to further reduce this risk means this money is not available for other important
+    governmental projects.
+
+    How much would you be willing to pay to move risk A from A1 to A2? Indicate the amount below:
+
+    1 unit = £1k'
+  scale:
+    min: 0
+    max: 100
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+  condition_var: stim_wtp_med_imp1
+response_recode: {}
+persona_map:
+  age: age
+  gender: Q219
+  ethnicity: ethnicity
+  income: income
+  education: education
+  ideology: pol_views
+  colour_blindness: col_bl_binary
+  perceived_flood_risk_where_you_live: flood_risk_1
+  personal_experience_of_flooding: Q1462
+  concern_about_flooding: rpi1_1
+  likelihood_of_serious_threat_to_own_health_or_wellbeing_from_flooding: rpi2_1
+  likelihood_of_harmful_long_term_impacts_of_flooding_on_society: rpi3_1
+  seriousness_of_national_flooding_impacts: rpi4_1
+persona_missing:
+  Q219:
+  - 3
+persona_label_rewrite:
+  flood_risk_1:
+    1: 1 on a scale from 1 (No risk) to 7 (High risk)
+    2: 2 on a scale from 1 (No risk) to 7 (High risk)
+    3: 3 on a scale from 1 (No risk) to 7 (High risk)
+    4: 4 on a scale from 1 (No risk) to 7 (High risk)
+    5: 5 on a scale from 1 (No risk) to 7 (High risk)
+    6: 6 on a scale from 1 (No risk) to 7 (High risk)
+    7: 7 on a scale from 1 (No risk) to 7 (High risk)
+  rpi1_1:
+    1: 1 on a scale from 1 (Not concerned at all) to 7 (Very concerned)
+    2: 2 on a scale from 1 (Not concerned at all) to 7 (Very concerned)
+    3: 3 on a scale from 1 (Not concerned at all) to 7 (Very concerned)
+    4: 4 on a scale from 1 (Not concerned at all) to 7 (Very concerned)
+    5: 5 on a scale from 1 (Not concerned at all) to 7 (Very concerned)
+    6: 6 on a scale from 1 (Not concerned at all) to 7 (Very concerned)
+    7: 7 on a scale from 1 (Not concerned at all) to 7 (Very concerned)
+  rpi2_1:
+    1: 1 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    2: 2 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    3: 3 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    4: 4 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    5: 5 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    6: 6 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    7: 7 on a scale from 1 (Very unlikely) to 7 (Very likely)
+  rpi3_1:
+    1: 1 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    2: 2 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    3: 3 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    4: 4 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    5: 5 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    6: 6 on a scale from 1 (Very unlikely) to 7 (Very likely)
+    7: 7 on a scale from 1 (Very unlikely) to 7 (Very likely)
+  rpi4_1:
+    1: 1 on a scale from 1 (Not serious at all) to 7 (Very serious)
+    2: 2 on a scale from 1 (Not serious at all) to 7 (Very serious)
+    3: 3 on a scale from 1 (Not serious at all) to 7 (Very serious)
+    4: 4 on a scale from 1 (Not serious at all) to 7 (Very serious)
+    5: 5 on a scale from 1 (Not serious at all) to 7 (Very serious)
+    6: 6 on a scale from 1 (Not serious at all) to 7 (Very serious)
+    7: 7 on a scale from 1 (Not serious at all) to 7 (Very serious)

@@ -146,6 +146,44 @@
    "White and Asian": "Mixed or Multiple ethnic groups",
    "White and Black African": "Mixed or Multiple ethnic groups",
    "White and Black Caribbean": "Mixed or Multiple ethnic groups"
+  },
+  "uk_3krjz_osf": {
+   "White British": "White",
+   "White Irish": "White",
+   "Other White": "White",
+   "White and Black Carribean": "Mixed or Multiple ethnic groups",
+   "White and Black African": "Mixed or Multiple ethnic groups",
+   "White and Asian": "Mixed or Multiple ethnic groups",
+   "Other Mixed": "Mixed or Multiple ethnic groups",
+   "Indian": "Asian or Asian British",
+   "Pakistani": "Asian or Asian British",
+   "Bangladeshi": "Asian or Asian British",
+   "Chinese": "Asian or Asian British",
+   "Other Asian": "Asian or Asian British",
+   "Black Carribean": "Black, Black British, Caribbean or African",
+   "Black African": "Black, Black British, Caribbean or African",
+   "Other Black": "Black, Black British, Caribbean or African",
+   "Any other ethnic group": "Other ethnic group"
+  },
+  "uk_wsqyn_osf": {
+   "English, Welsh, Scottish, Northern Irish or British": "White",
+   "Irish": "White",
+   "Gypsy or Irish Traveller": "White",
+   "Any other White background": "White",
+   "White and Black Caribbean": "Mixed or Multiple ethnic groups",
+   "White and Black African": "Mixed or Multiple ethnic groups",
+   "White and Asian": "Mixed or Multiple ethnic groups",
+   "Any other Mixed or Multiple ethnic background": "Mixed or Multiple ethnic groups",
+   "Indian": "Asian or Asian British",
+   "Pakistani": "Asian or Asian British",
+   "Bangladeshi": "Asian or Asian British",
+   "Chinese": "Asian or Asian British",
+   "Any other Asian background": "Asian or Asian British",
+   "African": "Black, Black British, Caribbean or African",
+   "Caribbean": "Black, Black British, Caribbean or African",
+   "Any other Black, African or Caribbean background": "Black, Black British, Caribbean or African",
+   "Arab": "Other ethnic group",
+   "Any other ethnic group": "Other ethnic group"
   }
  },
  "_about": [
@@ -180,6 +218,18 @@
   "the residual; overruled, the residual is \"Any other ethnic group\". No canonical value added; no other scheme changed.",
   "",
   "uk_pr8zu_osf (28 Oct 2026, IMG01): the k7tw5 lab's alcohol sibling. Its 18 labels are the same strings as uk_k7tw5_osf's",
-  "(checked by set equality in code), so the mapping is copied and no new judgement was needed. No canonical value added."
+  "(checked by set equality in code), so the mapping is copied and no new judgement was needed. No canonical value added.",
+  "",
+  "uk_3krjz_osf (29 Oct 2026, IMG48): ONS-2011-style 16-category labels from the Winton Centre flood risk-matrix survey, its",
+  "own spelling (\"Carribean\") kept. Jev (category_concept) put every label in its ONS group (white, mixed, asian, black at",
+  "0.72-1.0); the within-group catch-alls \"Other White\" / \"Other Mixed\" / \"Other Asian\" / \"Other Black\" scored residual",
+  "0.43-0.58 and go to their own group, as uk_ons_detailed_2011's \"Any other ... background\" labels do; \"Any other ethnic",
+  "group\" (residual 0.92) is Other ethnic group. No canonical value added; no other scheme changed.",
+  "",
+  "uk_wsqyn_osf (29 Oct 2026, IMG34): the 18 ONS-2021-style options of the Restrain Food Database validation study (Cardiff),",
+  "word-for-word from its .qsf. Jev (category_concept) put every label in its ONS group (white 0.76-0.98, mixed 0.94-1.0, asian",
+  "0.85-1.0, black 0.66-0.99; Arab middle_eastern 0.99, which UK schemes file under Other ethnic group per ONS). The within-group",
+  "catch-alls scored residual 0.41-0.62 and go to their own group, as uk_ons_detailed_2021's do; 'Any other ethnic group'",
+  "(residual 0.93) is Other ethnic group. Labels shared with other schemes keep their mapping. No canonical value added."
  ]
 }

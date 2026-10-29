@@ -41,7 +41,12 @@
     "\u00a317,500 to \u00a324,999 per year": "\u00a317,500 to \u00a324,999 per year",
     "\u00a330,000 to \u00a339,999 per year": "\u00a330,000 to \u00a339,999 per year",
     "\u00a340,000 to \u00a349,999 per year": "\u00a340,000 to \u00a349,999 per year",
-    "\u00a350,000 to \u00a374,999 per year": "\u00a350,000 to \u00a374,999 per year"
+    "\u00a350,000 to \u00a374,999 per year": "\u00a350,000 to \u00a374,999 per year",
+    "\u00a320,000 or less": "\u00a320,000 or less",
+    "\u00a320,001 to \u00a340,000": "\u00a320,001 to \u00a340,000",
+    "\u00a340,001 to \u00a360,000": "\u00a340,001 to \u00a360,000",
+    "\u00a360,001 to \u00a380,000": "\u00a360,001 to \u00a380,000",
+    "\u00a380,001 to \u00a3100,000": "\u00a380,001 to \u00a3100,000"
   },
   "schemes": {
     "7jt2f+9": {
@@ -155,6 +160,14 @@
       "\u00a350,000 to \u00a374,999 per year": "\u00a350,000 to \u00a374,999 per year",
       "\u00a375,000 to \u00a399,999 per year": "\u00a370,000 to \u00a399,999 per year",
       "\u00a3100,000 or more per year": "\u00a3100,000 and over (not further distinguished)"
+    },
+    "uk_3krjz_osf": {
+      "\u00a320,000 or less": "\u00a320,000 or less",
+      "\u00a320,001 to \u00a340,000": "\u00a320,001 to \u00a340,000",
+      "\u00a340,001 to \u00a360,000": "\u00a340,001 to \u00a360,000",
+      "\u00a360,001 to \u00a380,000": "\u00a360,001 to \u00a380,000",
+      "\u00a380,001 to \u00a3100,000": "\u00a380,001 to \u00a3100,000",
+      "More than \u00a3100,000": "\u00a3100,000 and over (not further distinguished)"
     }
   },
   "_about": [
@@ -194,6 +207,13 @@
     "\"\u00a3100,000 and over (not further distinguished)\" entered: no existing scheme is coarsened. Kept as own labels: \u00a34,500 to \u00a36,499 per year; \u00a39,500 to \u00a311,499 per year; \u00a313,500 to \u00a315,499 per year; \u00a317,500 to \u00a324,999 per year; \u00a330,000 to \u00a339,999 per year; \u00a340,000 to \u00a349,999 per year; \u00a350,000 to \u00a374,999 per year.",
     "",
     "uk_pr8zu_osf (28 Oct 2026, IMG01): the alcohol sibling of k7tw5. Its protocol prints the same A-O table (same per-year",
-    "bands, checked against the image), so the mapping is copied. No canonical value added."
+    "bands, checked against the image), so the mapping is copied. No canonical value added.",
+    "",
+    "uk_3krjz_osf (29 Oct 2026, IMG48): six household-income bands from the Winton Centre flood risk-matrix survey (\"What was",
+    "your household income last year?\"). Arithmetic, no model. Its edges sit at X,000/X,001 (\"\u00a320,000 or less\", \"\u00a320,001 to",
+    "\u00a340,000\" ...), so every band below the top contains an existing canonical edge (\u00a320,000, \u00a325,000 ... \u00a3100,000) and keeps its",
+    "own label as a canonical value, the k7tw5 ruling: \"\u00a380,001 to \u00a3100,000\" straddles only by its last pound, which is still a",
+    "straddle. \"More than \u00a3100,000\" sits inside \"\u00a3100,000 and over (not further distinguished)\" and merges. No existing",
+    "scheme is coarsened."
   ]
 }

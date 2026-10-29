@@ -123,6 +123,15 @@
    "Higher education or Bachelor’s degree": "Bachelors to postgraduate",
    "Post-Graduate degree": "Bachelors to postgraduate",
    "Doctoral or professional degree": "Bachelors to postgraduate"
+  },
+  "uk_3krjz_osf": {
+   "No qualification": "Less than high school",
+   "GCSE / O-Level / BTEC NVQ Level 2": "High school",
+   "A-Level / International Baccalaureate / BTEC NVQ Level 3": "High school",
+   "Higher Education / Higher National Certificates and Diplomas": "Some college to associate",
+   "Bachelor’s degree or equivalent": "Bachelors to postgraduate",
+   "Master’s degree / Postgraduate qualification": "Bachelors to postgraduate",
+   "Doctoral degree": "Bachelors to postgraduate"
   }
  },
  "_about": [
@@ -161,6 +170,14 @@
   "further distinguished)\". CertHE (Jev split some college/associate) and DipHE (associate) both land in Some college to",
   "associate. \"Higher education or Bachelor’s degree\" mapped by its headline to Bachelors to postgraduate, as k7tw5's",
   "Bachelor's was: a disclosed judgement (486 people). The question tells students to select the diploma being studied for,",
-  "so for its 52 students this is the qualification sought, not held. No canonical value added; no other scheme changed."
+  "so for its 52 students this is the qualification sought, not held. No canonical value added; no other scheme changed.",
+  "",
+  "uk_3krjz_osf (29 Oct 2026, IMG48): the Winton Centre flood risk-matrix survey's seven qualification levels (survey.docx).",
+  "Jev (ordinal_span) read each as one rung: No qualification less than high school (0.64/0.71, runner-up none_of_these);",
+  "GCSE / O-Level / BTEC NVQ Level 2 high school (0.94/0.99); A-Level / IB / NVQ 3 high school (0.98/0.99); Higher Education /",
+  "HNC and HND split some college/associate (0.52/0.49, runner-up associate), both inside Some college to associate; Bachelor's,",
+  "Master's/postgraduate and Doctoral at bachelors/postgraduate (0.99-1.0). GCSE is mapped to High school as uk_yougov_18 maps",
+  "\"GCSE\", although with only \"No qualification\" below it, a respondent holding low-grade GCSEs would also have picked it: a",
+  "disclosed judgement (939 people among completers). No canonical value added; no other scheme changed."
  ]
 }
