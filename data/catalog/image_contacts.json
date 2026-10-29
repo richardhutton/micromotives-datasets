@@ -46,9 +46,9 @@
     "ask": "Permission to use (no licence on OSF), and the label image files where they are only inside the protocol documents.",
     "subject": "Using your warning label studies",
     "body": "Hi Gareth and Natasha,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour group's studies on OSF would be really useful:\n- Alcohol and snack warning labels, Studies 1 and 2 (pr8zu, k7tw5)\n- Alcohol label acceptability (h6bzx)\n- Labels in an online shop (w5xf8)\n- Warnings with snack images (5gecb)\n- Warnings on chocolate bars (xsfev), copying Paul for this one\n\nThere's no licence on the deposits, so I wanted to check you're happy for me to use them. Some of the label images are only inside the protocol docs, so if you have them as files that would help a lot.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "yes",
+    "status": "sent",
     "sent": "2026-10-26",
-    "notes": "Agreed: permission to use the studies for research (rich, noted 28 Oct 2026). IMG02 is built. IMG01 built 28 Oct. Follow-up to send: (1) IMG39 (5gecb): Inquisit script (.iqx) or task files for the exact voucher/selection question wording; (2) IMG01 (pr8zu): coding of \"desire to drink\" (codes 1-5, 8, 9 in the deposit)."
+    "notes": "No reply yet (rich, 29 Oct). A \"yes\" was wrongly recorded on 28 Oct and reverted. IMG01 and IMG02 are built but not for training until permission is given. Questions to add when chasing: (1) IMG39 (5gecb): Inquisit script or task files for the exact voucher/selection question wording; (2) IMG01 (pr8zu): coding of \"desire to drink\" (codes 1-5, 8, 9 in the deposit)."
   },
   {
     "id": "hudson",

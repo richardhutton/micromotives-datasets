@@ -169,8 +169,8 @@ def recipe() -> dict:
         "experiment": "study1",
         "title": "Pictorial health warning labels on a chocolate bar: 18 labels (6 harms x 3 photographs)",
         "data_file": "Food labelling study 1 final dataset.xlsx",
-        "licence": "none stated (OSF deposit k7tw5). Permission granted by the authors for "
-        "research use (data/catalog/image_contacts.json, hollands).",
+        "licence": "none stated (OSF deposit k7tw5). Permission requested from the authors "
+        "26 Oct 2026; not for any training export until granted.",
         "comparable_to_socsci210": False,
         "participant_id_var": "PID",
         "notes": (__doc__ or "").strip(),

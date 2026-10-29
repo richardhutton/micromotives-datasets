@@ -3,8 +3,8 @@ source: osf
 experiment: study1
 title: 'Pictorial health warning labels on beer or wine: 21 labels (7 harms x 3 photographs)'
 data_file: Full dataset alcohol labelling study 1.xlsx
-licence: none stated (OSF deposit pr8zu). Permission granted by the authors for research use (data/catalog/image_contacts.json,
-  hollands).
+licence: none stated (OSF deposit pr8zu). Permission requested from the authors 26 Oct 2026; not for any
+  training export until granted.
 comparable_to_socsci210: false
 participant_id_var: Participant ID
 notes: "Write recipes/images/pr8zu_study1.yaml: alcohol health warning labels (IMG01).\n\nClarke, Pechey,\

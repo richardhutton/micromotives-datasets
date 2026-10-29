@@ -215,8 +215,8 @@ def recipe() -> dict:
         "title": "Pictorial health warning labels on beer or wine: 21 labels "
         "(7 harms x 3 photographs)",
         "data_file": DATA_FILE,
-        "licence": "none stated (OSF deposit pr8zu). Permission granted by the authors for "
-        "research use (data/catalog/image_contacts.json, hollands).",
+        "licence": "none stated (OSF deposit pr8zu). Permission requested from the authors "
+        "26 Oct 2026; not for any training export until granted.",
         "comparable_to_socsci210": False,
         "participant_id_var": "Participant ID",
         "notes": (__doc__ or "").strip(),
