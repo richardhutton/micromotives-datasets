@@ -437,3 +437,35 @@ def test_examples_reach_the_writer_but_not_the_blind_test() -> None:
     item = _item(examples=("Gut feeling", "Out of touch"))
     assert "Gut feeling" in q.writer_messages("S", [item])[1]["content"]
     assert "Gut feeling" not in json.dumps(q.blind_messages("S", item, "a quote"))
+
+
+@pytest.mark.parametrize(
+    ("quote", "tells"),
+    [
+        ("It sits in your gut \u2014 we can't keep doing this.", ["dash"]),
+        ("Well... I don't know.", ["ellipsis"]),
+        ("It's not just the money, but the principle.", ["not_x_but_y"]),
+        ("It's not about money, it's about respect.", ["not_x_but_y"]),
+        ("Look, I've always voted that way.", ["staged_opener"]),
+        ("I don't like them asking me that.", ["survey_talk"]),
+        ("Total gaslighting from the lot of them.", ["buzzword"]),
+        ("Fair play; she stuck to water.", ["semicolon"]),
+    ],
+)
+def test_ai_tells_catch_the_humanizer_patterns(quote: str, tells: list[str]) -> None:
+    assert q.ai_tells(quote) == tells
+
+
+@pytest.mark.parametrize(
+    "quote",
+    [
+        "Not great but it'll do.",
+        "Honestly, it scared me.",
+        "I'm not sure, but probably not.",
+        "He left. That's on him.",
+        "Out of the question, that.",
+        "My aunt drank like a fish and lived to be eighty.",
+    ],
+)
+def test_ai_tells_leave_ordinary_speech_alone(quote: str) -> None:
+    assert q.ai_tells(quote) == []

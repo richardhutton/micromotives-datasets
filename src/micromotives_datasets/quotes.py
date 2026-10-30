@@ -383,6 +383,32 @@ def copied_example(quote: str, examples: Sequence[str]) -> bool:
     return False
 
 
+# --- AI tells (v7, from the humanizer skill) -------------------------------------------
+
+AI_TELLS = {
+    "dash": re.compile(r"[\u2014\u2013]| -- "),
+    "semicolon": re.compile(r";"),
+    "ellipsis": re.compile(r"\u2026|\.\.\."),
+    "not_x_but_y": re.compile(
+        r"\bnot (just|only|merely|because)\b[^.?!]{0,60}\bbut\b|\bit'?s not\b[^.?!]{1,40}, it'?s\b",
+        re.I,
+    ),
+    "staged_opener": re.compile(
+        r"^\s*(look,|honestly\?|here'?s the thing|the thing is|let'?s be honest|real talk)", re.I
+    ),
+    "survey_talk": re.compile(
+        r"\b(survey|questionnaire|asking me|being asked|the passage|this study|who'?s counting)\b",
+        re.I,
+    ),
+    "buzzword": re.compile(r"\b(gaslight\w*|red flag|toxic|delve|tapestry|testament)\b", re.I),
+}
+
+
+def ai_tells(quote: str) -> list[str]:
+    """Humanizer tells that need no judgement to spot; any one fails the quote (v7)."""
+    return [name for name, pattern in AI_TELLS.items() if pattern.search(quote)]
+
+
 # --- checking --------------------------------------------------------------------------
 
 

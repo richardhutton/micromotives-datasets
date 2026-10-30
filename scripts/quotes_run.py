@@ -68,7 +68,12 @@ SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # v6 (30 Oct 2026, rich): real people's own words from the BES open answers as voice
 # examples (3 from people of the same age and education band, 2 from anyone), a length
 # target that follows real answers, and a code check that no quote copies an example.
-PROMPT_VERSION = "v6"
+# v7 (30 Oct 2026, after the v6 read: 32 good, 21 weak, 7 wrong of 60): humanizer tells
+# banned in the prompt and caught in code (dashes, ellipses, "not X but Y", staged openers,
+# survey talk, buzzwords); a spoken sentence, not notes; relatives in at most one in five;
+# the facts of the condition right; the checker names the chosen option first.
+PROMPT_VERSION = "v7"
+AI_TELLS_FROM = "v7"
 VOICE_EXAMPLES_FROM = "v6"  # prompt versions from this one on get voice examples
 
 
@@ -310,7 +315,17 @@ def check_one(
     nominal: bool,
     actual: float,
     blind: bool = True,
+    tells_on: bool = False,
 ) -> dict[str, Any]:
+    if tells_on and (tells := q.ai_tells(quote)):  # no checker call needed
+        return {
+            "failed": [f"ai_tell:{t}" for t in tells],
+            "notes": "Sounds like AI writing ("
+            + ", ".join(tells)
+            + "): say it the plain way this person would, without that.",
+            "blind_prediction": None,
+            "blind_agrees": None,
+        }
     if q.copied_example(quote, item.examples):  # no checker call needed
         return {
             "failed": ["copied_example"],
@@ -535,7 +550,14 @@ def main() -> None:
         if quote is None:
             return NOT_WRITTEN
         return check_one(
-            checker, prompts, items[i], quote, nominal[i], actual[i], blind=not args.no_blind
+            checker,
+            prompts,
+            items[i],
+            quote,
+            nominal[i],
+            actual[i],
+            blind=not args.no_blind,
+            tells_on=version >= AI_TELLS_FROM,
         )
 
     def rewrite(i: int) -> str | None:
