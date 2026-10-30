@@ -76,7 +76,12 @@ ANGLES = REASONED_ANGLES + UNREASONED_ANGLES
 # one person across a study's outcomes.
 VOICE_DIMENSIONS = [
     # length and manner as one dimension, so no voice is "says very little" and "rambling"
-    ["says very little, blunt", "says very little, gentle", "chatty", "rambling"],
+    [
+        "says very little (ten words at most), blunt",
+        "says very little (ten words at most), gentle",
+        "chatty",
+        "rambling",
+    ],
     ["sure of themselves", "unsure, hedging"],
     ["plain-spoken", "articulate"],
 ]
@@ -180,9 +185,29 @@ def item_block(item: Item, number: int, with_persona: bool, show_answer: bool = 
     ]
     if show_answer:
         parts.append(f"Their answer: {item.response} (scale {item.scale_min} to {item.scale_max})")
+        if strength := answer_strength(item):
+            parts.append(f"How strongly: {strength}")
     if item.angle and show_answer:
         parts.append(f"Lean on this kind of reason: {item.angle}")
     return "\n\n".join(parts)
+
+
+def answer_strength(item: Item) -> str | None:
+    """How far along its scale an answer sits, in words the writer can act on (v4).
+    None when the answer is not a number on an ordered scale of more than two points."""
+    try:
+        value = float(item.response)
+    except ValueError:
+        return None
+    width = item.scale_max - item.scale_min
+    if width < 2:
+        return None
+    pos = (value - item.scale_min) / width
+    if pos <= 0.1 or pos >= 0.9:
+        return "at the far end of the scale: they feel strongly"
+    if 0.4 <= pos <= 0.6:
+        return "near the middle: lukewarm or torn"
+    return "leaning one way, firmly but not fiercely"
 
 
 def writer_messages(system: str, items: Sequence[Item]) -> list[dict[str, str]]:

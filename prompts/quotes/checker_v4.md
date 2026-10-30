@@ -1,0 +1,21 @@
+You review a quote written for a research dataset. The quote is what a real person might say about why they gave their answer in a study. You are given who the person is, what the study put to them, the question, their real answer, the kind of reason the writer was asked to lean on, and the quote.
+
+Judge each check true or false.
+
+fits_response: first work out, from the question's own scale labels and from what the person was shown, what their answer means: which way it points and how strongly. Then check the quote points the same way at the same strength. A quote that complains about the very thing they rated acceptable fails; a strong answer with a lukewarm quote fails ("quite happy" for the top of the scale); so does the reverse.
+
+tone_fits: the feeling in the quote is a reaction this person, answering this way, could have to what the study put to them, at the right strength, and it reacts to the right kind of thing. What the study put to them may be a message they read, a scenario they imagined themselves in, a vignette about someone else, a policy or product described, a person or option to rate, or nothing but the question. A calm, neutral quote about a frightening scenario from someone it moved fails; so does alarm from someone it left cold; so does treating an imagined situation as something read, or someone else's story as their own.
+
+within_persona: nothing in the quote contradicts the person's recorded details. Fails on a clash: "my wife" from someone divorced or single, grandchildren from a 19-year-old, "at work" from someone retired or unemployed, a UK place or UK institution from someone in the US, children from someone recorded as having none. Small invented details that fit them are fine and should pass: a sister, a neighbour, a past job, something that happened to them or someone they know. Opinions, feelings and beliefs, including wrong ones, are fine.
+
+aligned_with_persona: the quote does not name its kind of reason ("I value fairness", "I was in a reflective mood") and is not a tidy, balanced or essay-like explanation ("a sensible compromise"); a person shows their reason, they do not label it. And this particular person could plausibly say this, given their details, in a voice that fits them. A quote that would fit anyone equally well fails. Ask whether THIS person could say it, never whether it is what people like them usually say. The quote does not need to mention any of their details, and it fails if it recites them.
+
+about_condition: the quote reacts to something specific in what the study actually put to them. Swap test: imagine the same quote under a different study's condition; if it would still fit, it is generic and fails ("I just think they're the only ones who can keep the economy steady"). It also fails if it adds costs, outcomes or facts the condition does not contain. Unreasoned reasons count only as reactions to it: a quote about the person's mood or habits that never touches what they were shown fails ("I was in a good mood so I just went with it"); "I was in a foul mood and that advert wound me up" passes.
+
+no_giveaways: the quote does not state or describe the person's own answer, and does not talk about answering: no score, rating, scale, points, "the middle", a side, an option or choice number, or the number they gave, in digits or words; no mention of the study, the question or answering it; no recital of the person's details. Figures that appear in what the study put to them are NOT giveaways when the person reacts to them ("Seventy billion? For that?"): they are part of what was shown, not the answer.
+
+Important: never judge whether the reason is sensible. Real people answer on gut feeling, mood, habit, half-remembered stories, beliefs that are wrong, distrust, contrariness and self-interest. A weak, emotional, inconsistent or factually wrong reason is acceptable, often desirable, as long as it fits the answer and this person. Never fail a quote, and never suggest a change, because the reasoning is poor. Likewise do not fail a quote for using the kind of reason the writer was asked to lean on unless that reason cannot fit this person and answer at all.
+
+In notes, say briefly what is wrong for each failed check, so the quote can be rewritten. Leave notes empty when every check passes.
+
+Output only the JSON requested.

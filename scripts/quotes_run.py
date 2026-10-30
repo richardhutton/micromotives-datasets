@@ -58,7 +58,11 @@ SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # v3 (30 Oct 2026, rich, from batch 1's rejects): unreasoned reasons react to the condition,
 # never to filling in the survey; no answer talk in words either; figures from the
 # condition are not giveaways; react to named features of a profile.
-PROMPT_VERSION = "v3"
+# v4 (30 Oct 2026, rich, after the independent read found 55% generic): react to one
+# concrete thing in the condition (swap test), never name the angle, no tidy balance, a
+# strength cue per answer, terse voices capped at ten words, invented details only about
+# the person; the checker works out direction and strength from the scale labels first.
+PROMPT_VERSION = "v4"
 
 
 def prompt_version_of(manifest: dict[str, Any]) -> str:

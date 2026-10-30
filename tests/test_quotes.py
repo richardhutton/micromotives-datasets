@@ -106,6 +106,27 @@ def test_no_voice_is_both_terse_and_rambling() -> None:
         assert not ("says very little" in voice and "rambling" in voice)
 
 
+@pytest.mark.parametrize(
+    ("response", "lo", "hi", "expect"),
+    [
+        ("10", 0, 10, "far end"),
+        ("1", 1, 7, "far end"),
+        ("5", 0, 10, "middle"),
+        ("3", 0, 10, "leaning"),
+        ("1", 0, 1, None),
+        ("Labour", 1, 5, None),
+    ],
+)
+def test_answer_strength(response: str, lo: int, hi: int, expect: str | None) -> None:
+    got = q.answer_strength(_item(response=response, scale_min=lo, scale_max=hi))
+    assert (got is None) if expect is None else (expect in got)
+
+
+def test_the_blind_test_does_not_get_the_strength_either() -> None:
+    text = json.dumps(q.blind_messages("SYSTEM", _item(response="10"), "q"))
+    assert "How strongly" not in text and "far end" not in text
+
+
 # --- prompts ----------------------------------------------------------------------------
 
 
@@ -143,6 +164,9 @@ def test_prompt_files_exist_and_carry_the_rules() -> None:
     w3, _ = q.load_prompt("writer_v3.md")
     c3, _ = q.load_prompt("checker_v3.md")
     assert "Never describe filling in the survey" in w3 and "Seventy billion" in c3
+    w4, _ = q.load_prompt("writer_v4.md")
+    c4, _ = q.load_prompt("checker_v4.md")
+    assert "Swap test" in c4 and "Never name the kind of reason" in w4
 
 
 # --- parsing ----------------------------------------------------------------------------
