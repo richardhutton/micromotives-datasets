@@ -5,7 +5,7 @@
 #   bash scripts/pod_serve_quotes.sh
 #
 # Starts, in a tmux session "serve": the writer (vLLM, :8000, served as "writer"), then
-# the checker (:8001, "checker"), then the router (:4000), which RunPod exposes at
+# the checker (:8100, "checker"), then the router (:4000), which RunPod exposes at
 # https://<pod id>-4000.proxy.runpod.net. The quote scripts run on the laptop and call
 # that address with QUOTES_API_KEY. Stop the pod in the console when the batches are done.
 set -euo pipefail
@@ -19,10 +19,10 @@ WRITER="Qwen/Qwen3.8-27B-FP8"
 CHECKER="google/gemma-4-31B-it"
 LOGS=/workspace/serve
 
-wait_for() {  # port, pid, name
+wait_for() {  # port, pid, name: up only when THAT model answers on THAT port
   for _ in $(seq 1 180); do
-    curl -sf "localhost:$1/v1/models" >/dev/null && { echo "$3 up on :$1"; return 0; }
     kill -0 "$2" 2>/dev/null || { echo "$3 exited before it was ready: see $LOGS/$3.log"; return 1; }
+    curl -sf "localhost:$1/v1/models" | grep -q "\"id\":\"$3\"" && { echo "$3 up on :$1"; return 0; }
     sleep 10
   done
   echo "$3 not ready after 30 minutes: see $LOGS/$3.log"; return 1
@@ -38,14 +38,15 @@ if [[ "${1:-}" == "--serve" ]]; then
     --gpu-memory-utilization 0.45 --max-model-len 16384 --max-num-seqs 128 \
     >"$LOGS/writer.log" 2>&1 &
   wait_for 8000 $! writer
-  # No FP8 copy of Gemma 4 is published; vLLM quantises it to FP8 on load.
-  vllm serve "$CHECKER" --served-model-name checker --port 8001 --quantization fp8 \
+  # No FP8 copy of Gemma 4 is published; vLLM quantises it to FP8 on load. Port 8100, not
+  # 8001: vLLM 0.32 also holds the port after its own, so the writer has 8001 too.
+  vllm serve "$CHECKER" --served-model-name checker --port 8100 --quantization fp8 \
     --gpu-memory-utilization 0.45 --max-model-len 16384 --max-num-seqs 128 \
     >"$LOGS/checker.log" 2>&1 &
-  wait_for 8001 $! checker
+  wait_for 8100 $! checker
   echo "router on :4000  ->  https://${RUNPOD_POD_ID:-<pod id>}-4000.proxy.runpod.net"
   exec uv run python scripts/quotes_router.py \
-    --route writer=http://127.0.0.1:8000 --route checker=http://127.0.0.1:8001 --port 4000
+    --route writer=http://127.0.0.1:8000 --route checker=http://127.0.0.1:8100 --port 4000
 fi
 
 # --- on the pod: check, install, start ----------------------------------------------
