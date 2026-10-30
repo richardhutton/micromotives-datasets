@@ -167,6 +167,9 @@ def test_prompt_files_exist_and_carry_the_rules() -> None:
     w4, _ = q.load_prompt("writer_v4.md")
     c4, _ = q.load_prompt("checker_v4.md")
     assert "Swap test" in c4 and "Never name the kind of reason" in w4
+    c5, _ = q.load_prompt("checker_v5.md")
+    assert "answer_means" in c5
+    assert next(iter(q.checker_schema()["properties"])) == "answer_means"
 
 
 # --- parsing ----------------------------------------------------------------------------

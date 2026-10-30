@@ -62,7 +62,10 @@ SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # concrete thing in the condition (swap test), never name the angle, no tidy balance, a
 # strength cue per answer, terse voices capped at ten words, invented details only about
 # the person; the checker works out direction and strength from the scale labels first.
-PROMPT_VERSION = "v4"
+# v5 (30 Oct 2026, after the v4 read: 28 good, 24 weak, 8 wrong of 60): the checker states
+# what the answer means before judging; short quotes are speech with a stance, not notes;
+# the angle is dropped when it does not fit; no semicolons or "not X but Y"; local spelling.
+PROMPT_VERSION = "v5"
 
 
 def prompt_version_of(manifest: dict[str, Any]) -> str:
@@ -306,6 +309,8 @@ def check_one(
     )
     failed = q.failed_checks(verdict) if verdict else ["unreadable_verdict"]
     notes = (verdict or {}).get("notes", "")
+    if verdict and verdict.get("answer_means") and failed:
+        notes = f"(the answer means: {verdict['answer_means']}) {notes}"
     if not blind:  # rich, 30 Oct 2026: off for the full run; measured on a sample instead
         return {"failed": failed, "notes": notes, "blind_prediction": None, "blind_agrees": None}
     predicted = q.parse_blind(

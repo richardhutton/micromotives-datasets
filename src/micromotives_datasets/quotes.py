@@ -280,9 +280,12 @@ def checker_messages(system: str, item: Item, quote: str) -> list[dict[str, str]
 
 
 def checker_schema() -> dict[str, Any]:
-    props: dict[str, Any] = {c: {"type": "boolean"} for c in CHECKS}
+    # answer_means comes FIRST, so the checker states the answer's direction and strength
+    # before it judges fits_response (v5: direction errors were getting through)
+    props: dict[str, Any] = {"answer_means": {"type": "string"}}
+    props |= {c: {"type": "boolean"} for c in CHECKS}
     props["notes"] = {"type": "string"}
-    return {"type": "object", "properties": props, "required": [*CHECKS, "notes"]}
+    return {"type": "object", "properties": props, "required": ["answer_means", *CHECKS, "notes"]}
 
 
 def parse_verdict(text: str) -> dict[str, Any] | None:
