@@ -8,10 +8,18 @@ model facts were checked on the Hugging Face model pages on 30 Oct 2026.
 ## 1. Purpose
 
 Each training row gets a short quote: what this respondent might say, in their own
-words, about why they gave the response they gave. The trained model then answers in two
-turns, the response first and the quote second, so a run reports both a quantitative
-result (response distributions) and a qualitative one (why people in each part of the
-distribution answered as they did, and where groups diverge).
+words, about why they gave the response they gave. The trained model answers in ONE
+assistant turn, response first and quote second (rich, 30 Oct 2026):
+
+    Answer: 4
+    Quote: Honestly, that advert frightened me. My dad went the same way.
+
+so a run reports both a quantitative result (response distributions) and a qualitative
+one (why people in each part of the distribution answered as they did, and where groups
+diverge). One turn rather than two: no invented "why?" question a respondent was never
+asked, simpler masking, and one request per prediction instead of two, which matters at
+scale. A row without a quote ends after its `Answer:` line. For numeric evaluation,
+generation stops at the end of that line, so quotes cost nothing when unread.
 
 This is not Socrates' "reasoning before the answer", which aimed to improve the
 prediction (they found it helped on seen studies and did little on unseen ones). Here
@@ -50,9 +58,10 @@ diversity measures, writing `quote` and `synthetic_quote`, and the export. The m
 run on a RunPod pod behind one router; the scripts that call them run in this repo, and
 the quotes land in the dataset here (section 9, `docs/RUNPOD_QUOTES.md`).
 
-micromotives-training only consumes exports that carry quotes: a second turn in its
-prompt, a config switch to train with or without them, a masking check for two assistant
-turns, and evaluation of the quotes its model writes.
+micromotives-training only consumes exports that carry quotes: the one-turn format in
+section 1 (its parser reads the `Answer:` line instead of a bare number), a config switch
+to train with or without quotes, a masking check that the loss covers the whole
+assistant turn, and evaluation of the quotes its model writes.
 
 ## 4. Where quotes go
 
