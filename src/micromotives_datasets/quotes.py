@@ -409,6 +409,38 @@ def join_quotes(rows: pd.DataFrame, table: pd.DataFrame) -> tuple[pd.DataFrame, 
     return merged, counts
 
 
+# --- drafts and preference pairs -------------------------------------------------------
+
+DRAFT_COLUMNS = [
+    *ROW_KEY,
+    "input_hash",
+    "round",
+    "quote",
+    "passed",
+    "failed_checks",
+    "notes",
+    "prompt_version",
+    "run",
+]
+
+
+def preference_pairs(drafts: pd.DataFrame) -> pd.DataFrame:
+    """(rejected, chosen) pairs for preference training: for each row whose quote passed
+    after a rewrite, every earlier failed draft of that row against the passing one.
+    Same row and same inputs on both sides, so the only difference is the quote."""
+    if drafts.empty:
+        return pd.DataFrame(columns=[*ROW_KEY, "input_hash", "rejected", "chosen", "failed_checks"])
+    keys = [*ROW_KEY, "input_hash"]
+    chosen = drafts[drafts["passed"].astype(bool)].sort_values("round").drop_duplicates(keys)
+    chosen = chosen[[*keys, "quote", "round"]].rename(columns={"quote": "chosen", "round": "_r"})
+    failed = drafts[~drafts["passed"].astype(bool)][[*keys, "quote", "round", "failed_checks"]]
+    pairs = failed.merge(chosen, on=keys)
+    pairs = pairs[pairs["round"] < pairs["_r"]]
+    return pairs.rename(columns={"quote": "rejected"})[
+        [*keys, "rejected", "chosen", "failed_checks"]
+    ].reset_index(drop=True)
+
+
 # --- variety (QUOTES_SPEC section 8) ----------------------------------------------------
 
 

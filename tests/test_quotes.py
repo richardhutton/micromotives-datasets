@@ -315,3 +315,57 @@ def test_export_joins_quotes_and_records_the_run(tmp_path: Path) -> None:
     assert manifest["with_quote"] == 1 and manifest["without_quote"] == 1
     assert manifest["runs"][0]["writer"] == {"model": "w"}
     assert len(manifest["runs"][0]["quotes_sha256"]) == 64
+
+
+def test_preference_pairs_put_each_failed_draft_against_the_accepted_rewrite() -> None:
+    key = {"study": "s", "recipe": "r", "participant_id": "p", "condition_num": 0, "task_num": 0}
+    d = pd.DataFrame(
+        [
+            key
+            | {
+                "input_hash": "h",
+                "round": 0,
+                "quote": "generic",
+                "passed": False,
+                "failed_checks": '["about_condition"]',
+            },
+            key
+            | {
+                "input_hash": "h",
+                "round": 1,
+                "quote": "still off",
+                "passed": False,
+                "failed_checks": '["fits_response"]',
+            },
+            key
+            | {
+                "input_hash": "h",
+                "round": 2,
+                "quote": "good one",
+                "passed": True,
+                "failed_checks": "[]",
+            },
+            key
+            | {
+                "participant_id": "q",
+                "input_hash": "h",
+                "round": 0,
+                "quote": "fine first time",
+                "passed": True,
+                "failed_checks": "[]",
+            },
+            key
+            | {
+                "participant_id": "z",
+                "input_hash": "h",
+                "round": 0,
+                "quote": "never fixed",
+                "passed": False,
+                "failed_checks": "[]",
+            },
+        ]
+    )
+    pairs = q.preference_pairs(d)
+    assert sorted(pairs["rejected"]) == ["generic", "still off"]
+    assert set(pairs["chosen"]) == {"good one"}
+    assert q.preference_pairs(d.iloc[:0]).empty

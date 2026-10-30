@@ -449,6 +449,12 @@ def main() -> None:
                     strict=True,
                 )
             ]
+    # Every checked draft, passed or not, for preference training (DPO): a rejected draft
+    # and the accepted rewrite of the same row are a ready-made pair (rich, 30 Oct 2026).
+    drafts_file = args.out / "drafts.parquet"
+    drafts: list[dict[str, Any]] = (
+        pd.read_parquet(drafts_file).to_dict("records") if drafts_file.exists() else []
+    )
     nominal = rows["scale_nominal"].astype(bool).tolist()
     actual = rows["response_num"].astype(float).tolist()
     print(f"rows: {n}  setting: {args.setting}  from: {phase or 'the start'}", flush=True)
@@ -469,6 +475,8 @@ def main() -> None:
         table["run"] = args.out.name
         table = table[q.TABLE_COLUMNS]
         table.to_parquet(args.out / "quotes.parquet", index=False)
+        if drafts:
+            pd.DataFrame(drafts, columns=q.DRAFT_COLUMNS).to_parquet(drafts_file, index=False)
         report = summarise(rows, table)
         manifest = {
             "run": args.out.name,
@@ -543,6 +551,20 @@ def main() -> None:
                 )
                 for i, res in run_parallel(pool, check, todo, "checks").items():
                     results[i] = res
+                    if quotes[i] is not None:
+                        drafts.append(
+                            dict(zip(q.ROW_KEY, items[i].key, strict=True))
+                            | {
+                                "input_hash": q.input_hash(rows.iloc[i]),
+                                "round": rounds[i],
+                                "quote": quotes[i],
+                                "passed": not res["failed"],
+                                "failed_checks": json.dumps(res["failed"]),
+                                "notes": res["notes"],
+                                "prompt_version": version,
+                                "run": args.out.name,
+                            }
+                        )
             report = save(name)
             print(f"{name}: saved; {report['passed']} of {n} pass so far", flush=True)
 
