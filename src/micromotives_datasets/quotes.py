@@ -14,9 +14,11 @@ Every quote is synthetic (CLAUDE.md, Data handling): the export sets `synthetic_
 
 from __future__ import annotations
 
+import difflib
 import hashlib
 import json
 import math
+import re
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -171,6 +173,7 @@ class Item:
     scale_max: int
     angle: str | None
     voice: str | None
+    examples: tuple[str, ...] = ()  # real people's answers to OTHER questions, for voice (v6)
 
 
 def item_block(item: Item, number: int, with_persona: bool, show_answer: bool = True) -> str:
@@ -210,10 +213,22 @@ def answer_strength(item: Item) -> str | None:
     return "leaning one way, firmly but not fiercely"
 
 
+def examples_block(examples: Sequence[str]) -> str:
+    lines = "\n".join(f'- "{e}"' for e in examples)
+    return (
+        "How real people talk: answers other people gave to DIFFERENT survey questions. "
+        "These are British voters; match how short, blunt and plain they are and how little "
+        "they explain, but keep the English this person would use (American for someone in "
+        f"the US). Never reuse their words or their opinions.\n{lines}"
+    )
+
+
 def writer_messages(system: str, items: Sequence[Item]) -> list[dict[str, str]]:
     """One call: either one respondent's rows (persona once) or k respondents' (each own)."""
     one_person = len({i.participant_id for i in items}) == 1
     blocks = []
+    if items and items[0].examples:
+        blocks.append(examples_block(items[0].examples))
     if one_person:
         first = items[0]
         head = f"About this person:\n{first.persona}"
@@ -260,6 +275,7 @@ def parse_quotes(text: str, n: int) -> list[str] | None:
 def repair_messages(system: str, item: Item, quote: str, notes: str) -> list[dict[str, str]]:
     user = "\n\n".join(
         [
+            *([examples_block(item.examples)] if item.examples else []),
             item_block(item, 1, True),
             f"A first attempt at their quote:\n{quote}",
             f"What a reviewer said was wrong with it:\n{notes}",
@@ -269,6 +285,99 @@ def repair_messages(system: str, item: Item, quote: str, notes: str) -> list[dic
         ]
     )
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+
+
+# --- the voice pool (v6) -----------------------------------------------------------------
+
+POOL = ROOT / "data" / "processed" / "quotes" / "voice_pool.parquet"
+DEGREE = re.compile(r"bachelor|degree|graduate|postgrad|master|doctor|phd|university", re.I)
+NO_DEGREE = re.compile(
+    r"no degree|below degree|less than (a )?degree|without a degree|non-degree|no formal", re.I
+)
+
+
+def persona_bands(persona_json: str) -> tuple[str | None, str | None]:
+    """(age band, education band) from a persona, in the pool's bands; None when unknown."""
+    p = json.loads(persona_json)
+    age = p.get("age")
+    band = None
+    if (
+        isinstance(age, int | float)
+        and not (isinstance(age, float) and math.isnan(age))
+        and age >= 16
+    ):
+        band = "18-34" if age < 35 else "35-54" if age < 55 else "55+"
+    edu = p.get("education")
+    edu_band = None
+    if isinstance(edu, str) and edu.strip():
+        edu_band = "no degree" if NO_DEGREE.search(edu) or not DEGREE.search(edu) else "degree"
+    return band, edu_band
+
+
+class VoicePool:
+    """Real answers to pick voice examples from: K_MATCHED from people of the same age and
+    education band (style, never opinion: no party, no region), K_RANDOM from anyone, so
+    the voice shifts without turning into a caricature of a group. Draws are seeded by
+    the row, so a resumed run shows the writer the same examples."""
+
+    K_MATCHED = 3
+    K_RANDOM = 2
+
+    def __init__(self, pool: pd.DataFrame) -> None:
+        self.pool = pool.reset_index(drop=True)
+        # sqrt of how many people gave an answer: short common answers come up often, not always
+        self.weight = np.sqrt(self.pool["n"].to_numpy(dtype=float))
+        self.groups = {
+            k: g.index.to_numpy()
+            for k, g in self.pool.groupby(["age_band", "edu_band"], dropna=True)
+        }
+
+    @classmethod
+    def load(cls, path: Path = POOL) -> VoicePool | None:
+        return cls(pd.read_parquet(path)) if path.exists() else None
+
+    def _draw(self, rng: np.random.Generator, idx: np.ndarray, k: int) -> list[str]:
+        if len(idx) == 0 or k == 0:
+            return []
+        w = self.weight[idx] / self.weight[idx].sum()
+        chosen = rng.choice(idx, size=min(k, len(idx)), replace=False, p=w)
+        return [str(self.pool.at[i, "text"]) for i in chosen]
+
+    def pick(
+        self, seed: int, key: Sequence[object], bands: tuple[str | None, str | None]
+    ) -> tuple[str, ...]:
+        rng = np.random.default_rng(_pick(seed, "voice-examples", *key))
+        matched = (
+            self.groups.get(bands, np.array([], dtype=int))
+            if None not in bands
+            else np.array([], dtype=int)
+        )
+        k_matched = self.K_MATCHED if len(matched) else 0
+        picked = self._draw(rng, matched, k_matched)
+        rest = np.setdiff1d(np.arange(len(self.pool)), np.array([], dtype=int))
+        while len(picked) < self.K_MATCHED + self.K_RANDOM:
+            extra = self._draw(rng, rest, self.K_MATCHED + self.K_RANDOM - len(picked))
+            picked += [e for e in extra if e not in picked]
+        return tuple(picked)
+
+
+def _words(text: str) -> list[str]:
+    return re.sub(r"[^a-z0-9 ]", "", text.lower()).split()
+
+
+def copied_example(quote: str, examples: Sequence[str]) -> bool:
+    """A quote that reuses a real person's answer: an example of 4+ words found nearly
+    word for word inside it. Real words must never pass as a synthetic quote."""
+    words = _words(quote)
+    for example in examples:
+        ex = _words(example)
+        if len(ex) < 4:
+            continue
+        for start in range(0, max(1, len(words) - len(ex) + 1)):
+            window = words[start : start + len(ex)]
+            if difflib.SequenceMatcher(None, window, ex).ratio() >= 0.75:
+                return True
+    return False
 
 
 # --- checking --------------------------------------------------------------------------

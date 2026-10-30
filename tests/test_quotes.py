@@ -372,3 +372,68 @@ def test_preference_pairs_put_each_failed_draft_against_the_accepted_rewrite() -
     assert sorted(pairs["rejected"]) == ["generic", "still off"]
     assert set(pairs["chosen"]) == {"good one"}
     assert q.preference_pairs(d.iloc[:0]).empty
+
+
+# --- the voice pool (v6) ------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("persona", "bands"),
+    [
+        ({"age": 27, "education": "Bachelors to postgraduate"}, ("18-34", "degree")),
+        ({"age": 60, "education": "High school"}, ("55+", "no degree")),
+        ({"age": 40, "education": "No degree"}, ("35-54", "no degree")),
+        (
+            {"age": 40, "education": "Below degree level (not further distinguished)"},
+            ("35-54", "no degree"),
+        ),
+        ({"age": None, "education": None}, (None, None)),
+        ({"age": 15}, (None, None)),
+    ],
+)
+def test_persona_bands(persona: dict[str, object], bands: tuple[str | None, str | None]) -> None:
+    assert q.persona_bands(json.dumps(persona)) == bands
+
+
+def _pool() -> q.VoicePool:
+    rows = [
+        {"text": f"young grad {i}", "n": 1, "age_band": "18-34", "edu_band": "degree"}
+        for i in range(10)
+    ] + [
+        {"text": f"older {i}", "n": 1, "age_band": "55+", "edu_band": "no degree"}
+        for i in range(10)
+    ]
+    return q.VoicePool(pd.DataFrame(rows))
+
+
+def test_pool_gives_three_matched_and_two_from_anyone_stably() -> None:
+    pool = _pool()
+    got = pool.pick(1, ("s", "r", "p", 0, 0), ("18-34", "degree"))
+    assert len(got) == 5 and len(set(got)) == 5
+    for i in range(50):  # every time, not by luck: the other group is half the pool
+        picked = pool.pick(1, ("s", "r", "p", 0, i), ("18-34", "degree"))
+        assert all(e.startswith("young grad") for e in picked[:3])
+    assert got == pool.pick(1, ("s", "r", "p", 0, 0), ("18-34", "degree"))
+    assert got != pool.pick(1, ("s", "r", "p", 0, 1), ("18-34", "degree"))
+
+
+def test_pool_falls_back_to_anyone_when_the_band_is_unknown() -> None:
+    got = _pool().pick(1, ("k",), (None, None))
+    assert len(got) == 5 and len(set(got)) == 5
+
+
+def test_copied_example() -> None:
+    examples = ["He is completely out of touch with ordinary people", "Everything"]
+    assert q.copied_example(
+        "Honestly he's completely out of touch with ordinary people, that one", examples
+    )
+    assert not q.copied_example("Never met anyone like that. Posh boy.", examples)
+    assert not q.copied_example(
+        "Everything about it, really.", examples
+    )  # short examples may recur
+
+
+def test_examples_reach_the_writer_but_not_the_blind_test() -> None:
+    item = _item(examples=("Gut feeling", "Out of touch"))
+    assert "Gut feeling" in q.writer_messages("S", [item])[1]["content"]
+    assert "Gut feeling" not in json.dumps(q.blind_messages("S", item, "a quote"))

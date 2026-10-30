@@ -65,7 +65,11 @@ SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # v5 (30 Oct 2026, after the v4 read: 28 good, 24 weak, 8 wrong of 60): the checker states
 # what the answer means before judging; short quotes are speech with a stance, not notes;
 # the angle is dropped when it does not fit; no semicolons or "not X but Y"; local spelling.
-PROMPT_VERSION = "v5"
+# v6 (30 Oct 2026, rich): real people's own words from the BES open answers as voice
+# examples (3 from people of the same age and education band, 2 from anyone), a length
+# target that follows real answers, and a code check that no quote copies an example.
+PROMPT_VERSION = "v6"
+VOICE_EXAMPLES_FROM = "v6"  # prompt versions from this one on get voice examples
 
 
 def prompt_version_of(manifest: dict[str, Any]) -> str:
@@ -210,7 +214,9 @@ def item_tokens(item: q.Item) -> int:
     return est_tokens(item.condition) + est_tokens(item.outcome) + 60
 
 
-def build_items(rows: pd.DataFrame, setting: str, seed: int) -> list[q.Item]:
+def build_items(
+    rows: pd.DataFrame, setting: str, seed: int, pool: q.VoicePool | None = None
+) -> list[q.Item]:
     items = []
     for _, row in rows.iterrows():
         key = q.row_key(row)
@@ -232,6 +238,7 @@ def build_items(rows: pd.DataFrame, setting: str, seed: int) -> list[q.Item]:
                 scale_max=int(row["scale_max"]),
                 angle=q.draw_angle(seed, key) if drawn else None,
                 voice=q.draw_voice(seed, row["study"], row["participant_id"]) if drawn else None,
+                examples=pool.pick(seed, key, q.persona_bands(row["persona"])) if pool else (),
             )
         )
     return items
@@ -304,6 +311,13 @@ def check_one(
     actual: float,
     blind: bool = True,
 ) -> dict[str, Any]:
+    if q.copied_example(quote, item.examples):  # no checker call needed
+        return {
+            "failed": ["copied_example"],
+            "notes": "Too close to a real person's answer from the examples: say it in this person's own words.",
+            "blind_prediction": None,
+            "blind_agrees": None,
+        }
     verdict = q.parse_verdict(
         checker.chat(q.checker_messages(prompts["checker"], item, quote), q.checker_schema(), 400)
     )
@@ -432,7 +446,10 @@ def main() -> None:
         "writer": Server(args.url, "writer", WRITER_SAMPLING, http),
         "checker": Server(args.url, "checker", CHECKER_SAMPLING, http),
     }
-    items = build_items(rows, args.setting, args.seed)
+    pool = q.VoicePool.load() if version >= VOICE_EXAMPLES_FROM else None
+    if version >= VOICE_EXAMPLES_FROM and pool is None:
+        sys.exit(f"{version} needs the voice pool: run scripts/bes_voice_pool.py first")
+    items = build_items(rows, args.setting, args.seed, pool)
     n = len(items)
 
     quotes: list[str | None] = [None] * n
