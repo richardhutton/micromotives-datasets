@@ -281,3 +281,10 @@ Proposed by the datasets agent, agreed by rich:
 - **First export with quotes:** all sources at once.
 - **Embeddings:** Voyage, the quote sentence only (section 8). Decided by rich.
 - **Respondent-level writing:** one call per respondent per study (section 6).
+- **Prompt tuning stops after v9** (rich, 30 Oct 2026). v4 to v7 sat between 37% and 53%
+  "good" on independent reads of 60 quotes each, which is within the noise of one read. A
+  single blind, paired comparison of v6 to v9 (the same 30 rows, each version's quote shown
+  unlabelled in random order) picks the prompt. It is used for the batches if it has at most
+  about 10% wrong; weak (bland but correct) quotes are accepted for the first training run.
+  Further gains come from the weighted rubric, preference training on the saved rejected and
+  accepted drafts, and reading what the trained model writes, not from more prompt versions.
