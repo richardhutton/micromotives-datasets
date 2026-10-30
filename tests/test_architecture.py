@@ -366,11 +366,13 @@ def test_the_typesafe_gate_actually_refuses() -> None:
         jev.client("ukds")
     assert "End User Licence" in str(refused.value)
 
-    # A permitted source must get PAST the licence gate. It will then fail on a
-    # missing key or SDK in CI, which is a different error and the proof that
-    # the gate let it through.
-    with pytest.raises((jev.JevUnavailableError, Exception)) as passed:
+    # A permitted source must get PAST the licence gate. Where the key and SDK are
+    # present it gets a client; where they are not it fails with a different error.
+    # Either is proof the gate let it through (this test used to demand the error,
+    # so it failed on any machine where Jev is set up).
+    try:
         jev.client("tess")
-    assert not isinstance(passed.value, jev.LicenceRefusedError), (
-        "a cleared source was refused by the licence gate"
-    )
+    except jev.LicenceRefusedError:
+        pytest.fail("a cleared source was refused by the licence gate")
+    except Exception:
+        pass

@@ -174,6 +174,41 @@ class Item:
     angle: str | None
     voice: str | None
     examples: tuple[str, ...] = ()  # real people's answers to OTHER questions, for voice (v6)
+    method: bool = False  # the condition is how the survey was set up, not content
+
+
+# Sub-experiments whose condition is a survey-method change: question order, layout, or
+# whether earlier questions were asked. Respondents never notice that, so a quote cannot
+# react to it, and on a self-report ("problems walking about") stating their own situation
+# IS the reason. In batch-v9-1 these passed 50% against 78% for everything else, failing
+# on about_condition and no_giveaways (rich, 30 Oct 2026). Read off each recipe's
+# conditions; add a recipe only when every arm differs in method alone.
+METHOD_RECIPES = frozenset(
+    {
+        "evnyh_Q1a_and_validation",
+        "ukds_6849_alcohol_w15",
+        "ukds_6849_caring_activity_w17",
+        "ukds_6849_caring_existing_w17",
+        "ukds_6849_eq5d3l_w11",
+        "ukds_6849_eq5d5l_w11",
+        "ukds_6849_fertility_w4",
+        "ukds_6849_fertility_w5",
+        "ukds_6849_hmrc_consent_w11",
+        "ukds_6849_nrp_w10_contact",
+        "ukds_6849_nrp_w10_fh",
+        "ukds_6849_numeracy_env_w16",
+        "ukds_6849_numeracy_fin_w16",
+        "ukds_6849_satisfaction_w9",
+    }
+)
+METHOD_NOTE = (
+    "Note: what the study put to them here is only how the survey was set up (the order of "
+    "the questions, the layout, or what was asked earlier). People do not notice that and "
+    "never talk about it. So the quote reacts to the question itself and to their own life, "
+    'not to the setup, and it may say plainly what their own situation is ("my knees are '
+    'bad, stairs are a struggle"): for a question about themselves, that is the reason, '
+    "not a giveaway. It must still not mention the survey, a score, a scale or an option."
+)
 
 
 def item_block(item: Item, number: int, with_persona: bool, show_answer: bool = True) -> str:
@@ -186,6 +221,8 @@ def item_block(item: Item, number: int, with_persona: bool, show_answer: bool = 
         f"What the study put to them:\n{item.condition}",
         f"The question:\n{item.outcome}",
     ]
+    if item.method:
+        parts.append(METHOD_NOTE)
     if show_answer:
         parts.append(f"Their answer: {item.response} (scale {item.scale_min} to {item.scale_max})")
         if strength := answer_strength(item):
@@ -284,6 +321,11 @@ def repair_messages(system: str, item: Item, quote: str, notes: str) -> list[dic
             f"What a reviewer said was wrong with it:\n{notes}",
             "Write a new quote that fixes only what the reviewer named. Do not make the "
             "reason more sensible, balanced or polite than this person would be. "
+            "Keep it short: a sentence or two, no longer than the first attempt.",
+            # rewrites drifted from the rules at the top of the prompt: 21% said "just" and
+            # they ran 60% longer than first drafts (batch-v9-1, 30 Oct 2026)
+            'The hard rules still apply: never "just"; no semicolons, dashes or "..."; '
+            "never mention the survey, the question, a score or a scale.",
             'Reply with JSON only: {"quotes": ["..."]}',
         ]
     )
@@ -403,6 +445,36 @@ AI_TELLS = {
     "just": re.compile(r"\bjust\b", re.I),  # Qwen's tic: 28% of v7 drafts; applied from v9
     "buzzword": re.compile(r"\b(gaslight\w*|red flag|toxic|delve|tapestry|testament)\b", re.I),
 }
+
+
+# A filler "just" is deleted rather than paid for with a rewrite (rich, 30 Oct 2026: 13% of
+# batch-v9-1 first drafts and 21% of rewrites failed on it alone). Uses where it carries
+# meaning ("not just", "only just", "a just cause", "just as", "just over") are left in
+# place, so they still fail and go back to the writer.
+FILLER_JUST = re.compile(
+    r"(?<!\bnot )(?<!\bonly )(?<!\ba )(?<!\bthe )\bjust\s+"
+    r"(?!(as|now|about|over|under|enough|in case)\b)",
+    re.I,
+)
+ELLIPSIS = re.compile(r"\s*(?:…|\.{3,})\s*")
+
+
+def scrub(quote: str) -> str:
+    """Remove the tells that need no rewrite: a filler "just", and "..." as a pause."""
+    out = FILLER_JUST.sub("", quote)
+
+    def pause(m: re.Match[str]) -> str:
+        rest = out[m.end() :]
+        if m.start() == 0 or (rest and rest[0] in ".?!,"):
+            return ""
+        if not rest:
+            return "."
+        return ". " if rest[0].isupper() else ", "
+
+    out = ELLIPSIS.sub(pause, out)
+    # a sentence that opened with "Just" now opens in lower case
+    out = re.sub(r"(^|[.?!]\s+)([a-z])", lambda m: m.group(1) + m.group(2).upper(), out)
+    return out.strip()
 
 
 def ai_tells(quote: str, skip: Sequence[str] = ()) -> list[str]:

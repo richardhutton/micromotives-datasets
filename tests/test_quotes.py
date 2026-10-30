@@ -474,3 +474,51 @@ def test_ai_tells_leave_ordinary_speech_alone(quote: str) -> None:
 
 def test_just_can_be_left_out_for_older_prompt_versions() -> None:
     assert q.ai_tells("It's just wrong.", skip=("just",)) == []
+
+
+@pytest.mark.parametrize(
+    ("quote", "clean"),
+    [
+        ("I just don't trust them.", "I don't trust them."),
+        ("It's just a bit much.", "It's a bit much."),
+        ("Just felt wrong to me.", "Felt wrong to me."),
+        ("I don't know... maybe.", "I don't know, maybe."),
+        ("Too dear... Nobody pays that.", "Too dear. Nobody pays that."),
+        ("Well, I'd say no…", "Well, I'd say no."),
+    ],
+)
+def test_scrub_removes_filler_just_and_ellipsis(quote: str, clean: str) -> None:
+    assert q.scrub(quote) == clean
+    assert q.ai_tells(q.scrub(quote)) == []
+
+
+@pytest.mark.parametrize(
+    "quote",
+    [
+        "It's not just the money, it's the principle.",
+        "We only just scraped by that year.",
+        "It was a just decision.",
+        "Just as bad as the last lot.",
+        "Just over half of it goes in tax.",
+        "Yes, I think so. No, not really.",
+    ],
+)
+def test_scrub_keeps_just_where_it_means_something(quote: str) -> None:
+    assert q.scrub(quote) == quote
+
+
+def test_method_note_reaches_writer_checker_and_rewrite_only_when_flagged() -> None:
+    method, content = _item(method=True), _item()
+    for build in (
+        lambda it: q.writer_messages("SYS", [it]),
+        lambda it: q.checker_messages("SYS", it, "a quote"),
+        lambda it: q.repair_messages("SYS", it, "a quote", "notes"),
+    ):
+        assert q.METHOD_NOTE in build(method)[1]["content"]
+        assert q.METHOD_NOTE not in build(content)[1]["content"]
+
+
+def test_every_method_recipe_exists() -> None:
+    # a misspelt name would silently flag nothing
+    missing = [r for r in q.METHOD_RECIPES if not (q.ROOT / "recipes" / f"{r}.yaml").exists()]
+    assert missing == []

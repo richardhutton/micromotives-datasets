@@ -260,6 +260,7 @@ def build_items(
                 angle=q.draw_angle(seed, key) if drawn and angles else None,
                 voice=q.draw_voice(seed, row["study"], row["participant_id"]) if drawn else None,
                 examples=pool.pick(seed, key, q.persona_bands(row["persona"])) if pool else (),
+                method=row["recipe"] in q.METHOD_RECIPES,
             )
         )
     return items
@@ -311,7 +312,7 @@ def write_call(writer: Server, system: str, items: Sequence[q.Item]) -> list[str
             writer.chat(messages, schema, TOKENS_PER_QUOTE * len(items) + 50), len(items)
         )
         if got:
-            return list(got)
+            return [q.scrub(quote) for quote in got]
     return [None] * len(items)
 
 
@@ -590,7 +591,7 @@ def main() -> None:
             TOKENS_PER_QUOTE + 50,
         )
         got = q.parse_quotes(reply, 1)
-        return got[0] if got else None
+        return q.scrub(got[0]) if got else None
 
     with ThreadPoolExecutor(args.workers) as pool:
         for name, model, round_ in STEPS[next_step(phase) :]:
