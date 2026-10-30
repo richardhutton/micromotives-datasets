@@ -419,7 +419,14 @@ def main() -> None:
     for name in ("writer", "checker", "blind"):
         prompts[name], prompt_hashes[name] = q.load_prompt(f"{name}_{version}.md")
 
-    http = httpx.Client(timeout=300, headers={"Authorization": f"Bearer {key}"})
+    # RunPod's proxy drops idle connections and cuts a request off after about 100 s. A
+    # pooled connection reused after it was dropped hangs until the read timeout, so: never
+    # keep an idle connection longer than a few seconds, and time out just past the proxy.
+    http = httpx.Client(
+        timeout=httpx.Timeout(110, connect=15),
+        limits=httpx.Limits(max_connections=200, keepalive_expiry=5),
+        headers={"Authorization": f"Bearer {key}"},
+    )
     pod = Pod(args.url, http)
     servers = {
         "writer": Server(args.url, "writer", WRITER_SAMPLING, http),
