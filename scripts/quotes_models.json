@@ -1,0 +1,15 @@
+{
+  "_note": "One model at a time on the whole GPU (QUOTES_SPEC section 9). Flags per model, measured 30 Oct 2026 on a 96 GB RTX PRO 6000: the writer is hybrid and needs --max-num-seqs within its state blocks; Gemma 4 has no published FP8 copy, so vLLM quantises it on load, and its KV cache is large per token, so a check (one quote) gets an 8k context.",
+  "model_port": 8000,
+  "gpu_memory_utilization": 0.9,
+  "models": {
+    "writer": {
+      "hf": "Qwen/Qwen3.8-27B-FP8",
+      "args": ["--max-model-len", "16384", "--max-num-seqs", "128"]
+    },
+    "checker": {
+      "hf": "google/gemma-4-31B-it",
+      "args": ["--quantization", "fp8", "--max-model-len", "8192", "--max-num-seqs", "128"]
+    }
+  }
+}

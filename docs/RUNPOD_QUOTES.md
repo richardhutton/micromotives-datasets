@@ -3,12 +3,13 @@
 The models run on a RunPod pod behind one router; everything else runs here. Design:
 `docs/QUOTES_SPEC.md`.
 
-- **On the pod:** the writer (Qwen3.8-27B FP8) and the checker (Gemma 4 31B, quantised
-  to FP8 on load) served by vLLM, and a small router in front
-  (`scripts/quotes_router.py`). The router sends each request to the model it names,
-  `writer` or `checker`, on one address that needs an API key.
-- **Here:** `scripts/quotes_run.py` sends the rows, in phases: write every quote, check
-  every quote, rewrite the duds, check them again. The quote table lands in
+- **On the pod:** ONE model at a time with the whole GPU, the writer (Qwen3.8-27B FP8)
+  or the checker (Gemma 4 31B, quantised to FP8 on load), served by vLLM behind a router
+  (`scripts/quotes_router.py`) on one address that needs an API key. The router switches
+  model when asked; models and flags are in `scripts/quotes_models.json`.
+- **Here:** `scripts/quotes_run.py` sends the rows in phases, switching the pod at the
+  start of each: write every quote (writer), check every quote (checker), rewrite the
+  failures (writer), check them (checker), twice. The quote table lands in
   `data/processed/quotes/<run>/`. `scripts/quotes_variety.py` measures variety with
   Voyage. The export joins the quotes and goes to Hugging Face as usual.
 
@@ -36,8 +37,10 @@ The models run on a RunPod pod behind one router; everything else runs here. Des
 
 ## Each session
 
-**1. Deploy** template `micromotives-quotes`, Secure Cloud, CUDA 13.0 and up, GPU
-**H100 80 GB** (both models side by side). Or **Start** the stopped pod from last time.
+**1. Deploy** template `micromotives-quotes`, Secure Cloud, CUDA 13.0 and up, a GPU of
+80 GB or more (the checker alone needs that much to run many checks at once; a 48 GB
+card leaves it room for two or three). Which card, and its cost, is agreed with rich
+before deploying. Or **Start** the stopped pod from last time.
 
 **2. Connect** (Web Terminal) and paste:
 
@@ -46,31 +49,32 @@ cd /workspace
 [ -d micromotives-datasets ] || git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GITHUB_DATASETS_TOKEN; }; f' \
   clone https://github.com/richardhutton/micromotives-datasets.git
 cd micromotives-datasets
+git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GITHUB_DATASETS_TOKEN; }; f' pull --ff-only
+tmux kill-session -t serve 2>/dev/null; pkill -f "vllm serve"; pkill -f quotes_router
 bash scripts/pod_serve_quotes.sh
 ```
 
-It starts the writer, then the checker, then the router, in a tmux session `serve`.
-The first time takes 20 to 30 minutes (download and load); after that, a few minutes.
-It is ready when `https://<pod id>-4000.proxy.runpod.net/health` shows both `true`.
+It starts the router in a tmux session `serve`, and the router loads the writer. The
+first time takes 20 to 30 minutes (download and load); after that, a few minutes. Ready
+when `curl -s localhost:4000/health` shows `{"model": "writer", "status": "ready"}`. The
+first switch to the checker downloads it too (about 62 GB); after that a switch takes a
+few minutes.
 
-**3. Run batches from here:**
+**3. Run from here** (a batch, or `--resume` to carry on a stopped one):
 
 ```
 source ~/.bash_profile
 export QUOTES_URL=https://<pod id>-4000.proxy.runpod.net
-uv run python scripts/quotes_pilot_rows.py data/processed/exports/v3/studies_10pct/train.parquet
-for s in sampling angle_voice full_persona group; do
-  uv run python scripts/quotes_run.py data/processed/exports/v3/studies_10pct/train.parquet \
-    data/processed/quotes/pilot-$s --setting $s --keys data/processed/quotes/pilot_keys.parquet
-  uv run python scripts/quotes_variety.py data/processed/exports/v3/studies_10pct/train.parquet \
-    data/processed/quotes/pilot-$s
-done
+T=data/processed/exports/v3/studies_10pct/train.parquet
+uv run python scripts/quotes_run.py $T data/processed/quotes/full-2 --existing data/processed/quotes/full-1 --limit 10000
+uv run python scripts/quotes_run.py $T data/processed/quotes/full-1 --resume
 ```
 
-Each run saves after every phase, so a run that stops part-way keeps what it paid for;
-rerun with `--existing <run folder>` to carry on from its passed quotes. A request that
-fails is retried, and one that keeps failing is counted in `run.json`
-(`request_failures`) rather than stopping the run.
+The run prints each phase, each switch (`pod: checker loading … ready`) and progress
+with a time estimate. It saves after every phase; `--resume` carries on from the last
+saved phase on the same rows. A request that fails is retried, and one that keeps
+failing is counted in `run.json` (`request_failures`) rather than stopping the run. If a
+model fails to start, the run stops and prints that model's last error line.
 
 **4. Stop the pod** in the console when the batches are done (the volume keeps the
 models for next time, about $0.70 a day); terminate it when quotes are finished.
@@ -84,16 +88,18 @@ then upload as before.
 - RunPod's HTTPS proxy closes a request after about 100 seconds, which is why a writer
   call holds at most six rows. If `request_failures` shows many timeouts (`ReadTimeout`
   or `http 524`), lower `MAX_ITEMS` in `quotes_run.py`.
-- On the 96 GB card the writer gets 0.40 of the memory (16,384-token context) and the
-  checker 0.53 (8,192: one quote per check), each with at most 64 requests in flight.
+- Each model gets 0.90 of the GPU's memory while it is loaded; the writer has a 16,384
+  token context and the checker 8,192 (one quote per check).
 
 | Symptom | Fix |
 |---|---|
-| `/health` shows a model `false` | `tmux attach -t serve`; read `/workspace/serve/<writer or checker>.log` |
+| a switch reports `failed` | the run prints the error; the full log is `/workspace/serve/<writer or checker>.log` |
 | checker never comes up | Gemma 4 or FP8-on-load unsupported by this vLLM: read `checker.log`, try the next release |
-| `the pod is not serving 'writer'` | the router started before a model; restart `pod_serve_quotes.sh` |
+| `409 … switch first` | a request named the model that is not loaded; the runner switches before each phase, so this means two runs at once |
 | `401` from the router | `QUOTES_API_KEY` here differs from the pod's secret |
 | clone fails with 403 | `GITHUB_DATASETS_TOKEN` is missing from the template, misspelt, or expired |
 
-Not yet run on a pod: the first pilot is the test of `pod_serve_quotes.sh`. The runner,
-router and variety script have been run end to end here against stand-in models.
+One model at a time is not yet run on a pod. Here, against stand-in models, a run went
+writer, checker, writer, checker, writer, checker with a stop and `--resume` in the
+middle, and the router's switching, refusal of the other model and crash reporting are
+tested (`tests/test_quotes_run.py`).

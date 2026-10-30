@@ -1,21 +1,30 @@
 """Write, check and repair synthetic quotes for training rows, calling the RunPod pod.
 
-Runs here; the models run on the pod behind one router (scripts/pod_serve_quotes.sh,
-docs/RUNPOD_QUOTES.md). Design: docs/QUOTES_SPEC.md; the pure parts are in
-micromotives_datasets.quotes and unit-tested.
+Runs here; the models run on the pod, ONE AT A TIME with the whole GPU, behind a router
+that switches between them on request (scripts/quotes_router.py, docs/RUNPOD_QUOTES.md).
+Design: docs/QUOTES_SPEC.md; the pure parts are in micromotives_datasets.quotes and
+unit-tested.
 
     source ~/.bash_profile && uv run python scripts/quotes_run.py ROWS.parquet OUT_DIR \\
         --url https://<pod id>-4000.proxy.runpod.net --setting full_persona \\
         [--keys pilot_keys.parquet] [--existing RUN_DIR ...] [--limit N]
+    ... quotes_run.py ROWS.parquet OUT_DIR --resume      # carry on a stopped run
 
 ROWS is an export's train.parquet; rows from a study the split holds out are refused,
 since a quote written from the real response would leak it. QUOTES_API_KEY comes from
 the environment.
 
-Phases, in order: write every quote; check every quote; rewrite the ones that failed
-and check those again, up to REPAIR_ROUNDS. OUT_DIR gets quotes.parquet (TABLE_COLUMNS)
-and run.json after EVERY phase, so a run that stops part-way keeps what it paid for; a
-rerun with --existing OUT_DIR picks up from the passed quotes. Prints counts only.
+Phases, each starting with the router switching to the model it needs:
+
+    written      writer   write every quote
+    checked 0    checker  check every quote
+    rewritten 1  writer   rewrite the ones that failed, with the checker's notes
+    checked 1    checker  check the rewrites
+    rewritten 2, checked 2, then done
+
+OUT_DIR gets quotes.parquet (TABLE_COLUMNS) and run.json after EVERY phase. --resume
+reads them back and carries on from the phase after the last one saved, on exactly the
+rows that run started with. Progress is printed as calls complete; counts only.
 
 Settings (QUOTES_SPEC section 10), each adding to the one before:
     sampling       persona_text only; no angle, no voice
@@ -33,8 +42,8 @@ import os
 import sys
 import time
 from collections import Counter
-from collections.abc import Sequence
-from concurrent.futures import ThreadPoolExecutor
+from collections.abc import Callable, Sequence
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -86,11 +95,7 @@ class Server:
         self.sampling = sampling
         self.http = http
         self.failures: Counter[str] = Counter()
-        listed = http.get(f"{self.url}/v1/models").json()["data"]
-        served = {m["id"]: m.get("root", m["id"]) for m in listed}
-        if model not in served:
-            raise SystemExit(f"the pod is not serving {model!r}; it serves {sorted(served)}")
-        self.root = served[model]
+        self.root = ""  # the Hugging Face id, filled in when the pod switches to it
 
     def chat(self, messages: list[dict[str, str]], schema: dict[str, Any], max_tokens: int) -> str:
         body = {
@@ -117,6 +122,64 @@ class Server:
             time.sleep(2**attempt)
         self.failures[reason] += 1
         return ""
+
+
+class Pod:
+    """The router's switch: one model loaded at a time, the whole GPU to it."""
+
+    POLL = 10.0
+    TIMEOUT = 50 * 60
+
+    def __init__(self, url: str, http: httpx.Client) -> None:
+        self.url = url.rstrip("/")
+        self.http = http
+
+    def state(self) -> dict[str, Any]:
+        r = self.http.get(f"{self.url}/admin/state")
+        r.raise_for_status()
+        return dict(r.json())
+
+    def use(self, model: str) -> dict[str, Any]:
+        """Switch to `model` and wait until it answers; stop the run if it fails to start."""
+        state = self.state()
+        if state["model"] == model and state["status"] == "ready":
+            return state
+        started = time.monotonic()
+        self.http.post(f"{self.url}/admin/switch", json={"model": model}).raise_for_status()
+        seen = None
+        while time.monotonic() - started < self.TIMEOUT:
+            state = self.state()
+            if state["model"] == model and state["status"] != seen:
+                seen = state["status"]
+                print(f"  pod: {model} {seen} ({time.monotonic() - started:.0f}s)", flush=True)
+            if state["model"] == model and state["status"] == "ready":
+                return state
+            if state["model"] == model and state["status"] == "failed":
+                raise SystemExit(f"{model} failed to start on the pod: {state.get('error')}")
+            time.sleep(self.POLL)
+        raise SystemExit(f"{model} not ready after {self.TIMEOUT / 60:.0f} minutes")
+
+
+def run_parallel[T](
+    pool: ThreadPoolExecutor, fn: Callable[[int], T], todo: Sequence[int], label: str
+) -> dict[int, T]:
+    """fn over todo on the pool, printing progress as calls complete."""
+    out: dict[int, T] = {}
+    if not todo:
+        return out
+    every = max(200, len(todo) // 20)
+    started = time.monotonic()
+    futures = {pool.submit(fn, i): i for i in todo}
+    for n, future in enumerate(as_completed(futures), 1):
+        out[futures[future]] = future.result()
+        if n % every == 0 or n == len(todo):
+            rate = n / max(time.monotonic() - started, 1e-9)
+            left = (len(todo) - n) / rate if rate else 0
+            print(
+                f"  {label}: {n} of {len(todo)}  ({rate:.1f}/s, ~{left / 60:.0f} min left)",
+                flush=True,
+            )
+    return out
 
 
 def est_tokens(text: str) -> int:
@@ -244,6 +307,29 @@ def training_rows_only(rows: pd.DataFrame, split: Path = SPLIT) -> None:
         sys.exit(f"rows from studies not in training: {bad[:5]}: a quote on them leaks the answer")
 
 
+STEPS = [
+    ("written", "writer", 0),
+    ("checked 0", "checker", 0),
+    ("rewritten 1", "writer", 1),
+    ("checked 1", "checker", 1),
+    ("rewritten 2", "writer", 2),
+    ("checked 2", "checker", 2),
+]
+assert len(STEPS) == 2 * (REPAIR_ROUNDS + 1)
+
+
+def next_step(phase: str | None) -> int:
+    """Index in STEPS of the step after the saved phase (0 for a new run)."""
+    if phase is None:
+        return 0
+    if phase == "done":
+        return len(STEPS)
+    names = [s[0] for s in STEPS]
+    if phase not in names:
+        raise SystemExit(f"cannot resume from phase {phase!r}")
+    return names.index(phase) + 1
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("rows", type=Path)
@@ -255,49 +341,88 @@ def main() -> None:
     )
     ap.add_argument("--existing", type=Path, nargs="+", default=[], help="earlier run folders")
     ap.add_argument("--limit", type=int, help="first N rows only, for a smoke test")
+    ap.add_argument("--resume", action="store_true", help="carry on the run saved in OUT")
     ap.add_argument("--seed", type=int, default=3407)
-    ap.add_argument("--workers", type=int, default=32)
+    ap.add_argument("--workers", type=int, default=64)
     args = ap.parse_args()
 
     key = os.environ.get("QUOTES_API_KEY", "")
     if not args.url or not key:
         sys.exit("set --url (or QUOTES_URL) and QUOTES_API_KEY")
-    if args.out.exists() and any(args.out.iterdir()):
-        sys.exit(f"{args.out} is not empty: a run is never overwritten")
 
-    rows = pd.read_parquet(args.rows)
-    training_rows_only(rows)
-    rows = rows[rows.apply(q.is_text_row, axis=1)]
-    if args.keys:
-        keys = pd.read_parquet(args.keys)[q.ROW_KEY]
-        rows = rows.reset_index(drop=True).merge(keys, on=q.ROW_KEY, validate="one_to_one")
-    if args.existing:
-        done = q.merge_tables(pd.read_parquet(run / "quotes.parquet") for run in args.existing)
-        joined, _ = q.join_quotes(rows, done)
-        rows = rows[~joined["synthetic_quote"].to_numpy()]
-    if args.limit:
-        rows = rows.head(args.limit)
+    all_rows = pd.read_parquet(args.rows)
+    training_rows_only(all_rows)
+    saved: pd.DataFrame | None = None
+    phase: str | None = None
+    if args.resume:
+        if not (args.out / "quotes.parquet").exists():
+            sys.exit(f"nothing to resume in {args.out}")
+        saved = pd.read_parquet(args.out / "quotes.parquet")
+        manifest = json.loads((args.out / "run.json").read_text())
+        phase, args.setting, args.seed = manifest["phase"], manifest["setting"], manifest["seed"]
+        rows = saved[q.ROW_KEY].merge(all_rows, on=q.ROW_KEY, how="left", validate="one_to_one")
+        if rows["persona"].isna().any():
+            sys.exit("some saved rows are no longer in ROWS: resume against the same export")
+    else:
+        if args.out.exists() and any(args.out.iterdir()):
+            sys.exit(f"{args.out} is not empty: a run is never overwritten (or use --resume)")
+        rows = all_rows[all_rows.apply(q.is_text_row, axis=1)]
+        if args.keys:
+            keys = pd.read_parquet(args.keys)[q.ROW_KEY]
+            rows = rows.reset_index(drop=True).merge(keys, on=q.ROW_KEY, validate="one_to_one")
+        if args.existing:
+            done = q.merge_tables(pd.read_parquet(run / "quotes.parquet") for run in args.existing)
+            joined, _ = q.join_quotes(rows, done)
+            rows = rows[~joined["synthetic_quote"].to_numpy()]
+        if args.limit:
+            rows = rows.head(args.limit)
     rows = rows.reset_index(drop=True)
     args.out.mkdir(parents=True, exist_ok=True)
-    print(f"rows to write: {len(rows)}  setting: {args.setting}", flush=True)
 
     prompts, prompt_hashes = {}, {}
     for name in ("writer", "checker", "blind"):
         prompts[name], prompt_hashes[name] = q.load_prompt(f"{name}_{PROMPT_VERSION}.md")
 
     http = httpx.Client(timeout=300, headers={"Authorization": f"Bearer {key}"})
-    writer = Server(args.url, "writer", WRITER_SAMPLING, http)
-    checker = Server(args.url, "checker", CHECKER_SAMPLING, http)
+    pod = Pod(args.url, http)
+    servers = {
+        "writer": Server(args.url, "writer", WRITER_SAMPLING, http),
+        "checker": Server(args.url, "checker", CHECKER_SAMPLING, http),
+    }
     items = build_items(rows, args.setting, args.seed)
-    calls = plan_calls(rows, items, args.setting)
+    n = len(items)
 
-    quotes: list[str | None] = [None] * len(items)
-    results: list[dict[str, Any]] = [NOT_WRITTEN] * len(items)
-    rounds = [0] * len(items)
+    quotes: list[str | None] = [None] * n
+    results: list[dict[str, Any]] = [NOT_WRITTEN] * n
+    rounds = [0] * n
+    if saved is not None:
+        drawn = [it.angle for it in items]
+        if [a if isinstance(a, str) else None for a in saved["angle"]] != drawn:
+            sys.exit("the saved angles differ from this run's draws: different setting or seed")
+        notes = saved["notes"] if "notes" in saved else pd.Series([""] * n)
+        quotes = [x if isinstance(x, str) else None for x in saved["quote"]]
+        rounds = [int(x) for x in saved["rounds"]]
+        if phase != "written":
+            results = [
+                {
+                    "failed": json.loads(f),
+                    "notes": nt if isinstance(nt, str) else "",
+                    "blind_prediction": bp if pd.notna(bp) else None,
+                    "blind_agrees": bool(ba),
+                }
+                for f, nt, bp, ba in zip(
+                    saved["failed_checks"],
+                    notes,
+                    saved["blind_prediction"],
+                    saved["blind_agrees"],
+                    strict=True,
+                )
+            ]
     nominal = rows["scale_nominal"].astype(bool).tolist()
     actual = rows["response_num"].astype(float).tolist()
+    print(f"rows: {n}  setting: {args.setting}  from: {phase or 'the start'}", flush=True)
 
-    def save(phase: str) -> dict[str, Any]:
+    def save(phase_name: str) -> dict[str, Any]:
         table = rows[q.ROW_KEY].copy()
         table["input_hash"] = rows.apply(q.input_hash, axis=1)
         table["quote"] = pd.Series(quotes, dtype=object)
@@ -307,6 +432,7 @@ def main() -> None:
         table["voice"] = [it.voice for it in items]
         table["setting"] = args.setting
         table["failed_checks"] = [json.dumps(r["failed"]) for r in results]
+        table["notes"] = [r["notes"] for r in results]
         table["blind_prediction"] = [r["blind_prediction"] for r in results]
         table["blind_agrees"] = [r["blind_agrees"] for r in results]
         table["run"] = args.out.name
@@ -315,24 +441,24 @@ def main() -> None:
         report = summarise(rows, table)
         manifest = {
             "run": args.out.name,
-            "phase": phase,
+            "phase": phase_name,
             "updated": datetime.now(UTC).isoformat(timespec="seconds"),
             "rows_file": str(args.rows),
             "setting": args.setting,
             "seed": args.seed,
-            "writer": {"model": writer.root, "sampling": WRITER_SAMPLING},
-            "checker": {"model": checker.root, "sampling": CHECKER_SAMPLING},
+            "serving": "one model at a time, switched by the router",
+            "writer": {"model": servers["writer"].root, "sampling": WRITER_SAMPLING},
+            "checker": {"model": servers["checker"].root, "sampling": CHECKER_SAMPLING},
             "prompts": {f"{k}_{PROMPT_VERSION}.md": h for k, h in prompt_hashes.items()},
             "repair_rounds": REPAIR_ROUNDS,
             "group_k": GROUP_K if args.setting == "group" else None,
-            "request_failures": {
-                "writer": dict(writer.failures),
-                "checker": dict(checker.failures),
-            },
+            "request_failures": {k: dict(s.failures) for k, s in servers.items()},
             **report,
         }
         (args.out / "run.json").write_text(json.dumps(manifest, indent=2, default=str) + "\n")
         return report
+
+    writer, checker = servers["writer"], servers["checker"]
 
     def check(i: int) -> dict[str, Any]:
         quote = quotes[i]
@@ -340,7 +466,7 @@ def main() -> None:
             return NOT_WRITTEN
         return check_one(checker, prompts, items[i], quote, nominal[i], actual[i])
 
-    def repair(i: int) -> str | None:
+    def rewrite(i: int) -> str | None:
         quote = quotes[i]
         if quote is None:
             return write_call(writer, prompts["writer"], [items[i]])[0]
@@ -353,38 +479,43 @@ def main() -> None:
         return got[0] if got else None
 
     with ThreadPoolExecutor(args.workers) as pool:
-        # phase 1: write everything
-        for call, got in zip(
-            calls,
-            pool.map(lambda c: write_call(writer, prompts["writer"], [items[i] for i in c]), calls),
-            strict=True,
-        ):
-            for i, quote in zip(call, got, strict=True):
-                quotes[i] = quote
-        save("written")
-        print(
-            f"written: {sum(x is not None for x in quotes)} of {len(items)} ({len(calls)} calls)",
-            flush=True,
-        )
-
-        # phase 2: check everything; phases 3+: rewrite the duds and check them again
-        todo = list(range(len(items)))
-        for round_ in range(REPAIR_ROUNDS + 1):
-            if round_:
-                for i, new in zip(todo, pool.map(repair, todo), strict=True):
+        for name, model, round_ in STEPS[next_step(phase) :]:
+            if name.startswith("checked") or name.startswith("rewritten"):
+                failing = [i for i in range(n) if results[i]["failed"]]
+                if name.startswith("rewritten") and not failing:
+                    break  # everything passed: nothing left to rewrite
+            print(f"{name}: switching the pod to the {model}", flush=True)
+            servers[model].root = pod.use(model)["hf"]
+            if name == "written":
+                calls = plan_calls(rows, items, args.setting)
+                got = run_parallel(
+                    pool,
+                    lambda c, calls=calls: write_call(  # type: ignore[misc]
+                        writer, prompts["writer"], [items[i] for i in calls[c]]
+                    ),
+                    range(len(calls)),
+                    "write calls",
+                )
+                for c, quotes_c in got.items():
+                    for i, quote in zip(calls[c], quotes_c, strict=True):
+                        quotes[i] = quote
+            elif name.startswith("rewritten"):
+                for i, new in run_parallel(pool, rewrite, failing, "rewrites").items():
                     quotes[i], rounds[i] = new, round_
-            for i, res in zip(todo, pool.map(check, todo), strict=True):
-                results[i] = res
-            todo = [i for i in todo if results[i]["failed"]]
-            save("checked" if round_ == 0 else f"repair {round_}")
-            print(f"round {round_}: {len(items) - len(todo)} of {len(items)} pass", flush=True)
-            if not todo:
-                break
+            else:
+                todo = (
+                    list(range(n)) if round_ == 0 else [i for i in range(n) if rounds[i] == round_]
+                )
+                for i, res in run_parallel(pool, check, todo, "checks").items():
+                    results[i] = res
+            report = save(name)
+            print(f"{name}: saved; {report['passed']} of {n} pass so far", flush=True)
 
     report = save("done")
     print(json.dumps({k: report[k] for k in ("rows", "passed", "pass_rate")}, indent=2))
-    if writer.failures or checker.failures:
-        print(f"request failures: writer {dict(writer.failures)}, checker {dict(checker.failures)}")
+    failures = {k: dict(s.failures) for k, s in servers.items() if s.failures}
+    if failures:
+        print(f"request failures: {failures}")
 
 
 def summarise(rows: pd.DataFrame, table: pd.DataFrame) -> dict[str, Any]:

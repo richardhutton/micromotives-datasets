@@ -43,6 +43,7 @@ TABLE_COLUMNS = [
     "voice",
     "setting",
     "failed_checks",
+    "notes",  # the checker's notes, which a rewrite (and a resumed run) needs
     "blind_prediction",
     "blind_agrees",
     "run",

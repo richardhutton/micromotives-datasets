@@ -1,63 +1,24 @@
 #!/usr/bin/env bash
-# Serve the quote writer and checker on a RunPod pod, behind one router (docs/RUNPOD_QUOTES.md).
-# Run on the pod after cloning:
+# Serve the quote models on a RunPod pod, ONE AT A TIME, behind one router
+# (docs/QUOTES_SPEC.md section 9, docs/RUNPOD_QUOTES.md). Run on the pod after cloning:
 #
 #   bash scripts/pod_serve_quotes.sh
 #
-# Starts, in a tmux session "serve": the writer (vLLM, :8000, served as "writer"), then
-# the checker (:8100, "checker"), then the router (:4000), which RunPod exposes at
-# https://<pod id>-4000.proxy.runpod.net. The quote scripts run on the laptop and call
-# that address with QUOTES_API_KEY. Stop the pod in the console when the batches are done.
+# Starts the router (:4000, exposed at https://<pod id>-4000.proxy.runpod.net) in a tmux
+# session "serve". The router loads the writer with the whole GPU, and switches to the
+# checker and back when quotes_run.py (on the laptop) asks it to between phases. Models
+# and their vLLM flags: scripts/quotes_models.json. Logs: /workspace/serve/<model>.log.
+# State: curl -s localhost:4000/health
 set -euo pipefail
 
 repo="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$repo"
 export PATH="$HOME/.local/bin:$PATH"
-
 VLLM="vllm==0.32.0"
-WRITER="Qwen/Qwen3.8-27B-FP8"
-CHECKER="google/gemma-4-31B-it"
-LOGS=/workspace/serve
 
-wait_for() {  # port, pid, name: up only when THAT model answers on THAT port
-  for _ in $(seq 1 180); do
-    kill -0 "$2" 2>/dev/null || { echo "$3 exited before it was ready: see $LOGS/$3.log"; return 1; }
-    curl -sf "localhost:$1/v1/models" | grep -q "\"id\":\"$3\"" && { echo "$3 up on :$1"; return 0; }
-    sleep 10
-  done
-  echo "$3 not ready after 30 minutes: see $LOGS/$3.log"; return 1
-}
-
-# --- inside tmux: start the servers one after the other ---------------------------
-if [[ "${1:-}" == "--serve" ]]; then
-  mkdir -p "$LOGS"
-  # Memory on the 96 GB card (30 Oct 2026): the writer is hybrid and needs little KV
-  # cache, but each request in flight needs one of its fixed state blocks (216 at 0.45,
-  # about half that at 0.40), so its concurrency is capped at 64; quotes_run.py sends 32.
-  # Gemma needs far more KV cache per token, so it gets the larger share.
-  vllm serve "$WRITER" --served-model-name writer --port 8000 \
-    --gpu-memory-utilization 0.40 --max-model-len 16384 --max-num-seqs 64 \
-    >"$LOGS/writer.log" 2>&1 &
-  wait_for 8000 $! writer
-  # No FP8 copy of Gemma 4 is published; vLLM quantises it to FP8 on load. Port 8100, not
-  # 8001: vLLM 0.32 also holds the port after its own, so the writer has 8001 too.
-  vllm serve "$CHECKER" --served-model-name checker --port 8100 --quantization fp8 \
-    --gpu-memory-utilization 0.53 --max-model-len 8192 --max-num-seqs 64 \
-    >"$LOGS/checker.log" 2>&1 &
-  wait_for 8100 $! checker
-  echo "router on :4000  ->  https://${RUNPOD_POD_ID:-<pod id>}-4000.proxy.runpod.net"
-  exec uv run python scripts/quotes_router.py \
-    --route writer=http://127.0.0.1:8000 --route checker=http://127.0.0.1:8100 --port 4000
-fi
-
-# --- on the pod: check, install, start ----------------------------------------------
 [[ -n "${HF_TOKEN:-}" ]] || { echo "HF_TOKEN is not set: check the template"; exit 1; }
 [[ ${#QUOTES_API_KEY} -ge 16 ]] || { echo "QUOTES_API_KEY is not set (16+ characters): check the template"; exit 1; }
-
-# This repo's own read token; GITHUB_TOKEN on the same template belongs to the training repo.
 [[ -n "${GITHUB_DATASETS_TOKEN:-}" ]] || { echo "GITHUB_DATASETS_TOKEN is not set: check the template"; exit 1; }
-git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GITHUB_DATASETS_TOKEN; }; f' \
-  pull --ff-only
 
 command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
 uv sync
@@ -65,8 +26,8 @@ command -v vllm >/dev/null || uv tool install "$VLLM"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 command -v tmux >/dev/null || { apt-get update -qq && apt-get install -y -qq tmux; }
 
-mkdir -p "$LOGS"
-tmux new-session -d -s serve "bash scripts/pod_serve_quotes.sh --serve 2>&1 | tee -a '$LOGS/serve.log'; exec bash"
-echo "starting writer, then checker, then router (about 20-30 minutes the first time)"
-echo "watch:   tmux attach -t serve    (leave it running: Ctrl-b then d)"
-echo "ready when https://${RUNPOD_POD_ID:-<pod id>}-4000.proxy.runpod.net/health shows both true"
+mkdir -p /workspace/serve
+tmux new-session -d -s serve \
+  "uv run python scripts/quotes_router.py --start writer --port 4000 2>&1 | tee -a /workspace/serve/router.log; exec bash"
+echo "router started; loading the writer (a few minutes once downloaded)"
+echo "state: curl -s localhost:4000/health   (or https://${RUNPOD_POD_ID:-<pod id>}-4000.proxy.runpod.net/health)"

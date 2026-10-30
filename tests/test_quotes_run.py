@@ -151,38 +151,100 @@ def test_a_server_that_keeps_failing_gives_up_quietly(monkeypatch: pytest.Monkey
     assert server.failures == {"http 500": 1}
 
 
-def test_refuses_a_pod_not_serving_the_model(monkeypatch: pytest.MonkeyPatch) -> None:
-    http = httpx.Client(
-        transport=httpx.MockTransport(
-            lambda r: httpx.Response(200, json={"data": [{"id": "other"}]})
-        )
+# --- the pod's switch, as the runner sees it ----------------------------------------
+
+
+def _pod(states: list[dict[str, Any]], monkeypatch: pytest.MonkeyPatch) -> tuple[Any, list[str]]:
+    monkeypatch.setattr(run.time, "sleep", lambda _s: None)
+    calls: list[str] = []
+    feed = iter(states)
+    last: dict[str, Any] = {}
+
+    def handler(r: httpx.Request) -> httpx.Response:
+        calls.append(f"{r.method} {r.url.path}")
+        if r.url.path == "/admin/state":
+            last.update(next(feed, last))
+            return httpx.Response(200, json=last)
+        return httpx.Response(202, json={})
+
+    return run.Pod("http://pod", httpx.Client(transport=httpx.MockTransport(handler))), calls
+
+
+def _st(model: str | None, status: str, **extra: Any) -> dict[str, Any]:
+    return {"model": model, "hf": f"hf/{model}", "status": status, "error": None, **extra}
+
+
+def test_pod_switches_and_waits_until_the_model_is_ready(monkeypatch: pytest.MonkeyPatch) -> None:
+    pod, calls = _pod(
+        [
+            _st("writer", "ready"),
+            _st("checker", "switching"),
+            _st("checker", "loading"),
+            _st("checker", "ready"),
+        ],
+        monkeypatch,
     )
+    assert pod.use("checker")["hf"] == "hf/checker"
+    assert "POST /admin/switch" in calls
+
+
+def test_pod_does_not_switch_when_the_model_is_already_ready(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    pod, calls = _pod([_st("writer", "ready")], monkeypatch)
+    pod.use("writer")
+    assert "POST /admin/switch" not in calls
+
+
+def test_pod_stops_the_run_when_a_model_fails_to_start(monkeypatch: pytest.MonkeyPatch) -> None:
+    pod, _ = _pod(
+        [_st("writer", "ready"), _st("checker", "loading"), _st("checker", "failed", error="OOM")],
+        monkeypatch,
+    )
+    with pytest.raises(SystemExit, match="OOM"):
+        pod.use("checker")
+
+
+def test_phases_resume_after_the_last_saved_one() -> None:
+    names = [s[0] for s in run.STEPS]
+    assert run.next_step(None) == 0
+    assert names[run.next_step("written")] == "checked 0"
+    assert names[run.next_step("checked 0")] == "rewritten 1"
+    assert run.next_step("done") == len(run.STEPS)
+    assert [s[1] for s in run.STEPS] == ["writer", "checker"] * (run.REPAIR_ROUNDS + 1)
     with pytest.raises(SystemExit):
-        run.Server("http://pod", "writer", {}, http)
+        run.next_step("halfway")
 
 
-# --- the router -------------------------------------------------------------------------
+# --- the router: one model at a time ---------------------------------------------------
 
-
-class _Echo(BaseHTTPRequestHandler):
-    name = ""
-
-    def log_message(self, *a: Any) -> None:
-        pass
-
-    def _send(self, obj: object) -> None:
-        body = json.dumps(obj).encode()
-        self.send_response(200)
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
-
-    def do_GET(self) -> None:
-        self._send({"data": [{"id": self.name}]})
-
-    def do_POST(self) -> None:
+FAKE_VLLM = """
+import json, sys
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+name, port, mode = sys.argv[1], int(sys.argv[2]), sys.argv[3]
+if mode == "fail":
+    print("ValueError: To serve at least one request ... KV cache needed", flush=True)
+    sys.exit(1)
+class H(BaseHTTPRequestHandler):
+    protocol_version = "HTTP/1.1"
+    def log_message(self, *a): pass
+    def _send(self, obj):
+        b = json.dumps(obj).encode(); self.send_response(200)
+        self.send_header("Content-Length", str(len(b))); self.end_headers(); self.wfile.write(b)
+    def do_GET(self): self._send({"data": [{"id": name}]})
+    def do_POST(self):
         raw = self.rfile.read(int(self.headers["Content-Length"]))
-        self._send({"backend": self.name, "body": json.loads(raw)})
+        self._send({"backend": name, "body": json.loads(raw)})
+ThreadingHTTPServer(("127.0.0.1", port), H).serve_forever()
+"""
+
+
+def _free_port() -> int:
+    import socket
+
+    with socket.socket() as s:
+        s.bind(("127.0.0.1", 0))
+        return int(s.getsockname()[1])
 
 
 def _serve(handler: type[BaseHTTPRequestHandler]) -> str:
@@ -191,39 +253,93 @@ def _serve(handler: type[BaseHTTPRequestHandler]) -> str:
     return f"http://127.0.0.1:{server.server_address[1]}"
 
 
-@pytest.fixture(scope="module")
-def routed() -> str:
-    writer = _serve(type("W", (_Echo,), {"name": "writer"}))
-    checker = _serve(type("C", (_Echo,), {"name": "checker"}))
-    routes = router.parse_routes([f"writer={writer}", f"checker={checker}"])
-    return _serve(router.make_handler(routes, "k" * 20))
+@pytest.fixture
+def pod_router(tmp_path: Path) -> Any:
+    import sys
+    import time
+
+    script = tmp_path / "fake_vllm.py"
+    script.write_text(FAKE_VLLM)
+    port = _free_port()
+    modes = {"writer": "ok", "checker": "ok", "broken": "fail"}
+    manager = router.Manager(
+        {n: f"hf/{n}" for n in modes},
+        lambda n: [sys.executable, str(script), n, str(port), modes[n]],
+        port,
+        tmp_path / "logs",
+        load_timeout=30,
+    )
+    url = _serve(router.make_handler(manager, "k" * 20))
+
+    def wait(model: str, status: str) -> dict[str, Any]:
+        for _ in range(150):
+            state = manager.snapshot()
+            if state["model"] == model and state["status"] == status:
+                return state
+            time.sleep(0.2)
+        raise AssertionError(f"never reached {model} {status}: {manager.snapshot()}")
+
+    yield manager, url, wait
+    manager.shutdown()
 
 
-def test_router_sends_each_model_to_its_backend_with_the_body_untouched(routed: str) -> None:
-    auth = {"Authorization": "Bearer " + "k" * 20}
-    body = {"model": "checker", "messages": [], "chat_template_kwargs": {"enable_thinking": False}}
-    got = httpx.post(f"{routed}/v1/chat/completions", json=body, headers=auth).json()
-    assert got == {"backend": "checker", "body": body}
-    got = httpx.post(f"{routed}/v1/chat/completions", json=body | {"model": "writer"}, headers=auth)
-    assert got.json()["backend"] == "writer"
-    listed = httpx.get(f"{routed}/v1/models", headers=auth).json()["data"]
-    assert sorted(m["id"] for m in listed) == ["checker", "writer"]
+AUTH = {"Authorization": "Bearer " + "k" * 20}
 
 
-def test_router_refuses_without_the_key_and_unknown_models(routed: str) -> None:
-    body = {"model": "writer"}
-    assert httpx.post(f"{routed}/v1/chat/completions", json=body).status_code == 401
-    wrong = {"Authorization": "Bearer nope"}
-    assert httpx.post(f"{routed}/v1/chat/completions", json=body, headers=wrong).status_code == 401
-    auth = {"Authorization": "Bearer " + "k" * 20}
-    assert httpx.post(f"{routed}/v1/x", json={"model": "nobody"}, headers=auth).status_code == 404
-    assert httpx.get(f"{routed}/health").status_code == 200
+def test_router_loads_one_model_and_refuses_the_other(pod_router: Any) -> None:
+    _, url, wait = pod_router
+    assert httpx.get(f"{url}/health").status_code == 503  # nothing loaded yet
+    assert (
+        httpx.post(f"{url}/admin/switch", json={"model": "writer"}, headers=AUTH).status_code == 202
+    )
+    wait("writer", "ready")
+    assert httpx.get(f"{url}/health").json() == {"model": "writer", "status": "ready"}
+    body = {"model": "writer", "messages": [], "chat_template_kwargs": {"enable_thinking": False}}
+    got = httpx.post(f"{url}/v1/chat/completions", json=body, headers=AUTH).json()
+    assert got == {"backend": "writer", "body": body}  # passed on untouched
+    other = httpx.post(f"{url}/v1/chat/completions", json=body | {"model": "checker"}, headers=AUTH)
+    assert other.status_code == 409
 
 
-def test_route_parsing() -> None:
-    assert router.parse_routes(["writer=http://a:1/"]) == {"writer": "http://a:1"}
-    with pytest.raises(ValueError):
-        router.parse_routes(["writer"])
+def test_switching_stops_the_old_server_before_the_new_one_answers(pod_router: Any) -> None:
+    manager, url, wait = pod_router
+    manager.switch("writer")
+    wait("writer", "ready")
+    first = manager.proc
+    httpx.post(f"{url}/admin/switch", json={"model": "checker"}, headers=AUTH)
+    wait("checker", "ready")
+    assert first is not None and first.poll() is not None  # the writer is gone
+    listed = httpx.get(f"{url}/v1/models", headers=AUTH).json()["data"]
+    assert [m["id"] for m in listed] == ["checker"]
+    back = httpx.post(f"{url}/v1/chat/completions", json={"model": "writer"}, headers=AUTH)
+    assert back.status_code == 409
+    manager.switch("writer")
+    wait("writer", "ready")  # and back again
+
+
+def test_switching_to_the_ready_model_does_not_restart_it(pod_router: Any) -> None:
+    manager, _, wait = pod_router
+    manager.switch("writer")
+    wait("writer", "ready")
+    pid = manager.proc.pid
+    manager.switch("writer")
+    assert manager.snapshot()["status"] == "ready" and manager.proc.pid == pid
+
+
+def test_a_model_that_crashes_on_start_is_reported_failed_with_its_error(pod_router: Any) -> None:
+    manager, url, wait = pod_router
+    manager.switch("broken")
+    state = wait("broken", "failed")
+    assert "KV cache" in state["error"]
+    assert httpx.get(f"{url}/admin/state", headers=AUTH).json()["status"] == "failed"
+
+
+def test_router_needs_the_key_and_known_models(pod_router: Any) -> None:
+    _, url, _ = pod_router
+    assert httpx.get(f"{url}/admin/state").status_code == 401
+    assert httpx.post(f"{url}/admin/switch", json={"model": "writer"}).status_code == 401
+    unknown = httpx.post(f"{url}/admin/switch", json={"model": "nobody"}, headers=AUTH)
+    assert unknown.status_code == 404
 
 
 # --- export and join guards -------------------------------------------------------------

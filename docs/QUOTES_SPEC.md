@@ -222,17 +222,27 @@ target. Otherwise choose the setting with the most variety among those where at 
 ## 9. Infrastructure
 
 One RunPod pod (batch work; serverless suits the occasional requests of the trained
-models later). vLLM 0.32.0 serves the writer and the checker side by side on one H100
-80 GB, each with 0.45 of its memory and a 16,384-token context; Gemma 4 has no published
-FP8 copy, so vLLM quantises it on load. A small router (`scripts/quotes_router.py`)
-sends each request to the model it names, `writer` or `checker`, on one HTTPS address
-with an API key (`QUOTES_API_KEY`).
+models later), serving **one model at a time with the whole GPU**: write all, switch,
+check all, switch, rewrite the failures, switch, check them, and so on. This is the
+design agreed at the start. From 30 Oct the pilot and the first 10,000-row batch ran both
+models side by side instead, which was not agreed: each phase left the other model's
+memory idle, and the checker, short of KV cache (98.6% full, 36 checks at once, about 2 a
+second), would have taken hours for one batch. It was stopped and replaced.
 
-`scripts/quotes_run.py` runs here and calls that address in phases: write all, check
-all, rewrite the duds, check them again. It saves the quote table after every phase,
-retries failed requests, and sizes each writer call to fit the context and the proxy's
-timeout. Variety is measured here with Voyage. Setup and each session:
-`docs/RUNPOD_QUOTES.md`.
+- **The router** (`scripts/quotes_router.py`) owns the one vLLM server. `POST
+  /admin/switch` stops the current model, waits for the port and GPU memory to free,
+  starts the named one and reports `switching`, `loading`, `ready` or `failed` with the
+  last error line of its log (`GET /admin/state`). Requests naming the other model get
+  409. Models and their vLLM flags: `scripts/quotes_models.json` (0.90 of GPU memory).
+- **The runner** (`scripts/quotes_run.py`, run here) switches the pod at the start of
+  each phase, saves after each phase, prints progress as calls complete, and `--resume`
+  carries on from the last saved phase on the same rows.
+- **The card.** One model at a time needs room for Gemma 4 31B in FP8 (about 31 GB of
+  weights) plus enough KV cache to run many checks at once: on a 48 GB L40S only about
+  6 GB would be left, room for 2 or 3 checks, so the spec's original L40S does not suit
+  this checker. An 80 GB or larger card does; the choice and its cost go to rich first.
+
+Embeddings for the variety measures are Voyage, called from here (section 8).
 
 ## 10. Pilot
 
