@@ -31,12 +31,17 @@ wait_for() {  # port, pid, name
 # --- inside tmux: start the servers one after the other ---------------------------
 if [[ "${1:-}" == "--serve" ]]; then
   mkdir -p "$LOGS"
+  # Qwen3.8 is a hybrid model: each request in flight needs one of its fixed state blocks,
+  # and vLLM's default of 1,024 concurrent requests is more than fit (216 on a 96 GB card).
+  # quotes_run.py sends at most 32 at a time, so 128 leaves plenty of room.
   vllm serve "$WRITER" --served-model-name writer --port 8000 \
-    --gpu-memory-utilization 0.45 --max-model-len 16384 >"$LOGS/writer.log" 2>&1 &
+    --gpu-memory-utilization 0.45 --max-model-len 16384 --max-num-seqs 128 \
+    >"$LOGS/writer.log" 2>&1 &
   wait_for 8000 $! writer
   # No FP8 copy of Gemma 4 is published; vLLM quantises it to FP8 on load.
   vllm serve "$CHECKER" --served-model-name checker --port 8001 --quantization fp8 \
-    --gpu-memory-utilization 0.45 --max-model-len 16384 >"$LOGS/checker.log" 2>&1 &
+    --gpu-memory-utilization 0.45 --max-model-len 16384 --max-num-seqs 128 \
+    >"$LOGS/checker.log" 2>&1 &
   wait_for 8001 $! checker
   echo "router on :4000  ->  https://${RUNPOD_POD_ID:-<pod id>}-4000.proxy.runpod.net"
   exec uv run python scripts/quotes_router.py \
