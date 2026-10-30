@@ -62,6 +62,8 @@ data/profiles/
 data/processed/*.parquet
 # Train/eval exports for the training project (scripts/export.py): respondent rows.
 data/processed/exports/
+# Synthetic quote tables and pilot keys (scripts/quotes_*.py): written from respondent rows.
+data/processed/quotes/
 data/processed/*.csv
 !data/processed/.gitkeep
 

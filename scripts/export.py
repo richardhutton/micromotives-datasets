@@ -27,6 +27,13 @@ respondents in training only and scored held-out studies in full: sampling eval 
 leaves most (condition, outcome) pairs with one or two responses, too few to compare
 distributions (micromotives-training LEDGER 5, 29 Oct 2026). Every study stays on the
 side the split puts it, so the held-out property is unchanged.
+
+`--quotes RUN_DIR [RUN_DIR ...]` joins synthetic quotes (docs/QUOTES_SPEC.md) onto
+TRAIN rows only, from the quote tables those runs wrote (oldest first; a later passed
+quote wins). A quote is joined only where its input hash still matches the row, so a
+row changed upstream gets no stale quote. eval.parquet never carries quotes: one
+written from the real response would leak it. Folder suffix `_quotes`; the manifest
+records each run's models, prompts and settings, and how many rows got a quote.
 """
 
 from __future__ import annotations
@@ -43,6 +50,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import make_splits
+from micromotives_datasets import quotes as q
 
 ROOT = make_splits.ROOT
 SPLITS = make_splits.OUT
@@ -97,6 +105,32 @@ def sample_respondents(frame: pd.DataFrame, fraction: float) -> pd.DataFrame:
     return frame.loc[frame.index.isin(pd.Index([]).append(keep))]
 
 
+def no_synthetic_quotes(held: pd.DataFrame) -> None:
+    """Stop the export if any eval row carries a synthetic quote: one written from the
+    real response would leak it. A real quote from the source is not a leak."""
+    if held["synthetic_quote"].astype(bool).any():
+        sys.exit("eval rows carry synthetic quotes: a quote written from the response leaks it")
+
+
+def add_quotes(train: pd.DataFrame, runs: list[Path]) -> tuple[pd.DataFrame, dict]:
+    """Train rows with quotes joined from the runs' tables, and what the manifest records."""
+    table = q.merge_tables(pd.read_parquet(run / "quotes.parquet") for run in runs)
+    joined, counts = q.join_quotes(train, table)
+    has = joined["synthetic_quote"]
+    return joined, {
+        "runs": [
+            json.loads((run / "run.json").read_text())
+            | {"quotes_sha256": _sha256(run / "quotes.parquet")}
+            for run in runs
+        ],
+        "train_rows": counts.rows,
+        "with_quote": counts.with_quote,
+        "stale_not_joined": counts.stale,
+        "without_quote": counts.without_quote,
+        "with_quote_by_source": joined.loc[has, "source"].value_counts().sort_index().to_dict(),
+    }
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -129,11 +163,19 @@ def main() -> None:
         help="keep this fraction of each training study's respondents (e.g. 0.1), "
         "for a small test export; eval is always complete",
     )
+    parser.add_argument(
+        "--quotes",
+        type=Path,
+        nargs="+",
+        help="quote run folders (quotes.parquet + run.json), oldest first; train rows only",
+    )
     args = parser.parse_args()
 
     folder = args.split + ("_without_ukds" if args.without_ukds else "")
     if args.fraction != 1.0:
         folder += f"_{round(args.fraction * 100):g}pct"
+    if args.quotes:
+        folder += "_quotes"
     out = EXPORTS / args.version / folder
     if out.exists():
         sys.exit(f"{out} exists: a version is never overwritten; use a new version")
@@ -154,6 +196,10 @@ def main() -> None:
         train = sample_respondents(train, args.fraction)
     if overlap := set(train["study"]) & set(held["study"]):
         sys.exit(f"studies on both sides: {sorted(overlap)}")
+    quotes_manifest = None
+    if args.quotes:
+        train, quotes_manifest = add_quotes(train, args.quotes)
+    no_synthetic_quotes(held)
     # Panels (Innovation Panel, the DEL panel waves) put the same person in several
     # studies, so a person can be in train for one study and eval for another. That is
     # not a leak of the held-out study; it is counted so it is known, not hidden.
@@ -194,6 +240,7 @@ def main() -> None:
             .sort_index()
             .to_dict(),
         },
+        "quotes": quotes_manifest,
         "includes_ukds": bool((rows.loc[~excluded, "source"] == "innovation_panel").any()),
         "train": summary(train) | {"sha256": _sha256(out / "train.parquet")},
         "eval": summary(held) | {"sha256": _sha256(out / "eval.parquet")},

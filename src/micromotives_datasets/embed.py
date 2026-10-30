@@ -62,6 +62,11 @@ CLEARED: dict[str, str] = {
         "documentation about a collection, not microdata from it. Verified by "
         "fetching, not assumed — see the note below. Decided by rich, 9 Oct 2026."
     ),
+    "synthetic-quote": (
+        "A synthetic quote our writer model produced (docs/QUOTES_SPEC.md), sent alone "
+        "for the variety measures: the sentence only, with no persona, condition, "
+        "outcome, response or identifier. Decided by rich, 30 Oct 2026."
+    ),
 }
 """Licences whose text may cross the wire. Anything absent is refused.
 

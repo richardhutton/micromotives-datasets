@@ -1,0 +1,434 @@
+"""Write, check and repair synthetic quotes for training rows, calling the RunPod pod.
+
+Runs here; the models run on the pod behind one router (scripts/pod_serve_quotes.sh,
+docs/RUNPOD_QUOTES.md). Design: docs/QUOTES_SPEC.md; the pure parts are in
+micromotives_datasets.quotes and unit-tested.
+
+    source ~/.bash_profile && uv run python scripts/quotes_run.py ROWS.parquet OUT_DIR \\
+        --url https://<pod id>-4000.proxy.runpod.net --setting full_persona \\
+        [--keys pilot_keys.parquet] [--existing RUN_DIR ...] [--limit N]
+
+ROWS is an export's train.parquet; rows from a study the split holds out are refused,
+since a quote written from the real response would leak it. QUOTES_API_KEY comes from
+the environment.
+
+Phases, in order: write every quote; check every quote; rewrite the ones that failed
+and check those again, up to REPAIR_ROUNDS. OUT_DIR gets quotes.parquet (TABLE_COLUMNS)
+and run.json after EVERY phase, so a run that stops part-way keeps what it paid for; a
+rerun with --existing OUT_DIR picks up from the passed quotes. Prints counts only.
+
+Settings (QUOTES_SPEC section 10), each adding to the one before:
+    sampling       persona_text only; no angle, no voice
+    angle_voice    plus a drawn reason angle per row and voice per respondent
+    full_persona   plus every recorded persona field instead of persona_text
+    group          plus k respondents sharing (recipe, factors, outcome, response) per call
+All but `group` write one respondent's rows in a study together (section 6).
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+import time
+from collections import Counter
+from collections.abc import Sequence
+from concurrent.futures import ThreadPoolExecutor
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+import httpx
+import pandas as pd
+
+from micromotives_datasets import quotes as q
+
+SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
+MAX_ITEMS = 6  # rows per writer call: keeps each reply well inside the proxy's timeout
+PROMPT_BUDGET = 6000  # estimated prompt tokens per writer call; the servers allow 16,384
+CHARS_PER_TOKEN = 3.5  # deliberately low, so the estimate errs towards smaller calls
+TOKENS_PER_QUOTE = 150
+GROUP_K = 5  # QUOTES_SPEC section 11
+REPAIR_ROUNDS = 2  # QUOTES_SPEC section 11
+SPLIT = q.ROOT / "data" / "catalog" / "splits" / "studies_mapping.json"
+
+# Qwen3.8 non-thinking settings, from the model card (checked 30 Oct 2026).
+WRITER_SAMPLING = {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "chat_template_kwargs": {"enable_thinking": False},
+}
+# A judge should be repeatable. Gemma 4's thinking is on only with <|think|> in the
+# system prompt, which the checker prompts never contain.
+CHECKER_SAMPLING = {"temperature": 0.0}
+BLIND_SCHEMA = {
+    "type": "object",
+    "properties": {"answer": {"type": "number"}},
+    "required": ["answer"],
+}
+
+
+class Server:
+    """One model behind the router. A request that still fails after retries returns ""
+    (counted, and treated like an unusable reply) instead of stopping the run."""
+
+    RETRIES = 4
+
+    def __init__(self, url: str, model: str, sampling: dict[str, Any], http: httpx.Client) -> None:
+        self.url = url.rstrip("/")
+        self.model = model
+        self.sampling = sampling
+        self.http = http
+        self.failures: Counter[str] = Counter()
+        listed = http.get(f"{self.url}/v1/models").json()["data"]
+        served = {m["id"]: m.get("root", m["id"]) for m in listed}
+        if model not in served:
+            raise SystemExit(f"the pod is not serving {model!r}; it serves {sorted(served)}")
+        self.root = served[model]
+
+    def chat(self, messages: list[dict[str, str]], schema: dict[str, Any], max_tokens: int) -> str:
+        body = {
+            "model": self.model,
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "response_format": {
+                "type": "json_schema",
+                "json_schema": {"name": "reply", "schema": schema},
+            },
+            **self.sampling,
+        }
+        for attempt in range(self.RETRIES):
+            try:
+                r = self.http.post(f"{self.url}/v1/chat/completions", json=body)
+            except httpx.HTTPError as e:
+                reason = type(e).__name__
+            else:
+                if r.status_code == 200:
+                    return str(r.json()["choices"][0]["message"]["content"] or "")
+                reason = f"http {r.status_code}"
+                if 400 <= r.status_code < 500 and r.status_code not in (408, 429):
+                    break  # the request itself is wrong (e.g. too long): retrying won't help
+            time.sleep(2**attempt)
+        self.failures[reason] += 1
+        return ""
+
+
+def est_tokens(text: str) -> int:
+    return int(len(text) / CHARS_PER_TOKEN) + 1
+
+
+def item_tokens(item: q.Item) -> int:
+    return est_tokens(item.condition) + est_tokens(item.outcome) + 60
+
+
+def build_items(rows: pd.DataFrame, setting: str, seed: int) -> list[q.Item]:
+    items = []
+    for _, row in rows.iterrows():
+        key = q.row_key(row)
+        drawn = setting != "sampling"
+        persona = (
+            q.persona_lines(row["persona"])
+            if setting in ("full_persona", "group")
+            else row["persona_text"]
+        )
+        items.append(
+            q.Item(
+                key=key,
+                participant_id=row["participant_id"],
+                persona=persona,
+                condition=row["condition"],
+                outcome=row["outcome"],
+                response=str(row["response"]),
+                scale_min=int(row["scale_min"]),
+                scale_max=int(row["scale_max"]),
+                angle=q.draw_angle(seed, key) if drawn else None,
+                voice=q.draw_voice(seed, row["study"], row["participant_id"]) if drawn else None,
+            )
+        )
+    return items
+
+
+def plan_calls(rows: pd.DataFrame, items: list[q.Item], setting: str) -> list[list[int]]:
+    """Positions of the items written together, one list per call. Every item is in
+    exactly one call; a call holds at most MAX_ITEMS and stays within PROMPT_BUDGET
+    (a single item over budget still gets a call of its own)."""
+    calls: list[list[int]] = []
+    left = list(range(len(rows)))
+    if setting == "group":
+        used: set[int] = set()
+        for _, g in rows.groupby(["recipe", "factors", "outcome", "response"], sort=True):
+            # one row per respondent in a group call, so k different people
+            firsts = [rows.index.get_loc(i) for i in g.drop_duplicates("participant_id").index]
+            for start in range(0, len(firsts) - len(firsts) % GROUP_K, GROUP_K):
+                chunk = firsts[start : start + GROUP_K]
+                persona_cost = sum(est_tokens(items[i].persona) for i in chunk)
+                if persona_cost + sum(item_tokens(items[i]) for i in chunk) > PROMPT_BUDGET:
+                    continue  # too long to write together; these go to their own calls
+                calls.append(chunk)
+                used.update(chunk)
+        left = [i for i in left if i not in used]
+    rest = rows.iloc[left]
+    for _, person in rest.groupby(["study", "participant_id"], sort=True):
+        ordered = [
+            rows.index.get_loc(i) for i in person.sort_values(["condition_num", "task_num"]).index
+        ]
+        budget = PROMPT_BUDGET - est_tokens(items[ordered[0]].persona)
+        call: list[int] = []
+        used_tokens = 0
+        for i in ordered:
+            cost = item_tokens(items[i])
+            if call and (len(call) == MAX_ITEMS or used_tokens + cost > budget):
+                calls.append(call)
+                call, used_tokens = [], 0
+            call.append(i)
+            used_tokens += cost
+        calls.append(call)
+    return calls
+
+
+def write_call(writer: Server, system: str, items: Sequence[q.Item]) -> list[str | None]:
+    messages = q.writer_messages(system, items)
+    schema = q.writer_schema(len(items))
+    for _ in range(2):  # one retry on an unusable reply
+        got = q.parse_quotes(
+            writer.chat(messages, schema, TOKENS_PER_QUOTE * len(items) + 50), len(items)
+        )
+        if got:
+            return list(got)
+    return [None] * len(items)
+
+
+NOT_WRITTEN = {
+    "failed": ["not_written"],
+    "notes": "",
+    "blind_prediction": None,
+    "blind_agrees": False,
+}
+
+
+def check_one(
+    checker: Server, prompts: dict[str, str], item: q.Item, quote: str, nominal: bool, actual: float
+) -> dict[str, Any]:
+    verdict = q.parse_verdict(
+        checker.chat(q.checker_messages(prompts["checker"], item, quote), q.checker_schema(), 400)
+    )
+    predicted = q.parse_blind(
+        checker.chat(q.blind_messages(prompts["blind"], item, quote), BLIND_SCHEMA, 50)
+    )
+    agrees = predicted is not None and q.direction_agrees(
+        predicted, actual, item.scale_min, item.scale_max, nominal
+    )
+    failed = q.failed_checks(verdict) if verdict else ["unreadable_verdict"]
+    notes = (verdict or {}).get("notes", "")
+    if not agrees:
+        failed.append("blind_test")
+        notes += " The quote suggests a different answer from the one they actually gave."
+    return {
+        "failed": failed,
+        "notes": notes.strip(),
+        "blind_prediction": predicted,
+        "blind_agrees": agrees,
+    }
+
+
+def training_rows_only(rows: pd.DataFrame, split: Path = SPLIT) -> None:
+    """Refuse rows from any study the split does not put in training."""
+    seen = set(json.loads(split.read_text())["seen"])
+    if bad := sorted(set(rows["study"]) - seen):
+        sys.exit(f"rows from studies not in training: {bad[:5]}: a quote on them leaks the answer")
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("rows", type=Path)
+    ap.add_argument("out", type=Path)
+    ap.add_argument("--url", default=os.environ.get("QUOTES_URL"), help="the pod's router")
+    ap.add_argument("--setting", choices=SETTINGS, default="full_persona")
+    ap.add_argument(
+        "--keys", type=Path, help="parquet of ROW_KEY columns to restrict to (the pilot)"
+    )
+    ap.add_argument("--existing", type=Path, nargs="+", default=[], help="earlier run folders")
+    ap.add_argument("--limit", type=int, help="first N rows only, for a smoke test")
+    ap.add_argument("--seed", type=int, default=3407)
+    ap.add_argument("--workers", type=int, default=32)
+    args = ap.parse_args()
+
+    key = os.environ.get("QUOTES_API_KEY", "")
+    if not args.url or not key:
+        sys.exit("set --url (or QUOTES_URL) and QUOTES_API_KEY")
+    if args.out.exists() and any(args.out.iterdir()):
+        sys.exit(f"{args.out} is not empty: a run is never overwritten")
+
+    rows = pd.read_parquet(args.rows)
+    training_rows_only(rows)
+    rows = rows[rows.apply(q.is_text_row, axis=1)]
+    if args.keys:
+        keys = pd.read_parquet(args.keys)[q.ROW_KEY]
+        rows = rows.reset_index(drop=True).merge(keys, on=q.ROW_KEY, validate="one_to_one")
+    if args.existing:
+        done = q.merge_tables(pd.read_parquet(run / "quotes.parquet") for run in args.existing)
+        joined, _ = q.join_quotes(rows, done)
+        rows = rows[~joined["synthetic_quote"].to_numpy()]
+    if args.limit:
+        rows = rows.head(args.limit)
+    rows = rows.reset_index(drop=True)
+    args.out.mkdir(parents=True, exist_ok=True)
+    print(f"rows to write: {len(rows)}  setting: {args.setting}", flush=True)
+
+    prompts, prompt_hashes = {}, {}
+    for name in ("writer", "checker", "blind"):
+        prompts[name], prompt_hashes[name] = q.load_prompt(f"{name}_v1.md")
+
+    http = httpx.Client(timeout=300, headers={"Authorization": f"Bearer {key}"})
+    writer = Server(args.url, "writer", WRITER_SAMPLING, http)
+    checker = Server(args.url, "checker", CHECKER_SAMPLING, http)
+    items = build_items(rows, args.setting, args.seed)
+    calls = plan_calls(rows, items, args.setting)
+
+    quotes: list[str | None] = [None] * len(items)
+    results: list[dict[str, Any]] = [NOT_WRITTEN] * len(items)
+    rounds = [0] * len(items)
+    nominal = rows["scale_nominal"].astype(bool).tolist()
+    actual = rows["response_num"].astype(float).tolist()
+
+    def save(phase: str) -> dict[str, Any]:
+        table = rows[q.ROW_KEY].copy()
+        table["input_hash"] = rows.apply(q.input_hash, axis=1)
+        table["quote"] = pd.Series(quotes, dtype=object)
+        table["passed"] = [not r["failed"] for r in results]
+        table["rounds"] = rounds
+        table["angle"] = [it.angle for it in items]
+        table["voice"] = [it.voice for it in items]
+        table["setting"] = args.setting
+        table["failed_checks"] = [json.dumps(r["failed"]) for r in results]
+        table["blind_prediction"] = [r["blind_prediction"] for r in results]
+        table["blind_agrees"] = [r["blind_agrees"] for r in results]
+        table["run"] = args.out.name
+        table = table[q.TABLE_COLUMNS]
+        table.to_parquet(args.out / "quotes.parquet", index=False)
+        report = summarise(rows, table)
+        manifest = {
+            "run": args.out.name,
+            "phase": phase,
+            "updated": datetime.now(UTC).isoformat(timespec="seconds"),
+            "rows_file": str(args.rows),
+            "setting": args.setting,
+            "seed": args.seed,
+            "writer": {"model": writer.root, "sampling": WRITER_SAMPLING},
+            "checker": {"model": checker.root, "sampling": CHECKER_SAMPLING},
+            "prompts": {f"{k}_v1.md": h for k, h in prompt_hashes.items()},
+            "repair_rounds": REPAIR_ROUNDS,
+            "group_k": GROUP_K if args.setting == "group" else None,
+            "request_failures": {
+                "writer": dict(writer.failures),
+                "checker": dict(checker.failures),
+            },
+            **report,
+        }
+        (args.out / "run.json").write_text(json.dumps(manifest, indent=2, default=str) + "\n")
+        return report
+
+    def check(i: int) -> dict[str, Any]:
+        quote = quotes[i]
+        if quote is None:
+            return NOT_WRITTEN
+        return check_one(checker, prompts, items[i], quote, nominal[i], actual[i])
+
+    def repair(i: int) -> str | None:
+        quote = quotes[i]
+        if quote is None:
+            return write_call(writer, prompts["writer"], [items[i]])[0]
+        reply = writer.chat(
+            q.repair_messages(prompts["writer"], items[i], quote, results[i]["notes"]),
+            q.writer_schema(1),
+            TOKENS_PER_QUOTE + 50,
+        )
+        got = q.parse_quotes(reply, 1)
+        return got[0] if got else None
+
+    with ThreadPoolExecutor(args.workers) as pool:
+        # phase 1: write everything
+        for call, got in zip(
+            calls,
+            pool.map(lambda c: write_call(writer, prompts["writer"], [items[i] for i in c]), calls),
+            strict=True,
+        ):
+            for i, quote in zip(call, got, strict=True):
+                quotes[i] = quote
+        save("written")
+        print(
+            f"written: {sum(x is not None for x in quotes)} of {len(items)} ({len(calls)} calls)",
+            flush=True,
+        )
+
+        # phase 2: check everything; phases 3+: rewrite the duds and check them again
+        todo = list(range(len(items)))
+        for round_ in range(REPAIR_ROUNDS + 1):
+            if round_:
+                for i, new in zip(todo, pool.map(repair, todo), strict=True):
+                    quotes[i], rounds[i] = new, round_
+            for i, res in zip(todo, pool.map(check, todo), strict=True):
+                results[i] = res
+            todo = [i for i in todo if results[i]["failed"]]
+            save("checked" if round_ == 0 else f"repair {round_}")
+            print(f"round {round_}: {len(items) - len(todo)} of {len(items)} pass", flush=True)
+            if not todo:
+                break
+
+    report = save("done")
+    print(json.dumps({k: report[k] for k in ("rows", "passed", "pass_rate")}, indent=2))
+    if writer.failures or checker.failures:
+        print(f"request failures: writer {dict(writer.failures)}, checker {dict(checker.failures)}")
+
+
+def summarise(rows: pd.DataFrame, table: pd.DataFrame) -> dict[str, Any]:
+    """Counts only. Pass rate by source, study, angle family and how unusual the answer is,
+    so a checker that quietly filters irrational angles or unusual answers shows up."""
+    passed = table["passed"].astype(bool)
+    fails: Counter[str] = Counter()
+    for f in table["failed_checks"]:
+        fails.update(json.loads(f))
+    width = (rows["scale_max"] - rows["scale_min"]).clip(lower=1)
+    typical = rows.groupby(["recipe", "outcome"])["response_num"].transform("mean")
+    unusual = pd.cut(
+        ((rows["response_num"] - typical).abs() / width),
+        [-0.01, 0.15, 0.35, 1.01],
+        labels=["typical", "somewhat unusual", "unusual"],
+    )
+    family = table["angle"].map(
+        lambda a: None if a is None else ("reasoned" if a in q.REASONED_ANGLES else "unreasoned")
+    )
+
+    def rate(by: pd.Series) -> dict[str, dict[str, float]]:
+        g = passed.groupby(by.to_numpy(), observed=True)
+        return {
+            str(k): {"rows": int(n), "pass_rate": round(float(r), 3)}
+            for k, n, r in zip(g.size().index, g.size(), g.mean(), strict=True)
+        }
+
+    return {
+        "rows": len(table),
+        "passed": int(passed.sum()),
+        "pass_rate": round(float(passed.mean()), 3) if len(table) else None,
+        "without_quote": int((~passed).sum()),
+        "failed_checks": dict(fails.most_common()),
+        "blind_agreement": round(float(table["blind_agrees"].astype(bool).mean()), 3)
+        if len(table)
+        else None,
+        "by_source": rate(rows["source"]),
+        "by_study": rate(rows["study"]),
+        "by_angle_family": rate(family.fillna("none")),
+        "by_unusualness": rate(unusual.astype(str)),
+        "rounds_needed": {
+            str(k): int(v)
+            for k, v in table.loc[passed, "rounds"].value_counts().sort_index().items()
+        },
+    }
+
+
+if __name__ == "__main__":
+    main()
