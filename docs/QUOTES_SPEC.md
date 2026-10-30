@@ -213,7 +213,7 @@ models later). vLLM 0.32.0 serves the writer and the checker side by side on one
 80 GB, each with 0.45 of its memory and a 16,384-token context; Gemma 4 has no published
 FP8 copy, so vLLM quantises it on load. A small router (`scripts/quotes_router.py`)
 sends each request to the model it names, `writer` or `checker`, on one HTTPS address
-with an API key (`QUOTES_API_KEY`).
+with an API key (`RUNPOD_QUOTES_API_KEY`).
 
 `scripts/quotes_run.py` runs here and calls that address in phases: write all, check
 all, rewrite the duds, check them again. It saves the quote table after every phase,

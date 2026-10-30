@@ -20,7 +20,7 @@ The models run on a RunPod pod behind one router; everything else runs here. Des
 |---|---|
 | `HF_TOKEN` | existing; the pod downloads the models with it |
 | `GITHUB_DATASETS_TOKEN` | GitHub fine-grained token `runpod-micromotives-datasets-read`: this repo only, Contents read-only. It expires, so renew it here when it does |
-| `QUOTES_API_KEY` | **new**: any long random string, e.g. from `openssl rand -hex 24`. The same value goes in `~/.bash_profile` here as `export QUOTES_API_KEY=...` |
+| `RUNPOD_QUOTES_API_KEY` | **new**: any long random string, e.g. from `openssl rand -hex 24`. The same value goes in `~/.bash_profile` here as `export RUNPOD_QUOTES_API_KEY=...` |
 
 **Template** `micromotives-quotes` (RunPod → Templates):
 
@@ -31,7 +31,7 @@ The models run on a RunPod pod behind one router; everything else runs here. Des
 - **Expose HTTP port 4000** (the router).
 - Environment variables: `HF_TOKEN` = `{{ RUNPOD_SECRET_HF_TOKEN }}`,
   `GITHUB_DATASETS_TOKEN` = `{{ RUNPOD_SECRET_GITHUB_DATASETS_TOKEN }}` (alongside
-  training's `GITHUB_TOKEN` when the template is shared), `QUOTES_API_KEY` = `{{ RUNPOD_SECRET_QUOTES_API_KEY }}`,
+  training's `GITHUB_TOKEN` when the template is shared), `RUNPOD_QUOTES_API_KEY` = `{{ RUNPOD_SECRET_RUNPOD_QUOTES_API_KEY }}`,
   `HF_HOME` = `/workspace/hf`.
 
 ## Each session
@@ -91,7 +91,7 @@ then upload as before.
 | `/health` shows a model `false` | `tmux attach -t serve`; read `/workspace/serve/<writer or checker>.log` |
 | checker never comes up | Gemma 4 or FP8-on-load unsupported by this vLLM: read `checker.log`, try the next release |
 | `the pod is not serving 'writer'` | the router started before a model; restart `pod_serve_quotes.sh` |
-| `401` from the router | `QUOTES_API_KEY` here differs from the pod's secret |
+| `401` from the router | `RUNPOD_QUOTES_API_KEY` here differs from the pod's secret |
 | clone fails with 403 | `GITHUB_DATASETS_TOKEN` is missing from the template, misspelt, or expired |
 
 Not yet run on a pod: the first pilot is the test of `pod_serve_quotes.sh`. The runner,

@@ -1,13 +1,13 @@
 """Route OpenAI-style requests to the model they name. Runs on the RunPod pod.
 
-    QUOTES_API_KEY=... uv run python scripts/quotes_router.py \\
+    RUNPOD_QUOTES_API_KEY=... uv run python scripts/quotes_router.py \\
         --route writer=http://127.0.0.1:8000 --route checker=http://127.0.0.1:8001
 
 One address for everything the pod serves (docs/RUNPOD_QUOTES.md). A request's
 `model` field picks the backend ("writer", "checker"; each vLLM server is started with
 that --served-model-name), and the body is passed on untouched, so model-specific
 settings such as the writer's `chat_template_kwargs` arrive exactly as sent. Every
-request needs `Authorization: Bearer $QUOTES_API_KEY`, except GET /health.
+request needs `Authorization: Bearer $RUNPOD_QUOTES_API_KEY`, except GET /health.
 """
 
 from __future__ import annotations
@@ -118,9 +118,9 @@ def main() -> None:
     ap.add_argument("--route", action="append", required=True, help="name=url, repeatable")
     ap.add_argument("--port", type=int, default=4000)
     args = ap.parse_args()
-    key = os.environ.get("QUOTES_API_KEY", "")
+    key = os.environ.get("RUNPOD_QUOTES_API_KEY", "")
     if len(key) < 16:
-        raise SystemExit("QUOTES_API_KEY must be set (16+ characters): the pod's port is public")
+        raise SystemExit("RUNPOD_QUOTES_API_KEY must be set (16+ characters): the pod's port is public")
     routes = parse_routes(args.route)
     print(f"routing {sorted(routes)} on :{args.port}", flush=True)
     Server(("0.0.0.0", args.port), make_handler(routes, key)).serve_forever()
