@@ -74,7 +74,17 @@ SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # the facts of the condition right; the checker names the chosen option first.
 # v8 (30 Oct 2026, rich): the non-negotiables as an IMPORTANT block of hard rules at the
 # top of the writer prompt, including never "just" (28% of v7 drafts had it).
-PROMPT_VERSION = "v8"
+# v9 (30 Oct 2026, rich, after the v7 read: 22 good, 29 weak, 9 wrong): fewer rules, not
+# more. No assigned reason angle (it was crammed in where it did not fit), short voices are
+# "short, but whole sentences" instead of a ten-word cap, and the bans live in code
+# ("just" included) rather than in a long prompt.
+PROMPT_VERSION = "v9"
+
+
+def vnum(version: str) -> int:
+    return int(version.lstrip("v"))
+
+
 AI_TELLS_FROM = "v7"
 VOICE_EXAMPLES_FROM = "v6"  # prompt versions from this one on get voice examples
 
@@ -222,7 +232,11 @@ def item_tokens(item: q.Item) -> int:
 
 
 def build_items(
-    rows: pd.DataFrame, setting: str, seed: int, pool: q.VoicePool | None = None
+    rows: pd.DataFrame,
+    setting: str,
+    seed: int,
+    pool: q.VoicePool | None = None,
+    angles: bool = True,
 ) -> list[q.Item]:
     items = []
     for _, row in rows.iterrows():
@@ -243,7 +257,7 @@ def build_items(
                 response=str(row["response"]),
                 scale_min=int(row["scale_min"]),
                 scale_max=int(row["scale_max"]),
-                angle=q.draw_angle(seed, key) if drawn else None,
+                angle=q.draw_angle(seed, key) if drawn and angles else None,
                 voice=q.draw_voice(seed, row["study"], row["participant_id"]) if drawn else None,
                 examples=pool.pick(seed, key, q.persona_bands(row["persona"])) if pool else (),
             )
@@ -318,8 +332,11 @@ def check_one(
     actual: float,
     blind: bool = True,
     tells_on: bool = False,
+    just_banned: bool = False,
 ) -> dict[str, Any]:
-    if tells_on and (tells := q.ai_tells(quote)):  # no checker call needed
+    if tells_on and (
+        tells := q.ai_tells(quote, skip=() if just_banned else ("just",))
+    ):  # no checker call needed
         return {
             "failed": [f"ai_tell:{t}" for t in tells],
             "notes": "Sounds like AI writing ("
@@ -463,10 +480,10 @@ def main() -> None:
         "writer": Server(args.url, "writer", WRITER_SAMPLING, http),
         "checker": Server(args.url, "checker", CHECKER_SAMPLING, http),
     }
-    pool = q.VoicePool.load() if version >= VOICE_EXAMPLES_FROM else None
-    if version >= VOICE_EXAMPLES_FROM and pool is None:
+    pool = q.VoicePool.load() if vnum(version) >= vnum(VOICE_EXAMPLES_FROM) else None
+    if vnum(version) >= vnum(VOICE_EXAMPLES_FROM) and pool is None:
         sys.exit(f"{version} needs the voice pool: run scripts/bes_voice_pool.py first")
-    items = build_items(rows, args.setting, args.seed, pool)
+    items = build_items(rows, args.setting, args.seed, pool, angles=vnum(version) < 9)
     n = len(items)
 
     quotes: list[str | None] = [None] * n
@@ -559,7 +576,8 @@ def main() -> None:
             nominal[i],
             actual[i],
             blind=not args.no_blind,
-            tells_on=version >= AI_TELLS_FROM,
+            tells_on=vnum(version) >= vnum(AI_TELLS_FROM),
+            just_banned=vnum(version) >= 9,
         )
 
     def rewrite(i: int) -> str | None:

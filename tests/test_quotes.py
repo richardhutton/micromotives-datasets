@@ -444,7 +444,8 @@ def test_examples_reach_the_writer_but_not_the_blind_test() -> None:
     [
         ("It sits in your gut \u2014 we can't keep doing this.", ["dash"]),
         ("Well... I don't know.", ["ellipsis"]),
-        ("It's not just the money, but the principle.", ["not_x_but_y"]),
+        ("It's not only the money, but the principle.", ["not_x_but_y"]),
+        ("It's just wrong.", ["just"]),
         ("It's not about money, it's about respect.", ["not_x_but_y"]),
         ("Look, I've always voted that way.", ["staged_opener"]),
         ("I don't like them asking me that.", ["survey_talk"]),
@@ -469,3 +470,7 @@ def test_ai_tells_catch_the_humanizer_patterns(quote: str, tells: list[str]) -> 
 )
 def test_ai_tells_leave_ordinary_speech_alone(quote: str) -> None:
     assert q.ai_tells(quote) == []
+
+
+def test_just_can_be_left_out_for_older_prompt_versions() -> None:
+    assert q.ai_tells("It's just wrong.", skip=("just",)) == []

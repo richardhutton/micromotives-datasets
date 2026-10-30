@@ -79,8 +79,8 @@ ANGLES = REASONED_ANGLES + UNREASONED_ANGLES
 VOICE_DIMENSIONS = [
     # length and manner as one dimension, so no voice is "says very little" and "rambling"
     [
-        "says very little (ten words at most), blunt",
-        "says very little (ten words at most), gentle",
+        "says very little (short, but whole sentences), blunt",
+        "says very little (short, but whole sentences), gentle",
         "chatty",
         "rambling",
     ],
@@ -400,13 +400,14 @@ AI_TELLS = {
         r"\b(survey|questionnaire|asking me|being asked|the passage|this study|who'?s counting)\b",
         re.I,
     ),
+    "just": re.compile(r"\bjust\b", re.I),  # Qwen's tic: 28% of v7 drafts; applied from v9
     "buzzword": re.compile(r"\b(gaslight\w*|red flag|toxic|delve|tapestry|testament)\b", re.I),
 }
 
 
-def ai_tells(quote: str) -> list[str]:
+def ai_tells(quote: str, skip: Sequence[str] = ()) -> list[str]:
     """Humanizer tells that need no judgement to spot; any one fails the quote (v7)."""
-    return [name for name, pattern in AI_TELLS.items() if pattern.search(quote)]
+    return [n for n, pattern in AI_TELLS.items() if n not in skip and pattern.search(quote)]
 
 
 # --- checking --------------------------------------------------------------------------
