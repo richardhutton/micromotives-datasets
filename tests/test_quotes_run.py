@@ -378,3 +378,27 @@ def test_join_never_puts_a_synthetic_quote_over_a_real_one() -> None:
     assert out["quote"].tolist() == ["what they wrote"]
     assert out["synthetic_quote"].tolist() == [False]
     assert counts.stale == 0
+
+
+def test_without_the_blind_test_a_check_is_one_call_and_cannot_fail_on_it(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    sent: list[dict[str, Any]] = []
+
+    def handler(r: httpx.Request) -> httpx.Response:
+        sent.append(json.loads(r.content))
+        verdict = dict.fromkeys(q.CHECKS, True) | {"notes": ""}
+        return httpx.Response(
+            200, json={"choices": [{"message": {"content": json.dumps(verdict)}}]}
+        )
+
+    checker = run.Server(
+        "http://pod", "checker", {}, httpx.Client(transport=httpx.MockTransport(handler))
+    )
+    item = run.build_items(_rows(people=1, per_person=1), "full_persona", 1)[0]
+    off = run.check_one(
+        checker, {"checker": "C", "blind": "B"}, item, "a quote", False, 3.0, blind=False
+    )
+    assert len(sent) == 1 and off["failed"] == [] and off["blind_agrees"] is None
+    on = run.check_one(checker, {"checker": "C", "blind": "B"}, item, "a quote", False, 3.0)
+    assert len(sent) == 3 and "blind_test" in on["failed"]  # the stub's reply has no answer

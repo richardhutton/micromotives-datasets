@@ -276,19 +276,27 @@ NOT_WRITTEN = {
 
 
 def check_one(
-    checker: Server, prompts: dict[str, str], item: q.Item, quote: str, nominal: bool, actual: float
+    checker: Server,
+    prompts: dict[str, str],
+    item: q.Item,
+    quote: str,
+    nominal: bool,
+    actual: float,
+    blind: bool = True,
 ) -> dict[str, Any]:
     verdict = q.parse_verdict(
         checker.chat(q.checker_messages(prompts["checker"], item, quote), q.checker_schema(), 400)
     )
+    failed = q.failed_checks(verdict) if verdict else ["unreadable_verdict"]
+    notes = (verdict or {}).get("notes", "")
+    if not blind:  # rich, 30 Oct 2026: off for the full run; measured on a sample instead
+        return {"failed": failed, "notes": notes, "blind_prediction": None, "blind_agrees": None}
     predicted = q.parse_blind(
         checker.chat(q.blind_messages(prompts["blind"], item, quote), BLIND_SCHEMA, 50)
     )
     agrees = predicted is not None and q.direction_agrees(
         predicted, actual, item.scale_min, item.scale_max, nominal
     )
-    failed = q.failed_checks(verdict) if verdict else ["unreadable_verdict"]
-    notes = (verdict or {}).get("notes", "")
     if not agrees:
         failed.append("blind_test")
         notes += " The quote suggests a different answer from the one they actually gave."
@@ -342,6 +350,9 @@ def main() -> None:
     ap.add_argument("--existing", type=Path, nargs="+", default=[], help="earlier run folders")
     ap.add_argument("--limit", type=int, help="first N rows only, for a smoke test")
     ap.add_argument("--resume", action="store_true", help="carry on the run saved in OUT")
+    ap.add_argument(
+        "--no-blind", action="store_true", help="skip the blind test: one checker call per quote"
+    )
     ap.add_argument("--seed", type=int, default=3407)
     ap.add_argument("--workers", type=int, default=64)
     args = ap.parse_args()
@@ -451,6 +462,7 @@ def main() -> None:
             "checker": {"model": servers["checker"].root, "sampling": CHECKER_SAMPLING},
             "prompts": {f"{k}_{PROMPT_VERSION}.md": h for k, h in prompt_hashes.items()},
             "repair_rounds": REPAIR_ROUNDS,
+            "blind_test": not args.no_blind,
             "group_k": GROUP_K if args.setting == "group" else None,
             "request_failures": {k: dict(s.failures) for k, s in servers.items()},
             **report,
@@ -464,7 +476,9 @@ def main() -> None:
         quote = quotes[i]
         if quote is None:
             return NOT_WRITTEN
-        return check_one(checker, prompts, items[i], quote, nominal[i], actual[i])
+        return check_one(
+            checker, prompts, items[i], quote, nominal[i], actual[i], blind=not args.no_blind
+        )
 
     def rewrite(i: int) -> str | None:
         quote = quotes[i]
@@ -549,9 +563,11 @@ def summarise(rows: pd.DataFrame, table: pd.DataFrame) -> dict[str, Any]:
         "pass_rate": round(float(passed.mean()), 3) if len(table) else None,
         "without_quote": int((~passed).sum()),
         "failed_checks": dict(fails.most_common()),
-        "blind_agreement": round(float(table["blind_agrees"].astype(bool).mean()), 3)
-        if len(table)
-        else None,
+        "blind_agreement": (
+            round(float(tested.astype(bool).mean()), 3)
+            if len(tested := table["blind_agrees"].dropna())
+            else None
+        ),
         "by_source": rate(rows["source"]),
         "by_study": rate(rows["study"]),
         "by_angle_family": rate(family.fillna("none")),
