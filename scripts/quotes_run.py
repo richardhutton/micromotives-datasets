@@ -72,7 +72,9 @@ SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # banned in the prompt and caught in code (dashes, ellipses, "not X but Y", staged openers,
 # survey talk, buzzwords); a spoken sentence, not notes; relatives in at most one in five;
 # the facts of the condition right; the checker names the chosen option first.
-PROMPT_VERSION = "v7"
+# v8 (30 Oct 2026, rich): the non-negotiables as an IMPORTANT block of hard rules at the
+# top of the writer prompt, including never "just" (28% of v7 drafts had it).
+PROMPT_VERSION = "v8"
 AI_TELLS_FROM = "v7"
 VOICE_EXAMPLES_FROM = "v6"  # prompt versions from this one on get voice examples
 
