@@ -84,7 +84,8 @@ then upload as before.
 - RunPod's HTTPS proxy closes a request after about 100 seconds, which is why a writer
   call holds at most six rows. If `request_failures` shows many timeouts (`ReadTimeout`
   or `http 524`), lower `MAX_ITEMS` in `quotes_run.py`.
-- Each vLLM server gets 0.45 of the H100's memory, with a 16,384-token context.
+- On the 96 GB card the writer gets 0.40 of the memory (16,384-token context) and the
+  checker 0.53 (8,192: one quote per check), each with at most 64 requests in flight.
 
 | Symptom | Fix |
 |---|---|
