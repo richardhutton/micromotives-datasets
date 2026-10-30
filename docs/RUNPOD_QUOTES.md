@@ -19,7 +19,7 @@ The models run on a RunPod pod behind one router; everything else runs here. Des
 | Secret | Holds |
 |---|---|
 | `HF_TOKEN` | existing; the pod downloads the models with it |
-| `GITHUB_DATASET_TOKEN` | GitHub fine-grained token `runpod-micromotives-datasets-read`: this repo only, Contents read-only. It expires, so renew it here when it does |
+| `GITHUB_DATASETS_TOKEN` | GitHub fine-grained token `runpod-micromotives-datasets-read`: this repo only, Contents read-only. It expires, so renew it here when it does |
 | `QUOTES_API_KEY` | **new**: any long random string, e.g. from `openssl rand -hex 24`. The same value goes in `~/.bash_profile` here as `export QUOTES_API_KEY=...` |
 
 **Template** `micromotives-quotes` (RunPod → Templates):
@@ -30,8 +30,8 @@ The models run on a RunPod pod behind one router; everything else runs here. Des
   download once and are kept while the pod is stopped.
 - **Expose HTTP port 4000** (the router).
 - Environment variables: `HF_TOKEN` = `{{ RUNPOD_SECRET_HF_TOKEN }}`,
-  `GITHUB_TOKEN` = `{{ RUNPOD_SECRET_GITHUB_DATASET_TOKEN }}` (the scripts read
-  `GITHUB_TOKEN`), `QUOTES_API_KEY` = `{{ RUNPOD_SECRET_QUOTES_API_KEY }}`,
+  `GITHUB_DATASETS_TOKEN` = `{{ RUNPOD_SECRET_GITHUB_DATASETS_TOKEN }}` (alongside
+  training's `GITHUB_TOKEN` when the template is shared), `QUOTES_API_KEY` = `{{ RUNPOD_SECRET_QUOTES_API_KEY }}`,
   `HF_HOME` = `/workspace/hf`.
 
 ## Each session
@@ -43,7 +43,7 @@ The models run on a RunPod pod behind one router; everything else runs here. Des
 
 ```
 cd /workspace
-[ -d micromotives-datasets ] || git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GITHUB_TOKEN; }; f' \
+[ -d micromotives-datasets ] || git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GITHUB_DATASETS_TOKEN; }; f' \
   clone https://github.com/richardhutton/micromotives-datasets.git
 cd micromotives-datasets
 bash scripts/pod_serve_quotes.sh
@@ -92,7 +92,7 @@ then upload as before.
 | checker never comes up | Gemma 4 or FP8-on-load unsupported by this vLLM: read `checker.log`, try the next release |
 | `the pod is not serving 'writer'` | the router started before a model; restart `pod_serve_quotes.sh` |
 | `401` from the router | `QUOTES_API_KEY` here differs from the pod's secret |
-| clone fails with 403 | the template's `GITHUB_TOKEN` must point at `GITHUB_DATASET_TOKEN`, and that token must not have expired |
+| clone fails with 403 | `GITHUB_DATASETS_TOKEN` is missing from the template, misspelt, or expired |
 
 Not yet run on a pod: the first pilot is the test of `pod_serve_quotes.sh`. The runner,
 router and variety script have been run end to end here against stand-in models.

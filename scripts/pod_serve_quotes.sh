@@ -47,9 +47,10 @@ fi
 [[ -n "${HF_TOKEN:-}" ]] || { echo "HF_TOKEN is not set: check the template"; exit 1; }
 [[ ${#QUOTES_API_KEY} -ge 16 ]] || { echo "QUOTES_API_KEY is not set (16+ characters): check the template"; exit 1; }
 
-git config --global credential.helper \
-  '!f(){ echo username=x-access-token; echo password=$GITHUB_TOKEN; }; f'
-git pull --ff-only
+# This repo's own read token; GITHUB_TOKEN on the same template belongs to the training repo.
+[[ -n "${GITHUB_DATASETS_TOKEN:-}" ]] || { echo "GITHUB_DATASETS_TOKEN is not set: check the template"; exit 1; }
+git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GITHUB_DATASETS_TOKEN; }; f' \
+  pull --ff-only
 
 command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
 uv sync
