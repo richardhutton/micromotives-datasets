@@ -45,6 +45,8 @@ import pandas as pd
 from micromotives_datasets import quotes as q
 
 SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
+# v2 (30 Oct 2026, rich): invented details allowed if they fit the person; a clash fails.
+PROMPT_VERSION = "v2"
 MAX_ITEMS = 6  # rows per writer call: keeps each reply well inside the proxy's timeout
 PROMPT_BUDGET = 6000  # estimated prompt tokens per writer call; the servers allow 16,384
 CHARS_PER_TOKEN = 3.5  # deliberately low, so the estimate errs towards smaller calls
@@ -281,7 +283,7 @@ def main() -> None:
 
     prompts, prompt_hashes = {}, {}
     for name in ("writer", "checker", "blind"):
-        prompts[name], prompt_hashes[name] = q.load_prompt(f"{name}_v1.md")
+        prompts[name], prompt_hashes[name] = q.load_prompt(f"{name}_{PROMPT_VERSION}.md")
 
     http = httpx.Client(timeout=300, headers={"Authorization": f"Bearer {key}"})
     writer = Server(args.url, "writer", WRITER_SAMPLING, http)
@@ -320,7 +322,7 @@ def main() -> None:
             "seed": args.seed,
             "writer": {"model": writer.root, "sampling": WRITER_SAMPLING},
             "checker": {"model": checker.root, "sampling": CHECKER_SAMPLING},
-            "prompts": {f"{k}_v1.md": h for k, h in prompt_hashes.items()},
+            "prompts": {f"{k}_{PROMPT_VERSION}.md": h for k, h in prompt_hashes.items()},
             "repair_rounds": REPAIR_ROUNDS,
             "group_k": GROUP_K if args.setting == "group" else None,
             "request_failures": {

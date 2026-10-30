@@ -97,7 +97,13 @@ def test_angle_families_are_the_same_size() -> None:
 def test_voice_is_one_per_respondent_and_differs_between_them() -> None:
     assert q.draw_voice(1, "s", "p1") == q.draw_voice(1, "s", "p1")
     voices = {q.draw_voice(1, "s", f"p{i}") for i in range(200)}
-    assert len(voices) == 2 ** len(q.VOICE_DIMENSIONS)
+    assert len(voices) == 4 * 2 * 2  # every combination is reachable
+
+
+def test_no_voice_is_both_terse_and_rambling() -> None:
+    for i in range(500):
+        voice = q.draw_voice(1, "s", f"p{i}")
+        assert not ("says very little" in voice and "rambling" in voice)
 
 
 # --- prompts ----------------------------------------------------------------------------
@@ -130,9 +136,10 @@ def test_group_call_gives_each_person_their_own_details() -> None:
 
 
 def test_prompt_files_exist_and_carry_the_rules() -> None:
-    writer, _ = q.load_prompt("writer_v1.md")
-    checker, _ = q.load_prompt("checker_v1.md")
+    writer, _ = q.load_prompt("writer_v2.md")
+    checker, _ = q.load_prompt("checker_v2.md")
     assert "gut feeling" in writer and "never judge whether the reason is sensible" in checker
+    assert "divorced" in writer and "divorced" in checker  # details may be added, never clash
 
 
 # --- parsing ----------------------------------------------------------------------------

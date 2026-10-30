@@ -74,10 +74,10 @@ ANGLES = REASONED_ANGLES + UNREASONED_ANGLES
 # Voice, drawn once per respondent (one value per dimension), so one person sounds like
 # one person across a study's outcomes.
 VOICE_DIMENSIONS = [
-    ["says very little", "chatty"],
+    # length and manner as one dimension, so no voice is "says very little" and "rambling"
+    ["says very little, blunt", "says very little, gentle", "chatty", "rambling"],
     ["sure of themselves", "unsure, hedging"],
     ["plain-spoken", "articulate"],
-    ["blunt", "rambling"],
 ]
 
 CHECKS = [

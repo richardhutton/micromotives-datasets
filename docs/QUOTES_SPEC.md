@@ -163,7 +163,11 @@ Per quote, a structured (JSON) verdict:
   strength. A calm, neutral quote about a frightening scenario from someone it moved
   fails; so does alarm from someone it left cold; so does a quote that treats an
   imagined situation as a message read, or a vignette about someone else as their own.
-- **Stays within the persona**: no invented facts.
+- **Stays within the persona** (rich, 30 Oct 2026): small invented details that fit the
+  person are allowed, the way people explain themselves ("my sister got it too"); anything
+  that contradicts a recorded detail fails ("my wife" from someone divorced, grandchildren
+  from a 19-year-old, "at work" from someone retired). Prompts v2. Such details come from
+  the writer, so how OFTEN a reason or anecdote appears is not a finding about people.
 - **Aligned with the persona** (rich, 30 Oct 2026): a reason THIS person could
   plausibly give, given their age, life stage, work, household, region, education and
   views as recorded, and a voice that fits them. A quote that would fit anyone equally
