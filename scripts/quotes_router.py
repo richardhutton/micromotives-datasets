@@ -1,7 +1,7 @@
 """Route OpenAI-style requests to the model they name. Runs on the RunPod pod.
 
     QUOTES_API_KEY=... uv run python scripts/quotes_router.py \\
-        --route writer=http://127.0.0.1:8000 --route checker=http://127.0.0.1:8001
+        --route writer=http://127.0.0.1:8000 --route checker=http://127.0.0.1:8100
 
 One address for everything the pod serves (docs/RUNPOD_QUOTES.md). A request's
 `model` field picks the backend ("writer", "checker"; each vLLM server is started with
