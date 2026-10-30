@@ -402,3 +402,10 @@ def test_without_the_blind_test_a_check_is_one_call_and_cannot_fail_on_it(
     assert len(sent) == 1 and off["failed"] == [] and off["blind_agrees"] is None
     on = run.check_one(checker, {"checker": "C", "blind": "B"}, item, "a quote", False, 3.0)
     assert len(sent) == 3 and "blind_test" in on["failed"]  # the stub's reply has no answer
+
+
+def test_a_resumed_run_keeps_the_prompt_version_it_started_with() -> None:
+    assert run.prompt_version_of({"prompt_version": "v2"}) == "v2"
+    old = {"prompts": {"writer_v2.md": "h", "checker_v2.md": "h", "blind_v2.md": "h"}}
+    assert run.prompt_version_of(old) == "v2"  # saved before the version was recorded
+    assert run.prompt_version_of({}) == run.PROMPT_VERSION

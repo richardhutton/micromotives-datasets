@@ -140,6 +140,9 @@ def test_prompt_files_exist_and_carry_the_rules() -> None:
     checker, _ = q.load_prompt("checker_v2.md")
     assert "gut feeling" in writer and "never judge whether the reason is sensible" in checker
     assert "divorced" in writer and "divorced" in checker  # details may be added, never clash
+    w3, _ = q.load_prompt("writer_v3.md")
+    c3, _ = q.load_prompt("checker_v3.md")
+    assert "Never describe filling in the survey" in w3 and "Seventy billion" in c3
 
 
 # --- parsing ----------------------------------------------------------------------------

@@ -55,7 +55,20 @@ from micromotives_datasets import quotes as q
 
 SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # v2 (30 Oct 2026, rich): invented details allowed if they fit the person; a clash fails.
-PROMPT_VERSION = "v2"
+# v3 (30 Oct 2026, rich, from batch 1's rejects): unreasoned reasons react to the condition,
+# never to filling in the survey; no answer talk in words either; figures from the
+# condition are not giveaways; react to named features of a profile.
+PROMPT_VERSION = "v3"
+
+
+def prompt_version_of(manifest: dict[str, Any]) -> str:
+    """The prompt version a saved run used, so a resumed run never mixes two."""
+    if "prompt_version" in manifest:
+        return str(manifest["prompt_version"])
+    names = list(manifest.get("prompts", {}))
+    return names[0].rsplit("_", 1)[1].removesuffix(".md") if names else PROMPT_VERSION
+
+
 MAX_ITEMS = 6  # rows per writer call: keeps each reply well inside the proxy's timeout
 PROMPT_BUDGET = 6000  # estimated prompt tokens per writer call; the servers allow 16,384
 CHARS_PER_TOKEN = 3.5  # deliberately low, so the estimate errs towards smaller calls
@@ -371,6 +384,7 @@ def main() -> None:
         saved = pd.read_parquet(args.out / "quotes.parquet")
         manifest = json.loads((args.out / "run.json").read_text())
         phase, args.setting, args.seed = manifest["phase"], manifest["setting"], manifest["seed"]
+        version = prompt_version_of(manifest)
         rows = saved[q.ROW_KEY].merge(all_rows, on=q.ROW_KEY, how="left", validate="one_to_one")
         if rows["persona"].isna().any():
             sys.exit("some saved rows are no longer in ROWS: resume against the same export")
@@ -389,10 +403,12 @@ def main() -> None:
             rows = rows.head(args.limit)
     rows = rows.reset_index(drop=True)
     args.out.mkdir(parents=True, exist_ok=True)
+    if not args.resume:
+        version = PROMPT_VERSION
 
     prompts, prompt_hashes = {}, {}
     for name in ("writer", "checker", "blind"):
-        prompts[name], prompt_hashes[name] = q.load_prompt(f"{name}_{PROMPT_VERSION}.md")
+        prompts[name], prompt_hashes[name] = q.load_prompt(f"{name}_{version}.md")
 
     http = httpx.Client(timeout=300, headers={"Authorization": f"Bearer {key}"})
     pod = Pod(args.url, http)
@@ -460,7 +476,8 @@ def main() -> None:
             "serving": "one model at a time, switched by the router",
             "writer": {"model": servers["writer"].root, "sampling": WRITER_SAMPLING},
             "checker": {"model": servers["checker"].root, "sampling": CHECKER_SAMPLING},
-            "prompts": {f"{k}_{PROMPT_VERSION}.md": h for k, h in prompt_hashes.items()},
+            "prompt_version": version,
+            "prompts": {f"{k}_{version}.md": h for k, h in prompt_hashes.items()},
             "repair_rounds": REPAIR_ROUNDS,
             "blind_test": not args.no_blind,
             "group_k": GROUP_K if args.setting == "group" else None,
