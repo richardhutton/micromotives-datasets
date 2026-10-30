@@ -216,10 +216,13 @@ def answer_strength(item: Item) -> str | None:
 def examples_block(examples: Sequence[str]) -> str:
     lines = "\n".join(f'- "{e}"' for e in examples)
     return (
-        "How real people talk: answers other people gave to DIFFERENT survey questions. "
-        "These are British voters; match how short, blunt and plain they are and how little "
-        "they explain, but keep the English this person would use (American for someone in "
-        f"the US). Never reuse their words or their opinions.\n{lines}"
+        "STYLE EXAMPLES (for voice only). Below are real answers that other people, British "
+        "voters, gave to different survey questions. They are NOT about this study and NOT "
+        "about this person. Use them only to hear how real people talk: how short, blunt and "
+        "plain they are, and how little they explain. Do not use their topics, words or "
+        "opinions. Keep the English this person would use (American for someone in the US).\n"
+        f"{lines}\n"
+        "END OF STYLE EXAMPLES."
     )
 
 
