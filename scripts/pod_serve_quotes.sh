@@ -7,7 +7,7 @@
 # Starts, in a tmux session "serve": the writer (vLLM, :8000, served as "writer"), then
 # the checker (:8001, "checker"), then the router (:4000), which RunPod exposes at
 # https://<pod id>-4000.proxy.runpod.net. The quote scripts run on the laptop and call
-# that address with RUNPOD_QUOTES_API_KEY. Stop the pod in the console when the batches are done.
+# that address with QUOTES_API_KEY. Stop the pod in the console when the batches are done.
 set -euo pipefail
 
 repo="$(cd "$(dirname "$0")/.." && pwd)"
@@ -45,7 +45,7 @@ fi
 
 # --- on the pod: check, install, start ----------------------------------------------
 [[ -n "${HF_TOKEN:-}" ]] || { echo "HF_TOKEN is not set: check the template"; exit 1; }
-[[ ${#RUNPOD_QUOTES_API_KEY} -ge 16 ]] || { echo "RUNPOD_QUOTES_API_KEY is not set (16+ characters): check the template"; exit 1; }
+[[ ${#QUOTES_API_KEY} -ge 16 ]] || { echo "QUOTES_API_KEY is not set (16+ characters): check the template"; exit 1; }
 
 # This repo's own read token; GITHUB_TOKEN on the same template belongs to the training repo.
 [[ -n "${GITHUB_DATASETS_TOKEN:-}" ]] || { echo "GITHUB_DATASETS_TOKEN is not set: check the template"; exit 1; }

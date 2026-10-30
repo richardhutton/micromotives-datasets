@@ -9,7 +9,7 @@ micromotives_datasets.quotes and unit-tested.
         [--keys pilot_keys.parquet] [--existing RUN_DIR ...] [--limit N]
 
 ROWS is an export's train.parquet; rows from a study the split holds out are refused,
-since a quote written from the real response would leak it. RUNPOD_QUOTES_API_KEY comes from
+since a quote written from the real response would leak it. QUOTES_API_KEY comes from
 the environment.
 
 Phases, in order: write every quote; check every quote; rewrite the ones that failed
@@ -257,9 +257,9 @@ def main() -> None:
     ap.add_argument("--workers", type=int, default=32)
     args = ap.parse_args()
 
-    key = os.environ.get("RUNPOD_QUOTES_API_KEY", "")
+    key = os.environ.get("QUOTES_API_KEY", "")
     if not args.url or not key:
-        sys.exit("set --url (or QUOTES_URL) and RUNPOD_QUOTES_API_KEY")
+        sys.exit("set --url (or QUOTES_URL) and QUOTES_API_KEY")
     if args.out.exists() and any(args.out.iterdir()):
         sys.exit(f"{args.out} is not empty: a run is never overwritten")
 
