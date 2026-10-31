@@ -41,6 +41,7 @@ def _rows(people: int, per_person: int, condition: str = "short") -> pd.DataFram
                 {
                     "study": "s1",
                     "recipe": "r1",
+                    "source": "tess",
                     "participant_id": f"p{p}",
                     "condition_num": 0,
                     "task_num": t,
@@ -409,3 +410,20 @@ def test_a_resumed_run_keeps_the_prompt_version_it_started_with() -> None:
     old = {"prompts": {"writer_v2.md": "h", "checker_v2.md": "h", "blind_v2.md": "h"}}
     assert run.prompt_version_of(old) == "v2"  # saved before the version was recorded
     assert run.prompt_version_of({}) == run.PROMPT_VERSION
+
+
+@pytest.mark.parametrize(
+    ("source", "country"), [("tess", "United States"), ("dataverse", "United Kingdom")]
+)
+def test_writer_and_checker_are_told_the_country(source: str, country: str) -> None:
+    rows = _rows(people=1, per_person=1).assign(source=source)
+    item = run.build_items(rows, "full_persona", 1)[0]
+    assert item.persona.startswith(f"Country: {country}\n")
+    assert f"Country: {country}" in q.writer_messages("SYS", [item])[1]["content"]
+    assert f"Country: {country}" in q.checker_messages("SYS", item, "a quote")[1]["content"]
+
+
+def test_a_source_with_no_country_is_refused_not_guessed() -> None:
+    rows = _rows(people=1, per_person=1).assign(source="somewhere_new")
+    with pytest.raises(KeyError):
+        run.build_items(rows, "full_persona", 1)

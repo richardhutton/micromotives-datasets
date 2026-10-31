@@ -251,7 +251,7 @@ def build_items(
             q.Item(
                 key=key,
                 participant_id=row["participant_id"],
-                persona=persona,
+                persona=q.with_country(persona, row["source"]),
                 condition=row["condition"],
                 outcome=row["outcome"],
                 response=str(row["response"]),

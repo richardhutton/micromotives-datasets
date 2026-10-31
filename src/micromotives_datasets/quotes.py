@@ -201,6 +201,22 @@ METHOD_RECIPES = frozenset(
         "ukds_6849_satisfaction_w9",
     }
 )
+# The country each source's respondents live in, stated to the writer and checker so the
+# voice does not rest on guessing from "South" or a dollar income (rich, 30 Oct 2026). Quote
+# prompts only: the training rows are unchanged. TESS is a US panel; every Dataverse study
+# here (DEL included) and the Innovation Panel are British (docs/EXPERIMENT_LIST.md).
+COUNTRY_BY_SOURCE = {
+    "tess": "United States",
+    "dataverse": "United Kingdom",
+    "innovation_panel": "United Kingdom",
+}
+
+
+def with_country(persona: str, source: str) -> str:
+    """The persona with its country first. An unknown source is an error, never a guess."""
+    return f"Country: {COUNTRY_BY_SOURCE[source]}\n{persona}"
+
+
 METHOD_NOTE = (
     "Note: what the study put to them here is only how the survey was set up (the order of "
     "the questions, the layout, or what was asked earlier). People do not notice that and "
