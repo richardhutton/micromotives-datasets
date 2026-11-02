@@ -558,8 +558,8 @@
       "description": "COVID personal risk graphs (Winton Centre): randomised graph designs (log vs linear, frequency vs percentage, risk scales); understanding, perceived risk, trust, behaviour. UK quota samples, n=702 / 1,822 / 2,577 across 3 surveys.",
       "link": "https://osf.io/auf8h",
       "status": "Waiting for images",
-      "reason": "Graphs are not in the deposit: the questionnaire PDFs are Qualtrics exports without pictures, and the paper figures show only some arms (Survey 3 low-risk graphs were changed mid-fieldwork, 102 people on a \"low2\" version). Asking the Winton Centre for the files. Data downloaded; 4 surveys (Survey 1 has no graphs).",
-      "permission": "Not asked yet",
+      "reason": "Graphs are not in the deposit: the questionnaire PDFs are Qualtrics exports without pictures, and the paper figures show only some arms (Survey 3 low-risk graphs were changed mid-fieldwork, 102 people on a \"low2\" version). Asking the Winton Centre for the files. Data downloaded; 4 surveys (Survey 1 has no graphs). Parked 2 Nov: Cambridge maths mail server blocks our emails; only route left is the Winton website contact form.",
+      "permission": "Asked",
       "contact": "Winton Centre (Freeman, Recchia)",
       "rows": null,
       "recipe": ""
@@ -571,7 +571,7 @@
       "link": "https://osf.io/3krjz",
       "status": "Built",
       "reason": "42,637 rows (4,107 people; 6 risk-choice items x 3 colour formats + 5 willingness-to-pay sliders x 5 groups; 43 arms). All nine Table 1 slopes reproduce to 3 decimals; independent checker: no blockers.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Winton Centre (Freeman, Recchia)",
       "rows": 42637,
       "recipe": "3krjz"
