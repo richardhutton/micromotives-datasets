@@ -3,6 +3,15 @@
 Copy and paste these into the quotes pod's Web Terminal. The full setup is in
 `docs/RUNPOD_QUOTES.md`.
 
+## Choosing a pod
+
+Deploy a fresh pod each time rather than stopping and restarting one: a stopped pod is tied
+to its machine, and that GPU is often gone when you come back. Filter on 80 GB of VRAM or
+more and prefer US datacenters. On 2 Nov 2026 a pod in EU-CZ-1 downloaded the models at about
+25 MB/s (an hour for both), another's volume failed with "Stale file handle", and US pods
+were ready in minutes. If `/workspace` ever reports "Stale file handle", that pod's storage
+is broken: terminate it and deploy another.
+
 ## Start serving (after starting or deploying the pod)
 
 ```
