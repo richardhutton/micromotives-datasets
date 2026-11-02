@@ -147,6 +147,13 @@
    "A level, or equivelent": "High school",
    "GCSE level, or equivelent": "High school",
    "No formal qualifications": "Less than high school"
+  },
+  "uk_be8a2_osf": {
+   "Postgraduate (e.g. M.Sc, Ph.D)": "Bachelors to postgraduate",
+   "Undergraduate University (e.g. BA, B.Sc, B.Ed)": "Bachelors to postgraduate",
+   "A-level, or equivalent": "High school",
+   "GCSE level, or equivalent": "High school",
+   "No formal qualifications": "Less than high school"
   }
  },
  "_about": [
@@ -207,6 +214,14 @@
   "GCSE (with only \"No formal qualifications\" below it, a disclosed judgement, 174 people); \"No formal qualifications\"",
   "to Less than high school as uk_yougov_18. The question asks for the qualification held \"or working towards\", so for",
   "students it is the one sought. \"Other, please specify\" (6 people) cannot be placed on the ladder and is left absent.",
-  "No canonical value added; no other scheme changed."
+  "No canonical value added; no other scheme changed.",
+  "",
+  "uk_be8a2_osf (2 Nov 2026, IMG54): the Sheffield/Electoral Commission digital imprints survey's five labelled levels",
+  "(answer labels in main_data.csv), the same question as uk_gybnm_osf's in different punctuation. Read, not asked of Jev,",
+  "each by uk_gybnm_osf's mapping: Postgraduate and Undergraduate University to Bachelors to postgraduate; A-level and GCSE",
+  "level to High school (GCSE with only \"No formal qualifications\" below it, the same disclosed judgement, 178 people);",
+  "\"No formal qualifications\" to Less than high school. The question asks for the qualification held \"or working",
+  "towards\", so for students it is the one sought. \"Other, please specify\" (15 people) cannot be placed on the ladder and",
+  "is left absent. No canonical value added; no other scheme changed."
  ]
 }

@@ -1,0 +1,762 @@
+study_id: be8a2
+source: osf
+title: 'Digital imprints: four Facebook posts from fictional campaigners, each seen with or without its
+  imprint, after an education text or none; how each post was read'
+data_file: be8a2_coded.xlsx
+licence: CC0 1.0 Universal (OSF be8a2).
+comparable_to_socsci210: false
+participant_id_var: pid
+notes: "Write recipes/images/be8a2.yaml: digital imprints on campaigners' posts (IMG54).\n\nGordon and\
+  \ colleagues (Sheffield), with the Electoral Commission, \"The impact of UK\ntransparency legislation\
+  \ on citizen informedness and trust (survey experiment)\",\nOSF be8a2 (CC0 1.0 Universal). The deposit\
+  \ holds the questionnaire\n(survey_final.pdf, \"Electoral Commission Digital Imprints Experiment: Survey\
+  \ Flow\"),\na codebook (codebook.md), the Qualtrics data as read into R (Data wrangle/\nmain_data.csv),\
+  \ the authors' cleaning script (main_datawrangle.Rmd), their processed\nfiles (Processed data/), the\
+  \ knitted analysis (knitted_analysis_script.pdf) and four\nhigh-resolution pictures of the imprint versions\
+  \ (Experimental Materials/). No\npaper is published yet that we could find; the knitted analysis is\
+  \ the answer key.\n\nUK adults (Prolific, March 2024) were split between subjects into two groups, one\n\
+  of which first read a short text about the new law requiring digital imprints, and\nthen each saw four\
+  \ Facebook posts from four fictional third-party campaigners. Two\nof the four carried a digital imprint\
+  \ (\"Promoted by: <name>, <address>\") and two\ndid not; which two was randomised, so every post was\
+  \ seen in both versions by\ndifferent people. After EACH post they answered the same 13 questions about\
+  \ it.\n\nEvery judgement is here, in code, so the recipe can be re-derived and reviewed:\n\n* DESIGN.\
+  \ A within-person design: one row per person per post, so a person's four\n  posts are four conditions\
+  \ and the coded file is LONG (`pid`, `post`, `imprint`,\n  `training`). 16 arms: the education text\
+  \ (shown or not, between subjects) x the\n  post (4) x the imprint (absent or present). condition_num\
+  \ = training * 8 +\n  (post - 1) * 2 + imprint. Each row names the post it rates and whether it carried\n\
+  \  the imprint, so a person's four ratings of one question are four different\n  conditions (QC rule\
+  \ 24).\n* ASSIGNMENT. `Training.condition` 0 = no education text, 1 = the text (codebook).\n  `Advert.<k>`\
+  \ 0/1 = post k shown without/with its imprint (codebook: \"version - 0\n  = no imprint viewed, 1 = imprint\
+  \ viewed\"). The data agree with the coding: for\n  every person, post k's answers sit in exactly one\
+  \ set of columns, the plain set\n  (`PK_<k>_1`...) when `Advert.<k>` is 0 and the imprint set (`PK_<k>imprint_1`...)\n\
+  \  when it is 1, never both (checked in --prep), and each person has exactly two\n  imprints, one on\
+  \ post 1 or 2 and one on post 3 or 4 (four patterns, each crossed\n  with both education groups, 159-180\
+  \ people per cell). Post k is the questionnaire's \"Advert k\", which the authors' script\n  names:\
+  \ Common Sense Collective 1, Breaking Barriers Alliance 2, Speak Freely Inc.\n  3, Campaign for a better\
+  \ Britain 4; the pictures under each \"Advert k\" heading\n  show that campaigner.\n* PICTURES. The\
+  \ eight pictures are the questionnaire's own (survey_final.pdf pages\n  2-4, \"No imprint version\"\
+  \ left, \"Imprint version\" right under each \"Advert k\"),\n  extracted unaltered with poppler's pdfimages;\
+  \ positions read with pdftohtml. The\n  deposit's \"Experimental Materials\" hold only the four imprint\
+  \ versions, as later\n  re-captures: higher resolution, cropped differently, and in Breaking Barriers\n\
+  \  Alliance with the link address and photo credit NOT blurred where the\n  questionnaire's picture\
+  \ blurs them. Using them for the imprint version and the\n  questionnaire for the plain one would make\
+  \ each pair differ in more than the\n  imprint, so all eight come from the questionnaire. Those re-captures\
+  \ were used\n  only to read characters too small to read in the questionnaire's pictures (the\n  Breaking\
+  \ Barriers Alliance comments and imprint), where the two show the same\n  layout. The Breaking Barriers\
+  \ Alliance pictures are 781x489 and 765x479 pixels,\n  so much of their small text is legible only through\
+  \ text_in_image.\n* WORDS IN THE PICTURES (text_in_image). Every word the campaigner and the\n  commenters\
+  \ wrote: page or account name, date, the post's text, the words of its\n  graphic (headline, caption,\
+  \ masthead, link card), comments, a group's own About\n  text, and in the imprint version the imprint.\
+  \ \" / \" separates blocks; line wraps\n  inside a block are joined with a space; quotes and apostrophes\
+  \ are straightened.\n  Left out, and described instead: words of the browser and of Facebook's own\n\
+  \  interface (navigation, Like/Comment/Share, \"Most relevant\", \"Write a comment...\",\n  \"View all\
+  \ 7 replies\", \"Join Group\", comment ages), counts of reactions, comments,\n  shares and members,\
+  \ words that are part of a photograph (protest banners,\n  labels on props, vehicle markings, the cut-out\
+  \ newspaper headlines in the\n  Common Sense Collective collage, which are partly covered and partly\
+  \ cut off),\n  blurred names and link addresses, and a cut-off fragment at the foot of Speak\n  Freely\
+  \ Inc.'s picture. Typos are the source's (\"Common Sence\", \"does nor\n  represent\", \"Primrose Kane\"\
+  ).\n* CONDITION. No shared context. Each arm's text is its group's text before the\n  posts, word-for-word\
+  \ (questionnaire page 1; the codebook gives the same words),\n  then the post. \"Please view the post\
+  \ below and answer a few questions on the\n  following page. Please pay attention as you won't be able\
+  \ to go back.\" is\n  dropped as survey mechanics. Words that are OURS: \"One of the four posts:\".\
+  \ The\n  order the four posts were shown in is not recorded and nothing is said about it,\n  nor about\
+  \ which of the person's other posts carried imprints.\n* OUTCOMES. 13 per post. The questionnaire PDF\
+  \ is the pre-fielding survey flow,\n  and the authors note it differs from what was fielded (\"ERROR\
+  \ IN PREREGISTERED\n  SURVEY THAT INCLUDED THE WRONG VERSION OF 'INFORMED, ITEM 4' (in the final survey,\n\
+  \  this item was reworded to be positively phrased...)\"); the data's answer labels\n  also differ from\
+  \ it (political interest has \"Slightly interested\" and no \"Don't\n  know\"). Wording therefore follows\
+  \ the codebook, which the authors wrote against\n  the final survey: informed item 4 is \"I can make\
+  \ an informed judgement about who\n  is behind this material\" (the PDF's negative \"I do not feel able\
+  \ to make...\" was\n  not fielded), and persuasion item 2 is \"This post promotes a particular\n  viewpoint\"\
+  \ where the PDF has \"The post promotes\" (a disclosed choice of source;\n  no fielded export survives\
+  \ to settle it). Stems are the codebook's and the PDF's\n  (they agree). The persuasion items' answer\
+  \ labels say \"Slightly\" and the others\n  \"Somewhat\" (the data's own labels; the authors' script\
+  \ notes the difference).\n  The four word pairs are asked as the stem followed by the pair in quotation\
+  \ marks. \"I am not sure\n  who is behind the material\" is built as answered (agreement 1-7), NOT\n\
+  \  reverse-scored as the authors' informed scale does.\n  Built: PK 1-4 (advert, viewpoint, is an advertisement,\
+  \ intended to influence),\n  agreement with the post's message, informed 1-4 (political goal, enough\n\
+  \  information, not sure who, informed judgement), accurate, trustworthy,\n  believable, factual.\n\
+  * NOT BUILT. Post 2's attention check (informed_2_5 / informed_2imprint_5) and\n  EPE_5. Everything\
+  \ after the four posts that is asked once (confidence in the\n  regulation of online campaigning, how\
+  \ many imprints recalled, which campaigners\n  recalled, who would find the information useful, knowledge\
+  \ of regulation,\n  political information efficacy, the open question): their condition would be\n \
+  \ the whole sequence of four posts in an order the data do not record, and recall\n  items are checks,\
+  \ not outcomes (docs/CONVENTIONS.md).\n* WHO. Every person with answers: 1,357 of the export's 1,369\
+  \ rows (9 gave no\n  consent, 3 declined; all 12 have no data). The authors' 1,322 also drop 4 who\n\
+  \  failed both attention checks (their rows 420, 948, 1288 and 1315 after the 12\n  blank rows are removed)\
+  \ and anyone faster than 360 seconds; the crosscheck\n  applies that filter to the built rows and reproduces\
+  \ their processed file\n  answer for answer and their descriptives table. `pid` is the 1-based row in\n\
+  \  main_data.csv, which is the authors' own `id` (row_number() before exclusions).\n* PERSONA. All asked\
+  \ at the end (Stage 4) or recorded by Prolific, and mapped as\n  stable facts: age (the data hold age;\
+  \ the questionnaire asked year of birth),\n  gender, education, party identification, ethnicity (Prolific's\n\
+  \  `Ethnicity.simplified`, crosswalk scheme uk_ons_five_group_short), interest in\n  politics, time\
+  \ spent online on news about politics, and how often the person\n  uses Facebook. Gender \"Prefer not\
+  \ to say\" (7) and ethnicity blanks (6) are left\n  absent; education \"Other, please specify\" (15;\
+  \ free text not mapped) cannot be\n  placed on the ladder; time online \"Not sure\" (9) carries no amount.\
+  \ Party \"Other,\n  please specify___________\" (23) is a real answer whose label carries the form's\n\
+  \  instruction, rewritten to \"Other\" (`persona_label_rewrite`), as gybnm's export\n  labels it; the\
+  \ free text is not mapped. Trailing spaces, tabs and blank fill-in\n  lines in labels are dropped as\
+  \ typography. NOT mapped: trust, mistrust and\n  cynicism about politicians, satisfaction with democracy,\
+  \ and political efficacy,\n  which are attitudes asked AFTER the manipulation; Prolific's employment\
+  \ and\n  student status (199-262 \"DATA_EXPIRED\"), sex (the survey's gender is mapped),\n  nationality\
+  \ and country. Education crosswalk scheme uk_be8a2_osf\n  (data/catalog/persona_crosswalk_education.json),\
+  \ read from existing schemes'\n  precedents, not asked of Jev.\n\n    uv run python scripts/gen_be8a2.py\
+  \ --extract    # (re)write the eight pictures\n    uv run python scripts/gen_be8a2.py --prep       #\
+  \ (re)write the coded long .xlsx\n    uv run python scripts/gen_be8a2.py --catalogue  # (re)write this\
+  \ study's images.json entries\n    uv run python scripts/gen_be8a2.py              # write the recipe\n\
+  \    uv run python scripts/gen_be8a2.py --check      # exit 1 if it differs"
+condition:
+  source_vars:
+  - training
+  - post
+  - imprint
+  factors:
+  - education_text
+  - post
+  - imprint
+  arms:
+  - raw_values:
+      training: 0
+      post: 1
+      imprint: 0
+    condition_num: 0
+    factors:
+      education_text: not shown
+      post: Common Sense Collective
+      imprint: absent
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Common Sense Collective / 1
+      November / The Conservative Party is turning towards the radical right. / We do not say this lightly
+      - there is a conscious strategy to adopt the language and policies of the radical right. / Read
+      ''Turning Right: The Dangerous Transformation of the Conservative Party''. / TURNING RIGHT / THE
+      DANGEROUS TRANSFORMATION OF THE CONSERVATIVE PARTY / Common Sense Collective / COMMONSENSECOLLECTIVE.ORG.UK
+      / Turning Right: The Dangerous Transformation of the Conservative Party / Common Sence Collective
+      has a proud history of opposing the far right for almost 20 years..." <image>'
+    images:
+    - be8a2_csc_no_imprint
+  - raw_values:
+      training: 0
+      post: 1
+      imprint: 1
+    condition_num: 1
+    factors:
+      education_text: not shown
+      post: Common Sense Collective
+      imprint: present
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Common Sense Collective / 1
+      November / The Conservative Party is turning towards the radical right. / We do not say this lightly
+      - there is a conscious strategy to adopt the language and policies of the radical right. / Read
+      ''Turning Right: The Dangerous Transformation of the Conservative Party''. / Promoted by: Common
+      Sense Collective, 5 Birch Lane, Ancoats, Manchester, NYZ 497 / TURNING RIGHT / THE DANGEROUS TRANSFORMATION
+      OF THE CONSERVATIVE PARTY / Common Sense Collective / COMMONSENSECOLLECTIVE.ORG.UK / Turning Right:
+      The Dangerous Transformation of the Conservative Party / Common Sence Collective has a proud history
+      of opposing the far right for almost 20 years..." <image>'
+    images:
+    - be8a2_csc_imprint
+  - raw_values:
+      training: 0
+      post: 2
+      imprint: 0
+    condition_num: 2
+    factors:
+      education_text: not shown
+      post: Breaking Barriers Alliance
+      imprint: absent
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Breaking Barriers Alliance
+      / 11 October / If Labour is serious about overhauling the NHS, its TOP priority should be ending
+      the wounding privatisation of the last 13 years. #reinstatethenhs #onlythenhs / Labour is dead for
+      crying out loud... it''s been rigged by the right wing. Can''t you understand that??? / And the
+      failed PFI and creeping private involvement prior to that initiated by Labour / How can they be
+      serious about ending what they started! They are all the same no matter what banner they hide under.
+      / I''ll not hold my breath. We all know his track record on future policy.... / This group is getting
+      so partisan. Urgh! You''re deliberately ignoring Labour''s privatisation efforts and Blair''s PFI!!!"
+      <image>'
+    images:
+    - be8a2_bba_no_imprint
+  - raw_values:
+      training: 0
+      post: 2
+      imprint: 1
+    condition_num: 3
+    factors:
+      education_text: not shown
+      post: Breaking Barriers Alliance
+      imprint: present
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Promoted by: Breaking Barriers
+      Alliance, 2 Aberdere Lane, Wrexham, Wales, LL4 261 / Breaking Barriers Alliance / 11 October / If
+      Labour is serious about overhauling the NHS, its TOP priority should be ending the wounding privatisation
+      of the last 13 years. #reinstatethenhs #onlythenhs / Labour is dead for crying out loud... it''s
+      been rigged by the right wing. Can''t you understand that??? / And the failed PFI and creeping private
+      involvement prior to that initiated by Labour / How can they be serious about ending what they started!
+      They are all the same no matter what banner they hide under. / I''ll not hold my breath. We all
+      know his track record on future policy.... / This group is getting so partisan. Urgh! You''re deliberately
+      ignoring Labour''s privatisation efforts and Blair''s PFI!!!" <image>'
+    images:
+    - be8a2_bba_imprint
+  - raw_values:
+      training: 0
+      post: 3
+      imprint: 0
+    condition_num: 4
+    factors:
+      education_text: not shown
+      post: Speak Freely Inc.
+      imprint: absent
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Speak Freely Inc. / 27 November
+      at 18:41 / NHS delays are KILLING us. / We can''t wait this long for emergency care. / We can''t
+      wait this long for operations. / We can''t wait this long for referrals. / Last year saw a man die
+      while waiting 18 minutes for an answer to his 999 call. It''s horrific, and it''s not on. / NHS
+      care delays in England harmed 8,000 people and caused 112 deaths last year / The Guardian / Newspaper
+      of the year / WE CAN''T WAIT / Ambulances outside the Royal London hospital in London. The Patients
+      Association described ''a disaster unfolding across the NHS''. Photograph: James Manning/PA" <image>'
+    images:
+    - be8a2_sfi_no_imprint
+  - raw_values:
+      training: 0
+      post: 3
+      imprint: 1
+    condition_num: 5
+    factors:
+      education_text: not shown
+      post: Speak Freely Inc.
+      imprint: present
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Speak Freely Inc. / 27 November
+      at 18:41 / NHS delays are KILLING us. / We can''t wait this long for emergency care. / We can''t
+      wait this long for operations. / We can''t wait this long for referrals. / Last year saw a man die
+      while waiting 18 minutes for an answer to his 999 call. It''s horrific, and it''s not on. / NHS
+      care delays in England harmed 8,000 people and caused 112 deaths last year / The Guardian / Newspaper
+      of the year / WE CAN''T WAIT / Ambulances outside the Royal London hospital in London. The Patients
+      Association described ''a disaster unfolding across the NHS''. Photograph: James Manning/PA / Promoted
+      by: Speak Freely Inc., 42 Primrose Kane, Camden Town, London, WC1b 734" <image>'
+    images:
+    - be8a2_sfi_imprint
+  - raw_values:
+      training: 0
+      post: 4
+      imprint: 0
+    condition_num: 6
+    factors:
+      education_text: not shown
+      post: Campaign for a better Britain
+      imprint: absent
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Group by Campaign for a better
+      Britain / Campaign for a better Britain / Campaign for a better Britain / 1 November 2023 / From
+      my own lived experience my current MP Lucy Fraser does nor represent me or any other person in her
+      constituency that does not agree with Conservative party policy. It would be the same whatever the
+      party if a different party to the one you support were elected. The majority of the time MP vote
+      in line with party policy. MPs therefore represent party rather than constituent. Because of Parliament
+      Protocol no other MP can represent me in parliament effectively leaving me with no representation.
+      I believe it would be a mistake replacing Lords with elected representative. It would be nothing
+      more than duplicating the House of Commons. It would just be another lot of MP following party politic
+      (policies chosen by biggest donors to the party). At whatever level politics, policy is influenced
+      by money whether it is lobbying or donations to political parties. I would prefer to see change
+      in the way people are appointed to the Lords rather that directly elected politician. I would like
+      to see businessmen and politicians and legal professions excluded from the Lords. I would also like
+      to representation of other religions. Any election system chosen by government would be one that
+      benefited the ruling party. Getting a fair system would be like getting turkeys to vote for Christmas
+      / Very well argued. One of the obvious changes would be to bring in PR. That would mean an end to
+      wasted votes(more or less). / Campaign for a better Britain is a community of activists and volunteers
+      committed to introducing Proportional Representation to the House of Commons. / United Kingdom"
+      <image>'
+    images:
+    - be8a2_cbb_no_imprint
+  - raw_values:
+      training: 0
+      post: 4
+      imprint: 1
+    condition_num: 7
+    factors:
+      education_text: not shown
+      post: Campaign for a better Britain
+      imprint: present
+    text: 'You are about to see four social media posts. Please review each example and answer a short
+      number of questions about what you''ve seen. One of the four posts: "Group by Campaign for a better
+      Britain / Campaign for a better Britain / Campaign for a better Britain / 1 November 2023 / Promoted
+      by: Campaign for a better Britain, 47 St Lotts Road, Birmingham, B6U 2TU / From my own lived experience
+      my current MP Lucy Fraser does nor represent me or any other person in her constituency that does
+      not agree with Conservative party policy. It would be the same whatever the party if a different
+      party to the one you support were elected. The majority of the time MP vote in line with party policy.
+      MPs therefore represent party rather than constituent. Because of Parliament Protocol no other MP
+      can represent me in parliament effectively leaving me with no representation. I believe it would
+      be a mistake replacing Lords with elected representative. It would be nothing more than duplicating
+      the House of Commons. It would just be another lot of MP following party politic (policies chosen
+      by biggest donors to the party). At whatever level politics, policy is influenced by money whether
+      it is lobbying or donations to political parties. I would prefer to see change in the way people
+      are appointed to the Lords rather that directly elected politician. I would like to see businessmen
+      and politicians and legal professions excluded from the Lords. I would also like to representation
+      of other religions. Any election system chosen by government would be one that benefited the ruling
+      party. Getting a fair system would be like getting turkeys to vote for Christmas / Very well argued.
+      One of the obvious changes would be to bring in PR. That would mean an end to wasted votes(more
+      or less). / Campaign for a better Britain is a community of activists and volunteers committed to
+      introducing Proportional Representation to the House of Commons. / United Kingdom" <image>'
+    images:
+    - be8a2_cbb_imprint
+  - raw_values:
+      training: 1
+      post: 1
+      imprint: 0
+    condition_num: 8
+    factors:
+      education_text: shown
+      post: Common Sense Collective
+      imprint: absent
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Common Sense Collective / 1 November / The Conservative
+      Party is turning towards the radical right. / We do not say this lightly - there is a conscious
+      strategy to adopt the language and policies of the radical right. / Read ''Turning Right: The Dangerous
+      Transformation of the Conservative Party''. / TURNING RIGHT / THE DANGEROUS TRANSFORMATION OF THE
+      CONSERVATIVE PARTY / Common Sense Collective / COMMONSENSECOLLECTIVE.ORG.UK / Turning Right: The
+      Dangerous Transformation of the Conservative Party / Common Sence Collective has a proud history
+      of opposing the far right for almost 20 years..." <image>'
+    images:
+    - be8a2_csc_no_imprint
+  - raw_values:
+      training: 1
+      post: 1
+      imprint: 1
+    condition_num: 9
+    factors:
+      education_text: shown
+      post: Common Sense Collective
+      imprint: present
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Common Sense Collective / 1 November / The Conservative
+      Party is turning towards the radical right. / We do not say this lightly - there is a conscious
+      strategy to adopt the language and policies of the radical right. / Read ''Turning Right: The Dangerous
+      Transformation of the Conservative Party''. / Promoted by: Common Sense Collective, 5 Birch Lane,
+      Ancoats, Manchester, NYZ 497 / TURNING RIGHT / THE DANGEROUS TRANSFORMATION OF THE CONSERVATIVE
+      PARTY / Common Sense Collective / COMMONSENSECOLLECTIVE.ORG.UK / Turning Right: The Dangerous Transformation
+      of the Conservative Party / Common Sence Collective has a proud history of opposing the far right
+      for almost 20 years..." <image>'
+    images:
+    - be8a2_csc_imprint
+  - raw_values:
+      training: 1
+      post: 2
+      imprint: 0
+    condition_num: 10
+    factors:
+      education_text: shown
+      post: Breaking Barriers Alliance
+      imprint: absent
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Breaking Barriers Alliance / 11 October / If Labour
+      is serious about overhauling the NHS, its TOP priority should be ending the wounding privatisation
+      of the last 13 years. #reinstatethenhs #onlythenhs / Labour is dead for crying out loud... it''s
+      been rigged by the right wing. Can''t you understand that??? / And the failed PFI and creeping private
+      involvement prior to that initiated by Labour / How can they be serious about ending what they started!
+      They are all the same no matter what banner they hide under. / I''ll not hold my breath. We all
+      know his track record on future policy.... / This group is getting so partisan. Urgh! You''re deliberately
+      ignoring Labour''s privatisation efforts and Blair''s PFI!!!" <image>'
+    images:
+    - be8a2_bba_no_imprint
+  - raw_values:
+      training: 1
+      post: 2
+      imprint: 1
+    condition_num: 11
+    factors:
+      education_text: shown
+      post: Breaking Barriers Alliance
+      imprint: present
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Promoted by: Breaking Barriers Alliance, 2 Aberdere
+      Lane, Wrexham, Wales, LL4 261 / Breaking Barriers Alliance / 11 October / If Labour is serious about
+      overhauling the NHS, its TOP priority should be ending the wounding privatisation of the last 13
+      years. #reinstatethenhs #onlythenhs / Labour is dead for crying out loud... it''s been rigged by
+      the right wing. Can''t you understand that??? / And the failed PFI and creeping private involvement
+      prior to that initiated by Labour / How can they be serious about ending what they started! They
+      are all the same no matter what banner they hide under. / I''ll not hold my breath. We all know
+      his track record on future policy.... / This group is getting so partisan. Urgh! You''re deliberately
+      ignoring Labour''s privatisation efforts and Blair''s PFI!!!" <image>'
+    images:
+    - be8a2_bba_imprint
+  - raw_values:
+      training: 1
+      post: 3
+      imprint: 0
+    condition_num: 12
+    factors:
+      education_text: shown
+      post: Speak Freely Inc.
+      imprint: absent
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Speak Freely Inc. / 27 November at 18:41 / NHS
+      delays are KILLING us. / We can''t wait this long for emergency care. / We can''t wait this long
+      for operations. / We can''t wait this long for referrals. / Last year saw a man die while waiting
+      18 minutes for an answer to his 999 call. It''s horrific, and it''s not on. / NHS care delays in
+      England harmed 8,000 people and caused 112 deaths last year / The Guardian / Newspaper of the year
+      / WE CAN''T WAIT / Ambulances outside the Royal London hospital in London. The Patients Association
+      described ''a disaster unfolding across the NHS''. Photograph: James Manning/PA" <image>'
+    images:
+    - be8a2_sfi_no_imprint
+  - raw_values:
+      training: 1
+      post: 3
+      imprint: 1
+    condition_num: 13
+    factors:
+      education_text: shown
+      post: Speak Freely Inc.
+      imprint: present
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Speak Freely Inc. / 27 November at 18:41 / NHS
+      delays are KILLING us. / We can''t wait this long for emergency care. / We can''t wait this long
+      for operations. / We can''t wait this long for referrals. / Last year saw a man die while waiting
+      18 minutes for an answer to his 999 call. It''s horrific, and it''s not on. / NHS care delays in
+      England harmed 8,000 people and caused 112 deaths last year / The Guardian / Newspaper of the year
+      / WE CAN''T WAIT / Ambulances outside the Royal London hospital in London. The Patients Association
+      described ''a disaster unfolding across the NHS''. Photograph: James Manning/PA / Promoted by: Speak
+      Freely Inc., 42 Primrose Kane, Camden Town, London, WC1b 734" <image>'
+    images:
+    - be8a2_sfi_imprint
+  - raw_values:
+      training: 1
+      post: 4
+      imprint: 0
+    condition_num: 14
+    factors:
+      education_text: shown
+      post: Campaign for a better Britain
+      imprint: absent
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Group by Campaign for a better Britain / Campaign
+      for a better Britain / Campaign for a better Britain / 1 November 2023 / From my own lived experience
+      my current MP Lucy Fraser does nor represent me or any other person in her constituency that does
+      not agree with Conservative party policy. It would be the same whatever the party if a different
+      party to the one you support were elected. The majority of the time MP vote in line with party policy.
+      MPs therefore represent party rather than constituent. Because of Parliament Protocol no other MP
+      can represent me in parliament effectively leaving me with no representation. I believe it would
+      be a mistake replacing Lords with elected representative. It would be nothing more than duplicating
+      the House of Commons. It would just be another lot of MP following party politic (policies chosen
+      by biggest donors to the party). At whatever level politics, policy is influenced by money whether
+      it is lobbying or donations to political parties. I would prefer to see change in the way people
+      are appointed to the Lords rather that directly elected politician. I would like to see businessmen
+      and politicians and legal professions excluded from the Lords. I would also like to representation
+      of other religions. Any election system chosen by government would be one that benefited the ruling
+      party. Getting a fair system would be like getting turkeys to vote for Christmas / Very well argued.
+      One of the obvious changes would be to bring in PR. That would mean an end to wasted votes(more
+      or less). / Campaign for a better Britain is a community of activists and volunteers committed to
+      introducing Proportional Representation to the House of Commons. / United Kingdom" <image>'
+    images:
+    - be8a2_cbb_no_imprint
+  - raw_values:
+      training: 1
+      post: 4
+      imprint: 1
+    condition_num: 15
+    factors:
+      education_text: shown
+      post: Campaign for a better Britain
+      imprint: present
+    text: 'Some of the posts you might see when browsing on social media are political campaign posts.
+      A new transparency law for online political campaigning has just come into force. Now, most digital
+      campaign material will require details of who paid for and produced it. This is designed to help
+      voters know who is trying to reach them online and influence their vote. You are about to see four
+      randomly selected social media posts. Please review each example and answer a short number of questions
+      about what you''ve seen. One of the four posts: "Group by Campaign for a better Britain / Campaign
+      for a better Britain / Campaign for a better Britain / 1 November 2023 / Promoted by: Campaign for
+      a better Britain, 47 St Lotts Road, Birmingham, B6U 2TU / From my own lived experience my current
+      MP Lucy Fraser does nor represent me or any other person in her constituency that does not agree
+      with Conservative party policy. It would be the same whatever the party if a different party to
+      the one you support were elected. The majority of the time MP vote in line with party policy. MPs
+      therefore represent party rather than constituent. Because of Parliament Protocol no other MP can
+      represent me in parliament effectively leaving me with no representation. I believe it would be
+      a mistake replacing Lords with elected representative. It would be nothing more than duplicating
+      the House of Commons. It would just be another lot of MP following party politic (policies chosen
+      by biggest donors to the party). At whatever level politics, policy is influenced by money whether
+      it is lobbying or donations to political parties. I would prefer to see change in the way people
+      are appointed to the Lords rather that directly elected politician. I would like to see businessmen
+      and politicians and legal professions excluded from the Lords. I would also like to representation
+      of other religions. Any election system chosen by government would be one that benefited the ruling
+      party. Getting a fair system would be like getting turkeys to vote for Christmas / Very well argued.
+      One of the obvious changes would be to bring in PR. That would mean an end to wasted votes(more
+      or less). / Campaign for a better Britain is a community of activists and volunteers committed to
+      introducing Proportional Representation to the House of Commons. / United Kingdom" <image>'
+    images:
+    - be8a2_cbb_imprint
+outcomes:
+- var: PK1
+  task_num: 0
+  question: Thinking about the image you've just seen, to what extent do you agree or disagree with the
+    following statements. "The post feels like an advertisement"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: PK2
+  task_num: 1
+  question: Thinking about the image you've just seen, to what extent do you agree or disagree with the
+    following statements. "This post promotes a particular viewpoint"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: PK3
+  task_num: 2
+  question: Thinking about the image you've just seen, to what extent do you agree or disagree with the
+    following statements. "The post is an advertisement"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: PK4
+  task_num: 3
+  question: Thinking about the image you've just seen, to what extent do you agree or disagree with the
+    following statements. "The post is intended to influence your opinion"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: AGREE
+  task_num: 4
+  question: To what extent do you agree or disagree with the message promoted by the post?
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INF1
+  task_num: 5
+  question: To what extent do you agree or disagree with the following statements about the materials
+    you have seen? "The material had a political goal"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INF2
+  task_num: 6
+  question: To what extent do you agree or disagree with the following statements about the materials
+    you have seen? "The material contained enough information to know who placed the material"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INF3
+  task_num: 7
+  question: To what extent do you agree or disagree with the following statements about the materials
+    you have seen? "I am not sure who is behind the material"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INF4
+  task_num: 8
+  question: To what extent do you agree or disagree with the following statements about the materials
+    you have seen? "I can make an informed judgement about who is behind this material"
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: ACCURATE
+  task_num: 9
+  question: Please circle the number in between each pair of words which represents how you feel about
+    the material you've just seen. "Inaccurate" - "accurate"
+  scale:
+    min: 1
+    max: 7
+    min_label: Inaccurate
+    max_label: accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: TRUSTWORTHY
+  task_num: 10
+  question: Please circle the number in between each pair of words which represents how you feel about
+    the material you've just seen. "Untrustworthy" - "trustworthy"
+  scale:
+    min: 1
+    max: 7
+    min_label: Untrustworthy
+    max_label: trustworthy
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: BELIEVABLE
+  task_num: 11
+  question: Please circle the number in between each pair of words which represents how you feel about
+    the material you've just seen. "Unbelievable" - "believable"
+  scale:
+    min: 1
+    max: 7
+    min_label: Unbelievable
+    max_label: believable
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: FACTUAL
+  task_num: 12
+  question: Please circle the number in between each pair of words which represents how you feel about
+    the material you've just seen. "Opinionated" - "factual"
+  scale:
+    min: 1
+    max: 7
+    min_label: Opinionated
+    max_label: factual
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+response_recode: {}
+missing_codes: []
+persona_map:
+  age: age
+  gender: gender
+  education: education
+  party_id: partyID
+  ethnicity: Ethnicity.simplified
+  interest_in_politics: political_interest
+  time_spent_online_on_news_about_politics_and_current_affairs_on_an_average_day: SM_use
+  how_often_uses_facebook: SM_frequency_1
+persona_missing:
+  gender:
+  - 4
+  education:
+  - 4
+  SM_use:
+  - 6
+persona_label_rewrite:
+  partyID:
+    8: Other

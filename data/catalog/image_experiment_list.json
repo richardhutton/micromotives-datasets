@@ -65,12 +65,12 @@
       "title": "Charity appeal photos",
       "description": "Charity appeal photos: 5 random real photos per person, from one of two sets (116 charity photos, or professional photographers' photos); emotions, urgency, sense of difference, find out more, donate yes/no and £. YouGov GB, n=3,538, CC0. Photos not in deposit.",
       "link": "https://doi.org/10.7910/DVN/XZ1XUZ",
-      "status": "Waiting for images",
-      "reason": "images not in the deposit; asked the authors",
+      "status": "Built",
+      "reason": "164,209 rows (3,639 people; 5 of 241 charity-appeal photos each, partner or photographer set; 11 questions per photo incl. donate and £ amount). Every row re-derived from the original .sav; QC clean; independent checker: mechanics verified, intro and 186 descriptions fixed to visible facts. No published figures for this module. Photos fetched from the survey's YouGov URLs, rights not stated. Open: perceived-ethnicity wording in descriptions awaits rich.",
       "permission": "Asked",
       "contact": "David Hudson",
-      "rows": null,
-      "recipe": ""
+      "rows": 164209,
+      "recipe": "del_sandbox_oct2023_appeal_photos"
     },
     {
       "id": "IMG07",
@@ -641,12 +641,12 @@
       "title": "Digital imprints on campaign posts",
       "description": "Electoral Commission: 4 Facebook posts from third-party campaigners, each with or without a digital imprint (within person) x educational text vs none; feels like an advert, agreement, accuracy, trust, informedness (1-7). UK, March 2024, n=1,322.",
       "link": "https://osf.io/be8a2",
-      "status": "Buildable",
-      "reason": "Found 2 Nov 2026: CC0; 4 imprint images in the deposit; which post and version per person recorded with a codebook. Building.",
+      "status": "Built",
+      "reason": "70,564 rows (1,357 people x 4 campaign posts x 13 questions; with or without a digital imprint, education text or not). Reproduces the authors' processed file answer for answer and every cell of their descriptives; independent checker: PASS, post-to-picture mapping confirmed four ways.",
       "permission": "Not asked yet",
       "contact": "",
-      "rows": null,
-      "recipe": ""
+      "rows": 70564,
+      "recipe": "be8a2"
     },
     {
       "id": "IMG55",
