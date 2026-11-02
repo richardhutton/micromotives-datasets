@@ -142,6 +142,61 @@ def case_text(row: pd.Series) -> str:
     )
 
 
+SET_JUDGE_SYSTEM = """You judge two sets of synthetic quotes. Each set was written for the same group of different real people, who were all shown the same thing, asked the same question and gave the same answer. Real people who give the same answer still give different reasons, in different voices, and notice different things.
+
+Pick the set that sounds more like that many different real people: distinct reasons, distinct voices, nobody echoing anyone else. Variety only counts when every quote is still a believable reason for that answer from that person; a set made odd for the sake of it does not win. "tie" only when you truly cannot choose.
+
+Reply with JSON only: {"better": "A|B|tie", "reason": "one sentence"}"""
+
+
+def judge_set(
+    ask: Callable[[str, str, str, int], str], cell: pd.DataFrame, ours_col: str, flip: bool
+) -> dict[str, Any]:
+    """One blind verdict on a whole cell: which set sounds like different people (rich,
+    2 Nov 2026: a set of near-identical good quotes is wrong as a population). Fewer than
+    two quotes of ours is a loss, unjudged."""
+    ours = [
+        (p, t)
+        for p, t in zip(cell["persona_text"], cell[ours_col], strict=True)
+        if isinstance(t, str)
+    ]
+    theirs = [
+        (p, t)
+        for p, t in zip(cell["persona_text"], cell["frontier"], strict=True)
+        if isinstance(t, str)
+    ]
+    if len(ours) < 2:
+        return {"better": "theirs", "reason": "fewer than two quotes of ours"}
+
+    def block(quotes: list[tuple[str, str]]) -> str:
+        return "\n".join(
+            f"- ({p.splitlines()[0]}; {p.splitlines()[1] if len(p.splitlines()) > 1 else ''}) {t}"
+            for p, t in quotes
+        )
+
+    first = cell.iloc[0]
+    head = (
+        f"What they were all shown:\n{first['condition']}\n\nThe question:\n{first['outcome']}\n\n"
+        f"The answer they all gave: {first['response']}"
+    )
+    a, b = (theirs, ours) if flip else (ours, theirs)
+    user = f"{head}\n\nSet A:\n{block(a)}\n\nSet B:\n{block(b)}"
+    for attempt in range(3):
+        text = ask(JUDGE, SET_JUDGE_SYSTEM, user, attempt)
+        try:
+            verdict = json.loads(text[text.index("{") : text.rindex("}") + 1])
+        except ValueError:
+            continue
+        if verdict.get("better") in ("A", "B", "tie"):
+            winner = {
+                "A": "theirs" if flip else "ours",
+                "B": "ours" if flip else "theirs",
+                "tie": "tie",
+            }
+            return {"better": winner[verdict["better"]], "reason": verdict.get("reason", "")}
+    return {"better": "unreadable", "reason": ""}
+
+
 def judge_pair(
     ask: Callable[[str, str, str, int], str],
     row: pd.Series,
@@ -307,12 +362,24 @@ def main() -> None:
                 range(len(rows)),
             )
         )
+        cells = [g for _, g in rows.groupby("cell", sort=True)]
+        sets = list(
+            ex.map(
+                lambda k: (
+                    {"cell": cells[k]["cell"].iloc[0]}
+                    | judge_set(ask, cells[k], "quote", random.Random(SEED * 7 + k).random() < 0.5)
+                ),
+                range(len(cells)),
+            )
+        )
     rows = pd.concat(
         [rows, pd.DataFrame(final).add_prefix("final_"), pd.DataFrame(first).add_prefix("first_")],
         axis=1,
     )
+    sets_frame = pd.DataFrame(sets)
     args.out.mkdir(parents=True, exist_ok=True)
     rows.to_parquet(args.out / "rows.parquet", index=False)
+    sets_frame.to_parquet(args.out / "sets.parquet", index=False)
 
     def words(col: str) -> float:
         return float(rows[col].dropna().str.split().str.len().median())
@@ -348,6 +415,10 @@ def main() -> None:
             "final": words("quote"),
             "first_draft": words("first_draft"),
             "frontier": words("frontier"),
+        },
+        "diversity_set_judge": {
+            "better": share(sets_frame["better"]),
+            "by_cell": dict(zip(sets_frame["cell"], sets_frame["better"], strict=True)),
         },
         "code_tells": {
             "final": tells("quote"),

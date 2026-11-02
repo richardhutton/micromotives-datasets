@@ -427,3 +427,8 @@ def test_a_source_with_no_country_is_refused_not_guessed() -> None:
     rows = _rows(people=1, per_person=1).assign(source="somewhere_new")
     with pytest.raises(KeyError):
         run.build_items(rows, "full_persona", 1)
+
+
+def test_swap_gives_each_role_the_other_model() -> None:
+    assert run.pod_names(False) == {"writer": "writer", "checker": "checker"}
+    assert run.pod_names(True) == {"writer": "checker", "checker": "writer"}

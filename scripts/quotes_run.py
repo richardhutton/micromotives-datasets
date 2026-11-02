@@ -114,6 +114,11 @@ WRITER_SAMPLING = {
     "presence_penalty": 1.5,
     "chat_template_kwargs": {"enable_thinking": False},
 }
+# --swap (rich, 2 Nov 2026): Gemma writes and Qwen checks, to test whether the writer model
+# is what loses to a frontier model. Gemma's own recommended sampling; Qwen as a judge is
+# made repeatable and kept out of thinking mode.
+GEMMA_WRITER_SAMPLING = {"temperature": 1.0, "top_p": 0.95, "top_k": 64}
+QWEN_CHECKER_SAMPLING = {"temperature": 0.0, "chat_template_kwargs": {"enable_thinking": False}}
 # A judge should be repeatable. Gemma 4's thinking is on only with <|think|> in the
 # system prompt, which the checker prompts never contain.
 CHECKER_SAMPLING = {"temperature": 0.0}
@@ -386,6 +391,14 @@ def training_rows_only(rows: pd.DataFrame, split: Path = SPLIT) -> None:
         sys.exit(f"rows from studies not in training: {bad[:5]}: a quote on them leaks the answer")
 
 
+def pod_names(swap: bool) -> dict[str, str]:
+    """The router model each role uses. The router's names are fixed by quotes_models.json
+    (writer = Qwen, checker = Gemma); --swap gives each role the other model."""
+    if swap:
+        return {"writer": "checker", "checker": "writer"}
+    return {"writer": "writer", "checker": "checker"}
+
+
 STEPS = [
     ("written", "writer", 0),
     ("checked 0", "checker", 0),
@@ -425,6 +438,7 @@ def main() -> None:
         "--no-blind", action="store_true", help="skip the blind test: one checker call per quote"
     )
     ap.add_argument("--seed", type=int, default=3407)
+    ap.add_argument("--swap", action="store_true", help="Gemma writes, Qwen checks")
     ap.add_argument("--workers", type=int, default=64)
     args = ap.parse_args()
 
@@ -477,9 +491,20 @@ def main() -> None:
         headers={"Authorization": f"Bearer {key}"},
     )
     pod = Pod(args.url, http)
+    on_pod = pod_names(args.swap)
     servers = {
-        "writer": Server(args.url, "writer", WRITER_SAMPLING, http),
-        "checker": Server(args.url, "checker", CHECKER_SAMPLING, http),
+        "writer": Server(
+            args.url,
+            on_pod["writer"],
+            GEMMA_WRITER_SAMPLING if args.swap else WRITER_SAMPLING,
+            http,
+        ),
+        "checker": Server(
+            args.url,
+            on_pod["checker"],
+            QWEN_CHECKER_SAMPLING if args.swap else CHECKER_SAMPLING,
+            http,
+        ),
     }
     pool = q.VoicePool.load() if vnum(version) >= vnum(VOICE_EXAMPLES_FROM) else None
     if vnum(version) >= vnum(VOICE_EXAMPLES_FROM) and pool is None:
@@ -550,8 +575,8 @@ def main() -> None:
             "setting": args.setting,
             "seed": args.seed,
             "serving": "one model at a time, switched by the router",
-            "writer": {"model": servers["writer"].root, "sampling": WRITER_SAMPLING},
-            "checker": {"model": servers["checker"].root, "sampling": CHECKER_SAMPLING},
+            "writer": {"model": servers["writer"].root, "sampling": servers["writer"].sampling},
+            "checker": {"model": servers["checker"].root, "sampling": servers["checker"].sampling},
             "prompt_version": version,
             "prompts": {f"{k}_{version}.md": h for k, h in prompt_hashes.items()},
             "repair_rounds": REPAIR_ROUNDS,
@@ -600,7 +625,7 @@ def main() -> None:
                 if name.startswith("rewritten") and not failing:
                     break  # everything passed: nothing left to rewrite
             print(f"{name}: switching the pod to the {model}", flush=True)
-            servers[model].root = pod.use(model)["hf"]
+            servers[model].root = pod.use(on_pod[model])["hf"]
             if name == "written":
                 calls = plan_calls(rows, items, args.setting)
                 got = run_parallel(
