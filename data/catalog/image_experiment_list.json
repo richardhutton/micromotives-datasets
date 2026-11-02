@@ -258,7 +258,7 @@
       "description": "Alcohol label acceptability: health warning / calorie / both × description alone vs description plus an example label image on a bottle; acceptability, effectiveness (1–7). Prolific, n=994.",
       "link": "https://osf.io/h6bzx/",
       "status": "Waiting for images",
-      "reason": "images not in the deposit, and the authors no longer have the files (2 Nov 2026): extract them from the protocol documents",
+      "reason": "Blocked (2 Nov 2026), data reproduces preprint Table 2: the \"Beer or wine\" column (which picture each person saw) has no value labels; wine + calorie and wine + health-warning images are in neither protocol nor preprint; on-screen framing not deposited. Ask the authors for the Qualtrics export (.qsf) or screenshots, and the Beer-or-wine coding. Bottle photos sourced from Eurocare.",
       "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
