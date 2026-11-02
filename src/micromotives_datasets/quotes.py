@@ -78,9 +78,14 @@ ANGLES = REASONED_ANGLES + UNREASONED_ANGLES
 # one person across a study's outcomes.
 VOICE_DIMENSIONS = [
     # length and manner as one dimension, so no voice is "says very little" and "rambling"
+    # weighted by repetition (v10): "says very little" went to 48% of rows in v9 and gave
+    # 11-word quotes, 30% of them sharing no word with the condition (rich, 2 Nov 2026)
     [
-        "says very little (short, but whole sentences), blunt",
-        "says very little (short, but whole sentences), gentle",
+        "says very little (one short sentence, but it still names what got to them)",
+        "a sentence or two",
+        "a sentence or two",
+        "a sentence or two",
+        "chatty",
         "chatty",
         "rambling",
     ],
@@ -248,6 +253,18 @@ def item_block(item: Item, number: int, with_persona: bool, show_answer: bool = 
     return "\n\n".join(parts)
 
 
+# An amount is not a feeling (v10). Giving £50 of £1,000 sits at "the far end of the scale",
+# which told the writer they "feel strongly" and failed 179 DEL cost-of-living rows. Only
+# wide scales (an amount, not a 1-7 agreement) whose outcome names money, time or a count.
+AMOUNT = re.compile(
+    r"[£$€]|\bhow many\b|\b(pounds|dollars|money|hours|minutes|days|weeks|months|years)\b", re.I
+)
+AMOUNT_NOTE = (
+    "this is an amount (money, time or a count), not a strength of feeling: the reason "
+    "should fit why they chose that amount"
+)
+
+
 def answer_strength(item: Item) -> str | None:
     """How far along its scale an answer sits, in words the writer can act on (v4).
     None when the answer is not a number on an ordered scale of more than two points."""
@@ -258,6 +275,8 @@ def answer_strength(item: Item) -> str | None:
     width = item.scale_max - item.scale_min
     if width < 2:
         return None
+    if width >= 20 and AMOUNT.search(item.outcome):
+        return AMOUNT_NOTE
     pos = (value - item.scale_min) / width
     if pos <= 0.1 or pos >= 0.9:
         return "at the far end of the scale: they feel strongly"
@@ -460,6 +479,8 @@ AI_TELLS = {
     ),
     "just": re.compile(r"\bjust\b", re.I),  # Qwen's tic: 28% of v7 drafts; applied from v9
     "buzzword": re.compile(r"\b(gaslight\w*|red flag|toxic|delve|tapestry|testament)\b", re.I),
+    # Qwen's stock phrases, repeated across thousands of v6 quotes (v10)
+    "stock_phrase": re.compile(r"\bit feels like\b|^\s*i mean,", re.I),
 }
 
 
@@ -475,9 +496,63 @@ FILLER_JUST = re.compile(
 ELLIPSIS = re.compile(r"\s*(?:…|\.{3,})\s*")
 
 
+# Spoken English contracts. 32% of v6 quotes had "I am", "do not" or "it is" and no
+# contraction at all, the most common three words in the set being "I am not" (2 Nov 2026).
+# A form at the end of a clause stays whole ("that's what it is", "yes I am").
+CONTRACTIONS = {
+    "I am": "I'm",
+    "I would": "I'd",
+    "I will": "I'll",
+    "it is": "it's",
+    "that is": "that's",
+    "there is": "there's",
+    "they are": "they're",
+    "we are": "we're",
+    "you are": "you're",
+    "do not": "don't",
+    "does not": "doesn't",
+    "did not": "didn't",
+    "is not": "isn't",
+    "are not": "aren't",
+    "was not": "wasn't",
+    "were not": "weren't",
+    "have not": "haven't",
+    "has not": "hasn't",
+    "had not": "hadn't",
+    "will not": "won't",
+    "would not": "wouldn't",
+    "could not": "couldn't",
+    "should not": "shouldn't",
+    "cannot": "can't",
+}
+
+
+def _contraction_pattern(keys: list[str]) -> re.Pattern[str]:
+    alternatives = "|".join(re.escape(k) for k in sorted(keys, key=len, reverse=True))
+    return re.compile(r"\b(" + alternatives + r")\b(?![.,;:!?]|\s*$)", re.I)
+
+
+# negations first, so "I would not" becomes "I wouldn't", never "I'd not"
+CONTRACT_PASSES = (
+    _contraction_pattern([k for k in CONTRACTIONS if k.endswith("not") or k == "cannot"]),
+    _contraction_pattern([k for k in CONTRACTIONS if not (k.endswith("not") or k == "cannot")]),
+)
+
+
+def _contract(m: re.Match[str]) -> str:
+    whole = m.group(1)
+    short = CONTRACTIONS[next(k for k in CONTRACTIONS if k.lower() == whole.lower())]
+    if whole == "I am" or whole.startswith("I "):
+        return short
+    return short[0].upper() + short[1:] if whole[0].isupper() else short
+
+
 def scrub(quote: str) -> str:
-    """Remove the tells that need no rewrite: a filler "just", and "..." as a pause."""
+    """Remove the tells that need no rewrite: a filler "just", "..." as a pause, and
+    uncontracted forms nobody says out loud."""
     out = FILLER_JUST.sub("", quote)
+    for contraction in CONTRACT_PASSES:
+        out = contraction.sub(_contract, out)
 
     def pause(m: re.Match[str]) -> str:
         rest = out[m.end() :]

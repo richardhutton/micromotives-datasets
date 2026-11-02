@@ -544,3 +544,44 @@ def test_voice_pool_drops_non_answers_in_any_case(text: str) -> None:
 @pytest.mark.parametrize("text", ["Brexit", "NA wages are too low", "No", "Nothing works"])
 def test_voice_pool_keeps_real_answers(text: str) -> None:
     assert not _voice_pool_script().is_placeholder(text)
+
+
+@pytest.mark.parametrize(
+    ("quote", "clean"),
+    [
+        ("I am not sure it is worth it.", "I'm not sure it's worth it."),
+        ("I would not do it, they are mad.", "I wouldn't do it, they're mad."),
+        ("It is fine and I do not care.", "It's fine and I don't care."),
+        ("We cannot afford it.", "We can't afford it."),
+    ],
+)
+def test_scrub_contracts_what_people_contract(quote: str, clean: str) -> None:
+    assert q.scrub(quote) == clean
+
+
+@pytest.mark.parametrize(
+    "quote", ["That's what it is.", "Yes I am.", "Who they are, I don't know."]
+)
+def test_scrub_keeps_forms_that_end_a_clause_whole(quote: str) -> None:
+    assert q.scrub(quote) == quote
+
+
+def test_stock_phrases_are_caught_and_ordinary_speech_is_not() -> None:
+    assert q.ai_tells("It feels like a waste of money.") == ["stock_phrase"]
+    assert q.ai_tells("I mean, who pays that?") == ["stock_phrase"]
+    assert q.ai_tells("That's what I mean, it's daft.") == []
+
+
+def test_an_amount_is_not_read_as_a_strength_of_feeling() -> None:
+    money = _item(
+        outcome="How many pounds would you give?", response="50", scale_min=0, scale_max=1000
+    )
+    agree = _item(outcome="How much do you agree?", response="7", scale_min=1, scale_max=7)
+    assert q.answer_strength(money) == q.AMOUNT_NOTE
+    assert q.answer_strength(agree) == "at the far end of the scale: they feel strongly"
+
+
+def test_says_very_little_is_a_minority_voice() -> None:
+    voices = [q.draw_voice(1, "s", f"p{i}") for i in range(2000)]
+    share = sum("says very little" in v for v in voices) / len(voices)
+    assert 0.08 < share < 0.22  # v9 drew it for about half of all rows

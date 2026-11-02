@@ -78,7 +78,7 @@ SETTINGS = ["sampling", "angle_voice", "full_persona", "group"]
 # more. No assigned reason angle (it was crammed in where it did not fit), short voices are
 # "short, but whole sentences" instead of a ten-word cap, and the bans live in code
 # ("just" included) rather than in a long prompt.
-PROMPT_VERSION = "v9"
+PROMPT_VERSION = "v10"
 
 
 def vnum(version: str) -> int:
