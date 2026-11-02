@@ -1,0 +1,336 @@
+study_id: pr8zu
+source: osf
+experiment: study2
+title: 'Health warning labels (image, text, both or none) on six of twelve drinks: whether an alcoholic
+  drink is chosen'
+data_file: Alcohol study 2 full dataset.xlsx
+licence: 'No licence stated on OSF (pr8zu). Author permission: Gareth Hollands, 2 Nov 2026, credit required.'
+comparable_to_socsci210: false
+participant_id_var: PID
+notes: "Write recipes/images/pr8zu_study2.yaml: the alcohol drink choice (IMG03, alcohol).\n\nClarke,\
+  \ Pechey, Mantzari, Hollands et al., Cambridge: \"Impact of health warning\nlabels communicating the\
+  \ risk of cancer on alcohol selection: an online\nexperimental study\", Addiction 116 (2021) 41-52,\
+  \ doi:10.1111/add.15072 (CC BY\n4.0). OSF pr8zu, Study 2. The sibling of k7tw5 Study 2 (snacks).\n\n\
+  6,024 UK adults who drink beer or wine at least weekly said which they prefer,\nwere randomised (Qualtrics)\
+  \ to one of four label groups, a 2 (image: present /\nabsent) x 2 (text: present / absent) design, saw\
+  \ twelve drinks one at a time and\nthen \"all the 12 drinks simultaneously, in random order\", and chose\
+  \ one (paper,\nPrimary outcome). Whether the drinks were beer or wine followed the stated\npreference.\n\
+  \nEvery judgement is here, in code, so the recipe can be re-derived and reviewed:\n\n* ARMS. The deposit\
+  \ has no codebook, and its `Condition` codes are NOT the\n  protocol's group numbers (the protocol's\
+  \ control is group 4; in the deposit\n  the control is the code whose people were all re-randomised\
+  \ for\n  acceptability, `Acceptability condition` 2-4). The paper's Table 3 ties each\n  code to its\
+  \ arm by count and by alcoholic selections, all exact: 1 control\n  (1,510; 1,157), 2 text-only (1,511;\
+  \ 926), 3 image-only (1,502; 728), 4\n  image-and-text (1,501; 837). Table 1's gender and weekly-units\
+  \ columns agree\n  with the same mapping.\n* DRINK is a factor, as in Study 1: the preference column\
+  \ decides which twelve\n  drinks were shown, so 4 x 2 = 8 arms, and the `drink` factor equals the\n\
+  \  persona's preference for every participant (not a randomised contrast).\n  !! WHICH CODE IS BEER\
+  \ IS A JUDGEMENT, OPEN: we are asking the authors. !!\n  The paper's Table 1 literally labels code 1\
+  \ \"Wine\" (its counts match code 1\n  exactly). Everything else favours 1 = Beer, and that is what\
+  \ is built:\n  gender, AUDIT, units, the protocol's option order and Study 1's labelled\n  coding. If\
+  \ the authors say 1 = Wine, swap DRINKS and rebuild. The deposit holds\n  1/2 with no labels. The protocol\
+  \ lists the options \"Beer, Wine\" (Qualtrics\n  codes options in order, 1 = Beer). Code 1 is 77% male\
+  \ and drinks more per\n  occasion; in Study 1, where the deposit labels them, beer drinkers are 77%\n\
+  \  male and wine drinkers 29%, the same split as codes 1 and 2 here (77% and\n  29%). Against that,\
+  \ the paper's Table 1 prints \"Wine\" beside the code 1 counts\n  (667 in image-and-text); but that\
+  \ table is not internally consistent (its\n  image-and-text age bands, 451 / 572 / 482, are within one\
+  \ of the deposit's\n  CONTROL group, 451 / 571 / 483), so 1 = Beer, 2 = Wine.\n* WHICH LABELS. Bowel\
+  \ Cancer 1, Breast Cancer 1 and Liver Cancer 2 are starred\n  \"(Label 1-3)\" in the authors' stimuli\
+  \ file (AlcoholLabellingOnlineStudyStimuli\n  8.3.20.docx, the file the paper cites as https://osf.io/6dx2u/,\
+  \ sha256\n  checked). Its label images are byte-identical to the Study 1 labels already\n  catalogued,\
+  \ so the image-and-text arm cites pr8zu_s1_* ids. \"Each health\n  consequence was shown twice (i.e.\
+  \ on two drinks)\" (paper); which drink carried\n  which label cannot be determined from source, so\
+  \ no row claims a pairing.\n  TEXT-ONLY: the same words, no picture (stimuli file examples). IMAGE-ONLY:\
+  \ the\n  same photographs with no words; the deposit holds them only inset on an\n  example wine bottle,\
+  \ not as label files, so the rows describe them in words,\n  reusing the checked descriptions of the\
+  \ Study 1 catalogue entries.\n* THE DRINKS are named from the packaging in the stimuli file's \"Product\n\
+  \  selection\" images (wine: word/media image22-23; beer: image24-25). The paper\n  confirms the make-up:\
+  \ six alcoholic, \"three different soft drinks and three\n  different alcohol-free beers or wines\"\
+  . The alcohol-free ones carry an\n  \"Alcohol free\" sticker in those images, which the rows say. The\
+  \ pictures are\n  not attached: they show the drinks in two separate lines-up with no labels,\n  a layout\
+  \ nobody saw and, for the alcoholic drinks, a state only the control\n  arm saw.\n* OUTCOME. The instruction\
+  \ is the protocol's: 'Imagine you are offered a drink.\n  Please select the drink you would prefer to\
+  \ drink [today/now, or later\n  today]'; the bracket is a draft placeholder and the fielded wording\
+  \ is NOT\n  deposited. Rendered as \"now or later today\", which is what the paper\n  supports (\"either\
+  \ immediately or later on that day\"). A judgement: flagged. The deposit\n  records ONLY whether the\
+  \ drink chosen was alcoholic (`Primary outcome`, 1 /\n  0), never which drink, so the response is that\
+  \ and the question says so.\n* NOT BUILT. The secondary outcomes concern a single bottle \"with or without\
+  \ a\n  HWL\" whose label the deposit does not record; acceptability re-randomised the\n  control group.\
+  \ The time-pressure pairs are a second, sequential task. Desire\n  to drink was not asked in Study 2.\n\
+  * PERSONA. Labels: gender from the paper's Table 1 (1 Male: 779 in\n  image-and-text; 4 is \"Prefer\
+  \ not to say\"); ethnicity in the order and wording\n  of the k7tw5 Study 2 Legend (same lab, same questionnaire,\
+  \ matched by Table 1:\n  White 1,401 ... prefer not to say 12 in image-and-text); education by the same\n\
+  \  Legend, the protocol's options in the same order (as in snacks, the paper's\n  \"Bachelor's degree\
+  \ or higher\" counts codes 5, 6 and 7); income letters by the\n  protocol table; AUDIT-C answers by\
+  \ the protocol's own 0-4 scoring, worded as\n  the Study 1 deposit labels them; weekly units by Table\
+  \ 1's bands (exact\n  counts). Age -999 (12 people) is a non-answer. Not mapped: unrounded BMI,\n  units\
+  \ consumed, the AUDIT score (derived), `Date`.\n\n    uv run python scripts/gen_pr8zu_study2.py    \
+  \        # write the recipe\n    uv run python scripts/gen_pr8zu_study2.py --check    # exit 1 if it\
+  \ differs"
+condition:
+  source_vars:
+  - Condition
+  - Which alcohol do you prefer?
+  factors:
+  - label
+  - drink
+  shared_context: You are shown pictures of twelve drinks, six alcoholic and six non-alcoholic, first
+    one at a time and then all together in random order.
+  arms:
+  - raw_values:
+      Condition: 1
+      Which alcohol do you prefer?: 1
+    condition_num: 0
+    factors:
+      label: none
+      drink: beer
+    text: The drinks are beer. The six alcoholic beers are Fourpure American Pale, Cisk Export, Farsons
+      Gold Label Pale Ale, Heineken, Pistonhead Full Amber and San Miguel Especial. The six non-alcoholic
+      drinks are three alcohol-free beers, each with an "Alcohol free" sticker (San Miguel 0,0, Heineken
+      0.0 and Pistonhead Flat Tire), and three soft drinks (J2O Orange & Passion Fruit, Appletiser and
+      Coca-Cola). All twelve are in their original packaging, with no health warning labels.
+    images: []
+  - raw_values:
+      Condition: 1
+      Which alcohol do you prefer?: 2
+    condition_num: 1
+    factors:
+      label: none
+      drink: wine
+    text: The drinks are wine. The six alcoholic wines are Jack & Gina Zinfandel Rosé, Tesco Merlot, Vicuña
+      Sauvignon Blanc, Oyster Bay Merlot, The Straw Hat rosé and a Chilean Sauvignon Blanc. The six non-alcoholic
+      drinks are three alcohol-free wines, each with an "Alcohol free" sticker (Eisberg Sauvignon Blanc,
+      Morouj Merlot and Bon Voyage Pinot Noir Rosé), and three soft drinks (Cawston Press Apple & Mango,
+      Coca-Cola and Bottlegreen Sparkling Elderflower Pressé). All twelve are in their original packaging,
+      with no health warning labels.
+    images: []
+  - raw_values:
+      Condition: 2
+      Which alcohol do you prefer?: 1
+    condition_num: 2
+    factors:
+      label: text only
+      drink: beer
+    text: 'The drinks are beer. The six alcoholic beers are Fourpure American Pale, Cisk Export, Farsons
+      Gold Label Pale Ale, Heineken, Pistonhead Full Amber and San Miguel Especial. The six non-alcoholic
+      drinks are three alcohol-free beers, each with an "Alcohol free" sticker (San Miguel 0,0, Heineken
+      0.0 and Pistonhead Flat Tire), and three soft drinks (J2O Orange & Passion Fruit, Appletiser and
+      Coca-Cola). Each of the six beers carries a health warning label in words only, one of these three,
+      each on two of the six: "Alcohol causes bowel cancer", "Alcohol causes breast cancer" and "Alcohol
+      causes liver cancer".'
+    images: []
+  - raw_values:
+      Condition: 2
+      Which alcohol do you prefer?: 2
+    condition_num: 3
+    factors:
+      label: text only
+      drink: wine
+    text: 'The drinks are wine. The six alcoholic wines are Jack & Gina Zinfandel Rosé, Tesco Merlot,
+      Vicuña Sauvignon Blanc, Oyster Bay Merlot, The Straw Hat rosé and a Chilean Sauvignon Blanc. The
+      six non-alcoholic drinks are three alcohol-free wines, each with an "Alcohol free" sticker (Eisberg
+      Sauvignon Blanc, Morouj Merlot and Bon Voyage Pinot Noir Rosé), and three soft drinks (Cawston Press
+      Apple & Mango, Coca-Cola and Bottlegreen Sparkling Elderflower Pressé). Each of the six wines carries
+      a health warning label in words only, one of these three, each on two of the six: "Alcohol causes
+      bowel cancer", "Alcohol causes breast cancer" and "Alcohol causes liver cancer".'
+    images: []
+  - raw_values:
+      Condition: 3
+      Which alcohol do you prefer?: 1
+    condition_num: 4
+    factors:
+      label: image only
+      drink: beer
+    text: 'The drinks are beer. The six alcoholic beers are Fourpure American Pale, Cisk Export, Farsons
+      Gold Label Pale Ale, Heineken, Pistonhead Full Amber and San Miguel Especial. The six non-alcoholic
+      drinks are three alcohol-free beers, each with an "Alcohol free" sticker (San Miguel 0,0, Heineken
+      0.0 and Pistonhead Flat Tire), and three soft drinks (J2O Orange & Passion Fruit, Appletiser and
+      Coca-Cola). Each of the six beers carries a health warning label that is a photograph with no words,
+      one of these three, each on two of the six: a close-up of the inside of a bowel with large red growths
+      around its wall; a chest and underarm crossed by long healed surgical scars; and a cut surface of
+      a liver with many pale round tumours, on black.'
+    images: []
+  - raw_values:
+      Condition: 3
+      Which alcohol do you prefer?: 2
+    condition_num: 5
+    factors:
+      label: image only
+      drink: wine
+    text: 'The drinks are wine. The six alcoholic wines are Jack & Gina Zinfandel Rosé, Tesco Merlot,
+      Vicuña Sauvignon Blanc, Oyster Bay Merlot, The Straw Hat rosé and a Chilean Sauvignon Blanc. The
+      six non-alcoholic drinks are three alcohol-free wines, each with an "Alcohol free" sticker (Eisberg
+      Sauvignon Blanc, Morouj Merlot and Bon Voyage Pinot Noir Rosé), and three soft drinks (Cawston Press
+      Apple & Mango, Coca-Cola and Bottlegreen Sparkling Elderflower Pressé). Each of the six wines carries
+      a health warning label that is a photograph with no words, one of these three, each on two of the
+      six: a close-up of the inside of a bowel with large red growths around its wall; a chest and underarm
+      crossed by long healed surgical scars; and a cut surface of a liver with many pale round tumours,
+      on black.'
+    images: []
+  - raw_values:
+      Condition: 4
+      Which alcohol do you prefer?: 1
+    condition_num: 6
+    factors:
+      label: image and text
+      drink: beer
+    text: 'The drinks are beer. The six alcoholic beers are Fourpure American Pale, Cisk Export, Farsons
+      Gold Label Pale Ale, Heineken, Pistonhead Full Amber and San Miguel Especial. The six non-alcoholic
+      drinks are three alcohol-free beers, each with an "Alcohol free" sticker (San Miguel 0,0, Heineken
+      0.0 and Pistonhead Flat Tire), and three soft drinks (J2O Orange & Passion Fruit, Appletiser and
+      Coca-Cola). Each of the six beers carries a health warning label with a picture, one of these three,
+      each on two of the six: "Alcohol causes bowel cancer" <image>, "Alcohol causes breast cancer" <image>
+      and "Alcohol causes liver cancer" <image>.'
+    images:
+    - pr8zu_s1_bowel_cancer_1
+    - pr8zu_s1_breast_cancer_1
+    - pr8zu_s1_liver_cancer_2
+  - raw_values:
+      Condition: 4
+      Which alcohol do you prefer?: 2
+    condition_num: 7
+    factors:
+      label: image and text
+      drink: wine
+    text: 'The drinks are wine. The six alcoholic wines are Jack & Gina Zinfandel Rosé, Tesco Merlot,
+      Vicuña Sauvignon Blanc, Oyster Bay Merlot, The Straw Hat rosé and a Chilean Sauvignon Blanc. The
+      six non-alcoholic drinks are three alcohol-free wines, each with an "Alcohol free" sticker (Eisberg
+      Sauvignon Blanc, Morouj Merlot and Bon Voyage Pinot Noir Rosé), and three soft drinks (Cawston Press
+      Apple & Mango, Coca-Cola and Bottlegreen Sparkling Elderflower Pressé). Each of the six wines carries
+      a health warning label with a picture, one of these three, each on two of the six: "Alcohol causes
+      bowel cancer" <image>, "Alcohol causes breast cancer" <image> and "Alcohol causes liver cancer"
+      <image>.'
+    images:
+    - pr8zu_s1_bowel_cancer_1
+    - pr8zu_s1_breast_cancer_1
+    - pr8zu_s1_liver_cancer_2
+outcomes:
+- var: Primary outcome
+  task_num: 0
+  question: 'Imagine you are offered a drink. Please select the drink you would prefer to drink now or
+    later today. Only whether the drink you choose is alcoholic is recorded: 1 means one of the six alcoholic
+    drinks and 0 means one of the six non-alcoholic drinks.'
+  scale:
+    min: 0
+    max: 1
+    nominal: true
+response_recode:
+  0: 0
+  1: 1
+missing_codes:
+- -888
+- -999
+persona_map:
+  age: Age
+  gender: Gender
+  ethnicity: Ethnicity
+  education: Education
+  income: Income
+  alcohol_preference: Which alcohol do you prefer?
+  how_often_has_a_drink_containing_alcohol: How often do you have a drink containing alcohol?
+  units_of_alcohol_on_a_typical_day_when_drinking: How many units of alcohol do you drink on a typical
+    day when you are drinking?
+  how_often_6_or_more_units_if_female_or_8_or_more_if_male_on_a_single_occasion_in_the_last_year: How
+    often have you drunk 6 or more units on a single occasion in the last year?
+  units_of_alcohol_drunk_per_week: Weekly consumption category
+persona_missing:
+  Age:
+  - -888
+  - -999
+  Gender:
+  - -888
+  - -999
+  - 4
+  Ethnicity:
+  - -888
+  - -999
+  - 6
+  Education:
+  - -888
+  - -999
+  Income:
+  - -888
+  - -999
+  Which alcohol do you prefer?:
+  - -888
+  - -999
+  How often do you have a drink containing alcohol?:
+  - -888
+  - -999
+  How many units of alcohol do you drink on a typical day when you are drinking?:
+  - -888
+  - -999
+  How often have you drunk 6 or more units on a single occasion in the last year?:
+  - -888
+  - -999
+  Weekly consumption category:
+  - -888
+  - -999
+persona_label_rewrite:
+  Gender:
+    1: Male
+    2: Female
+    3: Other
+  Ethnicity:
+    1: White British / White Irish / Other White background
+    2: Mixed White and Black African / Mixed White and Asian / Mixed White and Black Caribbean / Other
+      Mixed background
+    3: Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British background)
+    4: Black/Black British (African/Caribbean/Other Black/Black British background)
+    5: Other ethnic group
+  Education:
+    1: No qualifications
+    2: Up to 4 GCSE's (Including 1-4 O Levels/CSE/GCSEs (any grades), Foundation Diploma, NVQ level 1,
+      Foundation GNVQ or equivalents) (or foreign equivalent)
+    3: 5 or more GCSE's or 1 A-level (Including 5+ GCSEs (Grades A*-C),1 A Level/ 2-3 AS Levels, NVQ level
+      2, Intermediate GNVQ, City and Guilds Craft, BTEC First/General Diploma, RSA Diploma, Apprenticeship
+      or equivalents) (or foreign equivalent)
+    4: 2 or more A-levels (Including 2+ A Levels, 4+ AS Levels, NVQ Level 3, Advanced GNVQ, City and Guilds
+      Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma or equivalents) (or foreign equivalent)
+    5: Bachelor's degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher
+      level or equivalents) (or foreign equivalent)
+    6: Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional
+      qualifications e.g. teaching, nursing, accountancy or equivalents) (or foreign equivalent)
+    7: Other vocational/work-related qualifications
+  Income:
+    1: up to £4,499 per year
+    2: £4,500 to £6,499 per year
+    3: £6,500 to £7,499 per year
+    4: £7,500 to £9,499 per year
+    5: £9,500 to £11,499 per year
+    6: £11,500 to £13,499 per year
+    7: £13,500 to £15,499 per year
+    8: £15,500 to £17,499 per year
+    9: £17,500 to £24,999 per year
+    10: £25,000 to £29,999 per year
+    11: £30,000 to £39,999 per year
+    12: £40,000 to £49,999 per year
+    13: £50,000 to £74,999 per year
+    14: £75,000 to £99,999 per year
+    15: £100,000 or more per year
+  Which alcohol do you prefer?:
+    1: Beer
+    2: Wine
+  How often do you have a drink containing alcohol?:
+    0: Never
+    1: Monthly or less
+    2: 2-4 times per month
+    3: 2-3 times per week
+    4: 4+ times per week
+  How many units of alcohol do you drink on a typical day when you are drinking?:
+    0: 1-2 units
+    1: 3-4 units
+    2: 5-6 units
+    3: 7-9 units
+    4: 10+ units
+  How often have you drunk 6 or more units on a single occasion in the last year?:
+    0: Never
+    1: Less than monthly
+    2: Monthly
+    3: Weekly
+    4: Daily or almost daily
+  Weekly consumption category:
+    1: 0-14 units
+    2: 15-30 units
+    3: 31-50 units
+    4: 51-99 units
+    5: 100+ units

@@ -184,6 +184,13 @@
    "Any other Black, African or Caribbean background": "Black, Black British, Caribbean or African",
    "Arab": "Other ethnic group",
    "Any other ethnic group": "Other ethnic group"
+  },
+  "uk_xsfev_osf": {
+   "White British / White Irish / Other White background": "White",
+   "Mixed White and Black African / Mixed White and Asian / Mixed White and Black Caribbean / Other Mixed background": "Mixed or Multiple ethnic groups",
+   "Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British background)": "Asian or Asian British",
+   "Black/Black British (African/Caribbean/Other Black/Black British background)": "Black, Black British, Caribbean or African",
+   "Other ethnic group": "Other ethnic group"
   }
  },
  "_about": [
@@ -230,6 +237,11 @@
   "word-for-word from its .qsf. Jev (category_concept) put every label in its ONS group (white 0.76-0.98, mixed 0.94-1.0, asian",
   "0.85-1.0, black 0.66-0.99; Arab middle_eastern 0.99, which UK schemes file under Other ethnic group per ONS). The within-group",
   "catch-alls scored residual 0.41-0.62 and go to their own group, as uk_ons_detailed_2021's do; 'Any other ethnic group'",
-  "(residual 0.93) is Other ethnic group. Labels shared with other schemes keep their mapping. No canonical value added."
+  "(residual 0.93) is Other ethnic group. Labels shared with other schemes keep their mapping. No canonical value added.",
+  "",
+  "uk_xsfev_osf (2 Nov 2026, IMG40): the ONS five groups, each label listing its own members (\"White British /",
+  "White Irish / Other White background\", \"Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British",
+  "background)\", ...), from the data dictionary. Each maps to its own ONS group; read, not asked of Jev. No canonical value",
+  "added; no other scheme changed."
  ]
 }

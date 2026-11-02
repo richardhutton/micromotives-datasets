@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 
 from micromotives_datasets.pipeline.build import build_rows
-from micromotives_datasets.pipeline.qc import check
+from micromotives_datasets.pipeline.qc import check, reads_as_a_non_answer
 from micromotives_datasets.sources import spss
 
 
@@ -776,3 +776,70 @@ def test_rule22_catches_scale_columns_that_disagree_with_the_instruction(
     setattr(rows[0], field_, value)
     rep = check(rows, fixture_recipe)
     assert _fails(rep, "scale columns disagree"), rep.failures
+
+
+# --- Rule 24: one participant, one prompt, one answer -----------------------
+# `xsfev`'s no-label arm saw its "unlabelled" and "labelled" snack choices as the
+# same screen, so 471 people carried one prompt twice and 55 answered it
+# differently. Every count reconciled.
+
+_REPEATED = "same condition and outcome more than once"
+
+
+def _rule24(rows, recipe) -> list[str]:
+    return [f for f in check(rows, recipe).failures if _REPEATED in f]
+
+
+def test_a_participant_answering_the_same_prompt_twice_fails(fixture_sav, fixture_recipe) -> None:
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    assert not _rule24(rows, fixture_recipe)
+    twice = [*rows, rows[0].model_copy(update={"response": "9", "response_num": 9.0})]
+    assert _rule24(twice, fixture_recipe)
+
+
+def test_same_outcome_under_a_different_condition_passes(fixture_sav, fixture_recipe) -> None:
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    other = rows[0].model_copy(update={"condition": rows[0].condition + " Something else."})
+    assert not _rule24([*rows, other], fixture_recipe)
+
+
+def test_different_outcome_under_the_same_condition_passes(fixture_sav, fixture_recipe) -> None:
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    other = rows[0].model_copy(update={"outcome": rows[0].outcome + " (again, differently)"})
+    assert not _rule24([*rows, other], fixture_recipe)
+
+
+def test_same_words_with_a_different_picture_passes(fixture_sav, fixture_recipe) -> None:
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    a = rows[0].model_copy(update={"condition_images": ["img_a"]})
+    b = rows[0].model_copy(update={"condition_images": ["img_b"]})
+    assert not _rule24([a, b, *rows[1:]], fixture_recipe)
+
+
+def test_the_same_prompt_from_two_participants_passes(fixture_sav, fixture_recipe) -> None:
+    rows = list(build_rows(spss.read(fixture_sav), fixture_recipe))
+    other = rows[0].model_copy(update={"participant_id": rows[0].participant_id + "_other"})
+    assert not _rule24([*rows, other], fixture_recipe)
+
+
+# --- Rule 12's "n/a" must be a word, not a substring -------------------------
+# It matched inside "Asian/Asian British" (xsfev: 175 people flagged).
+
+
+@pytest.mark.parametrize(
+    "label",
+    [
+        "Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British "
+        "background)",
+        "Bosnian/Albanian",
+        "n/abc",
+        "N/Asian",
+    ],
+)
+def test_n_slash_a_inside_a_word_is_an_answer(label: str) -> None:
+    assert not reads_as_a_non_answer(label)
+
+
+@pytest.mark.parametrize("label", ["N/A", "n/a", "N/A.", "Not known (n/a)", "n/a - skipped"])
+def test_n_slash_a_standing_alone_is_a_non_answer(label: str) -> None:
+    assert reads_as_a_non_answer(label)

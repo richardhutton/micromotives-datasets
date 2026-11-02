@@ -44,10 +44,12 @@ from ..schema import Row
 #
 # Not widened by guesswork beyond that. A term matching too much deletes real
 # answers silently: "na" as a substring swallows "National", "Finance" and
-# "Native American".
+# "Native American". "n/a" did exactly that inside "Asian/Asian British", so it
+# must stand alone as a word (xsfev, 2 Nov 2026: 175 people flagged).
 _NON_ANSWER = re.compile(
     r"please specify|refused|missing|not asked|skipped|don['\u2019]?t know"
-    r"|no answer|unknown|dummy|prefer not|can['\u2019]?t remember|n/a|invalid|not applicable",
+    r"|no answer|unknown|dummy|prefer not|can['\u2019]?t remember|(?<!\w)n/a(?!\w)|invalid"
+    r"|not applicable",
     re.I,
 )
 
@@ -646,6 +648,31 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
         rep.failures.append(
             f"{misplaced} row(s) whose condition has a different number of "
             f"{images_mod.IMAGE_MARKER} markers from its image IDs"
+        )
+
+    # --- Rule 24: no participant answers the same prompt twice --------------
+    # Two rows from one person with the same condition (words AND pictures) and
+    # the same outcome are one question asked twice, and the row format cannot
+    # say which answer came first. Found on `xsfev`, whose no-label arm saw the
+    # "unlabelled" and "labelled" snack choices as the same screen: 471 people
+    # carried the identical prompt twice and 55 answered it differently, so the
+    # model was taught both answers to one question. Every count reconciled.
+    # The same outcome under a different condition, or a different outcome under
+    # the same condition, is ordinary and passes.
+    # A row with no participant id cannot be grouped; rule 19 is about those.
+    prompts: Counter[tuple[str, str, tuple[str, ...], str]] = Counter(
+        (r.participant_id, r.condition, tuple(r.condition_images), r.outcome)
+        for r in rows
+        if r.participant_id is not None
+    )
+    repeated = {k: n for k, n in prompts.items() if n > 1}
+    if repeated:
+        people = len({k[0] for k in repeated})
+        extra_rows = sum(n - 1 for n in repeated.values())
+        rep.failures.append(
+            f"{people} participant(s) answer the same condition and outcome more than "
+            f"once ({extra_rows} repeated row(s)) — a row cannot say which answer came "
+            "first; drop the repeat or make the outcome say what differed"
         )
 
     return rep

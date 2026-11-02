@@ -132,6 +132,14 @@
    "Bachelor’s degree or equivalent": "Bachelors to postgraduate",
    "Master’s degree / Postgraduate qualification": "Bachelors to postgraduate",
    "Doctoral degree": "Bachelors to postgraduate"
+  },
+  "uk_xsfev_osf": {
+   "No qualifications": "Less than high school",
+   "Up to 4 GCSE's (Including 1-4 O Levels/CSE/GCSEs (any grades), Foundation Diploma, NVQ level 1, Foundation GNVQ or equivalents) (or foreign equivalent)": "Below degree level (not further distinguished)",
+   "5 or more GCSE's or 1 A-level (Including 5+ GCSEs (Grades A*-C),1 A Level/ 2-3 AS Levels, NVQ level 2, Intermediate GNVQ, City and Guilds Craft, BTEC First/General Diploma, RSA Diploma, Apprenticeship or equivalents) (or foreign equivalent)": "Below degree level (not further distinguished)",
+   "2 or more A-levels (Including 2+ A Levels, 4+ AS Levels, NVQ Level 3, Advanced GNVQ, City and Guilds Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma or equivalents) (or foreign equivalent)": "Below degree level (not further distinguished)",
+   "Bachelor's degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher level or equivalents) (or foreign equivalent)": "Bachelors to postgraduate",
+   "Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional qualifications e.g. teaching, nursing, accountancy or equivalents) (or foreign equivalent)": "Bachelors to postgraduate"
   }
  },
  "_about": [
@@ -178,6 +186,11 @@
   "HNC and HND split some college/associate (0.52/0.49, runner-up associate), both inside Some college to associate; Bachelor's,",
   "Master's/postgraduate and Doctoral at bachelors/postgraduate (0.99-1.0). GCSE is mapped to High school as uk_yougov_18 maps",
   "\"GCSE\", although with only \"No qualification\" below it, a respondent holding low-grade GCSEs would also have picked it: a",
-  "disclosed judgement (939 people among completers). No canonical value added; no other scheme changed."
+  "disclosed judgement (939 people among completers). No canonical value added; no other scheme changed.",
+  "",
+  "uk_xsfev_osf (2 Nov 2026, IMG40): the same lab's qualification question (Cambridge BHRU, data dictionary",
+  "inline labels). Five labels equal uk_k7tw5_osf's up to typography and the dictionary's own suffix (\"GCSE's\", \"equivalents)",
+  "(or foreign equivalent)\"), matched in code and given k7tw5's mapping. \"No qualifications\" goes to Less than high school,",
+  "as uk_yougov_18's \"No formal qualifications\" does: read, not asked of Jev. No canonical value added; no other scheme changed."
  ]
 }

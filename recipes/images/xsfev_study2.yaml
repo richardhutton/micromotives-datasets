@@ -1,0 +1,471 @@
+study_id: xsfev
+source: osf
+experiment: study2
+title: 'Health warning labels vs irrelevant aversive labels vs no label on chocolate bars: liking, wanting
+  and snack choice'
+data_file: Study2_AvoidApproach_Data_20201019.xlsx
+licence: 'No licence stated on OSF (xsfev). Author permission: Gareth Hollands, 2 Nov 2026, for the group,
+  credit required; Paul Fletcher (cc) did not reply separately.'
+comparable_to_socsci210: false
+participant_id_var: Subject ID
+notes: "Write recipes/images/xsfev_study2.yaml: health warning vs irrelevant aversive labels (IMG40).\n\
+  \nVentsel, Pechey, Marteau, Hollands, Fletcher et al., Cambridge: \"Effect of health\nwarning labels\
+  \ on motivation towards energy-dense snack foods: Two experimental\nstudies\", Appetite 175 (2022),\
+  \ PMC9194909. OSF xsfev, Study 2 only: an online\nProlific study, 1,382 analysed. Study 1 (n=90, a lab\
+  \ conditioning study with a\njoystick task and a real snack choice) is a different design and is not\
+  \ built.\n\nPeople who like milk chocolate and eat it weekly were randomised (Qualtrics) to\nsee four\
+  \ chocolate bars (Dairy Milk, Mars, Snickers, Galaxy) carrying health\nwarning labels (HWL), irrelevant\
+  \ aversive labels (IAL: unpleasant animal pictures)\nor no label, through a manikin task, two snack\
+  \ choices, a go/no-go task, two more\nsnack choices and a final liking/wanting rating of each bar (protocol\
+  \ v2.2,\nProcedure; data dictionary).\n\nEvery judgement is here, in code, so the recipe can be re-derived\
+  \ and reviewed:\n\n* ARMS. `Condition` 1 = Control, 2 = HWLs, 3 = IALs (data dictionary). The\n  counts\
+  \ are the paper's (471 / 457 / 454) and the post-rating means reproduce\n  its Table 2 exactly, which\
+  \ ties the codes to the arms.\n* WHICH LABELS. The Supplementary Material (S8, S9) shows the labels\
+  \ fielded in\n  Study 2, and they are what the arms cite. The protocol's Appendix 2 is NOT\n  used for\
+  \ the IALs: its examples are the Study 1 / pre-pilot set (\"A dog that\n  has died and is decomposing\"\
+  , ...), and S9 says the pilot replaced two of\n  them. Images: supplementary docx word/media image19-21\
+  \ (HWLs), image26-28\n  (IALs), each read against the words printed on it.\n* WHICH LABEL ON WHICH BAR\
+  \ cannot be determined from source, so no row claims\n  one. The manikin task used 12 chocolate stimuli\
+  \ (protocol 1.1: \"the 12\n  chocolate bars\", i.e. four bars x three labels), and the deposit's own\
+  \ two\n  pictures of the HWL bars disagree (S8 shows Mars with heart disease; the S13\n  selection screenshot\
+  \ shows Mars with Type 2 diabetes). The condition\n  therefore says each bar carried one of the three\
+  \ labels and shows the three\n  labels, not the bars. The no-label arm shows no picture.\n* OUTCOMES\
+  \ BUILT. The post-task liking and wanting of each bar (8 items, 0-100\n  visual analogue scale, \"not\
+  \ at all\" (0) to \"very\" (100), wording from the\n  protocol and the paper), and the FIRST snack choice\
+  \ pair: the unlabelled\n  selection and the labelled selection, both taken after the manikin task. The\n\
+  \  choice options are those on the fielded Qualtrics screen (S13 screenshots):\n  the four bars and\
+  \ four fruits (apple, banana, orange, grapes); the deposit\n  records only which kind was chosen (1\
+  \ chocolate bar, 2 healthier snack). The\n  screen's own words open the question. Labelled-selection\
+  \ wording differs per\n  arm (`items` override), because what the bars carried differs. In the no-label\n\
+  \  arm the labelled selection is the unlabelled screen again: its row would repeat\n  the first choice's\
+  \ prompt word for word (471 people, 55 answering differently),\n  so that one cell is dropped, as the\
+  \ repeated second pair is.\n* NOT BUILT. Baseline liking and wanting: asked before randomisation took\n\
+  \  effect, of unlabelled bars, so they are not an outcome of any arm. The\n  stationery ratings: control\
+  \ stimuli never labelled in any arm. The second\n  snack choice pair (after the go/no-go task): the\
+  \ same question again, which a\n  row cannot tell apart from the first without citing its position in\
+  \ the\n  sequence. Manikin and go/no-go reaction times: not survey responses.\n* PERSONA. Codes are\
+  \ bare integers in the deposit; labels are the data\n  dictionary's own inline definitions (ethnicity,\
+  \ education), the supplement's\n  footnotes (purchase and consumption frequency, eating behaviour),\
+  \ and the\n  dictionary's income table (data/raw/xsfev/s2dict_media/image1.jpeg,\n  byte-identical to\
+  \ k7tw5's, so the same transcription). Gender 4 and ethnicity 6 (prefer not\n  to say) and the -888\
+  \ / -999 codes are non-answers. Hunger (0 not hungry at all .. 100 the most hungry)\n  and time since\
+  \ eating were asked before the tasks. Eating behaviour and\n  purchase/consumption frequency were asked\
+  \ at the END, after exposure; they are\n  mapped because the supplement's S15 shows them identical across\
+  \ arms (e.g.\n  Dairy Milk purchasing 1.4 in all three) and they describe habits over the last\n  month.\
+  \ A judgement: flagged for the checker. BMI is not mapped (unrounded\n  floats, as in k7tw5).\n\n  \
+  \  uv run python scripts/gen_xsfev_study2.py            # write the recipe\n    uv run python scripts/gen_xsfev_study2.py\
+  \ --check    # exit 1 if it differs"
+condition:
+  source_var: Condition
+  factors:
+  - label
+  shared_context: 'You are shown pictures of four chocolate bars: Dairy Milk, Mars, Snickers and Galaxy.'
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      label: none
+    text: The bars are shown in their original packaging, with no label.
+    images: []
+    items:
+      9:
+        response_recode: {}
+  - raw: 2
+    condition_num: 1
+    factors:
+      label: health warning
+    text: 'Each bar''s packaging carries a health warning label, one of these three: "Excess calories
+      cause obesity which causes heart disease" <image>, "Excess calories cause obesity which causes bowel
+      cancer" <image> and "Excess calories cause obesity which causes Type 2 diabetes" <image>.'
+    images:
+    - xsfev_s2_hwl_heart_disease
+    - xsfev_s2_hwl_bowel_cancer
+    - xsfev_s2_hwl_type_2_diabetes
+    items:
+      9:
+        outcome_question: Imagine you are offered a snack. Click on the one you would most like to eat
+          now. The eight snacks are four chocolate bars (Dairy Milk, Mars, Snickers and Galaxy), each
+          carrying one of the health warning labels, and four pieces of fruit (an apple, a banana, an
+          orange and a bunch of grapes). 1 means you chose a chocolate bar and 2 means you chose a piece
+          of fruit.
+  - raw: 3
+    condition_num: 2
+    factors:
+      label: irrelevant aversive
+    text: 'Each bar''s packaging carries a label with an unpleasant picture, one of these three: "A dog
+      that is aggressive and is showing its teeth" <image>, "A dog that is dead and abandoned" <image>
+      and "A cat that was hit by a car and killed" <image>.'
+    images:
+    - xsfev_s2_ial_aggressive_dog
+    - xsfev_s2_ial_dead_dog
+    - xsfev_s2_ial_dead_cat
+    items:
+      9:
+        outcome_question: Imagine you are offered a snack. Click on the one you would most like to eat
+          now. The eight snacks are four chocolate bars (Dairy Milk, Mars, Snickers and Galaxy), each
+          carrying one of the labels with an unpleasant picture, and four pieces of fruit (an apple, a
+          banana, an orange and a bunch of grapes). 1 means you chose a chocolate bar and 2 means you
+          chose a piece of fruit.
+outcomes:
+- var: Post-IM task (labelled per condition)-Dairy Milk_like
+  task_num: 0
+  question: 'Dairy Milk: How much do you like this chocolate bar generally?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: Post-IM task (labelled per condition)-mars-like
+  task_num: 1
+  question: 'Mars: How much do you like this chocolate bar generally?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: Post-IM task (labelled per condition)-snickers-like
+  task_num: 2
+  question: 'Snickers: How much do you like this chocolate bar generally?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: Post-IM task (labelled per condition)-galaxy-like
+  task_num: 3
+  question: 'Galaxy: How much do you like this chocolate bar generally?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: Post-IM task (labelled per condition)-Dairy Milk-want
+  task_num: 4
+  question: 'Dairy Milk: How much do you want one of these chocolate bars right now?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: Post-IM task (labelled per condition)-mars-want
+  task_num: 5
+  question: 'Mars: How much do you want one of these chocolate bars right now?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: Post-IM task (labelled per condition)-snickers-want
+  task_num: 6
+  question: 'Snickers: How much do you want one of these chocolate bars right now?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: Post-IM task (labelled per condition)-galaxy-want
+  task_num: 7
+  question: 'Galaxy: How much do you want one of these chocolate bars right now?'
+  scale:
+    min: 0
+    max: 100
+    min_label: not at all
+    max_label: very
+- var: 1st Snack selection - Part 1(unlabelled, post-manikin task)
+  task_num: 8
+  question: Imagine you are offered a snack. Click on the one you would most like to eat now. The eight
+    snacks are four chocolate bars (Dairy Milk, Mars, Snickers and Galaxy), shown in their original packaging
+    without any label, and four pieces of fruit (an apple, a banana, an orange and a bunch of grapes).
+    1 means you chose a chocolate bar and 2 means you chose a piece of fruit.
+  scale:
+    min: 1
+    max: 2
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+- var: 1st Snack selection - Part 2 (labelled depending on randomised condition, post manikin task)
+  task_num: 9
+  question: Imagine you are offered a snack. Click on the one you would most like to eat now. The eight
+    snacks are four chocolate bars (Dairy Milk, Mars, Snickers and Galaxy), shown in their original packaging
+    without any label, and four pieces of fruit (an apple, a banana, an orange and a bunch of grapes).
+    1 means you chose a chocolate bar and 2 means you chose a piece of fruit.
+  scale:
+    min: 1
+    max: 2
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+response_recode:
+  0: 0
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+  8: 8
+  9: 9
+  10: 10
+  11: 11
+  12: 12
+  13: 13
+  14: 14
+  15: 15
+  16: 16
+  17: 17
+  18: 18
+  19: 19
+  20: 20
+  21: 21
+  22: 22
+  23: 23
+  24: 24
+  25: 25
+  26: 26
+  27: 27
+  28: 28
+  29: 29
+  30: 30
+  31: 31
+  32: 32
+  33: 33
+  34: 34
+  35: 35
+  36: 36
+  37: 37
+  38: 38
+  39: 39
+  40: 40
+  41: 41
+  42: 42
+  43: 43
+  44: 44
+  45: 45
+  46: 46
+  47: 47
+  48: 48
+  49: 49
+  50: 50
+  51: 51
+  52: 52
+  53: 53
+  54: 54
+  55: 55
+  56: 56
+  57: 57
+  58: 58
+  59: 59
+  60: 60
+  61: 61
+  62: 62
+  63: 63
+  64: 64
+  65: 65
+  66: 66
+  67: 67
+  68: 68
+  69: 69
+  70: 70
+  71: 71
+  72: 72
+  73: 73
+  74: 74
+  75: 75
+  76: 76
+  77: 77
+  78: 78
+  79: 79
+  80: 80
+  81: 81
+  82: 82
+  83: 83
+  84: 84
+  85: 85
+  86: 86
+  87: 87
+  88: 88
+  89: 89
+  90: 90
+  91: 91
+  92: 92
+  93: 93
+  94: 94
+  95: 95
+  96: 96
+  97: 97
+  98: 98
+  99: 99
+  100: 100
+missing_codes:
+- -888
+- -999
+persona_map:
+  age: Age
+  gender: Gender
+  ethnicity: Ethnicity
+  education: Education
+  income: Income
+  how_hungry_from_0_not_hungry_at_all_to_100_the_most_hungry: Hunger
+  when_did_you_last_have_something_to_eat: Time since ate
+  how_true_i_deliberately_take_small_helpings_to_control_my_weight: How true is "I deliberately take small
+    helpings to control my weight"
+  how_true_i_dont_eat_some_foods_because_they_make_me_fat: How true is "I don't eat some foods because
+    they make me fat."
+  how_true_i_consciously_hold_back_on_how_much_i_eat_at_meals_to_keep_from_gaining_weight: How true is
+    "I consciously hold back on how much I eat at meals to keep from gaining weight"
+  times_purchased_dairy_milk_in_the_last_month: Purchasing Frequency - DM
+  times_eaten_dairy_milk_in_the_last_month: Consumption frequency - DM
+  times_purchased_mars_in_the_last_month: Purchasing Frequency - Mars
+  times_eaten_mars_in_the_last_month: Consumption frequency - Mars
+  times_purchased_snickers_in_the_last_month: Purchasing Frequency - Snickers
+  times_eaten_snickers_in_the_last_month: Consumption frequency - Snickers
+  times_purchased_galaxy_in_the_last_month: Purchasing Frequency - Galaxy
+  times_eaten_galaxy_in_the_last_month: Consumption frequency - Galaxy
+persona_missing:
+  Age:
+  - -888
+  - -999
+  Gender:
+  - -888
+  - -999
+  - 4
+  Ethnicity:
+  - -888
+  - -999
+  - 6
+  Education:
+  - -888
+  - -999
+  Income:
+  - -888
+  - -999
+  Hunger:
+  - -888
+  - -999
+  Time since ate:
+  - -888
+  - -999
+  How true is "I deliberately take small helpings to control my weight":
+  - -888
+  - -999
+  How true is "I don't eat some foods because they make me fat.":
+  - -888
+  - -999
+  How true is "I consciously hold back on how much I eat at meals to keep from gaining weight":
+  - -888
+  - -999
+  Purchasing Frequency - DM:
+  - -888
+  - -999
+  Consumption frequency - DM:
+  - -888
+  - -999
+  Purchasing Frequency - Mars:
+  - -888
+  - -999
+  Consumption frequency - Mars:
+  - -888
+  - -999
+  Purchasing Frequency - Snickers:
+  - -888
+  - -999
+  Consumption frequency - Snickers:
+  - -888
+  - -999
+  Purchasing Frequency - Galaxy:
+  - -888
+  - -999
+  Consumption frequency - Galaxy:
+  - -888
+  - -999
+persona_label_rewrite:
+  Gender:
+    1: Male
+    2: Female
+    3: Other
+  Ethnicity:
+    1: White British / White Irish / Other White background
+    2: Mixed White and Black African / Mixed White and Asian / Mixed White and Black Caribbean / Other
+      Mixed background
+    3: Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British background)
+    4: Black/Black British (African/Caribbean/Other Black/Black British background)
+    5: Other ethnic group
+  Education:
+    1: No qualifications
+    2: Up to 4 GCSE's (Including 1-4 O Levels/CSE/GCSEs (any grades), Foundation Diploma, NVQ level 1,
+      Foundation GNVQ or equivalents) (or foreign equivalent)
+    3: 5 or more GCSE's or 1 A-level (Including 5+ GCSEs (Grades A*-C),1 A Level/ 2-3 AS Levels, NVQ level
+      2, Intermediate GNVQ, City and Guilds Craft, BTEC First/General Diploma, RSA Diploma, Apprenticeship
+      or equivalents) (or foreign equivalent)
+    4: 2 or more A-levels (Including 2+ A Levels, 4+ AS Levels, NVQ Level 3, Advanced GNVQ, City and Guilds
+      Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma or equivalents) (or foreign equivalent)
+    5: Bachelor's degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher
+      level or equivalents) (or foreign equivalent)
+    6: Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional
+      qualifications e.g. teaching, nursing, accountancy or equivalents) (or foreign equivalent)
+  Income:
+    1: up to £4,499 per year
+    2: £4,500 to £6,499 per year
+    3: £6,500 to £7,499 per year
+    4: £7,500 to £9,499 per year
+    5: £9,500 to £11,499 per year
+    6: £11,500 to £13,499 per year
+    7: £13,500 to £15,499 per year
+    8: £15,500 to £17,499 per year
+    9: £17,500 to £24,999 per year
+    10: £25,000 to £29,999 per year
+    11: £30,000 to £39,999 per year
+    12: £40,000 to £49,999 per year
+    13: £50,000 to £74,999 per year
+    14: £75,000 to £99,999 per year
+    15: £100,000 or more per year
+  How true is "I deliberately take small helpings to control my weight":
+    1: Definitely false
+    2: Mostly false
+    3: Mostly true
+    4: Definitely true
+  How true is "I don't eat some foods because they make me fat.":
+    1: Definitely false
+    2: Mostly false
+    3: Mostly true
+    4: Definitely true
+  How true is "I consciously hold back on how much I eat at meals to keep from gaining weight":
+    1: Definitely false
+    2: Mostly false
+    3: Mostly true
+    4: Definitely true
+  Purchasing Frequency - DM:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day
+  Consumption frequency - DM:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day
+  Purchasing Frequency - Mars:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day
+  Consumption frequency - Mars:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day
+  Purchasing Frequency - Snickers:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day
+  Consumption frequency - Snickers:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day
+  Purchasing Frequency - Galaxy:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day
+  Consumption frequency - Galaxy:
+    1: Monthly or less often
+    2: At least once a week
+    3: Just about every day

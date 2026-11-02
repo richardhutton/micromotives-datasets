@@ -29,12 +29,12 @@
       "title": "Vending machine",
       "description": "Vending machine (Study 2 of IMG01 and IMG02): pick one product from a shelf of 12, with no label, calories, a text warning or an image warning. Snacks n=4,134, alcohol ~6,024.",
       "link": "https://osf.io/pr8zu/",
-      "status": "Buildable",
-      "reason": "stimuli document in the OSF deposit",
+      "status": "Built",
+      "reason": "10,149 rows in two recipes: snacks 4,125 (choose 1 of 12, 6 arms) and alcohol 6,024 (alcoholic or not, 8 arms; the deposit records only that). Choice counts per arm match both papers exactly; QC clean; independent checker: no blockers, 3 fixes made. Open: alcohol drink code 1 = beer is inferred (paper Table 1 says wine), asking the authors.",
       "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
-      "rows": null,
-      "recipe": ""
+      "rows": 10149,
+      "recipe": "k7tw5_study2, pr8zu_study2"
     },
     {
       "id": "IMG04",
@@ -473,12 +473,12 @@
       "title": "Chocolate-bar images with health warnings vs irrelevant unpleasant labels vs none; liking and wanting before and after, snack choice",
       "description": "Chocolate-bar images with health warnings vs irrelevant unpleasant labels vs none; liking and wanting before and after, snack choice. Prolific, n=1,382 (Study 2).",
       "link": "https://osf.io/xsfev/",
-      "status": "Waiting for images",
-      "reason": "images not in the deposit, and the authors no longer have the files (2 Nov 2026): extract them from the protocol documents",
+      "status": "Built",
+      "reason": "13,343 rows (1,382 people, 3 arms: none / health warning / irrelevant aversive; liking and wanting of 4 bars, snack choice). Table 2 and S17 figures match exactly; QC clean; independent checker: no blockers, fixes made (duplicate control prompt dropped). Fielded aversive labels from the supplement, not the protocol pre-pilot set. Paul Fletcher (cc) did not reply separately.",
       "permission": "Yes",
       "contact": "Gareth Hollands & Natasha Clarke",
-      "rows": null,
-      "recipe": ""
+      "rows": 13343,
+      "recipe": "xsfev_study2"
     },
     {
       "id": "IMG41",

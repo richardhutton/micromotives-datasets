@@ -1,0 +1,311 @@
+study_id: k7tw5
+source: osf
+experiment: study2
+title: 'Health warning labels and calorie labels on a vending machine of twelve snacks: which snack is
+  chosen'
+data_file: FoodLabellingOnline2Dataset.xlsx
+licence: 'No licence stated on OSF (k7tw5). Author permission: Gareth Hollands, 2 Nov 2026, credit required.'
+comparable_to_socsci210: false
+participant_id_var: Participant number
+notes: "Write recipes/images/k7tw5_study2.yaml: the snack vending-machine choice (IMG03, snacks).\n\n\
+  Clarke, Pechey, Mantzari, Hollands et al., Cambridge: \"Impact of health warning\nlabels on snack selection:\
+  \ an online experimental study\", Appetite 154 (2020)\n104744 (PMC7450271). OSF k7tw5, Study 2. The\
+  \ sibling of pr8zu Study 2 (alcohol).\n\n4,134 UK adults who eat energy-dense snacks were randomised\
+  \ (Qualtrics) to one of\nsix label groups, a 3 (image-and-text HWL / text-only HWL / no HWL) x 2 (calorie\n\
+  information / none) design, saw twelve snacks one at a time and then \"all the 12\nsnacks presented\
+  \ in randomised order, similar to a vending machine layout\", and\nwere told: \"Imagine you are at a\
+  \ vending machine. Please select the snack you\nwould like to eat right now.\" (paper, 2.4.1, quoting\
+  \ the instruction). The\nprotocol's draft wording (\"Click on the snack ...\") is superseded by the\
+  \ paper's\nquotation of what was shown.\n\nEvery judgement is here, in code, so the recipe can be re-derived\
+  \ and reviewed:\n\n* ARMS. `Condition` 1-6 per the deposit's Legend sheet: 1 pictorial HWL with\n  calories,\
+  \ 2 text-only HWL with calories, 3 calories only, 4 pictorial HWL,\n  5 text-only HWL, 6 control (no\
+  \ label). The paper's Table 2 counts (692, 686,\n  696, 688, 685, 687) and energy-dense selections (260,\
+  \ 299, 374, 255, 327, 405)\n  are reproduced exactly by these codes, which ties each code to its arm.\n\
+  * WHICH LABELS. The three HWLs used in Study 2 are starred in the authors'\n  stimuli file (FoodLabellingStudyStimuli11.3.20.docx,\
+  \ the file the paper cites\n  as https://osf.io/kf3r7/): Bowel Cancer 1, Type 2 Diabetes 1, Heart Disease\
+  \ 1.\n  That file's embedded label images are byte-identical to the Study 1 labels\n  already catalogued,\
+  \ so the arms cite the existing ids k7tw5_s1_*_1.\n* WHICH LABEL ON WHICH SNACK cannot be determined\
+  \ from source. The paper says\n  each energy-dense snack carried one of the three \"so that all health\n\
+  \  consequences were shown equally across the selection\": six snacks, three\n  labels, so two each.\
+  \ The condition says exactly that and shows the three\n  labels, never a snack-label pairing. CALORIES:\
+  \ \"given per package and ...\n  presented as black text on a white background\" (paper). Only one product's\n\
+  \  number is in the deposit (Galaxy, 229, in an example image), so no row states\n  a number. The original\
+  \ packs carry their own nutrition panels (the \"Snack\n  options\" image shows e.g. \"63 kcal\" on the\
+  \ carrot crisps), so the no-calorie\n  and control arms say only that no label was ADDED, never that\
+  \ no calories\n  were visible.\n* THE TWELVE SNACKS. Codes are the Legend's (\"1 = doritios, 2 = apple\
+  \ crisps,\n  3 = galaxy, 4 = Nims beetroot crisps, 5 = muller yoghurt, 6 = mccoys, 7 = apple\n  and\
+  \ grapes fruit, 8 = millionaire shortbread, 9 = dairy milk, 10 = mango and\n  pineapple fruit, 11 =\
+  \ GU dessert, 12 = KIND bar\"). Names in the rows are read\n  from the packaging in the stimuli file's\
+  \ \"Snack options\" image (word/media/\n  image19.png), the selection the paper points to. Eleven of\
+  \ the twelve match a\n  Legend name directly. Code 8's Legend name is generic: the product pictured\
+  \ is\n  a Food Connections Caramel Shortcake Slice (millionaire's shortbread by another\n  name). CODE\
+  \ 2 IS A JUDGEMENT, flagged for the checker: the Legend says \"apple\n  crisps\" but the pictured selection\
+  \ has no apple crisps; its one product left\n  unmatched is Morrisons Eat Smart carrot crisps, and the\
+  \ paper describes the\n  less energy-dense set as \"vegetable crisps, cereal bars, fruit and yoghurt\"\
+  ,\n  which fits carrot and beetroot crisps and not apple crisps. The Legend's names\n  are demonstrably\
+  \ not the fielded products' (code 8; the protocol's candidate\n  pool, data/raw/k7tw5/protocol_media,\
+  \ holds Nim's apple crisps and a Tesco\n  millionaire shortbread, neither pictured in the final selection),\
+  \ so code 2 is\n  named from the picture. Energy-dense (Primary outcome = 1) are codes 1, 3, 6,\n  8,\
+  \ 9, 11, checked against the deposit below.\n* THE PICTURE OF THE SELECTION IS NOT ATTACHED. It shows\
+  \ the twelve unlabelled,\n  split by energy density with a dividing line: a layout no participant saw\
+  \ (the\n  order was randomised) in a state only the control arm saw. The rows name the\n  snacks instead\
+  \ and attach only the labels.\n* OUTCOME. `Snack selected primary outcome`, 1-12, an unordered choice\n\
+  \  (nominal), the options enumerated in the question. Nine people hold 0 (no\n  snack recorded); the\
+  \ paper counts them as not choosing an energy-dense snack,\n  but 0 is not one of the twelve, so they\
+  \ are dropped (missing code 0). The\n  paper's Table 2 numbers therefore reproduce on the 4,134 before\
+  \ that drop.\n* NOT BUILT. The secondary outcomes (arousal, reactance, avoidance, disease\n  risk, acceptability)\
+  \ were asked about \"an image of a chocolate bar with or\n  without a label\", a different stimulus\
+  \ whose label the deposit does not\n  record; acceptability also re-randomised the control group. The\
+  \ time-pressure\n  pairs are a second, sequential task (six pairs) and are not built here.\n* PERSONA.\
+  \ Codes are bare integers; labels are the Legend's own definitions.\n  The paper's Table 1 ties the\
+  \ codes the Legend does not cover: gender 7 is\n  \"Prefer not to say\" (0, 1, 0, 1, 1, 0 per group,\
+  \ matching the deposit), and\n  ethnicity 7 is \"Prefer not to say\" (5, 3, 9, 7, 4, 2); both are non-answers.\n\
+  \  Education follows the Legend (1 no qualifications .. 7 other vocational); no\n  one holds 1 or a\
+  \ non-answer, and the paper's \"Bachelor's degree or higher\"\n  counts are codes 5, 6 AND 7 (e.g. 192\
+  \ + 91 + 55 = 338), so the paper grouped\n  \"other vocational\" with degrees. The Legend is followed;\
+  \ noted for the checker.\n  Income letters A-O use the protocol's table (same transcription as Study\
+  \ 1).\n  BMI category uses the Legend's bands; the unrounded BMI is not mapped.\n\n    uv run python\
+  \ scripts/gen_k7tw5_study2.py            # write the recipe\n    uv run python scripts/gen_k7tw5_study2.py\
+  \ --check    # exit 1 if it differs"
+condition:
+  source_var: Condition
+  factors:
+  - hwl
+  - calories
+  shared_context: You are shown pictures of twelve snacks, first one at a time and then all together in
+    random order.
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      hwl: image and text
+      calories: shown
+    text: 'Doritos, McCoy''s, Galaxy, Dairy Milk, the Gü cheesecake and the caramel shortcake slice each
+      carry a health warning label with a picture, one of these three, each on two of the six: "Excess
+      calories cause obesity which causes bowel cancer" <image>, "Excess calories cause obesity which
+      causes heart disease" <image> and "Excess calories cause obesity which causes Type 2 diabetes" <image>.
+      Every snack carries a calorie label giving its calories per pack, in black text on white.'
+    images:
+    - k7tw5_s1_bowel_cancer_1
+    - k7tw5_s1_heart_disease_1
+    - k7tw5_s1_type_2_diabetes_1
+  - raw: 2
+    condition_num: 1
+    factors:
+      hwl: text only
+      calories: shown
+    text: 'Doritos, McCoy''s, Galaxy, Dairy Milk, the Gü cheesecake and the caramel shortcake slice each
+      carry a health warning label in words only, one of these three, each on two of the six: "Excess
+      calories cause obesity which causes bowel cancer", "Excess calories cause obesity which causes heart
+      disease" and "Excess calories cause obesity which causes Type 2 diabetes". Every snack carries a
+      calorie label giving its calories per pack, in black text on white.'
+    images: []
+  - raw: 3
+    condition_num: 2
+    factors:
+      hwl: none
+      calories: shown
+    text: Every snack carries a calorie label giving its calories per pack, in black text on white. No
+      snack carries a health warning label.
+    images: []
+  - raw: 4
+    condition_num: 3
+    factors:
+      hwl: image and text
+      calories: not shown
+    text: 'Doritos, McCoy''s, Galaxy, Dairy Milk, the Gü cheesecake and the caramel shortcake slice each
+      carry a health warning label with a picture, one of these three, each on two of the six: "Excess
+      calories cause obesity which causes bowel cancer" <image>, "Excess calories cause obesity which
+      causes heart disease" <image> and "Excess calories cause obesity which causes Type 2 diabetes" <image>.
+      No calorie label is added to the snacks.'
+    images:
+    - k7tw5_s1_bowel_cancer_1
+    - k7tw5_s1_heart_disease_1
+    - k7tw5_s1_type_2_diabetes_1
+  - raw: 5
+    condition_num: 4
+    factors:
+      hwl: text only
+      calories: not shown
+    text: 'Doritos, McCoy''s, Galaxy, Dairy Milk, the Gü cheesecake and the caramel shortcake slice each
+      carry a health warning label in words only, one of these three, each on two of the six: "Excess
+      calories cause obesity which causes bowel cancer", "Excess calories cause obesity which causes heart
+      disease" and "Excess calories cause obesity which causes Type 2 diabetes". No calorie label is added
+      to the snacks.'
+    images: []
+  - raw: 6
+    condition_num: 5
+    factors:
+      hwl: none
+      calories: not shown
+    text: The snacks are in their original packaging, with no added labels.
+    images: []
+outcomes:
+- var: Snack selected primary outcome
+  task_num: 0
+  question: 'Imagine you are at a vending machine. Please select the snack you would like to eat right
+    now. The snacks are: 1 Doritos Tangy Cheese; 2 Morrisons Eat Smart carrot crisps; 3 Galaxy Smooth
+    Milk chocolate bar; 4 Nim''s beetroot & parsnip vegetable crisps; 5 Müller Light Toffee yoghurt; 6
+    McCoy''s Ridge Cut Salt & Malt Vinegar crisps; 7 Apple & Grape Snack Pack; 8 Food Connections Caramel
+    Shortcake Slice; 9 Cadbury Dairy Milk chocolate bar; 10 Tesco Mango and Pineapple Fingers; 11 Gü Zillionaires''
+    Cheesecake; 12 Pressed by KIND Dark Chocolate Banana bar. Answer with the number of the snack you
+    choose.'
+  scale:
+    min: 1
+    max: 12
+    nominal: true
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+  8: 8
+  9: 9
+  10: 10
+  11: 11
+  12: 12
+missing_codes:
+- 0
+- -888
+- -999
+persona_map:
+  age: Age
+  gender: Gender
+  ethnicity: Ethnicity
+  education: Education
+  income: Income
+  bmi_category: BMI category
+  how_often_do_you_consume_a_snack: Snack consumption frequency
+  biscuits_and_cookies_as_a_snack: Biscuits and cookies
+  cakes,_muffins_and_pastries_as_a_snack: Cakes, muffins and pastries
+  chocolate_bars_as_a_snack: Chocolate bars (or other chocolate-based snacks, e.g. pack of m&ms)
+  sweets_as_a_snack: Sweets (e.g. bag of skittles, packet of fruit pastilles)
+  crisps_as_a_snack: Packets of crisps
+persona_missing:
+  Age:
+  - -888
+  - -999
+  Gender:
+  - -888
+  - -999
+  - 4
+  - 7
+  Ethnicity:
+  - -888
+  - -999
+  - 6
+  - 7
+  Education:
+  - -888
+  - -999
+  Income:
+  - -888
+  - -999
+  BMI category:
+  - -888
+  - -999
+  Snack consumption frequency:
+  - -888
+  - -999
+  Biscuits and cookies:
+  - -888
+  - -999
+  Cakes, muffins and pastries:
+  - -888
+  - -999
+  Chocolate bars (or other chocolate-based snacks, e.g. pack of m&ms):
+  - -888
+  - -999
+  Sweets (e.g. bag of skittles, packet of fruit pastilles):
+  - -888
+  - -999
+  Packets of crisps:
+  - -888
+  - -999
+persona_label_rewrite:
+  Gender:
+    1: Male
+    2: Female
+    3: Other
+  Ethnicity:
+    1: White British / White Irish / Other White background
+    2: Mixed White and Black African / Mixed White and Asian / Mixed White and Black Caribbean / Other
+      Mixed background
+    3: Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British background)
+    4: Black/Black British (African/Caribbean/Other Black/Black British background)
+    5: Other ethnic group
+  Education:
+    1: No qualifications
+    2: Up to 4 GCSE's (Including 1-4 O Levels/CSE/GCSEs (any grades), Foundation Diploma, NVQ level 1,
+      Foundation GNVQ or equivalents) (or foreign equivalent)
+    3: 5 or more GCSE's or 1 A-level (Including 5+ GCSEs (Grades A*-C),1 A Level/ 2-3 AS Levels, NVQ level
+      2, Intermediate GNVQ, City and Guilds Craft, BTEC First/General Diploma, RSA Diploma, Apprenticeship
+      or equivalents) (or foreign equivalent)
+    4: 2 or more A-levels (Including 2+ A Levels, 4+ AS Levels, NVQ Level 3, Advanced GNVQ, City and Guilds
+      Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma or equivalents) (or foreign equivalent)
+    5: Bachelor's degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher
+      level or equivalents) (or foreign equivalent)
+    6: Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional
+      qualifications e.g. teaching, nursing, accountancy or equivalents) (or foreign equivalent)
+    7: Other vocational/work-related qualifications
+  Income:
+    1: up to £4,499 per year
+    2: £4,500 to £6,499 per year
+    3: £6,500 to £7,499 per year
+    4: £7,500 to £9,499 per year
+    5: £9,500 to £11,499 per year
+    6: £11,500 to £13,499 per year
+    7: £13,500 to £15,499 per year
+    8: £15,500 to £17,499 per year
+    9: £17,500 to £24,999 per year
+    10: £25,000 to £29,999 per year
+    11: £30,000 to £39,999 per year
+    12: £40,000 to £49,999 per year
+    13: £50,000 to £74,999 per year
+    14: £75,000 to £99,999 per year
+    15: £100,000 or more per year
+  BMI category:
+    1: Underweight (under 18.5)
+    2: Healthy weight (18.5-24.9)
+    3: Overweight (25-29.9)
+    4: Obese (30-34.9)
+    5: Severely obese (35-39.9)
+    6: Morbidly obese (40+)
+  Snack consumption frequency:
+    1: Daily
+    2: Weekly
+    3: Monthly
+    4: Never
+  Biscuits and cookies:
+    1: Less than once a week
+    2: Once a week
+    3: 2-3 times a week
+    4: 4-6 times a week
+    5: Every day
+  Cakes, muffins and pastries:
+    1: Less than once a week
+    2: Once a week
+    3: 2-3 times a week
+    4: 4-6 times a week
+    5: Every day
+  Chocolate bars (or other chocolate-based snacks, e.g. pack of m&ms):
+    1: Less than once a week
+    2: Once a week
+    3: 2-3 times a week
+    4: 4-6 times a week
+    5: Every day
+  Sweets (e.g. bag of skittles, packet of fruit pastilles):
+    1: Less than once a week
+    2: Once a week
+    3: 2-3 times a week
+    4: 4-6 times a week
+    5: Every day
+  Packets of crisps:
+    1: Less than once a week
+    2: Once a week
+    3: 2-3 times a week
+    4: 4-6 times a week
+    5: Every day
