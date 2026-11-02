@@ -106,6 +106,16 @@ def test_no_voice_is_both_terse_and_rambling() -> None:
         assert not ("says very little" in voice and "rambling" in voice)
 
 
+def test_a_choice_between_options_has_no_strength_and_says_so() -> None:
+    item = _item(response="3", scale_min=1, scale_max=5, nominal=True)
+    assert q.answer_strength(item) is None
+    block = q.item_block(item, 1, True)
+    assert "option 3 of 1 to 5" in block and "not a scale" in block
+    assert "How strongly" not in block and "(scale 1 to 5)" not in block
+    ordered = q.item_block(_item(response="5", scale_min=1, scale_max=5), 1, True)
+    assert "(scale 1 to 5)" in ordered and "How strongly" in ordered
+
+
 @pytest.mark.parametrize(
     ("response", "lo", "hi", "expect"),
     [

@@ -180,6 +180,9 @@ class Item:
     voice: str | None
     examples: tuple[str, ...] = ()  # real people's answers to OTHER questions, for voice (v6)
     method: bool = False  # the condition is how the survey was set up, not content
+    # the answer picks one of several options, which have no order: no "strength" (runtime,
+    # micromotives-service, 2 Nov 2026; the training runs never set it)
+    nominal: bool = False
 
 
 # Sub-experiments whose condition is a survey-method change: question order, layout, or
@@ -244,7 +247,12 @@ def item_block(item: Item, number: int, with_persona: bool, show_answer: bool = 
     ]
     if item.method:
         parts.append(METHOD_NOTE)
-    if show_answer:
+    if show_answer and item.nominal:
+        parts.append(
+            f"Their answer: option {item.response} of {item.scale_min} to {item.scale_max}. "
+            "The options are separate choices, not a scale: the question says what each one is."
+        )
+    elif show_answer:
         parts.append(f"Their answer: {item.response} (scale {item.scale_min} to {item.scale_max})")
         if strength := answer_strength(item):
             parts.append(f"How strongly: {strength}")
@@ -268,6 +276,8 @@ AMOUNT_NOTE = (
 def answer_strength(item: Item) -> str | None:
     """How far along its scale an answer sits, in words the writer can act on (v4).
     None when the answer is not a number on an ordered scale of more than two points."""
+    if item.nominal:
+        return None
     try:
         value = float(item.response)
     except ValueError:
