@@ -1,0 +1,655 @@
+study_id: gybnm
+source: osf
+title: 'Political advert disclaimers: four adverts from a fictional party, with or without a paid-for-by
+  and targeting disclaimer; trust in the party and its adverts'
+data_file: gybnm_coded.xlsx
+licence: CC0 1.0 Universal (OSF gybnm).
+comparable_to_socsci210: false
+participant_id_var: pid
+notes: "Write recipes/images/gybnm.yaml: political advert disclaimers (IMG44).\n\nGordon, Stafford & Dommett\
+  \ (Sheffield), \"Cue to Trust? Investigating the Impact of\nPolitical Advertising Transparency Disclaimers\
+  \ on Citizen Trust Evaluations\",\nProceedings of the Annual Meeting of the Cognitive Science Society\
+  \ 46 (2024),\nhttps://escholarship.org/uc/item/8fs0x868 (CC BY 4.0). OSF gybnm (CC0 1.0\nUniversal):\
+  \ the fielded questionnaire (full_survey.pdf), the Qualtrics export\n(final_responses.csv), the authors'\
+  \ cleaning script (data_wrangle.Rmd) and all\neight advert pictures (\"Experimental Materials/\").\n\
+  \n1,249 UK adults (Prolific) answered questions about UK politicians, then read a\nshort statement from\
+  \ the leader of a fictional party, The Reconnect Party, and were\nshown four of its Facebook-style adverts,\
+  \ either plain (control) or each carrying\nthe words \"Political ad.\" and a yellow disclaimer banner\
+  \ saying who paid for it,\nthat it was targeted on income, age and gender, the audience size and the\
+  \ amount\nspent. They then rated the party and its adverts.\n\nEvery judgement is here, in code, so\
+  \ the recipe can be re-derived and reviewed:\n\n* DESIGN. Between subjects, two arms. Each person saw\
+  \ all four adverts together\n  and then answered questions about the party and \"the adverts\" as a\
+  \ whole: no\n  question is about one advert, so no row needs to say which advert it rates and\n  none\
+  \ cites a position in a sequence. The debrief text in the export says people\n  were split into THREE\
+  \ groups (no imprint; who paid; who paid plus targeting),\n  but the data's `Condition` holds two codes,\
+  \ the deposit has two sets of\n  pictures, the questionnaire shows two columns (\"Control Condition\"\
+  ,\n  \"Experimental Condition\") and the paper reports two conditions. Built as two.\n* ARMS. `Condition`\
+  \ 0 = control, 1 = disclaimer: the authors' script labels them\n  so (\"control\", \"transparent\");\
+  \ each code has its own page-timing block (Q54 for\n  0, Q56 for 1, never both); and the recall answers\
+  \ agree (who paid: 68 of 625\n  \"yes\" in 0, 326 of 624 in 1). Pictures: `control_<k>.jpg` and\n  `material<k>_transparent.jpg`,\
+  \ the same eight the questionnaire's table shows,\n  advert k in row k of both columns.\n* CONDITION.\
+  \ shared_context is the questionnaire's introduction to the adverts and\n  the party leader's statement,\
+  \ word-for-word (full_survey.pdf, page 2), dropping\n  \"However, if you feel uncomfortable at any point,\
+  \ we remind you that you can\n  exit the study at any time by closing the browser.\" and the paragraph\
+  \ about\n  clicking next and the 40-second timer, as survey mechanics. The arm text quotes\n  every\
+  \ word printed on each advert (the catalogue's text_in_image, \" / \" between\n  separate blocks of\
+  \ text), each followed by the advert itself. Words that are\n  OURS: \"The four adverts were then shown:\"\
+  . The order the four were shown in is\n  not recorded; the text lists them in the questionnaire's order\
+  \ and says nothing\n  about order. In the disclaimer arm the paper quotes the banner as \"...your age,\n\
+  \  income and gender...\"; the pictures, which are what was shown, say \"your\n  income, age, and gender\"\
+  , and the text follows the pictures.\n* OUTCOMES. Wording from the Qualtrics export's own question-text\
+  \ row (the\n  second header line of final_responses.csv), which is what the survey platform\n  displayed;\
+  \ whitespace between paragraphs is collapsed, curly quotes\n  straightened, words kept (including \"\
+  The Reconnect Parties' campaign\"). It\n  differs from full_survey.pdf in places (\"The Reconnect Party\
+  \ adverts are\n  credible.\" where the PDF has \"Party's\"; \"above their personal interests\" where\n\
+  \  the PDF has \"own interests\"; the integrity items' order), and the export wins.\n  A grid item is\
+  \ its screen's stem followed by its statement in quotation marks.\n  Dropped as survey mechanics: the\
+  \ social media trust screen's opening \"Thank you\n  for the time you've taken so far to answer the\
+  \ questions. The rest of the survey\n  should take you no longer than 5 minutes to complete.\"\n  Scale\
+  \ endpoint labels are the answer labels in the export. Answers are coded\n  1..n in the order the questionnaire\
+  \ lists them, looked up by label (trailing\n  spaces in labels such as \"Mostly not targeted \" are\
+  \ typography). Built: the 12\n  trust items (competence, benevolence, integrity), credible, manipulative,\
+  \ the\n  two transparency items, liking (1-5), agreement with the campaign's messages\n  (1-5), felt\
+  \ targeted (1-5), the two social media trust items, confidence that\n  online political adverts are\
+  \ regulated (\"Don't know\" coded 8 and not built, 7\n  people) and acceptability of personalised political\
+  \ advertising.\n* NOT BUILT. The two recall items (\"did the adverts include information\n  informing\
+  \ you who paid for them?\" / \"...if it had been targeted\"): recall\n  checks are not outcomes (docs/CONVENTIONS.md).\
+  \ The two attention checks.\n  PERC_ID (where the respondent would place the party, left to right):\
+  \ the\n  questionnaire lists eight positions plus \"don't know\" with garbled numbering,\n  the export\
+  \ holds only seven of them, and 102 cells are blank with no \"don't\n  know\" anywhere, so the offered\
+  \ scale and what a blank means cannot be\n  determined. The eight \"faith in reason\" items (FIR_*):\
+  \ views about people in\n  general, asked after the adverts, so neither a measure of the adverts nor\
+  \ a\n  clean persona attribute.\n* WHO. All 1,249 people in the export (all finished). The paper's 1,222\
+  \ drops 26\n  who took 270 seconds or less and one who gave their age as 4 (data_wrangle.Rmd:\n  duration\
+  \ > 270, age > 17); the crosscheck applies that filter to the built rows\n  and reproduces the paper's\
+  \ 611 per arm and its Table 1. The export has no\n  respondent id, so `pid` is the 1-based row position\
+  \ in final_responses.csv.\n* PERSONA. Asked BEFORE the adverts, so untouched by the manipulation: the\
+  \ ten\n  items on politicians in the UK (ORIENT_1_*, ORIENT_2_*) and the five on MPs\n  elected in 2019\
+  \ (MISTRUST_EX_*, the attention check row left out), each on the\n  seven-point agree scale, the answer\
+  \ label as the value. Asked at the END and\n  mapped as stable facts: age, gender, education, party\
+  \ identification, left-right\n  self-placement (`ideology`), interest in politics, use of social media\
+  \ for\n  political information (two items) and six political activities in the last 12\n  months. Age\
+  \ 4 (one person) is left absent. Gender \"Prefer not to say\" (3) is a\n  non-answer. Left-right \"\
+  I don't know\" (71) is left absent, as QC requires of a\n  label that carries no position. Education\
+  \ \"Other, please specify\" (6; free text\n  not mapped) cannot be placed on the qualification ladder\
+  \ and is left absent;\n  \"A level, or equivelent\" keeps its spelling. Education crosswalk scheme\n\
+  \  uk_gybnm_osf (data/catalog/persona_crosswalk_education.json), read from existing\n  schemes' precedents,\
+  \ not asked of Jev.\n\n    uv run python scripts/gen_gybnm.py --prep       # (re)write the coded .xlsx\n\
+  \    uv run python scripts/gen_gybnm.py --catalogue  # (re)write this study's images.json entries\n\
+  \    uv run python scripts/gen_gybnm.py            # write the recipe\n    uv run python scripts/gen_gybnm.py\
+  \ --check    # exit 1 if it differs"
+condition:
+  source_var: Condition
+  factors:
+  - disclaimer
+  shared_context: 'As you''ve been informed, this survey is interested in understanding how you form judgments
+    about political actors and organisations. In this next section, you will be shown a selection of 4
+    political advertisements created by a political party named The Reconnect Party. The adverts you see
+    have been selected from their upcoming online ad campaign for the next general election. First, you
+    will be shown the advertisements, then you will be asked about your perception of The Reconnect Party.
+    It is important to remind you that the views and beliefs of The Reconnect Party do not represent those
+    of the researchers of this study or of the University of Sheffield more widely. This study does not
+    intend to promote a particular political viewpoint. The following provides a statement from the leader
+    of The Reconnect Party to give you some background to their campaign: "Over the last decade, citizens
+    from across the UK have come together through an organisation named Reconnect to discuss what they
+    want for themselves and their communities. After years of preparation, we have formed a new political
+    party - The Reconnect Party - offering citizens electoral candidates from a vast range of careers
+    and backgrounds and a clear understanding of the nation''s social and economic needs. Our growing
+    party now has 30,000 members and 270 candidates across Scotland, England, Wales, and Northern Ireland
+    ready to run for the first time in their local constituencies. We believe the UK deserves a politics
+    every citizen can feel connected to."'
+  arms:
+  - raw: 0
+    condition_num: 0
+    factors:
+      disclaimer: none
+    text: 'The four adverts were then shown: "The Reconnect Party / We are listening. / Our nation''s
+      political failures have come from an absence of new ideas, fresh perspectives, and insight into
+      the lives of those across every sector of society / RECONNECT PARTY / together with you / WWW.RECONNECT.CO.UK/MANIFESTO
+      / Find out more about our plans on our website / Learn more" <image> "The Reconnect Party / UK politics
+      has lost touch with what democracy really means. The Reconnect Party will address this. / From health
+      workers to farmers, builders to economists, pensioners to school goers / The Reconnect Party was
+      built by different people connected through the commitment to find effective political solutions,
+      together / RECONNECT PARTY / together with you / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about
+      our plans on our website / Learn more" <image> "The Reconnect Party / Our candidates are ready to
+      represent the diversity of our nation for the first time in the next general election. / Most MPs
+      have never had a job outside politics. / All our candidates have worked in the real world and understand
+      the demands, stresses and joys of the lives you lead. / RECONNECT PARTY / together with you / WWW.RECONNECT.CO.UK/MANIFESTO
+      / Find out more about our plans on our website / Learn more" <image> "The Reconnect Party / We are
+      a political party dedicated to democracy. Get in contact today to see how we can draw up new ideas
+      together. / RECONNECT PARTY / together with you / We don''t expect you to just take our word for
+      it. / Click below to our website to read case by case examples of what we''ve already achieved to
+      help citizens and local businesses. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans
+      on our website / Learn more" <image>'
+    images:
+    - gybnm_ad1_control
+    - gybnm_ad2_control
+    - gybnm_ad3_control
+    - gybnm_ad4_control
+  - raw: 1
+    condition_num: 1
+    factors:
+      disclaimer: paid for and targeting
+    text: 'The four adverts were then shown: "The Reconnect Party / Political ad. / We are listening.
+      / Our nation''s political failures have come from an absence of new ideas, fresh perspectives, and
+      insight into the lives of those across every sector of society / RECONNECT PARTY / together with
+      you / Paid for by The Reconnect Party. The Reconnect Party shows you this ad on the basis of information
+      about your income, age, and gender. Estimated audience size: 5K-10K. Amount spent (GBP): <£100.
+      / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more" <image>
+      "The Reconnect Party / Political ad. / UK politics has lost touch with what democracy really means.
+      The Reconnect Party will address this. / From health workers to farmers, builders to economists,
+      pensioners to school goers / The Reconnect Party was built by different people connected through
+      the commitment to find effective political solutions, together / RECONNECT PARTY / together with
+      you / Paid for by The Reconnect Party. The Reconnect Party shows you this ad on the basis of information
+      about your income, age, and gender. Estimated audience size: 1K-3K. Amount spent (GBP): <£100. /
+      WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more" <image>
+      "The Reconnect Party / Political ad. / Our candidates are ready to represent the diversity of our
+      nation for the first time in the next general election. / Most MPs have never had a job outside
+      politics. / All our candidates have worked in the real world and understand the demands, stresses
+      and joys of the lives you lead. / RECONNECT PARTY / together with you / Paid for by The Reconnect
+      Party. The Reconnect Party shows you this ad on the basis of information about your income, age,
+      and gender. Estimated audience size: 10K-30K. Amount spent (GBP): £200-299. / WWW.RECONNECT.CO.UK/MANIFESTO
+      / Find out more about our plans on our website / Learn more" <image> "The Reconnect Party / Political
+      ad. / We are a political party dedicated to democracy. Get in contact today to see how we can draw
+      up new ideas together. / RECONNECT PARTY / together with you / We don''t expect you to just take
+      our word for it. / Click below to our website to read case by case examples of what we''ve already
+      achieved to help citizens and local businesses. / Paid for by The Reconnect Party. The Reconnect
+      Party shows you this ad on the basis of information about your income, age, and gender. Estimated
+      audience size: 30K-60K. Amount spent (GBP): £400-499. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out
+      more about our plans on our website / Learn more" <image>'
+    images:
+    - gybnm_ad1_disclaimer
+    - gybnm_ad2_disclaimer
+    - gybnm_ad3_disclaimer
+    - gybnm_ad4_disclaimer
+outcomes:
+- var: COMP_1
+  task_num: 0
+  question: You've been shown a selection of adverts from The Reconnect Parties' campaign, and we are
+    interested to know more about what you think of them. For example, we are interested in your sense
+    of how the parties' candidates would be likely to act if elected. We recognise some questions might
+    be tricky to answer without more information. You are encouraged to base your answer on your sense
+    of The Reconnect Party at this point and your immediate reactions when viewing their campaign materials.
+    Keep in mind there are no right or wrong ways to go about answering the questions. Please indicate
+    the extent to which you agree or disagree with the following statements, based on what you have seen
+    so far. "The Reconnect Party seems like they would perform their job competently."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: COMP_2
+  task_num: 1
+  question: You've been shown a selection of adverts from The Reconnect Parties' campaign, and we are
+    interested to know more about what you think of them. For example, we are interested in your sense
+    of how the parties' candidates would be likely to act if elected. We recognise some questions might
+    be tricky to answer without more information. You are encouraged to base your answer on your sense
+    of The Reconnect Party at this point and your immediate reactions when viewing their campaign materials.
+    Keep in mind there are no right or wrong ways to go about answering the questions. Please indicate
+    the extent to which you agree or disagree with the following statements, based on what you have seen
+    so far. "The Reconnect Party seems to lack technical expertise."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: COMP_3
+  task_num: 2
+  question: You've been shown a selection of adverts from The Reconnect Parties' campaign, and we are
+    interested to know more about what you think of them. For example, we are interested in your sense
+    of how the parties' candidates would be likely to act if elected. We recognise some questions might
+    be tricky to answer without more information. You are encouraged to base your answer on your sense
+    of The Reconnect Party at this point and your immediate reactions when viewing their campaign materials.
+    Keep in mind there are no right or wrong ways to go about answering the questions. Please indicate
+    the extent to which you agree or disagree with the following statements, based on what you have seen
+    so far. "The Reconnect Party seems like they would waste public money."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: COMP_4
+  task_num: 3
+  question: You've been shown a selection of adverts from The Reconnect Parties' campaign, and we are
+    interested to know more about what you think of them. For example, we are interested in your sense
+    of how the parties' candidates would be likely to act if elected. We recognise some questions might
+    be tricky to answer without more information. You are encouraged to base your answer on your sense
+    of The Reconnect Party at this point and your immediate reactions when viewing their campaign materials.
+    Keep in mind there are no right or wrong ways to go about answering the questions. Please indicate
+    the extent to which you agree or disagree with the following statements, based on what you have seen
+    so far. "The Reconnect Party seems like they would be good at getting the job done."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: BENEV_1
+  task_num: 4
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "The Reconnect Party seems like they would look after their
+    own interests rather than trying to help others."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: BENEV_2
+  task_num: 5
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "The Reconnect Party seems to care about other people."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: BENEV_3
+  task_num: 6
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "It seems like The Reconnect Party don't really understand
+    the problems facing ordinary people."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: BENEV_4
+  task_num: 7
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "The Reconnect Party seems like they would treat all groups
+    in society fairly."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INTEG_1
+  task_num: 8
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "The Reconnect Party seem as if they adhere to a strong moral
+    code."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INTEG_2
+  task_num: 9
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "The Reconnect Party seems like they would distort facts
+    to make their policies look good."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INTEG_3
+  task_num: 10
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "The Reconnect Party are happy to make promises at elections,
+    but it seems like they would forget them afterwards."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INTEG_4
+  task_num: 11
+  question: Please indicate the extent to which you agree or disagree with the following statements, based
+    on what you have seen of their campaign. "It seems The Reconnect Party would tell the truth."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: AD_TRUST_1
+  task_num: 12
+  question: We are now interested in what you thought about the use of these advertisements as part of
+    a political campaign. "The Reconnect Party adverts are credible."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: AD_TRUST_2
+  task_num: 13
+  question: We are now interested in what you thought about the use of these advertisements as part of
+    a political campaign. "The Reconnect Party adverts are manipulative."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: AD_TRUST_4
+  task_num: 14
+  question: We are now interested in what you thought about the use of these advertisements as part of
+    a political campaign. "The Reconnect Party is open and transparent about who pays for their advertisements."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: AD_TRUST_5
+  task_num: 15
+  question: We are now interested in what you thought about the use of these advertisements as part of
+    a political campaign. "The Reconnect Party is open and transparent about who they target their advertisements
+    to."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: LIKE
+  task_num: 16
+  question: We are now interested generally in how much you like and agree with The Reconnect Party. How
+    much do you like The Reconnect Party?
+  scale:
+    min: 1
+    max: 5
+    min_label: Dislike a great deal
+    max_label: Like a great deal
+    mid_label: Neither like nor dislike
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: AGREE
+  task_num: 17
+  question: How much do you agree or disagree with the messages put forward in The Reconnect Parties'
+    campaign?
+  scale:
+    min: 1
+    max: 5
+    min_label: Completely disagree
+    max_label: Completely agree
+    mid_label: Neither agree or disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: SELF_TAR
+  task_num: 18
+  question: As you may know, personalised advertising is a type of online advertising that shows ads to
+    people based on their online activity and profile (gender, age, interests, political views, etc.).
+    To what extent do you think the advertisements from The Reconnect Party campaign were targeted at
+    you personally?
+  scale:
+    min: 1
+    max: 5
+    min_label: Not at all targeted at me
+    max_label: Completely targeted at me
+    mid_label: Somewhat targeted
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: SM_TRUST_1
+  task_num: 19
+  question: This question is interested in your general trust in the social media platforms that publish
+    political advertisements, such as Facebook. Please indicate the extent to which you agree or disagree
+    with the following two statements. "Social media companies can be trusted to protect their users from
+    viewing political misinformation."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: SM_TRUST_2
+  task_num: 20
+  question: This question is interested in your general trust in the social media platforms that publish
+    political advertisements, such as Facebook. Please indicate the extent to which you agree or disagree
+    with the following two statements. "Social media companies can be trusted to protect the privacy of
+    their users."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: REG_TRUST_1
+  task_num: 21
+  question: Please indicate the extent to which you agree or disagree with the following statement. "I
+    feel confident that the political advertisements published online are effectively regulated."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: DATA_ACCEPT
+  task_num: 22
+  question: To remind you, personalised advertising is a type of online advertising that shows ads to
+    people based on their online activity and profile (gender, age, interests, political views, etc.).
+    We are interested to know what you think about the use of personalised advertising in online political
+    campaigns. How acceptable do you think it is for social media and other websites to collect and use
+    data about you and your past online activities to show you personalised messages from political campaigns?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all acceptable
+    max_label: Completely acceptable
+    mid_label: Neither acceptable nor unacceptable
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+response_recode: {}
+missing_codes:
+- 8
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUCATION
+  party_id: PARTY_IDENT
+  ideology: LEFT_RIGHT
+  in_general_the_government_usually_does_the_right_thing: ORIENT_1_1
+  i_am_unsure_whether_to_believe_most_politicians: ORIENT_1_2
+  in_general_politicians_are_open_about_their_decisions: ORIENT_1_3
+  the_government_acts_unfairly_towards_people_like_me: ORIENT_1_4
+  information_provided_by_the_government_is_unreliable: ORIENT_1_5
+  politicians_often_put_the_country_above_their_personal_interests: ORIENT_2_1
+  i_am_usually_cautious_about_trusting_politicians: ORIENT_2_2
+  politicians_don_t_respect_people_like_me: ORIENT_2_3
+  most_politicians_are_honest_and_truthful: ORIENT_2_4
+  politicians_usually_ignore_my_community: ORIENT_2_5
+  i_would_seek_help_from_an_mp_if_i_was_in_trouble: MISTRUST_EX_1
+  i_check_whether_mps_have_met_their_electoral_promises: MISTRUST_EX_2
+  i_monitor_the_behaviour_of_mps_closely: MISTRUST_EX_3
+  i_could_speak_openly_with_an_mp: MISTRUST_EX_5
+  i_double_check_what_mps_say_in_case_of_misleading_information: MISTRUST_EX_6
+  interest_in_politics: POL_INT
+  uses_social_media_for_information_about_party_politics_and_elections: SM_USE_1
+  uses_social_media_for_information_about_political_issues_in_general: SM_USE_2
+  in_last_12_months_done_work_for_a_political_party_or_action_group: ELECT_PAR_1
+  in_last_12_months_given_money_to_a_political_party_organisation_or_cause: ELECT_PAR_2
+  in_last_12_months_displayed_an_election_poster: ELECT_PAR_3
+  in_last_12_months_listened_to_or_watched_a_party_election_broadcast: ELECT_PAR_4
+  in_last_12_months_read_a_campaign_leaflet_letter_text_or_email_from_a_party: ELECT_PAR_5
+  in_last_12_months_tried_to_persuade_somebody_which_party_to_vote_for: ELECT_PAR_6
+persona_missing:
+  AGE:
+  - 4
+  GENDER:
+  - 4
+  EDUCATION:
+  - 4
+  LEFT_RIGHT:
+  - 3

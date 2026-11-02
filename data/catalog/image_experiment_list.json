@@ -521,12 +521,12 @@
       "title": "Political ad disclaimers",
       "description": "Political ad disclaimers: 4 Facebook-style ads from a fictional party, with or without sponsorship/targeting disclaimers; party competence, integrity, ad trust, manipulativeness, agree (1–7). UK, n=1,249.",
       "link": "https://osf.io/gybnm",
-      "status": "Buildable",
-      "reason": "all 8 ads in the deposit (CC0)",
+      "status": "Built",
+      "reason": "28,719 rows (1,249 people x 23 outcomes; 2 arms: no disclaimer / \"Political ad\" plus paid-for and targeting banner). Reproduces the paper's Table 1 and all three regressions; QC clean; independent checker: PASS, no blockers. The debrief's \"three groups\" is stale text: two arms confirmed.",
       "permission": "Not needed",
       "contact": "Hazel Gordon",
-      "rows": null,
-      "recipe": ""
+      "rows": 28719,
+      "recipe": "gybnm"
     },
     {
       "id": "IMG45",

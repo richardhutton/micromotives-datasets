@@ -6846,5 +6846,69 @@
     "licence": "Author permission (Gareth Hollands, 2 Nov 2026, for the group): credit required. No licence stated on OSF. Paul Fletcher (cc) did not reply separately.",
     "text_in_image": "A cat that was hit by a car and killed",
     "description": "A label in the same format as the health warnings: the words \"A cat that was hit by a car and killed\" in black on white, above a photograph of a dead black cat lying on a road beside a yellow line, with a car's wheel behind it."
+  },
+  "gybnm_ad1_control": {
+    "file": "raw/gybnm/Experimental Materials/control_1.jpg",
+    "sha256": "da928db799f6db08adee8cbf73a0564c649dc5d12afd9f734e4847a82ab23af0",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/control_1.jpg; the questionnaire full_survey.pdf shows it in row 1 of its Control Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / We are listening. / Our nation's political failures have come from an absence of new ideas, fresh perspectives, and insight into the lives of those across every sector of society / RECONNECT PARTY / together with you / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, the post's text below, then a picture, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture is a pale blue-grey panel with the slogan in black on the left and, on the right, a cut-away doll's house whose nine rooms each show people at work or at home (a meeting, a man at a whiteboard, an older man reading, a young man studying, two workers in high-visibility jackets, a farmer by a tractor, a mechanic, a woman at a laboratory bench, a father holding a small child); the party's logo box sits under the slogan."
+  },
+  "gybnm_ad2_control": {
+    "file": "raw/gybnm/Experimental Materials/control_2.jpg",
+    "sha256": "c7507eb657c12151ea0d5ca76e8a822bd3e1f0abc3cc19cc46f37e14c4612955",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/control_2.jpg; the questionnaire full_survey.pdf shows it in row 2 of its Control Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / UK politics has lost touch with what democracy really means. The Reconnect Party will address this. / From health workers to farmers, builders to economists, pensioners to school goers / The Reconnect Party was built by different people connected through the commitment to find effective political solutions, together / RECONNECT PARTY / together with you / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, the post's text below, then a picture, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture shows, from above, four people working around a table covered with plans and a model of a city, with white text on a blue-grey panel over its left side and the party's logo box at the lower right."
+  },
+  "gybnm_ad3_control": {
+    "file": "raw/gybnm/Experimental Materials/control_3.jpg",
+    "sha256": "526fe3a0b995c659ce8754de35ff023f0404f66250d9829c445438868e769181",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/control_3.jpg; the questionnaire full_survey.pdf shows it in row 3 of its Control Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / Our candidates are ready to represent the diversity of our nation for the first time in the next general election. / Most MPs have never had a job outside politics. / All our candidates have worked in the real world and understand the demands, stresses and joys of the lives you lead. / RECONNECT PARTY / together with you / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, the post's text below, then a picture, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture is three panels inside a thin frame: a construction worker in a hard hat and high-visibility harness seen from behind, a train running through a misty forest, and a nurse seen from behind facing a whiteboard; white text runs across the middle with the party's logo box below it."
+  },
+  "gybnm_ad4_control": {
+    "file": "raw/gybnm/Experimental Materials/control_4.jpg",
+    "sha256": "61de11fb96cd7a867f2921c8aa0309fc1685d191617008507e2bb541535145e0",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/control_4.jpg; the questionnaire full_survey.pdf shows it in row 4 of its Control Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / We are a political party dedicated to democracy. Get in contact today to see how we can draw up new ideas together. / RECONNECT PARTY / together with you / We don't expect you to just take our word for it. / Click below to our website to read case by case examples of what we've already achieved to help citizens and local businesses. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, the post's text below, then a picture, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture is split diagonally: on the left, the party's logo box and white text on black; on the right, a paintbrush with a burst of glossy grey paint on a light grey background."
+  },
+  "gybnm_ad1_disclaimer": {
+    "file": "raw/gybnm/Experimental Materials/material1_transparent.jpg",
+    "sha256": "52c6f24ec06cbfd1bf643f93bf6414edf5da50617cf9cba014d0cf95c87e2678",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/material1_transparent.jpg; the questionnaire full_survey.pdf shows it in row 1 of its Experimental Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / Political ad. / We are listening. / Our nation's political failures have come from an absence of new ideas, fresh perspectives, and insight into the lives of those across every sector of society / RECONNECT PARTY / together with you / Paid for by The Reconnect Party. The Reconnect Party shows you this ad on the basis of information about your income, age, and gender. Estimated audience size: 5K-10K. Amount spent (GBP): <£100. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, with \"Political ad.\" and a small globe icon under the name, the post's text below, then a picture, a bright yellow banner under the picture carrying the disclaimer, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture is a pale blue-grey panel with the slogan in black on the left and, on the right, a cut-away doll's house whose nine rooms each show people at work or at home (a meeting, a man at a whiteboard, an older man reading, a young man studying, two workers in high-visibility jackets, a farmer by a tractor, a mechanic, a woman at a laboratory bench, a father holding a small child); the party's logo box sits under the slogan."
+  },
+  "gybnm_ad2_disclaimer": {
+    "file": "raw/gybnm/Experimental Materials/material2_transparent.jpg",
+    "sha256": "c606049ff938f3a0e61d4869f3b5179c059713c91bc3ed47b674d66d7fb870ea",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/material2_transparent.jpg; the questionnaire full_survey.pdf shows it in row 2 of its Experimental Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / Political ad. / UK politics has lost touch with what democracy really means. The Reconnect Party will address this. / From health workers to farmers, builders to economists, pensioners to school goers / The Reconnect Party was built by different people connected through the commitment to find effective political solutions, together / RECONNECT PARTY / together with you / Paid for by The Reconnect Party. The Reconnect Party shows you this ad on the basis of information about your income, age, and gender. Estimated audience size: 1K-3K. Amount spent (GBP): <£100. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, with \"Political ad.\" and a small globe icon under the name, the post's text below, then a picture, a bright yellow banner under the picture carrying the disclaimer, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture shows, from above, four people working around a table covered with plans and a model of a city, with white text on a blue-grey panel over its left side and the party's logo box at the lower right."
+  },
+  "gybnm_ad3_disclaimer": {
+    "file": "raw/gybnm/Experimental Materials/material3_transparent.jpg",
+    "sha256": "3716ea4810b7550cc793ef1ab50e817a8cce64d56120af3182da8eb5cdb240b9",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/material3_transparent.jpg; the questionnaire full_survey.pdf shows it in row 3 of its Experimental Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / Political ad. / Our candidates are ready to represent the diversity of our nation for the first time in the next general election. / Most MPs have never had a job outside politics. / All our candidates have worked in the real world and understand the demands, stresses and joys of the lives you lead. / RECONNECT PARTY / together with you / Paid for by The Reconnect Party. The Reconnect Party shows you this ad on the basis of information about your income, age, and gender. Estimated audience size: 10K-30K. Amount spent (GBP): £200-299. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, with \"Political ad.\" and a small globe icon under the name, the post's text below, then a picture, a bright yellow banner under the picture carrying the disclaimer, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture is three panels inside a thin frame: a construction worker in a hard hat and high-visibility harness seen from behind, a train running through a misty forest, and a nurse seen from behind facing a whiteboard; white text runs across the middle with the party's logo box below it."
+  },
+  "gybnm_ad4_disclaimer": {
+    "file": "raw/gybnm/Experimental Materials/material4_transparent.jpg",
+    "sha256": "b745c1b7a5898adac7c50be4b6a3e6a670451366638c914c7be1303b8193e32a",
+    "source": "https://osf.io/gybnm/ (osfstorage, Experimental Materials/material4_transparent.jpg; the questionnaire full_survey.pdf shows it in row 4 of its Experimental Condition column)",
+    "licence": "CC0 1.0 Universal (OSF gybnm).",
+    "text_in_image": "The Reconnect Party / Political ad. / We are a political party dedicated to democracy. Get in contact today to see how we can draw up new ideas together. / RECONNECT PARTY / together with you / We don't expect you to just take our word for it. / Click below to our website to read case by case examples of what we've already achieved to help citizens and local businesses. / Paid for by The Reconnect Party. The Reconnect Party shows you this ad on the basis of information about your income, age, and gender. Estimated audience size: 30K-60K. Amount spent (GBP): £400-499. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
+    "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, with \"Political ad.\" and a small globe icon under the name, the post's text below, then a picture, a bright yellow banner under the picture carrying the disclaimer, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture is split diagonally: on the left, the party's logo box and white text on black; on the right, a paintbrush with a burst of glossy grey paint on a light grey background."
   }
 }

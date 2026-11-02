@@ -140,6 +140,13 @@
    "2 or more A-levels (Including 2+ A Levels, 4+ AS Levels, NVQ Level 3, Advanced GNVQ, City and Guilds Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma or equivalents) (or foreign equivalent)": "Below degree level (not further distinguished)",
    "Bachelor's degree (Including BA, BSc, NVQ Level 4-5, HNC, HND, RSA Higher Diploma, BTEC Higher level or equivalents) (or foreign equivalent)": "Bachelors to postgraduate",
    "Post-Graduate degree or qualification (Including Higher Degrees e.g. MA, PhD, PGCE, Professional qualifications e.g. teaching, nursing, accountancy or equivalents) (or foreign equivalent)": "Bachelors to postgraduate"
+  },
+  "uk_gybnm_osf": {
+   "Postgraduate (e.g., M.Sc or Ph.D)": "Bachelors to postgraduate",
+   "Undergraduate University (e.g., BA, B.Sc or B.Ed)": "Bachelors to postgraduate",
+   "A level, or equivelent": "High school",
+   "GCSE level, or equivelent": "High school",
+   "No formal qualifications": "Less than high school"
   }
  },
  "_about": [
@@ -191,6 +198,15 @@
   "uk_xsfev_osf (2 Nov 2026, IMG40): the same lab's qualification question (Cambridge BHRU, data dictionary",
   "inline labels). Five labels equal uk_k7tw5_osf's up to typography and the dictionary's own suffix (\"GCSE's\", \"equivalents)",
   "(or foreign equivalent)\"), matched in code and given k7tw5's mapping. \"No qualifications\" goes to Less than high school,",
-  "as uk_yougov_18's \"No formal qualifications\" does: read, not asked of Jev. No canonical value added; no other scheme changed."
+  "as uk_yougov_18's \"No formal qualifications\" does: read, not asked of Jev. No canonical value added; no other scheme changed.",
+  "",
+  "uk_gybnm_osf (2 Nov 2026, IMG44): the Sheffield political-advert survey's five labelled levels (Qualtrics export",
+  "answer labels, the source's spelling \"equivelent\" kept). Read, not asked of Jev, each by an existing scheme's",
+  "precedent: Postgraduate and Undergraduate University to Bachelors to postgraduate; \"A level, or equivelent\" to High",
+  "school as uk_k369t_osf's \"A level\"; \"GCSE level, or equivelent\" to High school as uk_yougov_18 and uk_3krjz_osf map",
+  "GCSE (with only \"No formal qualifications\" below it, a disclosed judgement, 174 people); \"No formal qualifications\"",
+  "to Less than high school as uk_yougov_18. The question asks for the qualification held \"or working towards\", so for",
+  "students it is the one sought. \"Other, please specify\" (6 people) cannot be placed on the ladder and is left absent.",
+  "No canonical value added; no other scheme changed."
  ]
 }
