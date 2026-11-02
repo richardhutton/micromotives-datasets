@@ -156,7 +156,7 @@
     "body": "Hi Eric,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour lab's studies on OSF would be really useful:\n- Salt warning labels (vyh2x), copying Dr Evans\n- Calorie and PACE labels on drinks (aydum)\n- Alcohol calories on pub menus (29q8c)\n- Alcohol calories on a restaurant menu (y2hbc), copying Dr Jones\n- Portion choice from food photos (k369t)\n- Online supermarket labels (kq9c8)\n- Fast-food menu boards (ajcr6)\n- Delivery app calorie labels (kaju5), copying Dr Finlay\n\nMost of the deposits don't have a licence, so I wanted to check you're happy for me to use them. If you have the menus, labels and food photos as image files, that would help a lot too.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
     "status": "yes",
     "sent": "2026-10-26",
-    "notes": "26 Oct, Eric replied: YES, the OSF data can be used for research purposes. Menus, labels and image files: possible, but a lot of work, so he wants to know more about what we're doing and why. Next: reply with more detail and ask only for images not already in the protocols (IMG20 has 38 in its protocol, IMG27 has 34). IMG27 (k369t) built 29 Oct from the OSF deposit alone. IMG29 (ajcr6) not buildable from the deposit: add to the reply to Eric: menu-board screenshots per arm, item-level choices (main/side/drink), order-screen wording, the demographics."
+    "notes": "26 Oct, Eric replied: YES, the OSF data can be used for research purposes. Menus, labels and image files: possible, but a lot of work, so he wants to know more about what we're doing and why. Next: reply with more detail and ask only for images not already in the protocols (IMG20 has 38 in its protocol, IMG27 has 34). IMG27 (k369t) built 29 Oct from the OSF deposit alone. IMG29 (ajcr6) not buildable from the deposit: add to the reply to Eric: menu-board screenshots per arm, item-level choices (main/side/drink), order-screen wording, the demographics. 2 Nov 2026: reply SENT (row robinson2), adding IMG60, IMG62 and the IMG29 asks."
   },
   {
     "id": "pechey",
@@ -343,7 +343,7 @@
     "body": "Hi Stuart,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour heroes and villains conjoint is a great fit, and thanks for the CC0 data (Dataverse X2WKUZ).\n\nThe data has the character names but not the pictures. Could you share the images people saw, or tell me where they came from?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
     "status": "yes",
     "sent": "2026-10-26",
-    "notes": "26 Oct: replied within minutes, images at https://osf.io/s9ke8/. Downloaded: 44 heroes + 43 villains = 87 images (Disney, Marvel, Harry Potter, LOTR, Game of Thrones, Star Wars), saved in data/raw/x2wkuz_images/. Also includes the pre-analysis plan for experiment 2. 2 Nov 2026: build blocked. Follow-up SENT 2 Nov asking for the Qualtrics export (.qsf or Word) of UK Study 1, for the question wording, whether names were shown, and which image file is which character. Auto-reply: out of office 2-6 Nov, replies delayed. Chase after 10 Nov if nothing."
+    "notes": "26 Oct: replied within minutes, images at https://osf.io/s9ke8/. Downloaded: 44 heroes + 43 villains = 87 images (Disney, Marvel, Harry Potter, LOTR, Game of Thrones, Star Wars), saved in data/raw/x2wkuz_images/. Also includes the pre-analysis plan for experiment 2. 2 Nov 2026: build blocked. Follow-up SENT 2 Nov asking for the Qualtrics export (.qsf or Word) of UK Study 1, for the question wording, whether names were shown, and which image file is which character. Auto-reply: out of office 2-6 Nov, replies delayed. Chase after 10 Nov if nothing. 2 Nov 2026: chase sent (row turnbull2), with IMG80."
   },
   {
     "id": "duthie",
@@ -430,8 +430,8 @@
     "ask": "Permission: no licence on the OSF project.",
     "subject": "Your AI-label headline study on OSF",
     "body": "Dear Sacha,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nStudy 2 of your paper with Fabrizio on AI-labelled headlines would be a great fit, and thanks for putting the cards and data on OSF (a4y7s). I couldn't see a licence on the project, so I wanted to check you're happy for me to use the UK data and the 40 headline cards.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Address from the University of Zurich press release for the PNAS Nexus paper (2024); check the paper's corresponding-author line before sending."
   },
   {
@@ -451,8 +451,8 @@
     "ask": "Permission (no licence on OSF), and the column that records each person's group if there is one.",
     "subject": "Your Join This Group study on OSF",
     "body": "Dear Rakoen,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nThe UK part of your Join This Group study would be really useful, and thanks for sharing the WhatsApp images and raw data on OSF (yxc92). There's no licence on the project, so I wanted to check you're happy for me to use them. And is there a column that says which group each person was in? At the moment I'd have to work it out from the timing columns.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Address from his New College profile."
   },
   {
@@ -472,8 +472,8 @@
     "ask": "Permission (no licence on OSF), and a key from the data columns to the post and condition each person saw.",
     "subject": "Your social correction experiment on OSF",
     "body": "Dear Florian,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour social correction experiment in the UK (OSF 4hjcf) is a great fit, and thanks for making the posts and data public. Two questions, if you have a moment. There's no licence on the project, so are you happy for me to use it? And is there a key that shows which post each person saw in which condition? I can see the columns but can't decode them with confidence.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Address from the 2024 Communications Psychology paper."
   },
   {
@@ -493,8 +493,8 @@
     "ask": "Respondent-level data (available on reasonable request); the mock packs are in the supplement.",
     "subject": "Data from your front-of-pack label study",
     "body": "Dear Jessica,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour front-of-pack label study (n=4,504, OSF k9v2p) would be a great fit, and the paper says the data is available on reasonable request, so I'm writing to ask. I'd need each person's label condition, their product ranking and the demographics. The mock packs in the supplement already cover the images.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": ""
   },
   {
@@ -514,8 +514,8 @@
     "ask": "Respondent-level data and the six advert mock-ups.",
     "subject": "Data from your slot-game advert experiment",
     "body": "Dear Lauren,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour first experiment on slot-game advert features (n=5,975) would be a great fit, but I couldn't find the data online. Would you be able to share the respondent-level data, along with the six advert mock-ups people saw?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": ""
   },
   {
@@ -535,8 +535,8 @@
     "ask": "The full set of UK shop images (OSF has example screenshots only).",
     "subject": "Images from the CLASP online energy-label study",
     "body": "Dear Millie,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nThe UK part of the online energy-label study you ran for CLASP would be very useful, and thanks for the open data on OSF (kwgfc). The report has the full questionnaire, but the deposit only has example screenshots. Would you have the full set of product and basket images for the UK desktop and mobile versions?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Address from the CLASP report (Nov 2023)."
   },
   {
@@ -556,8 +556,8 @@
     "ask": "The app screens for each arm, and permission (no licence on OSF).",
     "subject": "App screens from your delivery-app study",
     "body": "Dear Paul,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour delivery-app study in PNAS Nexus (n=4,008, OSF kxh2v) is a great fit. The data has each person's condition and the dish they chose, but not the app screens. Could you share the screens for each of the four arms? There's no licence on the OSF project either, so I wanted to check you're happy for me to use the data.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Corresponding-author address from the paper."
   },
   {
@@ -582,8 +582,8 @@
     "ask": "Reply to his 26 Oct yes: say what we're doing and why, then ask in priority order for the delivery-menu screens (IMG60, IMG62) and the menu-board material (IMG29).",
     "subject": "Re: Using your labelling and menu studies",
     "body": "Dear Eric,\n\nThanks again for saying yes to the OSF data, and sorry for the slow reply.\n\nYou asked what I'm doing and why. I'm building a model that can give an early read on how different groups of people in the UK might respond to something like a label or a menu change, before anyone tests it for real. It learns from real randomised experiments like yours, where we know exactly what people saw and what they did. Studies that include the actual images are the hardest to find, and your lab has run more of them than any other group I've found.\n\nI know the files are a lot of work to dig out, so I've put what would help most first, and even the first one would be great:\n\n1. The full menu screens for each arm of the price promotions study (fxc8q) and the Nutri-Score delivery app study (pek74). The protocols only show examples. I've copied Amy, as these are hers.\n2. For the fast-food menu boards study (ajcr6): the menu-board screenshots for each arm, the wording on the order screen, and if possible the item-level choices (main, side, drink) and demographics.\n\nNothing derived from your data would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "RICH TO CHECK the paragraph on what we're doing and why before sending. Replaces the reply still owed from 26 Oct (see the robinson row). Amy Finlay's address is the one cc'd on the first email."
   },
   {
@@ -603,8 +603,8 @@
     "ask": "Respondent-level data (available on request per the paper).",
     "subject": "Data from your nicotine pouch packaging experiment",
     "body": "Dear Eve,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour nicotine pouch packaging experiment (OSF 849nk) would be really useful, and thanks for putting the pack images and questionnaire online. The paper says the data is available on request, so I'm asking: could you share the respondent-level data, with each person's packaging condition, pack choice, harm rating and demographics?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Moved from UCL to King's College London; KCL address from rich (2 Nov 2026). The paper's address, eve.taylor@ucl.ac.uk, is out of date."
   },
   {
@@ -624,8 +624,8 @@
     "ask": "The profile photos and the key linking each photo to the data.",
     "subject": "Profile photos from your online dating conjoint",
     "body": "Dear Georgios,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour dating conjoint with Yara and Paul is a great fit, and thanks for the CC0 data on Dataverse. The data records the photo attributes but not the photos themselves. Could you share the profile photos, with the key that links each one to the data? If they came from a licensed face database, just tell me which one and I'll look into it there.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Corresponding-author address from the PSRM paper."
   },
   {
@@ -645,8 +645,8 @@
     "ask": "The response data (images and appendix are on OSF).",
     "subject": "Data from your armed police photo experiment",
     "body": "Dear Julia,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour experiment with Ben on armed police photos (OSF ywezg) would be a great fit, and thanks for putting the images and appendix online. I couldn't find the response data. Could you share it, with each person's condition (how many officers were armed, and the terror prime) and their ratings?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "Address from the 2020 Journal of Experimental Criminology paper, so it may be out of date."
   },
   {
@@ -666,8 +666,8 @@
     "ask": "Chase the IMG46 Qualtrics export, and ask for the IMG80 profile photos.",
     "subject": "Re: Heroes and villains images",
     "body": "Hi Stuart,\n\nJust following up on my last note about the heroes and villains conjoint, in case it got buried while you were away. The Qualtrics export (.qsf or Word) for UK Study 1 would answer everything I'm stuck on: the question wording, whether names were shown, and which image file is which character.\n\nWhile I'm writing, your far-right dating conjoint (Dataverse FYZANZ) would be a great fit too. The data has the profile attributes but not the photos. Could you share those as well?\n\nThanks again,\nRich",
-    "status": "ready",
-    "sent": "",
+    "status": "sent",
+    "sent": "2026-11-02",
     "notes": "SEND AFTER 10 NOV (he's out of office to 6 Nov). Replaces a separate chase."
   }
 ]

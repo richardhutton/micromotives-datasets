@@ -103,7 +103,7 @@
       "link": "https://osf.io/k9v2p/",
       "status": "Waiting for images",
       "reason": "Reviewed 2 Nov 2026: data \"available on reasonable request\" (Jessica Packer, jessica.packer@ucl.ac.uk); mock packs in the supplement; outcome is a ranking of 3 products (expressible as one choice).",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Jessica Packer",
       "rows": null,
       "recipe": ""
@@ -127,7 +127,7 @@
       "link": "https://bi.team/wp-content/uploads/2023/05/2023-09-Exploring-the-impact-of-slot-game-advert-features-Experiment-1-Results.pdf",
       "status": "Waiting for images",
       "reason": "Reviewed 2 Nov 2026: no public data; ask BIT (Lauren Leak-Smith, lauren.leak-smith@bi.team) for respondent data. Six advert arms (BIT's own mock-ups); decision to play and intent are single answers.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Lauren Leak-Smith",
       "rows": null,
       "recipe": ""
@@ -511,7 +511,7 @@
       "link": "https://osf.io/4hjcf",
       "status": "Needs checking",
       "reason": "Found 2 Nov 2026: stimuli zip and data public; post-to-condition columns need decoding. No licence stated.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Florian Stoeckel",
       "rows": null,
       "recipe": ""
@@ -523,7 +523,7 @@
       "link": "https://osf.io/kxh2v",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: data with condition and dish chosen; app screens not deposited. No licence on OSF. Ask for the screens.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Paul Lohmann",
       "rows": null,
       "recipe": ""
@@ -535,7 +535,7 @@
       "link": "https://osf.io/fxc8q",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: CC BY; condition labelled; only 4 example screens in the protocol. Ask for the full screens.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Eric Robinson (reply)",
       "rows": null,
       "recipe": ""
@@ -547,7 +547,7 @@
       "link": "https://osf.io/pek74",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: CC BY; group and outlet recorded; menu images are examples only. Ask.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Eric Robinson (reply)",
       "rows": null,
       "recipe": ""
@@ -559,7 +559,7 @@
       "link": "https://osf.io/a4y7s",
       "status": "Needs checking",
       "reason": "Found 2 Nov 2026: all 40 cards on OSF; item and arm recorded; Qualtrics wording available. No licence stated: ask. One card is US-specific.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Sacha Altay",
       "rows": null,
       "recipe": ""
@@ -595,7 +595,7 @@
       "link": "https://osf.io/kwgfc",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: CC BY-SA; arms coded with the full questionnaire in the report; only example screenshots deposited. Ask for the full image set.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Millie Elsen",
       "rows": null,
       "recipe": ""
@@ -619,7 +619,7 @@
       "link": "https://osf.io/yxc92",
       "status": "Needs checking",
       "reason": "Found 2 Nov 2026: PNGs on OSF; item-level raw data; arm from timing columns. No licence stated: ask.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Rakoen Maertens",
       "rows": null,
       "recipe": ""
@@ -643,7 +643,7 @@
       "link": "https://doi.org/10.7910/DVN/FYZANZ",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: CC0 data with attribute levels per profile; photos not deposited.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Stuart Turnbull-Dugarte (chase + IMG80)",
       "rows": null,
       "recipe": ""
@@ -655,7 +655,7 @@
       "link": "https://doi.org/10.7910/DVN/G1H0UA",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: CC0 data; photos not deposited.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Georgios Melios",
       "rows": null,
       "recipe": ""
@@ -667,7 +667,7 @@
       "link": "https://osf.io/849nk",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: images and questionnaire on OSF; data on request.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Eve Taylor",
       "rows": null,
       "recipe": ""
@@ -679,7 +679,7 @@
       "link": "https://osf.io/ywezg",
       "status": "Waiting for images",
       "reason": "Found 2 Nov 2026: images and appendix on OSF; no data. Ask for data.",
-      "permission": "Not asked yet",
+      "permission": "Asked",
       "contact": "Julia Yesberg",
       "rows": null,
       "recipe": ""
