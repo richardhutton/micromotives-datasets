@@ -154,6 +154,15 @@
    "A-level, or equivalent": "High school",
    "GCSE level, or equivalent": "High school",
    "No formal qualifications": "Less than high school"
+  },
+  "uk_zenodo10628634": {
+   "Primary school reception class / nursery school": "Less than high school",
+   "Primary school": "Less than high school",
+   "GCSE": "High school",
+   "A levels": "High school",
+   "Bachelor's degree": "Bachelors to postgraduate",
+   "Master's degree": "Bachelors to postgraduate",
+   "Doctorate": "Bachelors to postgraduate"
   }
  },
  "_about": [
@@ -222,6 +231,14 @@
   "level to High school (GCSE with only \"No formal qualifications\" below it, the same disclosed judgement, 178 people);",
   "\"No formal qualifications\" to Less than high school. The question asks for the qualification held \"or working",
   "towards\", so for students it is the one sought. \"Other, please specify\" (15 people) cannot be placed on the ladder and",
-  "is left absent. No canonical value added; no other scheme changed."
+  "is left absent. No canonical value added; no other scheme changed.",
+  "",
+  "uk_zenodo10628634 (2 Nov 2026, IMG77): the Wageningen mycelium survey's seven levels (Mycelium.sav value labels, the",
+  "docx's own options), which the paper ties to ISCED 0, 1, 2, 3, 6, 7, 8. Read, not asked of Jev, each by an existing",
+  "scheme's precedent: the nursery/reception and primary levels to Less than high school (the paper reads the first as",
+  "\"no formal education\"; 1 person, and no one chose \"Primary school\", so that line is read, not exercised); GCSE to",
+  "High school as uk_3krjz_osf and uk_gybnm_osf map GCSE (with only primary schooling below it, the same disclosed",
+  "judgement, 71 people); A levels to High school; Bachelor's (already mapped by another scheme, identically), Master's",
+  "and Doctorate to Bachelors to postgraduate. No canonical value added; no other scheme changed."
  ]
 }

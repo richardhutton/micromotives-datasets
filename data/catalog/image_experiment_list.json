@@ -869,12 +869,12 @@
       "title": "Wheelchair user in a restaurant ad",
       "description": "\"Pastamasta\" ad: wheelchair user edited out / shown / shown with an inclusive-advertising standard; ad and brand attitude (0-100), inclusivity (1-7). UK Prolific n=455 (Cossu, Estes & Vosgerau, J Marketing 2026, Study 4).",
       "link": "https://researchbox.org/799",
-      "status": "Buildable",
-      "reason": "Found 2 Nov 2026: CC BY 4.0; 2 ad images in the Qualtrics PDF; group recorded; codebook and qsf. Small.",
+      "status": "Built",
+      "reason": "4,059 rows (451 UK people x 9 questions, 3 arms). Reproduces Study 4 Table 2, demographics and effect sizes; independent checker: PASS. The control group saw a different headline on the inclusivity page (as fielded); each row states its own page.",
       "permission": "Not asked yet",
       "contact": "",
-      "rows": null,
-      "recipe": ""
+      "rows": 4059,
+      "recipe": "researchbox799_study4"
     },
     {
       "id": "IMG74",
@@ -917,12 +917,12 @@
       "title": "Mycelium novel food photos",
       "description": "3x3: product (cake / protein powder / burger) x substrate (horse manure / logs / glucose), each with photos; willingness, disgust, value, health, naturalness (7-pt). UK Prolific n=449 (Fischer & Hilboesen 2024).",
       "link": "https://zenodo.org/records/10628634",
-      "status": "Buildable",
-      "reason": "Found 2 Nov 2026: CC BY 4.0; 6 images and all arm text in the design docx; condition recorded.",
+      "status": "Built",
+      "reason": "7,184 rows (449 UK people x 16 questions, 9 arms). All 144 Table 2 means and SDs match (paper excludes 4 people with no age); independent checker: no blockers. Three sentences in the survey file look like leftover drafting but are kept as fielded, with the counter-evidence in notes. Photo rights uncertain.",
       "permission": "Not asked yet",
       "contact": "",
-      "rows": null,
-      "recipe": ""
+      "rows": 7184,
+      "recipe": "zenodo10628634"
     },
     {
       "id": "IMG78",

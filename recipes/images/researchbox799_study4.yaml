@@ -1,0 +1,928 @@
+study_id: researchbox799
+source: researchbox
+experiment: study4
+title: 'Wheelchair user in a restaurant ad: a news brief and ad for a fictional restaurant chain, with
+  the diner''s wheelchair edited out, shown, or shown to comply with an EU advertising standard; attitudes
+  to the ad and brand, and the brand''s inclusivity'
+data_file: Study 4 Ruling Out Warmth and Coolness.sav
+licence: CC BY 4.0 (ResearchBox 799, https://researchbox.org/799; Zenodo record 21296065).
+comparable_to_socsci210: false
+notes: "Write recipes/images/researchbox799_study4.yaml: wheelchair user in a restaurant ad (IMG73).\n\
+  \nCossu, Estes & Vosgerau, \"Beyond Visibility: The Disability Inclusion Effect in\nAdvertising\", Journal\
+  \ of Marketing (2026), doi:10.1177/00222429261447790; preprint\nhttps://openaccess.city.ac.uk/id/eprint/37335/.\
+  \ ResearchBox 799 (\"Disability\nInclusion\", https://researchbox.org/799, mirrored as Zenodo record\
+  \ 21296065), CC BY\n4.0. Study 4 ONLY: \"Study 4 Ruling Out Warmth and Coolness\" (.sav, .qsf, Qualtrics\n\
+  PDF, codebook, SPSS syntax, AsPredicted #275889). The box's other studies are US\nsamples, or pre-tests\
+  \ and post-tests of other stimuli, and are not built here.\n\n455 UK residents on Prolific (the paper:\
+  \ \"We recruited 455 UK residents\"; the data\nhold no country variable, so UK rests on the paper) read\
+  \ a short news brief about a\nfictional restaurant chain, Pastamasta Kitchen, and saw its ad, then rated\
+  \ the ad\nand the brand (six 0-100 sliders) and the brand's inclusivity (three 1-7 items).\n\nEvery\
+  \ judgement is here, in code, so the recipe can be re-derived and reviewed:\n\n* DESIGN. Between subjects,\
+  \ three arms. `Group` is an embedded field set by the\n  survey flow's even-presentation randomiser\
+  \ (.qsf FL_5): 0 routes to the \"Disability\n  Forced\" blocks, 1 to \"Disability Voluntary\", 2 to\
+  \ \"Control\". The .sav labels agree\n  (0 \" disability-conformity\", 1 \"disability-divergent\", 2\
+  \ \" control\"; the paper's\n  disability-compliant, disability-divergent, control), and so does the\
+  \ data: each\n  group answered only its own block's variables (`*_disability_F_*`, `*_disability_V_*`,\n\
+  \  `*_control_*`; checked in recipe()). The 4 people who chose \"Very little\" at the\n  attention question\
+  \ were ended by the flow before randomisation and have no Group\n  and no answers, so they make no rows;\
+  \ 451 people are built, the paper's analytic\n  sample.\n* WHAT EACH ARM SAW. Each group answered two\
+  \ blocks, attitudes and inclusivity, in\n  random order (BlockRandomizer SubSet 2); the order is not\
+  \ recorded and nothing is\n  said about it. Every block shows the news brief (a text item: bold headline,\
+  \ then\n  the body) and under it the ad (a graphic item), then the questions. The two\n  disability\
+  \ arms show the wheelchair picture (Qualtrics graphic IM_beaO66U4W2SbF2u),\n  the control arm the same\
+  \ photograph with the wheelchair's wheels removed\n  (IM_cwJ36LJe5e18RGS). The pictures are the Qualtrics\
+  \ PDF's own, extracted\n  unaltered with poppler's pdfimages (page 3 for the wheelchair ad, page 12\
+  \ for the\n  control ad); the same two files appear on every page of their arms (sha256\n  checked when\
+  \ written). The deposit holds no other copy.\n* THE CONTROL ARM'S TWO HEADLINES. The control attitudes\
+  \ block's headline is\n  \"Pastamasta Kitchen Features Patron in Latest Campaign\", but the control\n\
+  \  INCLUSIVITY block's headline, in both the .qsf and the Qualtrics PDF, is\n  \"Pastamasta Kitchen\
+  \ Features Wheelchair-Using Patron in Latest Campaign\", above the\n  control body (\"...to feature\
+  \ a real customer in their campaign.\") and the control\n  picture. The paper's Figure 6 prints only\
+  \ the first. The fielded instrument is the\n  authority, so the three inclusivity items of the control\
+  \ arm carry their own\n  page's headline (an item-level `condition_text`); the six attitude items carry\
+  \ the\n  attitudes page's. The disability arms show the same brief on both pages. Not\n  expressible:\
+  \ about half the control group will have seen the inclusivity page\n  first, so they had already read\
+  \ the wheelchair headline when they rated the ad;\n  block order is not recorded, so no row says so\
+  \ and none asserts the other page.\n* CONDITION. shared_context is the questionnaire's instructions,\
+  \ word-for-word, from\n  \"We are investigating\" to \"a couple of questions about it.\"; dropped as\
+  \ survey\n  mechanics: the study length, \"This is a serious study...\" and \"Please proceed when\n\
+  \  you're ready...\". Each arm's text quotes its page's headline and body word-for-word\n  from the\
+  \ .qsf (HTML stripped, entities resolved; the em dash and the missing comma\n  after \"Amsterdam\" in\
+  \ the control body are the source's), then the ad with the only\n  word printed in it, its logo's \"\
+  pastamasta\". Headline, body and ad each take a\n  line, as on the page. Words that are OURS: \"News\
+  \ brief:\" and \"The ad, shown\n  below it:\".\n* OUTCOMES. Nine, in the questionnaire's listing order.\
+  \ The ad grid (0-100 sliders,\n  \"I like this ad.\", \"The ad is well made.\", \"My opinion regarding\
+  \ this ad is very\n  positive.\") is its stem then the statement in quotation marks; the three brand\n\
+  \  sliders are their stems (\"...0 (Dislike) to 100 (Like)\", Unfavorable/Favorable,\n  Bad/Good), which\
+  \ carry no statement; the inclusivity grid (1-7) is its stem then\n  the statement. Wording is the .qsf's\
+  \ (HTML stripped), and the generator checks the\n  three arms' copies are identical. Scale labels are\
+  \ the .qsf's: the ad grid's\n  \"Strongly disagree\" / \"Neither agree nor disagree\" / \"Strongly agree\"\
+  \ at 0 / 50 /\n  100, the brand sliders' end labels, the Likert grid's seven answers (recoded\n  1..7\
+  \ by the .qsf's RecodeValues, which the .sav already holds). Slider answers\n  are whole numbers (NumDecimals\
+  \ 0; checked). Statement order within each grid\n  was randomised per person and is not recorded; each\
+  \ statement is its own row.\n  The prereg calls item 1 \"the brand promotes inclusivity\" and the paper\
+  \ says it\n  was rephrased from \"sincerely promotes\"; what was fielded is \"The brand supports\n \
+  \ inclusivity.\" and that is what the row says.\n* NOT BUILT. The attention question (a check, asked\
+  \ before randomisation), the\n  Prolific ID (not in the deposit) and the closing comment box.\n* WHO.\
+  \ All 451 randomised people. The export has no respondent id, so the id is\n  the 0-based row position\
+  \ in the .sav.\n* PERSONA. All asked at the end, after the ratings, and mapped as stable facts:\n  age\
+  \ (typed in, 18-78), gender (the form offered only Male and Female), whether\n  the person has a disability\
+  \ and, if yes, its type (Mental / Physical / Mental and\n  physical, the labels word-for-word). No non-answer\
+  \ codes exist; the 57 \"No\"\n  answers simply have no type.\n* UK FIT. Fielded in the UK; a fictional\
+  \ chain, a Dutch dateline and a fictional EU\n  standard, all presented as news, which a UK respondent\
+  \ reads as news from Europe.\n  Nothing requires local knowledge the UK sample lacks.\n* NOT ASKED OF\
+  \ JEV. The assignment, persona and non-answer questions recipe_prep.py\n  asks are settled here by the\
+  \ .qsf flow, the .sav labels and the data (no paid\n  call made).\n\n    uv run python scripts/gen_researchbox799_study4.py\
+  \ --extract    # (re)extract the two ads\n    uv run python scripts/gen_researchbox799_study4.py --catalogue\
+  \  # (re)write its images.json entries\n    uv run python scripts/gen_researchbox799_study4.py     \
+  \         # write the recipe\n    uv run python scripts/gen_researchbox799_study4.py --check      #\
+  \ exit 1 if it differs"
+condition:
+  source_var: Group
+  factors:
+  - inclusion
+  shared_context: We are investigating consumer attitudes toward brands. We will ask you to read a short
+    news brief about a restaurant and view an advertisement, and then answer a couple of questions about
+    it.
+  arms:
+  - raw: 2
+    condition_num: 0
+    factors:
+      inclusion: control
+    text: 'News brief:
+
+      Pastamasta Kitchen Features Patron in Latest Campaign
+
+      Amsterdam 8 February 2026 — Casual dining chain Pastamasta Kitchen has refreshed its "Ready for
+      Lunch" advertisement to feature a real customer in their campaign.
+
+      The ad, shown below it: "pastamasta" <image>'
+    images:
+    - researchbox799_study4_ad_control
+    items:
+      0:
+        outcome_var: Ad_control_1
+      1:
+        outcome_var: Ad_control_2
+      2:
+        outcome_var: Ad_control_3
+      3:
+        outcome_var: Brand1_control_1
+      4:
+        outcome_var: Brand2_control_1
+      5:
+        outcome_var: Brand3_control_1
+      6:
+        outcome_var: Inclus_control_1
+        condition_text: 'News brief:
+
+          Pastamasta Kitchen Features Wheelchair-Using Patron in Latest Campaign
+
+          Amsterdam 8 February 2026 — Casual dining chain Pastamasta Kitchen has refreshed its "Ready
+          for Lunch" advertisement to feature a real customer in their campaign.
+
+          The ad, shown below it: "pastamasta" <image>'
+      7:
+        outcome_var: Inclus_control_2
+        condition_text: 'News brief:
+
+          Pastamasta Kitchen Features Wheelchair-Using Patron in Latest Campaign
+
+          Amsterdam 8 February 2026 — Casual dining chain Pastamasta Kitchen has refreshed its "Ready
+          for Lunch" advertisement to feature a real customer in their campaign.
+
+          The ad, shown below it: "pastamasta" <image>'
+      8:
+        outcome_var: Inclus_control_3
+        condition_text: 'News brief:
+
+          Pastamasta Kitchen Features Wheelchair-Using Patron in Latest Campaign
+
+          Amsterdam 8 February 2026 — Casual dining chain Pastamasta Kitchen has refreshed its "Ready
+          for Lunch" advertisement to feature a real customer in their campaign.
+
+          The ad, shown below it: "pastamasta" <image>'
+  - raw: 1
+    condition_num: 1
+    factors:
+      inclusion: disability divergent
+    text: 'News brief:
+
+      Pastamasta Kitchen Features Wheelchair-Using Patron in Latest Campaign
+
+      Amsterdam, 8 February 2026 — Casual dining chain Pastamasta Kitchen has refreshed its "Ready for
+      Lunch" advertisement to feature a real customer who uses a manual wheelchair in their campaign.
+
+      The ad, shown below it: "pastamasta" <image>'
+    images:
+    - researchbox799_study4_ad_wheelchair
+    items:
+      0:
+        outcome_var: Ad_disability_V_1
+      1:
+        outcome_var: Ad_disability_V_2
+      2:
+        outcome_var: Ad_disability_V_3
+      3:
+        outcome_var: Brand1_disability_V_1
+      4:
+        outcome_var: Brand2_disability_V_1
+      5:
+        outcome_var: Brand3_disability_V_1
+      6:
+        outcome_var: Incl_disability_V_1
+      7:
+        outcome_var: Incl_disability_V_2
+      8:
+        outcome_var: Incl_disability_V_3
+  - raw: 0
+    condition_num: 2
+    factors:
+      inclusion: disability compliant
+    text: 'News brief:
+
+      Pastamasta Kitchen Features Wheelchair-Using Patron in Latest Campaign, Citing New EU Regulations
+
+      Amsterdam, 8 February 2026 — Casual dining chain Pastamasta Kitchen has refreshed its "Ready for
+      Lunch" advertisement to feature a real customer who uses a manual wheelchair in their campaign,
+      saying the move helps it comply with the European Inclusive Advertising Standard (EIAS) that came
+      into force this spring.
+
+      The ad, shown below it: "pastamasta" <image>'
+    images:
+    - researchbox799_study4_ad_wheelchair
+    items:
+      0:
+        outcome_var: Ad_disability_F_1
+      1:
+        outcome_var: Ad_disability_F_2
+      2:
+        outcome_var: Ad_disability_F_3
+      3:
+        outcome_var: Brand1_disability_F_1
+      4:
+        outcome_var: Brand2_disability_F_1
+      5:
+        outcome_var: Brand3_disability_F_1
+      6:
+        outcome_var: Incl_disability_F_1
+      7:
+        outcome_var: Incl_disability_F_2
+      8:
+        outcome_var: Incl_disability_F_3
+outcomes:
+- task_num: 0
+  question: Please rate how much you agree with the following statements on a scale from 0 (strongly disagree)
+    to 100 (strongly agree) "I like this ad."
+  scale:
+    min: 0
+    max: 100
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- task_num: 1
+  question: Please rate how much you agree with the following statements on a scale from 0 (strongly disagree)
+    to 100 (strongly agree) "The ad is well made."
+  scale:
+    min: 0
+    max: 100
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- task_num: 2
+  question: Please rate how much you agree with the following statements on a scale from 0 (strongly disagree)
+    to 100 (strongly agree) "My opinion regarding this ad is very positive."
+  scale:
+    min: 0
+    max: 100
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- task_num: 3
+  question: Please rate your attitude toward the brand on a scale to 0 (Dislike) to 100 (Like)
+  scale:
+    min: 0
+    max: 100
+    min_label: Dislike
+    max_label: Like
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- task_num: 4
+  question: Please rate your attitude toward the brand on a scale to 0 (Unfavorable) to 100 (Favorable)
+  scale:
+    min: 0
+    max: 100
+    min_label: Unfavorable
+    max_label: Favorable
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- task_num: 5
+  question: Please rate your attitude toward the brand on a scale to 0 (Bad) to 100 (Good)
+  scale:
+    min: 0
+    max: 100
+    min_label: Bad
+    max_label: Good
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- task_num: 6
+  question: 'Please rate how much you agree with the following statements: "The brand supports inclusivity."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- task_num: 7
+  question: 'Please rate how much you agree with the following statements: "The brand benefits minorities."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- task_num: 8
+  question: 'Please rate how much you agree with the following statements: "The brand supports integration
+    of minorities."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+response_recode: {}
+persona_map:
+  age: Age
+  gender: Gender
+  has_a_disability: Disability_have
+  type_of_disability: Disability_type

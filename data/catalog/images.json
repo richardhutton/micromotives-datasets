@@ -8982,5 +8982,69 @@
     "licence": "Data CC0 (DEL). Photos fetched from the survey's YouGov image URLs; photo rights not stated (third-party charity and photographer images).",
     "text_in_image": "",
     "description": "Colour photograph, landscape. A smiling Black woman in a pink top stands in front of a blue-and-white painted building with a corrugated roof, in a sunny yard where a few people sit and stand in the shade."
+  },
+  "researchbox799_study4_ad_wheelchair": {
+    "file": "raw/researchbox799/images/ad_wheelchair.jpg",
+    "sha256": "2adb1c78be175d1e438b397d6bccc37bd24bacc965e2b44eb18e9809ca568f15",
+    "source": "https://researchbox.org/799 (Zenodo record 21296065, ResearchBox_799.zip): Materials/Study 4 Ruling Out Warmth and Coolness.pdf, page 3, first image, extracted unaltered with poppler pdfimages -j; Qualtrics graphic IM_beaO66U4W2SbF2u in the .qsf; shown on pages [3, 6, 8, 10]",
+    "licence": "CC BY 4.0 (ResearchBox 799, https://researchbox.org/799; Zenodo record 21296065).",
+    "text_in_image": "pastamasta",
+    "description": "Colour photograph, landscape, of people eating together at a long wooden table in a restaurant with exposed brick walls, shelves and lit candles behind them. The table holds plates of food, bowls, glasses of red wine, a lit white candle and napkins. In the foreground on the left a man with short fair hair, in a blue-and-white striped short-sleeved shirt, light blue shorts and a bracelet, sits in a manual wheelchair, holding a glass of red wine; the wheelchair's armrest, push handle and the lower part of one large wheel are in view. Beside him sits a woman with fair hair tied back, in a blue shirt with round orange earrings, and across the table a woman with long curly dark hair in a blue blouse holding a glass of red wine. At the right edge a hand holds a wine glass and a person in a green striped shirt, seen from behind, is cut off by the frame. In the top right corner a beige square logo: a spoon and a fork drawn as looping lines, with the word \"pastamasta\" in italics beneath. White margins run down the left and right sides of the picture."
+  },
+  "researchbox799_study4_ad_control": {
+    "file": "raw/researchbox799/images/ad_control.jpg",
+    "sha256": "f0b04d024e69adf325969b09e729b97686430e6368cff2e3be32c88635256093",
+    "source": "https://researchbox.org/799 (Zenodo record 21296065, ResearchBox_799.zip): Materials/Study 4 Ruling Out Warmth and Coolness.pdf, page 12, first image, extracted unaltered with poppler pdfimages -j; Qualtrics graphic IM_cwJ36LJe5e18RGS in the .qsf; shown on pages [12, 15]",
+    "licence": "CC BY 4.0 (ResearchBox 799, https://researchbox.org/799; Zenodo record 21296065).",
+    "text_in_image": "pastamasta",
+    "description": "Colour photograph, landscape, of people eating together at a long wooden table in a restaurant with exposed brick walls, shelves and lit candles behind them. The table holds plates of food, bowls, glasses of red wine, a lit white candle and napkins. In the foreground on the left a man with short fair hair, in a blue-and-white striped short-sleeved shirt, light blue shorts and a bracelet, sits in a dark chair with a black armrest and a dark panel below it, holding a glass of red wine. Beside him sits a woman with fair hair tied back, in a blue shirt with round orange earrings, and across the table a woman with long curly dark hair in a blue blouse holding a glass of red wine. At the right edge a hand holds a wine glass and a person in a green striped shirt, seen from behind, is cut off by the frame. In the top right corner a beige square logo: a spoon and a fork drawn as looping lines, with the word \"pastamasta\" in italics beneath. The photograph fills the frame."
+  },
+  "zenodo10628634_product_mould_cake": {
+    "file": "raw/zenodo10628634/pictures/product_mould_cake.png",
+    "sha256": "49f0413539bf150f0a87dee57b1ee252a18a5b7e1c80425c54128966d694f9f7",
+    "source": "https://zenodo.org/records/10628634 (full experimental design.docx, word/media/image1.jpg; cropped as the docx displays it (a:srcRect; left 286, top 0, 1325x1340 of 2048x1371) with macOS sips and saved as PNG)",
+    "licence": "CC BY 4.0 (Zenodo 10628634). The photographs are embedded in the deposit's survey document; their own sources and terms are not stated, and two carry embedded metadata from other publishers.",
+    "text_in_image": "",
+    "description": "Photograph from above of a thick rectangular block of pale, straw-coloured fibrous material covered in white fluffy growth, resting on crumpled aluminium foil on a bed of white granules inside a grey container with small holes in its walls and two threaded metal rods across it; part of a white surface with a few brown crumbs at the right edge."
+  },
+  "zenodo10628634_product_protein_powder": {
+    "file": "raw/zenodo10628634/pictures/product_protein_powder.jpg",
+    "sha256": "b2ca9dd0bc5a539f02078213072679149c612c3bd462a0857f65e77870734d62",
+    "source": "https://zenodo.org/records/10628634 (full experimental design.docx, word/media/image5.jpg; extracted unaltered)",
+    "licence": "CC BY 4.0 (Zenodo 10628634). The photographs are embedded in the deposit's survey document; their own sources and terms are not stated, and two carry embedded metadata from other publishers.",
+    "text_in_image": "",
+    "description": "Photograph of a white plastic measuring scoop heaped with fine cream-coloured powder on a dark wooden surface, a small pile of the same powder in front of it and a green bowl of the powder behind it on the left."
+  },
+  "zenodo10628634_product_burger": {
+    "file": "raw/zenodo10628634/pictures/product_burger.jpg",
+    "sha256": "6ad5ffab4cf8d2b7ec9a147218d6686b649d8fc537cd4239ff5cc2dd71816ef0",
+    "source": "https://zenodo.org/records/10628634 (full experimental design.docx, word/media/image6.jpg; extracted unaltered)",
+    "licence": "CC BY 4.0 (Zenodo 10628634). The photographs are embedded in the deposit's survey document; their own sources and terms are not stated, and two carry embedded metadata from other publishers.",
+    "text_in_image": "",
+    "description": "Photograph of two round, flat, brown patties with a criss-cross pattern pressed into their tops, one leaning against the other, on white paper."
+  },
+  "zenodo10628634_substrate_horse_manure": {
+    "file": "raw/zenodo10628634/pictures/substrate_horse_manure.jpg",
+    "sha256": "a6e8cc89a6ee7dc0d0d23d3e64f79110005653a24b7c194bdc9d0576602815ec",
+    "source": "https://zenodo.org/records/10628634 (full experimental design.docx, word/media/image2.jpg; extracted unaltered)",
+    "licence": "CC BY 4.0 (Zenodo 10628634). The photographs are embedded in the deposit's survey document; their own sources and terms are not stated, and two carry embedded metadata from other publishers.",
+    "text_in_image": "",
+    "description": "Close-up photograph filling the frame with a dark brown, crumbly mass mixed with short broken pieces of yellow straw. A small, low-resolution picture."
+  },
+  "zenodo10628634_substrate_hardwood_logs": {
+    "file": "raw/zenodo10628634/pictures/substrate_hardwood_logs.jpg",
+    "sha256": "bbffead154a0baca2e124e30eef8b86211906bb3e770c771088c7617ff5803bf",
+    "source": "https://zenodo.org/records/10628634 (full experimental design.docx, word/media/image3.jpg; extracted unaltered)",
+    "licence": "CC BY 4.0 (Zenodo 10628634). The photographs are embedded in the deposit's survey document; their own sources and terms are not stated, and two carry embedded metadata from other publishers.",
+    "text_in_image": "",
+    "description": "Close-up photograph of a heap of split, pale wooden logs, some with dark bark on one side, filling the frame."
+  },
+  "zenodo10628634_substrate_glucose": {
+    "file": "raw/zenodo10628634/pictures/substrate_glucose.png",
+    "sha256": "91ae02bc73f7a11f0ecfc2a50cc72a3e29d9c67a8596e716516e50caa22c088a",
+    "source": "https://zenodo.org/records/10628634 (full experimental design.docx, word/media/image4.png; extracted unaltered)",
+    "licence": "CC BY 4.0 (Zenodo 10628634). The photographs are embedded in the deposit's survey document; their own sources and terms are not stated, and two carry embedded metadata from other publishers.",
+    "text_in_image": "",
+    "description": "Photograph of a small clear glass vial with a white screw cap, about two-thirds full of clear yellow liquid, standing on a white surface against a plain white background, its reflection below it."
   }
 }

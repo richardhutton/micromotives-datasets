@@ -1,0 +1,555 @@
+study_id: zenodo10628634
+source: zenodo
+title: 'Mycelium as food: a mould cake, protein powder or burger grown on horse manure, hardwood logs
+  or glucose, each shown in pictures; acceptance, value, disgust, benefits and risks, naturalness'
+data_file: Mycelium.sav
+licence: CC BY 4.0 (Zenodo 10628634).
+comparable_to_socsci210: false
+notes: "Write recipes/images/zenodo10628634.yaml: mycelium as food, product x substrate (IMG77).\n\nFischer\
+  \ & Hilboesen (Wageningen), \"Consumer acceptance of mycelium as protein\nsource\", Food Quality and\
+  \ Preference 122 (2025) 105304,\nhttps://doi.org/10.1016/j.foodqual.2024.105304 (open access, edepot.wur.nl/672569).\n\
+  Zenodo record 10628634, \"Consumer acceptance Mycelium\" (CC BY 4.0): the survey\n(\"full experimental\
+  \ design.docx\", the same text and pictures as the .rtf copy),\nthe data (Mycelium.sav, with Mycelium.csv\
+  \ as an unlabelled copy), the authors' R\nscript and a readme.\n\n449 UK adults (Prolific, 2021; the\
+  \ readme: \"Sampled from Prolific age above 18,\nresidence in the UK\"; the paper: \"Participants were\
+  \ from the UK\") were each shown\nONE of nine short texts about a new food made from mycelium, between\
+  \ subjects: the\nproduct (a mould cake, a protein powder, a burger) crossed with what the mycelium\n\
+  is grown on (composted horse manure with straw, hardwood logs, glucose with added\nvitamins and minerals).\
+  \ Each text carries a picture of the product and a picture\nof the substrate, each with a caption. They\
+  \ then rated the product.\n\nEvery judgement is here, in code, so the recipe can be re-derived and reviewed:\n\
+  \n* INSTRUMENT. The docx is the only instrument in the deposit. The readme calls it\n  \"The survey\
+  \ as taken by participants - including all 9 conditions (only one\n  shown for individual participants)\"\
+  , and it marks in red what participants did\n  not see (scenario headings, question numbers, \"Next\
+  \ page\"). It carries Qualtrics\n  traces (\"I might consider consuming this product (5)\", the duplicated\n\
+  \  \"Q8. ... Q16 ...\" heading), so it reads as a transcription of the fielded survey\n  and is taken\
+  \ as the fielded wording. The paper's Text box 1 is a shorter\n  paraphrase (\"the roots of fungi\"\
+  , \"Mycelium can be grown on either solid or\n  liquid surfaces\"), not what was shown, and is not used.\n\
+  * ARMS. `Condition` 1-9 (value labels \"mould cake x horse manure\" ... \"burger x\n  glucose\"); `Process`\
+  \ and `Source` agree with it in every row. Each code's text is\n  the docx block under the red heading\
+  \ naming the same product and substrate\n  (matched in code by keyword, not by position). The arm text\
+  \ is that block\n  word-for-word, read from the docx at generation time, with typography normalised\n\
+  \  (curly quotes straightened, runs of spaces collapsed). The nine blocks are NOT\n  word-identical\
+  \ apart from the product and substrate: the mould cake x manure\n  block says \"a new interesting food\
+  \ product\" and \"plant based\"; the burger x\n  manure block \"a Mycelium burger\"; and two burger\
+  \ blocks carry a sentence the\n  others lack, burger x logs \"The mycelium used for this product is\
+  \ grown using a\n  substrate of straw.\" followed by a stray closing quotation mark, and burger x\n\
+  \  glucose \"The mycelium used for this product is grown using a substrate of\n  glucose with added\
+  \ vitamins and minerals.\" These are in black, the colour of\n  what participants saw, in both the docx\
+  \ and the .rtf, so they are kept as\n  shown, including the straw sentence that contradicts its own\
+  \ arm's logs.\n  The evidence the other way is real: the paper's Text box 1 is one template with\n \
+  \ a single substrate statement per condition and no \"substrate of straw\"\n  sentence, and \"grown\
+  \ using a substrate of straw\" under hardwood logs\n  contradicts the design (as does its stray quotation\
+  \ mark), so that sentence may\n  never have been shown. It is kept because the docx, the only fielded\n\
+  \  instrument in the deposit, has it in black; which is true cannot be settled\n  from the deposit.\n\
+  \  Dropped as survey mechanics: \"Please take your time to read the text and\n  analyse the pictures\
+  \ carefully\", identical in every arm. Words that are OURS:\n  \"Captioned:\" before each picture's\
+  \ caption, which the survey printed under the\n  picture. In the mould cake x manure block the docx\
+  \ floats the cake picture\n  beside its caption; the other eight blocks place each picture above its\n\
+  \  caption, as the paper's Table 1 does, and so does the text here.\n* PICTURES. Six, each shown in\
+  \ three arms: three products and three substrates.\n  Extracted from the docx (word/media), five unaltered.\
+  \ The mould cake picture is\n  displayed in the docx cropped (a:srcRect l=13.942%, r=21.314%, b=2.242%),\
+  \ which\n  cuts off a second, dark lump on the right; the paper's Table 1 shows the same\n  crop. The\
+  \ catalogued file is that crop, made with macOS sips (left 286, width\n  1325, height 1340 of 2048x1371,\
+  \ rounded to whole pixels) and saved as PNG so no\n  further compression is added. No picture carries\
+  \ words (text_in_image is empty).\n* OUTCOMES. 16, every item before the background questions, in the\
+  \ survey's\n  order: willingness to consider (Q1), the six value items (Q2: three of the\n  authors'\
+  \ acceptance construct, three social value), four disgust items (Q3),\n  health benefits, environmental\
+  \ benefits, health risks, environmental risks\n  (Q4-Q7), and naturalness (Q8). Wording is the docx's:\
+  \ each screen's stem\n  followed by its statement in quotation marks, question numbers (red) and the\n\
+  \  stray \"Q16 ...\" duplicate dropped. Scale endpoint and midpoint labels are the\n  docx's column\
+  \ headings, without their \"1.\" / \"4.\" / \"7.\" prefixes. The SPSS\n  labels differ for Q1 (\"4.\
+  \ I am indifferent about consuming this product\", \"7. I\n  would definitly consider ...\"); the docx\
+  \ wins as the survey shown. All answers\n  are 1-7 as stored, none missing, risks NOT reverse-scored.\n\
+  * NOT BUILT. Familiarity with eating mycelium and the twelve environmental concern\n  items (Q9, Q10):\
+  \ asked after the scenario, about the person rather than the\n  product, so neither an outcome of the\
+  \ manipulation nor a clean persona\n  attribute (the paper uses both only as randomisation checks).\n\
+  * WHO. All 449 rows (Table 2's cell sizes 50/51/50/50/50/49/50/50/49 equal the\n  data's). Table 2's\
+  \ item means and SDs leave out the 4 people with no age (one\n  each in mould cake x logs, mould cake\
+  \ x glucose, burger x manure, burger x logs),\n  though it prints the full cell sizes; with those four\
+  \ left out the built rows\n  reproduce all 144 of its means and all 144 of its SDs (the SDs rounded\
+  \ to three\n  decimals and then two). Nothing else marks those four, so they are built. The\n  data\
+  \ hold no respondent id, so participants are keyed by row position in\n  Mycelium.sav.\n* PERSONA. Asked\
+  \ at the end, stable facts: age (4 blank), gender (\"Prefer not to\n  say\", 1 person, is a non-answer)\
+  \ and education. Education crosswalk scheme\n  uk_zenodo10628634 (data/catalog/persona_crosswalk_education.json),\
+  \ read from\n  existing schemes' precedents, not asked of Jev.\n\n    uv run python scripts/gen_zenodo10628634.py\
+  \ --extract    # (re)write the six pictures\n    uv run python scripts/gen_zenodo10628634.py --catalogue\
+  \  # this study's images.json entries\n    uv run python scripts/gen_zenodo10628634.py             \
+  \ # write the recipe\n    uv run python scripts/gen_zenodo10628634.py --check      # exit 1 if it differs"
+condition:
+  source_var: Condition
+  factors:
+  - product
+  - substrate
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      product: mould cake
+      substrate: horse manure
+    text: 'There is a new interesting food product coming into the market, which is made from mycelium.
+      Mycelium is the name for the vegetative structure of fungi, and consists of bundles of white or
+      cream coloured mould strings called hyphae. These hyphae are able to absorb nutrients from their
+      environment and transform them into high quality protein. As a result, mycelium is rich in protein
+      and can be considered as an alternative for animal and plant based protein. Mycelium protein will
+      be available on the market as a natural mould cake similar to tempeh and will have an appearance
+      similar to the picture below. <image> Captioned: "Mycelium mould cake" Mycelium is grown with the
+      use of substrates, which are the surfaces on which fungi live and can be either solid or liquid.
+      The mycelium used for the novel product is grown using a substrate of composted horse manure mixed
+      with straw, which provides necessary nutrients and looks similar to the substrate pictured below.
+      <image> Captioned: "Composted horse manure mixed with straw"'
+    images:
+    - zenodo10628634_product_mould_cake
+    - zenodo10628634_substrate_horse_manure
+  - raw: 2
+    condition_num: 1
+    factors:
+      product: mould cake
+      substrate: hardwood logs
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as a natural mould cake similar to tempeh and will have an appearance similar to the picture
+      below. <image> Captioned: "Mycelium mould cake" Mycelium is grown with the use of substrates, which
+      are the surfaces on which fungi live and can be either solid or liquid. The mycelium used for the
+      novel product is grown using hardwood logs as a growth substrate, which provides necessary nutrients
+      and look similar to the substrate pictured below. <image> Captioned: "Hardwood logs as growth substrate"'
+    images:
+    - zenodo10628634_product_mould_cake
+    - zenodo10628634_substrate_hardwood_logs
+  - raw: 3
+    condition_num: 2
+    factors:
+      product: mould cake
+      substrate: glucose
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as a natural mould cake similar to tempeh and will have an appearance similar to the picture
+      below. <image> Captioned: "Mycelium mould cake" Mycelium is grown with the use of substrates, which
+      are the surfaces on which fungi live and can be either solid or liquid. The mycelium used for the
+      novel product is grown using a substrate of glucose with added vitamins and minerals. This solution
+      provides necessary nutrients for the mycelium and looks similar to the mixture pictured below. <image>
+      Captioned: "Substrate of glucose with added vitamins and minerals"'
+    images:
+    - zenodo10628634_product_mould_cake
+    - zenodo10628634_substrate_glucose
+  - raw: 4
+    condition_num: 3
+    factors:
+      product: protein powder
+      substrate: horse manure
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as mycelium protein powder, which can be used in smoothies or for baking and will have an
+      appearance similar to the picture below. <image> Captioned: "Mycelium protein powder" Mycelium is
+      grown with the use of substrates, which are the surfaces on which fungi live and can be either solid
+      or liquid. The mycelium used for the novel product is grown using a substrate of composted horse
+      manure mixed with straw, which provides necessary nutrients and looks similar to the substrate pictured
+      below. <image> Captioned: "Composted horse manure mixed with straw"'
+    images:
+    - zenodo10628634_product_protein_powder
+    - zenodo10628634_substrate_horse_manure
+  - raw: 5
+    condition_num: 4
+    factors:
+      product: protein powder
+      substrate: hardwood logs
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as mycelium protein powder, which can be used in smoothies or for baking and will have an
+      appearance similar to the picture below. <image> Captioned: "Mycelium protein powder" Mycelium is
+      grown with the use of substrates, which are the surfaces on which fungi live and can be either solid
+      or liquid. The mycelium used for the novel product is grown using hardwood logs as a growth substrate,
+      which provides necessary nutrients and look similar to the substrate pictured below. <image> Captioned:
+      "Hardwood logs as growth substrate"'
+    images:
+    - zenodo10628634_product_protein_powder
+    - zenodo10628634_substrate_hardwood_logs
+  - raw: 6
+    condition_num: 5
+    factors:
+      product: protein powder
+      substrate: glucose
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as mycelium protein powder, which can be used in smoothies or for baking and will have an
+      appearance similar to the picture below. <image> Captioned: "Mycelium protein powder" Mycelium is
+      grown with the use of substrates, which are the surfaces on which fungi live and can be either solid
+      or liquid. The mycelium used for the novel product is grown using a substrate of glucose with added
+      vitamins and minerals. This solution provides necessary nutrients for the mycelium and looks similar
+      to the mixture pictured below. <image> Captioned: "Substrate of glucose with added vitamins and
+      minerals"'
+    images:
+    - zenodo10628634_product_protein_powder
+    - zenodo10628634_substrate_glucose
+  - raw: 7
+    condition_num: 6
+    factors:
+      product: burger
+      substrate: horse manure
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as a Mycelium burger and will have an appearance similar to the picture below. <image> Captioned:
+      "Mycelium burger" Mycelium is grown with the use of substrates, which are the surfaces on which
+      fungi live and can be either solid or liquid. The mycelium used for the novel product is grown using
+      a substrate of composted horse manure mixed with straw, which provides necessary nutrients and looks
+      similar to the substrate pictured below. <image> Captioned: "Composted horse manure mixed with straw"'
+    images:
+    - zenodo10628634_product_burger
+    - zenodo10628634_substrate_horse_manure
+  - raw: 8
+    condition_num: 7
+    factors:
+      product: burger
+      substrate: hardwood logs
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as a mycelium burger and will have an appearance similar to the picture below. The mycelium
+      used for this product is grown using a substrate of straw." <image> Captioned: "Mycelium burger"
+      Mycelium is grown with the use of substrates, which are the surfaces on which fungi live and can
+      be either solid or liquid. The mycelium used for the novel product is grown using hardwood logs
+      as a growth substrate, which provides necessary nutrients and look similar to the substrate pictured
+      below. <image> Captioned: "Hardwood logs as growth substrate"'
+    images:
+    - zenodo10628634_product_burger
+    - zenodo10628634_substrate_hardwood_logs
+  - raw: 9
+    condition_num: 8
+    factors:
+      product: burger
+      substrate: glucose
+    text: 'There is a new food product coming into the market, which is made from mycelium. Mycelium is
+      the name for the vegetative structure of fungi, and consists of bundles of white or cream coloured
+      mould strings called hyphae. These hyphae are able to absorb nutrients from their environment and
+      transform them into high quality protein. As a result, mycelium is rich in protein and can be considered
+      as an alternative for animal and plant-based protein. Mycelium protein will be available on the
+      market as a mycelium burger and will have an appearance similar to the picture below. The mycelium
+      used for this product is grown using a substrate of glucose with added vitamins and minerals. <image>
+      Captioned: "Mycelium burger" Mycelium is grown with the use of substrates, which are the surfaces
+      on which fungi live and can be either solid or liquid. The mycelium used for the novel product is
+      grown using a substrate of glucose with added vitamins and minerals. This solution provides necessary
+      nutrients for the mycelium and looks similar to the mixture pictured below. <image> Captioned: "Substrate
+      of glucose with added vitamins and minerals"'
+    images:
+    - zenodo10628634_product_burger
+    - zenodo10628634_substrate_glucose
+outcomes:
+- var: INT1
+  task_num: 0
+  question: Imagine you walk through the grocery store and come across a novel product as described in
+    the previous informational text. Please provide your response to the following statement regarding
+    your willingness to consider this novel mycelium product. "I would consider consuming this product"
+  scale:
+    min: 1
+    max: 7
+    min_label: I would never consider consuming this product
+    max_label: I would definitely consider consuming this product
+    mid_label: I don't know if I would consider consuming this product
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: ATT1
+  task_num: 1
+  question: Please provide your response to the following statements regarding the value you perceive
+    of the novel mycelium product "This product is one that I would enjoy"
+  scale:
+    min: 1
+    max: 7
+    min_label: Totally disagree
+    max_label: Totally agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: INT2
+  task_num: 2
+  question: Please provide your response to the following statements regarding the value you perceive
+    of the novel mycelium product "This product would make me want to consume it"
+  scale:
+    min: 1
+    max: 7
+    min_label: Totally disagree
+    max_label: Totally agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: ATT2
+  task_num: 3
+  question: Please provide your response to the following statements regarding the value you perceive
+    of the novel mycelium product "Consuming this product would make me feel good"
+  scale:
+    min: 1
+    max: 7
+    min_label: Totally disagree
+    max_label: Totally agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: SOC1
+  task_num: 4
+  question: Please provide your response to the following statements regarding the value you perceive
+    of the novel mycelium product "Consuming this product would help me feel acceptable"
+  scale:
+    min: 1
+    max: 7
+    min_label: Totally disagree
+    max_label: Totally agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: SOC2
+  task_num: 5
+  question: Please provide your response to the following statements regarding the value you perceive
+    of the novel mycelium product "Consuming this product would improve the way I am perceived"
+  scale:
+    min: 1
+    max: 7
+    min_label: Totally disagree
+    max_label: Totally agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: SOC3
+  task_num: 6
+  question: Please provide your response to the following statements regarding the value you perceive
+    of the novel mycelium product "Consuming this product would make a good impression on other people"
+  scale:
+    min: 1
+    max: 7
+    min_label: Totally disagree
+    max_label: Totally agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: DISG1
+  task_num: 7
+  question: Please provide your response to the following statements regarding your feelings of disgust
+    towards the novel mycelium product "The thought of eating this food makes me nauseous"
+  scale:
+    min: 1
+    max: 7
+    min_label: None at all
+    max_label: Extremely
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: DISG2
+  task_num: 8
+  question: Please provide your response to the following statements regarding your feelings of disgust
+    towards the novel mycelium product "I dislike the idea of having this food in my stomach"
+  scale:
+    min: 1
+    max: 7
+    min_label: None at all
+    max_label: Extremely
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: DISG3
+  task_num: 9
+  question: Please provide your response to the following statements regarding your feelings of disgust
+    towards the novel mycelium product "I dislike the idea of this food because of what it is or where
+    it comes from"
+  scale:
+    min: 1
+    max: 7
+    min_label: None at all
+    max_label: Extremely
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: DISG4
+  task_num: 10
+  question: Please provide your response to the following statements regarding your feelings of disgust
+    towards the novel mycelium product "The thought of eating this food is disgusting to me"
+  scale:
+    min: 1
+    max: 7
+    min_label: None at all
+    max_label: Extremely
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: HeaB
+  task_num: 11
+  question: Please provide your opinion on the following statement regarding the expected health benefits
+    of consuming the novel mycelium product "Consuming this product will provide health benefits"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: A great deal
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: EnvB
+  task_num: 12
+  question: Please provide your opinion on the following statement regarding the expected environmental
+    sustainability benefits of producing the novel mycelium product "Producing this product will benefit
+    the sustainability of the environment"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: A great deal
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: HeaR
+  task_num: 13
+  question: Please provide your opinion on the following statements regarding the expected health risks
+    of consuming the novel mycelium product "Consuming this product will result in health risks"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: A great deal
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: EnvR
+  task_num: 14
+  question: Please provide your opinion on the following statements regarding the expected environmental
+    sustainability risks of producing the novel mycelium product "Producing this product will increase
+    the risk of environmental sustainability losses"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: A great deal
+    mid_label: Moderately
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: NATURAL
+  task_num: 15
+  question: Please answer the following questions regarding the naturalness of the novel mycelium product
+    "How natural do you perceive this product to be?"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all natural
+    max_label: Extremely natural
+    mid_label: Moderately natural
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+response_recode: {}
+persona_map:
+  age: Age
+  gender: Gender
+  education: Education
+persona_missing:
+  Gender:
+  - 4
