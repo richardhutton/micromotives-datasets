@@ -21,13 +21,15 @@ VLLM="vllm==0.32.0"
 [[ -n "${GITHUB_DATASETS_TOKEN:-}" ]] || { echo "GITHUB_DATASETS_TOKEN is not set: check the template"; exit 1; }
 
 command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
-uv sync
+# the router needs httpx and nothing else: no `uv sync` of the whole project (pandas, mypy,
+# pytest...) onto the network volume, which was slow every time and failed once with a
+# stale file handle (2 Nov 2026)
 command -v vllm >/dev/null || uv tool install "$VLLM"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 command -v tmux >/dev/null || { apt-get update -qq && apt-get install -y -qq tmux; }
 
 mkdir -p /workspace/serve
 tmux new-session -d -s serve \
-  "uv run python scripts/quotes_router.py --start writer --port 4000 2>&1 | tee -a /workspace/serve/router.log; exec bash"
+  "uv run --no-project --with httpx python scripts/quotes_router.py --start writer --port 4000 2>&1 | tee -a /workspace/serve/router.log; exec bash"
 echo "router started; loading the writer (a few minutes once downloaded)"
 echo "state: curl -s localhost:4000/health   (or https://${RUNPOD_POD_ID:-<pod id>}-4000.proxy.runpod.net/health)"
