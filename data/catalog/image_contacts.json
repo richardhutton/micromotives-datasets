@@ -590,9 +590,9 @@
     "id": "taylor",
     "order": 23,
     "name": "Eve Taylor",
-    "email": "eve.taylor@ucl.ac.uk",
+    "email": "eve.v.taylor@kcl.ac.uk",
     "cc": "",
-    "org": "UCL",
+    "org": "King's College London",
     "experiments": [
       {
         "id": "IMG84",
@@ -605,7 +605,7 @@
     "body": "Dear Eve,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour nicotine pouch packaging experiment (OSF 849nk) would be really useful, and thanks for putting the pack images and questionnaire online. The paper says the data is available on request, so I'm asking: could you share the respondent-level data, with each person's packaging condition, pack choice, harm rating and demographics?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
     "status": "ready",
     "sent": "",
-    "notes": "Corresponding-author address from the 2025 Nicotine and Tobacco Research paper."
+    "notes": "Moved from UCL to King's College London; KCL address from rich (2 Nov 2026). The paper's address, eve.taylor@ucl.ac.uk, is out of date."
   },
   {
     "id": "melios",
