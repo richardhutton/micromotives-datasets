@@ -1,5 +1,23 @@
 # Spec: synthetic quotes on training rows
 
+> **Superseded 2 Nov 2026 (rich): the model is trained WITHOUT quotes.** Training uses the
+> answers-only export `v3/studies_10pct` (tag `v3-10pct`). Quotes are written at runtime
+> by frontier models from several labs, after our model has answered, for the respondents
+> a user is shown: a small sample per segment, more on demand, with code checks, a second
+> model's check, a diversity step and caching per run.
+>
+> Why: a fair blind comparison on 50 rows (`scripts/quotes_frontier.py`, same rows, input
+> and prompt for both sides) found a one-shot frontier model preferred about 80% of the
+> time over this pipeline's quotes (v9 22%, v10 18%, Gemma as writer 20%). Ours were
+> correct but plain; the writer model was the limit, not the prompt. Frontier quotes for
+> training would have cost about $220 (10% set) to $2,200 (full set). Ours were the more
+> varied: the frontier's quotes for people with the same answer were near-duplicates
+> 50-59% of the time, which is why runtime quotes come from several labs' models.
+>
+> What carries over to runtime: the v10 writer prompt, `q.scrub` and `q.ai_tells`, the
+> BES voice pool, and the comparison harness with its dev and held-out sets. The rest of
+> this document describes the batch pipeline as built and is kept as a record.
+
 Reviewed and built 30 Oct 2026 (code: `src/micromotives_datasets/quotes.py`, `scripts/quotes_*.py`, prompts in `prompts/quotes/`, router `scripts/quotes_router.py`, pod runbook `docs/RUNPOD_QUOTES.md`); the pilot has not run yet. Written 30 Oct 2026
 from a design discussion between rich and the micromotives-training agent. Nothing here
 is built yet. Facts marked *measured* were counted on export `v3/studies_10pct@v3-10pct`;
