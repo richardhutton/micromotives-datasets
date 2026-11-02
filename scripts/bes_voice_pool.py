@@ -51,6 +51,12 @@ PLACEHOLDERS = {
 MAX_WORDS = 40
 
 
+def is_placeholder(text: str) -> bool:
+    """A non-answer, in any case: BES writes a blank as "__NA__", which a lower-cased
+    comparison against an upper-case list let through 655,495 times (fixed 2 Nov 2026)."""
+    return text.strip().lower() in {p.lower() for p in PLACEHOLDERS} or len(text.strip()) <= 1
+
+
 def age_band(age: float) -> str | None:
     if pd.isna(age) or age < 16:
         return None
@@ -77,7 +83,7 @@ def main() -> None:
     text, _ = pyreadstat.read_sav(STRINGS, usecols=["id", *cols], encoding="latin1")
     long = text.melt(id_vars="id", var_name="question", value_name="text").dropna()
     long["text"] = long["text"].astype(str).str.strip()
-    long = long[~long["text"].str.lower().isin(PLACEHOLDERS) & (long["text"].str.len() > 1)]
+    long = long[~long["text"].map(is_placeholder)]
     long = long[long["text"].str.split().str.len() <= MAX_WORDS]
     long["question"] = long["question"].str.replace(r"W\d+$", "", regex=True)
 

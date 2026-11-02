@@ -522,3 +522,25 @@ def test_every_method_recipe_exists() -> None:
     # a misspelt name would silently flag nothing
     missing = [r for r in q.METHOD_RECIPES if not (q.ROOT / "recipes" / f"{r}.yaml").exists()]
     assert missing == []
+
+
+def _voice_pool_script():  # type: ignore[no-untyped-def]
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "bes_voice_pool", q.ROOT / "scripts" / "bes_voice_pool.py"
+    )
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+@pytest.mark.parametrize("text", ["__NA__", "__na__", " N/A ", "Don't know", "-1", "x", ""])
+def test_voice_pool_drops_non_answers_in_any_case(text: str) -> None:
+    assert _voice_pool_script().is_placeholder(text)
+
+
+@pytest.mark.parametrize("text", ["Brexit", "NA wages are too low", "No", "Nothing works"])
+def test_voice_pool_keeps_real_answers(text: str) -> None:
+    assert not _voice_pool_script().is_placeholder(text)
