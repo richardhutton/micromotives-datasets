@@ -343,7 +343,7 @@
     "body": "Hi Stuart,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour heroes and villains conjoint is a great fit, and thanks for the CC0 data (Dataverse X2WKUZ).\n\nThe data has the character names but not the pictures. Could you share the images people saw, or tell me where they came from?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
     "status": "yes",
     "sent": "2026-10-26",
-    "notes": "26 Oct: replied within minutes, images at https://osf.io/s9ke8/. Downloaded: 44 heroes + 43 villains = 87 images (Disney, Marvel, Harry Potter, LOTR, Game of Thrones, Star Wars), saved in data/raw/x2wkuz_images/. Also includes the pre-analysis plan for experiment 2."
+    "notes": "26 Oct: replied within minutes, images at https://osf.io/s9ke8/. Downloaded: 44 heroes + 43 villains = 87 images (Disney, Marvel, Harry Potter, LOTR, Game of Thrones, Star Wars), saved in data/raw/x2wkuz_images/. Also includes the pre-analysis plan for experiment 2. 2 Nov 2026: build blocked. Follow-up to send: ask for the Qualtrics export (.qsf or Word) of UK Study 1, for the question wording, whether names were shown, and which image file is which character."
   },
   {
     "id": "duthie",
