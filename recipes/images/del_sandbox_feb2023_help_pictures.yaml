@@ -1,0 +1,1355 @@
+study_id: del
+source: dataverse
+experiment: sandbox_feb2023_help_pictures
+title: 'Development Engagement Lab, Sandbox Great Britain February 2023: paired photographs, which person
+  needs / deserves help the most'
+data_file: DEL_Sandbox_GreatBritain_Feb2023_Data-derived.sav
+licence: CC0 1.0 doi:10.7910/DVN/XZ1XUZ, stated on the Harvard Dataverse deposit "DEL Sandbox 2023" and
+  read from the Dataverse API (latestVersion.license) on 10 Oct 2026. The deposit's Readme adds "DEL datasets
+  are a public good and can be used with the appropriate citation."
+comparable_to_socsci210: false
+participant_id_var: GUNQID
+notes: "Write recipes/images/del_sandbox_feb2023_help_pictures.yaml: who needs / deserves help (IMG07).\n\
+  \nHudson, Jennifer; Hudson, David; Morini, Paolo; Oh, Soomin; Torres-Raposo, Felipe,\n2024, \"DEL Sandbox\
+  \ 2023\", https://doi.org/10.7910/DVN/XZ1XUZ, Harvard Dataverse, V1;\nDEL_Sandbox_GreatBritain_Feb2023_Data.sav.\
+  \ Fielded online by YouGov, 20-28 February\n2023, n = 2,007 adults in Great Britain (the deposit's Readme).\
+  \ The same file as\n`del_sandbox_feb2023_wordfeminist` and the other five Feb 2023 text builds, whose\n\
+  licence, person id and persona block carry over unchanged (read from that recipe by\nthis generator,\
+  \ so they cannot drift).\n\nEvery judgement is here, in code, so the recipe can be re-derived and reviewed:\n\
+  \n* THE DESIGN. Four paired-photo screens, `images_1` .. `images_4`, every respondent.\n  The script\
+  \ (DEL_Sandbox_GreatBritain_Feb2023_Survey.docx, the block after `femi`)\n  lists ten photos, `img_name_arr`\
+  \ = M_EMP, M_WORK, W_WORK, W_PARENT, W_NEUT, W_EMP,\n  W_CONT, M_PARENT, M_NEUT, M_CONT, and draws four\
+  \ pairs WITHOUT replacement across\n  the whole block (`random_samples(..., 2)` then `sets.sdiff`),\
+  \ so each person sees\n  eight different photos, none twice. The first of each pair is Picture A, the\n\
+  \  second Picture B. `img1_pair{k}_A` / `_B` record, per person, the `<img>` tag shown,\n  with the\
+  \ file name in `alt` and the YouGov CloudFront URL in `src`; all 2,007\n  people have all eight, every\
+  \ tag parses, each file name has exactly one URL, A and\n  B always differ and the eight are always\
+  \ distinct (checked by `prep()`).\n* WHAT VARIES. The ordered pair (A, B): 90 arms, condition_num =\
+  \ 9 * (code_A - 1) +\n  rank of code_B among the other nine, codes 1-10 in the instrument's own array\n\
+  \  order. Declared on the condition as `source_vars` (screen 1's two columns) and on\n  each later screen's\
+  \ outcome as `condition_vars`, so each screen resolves its own\n  arm. Factors, structured metadata\
+  \ for each picture: person (man / woman, from the\n  file name's M / W) and framing (the file name's\
+  \ own code: CONT, EMP, NEUT, PARENT,\n  WORK). What the five codes stand for is NOT stated anywhere\
+  \ in the deposit\n  (questionnaire, codebook, Readme), so they are kept as codes, not expanded.\n* THE\
+  \ PREPPED FILE. The pipeline reads integer assignment codes, and the .sav holds\n  the tags as strings,\
+  \ so `--prep` writes `DEL_Sandbox_GreatBritain_Feb2023_Data-\n  derived.sav`: the deposit unchanged\
+  \ (a pyreadstat round trip, values, variable\n  labels and value labels identical) plus eight integer\
+  \ columns `img_pair{k}_A_code`\n  / `_B_code`, labelled with the file name. Nothing else changes.\n\
+  * CONDITION. Ours: \"Two pictures were shown side by side below the question.\" and the\n  colon after\
+  \ each heading. The instrument's: \"Picture A\" and \"Picture B\", the\n  table's two column headings,\
+  \ each over its picture (the questionnaire's table:\n  one row of headings, one row of pictures, 50%\
+  \ width each). No pair number (\"pair\n  3\") is rendered: a row cannot cite its position (docs/CONVENTIONS.md).\
+  \ The photos\n  carry no caption on screen; the few words visible in them (a T-shirt, a tent) are\n\
+  \  in the catalogue's text_in_image, and are not quoted in the condition because\n  they are incidental\
+  \ to the photograph, not a caption the respondent was given to\n  read (k369t precedent: the image carries\
+  \ its own words).\n* OUTCOMES. Word-for-word from the questionnaire (and the .sav's variable label):\n\
+  \  \"Looking at the two images below, please tell us which pictures shows the person\n  or people you\
+  \ think needs help the most.\" (`images_1`, `images_2`) and the same\n  with \"deserves help the most\"\
+  \ (`images_3`, `images_4`). \"pictures shows\" is the\n  instrument's grammar and is kept; the `**`\
+  \ bold markup is typography and goes.\n  The answers are a nominal choice: 1 Picture A, 2 Both equally,\
+  \ 3 Picture B, 4\n  Neither of these, enumerated in the question in the PZB01G form (\"1 means ...\"\
+  ),\n  ours. 5 \"Don't know\" is dropped as a non-answer; 8 \"Skipped\" and 9 \"Not Asked\" are\n  labelled,\
+  \ never occur, and are declared so a re-fetched deposit drops them.\n  Screens 1 and 2 share a wording,\
+  \ as do 3 and 4; their rows differ by the pictures\n  (no person sees a photo twice), so no participant\
+  \ has two rows with the same\n  condition and outcome (QC rule 24). The split tooling joins task numbers\
+  \ that\n  share a wording into one hiding unit.\n* WHAT CAME BEFORE, the same for everyone, none of\
+  \ it rendered. The block follows\n  the feminism grid `femi` and a \"Moving on...\" page; earlier in\
+  \ the interview\n  everyone answered the aid, gender-equality and feminism items built in the six\n\
+  \  Feb 2023 text recipes. The women-only `womenexp` block comes after.\n* PHOTOS. Fetched from the ten\
+  \ URLs in the .sav into data/raw/del/feb2023_images/,\n  byte-identical to an earlier independent download.\
+  \ Rights are not stated by the\n  deposit. Several files carry embedded rights metadata (catalogue `licence`);\
+  \ it is\n  recorded, not acted on.\n* PERSONA and PERSON ID as in del_sandbox_feb2023_wordfeminist.yaml\
+  \ (`GUNQID`,\n  study_id `del`, shared across all DEL files).\n* REFERENCE. No published figures for\
+  \ this block were found; the crosscheck is\n  internal (A/B balance, each photo's share chosen when\
+  \ shown).\n\n    uv run python scripts/gen_del_feb2023_help_pictures.py --prep       # derived .sav\n\
+  \    uv run python scripts/gen_del_feb2023_help_pictures.py --catalogue  # images.json\n    uv run python\
+  \ scripts/gen_del_feb2023_help_pictures.py              # the recipe\n    uv run python scripts/gen_del_feb2023_help_pictures.py\
+  \ --check      # exit 1 if it differs"
+condition:
+  source_vars:
+  - img_pair1_A_code
+  - img_pair1_B_code
+  factors:
+  - person_A
+  - framing_A
+  - person_B
+  - framing_B
+  arms:
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 2
+    condition_num: 0
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 3
+    condition_num: 1
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 4
+    condition_num: 2
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 5
+    condition_num: 3
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 6
+    condition_num: 4
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 7
+    condition_num: 5
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 8
+    condition_num: 6
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 9
+    condition_num: 7
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 1
+      img_pair1_B_code: 10
+    condition_num: 8
+    factors:
+      person_A: man
+      framing_A: EMP
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_emp
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 1
+    condition_num: 9
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 3
+    condition_num: 10
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 4
+    condition_num: 11
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 5
+    condition_num: 12
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 6
+    condition_num: 13
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 7
+    condition_num: 14
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 8
+    condition_num: 15
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 9
+    condition_num: 16
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 2
+      img_pair1_B_code: 10
+    condition_num: 17
+    factors:
+      person_A: man
+      framing_A: WORK
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_work
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 1
+    condition_num: 18
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 2
+    condition_num: 19
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 4
+    condition_num: 20
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 5
+    condition_num: 21
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 6
+    condition_num: 22
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 7
+    condition_num: 23
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 8
+    condition_num: 24
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 9
+    condition_num: 25
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 3
+      img_pair1_B_code: 10
+    condition_num: 26
+    factors:
+      person_A: woman
+      framing_A: WORK
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_work
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 1
+    condition_num: 27
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 2
+    condition_num: 28
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 3
+    condition_num: 29
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 5
+    condition_num: 30
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 6
+    condition_num: 31
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 7
+    condition_num: 32
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 8
+    condition_num: 33
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 9
+    condition_num: 34
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 4
+      img_pair1_B_code: 10
+    condition_num: 35
+    factors:
+      person_A: woman
+      framing_A: PARENT
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_parent
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 1
+    condition_num: 36
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 2
+    condition_num: 37
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 3
+    condition_num: 38
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 4
+    condition_num: 39
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 6
+    condition_num: 40
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 7
+    condition_num: 41
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 8
+    condition_num: 42
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 9
+    condition_num: 43
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 5
+      img_pair1_B_code: 10
+    condition_num: 44
+    factors:
+      person_A: woman
+      framing_A: NEUT
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_neut
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 1
+    condition_num: 45
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 2
+    condition_num: 46
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 3
+    condition_num: 47
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 4
+    condition_num: 48
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 5
+    condition_num: 49
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 7
+    condition_num: 50
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 8
+    condition_num: 51
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 9
+    condition_num: 52
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 6
+      img_pair1_B_code: 10
+    condition_num: 53
+    factors:
+      person_A: woman
+      framing_A: EMP
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_emp
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 1
+    condition_num: 54
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 2
+    condition_num: 55
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 3
+    condition_num: 56
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 4
+    condition_num: 57
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 5
+    condition_num: 58
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 6
+    condition_num: 59
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 8
+    condition_num: 60
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 9
+    condition_num: 61
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 7
+      img_pair1_B_code: 10
+    condition_num: 62
+    factors:
+      person_A: woman
+      framing_A: CONT
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_w_cont
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 1
+    condition_num: 63
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 2
+    condition_num: 64
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 3
+    condition_num: 65
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 4
+    condition_num: 66
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 5
+    condition_num: 67
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 6
+    condition_num: 68
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 7
+    condition_num: 69
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 9
+    condition_num: 70
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_m_neut
+  - raw_values:
+      img_pair1_A_code: 8
+      img_pair1_B_code: 10
+    condition_num: 71
+    factors:
+      person_A: man
+      framing_A: PARENT
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_parent
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 1
+    condition_num: 72
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 2
+    condition_num: 73
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 3
+    condition_num: 74
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 4
+    condition_num: 75
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 5
+    condition_num: 76
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 6
+    condition_num: 77
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 7
+    condition_num: 78
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 8
+    condition_num: 79
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 9
+      img_pair1_B_code: 10
+    condition_num: 80
+    factors:
+      person_A: man
+      framing_A: NEUT
+      person_B: man
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_neut
+    - del_feb2023_m_cont
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 1
+    condition_num: 81
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: man
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_m_emp
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 2
+    condition_num: 82
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: man
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_m_work
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 3
+    condition_num: 83
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: woman
+      framing_B: WORK
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_w_work
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 4
+    condition_num: 84
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: woman
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_w_parent
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 5
+    condition_num: 85
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: woman
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_w_neut
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 6
+    condition_num: 86
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: woman
+      framing_B: EMP
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_w_emp
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 7
+    condition_num: 87
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: woman
+      framing_B: CONT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_w_cont
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 8
+    condition_num: 88
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: man
+      framing_B: PARENT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_m_parent
+  - raw_values:
+      img_pair1_A_code: 10
+      img_pair1_B_code: 9
+    condition_num: 89
+    factors:
+      person_A: man
+      framing_A: CONT
+      person_B: man
+      framing_B: NEUT
+    text: 'Two pictures were shown side by side below the question. Picture A: <image> Picture B: <image>'
+    images:
+    - del_feb2023_m_cont
+    - del_feb2023_m_neut
+outcomes:
+- var: images_1
+  task_num: 0
+  question: Looking at the two images below, please tell us which pictures shows the person or people
+    you think needs help the most. 1 means "Picture A"; 2 means "Both equally"; 3 means "Picture B"; 4
+    means "Neither of these".
+  scale:
+    min: 1
+    max: 4
+    nominal: true
+- var: images_2
+  task_num: 1
+  question: Looking at the two images below, please tell us which pictures shows the person or people
+    you think needs help the most. 1 means "Picture A"; 2 means "Both equally"; 3 means "Picture B"; 4
+    means "Neither of these".
+  scale:
+    min: 1
+    max: 4
+    nominal: true
+  condition_vars:
+  - img_pair2_A_code
+  - img_pair2_B_code
+- var: images_3
+  task_num: 2
+  question: Looking at the two images below, please tell us which pictures shows the person or people
+    you think deserves help the most. 1 means "Picture A"; 2 means "Both equally"; 3 means "Picture B";
+    4 means "Neither of these".
+  scale:
+    min: 1
+    max: 4
+    nominal: true
+  condition_vars:
+  - img_pair3_A_code
+  - img_pair3_B_code
+- var: images_4
+  task_num: 3
+  question: Looking at the two images below, please tell us which pictures shows the person or people
+    you think deserves help the most. 1 means "Picture A"; 2 means "Both equally"; 3 means "Picture B";
+    4 means "Neither of these".
+  scale:
+    min: 1
+    max: 4
+    nominal: true
+  condition_vars:
+  - img_pair4_A_code
+  - img_pair4_B_code
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+missing_codes:
+- 5
+- 8
+- 9
+persona_label_rewrite:
+  religion:
+    18: Yes - Pentecostal
+persona_map:
+  age: age
+  gender: gender
+  education: education_level
+  income: gross_household
+  ethnicity: ethnicity_new
+  region: region_GOR
+  religion: religion
+  social_grade: socialgrade_cie
+  vote_2019: pastvote_ge_2019
+  eu_referendum_vote: pastvote_EURef
+persona_missing:
+  gender:
+  - 8
+  - 9
+  education_level:
+  - 19
+  - 20
+  - 98
+  - 99
+  gross_household:
+  - 16
+  - 17
+  - 98
+  - 99
+  ethnicity_new:
+  - 19
+  - 98
+  - 99
+  region_GOR:
+  - 13
+  - 98
+  - 99
+  religion:
+  - 16
+  - 98
+  - 99
+  socialgrade_cie:
+  - 7
+  - 8
+  - 98
+  - 99
+  pastvote_ge_2019:
+  - 99
+  - 998
+  - 999
+  pastvote_EURef:
+  - 4
+  - 8
+  - 9

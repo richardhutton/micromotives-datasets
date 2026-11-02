@@ -77,12 +77,12 @@
       "title": "Paired photos",
       "description": "Paired photos (man/woman × framing, 10 images), 4 random pairs: \"which person needs / deserves help most\". YouGov GB. CC0. Same survey as our gender equality build.",
       "link": "https://doi.org/10.7910/DVN/XZ1XUZ",
-      "status": "Buildable",
-      "reason": "Reviewed 2 Nov 2026: CC0 data (n=2,007) records which photo was A and B for each person; all 10 photos still live on the survey's image URLs. Photo rights not stated. Building.",
+      "status": "Built",
+      "reason": "6,792 rows (1,828 people, 4 screens: who \"needs\" (2) and \"deserves\" (2) help most, each a pair of 10 photos; 90 ordered-pair arms). QC clean; independent checker: PASS, A/B orientation verified on every row; descriptions cut to visible facts. No published figures exist for this block. Some photos carry their own rights notices (Shutterstock, MoD Crown Copyright, DFID, Oxfam), recorded in images.json.",
       "permission": "Asked",
       "contact": "David Hudson",
-      "rows": null,
-      "recipe": ""
+      "rows": 6792,
+      "recipe": "del_sandbox_feb2023_help_pictures"
     },
     {
       "id": "IMG08",

@@ -6910,5 +6910,85 @@
     "licence": "CC0 1.0 Universal (OSF gybnm).",
     "text_in_image": "The Reconnect Party / Political ad. / We are a political party dedicated to democracy. Get in contact today to see how we can draw up new ideas together. / RECONNECT PARTY / together with you / We don't expect you to just take our word for it. / Click below to our website to read case by case examples of what we've already achieved to help citizens and local businesses. / Paid for by The Reconnect Party. The Reconnect Party shows you this ad on the basis of information about your income, age, and gender. Estimated audience size: 30K-60K. Amount spent (GBP): £400-499. / WWW.RECONNECT.CO.UK/MANIFESTO / Find out more about our plans on our website / Learn more",
     "description": "A Facebook-style sponsored post: the party's round grey shell-like logo and its name with a blue verified tick at the top, with \"Political ad.\" and a small globe icon under the name, the post's text below, then a picture, a bright yellow banner under the picture carrying the disclaimer, and a grey footer with the web address, a line of text and a \"Learn more\" button. Every word is quoted in text_in_image. The picture is split diagonally: on the left, the party's logo box and white text on black; on the right, a paintbrush with a burst of glossy grey paint on a light grey background."
+  },
+  "del_feb2023_m_emp": {
+    "file": "raw/del/feb2023_images/M_EMP.jpeg",
+    "sha256": "fe73634a2b0164788bcb2d80167e8c438e24962224afccafedfaad79aa440b0c",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/ac0d93b0709cb9007baae5af88e55083/63f38efca92abbc37691a144.jpeg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='M_EMP.jpeg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated; the file carries embedded copyright \"Copyright (c) 2017 Anton_Ivanov/Shutterstock.  No use without permission.\".",
+    "text_in_image": "AFRICA / WESTERN SAHARA / ALGERIA / LIBYA / MALI / NIGER / CHAD / SUDAN / TOGO / BENIN / [partial: the smaller country names on the map are not legible]",
+    "description": "Colour photograph, square. A Black man stands with his hands on his hips, looking at the camera, in front of a fence of dry reeds or straw in bright sun. He wears a black T-shirt with purple trim printed with a map of Africa and the word AFRICA in large dotted letters; the larger country names on the map are quoted in text_in_image, the smaller ones are too small to read."
+  },
+  "del_feb2023_m_work": {
+    "file": "raw/del/feb2023_images/M_WORK.jpg",
+    "sha256": "4991f92b8a8703757b6c9023884eec6216353d23de3c96509d13abf62cdf7213",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/2021bcaaffc6ed12492458a3e4f7800e/63f38efba92abbc37691a13f.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='M_WORK.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated; the file carries embedded copyright \"Department For International Development/Simon Davis\".",
+    "text_in_image": "",
+    "description": "Colour photograph, square. A Black man with grey hair, in a short-sleeved light-coloured shirt, sits at a black manual sewing machine on a wooden table, his hands on the cloth, looking at the camera. Behind him, a window with wooden bars, a chair with a cloth over it, and plain walls. No legible words."
+  },
+  "del_feb2023_w_work": {
+    "file": "raw/del/feb2023_images/W_WORK.jpg",
+    "sha256": "698a3b96ffde6fadcef6496aa369035f72a9377fb2aa66a5df61f0af57a53fff",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/54af1344933ca2bcf101284a65b3f0a5/63f38efaa92abbc37691a13b.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='W_WORK.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated; the file carries embedded copyright \"© Valérie Batselaere 2012\"; artist \"Pablo Tosco/Intermon Oxfam, Valérie Batselaere\".",
+    "text_in_image": "",
+    "description": "Colour photograph, square. A Black woman in a bright blue dress and a red head wrap kneels in a field of low green plants on dry, cracked soil, looking down and tending the plants with her hands. Flat land, scattered trees and distant figures stretch to the horizon under a pale blue sky. No words."
+  },
+  "del_feb2023_w_parent": {
+    "file": "raw/del/feb2023_images/W_PARENT.jpg",
+    "sha256": "64e10130e563e783cb57ed0ed2f7c2082d78a40e90b003ae92d5529ef8d0fa76",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/eb7b0a511f22dffd84dc78cee8aae173/63f38efba92abbc37691a13e.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='W_PARENT.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated.",
+    "text_in_image": "",
+    "description": "Colour photograph, square. A Black woman holds a baby in a blue striped top, wrapped partly in a brightly patterned cloth; her eyes are lowered and the baby looks down. Behind them, out of focus, trees, dry ground and a building under a blue sky. Printing on the baby's top is not legible."
+  },
+  "del_feb2023_w_neut": {
+    "file": "raw/del/feb2023_images/W_NEUT.jpg",
+    "sha256": "7c96d01f4269cb5b52385b853742601d0c706e49a6f3e43cd58b0e5504405de6",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/051c906459a47b87daf19438fba6b0a4/63f38efba92abbc37691a13d.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='W_NEUT.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated.",
+    "text_in_image": "",
+    "description": "Colour photograph, square, a head-and-shoulders portrait. A Black woman in a white head covering and a white collared uniform shirt, with a blue pen in the pocket, looks at the camera. Behind her, a building painted green below and yellow above, with a green door and barred windows. No words."
+  },
+  "del_feb2023_w_emp": {
+    "file": "raw/del/feb2023_images/W_EMP.jpg",
+    "sha256": "6d0c8f6b9eddb7a8b3c77c6bae91797e2dd0f0f5eef915408360f469c7f19feb",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/6c01b8f11459008ac58b66c67de6b365/63f38efadcf49247b612e69a.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='W_EMP.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated.",
+    "text_in_image": "",
+    "description": "Colour photograph, square. A Black woman stands with her hands on her hips, looking at the camera, on bare earth in front of round thatched huts and trees. She wears a mustard-yellow top and a long yellow-and-white patterned wrap skirt, with sandals. No words."
+  },
+  "del_feb2023_w_cont": {
+    "file": "raw/del/feb2023_images/W_CONT.jpg",
+    "sha256": "5e69fcf0123cc75347921fd2ea6f26995c4ee132f49f37c04124d975f5c682d9",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/d4a1f5d695753df26a2a63beae2aee86/63f38efa6c90ba678025ea57.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='W_CONT.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated.",
+    "text_in_image": "",
+    "description": "Colour photograph, square. A Black woman stands in front of a large heap of dry straw or thatch, looking at the camera, wearing a loose floral dress and a necklace of coloured beads. The ground is dry and dusty, with a hazy sky and bare trees to the left. No words."
+  },
+  "del_feb2023_m_parent": {
+    "file": "raw/del/feb2023_images/M_PARENT.jpg",
+    "sha256": "5b87b6c9b300ae7192dd151b9518ae390a8a42c0dd434cae4bebcfccc376639b",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/69ed9586e7162512e35835d9839e1bbc/63f38efa6c90ba678025ea55.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='M_PARENT.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated.",
+    "text_in_image": "UNHCR",
+    "description": "Colour photograph, square. A Black man with a short beard, in a blue shirt, sits holding a small child in a striped top on his lap; the man looks towards the camera, the child looks down and away. Behind them, white tents on bare ground among trees, with people standing nearby; one tent is printed with a blue logo and the word quoted in text_in_image, partly crossed by a guy rope, with smaller lines beneath too blurred to read. Printing on the child's top is not legible."
+  },
+  "del_feb2023_m_neut": {
+    "file": "raw/del/feb2023_images/M_NEUT.jpg",
+    "sha256": "3d0508276bb2dc75e32a0f4ec5c12cb9e9bacf87ab0076f6c4de456b6ab3a4f7",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/9e27fdce29701a29a56a1d61db8b098f/63f38ef96c90ba678025ea53.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='M_NEUT.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated; the file carries embedded copyright \"Crown Copyright: This image may be used for current news purposes only.  It may not be used, reproduced or transmitted for any other purpose without first obtaining a copyright license available from the MoD, Crown Copyright Unit.\"; artist \"Corporal Paul Shaw ABIPP (Army)\".",
+    "text_in_image": "",
+    "description": "Colour photograph, square, a head-and-shoulders portrait. A Black man with a shaved head looks at the camera; he wears a turquoise scrub-style top over a grey collared shirt. Behind him, out of focus, a single-storey building, a tree and a few people on sandy ground. No words."
+  },
+  "del_feb2023_m_cont": {
+    "file": "raw/del/feb2023_images/M_CONT.jpg",
+    "sha256": "e03ee517ebf3cc6fccd3afc658a0141f3cc9bb3425687ed2d079a86663869874",
+    "source": "https://d25tjp0uwv51o3.cloudfront.net/public/0cbb8a26a029386e6cf3e086fe55de29/63f38efaa92abbc37691a138.jpg (DEL Sandbox Feb 2023, doi:10.7910/DVN/XZ1XUZ: the URL in img1_pair*_A/_B with alt='M_CONT.jpg'; the questionnaire's img_name_arr)",
+    "licence": "Data CC0 (DEL); photos fetched from the survey's YouGov image URLs, rights not stated.",
+    "text_in_image": "",
+    "description": "Colour photograph, square. A Black man stands in dry, open bush, holding a long wooden stick across his body and looking off to one side; he wears a brown striped vest, a white bead necklace, a leather belt and dark trousers. Behind him is bare reddish ground with dark patches of burnt grass and scrubby trees under a hazy sky. No words."
   }
 }
