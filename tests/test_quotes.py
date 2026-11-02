@@ -451,6 +451,7 @@ def test_examples_reach_the_writer_but_not_the_blind_test() -> None:
         ("I don't like them asking me that.", ["survey_talk"]),
         ("Total gaslighting from the lot of them.", ["buzzword"]),
         ("Fair play; she stuck to water.", ["semicolon"]),
+        ("My view on it: no chance.", ["colon"]),
     ],
 )
 def test_ai_tells_catch_the_humanizer_patterns(quote: str, tells: list[str]) -> None:
@@ -466,6 +467,7 @@ def test_ai_tells_catch_the_humanizer_patterns(quote: str, tells: list[str]) -> 
         "He left. That's on him.",
         "Out of the question, that.",
         "My aunt drank like a fish and lived to be eighty.",
+        "The bus goes at 10:30 and it's never on time.",
     ],
 )
 def test_ai_tells_leave_ordinary_speech_alone(quote: str) -> None:
@@ -485,11 +487,17 @@ def test_just_can_be_left_out_for_older_prompt_versions() -> None:
         ("I don't know... maybe.", "I don't know, maybe."),
         ("Too dear... Nobody pays that.", "Too dear. Nobody pays that."),
         ("Well, I'd say no…", "Well, I'd say no."),
+        ("Even a 20% cut would hurt.", "Even a 20 per cent cut would hurt."),
+        ("Losing 33 % of it, no.", "Losing 33 per cent of it, no."),
     ],
 )
 def test_scrub_removes_filler_just_and_ellipsis(quote: str, clean: str) -> None:
     assert q.scrub(quote) == clean
     assert q.ai_tells(q.scrub(quote)) == []
+
+
+def test_scrub_spells_percent_the_american_way_for_us_personas() -> None:
+    assert q.scrub("A 20% cut is a lot.", country="United States") == "A 20 percent cut is a lot."
 
 
 @pytest.mark.parametrize(

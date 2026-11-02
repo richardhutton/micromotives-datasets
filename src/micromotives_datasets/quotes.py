@@ -359,7 +359,7 @@ def repair_messages(system: str, item: Item, quote: str, notes: str) -> list[dic
             "Keep it short: a sentence or two, no longer than the first attempt.",
             # rewrites drifted from the rules at the top of the prompt: 21% said "just" and
             # they ran 60% longer than first drafts (batch-v9-1, 30 Oct 2026)
-            'The hard rules still apply: never "just"; no semicolons, dashes or "..."; '
+            'The hard rules still apply: never "just"; no colons, semicolons, dashes or "..."; '
             "never mention the survey, the question, a score or a scale.",
             'Reply with JSON only: {"quotes": ["..."]}',
         ]
@@ -465,6 +465,8 @@ def copied_example(quote: str, examples: Sequence[str]) -> bool:
 AI_TELLS = {
     "dash": re.compile(r"[\u2014\u2013]| -- "),
     "semicolon": re.compile(r";"),
+    # people don't speak in colons; a clock time ("10:30") is not one (v11, rich, 2 Nov 2026)
+    "colon": re.compile(r"(?<!\d):(?!\d)"),
     "ellipsis": re.compile(r"\u2026|\.\.\."),
     "not_x_but_y": re.compile(
         r"\bnot (just|only|merely|because)\b[^.?!]{0,60}\bbut\b|\bit'?s not\b[^.?!]{1,40}, it'?s\b",
@@ -547,10 +549,16 @@ def _contract(m: re.Match[str]) -> str:
     return short[0].upper() + short[1:] if whole[0].isupper() else short
 
 
-def scrub(quote: str) -> str:
-    """Remove the tells that need no rewrite: a filler "just", "..." as a pause, and
-    uncontracted forms nobody says out loud."""
+# A quote is speech, and nobody says "percent sign": "20%" is said "20 per cent", spelled
+# the British way unless the person is in the US (rich, 2 Nov 2026).
+PERCENT = re.compile(r"(\d)\s*%")
+
+
+def scrub(quote: str, country: str = "United Kingdom") -> str:
+    """Remove the tells that need no rewrite: a filler "just", "..." as a pause,
+    uncontracted forms nobody says out loud, and a "%" sign."""
     out = FILLER_JUST.sub("", quote)
+    out = PERCENT.sub(r"\1 percent" if country == "United States" else r"\1 per cent", out)
     for contraction in CONTRACT_PASSES:
         out = contraction.sub(_contract, out)
 
