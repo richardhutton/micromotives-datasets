@@ -497,12 +497,12 @@
       "title": "Gambling adverts and stigma",
       "description": "5 real safer-gambling and stigma adverts (Sky Bet operator ad, GambleAware and others), all seen in random order; fault, willpower, \"worse\" (1-7) per advert. Prolific UK, n=500.",
       "link": "https://osf.io/rhfd6",
-      "status": "Needs checking",
-      "reason": "Found 2 Nov 2026: data, all 5 images and the .qsf public. Project licence none stated; registration pjb98 says GPL 3.0. Real brand creatives: rich to decide.",
+      "status": "Built",
+      "reason": "7,470 rows (498 UK people x 5 real adverts x 3 statements; 2 excluded by the authors' carelessness check). Reproduces the authors' analysis and preprint: sample, PGSI, item frequencies, alpha, all five advert means and ten pairwise differences. Independent checker: no blockers, two descriptions tightened. PGSI (problem gambling) in the persona although half answered it after the adverts: no order effect found by the authors or by us. Used on rich's ruling of 2 Nov 2026 (no project licence; registration says GPL 3.0).",
       "permission": "Not asked yet",
       "contact": "",
-      "rows": null,
-      "recipe": ""
+      "rows": 7470,
+      "recipe": "rhfd6"
     },
     {
       "id": "IMG57",

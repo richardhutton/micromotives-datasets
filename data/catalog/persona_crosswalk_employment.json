@@ -100,6 +100,14 @@
    "Temporary or permanently sick or disabled": "Disabled",
    "Looking after home/family": "Other",
    "Other unemployed": "Other"
+  },
+  "uk_prolific_rhfd6": {
+   "Full-Time": "Employed full time",
+   "Part-Time": "Employed part time",
+   "Unemployed (and job seeking)": "Unemployed looking",
+   "Not in paid work (e.g. homemaker, retired or disabled)": "Other",
+   "Due to start a new job within the next month": "Other",
+   "Other": "Other"
   }
  },
  "_about": [
@@ -134,6 +142,12 @@
   "after family or home' does: the canonical has no homemaker value. 'Student' goes to Full time student, the only student",
   "value, though the option does not say full time (52 people). 'Other unemployed' was split by Jev (unemployed_looking",
   "0.47, other_residual 0.36); mapped to Other (135 people): it is the residual after the named statuses and says nothing",
-  "about seeking work (checker, 29 Oct 2026). No canonical value added; no other scheme changed."
+  "about seeking work (checker, 29 Oct 2026). No canonical value added; no other scheme changed.",
+  "uk_prolific_rhfd6 (2 Nov 2026, IMG55): Prolific's own employment record for the rhfd6 gambling-adverts sample,",
+  "read by eye from existing precedents, not asked of Jev. Full-Time, Part-Time and 'Unemployed (and job seeking)'",
+  "map directly. 'Not in paid work (e.g. homemaker, retired or disabled)' spans retired, disabled and homemaker,",
+  "which no canonical value merges, so it goes to Other (as k369t's and UKHLS's homemaker options do); 'Due to",
+  "start a new job within the next month' is not in work and says nothing about seeking it, so Other.",
+  "DATA_EXPIRED (49) is left absent by the recipe. No canonical value added; no other scheme changed."
  ]
 }

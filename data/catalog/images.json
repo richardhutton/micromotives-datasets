@@ -9046,5 +9046,45 @@
     "licence": "CC BY 4.0 (Zenodo 10628634). The photographs are embedded in the deposit's survey document; their own sources and terms are not stated, and two carry embedded metadata from other publishers.",
     "text_in_image": "",
     "description": "Photograph of a small clear glass vial with a white screw cap, about two-thirds full of clear yellow liquid, standing on a white surface against a plain white background, its reflection below it."
+  },
+  "rhfd6_deposit_limit": {
+    "file": "raw/rhfd6/Adverts/Deposit_limit.jpeg",
+    "sha256": "4350709629f049603b11b2cfe6f6acc9ac86ecb3f7939a97b391220b2cd9e610",
+    "source": "https://osf.io/rhfd6/ (osfstorage, Adverts/Deposit_limit.jpeg); byte-identical to Qualtrics graphic IM_06cbPcW6WftphDo, which the .qsf's \"sky bet\" block shows as its rating grid's question text (Materials/Materials.qsf)",
+    "licence": "No licence stated on OSF project rhfd6; its registration pjb98 lists GNU GPL 3.0. Used with rich's ruling of 2 Nov 2026. The advert is a third-party campaign creative whose own terms the deposit does not state.",
+    "text_in_image": "JOIN THE HALF MILLION CUSTOMERS WHO HAVE SET A DEPOSIT LIMIT.",
+    "description": "A wide banner, landscape, on a white background. A deep blue panel carries a faint repeated pattern of a small symbol, a cross above a curved line. In the centre a man with short grey hair, in a blue suit and an open-necked white shirt, stands with his arms folded, facing the viewer; his head rises above the top of the panel. Large white capital letters run across the panel and across him, the middle word much the largest; \"MERS WHO\" is drawn in outline only where it crosses his body, and the final full stop is red. No logo or other text is shown."
+  },
+  "rhfd6_stigma_reduction": {
+    "file": "raw/rhfd6/Adverts/Stigma_reduction.jpeg",
+    "sha256": "6716001b77a7ab5fe9e2203b722bef509dc5239bfa984400b27fad429b0c48c2",
+    "source": "https://osf.io/rhfd6/ (osfstorage, Adverts/Stigma_reduction.jpeg); byte-identical to Qualtrics graphic IM_7TIeugHzfAN9YZU, which the .qsf's \"Stigma reduction\" block shows as its rating grid's question text (Materials/Materials.qsf)",
+    "licence": "No licence stated on OSF project rhfd6; its registration pjb98 lists GNU GPL 3.0. Used with rich's ruling of 2 Nov 2026. The advert is a third-party campaign creative whose own terms the deposit does not state.",
+    "text_in_image": "\"It started to feel like I couldn't escape gambling ads / so I got help\"",
+    "description": "A tall portrait poster with an orange background shading to yellow at the foot, lightly speckled. Two stylised black eyes with white irises look down from the top edge and two look up from the bottom edge, cut off by the frame. Between them, in large black condensed letters, a quotation in quotation marks, its last line smaller and set apart. No logo or other text is shown."
+  },
+  "rhfd6_bet_regret": {
+    "file": "raw/rhfd6/Adverts/Chasing_Losses.jpeg",
+    "sha256": "c10aa79840acbd8794301387a36f663c90fc046fbd30fc02ee5432b440add496",
+    "source": "https://osf.io/rhfd6/ (osfstorage, Adverts/Chasing_Losses.jpeg); byte-identical to Qualtrics graphic IM_bdBtrxyekHbiJVQ, which the .qsf's \"Bet regret\" block shows as its rating grid's question text (Materials/Materials.qsf)",
+    "licence": "No licence stated on OSF project rhfd6; its registration pjb98 lists GNU GPL 3.0. Used with rich's ruling of 2 Nov 2026. The advert is a third-party campaign creative whose own terms the deposit does not state.",
+    "text_in_image": "DID YOU ACTUALLY BELIEVE YOU WOULD WIN YOUR MONEY BACK BY CHASING YOUR LOSSES? / THINK TWICE OR YOU'LL BET REGRET IT / BeGambleAware.org",
+    "description": "A portrait poster on an orange background, set on a white margin. Large black capital letters ask a question; the last words, from MONEY on, tilt and tumble down the right side, the letters of LOSSES? falling one below another. Below sits a small square black-and-white photograph of a man with short dark hair, one hand raised to the side of his head, holding a mobile phone. At the foot a line of black capitals in which BET REGRET sits in a black box, BET in white on black and REGRET in white italic, and beneath it a small BeGambleAware.org logo. The picture is small, so its smallest text is soft."
+  },
+  "rhfd6_odds_are": {
+    "file": "raw/rhfd6/Adverts/Odds_are.jpeg",
+    "sha256": "6416e61f8a499eb490d14d0afb585426c579c7776134b21e6d21678680d50fcc",
+    "source": "https://osf.io/rhfd6/ (osfstorage, Adverts/Odds_are.jpeg); byte-identical to Qualtrics graphic IM_0ldhwgg6ndS8nAy, which the .qsf's \"Odds are...\" block shows as its rating grid's question text (Materials/Materials.qsf)",
+    "licence": "No licence stated on OSF project rhfd6; its registration pjb98 lists GNU GPL 3.0. Used with rich's ruling of 2 Nov 2026. The advert is a third-party campaign creative whose own terms the deposit does not state.",
+    "text_in_image": "FIXED / DICE / POKER / BLACKJACK / SLOTS / ROULETTE / THE MAIN PURPOSE OF GAMBLING COMPANIES IS TO MAXIMISE PROFIT, GENERATED THROUGH CUSTOMER LOSSES. / GAMBLING COMPANIES / ODDS ARE THEY WIN / #ODDSARETHEYWIN",
+    "description": "A square graphic on a black background patterned with faint diamonds and card-suit symbols. At the top a red-and-gold casino chip, its black centre showing FIXED in large gold capitals and five game names in white round its rim. Below, white capital letters state the main message. Under that two red labels with pointed ends sit side by side, each with white capitals, and at the foot a hashtag in white."
+  },
+  "rhfd6_bet_responsibly": {
+    "file": "raw/rhfd6/Adverts/Bet_responsibly.jpeg",
+    "sha256": "321c4d712adf29cd3958c2b3c6cce49ecd05ffbbb2b2e7a72b4d8e3ce7b08128",
+    "source": "https://osf.io/rhfd6/ (osfstorage, Adverts/Bet_responsibly.jpeg); byte-identical to Qualtrics graphic IM_bqJ7VVUx19Zba50, which the .qsf's \"Gambling operator\" block shows as its rating grid's question text (Materials/Materials.qsf)",
+    "licence": "No licence stated on OSF project rhfd6; its registration pjb98 lists GNU GPL 3.0. Used with rich's ruling of 2 Nov 2026. The advert is a third-party campaign creative whose own terms the deposit does not state.",
+    "text_in_image": "PLEASE BET RESPONSIBLY / - Take time to think / - Use safer gambling tools to stay in control / Racing TV / TAKE TIME TO THINK / taketimetothink.co.uk / BeGambleAware.org / 18+",
+    "description": "A small landscape banner. On the left, on a grey background, large white capitals with two lines in yellow below them, each starting with a dash, and the Racing TV logo in white. On the right a hand holds a smartphone showing a horse-racing app with race times, runners and small coloured logos, its words too small to read. Across the foot a yellow strip with a black pause-button symbol, TAKE TIME TO THINK and a small web address on the left, and the BeGambleAware.org logo with a black 18+ badge on the right."
   }
 }

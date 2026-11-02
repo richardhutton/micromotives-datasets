@@ -1,0 +1,217 @@
+study_id: rhfd6
+source: osf
+title: 'Safer gambling adverts and stigma: five real UK adverts, each rated by every person on three statements
+  about people who gamble heavily'
+data_file: rhfd6_coded.xlsx
+licence: No licence stated on OSF project rhfd6; its registration pjb98 lists GNU GPL 3.0. Used with rich's
+  ruling of 2 Nov 2026.
+comparable_to_socsci210: false
+participant_id_var: pid
+notes: "Write recipes/images/rhfd6.yaml: safer gambling adverts and stigma (IMG55).\n\nPalmer, Weiss-Cohen,\
+  \ Torrance & Newall (Bristol), \"When 'help' might hurt: Do safer\ngambling advertisements reduce or\
+  \ contribute to gambling stigma?\", OSF Preprints\nh8vxz v1 (10 March 2025), https://osf.io/preprints/osf/h8vxz_v1.\
+  \ OSF project rhfd6\n(\"Gambling advertising & stigma\"): the Qualtrics survey (Materials/Materials.qsf),\n\
+  a Word copy of it and the debrief, the data (Data/stigma_data.csv), the authors'\nanalysis (Analyses\
+  \ and Results/Stigma.Rmd, knitted to Stigma.html on 24 September\n2025) and the five advert pictures\
+  \ (Adverts/). Preregistration: OSF pjb98 (5 Feb\n2025). The project states no licence; the registration\
+  \ lists GPL 3.0.\n\n500 UK adults who gamble (Prolific, February 2025; screened to have reported at\
+  \ least\none non-lottery, non-bingo gambling format) each rated five real safer-gambling\nadverts, shown\
+  \ one per page in random order, on three statements about people who\ngamble heavily (1-7 agreement).\
+  \ In a separate block, before or after the adverts\n(counterbalanced), they answered the nine-item Problem\
+  \ Gambling Severity Index.\n\nEvery judgement is here, in code, so the recipe can be re-derived and\
+  \ reviewed:\n\n* DESIGN. Within person: everyone saw all five adverts, so one row per person per\n \
+  \ advert per statement, and the coded file is LONG (`pid`, `advert`). Five arms, one\n  per advert;\
+  \ condition_num follows the .qsf flow's order: Sky Bet's deposit-limit\n  advert 0, GambleAware's stigma-reduction\
+  \ advert 1, GambleAware's Bet Regret\n  advert 2, the Odds Are: They Win advert 3, Racing TV's bet-responsibly\
+  \ advert 4.\n  A person's five rows of one statement are five different conditions (QC rule 24).\n*\
+  \ WHICH COLUMNS ARE WHICH ADVERT. The .qsf names its blocks \"sky bet\", \"Stigma\n  reduction\", \"\
+  Bet regret\", \"Odds are...\" and \"Gambling operator\"; the data name the\n  same answers DepositLimit_*,\
+  \ StigmaCampaign_*, ChasingLosses_*, OddsAre_* and\n  BetResponsibly_*, and the authors' script and\
+  \ the preprint's Table 1 tie each name\n  to its advert's words. The pictures settle it independently:\
+  \ each block's\n  Qualtrics graphic, fetched from the survey's own graphic URL, is byte-identical\n\
+  \  (sha256) to the OSF file of that name (checked in --catalogue).\n* PICTURES. The five OSF files,\
+  \ unaltered. They are the graphics each block's rating\n  grid displayed as its question text. Each\
+  \ page showed its advert a second time\n  below the grid, above the comment box (a display item; the\
+  \ block's fixed order is\n  grid, picture, comment): for four adverts the same graphic, for Racing TV\
+  \ a larger\n  copy of the same advert (Qualtrics IM_bDYh50Trh3fCbhc, 634x354 against 399x222;\n  same\
+  \ layout and words), which OSF does not hold and which is not catalogued. Two\n  OSF files named .jpeg\
+  \ are PNGs (Deposit_limit, Stigma_reduction, Chasing_Losses);\n  kept as published.\n* WORDS IN THE\
+  \ PICTURES (text_in_image). Every word printed on the advert, in\n  reading order; \" / \" separates\
+  \ blocks and line wraps inside a block are joined\n  with a space; curly quotes and apostrophes are\
+  \ straightened. Left out and\n  described instead: the words on the phone screen in the Racing TV photograph\n\
+  \  (part of a photograph and mostly too small to read) and the registered-trademark\n  marks. Odds Are's\
+  \ chip carries \"FIXED\" in its centre and five words round its rim,\n  listed clockwise from the upper\
+  \ left.\n* CONDITION. shared_context is the page before the adverts (block \"Message intro\"),\n  word-for-word:\
+  \ \"You will now be presented with various safer gambling adverts.\n  Please rate each message using\
+  \ the scales provided.\" Each arm is then the advert:\n  words that are OURS, \"One of the adverts:\"\
+  , then its words in quotation marks (the\n  stigma-reduction advert's words are already a quotation,\
+  \ so none are added) and\n  the <image> marker. The order each person saw the adverts in IS recorded\n\
+  \  (`Block_Order`) but no row says where its advert sat, and nothing is said of the\n  other four (docs/CONVENTIONS.md,\
+  \ sequence signposting); the authors found no order\n  effect. Nor does a row say whether the person\
+  \ answered the PGSI before the adverts\n  (`counterbalance` 0, 250 of the 498 built) or after them (1,\
+  \ 248).\n* OUTCOMES. Three per advert, the rating grid's three statements word-for-word from\n  the\
+  \ .qsf (HTML stripped; the five blocks' copies are identical, checked), in the\n  .qsf's listing order:\
+  \ fault, will-power, worse. The grid has no stem (its question\n  text is the advert), so the statement\
+  \ is the whole question. Statement order was\n  randomised per person (the `*_Order` columns record\
+  \ it); each statement is its own\n  row. Answers 1..7: Strongly disagree, Disagree, Somewhat disagree,\
+  \ Neither agree\n  nor disagree, Somewhat agree, Agree, Strongly agree (.qsf answer ids, the data's\n\
+  \  codes; forced response, no missing answers).\n* NOT BUILT. The optional comment box under each advert\
+  \ (free text), the closing\n  feedback box, the Prolific ID, the carelessness check (a check, not an\
+  \ outcome),\n  and the PGSI (asked once, before or after all five adverts, so it has no single\n  advert\
+  \ for a condition; mapped as persona instead, below).\n* WHO. 498 of the 500 people: the two who answered\
+  \ the carelessness check \"No, I\n  was not paying attention, discard my data\" (`Honesty` 1) asked\
+  \ for their data to\n  be discarded, and the authors' preregistered exclusion does the same; --prep\n\
+  \  asserts there are exactly two. `pid` is the 1-based row in stigma_data.csv.\n* PERSONA. Prolific's\
+  \ own records, stable facts collected before the study: age,\n  sex, ethnicity (`Ethnicity simplified`,\
+  \ crosswalk scheme uk_ons_five_group_short),\n  employment (scheme uk_prolific_rhfd6, added to data/catalog/\n\
+  \  persona_crosswalk_employment.json), student status, country of birth,\n  nationality, and the online\
+  \ gambling games the person reported playing (Prolific\n  screener, comma-separated as exported). Then\
+  \ the nine PGSI items with their\n  answers word-for-word (Never / Sometimes / Most of the time / Almost\
+  \ always; .qsf\n  recode 0-3, the data's codes): they report the person's own gambling over the\n  previous\
+  \ 12 months, a behavioural history rather than a reaction, and they are the\n  authors' preregistered\
+  \ moderator. Half answered them after the adverts; the\n  authors tested whether that order moved PGSI\
+  \ totals and found it did not (their\n  negative-binomial model; our crosscheck repeats the comparison\
+  \ of means). The\n  PGSI total is not mapped: no respondent gave it, it is our sum. Left absent: sex\n\
+  \  and ethnicity \"Prefer not to say\" (1 each), employment \"DATA_EXPIRED\" (49) and\n  student status\
+  \ \"DATA_EXPIRED\" (43). Prolific's \"Not in paid work (e.g.\n  homemaker', 'retired or disabled)\"\
+  \ has two stray quote marks from the export; they\n  are typography and removed. Not mapped: country\
+  \ of residence (UK for everyone),\n  `Language` (the export does not say whether it is first or fluent\
+  \ language).\n* UK FIT. A UK sample rating UK adverts (Sky Bet, Racing TV, GambleAware, Greater\n  Manchester's\
+  \ Odds Are campaign); British spelling throughout.\n* NOT ASKED OF JEV. Assignment, persona and non-answer\
+  \ codes are settled by the .qsf\n  flow, Prolific's export labels and existing crosswalk precedents;\
+  \ no paid call.\n\n    uv run python scripts/gen_rhfd6.py --prep       # (re)write the coded long .xlsx\n\
+  \    uv run python scripts/gen_rhfd6.py --catalogue  # (re)write this study's images.json entries\n\
+  \    uv run python scripts/gen_rhfd6.py              # write the recipe\n    uv run python scripts/gen_rhfd6.py\
+  \ --check      # exit 1 if it differs"
+condition:
+  source_var: advert
+  shared_context: You will now be presented with various safer gambling adverts. Please rate each message
+    using the scales provided.
+  factors:
+  - advert
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      advert: 'Sky Bet: deposit limit'
+    text: 'One of the adverts: "JOIN THE HALF MILLION CUSTOMERS WHO HAVE SET A DEPOSIT LIMIT." <image>'
+    images:
+    - rhfd6_deposit_limit
+  - raw: 2
+    condition_num: 1
+    factors:
+      advert: 'GambleAware: stigma reduction'
+    text: 'One of the adverts: "It started to feel like I couldn''t escape gambling ads / so I got help"
+      <image>'
+    images:
+    - rhfd6_stigma_reduction
+  - raw: 3
+    condition_num: 2
+    factors:
+      advert: 'GambleAware: Bet Regret'
+    text: 'One of the adverts: "DID YOU ACTUALLY BELIEVE YOU WOULD WIN YOUR MONEY BACK BY CHASING YOUR
+      LOSSES? / THINK TWICE OR YOU''LL BET REGRET IT / BeGambleAware.org" <image>'
+    images:
+    - rhfd6_bet_regret
+  - raw: 4
+    condition_num: 3
+    factors:
+      advert: 'Odds Are: They Win'
+    text: 'One of the adverts: "FIXED / DICE / POKER / BLACKJACK / SLOTS / ROULETTE / THE MAIN PURPOSE
+      OF GAMBLING COMPANIES IS TO MAXIMISE PROFIT, GENERATED THROUGH CUSTOMER LOSSES. / GAMBLING COMPANIES
+      / ODDS ARE THEY WIN / #ODDSARETHEYWIN" <image>'
+    images:
+    - rhfd6_odds_are
+  - raw: 5
+    condition_num: 4
+    factors:
+      advert: 'Racing TV: bet responsibly'
+    text: 'One of the adverts: "PLEASE BET RESPONSIBLY / - Take time to think / - Use safer gambling tools
+      to stay in control / Racing TV / TAKE TIME TO THINK / taketimetothink.co.uk / BeGambleAware.org
+      / 18+" <image>'
+    images:
+    - rhfd6_bet_responsibly
+outcomes:
+- var: FAULT
+  task_num: 0
+  question: This advertisement makes me think that people who gamble heavily are at fault for whatever
+    may happen to them.
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: WILLPOWER
+  task_num: 1
+  question: This advertisement makes me think that people wouldn't gamble heavily if they had more will-power.
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: WORSE
+  task_num: 2
+  question: This advertisement makes me think that people who gamble heavily are worse than those who
+    can control their gambling.
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+response_recode: {}
+missing_codes: []
+persona_map:
+  age: Age
+  sex: Sex
+  ethnicity: Ethnicity simplified
+  employment: Employment status
+  student_status: Student status
+  country_of_birth: Country of birth
+  nationality: Nationality
+  online_gambling_games_played: Online gambling games
+  in_the_previous_12_months_have_you_bet_more_than_you_could_really_afford_to_lose: PGSI_1
+  in_the_previous_12_months_have_you_needed_to_gamble_with_larger_amounts_of_money_to_get_the_same_feeling_of_excitement: PGSI_2
+  in_the_previous_12_months_have_you_gone_back_on_another_day_to_try_to_win_back_the_money_you_lost: PGSI_3
+  in_the_previous_12_months_have_you_borrowed_money_or_sold_anything_to_gamble: PGSI_4
+  in_the_previous_12_months_have_you_felt_that_you_might_have_a_problem_with_gambling: PGSI_5
+  ? in_the_previous_12_months_have_people_criticised_your_betting_or_told_you_that_you_had_a_gambling_problem_whether_or_not_you_thought_it_was_true
+  : PGSI_6
+  in_the_previous_12_months_have_you_felt_guilty_about_the_way_you_gamble_or_what_happens_when_you_gamble: PGSI_7
+  in_the_previous_12_months_has_gambling_caused_you_any_health_problems_including_stress_or_anxiety: PGSI_8
+  in_the_previous_12_months_has_your_gambling_caused_any_financial_problems_for_you_or_your_household: PGSI_9
+persona_missing:
+  Sex:
+  - 3
+  Ethnicity simplified:
+  - 5
+  Employment status:
+  - 1
+  Student status:
+  - 1
