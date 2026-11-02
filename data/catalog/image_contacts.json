@@ -391,7 +391,7 @@
     "id": "winton",
     "order": 14,
     "name": "Winton Centre (Freeman, Recchia)",
-    "email": "",
+    "email": "wintoncentre@maths.cam.ac.uk",
     "cc": "",
     "org": "University of Cambridge",
     "experiments": [
@@ -408,9 +408,9 @@
     ],
     "ask": "IMG47: the graph image files for each arm (the Qualtrics exports on OSF leave out every picture), especially Survey 3's low-risk versions and Survey 4's 20 versions. IMG48 needs nothing.",
     "subject": "Graph images from your COVID risk communication surveys",
-    "body": "Hi Alex,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, a chart) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour team's COVID risk surveys on OSF (auf8h) would be really useful, and thanks for the open data. The questionnaire PDFs are Qualtrics exports, though, and they leave out the graphs people saw. Would you still have the image files for each version, in particular the Survey 3 low-risk graphs (including the corrected ones) and the 20 graphs in Survey 4?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
+    "body": "Hi,\n\nCould this please reach Alex Freeman, or whoever looks after the COVID risk communication surveys?\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, a chart) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour team's COVID risk surveys on OSF (auf8h) would be really useful, and thanks for the open data. The questionnaire PDFs are Qualtrics exports, though, and they leave out the graphs people saw. Would you still have the image files for each version, in particular the Survey 3 low-risk graphs (including the corrected ones) and the 20 graphs in Survey 4?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
     "status": "ready",
     "sent": "",
-    "notes": "2 Nov 2026: IMG47 build stopped: the OSF questionnaire PDFs contain no graphs, and the paper figures show only some arms (Survey 3 low-risk graphs were changed mid-fieldwork). Email address to find (Alexandra Freeman, Winton Centre, Cambridge)."
+    "notes": "2 Nov 2026: IMG47 build stopped: the OSF questionnaire PDFs contain no graphs, and the paper figures show only some arms (Survey 3 low-risk graphs were changed mid-fieldwork). No direct address published for Alexandra Freeman (corresponding author); sent to the centre's general address."
   }
 ]
