@@ -37,30 +37,6 @@
       "recipe": "k7tw5_study2, pr8zu_study2"
     },
     {
-      "id": "IMG04",
-      "title": "Food photos",
-      "description": "Food photos (CROCUFID): 60 random food images per rater; appeal, healthiness, desire to eat. UK n=266. CC BY 4.0.",
-      "link": "https://osf.io/5jtqx",
-      "status": "Unlikely",
-      "reason": "Dropped on review: see IMAGE_CANDIDATES.md",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
-      "id": "IMG05",
-      "title": "Risk icon arrays",
-      "description": "Risk icon arrays (BRCA): chart style vs text. UK, n=1,300.",
-      "link": "https://osf.io/y5fm6",
-      "status": "Unlikely",
-      "reason": "Dropped on review: see IMAGE_CANDIDATES.md",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
       "id": "IMG06",
       "title": "Charity appeal photos",
       "description": "Charity appeal photos: 5 random real photos per person, from one of two sets (116 charity photos, or professional photographers' photos); emotions, urgency, sense of difference, find out more, donate yes/no and £. YouGov GB, n=3,538, CC0. Photos not in deposit.",
@@ -109,42 +85,6 @@
       "recipe": ""
     },
     {
-      "id": "IMG10",
-      "title": "Face ratings",
-      "description": "Face ratings (Chicago Face Database), 120 faces per rater, 1 of 13 traits. CC BY 4.0. UK raters n=361, mostly students.",
-      "link": "https://osf.io/f7v3n",
-      "status": "Unlikely",
-      "reason": "Reviewed 2 Nov 2026: Chicago Face Database terms forbid release to cloud services; nothing randomised about the image (every rater saw all 120 faces).",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
-      "id": "IMG11",
-      "title": "102 London faces rated for attractiveness by 2,513 raters",
-      "description": "102 London faces rated for attractiveness by 2,513 raters. CC BY 4.0.",
-      "link": "https://figshare.com/articles/Face_Research_Lab_London_Set/5047666",
-      "status": "Unlikely",
-      "reason": "Reviewed 2 Nov 2026: every rater rated all 102 faces, nothing randomised; raters' country not stated.",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
-      "id": "IMG12",
-      "title": "E-cigarette shop displays, 2×2 design, 12 photos",
-      "description": "E-cigarette shop displays, 2×2 design, 12 photos. CC BY 4.0.",
-      "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10423515/",
-      "status": "Unlikely",
-      "reason": "Reviewed 2 Nov 2026: respondents are aged 13-17 (outside the adult population); images not in the deposit.",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
       "id": "IMG13",
       "title": "EU flag / symbol images vs none, YouGov 2011, n=8,599",
       "description": "EU flag / symbol images vs none, YouGov 2011, n=8,599.",
@@ -181,48 +121,12 @@
       "recipe": ""
     },
     {
-      "id": "IMG16",
-      "title": "Climate image pairs, forced choice",
-      "description": "Climate image pairs, forced choice. UK/DE/US, n=3,014.",
-      "link": "https://climateoutreach.org/reports/climate-visuals-seven-principles-for-visual-climate-change-communication/",
-      "status": "Unlikely",
-      "reason": "Reviewed 2 Nov 2026: no data deposit; photos largely agency-owned.",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
-      "id": "IMG17",
-      "title": "Architecture paired-image preferences",
-      "description": "Architecture paired-image preferences. UK, n≈2,095. Published tables only.",
-      "link": "https://worksinprogress.co/issue/do-people-prefer-traditional-architecture/",
-      "status": "Unlikely",
-      "reason": "Reviewed 2 Nov 2026: aggregate poll results only, no randomisation, no respondent data.",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
       "id": "IMG18",
       "title": "Slot-game advert features",
       "description": "Slot-game advert features. UK, n=5,975.",
       "link": "https://bi.team/wp-content/uploads/2023/05/2023-09-Exploring-the-impact-of-slot-game-advert-features-Experiment-1-Results.pdf",
       "status": "Waiting for images",
       "reason": "Reviewed 2 Nov 2026: no public data; ask BIT (Lauren Leak-Smith, lauren.leak-smith@bi.team) for respondent data. Six advert arms (BIT's own mock-ups); decision to play and intent are single answers.",
-      "permission": "Not asked yet",
-      "contact": "",
-      "rows": null,
-      "recipe": ""
-    },
-    {
-      "id": "IMG19",
-      "title": "Safer-gambling ads",
-      "description": "Safer-gambling ads (video).",
-      "link": "https://cronfa.swan.ac.uk/Record/cronfa71039/Details",
-      "status": "Unlikely",
-      "reason": "Reviewed 2 Nov 2026: video, not images (15 third-party TV ads); otherwise complete and public (OSF dcey2, CC BY). Strongest ads source if video is ever supported. Deposit found 2 Nov: osf.io/dcey2 (data, MP4s, .qsf).",
       "permission": "Not asked yet",
       "contact": "",
       "rows": null,
@@ -453,18 +357,6 @@
       "reason": "images not in the deposit; asked the authors",
       "permission": "Yes",
       "contact": "Olivia Maynard",
-      "rows": null,
-      "recipe": ""
-    },
-    {
-      "id": "IMG39",
-      "title": "Health warnings with snack images",
-      "description": "Health warnings with snack images: image+text, image only, text only, none; snack and voucher choice, attitudes. Agency general-population sample, n=1,184 (UK general population, Dynata; Asbridge et al. 2020, Appetite).",
-      "link": "https://osf.io/5gecb/",
-      "status": "Unlikely",
-      "reason": "Not buildable (checked 2 Nov 2026): the on-screen wording of the snack and voucher choice tasks is not recoverable (methods-section paraphrase only; the authors no longer hold the Inquisit files), the voucher data has a third option no source describes, and attitudes are deposited only as summed scores. Buildable as 3-way choices only if the Inquisit script ever turns up.",
-      "permission": "Yes",
-      "contact": "Gareth Hollands & Natasha Clarke",
       "rows": null,
       "recipe": ""
     },
