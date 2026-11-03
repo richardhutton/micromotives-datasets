@@ -558,8 +558,8 @@
       "description": "10 Facebook-style headline cards (photo, headline, lede), true/false x AI/human; no label or \"AI-generated\" label with 4 definitions; accuracy and sharing (1-6). UK Prolific ~1,537 (Altay & Gilardi 2024, Study 2).",
       "link": "https://osf.io/a4y7s",
       "status": "Needs checking",
-      "reason": "Found 2 Nov 2026: all 40 cards on OSF; item and arm recorded; Qualtrics wording available. No licence stated: ask. One card is US-specific.",
-      "permission": "Asked",
+      "reason": "Permission YES from Sacha Altay, 3 Nov 2026. All 40 cards on OSF; item and arm recorded; Qualtrics wording available. One card is US-specific. Building.",
+      "permission": "Yes",
       "contact": "Sacha Altay",
       "rows": null,
       "recipe": ""

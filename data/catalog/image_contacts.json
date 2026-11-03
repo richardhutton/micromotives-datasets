@@ -430,9 +430,9 @@
     "ask": "Permission: no licence on the OSF project.",
     "subject": "Your AI-label headline study on OSF",
     "body": "Dear Sacha,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nStudy 2 of your paper with Fabrizio on AI-labelled headlines would be a great fit, and thanks for putting the cards and data on OSF (a4y7s). I couldn't see a licence on the project, so I wanted to check you're happy for me to use the UK data and the 40 headline cards.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "sent",
+    "status": "yes",
     "sent": "2026-11-02",
-    "notes": "Address from the University of Zurich press release for the PNAS Nexus paper (2024); check the paper's corresponding-author line before sending."
+    "notes": "Address from the University of Zurich press release for the PNAS Nexus paper (2024); check the paper's corresponding-author line before sending. 3 Nov 2026: Sacha replied YES, good to go (IMG69, AI labels on headline cards)."
   },
   {
     "id": "maertens",
