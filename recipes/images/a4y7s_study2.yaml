@@ -1,0 +1,1590 @@
+study_id: a4y7s
+source: osf
+experiment: study2
+title: 'AI labels on news headline cards, UK sample: ten Facebook-style cards per person, true or false
+  and human- or AI-written, with or without an AI-generated label and definition, each rated for sharing
+  and accuracy'
+data_file: a4y7s_study2_coded.xlsx
+licence: No licence on OSF a4y7s; used with the author's written permission (Sacha Altay, 3 Nov 2026).
+comparable_to_socsci210: false
+participant_id_var: pid
+notes: "Write recipes/images/a4y7s_study2.yaml: AI labels on headline cards, UK sample (IMG69).\n\nAltay\
+  \ & Gilardi (2024), \"People are skeptical of headlines labeled as AI-generated,\neven if true or human-made,\
+  \ because they assume full AI automation\", PNAS Nexus 3(10)\npgae403, doi 10.1093/pnasnexus/pgae403\
+  \ (open access, PMC11443540). OSF project a4y7s\n(\"GenAI labels\"), folder \"Study 2\": the Qualtrics\
+  \ survey (Materials/Qualtrics.qsf and a\nWord copy), the 40 card pictures (Materials/Headlines/{Control_A,\
+  \ Control_B, Labels_A,\nLabels_B}), the raw Qualtrics export (Data and Stats/Raw/Data.xlsx), the six\
+  \ Prolific\ndemographic exports it is merged with ({Left, Center, Right}_{UK, US}.csv), the\nauthors'\
+  \ cleaning and analysis script (Script_clean.R) and their long file\n(data_clean.xlsx). Study 1 (US\
+  \ only, a different design) is in the same deposit and is\nnot built here.\n\nStudy 2 ran on Prolific\
+  \ on 20-21 March 2024 in the US and the UK, each sample in\nthirds by Prolific's political-affiliation\
+  \ screener. THIS RECIPE BUILDS THE UK SAMPLE\nONLY: 1,500 people. Each saw ten Facebook-style news cards\
+  \ (photograph, headline,\nlede, no source), one per page in random order, and on each page answered\
+  \ a sharing\nquestion and then an accuracy question (1-6).\n\nEvery judgement is here, in code, so the\
+  \ recipe can be re-derived and reviewed:\n\n* DESIGN. Two randomisations. Between people, one of five\
+  \ instruction screens\n  (`FL_61_DO`): Control (no labels), No Definition (AI-generated cards labelled),\
+  \ and\n  Weak, Medium and Strong (labelled, plus a definition of \"AI-generated\"). Then one of\n  two\
+  \ sets of ten stories (`FL_72_DO` for Control, `FL_74_DO` for the rest): each of\n  ten stories exists\
+  \ in a human-written and an AI-written version, and set A shows one\n  version of each story, set B\
+  \ the other. Within the person, the ten cards. So one row\n  per person per card per question; the coded\
+  \ file is LONG (`pid`, `card`).\n* WHICH CARD WAS SHOWN. Read from the instrument, never from the variable\
+  \ names. Each\n  of the four card blocks (Control_A, Control_B, Label_A, Label_B) holds ten sharing\n\
+  \  questions, each displaying one Qualtrics graphic, and ten accuracy questions. The 39\n  distinct\
+  \ graphics were fetched from the survey's own graphic URL\n  (ipz.qualtrics.com/CP/Graphic.php?IM=<id>)\
+  \ and each is the same picture as one OSF\n  card. The files are not byte-identical (Qualtrics re-encodes\
+  \ uploads), so --catalogue\n  compares pixels: reduced to 64x64 grey by macOS sips, every graphic is\
+  \ within 0.41\n  grey levels (of 255) of its card and at least 10.9 from any other. Two findings,\n\
+  \  both from that check:\n  - Control_B's tenth sharing question shows the right card, the AI-written\
+  \ FALSE\n    vaccine-injury card (set B's mirror of Control_A's human-written one), but is\n    MIS-TAGGED\
+  \ `1_t_AI_nol_sha` (true, AI-written). Only the tag is wrong. The\n    authors' script reads veracity\
+  \ from the tag, so their file codes it true; ours\n    shows what was on screen.\n  - Label_A's tenth\
+  \ sharing question is tagged `10_f_h_nol_sha` (false, human-written)\n    but shows the same graphic\
+  \ as Control_B's tenth: the AI-written vaccine-injury card\n    without a label. The human-written version,\
+  \ which the OSF folder Labels_A holds,\n    was never shown to anyone in Label_A. So in the four labelled\
+  \ arms, set A, one\n    AI-written card went unlabelled. The authors code it human-written.\n  Neither\
+  \ changes a response; both change what a row says it showed, and the crosscheck\n  asserts both differences\
+  \ rather than tolerating them.\n* WHICH ACCURACY ANSWER BELONGS TO WHICH CARD. Each block's randomisation\
+  \ is\n  \"Advanced\": the ten sharing questions (which carry the pictures) are shuffled into\n  ten\
+  \ fixed slots and the ten accuracy questions stay put, two questions per page. So\n  the accuracy question\
+  \ `k_accuracy` asks about whichever card was shown on page k,\n  and the display-order string (`<block>_DO`)\
+  \ says which that was; --prep asserts that\n  string has the fixed accuracy question in every second\
+  \ place. The authors' script\n  makes the same reassignment. The accuracy question's own words (\"the\
+  \ above\n  headline\") point to the card on its page.\n* CONDITION. The instruction screen, then (Weak,\
+  \ Medium, Strong) the reminder screen,\n  then the card. Word-for-word from the .qsf (HTML stripped,\
+  \ line breaks to spaces):\n  - shared_context is the instruction text every arm shares: \"Some headlines\
+  \ may be\n    human-generated while others may be generated by artificial intelligence (AI). If\n  \
+  \  you see AI-generated headlines, they will be explicitly labeled as such.\" The\n    screen's first\
+  \ sentence, \"Next, you will be presented with 10 news headlines and\n    asked to answer a few questions\
+  \ about them.\", is survey mechanics describing the\n    whole sequence and is DROPPED (docs/CONVENTIONS.md,\
+  \ sequence signposting). The\n    Control and No Definition screens are the same words (checked).\n\
+  \  - Weak, Medium and Strong add their definition (\"AI-generated means that: - ...\")\n    and then\
+  \ the reminder screen (\"As a reminder, AI-generated headlines means that:\n    - ...\", the source's\
+  \ grammar kept). Between the two, those arms answered two\n    questions about the definition (a comprehension\
+  \ check); they are not narrated.\n  - Then words that are OURS, \"One of the headlines:\", the card's\
+  \ words in quotation\n    marks, and the <image> marker. Nothing is said of the other nine cards or\
+  \ where\n    this one sat; the display order is recorded but random.\n* ONE CONDITION, TWO ARMS. A Control\
+  \ person and a No Definition person who saw the\n  same unlabelled card read the same instruction words\
+  \ and the same picture, so their\n  rows are one condition (`raws` lists both codes). They differ only\
+  \ in what ELSE the\n  person saw (labels on other cards), which a row cannot say; that spillover is\
+  \ the\n  authors' RQ4 and is not built. In all, 90 conditions: 30 with no definition (20\n  unlabelled\
+  \ cards, 10 labelled) and 20 for each definition (10 labelled AI-written\n  cards, 9 human-written cards,\
+  \ and the unlabelled AI-written vaccine-injury card).\n* PICTURES. 30 distinct cards, the OSF files\
+  \ unaltered: 10 stories x (human-written,\n  AI-written, AI-written with the label). Human-written cards\
+  \ appear byte-identically\n  in a Control and a Labels folder; the Control copy is catalogued. One Qualtrics\n\
+  \  graphic (the labelled veteran card) is a smaller copy, 900x898 against 1140x1138;\n  same picture.\n\
+  * WORDS IN THE PICTURES (text_in_image). The label line, the headline and the lede,\n  word-for-word,\
+  \ \" / \" between blocks, line wraps joined with a space (a hyphen at a\n  wrap is kept: \"Asian-Pacific\"\
+  ). En and em dashes become \"-\". The source's spelling is\n  kept: \"teenagers ticket\", \"wasnt\"\
+  , \"Ukraininan\", \"In just Few Weeks!\". Left out and\n  described instead: words inside photographs\
+  \ and logos (the CDC backdrop, the Russian\n  slide, the airline's livery and boarding pass, the NATO\
+  \ summit logos, brand names on\n  cans, the Us Weekly logo) and the letters AI inside the label's chip\
+  \ icon. The Adele\n  collage's two caption boxes are printed text over the photographs and are kept.\n\
+  * OUTCOMES. Two per card, in the order asked on the page: \"If you saw this post\n  online, how likely\
+  \ would you be to share it?\" (1 Extremely unlikely .. 6 Extremely\n  likely) and \"How accurate is\
+  \ the claim in the above headline?\" (1 Certainly false ..\n  6 Certainly true). Identical in all 40\
+  \ copies of each (checked); no recode; forced\n  answers, no missing values among those built.\n* NOT\
+  \ BUILT. The comprehension check (two questions on the definition: a check, not\n  an outcome); the\
+  \ attention check; trust in news asked after the cards, what\n  \"AI-generated\" means and what should\
+  \ be labelled (asked once, after all ten cards,\n  so no single card is their condition); Study 1; the\
+  \ US sample.\n* WHO. The authors' exclusions, which the consent page supports: Progress 99 or 100\n\
+  \  (the page says a person may withdraw \"before submitting your answers ... by closing\n  the browser\"\
+  ; a response that stopped short was withdrawn) and the attention check\n  passed (`Attention_check_recoded`\
+  \ not 0). Then the UK sample: the Prolific ID is in\n  one of the three UK exports. 1,500 people, none\
+  \ duplicated; --prep asserts the count.\n  `pid` is the 1-based data row of Data.xlsx; the Prolific\
+  \ ID is not carried.\n* PERSONA. Prolific's own records, stable facts collected before the study: age,\
+  \ sex,\n  ethnicity (`Ethnicity simplified`, crosswalk scheme uk_ons_five_group_short),\n  employment\
+  \ (scheme uk_prolific_rhfd6, the same Prolific export labels), student\n  status, country of birth,\
+  \ nationality, and Prolific's UK political-affiliation\n  screener (Left, Centre, Right; the sample's\
+  \ quota variable). Then the three trust\n  statements of the screen asked BEFORE the cards (Q6, \"To\
+  \ what extent do you agree or\n  disagree with the following statements?\"), answers word-for-word (Strongly\n\
+  \  disagree .. Strongly agree, seven points with \"Tend to\"): trust in news, in\n  journalists and\
+  \ in news on social media. They are pre-treatment attitudes, the\n  authors' baseline for H3; they correlate\
+  \ with the outcomes but no answer follows\n  from them. Left absent: DATA_EXPIRED (ethnicity 1, employment\
+  \ 127, student status\n  51, nationality 1, country of birth 1). Prolific's \"Not in paid work (e.g.\n\
+  \  homemaker', 'retired or disabled)\" has two stray quote marks from the export; they\n  are typography\
+  \ and removed. Not mapped: country of residence (UK for everyone),\n  `Language` (the export does not\
+  \ say whether it is first or fluent language), the\n  Prolific submission status.\n* UK FIT. The sample\
+  \ is British and was fielded these cards deliberately, to test the\n  US finding outside the US. The\
+  \ ten stories: a WHO alcohol claim, a US-funded\n  biolabs claim about Ukraine, a war veteran's medals,\
+  \ Adele's weight loss, a CDC\n  vaccine-injury claim, Ontario's drinks-container deposit scheme, a Bangladeshi\n\
+  \  labour leader's death, British recruiters, American Airlines and \"skiplagging\", and\n  NATO's Asia-Pacific\
+  \ partners. Three are about North American institutions (the CDC,\n  a US airline's domestic route,\
+  \ Ontario and \"The Beer Store\"). The catalogue note\n  calls one card US-specific without naming it;\
+  \ three qualify, so all three are\n  flagged here. All are kept as fielded: the\n  outcomes ask whether\
+  \ the claim seems accurate and whether one would share the post,\n  which a UK reader can judge without\
+  \ local knowledge, and dropping a card would cut\n  every person's set below the ten they saw. Flagged,\
+  \ not hidden: the US/Canadian\n  cards measure how UK readers judge foreign news. American spelling\
+  \ on the cards is\n  the source's (\"labor\", \"honor\", \"canceled\").\n* NOT ASKED OF JEV. Assignment,\
+  \ card identity, persona and non-answer codes are\n  settled by the .qsf flow, pixel comparison, Prolific's\
+  \ export labels and existing\n  crosswalk precedents; no paid call.\n\n    uv run python scripts/gen_a4y7s_study2.py\
+  \ --prep       # (re)write the coded long .xlsx\n    uv run python scripts/gen_a4y7s_study2.py --catalogue\
+  \  # check graphics, write images.json entries\n    uv run python scripts/gen_a4y7s_study2.py      \
+  \        # write the recipe\n    uv run python scripts/gen_a4y7s_study2.py --check      # exit 1 if\
+  \ it differs"
+condition:
+  source_var: card
+  shared_context: Some headlines may be human-generated while others may be generated by artificial intelligence
+    (AI). If you see AI-generated headlines, they will be explicitly labeled as such.
+  factors:
+  - definition
+  - label
+  - story
+  - version
+  arms:
+  - raws:
+    - 101
+    - 201
+    condition_num: 0
+    factors:
+      definition: none
+      label: 'no'
+      story: who_alcohol
+      version: human-written
+    text: 'One of the headlines: "World Health Organization wants to BAN all women aged 18-50 from drinking
+      alcohol / THE WORLD Health Organization (WHO) says that women of "child-bearing age" should be prevented
+      from drinking alcohol." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_human
+  - raw: 102
+    condition_num: 1
+    factors:
+      definition: none
+      label: 'no'
+      story: who_alcohol
+      version: AI-written
+    text: 'One of the headlines: "High Controversy Erupts as WHO Considers Banning Alcohol for Women of
+      Child-Bearing Age / The World Health Organization (WHO) faces backlash and accusations of sexism
+      as it proposes a global action plan to prohibit alcohol consumption among women aged 18 to 50, citing
+      potential risks to unborn children." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_ai
+  - raw: 203
+    condition_num: 2
+    factors:
+      definition: none
+      label: 'yes'
+      story: who_alcohol
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / High Controversy Erupts
+      as WHO Considers Banning Alcohol for Women of Child-Bearing Age / The World Health Organization
+      (WHO) faces backlash and accusations of sexism as it proposes a global action plan to prohibit alcohol
+      consumption among women aged 18 to 50, citing potential risks to unborn children." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_ai_labelled
+  - raws:
+    - 104
+    - 204
+    condition_num: 3
+    factors:
+      definition: none
+      label: 'no'
+      story: ukraine_biolabs
+      version: human-written
+    text: 'One of the headlines: "US Department of Defense Finally Comes Clean - Admits in Public Document
+      that There Are 46 US Military-Funded Biolabs in Ukraine / Russian Defence Ministry briefing showing
+      US-sponsored biolabs on Ukraininan territory." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_human
+  - raw: 105
+    condition_num: 4
+    factors:
+      definition: none
+      label: 'no'
+      story: ukraine_biolabs
+      version: AI-written
+    text: 'One of the headlines: "Pentagon''s Admission: 46 US Military-Funded Biolabs Exist in Ukraine,
+      Contrary to Previous Denials / After months of denial, the US Department of Defense publicly acknowledges
+      the presence of 46 American-funded biolabs in Ukraine, contradicting previous statements and stirring
+      controversy." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_ai
+  - raw: 206
+    condition_num: 5
+    factors:
+      definition: none
+      label: 'yes'
+      story: ukraine_biolabs
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / Pentagon''s Admission: 46
+      US Military-Funded Biolabs Exist in Ukraine, Contrary to Previous Denials / After months of denial,
+      the US Department of Defense publicly acknowledges the presence of 46 American-funded biolabs in
+      Ukraine, contradicting previous statements and stirring controversy." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_ai_labelled
+  - raws:
+    - 107
+    - 207
+    condition_num: 6
+    factors:
+      definition: none
+      label: 'no'
+      story: veteran_medals
+      version: human-written
+    text: 'One of the headlines: "Old Veteran Sells His Medals to Buy Groceries, Next Day Sees Military
+      Band Playing At His Yard - Story of the Day / When a 93-year-old war veteran had no money to buy
+      groceries, he sold his prestigious medals, unaware of what he was actually giving away. The next
+      day, he woke up to a loud military band playing outside his house." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_human
+  - raw: 108
+    condition_num: 7
+    factors:
+      definition: none
+      label: 'no'
+      story: veteran_medals
+      version: AI-written
+    text: 'One of the headlines: "Sacrifice and Serendipity: War Veteran Sells Medals for Groceries, Surprised
+      by Military Band Outside His Home the Next Day / In an extraordinary turn of events, a 93-year-old
+      war veteran''s decision to sell his cherished medals to buy groceries leads to an unexpected display
+      of honor and gratitude as a military band plays outside his house the following day." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_ai
+  - raw: 209
+    condition_num: 8
+    factors:
+      definition: none
+      label: 'yes'
+      story: veteran_medals
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / Sacrifice and Serendipity:
+      War Veteran Sells Medals for Groceries, Surprised by Military Band Outside His Home the Next Day
+      / In an extraordinary turn of events, a 93-year-old war veteran''s decision to sell his cherished
+      medals to buy groceries leads to an unexpected display of honor and gratitude as a military band
+      plays outside his house the following day." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_ai_labelled
+  - raws:
+    - 110
+    - 210
+    condition_num: 9
+    factors:
+      definition: none
+      label: 'no'
+      story: adele_keto
+      version: human-written
+    text: 'One of the headlines: "Adele reveals her secret! / Finally! We got the answers, everybody was
+      asking for about her huge body transformation! / Adele Told Us About Her Daily Keto Routine That
+      Melted 87 Pounds In just Few Weeks! / In the end of 2019, popular International Singer, Adele, pulled
+      off one of the most amazing transformations in Music history. She dropped an astonishing 87 pounds
+      of weight in only 6 weeks and set a precedent for one of the most dramatic weight loss journeys
+      any celebrity in Music Industry has ever undergone." <image>'
+    images:
+    - a4y7s_s2_adele_keto_human
+  - raw: 111
+    condition_num: 10
+    factors:
+      definition: none
+      label: 'no'
+      story: adele_keto
+      version: AI-written
+    text: 'One of the headlines: "Adele reveals her secret! / Finally! We got the answers, everybody was
+      asking for about her huge body transformation! / Adele Reveals Keto Routine Behind Her Astonishing
+      87-Pound Weight Loss in Just 6 Weeks! / International singer Adele opens up about her transformative
+      weight loss journey, attributing her incredible results to a two-month stint on the Keto diet and
+      Trim Life Keto + ACV Gummies, a natural supplement that jump-started her fat-burning process." <image>'
+    images:
+    - a4y7s_s2_adele_keto_ai
+  - raw: 212
+    condition_num: 11
+    factors:
+      definition: none
+      label: 'yes'
+      story: adele_keto
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / Adele reveals her secret!
+      / Finally! We got the answers, everybody was asking for about her huge body transformation! / Adele
+      Reveals Keto Routine Behind Her Astonishing 87-Pound Weight Loss in Just 6 Weeks! / International
+      singer Adele opens up about her transformative weight loss journey, attributing her incredible results
+      to a two-month stint on the Keto diet and Trim Life Keto + ACV Gummies, a natural supplement that
+      jump-started her fat-burning process." <image>'
+    images:
+    - a4y7s_s2_adele_keto_ai_labelled
+  - raw: 113
+    condition_num: 12
+    factors:
+      definition: none
+      label: 'no'
+      story: cdc_vaccine
+      version: human-written
+    text: 'One of the headlines: "Court Orders CDC to Release Data Showing 18 Million Vaccine Injuries
+      in America / More than 18 million people were injured so badly by their first COVID shot from Pfizer
+      or Moderna that they had to go to the hospital." <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_human
+  - raws:
+    - 114
+    - 214
+    condition_num: 13
+    factors:
+      definition: none
+      label: 'no'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'One of the headlines: "Court Orders CDC to Release Data Revealing 18 Million Vaccine Injuries
+      in America / Internal CDC data, released under court order, reveals that over 18 million individuals
+      in America were hospitalized due to adverse reactions from their first COVID shots, raising concerns
+      about a cover-up and the need for accountability." <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai
+  - raw: 215
+    condition_num: 14
+    factors:
+      definition: none
+      label: 'yes'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / Court Orders CDC to Release
+      Data Revealing 18 Million Vaccine Injuries in America / Internal CDC data, released under court
+      order, reveals that over 18 million individuals in America were hospitalized due to adverse reactions
+      from their first COVID shots, raising concerns about a cover-up and the need for accountability."
+      <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai_labelled
+  - raws:
+    - 116
+    - 216
+    condition_num: 15
+    factors:
+      definition: none
+      label: 'no'
+      story: ontario_deposit
+      version: human-written
+    text: 'One of the headlines: "Ontario considering deposit-and-return system like The Beer Store''s
+      for non-alcoholic drink containers / Province creating working group to explore options, according
+      to copy of letter obtained by CBC Toronto" <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_human
+  - raw: 117
+    condition_num: 16
+    factors:
+      definition: none
+      label: 'no'
+      story: ontario_deposit
+      version: AI-written
+    text: 'One of the headlines: "Ontario Launches Working Group to Explore Deposit-and-Return System
+      for Non-Alcoholic Drink Containers / Ontario is taking steps towards implementing a deposit-and-return
+      system for non-alcoholic drink containers by forming a working group to examine potential options,
+      according to a letter obtained by CBC Toronto." <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_ai
+  - raw: 218
+    condition_num: 17
+    factors:
+      definition: none
+      label: 'yes'
+      story: ontario_deposit
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / Ontario Launches Working
+      Group to Explore Deposit-and-Return System for Non-Alcoholic Drink Containers / Ontario is taking
+      steps towards implementing a deposit-and-return system for non-alcoholic drink containers by forming
+      a working group to examine potential options, according to a letter obtained by CBC Toronto." <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_ai_labelled
+  - raws:
+    - 119
+    - 219
+    condition_num: 18
+    factors:
+      definition: none
+      label: 'no'
+      story: bangladesh_labour
+      version: human-written
+    text: 'One of the headlines: "Bangladeshi labour leader beaten to death while trying to resolve dispute
+      / Shahidul Islam died in an assault on Sunday in Dhaka after meeting garment factory employees fighting
+      for unpaid salaries" <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_human
+  - raw: 120
+    condition_num: 19
+    factors:
+      definition: none
+      label: 'no'
+      story: bangladesh_labour
+      version: AI-written
+    text: 'One of the headlines: "Prominent Bangladeshi Labor Leader Shahidul Islam Fatally Beaten While
+      Resolving Unpaid Salary Dispute / Shahidul Islam, a well-known trade unionist in Bangladesh, was
+      brutally beaten to death in Dhaka while attempting to mediate between garment factory workers and
+      an owner over long-standing unpaid wages." <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_ai
+  - raw: 221
+    condition_num: 20
+    factors:
+      definition: none
+      label: 'yes'
+      story: bangladesh_labour
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / Prominent Bangladeshi Labor
+      Leader Shahidul Islam Fatally Beaten While Resolving Unpaid Salary Dispute / Shahidul Islam, a well-known
+      trade unionist in Bangladesh, was brutally beaten to death in Dhaka while attempting to mediate
+      between garment factory workers and an owner over long-standing unpaid wages." <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_ai_labelled
+  - raws:
+    - 122
+    - 222
+    condition_num: 21
+    factors:
+      definition: none
+      label: 'no'
+      story: british_recruiters
+      version: human-written
+    text: 'One of the headlines: "British recruiters hit by slow hiring, reluctance to switch jobs / Employers
+      are taking longer to hire new staff and candidates are more reluctant to change jobs in the current
+      uncertain economic climate, especially in the United States, United Kingdom and China, according
+      to updates from British recruiters." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_human
+  - raw: 123
+    condition_num: 22
+    factors:
+      definition: none
+      label: 'no'
+      story: british_recruiters
+      version: AI-written
+    text: 'One of the headlines: "British Recruiters Face Hiring Slump and Job Switching Reluctance Amid
+      Economic Uncertainty / British recruiters are grappling with prolonged hiring processes and candidates''
+      reluctance to change jobs amidst uncertain economic conditions, impacting companies like Hays, Robert
+      Walters, and PageGroup." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_ai
+  - raw: 224
+    condition_num: 23
+    factors:
+      definition: none
+      label: 'yes'
+      story: british_recruiters
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / British Recruiters Face
+      Hiring Slump and Job Switching Reluctance Amid Economic Uncertainty / British recruiters are grappling
+      with prolonged hiring processes and candidates'' reluctance to change jobs amidst uncertain economic
+      conditions, impacting companies like Hays, Robert Walters, and PageGroup." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_ai_labelled
+  - raws:
+    - 125
+    - 225
+    condition_num: 24
+    factors:
+      definition: none
+      label: 'no'
+      story: airline_skiplagging
+      version: human-written
+    text: 'One of the headlines: "American Airlines canceled a teenager''s ''skiplagging'' ticket after
+      realizing he wasn''t planning to board the connecting flight to New York: report / American Airlines
+      canceled a teenagers ticket after realizing he wasnt planning to board his connecting flight to
+      New York City, so his family had to purchase a direct ticket to Charlotte, North Carolina, instead."
+      <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_human
+  - raw: 126
+    condition_num: 25
+    factors:
+      definition: none
+      label: 'no'
+      story: airline_skiplagging
+      version: AI-written
+    text: 'One of the headlines: "American Airlines Cancels Teenager''s Ticket for ''Skiplagging'' as
+      Family Forced to Buy Direct Flight: Report / American Airlines cancels a teenager''s ticket after
+      discovering his intention to ''skiplag'' during a layover, prompting his family to purchase an alternate
+      direct flight, emphasizing the airline''s crackdown on the practice." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_ai
+  - raw: 227
+    condition_num: 26
+    factors:
+      definition: none
+      label: 'yes'
+      story: airline_skiplagging
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / American Airlines Cancels
+      Teenager''s Ticket for ''Skiplagging'' as Family Forced to Buy Direct Flight: Report / American
+      Airlines cancels a teenager''s ticket after discovering his intention to ''skiplag'' during a layover,
+      prompting his family to purchase an alternate direct flight, emphasizing the airline''s crackdown
+      on the practice." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_ai_labelled
+  - raws:
+    - 128
+    - 228
+    condition_num: 27
+    factors:
+      definition: none
+      label: 'no'
+      story: nato_asia_pacific
+      version: human-written
+    text: 'One of the headlines: "NATO strengthens ties with Asian-Pacific democracies, angering China
+      / The leaders of Japan, Australia, South Korea and New Zealand took part in the Vilnius summit,
+      but the Allies disagree on how far the organization should be involved in that region" <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_human
+  - raw: 129
+    condition_num: 28
+    factors:
+      definition: none
+      label: 'no'
+      story: nato_asia_pacific
+      version: AI-written
+    text: 'One of the headlines: "China Upset as NATO Bolsters Ties with Asian-Pacific Democracies / NATO''s
+      efforts to strengthen relationships with Japan, Australia, South Korea, and New Zealand, infuriates
+      China, which opposes the alliance''s "eastward movement" into the Asia-Pacific region, further deepening
+      divisions within NATO on the extent of involvement in the region and escalating tensions between
+      the democratic nations and authoritarian China." <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_ai
+  - raw: 230
+    condition_num: 29
+    factors:
+      definition: none
+      label: 'yes'
+      story: nato_asia_pacific
+      version: AI-written
+    text: 'One of the headlines: "Text generated by Artificial Intelligence / China Upset as NATO Bolsters
+      Ties with Asian-Pacific Democracies / NATO''s efforts to strengthen relationships with Japan, Australia,
+      South Korea, and New Zealand, infuriates China, which opposes the alliance''s "eastward movement"
+      into the Asia-Pacific region, further deepening divisions within NATO on the extent of involvement
+      in the region and escalating tensions between the democratic nations and authoritarian China." <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_ai_labelled
+  - raw: 301
+    condition_num: 30
+    factors:
+      definition: weak
+      label: 'no'
+      story: who_alcohol
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "World Health Organization wants to BAN all women aged
+      18-50 from drinking alcohol / THE WORLD Health Organization (WHO) says that women of "child-bearing
+      age" should be prevented from drinking alcohol." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_human
+  - raw: 303
+    condition_num: 31
+    factors:
+      definition: weak
+      label: 'yes'
+      story: who_alcohol
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / High Controversy
+      Erupts as WHO Considers Banning Alcohol for Women of Child-Bearing Age / The World Health Organization
+      (WHO) faces backlash and accusations of sexism as it proposes a global action plan to prohibit alcohol
+      consumption among women aged 18 to 50, citing potential risks to unborn children." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_ai_labelled
+  - raw: 304
+    condition_num: 32
+    factors:
+      definition: weak
+      label: 'no'
+      story: ukraine_biolabs
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "US Department of Defense Finally Comes Clean - Admits
+      in Public Document that There Are 46 US Military-Funded Biolabs in Ukraine / Russian Defence Ministry
+      briefing showing US-sponsored biolabs on Ukraininan territory." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_human
+  - raw: 306
+    condition_num: 33
+    factors:
+      definition: weak
+      label: 'yes'
+      story: ukraine_biolabs
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / Pentagon''s
+      Admission: 46 US Military-Funded Biolabs Exist in Ukraine, Contrary to Previous Denials / After
+      months of denial, the US Department of Defense publicly acknowledges the presence of 46 American-funded
+      biolabs in Ukraine, contradicting previous statements and stirring controversy." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_ai_labelled
+  - raw: 307
+    condition_num: 34
+    factors:
+      definition: weak
+      label: 'no'
+      story: veteran_medals
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Old Veteran Sells His Medals to Buy Groceries, Next Day
+      Sees Military Band Playing At His Yard - Story of the Day / When a 93-year-old war veteran had no
+      money to buy groceries, he sold his prestigious medals, unaware of what he was actually giving away.
+      The next day, he woke up to a loud military band playing outside his house." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_human
+  - raw: 309
+    condition_num: 35
+    factors:
+      definition: weak
+      label: 'yes'
+      story: veteran_medals
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / Sacrifice
+      and Serendipity: War Veteran Sells Medals for Groceries, Surprised by Military Band Outside His
+      Home the Next Day / In an extraordinary turn of events, a 93-year-old war veteran''s decision to
+      sell his cherished medals to buy groceries leads to an unexpected display of honor and gratitude
+      as a military band plays outside his house the following day." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_ai_labelled
+  - raw: 310
+    condition_num: 36
+    factors:
+      definition: weak
+      label: 'no'
+      story: adele_keto
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Adele reveals her secret! / Finally! We got the answers,
+      everybody was asking for about her huge body transformation! / Adele Told Us About Her Daily Keto
+      Routine That Melted 87 Pounds In just Few Weeks! / In the end of 2019, popular International Singer,
+      Adele, pulled off one of the most amazing transformations in Music history. She dropped an astonishing
+      87 pounds of weight in only 6 weeks and set a precedent for one of the most dramatic weight loss
+      journeys any celebrity in Music Industry has ever undergone." <image>'
+    images:
+    - a4y7s_s2_adele_keto_human
+  - raw: 312
+    condition_num: 37
+    factors:
+      definition: weak
+      label: 'yes'
+      story: adele_keto
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / Adele reveals
+      her secret! / Finally! We got the answers, everybody was asking for about her huge body transformation!
+      / Adele Reveals Keto Routine Behind Her Astonishing 87-Pound Weight Loss in Just 6 Weeks! / International
+      singer Adele opens up about her transformative weight loss journey, attributing her incredible results
+      to a two-month stint on the Keto diet and Trim Life Keto + ACV Gummies, a natural supplement that
+      jump-started her fat-burning process." <image>'
+    images:
+    - a4y7s_s2_adele_keto_ai_labelled
+  - raw: 314
+    condition_num: 38
+    factors:
+      definition: weak
+      label: 'no'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Court Orders CDC to Release Data Revealing 18 Million
+      Vaccine Injuries in America / Internal CDC data, released under court order, reveals that over 18
+      million individuals in America were hospitalized due to adverse reactions from their first COVID
+      shots, raising concerns about a cover-up and the need for accountability." <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai
+  - raw: 315
+    condition_num: 39
+    factors:
+      definition: weak
+      label: 'yes'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / Court Orders
+      CDC to Release Data Revealing 18 Million Vaccine Injuries in America / Internal CDC data, released
+      under court order, reveals that over 18 million individuals in America were hospitalized due to
+      adverse reactions from their first COVID shots, raising concerns about a cover-up and the need for
+      accountability." <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai_labelled
+  - raw: 316
+    condition_num: 40
+    factors:
+      definition: weak
+      label: 'no'
+      story: ontario_deposit
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Ontario considering deposit-and-return system like The
+      Beer Store''s for non-alcoholic drink containers / Province creating working group to explore options,
+      according to copy of letter obtained by CBC Toronto" <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_human
+  - raw: 318
+    condition_num: 41
+    factors:
+      definition: weak
+      label: 'yes'
+      story: ontario_deposit
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / Ontario Launches
+      Working Group to Explore Deposit-and-Return System for Non-Alcoholic Drink Containers / Ontario
+      is taking steps towards implementing a deposit-and-return system for non-alcoholic drink containers
+      by forming a working group to examine potential options, according to a letter obtained by CBC Toronto."
+      <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_ai_labelled
+  - raw: 319
+    condition_num: 42
+    factors:
+      definition: weak
+      label: 'no'
+      story: bangladesh_labour
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Bangladeshi labour leader beaten to death while trying
+      to resolve dispute / Shahidul Islam died in an assault on Sunday in Dhaka after meeting garment
+      factory employees fighting for unpaid salaries" <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_human
+  - raw: 321
+    condition_num: 43
+    factors:
+      definition: weak
+      label: 'yes'
+      story: bangladesh_labour
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / Prominent
+      Bangladeshi Labor Leader Shahidul Islam Fatally Beaten While Resolving Unpaid Salary Dispute / Shahidul
+      Islam, a well-known trade unionist in Bangladesh, was brutally beaten to death in Dhaka while attempting
+      to mediate between garment factory workers and an owner over long-standing unpaid wages." <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_ai_labelled
+  - raw: 322
+    condition_num: 44
+    factors:
+      definition: weak
+      label: 'no'
+      story: british_recruiters
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "British recruiters hit by slow hiring, reluctance to
+      switch jobs / Employers are taking longer to hire new staff and candidates are more reluctant to
+      change jobs in the current uncertain economic climate, especially in the United States, United Kingdom
+      and China, according to updates from British recruiters." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_human
+  - raw: 324
+    condition_num: 45
+    factors:
+      definition: weak
+      label: 'yes'
+      story: british_recruiters
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / British Recruiters
+      Face Hiring Slump and Job Switching Reluctance Amid Economic Uncertainty / British recruiters are
+      grappling with prolonged hiring processes and candidates'' reluctance to change jobs amidst uncertain
+      economic conditions, impacting companies like Hays, Robert Walters, and PageGroup." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_ai_labelled
+  - raw: 325
+    condition_num: 46
+    factors:
+      definition: weak
+      label: 'no'
+      story: airline_skiplagging
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "American Airlines canceled a teenager''s ''skiplagging''
+      ticket after realizing he wasn''t planning to board the connecting flight to New York: report /
+      American Airlines canceled a teenagers ticket after realizing he wasnt planning to board his connecting
+      flight to New York City, so his family had to purchase a direct ticket to Charlotte, North Carolina,
+      instead." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_human
+  - raw: 327
+    condition_num: 47
+    factors:
+      definition: weak
+      label: 'yes'
+      story: airline_skiplagging
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / American
+      Airlines Cancels Teenager''s Ticket for ''Skiplagging'' as Family Forced to Buy Direct Flight: Report
+      / American Airlines cancels a teenager''s ticket after discovering his intention to ''skiplag''
+      during a layover, prompting his family to purchase an alternate direct flight, emphasizing the airline''s
+      crackdown on the practice." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_ai_labelled
+  - raw: 328
+    condition_num: 48
+    factors:
+      definition: weak
+      label: 'no'
+      story: nato_asia_pacific
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "NATO strengthens ties with Asian-Pacific democracies,
+      angering China / The leaders of Japan, Australia, South Korea and New Zealand took part in the Vilnius
+      summit, but the Allies disagree on how far the organization should be involved in that region" <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_human
+  - raw: 330
+    condition_num: 49
+    factors:
+      definition: weak
+      label: 'yes'
+      story: nato_asia_pacific
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article and wrote the article.
+      - AI was used to improve the clarity of the text and adapt it to the style of the news outlet. As
+      a reminder, AI-generated headlines means that: - A journalist selected the topic of the article
+      and wrote the article. - AI was used to improve the clarity of the text and adapt it to the style
+      of the news outlet. One of the headlines: "Text generated by Artificial Intelligence / China Upset
+      as NATO Bolsters Ties with Asian-Pacific Democracies / NATO''s efforts to strengthen relationships
+      with Japan, Australia, South Korea, and New Zealand, infuriates China, which opposes the alliance''s
+      "eastward movement" into the Asia-Pacific region, further deepening divisions within NATO on the
+      extent of involvement in the region and escalating tensions between the democratic nations and authoritarian
+      China." <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_ai_labelled
+  - raw: 401
+    condition_num: 50
+    factors:
+      definition: medium
+      label: 'no'
+      story: who_alcohol
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "World Health Organization wants
+      to BAN all women aged 18-50 from drinking alcohol / THE WORLD Health Organization (WHO) says that
+      women of "child-bearing age" should be prevented from drinking alcohol." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_human
+  - raw: 403
+    condition_num: 51
+    factors:
+      definition: medium
+      label: 'yes'
+      story: who_alcohol
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / High Controversy Erupts as WHO Considers Banning Alcohol for Women of Child-Bearing
+      Age / The World Health Organization (WHO) faces backlash and accusations of sexism as it proposes
+      a global action plan to prohibit alcohol consumption among women aged 18 to 50, citing potential
+      risks to unborn children." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_ai_labelled
+  - raw: 404
+    condition_num: 52
+    factors:
+      definition: medium
+      label: 'no'
+      story: ukraine_biolabs
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "US Department of Defense Finally
+      Comes Clean - Admits in Public Document that There Are 46 US Military-Funded Biolabs in Ukraine
+      / Russian Defence Ministry briefing showing US-sponsored biolabs on Ukraininan territory." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_human
+  - raw: 406
+    condition_num: 53
+    factors:
+      definition: medium
+      label: 'yes'
+      story: ukraine_biolabs
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / Pentagon''s Admission: 46 US Military-Funded Biolabs Exist in Ukraine, Contrary to
+      Previous Denials / After months of denial, the US Department of Defense publicly acknowledges the
+      presence of 46 American-funded biolabs in Ukraine, contradicting previous statements and stirring
+      controversy." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_ai_labelled
+  - raw: 407
+    condition_num: 54
+    factors:
+      definition: medium
+      label: 'no'
+      story: veteran_medals
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Old Veteran Sells His Medals
+      to Buy Groceries, Next Day Sees Military Band Playing At His Yard - Story of the Day / When a 93-year-old
+      war veteran had no money to buy groceries, he sold his prestigious medals, unaware of what he was
+      actually giving away. The next day, he woke up to a loud military band playing outside his house."
+      <image>'
+    images:
+    - a4y7s_s2_veteran_medals_human
+  - raw: 409
+    condition_num: 55
+    factors:
+      definition: medium
+      label: 'yes'
+      story: veteran_medals
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / Sacrifice and Serendipity: War Veteran Sells Medals for Groceries, Surprised by Military
+      Band Outside His Home the Next Day / In an extraordinary turn of events, a 93-year-old war veteran''s
+      decision to sell his cherished medals to buy groceries leads to an unexpected display of honor and
+      gratitude as a military band plays outside his house the following day." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_ai_labelled
+  - raw: 410
+    condition_num: 56
+    factors:
+      definition: medium
+      label: 'no'
+      story: adele_keto
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Adele reveals her secret! /
+      Finally! We got the answers, everybody was asking for about her huge body transformation! / Adele
+      Told Us About Her Daily Keto Routine That Melted 87 Pounds In just Few Weeks! / In the end of 2019,
+      popular International Singer, Adele, pulled off one of the most amazing transformations in Music
+      history. She dropped an astonishing 87 pounds of weight in only 6 weeks and set a precedent for
+      one of the most dramatic weight loss journeys any celebrity in Music Industry has ever undergone."
+      <image>'
+    images:
+    - a4y7s_s2_adele_keto_human
+  - raw: 412
+    condition_num: 57
+    factors:
+      definition: medium
+      label: 'yes'
+      story: adele_keto
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / Adele reveals her secret! / Finally! We got the answers, everybody was asking for
+      about her huge body transformation! / Adele Reveals Keto Routine Behind Her Astonishing 87-Pound
+      Weight Loss in Just 6 Weeks! / International singer Adele opens up about her transformative weight
+      loss journey, attributing her incredible results to a two-month stint on the Keto diet and Trim
+      Life Keto + ACV Gummies, a natural supplement that jump-started her fat-burning process." <image>'
+    images:
+    - a4y7s_s2_adele_keto_ai_labelled
+  - raw: 414
+    condition_num: 58
+    factors:
+      definition: medium
+      label: 'no'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Court Orders CDC to Release
+      Data Revealing 18 Million Vaccine Injuries in America / Internal CDC data, released under court
+      order, reveals that over 18 million individuals in America were hospitalized due to adverse reactions
+      from their first COVID shots, raising concerns about a cover-up and the need for accountability."
+      <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai
+  - raw: 415
+    condition_num: 59
+    factors:
+      definition: medium
+      label: 'yes'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / Court Orders CDC to Release Data Revealing 18 Million Vaccine Injuries in America
+      / Internal CDC data, released under court order, reveals that over 18 million individuals in America
+      were hospitalized due to adverse reactions from their first COVID shots, raising concerns about
+      a cover-up and the need for accountability." <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai_labelled
+  - raw: 416
+    condition_num: 60
+    factors:
+      definition: medium
+      label: 'no'
+      story: ontario_deposit
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Ontario considering deposit-and-return
+      system like The Beer Store''s for non-alcoholic drink containers / Province creating working group
+      to explore options, according to copy of letter obtained by CBC Toronto" <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_human
+  - raw: 418
+    condition_num: 61
+    factors:
+      definition: medium
+      label: 'yes'
+      story: ontario_deposit
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / Ontario Launches Working Group to Explore Deposit-and-Return System for Non-Alcoholic
+      Drink Containers / Ontario is taking steps towards implementing a deposit-and-return system for
+      non-alcoholic drink containers by forming a working group to examine potential options, according
+      to a letter obtained by CBC Toronto." <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_ai_labelled
+  - raw: 419
+    condition_num: 62
+    factors:
+      definition: medium
+      label: 'no'
+      story: bangladesh_labour
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Bangladeshi labour leader beaten
+      to death while trying to resolve dispute / Shahidul Islam died in an assault on Sunday in Dhaka
+      after meeting garment factory employees fighting for unpaid salaries" <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_human
+  - raw: 421
+    condition_num: 63
+    factors:
+      definition: medium
+      label: 'yes'
+      story: bangladesh_labour
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / Prominent Bangladeshi Labor Leader Shahidul Islam Fatally Beaten While Resolving
+      Unpaid Salary Dispute / Shahidul Islam, a well-known trade unionist in Bangladesh, was brutally
+      beaten to death in Dhaka while attempting to mediate between garment factory workers and an owner
+      over long-standing unpaid wages." <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_ai_labelled
+  - raw: 422
+    condition_num: 64
+    factors:
+      definition: medium
+      label: 'no'
+      story: british_recruiters
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "British recruiters hit by slow
+      hiring, reluctance to switch jobs / Employers are taking longer to hire new staff and candidates
+      are more reluctant to change jobs in the current uncertain economic climate, especially in the United
+      States, United Kingdom and China, according to updates from British recruiters." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_human
+  - raw: 424
+    condition_num: 65
+    factors:
+      definition: medium
+      label: 'yes'
+      story: british_recruiters
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / British Recruiters Face Hiring Slump and Job Switching Reluctance Amid Economic Uncertainty
+      / British recruiters are grappling with prolonged hiring processes and candidates'' reluctance to
+      change jobs amidst uncertain economic conditions, impacting companies like Hays, Robert Walters,
+      and PageGroup." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_ai_labelled
+  - raw: 425
+    condition_num: 66
+    factors:
+      definition: medium
+      label: 'no'
+      story: airline_skiplagging
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "American Airlines canceled a
+      teenager''s ''skiplagging'' ticket after realizing he wasn''t planning to board the connecting flight
+      to New York: report / American Airlines canceled a teenagers ticket after realizing he wasnt planning
+      to board his connecting flight to New York City, so his family had to purchase a direct ticket to
+      Charlotte, North Carolina, instead." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_human
+  - raw: 427
+    condition_num: 67
+    factors:
+      definition: medium
+      label: 'yes'
+      story: airline_skiplagging
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / American Airlines Cancels Teenager''s Ticket for ''Skiplagging'' as Family Forced
+      to Buy Direct Flight: Report / American Airlines cancels a teenager''s ticket after discovering
+      his intention to ''skiplag'' during a layover, prompting his family to purchase an alternate direct
+      flight, emphasizing the airline''s crackdown on the practice." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_ai_labelled
+  - raw: 428
+    condition_num: 68
+    factors:
+      definition: medium
+      label: 'no'
+      story: nato_asia_pacific
+      version: human-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "NATO strengthens ties with Asian-Pacific
+      democracies, angering China / The leaders of Japan, Australia, South Korea and New Zealand took
+      part in the Vilnius summit, but the Allies disagree on how far the organization should be involved
+      in that region" <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_human
+  - raw: 430
+    condition_num: 69
+    factors:
+      definition: medium
+      label: 'yes'
+      story: nato_asia_pacific
+      version: AI-written
+    text: 'AI-generated means that: - A journalist selected the topic of the article. - AI wrote a first
+      draft of the article based on sources provided by the journalist. As a reminder, AI-generated headlines
+      means that: - A journalist selected the topic of the article. - AI wrote a first draft of the article
+      based on sources provided by the journalist. One of the headlines: "Text generated by Artificial
+      Intelligence / China Upset as NATO Bolsters Ties with Asian-Pacific Democracies / NATO''s efforts
+      to strengthen relationships with Japan, Australia, South Korea, and New Zealand, infuriates China,
+      which opposes the alliance''s "eastward movement" into the Asia-Pacific region, further deepening
+      divisions within NATO on the extent of involvement in the region and escalating tensions between
+      the democratic nations and authoritarian China." <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_ai_labelled
+  - raw: 501
+    condition_num: 70
+    factors:
+      definition: strong
+      label: 'no'
+      story: who_alcohol
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "World Health Organization wants to BAN all women aged
+      18-50 from drinking alcohol / THE WORLD Health Organization (WHO) says that women of "child-bearing
+      age" should be prevented from drinking alcohol." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_human
+  - raw: 503
+    condition_num: 71
+    factors:
+      definition: strong
+      label: 'yes'
+      story: who_alcohol
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / High Controversy
+      Erupts as WHO Considers Banning Alcohol for Women of Child-Bearing Age / The World Health Organization
+      (WHO) faces backlash and accusations of sexism as it proposes a global action plan to prohibit alcohol
+      consumption among women aged 18 to 50, citing potential risks to unborn children." <image>'
+    images:
+    - a4y7s_s2_who_alcohol_ai_labelled
+  - raw: 504
+    condition_num: 72
+    factors:
+      definition: strong
+      label: 'no'
+      story: ukraine_biolabs
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "US Department of Defense Finally Comes Clean - Admits
+      in Public Document that There Are 46 US Military-Funded Biolabs in Ukraine / Russian Defence Ministry
+      briefing showing US-sponsored biolabs on Ukraininan territory." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_human
+  - raw: 506
+    condition_num: 73
+    factors:
+      definition: strong
+      label: 'yes'
+      story: ukraine_biolabs
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / Pentagon''s
+      Admission: 46 US Military-Funded Biolabs Exist in Ukraine, Contrary to Previous Denials / After
+      months of denial, the US Department of Defense publicly acknowledges the presence of 46 American-funded
+      biolabs in Ukraine, contradicting previous statements and stirring controversy." <image>'
+    images:
+    - a4y7s_s2_ukraine_biolabs_ai_labelled
+  - raw: 507
+    condition_num: 74
+    factors:
+      definition: strong
+      label: 'no'
+      story: veteran_medals
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Old Veteran Sells His Medals to Buy Groceries, Next Day
+      Sees Military Band Playing At His Yard - Story of the Day / When a 93-year-old war veteran had no
+      money to buy groceries, he sold his prestigious medals, unaware of what he was actually giving away.
+      The next day, he woke up to a loud military band playing outside his house." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_human
+  - raw: 509
+    condition_num: 75
+    factors:
+      definition: strong
+      label: 'yes'
+      story: veteran_medals
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / Sacrifice
+      and Serendipity: War Veteran Sells Medals for Groceries, Surprised by Military Band Outside His
+      Home the Next Day / In an extraordinary turn of events, a 93-year-old war veteran''s decision to
+      sell his cherished medals to buy groceries leads to an unexpected display of honor and gratitude
+      as a military band plays outside his house the following day." <image>'
+    images:
+    - a4y7s_s2_veteran_medals_ai_labelled
+  - raw: 510
+    condition_num: 76
+    factors:
+      definition: strong
+      label: 'no'
+      story: adele_keto
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Adele reveals her secret! / Finally! We got the answers,
+      everybody was asking for about her huge body transformation! / Adele Told Us About Her Daily Keto
+      Routine That Melted 87 Pounds In just Few Weeks! / In the end of 2019, popular International Singer,
+      Adele, pulled off one of the most amazing transformations in Music history. She dropped an astonishing
+      87 pounds of weight in only 6 weeks and set a precedent for one of the most dramatic weight loss
+      journeys any celebrity in Music Industry has ever undergone." <image>'
+    images:
+    - a4y7s_s2_adele_keto_human
+  - raw: 512
+    condition_num: 77
+    factors:
+      definition: strong
+      label: 'yes'
+      story: adele_keto
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / Adele reveals
+      her secret! / Finally! We got the answers, everybody was asking for about her huge body transformation!
+      / Adele Reveals Keto Routine Behind Her Astonishing 87-Pound Weight Loss in Just 6 Weeks! / International
+      singer Adele opens up about her transformative weight loss journey, attributing her incredible results
+      to a two-month stint on the Keto diet and Trim Life Keto + ACV Gummies, a natural supplement that
+      jump-started her fat-burning process." <image>'
+    images:
+    - a4y7s_s2_adele_keto_ai_labelled
+  - raw: 514
+    condition_num: 78
+    factors:
+      definition: strong
+      label: 'no'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Court Orders CDC to Release Data Revealing 18 Million
+      Vaccine Injuries in America / Internal CDC data, released under court order, reveals that over 18
+      million individuals in America were hospitalized due to adverse reactions from their first COVID
+      shots, raising concerns about a cover-up and the need for accountability." <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai
+  - raw: 515
+    condition_num: 79
+    factors:
+      definition: strong
+      label: 'yes'
+      story: cdc_vaccine
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / Court Orders
+      CDC to Release Data Revealing 18 Million Vaccine Injuries in America / Internal CDC data, released
+      under court order, reveals that over 18 million individuals in America were hospitalized due to
+      adverse reactions from their first COVID shots, raising concerns about a cover-up and the need for
+      accountability." <image>'
+    images:
+    - a4y7s_s2_cdc_vaccine_ai_labelled
+  - raw: 516
+    condition_num: 80
+    factors:
+      definition: strong
+      label: 'no'
+      story: ontario_deposit
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Ontario considering deposit-and-return system like The
+      Beer Store''s for non-alcoholic drink containers / Province creating working group to explore options,
+      according to copy of letter obtained by CBC Toronto" <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_human
+  - raw: 518
+    condition_num: 81
+    factors:
+      definition: strong
+      label: 'yes'
+      story: ontario_deposit
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / Ontario Launches
+      Working Group to Explore Deposit-and-Return System for Non-Alcoholic Drink Containers / Ontario
+      is taking steps towards implementing a deposit-and-return system for non-alcoholic drink containers
+      by forming a working group to examine potential options, according to a letter obtained by CBC Toronto."
+      <image>'
+    images:
+    - a4y7s_s2_ontario_deposit_ai_labelled
+  - raw: 519
+    condition_num: 82
+    factors:
+      definition: strong
+      label: 'no'
+      story: bangladesh_labour
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Bangladeshi labour leader beaten to death while trying
+      to resolve dispute / Shahidul Islam died in an assault on Sunday in Dhaka after meeting garment
+      factory employees fighting for unpaid salaries" <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_human
+  - raw: 521
+    condition_num: 83
+    factors:
+      definition: strong
+      label: 'yes'
+      story: bangladesh_labour
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / Prominent
+      Bangladeshi Labor Leader Shahidul Islam Fatally Beaten While Resolving Unpaid Salary Dispute / Shahidul
+      Islam, a well-known trade unionist in Bangladesh, was brutally beaten to death in Dhaka while attempting
+      to mediate between garment factory workers and an owner over long-standing unpaid wages." <image>'
+    images:
+    - a4y7s_s2_bangladesh_labour_ai_labelled
+  - raw: 522
+    condition_num: 84
+    factors:
+      definition: strong
+      label: 'no'
+      story: british_recruiters
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "British recruiters hit by slow hiring, reluctance to switch
+      jobs / Employers are taking longer to hire new staff and candidates are more reluctant to change
+      jobs in the current uncertain economic climate, especially in the United States, United Kingdom
+      and China, according to updates from British recruiters." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_human
+  - raw: 524
+    condition_num: 85
+    factors:
+      definition: strong
+      label: 'yes'
+      story: british_recruiters
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / British Recruiters
+      Face Hiring Slump and Job Switching Reluctance Amid Economic Uncertainty / British recruiters are
+      grappling with prolonged hiring processes and candidates'' reluctance to change jobs amidst uncertain
+      economic conditions, impacting companies like Hays, Robert Walters, and PageGroup." <image>'
+    images:
+    - a4y7s_s2_british_recruiters_ai_labelled
+  - raw: 525
+    condition_num: 86
+    factors:
+      definition: strong
+      label: 'no'
+      story: airline_skiplagging
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "American Airlines canceled a teenager''s ''skiplagging''
+      ticket after realizing he wasn''t planning to board the connecting flight to New York: report /
+      American Airlines canceled a teenagers ticket after realizing he wasnt planning to board his connecting
+      flight to New York City, so his family had to purchase a direct ticket to Charlotte, North Carolina,
+      instead." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_human
+  - raw: 527
+    condition_num: 87
+    factors:
+      definition: strong
+      label: 'yes'
+      story: airline_skiplagging
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / American Airlines
+      Cancels Teenager''s Ticket for ''Skiplagging'' as Family Forced to Buy Direct Flight: Report / American
+      Airlines cancels a teenager''s ticket after discovering his intention to ''skiplag'' during a layover,
+      prompting his family to purchase an alternate direct flight, emphasizing the airline''s crackdown
+      on the practice." <image>'
+    images:
+    - a4y7s_s2_airline_skiplagging_ai_labelled
+  - raw: 528
+    condition_num: 88
+    factors:
+      definition: strong
+      label: 'no'
+      story: nato_asia_pacific
+      version: human-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "NATO strengthens ties with Asian-Pacific democracies,
+      angering China / The leaders of Japan, Australia, South Korea and New Zealand took part in the Vilnius
+      summit, but the Allies disagree on how far the organization should be involved in that region" <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_human
+  - raw: 530
+    condition_num: 89
+    factors:
+      definition: strong
+      label: 'yes'
+      story: nato_asia_pacific
+      version: AI-written
+    text: 'AI-generated means that: - AI selected the topic of the article. - AI wrote the whole article.
+      As a reminder, AI-generated headlines means that: - AI selected the topic of the article. - AI wrote
+      the whole article. One of the headlines: "Text generated by Artificial Intelligence / China Upset
+      as NATO Bolsters Ties with Asian-Pacific Democracies / NATO''s efforts to strengthen relationships
+      with Japan, Australia, South Korea, and New Zealand, infuriates China, which opposes the alliance''s
+      "eastward movement" into the Asia-Pacific region, further deepening divisions within NATO on the
+      extent of involvement in the region and escalating tensions between the democratic nations and authoritarian
+      China." <image>'
+    images:
+    - a4y7s_s2_nato_asia_pacific_ai_labelled
+outcomes:
+- var: SHARE
+  task_num: 0
+  question: If you saw this post online, how likely would you be to share it?
+  scale:
+    min: 1
+    max: 6
+    min_label: Extremely unlikely
+    max_label: Extremely likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+- var: ACCURACY
+  task_num: 1
+  question: How accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 6
+    min_label: Certainly false
+    max_label: Certainly true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+response_recode: {}
+missing_codes: []
+persona_map:
+  age: Age
+  sex: Sex
+  ethnicity: Ethnicity simplified
+  employment: Employment status
+  student_status: Student status
+  country_of_birth: Country of birth
+  nationality: Nationality
+  political_affiliation: Political affiliation (uk)
+  i_trust_most_news_most_of_the_time: Q6_1
+  i_trust_journalists_most_of_the_time: Q6_2
+  i_trust_news_on_social_media_most_of_the_time: Q6_3
+persona_missing:
+  Ethnicity simplified:
+  - 3
+  Employment status:
+  - 1
+  Student status:
+  - 1
+  Country of birth:
+  - 9
+  Nationality:
+  - 1

@@ -557,12 +557,12 @@
       "title": "AI labels on headline cards",
       "description": "10 Facebook-style headline cards (photo, headline, lede), true/false x AI/human; no label or \"AI-generated\" label with 4 definitions; accuracy and sharing (1-6). UK Prolific ~1,537 (Altay & Gilardi 2024, Study 2).",
       "link": "https://osf.io/a4y7s",
-      "status": "Needs checking",
-      "reason": "Permission YES from Sacha Altay, 3 Nov 2026. All 40 cards on OSF; item and arm recorded; Qualtrics wording available. One card is US-specific. Building.",
+      "status": "Built",
+      "reason": "30,000 rows (1,500 UK people x 10 headline cards x 2 questions, sharing and accuracy; 90 conditions: label definition x card). All 30,000 ratings match the authors' cleaned file; the paper prints no UK-only numbers. Found two tagging errors in the fielded survey (one unlabelled AI card in Label_A; a mis-tag in Control_B); rows follow what was on screen. Three North American cards kept as fielded. Independent checker: no blockers. Permission from Sacha Altay, 3 Nov 2026.",
       "permission": "Yes",
       "contact": "Sacha Altay",
-      "rows": null,
-      "recipe": ""
+      "rows": 30000,
+      "recipe": "a4y7s_study2"
     },
     {
       "id": "IMG70",
