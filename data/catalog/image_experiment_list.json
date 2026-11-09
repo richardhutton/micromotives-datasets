@@ -1196,6 +1196,96 @@
       "reason": "Fully public (CC BY 4.0) but video, which the pipeline cannot represent.",
       "permission": "Not asked yet",
       "contact": ""
+    },
+    {
+      "id": "IMG134",
+      "title": "Election leaflets: attack vs policy",
+      "description": "Mock election leaflet pairs: challenger positive, policy attack, personal attack or both, Labour or Conservative; negativity and favourability (0-10). YouGov GB, n=1,664 (Milazzo, Nottingham 2025).",
+      "link": "https://doi.org/10.17639/nott.7607",
+      "status": "Waiting for images",
+      "reason": "Only code deposited (CC BY 4.0); data needs a request to the author; leaflets in the publisher's supplementary appendix.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG135",
+      "title": "Fake-news posts: source and popularity",
+      "description": "Simulated social posts of 3 real fake-news stories, high or low source authority x high or low likes and shares; likelihood of sharing (0-10), accuracy. UK, three studies ~2,000 (Buchanan, Westminster 2020).",
+      "link": "https://reshare.ukdataservice.ac.uk/854297",
+      "status": "Needs checking",
+      "reason": "Data (.sav), dictionaries and questionnaires with all stimulus variants deposited, CC BY-SA 4.0. Stories are anti-migrant and anti-Muslim: needs a content check.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG136",
+      "title": "COVID vaccine misinformation images",
+      "description": "5 vaccine-misinformation images vs 5 factual images as social posts; vaccination intent before and after, agreement, trust, sharing. UK ORB, n=4,000 (Loomba, Larson et al., LSHTM 2021).",
+      "link": "https://github.com/sloomba/covid19-misinfo",
+      "status": "Waiting for images",
+      "reason": "Data and questionnaire public (MIT); the images are only in the paper's figures, and are third-party screenshots.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG137",
+      "title": "Bottled water adverts: enjoyment vs health",
+      "description": "Image adverts for a made-up bottled water, enjoyment-focused, health-focused or control; desire, willingness to pay, water vs Coca-Cola choice. UK Prolific, ~2,700 over 3 experiments (Papies & Claassen, Glasgow).",
+      "link": "https://reshare.ukdataservice.ac.uk/856178",
+      "status": "Needs checking",
+      "reason": "Raw data and .qsf on OSF (d82h6, s4kwv) with no licence there; ReShare readme is CC BY-SA. Confirm the advert image files.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG138",
+      "title": "Maps with personal stories",
+      "description": "For each of 3 local issues, one of 3 maps with different amounts of personal narrative; engagement, credibility, views. UK Prolific, n=389 (Davidson & Cheshire, UCL 2025).",
+      "link": "https://rdr.ucl.ac.uk/articles/dataset/28608185",
+      "status": "Waiting for images",
+      "reason": "Data CC BY 4.0; map images not deposited (probably in the open-access paper).",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG139",
+      "title": "Alcohol-free share in an online shop",
+      "description": "Simulated online supermarket with 25%, 50% or 75% non-alcoholic products; units selected and a real purchase. UK, n=737 (Clarke, Hollands, Marteau et al., Cambridge).",
+      "link": "https://doi.org/10.17863/CAM.94093",
+      "status": "Waiting for images",
+      "reason": "Data CC BY 4.0; product photos not deposited. Fits the same Cambridge email as the Pechey studies.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG140",
+      "title": "Edited 'prettier' species photos",
+      "description": "5 endangered species, original or photo-edited image; how to split £5,000 between three pictured species. UK Prolific quota sample, n=404 (Shaw, Veríssimo et al., Exeter 2024).",
+      "link": "https://doi.org/10.6084/m9.figshare.24747501",
+      "status": "Waiting for images",
+      "reason": "Data CC BY 4.0; within-person; images only in the paper.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG141",
+      "title": "Smart device security labels",
+      "description": "Graded vs informational security label graphics on smart-device product cards; product choice and willingness to pay. UK Prolific, n=3,000 (Johnson, Blythe et al., UCL 2020).",
+      "link": "https://rdr.ucl.ac.uk/articles/dataset/11568438",
+      "status": "Unlikely",
+      "reason": "No-derivatives licence (CC BY-ND), and the paper says the deposited labels differ from those shown.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG142",
+      "title": "Source effects in political advertising",
+      "description": "UK study of political ad sources (2019); details unconfirmed.",
+      "link": "https://osf.io/62hef",
+      "status": "Needs checking",
+      "reason": "Lead only: found outside the repository search, not yet opened.",
+      "permission": "Not asked yet",
+      "contact": ""
     }
   ]
 }
