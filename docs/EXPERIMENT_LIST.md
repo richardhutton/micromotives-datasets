@@ -10,9 +10,9 @@ Every experiment we have built and every candidate we could add, from four sourc
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Innovation Panel | UK · not publishable | 38 | 16 | 2 | 8 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 16 | 2 | 2 | 10 | 14 | 143,761 |
-| TESS | US · not publishable | 48 | 40 | 5 | 15 | 60 | 445,368 |
+| TESS | US · not publishable | 47 | 40 | 5 | 16 | 61 | 413,140 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **115** | **58** | **21** | **36** | **115** | **1,104,700** |
+| **Total** | | **114** | **58** | **21** | **37** | **116** | **1,072,472** |
 
 ## Next 34, in build order (31 built, 3 to go)
 
@@ -198,7 +198,7 @@ UK · publishable (CC0). 16 Built, 2 Buildable, 2 Needs checking, 10 Unlikely.
 
 ## TESS
 
-US · not publishable. 48 Built, 40 Buildable, 5 Needs checking, 15 Unlikely.
+US · not publishable. 47 Built, 40 Buildable, 5 Needs checking, 16 Unlikely.
 
 | Study ID | Split | Experiment ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -222,7 +222,6 @@ US · not publishable. 48 Built, 40 Buildable, 5 Needs checking, 15 Unlikely.
 | e5rfg | seen | e5rfg_pair | **Who has Narrow Brackets? (Example 2 pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*323 rows; 2005* | economics/behavioural | Built | 0.33 | 18 | 323 |
 | e5rfg | seen | e5rfg_six | **Who has Narrow Brackets? (six-decision modules)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*3,608 rows; 2005* | economics/behavioural | Built | 0.33 | 18 | 3,608 |
 | e5rfg | seen | e5rfg_tk | **Who has Narrow Brackets? (Tversky-Kahneman pair)**<br>Do people judge risky choices one at a time and so pick combinations that are worse overall? Hypothetical large-stakes choices.<br>*264 rows; 2005* | economics/behavioural | Built | 0.33 | 18 | 264 |
-| es4xw | seen | es4xw | **Perceptions of Diversity Across Groups**<br>A pictured management team of six people is shown with two Black, two Asian, one of each, or no members from either group, the rest White (4 conditions). Answer: agreement 1-7 with 13 statements on the team's diversity, fairness, wanting to work there, and views on race.<br>*32,228 rows* | moral/social/cognition | Built |  |  | 32,228 |
 | evnyh | seen | evnyh_Q1a_and_validation | **Impact of Response Scale Direction on Survey Responses (Keusch, TESS3 150)**<br>How a five-option frequency scale is shown: high to low or low to high, vertical or horizontal, with vague words, precise day counts or both (12 conditions). Answer: how often in a week you feel sad, nervous etc. or eat and exercise, on a 5-point scale, and days per week, 0-7.<br>*33,932 rows* | survey methodology | Built |  |  | 33,932 |
 | gh396 | seen | gh396 | **Maintaining a Sense of Belonging among the Socially Isolated**<br>Do socially isolated people inflate past group ties to feel they belong?<br>*8,959 rows; 2005; 2x2, 26 outcomes* | moral/social/cognition | Built | 0.22 | 20 | 8,959 |
 | gyrp9 | seen | gyrp9_return | **Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (second mover)**<br>Trust and cooperation games used as survey questions to measure social capital.<br>*914 rows; 2003 phone survey* | economics/behavioural | Built | 0.21 | 24 | 914 |
@@ -297,6 +296,7 @@ US · not publishable. 48 Built, 40 Buildable, 5 Needs checking, 15 Unlikely.
 | etqdx |  | etqdx | **Estimating Number of Lifetime Sexual Partners: A Strategy Activation Study**<br>Why men report more sexual partners than women: prompting different ways of counting.<br>*2006* | moral/social/cognition | Needs checking: download refused | 0.11 |  |  |
 | 5an26 |  | 5an26 | **Gender and Physical Attractiveness as Status Beliefs** | work/family/gender | Unlikely: Photo experiment: attractiveness is shown only by headshots of apparently real people with no stated consent, and a salary outcome is in dollars. |  |  |  |
 | 5fu2b |  | 5fu2b | **Two-Sided Messages and Pandemic Flu: Persuading the Public to Follow Contradictory Government Directives**<br>Persuading people to follow two contradictory pandemic directives: stay apart, yet queue for treatment.<br>*2008; UK priority 0.99; transfers: Mechanism only* | health communication | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.16 |  |  |
+| es4xw |  | es4xw | **Perceptions of Diversity Across Groups**<br>A pictured management team of six people is shown with two Black, two Asian, one of each, or no members from either group, the rest White (4 conditions). Answer: agreement 1-7 with 13 statements on the team's diversity, fairness, wanting to work there, and views on race. | moral/social/cognition | Unlikely: Moved to the image set as IMG87 (9 Nov 2026): the treatment is a team photo, and the text build stated the team's make-up in words respondents never read. |  |  |  |
 | ga53m |  | ga53m | **With God on Our Side**<br>Do people project their own beliefs onto God more than onto the average American?<br>*2007; UK priority 0.83; transfers: Mechanism only* | moral/social/cognition | Unlikely: Ruled out by rich on 10 Oct 2026: the comparison is God vs "the average American"; only the mechanism transfers. | 0.32 | None |  |
 | ht243 |  | ht243 | **Value Choices in the Mass Public: Testing for Framing Effects and Hierarchical Structure**<br>Are people's value priorities stable, or changed by how the choice is framed?<br>*2005; UK priority 0.35; transfers: US-specific* | survey methodology | Unlikely: answering needs US knowledge | 0.15 |  |  |
 | hu45w |  | hu45w | **Factors Affecting Public Opinion on Transgender Medical Care Refusal** | moral/social/cognition | Unlikely: Dropped by rich, 9 Nov 2026. The two main questions' wording (allowed to refuse / required to treat) was drawn at random and the draw is not in the deposit, so only one question (5,002 rows) is buildable; and the patient's name varies to cue US race categories. |  |  |  |

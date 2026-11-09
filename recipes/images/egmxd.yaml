@@ -1,0 +1,537 @@
+study_id: egmxd
+source: tess
+title: 'Do Sustainability Labels Lead to More Sustainable and Healthier Food Choices?: a fast-food menu
+  with QR codes, green low-climate-impact labels or red high-climate-impact labels; the item ordered,
+  whether the menu discouraged high-impact items, how healthy the meal was, climate concern and the importance
+  of healthy choices'
+data_file: egmxd_coded.sav
+licence: 'None stated: the TESS deposit on OSF (egmxd, wolfson1443.zip) gives no reuse terms (OSF API,
+  2 Oct 2026: node_license null), and TESS has since suspended operations. Used with rich''s ruling of
+  9 Nov 2026 that an unstated licence does not block an image build.'
+comparable_to_socsci210: false
+participant_id_var: CaseId
+notes: "Write recipes/images/egmxd.yaml: a fast-food menu with QR codes, green or red labels.\n\nWolfson,\
+  \ TESS 1443 (fielded as NORC 9089.108), \"Do Sustainability Labels Lead to More\nSustainable and Healthier\
+  \ Food Choices?\". OSF egmxd, the TESS deposit wolfson1443.zip:\nthe data (9089_TESS-Wolfson108_20220420.dta),\
+  \ its codebook, the fielded questionnaire in\na simple and a programming version (9089.108_TESS-Wolfson_vFINALsimple.docx\
+  \ and\n_v5clean.docx, \"Q\" and \"PG\" below), NORC's methods report, and the proposal\n(Wolfson1443.pdf)\
+  \ with its description document (TESS-1443.R2 description.docx).\n\nAmeriSpeak, US adults, web only\
+  \ (`SURV_MODE` 2 for all), English only, fielded\n30 March to 13 April 2022. 5,055 completed; all 5,055\
+  \ are in the file and all are built.\nThe menu task ran in Qualtrics (NORC's \"trusted partner website\"\
+  ), the rest at NORC.\n\nEvery judgement is here, in code, so the recipe can be re-derived and reviewed:\n\
+  \n* DESIGN. Three arms between people, the preload `P_COND` (codebook and PG's preload\n  table: 1 Control,\
+  \ 2 Low impact, 3 High impact; 1,667 / 1,671 / 1,717).\n  condition_num is P_COND - 1. Each arm saw\
+  \ one picture of a restaurant menu: the\n  same fourteen items, prices and calories, differing only\
+  \ in their labels.\n  Control: a QR code under every item and \"Scan the QR code for more menu\n  information.\"\
+  \ at the top. Low impact: a green \"LOW CLIMATE IMPACT\" label under\n  the nine items without beef,\
+  \ and a green key at the top. High impact: a red \"HIGH\n  CLIMATE IMPACT\" label under the five beef\
+  \ burgers, and a red key at the top. The\n  three pictures are pixel-identical outside the top key and\
+  \ those label strips\n  (checked in --catalogue). The factor `label` (control / low_impact / high_impact)\n\
+  \  is carried by the words as well as the picture, because the condition quotes\n  every word printed\
+  \ on the menu (docs/CONVENTIONS.md, Image conditions).\n* WHICH PICTURE IS WHICH CONDITION. Q's word/document.xml,\
+  \ read in order, has\n  \"[SHOW IF P_COND=1]\" then \"Q1A.\" then the picture r:embed rId10 (media/image3.png),\n\
+  \  P_COND=2 / Q1B. / rId11 (image4.png), P_COND=3 / Q1C. / rId12 (image5.png). PG\n  embeds the same\
+  \ three files, byte for byte, as rId15 / rId16 / rId17 under the same\n  three blocks, and names them\
+  \ in the line above each: \"[9089.108_MenuA.png]\",\n  \"[9089.108_MenuB.png]\", \"[9089.108_MenuC.png]\"\
+  . Both parsed here and asserted to\n  agree. Two independent witnesses: the data's own timer labels\
+  \ name the arm of each\n  block (\"[Control] Timing\", \"[Low impact] Timing\", \"[High impact] Timing\"\
+  \ on Q1A,\n  Q1B, Q1C), and the proposal's description document prints the same three pictures\n  under\
+  \ \"MENU A: Control condition\",\n  \"MENU B: Green positive sustainability label\" and \"MENU C: Red\
+  \ negative\n  sustainability label\": same size, every pixel within 8 of 255 levels of its own menu\n\
+  \  (another PNG encoding) and differing from the other two by up to 255 (checked in\n  --catalogue).\
+  \ What cannot be shown is that these\n  are the exact files Qualtrics displayed: NORC's MenuA/B/C.png\
+  \ are not in the\n  deposit, so the pictures are Word's copies and may differ in resolution or\n  encoding.\
+  \ Recorded in each catalogue entry's source.\n* WORDS ON THE PICTURE. text_in_image transcribes every\
+  \ word legible in the file,\n  from the top down and left to right, \" / \" between blocks; an item\
+  \ name that\n  wraps onto two lines is joined with a space. Prices, calories and their \"|\" are\n \
+  \ kept as printed. The footprint icon on the key at the top carries the letters\n  \"CO2\", legible\
+  \ there and transcribed; the same icon on the small labels under the\n  items is a few pixels high and\
+  \ its letters cannot be read, so it is described, not\n  transcribed. QR codes are pictures, not words.\
+  \ No brand name or logo is printed\n  anywhere on the menu; the item names are the chain's own and are\
+  \ kept word-for-word.\n* CONDITION. shared_context is the one line of the welcome screen that is not\
+  \ survey\n  mechanics, \"This survey is about restaurant menus.\" (Q and PG agree). Each arm is\n  then\
+  \ OURS: 'The restaurant menu read, from top to bottom: \"...\" <image>', where the\n  quotation is that\
+  \ arm's text_in_image word-for-word. Only the words \"The restaurant\n  menu read, from top to bottom:\"\
+  \ are ours. That is the whole condition of task 0, the\n  menu screen itself. Tasks 1-4 were asked on\
+  \ later screens, so each of their\n  conditions (`items[task].condition_text`) is the menu followed\
+  \ by every question put\n  to the respondent between the menu and that one, word-for-word and in the\
+  \ fielded\n  order, narrated as asked and never as answered: 'You were asked: \"Imagine you are\n  ...\
+  \ before you choose.\" Then you were asked: \"Did you notice any labels ...?\"' and so\n  on (docs/CONVENTIONS.md,\
+  \ Narrating what the respondent did; as\n  del_sandbox_jul2020_global_goals). Only \"You were asked:\"\
+  \ and \"Then you were\n  asked:\" are ours. The questions are quoted without their answer options, and\
+  \ nothing\n  says what anyone chose. Q2's question is included because it was asked, although\n  Q2\
+  \ is not built. The order is fixed: no screen after the menu was randomised. The\n  redirect screen\
+  \ DISPLAY1, the \"No more than 1 choice may be selected\" error and the\n  soft prompt are mechanics\
+  \ and dropped.\n* OUTCOMES. Five:\n  - Task 0, the menu choice. The question is Q1A's words, word-for-word\
+  \ (Q1A, Q1B and\n    Q1C are asserted identical, PG's copy too once its <u> tags and [SPACE] markers\n\
+  \    are removed), then the fourteen items enumerated, as a nominal scale requires:\n    '1 means \"\
+  Whopper\"; ... 14 means \"Side Garden Salad\".' The menu was one clickable\n    picture (Qualtrics \"\
+  hot spot\"), and the deposit records the click as fourteen 0/1\n    variables per arm (Q1A_1 .. Q1A_14\
+  \ for P_COND 1, Q1B_* for 2, Q1C_* for 3), each\n    named in the codebook by its region, \"[Whopper]\"\
+  \ .. \"[Side Garden Salad]\". Every\n    one of the 5,055 respondents has exactly one 1 among their\
+  \ own arm's fourteen and\n    nothing in the other arms' (asserted). So --prep folds the fourteen into\
+  \ ONE\n    variable, `MENU_ITEM` = the region clicked, 1-14 in the menu's reading order: an\n    injective\
+  \ recode of what the respondent did, asked as one question. The region\n    names are asserted equal\
+  \ to the item names transcribed from the picture.\n    SocSci210 instead built fourteen yes/no rows\
+  \ per person (\"Did you choose the\n    Whopper?\"); see ANSWER KEY.\n  - Task 1, Q3: \"How much do\
+  \ you agree or disagree with the following statement?\"\n    then the statement, joined with a space;\
+  \ 1-5, Strongly disagree .. Strongly agree,\n    midpoint Neither agree nor disagree. The data codes\
+  \ it 2-6 (codebook and data\n    agree), so the recode is 2->1 .. 6->5, by the questionnaire's own numbering.\n\
+  \  - Task 2, Q4: \"How unhealthy or healthy do you think the meal you ordered is?\";\n    1-7, Very\
+  \ unhealthy .. Very healthy, midpoint Neither unhealthy nor healthy. \"The\n    meal you ordered\" is\
+  \ the respondent's own task-0 choice, which no row states; the\n    menu is in the condition, as it\
+  \ was in the respondent's memory.\n  - Task 3, Q5: \"How much do you agree or disagree with the following\
+  \ statement? I am\n    concerned about climate change.\"; task 4, Q6: the same stem and \"Making healthy\n\
+  \    food and beverage choices is important to me.\"; both 1-5 as Q3, coded 2-6 and\n    recoded the\
+  \ same way. They are attitudes asked AFTER the labelled menu, so they\n    can move with the label,\
+  \ and are built as outcomes (ruled 9 Nov 2026 by the\n    coordinator, as vemrp's post-treatment environmental\
+  \ concern and 3xy9j's attitude\n    items): the moderator precedent (yjvpn's Q7-Q9, zaqkm's contact\
+  \ item) covers facts\n    about the respondent, not attitudes measured after treatment. The proposal's\
+  \ plan\n    also names climate concern as a possible effect modifier; a reader using it that\n    way\
+  \ must remember it was measured post-treatment. PG prints Q6 as\n    \"is<u>important</u>\", which loses\
+  \ the space once the tags go; Q's \"is important\"\n    is followed.\n  Each was asked on its own screen\
+  \ after the menu, which was not shown again.\n* NOT BUILT. Q2, \"Did you notice any labels (other than\
+  \ calories) next to or below\n  the menu items?\", is the manipulation check: its answer is stated in\
+  \ the condition\n  (docs/CONVENTIONS.md, attention and recall checks), 5,052 rows. SocSci210 did not\n\
+  \  build it either.\n* WHO. All 5,055 completes; `CaseId` is the participant id. 98 \"SKIPPED ON WEB\"\
+  \ drops\n  only that row (Q3: 2, Q4: 3, Q5: 4, Q6: 4; the menu: none).\n* DATA FILE. pyreadstat cannot\
+  \ read this .dta at any encoding (Stata 117, latin-1\n  strings with a cp1252 byte 0x92 in free text),\
+  \ and the pandas fallback in\n  `sources.spss` returns labels in place of codes, which the melt cannot\
+  \ use. So\n  --prep reads the .dta with pandas keeping the CODES, and writes egmxd_coded.sav\n  with\
+  \ every column's codes, value labels and variable labels unchanged, plus\n  `MENU_ITEM`; RELIGO (free\
+  \ text, not built) is left out. The round trip is asserted:\n  every coded value in the .sav maps, through\
+  \ its value labels, to the label pandas\n  decodes from the .dta.\n* PERSONA. The standard AmeriSpeak\
+  \ preloads, b87sm's field set (also TESS on\n  AmeriSpeak, 2021): AGE, GENDER, EDUC5, RACETHNICITY,\
+  \ INCOME (18 bands), MARITAL,\n  EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE,\n\
+  \  PartyID7, IDEO20, RELIG, ATTEND. Left absent: PartyID7 and IDEO20 -1 \"Unknown\"\n  (17 and 62),\
+  \ RELIG and ATTEND 98 \"SKIPPED ON WEB\" (46 and 59), GENDER 0 \"Unknown\"\n  (none here). Only codes\
+  \ this file labels are declared. Not mapped: STATE, REGION9,\n  the banded duplicates AGE4 / AGE7 /\
+  \ INCOME4 / INCOME9, the household age counts,\n  PartyID5. RELIG code 1's label is cut off at 80 characters\
+  \ in the .dta (\"...\n  Presbyterian, Pent\"); `persona_label_rewrite` restores the whole answer from\
+  \ Q's\n  demographic profile, with its own curly apostrophe (the religion crosswalk's\n  spelling).\
+  \ RELIG 14 \"Something else, please specify:\" is a real answer wearing the\n  text-box instruction;\
+  \ it is rewritten \"Something else\", as s6urt and 9xw67 carry it.\n* UK FIT. rich approved this as\
+  \ an image build on 9 Nov 2026, accepting that the menu\n  is a US fast-food chain's, priced in dollars.\
+  \ The questions name no US place, law or\n  institution. US spellings are kept word-for-word. The sample\
+  \ is American.\n* ANSWER KEY. SocSci210 holds this study (fetched 9 Nov 2026): 90,977 rows, 5,055\n\
+  \  people, three conditions, five tasks {0: 70,770, 1: 5,053, 2: 5,052, 3: 5,051,\n  4: 5,051}. Their\
+  \ task 0 is our task 0 as fourteen yes/no rows per person (14 x\n  5,055 = 70,770); their 5,055 \"yes\"\
+  \ rows, item by item and arm by arm, are exactly\n  our task-0 answers. Their tasks 1 and 2 are our\
+  \ Q3 and Q4, the same rows and\n  responses (their 1,666 / 1,670 / 1,717 per arm on Q3, ours too), and\
+  \ their tasks 3\n  and 4 are our Q5 and Q6, cell for cell (1,666 / 1,669 / 1,716 per arm each). So\n\
+  \  90,977 - 70,770 + 5,055 = 25,262 = ours, every response agreeing; hence `comparable_to_socsci210:\
+  \ false`, with the\n  reconciliation asserted in tests/test_gen_egmxd.py. Their conditions describe\
+  \ the\n  menus in their own words (\"You were shown a fast-food menu with a Quick Response\n  code label\
+  \ next to every menu item\"), not the menu's.\n* NOT ASKED OF JEV. The assignment is the preload the\
+  \ questionnaire's own SHOW IF\n  blocks name, the persona is b87sm's, and each outcome's non-answer\
+  \ is its own value\n  label; no paid call.\n\n    uv run python scripts/gen_egmxd.py --prep       #\
+  \ extract the menus, write the .sav\n    uv run python scripts/gen_egmxd.py --catalogue  # (re)write\
+  \ this study's images.json entries\n    uv run python scripts/gen_egmxd.py              # write the\
+  \ recipe\n    uv run python scripts/gen_egmxd.py --check      # exit 1 if it differs"
+condition:
+  source_var: P_COND
+  shared_context: This survey is about restaurant menus.
+  factors:
+  - label
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      label: control
+    text: 'The restaurant menu read, from top to bottom: "Scan the QR code for more menu information.
+      / 2,000 calories a day is used for general nutrition advice, but calorie needs vary. / FLAME GRILLED
+      BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79 | 628 Cal. / Whopper Jr. / $2.19
+      | 314 Cal. / Double Whopper with Cheese / $6.69 | 939 Cal. / Bacon Double Cheeseburger / $2.79 |
+      404 Cal. / Cheeseburger / $1.29 | 283 Cal. / CHICKEN & FISH / Crispy Chicken Sandwich / $4.99 |
+      800 Cal. / Spicy Crispy Chicken Sandwich / $4.99 | 950 Cal. / Original Chicken Sandwich / $4.89
+      | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. / 10 Pc Nuggets / $1.49 | 482 Cal. / Big Fish / $4.99
+      | 513 Cal. / SALADS / Chicken Garden Salad / $5.89 | 870 Cal. / Side Garden Salad / $1.69 | 322
+      Cal." <image>'
+    images:
+    - egmxd_menu_control
+    items:
+      1:
+        condition_text: 'The restaurant menu read, from top to bottom: "Scan the QR code for more menu
+          information. / 2,000 calories a day is used for general nutrition advice, but calorie needs
+          vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79 | 628
+          Cal. / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese / $6.69 | 939 Cal. / Bacon
+          Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283 Cal. / CHICKEN & FISH /
+          Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99 | 950 Cal.
+          / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. / 10 Pc Nuggets
+          / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad / $5.89 | 870
+          Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine you are at a restaurant
+          and about to order dinner. Look at the restaurant menu below and click on the ONE item you want
+          to order for yourself. If you change your mind, click on the item again to deselect. Please
+          scroll down to see all the menu items before you choose." Then you were asked: "Did you notice
+          any labels (other than calories) next to or below the menu items?"'
+      2:
+        condition_text: 'The restaurant menu read, from top to bottom: "Scan the QR code for more menu
+          information. / 2,000 calories a day is used for general nutrition advice, but calorie needs
+          vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79 | 628
+          Cal. / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese / $6.69 | 939 Cal. / Bacon
+          Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283 Cal. / CHICKEN & FISH /
+          Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99 | 950 Cal.
+          / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. / 10 Pc Nuggets
+          / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad / $5.89 | 870
+          Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine you are at a restaurant
+          and about to order dinner. Look at the restaurant menu below and click on the ONE item you want
+          to order for yourself. If you change your mind, click on the item again to deselect. Please
+          scroll down to see all the menu items before you choose." Then you were asked: "Did you notice
+          any labels (other than calories) next to or below the menu items?" Then you were asked: "How
+          much do you agree or disagree with the following statement? Information on the menu discouraged
+          me from wanting to consume menu items with a high impact on climate change."'
+      3:
+        condition_text: 'The restaurant menu read, from top to bottom: "Scan the QR code for more menu
+          information. / 2,000 calories a day is used for general nutrition advice, but calorie needs
+          vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79 | 628
+          Cal. / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese / $6.69 | 939 Cal. / Bacon
+          Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283 Cal. / CHICKEN & FISH /
+          Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99 | 950 Cal.
+          / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. / 10 Pc Nuggets
+          / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad / $5.89 | 870
+          Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine you are at a restaurant
+          and about to order dinner. Look at the restaurant menu below and click on the ONE item you want
+          to order for yourself. If you change your mind, click on the item again to deselect. Please
+          scroll down to see all the menu items before you choose." Then you were asked: "Did you notice
+          any labels (other than calories) next to or below the menu items?" Then you were asked: "How
+          much do you agree or disagree with the following statement? Information on the menu discouraged
+          me from wanting to consume menu items with a high impact on climate change." Then you were asked:
+          "How unhealthy or healthy do you think the meal you ordered is?"'
+      4:
+        condition_text: 'The restaurant menu read, from top to bottom: "Scan the QR code for more menu
+          information. / 2,000 calories a day is used for general nutrition advice, but calorie needs
+          vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79 | 628
+          Cal. / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese / $6.69 | 939 Cal. / Bacon
+          Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283 Cal. / CHICKEN & FISH /
+          Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99 | 950 Cal.
+          / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. / 10 Pc Nuggets
+          / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad / $5.89 | 870
+          Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine you are at a restaurant
+          and about to order dinner. Look at the restaurant menu below and click on the ONE item you want
+          to order for yourself. If you change your mind, click on the item again to deselect. Please
+          scroll down to see all the menu items before you choose." Then you were asked: "Did you notice
+          any labels (other than calories) next to or below the menu items?" Then you were asked: "How
+          much do you agree or disagree with the following statement? Information on the menu discouraged
+          me from wanting to consume menu items with a high impact on climate change." Then you were asked:
+          "How unhealthy or healthy do you think the meal you ordered is?" Then you were asked: "How much
+          do you agree or disagree with the following statement? I am concerned about climate change."'
+  - raw: 2
+    condition_num: 1
+    factors:
+      label: low_impact
+    text: 'The restaurant menu read, from top to bottom: "CO2 / LOW CLIMATE IMPACT / This item is environmentally
+      sustainable. It has low greenhouse gas emissions and a low contribution to climate change. / 2,000
+      calories a day is used for general nutrition advice, but calorie needs vary. / FLAME GRILLED BURGERS
+      / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79 | 628 Cal. / LOW CLIMATE IMPACT / Whopper
+      Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese / $6.69 | 939 Cal. / Bacon Double Cheeseburger
+      / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283 Cal. / CHICKEN & FISH / Crispy Chicken Sandwich
+      / $4.99 | 800 Cal. / LOW CLIMATE IMPACT / Spicy Crispy Chicken Sandwich / $4.99 | 950 Cal. / LOW
+      CLIMATE IMPACT / Original Chicken Sandwich / $4.89 | 662 Cal. / LOW CLIMATE IMPACT / Chicken Jr.
+      / $1.00 | 451 Cal. / LOW CLIMATE IMPACT / 10 Pc Nuggets / $1.49 | 482 Cal. / LOW CLIMATE IMPACT
+      / Big Fish / $4.99 | 513 Cal. / LOW CLIMATE IMPACT / SALADS / Chicken Garden Salad / $5.89 | 870
+      Cal. / LOW CLIMATE IMPACT / Side Garden Salad / $1.69 | 322 Cal. / LOW CLIMATE IMPACT" <image>'
+    images:
+    - egmxd_menu_low_impact
+    items:
+      1:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / LOW CLIMATE IMPACT / This
+          item is environmentally sustainable. It has low greenhouse gas emissions and a low contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79
+          | 628 Cal. / LOW CLIMATE IMPACT / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese
+          / $6.69 | 939 Cal. / Bacon Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283
+          Cal. / CHICKEN & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / LOW CLIMATE IMPACT / Spicy
+          Crispy Chicken Sandwich / $4.99 | 950 Cal. / LOW CLIMATE IMPACT / Original Chicken Sandwich
+          / $4.89 | 662 Cal. / LOW CLIMATE IMPACT / Chicken Jr. / $1.00 | 451 Cal. / LOW CLIMATE IMPACT
+          / 10 Pc Nuggets / $1.49 | 482 Cal. / LOW CLIMATE IMPACT / Big Fish / $4.99 | 513 Cal. / LOW
+          CLIMATE IMPACT / SALADS / Chicken Garden Salad / $5.89 | 870 Cal. / LOW CLIMATE IMPACT / Side
+          Garden Salad / $1.69 | 322 Cal. / LOW CLIMATE IMPACT" <image> You were asked: "Imagine you are
+          at a restaurant and about to order dinner. Look at the restaurant menu below and click on the
+          ONE item you want to order for yourself. If you change your mind, click on the item again to
+          deselect. Please scroll down to see all the menu items before you choose." Then you were asked:
+          "Did you notice any labels (other than calories) next to or below the menu items?"'
+      2:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / LOW CLIMATE IMPACT / This
+          item is environmentally sustainable. It has low greenhouse gas emissions and a low contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79
+          | 628 Cal. / LOW CLIMATE IMPACT / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese
+          / $6.69 | 939 Cal. / Bacon Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283
+          Cal. / CHICKEN & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / LOW CLIMATE IMPACT / Spicy
+          Crispy Chicken Sandwich / $4.99 | 950 Cal. / LOW CLIMATE IMPACT / Original Chicken Sandwich
+          / $4.89 | 662 Cal. / LOW CLIMATE IMPACT / Chicken Jr. / $1.00 | 451 Cal. / LOW CLIMATE IMPACT
+          / 10 Pc Nuggets / $1.49 | 482 Cal. / LOW CLIMATE IMPACT / Big Fish / $4.99 | 513 Cal. / LOW
+          CLIMATE IMPACT / SALADS / Chicken Garden Salad / $5.89 | 870 Cal. / LOW CLIMATE IMPACT / Side
+          Garden Salad / $1.69 | 322 Cal. / LOW CLIMATE IMPACT" <image> You were asked: "Imagine you are
+          at a restaurant and about to order dinner. Look at the restaurant menu below and click on the
+          ONE item you want to order for yourself. If you change your mind, click on the item again to
+          deselect. Please scroll down to see all the menu items before you choose." Then you were asked:
+          "Did you notice any labels (other than calories) next to or below the menu items?" Then you
+          were asked: "How much do you agree or disagree with the following statement? Information on
+          the menu discouraged me from wanting to consume menu items with a high impact on climate change."'
+      3:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / LOW CLIMATE IMPACT / This
+          item is environmentally sustainable. It has low greenhouse gas emissions and a low contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79
+          | 628 Cal. / LOW CLIMATE IMPACT / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese
+          / $6.69 | 939 Cal. / Bacon Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283
+          Cal. / CHICKEN & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / LOW CLIMATE IMPACT / Spicy
+          Crispy Chicken Sandwich / $4.99 | 950 Cal. / LOW CLIMATE IMPACT / Original Chicken Sandwich
+          / $4.89 | 662 Cal. / LOW CLIMATE IMPACT / Chicken Jr. / $1.00 | 451 Cal. / LOW CLIMATE IMPACT
+          / 10 Pc Nuggets / $1.49 | 482 Cal. / LOW CLIMATE IMPACT / Big Fish / $4.99 | 513 Cal. / LOW
+          CLIMATE IMPACT / SALADS / Chicken Garden Salad / $5.89 | 870 Cal. / LOW CLIMATE IMPACT / Side
+          Garden Salad / $1.69 | 322 Cal. / LOW CLIMATE IMPACT" <image> You were asked: "Imagine you are
+          at a restaurant and about to order dinner. Look at the restaurant menu below and click on the
+          ONE item you want to order for yourself. If you change your mind, click on the item again to
+          deselect. Please scroll down to see all the menu items before you choose." Then you were asked:
+          "Did you notice any labels (other than calories) next to or below the menu items?" Then you
+          were asked: "How much do you agree or disagree with the following statement? Information on
+          the menu discouraged me from wanting to consume menu items with a high impact on climate change."
+          Then you were asked: "How unhealthy or healthy do you think the meal you ordered is?"'
+      4:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / LOW CLIMATE IMPACT / This
+          item is environmentally sustainable. It has low greenhouse gas emissions and a low contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / Impossible Whopper / $6.79
+          | 628 Cal. / LOW CLIMATE IMPACT / Whopper Jr. / $2.19 | 314 Cal. / Double Whopper with Cheese
+          / $6.69 | 939 Cal. / Bacon Double Cheeseburger / $2.79 | 404 Cal. / Cheeseburger / $1.29 | 283
+          Cal. / CHICKEN & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / LOW CLIMATE IMPACT / Spicy
+          Crispy Chicken Sandwich / $4.99 | 950 Cal. / LOW CLIMATE IMPACT / Original Chicken Sandwich
+          / $4.89 | 662 Cal. / LOW CLIMATE IMPACT / Chicken Jr. / $1.00 | 451 Cal. / LOW CLIMATE IMPACT
+          / 10 Pc Nuggets / $1.49 | 482 Cal. / LOW CLIMATE IMPACT / Big Fish / $4.99 | 513 Cal. / LOW
+          CLIMATE IMPACT / SALADS / Chicken Garden Salad / $5.89 | 870 Cal. / LOW CLIMATE IMPACT / Side
+          Garden Salad / $1.69 | 322 Cal. / LOW CLIMATE IMPACT" <image> You were asked: "Imagine you are
+          at a restaurant and about to order dinner. Look at the restaurant menu below and click on the
+          ONE item you want to order for yourself. If you change your mind, click on the item again to
+          deselect. Please scroll down to see all the menu items before you choose." Then you were asked:
+          "Did you notice any labels (other than calories) next to or below the menu items?" Then you
+          were asked: "How much do you agree or disagree with the following statement? Information on
+          the menu discouraged me from wanting to consume menu items with a high impact on climate change."
+          Then you were asked: "How unhealthy or healthy do you think the meal you ordered is?" Then you
+          were asked: "How much do you agree or disagree with the following statement? I am concerned
+          about climate change."'
+  - raw: 3
+    condition_num: 2
+    factors:
+      label: high_impact
+    text: 'The restaurant menu read, from top to bottom: "CO2 / HIGH CLIMATE IMPACT / This item is not
+      environmentally sustainable. It has high greenhouse gas emissions and a high contribution to climate
+      change. / 2,000 calories a day is used for general nutrition advice, but calorie needs vary. / FLAME
+      GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / HIGH CLIMATE IMPACT / Impossible Whopper / $6.79
+      | 628 Cal. / Whopper Jr. / $2.19 | 314 Cal. / HIGH CLIMATE IMPACT / Double Whopper with Cheese /
+      $6.69 | 939 Cal. / HIGH CLIMATE IMPACT / Bacon Double Cheeseburger / $2.79 | 404 Cal. / HIGH CLIMATE
+      IMPACT / Cheeseburger / $1.29 | 283 Cal. / HIGH CLIMATE IMPACT / CHICKEN & FISH / Crispy Chicken
+      Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99 | 950 Cal. / Original Chicken
+      Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. / 10 Pc Nuggets / $1.49 | 482 Cal.
+      / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad / $5.89 | 870 Cal. / Side Garden Salad
+      / $1.69 | 322 Cal." <image>'
+    images:
+    - egmxd_menu_high_impact
+    items:
+      1:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / HIGH CLIMATE IMPACT / This
+          item is not environmentally sustainable. It has high greenhouse gas emissions and a high contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / HIGH CLIMATE IMPACT / Impossible
+          Whopper / $6.79 | 628 Cal. / Whopper Jr. / $2.19 | 314 Cal. / HIGH CLIMATE IMPACT / Double Whopper
+          with Cheese / $6.69 | 939 Cal. / HIGH CLIMATE IMPACT / Bacon Double Cheeseburger / $2.79 | 404
+          Cal. / HIGH CLIMATE IMPACT / Cheeseburger / $1.29 | 283 Cal. / HIGH CLIMATE IMPACT / CHICKEN
+          & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99
+          | 950 Cal. / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. /
+          10 Pc Nuggets / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad
+          / $5.89 | 870 Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine
+          you are at a restaurant and about to order dinner. Look at the restaurant menu below and click
+          on the ONE item you want to order for yourself. If you change your mind, click on the item again
+          to deselect. Please scroll down to see all the menu items before you choose." Then you were
+          asked: "Did you notice any labels (other than calories) next to or below the menu items?"'
+      2:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / HIGH CLIMATE IMPACT / This
+          item is not environmentally sustainable. It has high greenhouse gas emissions and a high contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / HIGH CLIMATE IMPACT / Impossible
+          Whopper / $6.79 | 628 Cal. / Whopper Jr. / $2.19 | 314 Cal. / HIGH CLIMATE IMPACT / Double Whopper
+          with Cheese / $6.69 | 939 Cal. / HIGH CLIMATE IMPACT / Bacon Double Cheeseburger / $2.79 | 404
+          Cal. / HIGH CLIMATE IMPACT / Cheeseburger / $1.29 | 283 Cal. / HIGH CLIMATE IMPACT / CHICKEN
+          & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99
+          | 950 Cal. / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. /
+          10 Pc Nuggets / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad
+          / $5.89 | 870 Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine
+          you are at a restaurant and about to order dinner. Look at the restaurant menu below and click
+          on the ONE item you want to order for yourself. If you change your mind, click on the item again
+          to deselect. Please scroll down to see all the menu items before you choose." Then you were
+          asked: "Did you notice any labels (other than calories) next to or below the menu items?" Then
+          you were asked: "How much do you agree or disagree with the following statement? Information
+          on the menu discouraged me from wanting to consume menu items with a high impact on climate
+          change."'
+      3:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / HIGH CLIMATE IMPACT / This
+          item is not environmentally sustainable. It has high greenhouse gas emissions and a high contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / HIGH CLIMATE IMPACT / Impossible
+          Whopper / $6.79 | 628 Cal. / Whopper Jr. / $2.19 | 314 Cal. / HIGH CLIMATE IMPACT / Double Whopper
+          with Cheese / $6.69 | 939 Cal. / HIGH CLIMATE IMPACT / Bacon Double Cheeseburger / $2.79 | 404
+          Cal. / HIGH CLIMATE IMPACT / Cheeseburger / $1.29 | 283 Cal. / HIGH CLIMATE IMPACT / CHICKEN
+          & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99
+          | 950 Cal. / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. /
+          10 Pc Nuggets / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad
+          / $5.89 | 870 Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine
+          you are at a restaurant and about to order dinner. Look at the restaurant menu below and click
+          on the ONE item you want to order for yourself. If you change your mind, click on the item again
+          to deselect. Please scroll down to see all the menu items before you choose." Then you were
+          asked: "Did you notice any labels (other than calories) next to or below the menu items?" Then
+          you were asked: "How much do you agree or disagree with the following statement? Information
+          on the menu discouraged me from wanting to consume menu items with a high impact on climate
+          change." Then you were asked: "How unhealthy or healthy do you think the meal you ordered is?"'
+      4:
+        condition_text: 'The restaurant menu read, from top to bottom: "CO2 / HIGH CLIMATE IMPACT / This
+          item is not environmentally sustainable. It has high greenhouse gas emissions and a high contribution
+          to climate change. / 2,000 calories a day is used for general nutrition advice, but calorie
+          needs vary. / FLAME GRILLED BURGERS / Whopper / $5.79 | 657 Cal. / HIGH CLIMATE IMPACT / Impossible
+          Whopper / $6.79 | 628 Cal. / Whopper Jr. / $2.19 | 314 Cal. / HIGH CLIMATE IMPACT / Double Whopper
+          with Cheese / $6.69 | 939 Cal. / HIGH CLIMATE IMPACT / Bacon Double Cheeseburger / $2.79 | 404
+          Cal. / HIGH CLIMATE IMPACT / Cheeseburger / $1.29 | 283 Cal. / HIGH CLIMATE IMPACT / CHICKEN
+          & FISH / Crispy Chicken Sandwich / $4.99 | 800 Cal. / Spicy Crispy Chicken Sandwich / $4.99
+          | 950 Cal. / Original Chicken Sandwich / $4.89 | 662 Cal. / Chicken Jr. / $1.00 | 451 Cal. /
+          10 Pc Nuggets / $1.49 | 482 Cal. / Big Fish / $4.99 | 513 Cal. / SALADS / Chicken Garden Salad
+          / $5.89 | 870 Cal. / Side Garden Salad / $1.69 | 322 Cal." <image> You were asked: "Imagine
+          you are at a restaurant and about to order dinner. Look at the restaurant menu below and click
+          on the ONE item you want to order for yourself. If you change your mind, click on the item again
+          to deselect. Please scroll down to see all the menu items before you choose." Then you were
+          asked: "Did you notice any labels (other than calories) next to or below the menu items?" Then
+          you were asked: "How much do you agree or disagree with the following statement? Information
+          on the menu discouraged me from wanting to consume menu items with a high impact on climate
+          change." Then you were asked: "How unhealthy or healthy do you think the meal you ordered is?"
+          Then you were asked: "How much do you agree or disagree with the following statement? I am concerned
+          about climate change."'
+outcomes:
+- var: MENU_ITEM
+  task_num: 0
+  question: Imagine you are at a restaurant and about to order dinner. Look at the restaurant menu below
+    and click on the ONE item you want to order for yourself. If you change your mind, click on the item
+    again to deselect. Please scroll down to see all the menu items before you choose. 1 means "Whopper";
+    2 means "Impossible Whopper"; 3 means "Whopper Jr."; 4 means "Double Whopper with Cheese"; 5 means
+    "Bacon Double Cheeseburger"; 6 means "Cheeseburger"; 7 means "Crispy Chicken Sandwich"; 8 means "Spicy
+    Crispy Chicken Sandwich"; 9 means "Original Chicken Sandwich"; 10 means "Chicken Jr."; 11 means "10
+    Pc Nuggets"; 12 means "Big Fish"; 13 means "Chicken Garden Salad"; 14 means "Side Garden Salad".
+  scale:
+    min: 1
+    max: 14
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+- var: Q3
+  task_num: 1
+  question: How much do you agree or disagree with the following statement? Information on the menu discouraged
+    me from wanting to consume menu items with a high impact on climate change.
+  scale:
+    min: 1
+    max: 5
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    2: 1
+    3: 2
+    4: 3
+    5: 4
+    6: 5
+- var: Q4
+  task_num: 2
+  question: How unhealthy or healthy do you think the meal you ordered is?
+  scale:
+    min: 1
+    max: 7
+    min_label: Very unhealthy
+    max_label: Very healthy
+    mid_label: Neither unhealthy nor healthy
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q5
+  task_num: 3
+  question: How much do you agree or disagree with the following statement? I am concerned about climate
+    change.
+  scale:
+    min: 1
+    max: 5
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    2: 1
+    3: 2
+    4: 3
+    5: 4
+    6: 5
+- var: Q6
+  task_num: 4
+  question: How much do you agree or disagree with the following statement? Making healthy food and beverage
+    choices is important to me.
+  scale:
+    min: 1
+    max: 5
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    2: 1
+    3: 2
+    4: 3
+    5: 4
+    6: 5
+response_recode: {}
+missing_codes: []
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO20
+  religion: RELIG
+  religious_attendance: ATTEND
+persona_label_rewrite:
+  RELIG:
+    1: Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian,
+      Reformed, Church of Christ, Jehovah’s Witness, etc.)
+    14: Something else
+persona_missing:
+  PartyID7:
+  - -1
+  IDEO20:
+  - -1
+  RELIG:
+  - 98
+  ATTEND:
+  - 98
+  GENDER:
+  - 0

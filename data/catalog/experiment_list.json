@@ -2166,12 +2166,11 @@
    "id": "es4xw",
    "title": "Perceptions of Diversity Across Groups",
    "description": "A pictured management team of six people is shown with two Black, two Asian, one of each, or no members from either group, the rest White (4 conditions). Answer: agreement 1-7 with 13 statements on the team's diversity, fairness, wanting to work there, and views on race.",
-   "details": "32,228 rows",
+   "details": "",
    "category": "moral/social/cognition",
-   "status": "Built",
-   "reason": "",
-   "novelty": null,
-   "recipe": "es4xw"
+   "status": "Unlikely",
+   "reason": "Moved to the image set as IMG87 (9 Nov 2026): the treatment is a team photo, and the text build stated the team's make-up in words respondents never read.",
+   "novelty": null
   },
   {
    "source": "TESS",
@@ -2701,7 +2700,7 @@
  "built": {
   "Innovation Panel": 22,
   "DEL": 0,
-  "TESS": 33,
+  "TESS": 32,
   "Harvard Dataverse": 13
  },
  "meta": {

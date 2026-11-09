@@ -1,0 +1,631 @@
+study_id: mkgvp
+source: tess
+title: 'Affective Architecture: a burglary to report in person, then one of six police buildings, seen
+  from a distance and close up; feelings on approaching it, trust in the officers inside, and likelihood
+  of going in'
+data_file: 8041.050_TESS 050 Headley.dta
+licence: 'None stated: the TESS deposit on OSF (mkgvp, headley1126.zip) gives no reuse terms, and TESS
+  has since suspended operations. The photographs are of real buildings, by photographers the deposit
+  does not name. Used with rich''s ruling of 9 Nov 2026 that an unstated licence does not block an image
+  build.'
+comparable_to_socsci210: false
+participant_id_var: CaseId
+notes: "Write recipes/images/mkgvp.yaml: a burglary to report, and a police building seen twice.\n\nHeadley,\
+  \ Blount-Hill and St. John, TESS 1126 (fielded as NORC 8041.050, \"TESS 050\nHeadley\"), \"Affective\
+  \ Architecture: Isolating the Influence of Physical Environment on\nPerceptual and Behavioral Attitudes\
+  \ toward Police\". OSF mkgvp, the TESS deposit\nheadley1126.zip: the data (8041.050_TESS 050 Headley.dta,\
+  \ and TESS0050_Headley_STATA.dta,\nwhose bytes differ in the header but whose 732 x 65 values are identical),\
+  \ its codebook,\nthe fielded questionnaire (8041.050_TESS 050 Headley_quex_v3clean.docx, \"Q\" below),\
+  \ NORC's\nfield report, the proposal (Headley1126.pdf) and the researchers' description document.\n\n\
+  AmeriSpeak, US adults, web only (`SURV_MODE` 2 for all), English only (`SURV_LANG` 1),\nfielded 13 to\
+  \ 28 November 2019. The proposal asked for equal White, Black and Latinx\nthirds, and RACETHNICITY holds\
+  \ only codes 1, 2 and 4. 732 completed; all are built.\n\nEvery judgement is here, in code, so the recipe\
+  \ can be re-derived and reviewed:\n\n* DESIGN. Twelve conditions between people: six buildings crossed\
+  \ with two question\n  orders. The building is the preload `P_HEADLEY` (codebook and Q: 1-3 \"Hostile\n\
+  \  defensive 1-3\", 4-6 \"Welcoming 1-3\"; 126 / 121 / 120 / 127 / 117 / 121). The proposal's\n  two\
+  \ factors are \"type of building\" (hostile/defensive or welcoming) and \"external image\"\n  (three\
+  \ buildings of each type), so `design` and `building` here; both are carried by\n  the pictures alone.\
+  \ The order is the script's `RND_01` (358 / 374), factor `order`: Q's\n  directives read \"IF RND_01=0\
+  \ SHOW HEADLEY3, Q4, Q5 BEFORE HEADLEY1\" and \"IF RND_01=1\n  SHOW HEADLEY3, Q4, Q5 AFTER Q3\" (parsed\
+  \ and asserted). The data cannot confirm that\n  direction (no timestamp covers Q4 or Q5), so it rests\
+  \ on the directive alone. RND_01 is\n  independent of P_HEADLEY (every building has 50 to 70 people\
+  \ in each order).\n  condition_num is 6 x RND_01 + P_HEADLEY - 1: 0-5 the six buildings with the police\n\
+  \  questions first, 6-11 the same buildings with them after. QC rules 1 and 5 compare words\n  AND images\
+  \ (docs/CONVENTIONS.md, Image conditions).\n* WHICH PICTURE IS WHICH ARM. Q's .txt export shows the\
+  \ [SHOW IF P_HEADLEY=n] lines with\n  nothing under them, so the mapping is read from word/document.xml\
+  \ in document order:\n  each \"[SHOW IF P_HEADLEY=n]\" paragraph is followed by exactly one embedded\
+  \ picture.\n  Screen HEADLEY1A (\"You now see the police department from a distance.\") shows\n  image3,\
+  \ image4, image5, image6, image7, image8 for n = 1..6; screen HEADLEY2 (\"You are\n  now closer...\"\
+  ) shows image9..image14; and Q1, Q2 and Q3 each repeat HEADLEY2's\n  picture above the question, the\
+  \ same media file for the same n (asserted). A second,\n  independent witness: every picture's alt text\
+  \ is the path of the client's original\n  file, \"Image n hostile police building k.png\" for the distant\
+  \ view and \"... closeup\"\n  for the near one (n = 1-3 hostile k = n, n = 4-6 welcoming k = n - 3),\
+  \ and it agrees\n  with the [SHOW IF] mapping for all 30 placements (asserted). Each distant photo and\
+  \ its\n  close-up show the same building (read by eye). Word draws every picture uncropped\n  (`<a:srcRect/>`\
+  \ on all of them, asserted), so the media file is what the page showed.\n  The files are the copies\
+  \ NORC pasted into its questionnaire; the fielded files may\n  differ in resolution or encoding.\n*\
+  \ REDACTIONS. In four of the twelve photographs someone painted flat rectangles over\n  lettering (P_HEADLEY\
+  \ 3, 4 and 6's close-ups and 6's distant view). The rectangles are\n  part of what respondents saw,\
+  \ so the catalogue describes them and transcribes what\n  remains readable; it never restores what they\
+  \ hide. The other photographs show their\n  buildings' names or signs, sometimes legibly (catalogue\
+  \ `text_in_image`).\n* CONDITION. No shared_context: the order narration comes first, so nothing every\
+  \ arm\n  shares is a prefix. Every arm reads HEADLEY1 then HEADLEY1A's words, word-for-word from\n \
+  \ Q (the instruction to imagine the scenario, the burglary vignette, the walk to the\n  police department\
+  \ and \"You now see the police department from a distance.\"), then\n  \"<image> You are now closer\
+  \ to approaching the police department. <image>\": the distant\n  photo, HEADLEY2's one sentence word-for-word,\
+  \ and the close-up, in the order seen.\n  Images and these words are identical across the two orders.\n\
+  \  For RND_01 = 0, the earlier block is narrated in front of that, as docs/CONVENTIONS.md\n  (\"Narrating\
+  \ what the respondent did\") allows: what they were shown and asked, never\n  what they answered. The\
+  \ quoted words are HEADLEY3, Q4's stem and nine statements, and\n  Q5, all word-for-word from Q; the\
+  \ nine statements are listed in Q's order, and the row\n  says they were shown in random order, which\
+  \ Q's [RANDOMIZE] makes true for everyone.\n  The words that are OURS, added to join them, are exactly\
+  \ these four phrases, the\n  second used twice: \"You were first shown:\" / \"You were then asked:\"\
+  \ / \"for each of nine\n  statements, shown in random order:\" / \"After that:\".\n  For RND_01 = 1\
+  \ the block came after Q3, so no row names it (later screens are never\n  named). The close-up appeared\
+  \ again above each question\n  screen; the row places it once, directly before its question, which is\
+  \ the order the\n  respondent met it. Typography only: curly quotes straightened, the ellipsis \"...\"\
+  \ made\n  ASCII; \"as honestly and realistic as you can\" is the instrument's grammar and is kept.\n\
+  * OUTCOMES. Twelve, each asked on a screen with the close-up above it:\n  - Q1A-Q1I (task 0-8): the\
+  \ nine items of grid Q1, each \"Indicate the likelihood that you\n    would feel the following emotions\
+  \ and/or sentiments: I would feel...\" then the item\n    (\"Safe as I am approaching this building\"\
+  ). The `<u>` tags round each emotion word are\n    programming markup for underlining and are removed.\
+  \ The item in each variable is read\n    from the codebook's bracketed label and asserted to be Q's\
+  \ listing order. Answers 1-5,\n    1 \"Clearly describes my feelings\" .. 5 \"Does not describe my feelings\"\
+  , midpoint\n    \"Moderately describes my feelings\" (the data's labels, asserted equal to Q's).\n \
+  \ - Q2A, Q2B (task 9-10): \"Please indicate your level of agreement with the following\n    statement:\"\
+  \ then each of the two statements; 1 \"Strongly agree\" .. 5 \"Strongly\n    disagree\".\n  - Q3 (task\
+  \ 11): \"How likely are you to proceed in entering the police department?\";\n    1 \"Very likely\"\
+  \ .. 5 \"Very unlikely\".\n  Item order within Q1 and Q2 was randomised and not recorded; no row says\
+  \ where its item\n  sat. Each outcome drops 77 / 98 / 99 (DON'T KNOW / SKIPPED ON WEB / REFUSED, its\
+  \ own\n  labels; only 98 occurs: 7 to 15 per Q1 item, 1 each on Q2A and Q2B, none on Q3).\n* NOT BUILT.\
+  \ Q4 (nine police-legitimacy items: obligation to obey, normative alignment,\n  satisfaction), Q5 (satisfaction\
+  \ at the last police stop), Q6 (ever been inside a police\n  department) and Q7 (ever arrested). The\
+  \ proposal calls all of them \"demographic and\n  experiential items that might otherwise help to explain\
+  \ statistical relationships\",\n  i.e. controls, and asks for HEADLEY3/Q4/Q5 to be placed before the\
+  \ vignette for half the\n  sample and after Q3 for the other half (`RND_01`, 358 / 374) \"primarily\
+  \ to avoid priming\n  stimuli responses\". They are statements about the respondent and the police in\
+  \ general,\n  not about the building shown, so they are not outcomes of this manipulation (the same\n\
+  \  call as yjvpn's moderator block and s6urt's profile items). Building Q4 for the\n  RND_01 = 1 half\
+  \ only would make an outcome of a control measure for a self-selected\n  half of its sample. Q6 and\
+  \ Q7 are facts about the respondent, but asked after the\n  stimulus, so not admissible as persona;\
+  \ Q4/Q5 for the RND_01 = 0 half were asked\n  before it, but sit in the outcomes' domain (police), so\
+  \ the domain rule keeps them out\n  of the persona too. SocSci210 did not build them either. Excluded:\
+  \ Q4-Q7, twelve items,\n  8,729 answers after skips (Q4 6,545, Q5 730, Q6 730, Q7 724).\n* WHO. All\
+  \ 732 completes. `CaseId` is the participant id. Respondents answered each\n  question or skipped it;\
+  \ each skip drops only that row. Rows: 12 outcomes x 732 people =\n  8,784 possible, less 94 skips (92\
+  \ on Q1, 2 on Q2, none on Q3) = 8,690.\n* PERSONA. The standard AmeriSpeak preloads, as xtvu5 (the same\
+  \ NORC series): AGE,\n  GENDER, EDUC (14 levels; Jev 0.99 over EDUC4), RACETHNICITY, INCOME (18 bands),\
+  \ MARITAL,\n  EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE, and the\n\
+  \  custom preloads P_PARTYID7, P_IDEO, P_RELIG, P_ATTEND (blank, not coded, where missing:\n  5 / 0\
+  \ / 8 / 7). GENDER 0 \"Unknown\" is left absent (no code 0 occurs; inert). P_IDEO 8\n  \"Haven't thought\
+  \ much about it\" is KEPT as an answer, as xtvu5 keeps it; Jev called it\n  non_answer at 0.72 (runner-up\
+  \ answer 0.19). `recipe_prep.py` preferred REGION9 at 0.40\n  over REGION4 at 0.45 in the run-off; REGION4\
+  \ is used, as every AmeriSpeak sibling does,\n  because the persona crosswalk maps the four-region scheme.\
+  \ Two value labels are\n  restored from Q's own preload table by `persona_label_rewrite`: P_RELIG 1,\
+  \ cut off at\n  80 characters in the .dta (\"... Presbyterian, Pent\"), and P_IDEO 2, misspelt \"Libreal\"\
+  \n  in the .dta where Q's table reads \"Liberal\" (no built row in the corpus carries\n  \"Libreal\"\
+  ). Not mapped: STATE, REGION9, AGE4 / AGE7 / EDUC4 (banded duplicates), the\n  household age counts,\
+  \ Device, WEIGHT. No persona field names a building or a design.\n* UK FIT. The photographs are recognisable\
+  \ US police buildings, several with US and state\n  flags; rich accepted that for image builds on 9\
+  \ Nov 2026. The words name no US place or\n  institution (\"police department\" and the spelling \"\
+  neighbor\" are kept word-for-word).\n  The sample is American.\n* ANSWER KEY. SocSci210 holds this study:\
+  \ 8,690 rows, the same answers, but a different\n  scope, so `comparable_to_socsci210` is false and\
+  \ the comparison lives in\n  tests/test_gen_mkgvp.py. SocSci210 groups the twelve outcomes into three\
+  \ tasks (Q1, Q2,\n  Q3), and its two conditions are RND_01, not the building: it describes condition\
+  \ 0 as a\n  hostile/defensive building and 1 as a welcoming one, and its six condition-by-task\n  response\
+  \ tables equal ours grouped by `order`, cell for cell, while they do not match\n  ours grouped by `design`.\
+  \ So SocSci210's text names the wrong building type for about\n  half the people in each of its conditions.\n\
+  * JEV. `scripts/recipe_prep.py mkgvp --source tess` (instrument only): assignment\n  P_HEADLEY at 0.94;\
+  \ persona as mapped above, with the two overrulings stated; no\n  outcome label surprises. It found\
+  \ no questionnaire to scan, because Q is a .docx; the\n  directives here are parsed from the .docx by\
+  \ this script.\n\n    uv run python scripts/gen_mkgvp.py --prep       # copy the twelve photos out of\
+  \ the .docx\n    uv run python scripts/gen_mkgvp.py --catalogue  # (re)write this study's images.json\
+  \ entries\n    uv run python scripts/gen_mkgvp.py              # write the recipe\n    uv run python\
+  \ scripts/gen_mkgvp.py --check      # exit 1 if it differs"
+condition:
+  source_vars:
+  - P_HEADLEY
+  - RND_01
+  factors:
+  - design
+  - building
+  - order
+  arms:
+  - raw_values:
+      P_HEADLEY: 1
+      RND_01: 0
+    condition_num: 0
+    factors:
+      design: hostile defensive
+      building: '1'
+      order: police questions first
+    text: 'You were first shown: "We''re going to ask you about your perceptions of the criminal justice
+      system." You were then asked: "Please indicate your level of agreement with the following statements:"
+      for each of nine statements, shown in random order: "I am not satisfied with the police." "It is
+      my moral duty to back the decisions made by the police because the police are legitimate authorities."
+      "You should do what the police tell you even if you disagree." "The police care about the well-being
+      of everyone they deal with." "I generally support how the police usually act." "I do not have confidence
+      that police can do their job well." "It is my moral duty to do what the police tell me even if I
+      do not understand or agree with the reasons." "The police cannot be trusted to make the right decisions."
+      "The police generally have the same sense of right and wrong as I do." You were then asked: "Think
+      back to the last time you were stopped by the police. How satisfied were you with the way they treated
+      you?" After that: Please imagine being in the following hypothetical scenario and answer the questions
+      as honestly and realistic as you can... Imagine you are walking down the street and you realize
+      your new neighbor''s home has been broken into and vandalized while they were out of town. Instead
+      of calling the police, you decide to go into the police department to report the crime to the police
+      in person. The police department is only a few miles from your home. You leave your house and head
+      to the police department. You now see the police department from a distance. <image> You are now
+      closer to approaching the police department. <image>'
+    images:
+    - mkgvp_p1_distance
+    - mkgvp_p1_closeup
+  - raw_values:
+      P_HEADLEY: 2
+      RND_01: 0
+    condition_num: 1
+    factors:
+      design: hostile defensive
+      building: '2'
+      order: police questions first
+    text: 'You were first shown: "We''re going to ask you about your perceptions of the criminal justice
+      system." You were then asked: "Please indicate your level of agreement with the following statements:"
+      for each of nine statements, shown in random order: "I am not satisfied with the police." "It is
+      my moral duty to back the decisions made by the police because the police are legitimate authorities."
+      "You should do what the police tell you even if you disagree." "The police care about the well-being
+      of everyone they deal with." "I generally support how the police usually act." "I do not have confidence
+      that police can do their job well." "It is my moral duty to do what the police tell me even if I
+      do not understand or agree with the reasons." "The police cannot be trusted to make the right decisions."
+      "The police generally have the same sense of right and wrong as I do." You were then asked: "Think
+      back to the last time you were stopped by the police. How satisfied were you with the way they treated
+      you?" After that: Please imagine being in the following hypothetical scenario and answer the questions
+      as honestly and realistic as you can... Imagine you are walking down the street and you realize
+      your new neighbor''s home has been broken into and vandalized while they were out of town. Instead
+      of calling the police, you decide to go into the police department to report the crime to the police
+      in person. The police department is only a few miles from your home. You leave your house and head
+      to the police department. You now see the police department from a distance. <image> You are now
+      closer to approaching the police department. <image>'
+    images:
+    - mkgvp_p2_distance
+    - mkgvp_p2_closeup
+  - raw_values:
+      P_HEADLEY: 3
+      RND_01: 0
+    condition_num: 2
+    factors:
+      design: hostile defensive
+      building: '3'
+      order: police questions first
+    text: 'You were first shown: "We''re going to ask you about your perceptions of the criminal justice
+      system." You were then asked: "Please indicate your level of agreement with the following statements:"
+      for each of nine statements, shown in random order: "I am not satisfied with the police." "It is
+      my moral duty to back the decisions made by the police because the police are legitimate authorities."
+      "You should do what the police tell you even if you disagree." "The police care about the well-being
+      of everyone they deal with." "I generally support how the police usually act." "I do not have confidence
+      that police can do their job well." "It is my moral duty to do what the police tell me even if I
+      do not understand or agree with the reasons." "The police cannot be trusted to make the right decisions."
+      "The police generally have the same sense of right and wrong as I do." You were then asked: "Think
+      back to the last time you were stopped by the police. How satisfied were you with the way they treated
+      you?" After that: Please imagine being in the following hypothetical scenario and answer the questions
+      as honestly and realistic as you can... Imagine you are walking down the street and you realize
+      your new neighbor''s home has been broken into and vandalized while they were out of town. Instead
+      of calling the police, you decide to go into the police department to report the crime to the police
+      in person. The police department is only a few miles from your home. You leave your house and head
+      to the police department. You now see the police department from a distance. <image> You are now
+      closer to approaching the police department. <image>'
+    images:
+    - mkgvp_p3_distance
+    - mkgvp_p3_closeup
+  - raw_values:
+      P_HEADLEY: 4
+      RND_01: 0
+    condition_num: 3
+    factors:
+      design: welcoming
+      building: '1'
+      order: police questions first
+    text: 'You were first shown: "We''re going to ask you about your perceptions of the criminal justice
+      system." You were then asked: "Please indicate your level of agreement with the following statements:"
+      for each of nine statements, shown in random order: "I am not satisfied with the police." "It is
+      my moral duty to back the decisions made by the police because the police are legitimate authorities."
+      "You should do what the police tell you even if you disagree." "The police care about the well-being
+      of everyone they deal with." "I generally support how the police usually act." "I do not have confidence
+      that police can do their job well." "It is my moral duty to do what the police tell me even if I
+      do not understand or agree with the reasons." "The police cannot be trusted to make the right decisions."
+      "The police generally have the same sense of right and wrong as I do." You were then asked: "Think
+      back to the last time you were stopped by the police. How satisfied were you with the way they treated
+      you?" After that: Please imagine being in the following hypothetical scenario and answer the questions
+      as honestly and realistic as you can... Imagine you are walking down the street and you realize
+      your new neighbor''s home has been broken into and vandalized while they were out of town. Instead
+      of calling the police, you decide to go into the police department to report the crime to the police
+      in person. The police department is only a few miles from your home. You leave your house and head
+      to the police department. You now see the police department from a distance. <image> You are now
+      closer to approaching the police department. <image>'
+    images:
+    - mkgvp_p4_distance
+    - mkgvp_p4_closeup
+  - raw_values:
+      P_HEADLEY: 5
+      RND_01: 0
+    condition_num: 4
+    factors:
+      design: welcoming
+      building: '2'
+      order: police questions first
+    text: 'You were first shown: "We''re going to ask you about your perceptions of the criminal justice
+      system." You were then asked: "Please indicate your level of agreement with the following statements:"
+      for each of nine statements, shown in random order: "I am not satisfied with the police." "It is
+      my moral duty to back the decisions made by the police because the police are legitimate authorities."
+      "You should do what the police tell you even if you disagree." "The police care about the well-being
+      of everyone they deal with." "I generally support how the police usually act." "I do not have confidence
+      that police can do their job well." "It is my moral duty to do what the police tell me even if I
+      do not understand or agree with the reasons." "The police cannot be trusted to make the right decisions."
+      "The police generally have the same sense of right and wrong as I do." You were then asked: "Think
+      back to the last time you were stopped by the police. How satisfied were you with the way they treated
+      you?" After that: Please imagine being in the following hypothetical scenario and answer the questions
+      as honestly and realistic as you can... Imagine you are walking down the street and you realize
+      your new neighbor''s home has been broken into and vandalized while they were out of town. Instead
+      of calling the police, you decide to go into the police department to report the crime to the police
+      in person. The police department is only a few miles from your home. You leave your house and head
+      to the police department. You now see the police department from a distance. <image> You are now
+      closer to approaching the police department. <image>'
+    images:
+    - mkgvp_p5_distance
+    - mkgvp_p5_closeup
+  - raw_values:
+      P_HEADLEY: 6
+      RND_01: 0
+    condition_num: 5
+    factors:
+      design: welcoming
+      building: '3'
+      order: police questions first
+    text: 'You were first shown: "We''re going to ask you about your perceptions of the criminal justice
+      system." You were then asked: "Please indicate your level of agreement with the following statements:"
+      for each of nine statements, shown in random order: "I am not satisfied with the police." "It is
+      my moral duty to back the decisions made by the police because the police are legitimate authorities."
+      "You should do what the police tell you even if you disagree." "The police care about the well-being
+      of everyone they deal with." "I generally support how the police usually act." "I do not have confidence
+      that police can do their job well." "It is my moral duty to do what the police tell me even if I
+      do not understand or agree with the reasons." "The police cannot be trusted to make the right decisions."
+      "The police generally have the same sense of right and wrong as I do." You were then asked: "Think
+      back to the last time you were stopped by the police. How satisfied were you with the way they treated
+      you?" After that: Please imagine being in the following hypothetical scenario and answer the questions
+      as honestly and realistic as you can... Imagine you are walking down the street and you realize
+      your new neighbor''s home has been broken into and vandalized while they were out of town. Instead
+      of calling the police, you decide to go into the police department to report the crime to the police
+      in person. The police department is only a few miles from your home. You leave your house and head
+      to the police department. You now see the police department from a distance. <image> You are now
+      closer to approaching the police department. <image>'
+    images:
+    - mkgvp_p6_distance
+    - mkgvp_p6_closeup
+  - raw_values:
+      P_HEADLEY: 1
+      RND_01: 1
+    condition_num: 6
+    factors:
+      design: hostile defensive
+      building: '1'
+      order: police questions after
+    text: Please imagine being in the following hypothetical scenario and answer the questions as honestly
+      and realistic as you can... Imagine you are walking down the street and you realize your new neighbor's
+      home has been broken into and vandalized while they were out of town. Instead of calling the police,
+      you decide to go into the police department to report the crime to the police in person. The police
+      department is only a few miles from your home. You leave your house and head to the police department.
+      You now see the police department from a distance. <image> You are now closer to approaching the
+      police department. <image>
+    images:
+    - mkgvp_p1_distance
+    - mkgvp_p1_closeup
+  - raw_values:
+      P_HEADLEY: 2
+      RND_01: 1
+    condition_num: 7
+    factors:
+      design: hostile defensive
+      building: '2'
+      order: police questions after
+    text: Please imagine being in the following hypothetical scenario and answer the questions as honestly
+      and realistic as you can... Imagine you are walking down the street and you realize your new neighbor's
+      home has been broken into and vandalized while they were out of town. Instead of calling the police,
+      you decide to go into the police department to report the crime to the police in person. The police
+      department is only a few miles from your home. You leave your house and head to the police department.
+      You now see the police department from a distance. <image> You are now closer to approaching the
+      police department. <image>
+    images:
+    - mkgvp_p2_distance
+    - mkgvp_p2_closeup
+  - raw_values:
+      P_HEADLEY: 3
+      RND_01: 1
+    condition_num: 8
+    factors:
+      design: hostile defensive
+      building: '3'
+      order: police questions after
+    text: Please imagine being in the following hypothetical scenario and answer the questions as honestly
+      and realistic as you can... Imagine you are walking down the street and you realize your new neighbor's
+      home has been broken into and vandalized while they were out of town. Instead of calling the police,
+      you decide to go into the police department to report the crime to the police in person. The police
+      department is only a few miles from your home. You leave your house and head to the police department.
+      You now see the police department from a distance. <image> You are now closer to approaching the
+      police department. <image>
+    images:
+    - mkgvp_p3_distance
+    - mkgvp_p3_closeup
+  - raw_values:
+      P_HEADLEY: 4
+      RND_01: 1
+    condition_num: 9
+    factors:
+      design: welcoming
+      building: '1'
+      order: police questions after
+    text: Please imagine being in the following hypothetical scenario and answer the questions as honestly
+      and realistic as you can... Imagine you are walking down the street and you realize your new neighbor's
+      home has been broken into and vandalized while they were out of town. Instead of calling the police,
+      you decide to go into the police department to report the crime to the police in person. The police
+      department is only a few miles from your home. You leave your house and head to the police department.
+      You now see the police department from a distance. <image> You are now closer to approaching the
+      police department. <image>
+    images:
+    - mkgvp_p4_distance
+    - mkgvp_p4_closeup
+  - raw_values:
+      P_HEADLEY: 5
+      RND_01: 1
+    condition_num: 10
+    factors:
+      design: welcoming
+      building: '2'
+      order: police questions after
+    text: Please imagine being in the following hypothetical scenario and answer the questions as honestly
+      and realistic as you can... Imagine you are walking down the street and you realize your new neighbor's
+      home has been broken into and vandalized while they were out of town. Instead of calling the police,
+      you decide to go into the police department to report the crime to the police in person. The police
+      department is only a few miles from your home. You leave your house and head to the police department.
+      You now see the police department from a distance. <image> You are now closer to approaching the
+      police department. <image>
+    images:
+    - mkgvp_p5_distance
+    - mkgvp_p5_closeup
+  - raw_values:
+      P_HEADLEY: 6
+      RND_01: 1
+    condition_num: 11
+    factors:
+      design: welcoming
+      building: '3'
+      order: police questions after
+    text: Please imagine being in the following hypothetical scenario and answer the questions as honestly
+      and realistic as you can... Imagine you are walking down the street and you realize your new neighbor's
+      home has been broken into and vandalized while they were out of town. Instead of calling the police,
+      you decide to go into the police department to report the crime to the police in person. The police
+      department is only a few miles from your home. You leave your house and head to the police department.
+      You now see the police department from a distance. <image> You are now closer to approaching the
+      police department. <image>
+    images:
+    - mkgvp_p6_distance
+    - mkgvp_p6_closeup
+outcomes:
+- var: Q1A
+  task_num: 0
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Safe as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1B
+  task_num: 1
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Confident as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1C
+  task_num: 2
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Jittery as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1D
+  task_num: 3
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Optimistic as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1E
+  task_num: 4
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Nervous as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1F
+  task_num: 5
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Calm as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1G
+  task_num: 6
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Worried as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1H
+  task_num: 7
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Content as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q1I
+  task_num: 8
+  question: 'Indicate the likelihood that you would feel the following emotions and/or sentiments: I would
+    feel... Relaxed as I am approaching this building'
+  scale:
+    min: 1
+    max: 5
+    min_label: Clearly describes my feelings
+    max_label: Does not describe my feelings
+    mid_label: Moderately describes my feelings
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q2A
+  task_num: 9
+  question: 'Please indicate your level of agreement with the following statement: I feel confident that
+    the criminal activity I am going to report to the police today will be taken seriously.'
+  scale:
+    min: 1
+    max: 5
+    min_label: Strongly agree
+    max_label: Strongly disagree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q2B
+  task_num: 10
+  question: 'Please indicate your level of agreement with the following statement: The police officers
+    who work here will be professional.'
+  scale:
+    min: 1
+    max: 5
+    min_label: Strongly agree
+    max_label: Strongly disagree
+    mid_label: Neither agree nor disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q3
+  task_num: 11
+  question: How likely are you to proceed in entering the police department?
+  scale:
+    min: 1
+    max: 5
+    min_label: Very likely
+    max_label: Very unlikely
+    mid_label: Neither likely nor unlikely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+response_recode: {}
+missing_codes: []
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: P_PARTYID7
+  ideology: P_IDEO
+  religion: P_RELIG
+  religious_attendance: P_ATTEND
+persona_label_rewrite:
+  P_RELIG:
+    1: Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian,
+      Reformed, Church of Christ, Jehovah's Witness, etc.)
+  P_IDEO:
+    2: Liberal
+persona_missing:
+  GENDER:
+  - 0

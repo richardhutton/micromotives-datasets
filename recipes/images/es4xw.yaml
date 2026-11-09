@@ -1,0 +1,303 @@
+study_id: es4xw
+source: tess
+title: Perceptions of Diversity Across Groups
+data_file: TESS2_040_Bauman_Client.sav
+licence: 'None stated: the OSF deposit es4xw has no licence (node_license null, checked 2026-10-01), TESS
+  archived it without reuse terms, and TESS has since suspended operations. The pictures are photographs
+  of apparently real people with no statement of who they are or of their consent. Used with rich''s ruling
+  of 9 Nov 2026 accepting both.'
+comparable_to_socsci210: false
+notes: "Write recipes/images/es4xw.yaml: one of four photographs of a six-person management team.\n\n\
+  Bauman, TESS2 040 (University of Chicago), \"Perceptions of Diversity Across Groups\".\nOSF es4xw. Fielded\
+  \ June 2010 by Knowledge Networks (KnowledgePanel), N = 2,512, sampled\nto equal African American /\
+  \ Asian / Hispanic / White quotas (the questionnaire's\n\"Sample Criteria\"; the .sav keeps no screener).\
+  \ Files used: the data\n(TESS2_040_Bauman_Client.sav), the fielded questionnaire as Word\n(Tess2_040_Bauman_final.docx,\
+  \ \"Q\" below) and as text (Tess2_040_Bauman_final.txt, the\nsame words without the pictures). The proposal\
+  \ (Bauman024.pdf) was read only to see\nwhether it describes the fielded design; it does not (below),\
+  \ and no word of it is used.\n\nThis replaces the text build (recipes/es4xw.yaml). rich ruled on 9 Nov\
+  \ 2026 that the\ntext build was wrong in kind: respondents saw a photograph of the team and the text\
+  \ rows\nstated its racial make-up in words, a sentence nobody read. Here the row carries the\nphotograph\
+  \ and the words that were actually on screen. Every row and response is the\ntext build's; only the\
+  \ condition text differs (tests/test_gen_es4xw.py).\n\nEvery judgement is here, in code, so the recipe\
+  \ can be re-derived and reviewed:\n\n* DESIGN. One randomised variable with four levels. Q's sample-variable\
+  \ block reads\n  \"XTESS042 1=Picture1 2=Picture2 3=Picture3 4=Picture4\"; the .sav's column is XTESS040\n\
+  \  (\"Picture Selected\", 1-4 \"Picture 1\" .. \"Picture 4\"; 636 / 644 / 625 / 607 = 2,512).\n  Treated\
+  \ as one variable under a typo in Q: the labels match in words and order, it is\n  the file's only four-level\
+  \ column whose counts sum to N, and recipe_prep.py (Jev)\n  named XTESS040 the assignment at confidence\
+  \ 0.96 from its labels alone.\n  condition_num is XTESS040 - 1.\n* WHICH PICTURE IS WHICH ARM. Q shows\
+  \ \"[SHOW BELOW PICTURE IF XTESS042=n]\" four times,\n  each followed directly by one embedded picture:\
+  \ word/media/image1.png .. image4.png,\n  in that order (parsed from Q's XML in --prep and --check,\
+  \ not assumed from the file\n  names). They are copied byte for byte to data/raw/es4xw/images/picture1..4.png.\n\
+  \  Each is a 446 x 405 PNG: six head-and-shoulders photographs in two rows of three,\n  separated by\
+  \ white gutters.\n* WHAT VARIES. Compared panel by panel here (mean absolute RGB difference; under 5\
+  \ is\n  the same photograph, over 30 a different one): the top-left, top-right,\n  bottom-middle and\
+  \ bottom-right photographs are the same in all four pictures; the\n  top-middle and bottom-left change.\
+  \ Picture 3 reuses picture 2's top-middle and\n  picture 1's bottom-left; picture 4's two are in no\
+  \ other picture. So the four\n  pictures differ in exactly two of six faces.\n* THE ARMS' COMPOSITIONS\
+  \ ARE DESIGN FACTS, NOT CONDITION TEXT. TESS's study record\n  (tessexperiments.org/study/bauman024,\
+  \ re-read 9 Nov 2026) gives the manipulation as\n  \"Racial composition of 6-person groups via pictures\"\
+  \ with \"Four conditions: 6 White,\n  4 White + 2 African American, 4 White + 2 Asian, 4 White + 1 African\
+  \ American +\n  1 Asian\". It does not say which picture number is which. The text build fixed that\n\
+  \  from the data, and --check re-derives it from aggregates computed locally: on the mean\n  of Q1,\
+  \ Q2 and (8 - Q3) by PPETHM, XTESS040 = 3 is the highest-rated picture for every\n  respondent group\
+  \ (the paper's headline: Bauman, Trawalter & Unzueta 2014, PSPB 40,\n  1354-1372, the mixed team is\
+  \ seen as most diverse by all), XTESS040 = 4 the lowest\n  (the all-White team), and Black respondents\
+  \ rate picture 1 well above picture 2\n  (4.51 vs 3.38) while White respondents barely separate them\
+  \ (4.85 vs 4.70), which\n  places the two Black team members in picture 1 and the two Asian team members\
+  \ in\n  picture 2. Picture 3 then combines one of each, as the panel comparison shows. These\n  facts\
+  \ are kept only as the arms' factors, `black_member_present` x\n  `asian_member_present` (present /\
+  \ absent), unchanged from the text build so that the\n  rows compare exactly. They never appear in a\
+  \ row's condition, and our image\n  descriptions do not state anyone's apparent race, ethnicity, gender\
+  \ or age.\n* CONDITION. Q says to show the picture with a caption beneath it, \"[SHOW BELOW TEXT\n \
+  \ FOR ALL RESPONDENTS UNDER IMAGE]\", on the same page as the first three grids. Each\n  arm is the\
+  \ picture marker followed by that caption, word-for-word from Q (curly\n  apostrophe straightened):\
+  \ \"<image> A large company recently formed a management team\n  to lead a new project. You don't know\
+  \ any of them personally, but the company included\n  pictures of the management team when it sent out\
+  \ an announcement about the project\n  (see above).\" The text build dropped \"(see above)\" because\
+  \ nothing preceded it; here\n  the picture does, so the words are kept as fielded. No connecting words\
+  \ of ours.\n  The four arms have the same words and differ only in their picture, which QC rules 1\n\
+  \  and 5 compare (docs/CONVENTIONS.md, Image conditions). There is no shared_context:\n  the caption\
+  \ is the only shared text and it follows the picture.\n* IMAGE IDS are es4xw_picture1 .. es4xw_picture4,\
+  \ Q's own neutral names for the four\n  levels (\"Picture1\" .. \"Picture4\"). They say nothing about\
+  \ who is pictured. As in every\n  image build here the ID is resolved to its file by the export and\
+  \ never written into\n  a prompt, but a neutral name means a slip in that would leak nothing either.\n\
+  * OUTCOMES. Q1-Q13, four grids each on a 1-7 scale, Strongly Disagree .. Strongly\n  Agree with \"Neither\"\
+  \ in the middle (Q's grid header; the same as each item's .sav\n  labels). Q1-Q3 perceived ethnic diversity\
+  \ of the team (Q3 reverse-worded), Q4-Q6\n  expected fairness, Q7-Q9 wanting to join the team, Q10-Q13\
+  \ colour-blind attitudes.\n  Each statement is word-for-word from Q, read out of the text file and checked.\
+  \ The\n  lead \"Please rate the following statement:\" is NOT on Q's screen (the grid shows\n  only\
+  \ its agree / disagree header); it is the text build's, kept unchanged so that\n  every outcome string\
+  \ compares exactly, and flagged here rather than silently\n  inherited. All 13 are asked of everyone,\
+  \ with no branching. The first three grids\n  are marked \"[GRID - SP - PLACE IMAGE ABOVE QUESTIONS]\"\
+  ; the fourth (Q10-Q13) only\n  \"[GRID - SP]\", so the picture was not on that page, but every respondent\
+  \ had just\n  seen it on the three before. Those rows carry the same condition, as in the text\n  build.\
+  \ -1 \"Refused\" is the only non-answer code.\n* PERSONA. Unchanged from the text build: the KnowledgePanel\
+  \ PP* fields, xparty7,\n  xideo and xrel1 (case-insensitive lookups). education is PPEDUCAT and region\
+  \ PPREG4,\n  matching the other KnowledgePanel recipes rather than Jev's finer picks (ledger\n  #64-66).\
+  \ xrel1 code 12 \"Other non-Christian, please specify:\" is rewritten to \"Other\n  non-Christian\"\
+  \ (ledger #60). Sentinel codes on xparty7 / xideo / xrel1 / xrel2 are\n  declared as in the text build.\n\
+  * PROPOSAL VS FIELDED. Bauman024.pdf describes composite pictures of EIGHT head shots,\n  3 or 5 minority\
+  \ members and four outcome items; the fielded study shows six, two\n  minority members, a mixed condition\
+  \ and thirteen items. Nothing from it is used.\n* SOCSCI210 holds es4xw (9,891 rows, four conditions,\
+  \ three outcomes), reconstructed\n  from the proposal's description of an earlier eight-headshot pilot,\
+  \ not from the\n  fielded instrument: its four pure-group conditions are not this study's, so no\n \
+  \ numeric reconciliation is possible (comparable_to_socsci210: false, as the text\n  build found).\n\
+  * CAVEAT. The pictures are photographs of what appear to be real people, in a\n  stock-portrait style,\
+  \ with no statement of who they are or of their consent, and\n  the deposit states no licence. rich\
+  \ accepted both on 9 Nov 2026. Recorded in each\n  catalogue entry.\n* NOT ASKED OF JEV. The assignment,\
+  \ persona and codes are the text build's, already\n  screened; no paid call.\n\n    uv run python scripts/gen_es4xw.py\
+  \ --prep       # extract the four pictures from Q\n    uv run python scripts/gen_es4xw.py --catalogue\
+  \  # (re)write this study's images.json entries\n    uv run python scripts/gen_es4xw.py            \
+  \  # write the recipe\n    uv run python scripts/gen_es4xw.py --check      # exit 1 if it differs"
+condition:
+  source_var: XTESS040
+  factors:
+  - black_member_present
+  - asian_member_present
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      black_member_present: present
+      asian_member_present: absent
+    text: <image> A large company recently formed a management team to lead a new project. You don't know
+      any of them personally, but the company included pictures of the management team when it sent out
+      an announcement about the project (see above).
+    images:
+    - es4xw_picture1
+  - raw: 2
+    condition_num: 1
+    factors:
+      black_member_present: absent
+      asian_member_present: present
+    text: <image> A large company recently formed a management team to lead a new project. You don't know
+      any of them personally, but the company included pictures of the management team when it sent out
+      an announcement about the project (see above).
+    images:
+    - es4xw_picture2
+  - raw: 3
+    condition_num: 2
+    factors:
+      black_member_present: present
+      asian_member_present: present
+    text: <image> A large company recently formed a management team to lead a new project. You don't know
+      any of them personally, but the company included pictures of the management team when it sent out
+      an announcement about the project (see above).
+    images:
+    - es4xw_picture3
+  - raw: 4
+    condition_num: 3
+    factors:
+      black_member_present: absent
+      asian_member_present: absent
+    text: <image> A large company recently formed a management team to lead a new project. You don't know
+      any of them personally, but the company included pictures of the management team when it sent out
+      an announcement about the project (see above).
+    images:
+    - es4xw_picture4
+outcomes:
+- var: Q1
+  task_num: 0
+  question: 'Please rate the following statement: "This team includes a high degree of ethnic diversity."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q2
+  task_num: 1
+  question: 'Please rate the following statement: "I consider this team to be ethnically diverse."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q3
+  task_num: 2
+  question: 'Please rate the following statement: "This team includes a low degree of ethnic diversity."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q4
+  task_num: 3
+  question: 'Please rate the following statement: "This team would treat everyone they worked with fairly."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q5
+  task_num: 4
+  question: 'Please rate the following statement: "This group would listen to everyone''s views and opinions."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q6
+  task_num: 5
+  question: 'Please rate the following statement: "This team would apply rules and procedures consistently
+    to everyone."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q7
+  task_num: 6
+  question: 'Please rate the following statement: "I would like to work with this group."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q8
+  task_num: 7
+  question: 'Please rate the following statement: "I wish I had a job on this team."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q9
+  task_num: 8
+  question: 'Please rate the following statement: "I would apply for a job here if they needed someone
+    with my skills."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q10
+  task_num: 9
+  question: 'Please rate the following statement: "I wish people in this society would stop obsessing
+    so much about race."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q11
+  task_num: 10
+  question: 'Please rate the following statement: "People who become preoccupied by race are forgetting
+    that we are all just human."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q12
+  task_num: 11
+  question: 'Please rate the following statement: "Putting racial labels on people obscures the fact that
+    everyone is a unique individual."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+- var: Q13
+  task_num: 12
+  question: 'Please rate the following statement: "Race is an artificial label that keeps people from
+    thinking freely as individuals."'
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly Disagree
+    mid_label: Neither
+    max_label: Strongly Agree
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+missing_codes:
+- -1
+persona_missing:
+  xparty7:
+  - 8
+  - 9
+  xideo:
+  - -1
+  - 8
+  - 9
+  xrel1:
+  - 14
+  xrel2:
+  - -1
+persona_label_rewrite:
+  xrel1:
+    12: Other non-Christian
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: xparty7
+  ideology: xideo
+  religion: xrel1

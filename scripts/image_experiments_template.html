@@ -33,7 +33,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .defs li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;align-items:baseline}
 .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid currentColor}
 .s-Built{color:var(--todo)} .s-Buildable{color:var(--yes)} .s-Waiting{color:var(--sent)} .s-Needs{color:var(--ready)} .s-Unlikely{color:var(--no)}
-.p-Yes{color:var(--yes)} .p-Asked{color:var(--sent)} .p-Not{color:var(--todo)} .p-No{color:var(--no)}
+.us{color:var(--no);margin-left:6px;vertical-align:1px} .p-Yes{color:var(--yes)} .p-Asked{color:var(--sent)} .p-Not{color:var(--todo)} .p-No{color:var(--no)}
 .s-todo{color:var(--todo)} .s-ready{color:var(--ready)} .s-sent{color:var(--sent)} .s-chased{color:var(--sent)} .s-yes{color:var(--yes)} .s-no{color:var(--no)} .s-notneeded{color:var(--todo)}
 .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
 input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:6px 8px}
@@ -82,6 +82,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
       <input id="q" type="search" placeholder="Search id, title, description, contact" aria-label="Search">
       <select id="fs" aria-label="Filter by status"><option value="">All statuses</option></select>
       <select id="fp" aria-label="Filter by permission"><option value="">All permissions</option></select>
+      <select id="fu" aria-label="Filter by sample"><option value="">All samples</option><option value="us">US · TESS only</option><option value="notus">Excluding US · TESS</option></select>
     </div>
     <p id="msg" class="note" hidden></p>
     <div class="scroll">
@@ -109,7 +110,7 @@ const pcls=p=>"p-"+String(p).split(" ")[0];
 $("defs").innerHTML=STATUSES.map(([s,k,d])=>`<li><span><span class="pill ${scls(s)}">${s}</span></span><span>${d}</span></li>`).join("");
 $("fs").insertAdjacentHTML("beforeend",STATUSES.map(([s])=>`<option>${s}</option>`).join(""));
 $("fp").insertAdjacentHTML("beforeend",PERMS.map(p=>`<option>${p}</option>`).join(""));
-["q","fs","fp"].forEach(i=>$(i).addEventListener(i==="q"?"input":"change",render));
+["q","fs","fp","fu"].forEach(i=>$(i).addEventListener(i==="q"?"input":"change",render));
 
 function summary(){
   const n=(s,p)=>rows.filter(r=>(!s||r.status===s)&&(!p||r.permission===p)).length;
@@ -123,12 +124,12 @@ function summary(){
 }
 
 function render(){
-  const q=$("q").value.trim().toLowerCase(), fs=$("fs").value, fp=$("fp").value;
-  const vis=rows.filter(r=>(!fs||r.status===fs)&&(!fp||r.permission===fp)&&(!q||JSON.stringify(r).toLowerCase().includes(q)));
+  const q=$("q").value.trim().toLowerCase(), fs=$("fs").value, fp=$("fp").value, fu=$("fu").value;
+  const vis=rows.filter(r=>(!fs||r.status===fs)&&(!fp||r.permission===fp)&&(!fu||(fu==="us")===!!r.sample)&&(!q||JSON.stringify(r).toLowerCase().includes(q)));
   $("msg").hidden=vis.length>0; $("msg").textContent="No experiments match.";
   $("rows").innerHTML=vis.map(r=>`<tr>
     <td class="num">${esc(r.id)}${r.recipe?`<div class="cc">${esc(r.recipe)}</div>`:""}</td>
-    <td><b>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a>`:esc(r.title)}</b><div class="ask" style="max-width:80ch">${esc(r.description)}</div></td>
+    <td><b>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a>`:esc(r.title)}</b>${r.sample?`<span class="pill us" title="US sample, from TESS">${esc(r.sample)}</span>`:""}<div class="ask" style="max-width:80ch">${esc(r.description)}</div></td>
     <td><span class="pill ${scls(r.status)}">${esc(r.status)}</span>${r.reason?`<div class="notes">${esc(r.reason)}</div>`:""}</td>
     <td><span class="pill ${pcls(r.permission)}">${esc(r.permission)}</span>${r.contact?`<div class="cc">${esc(r.contact)}</div>`:""}</td>
     <td class="num">${r.rows?r.rows.toLocaleString("en-GB"):""}</td>

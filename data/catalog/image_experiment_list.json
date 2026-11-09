@@ -691,10 +691,111 @@
       "link": "https://osf.io/yjvpn",
       "status": "Built",
       "reason": "18,069 rows (914 people x 20 outcomes; 6 conditions: face x caption). Matches SocSci210 exactly, all 443 condition x task x response cells. Found by the 9 Nov SocSci210 UK rescan; would have been wrong as text, because the face is the treatment. The fielded image files are not in the deposit: the three faces come from the researcher's description document and match the proposal's printed faces, but may differ in resolution from what respondents saw. Transphobia and familiarity items left out (self-report after the stimulus). Independent checker: no defects. Licence unstated, used on rich's ruling.",
-      "permission": "Not asked yet",
+      "permission": "Not needed",
       "contact": "",
       "rows": 18069,
-      "recipe": "yjvpn"
+      "recipe": "yjvpn",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG87",
+      "title": "Management-team photos and diversity",
+      "description": "A photo of a six-person management team; only two faces change between four versions. Ratings of how diverse the team is and related statements (13 items, 1-7). TESS (Bauman), US, n=2,501.",
+      "link": "https://osf.io/es4xw",
+      "status": "Built",
+      "reason": "32,228 rows. Moved from the text set (9 Nov): the text build stated the team's racial make-up in words respondents never read. Rows identical to the text build except the condition, which is now the fielded caption plus the photo. Which photo is which version is inferred from the TESS record and answer patterns. Photos of apparently real people, no stated consent (accepted by rich). Independent checker: pass.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS",
+      "rows": 32228,
+      "recipe": "es4xw"
+    },
+    {
+      "id": "IMG88",
+      "title": "Treatment-outcome charts and consent",
+      "description": "Stroke (t-PA) or cardiac arrest (CPR), with or without the chance to consent; each scenario shows a 100-figure chart of outcomes after treatment. Would you want treatment (1-4), plus attitudes to consent. TESS (Chiong), US adults 50+.",
+      "link": "https://osf.io/3xy9j",
+      "status": "Built",
+      "reason": "16,979 rows (2,135 people; 4 conditions: stroke or cardiac arrest x choice or no consent; the scenario question plus 7 attitude questions). Each scenario shows its own 100-figure outcome chart; the figure counts match the text under it. All 8 questions match SocSci210 cell for cell, but SocSci210 reverses the 1-6 scale on the 7 attitude questions (its prompt says 1 = strongly disagree; on screen 1 = strongly agree). Health-status items left out. Independent checker: pass.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS",
+      "rows": 16979,
+      "recipe": "3xy9j"
+    },
+    {
+      "id": "IMG89",
+      "title": "Sustainability labels on a fast-food menu",
+      "description": "A Burger King menu with photos, prices (dollars) and calories, with sustainability labels varied between versions; menu choices. TESS (Wolfson), US. SocSci210's biggest study (90,977 rows).",
+      "link": "https://osf.io/egmxd",
+      "status": "Built",
+      "reason": "25,262 rows (5,055 people; 3 menus: QR codes, green low-impact labels on 9 non-beef items, red high-impact labels on 5 beef burgers; the menu choice plus 4 follow-up questions). Matches SocSci210 cell for cell; SocSci210 splits the one menu choice into 14 yes/no rows each. Q4 asks about 'the meal you ordered', which the row does not state, so it is partly unpredictable. Menu images are Word's copies from the fielded questionnaire. US menu and dollar prices accepted by rich. Independent checker: pass.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS",
+      "rows": 25262,
+      "recipe": "egmxd"
+    },
+    {
+      "id": "IMG90",
+      "title": "The Tesla effect: car photos",
+      "description": "An image and description of one of four cars at about $40,000: Tesla Model 3, Hyundai Kona Electric, Ford F-150 Lightning or petrol F-150. First reaction, liked features, reflects my values. TESS (Rode, 2023), US. 75,329 rows in SocSci210.",
+      "link": "https://osf.io/v6kqy",
+      "status": "Built",
+      "reason": "58,123 rows (2,458 Republicans, by the study's design; 9 conditions: each of 4 vehicles shown three pages of photo plus text, to treated people or to controls after a delay, plus controls' policy answers before any car). 24 questions: reactions to the vehicle and EV policy. Matches SocSci210 cell for cell; SocSci210 used the proposal's wording and gave controls a car they had not seen yet. Tick-all features question (17,206 rows) left out pending rich. Photos are the fielded questionnaire's embedded copies. Independent checker: pass.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS",
+      "rows": 58123,
+      "recipe": "v6kqy"
+    },
+    {
+      "id": "IMG91",
+      "title": "Police headquarters photos",
+      "description": "A burglary scenario, then a photo of a police headquarters from a distance and close up: three hostile-looking and three welcoming buildings. Emotions, agreement and likelihood of going in. TESS (Headley), US, n=732.",
+      "link": "https://osf.io/mkgvp",
+      "status": "Built",
+      "reason": "8,690 rows (732 people; 12 conditions: 6 police buildings, 3 hostile-looking and 3 welcoming, each shown from a distance then close up, x whether the police-attitude questions came before or after; 12 questions on feelings and likelihood of going in). SocSci210 built it on the wrong variable (the question-order draw, not the building), so its building descriptions are wrong for about half its rows. Recognisable US buildings, some with flags and painted-over lettering. Independent checker: failed once (order not narrated), fixed, then passed.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS",
+      "rows": 8690,
+      "recipe": "mkgvp"
+    },
+    {
+      "id": "IMG92",
+      "title": "Attractiveness, gender and status",
+      "description": "A headshot (attractive or unattractive woman or man) with a short profile, across four occupations; status and competence judgements and a salary estimate in dollars. TESS (Paustian-Underdahl), US, n=435.",
+      "link": "https://osf.io/5an26",
+      "status": "Built",
+      "reason": "12,126 rows (435 people; 16 conditions: photo of an attractive or unattractive woman or man x 4 occupations; 28 questions on status, competence, hiring and salary). Which photo is which confirmed by the study's own attractiveness check (A 7.0, B 6.5, C 4.2, D 4.8). SocSci210 merged the occupations (4 conditions, not 16) and attached wrong wordings from Q8 on. Part II/III order was randomised and not recorded, so those rows state only the photo and profile. Small headshots carved from the fielded questionnaire; real people, no stated consent (accepted by rich). Independent checker: pass.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS",
+      "rows": 12126,
+      "recipe": "5an26"
+    },
+    {
+      "id": "IMG93",
+      "title": "Racial bias in perceptions of pain",
+      "description": "Faces varied by race; ratings of how much pain each person feels. TESS (Trawalter), US.",
+      "link": "https://osf.io/e45hu",
+      "status": "Unlikely",
+      "reason": "The faces are chosen to vary US racial categories, which is the manipulation itself.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG94",
+      "title": "Masked video and privacy",
+      "description": "One of four silent videos of an older adult at home, with the person shown plainly or masked; perceived invasion of privacy. TESS (Downs), US 45+.",
+      "link": "https://osf.io/w72cz",
+      "status": "Unlikely",
+      "reason": "Video, not still images; the pipeline cannot represent it. The video files are in the deposit.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
     }
   ]
 }

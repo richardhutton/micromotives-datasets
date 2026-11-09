@@ -44,7 +44,9 @@ def main() -> None:
         if r["status"] not in STATUSES:
             raise SystemExit(f"{r['id']}: unknown status {r['status']!r}")
         c = who.get(r["id"])
-        r["permission"] = PERMISSION[c["status"]] if c else "Not asked yet"
+        # A TESS deposit is a public archive with no one to ask, so it needs no permission.
+        default = "Not needed" if r.get("sample") == "US · TESS" else "Not asked yet"
+        r["permission"] = PERMISSION[c["status"]] if c else default
         r["contact"] = c["name"] if c else ""
     DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")

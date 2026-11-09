@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**75 studies (115 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 28 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 48 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**74 studies (114 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 28 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 47 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 14 | 28 | 273,233 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| US transfer — TESS | 37 | 48 | 445,368 | **no** — no licence stated |
-| **Total** | **75** | **115** | **1,104,700** | |
+| US transfer — TESS | 36 | 47 | 413,140 | **no** — no licence stated |
+| **Total** | **74** | **114** | **1,072,472** | |
 
 ---
 
@@ -86,7 +86,6 @@
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
 | `ukds_6849_sensor_consent_w17_ftf` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 339 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
-| `es4xw` ⚠ | Perceptions of Diversity Across Groups | TESS (OSF) | `osf.io/es4xw` | 32,228 |
 | `xtvu5` ⚠ | Effects of Misinformation News Coverage on Media Trust | TESS (OSF) | `—` | 23,017 |
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
 | `7tzpe` ⚠ | Body Size, Illness, and Blame: Causal Attributions and Social Conse… | TESS (OSF) | `osf.io/7tzpe` | 20,308 |
@@ -1055,7 +1054,6 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `9xw67_conjoint` | Blame and Bias in Trust in Public Policy Algorithms | moral/social/cognition | 20,373 | 2,048 | osf.io/9xw67 |
 | `9xw67_vignette` | Blame and Bias in Trust in Public Policy Algorithms | moral/social/cognition | 5,816 | 1,846 | osf.io/9xw67 |
 | `b87sm` | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | moral/social/cognition | 19,282 | 1,942 | osf.io/b87sm |
-| `es4xw` | Perceptions of Diversity Across Groups | moral/social/cognition | 32,228 | 2,501 | osf.io/es4xw |
 | `gh396` | Maintaining a Sense of Belonging among the Socially Isolated | moral/social/cognition | 8,959 | 412 | osf.io/gh396 |
 | `j6xgs` | Busyness, Idleness, and Happiness | moral/social/cognition | 14,201 | 1,198 | osf.io/j6xgs |
 | `jxdu8` | Moral Luck, Loss of Chance, and Legal Liability | moral/social/cognition | 5,478 | 371 | osf.io/jxdu8 |
@@ -1093,7 +1091,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 11 | 7 | 201,009 |
 | health communication | 0 | 9 | 91,114 |
-| moral/social/cognition | 7 | 17 | 251,505 |
+| moral/social/cognition | 7 | 16 | 219,277 |
 | political identity/polarisation | 4 | 0 | 34,920 |
 | political preferences/policy | 17 | 1 | 161,491 |
 | survey methodology | 20 | 5 | 220,843 |

@@ -1,0 +1,620 @@
+study_id: v6kqy
+source: tess
+title: 'The Tesla effect: three photographs of one of four vehicles, shown before or after questions on
+  electric vehicles and climate policy, then rated as a product'
+data_file: v6kqy-derived.sav
+licence: 'None stated: the TESS deposit on OSF (v6kqy, rode1532.zip) gives no reuse terms, and TESS has
+  since suspended operations. Used with rich''s ruling of 9 Nov 2026 that an unstated licence does not
+  block an image build.'
+comparable_to_socsci210: true
+participant_id_var: CaseId
+notes: "Write recipes/images/v6kqy.yaml: three photographs of one vehicle, then questions.\n\nRode, TESS\
+  \ 1532 (fielded as NORC 9089.122, \"TESS 122 Rode\"), \"The Tesla effect:\nIncreasing Republican support\
+  \ for electric vehicle adoption through engagement with\na value-aligned product\". OSF v6kqy, the TESS\
+  \ deposit rode1532.zip, unpacked under\ndata/raw/v6kqy/TESS 122 Rode/: the data (s2861_client.dta),\
+  \ NORC's deliverables\n(the same data as CSV, a codebook, and the fielded questionnaire in a simple\
+  \ and a\nprogramming version, 9089.122_TESS_Rode_vFINALsimple.docx / vFINALprog.docx, \"Q\" and\n\"\
+  PG\" below), NORC's methods report, and the researcher's description document (a\nzero-byte file in\
+  \ the deposit). The proposal is data/raw/v6kqy/Rode1532.pdf, fetched\nseparately (\"Manuscript ID TESS-1532.R1\"\
+  ).\n\nAmeriSpeak, US adult Republicans and Republican leaners (Q's own heading; PARTYID7 is\n5, 6 or\
+  \ 7 for all), web only (`SURV_MODE` 2), English only, fielded 1 to 14 March\n2023. 2,458 completed;\
+  \ all 2,458 are in the file and all are built.\n\nEvery judgement is here, in code, so the recipe can\
+  \ be re-derived and reviewed:\n\n* DESIGN. Two preloads (Q's demographic profile and PG's preload table):\n\
+  \  `DOV_EXP_RODE` 1 LIGHTNING, 2 XLT, 3 TESLA, 4 KONA, 5 CONTROL (499 / 518 / 500 /\n  488 / 453), and,\
+  \ for the 453 controls only, `DOV_CONTROL` 1-4, the vehicle the\n  control group was shown (118 / 105\
+  \ / 110 / 120). Q's block-order directive: arms\n  1-4 saw STIMULI, REVIEW_1, ATTITUDES, INTEREST1,\
+  \ REVIEW_2, INTEREST2; the control\n  saw ATTITUDES, INTEREST1, STIMULI, REVIEW_1, REVIEW_2, INTEREST2.\
+  \ So the\n  manipulation is whether a person evaluated one of four vehicles BEFORE the\n  environmental-policy\
+  \ questions, and which vehicle. The data's ORDERA..ORDERF\n  record exactly those two block orders,\
+  \ one per group (asserted).\n* WHAT EACH PERSON SAW. Everyone saw the same three-page stimulus block,\
+  \ for one\n  vehicle: STIMULI1 (photo; name, kind and price), STIMULI2 (photo; range),\n  STIMULI3 (photo;\
+  \ towing or acceleration). So every person saw THREE photographs,\n  one per page, in that fixed order,\
+  \ each with its sentence. The control group saw\n  the same block for its `DOV_CONTROL` vehicle, but\
+  \ only after ATTITUDES and\n  INTEREST1. Each REVIEW screen repeated the STIMULI1 photo at the top (PG:\
+  \ \"DISPLAY\n  IMAGE SHOWN IN DISPLAY_STIMULI1 AT THE TOP OF EACH SCREEN THROUGHOUT THE REVIEW\n  SECTION\"\
+  ); that repeat is not rendered a second time, because the photo is\n  already in the condition and an\
+  \ arm's pictures cannot differ between its outcomes.\n* WHICH PICTURE IS WHICH CONDITION. Q embeds the\
+  \ twelve photographs, each in a\n  paragraph directly under its own directive (\"IF DOV_EXP_RODE=3 OR\
+  \ DOV_CONTROL=3:\"),\n  word/media/image3..image14. That mapping is read here from Q's document.xml\
+  \ in\n  document order (the directive paragraph, then the r:embed of the next paragraph,\n  then the\
+  \ sentence), not assumed. Q's first directive reads \"IF DOV_EXP_RODE=1 OR\n  DOV_CONTROL:\" with the\
+  \ \"=1\" missing; PG's copy has it, and the condition is read\n  as 1 (asserted against PG). Two independent\
+  \ witnesses agree: PG names the fielded\n  files in the same per-screen order (LIGHTNING1/XLT1/TESLA1/KONA1.jpg\
+  \ on STIMULI1,\n  ...2 and ...3 after), and the proposal (Rode1532.pdf, Appendix B, pp. 12-14)\n  prints\
+  \ the same twelve photographs under the vehicle headings, in the order XLT,\n  Lightning, Tesla, Kona;\
+  \ reduced to 64 x 64 grey, each proposal photograph is\n  nearest Q's photograph for the same vehicle\
+  \ and page (checked in --catalogue).\n  The fielded files themselves are not in the deposit: PG names\
+  \ them as .jpg on\n  NORC's drive, and Q's TESLA1 copy is a PNG, so these are Q's embedded copies and\n\
+  \  may differ from what was served in resolution or encoding.\n* CONDITION. shared_context is WINTRO_1's\
+  \ one line shown to everyone (\"[ALL] This\n  survey is about your opinions of products currently on\
+  \ the market.\"); the thanks,\n  the AmeriPoints and the Continue button are survey mechanics and are\
+  \ dropped.\n  Each arm then gives the introduction screen DISPLAY_INTRODUCTION for its group\n  (two\
+  \ wordings, word-for-word from Q, asserted in PG), and, where the vehicle had\n  been shown, the three\
+  \ pages: each photo, then its sentence, word-for-word from Q\n  (and asserted present in PG). The connecting\
+  \ words are OURS: \"Then three pages,\n  each a photo followed by text:\", and the quotation marks.\
+  \ They say only what PG's\n  layout (INSERT IMAGE, then the text) says was on screen.\n  Nine arms,\
+  \ two factors (`vehicle`, `order`):\n  - 0-3: arms 1-4, the vehicle first. Every outcome.\n  - 4-7:\
+  \ the control, shown vehicle `DOV_CONTROL` after the policy questions. The\n    REVIEW outcomes only:\
+  \ these rows had the vehicle; their introduction told them\n    \"you will answer a few background questions\
+  \ and then learn about a product\".\n  - 8: the control BEFORE any vehicle. ATTITUDES and INTEREST1\
+  \ only: those were\n    asked before the stimulus block, so the condition is the control's\n    introduction\
+  \ and nothing else, and carries no picture. SocSci210 gives these\n    rows the vehicle the person saw\
+  \ only AFTER answering them; that is the defect\n    this arm exists to avoid.\n  The assignment therefore\
+  \ differs by outcome, which the recipe expresses the way\n  within-subject designs do: the study-level\
+  \ `source_var` is a DERIVED column,\n  `V6KQY_ARM` (DOV_EXP_RODE 1-4; 5 + DOV_CONTROL for the control,\
+  \ so 6-9), and\n  ATTITUDES1A-2B and INTEREST1 declare `condition_var: DOV_EXP_RODE` (1-4 and 5).\n\
+  \  One code space: 1-4 are the same arms through either column. QC's rule 10 skips\n  itself for such\
+  \ designs and says so. The derived file is the deposit .dta plus\n  that one column, written as data/raw/v6kqy/v6kqy-derived.sav\
+  \ by --prep and\n  checked equal to the deposit on every original column (as gh396, egmxd).\n* OUTCOMES.\
+  \ Twenty-four, word-for-word from Q, typography normalised. Task numbers\n  follow Q's listing order:\n\
+  \  - REVIEW1, REVIEW4, REVIEW5, REVIEW6 (task 0, 3, 4, 5): 1-5, Q's options.\n  - REVIEW2, REVIEW3 (task\
+  \ 1, 2): \"Yes\" / \"No\", nominal, options enumerated in the\n    question. Q's third option \"Unsure\"\
+  \ is coded 77, the panel's own DON'T KNOW\n    code (its value label is \"Unsure\"), so it is a non-answer\
+  \ and dropped (182 and\n    425 people), as SocSci210 did.\n  - REVIEW7A-F (task 6-11) and REVIEW9A-F\
+  \ (task 12-17): grids, stem then item,\n    1-5, Strongly disagree .. Strongly agree. Item order was\
+  \ randomised and not\n    recorded; no row says where its item sat.\n  - ATTITUDES1A-C (task 18-20):\
+  \ \"How much do you oppose or support the\n    following?\" then the item, 1-5. ATTITUDES2A-B (task\
+  \ 21-22): agreement, 1-5.\n  - INTEREST1 (task 23): \"Do you want to learn some surprising facts about\
+  \ electric\n    vehicles ...?\" Yes / No, nominal.\n  Each item's codes are checked against the data's\
+  \ value labels.\n* NOT BUILT.\n  - REVIEW8, \"Which of the following features make you like this product?\
+  \ Select\n    all that apply.\" A select-all list stored as seven 0/1 columns (REVIEW8_1 ..\n    REVIEW8_7).\
+  \ The respondent ticked boxes in one list; a row per box would ask a\n    yes/no question nobody was\
+  \ asked, and no build here has yet ruled how a\n    select-all list becomes rows. SocSci210 built it\
+  \ as seven Yes/No rows (17,206).\n    Left for rich's ruling; the cost is 7 x 2,458 = 17,206 rows.\n\
+  \  - REVIEW10-12, the fuel, price and range of the vehicle \"based on the information\n    provided\
+  \ earlier in this survey\": comprehension checks whose answers are stated\n    in the condition (docs/CONVENTIONS.md,\
+  \ as yjvpn's Q5/Q6). SocSci210 did not\n    build them.\n  - INTEREST2 is a display of three links (its\
+  \ only code is \"Continue\") and its\n    click counts are behaviour after every built outcome; PID1/PIDA/PIDB/PIDi\
+  \ are\n    the panel's party screener, not in the file as answers.\n* WHO. All 2,458 completes. `CaseId`\
+  \ is the participant id. Skips are 98 \"SKIPPED ON\n  WEB\" (2 to 20 per item); 77 occurs only as REVIEW2/3's\
+  \ \"Unsure\"; 99 never occurs.\n  `missing_codes` is 77 / 98 / 99, none of which is a valid answer to\
+  \ any built\n  item (every scale tops out at 5).\n* PERSONA. The standard AmeriSpeak preloads, as yjvpn\
+  \ and 8ctbk: AGE, GENDER, EDUC5\n  (the file has no EDUC), RACETHNICITY, INCOME (18 bands), MARITAL,\
+  \ EMPLOY,\n  REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE, PARTYID7, IDEO,\n \
+  \ RELIG, ATTEND. Party and ideology are persona, never condition; the sample is\n  Republicans and leaners\
+  \ by design. Left absent: PARTYID7 and IDEO -1 \"Unknown\",\n  RELIG / ATTEND 77 / 98 / 99, GENDER 0\
+  \ \"Unknown\". Not mapped: STATE, REGION9, the\n  banded duplicates AGE4 / AGE7 / INCOME4 / INCOME9,\
+  \ the household age counts,\n  PARTYID5. RELIG code 1's label is cut off at 80 characters in the .dta\
+  \ (\"...\n  Presbyterian, Pent\"); `persona_label_rewrite` restores the whole answer from Q's\n  demographic\
+  \ profile, as yjvpn. Code 14's label is \"Something else, please\n  specify:\", a real answer wearing\
+  \ a text-box instruction; rewritten to \"Something\n  else\", as vemrp, xk9ch and s6urt.\n* UK FIT.\
+  \ American vehicles, US dollar prices, miles, pounds and \"the U.S.\"\n  economy. Accepted for image\
+  \ experiments (rich, 9 Nov 2026). US spellings\n  (\"favorable\") are kept word-for-word.\n* ANSWER\
+  \ KEY. SocSci210 holds this study: 75,329 rows, 2,458 people, four\n  conditions (the vehicle, treatment\
+  \ and control merged) and six tasks. Their\n  condition text is written from the proposal (a \"5.3 seconds\"\
+  \ Model 3 and \"mpg\"),\n  not the fielded instrument (5.8 seconds). Reconciled cell for cell in\n \
+  \ tests/test_gen_v6kqy.py.\n* JEV (scripts/recipe_prep.py v6kqy --source tess, 9 Nov 2026, instrument\
+  \ only).\n  Assignment: DOV_EXP_RODE, conf 0.96 (runner-up DOV_CONTROL 0.02), accepted; the\n  control's\
+  \ own vehicle column is the runner-up and is folded in above. Persona: every\n  field as mapped here\
+  \ at conf 0.93-1.00, except region, REGION4 at 0.52 against\n  REGION9 at 0.36 (REVIEW): REGION4 kept,\
+  \ as in every other TESS build. Non-answers:\n  REVIEW2 / REVIEW3 \"Unsure\" judged non_answer at 0.82\
+  \ (REVIEW) and 0.86, disagreeing\n  with the keyword regex; accepted, as above. Its directive scan found\
+  \ no\n  questionnaire (it does not read .docx), so that section checked nothing; the\n  directives this\
+  \ recipe depends on are parsed and asserted here instead.\n\n    uv run python scripts/gen_v6kqy.py\
+  \ --prep       # photos out of Q; the derived .sav\n    uv run python scripts/gen_v6kqy.py --catalogue\
+  \  # (re)write this study's images.json entries\n    uv run python scripts/gen_v6kqy.py            \
+  \  # write the recipe\n    uv run python scripts/gen_v6kqy.py --check      # exit 1 if it differs"
+condition:
+  source_var: V6KQY_ARM
+  shared_context: This survey is about your opinions of products currently on the market.
+  factors:
+  - vehicle
+  - order
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      vehicle: lightning
+      order: vehicle_first
+    text: 'On the following pages, you will learn about a product. You will then be asked to answer a
+      few questions about the product and your attitudes related to it. Please answer honestly and read
+      all instructions. Thank you! Then three pages, each a photo followed by text: <image> "This is the
+      Ford F-150 Lightning, a 100% electric version of the traditional Ford F-150. It costs about $40,000
+      brand new (depending on exact specifications and model year)." <image> "The F-150 Lightning has
+      an estimated 250 mile range." <image> "The F-150 Lightning can tow up to 10,000 pounds."'
+    images:
+    - v6kqy_lightning_1
+    - v6kqy_lightning_2
+    - v6kqy_lightning_3
+  - raw: 2
+    condition_num: 1
+    factors:
+      vehicle: xlt
+      order: vehicle_first
+    text: 'On the following pages, you will learn about a product. You will then be asked to answer a
+      few questions about the product and your attitudes related to it. Please answer honestly and read
+      all instructions. Thank you! Then three pages, each a photo followed by text: <image> "This is the
+      Ford F-150 XLT, a gasoline-powered truck. It costs about $40,000 brand new (depending on exact specifications
+      and model year)." <image> "The F-150 XLT can drive about 500 miles on one tank of gas." <image>
+      "The F-150 XLT can tow up to 14,000 pounds."'
+    images:
+    - v6kqy_xlt_1
+    - v6kqy_xlt_2
+    - v6kqy_xlt_3
+  - raw: 3
+    condition_num: 2
+    factors:
+      vehicle: tesla
+      order: vehicle_first
+    text: 'On the following pages, you will learn about a product. You will then be asked to answer a
+      few questions about the product and your attitudes related to it. Please answer honestly and read
+      all instructions. Thank you! Then three pages, each a photo followed by text: <image> "This is the
+      Tesla Model 3, a 100% electric car. It costs about $40,000 brand new (depending on exact specifications
+      and model year)." <image> "The Model 3 has an estimated 250 mile range." <image> "The Model 3 can
+      accelerate from zero to 60 mph in about 5.8 seconds."'
+    images:
+    - v6kqy_tesla_1
+    - v6kqy_tesla_2
+    - v6kqy_tesla_3
+  - raw: 4
+    condition_num: 3
+    factors:
+      vehicle: kona
+      order: vehicle_first
+    text: 'On the following pages, you will learn about a product. You will then be asked to answer a
+      few questions about the product and your attitudes related to it. Please answer honestly and read
+      all instructions. Thank you! Then three pages, each a photo followed by text: <image> "This is the
+      Hyundai Kona Electric, a 100% electric version of the traditional Hyundai Kona. It costs about $40,000
+      brand new (depending on exact specifications and model year)." <image> "The Kona Electric has an
+      estimated 250 mile range." <image> "The Kona Electric can accelerate from zero to 60 mph in about
+      6.4 seconds."'
+    images:
+    - v6kqy_kona_1
+    - v6kqy_kona_2
+    - v6kqy_kona_3
+  - raw: 6
+    condition_num: 4
+    factors:
+      vehicle: lightning
+      order: questions_first
+    text: 'On the following pages, you will answer a few background questions and then learn about a product.
+      You will then be asked to answer a few questions about the product and your attitudes related to
+      it. Please answer honestly and read all instructions. Thank you! Then three pages, each a photo
+      followed by text: <image> "This is the Ford F-150 Lightning, a 100% electric version of the traditional
+      Ford F-150. It costs about $40,000 brand new (depending on exact specifications and model year)."
+      <image> "The F-150 Lightning has an estimated 250 mile range." <image> "The F-150 Lightning can
+      tow up to 10,000 pounds."'
+    images:
+    - v6kqy_lightning_1
+    - v6kqy_lightning_2
+    - v6kqy_lightning_3
+  - raw: 7
+    condition_num: 5
+    factors:
+      vehicle: xlt
+      order: questions_first
+    text: 'On the following pages, you will answer a few background questions and then learn about a product.
+      You will then be asked to answer a few questions about the product and your attitudes related to
+      it. Please answer honestly and read all instructions. Thank you! Then three pages, each a photo
+      followed by text: <image> "This is the Ford F-150 XLT, a gasoline-powered truck. It costs about
+      $40,000 brand new (depending on exact specifications and model year)." <image> "The F-150 XLT can
+      drive about 500 miles on one tank of gas." <image> "The F-150 XLT can tow up to 14,000 pounds."'
+    images:
+    - v6kqy_xlt_1
+    - v6kqy_xlt_2
+    - v6kqy_xlt_3
+  - raw: 8
+    condition_num: 6
+    factors:
+      vehicle: tesla
+      order: questions_first
+    text: 'On the following pages, you will answer a few background questions and then learn about a product.
+      You will then be asked to answer a few questions about the product and your attitudes related to
+      it. Please answer honestly and read all instructions. Thank you! Then three pages, each a photo
+      followed by text: <image> "This is the Tesla Model 3, a 100% electric car. It costs about $40,000
+      brand new (depending on exact specifications and model year)." <image> "The Model 3 has an estimated
+      250 mile range." <image> "The Model 3 can accelerate from zero to 60 mph in about 5.8 seconds."'
+    images:
+    - v6kqy_tesla_1
+    - v6kqy_tesla_2
+    - v6kqy_tesla_3
+  - raw: 9
+    condition_num: 7
+    factors:
+      vehicle: kona
+      order: questions_first
+    text: 'On the following pages, you will answer a few background questions and then learn about a product.
+      You will then be asked to answer a few questions about the product and your attitudes related to
+      it. Please answer honestly and read all instructions. Thank you! Then three pages, each a photo
+      followed by text: <image> "This is the Hyundai Kona Electric, a 100% electric version of the traditional
+      Hyundai Kona. It costs about $40,000 brand new (depending on exact specifications and model year)."
+      <image> "The Kona Electric has an estimated 250 mile range." <image> "The Kona Electric can accelerate
+      from zero to 60 mph in about 6.4 seconds."'
+    images:
+    - v6kqy_kona_1
+    - v6kqy_kona_2
+    - v6kqy_kona_3
+  - raw: 5
+    condition_num: 8
+    factors:
+      vehicle: none
+      order: questions_first
+    text: On the following pages, you will answer a few background questions and then learn about a product.
+      You will then be asked to answer a few questions about the product and your attitudes related to
+      it. Please answer honestly and read all instructions. Thank you!
+  considered_and_rejected:
+    DOV_CONTROL: The control group's vehicle; folded into V6KQY_ARM (5 + DOV_CONTROL), which is the declared
+      assignment.
+    ORDERA: Block order, fixed by DOV_EXP_RODE (one order for arms 1-4, one for the control; asserted);
+      the timing it records is the `order` factor.
+    ORDERB: Block order, fixed by DOV_EXP_RODE (one order for arms 1-4, one for the control; asserted);
+      the timing it records is the `order` factor.
+    ORDERC: Block order, fixed by DOV_EXP_RODE (one order for arms 1-4, one for the control; asserted);
+      the timing it records is the `order` factor.
+    ORDERD: Block order, fixed by DOV_EXP_RODE (one order for arms 1-4, one for the control; asserted);
+      the timing it records is the `order` factor.
+    ORDERE: Block order, fixed by DOV_EXP_RODE (one order for arms 1-4, one for the control; asserted);
+      the timing it records is the `order` factor.
+    ORDERF: Block order, fixed by DOV_EXP_RODE (one order for arms 1-4, one for the control; asserted);
+      the timing it records is the `order` factor.
+outcomes:
+- var: REVIEW1
+  task_num: 0
+  question: What is your first reaction to the product?
+  scale:
+    min: 1
+    max: 5
+    min_label: Very negative
+    max_label: Very positive
+    mid_label: Neutral
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW2
+  task_num: 1
+  question: Before learning about the product in this survey, had you heard of this product? 1 means "Yes";
+    2 means "No".
+  scale:
+    min: 1
+    max: 2
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+- var: REVIEW3
+  task_num: 2
+  question: In the past 30 days, have you been exposed to advertising for this product? 1 means "Yes";
+    2 means "No".
+  scale:
+    min: 1
+    max: 2
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+- var: REVIEW4
+  task_num: 3
+  question: Before learning about the product in this survey, how informed were you about it?
+  scale:
+    min: 1
+    max: 5
+    min_label: Very uninformed
+    max_label: Very informed
+    mid_label: Neutral
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW5
+  task_num: 4
+  question: If you were purchasing a vehicle, how likely would you be to buy the product?
+  scale:
+    min: 1
+    max: 5
+    min_label: Very unlikely
+    max_label: Very likely
+    mid_label: Neutral
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW6
+  task_num: 5
+  question: How would you describe your overall opinion of the product?
+  scale:
+    min: 1
+    max: 5
+    min_label: Very unfavorable
+    max_label: Very favorable
+    mid_label: Neutral
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW7A
+  task_num: 6
+  question: Please rate your agreement or disagreement with the following statements. I expect this product
+    to perform consistently
+  scale: &id001
+    min: 1
+    max: 5
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither disagree nor agree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW7B
+  task_num: 7
+  question: Please rate your agreement or disagreement with the following statements. This product is
+    one that I would enjoy
+  scale: *id001
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW7C
+  task_num: 8
+  question: Please rate your agreement or disagreement with the following statements. This product has
+    a strong engine
+  scale: *id001
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW7D
+  task_num: 9
+  question: Please rate your agreement or disagreement with the following statements. This product offers
+    value for money
+  scale: *id001
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW7E
+  task_num: 10
+  question: Please rate your agreement or disagreement with the following statements. This product looks
+    good
+  scale: *id001
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW7F
+  task_num: 11
+  question: Please rate your agreement or disagreement with the following statements. This product is
+    innovative
+  scale: *id001
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW9A
+  task_num: 12
+  question: Please rate your agreement or disagreement with the following statements. This product reflects
+    my values
+  scale: &id002
+    min: 1
+    max: 5
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither disagree nor agree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW9B
+  task_num: 13
+  question: Please rate your agreement or disagreement with the following statements. This is a product
+    for people like me
+  scale: *id002
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW9C
+  task_num: 14
+  question: Please rate your agreement or disagreement with the following statements. Buying this product
+    would reflect who I am
+  scale: *id002
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW9D
+  task_num: 15
+  question: Please rate your agreement or disagreement with the following statements. This product would
+    have a good look for me
+  scale: *id002
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW9E
+  task_num: 16
+  question: Please rate your agreement or disagreement with the following statements. A lot of people
+    will think highly of this product
+  scale: *id002
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: REVIEW9F
+  task_num: 17
+  question: Please rate your agreement or disagreement with the following statements. My friends would
+    like this product
+  scale: *id002
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: ATTITUDES1A
+  task_num: 18
+  question: How much do you oppose or support the following? An increased use of electric vehicles in
+    the U.S.
+  scale: &id003
+    min: 1
+    max: 5
+    min_label: Strongly oppose
+    max_label: Strongly support
+    mid_label: Neutral
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: DOV_EXP_RODE
+- var: ATTITUDES1B
+  task_num: 19
+  question: How much do you oppose or support the following? Tougher fuel efficiency standards for automobiles
+    and trucks
+  scale: *id003
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: DOV_EXP_RODE
+- var: ATTITUDES1C
+  task_num: 20
+  question: How much do you oppose or support the following? Transitioning the United States' economy
+    away from fossil fuels
+  scale: *id003
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: DOV_EXP_RODE
+- var: ATTITUDES2A
+  task_num: 21
+  question: Please rate your agreement or disagreement with the following statements. I am concerned about
+    climate change
+  scale: &id004
+    min: 1
+    max: 5
+    min_label: Strongly disagree
+    max_label: Strongly agree
+    mid_label: Neither disagree nor agree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: DOV_EXP_RODE
+- var: ATTITUDES2B
+  task_num: 22
+  question: Please rate your agreement or disagreement with the following statements. I support a carbon
+    tax to reduce carbon emissions
+  scale: *id004
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: DOV_EXP_RODE
+- var: INTEREST1
+  task_num: 23
+  question: Do you want to learn some surprising facts about electric vehicles and how the U.S. can benefit
+    from adopting them? 1 means "Yes"; 2 means "No".
+  scale:
+    min: 1
+    max: 2
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+  condition_var: DOV_EXP_RODE
+response_recode: {}
+missing_codes:
+- 77
+- 98
+- 99
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND
+persona_label_rewrite:
+  RELIG:
+    1: Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian,
+      Reformed, Church of Christ, Jehovah's Witness, etc.)
+    14: Something else
+persona_missing:
+  PARTYID7:
+  - -1
+  IDEO:
+  - -1
+  RELIG:
+  - 77
+  - 98
+  - 99
+  ATTEND:
+  - 77
+  - 98
+  - 99
+  GENDER:
+  - 0

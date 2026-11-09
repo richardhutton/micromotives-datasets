@@ -1,0 +1,863 @@
+study_id: 3xy9j
+source: tess
+title: 'An experiment on the presumption of consent to emergency medical treatment: a stroke treated with
+  t-PA or a cardiac arrest treated with CPR, its outcomes for 100 people shown as an icon chart, asked
+  as a choice or as treatment without consent'
+data_file: TESS3133_Chiong_Client_Final Data.sav
+licence: 'None stated: the TESS deposit on OSF (3xy9j, Chiong300.zip) gives no reuse terms (OSF node_license
+  null, checked 9 Nov 2026), and TESS has since suspended operations. Used with rich''s ruling of 9 Nov
+  2026 that an unstated licence does not block a build.'
+comparable_to_socsci210: false
+participant_id_var: CaseID
+notes: "Write recipes/images/3xy9j.yaml: a stroke or a cardiac arrest, its treatment's\noutcomes for 100\
+  \ people as an icon chart, asked as a choice or without consent, then\nseven statements about medical\
+  \ decisions.\n\nChiong, TESS3 133 (GfK SNO 17158, February 2013), \"An experiment on the presumption\n\
+  of consent to emergency medical treatment\". OSF 3xy9j: the proposal (Chiong300.pdf,\nTESS-0300.R1)\
+  \ and the TESS deposit Chiong300.zip, unpacked to \"TESS133 - Chiong -\nFinal Deliverables/\": the data\
+  \ (TESS3133_Chiong_Client_Final Data.sav), the fielded\nquestionnaire as a Word file (TESS3 133 Chiong\
+  \ Survey_Final.docx, \"Q\" below) with a\nplain-text copy (.txt, \"QT\"), the response rate report and\
+  \ GfK's methodology note.\n\nKnowledgePanel, US adults aged 50 and over (PPAGE 50 to 94; the proposal:\
+  \ \"older (50+)\nAmerican adults\"), web. 2,154 in the file, all with an assignment.\n\nEvery judgement\
+  \ is here, in code, so the recipe can be re-derived and reviewed:\n\n* DESIGN. 2 x 2 between people,\
+  \ held in the preload `XTESS133` (Q's study details:\n  \"1 =Group1a; 2 =Group 1b; 3 =Group 2a; 4 =Group\
+  \ 2b\"; .sav: Group 1a .. Group 2b;\n  545 / 534 / 555 / 520). The proposal names the factors: clinical\
+  \ scenario (a stroke\n  treated with the clot-dissolving medicine t-PA, or a cardiac arrest treated\
+  \ with\n  CPR) and question type (a hypothetical choice, or treatment \"in the absence of\n  consent\
+  \ or surrogate input\"). Q's screens: [IF XTESS133=1] Q1a stroke / choice,\n  =2 Q1b stroke / without\
+  \ consent, =3 Q1c cardiac arrest / choice, =4 Q1d cardiac\n  arrest / without consent. condition_num\
+  \ is XTESS133 - 1. Each group answers its own\n  variable, Q1A .. Q1D (every other group's copy is blank),\
+  \ declared per arm.\n  The recipe_prep call agreed: XTESS133, confidence 1.00.\n* WHY AN IMAGE EXPERIMENT.\
+  \ Each scenario screen shows a chart between the scenario and\n  the sentence \"This graphic shows ...\"\
+  . Read from Q's document.xml in order: the\n  screens for XTESS133 = 1 and 2 embed relationship rId12\
+  \ = word/media/image2.png and\n  those for 3 and 4 embed rId13 = word/media/image3.png, one picture\
+  \ per screen and no\n  other picture in the body (checked here). So the picture VARIES WITH THE SCENARIO\n\
+  \  factor and is identical within it. It repeats the text's numbers (checked: the\n  figures of each\
+  \ colour are counted from the file and equal the numbers in the\n  paragraph under it), but it is part\
+  \ of what every respondent saw, the paragraph\n  under it cites it (\"This graphic shows\"), and it\
+  \ carries what the text does not:\n  the layout of the 100 figures, the legend's own category names,\
+  \ and for the cardiac\n  arrest the 83 \"Dead\" that the text leaves as \"most of them ... would die\"\
+  . Built as\n  an image experiment, so a text-only reader still has every number and a vision\n  reader\
+  \ has the chart. The proposal says the stroke chart follows published\n  guidance on figures for stroke\
+  \ thrombolysis (Gadhia et al. 2010).\n* PICTURES. Copied byte for byte out of Q (the fielded questionnaire\
+  \ itself, not a\n  draft), 550 x 529 RGBA PNGs: stroke.png (image2) and cpr.png (image3). Whether GfK\n\
+  \  displayed them at this size cannot be known from the deposit. Each is a 10 x 10\n  grid of identical\
+  \ head-and-shoulders figures, coloured by outcome, with a legend on\n  the right. The figure counts\
+  \ in each description are measured from the file\n  (`icon_counts`, by the colour of each figure's body\
+  \ against the legend's\n  swatches), not read by eye. The other pictures in Q's media folder are not\
+  \ shown on\n  any screen of the body (logos in the headers).\n* CONDITION. shared_context is the paragraph\
+  \ that opens every scenario screen (\"In\n  medical emergencies, ... their health care.\"), word-for-word\
+  \ and identical on all\n  four (asserted), its \"Q1a.\" label removed. Each arm is then the scenario's\
+  \ two\n  paragraphs, `<image>` where the chart sits, and the paragraph under the chart, all\n  word-for-word.\
+  \ For the two without-consent groups the screen's last paragraph is\n  \"Imagine that the doctors [paramedics]\
+  \ cannot communicate with you ... whether you\n  would want this treatment. Even though the doctors\
+  \ [paramedics] are not able to\n  obtain your consent, would you want them to treat you with this medicine\
+  \ [CPR]?\":\n  its first sentence states the situation and goes in the condition; its second is\n  the\
+  \ question and is the outcome. No words of ours are added to task 0's condition\n  (for tasks 1-7, see\
+  \ OUTCOMES). Response\n  options and screen mechanics ([GRID SP ACROSS], the option codes) are not text.\n\
+  \  The consent screen before it (UCSF's research consent form) is survey mechanics and\n  is dropped.\n\
+  * OUTCOMES. Eight.\n  - Task 0: the scenario screen's question, which differs by arm and is declared\
+  \ per\n    arm (`outcome_question`): \"Would you want treatment with this medicine for your\n    condition?\"\
+  \ (1a), \"... with CPR for your condition?\" (2a), and the \"Even though\n    ...\" sentences above\
+  \ (1b, 2b). Answers 1-4: Definitely yes, Probably yes, Probably\n    no, Definitely no (Q, and the .sav's\
+  \ labels). -1 \"Refused\" is the only non-answer\n    (recipe_prep: non_answer, 1.00): 9 / 8 / 7 / 8\
+  \ people, dropped.\n  - Tasks 1-7: Q2-Q8, the grid on screen 3, asked of everyone straight after the\n\
+  \    scenario screen: seven statements about consent, involvement and treatment\n    (relying on the\
+  \ doctor, being offered choices, leaving decisions to the doctor,\n    fear of dependency, wanting a\
+  \ long life, confidence in care, distrust of\n    statistics). They are attitudes asked after the randomised\
+  \ scenario, so they can\n    move with it: built as post-treatment outcomes, the same call as vemrp's\
+  \ Q8\n    (ruled by the coordinator, 9 Nov 2026). Each question is the grid's stem then\n    the statement,\
+  \ joined with a space, word-for-word from Q (asserted the same in\n    QT), the \"Q2.\" labels removed.\
+  \ Answers 1-6, \"Strongly agree\" .. \"Strongly\n    disagree\", the screen's own end labels (the .sav's\
+  \ read \"Strongly agree <BR/>1\"\n    etc., GfK's markup; the codes are asserted to be those labels).\
+  \ -1 \"Refused\" is\n    dropped. No order variable exists and the grid shows all seven at once, so\
+  \ no row\n    says where its statement sat.\n  - THE CONDITION AT TASKS 1-7 states only what that person\
+  \ had seen and been asked\n    by then: the arm's scenario screen, the chart, and then the scenario\
+  \ question,\n    narrated as asked, never as answered (32 people refused it and are still built\n  \
+  \  here, docs/CONVENTIONS.md, Repeated measures within one block). Declared per arm\n    as an item\
+  \ `condition_text`: the arm's text, then the words of ours 'You were\n    asked:' and that arm's question\
+  \ in double quotes, word-for-word. \"You were\n    asked:\" is the only addition, and it is true for\
+  \ every row it appears in.\n* NOT BUILT. Q9-Q12 (general physical health, ever diagnosed with a heart\
+  \ attack,\n  with a stroke, having an advance directive), asked of everyone after the grid:\n  health\
+  \ status and history are facts about the respondent, not reactions to the\n  scenario, so they are not\
+  \ outcomes of this manipulation (the proposal: \"personal\n  and health factors\"; ruled by the coordinator,\
+  \ 9 Nov 2026). Asked after the\n  stimulus, they are not admissible as persona either. SocSci210 built\
+  \ them (its\n  tasks 8-11). Cost: 8,503 rows (SocSci210's count for those tasks).\n* WHO. 2,154 respondents;\
+  \ 2,135 answered at least one built question and are built\n  (2,122 answered the scenario question).\
+  \ Each item's refusal drops only that row.\n  `CaseID` is the participant id (unique).\n* PERSONA. The\
+  \ standard GfK KnowledgePanel profile, as a42yg (same variable names):\n  PPAGE, PPGENDER, PPEDUCAT,\
+  \ PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE,\n  PPHOUSE, PPRENT, PPMSACAT, PPNET, and the\
+  \ study's merged party, ideology and\n  religion items PARTY7, IDEO, REL1, REL2 (Q: DOV_ = the preload,\
+  \ else the backfill\n  question). Left absent: IDEO / REL1 / REL2 -1 \"Refused\" (PARTY7 has no non-answer\n\
+  \  code). recipe_prep offered PPEDUC (14 levels, confidence 0.99) for education;\n  overruled for PPEDUCAT,\
+  \ which every other GfK TESS recipe maps and the crosswalk\n  covers. It offered PPREG4 for region (0.61,\
+  \ runner-up ppreg9); PPREG4 accepted, as\n  every other TESS build. Not mapped: PPEDUC, ppreg9, PPSTATEN,\
+  \ ppagecat / ppagect4,\n  PPHHHEAD, the household age counts PPT*, the weight and timings. No persona\
+  \ field\n  is in the outcome's domain (medical treatment), and the condition names no persona\n  category.\n\
+  * UK FIT. A stroke and a cardiac arrest, an ambulance, paramedics, a hospital, t-PA\n  and CPR: nothing\
+  \ in the condition or question is American law, place or\n  institution. US spelling (\"paralyzed\"\
+  ) is kept word-for-word. The sample is American\n  and aged 50 or over.\n* ANSWER KEY. SocSci210 holds\
+  \ this study: 25,482 rows, 2,142 people, 12 tasks. Its\n  tasks 0-7 are ours, numbered the same: 16,979\
+  \ rows, 2,135 people, and every\n  (condition, task, response) cell equal to ours, value for value\n\
+  \  (tests/test_gen_3xy9j.py). Its other 8,503 rows are Q9-Q12, not built above, so\n  `comparable_to_socsci210`\
+  \ is false (the whole-study crosscheck compares row totals\n  and would fail on scope alone) and the\
+  \ cell-for-cell comparison is the test.\n  SocSci210's text differs from what was fielded. Its conditions\
+  \ are worded from the\n  PROPOSAL: the cardiac-arrest text gives CPR as saving \"5 people\" at normal\n\
+  \  function, 1 with some brain damage and 1 in a coma or too damaged to live\n  independently, where\
+  \ the fielded screen and chart say 12, 3, 1 and 1; and it drops\n  \"on their own\" from the stroke\
+  \ paragraph. At tasks 1-7 it gives the statement\n  without the grid's stem, does not say the scenario\
+  \ question was asked, and its\n  answer instruction reads \"1 means Strongly disagree and 6 means Strongly\
+  \ agree\",\n  the reverse of the screen (1 = strongly agree) and of the .sav, while its stored\n  responses\
+  \ are the raw codes, equal to ours: its prompts invert the meaning of\n  every answer on those seven\
+  \ tasks. Our text is Q's.\n* JEV. scripts/recipe_prep.py 3xy9j --source tess (9 Nov 2026): assignment\
+  \ XTESS133\n  (1.00); persona as above; 301 value labels asked, the one disagreement with the\n  regex\
+  \ is PPSTATEN's \"ID\" (Idaho, an answer; not mapped). Its questionnaire scan\n  found no instrument\
+  \ because it does not read .docx; the directives were read here\n  instead, and Q's only routing on\
+  \ the built screens is [IF XTESS133=k].\n\n    uv run python scripts/gen_3xy9j.py --prep       # extract\
+  \ the two charts from Q\n    uv run python scripts/gen_3xy9j.py --catalogue  # (re)write this study's\
+  \ images.json entries\n    uv run python scripts/gen_3xy9j.py              # write the recipe\n    uv\
+  \ run python scripts/gen_3xy9j.py --check      # exit 1 if it differs"
+condition:
+  source_var: XTESS133
+  shared_context: In medical emergencies, doctors and patients must make difficult decisions about treatment.
+    We are trying to find out how people would want to be treated in different situations, and why. Please
+    read the following scenario and answer the question. Imagine yourself as the patient in this scenario.
+    You can refer to the scenario while answering the question. Your opinions will help doctors understand
+    how people make decisions about their health care.
+  factors:
+  - scenario
+  - question_type
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      scenario: stroke
+      question_type: hypothetical_choice
+    text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery in your brain,
+      so part of your brain does not get enough blood. As a result, you are unable to speak and the right
+      side of your body is paralyzed. You are quickly brought to a hospital by ambulance. In the hospital,
+      a medicine (called t-PA) can be injected into your blood to try to dissolve the clot and allow blood
+      to flow to that part of your brain, but it can only be given within 3 hours of your stroke. This
+      treatment does not work for every patient, and because it dissolves blood clots, it has a risk of
+      causing serious bleeding that makes some patients worse. Also, some people with strokes get better
+      on their own, even without the medicine. <image> This graphic shows the difference that treatment
+      with this medicine would make if given to 100 people with this kind of stroke. In most of them,
+      the treatment would make no difference: these people would get better or worse on their own regardless
+      of whether they get the medicine. The medicine would make 13 people normal or near normal again.
+      It would make another 20 people better but not all the way back to normal. 1 person would either
+      be killed or made severely disabled by the medicine, and another 2 people would be made worse by
+      the medicine.'
+    images:
+    - 3xy9j_stroke
+    outcome_var: Q1A
+    outcome_question: Would you want treatment with this medicine for your condition?
+    items:
+      1:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. You were asked: "Would
+          you want treatment with this medicine for your condition?"'
+      2:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. You were asked: "Would
+          you want treatment with this medicine for your condition?"'
+      3:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. You were asked: "Would
+          you want treatment with this medicine for your condition?"'
+      4:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. You were asked: "Would
+          you want treatment with this medicine for your condition?"'
+      5:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. You were asked: "Would
+          you want treatment with this medicine for your condition?"'
+      6:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. You were asked: "Would
+          you want treatment with this medicine for your condition?"'
+      7:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. You were asked: "Would
+          you want treatment with this medicine for your condition?"'
+  - raw: 2
+    condition_num: 1
+    factors:
+      scenario: stroke
+      question_type: without_consent
+    text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery in your brain,
+      so part of your brain does not get enough blood. As a result, you are unable to speak and the right
+      side of your body is paralyzed. You are quickly brought to a hospital by ambulance. In the hospital,
+      a medicine (called t-PA) can be injected into your blood to try to dissolve the clot and allow blood
+      to flow to that part of your brain, but it can only be given within 3 hours of your stroke. This
+      treatment does not work for every patient, and because it dissolves blood clots, it has a risk of
+      causing serious bleeding that makes some patients worse. Also, some people with strokes get better
+      on their own, even without the medicine. <image> This graphic shows the difference that treatment
+      with this medicine would make if given to 100 people with this kind of stroke. In most of them,
+      the treatment would make no difference: these people would get better or worse on their own regardless
+      of whether they get the medicine. The medicine would make 13 people normal or near normal again.
+      It would make another 20 people better but not all the way back to normal. 1 person would either
+      be killed or made severely disabled by the medicine, and another 2 people would be made worse by
+      the medicine. Imagine that the doctors cannot communicate with you because of your stroke, and also
+      cannot find your family or friends to ask them whether you would want this treatment.'
+    images:
+    - 3xy9j_stroke
+    outcome_var: Q1B
+    outcome_question: Even though the doctors are not able to obtain your consent, would you want them
+      to treat you with this medicine?
+    items:
+      1:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. Imagine that the
+          doctors cannot communicate with you because of your stroke, and also cannot find your family
+          or friends to ask them whether you would want this treatment. You were asked: "Even though the
+          doctors are not able to obtain your consent, would you want them to treat you with this medicine?"'
+      2:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. Imagine that the
+          doctors cannot communicate with you because of your stroke, and also cannot find your family
+          or friends to ask them whether you would want this treatment. You were asked: "Even though the
+          doctors are not able to obtain your consent, would you want them to treat you with this medicine?"'
+      3:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. Imagine that the
+          doctors cannot communicate with you because of your stroke, and also cannot find your family
+          or friends to ask them whether you would want this treatment. You were asked: "Even though the
+          doctors are not able to obtain your consent, would you want them to treat you with this medicine?"'
+      4:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. Imagine that the
+          doctors cannot communicate with you because of your stroke, and also cannot find your family
+          or friends to ask them whether you would want this treatment. You were asked: "Even though the
+          doctors are not able to obtain your consent, would you want them to treat you with this medicine?"'
+      5:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. Imagine that the
+          doctors cannot communicate with you because of your stroke, and also cannot find your family
+          or friends to ask them whether you would want this treatment. You were asked: "Even though the
+          doctors are not able to obtain your consent, would you want them to treat you with this medicine?"'
+      6:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. Imagine that the
+          doctors cannot communicate with you because of your stroke, and also cannot find your family
+          or friends to ask them whether you would want this treatment. You were asked: "Even though the
+          doctors are not able to obtain your consent, would you want them to treat you with this medicine?"'
+      7:
+        condition_text: 'Imagine that one day you have a serious stroke: a blood clot blocks an artery
+          in your brain, so part of your brain does not get enough blood. As a result, you are unable
+          to speak and the right side of your body is paralyzed. You are quickly brought to a hospital
+          by ambulance. In the hospital, a medicine (called t-PA) can be injected into your blood to try
+          to dissolve the clot and allow blood to flow to that part of your brain, but it can only be
+          given within 3 hours of your stroke. This treatment does not work for every patient, and because
+          it dissolves blood clots, it has a risk of causing serious bleeding that makes some patients
+          worse. Also, some people with strokes get better on their own, even without the medicine. <image>
+          This graphic shows the difference that treatment with this medicine would make if given to 100
+          people with this kind of stroke. In most of them, the treatment would make no difference: these
+          people would get better or worse on their own regardless of whether they get the medicine. The
+          medicine would make 13 people normal or near normal again. It would make another 20 people better
+          but not all the way back to normal. 1 person would either be killed or made severely disabled
+          by the medicine, and another 2 people would be made worse by the medicine. Imagine that the
+          doctors cannot communicate with you because of your stroke, and also cannot find your family
+          or friends to ask them whether you would want this treatment. You were asked: "Even though the
+          doctors are not able to obtain your consent, would you want them to treat you with this medicine?"'
+  - raw: 3
+    condition_num: 2
+    factors:
+      scenario: cardiac_arrest
+      question_type: hypothetical_choice
+    text: 'Imagine that one day you have a serious heart attack: an electrical abnormality in your heart
+      makes it stop pumping, so your brain and other organs do not get enough blood. As a result, you
+      fall down unconscious, and you will die quickly without treatment. Some paramedics are nearby, and
+      they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary resuscitation), in which
+      they repeatedly compress your chest and blow air into your lungs. This is to try to keep blood flowing
+      to your brain and other organs until your heart can be restarted. This treatment does not work for
+      most patients, and some patients who receive CPR survive but are left with serious brain damage.
+      <image> This graphic shows what would happen if treatment with CPR is given to 100 people with this
+      kind of heart attack. In most of them, the treatment would make no difference: these people would
+      die regardless of whether they receive CPR. CPR would allow 12 people to survive at a normal or
+      near normal level of function. It would allow another 3 people to survive with some brain damage,
+      but still able to live independently. 1 person would survive with too much brain damage to live
+      independently, and another 1 person would survive in a coma.'
+    images:
+    - 3xy9j_cpr
+    outcome_var: Q1C
+    outcome_question: Would you want treatment with CPR for your condition?
+    items:
+      1:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. You were asked: "Would you want treatment with CPR for your condition?"'
+      2:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. You were asked: "Would you want treatment with CPR for your condition?"'
+      3:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. You were asked: "Would you want treatment with CPR for your condition?"'
+      4:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. You were asked: "Would you want treatment with CPR for your condition?"'
+      5:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. You were asked: "Would you want treatment with CPR for your condition?"'
+      6:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. You were asked: "Would you want treatment with CPR for your condition?"'
+      7:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. You were asked: "Would you want treatment with CPR for your condition?"'
+  - raw: 4
+    condition_num: 3
+    factors:
+      scenario: cardiac_arrest
+      question_type: without_consent
+    text: 'Imagine that one day you have a serious heart attack: an electrical abnormality in your heart
+      makes it stop pumping, so your brain and other organs do not get enough blood. As a result, you
+      fall down unconscious, and you will die quickly without treatment. Some paramedics are nearby, and
+      they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary resuscitation), in which
+      they repeatedly compress your chest and blow air into your lungs. This is to try to keep blood flowing
+      to your brain and other organs until your heart can be restarted. This treatment does not work for
+      most patients, and some patients who receive CPR survive but are left with serious brain damage.
+      <image> This graphic shows what would happen if treatment with CPR is given to 100 people with this
+      kind of heart attack. In most of them, the treatment would make no difference: these people would
+      die regardless of whether they receive CPR. CPR would allow 12 people to survive at a normal or
+      near normal level of function. It would allow another 3 people to survive with some brain damage,
+      but still able to live independently. 1 person would survive with too much brain damage to live
+      independently, and another 1 person would survive in a coma. Imagine that the paramedics cannot
+      communicate with you because of your heart attack, and also cannot find your family or friends to
+      ask them whether you would want this treatment.'
+    images:
+    - 3xy9j_cpr
+    outcome_var: Q1D
+    outcome_question: Even though the paramedics are not able to obtain your consent, would you want them
+      to treat you with CPR?
+    items:
+      1:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. Imagine that the paramedics cannot communicate with you because of
+          your heart attack, and also cannot find your family or friends to ask them whether you would
+          want this treatment. You were asked: "Even though the paramedics are not able to obtain your
+          consent, would you want them to treat you with CPR?"'
+      2:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. Imagine that the paramedics cannot communicate with you because of
+          your heart attack, and also cannot find your family or friends to ask them whether you would
+          want this treatment. You were asked: "Even though the paramedics are not able to obtain your
+          consent, would you want them to treat you with CPR?"'
+      3:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. Imagine that the paramedics cannot communicate with you because of
+          your heart attack, and also cannot find your family or friends to ask them whether you would
+          want this treatment. You were asked: "Even though the paramedics are not able to obtain your
+          consent, would you want them to treat you with CPR?"'
+      4:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. Imagine that the paramedics cannot communicate with you because of
+          your heart attack, and also cannot find your family or friends to ask them whether you would
+          want this treatment. You were asked: "Even though the paramedics are not able to obtain your
+          consent, would you want them to treat you with CPR?"'
+      5:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. Imagine that the paramedics cannot communicate with you because of
+          your heart attack, and also cannot find your family or friends to ask them whether you would
+          want this treatment. You were asked: "Even though the paramedics are not able to obtain your
+          consent, would you want them to treat you with CPR?"'
+      6:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. Imagine that the paramedics cannot communicate with you because of
+          your heart attack, and also cannot find your family or friends to ask them whether you would
+          want this treatment. You were asked: "Even though the paramedics are not able to obtain your
+          consent, would you want them to treat you with CPR?"'
+      7:
+        condition_text: 'Imagine that one day you have a serious heart attack: an electrical abnormality
+          in your heart makes it stop pumping, so your brain and other organs do not get enough blood.
+          As a result, you fall down unconscious, and you will die quickly without treatment. Some paramedics
+          are nearby, and they come quickly by ambulance. The paramedics can use CPR (cardiopulmonary
+          resuscitation), in which they repeatedly compress your chest and blow air into your lungs. This
+          is to try to keep blood flowing to your brain and other organs until your heart can be restarted.
+          This treatment does not work for most patients, and some patients who receive CPR survive but
+          are left with serious brain damage. <image> This graphic shows what would happen if treatment
+          with CPR is given to 100 people with this kind of heart attack. In most of them, the treatment
+          would make no difference: these people would die regardless of whether they receive CPR. CPR
+          would allow 12 people to survive at a normal or near normal level of function. It would allow
+          another 3 people to survive with some brain damage, but still able to live independently. 1
+          person would survive with too much brain damage to live independently, and another 1 person
+          would survive in a coma. Imagine that the paramedics cannot communicate with you because of
+          your heart attack, and also cannot find your family or friends to ask them whether you would
+          want this treatment. You were asked: "Even though the paramedics are not able to obtain your
+          consent, would you want them to treat you with CPR?"'
+outcomes:
+- task_num: 0
+  question: Would you want treatment with this medicine for your condition?
+  scale:
+    min: 1
+    max: 4
+    min_label: Definitely yes
+    max_label: Definitely no
+- var: Q2
+  task_num: 1
+  question: We would also like to ask some questions about your preferences when decisions about your
+    health care have to be made. Please rate the following statements on a scale from 1 (strongly agree)
+    to 6 (strongly disagree). Choose the number that most closely describes your attitude. I prefer to
+    rely upon my doctor's knowledge and not try to find out about my condition on my own.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+- var: Q3
+  task_num: 2
+  question: We would also like to ask some questions about your preferences when decisions about your
+    health care have to be made. Please rate the following statements on a scale from 1 (strongly agree)
+    to 6 (strongly disagree). Choose the number that most closely describes your attitude. I prefer that
+    my doctor offers me choices and asks my opinion.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+- var: Q4
+  task_num: 3
+  question: We would also like to ask some questions about your preferences when decisions about your
+    health care have to be made. Please rate the following statements on a scale from 1 (strongly agree)
+    to 6 (strongly disagree). Choose the number that most closely describes your attitude. I prefer to
+    leave the decisions about my medical care up to my doctor.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+- var: Q5
+  task_num: 4
+  question: We would also like to ask some questions about your preferences when decisions about your
+    health care have to be made. Please rate the following statements on a scale from 1 (strongly agree)
+    to 6 (strongly disagree). Choose the number that most closely describes your attitude. I am afraid
+    of becoming dependent on my family or a nursing home for my daily needs.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+- var: Q6
+  task_num: 5
+  question: We would also like to ask some questions about your preferences when decisions about your
+    health care have to be made. Please rate the following statements on a scale from 1 (strongly agree)
+    to 6 (strongly disagree). Choose the number that most closely describes your attitude. I would like
+    to live a long life, regardless of how healthy or independent I am.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+- var: Q7
+  task_num: 6
+  question: We would also like to ask some questions about your preferences when decisions about your
+    health care have to be made. Please rate the following statements on a scale from 1 (strongly agree)
+    to 6 (strongly disagree). Choose the number that most closely describes your attitude. When I go to
+    a hospital or doctor's office, I am confident that I will receive good care.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+- var: Q8
+  task_num: 7
+  question: We would also like to ask some questions about your preferences when decisions about your
+    health care have to be made. Please rate the following statements on a scale from 1 (strongly agree)
+    to 6 (strongly disagree). Choose the number that most closely describes your attitude. I do not believe
+    in using statistics to make important life decisions.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+missing_codes:
+- -1
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: PARTY7
+  ideology: IDEO
+  religion: REL1
+  religious_attendance: REL2
+persona_missing:
+  IDEO:
+  - -1
+  REL1:
+  - -1
+  REL2:
+  - -1
