@@ -669,5 +669,67 @@
     "status": "sent",
     "sent": "2026-11-02",
     "notes": "SEND AFTER 10 NOV (he's out of office to 6 Nov). Replaces a separate chase."
+  },
+  {
+    "id": "pechey2",
+    "order": 27,
+    "name": "Rachel Pechey (chase + IMG107-110)",
+    "email": "rachel.pechey@phc.ox.ac.uk",
+    "cc": "",
+    "org": "University of Oxford, Nuffield Dept of Primary Care",
+    "experiments": [
+      {
+        "id": "IMG107",
+        "link": "https://osf.io/qkh8c",
+        "title": "Cafeteria shelf photos and social norms"
+      },
+      {
+        "id": "IMG108",
+        "link": "https://osf.io/9sudr",
+        "title": "Branded snack and meal preferences"
+      },
+      {
+        "id": "IMG109",
+        "link": "https://osf.io/c83vq",
+        "title": "Snack availability and choice"
+      },
+      {
+        "id": "IMG110",
+        "link": "https://osf.io/pjmbd",
+        "title": "Alcohol vs alcohol-free adverts"
+      }
+    ],
+    "ask": "Chase the 26 Oct email (IMG31, 32, 42, 43, no reply yet), and ask for the photos and adverts behind four more studies, plus permission.",
+    "subject": "Re: Using your online supermarket studies",
+    "body": "Hi Rachel,\n\nJust following up on my note from 26 October about your online supermarket studies, in case it got buried. I'd still love to use them, and the label and product images would help most.\n\nSince then I've found four more of your studies that would fit really well. The data is on OSF for each of them, but the pictures people saw aren't:\n- Shelf photos and social norms (qkh8c)\n- Branded snack and meal preferences (9sudr)\n- Snack availability and choice (c83vq)\n- Alcohol and alcohol-free adverts (pjmbd)\n\nCould you share the photos and adverts for each version, and let me know you're happy for me to use the data? If some are easier to dig out than others, any of them would be a big help.\n\nAs before, nothing derived from your data would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich",
+    "status": "ready",
+    "sent": "",
+    "notes": "Draft added 9 Nov 2026. Sending this also counts as the chase for the pechey row."
+  },
+  {
+    "id": "hollands2",
+    "order": 28,
+    "name": "Gareth Hollands & Natasha Clarke (IMG106, IMG139)",
+    "email": "gareth.hollands@ucl.ac.uk",
+    "cc": "n.clarke@bathspa.ac.uk",
+    "org": "UCL / Bath Spa / Cambridge",
+    "experiments": [
+      {
+        "id": "IMG139",
+        "link": "https://doi.org/10.17863/CAM.94093",
+        "title": "Alcohol-free share in an online shop"
+      },
+      {
+        "id": "IMG106",
+        "link": "https://osf.io/kmfpg",
+        "title": "Infographics on policy effectiveness"
+      }
+    ],
+    "ask": "Product photos for IMG139 (data is CC BY), and for IMG106 confirm the 7 protocol images are the fielded infographics, plus permission.",
+    "subject": "Re: Using your warning label studies",
+    "body": "Hi Gareth and Natasha,\n\nThanks again for saying yes to the warning label studies. I've found two more of your group's studies that would fit the dataset well:\n- The share of alcohol-free drinks in an online shop (Apollo, doi 10.17863/CAM.94093). The data is there, but not the product photos people saw. If you still have them, they'd make it usable.\n- The infographics on obesity policies (osf.io/kmfpg). The protocol includes seven images. Are those the exact versions people saw, and are you happy for me to use the data?\n\nI know the older files are hard to get hold of now, so no worries if the photos have gone.\n\nThanks,\nRich",
+    "status": "ready",
+    "sent": "",
+    "notes": "Draft added 9 Nov 2026. They said on 2 Nov they no longer have the old label files, so the IMG139 photos may be gone too."
   }
 ]

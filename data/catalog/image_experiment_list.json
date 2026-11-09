@@ -1077,9 +1077,9 @@
       "description": "Evidence that obesity policies work, shown as text, infographic, analogy, or both, vs control; perceived effectiveness and support (1-7). England, n~4,500 (Reynolds, Marteau, Hollands et al.).",
       "link": "https://osf.io/kmfpg",
       "status": "Needs checking",
-      "reason": "Data public; 7 images embedded in the protocol, need confirming as the fielded infographics.",
+      "reason": "Data public; 7 images embedded in the protocol. Email to Gareth Hollands asks whether they are the fielded infographics.",
       "permission": "Not asked yet",
-      "contact": "",
+      "contact": "Gareth Hollands & Natasha Clarke (IMG106, IMG139)",
       "added": "2026-11-09",
       "found_via": "Search: UK health labels"
     },
@@ -1089,9 +1089,9 @@
       "description": "Shelf photos varying availability of healthier options and shelf fullness (3x2); perceived norms and what you'd buy. UK Dynata, n=2,331 (Pechey et al. 2021).",
       "link": "https://osf.io/qkh8c",
       "status": "Waiting for images",
-      "reason": "Data public; full photo set and questionnaire not deposited. One email to Rachel Pechey covers this and the next three.",
+      "reason": "Data public; full photo set and questionnaire not deposited. Email to Rachel Pechey drafted (covers IMG107-110).",
       "permission": "Not asked yet",
-      "contact": "",
+      "contact": "Rachel Pechey (chase + IMG107-110)",
       "added": "2026-11-09",
       "found_via": "Search: UK health labels"
     },
@@ -1103,7 +1103,7 @@
       "status": "Waiting for images",
       "reason": "Data public; images only as reproduced in the paper. Same email as the shelf photos.",
       "permission": "Not asked yet",
-      "contact": "",
+      "contact": "Rachel Pechey (chase + IMG107-110)",
       "added": "2026-11-09",
       "found_via": "Search: UK health labels"
     },
@@ -1115,7 +1115,7 @@
       "status": "Waiting for images",
       "reason": "Data public; images not deposited. Same email as the shelf photos.",
       "permission": "Not asked yet",
-      "contact": "",
+      "contact": "Rachel Pechey (chase + IMG107-110)",
       "added": "2026-11-09",
       "found_via": "Search: UK health labels"
     },
@@ -1127,7 +1127,7 @@
       "status": "Waiting for images",
       "reason": "Data public; ad creatives probably only as protocol examples. Same email as the shelf photos.",
       "permission": "Not asked yet",
-      "contact": "",
+      "contact": "Rachel Pechey (chase + IMG107-110)",
       "added": "2026-11-09",
       "found_via": "Search: UK health labels"
     },
@@ -1473,9 +1473,9 @@
       "description": "Simulated online supermarket with 25%, 50% or 75% non-alcoholic products; units selected and a real purchase. UK, n=737 (Clarke, Hollands, Marteau et al., Cambridge).",
       "link": "https://doi.org/10.17863/CAM.94093",
       "status": "Waiting for images",
-      "reason": "Data CC BY 4.0; product photos not deposited. Fits the same Cambridge email as the Pechey studies.",
+      "reason": "Data CC BY 4.0; product photos not deposited. Email to Gareth Hollands and Natasha Clarke drafted.",
       "permission": "Not asked yet",
-      "contact": "",
+      "contact": "Gareth Hollands & Natasha Clarke (IMG106, IMG139)",
       "added": "2026-11-09",
       "found_via": "Search: UK university repositories"
     },
