@@ -41,6 +41,16 @@
         "id": "IMG40",
         "link": "https://osf.io/xsfev/",
         "title": "Warnings on chocolate bars"
+      },
+      {
+        "id": "IMG139",
+        "link": "https://doi.org/10.17863/CAM.94093",
+        "title": "Alcohol-free share in an online shop"
+      },
+      {
+        "id": "IMG106",
+        "link": "https://osf.io/kmfpg",
+        "title": "Infographics on policy effectiveness"
       }
     ],
     "ask": "Permission to use (no licence on OSF), and the label image files where they are only inside the protocol documents.",
@@ -48,7 +58,7 @@
     "body": "Hi Gareth and Natasha,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour group's studies on OSF would be really useful:\n- Alcohol and snack warning labels, Studies 1 and 2 (pr8zu, k7tw5)\n- Alcohol label acceptability (h6bzx)\n- Labels in an online shop (w5xf8)\n- Warnings with snack images (5gecb)\n- Warnings on chocolate bars (xsfev), copying Paul for this one\n\nThere's no licence on the deposits, so I wanted to check you're happy for me to use them. Some of the label images are only inside the protocol docs, so if you have them as files that would help a lot.\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
     "status": "yes",
     "sent": "2026-10-26",
-    "notes": "Yes, 2 Nov 2026 13:09, from Gareth Hollands (Natasha Clarke cc'd): \"That's fine and thanks for specifying that you'll credit the work.\" Credit their work in anything we write. They no longer have the label image files: extract them from the protocol documents in the deposits. Paul Fletcher (cc, IMG40) did not reply separately. The two follow-up questions (IMG39 Inquisit script; IMG01 desire-to-drink codes 1-5, 8, 9) were never sent; with no access to their old files, they are unlikely to have them."
+    "notes": "Yes, 2 Nov 2026 13:09, from Gareth Hollands (Natasha Clarke cc'd): \"That's fine and thanks for specifying that you'll credit the work.\" Credit their work in anything we write. They no longer have the label image files: extract them from the protocol documents in the deposits. Paul Fletcher (cc, IMG40) did not reply separately. The two follow-up questions (IMG39 Inquisit script; IMG01 desire-to-drink codes 1-5, 8, 9) were never sent; with no access to their old files, they are unlikely to have them. 9 Nov 2026 (rich): this approval also covers IMG106 and IMG139; no new email needed."
   },
   {
     "id": "hudson",
@@ -705,31 +715,5 @@
     "status": "ready",
     "sent": "",
     "notes": "Draft added 9 Nov 2026. Sending this also counts as the chase for the pechey row."
-  },
-  {
-    "id": "hollands2",
-    "order": 28,
-    "name": "Gareth Hollands & Natasha Clarke (IMG106, IMG139)",
-    "email": "gareth.hollands@ucl.ac.uk",
-    "cc": "n.clarke@bathspa.ac.uk",
-    "org": "UCL / Bath Spa / Cambridge",
-    "experiments": [
-      {
-        "id": "IMG139",
-        "link": "https://doi.org/10.17863/CAM.94093",
-        "title": "Alcohol-free share in an online shop"
-      },
-      {
-        "id": "IMG106",
-        "link": "https://osf.io/kmfpg",
-        "title": "Infographics on policy effectiveness"
-      }
-    ],
-    "ask": "Product photos for IMG139 (data is CC BY), and for IMG106 confirm the 7 protocol images are the fielded infographics, plus permission.",
-    "subject": "Re: Using your warning label studies",
-    "body": "Hi Gareth and Natasha,\n\nThanks again for saying yes to the warning label studies. I've found two more of your group's studies that would fit the dataset well:\n- The share of alcohol-free drinks in an online shop (Apollo, doi 10.17863/CAM.94093). The data is there, but not the product photos people saw. If you still have them, they'd make it usable.\n- The infographics on obesity policies (osf.io/kmfpg). The protocol includes seven images. Are those the exact versions people saw, and are you happy for me to use the data?\n\nI know the older files are hard to get hold of now, so no worries if the photos have gone.\n\nThanks,\nRich",
-    "status": "ready",
-    "sent": "",
-    "notes": "Draft added 9 Nov 2026. They said on 2 Nov they no longer have the old label files, so the IMG139 photos may be gone too."
   }
 ]
