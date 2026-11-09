@@ -83,6 +83,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
       <select id="fs" aria-label="Filter by status"><option value="">All statuses</option></select>
       <select id="fp" aria-label="Filter by permission"><option value="">All permissions</option></select>
       <select id="fu" aria-label="Filter by sample"><option value="">All samples</option><option value="us">US · TESS only</option><option value="notus">Excluding US · TESS</option></select>
+      <select id="fa" aria-label="Filter by date added"><option value="">Any date added</option></select>
     </div>
     <p id="msg" class="note" hidden></p>
     <div class="scroll">
@@ -110,7 +111,8 @@ const pcls=p=>"p-"+String(p).split(" ")[0];
 $("defs").innerHTML=STATUSES.map(([s,k,d])=>`<li><span><span class="pill ${scls(s)}">${s}</span></span><span>${d}</span></li>`).join("");
 $("fs").insertAdjacentHTML("beforeend",STATUSES.map(([s])=>`<option>${s}</option>`).join(""));
 $("fp").insertAdjacentHTML("beforeend",PERMS.map(p=>`<option>${p}</option>`).join(""));
-["q","fs","fp","fu"].forEach(i=>$(i).addEventListener(i==="q"?"input":"change",render));
+$("fa").insertAdjacentHTML("beforeend",[...new Set(rows.map(r=>r.added).filter(Boolean))].sort().reverse().map(x=>`<option>${x}</option>`).join(""));
+["q","fs","fp","fu","fa"].forEach(i=>$(i).addEventListener(i==="q"?"input":"change",render));
 
 function summary(){
   const n=(s,p)=>rows.filter(r=>(!s||r.status===s)&&(!p||r.permission===p)).length;
@@ -124,12 +126,12 @@ function summary(){
 }
 
 function render(){
-  const q=$("q").value.trim().toLowerCase(), fs=$("fs").value, fp=$("fp").value, fu=$("fu").value;
-  const vis=rows.filter(r=>(!fs||r.status===fs)&&(!fp||r.permission===fp)&&(!fu||(fu==="us")===!!r.sample)&&(!q||JSON.stringify(r).toLowerCase().includes(q)));
+  const q=$("q").value.trim().toLowerCase(), fs=$("fs").value, fp=$("fp").value, fu=$("fu").value, fa=$("fa").value;
+  const vis=rows.filter(r=>(!fs||r.status===fs)&&(!fp||r.permission===fp)&&(!fu||(fu==="us")===!!r.sample)&&(!fa||r.added===fa)&&(!q||JSON.stringify(r).toLowerCase().includes(q)));
   $("msg").hidden=vis.length>0; $("msg").textContent="No experiments match.";
   $("rows").innerHTML=vis.map(r=>`<tr>
-    <td class="num">${esc(r.id)}${r.recipe?`<div class="cc">${esc(r.recipe)}</div>`:""}</td>
-    <td><b>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a>`:esc(r.title)}</b>${r.sample?`<span class="pill us" title="US sample, from TESS">${esc(r.sample)}</span>`:""}<div class="ask" style="max-width:80ch">${esc(r.description)}</div></td>
+    <td class="num">${esc(r.id)}${r.recipe?`<div class="cc">${esc(r.recipe)}</div>`:""}${r.added?`<div class="cc">added ${esc(r.added)}</div>`:""}</td>
+    <td><b>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a>`:esc(r.title)}</b>${r.sample?`<span class="pill us" title="US sample, from TESS">${esc(r.sample)}</span>`:""}<div class="ask" style="max-width:80ch">${esc(r.description)}</div>${r.found_via?`<div class="cc">Found via: ${esc(r.found_via)}</div>`:""}</td>
     <td><span class="pill ${scls(r.status)}">${esc(r.status)}</span>${r.reason?`<div class="notes">${esc(r.reason)}</div>`:""}</td>
     <td><span class="pill ${pcls(r.permission)}">${esc(r.permission)}</span>${r.contact?`<div class="cc">${esc(r.contact)}</div>`:""}</td>
     <td class="num">${r.rows?r.rows.toLocaleString("en-GB"):""}</td>
