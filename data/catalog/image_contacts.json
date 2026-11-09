@@ -200,9 +200,9 @@
     "ask": "Permission to use (no licence stated), and the label and product images.",
     "subject": "Using your online supermarket studies",
     "body": "Hi Rachel,\n\nI'm an independent researcher in the UK. I'm putting together a dataset of UK experiments where people were randomly shown something (a label, a photo, an ad) and then answered questions, and I use it to fine-tune open-weight LLMs to predict how people respond.\n\nYour studies on OSF would be really useful:\n- Ecolabels in the online supermarket (byztm / rn5za)\n- Range of ecolabels on canteen meals (69xct)\n- Positioning and labels (tcwr5)\n- Removing price promotions (9ru3e)\n\nThere's no licence on the deposits, so I wanted to check you're happy for me to use them. Could you also share the label and product images people saw?\n\nI'm not redistributing anything. Nothing derived from your data would be published or shared with anyone; it's for my own research. I'll credit your work, of course.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "sent",
+    "status": "chased",
     "sent": "2026-10-26",
-    "notes": ""
+    "notes": "No reply by 9 Nov; chased that day (see the pechey2 row)."
   },
   {
     "id": "maynard",
@@ -712,8 +712,8 @@
     "ask": "Chase the 26 Oct email (IMG31, 32, 42, 43, no reply yet), and ask for the photos and adverts behind four more studies, plus permission.",
     "subject": "Re: Using your online supermarket studies",
     "body": "Hi Rachel,\n\nJust following up on my note from 26 October about your online supermarket studies, in case it got buried. I'd still love to use them, and the label and product images would help most.\n\nSince then I've found four more of your studies that would fit really well. The data is on OSF for each of them, but the pictures people saw aren't:\n- Shelf photos and social norms (qkh8c)\n- Branded snack and meal preferences (9sudr)\n- Snack availability and choice (c83vq)\n- Alcohol and alcohol-free adverts (pjmbd)\n\nCould you share the photos and adverts for each version, and let me know you're happy for me to use the data? If some are easier to dig out than others, any of them would be a big help.\n\nAs before, nothing derived from your data would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich",
-    "status": "ready",
-    "sent": "",
-    "notes": "Draft added 9 Nov 2026. Sending this also counts as the chase for the pechey row."
+    "status": "sent",
+    "sent": "2026-11-09",
+    "notes": "Sent 9 Nov 2026 as a follow-up in the 26 Oct thread. Address checked: still Oxford NDPCHS (Europe PMC, papers to Sept 2026)."
   }
 ]
