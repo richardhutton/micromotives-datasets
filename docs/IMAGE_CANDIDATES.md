@@ -35,7 +35,7 @@ https://www.facebook.com/ads/library/?id=497242307539002
 | IMG16 | Climate image pairs, forced choice. UK/DE/US, n=3,014. | Climate Outreach, Climate Visuals | https://climateoutreach.org/reports/climate-visuals-seven-principles-for-visual-climate-change-communication/ | No public data (in tracker) |
 | IMG17 | Architecture paired-image preferences. UK, n≈2,095. Published tables only. | Create Streets / Deltapoll | https://worksinprogress.co/issue/do-people-prefer-traditional-architecture/ | No public data (in tracker) |
 | IMG18 | Slot-game advert features. UK, n=5,975. | Behavioural Insights Team | https://bi.team/wp-content/uploads/2023/05/2023-09-Exploring-the-impact-of-slot-game-advert-features-Experiment-1-Results.pdf | No public data (in tracker) |
-| IMG19 | Safer-gambling ads (video). | Newall et al. | https://cronfa.swan.ac.uk/Record/cronfa71039/Details | No public data |
+| IMG19 | Safer-gambling ads (video). | Newall et al. | https://cronfa.swan.ac.uk/Record/cronfa71039/Details | Public after all (9 Nov 2026): https://osf.io/dcey2, CC BY 4.0, .qsf, data and all 15 ad videos. Still video, so not buildable as images |
 
 ## New finds, 26 Oct 2026: food and alcohol labs (Liverpool, Cambridge, Oxford, Durham, Cardiff, Bristol)
 

@@ -796,6 +796,406 @@
       "permission": "Not needed",
       "contact": "",
       "sample": "US · TESS"
+    },
+    {
+      "id": "IMG95",
+      "title": "Light bulbs: product photos and cost information",
+      "description": "Incandescent vs energy-saving bulb photos at $4 with left/right order randomised; cost-over-time information chart vs control chart; willingness to pay from price lists, real purchase. TESS3 125 (Allcott & Taubinsky), US.",
+      "link": "https://osf.io/cf2qy",
+      "status": "Buildable",
+      "reason": "Found in the TESS picture scan. May be the same deposit as c956y (same Allcott survey file): check before building. TESS index mislabels it as a partisan study.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG96",
+      "title": "Cancer screening risk graphic",
+      "description": "A personal risk bar set high (20%) or low (6%) under a prostate or breast banner, with or without information on the test's risks; interest in a screening test with no benefit. TESS3 204 (Scherer), US.",
+      "link": "https://osf.io/ewu2a",
+      "status": "Buildable",
+      "reason": "Found in the TESS picture scan; risk feedback was fictitious and debriefed.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG97",
+      "title": "CV images and hiring (Amy Decker)",
+      "description": "A CV image with a military or a cosmetics background, for an automotive, wedding-planning or consulting job; salary, bonus, leadership and competence ratings. TESS 041 (Melin), US.",
+      "link": "https://osf.io/tbrfh",
+      "status": "Buildable",
+      "reason": "Found in the TESS picture scan.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG98",
+      "title": "Alcohol heart-health infographic",
+      "description": "An alcohol infographic seen by 4 of 6 arms after self-affirmation and construal primes; emotional reactions, intention to drink moderately. TESS 051 (Zhu), US.",
+      "link": "https://osf.io/zyqcj",
+      "status": "Buildable",
+      "reason": "Found in the TESS picture scan. The infographic is the same wherever shown; the primes vary.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG99",
+      "title": "Elite philanthropy chart",
+      "description": "Chart of giving by the top 0.01%, rising or flat, vs a text control; 0-100 ratings of the wealthy and of plutocracy. TESS 097 (Schnabel), US.",
+      "link": "https://osf.io/6wbd7",
+      "status": "Buildable",
+      "reason": "Found in the TESS picture scan. No partisan cues.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG100",
+      "title": "Petrol price forecast graph",
+      "description": "News story with a graph forecasting $5 a gallon vs no information; planned driving, transport and spending. TESS 70 (Davis), US.",
+      "link": "https://osf.io/sxda4",
+      "status": "Needs checking",
+      "reason": "The graph sits inside an embedded OLE object and still needs extracting.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG101",
+      "title": "Inequality article with chart",
+      "description": "A CBO-branded inequality article with chart vs a baseball article with chart; beliefs about what gets people ahead. TESS3 199 (McCall), US.",
+      "link": "https://osf.io/6bw7k",
+      "status": "Needs checking",
+      "reason": "Treatment chart is EMF and still needs converting.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG102",
+      "title": "Humanitarian crisis news photo",
+      "description": "News article on repression on a fictional island with a photo of a beaten student, European-looking or Middle-Eastern-looking; support for aid, force and asylum. TESS3 226 (Sirin), US.",
+      "link": "https://osf.io/qzv8b",
+      "status": "Needs checking",
+      "reason": "Rich's call: varies ethnicity, and outcomes are US foreign-policy responses.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG103",
+      "title": "Social mobility rank graphics",
+      "description": "Parents' income-rank graphic at one of 9 ranks, plus an income distribution chart in one arm; predicted rank of the child. TESS (Cheng), US.",
+      "link": "https://osf.io/bpg8z",
+      "status": "Unlikely",
+      "reason": "Only 1 of the 9 rank graphics is in the deposit.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG104",
+      "title": "Global income position chart",
+      "description": "Personalised 'you are in the top X% of the world' donut chart by income bracket; foreign aid views and giving from a $20 bonus. TESS3 186 (Nair), US.",
+      "link": "https://osf.io/b5a4z",
+      "status": "Unlikely",
+      "reason": "Per-bracket screens not in the deposit; outcomes mostly US policy.",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS"
+    },
+    {
+      "id": "IMG105",
+      "title": "Gambling inducement adverts",
+      "description": "Gambling inducement advert with or without the true cost worked out; attractiveness and comprehension. UK bettors (Torrance et al. 2026).",
+      "link": "https://osf.io/rpynh",
+      "status": "Buildable",
+      "reason": "Data (.sav), Qualtrics survey and all advert images deposited, CC BY-SA 4.0.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG106",
+      "title": "Infographics on policy effectiveness",
+      "description": "Evidence that obesity policies work, shown as text, infographic, analogy, or both, vs control; perceived effectiveness and support (1-7). England, n~4,500 (Reynolds, Marteau, Hollands et al.).",
+      "link": "https://osf.io/kmfpg",
+      "status": "Needs checking",
+      "reason": "Data public; 7 images embedded in the protocol, need confirming as the fielded infographics.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG107",
+      "title": "Cafeteria shelf photos and social norms",
+      "description": "Shelf photos varying availability of healthier options and shelf fullness (3x2); perceived norms and what you'd buy. UK Dynata, n=2,331 (Pechey et al. 2021).",
+      "link": "https://osf.io/qkh8c",
+      "status": "Waiting for images",
+      "reason": "Data public; full photo set and questionnaire not deposited. One email to Rachel Pechey covers this and the next three.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG108",
+      "title": "Branded snack and meal preferences",
+      "description": "Pairwise choices between branded snack and meal photos; then sets with more or fewer healthier options. UK, n=1,976 + 1,078 (Pechey, Hollands, Marteau 2022).",
+      "link": "https://osf.io/9sudr",
+      "status": "Waiting for images",
+      "reason": "Data public; images only as reproduced in the paper. Same email as the shelf photos.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG109",
+      "title": "Snack availability and choice",
+      "description": "Front-of-pack snack pictures in sets with more or fewer healthier options, with or without cognitive load; snack choice and ratings. UK, n=1,509 (Pechey & Marteau 2018).",
+      "link": "https://osf.io/c83vq",
+      "status": "Waiting for images",
+      "reason": "Data public; images not deposited. Same email as the shelf photos.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG110",
+      "title": "Alcohol vs alcohol-free adverts",
+      "description": "Brand-matched alcoholic, alcohol-free or unrelated advert, then an online supermarket; selection and policy support. UK Dynata, n=1,638 (Jia, Pechey et al. 2026).",
+      "link": "https://osf.io/pjmbd",
+      "status": "Waiting for images",
+      "reason": "Data public; ad creatives probably only as protocol examples. Same email as the shelf photos.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG111",
+      "title": "Nutri-Score on takeaway menus",
+      "description": "Nutri-Score plus calorie labels vs calorie labels only on online takeaway menus; perceived effectiveness and order. England, Prolific (Finlay, Robinson et al.).",
+      "link": "https://osf.io/tda3p",
+      "status": "Waiting for images",
+      "reason": "Data public, CC BY 4.0; menus not deposited.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG112",
+      "title": "Carbon ordering in an online supermarket",
+      "description": "Product images ordered randomly, covertly by carbon, or overtly with a statement; choice in 6 categories. GB, n=1,842 (Kantar Public for the FSA).",
+      "link": "https://osf.io/a7pyv",
+      "status": "Needs checking",
+      "reason": "Data, questionnaire and products sheet public; the manipulation is ordering, not a different picture.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG113",
+      "title": "Safer gambling banner messages",
+      "description": "'When the fun stops, stop' banner variants on betting screens; bet acceptance. UK (Newall et al.).",
+      "link": "https://osf.io/fwunh",
+      "status": "Needs checking",
+      "reason": "Experiment 1 data and message images public; outcomes are behaviour, few ratings.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG114",
+      "title": "Sugary drink warning labels for parents",
+      "description": "Disease image, sugar image or none, crossed with calorie labels; parents' drink selection. UK, n=2,002 (Mantzari, Marteau et al. 2018).",
+      "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6215029/",
+      "status": "Waiting for images",
+      "reason": "No data deposit found; ask the authors.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG115",
+      "title": "Vodka bottle health labels",
+      "description": "Vodka bottle with no warning, small or large text warning, or pictorial warning. UK 18-35s, n=1,360 (Jones, Moodie et al., Stirling 2022).",
+      "link": "https://dspace.stir.ac.uk/handle/1893/34140",
+      "status": "Waiting for images",
+      "reason": "No data statement found; ask the authors.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG116",
+      "title": "Non-alcoholic drink availability (Bristol)",
+      "description": "Drink images in 4 ratios of alcohol-free to alcoholic; selection. UK weekly drinkers, n=808 (Blackwell, Munafò et al. 2020).",
+      "link": "https://doi.org/10.5523/bris.1dnhjcw6w4m1n29u2yuxjywde1",
+      "status": "Unlikely",
+      "reason": "Non-Commercial Government Licence; drink images not separately deposited.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG117",
+      "title": "Tobacco warning severity (Bristol)",
+      "description": "9 pack warnings: 3 diseases x text-only, moderate or highly severe image; believability and effectiveness. UK Prolific (Maynard et al. 2018).",
+      "link": "https://doi.org/10.5523/bris.381hbwlv26t9w2ipkng7f941e3",
+      "status": "Unlikely",
+      "reason": "Non-Commercial Government Licence and now restricted access.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG118",
+      "title": "Climate action megastudy, UK samples",
+      "description": "11 interventions vs control, several with pictures (flags, impact images, data graphics); climate belief, policy support, sharing, effort task. Four UK samples, ~1,900 (Vlasceanu, Van Bavel et al. 2024).",
+      "link": "https://osf.io/ytf89",
+      "status": "Needs checking",
+      "reason": "CC0 data and Qualtrics files; images are hosted URLs in the .qsf, most still live. The picture is only part of each condition.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG119",
+      "title": "Content Credentials labels on news images",
+      "description": "BBC and Sun news previews with 4 levels of provenance label under the photo; trust and credibility. UK YouGov, ~2,000 (Trattner, Starke et al. 2026).",
+      "link": "https://osf.io/a24py",
+      "status": "Needs checking",
+      "reason": "Stimuli, questionnaire and UK data deposited; no licence stated and the photos are BBC/Sun images.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG120",
+      "title": "NHS Predict tool display",
+      "description": "Screenshot of a breast-cancer prediction tool: 3 uncertainty displays x 4 logos (none, Cambridge, NHS, GSK); trust and treatment choice. UK Prolific, n=1,777 (Recchia, Freeman et al. 2024).",
+      "link": "https://osf.io/b7gju",
+      "status": "Waiting for images",
+      "reason": "Data CC BY 4.0; the 12 screenshots are not deposited.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG121",
+      "title": "Face masks and trust",
+      "description": "Trust-game partner shown masked or unmasked; amount sent and returned. UK Prolific, ~1,300 (Peng, Vlaev et al., Warwick 2025).",
+      "link": "https://osf.io/yrd7j",
+      "status": "Buildable",
+      "reason": "Faces, data and Qualtrics files deposited, CC BY 4.0; faces are from the Chicago Face Database, which has its own terms.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG122",
+      "title": "Organisation chart and power (Many Labs 2)",
+      "description": "Org chart with a long or short line to the manager; perceived power (1-7). Three UK student sites (Klein et al. 2018).",
+      "link": "https://osf.io/8cd4r",
+      "status": "Buildable",
+      "reason": "CC0; the chart is in the materials docx. Students only, small UK n.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG123",
+      "title": "Social class from faces",
+      "description": "Face pairs with colour manipulated; which is richer or poorer. British Prolific samples (Bjornsdottir & Beacon, Royal Holloway 2024).",
+      "link": "https://osf.io/zcxtp",
+      "status": "Needs checking",
+      "reason": "No licence; faces from the Chicago Face Database, not deposited; no questionnaire.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG124",
+      "title": "Moral Machine, UK users",
+      "description": "Illustrated self-driving-car dilemmas with 9 randomised attributes; swerve or stay. Self-selected web users, GBR subset (Awad et al. 2018).",
+      "link": "https://osf.io/3hvt2",
+      "status": "Unlikely",
+      "reason": "The cartoons are not deposited, and redrawing them would invent the condition.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG125",
+      "title": "Housing density photo simulations",
+      "description": "24 photo-simulated developments with 8 randomised design treatments (greenery, parking, façade...); density and acceptability. 939 Outer London residents (Navarrete-Hernandez et al. 2022).",
+      "link": "https://eprints.lse.ac.uk/111820/",
+      "status": "Waiting for images",
+      "reason": "No deposit; ask the authors. Best fit for planning and architecture.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG126",
+      "title": "Climate warming stripes",
+      "description": "3 versions of stripe design or labelling; liking, trust, affect, risk. Two UK Prolific studies, ~630 (Dawson et al., Southampton 2026).",
+      "link": "",
+      "status": "Waiting for images",
+      "reason": "No data deposit found; ask the authors.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG127",
+      "title": "Charity appeal photos (Friends of the Earth)",
+      "description": "Real appeal leaflets in original vs child-prominent photo versions, 4 studies; real donations and persuasiveness. Likely UK, ~2,200 (Wolf, Maio et al., Bath 2024).",
+      "link": "https://osf.io/hsbrw",
+      "status": "Buildable",
+      "reason": "Data (.sav) and materials with images deposited; no licence stated; confirm UK residence.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG128",
+      "title": "Cigarette filters",
+      "description": "Cigarette images with vs without filters; which to smoke and harm ratings. GB YouGov, n=3,961 (East, Taylor et al. 2026).",
+      "link": "https://osf.io/8hk2j",
+      "status": "Needs checking",
+      "reason": "Data and survey public; same team that declined IMG84, so check with them first.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG129",
+      "title": "AI-written vs human tweets",
+      "description": "Tweet images, organic or AI-written, true or false, 11 topics; true/false and human/AI judgements. Largest group UK, filter by nationality (Spitale et al. 2023).",
+      "link": "https://osf.io/9ntgf",
+      "status": "Needs checking",
+      "reason": "CC BY-SA 4.0, tweet images and .qsf deposited; nationality, not residence.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG130",
+      "title": "Snack packs with traffic lights and promotions",
+      "description": "Unbranded snack-bar packs with or without traffic-light labels x price promotion; choice. UK Prolific, n=1,582 (Klotz, Lohmann et al. 2025).",
+      "link": "https://osf.io/f5ym8",
+      "status": "Waiting for images",
+      "reason": "Data public; no questionnaire or image files.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG131",
+      "title": "Influencer posts, retouched or labelled",
+      "description": "Influencer posts retouched or not, with or without a 'retouched' stamp. 177 UK women (Mucundorfeanu et al. 2024).",
+      "link": "",
+      "status": "Waiting for images",
+      "reason": "Data availability unchecked; ask the authors.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG132",
+      "title": "Billboard food logos",
+      "description": "HFSS, healthier or non-food brand logos on Liverpool billboard photos (Ferneyhough, Boyland et al. 2026), n=191.",
+      "link": "",
+      "status": "Waiting for images",
+      "reason": "No data statement; ask the authors.",
+      "permission": "Not asked yet",
+      "contact": ""
+    },
+    {
+      "id": "IMG133",
+      "title": "Safer-gambling TV adverts (video)",
+      "description": "5 arms of real TV adverts: inducement, operator safer-gambling, GambleAware, stigma, control; gambling urge. UK gamblers, n=2,741 (Newall et al. 2025).",
+      "link": "https://osf.io/dcey2",
+      "status": "Unlikely",
+      "reason": "Fully public (CC BY 4.0) but video, which the pipeline cannot represent.",
+      "permission": "Not asked yet",
+      "contact": ""
     }
   ]
 }
