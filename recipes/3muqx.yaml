@@ -1,0 +1,381 @@
+study_id: 3muqx
+source: tess
+title: "Whom Do You Believe? Assessing Credibility of the Accuser and Accused in Sexual Assault"
+data_file: "8041.033_Hamilton_TESS033_weighted.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-09: node 3muqx, node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# SocSci210 merged Q1a/Q1b on raw codes and dropped Q1c's unlabelled points;
+# the gap reconciles exactly (see notes).
+comparable_to_socsci210: false
+
+notes: |-
+  TESS S31 / NORC 8041.033 (Hamilton), "Whom Do You Believe? Assessing
+  Credibility of the Accuser and Accused in Sexual Assault". AmeriSpeak, web
+  only, fielded 9-23 April 2019; "In field, NORC collected 2,005 interviews"
+  (8041.033 TESS Hamilton Field Report.pdf). The .sav has exactly 2,005 rows.
+
+  Line citations are 1-based line numbers in
+    Q  = "[8041.033.035.036] TESS Combined_v10clean.txt" (the fielded
+         questionnaire; checked against its .docx, which has no tracked
+         changes and the same wording)
+    PR = "S31.R1 description.txt" (the PROPOSAL; never a wording source, per
+         docs/CONVENTIONS.md, cited only where it disagrees with Q)
+
+
+  A COMBINED THREE-STUDY INSTRUMENT, AND WHERE HAMILTON'S BLOCK IS
+
+  Q is the omnibus questionnaire for TESS 033 (Hamilton), 035 (Krupnikov) and
+  036 (Calarco; this project's own `dh3nj`). Q 356-362 lists the blocks and
+  "RANDOMIZE ORDER OF BLOCK 1, BLOCK 2, BLOCK3; BLOCK 4 IS ALWAYS LAST":
+
+    Q 365-463  BLOCK1 "BEGIN TESS 033 HAMILTON"  <- this recipe, only this
+    Q 466-514  BLOCK2 "BEGIN TESS 035 KRUPNIKOV" (discrimination against
+               women "In America today", party identity)
+    Q 517-597  BLOCK3 "BEGIN TESS 036 Calarco" (pregnant Megan at a bar)
+    Q 600+     BLOCK4 profile variables (vote 2016, born again, LGBT, trust)
+
+  Nothing from lines 466-788 is used. The delivered .sav is already scoped:
+  it carries Hamilton's columns plus the panel profile, and none of
+  Krupnikov's (Q3-Q6) or Calarco's (CALARCO_VIGNETTE, Q7-Q9).
+  `BLOCKORDER1-3` record where Hamilton's block fell among the three; that is
+  the omnibus's counterbalancing of unrelated studies, not this design, and is
+  recorded in `considered_and_rejected`.
+
+
+  THE DESIGN
+
+  11 between-subjects vignettes, `P_HAMILTON` in Q (Q 276-288), held in the
+  .sav as `HAMILTON_VIGNETTE` (labels V1..V11). Counts 194/177/176/186/203/
+  195/179/167/163/186/179, sum 2,005. Jev (recipe_prep.py, 2026-11-09) chose
+  HAMILTON_VIGNETTE at confidence 0.88 against NONE_OF_THESE 0.08; the
+  questionnaire settles it independently (the `[SHOW IF P_HAMILTON=n]` blocks).
+  raw n -> condition_num n-1, the label order, no permutation.
+
+  Each vignette is one sentence pattern with one element changed from V1
+  (accuser's sex, the act's wording, the denial, drinking, prior
+  accusations). It is not a factorial, so it is declared as ONE factor,
+  `vignette`, with eleven levels named after Q's own block headings.
+
+  CONDITION TEXT. `shared_context` is HAMILTON_INTRO word-for-word (Q 371),
+  shown "ON SAME PAGE AS VIGNETTE" (Q 369). Each arm is its vignette
+  sentence(s) word-for-word (Q 376-415). The vignette was re-shown above each
+  question ("[SHOW VIGNETTE PER SHOW IF LOGIC ON SCREEN]", Q 421, 433, 444).
+  Not rendered: the "[PROMPT TWICE][CUSTOM PROMPT: We would really like your
+  answer...]" text (Q 418, 430), which appeared only to someone who tried to
+  skip, so it was not seen by the arm as a whole; and the block headings
+  ("VIGNETTE 1. WOMAN ACCUSER"), which are researcher labels. No typography
+  needed normalising in any of this text.
+
+  V10 — THE QUESTIONNAIRE AND THE PROPOSAL DISAGREE, AND THE RESPONDENTS SIDE
+  WITH THE QUESTIONNAIRE. Q 410-412:
+    heading  "VIGNETTE 10. FIRST ALLEGATION AGAINST MAN"
+    text     "... The man denies the allegation. This is not the first time
+              the woman has accused a man of sexual assault."
+  PR 103-106 has the same heading over different text: "This is the first
+  time he has been accused of sexual assault." So the fielded V10 is about the
+  WOMAN's prior accusations, and its heading is a leftover from the proposal.
+  The respondents' own Q2 explanations settle which they read. A pattern
+  count over the free text (her prior accusations: "she has already /
+  previously / done / made / accused", "her first", "history of accus.../
+  false...", "accused someone / men / other") finds 26 of 186 V10 answers
+  against 3 of 179 in V11; a count for HIS first accusation ("his first",
+  "first time he", "never been accused") finds 0 in V10 against 12 in V11.
+  Examples from V10: "She has already accused someone", "She has a history of
+  accusing people", "if it is not her first time accusing a man of sexual
+  assault", "this is at least the second time this woman has made an
+  allegation". The recipe follows Q, as the convention requires, and the level
+  is named for what the text says (`woman_not_first_accusation`), not for the
+  stale heading. Any reconstruction built from the proposal has V10 wrong.
+
+  The proposal also describes a 6-point "Definitely/Probably/Possibly the
+  man/woman" scale (PR 117-158). The fielded instrument and the data are a
+  binary Q1a/Q1b plus a 5-point Q1c, so the proposal's design was not fielded.
+
+
+  OUTCOMES
+
+  Q1 has two versions, randomised by RND_01 (Q 310-311, Q 417-438; PR 115
+  "Randomly ask respondents either Q1a or Q1b, not both"):
+    Q1a (RND_01=0) "Would you be more inclined to believe the man or the
+        woman?"  Man / Woman      .sav Q1A: 1 Man, 2 Woman
+    Q1b (RND_01=1) "Would you be more inclined to believe the woman or the
+        man?"  Woman / Man        .sav Q1B: 1 Woman, 2 Man
+  RND_01 itself is NOT in the .sav. Which version a respondent got is recorded
+  only by which of Q1A / Q1B holds a value (blank otherwise; 0 respondents
+  have both, 0 have neither). The version is therefore built as two OUTCOMES,
+  task 0 (Q1A) and task 1 (Q1B), each with its own wording and its own codes,
+  rather than as a condition factor: the versions differ only in the
+  question's wording and option order, which is outcome text. Each respondent
+  answers exactly one of them.
+
+  Codes are positional and kept RAW per outcome: Q1A 1 = Man, Q1B 1 = Woman.
+  Ledger #47 asks whether a reversed order is label-anchored; here it is not —
+  two separate columns with two separate value-label sets — and the
+  distributions confirm the reading (Q1A: Man 263 / Woman 749; Q1B: Woman 776
+  / Man 211; about 75% believe the woman under both). Each question enumerates
+  its options in the order shown, as `scale.nominal` requires.
+
+  Q1c (task 2), Q 441-452, asked of everyone who answered Q1a or Q1b: "How
+  much more likely are you to believe the [IF Q1a=1 OR Q1b=2 SHOW man; IF
+  Q1a=2 OR Q1b=1 SHOW woman]?". The fill is the respondent's OWN Q1 answer, so
+  it varies by respondent, not by arm; it is resolved per row through
+  `respondent_vars: [Q1A, Q1B]` (the a2nbf mechanism). The directive is
+  written here with a comma before SHOW ("[IF Q1A=1 OR Q1B=2, SHOW man; ...]")
+  because that is the form `quex` parses; the words and conditions are Q's.
+  Q1c options (Q 448-452): five bullets, with only 1 "A little", 3 "A
+  moderate amount" and 5 "A great deal" labelled; 2 and 4 are blank bullets
+  (the .sav labels them ''). They are real scale points, used by 154 and 299
+  respondents. recipe_prep.py's Jev pass called the '' label a non-answer
+  (conf 0.72); OVERRULED on the questionnaire's own layout, and the codes are
+  kept. The three labels go in the scale (min/mid/max), word-for-word.
+
+  NOT BUILT: Q2 (Q 455-463), "Why do you believe the [man/woman] more than the
+  [woman/man]?", a free-text box. No numeric response exists; the answers were
+  read here only as evidence of V10's wording (above).
+
+  The Q1c row names the side the respondent chose in Q1. That is what the
+  screen said, and it is outcome text, not persona or condition.
+
+
+  RESPONSES AND MISSING
+
+  response_recode is the identity on 1..5; missing_codes 77/98/99 (the .sav's
+  DON'T KNOW / SKIPPED ON WEB / REFUSED; only 98 occurs: Q1A 3, Q1B 3, Q1C 6).
+  The six Q1 skippers were not asked Q1c (blank), so they contribute no rows
+  at all; Q1c's six 98s come from respondents who did answer Q1.
+
+    Q1A  1,015 asked - 3 skipped = 1,012
+    Q1B    990 asked - 3 skipped =   987
+    Q1C  1,999 asked - 6 skipped = 1,993
+    rows = 3,992; participants = 2,005 - 6 = 1,999
+
+
+  PERSONA
+
+  The AmeriSpeak set this project already maps for TESS (dh3nj, which is the
+  same omnibus, and 8ctbk): AGE, GENDER, EDUC, RACETHNICITY, INCOME, MARITAL,
+  EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE,
+  PARTYID7, IDEO, RELIG, ATTEND. Jev agreed on every field it was asked about
+  (conf 0.97-1.00) except region, where it preferred REGION9 (0.50) over
+  REGION4 (0.33); REGION4 kept for consistency with every other AmeriSpeak
+  recipe here and the crosswalk built for it. RELIG code 1's label is severed
+  in the .sav and restored from this deposit's own Q 189, as dh3nj does.
+  GENDER 0 "Unknown" is declared missing; it has no occurrences in this file.
+  IDEO 8 "Haven't thought much about it" is an offered answer and is kept
+  (Jev called it a non-answer at 0.68; overruled). Blank IDEO (1), RELIG (18)
+  and PARTYID7 (2) are simply absent. Not mapped: VOTE2016, BORNAGAIN, LGBT,
+  POLTRUST (study-specific profile items, not the standard set; VOTE2016 is
+  US electoral politics), STATE/REGION9 (finer than the shared scheme).
+
+
+  UK CHECK
+
+  What respondents were shown and asked contains nothing American: an
+  accusation of sexual assault between a man and a woman, the words "rape",
+  "touching inappropriately", consent, drinking, prior accusations, and which
+  party they would believe. No party, law, institution, place, race category
+  or money appears in the condition or outcome. (The neighbouring Krupnikov
+  block does say "In America today", and is not used.) The persona is the
+  usual US panel profile, as for every TESS source.
+
+
+  SocSci210 — NOT COMPARABLE, AND THE DIFFERENCE RECONCILES EXACTLY
+
+  Their build (fetched by `mmds build --crosscheck`, 2026-11-09): 3,539 rows,
+  1,999 participants, 11 conditions, 2 tasks {0: 1,999, 1: 1,540}, responses
+  {1: 1,411, 2: 960, 3: 873, 5: 295}. Ours: 3,992 rows, 1,999 participants,
+  11 conditions, 3 tasks {0: 1,012, 1: 987, 2: 1,993}, responses {1: 1,411,
+  2: 1,114, 3: 873, 4: 299, 5: 295}. Decomposed:
+    - their task 0 (1,999) = our tasks 0 + 1 (1,012 + 987): Q1a and Q1b
+      merged into one task under the single prompt "Only return 1 for 'Man'
+      or 2 for 'Woman'", with the RAW codes kept. Q1b's raw 1 is Woman, so
+      their 987 Q1b rows carry the opposite meaning to their own prompt. (Their
+      1s = 263 + 776 = 1,039, their 2s = 749 + 211 = 960: the positional merge,
+      exactly.)
+    - their task 1 (1,540) = our task 2 (1,993) minus the 453 rows answering
+      2 or 4. They dropped Q1c's two unlabelled scale points (154 + 299) as if
+      they were missing; we keep them (see OUTCOMES).
+  Removing those 453 rows from our build reproduces their 3,539 rows, all 11
+  per-condition counts {0: 347, 1: 314, 2: 300, 3: 323, 4: 366, 5: 342,
+  6: 314, 7: 299, 8: 296, 9: 331, 10: 307} and their whole response
+  distribution, exactly. So the assignment, the participants and every
+  response agree; we disagree with them on two decisions, both deliberate,
+  hence `comparable_to_socsci210: false`.
+
+  Their text (informational, per ledger): V10 reads "The event occurred one
+  year ago." and V11 "The event occurred 20 years ago.", wording found in
+  neither the questionnaire nor the proposal; V1, V2, V10 and V11 (the four
+  read) say "of sexual assault" where Q says "of sexually assaulting her/him"; Q1c is paraphrased as
+  "the person you indicated in the previous question".
+
+
+  BUILD NOTE — PIPELINE GAP
+
+  `respondent_vars` assumes the variable is never blank: `build._as_code`
+  raises on NaN ("cannot convert float NaN to integer"), and Q1A/Q1B are each
+  blank for about half the sample by design. Until `_as_code` returns None for
+  NaN (which `quex` already treats as "not equal to anything"), this recipe
+  does not build. With that one change applied in memory only: QC PASS with no
+  warnings, 3,992 rows, and the Q1c fill checked against each respondent's own
+  Q1 row: 0 mismatches (1,522 "woman", 471 "man").
+
+condition:
+  source_var: HAMILTON_VIGNETTE
+  factors: [vignette]
+  considered_and_rejected:
+    BLOCKORDER1: >-
+      Omnibus counterbalancing of three unrelated TESS studies (Q 361-362,
+      "RANDOMIZE ORDER OF BLOCK 1, BLOCK 2, BLOCK3"), not part of this design;
+      no wording changes with it.
+    BLOCKORDER2: >-
+      Omnibus block order, as BLOCKORDER1.
+    BLOCKORDER3: >-
+      Omnibus block order, as BLOCKORDER1.
+  shared_context: >-
+    Please form an impression of the people described below. Then please
+    answer the questions with your first uncensored impressions. The questions
+    may feel vague, or you may feel like you do not have enough information to
+    answer them, but please answer as truthfully and honestly as possible.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {vignette: woman_accuser}
+      text: >-
+        A woman has accused a man of sexually assaulting her. The man denies
+        the allegation.
+    - raw: 2
+      condition_num: 1
+      factors: {vignette: man_accuser}
+      text: >-
+        A man has accused a woman of sexually assaulting him. The woman denies
+        the allegation.
+    - raw: 3
+      condition_num: 2
+      factors: {vignette: rape_language}
+      text: >-
+        A woman has accused a man of raping her. The man denies the
+        allegation.
+    - raw: 4
+      condition_num: 3
+      factors: {vignette: attempted_rape_language}
+      text: >-
+        A woman has accused a man of attempting to rape her. The man denies
+        the allegation.
+    - raw: 5
+      condition_num: 4
+      factors: {vignette: inappropriate_touching_language}
+      text: >-
+        A woman has accused a man of touching her inappropriately without her
+        consent. The man denies the allegation.
+    - raw: 6
+      condition_num: 5
+      factors: {vignette: soft_denial}
+      text: >-
+        A woman has accused a man of sexually assaulting her. The man denies
+        the allegation and says he does not remember the event in question,
+        but this is something he would never do.
+    - raw: 7
+      condition_num: 6
+      factors: {vignette: consent}
+      text: >-
+        A woman has accused a man of sexually assaulting her. The man denies
+        the allegation and says the woman consented.
+    - raw: 8
+      condition_num: 7
+      factors: {vignette: both_drinking}
+      text: >-
+        A woman has accused a man of sexually assaulting her. The man denies
+        the allegation. Both people had been drinking at the time.
+    - raw: 9
+      condition_num: 8
+      factors: {vignette: neither_drinking}
+      text: >-
+        A woman has accused a man of sexually assaulting her. The man denies
+        the allegation. Neither person had been drinking at the time.
+    - raw: 10
+      condition_num: 9
+      # Q's heading reads "FIRST ALLEGATION AGAINST MAN"; the fielded text
+      # (Q 412) is about the woman. See V10 in notes.
+      factors: {vignette: woman_not_first_accusation}
+      text: >-
+        A woman has accused a man of sexually assaulting her. The man denies
+        the allegation. This is not the first time the woman has accused a man
+        of sexual assault.
+    - raw: 11
+      condition_num: 10
+      factors: {vignette: man_not_first_accused}
+      text: >-
+        A woman has accused a man of sexually assaulting her. The man denies
+        the allegation. This is not the first time he has been accused of
+        sexual assault.
+
+outcomes:
+  - var: Q1A
+    task_num: 0
+    question: >-
+      Would you be more inclined to believe the man or the woman? Options:
+      1 = Man, 2 = Woman.
+    scale:
+      min: 1
+      max: 2
+      nominal: true
+  - var: Q1B
+    task_num: 1
+    question: >-
+      Would you be more inclined to believe the woman or the man? Options:
+      1 = Woman, 2 = Man.
+    scale:
+      min: 1
+      max: 2
+      nominal: true
+  - var: Q1C
+    task_num: 2
+    question: >-
+      How much more likely are you to believe the [IF Q1A=1 OR Q1B=2, SHOW
+      man; IF Q1A=2 OR Q1B=1, SHOW woman]?
+    scale:
+      min: 1
+      max: 5
+      min_label: A little
+      mid_label: A moderate amount
+      max_label: A great deal
+
+respondent_vars: [Q1A, Q1B]
+
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+missing_codes: [77, 98, 99]
+
+persona_label_rewrite:
+  # SPSS severed this value label; restored word-for-word from this deposit's
+  # own questionnaire, Q 189.
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+
+persona_missing:
+  GENDER: [0]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

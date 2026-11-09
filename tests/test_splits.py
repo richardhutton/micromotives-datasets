@@ -49,7 +49,7 @@ def test_socsci210_sides_are_kept_for_shared_tess_studies() -> None:
     unseen = set(MAPPING["unseen"])
     shared_unseen = ours & make_splits.SOCSCI210_UNSEEN
     shared_seen = ours & make_splits.SOCSCI210_SEEN
-    assert shared_unseen == {"5hqan", "7jt2f", "8ctbk", "a5v96", "c5r2f", "rpw4u"}
+    assert shared_unseen == {"3muqx", "5hqan", "7jt2f", "8ctbk", "a5v96", "c5r2f", "rpw4u", "xtvu5"}
     assert shared_unseen <= unseen
     assert not shared_seen & unseen
 

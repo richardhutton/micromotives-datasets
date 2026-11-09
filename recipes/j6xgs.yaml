@@ -1,0 +1,466 @@
+study_id: j6xgs
+source: tess
+title: "Busyness, Idleness, and Happiness"
+data_file: "8041.037_Rifkin_TESS037_client_weighted.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-09: node j6xgs
+  and its child components qync3 "Proposal" and pyck3 "Data and Materials" all
+  have node_license null and no license relationship). TESS archived its post-2009
+  projects through the Roper Center and its own site states no reuse terms; TESS
+  has since suspended operations. So there is no explicit grant of redistribution
+  rights for this deposit, and none should be assumed.
+
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 037 (Rifkin, Northwestern; TESS proposal 1073), "Introducing a Novel
+  Framework for Understanding the Relationships Between Busyness, Idleness, and
+  Happiness". NORC AmeriSpeak, CAWI only (SURV_MODE = 2 "Web Interview" for all
+  1,200), fielded April 2019. N = 1,200.
+
+  Line citations are 1-based line numbers in
+    Q   = "8041.037_Tess_Rifkin_037_v7Clean.txt" (the fielded questionnaire)
+    SAV = "8041.037_Rifkin_TESS037_client_weighted.sav", read with pyreadstat.
+
+
+  WHICH DATA FILE
+
+  The deposit has two data files: the NORC client file (.sav) and
+  "TESS037_Rifkin_STATA.dta", dated a year later in Rifkin1073.zip. Same 1,200
+  CaseIds in the same order, same 52 columns, same value labels, and every value
+  identical in all 50 non-date columns; the .dta only truncates STARTDT/ENDDT
+  to dates. The .sav is the client file NORC delivered, so it is used. Nothing
+  depends on the choice.
+
+
+  NO PICTURES
+
+  The questionnaire .docx embeds two images, word/media/image1.png and
+  image2.png, both referenced from page headers. They are the NORC and
+  AmeriSpeak logos. There are no empty [SHOW IF] blocks; every conditional in Q
+  carries its own words. This is a text study.
+
+
+  THE DESIGN (Q 206-209, 244-263)
+
+  One between-subjects factor, the preload P_BUSY (SAV `BUSY`, "Experimental
+  Condition", 1 '"High"' n=595, 2 '"Low"' n=605). It changes two things:
+
+    1. Q1, a 30-second reflection screen with no response (Q 255-263), asks the
+       respondent to think about the reasons "why you have recently been BUSIER
+       THAN NORMAL" (P_BUSY=1) or "...LESS BUSY THAN NORMAL" (P_BUSY=2).
+    2. The stem of every outcome in Q2-Q7 reads "Please indicate how you are
+       currently feeling about being [busier than normal / less busy than
+       normal]." (Q 269, 291, 313, 335, 358, 369). Q8 has no such stem (Q 378).
+
+  So the arm text is the Q1 screen, and the arm-varying stem of Q2-Q7 goes in
+  each arm's per-item `outcome_question` (items 0-9), because it is part of
+  the QUESTION the respondent was asked and differs by arm. Q8 (items 10-11)
+  uses the outcome's own question, the same in both arms.
+
+  CONDITION MAPPING (declared): raw 1 ("High") -> condition_num 0;
+  raw 2 ("Low") -> condition_num 1. The direction is fixed by the questionnaire's
+  own preload legend (Q 206-209: P_BUSY 1 "High", 2 "Low") together with the Q1
+  directive (Q 261: P_BUSY=1 shows BUSIER, P_BUSY=2 shows LESS BUSY).
+
+
+  ARM TEXT — WHAT WAS TRANSCRIBED AND WHAT WAS LEFT OUT
+
+  shared_context = Q 259, word-for-word. Arm text = Q 261 with its directive
+  resolved, word-for-word, including the source's capitals (BUSIER THAN NORMAL /
+  LESS BUSY THAN NORMAL). HTML markup (<u>, <i>) is dropped; the words inside it
+  are kept.
+
+  Left out, deliberately: Q 263, "To allow you time to think, the "Continue"
+  button will not appear for 30 seconds." It is an instruction about operating
+  the screen (the 30-second delay is the programming note at Q 257), the same
+  class of survey mechanics CONVENTIONS drops elsewhere. Likewise the slider
+  operation line at Q 362 and Q 373 ("Click to activate the slider, drag the
+  button to the place that feels most correct.") is not rendered; the scale
+  instruction does that job.
+
+  Outcome stems: "I feel…" (Q 271 etc.) is rendered as "I feel..." (ellipsis
+  normalised per CONVENTIONS, characters) followed by the grid item
+  word-for-word, so Q2A reads "I feel... stressed.". "currently" was underlined
+  on screen; the word is kept and the underline dropped.
+
+
+  BLOCK ORDER (not built into the text)
+
+  Blocks 2-5 (Q2, Q3, Q4, Q5) were shown in random order, Q1 always first and
+  Q6-Q8 always last (Q 244-252), recorded as BLOCKORDER1..4 (all 24 orders
+  occur, roughly balanced across BUSY). This is counterbalancing of the outcome
+  blocks, not part of the manipulation; each row carries one item and no row
+  narrates the items before it, which is how every other TESS source here treats
+  block rotation. The two items inside each grid were also randomised
+  ([RANDOMIZE] at Q 273 etc.) and that order was not recorded; it does not
+  matter for a one-item row. BLOCKORDER1..4 are listed in
+  `considered_and_rejected`.
+
+
+  OUTCOMES (12)
+
+    task 0  Q2A stressed                          1-7 Strongly disagree..agree
+    task 1  Q2B anxious                           1-7
+    task 2  Q3A like I have a purpose             1-7
+    task 3  Q3B productive                        1-7
+    task 4  Q4A bored                             1-7
+    task 5  Q4B like I am wasting my time         1-7
+    task 6  Q5A like I have time to think about myself    1-7
+    task 7  Q5B like I am able to consider my own needs   1-7
+    task 8  Q6  Overall, how happy are you feeling?       0-100 slider
+    task 9  Q7  Overall, how fulfilled are you feeling?   0-100 slider
+    task 10 Q8A My future is filled with possibilities.   1-7 Very untrue..true
+    task 11 Q8B I experience time as limited.             1-7
+
+  Endpoint labels are the questionnaire's and the .sav's (Q 279/285, 388/394;
+  slider endpoints at Q 356, "Not at all" at 0 and "Extremely" at 100). Codes
+  2-6 are unlabelled on screen (Q 278 "RESPONSE OPTIONS FOR 2 TO 6 SHOULD BE
+  UNLABELED") and carry an empty value label in the .sav. recipe_prep asked Jev
+  about that empty label and it called it a non-answer (conf 0.66-0.83 across
+  the ten 7-point items, flagged REVIEW, disagreeing with the regex). OVERRULED:
+  the instrument says these are unlabelled scale points, and they hold most of
+  the answers. They are kept as responses 2-6.
+
+
+  RESPONSE CODING AND MISSING VALUES
+
+  7-point items: identity recode 1-7. Non-answers on these are code 98
+  "SKIPPED ON WEB" (Q 212), 124 cells in all; 77 and 99 are labelled but never
+  occur. They are dropped because they are not in the recode.
+
+  Sliders Q6/Q7: identity recode 0-100 on the outcome; non-answer is 998
+  "SKIPPED ON WEB" (41 on Q6, 34 on Q7), the only value label those two
+  variables carry.
+
+  THE TRAP: `missing_codes` is applied to every outcome BEFORE the recode
+  (pipeline/build.py), so listing 77/98/99 there would delete real slider
+  answers. In this file 68 slider answers sit at those values (Q6: 25 at 77,
+  6 at 98, 8 at 99; Q7: 15, 5, 9). So `missing_codes` lists only 998, which is
+  outside every scale, and the 7-point items' 98s are dropped by their recode.
+
+  ROW ARITHMETIC: 1,200 x 12 = 14,400 cells, minus 124 (98 on the 7-point
+  items) minus 75 (998 on the sliders) = 14,201 rows.
+
+
+  PERSONA
+
+  AmeriSpeak preloads, the same map as the sibling AmeriSpeak recipes (3muqx,
+  hu45w): AGE, GENDER, EDUC, RACETHNICITY, INCOME, MARITAL, EMPLOY, REGION4,
+  HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE, PARTYID7, IDEO,
+  RELIG, ATTEND. recipe_prep: all at conf >= 0.97 except region, a REVIEW
+  between REGION4 and REGION9 at 0.43 each; REGION4 is used, as in every other
+  AmeriSpeak recipe. STATE is not mapped. GENDER 0 "Unknown" never occurs but is
+  declared in persona_missing as in the siblings. PARTYID7/IDEO/ATTEND/RELIG
+  have 2/3/10/12 blanks, which leave the field empty.
+
+  persona_label_rewrite: this .sav wraps every PARTYID7, IDEO, ATTEND and RELIG
+  label in literal quotation marks copied from the questionnaire's preload table
+  ('"Strong Democrat"', '"Never”'), and RELIG code 1 is severed by SPSS at
+  "...Reformed, Church". The rewrites remove the quotation marks only and restore
+  RELIG 1 word-for-word from Q 192, apostrophes straightened. No word changes.
+
+
+  UK CHECK
+
+  Nothing a respondent was shown or asked depends on the US: the stimulus asks
+  them to reflect on their own busyness, and the outcomes are feelings and
+  future-time perspective. "AmeriSpeak"/"AmeriPoints" occur only in the panel's
+  welcome and closing screens (Q 239, QFINAL), which are not built.
+  Party/ideology/US race categories are persona preloads only.
+
+
+  CROSSCHECK — comparable_to_socsci210: false, with the difference PROVED
+
+  SocSci210 has 11,748 rows, 1,197 participants, 6 tasks; we have 14,201 rows,
+  1,198 participants, 12 tasks. Their scope differs from ours in three ways,
+  each measured against their parquet (read via pipeline/crosscheck.py):
+
+    1. They merged each grid's two items under one task_num: their tasks 0-3
+       are 2,369 / 2,375 / 2,371 / 2,376 rows = our Q2A+Q2B, Q3A+Q3B, Q4A+Q4B,
+       Q5A+Q5B exactly (1,186+1,183, 1,186+1,189, 1,183+1,188, 1,186+1,190).
+       Their stimulus for condition 0 names one item ("I feel anxious.") for
+       rows that also hold "stressed" (ledger #45: their task_num is not a
+       question key). We keep one task per item.
+    2. They did not build Q8A/Q8B (2,385 rows here).
+    3. On the sliders they dropped real answers of 77, 98 and 99 as if they
+       were missing codes: their tasks 4/5 hold 1,120 / 1,137 rows against our
+       1,159 / 1,166, a gap of 39 and 29 that equals the count at those three
+       values (25+6+8, 15+5+9), and 77, 98 and 99 are the only values from 0-100
+       absent from their response distribution. Those codes mean "Don't
+       know"/"Skipped"/"Refused" only on the 7-point items; the sliders' sole
+       non-answer is 998. We keep the 68 answers.
+
+  Projecting our build onto their scope (merge tasks 0-7 pairwise, drop tasks
+  10-11, drop slider values 77/98/99) gives 11,748 rows and reproduces their
+  count in ALL 427 (condition_num, task_num, response) cells exactly, so the arm
+  mapping (raw 1 -> 0 BUSIER, raw 2 -> 1 LESS BUSY) and every response agree.
+  Participants: 1,198 vs 1,197, the one extra person answered only Q8, which
+  they did not build. 2 of the 1,200 have no usable answer on any item.
+
+  Text (informational): their stimulus adds "Spend 20 seconds thinking about
+  this and why this is the case.", which is the PROPOSAL's wording ("TESS-1073.R1
+  description.txt" lines 21 and 27) and occurs 0 times in the fielded
+  questionnaire, where the delay is 30 seconds (Q 257, 263). Another instance
+  of ledger #35/#44.
+
+condition:
+  source_var: BUSY
+  factors: [busyness]
+  shared_context: >-
+    People sometimes feel like they are busier than normal, and at other times
+    they feel like they are less busy than normal. We are interested in how you
+    have been feeling lately.
+  considered_and_rejected:
+    BLOCKORDER1: >-
+      Records which of the four outcome blocks (Q2-Q5) was shown first; block order
+      was randomised for counterbalancing (Q 244-252), not as a manipulation, and no
+      row narrates the blocks before it.
+    BLOCKORDER2: Second of the counterbalanced outcome blocks; see BLOCKORDER1.
+    BLOCKORDER3: Third of the counterbalanced outcome blocks; see BLOCKORDER1.
+    BLOCKORDER4: Fourth of the counterbalanced outcome blocks; see BLOCKORDER1.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors:
+        busyness: busier_than_normal
+      text: >-
+        Think for a few moments about the reasons why you have recently been
+        BUSIER THAN NORMAL.
+      items:
+        0:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... stressed.
+        1:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... anxious.
+        2:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... like I have a purpose.
+        3:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... productive.
+        4:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... bored.
+        5:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... like I am wasting my time.
+        6:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... like I have time to think about myself.
+        7:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. I feel... like I am able to consider my own needs.
+        8:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. Overall, how happy are you feeling?
+        9:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being busier than
+            normal. Overall, how fulfilled are you feeling?
+    - raw: 2
+      condition_num: 1
+      factors:
+        busyness: less_busy_than_normal
+      text: >-
+        Think for a few moments about the reasons why you have recently been
+        LESS BUSY THAN NORMAL.
+      items:
+        0:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... stressed.
+        1:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... anxious.
+        2:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... like I have a purpose.
+        3:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... productive.
+        4:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... bored.
+        5:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... like I am wasting my time.
+        6:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... like I have time to think about myself.
+        7:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. I feel... like I am able to consider my own needs.
+        8:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. Overall, how happy are you feeling?
+        9:
+          outcome_question: >-
+            Please indicate how you are currently feeling about being less busy
+            than normal. Overall, how fulfilled are you feeling?
+
+# Outcome `question` for tasks 0-9 is the arm-neutral fallback; both arms
+# override it per item above, so it is never rendered. It keeps the source's
+# two alternatives visible for a reader of this file.
+outcomes:
+  - var: Q2A
+    task_num: 0
+    question: "[busier than normal / less busy than normal] I feel... stressed."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q2B
+    task_num: 1
+    question: "[busier than normal / less busy than normal] I feel... anxious."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q3A
+    task_num: 2
+    question: "[busier than normal / less busy than normal] I feel... like I have a purpose."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q3B
+    task_num: 3
+    question: "[busier than normal / less busy than normal] I feel... productive."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q4A
+    task_num: 4
+    question: "[busier than normal / less busy than normal] I feel... bored."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q4B
+    task_num: 5
+    question: "[busier than normal / less busy than normal] I feel... like I am wasting my time."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q5A
+    task_num: 6
+    question: "[busier than normal / less busy than normal] I feel... like I have time to think about myself."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q5B
+    task_num: 7
+    question: "[busier than normal / less busy than normal] I feel... like I am able to consider my own needs."
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", max_label: "Strongly agree"}
+  - var: Q6
+    task_num: 8
+    question: "[busier than normal / less busy than normal] Overall, how happy are you feeling?"
+    scale: {min: 0, max: 100, min_label: "Not at all", max_label: "Extremely"}
+    response_recode: {
+      0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12,
+      13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25,
+      26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38,
+      39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51,
+      52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64,
+      65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77,
+      78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90,
+      91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100
+    }
+  - var: Q7
+    task_num: 9
+    question: "[busier than normal / less busy than normal] Overall, how fulfilled are you feeling?"
+    scale: {min: 0, max: 100, min_label: "Not at all", max_label: "Extremely"}
+    response_recode: {
+      0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12,
+      13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25,
+      26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38,
+      39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51,
+      52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64,
+      65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77,
+      78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90,
+      91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100
+    }
+  - var: Q8A
+    task_num: 10
+    question: >-
+      Please respond to each of the following items by answering the question:
+      "How true is this of you?" My future is filled with possibilities.
+    scale: {min: 1, max: 7, min_label: "Very untrue", max_label: "Very true"}
+  - var: Q8B
+    task_num: 11
+    question: >-
+      Please respond to each of the following items by answering the question:
+      "How true is this of you?" I experience time as limited.
+    scale: {min: 1, max: 7, min_label: "Very untrue", max_label: "Very true"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+# 998 only: 77/98/99 are real slider values on Q6/Q7 (see notes, THE TRAP).
+missing_codes: [998]
+
+persona_missing:
+  GENDER: [0]
+
+persona_label_rewrite:
+  PARTYID7:
+    1: "Strong Democrat"
+    2: "Moderate Democrat"
+    3: "Lean Democrat"
+    4: "Don't Lean/Independent/None"
+    5: "Lean Republican"
+    6: "Moderate Republican"
+    7: "Strong Republican"
+  IDEO:
+    1: "Extremely Liberal"
+    2: "Liberal"
+    3: "Slightly Liberal"
+    4: "Moderate"
+    5: "Slightly Conservative"
+    6: "Conservative"
+    7: "Extremely Conservative"
+    8: "Haven't thought much about it"
+  ATTEND:
+    1: "Never"
+    2: "Less than once a year"
+    3: "About once or twice a year"
+    4: "Several times a year"
+    5: "About once a month"
+    6: "2-3 times a month"
+    7: "Nearly every week"
+    8: "Every week"
+    9: "Several times a week"
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+    2: "Roman Catholic (Catholic)"
+    3: "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)"
+    4: "Orthodox (Greek, Russian, or some other orthodox church)"
+    5: "Jewish (Judaism)"
+    6: "Muslim (Islam)"
+    7: "Buddhist"
+    8: "Hindu"
+    9: "Atheist (do not believe in God)"
+    10: "Agnostic (not sure if there is a God)"
+    11: "Nothing in particular"
+    12: "Just Christian"
+    13: "Unitarian (Universalist)"
+    14: "Something else"
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

@@ -2592,12 +2592,105 @@
    "reason": "",
    "novelty": null,
    "recipe": "zrwjp"
+  },
+  {
+   "source": "TESS",
+   "id": "3muqx",
+   "title": "Whom Do You Believe? Credibility in Sexual Assault",
+   "description": "A woman accuses a man of sexual assault, in eleven versions that vary what is known about each of them (11 conditions). Answer: whom you believe, then how much more, 1-5 (3 ratings).",
+   "details": "3,992 rows",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "3muqx"
+  },
+  {
+   "source": "TESS",
+   "id": "sdq2z",
+   "title": "Do liberals and conservatives differ in attitudes towards new housing?",
+   "description": "Conjoint: two proposed residential buildings vary in distance from home, neighbours' view, affordable share, height, current land use, own or rent and size. Answer: which of the two you would rather see built where you live (5 choices).",
+   "details": "14,630 rows",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "sdq2z"
+  },
+  {
+   "source": "TESS",
+   "id": "xtvu5",
+   "title": "Effects of Misinformation News Coverage on Media Trust",
+   "description": "Questions on how much news is misinformation, worded with or without naming social media sites, asked before or after a trust grid (4 conditions). Answer: misinformation estimates and trust in six news sources (11 ratings).",
+   "details": "23,017 rows",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "xtvu5"
+  },
+  {
+   "source": "TESS",
+   "id": "vemrp",
+   "title": "Accidental Environmentalists: Income and Evaluations of Eco-Friendly Lifestyles",
+   "description": "A neighbouring family lives a green or not-green lifestyle with very little or a lot of money (4 conditions). Answer: how much you approve of the family and how ethical and knowledgeable they seem, 0-10, plus your own environmental concern (6 ratings).",
+   "details": "15,391 rows",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "vemrp"
+  },
+  {
+   "source": "TESS",
+   "id": "j6xgs",
+   "title": "Busyness, Idleness, and Happiness",
+   "description": "You reflect on why you have recently been busier, or less busy, than normal (2 conditions). Answer: how stressed, bored, happy and fulfilled you feel about it, and how you see your future (12 ratings).",
+   "details": "14,201 rows",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "j6xgs"
+  },
+  {
+   "source": "TESS",
+   "id": "5an26",
+   "title": "Gender and Physical Attractiveness as Status Beliefs",
+   "description": "",
+   "details": "",
+   "category": "work/family/gender",
+   "status": "Unlikely",
+   "reason": "Photo experiment: attractiveness is shown only by headshots of apparently real people with no stated consent, and a salary outcome is in dollars.",
+   "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "w72cz",
+   "title": "Can masking of video data reduce perceived invasion of privacy?",
+   "description": "",
+   "details": "",
+   "category": "moral/social/cognition",
+   "status": "Unlikely",
+   "reason": "Video experiment: the condition is one of four silent videos, which the pipeline cannot represent.",
+   "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "mkgvp",
+   "title": "Affective Architecture: Physical Environment and Attitudes toward Police",
+   "description": "",
+   "details": "",
+   "category": "moral/social/cognition",
+   "status": "Unlikely",
+   "reason": "Photo experiment: the only thing that varies is a picture of a recognisable US police headquarters, several with US flags.",
+   "novelty": null
   }
  ],
  "built": {
   "Innovation Panel": 22,
   "DEL": 0,
-  "TESS": 28,
+  "TESS": 33,
   "Harvard Dataverse": 13
  },
  "meta": {

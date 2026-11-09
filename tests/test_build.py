@@ -322,3 +322,15 @@ def test_a_fill_resolving_to_nothing_at_the_end_leaves_no_trailing_space(tmp_pat
     )
     rows = list(build_rows(spss.read(path), rec))
     assert [r.condition for r in rows] == ["Intro. Appeal.", "Intro."]
+
+
+def test_a_blank_numeric_cell_is_no_code_not_a_crash() -> None:
+    """A respondent variable blank by design (asked of half the sample) reads as NaN."""
+    from micromotives_datasets.pipeline.build import _as_code
+
+    assert _as_code(float("nan")) is None
+    assert _as_code(float("inf")) is None
+    # ...and the legitimate cases still resolve.
+    assert _as_code(2.0) == 2
+    assert _as_code("3") == 3
+    assert _as_code(2.5) is None

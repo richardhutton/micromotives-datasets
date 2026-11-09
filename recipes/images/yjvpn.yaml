@@ -1,0 +1,703 @@
+study_id: yjvpn
+source: tess
+title: 'The De-gendering and Dehumanization of Transgender People: one of three photographs of Alex, captioned
+  transgender or cisgender, rated on 17 traits, warmth, how hard Alex''s gender is to tell and what it
+  is'
+data_file: 9089.138_TESS-Kubicki_20231109.dta
+licence: 'None stated: the TESS deposit on OSF (yjvpn, kubicki1576.zip) gives no reuse terms, and TESS
+  has since suspended operations. Used with rich''s ruling of 9 Nov 2026 that an unstated licence does
+  not block an image build.'
+comparable_to_socsci210: true
+participant_id_var: CaseId
+notes: "Write recipes/images/yjvpn.yaml: a photo of \"Alex\", labelled transgender or cisgender.\n\nKubicki,\
+  \ TESS 1576 (fielded as NORC 9089.138), \"The De-gendering and Dehumanization\nof Transgender People\"\
+  . OSF yjvpn, the TESS deposit kubicki1576.zip: the data\n(9089.138_TESS-Kubicki_20231109.dta), its codebook,\
+  \ the fielded questionnaire in a\nsimple and a programming version (9089.138_TESS-Kubicki_vfinal.simple.txt\
+  \ / .prog.txt,\n\"Q\" and \"PG\" below), NORC's methods and transparency report, the proposal\n(Kubicki1576.pdf)\
+  \ and the researcher's description document (Kubicki-1576.R2\ndescription.docx, a Qualtrics export of\
+  \ the design).\n\nAmeriSpeak, US adults screened to be cisgender (report: \"Cisgender general Population\n\
+  Age 18+\"), web only (`SURV_MODE` 2 for all), English only, fielded 23 October to\n1 November 2023.\
+  \ 914 completed; all 914 are in the file and all are built.\n\nEvery judgement is here, in code, so\
+  \ the recipe can be re-derived and reviewed:\n\n* DESIGN. 3 x 2 between people, held in the preload\
+  \ `P_COND` (codebook: 1\n  TransMasculine, 2 TransAndrogynous, 3 TransFem, 4 CisMasc, 5 CisAndro, 6\
+  \ CisFem;\n  147 / 165 / 143 / 156 / 145 / 158). One of three photographs of a person, each\n  captioned\
+  \ with the name Alex and a gender identity. condition_num is P_COND - 1.\n  The photo factor (`appearance`,\
+  \ the researcher's own masculine / androgynous /\n  feminine) is carried by the picture alone; the label\
+  \ factor by the caption's words.\n  QC rules 1 and 5 compare words AND images (docs/CONVENTIONS.md,\
+  \ Image conditions).\n* WHICH PICTURE IS WHICH CONDITION. Q (and PG, identically) shows above every\n\
+  \  stimulus question: \"IF P_COND=1 OR 4 SHOW 9089.0138_MASQUALITY.PNG / IF P_COND=2\n  OR 5 SHOW 9089.0138_ANDROQUALITY.PNG\
+  \ / IF P_COND=3 OR 6 SHOW\n  9089.013_FEMQUALITY.PNG\" (the last file name's missing \"8\" is the\n\
+  \  questionnaire's). Parsed here, and the four copies (Q1, Q2, Q4, Q3) asserted\n  identical in both\
+  \ files.\n* PICTURES, AND THE CAVEAT. The fielded PNGs are NOT in the deposit. The only\n  full-size\
+  \ copies are the three photographs embedded in the researcher's\n  description document, word/media/image2.png,\
+  \ image6.png and image7.png (512 x 512\n  RGBA PNGs, background cut away to transparency). Which is\
+  \ which is read from that\n  document's own block structure: image2 sits under \"Start of Block: TransMasculine\"\
+  \n  and \"CisMasc\", image6 under \"TransAndrogynous\" and \"CisAndro\", image7 under\n  \"TransFem\"\
+  \ and \"CisFem\" (checked in --catalogue, from the .docx XML). A second,\n  independent witness: the\
+  \ proposal (Kubicki1576.pdf, pp. 12-13) prints three\n  photographs under \"ANDROGYNOUS PHOTO\", \"\
+  FEMININE PHOTO\" and \"MASCULINE PHOTO\";\n  reduced to 64 x 64 grey, each is nearest the description\
+  \ document's picture of\n  the same name, by a wide margin (checked in --catalogue: within 4.7 / 11.2\
+  \ / 4.7\n  grey levels of its own and at least 30.5 from either other). So the faces are the\n  study's\
+  \ faces. What cannot be shown is that these are the exact files NORC\n  displayed: the description document\
+  \ is the researcher's Qualtrics draft, NORC\n  renamed the files (MASQUALITY etc.), and the fielded\
+  \ copies may differ in\n  resolution, cropping or encoding. Recorded in each catalogue entry's source.\
+  \ The\n  proposal says the photographs were \"generated from artificial intelligence\"; it\n  does not\
+  \ name the tool. No words are printed on any of them.\n* CONDITION. shared_context is the instruction\
+  \ screen INSTRUC, word-for-word from Q\n  (PG's copy is the same words, asserted, once its <em> tags\
+  \ and [SPACE] markers are\n  removed). It is the screen every respondent read before the photo, and\
+  \ it holds the\n  study's own definitions of cisgender and transgender. The welcome screen WINTRO_1\n\
+  \  (thanks, AmeriPoints, the Continue button) is survey mechanics and is dropped.\n  Each arm is then\
+  \ the photo and its caption, \"Alex, Transgender\" or \"Alex,\n  Cisgender\", word-for-word from Q,\
+  \ which Q says is centred under the image. The\n  connecting words are OURS: 'A photo: <image> Centred\
+  \ beneath the photo: \"Alex,\n  Transgender\"'. They say only what the directive says was on screen.\n\
+  * OUTCOMES. Twenty, each asked on a screen with the same photo and caption above it:\n  - Q1A-Q1Q (task\
+  \ 0-16): the 17 traits of grid Q1, each the grid's stem then the\n    trait, joined with a space (\"\
+  ...typical of the individual in the photo?\n    Ambitious\"). The trait in each variable is read from\
+  \ the codebook's bracketed\n    label and asserted to be Q's listing order. Answers 1-7, Extremely\n\
+  \    uncharacteristic .. Extremely characteristic, midpoint \"Neither uncharacteristic\n    nor characteristic\"\
+  . Trait order was randomised and recorded (Q1_ORDER*); no row\n    says where its trait sat.\n  - Q2\
+  \ (task 17): the 0-100 feeling thermometer, a slider, word-for-word. The data's\n    value labels on\
+  \ 0, 15, 30 .. 100 (\"Very cold or unfavorable feeling\" etc.) are\n    the panel's stock thermometer\
+  \ labels and are NOT on the fielded screen (Q says\n    only \"[SLIDER [RANGE 0 TO 100]]\"), so the\
+  \ scale carries no endpoint labels; the\n    question's own words explain it. Its non-answers are 777\
+  \ / 998 / 999 (this\n    variable's own labels), so 77, 98 and 99 are SLIDER POSITIONS: 6, 4 and 14\n\
+  \    people, in a smooth distribution (76: 7, 78: 5, 97: 4, 100: 50). They are kept.\n    The study's\
+  \ missing codes 77 / 98 / 99 are therefore NOT declared globally\n    (`missing_codes` is empty); each\
+  \ outcome's own recode lists its valid codes and\n    drops the rest.\n  - Q3 (task 18): difficulty\
+  \ of determining Alex's gender, 1-5, Not at all difficult\n    .. Extremely difficult, midpoint Slightly\
+  \ difficult.\n  - Q4 (task 19): \"If you saw Alex in passing, you would immediately think of them as\n\
+  \    a:\", NOMINAL, options enumerated in the question as the instrument lists them\n    (Man / Woman\
+  \ / Uncertain / \"Other, please describe:\"). Code 4 is kept as a real\n    answer (10 people); the\
+  \ words they typed (`Q4_OE`) are free text and not built.\n  Q1 and Q2 were shown in random order (ORDER1/ORDER2),\
+  \ then Q4, then Q3: the fielded\n  order puts Q4 BEFORE Q3, so task numbers follow the variable names,\
+  \ not the screens.\n  Every one of these screens repeated the photo and caption, so every row's\n  condition\
+  \ is literally what was above its question. The order variables (ORDER1/2,\n  Q1_ORDER*, and those of\
+  \ the unbuilt checks and moderator block) record\n  presentation order, not manipulations, and are listed\
+  \ in `considered_and_rejected`.\n* NOT BUILT. Q5 (the name of the person) and Q6 (their gender identity)\
+  \ are the\n  attention / manipulation checks: their answers are stated in the condition, so\n  they\
+  \ are not outcomes (docs/CONVENTIONS.md). Q7 (nine items of a genderism and\n  transphobia scale) and\
+  \ Q8 / Q9 (how often the respondent has encountered\n  transgender people, and stories about them in\
+  \ the media) are the proposal's\n  moderator block (\"Transphobia;Familiarity\"), asked of everyone\
+  \ after the checks.\n  They are statements about the respondent, not about the photo or Alex, so they\n\
+  \  are not outcomes of this manipulation (zaqkm's contact item and s6urt's profile\n  items, the same\
+  \ call); and being asked after the stimulus, they are not\n  admissible as persona either, which for\
+  \ Q7 the domain rule would forbid anyway.\n  SocSci210 did not build them. Cost: up to 9 x 914 + 2 x\
+  \ 914 = 10,054 answers.\n* WHO. All 914 completes. `CaseId` is the participant id. Respondents answered\
+  \ each\n  question or skipped it (98 \"SKIPPED ON WEB\" on Q1/Q3/Q4: 4 to 11 per item; 998 on\n  Q2:\
+  \ 61; 777 / 999 never occur); each skip drops only that row.\n* PERSONA. The standard AmeriSpeak preloads,\
+  \ the same field set and variables as\n  8ctbk: AGE, GENDER, EDUC5 (the file has no EDUC), RACETHNICITY,\
+  \ INCOME (18 bands),\n  MARITAL, EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET,\n  PHONESERVICE,\
+  \ PartyID7, IDEO, RELIG, ATTEND. Left absent: PartyID7 and IDEO -1\n  \"Unknown\", RELIG / ATTEND 77\
+  \ / 98 / 99, GENDER 0 \"Unknown\" (as 8ctbk; codes that\n  do not occur here are inert). Not mapped:\
+  \ STATE, REGION9 (finer than every other\n  TESS build's region), the banded duplicates AGE4 / AGE7\
+  \ / INCOME4 / INCOME9, the\n  household age counts, PartyID5. RELIG code 1's label is cut off at 80\
+  \ characters\n  in the .dta (\"... Presbyterian, Pent\"); `persona_label_rewrite` restores the whole\n\
+  \  answer from Q's demographic profile, as 9xw67 does. Every respondent was screened\n  cisgender, so\
+  \ no persona field records gender identity; the caption names a\n  category no persona field holds,\
+  \ so nothing in a row can be matched by\n  substitution.\n* UK FIT. The photo, the name, the definitions\
+  \ and the questions name no US place,\n  law, party or institution; the rescan screen called it a full\
+  \ transfer. US\n  spellings (\"favorable\") are kept word-for-word. The sample is American.\n* ANSWER\
+  \ KEY. SocSci210 holds this study: 18,069 rows over six conditions. Our build\n  has the same rows per\
+  \ condition and the same response distribution (crosscheck).\n  SocSci210 groups the 20 outcomes into\
+  \ 5 tasks (12 traits, 5 traits, Q2, Q3, Q4)\n  and words its conditions from the proposal (\"How difficult\
+  \ would it be ...\"), not\n  from the fielded instrument; task counts are reported, not failed.\n* NOT\
+  \ ASKED OF JEV. The assignment is the preload the questionnaire's own directives\n  name, the persona\
+  \ is 8ctbk's, and each outcome's non-answer codes are its own value\n  labels; no paid call.\n\n   \
+  \ uv run python scripts/gen_yjvpn.py --prep       # extract the three photos from the .docx\n    uv\
+  \ run python scripts/gen_yjvpn.py --catalogue  # (re)write this study's images.json entries\n    uv\
+  \ run python scripts/gen_yjvpn.py              # write the recipe\n    uv run python scripts/gen_yjvpn.py\
+  \ --check      # exit 1 if it differs"
+condition:
+  source_var: P_COND
+  shared_context: Thank you for taking our survey. This study is about people's perceptions of others.
+    We make split-second judgments about other people based on very little and, in many cases, no information,
+    every single day. In this study, you will be shown a photo of someone with some information about
+    that person before responding to some questions about your perceptions of that person. There are no
+    right or wrong answers. We are simply interested in your perceptions and opinions. You can work quickly;
+    your first feeling is generally best. For the purposes of this survey, there are some definitions
+    below that may help as you encounter the individual you are being asked questions about. Cisgender
+    people identify with their biological sex assigned at birth. For example, a cisgender man was born
+    biologically male and identifies as a man, and a cisgender woman was born biologically female and
+    identifies as a woman. Transgender people do not identify with their biological sex assigned at birth.
+    For example, a transgender man was born biologically female and identifies as a man, and a transgender
+    woman was born biologically male and identifies as a woman.
+  factors:
+  - appearance
+  - label
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      appearance: masculine
+      label: transgender
+    text: 'A photo: <image> Centred beneath the photo: "Alex, Transgender"'
+    images:
+    - yjvpn_masculine
+  - raw: 2
+    condition_num: 1
+    factors:
+      appearance: androgynous
+      label: transgender
+    text: 'A photo: <image> Centred beneath the photo: "Alex, Transgender"'
+    images:
+    - yjvpn_androgynous
+  - raw: 3
+    condition_num: 2
+    factors:
+      appearance: feminine
+      label: transgender
+    text: 'A photo: <image> Centred beneath the photo: "Alex, Transgender"'
+    images:
+    - yjvpn_feminine
+  - raw: 4
+    condition_num: 3
+    factors:
+      appearance: masculine
+      label: cisgender
+    text: 'A photo: <image> Centred beneath the photo: "Alex, Cisgender"'
+    images:
+    - yjvpn_masculine
+  - raw: 5
+    condition_num: 4
+    factors:
+      appearance: androgynous
+      label: cisgender
+    text: 'A photo: <image> Centred beneath the photo: "Alex, Cisgender"'
+    images:
+    - yjvpn_androgynous
+  - raw: 6
+    condition_num: 5
+    factors:
+      appearance: feminine
+      label: cisgender
+    text: 'A photo: <image> Centred beneath the photo: "Alex, Cisgender"'
+    images:
+    - yjvpn_feminine
+  considered_and_rejected:
+    RND_00: Order of the two checks Q5/Q6, both not built; asked after every built outcome.
+    ORDER1: Records whether Q1 or Q2 came first; presentation order, not a manipulation, and no row says
+      where it sat.
+    ORDER2: The other half of ORDER1.
+    RAN1_Q5: Order of Q5's response options; Q5 is a manipulation check, not built.
+    RAN2_Q5: Order of Q5's response options; Q5 is a manipulation check, not built.
+    RAN3_Q5: Order of Q5's response options; Q5 is a manipulation check, not built.
+    RAN4_Q5: Order of Q5's response options; Q5 is a manipulation check, not built.
+    RAN5_Q5: Order of Q5's response options; Q5 is a manipulation check, not built.
+    RAN1_Q6: Order of Q6's response options; Q6 is a manipulation check, not built.
+    RAN2_Q6: Order of Q6's response options; Q6 is a manipulation check, not built.
+    ORDERA1: Order of Q7, Q8 and Q9, the moderator block, not built; asked after every built outcome.
+    ORDERB1: Order of Q7, Q8 and Q9, the moderator block, not built; asked after every built outcome.
+    ORDERC1: Order of Q7, Q8 and Q9, the moderator block, not built; asked after every built outcome.
+    Q7_ORDER1: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER2: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER3: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER4: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER5: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER6: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER7: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER8: Order of Q7's grid items, not built; asked after every built outcome.
+    Q7_ORDER9: Order of Q7's grid items, not built; asked after every built outcome.
+outcomes:
+- var: Q1A
+  task_num: 0
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Ambitious
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1B
+  task_num: 1
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Sensitive
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1C
+  task_num: 2
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Warm
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1D
+  task_num: 3
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Competitive
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1E
+  task_num: 4
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Courageous
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1F
+  task_num: 5
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Gentle
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1G
+  task_num: 6
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Passionate
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1H
+  task_num: 7
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Kind
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1I
+  task_num: 8
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Dominant
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1J
+  task_num: 9
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Adventurous
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1K
+  task_num: 10
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Nurturing
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1L
+  task_num: 11
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Analytic
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1M
+  task_num: 12
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Daring
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1N
+  task_num: 13
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Imaginative
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1O
+  task_num: 14
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Sympathetic
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1P
+  task_num: 15
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Masculine
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q1Q
+  task_num: 16
+  question: We are interested in people's first impressions. Although it may seem difficult, people are
+    actually quite good at judging others from first impressions. How much do you think the following
+    traits are typical of the individual in the photo? Feminine
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely uncharacteristic
+    max_label: Extremely characteristic
+    mid_label: Neither uncharacteristic nor characteristic
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q2
+  task_num: 17
+  question: Using the slider below, on a scale from zero to 100, please tell us your personal feelings
+    toward the person in the photo. As you do this task, think of an imaginary thermometer. The warmer
+    or more favorable you feel toward this person, the higher the number you should give. The colder or
+    less favorable you feel, the lower the number. If you feel neither warm nor cold toward this person,
+    rate them 50.
+  scale:
+    min: 0
+    max: 100
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- var: Q3
+  task_num: 18
+  question: How difficult is it for you to confidently determine Alex's gender?
+  scale:
+    min: 1
+    max: 5
+    min_label: Not at all difficult
+    max_label: Extremely difficult
+    mid_label: Slightly difficult
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+- var: Q4
+  task_num: 19
+  question: 'If you saw Alex in passing, you would immediately think of them as a: 1 means "Man"; 2 means
+    "Woman"; 3 means "Uncertain"; 4 means "Other, please describe:".'
+  scale:
+    min: 1
+    max: 4
+    nominal: true
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+response_recode: {}
+missing_codes: []
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND
+persona_label_rewrite:
+  RELIG:
+    1: Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian,
+      Reformed, Church of Christ, Jehovah's Witness, etc.)
+persona_missing:
+  PartyID7:
+  - -1
+  IDEO:
+  - -1
+  RELIG:
+  - 77
+  - 98
+  - 99
+  ATTEND:
+  - 77
+  - 98
+  - 99
+  GENDER:
+  - 0

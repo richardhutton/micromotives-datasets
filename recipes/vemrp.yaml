@@ -1,0 +1,377 @@
+study_id: vemrp
+source: tess
+title: "Accidental Environmentalists: Income and Evaluations of Eco-Friendly Lifestyles"
+data_file: PN8041_TESS023_Kennedy.sav
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-09: node vemrp
+  and its child components 9uktj "Data and Materials" and e9uag "Proposal" all
+  have node_license null and no license relationship). TESS archived its post-2009
+  projects through the Roper Center and its own site states no reuse terms; TESS
+  has since suspended operations. So there is no explicit grant of redistribution
+  rights for this deposit, and none should be assumed.
+
+# SocSci210 built Q1-Q7; we build Q1-Q5 and Q8 and drop the two recall checks
+# Q6/Q7 (CONVENTIONS, "Attention and recall checks are not outcomes"), so the
+# totals cannot agree. Their tasks 0-4 were compared by hand; see CROSSCHECK.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 023 (Kennedy and Horne, Washington State University; NORC AmeriSpeak, web
+  only, English only), "Accidental Environmentalists". Fielded 17-25 May 2018;
+  "In field, NORC collected 2,595 interviews" (Field Report p.1). The .sav has
+  exactly 2,595 rows. One experiment, one recipe.
+
+  SOURCES. Q = "8041.023 TESS 23 Kennedy vFINAL.txt" (sha256 cb857c89...82a4,
+  607 lines), the FIELDED NORC programming questionnaire; it is identical, apart
+  from trailing whitespace, to a fresh textutil conversion of the deposit's own
+  "8041.023 TESS 23 Kennedy vFINAL.docx" (sha256 6c617273...63ab), checked by
+  diff. The .docx holds two images, both letterhead logos (NORC, AmeriSpeak); no
+  picture is part of the stimulus. Line numbers below are 1-based into Q. Zip
+  Kennedy1017.zip sha256 9b9939c0...254e, from OSF vemrp.
+  "TESS Project Description 4.6.2018_final" is the PROPOSAL and is not used for
+  any wording (CONVENTIONS, source authority). It differs from Q where it
+  matters: the proposal's not-green house is "good sized", the fielded one is
+  "pretty big".
+
+  WHICH DATA FILE. The deposit ships PN8041_TESS023_Kennedy.sav (45 columns) and
+  PN8041_TESS023_Kennedy.dta (46). Compared column by column on all 2,595 rows:
+  same CaseIds, and every column common to both is identical except RELIG_OE
+  (empty either way, stored as different string types) and STARTDT/ENDDT
+  (timestamps stored in different types). The .dta adds only WEIGHT. They are
+  one fielded client file in two formats; the .sav is used because it carries
+  the SPSS value labels the persona and missing codes are read from.
+
+
+  THE DESIGN (Q 140-144, 268-288; proposal p.1 for the 2 x 2 naming only)
+
+  A 2 x 2 between-subjects vignette, one per respondent, assigned by the preload
+  P_TESS23: 1 "Not Green; Low", 2 "Green; Low", 3 "Not Green; High", 4 "Green;
+  High" (Q 140-144; .sav labels identical). Counts 667 / 654 / 634 / 640.
+    lifestyle - not green (house pretty big, reliable car, washer and dryer used
+                frequently, comfortable temperature; "about the same
+                environmental impact") or green (small house, public transit or
+                walk, clothesline, no air conditioning; "a much lower
+                environmental impact")
+    income    - "very little money ... no extra money" (low) or "a lot of
+                money ... plenty of extra money" (high)
+  Both factors change words in the arm text; QC rule 5 confirms.
+
+  condition_num = P_TESS23 - 1.
+
+  ARM TEXT is Q 271/273, 276/278, 281/283, 286/288 word-for-word, the two
+  paragraphs of each block kept as two paragraphs (the instrument's [SPACE]).
+  Removed: the <u>...</u> underline tags (typography; arm 4's "<u>small and"
+  never closes its tag, a markup slip, removed the same way), the space inside
+  "<u> pretty big</u>" (so "is pretty big", not "is  pretty big"), trailing
+  spaces, and curly apostrophes straightened ("don't"). No word changed.
+  Each arm repeats the whole vignette: the first two sentences are common to
+  all four, but they sit in the same paragraph as the varying clauses, so only
+  V1's lead-in is hoisted into shared_context (CONVENTIONS: shared_context is a
+  prefix; the paragraph stays as read, as hu45w rules). The "$" in the block
+  headers "P_TESS23= 1: Not green, low $" is a researcher label in the
+  programming notes (Q 268 says to insert only the text "for the specified
+  value"); no respondent saw it.
+
+  shared_context is V1, Q 293, word-for-word: the screen that introduced the
+  vignette.
+
+  THE QUESTION SCREENS. Each of Q1-Q5 re-displays the vignette (first two
+  sentences shown, rest behind "Show more", Q 302-304 etc.). The row's condition
+  already carries the full vignette, so the re-display and its mechanics ("You
+  have already read this information, but we will repeat it over the next few
+  pages...", Q 300; "Click 'Show more'...", Q 302; "Again, here is the
+  information about the family.", Q 325 etc.) are not rendered: survey
+  mechanics, and "Again" and "over the next few pages" cite a sequence the row
+  cannot hold (CONVENTIONS, sequence signposting). Each question keeps the
+  instruction sentence that sits on its own screen, word-for-word:
+    Q1 (Q 306): "Now we would like you to answer the following questions about
+        the family. You may feel that you don't have enough information, but we
+        are interested in your first impressions." (apostrophe already straight)
+    Q2-Q5 (Q 325, 351, 374, 398): "Please answer the following questions using
+        your first impressions."
+  The <u> on "first impressions" is dropped like the arm underlines.
+
+
+  OUTCOMES - SIX BUILT
+
+  task 0 Q1 (Q 297-320)  How much do you approve of this family?  0-10,
+         "0 Not at all" .. "10 Very much"
+  task 1 Q2 (Q 322-343)  If this family moved to your neighborhood, how
+         interested would you be in being friends with them?  "0 Not at all" ..
+         "10 Very"
+  task 2 Q3 (Q 348-369)  How knowledgeable is this family?  "Not at all" ..
+         "Very"
+  task 3 Q4 (Q 372-392)  How ethical is this family?  "Not at all" .. "Very"
+  task 4 Q5 (Q 396-416)  How much is the environment a high priority for this
+         family?  "Not at all" .. "Very much"
+  task 5 Q8 (Q 437-444)  Generally speaking, how concerned are you about
+         environmental issues?  1-5, "1 Not at all concerned" .. "5 Very
+         concerned"
+  Endpoint labels are each item's own option list (Q) and agree with the .sav.
+  The slider directive above each says to show 'Very' on top for all five, but
+  the option lists and .sav say "Very much" for Q1 and Q5; the option list is
+  the respondent-facing text, so it is used.
+
+  Codes: Q1-Q5 store 1-11 for the displayed 0-10 (.sav labels "0 Not at all" =
+  1 .. "10 Very much" = 11), so the study map is code - 1. Q8 is stored in
+  DISPLAY order from the top, 1 = "5 Very concerned" .. 5 = "1 Not at all
+  concerned" (.sav labels), so its own map reverses it to the number the
+  respondent saw (1 -> 5 .. 5 -> 1); the resulting distribution 108 / 173 /
+  778 / 922 / 604 for 1..5 matches the labels' meaning. Missing: 98 "SKIPPED ON
+  WEB" occurs (Q1 32, Q2 29, Q3 35, Q4 41, Q5 32, Q8 10); 77 and 99 never occur
+  and are declared because the questionnaire defines them (Q 222-228: CATI
+  codes, not offered on the web unless written in the options; inert here).
+  98 is the web skip (Q 227).
+
+  Q8 is about the respondent, not the family, and is built as an outcome. It
+  sits inside the study module (between Q7 and the party/ideology backfill), it
+  is in the proposal's own questionnaire, and it was asked after the randomised
+  vignette, so it is a post-treatment measure, not a profile item. It is not a
+  recall check: nothing about the vignette answers it.
+
+  NOT BUILT - Q6 and Q7, the two manipulation checks (Q 418-435): "How much
+  money does the family make?" (A lot / Very little) and "Is the family's
+  environmental impact lower than or the same as other people in their
+  neighborhood?" Each answer is stated word for word in the condition text, so
+  per CONVENTIONS ("Attention and recall checks are not outcomes") they are
+  excluded. Cost 2,564 + 2,571 = 5,135 rows. SocSci210 built both (their tasks
+  5 and 6).
+
+  UNRECORDED ORDER. RND_00 (Q 203-204, 346) shows Q3 before Q4 or Q4 before Q3,
+  drawn in the script, and is not in the deposit (all 45 .sav columns read).
+  Neither wording changes, and no row narrates earlier items, so nothing in any
+  row is made false by it; it is a balanced nuisance, independent of P_TESS23 by
+  design.
+
+
+  ROW ARITHMETIC
+    Q1 2,563 + Q2 2,566 + Q3 2,560 + Q4 2,554 + Q5 2,563 + Q8 2,585 = 15,391.
+
+
+  CROSSCHECK WITH SocSci210 (by hand; comparable_to_socsci210 false because of
+  scope only)
+
+  SocSci210 has 17,941 rows, 2,594 participants, 4 conditions, 7 tasks (Q1-Q7,
+  read from their prompts; no Q8). Their tasks 0-4 have 2,563 / 2,566 / 2,560 /
+  2,554 / 2,563 rows, equal to our Q1-Q5, and their full per-task response
+  distributions for tasks 0-4 equal ours bin for bin (e.g. Q1 0..10: 15 2 9 18
+  39 330 253 438 561 278 620). Their tasks 5/6 (2,564 / 2,571) are our excluded
+  Q6/Q7. 17,941 - 2,564 - 2,571 = 12,806 = our Q1-Q5 rows; our 15,391 adds
+  Q8's 2,585. Per-condition counts on tasks 0-4 are compared in the build
+  report.
+
+  Their stimulus text is wrong for every condition: all four of their strings
+  mix the green and not-green descriptions (their condition 0 has "very little
+  money ... small home ... about the same environmental impact", a combination
+  no arm contains), they have "comfortable home", which occurs in neither the
+  proposal nor Q, and they drop "You chat with them sometimes" and "As far as
+  you can tell". Numeric answer key only, as ever.
+
+
+  UK FIT. No dollar amount, price, party, law, institution, race category or
+  place appears in the vignette or any built question; income is stated only as
+  "very little money" / "a lot of money". US-flavoured words kept word-for-word:
+  "neighborhood" (spelling), "public transit", "washer and dryer". "Don't have
+  air conditioning" is presented as a green choice; in the UK, where few homes
+  have it, a reader may not see it as one, which could weaken the lifestyle
+  contrast for a UK respondent, but a UK adult can take part as written.
+  data/catalog/socsci210_uk_rescan.json: uk_fit "fit", us_dollars 0.01.
+
+
+  PERSONA. scripts/recipe_prep.py vemrp --source tess --file
+  PN8041_TESS023_Kennedy.sav (2026-11-09):
+    assignment  P_TESS23 0.99 - accepted.
+    region      REGION4 0.55 REVIEW (next REGION9 0.43) - REGION4, as every
+                AmeriSpeak sibling.
+    religion    RELIG 0.83 REVIEW (next RELIG_OE 0.17) - RELIG; RELIG_OE is the
+                empty write-in. Label 1 is severed in the .sav at "...Reformed,
+                Church"; restored word-for-word from Q 169 (the preload list;
+                the in-survey list at Q 517 is the same), spelled as 3muqx,
+                s6urt and zaqkm restore it. Code 14 "Other (please specify):"
+                carries a text-box instruction; rewritten to "Something else",
+                the label the preload list gives code 14 (Q 182), as s6urt does.
+    ideology    IDEO. 8 "Haven't thought much about it" (318 respondents): Jev
+                non_answer 0.70 REVIEW, disagreeing with the regex - overruled
+                and kept as a real answer, as hu45w, xk9ch_vignette1 and gyrp9
+                rule. The .sav label is already straight-apostrophed, so no
+                rewrite is needed.
+    attendance  ATTEND. 98 "SKIPPED ON WEB": Jev called it an answer at 0.37
+                against non_answer 0.41, a close call disagreeing with the
+                regex - overruled; it is a skip and goes in persona_missing
+                (1 respondent). 77/99 declared from the label set.
+    gender      GENDER 0 "Unknown": Jev non_answer 0.82 - persona_missing.
+                Inert here (0 respondents carry it).
+    party       PartyID7 -1 "Unknown": persona_missing; inert (0 respondents).
+    others      AGE, EDUC, RACETHNICITY, INCOME, MARITAL, EMPLOY, HHSIZE all
+                0.99-1.00. INCOME is in dollars, as in every AmeriSpeak recipe;
+                it is a profile item, not stimulus.
+  Not mapped: AGE4/AGE7/EDUC4/REGION9/STATE (coarser or finer duplicates),
+  PartyID5 (duplicate of PartyID7), HH01-HH18OV, duration, Device, SURV_MODE
+  (all 2 = web).
+  Caveat shared with every AmeriSpeak recipe: PID1/D3/RELIG/ATTEND are asked
+  in-survey after the outcomes only for panelists whose profile lacked them
+  ("[SHOW IF MISSING P_...]", Q 449-547), so for those few the persona value
+  was collected post-treatment; the file does not say which respondents.
+  Value labels: 291 asked, two disagreements (IDEO 8, ATTEND 98), both above.
+  Directives: section 4 of recipe_prep scanned NOTHING ("questionnaires: NONE
+  FOUND" - it did not pick up the .txt in the Kennedy1017 subfolder), so they
+  were read by hand. The only directives touching built text are the five
+  "[INSERT UNBOLDED TEXT FROM ASSIGNED P_TESS23 CONDITION HERE]" fills,
+  resolved as arms, and RND_00 (above). The "[SHOW IF ...]" directives gate
+  only the post-outcome background items, none built.
+  respondent_vars: none; nothing in the built text varies by respondent.
+
+condition:
+  source_var: P_TESS23
+  factors:
+  - lifestyle
+  - income
+  shared_context: >-
+    We are going to give you some information about a family. Please read the
+    information very carefully as we will be asking you questions about it.
+  arms:
+  # P_TESS23=1 "Not Green; Low": Q 271, 273
+  - raw: 1
+    condition_num: 0
+    factors:
+      lifestyle: not_green
+      income: low
+    text: |-
+      A family with two children lives in a neighborhood nearby to yours. You chat with them sometimes when you see them in the neighborhood. As far as you can tell, they make very little money and seem to have no extra money to spend. Their house is pretty big and they drive a reliable car. They also use their washer and dryer frequently and keep their home at a comfortable temperature.
+
+      This family has about the same environmental impact as other people in their neighborhood.
+  # P_TESS23=2 "Green; Low": Q 276, 278
+  - raw: 2
+    condition_num: 1
+    factors:
+      lifestyle: green
+      income: low
+    text: |-
+      A family with two children lives in a neighborhood nearby to yours. You chat with them sometimes when you see them in the neighborhood. As far as you can tell, they make very little money and seem to have no extra money to spend. Their house is small and they often take public transit or walk to avoid driving. They also dry their clothes on a clothesline and don't have air conditioning in their home.
+
+      This family has a much lower environmental impact than other people in their neighborhood.
+  # P_TESS23=3 "Not Green; High": Q 281, 283
+  - raw: 3
+    condition_num: 2
+    factors:
+      lifestyle: not_green
+      income: high
+    text: |-
+      A family with two children lives in a neighborhood nearby to yours. You chat with them sometimes when you see them in the neighborhood. As far as you can tell, they make a lot of money and seem to have plenty of extra money to spend. Their house is pretty big and they drive a reliable car. They also use their washer and dryer frequently and keep their home at a comfortable temperature.
+
+      This family has about the same environmental impact as other people in their neighborhood.
+  # P_TESS23=4 "Green; High": Q 286, 288
+  - raw: 4
+    condition_num: 3
+    factors:
+      lifestyle: green
+      income: high
+    text: |-
+      A family with two children lives in a neighborhood nearby to yours. You chat with them sometimes when you see them in the neighborhood. As far as you can tell, they make a lot of money and seem to have plenty of extra money to spend. Their house is small and they often take public transit or walk to avoid driving. They also dry their clothes on a clothesline and don't have air conditioning in their home.
+
+      This family has a much lower environmental impact than other people in their neighborhood.
+
+outcomes:
+- var: Q1
+  task_num: 0
+  question: >-
+    Now we would like you to answer the following questions about the family.
+    You may feel that you don't have enough information, but we are interested
+    in your first impressions. How much do you approve of this family?
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very much
+- var: Q2
+  task_num: 1
+  question: >-
+    Please answer the following questions using your first impressions. If this
+    family moved to your neighborhood, how interested would you be in being
+    friends with them?
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very
+- var: Q3
+  task_num: 2
+  question: >-
+    Please answer the following questions using your first impressions. How
+    knowledgeable is this family?
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very
+- var: Q4
+  task_num: 3
+  question: >-
+    Please answer the following questions using your first impressions. How
+    ethical is this family?
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very
+- var: Q5
+  task_num: 4
+  question: >-
+    Please answer the following questions using your first impressions. How much
+    is the environment a high priority for this family?
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very much
+- var: Q8
+  task_num: 5
+  question: >-
+    Generally speaking, how concerned are you about environmental issues?
+  scale:
+    min: 1
+    max: 5
+    min_label: Not at all concerned
+    max_label: Very concerned
+  # Stored top-down as displayed: 1 = "5 Very concerned" .. 5 = "1 Not at all
+  # concerned" (.sav labels). Mapped to the number the respondent saw.
+  response_recode: {1: 5, 2: 4, 3: 3, 4: 2, 5: 1}
+
+# Q1-Q5: stored 1-11 for the displayed 0-10.
+response_recode: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 10: 9, 11: 10}
+missing_codes: [77, 98, 99]
+
+persona_label_rewrite:
+  # SPSS severed this label at "...Reformed, Church"; restored word-for-word
+  # from this deposit's own questionnaire preload list (Q 169).
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+    # Real answer; the .sav label carries the text-box instruction. The preload
+    # list's own label for code 14 (Q 182), as s6urt.
+    14: "Something else"
+
+persona_missing:
+  PartyID7: [-1]
+  RELIG: [77, 98, 99]
+  ATTEND: [77, 98, 99]
+  GENDER: [0]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

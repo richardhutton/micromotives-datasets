@@ -35,6 +35,10 @@ def _as_code(raw: Any) -> int | None:
         f = float(raw)
     except (TypeError, ValueError):
         return None
+    # A blank numeric cell reads as NaN, and int(NaN) raises. A variable blank by
+    # design (asked of half the sample) is "no value", not a crash (3muqx).
+    if not math.isfinite(f):
+        return None
     return int(f) if f == int(f) else None
 
 

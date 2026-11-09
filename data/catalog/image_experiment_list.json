@@ -683,6 +683,18 @@
       "contact": "Julia Yesberg",
       "rows": null,
       "recipe": ""
+    },
+    {
+      "id": "IMG86",
+      "title": "Transgender label and face appearance",
+      "description": "An AI-generated face of \"Alex\" (masculine, androgynous or feminine) captioned \"Alex, Transgender\" or \"Alex, Cisgender\"; 17 trait ratings (1-7), a feeling thermometer (0-100), how hard it is to tell Alex's gender (1-5) and whether you would see Alex as a man or a woman. TESS (Kubicki), US sample, n=914.",
+      "link": "https://osf.io/yjvpn",
+      "status": "Built",
+      "reason": "18,069 rows (914 people x 20 outcomes; 6 conditions: face x caption). Matches SocSci210 exactly, all 443 condition x task x response cells. Found by the 9 Nov SocSci210 UK rescan; would have been wrong as text, because the face is the treatment. The fielded image files are not in the deposit: the three faces come from the researcher's description document and match the proposal's printed faces, but may differ in resolution from what respondents saw. Transphobia and familiarity items left out (self-report after the stimulus). Independent checker: no defects. Licence unstated, used on rich's ruling.",
+      "permission": "Not asked yet",
+      "contact": "",
+      "rows": 18069,
+      "recipe": "yjvpn"
     }
   ]
 }

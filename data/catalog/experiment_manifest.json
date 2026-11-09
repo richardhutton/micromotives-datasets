@@ -530,6 +530,30 @@
       "description": "How urgent it is that the UK government take action on climate change, after reading one of four news items about extreme weather: ice melt in Greenland, floods in Pakistan, a heatwave in China, or the UK passing 40C for the first time. DEL panel wave 4 (2022).",
       "design": "between-subjects, 4 arms (climatescenariosplit), no control; one 5-point outcome, each arm's item merged; everyone had answered the identical question (action) earlier in the survey before any news item, not narrated and kept out of the persona (rich, 18 Oct 2026; as climate harm stories)",
       "verified_against": "no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 7,276 rows back to raw by respondent id (0 mismatches); persona block identical to the East Africa drought build (18 Oct 2026)"
+    },
+    "3muqx": {
+      "category": "moral/social/cognition",
+      "description": "A woman accuses a man of sexual assault; eleven versions vary what is known about each of them. Respondents say whom they believe, and how much more.",
+      "design": "single-factor vignette, 11 versions, between subjects; 3 outcomes (two opposite-coded forms of the who-do-you-believe question, then strength of belief)",
+      "verified_against": "SocSci210 rows reproduced exactly once its two scope choices are reversed (it merged the opposite-coded Q1a/Q1b under one prompt and dropped scale points 2 and 4); every row diffed against the .sav by an independent checker"
+    },
+    "xtvu5": {
+      "category": "moral/social/cognition",
+      "description": "Questions about how much news is misinformation, worded with or without naming social media sites like Facebook and Twitter, asked before or after a grid of trust in news sources.",
+      "design": "2x2 between subjects (wording x order of the trust grid); 11 outcomes",
+      "verified_against": "SocSci210: identical rows, tasks and responses on all 23,017 rows (it merges the order factor); every row's prior-question set rebuilt from the .sav by an independent checker"
+    },
+    "vemrp": {
+      "category": "moral/social/cognition",
+      "description": "A neighbouring family lives a green or a not-green lifestyle, with very little or a lot of money. Respondents rate how much they approve of the family and how ethical and knowledgeable they seem.",
+      "design": "2x2 vignette, between subjects; 6 outcomes (5 ratings of the family, 0-10, plus own environmental concern)",
+      "verified_against": "SocSci210 Q1-Q5 matched cell for cell (condition x task x response); every row diffed against the .sav by an independent checker"
+    },
+    "sdq2z": {
+      "category": "political preferences/policy",
+      "description": "Two proposed residential buildings side by side, varying distance from home, neighbours' view, affordable share, height, what the land is used for now, own or rent and size. Respondents pick which they would rather see built where they live.",
+      "design": "paired-profile conjoint, 7 attributes, 5 screens per respondent",
+      "verified_against": "no reference build (SocSci210 left the conjoint out); all 14,630 rows rebuilt from the .sav levels by an independent checker, and choice directions agree with the study's reported effects"
     }
   }
 }

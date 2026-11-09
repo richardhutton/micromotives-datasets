@@ -1,0 +1,447 @@
+study_id: xtvu5
+source: tess
+title: "Effects of Misinformation News Coverage on Media Trust"
+data_file: "PN8041.040_TESS040_Thorson_20200109.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-09:
+  https://api.osf.io/v2/nodes/xtvu5/ -> attributes.node_license null,
+  relationships.license null). TESS archived its post-2009 projects through the
+  Roper Center and its own site states no reuse terms; TESS has since suspended
+  operations. So there is no explicit grant of redistribution rights for this
+  deposit, and none should be assumed.
+# SocSci210 merged the question-order factor (4 arms -> 2); see CROSSCHECK in notes.
+comparable_to_socsci210: false
+
+notes: |
+  TESS 040 (Thorson, Syracuse), "Effects of Misinformation News Coverage on Media
+  Trust". NORC AmeriSpeak, web only, in field 12-23 Dec 2019; NORC collected 2,118
+  interviews (Field Report: "In field, NORC collected 2,118 interviews."). The .sav
+  has exactly 2,118 rows. MAKER DRAFT, for checker review.
+
+  Line citations are 1-based lines in
+    Q  = "8041.040_.043_TESS_40_43_Thorson_Klar_v6clean.txt" (textutil of the .docx;
+         the fielded questionnaire, "v6clean", dated December 11, 2019, line 345)
+    PR = "S42.R1 description.txt" (the proposal; consulted for factor names only)
+    SAV = PN8041.040_TESS040_Thorson_20200109.sav, read with pyreadstat
+
+
+  THE COMBINED INSTRUMENT, AND WHERE THORSON'S BLOCK IS
+
+  Q is one instrument for two studies fielded together: TESS 040 Thorson and TESS
+  043 Klar. Q 354-355: "IF RND_00=0 SHOW BLOCK A FIRST AND BLOCK B SECOND / IF
+  RND_00=1 SHOW BLOCK B FIRST AND BLOCK A SECOND".
+    Q 358-455  "BLOCK A KLAR" (abortion laws and the 2020 Presidential election).
+               Not this study. Nothing from it is used.
+    Q 457-605  "BLOCK B THORSON". This recipe's scope.
+    Q 607-648  "BLOCK C Profile Questions", shown last to everyone, only to backfill
+               missing panel profile values (Q3B, Q15ANEW, D7). Not this study's
+               outcomes; none of those variables is in the SAV.
+  The SAV is already scoped to Thorson: its 69 columns carry no Klar item (no
+  Q1_KLAR_*, no P_KLAR). RND_00 is present (block order) and is recorded under
+  `considered_and_rejected`.
+
+
+  THE DESIGN (Q 457-605; PR "Design")
+
+  Everyone: Q1_THORSON (Q 461-468, how closely you follow politics) then
+  Q2_THORSON (Q 471-488, a 7-row grid of how often you get news from Facebook,
+  Twitter, Print newspaper, Local TV news, Fox News, MSNBC, Online news websites).
+  Then a 2 x 2, each factor its own preload (Q 254-265):
+    P_THORSON_A_B   1 = "Show A Versions of Q3 and Q4" (Q3A/Q4A name "social media
+                    websites like Facebook and Twitter", Q 527-546);
+                    2 = "Show B Versions" (Q3B/Q4B, the same words without the
+                    social media clause, Q 551-570).
+    P_THORSON_Q5_Q6 1 = "Q5 and Q6 shown second": Q3, Q4, then Q5_1 (Q 573-583),
+                    then Q6_1 (Q 586-604);
+                    2 = "Q6 and Q5 shown first": Q6_2 (Q 491-509), then Q5_2
+                    (Q 512-522), then Q3, Q4.
+  PR: "a 2 (social media mention) x 2 (question order) experiment". The proposal
+  describes three items; the fielded questionnaire has the extra Q3 ("How closely
+  are you following news about this issue?") and Q5 (misinformation percentages).
+  Built from the fielded questionnaire, per the source-authority ruling.
+
+  SAV cell counts (A_B x Q5_Q6): (1,1) 536, (1,2) 523, (2,1) 533, (2,2) 526; sum
+  2,118. Routing verified: Q3A/Q4A answered only by A_B=1, Q3B/Q4B only by A_B=2;
+  Q5_1/Q6_1 only by Q5_Q6=1, Q5_2/Q6_2 only by Q5_Q6=2; no respondent has a code in
+  a variable of the other cell.
+
+  CONDITION MAPPING (declared):
+    A_B=1, Q5_Q6=1 -> 0  (wording names Facebook and Twitter, trust asked after)
+    A_B=2, Q5_Q6=1 -> 1  (no platform named, trust asked after)
+    A_B=1, Q5_Q6=2 -> 2  (names Facebook and Twitter, trust asked before)
+    A_B=2, Q5_Q6=2 -> 3  (no platform named, trust asked before)
+
+
+  HOW THE CONDITION IS WRITTEN: WHAT HAD BEEN ASKED BEFORE THIS ITEM
+
+  The manipulation is entirely in question wording and question order; there is no
+  vignette. So each row's condition is what had been put to the respondent in this
+  block before the row's own question, never what came after (CONVENTIONS,
+  "Repeated measures within one block"; the a2nbf / IP 9.24 pattern), with earlier
+  questions narrated as ASKED, never as answered. Per cell:
+
+    order 1 (arms 0, 1):  Q3 <- nothing yet;  Q4 <- Q3;  Q5 <- Q3, Q4;
+                          Q6 <- Q3, Q4, Q5.
+    order 2 (arms 2, 3):  Q6 <- nothing yet;  Q5 <- Q6;  Q3 <- Q6, Q5;
+                          Q4 <- Q6, Q5, Q3.
+
+  So the wording factor reaches the condition only where Q3/Q4 preceded the item.
+  Where it had not (order 2's Q6 and Q5 rows; order 1's Q3 row), arms differing only
+  in wording render the same condition, declared on both arms via `items`, which is
+  true: at that point the A and B respondents had been asked exactly the same
+  things. For Q3 itself the wording difference is carried by the outcome question
+  (A and B ask different words), not copied into the condition.
+
+  The shared context covers Q1 and Q2, asked of everyone before any of this. It
+  quotes Q1 in full and Q2's stem word-for-word but does NOT list Q2's seven
+  sources. That is a deliberate UK-appropriateness choice, flagged for review:
+  listing them would put "Fox News" and "MSNBC" (Q 480-481) into every condition
+  in the study. Q2 is pre-treatment and identical in every arm, so leaving the
+  list out changes no contrast; it does leave the condition less specific than
+  the screen was.
+
+  ADDED BY US (narration, not transcription), word-for-word:
+    "You were asked:"   "You were also asked, about a list of news sources:"
+    "You were then asked:"
+    "You were then asked, for Local newspapers, National newspapers, Facebook,
+     Twitter, Network TV news and Local TV news:"   (the six names are Q's own grid
+     row labels; "for", the commas and "and" are ours)
+    "You were then asked, for Social media, Newspapers and Television:" (likewise)
+  Everything inside double quotes is Q's own text. Typography normalised (Q's
+  "<u>trust</u>" underline markup dropped, Q 494/589). Grid rows and the Q5 list
+  were randomised on screen (Q 475, 496, 517, 578, 591: "RANDOMIZE"); the order
+  shown to each respondent is not recorded in the SAV, so the lists are given in
+  Q's printed order, as a list and not as a claim about screen position. Q1 and
+  Q2's answers are not narrated, and Klar's block, which half the respondents
+  (RND_00=0) saw before this one, is not mentioned: it is another study's
+  material and identical across Thorson's four arms.
+
+
+  OUTCOMES (11; every arm supplies its own variable through `items`)
+
+    task 0   Q3 (Q3A_/Q3B_THORSON) how closely following news about misinformation;
+             1 Very closely .. 4 Not at all closely. Question wording per arm.
+    task 1   Q4 (Q4A_/Q4B_THORSON) how much of a problem; 1 A very important problem
+             .. 4 Not a problem. Question wording per arm.
+    task 2-4 Q5 (Q5_1_/Q5_2_THORSON1..3) percentage of news that is misinformation,
+             0-100, for Social media / Newspapers / Television. One screen, three
+             number boxes: each row appends "Report only the percentage for
+             "<place>"." ADDED BY US, per CONVENTIONS "One stem, several labelled
+             answer fields"; the place names are the SAV's own labels and Q 518-522.
+    task 5-10 Q6 (Q6_1_/Q6_2_THORSONA..F) trust, 1 "1 - Not at all" .. 5 "5 - A great
+             deal", rows Local newspapers, National newspapers, Facebook, Twitter,
+             Network TV news, Local TV news (SAV labels, Q 497-502).
+
+  Outcome numbering is by the item, not by its screen position: Q5 and Q6 keep the
+  same task numbers in both orders.
+
+  NOT BUILT: Q1_THORSON and Q2_THORSON (asked before random assignment, identical
+  in every arm, so not outcomes of this experiment; Q2 also names US outlets).
+  SocSci210's count (below) shows they did not build them either.
+
+
+  RESPONSES
+
+  Q3, Q4, Q6: recode identity on 1..5; 77 DON'T KNOW / 98 SKIPPED ON WEB / 99
+  REFUSED are dropped by being absent from the recode (they cannot go in
+  `missing_codes`, because 77, 98 and 99 are legitimate Q5 percentages and the
+  melt applies `missing_codes` before any recode). Q5: identity recode on 0..100,
+  and `missing_codes` [777, 998, 999] are the Q5 non-answer codes (SAV labels;
+  Q 513/574 "998 FOR SKIPPED ON WEB"). Every Q5 value outside those codes is an
+  integer in 0..100 (checked, all six variables).
+
+  recipe_prep (Jev, instrument only): every 77/98/99 and 777/998/999 label called
+  non_answer, conf >= 0.98. Assignment question: picked P_THORSON_A_B (conf 0.64,
+  REVIEW) and is single-answer by construction, so it could not return the second
+  factor; P_THORSON_Q5_Q6 is declared from Q 254-259 and the SAV's own labels.
+
+
+  PERSONA
+
+  AmeriSpeak standard set, the same spine as xk9ch / s6urt / 8ctbk: AGE, GENDER,
+  EDUC (14-level; this deposit has no EDUC5, as xk9ch), RACETHNICITY, INCOME,
+  MARITAL, EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET,
+  PHONESERVICE. Recipe_prep chose REGION9 at conf 0.36 over REGION4 (0.48 runner-up,
+  REVIEW); REGION4 is used, as every AmeriSpeak sibling does, because the persona
+  crosswalk (scripts/persona_amerispeak.py) maps the 4-region scheme. Profile
+  attitudes are the custom preloads (Q 193-246): P_PARTYID, P_IDEO, P_RELIG,
+  P_ATTEND. Their missing values are blank in the SAV (13 / 5 / 13 / 10), so they
+  need no `persona_missing`. GENDER has no code 0 here (1,021 / 1,097).
+  P_IDEO 8 "Haven't thought much about it" is KEPT as an answer, as the siblings
+  keep IDEO 8; Jev called it non_answer at conf 0.64 (runner-up answer 0.24),
+  disagreeing with the regex. It is a substantive position on the ideology item, not
+  a refusal. P_RELIG 1's SAV label is cut off at "...Reformed, Church"; restored
+  word-for-word from Q 233, as xk9ch does.
+
+  The persona does not overlap the condition: no condition names a party, an
+  ideology or a religion.
+
+
+  CROSSCHECK WITH SocSci210: SAME ROWS, ORDER FACTOR MERGED
+
+  `comparable_to_socsci210: false`, because SocSci210 built 2 conditions where the
+  design has 4: they kept the wording factor and merged the question-order factor
+  (the schema's "arms merged" case). Everything else agrees exactly:
+    rows 23,017 = 23,017; participants 2,118; tasks 11, and rows per task identical
+    (2112, 2102, 2069, 2058, 2068, 2105, 2100, 2101, 2087, 2109, 2106); response
+    distribution identical.
+    Their condition 0 (11,510 rows) = our arms 1 + 3 (5,779 + 5,731, wording B);
+    their condition 1 (11,507) = our arms 0 + 2 (5,818 + 5,689, wording A).
+  Cell-level check (scratch script reading their parquet rows): the multiset of
+  (wording, task, response) over all 23,017 rows differs from theirs in 0 cells
+  under that mapping (2,630 under the reverse). So the assignment, the item
+  mapping, the Q5/Q6 order routing and the non-answer drops all reproduce theirs.
+  Row arithmetic: 2,118 x 11 = 23,298 possible, less 281 non-answers.
+
+  Their stimulus text is wrong for half the rows, which is why we do not follow it:
+  every row, including the Q6 trust items that order-2 respondents answered BEFORE
+  any misinformation question, reads 'You read "Lately, there have been a lot of
+  news stories about the spread of political misinformation..."'. They also cut
+  Q3's question into a "You read" preamble plus a question.
+
+condition:
+  source_vars: [P_THORSON_A_B, P_THORSON_Q5_Q6]
+  factors: [wording, trust_order]
+  shared_context: >-
+    You were asked: "How closely do you follow politics and government affairs?"
+    You were also asked, about a list of news sources: "People get news from many
+    different sources. Please indicate how often you get news from the following sources."
+  considered_and_rejected:
+    RND_00: >-
+      Orders this study's block against Klar's (TESS 043) block, a different
+      study fielded in the same AmeriSpeak wave (questionnaire lines 354-355).
+      Not part of Thorson's design; Klar's questions are not in this deposit.
+  arms:
+    - raw_values: {P_THORSON_A_B: 1, P_THORSON_Q5_Q6: 1}
+      condition_num: 0
+      factors: {wording: "names Facebook and Twitter", trust_order: "trust asked after"}
+      # Arm text = the condition at this arm's LAST item. Every item overrides it.
+      text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+      items:
+        0:
+          outcome_var: Q3A_THORSON
+          outcome_question: "Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?"
+          condition_text: ""
+        1:
+          outcome_var: Q4A_THORSON
+          outcome_question: "In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?"
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\""
+        2:
+          outcome_var: Q5_1_THORSON1
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\""
+        3:
+          outcome_var: Q5_1_THORSON2
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\""
+        4:
+          outcome_var: Q5_1_THORSON3
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\""
+        5:
+          outcome_var: Q6_1_THORSONA
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        6:
+          outcome_var: Q6_1_THORSONB
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        7:
+          outcome_var: Q6_1_THORSONC
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        8:
+          outcome_var: Q6_1_THORSOND
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        9:
+          outcome_var: Q6_1_THORSONE
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        10:
+          outcome_var: Q6_1_THORSONF
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+    - raw_values: {P_THORSON_A_B: 2, P_THORSON_Q5_Q6: 1}
+      condition_num: 1
+      factors: {wording: "no platform named", trust_order: "trust asked after"}
+      # Arm text = the condition at this arm's LAST item. Every item overrides it.
+      text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+      items:
+        0:
+          outcome_var: Q3B_THORSON
+          outcome_question: "Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?"
+          condition_text: ""
+        1:
+          outcome_var: Q4B_THORSON
+          outcome_question: "In your opinion, how much of a problem is the spread of political misinformation?"
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\""
+        2:
+          outcome_var: Q5_1_THORSON1
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\""
+        3:
+          outcome_var: Q5_1_THORSON2
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\""
+        4:
+          outcome_var: Q5_1_THORSON3
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\""
+        5:
+          outcome_var: Q6_1_THORSONA
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        6:
+          outcome_var: Q6_1_THORSONB
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        7:
+          outcome_var: Q6_1_THORSONC
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        8:
+          outcome_var: Q6_1_THORSOND
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        9:
+          outcome_var: Q6_1_THORSONE
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        10:
+          outcome_var: Q6_1_THORSONF
+          condition_text: "You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\" You were then asked: \"In your opinion, how much of a problem is the spread of political misinformation?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+    - raw_values: {P_THORSON_A_B: 1, P_THORSON_Q5_Q6: 2}
+      condition_num: 2
+      factors: {wording: "names Facebook and Twitter", trust_order: "trust asked before"}
+      # Arm text = the condition at this arm's LAST item. Every item overrides it.
+      text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\" You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\""
+      items:
+        0:
+          outcome_var: Q3A_THORSON
+          outcome_question: "Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?"
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        1:
+          outcome_var: Q4A_THORSON
+          outcome_question: "In your opinion, how much of a problem is the spread of political misinformation on social media like Facebook and Twitter?"
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\" You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation on social media websites like Facebook and Twitter. How closely are you following news about this issue?\""
+        2:
+          outcome_var: Q5_2_THORSON1
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\""
+        3:
+          outcome_var: Q5_2_THORSON2
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\""
+        4:
+          outcome_var: Q5_2_THORSON3
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\""
+        5:
+          outcome_var: Q6_2_THORSONA
+          condition_text: ""
+        6:
+          outcome_var: Q6_2_THORSONB
+          condition_text: ""
+        7:
+          outcome_var: Q6_2_THORSONC
+          condition_text: ""
+        8:
+          outcome_var: Q6_2_THORSOND
+          condition_text: ""
+        9:
+          outcome_var: Q6_2_THORSONE
+          condition_text: ""
+        10:
+          outcome_var: Q6_2_THORSONF
+          condition_text: ""
+    - raw_values: {P_THORSON_A_B: 2, P_THORSON_Q5_Q6: 2}
+      condition_num: 3
+      factors: {wording: "no platform named", trust_order: "trust asked before"}
+      # Arm text = the condition at this arm's LAST item. Every item overrides it.
+      text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\" You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\""
+      items:
+        0:
+          outcome_var: Q3B_THORSON
+          outcome_question: "Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?"
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\""
+        1:
+          outcome_var: Q4B_THORSON
+          outcome_question: "In your opinion, how much of a problem is the spread of political misinformation?"
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\" You were then asked, for Social media, Newspapers and Television: \"Overall, about what percentage of the news that appears in the following places do you think is misinformation?\" You were then asked: \"Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?\""
+        2:
+          outcome_var: Q5_2_THORSON1
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\""
+        3:
+          outcome_var: Q5_2_THORSON2
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\""
+        4:
+          outcome_var: Q5_2_THORSON3
+          condition_text: "You were then asked, for Local newspapers, National newspapers, Facebook, Twitter, Network TV news and Local TV news: \"How much do you trust news from the following sources?\""
+        5:
+          outcome_var: Q6_2_THORSONA
+          condition_text: ""
+        6:
+          outcome_var: Q6_2_THORSONB
+          condition_text: ""
+        7:
+          outcome_var: Q6_2_THORSONC
+          condition_text: ""
+        8:
+          outcome_var: Q6_2_THORSOND
+          condition_text: ""
+        9:
+          outcome_var: Q6_2_THORSONE
+          condition_text: ""
+        10:
+          outcome_var: Q6_2_THORSONF
+          condition_text: ""
+
+outcomes:
+  - task_num: 0
+    # Fallback only: every arm's items[0].outcome_question overrides it.
+    question: "Lately, there have been a lot of news stories about the spread of political misinformation. How closely are you following news about this issue?"
+    scale: {min: 1, max: 4, min_label: "Very closely", max_label: "Not at all closely"}
+  - task_num: 1
+    # Fallback only: every arm's items[1].outcome_question overrides it.
+    question: "In your opinion, how much of a problem is the spread of political misinformation?"
+    scale: {min: 1, max: 4, min_label: "A very important problem", max_label: "Not a problem"}
+  - task_num: 2
+    question: "Overall, about what percentage of the news that appears in the following places do you think is misinformation?\nSocial media\nNewspapers\nTelevision\nReport only the percentage for \"Social media\"."
+    scale: {min: 0, max: 100}
+    response_recode: &pct {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - task_num: 3
+    question: "Overall, about what percentage of the news that appears in the following places do you think is misinformation?\nSocial media\nNewspapers\nTelevision\nReport only the percentage for \"Newspapers\"."
+    scale: {min: 0, max: 100}
+    response_recode: *pct
+  - task_num: 4
+    question: "Overall, about what percentage of the news that appears in the following places do you think is misinformation?\nSocial media\nNewspapers\nTelevision\nReport only the percentage for \"Television\"."
+    scale: {min: 0, max: 100}
+    response_recode: *pct
+  - task_num: 5
+    question: "How much do you trust news from the following sources? ... Local newspapers"
+    scale: &trust {min: 1, max: 5, min_label: "Not at all", max_label: "A great deal"}
+  - task_num: 6
+    question: "How much do you trust news from the following sources? ... National newspapers"
+    scale: *trust
+  - task_num: 7
+    question: "How much do you trust news from the following sources? ... Facebook"
+    scale: *trust
+  - task_num: 8
+    question: "How much do you trust news from the following sources? ... Twitter"
+    scale: *trust
+  - task_num: 9
+    question: "How much do you trust news from the following sources? ... Network TV news"
+    scale: *trust
+  - task_num: 10
+    question: "How much do you trust news from the following sources? ... Local TV news"
+    scale: *trust
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [777, 998, 999]
+
+persona_label_rewrite:
+  # SPSS cut this value label at "...Reformed, Church". Restored word-for-word from
+  # the fielded questionnaire's preload table (Q 233).
+  P_RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: P_PARTYID
+  ideology: P_IDEO
+  religion: P_RELIG
+  religious_attendance: P_ATTEND
