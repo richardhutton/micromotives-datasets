@@ -2685,6 +2685,17 @@
    "status": "Unlikely",
    "reason": "Photo experiment: the only thing that varies is a picture of a recognisable US police headquarters, several with US flags.",
    "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "hu45w",
+   "title": "Factors Affecting Public Opinion on Transgender Medical Care Refusal",
+   "description": "",
+   "details": "",
+   "category": "moral/social/cognition",
+   "status": "Unlikely",
+   "reason": "Dropped by rich, 9 Nov 2026. The two main questions' wording (allowed to refuse / required to treat) was drawn at random and the draw is not in the deposit, so only one question (5,002 rows) is buildable; and the patient's name varies to cue US race categories.",
+   "novelty": null
   }
  ],
  "built": {

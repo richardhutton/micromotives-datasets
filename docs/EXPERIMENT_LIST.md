@@ -10,9 +10,9 @@ Every experiment we have built and every candidate we could add, from four sourc
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Innovation Panel | UK · not publishable | 38 | 16 | 2 | 8 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 16 | 2 | 2 | 10 | 14 | 143,761 |
-| TESS | US · not publishable | 48 | 40 | 5 | 14 | 59 | 445,368 |
+| TESS | US · not publishable | 48 | 40 | 5 | 15 | 60 | 445,368 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 13 | 0 | 12 | 3 | 15 | 142,740 |
-| **Total** | | **115** | **58** | **21** | **35** | **114** | **1,104,700** |
+| **Total** | | **115** | **58** | **21** | **36** | **115** | **1,104,700** |
 
 ## Next 34, in build order (31 built, 3 to go)
 
@@ -198,7 +198,7 @@ UK · publishable (CC0). 16 Built, 2 Buildable, 2 Needs checking, 10 Unlikely.
 
 ## TESS
 
-US · not publishable. 48 Built, 40 Buildable, 5 Needs checking, 14 Unlikely.
+US · not publishable. 48 Built, 40 Buildable, 5 Needs checking, 15 Unlikely.
 
 | Study ID | Split | Experiment ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -299,6 +299,7 @@ US · not publishable. 48 Built, 40 Buildable, 5 Needs checking, 14 Unlikely.
 | 5fu2b |  | 5fu2b | **Two-Sided Messages and Pandemic Flu: Persuading the Public to Follow Contradictory Government Directives**<br>Persuading people to follow two contradictory pandemic directives: stay apart, yet queue for treatment.<br>*2008; UK priority 0.99; transfers: Mechanism only* | health communication | Unlikely: pandemic-framed; ruled out by rich, 10 Oct 2026 | 0.16 |  |  |
 | ga53m |  | ga53m | **With God on Our Side**<br>Do people project their own beliefs onto God more than onto the average American?<br>*2007; UK priority 0.83; transfers: Mechanism only* | moral/social/cognition | Unlikely: Ruled out by rich on 10 Oct 2026: the comparison is God vs "the average American"; only the mechanism transfers. | 0.32 | None |  |
 | ht243 |  | ht243 | **Value Choices in the Mass Public: Testing for Framing Effects and Hierarchical Structure**<br>Are people's value priorities stable, or changed by how the choice is framed?<br>*2005; UK priority 0.35; transfers: US-specific* | survey methodology | Unlikely: answering needs US knowledge | 0.15 |  |  |
+| hu45w |  | hu45w | **Factors Affecting Public Opinion on Transgender Medical Care Refusal** | moral/social/cognition | Unlikely: Dropped by rich, 9 Nov 2026. The two main questions' wording (allowed to refuse / required to treat) was drawn at random and the draw is not in the deposit, so only one question (5,002 rows) is buildable; and the patient's name varies to cue US race categories. |  |  |  |
 | k5hpv |  | k5hpv | **Effects of Rejection on Multiple Relationships**<br>Recalling rejection by one partner, and feeling accepted by others.<br>*2005* | moral/social/cognition | Unlikely: no assignment record: the OSF deposit holds a completion report and an open-ends spreadsheet only (free-text Q18-Q24), not the main data file (rich, 10 Oct 2026) | 0.18 |  |  |
 | m8y47 |  | m8y47 | **Measuring Perceptions and Attitudes about Overweight and Obesity**<br>At what body size do people call someone overweight or obese? Uses altered images.<br>*2004; UK priority 0.99; transfers: Mechanism only* | health communication | Unlikely: the condition is an image | 0.18 |  |  |
 | mkgvp |  | mkgvp | **Affective Architecture: Physical Environment and Attitudes toward Police** | moral/social/cognition | Unlikely: Photo experiment: the only thing that varies is a picture of a recognisable US police headquarters, several with US flags. |  |  |  |
