@@ -466,6 +466,15 @@ class Condition(BaseModel):
         "undeclared-assignment screen for that variable, and records the judgment "
         "rather than leaving it implicit.",
     )
+    on_screen_construction: dict[str, str] = Field(
+        default_factory=dict,
+        description="Phrases QC rule 17 flags as talk about the study's own construction "
+        "(e.g. 'randomly assigned') that were genuinely ON SCREEN for every row carrying "
+        "them, such as a debrief quoted word-for-word before a follow-up, mapped to the "
+        "reason. Key is the phrase as rule 17 reports it (lower case). Rule 17 then notes "
+        "rather than warns for that phrase, and WARNS if a declared phrase never occurs, "
+        "so a stale declaration cannot sit unexercised.",
+    )
     arms: list[Arm] = Field(
         default_factory=list,
         description="The arms, written out. Omit when `template` declares a factorial "

@@ -522,6 +522,22 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
         for text in (r.condition, r.outcome):
             for m in _CONSTRUCTION.finditer(str(text)):
                 construction[" ".join(m.group(0).split()).lower()] += 1
+    # A phrase that WAS on screen (yxc92: the debrief, read before the follow-up,
+    # says "we randomly assigned participants to either the training condition ...
+    # or the control condition") is the recipe's to declare, with its reason. The
+    # declaration covers that phrase only, and one that matches nothing warns: an
+    # unexercised declaration is where a wrong one survives.
+    on_screen = recipe.condition.on_screen_construction
+    for phrase in sorted(on_screen):
+        if phrase in construction:
+            rep.notes.append(
+                f"rule 17: {phrase!r} on {construction.pop(phrase)} rows, declared on "
+                f"screen: {on_screen[phrase]}"
+            )
+        else:
+            rep.warnings.append(
+                f"rule 17: on_screen_construction declares {phrase!r}, which no row contains"
+            )
     if construction:
         rep.warnings.append(
             f"row text refers to the experiment's own construction: {dict(construction)} "

@@ -1,0 +1,1408 @@
+study_id: 4hjcf
+source: osf
+title: 'Social corrections under false and true news posts: no comment, a correction with few or many
+  likes, or with a fact-check link (UK, 2022)'
+data_file: 4hjcf_wide.csv
+licence: 'None stated: OSF 4hjcf gives no reuse terms. The authors were emailed for permission; built
+  under rich''s ruling of 9 Nov 2026 that an unstated licence does not block an image build.'
+comparable_to_socsci210: false
+participant_id_var: ResponseId
+notes: "Write recipes/images/4hjcf.yaml: social corrections under false and true news posts (IMG57).\n\
+  \nStoeckel, Stöckli, Ceka, Ricchi, Lyons and Reifler, \"Social corrections act as a\ndouble-edged sword\
+  \ by reducing the perceived accuracy of false and real news in the UK,\nGermany, and Italy\", Communications\
+  \ Psychology 2 (2024) 10, doi:10.1038/s44271-024-00057-w,\nthe UK experiment (\"Experiment 1\"). OSF\
+  \ 4hjcf, \"Social correction - an online experiment\nin the UK\": the Qualtrics export (analyses/data.csv,\
+  \ semicolon-separated, cp1252), the\nauthors' six rendered R Markdown analyses (analyses/*.html), the\
+  \ pre-registration and its\nupdate (methods/pre-reg.pdf, \"pre-reg update .pdf\") and the stimuli\n\
+  (methods/posts/stimuli_osf.zip: 13 folders, four PNGs each). Pre-registered as OSF fpm2e\n(12 July 2022).\
+  \ Dynata UK online panel, fielded 11-26 July 2022. No questionnaire is\ndeposited (the pre-registration's\
+  \ \"uploaded questionnaire\" is not on OSF either; the\nregistration holds no files).\n\nEvery judgement\
+  \ is here, in code, so the recipe can be re-derived and reviewed:\n\n* DESIGN. Within person. Each respondent\
+  \ saw nine posts: true post 1, three false posts\n  (Qualtrics flow randomiser FL_7, 3 of 10), true\
+  \ post 2, three false posts (FL_51, 3 of\n  10), true post 3 (the paper's \"Social media post assessment\
+  \ task\"). Each post block\n  showed ONE of four PNGs, chosen by an in-block randomiser whose display-order\
+  \ columns\n  are `<post>_DO_<post>_control / _sc / _sca / _scp`: exactly one of the four is set for\n\
+  \  every respondent who reached the post (checked: never two, and never an answer\n  without one). After\
+  \ the picture, three questions in a fixed order (their DO columns\n  are the constants 2, 3, 4): accuracy,\
+  \ like, share.\n* WHICH ARM IS WHICH PICTURE (proven, not guessed). The data's arm suffixes are decoded\n\
+  \  by the authors' own code, printed in analysis_truenews_osf.html and parsed here:\n  `grepl(\"scp\"\
+  ) ~ 3`, `grepl(\"sca\") ~ 2`, `grepl(\"sc\") ~ 1`, `grepl(\"control\") ~ 0`,\n  then revalued 0 \"control\"\
+  , 1 \"low ampl\", 2 \"high ampl\", 3 \"ampl+link\". The stimulus\n  files are named the same way in\
+  \ every folder: control.png, \"low amp(lification)\",\n  \"high amp(lification)\" and \"high amp(lification)\
+  \ + debunk(ing)\" / \"+ link\". So sc = the\n  low-amplification file, sca = high, scp = high + link.\
+  \ Independent witness: the\n  per-arm effects in this deposit reproduce the paper's Table 1 under that\
+  \ decoding and\n  under no other of the six permutations (`effects()`, crosscheck below).\n* WHICH POST\
+  \ IS WHICH FOLDER (proven). The data's `post_k` (k = 1, 2, 3, 5, 6, 8, 10,\n  11, 12, 13) and `realpost_k`\
+  \ (k = 1-3) are the folders \"Stimulus FALSE NEWS k\" and\n  \"Stimulus TRUE NEWS k\": the same ten\
+  \ numbers, gaps included. Two witnesses: the\n  authors' congeniality code ties each false post to the\
+  \ opinion it is congenial to\n  (1 NHS; 2, 3, 8, 10 vaccines; 5 Brexit; 6, 11 climate; 12, 13 Russia),\
+  \ parsed here\n  and asserted against each folder's topic; and their true-news labels (1 \"effective\n\
+  \  covid booster\", 2 \"monkeypox cases rise\", 3 \"covid jab and blood clot\") match the\n  three true\
+  \ folders' pictures. The paper's Supplementary Table 36 lists the UK false\n  headlines in the same\
+  \ order (1 Track & Trace ... 13 MFA Russia).\n* THE TREATMENT IS IN THE PICTURE. Each of the 52 PNGs\
+  \ is a complete mock Facebook or\n  Twitter screenshot (made with zeoob.com, names and faces generated,\
+  \ per the paper):\n  the post, and in the treatment arms a corrective comment (a \"miscorrection\" under\
+  \ a\n  true post) above a second, supporting comment, with like counts, and in the link arm\n  a link\
+  \ card under the correction. Nothing was overlaid by the survey. So each arm is\n  its picture; its\
+  \ words are transcribed in the catalogue (`text_in_image`) and quoted\n  in the condition. Low and high\
+  \ amplification differ in the correction's like count,\n  but not ONLY there: in several posts the supporting\
+  \ comment's count, a comment's age\n  or one word also differs between files (post 1: 5 vs 6 likes;\
+  \ post 5: 10 vs 1 likes\n  and 7h vs 4h; post 8: \"Seema\" vs \"Seems\"). The transcription records\
+  \ each file as it\n  is; nothing is harmonised.\n* WORDS IN THE PICTURES (text_in_image). Every word\
+  \ the platform or a person wrote:\n  names, handles, the post's own text and the words of its graphic,\
+  \ time stamps, the\n  reaction, comment, share, retweet and like counts (the like counts ARE the\n \
+  \ manipulation, so unlike be8a2 they are transcribed), comments, Facebook's\n  \"Like\"/\"Comment\"\
+  /\"Share\"/\"Like · Reply · 7h\"/\"View more N Comments\"/\"Write a\n  comment...\", and on a link card\
+  \ its source name and headline (and description line\n  where it has one). \" / \" separates blocks;\
+  \ line wraps inside a block are joined with a\n  space; curly quotes and apostrophes are straightened,\
+  \ \"…\" is written \"...\", and the\n  middle dot is spaced \" · \" (typography, CONVENTIONS). Every\
+  \ word legible at the\n  file's own resolution is transcribed (ledger 153), including words inside a\n\
+  \  photograph (the phone's \"NHS Test and Trace\", the vial's \"Moderna COVID-19 Vaccine\",\n  the ship's\
+  \ \"TOKATU NELSON\", the generators' \"YADX166\" and \"aggreko\", the lectern's\n  \"Pfizer\", the vials'\
+  \ \"COVID-19 VACCINE\"), a link card's kicker, byline and date, and\n  a video's logo and caption. Two\
+  \ dates were read from blurred type and confirmed\n  outside the picture: false 5's \"10 NOVEMBER 2021\"\
+  \ is the publication date of the\n  Full Fact article the card shows (fullfact.org/online/Brexit-EU-fishing-fuel-\n\
+  \  subsidies, dated 10 Nov 2021 by the CIMPLE claim-review index); false 2's \"21\n  OCTOBER 2021\"\
+  \ is read from the file alone. Left out, because they cannot be read or\n  are too many to transcribe\
+  \ faithfully, and listed per picture in `UNQUOTED`: the\n  small print on vial labels, false 6's cut-off\
+  \ orange letters, false 8's link-card\n  date line (about 6 pixels high; a checker read \"NOVEMBER 16,\
+  \ 2021 / 8:20 PM /\n  UPDATED 9 MONTHS AGO\", which this maker could not confirm digit by digit, so\
+  \ it is\n  not quoted), post 12's map, post 13's photographed documents, and two tiny marks in\n  link-card\
+  \ photographs. Icons and emoji are not words. Typos are the source's\n  (\"Twitter for Adroid\", \"\
+  @robertashcraft\", \"14:17 PM\", \"Seema Yeadon\", \"shi££\").\n* CONDITION. The task instructions are\
+  \ not in the deposit (the paper says only that\n  respondents were \"asked to imagine that these posts\
+  \ came up in their feed\"), so\n  nothing of them is quoted. Words that are OURS: 'You are shown a social\
+  \ media post:\n  \"...\" <image>', and for a picture holding words not quoted (`UNQUOTED`) 'You are\n\
+  \  shown a social media post (not every word in it is quoted here): \"...\" <image>'. The\n  clause\
+  \ says only that the quotation is partial; it never says what the missing words\n  are (a condition\
+  \ does not describe a picture, ledger 158); the catalogue's\n  `description` names them. No shared context.\n\
+  * OUTCOMES. 13 posts x 3 questions = 39 outcomes, each with its post's own assignment\n  column (`Outcome.condition_var`,\
+  \ the within-subject design). Wording from the\n  pre-registration's table of dependent variables, the\
+  \ only deposited source; the paper\n  prints the same words. Accuracy \"To the best of your knowledge,\
+  \ how accurate is the\n  claim in the above headline?\" 1-4 (pre-registration: \"not at all accurate/not\
+  \ very\n  accurate/somewhat accurate/very accurate\"); like and share 1-5, \"1 = not at all\n  likely,\
+  \ 5 = very likely\". Direction: false posts' accuracy is lower than true posts'\n  and every correction\
+  \ arm lowers it, as the paper reports (1 = not at all accurate).\n* WHO, AND WHAT IS LEFT OUT. Every\
+  \ respondent who reached a post; non-finishers' answers\n  to the posts they did see are kept (the melt\
+  \ drops a blank answer). 9 people took the\n  survey twice under one panel id (`psid`); each attempt\
+  \ is its own response\n  (`ResponseId`, the participant id) and is kept, as the authors did. EXCLUDED:\
+  \ any\n  false post that BOTH flow randomisers drew for a person. FL_7 and FL_51 drew three\n  posts\
+  \ each, independently, so the draws overlap for 1,429 of the 2,011 who finished\n  (1,030 by one post,\
+  \ 383 by two, 16 by three); the data hold one answer and one arm for\n  such a post. Over everyone,\
+  \ 1,888 person-post pairs, 1,464 people, 5,660 answers. Qualtrics shows a block reached a second time\
+  \ again, with the earlier\n  answers pre-filled and editable, and keeps only the last answers (Qualtrics\
+  \ support,\n  \"Question Blocks\" in Survey Flow). So the recorded answer may have been given on a\n\
+  \  second viewing, and whether the second showing drew the same arm is not recorded:\n  the row's condition\
+  \ cannot be verified (ledger 143, 150). Counted in\n  `double_drawn()`; the authors analysed these pairs\
+  \ as single exposures.\n* PERSONA. Only what the source labels: `age_scr` (6 bands), `gender_scr`, `edu_scr`\n\
+  \  (3 groups), all asked before the posts. No value labels are deposited; the codes are\n  read from\
+  \ the paper's Supplementary Table 11 (demographics of the UK experiment),\n  whose counts reproduce\
+  \ the codes' order (age 235, 285, 344, 355, 310, 415 for codes\n  1-6; education 771, 530, 643 for 1-3)\
+  \ and from the authors' code (`gender_scr == 1 ~\n  \"female\"`, `== 2 ~ \"male\"`). Code 4 is the only\
+  \ other gender code; Table 11's third\n  row is \"Non-binary / third gender / other\". Education's groups\
+  \ are Table 11's note,\n  word-for-word. NOT mapped: `region_scr` (12 codes, no labels anywhere), `party`\n\
+  \  (11 codes; the authors' recode names only code 1 and its other branches are\n  mis-keyed on `post`),\
+  \ `leftright` (0-10, endpoints unknown), and the attitude\n  batteries (opinion_*, antiexpert_*, ssi_*,\
+  \ crt_*, russia_feeling_1, ukraine_war),\n  whose code directions are not documented.\n* UK FIT, per\
+  \ post. Fielded in the UK on a UK sample, most posts are UK stories (NHS\n  Test and Trace, Brexit fishing\
+  \ fuel, COP26 in Glasgow, UK monkeypox, a UK inquest).\n  Two are not: false post 2 is a US story (a\
+  \ Delta pilot) whose supporting comment\n  names Biden, and false post 10 is set in a New York hospital;\
+  \ false posts 12 and 13\n  are Russia-Ukraine war disinformation. Flagged for the lead, not removed:\
+  \ they were\n  what UK respondents saw.\n* LICENCE. None stated on OSF 4hjcf. The authors have been\
+  \ emailed; built under\n  rich's standing ruling that an unstated licence does not block a build.\n\n\
+  \    uv run python -I scripts/gen_4hjcf.py --prep       # images + derived wide CSV\n    uv run python\
+  \ -I scripts/gen_4hjcf.py --catalogue  # (re)write this study's images.json entries\n    uv run python\
+  \ -I scripts/gen_4hjcf.py              # write the recipe\n    uv run python -I scripts/gen_4hjcf.py\
+  \ --check      # exit 1 if recipe or wide CSV differ"
+condition:
+  source_var: post_1_cond
+  factors:
+  - post
+  - comment
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      post: false01
+      comment: none
+    text: 'You are shown a social media post: "Robert Ashcroft / robertashcroft / There are only TWO projects
+      in history that have cost more than the Track & Trace app: the ISS (£72bn) and the entire US road
+      network (£82bn). So there we have it: at £37 billion, the third most expensive thing we''ve ever
+      spaffed money on is a broken version of Pokemon Go. / NHS Test and Trace / 4:17 PM · Feb 2, 2021
+      / 27 Retweets 188 Likes" <image>'
+    images:
+    - 4hjcf_false01_control
+  - raw: 2
+    condition_num: 1
+    factors:
+      post: false01
+      comment: few_likes
+    text: 'You are shown a social media post: "Robert Ashcroft / robertashcroft / There are only TWO projects
+      in history that have cost more than the Track & Trace app: the ISS (£72bn) and the entire US road
+      network (£82bn). So there we have it: at £37 billion, the third most expensive thing we''ve ever
+      spaffed money on is a broken version of Pokemon Go. / NHS Test and Trace / 4:17 PM · Feb 2, 2021
+      / 27 Retweets 188 Likes / Anita Vara @anitavara · 5h / Replying to @robertashcraft / This is somewhat
+      misleading: NHS Test and Trace is not an app but all coronavirus testing in the UK... / 6 / John
+      Milton @johnmilton · 4h / Replying to @robertashcraft / This is absolutely insane! / 5" <image>'
+    images:
+    - 4hjcf_false01_low
+  - raw: 3
+    condition_num: 2
+    factors:
+      post: false01
+      comment: many_likes
+    text: 'You are shown a social media post: "Robert Ashcroft / robertashcroft / There are only TWO projects
+      in history that have cost more than the Track & Trace app: the ISS (£72bn) and the entire US road
+      network (£82bn). So there we have it: at £37 billion, the third most expensive thing we''ve ever
+      spaffed money on is a broken version of Pokemon Go. / NHS Test and Trace / 4:17 PM · Feb 2, 2021
+      / 27 Retweets 188 Likes / Anita Vara @anitavara · 5h / Replying to @robertashcraft / This is somewhat
+      misleading: NHS Test and Trace is not an app but all coronavirus testing in the UK... / 145 / John
+      Milton @johnmilton · 4h / Replying to @robertashcraft / This is absolutely insane! / 6" <image>'
+    images:
+    - 4hjcf_false01_high
+  - raw: 4
+    condition_num: 3
+    factors:
+      post: false01
+      comment: many_likes_link
+    text: 'You are shown a social media post: "Robert Ashcroft / robertashcroft / There are only TWO projects
+      in history that have cost more than the Track & Trace app: the ISS (£72bn) and the entire US road
+      network (£82bn). So there we have it: at £37 billion, the third most expensive thing we''ve ever
+      spaffed money on is a broken version of Pokemon Go. / NHS Test and Trace / 4:17 PM · Feb 2, 2021
+      / 27 Retweets 188 Likes / Anita Vara @anitavara · 5h / Replying to @robertashcraft / This is somewhat
+      misleading: NHS Test and Trace is not an app but all coronavirus testing in the UK... / fullfact.org
+      / Flawed comparisons between test and trace systems go viral - Full Fact / Claims suggesting the
+      system in England costs vastly more than those in Wales and Ireland uses incomparable figures. /
+      145 / John Milton @johnmilton · 4h / Replying to @robertashcraft / This is absolutely insane! /
+      6" <image>'
+    images:
+    - 4hjcf_false01_link
+  - raw: 5
+    condition_num: 4
+    factors:
+      post: false02
+      comment: none
+    text: 'You are shown a social media post (not every word in it is quoted here): "Cliff Davie / cliffdavie
+      / So, we''re just not going to talk about the Delta pilot who died mid-flight in the cockpit just
+      a few weeks after taking the COVID vaccine? / Moderna COVID-19 Vaccine / 14:17 PM · Oct 7, 2021
+      / 28 Retweets 184 Likes" <image>'
+    images:
+    - 4hjcf_false02_control
+  - raw: 6
+    condition_num: 5
+    factors:
+      post: false02
+      comment: few_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Cliff Davie / cliffdavie
+      / So, we''re just not going to talk about the Delta pilot who died mid-flight in the cockpit just
+      a few weeks after taking the COVID vaccine? / Moderna COVID-19 Vaccine / 14:17 PM · Oct 7, 2021
+      / 28 Retweets 184 Likes / Lisa Langley @lisalangley · 9h / Replying to @cliffdavie / Someone else
+      posted about this topic. Of course, nothing attached showing it''s been documented. Stop spreading
+      crap that isn''t true or give us a reliable source. / 7 / Terence Royston @terenceroyston · 4h /
+      Replying to @cliffdavie / Holy shit, Biden was hiding these risks???? What the hell other risks
+      are they hiding from travelers? / 6" <image>'
+    images:
+    - 4hjcf_false02_low
+  - raw: 7
+    condition_num: 6
+    factors:
+      post: false02
+      comment: many_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Cliff Davie / cliffdavie
+      / So, we''re just not going to talk about the Delta pilot who died mid-flight in the cockpit just
+      a few weeks after taking the COVID vaccine? / Moderna COVID-19 Vaccine / 14:17 PM · Oct 7, 2021
+      / 28 Retweets 184 Likes / Lisa Langley @lisalangley · 9h / Replying to @cliffdavie / Someone else
+      posted about this topic. Of course, nothing attached showing it''s been documented. Stop spreading
+      crap that isn''t true or give us a reliable source. / 156 / Terence Royston @terenceroyston · 4h
+      / Replying to @cliffdavie / Holy shit, Biden was hiding these risks???? What the hell other risks
+      are they hiding from travelers? / 6" <image>'
+    images:
+    - 4hjcf_false02_high
+  - raw: 8
+    condition_num: 7
+    factors:
+      post: false02
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "Cliff Davie / cliffdavie
+      / So, we''re just not going to talk about the Delta pilot who died mid-flight in the cockpit just
+      a few weeks after taking the COVID vaccine? / Moderna COVID-19 Vaccine / 14:17 PM · Oct 7, 2021
+      / 28 Retweets 184 Likes / Lisa Langley @lisalangley · 9h / Replying to @cliffdavie / Someone else
+      posted about this topic. Of course, nothing attached showing it''s been documented. Stop spreading
+      crap that isn''t true or give us a reliable source. / HEALTH / CORONAVIRUS / Vaccinated pilot did
+      not die mid-flight / 21 OCTOBER 2021 / 156 / Terence Royston @terenceroyston · 4h / Replying to
+      @cliffdavie / Holy shit, Biden was hiding these risks???? What the hell other risks are they hiding
+      from travelers? / 6" <image>'
+    images:
+    - 4hjcf_false02_link
+  - raw: 9
+    condition_num: 8
+    factors:
+      post: false03
+      comment: none
+    text: 'You are shown a social media post: "Hannah Green / Yesterday at 14:45pm / Deaths among male
+      Children are 83% higher than the 5-year-average since they were given the Covid-19 Vaccine / 158
+      / 25 Comments 5 Shares / Like / Share / View more 25 Comments / Write a comment..." <image>'
+    images:
+    - 4hjcf_false03_control
+  - raw: 10
+    condition_num: 9
+    factors:
+      post: false03
+      comment: few_likes
+    text: 'You are shown a social media post: "Hannah Green / Yesterday at 14:45pm / Deaths among male
+      Children are 83% higher than the 5-year-average since they were given the Covid-19 Vaccine / 158
+      / 25 Comments 5 Shares / Like / Share / View more 23 Comments / Julie Milton Stop spreading crap
+      that isn''t true / 10 / Like · Reply · 7h / David Walker There is something seriously wrong when
+      the ''cure'' kills more children than the ''problem''. Wake up people! / 9 / Like · Reply · 7h /
+      Write a comment..." <image>'
+    images:
+    - 4hjcf_false03_low
+  - raw: 11
+    condition_num: 10
+    factors:
+      post: false03
+      comment: many_likes
+    text: 'You are shown a social media post: "Hannah Green / Yesterday at 14:45pm / Deaths among male
+      Children are 83% higher than the 5-year-average since they were given the Covid-19 Vaccine / 158
+      / 25 Comments 5 Shares / Like / Share / View more 23 Comments / Julie Milton Stop spreading crap
+      that isn''t true / 100 / Like · Reply · 7h / David Walker There is something seriously wrong when
+      the ''cure'' kills more children than the ''problem''. Wake up people! / 9 / Like · Reply · 7h /
+      Write a comment..." <image>'
+    images:
+    - 4hjcf_false03_high
+  - raw: 12
+    condition_num: 11
+    factors:
+      post: false03
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "Hannah Green / Yesterday
+      at 14:45pm / Deaths among male Children are 83% higher than the 5-year-average since they were given
+      the Covid-19 Vaccine / 158 / 25 Comments 5 Shares / Like / Share / View more 23 Comments / Julie
+      Milton Stop spreading crap that isn''t true / No evidence linking deaths among children to vaccine
+      rollout - Full Fact / An article by The Exposé makes a misleading link betw / 100 / Like · Reply
+      · 7h / David Walker There is something seriously wrong when the ''cure'' kills more children than
+      the ''problem''. Wake up people! / 9 / Like · Reply · 7h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false03_link
+  - raw: 13
+    condition_num: 12
+    factors:
+      post: false05
+      comment: none
+    text: 'You are shown a social media post: "Hugo Sherlock / Yesterday at 13:14am / Did you know, another
+      interesting point. Fishing boats run on EU subsidised fuel running at around 30p a litre. After
+      brexit ( 1st January) it will be £1.40 litre. That''s on top of the tariffs they will have to pay
+      to sell their fish to the EU! / TOKATU NELSON / 106 / 20 Comments 3 Shares / Like / Share / View
+      more 20 Comments / Write a comment..." <image>'
+    images:
+    - 4hjcf_false05_control
+  - raw: 14
+    condition_num: 13
+    factors:
+      post: false05
+      comment: few_likes
+    text: 'You are shown a social media post: "Hugo Sherlock / Yesterday at 13:14am / Did you know, another
+      interesting point. Fishing boats run on EU subsidised fuel running at around 30p a litre. After
+      brexit ( 1st January) it will be £1.40 litre. That''s on top of the tariffs they will have to pay
+      to sell their fish to the EU! / TOKATU NELSON / 106 / 20 Comments 3 Shares / Like / Share / View
+      more 18 Comments / Diane Ryan This post is disingenuous if not a straight forward lie / 10 / Like
+      · Reply · 4h / Helen Sanson Not forgetting the paperwork will take longer, fish less fresh, and
+      that''s IF the French let them into port! / 10 / Like · Reply · 7h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false05_low
+  - raw: 15
+    condition_num: 14
+    factors:
+      post: false05
+      comment: many_likes
+    text: 'You are shown a social media post: "Hugo Sherlock / Yesterday at 13:14am / Did you know, another
+      interesting point. Fishing boats run on EU subsidised fuel running at around 30p a litre. After
+      brexit ( 1st January) it will be £1.40 litre. That''s on top of the tariffs they will have to pay
+      to sell their fish to the EU! / TOKATU NELSON / 106 / 20 Comments 3 Shares / Like / Share / View
+      more 18 Comments / Diane Ryan This post is disingenuous if not a straight forward lie / 153 / Like
+      · Reply · 4h / Helen Sanson Not forgetting the paperwork will take longer, fish less fresh, and
+      that''s IF the French let them into port! / 1 / Like · Reply · 4h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false05_high
+  - raw: 16
+    condition_num: 15
+    factors:
+      post: false05
+      comment: many_likes_link
+    text: 'You are shown a social media post: "Hugo Sherlock / Yesterday at 13:14am / Did you know, another
+      interesting point. Fishing boats run on EU subsidised fuel running at around 30p a litre. After
+      brexit ( 1st January) it will be £1.40 litre. That''s on top of the tariffs they will have to pay
+      to sell their fish to the EU! / TOKATU NELSON / 106 / 20 Comments 3 Shares / Like / Share / View
+      more 18 Comments / Diane Ryan This post is disingenuous if not a straight forward lie / ONLINE /
+      Brexit hasn''t quadrupled the cost of fuel for fishing boats / 10 NOVEMBER 2021 / 153 / Like · Reply
+      · 4h / Helen Sanson Not forgetting the paperwork will take longer, fish less fresh, and that''s
+      IF the French let them into port!" / 10 / Like · Reply · 7h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false05_link
+  - raw: 17
+    condition_num: 16
+    factors:
+      post: false06
+      comment: none
+    text: 'You are shown a social media post (not every word in it is quoted here): "John Basham / Yesterday
+      at 17:09pm / REPORT: A Group Of Diesel Gas Generators Are Hidden From Public View Behind Screens
+      At The #COP26 Climate Conference. Why Didn''t They Use Wind & Solar To Power The Event? / YADX166
+      / aggreko / 161 / 20 Comments 6 Shares / Like / Share / View more 20 Comments / Write a comment..."
+      <image>'
+    images:
+    - 4hjcf_false06_control
+  - raw: 18
+    condition_num: 17
+    factors:
+      post: false06
+      comment: few_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "John Basham / Yesterday
+      at 17:09pm / REPORT: A Group Of Diesel Gas Generators Are Hidden From Public View Behind Screens
+      At The #COP26 Climate Conference. Why Didn''t They Use Wind & Solar To Power The Event? / YADX166
+      / aggreko / 161 / 20 Comments 6 Shares / Like / Share / View more 18 Comments / Claude Hodgkinson
+      There is something deeply deeply fishy about this / 10 / Like · Reply · 1h / Stephen Hughes They
+      are failing on multiple fronts to keep the charade going much longer / 7 / Like · Reply · 4h / Write
+      a comment..." <image>'
+    images:
+    - 4hjcf_false06_low
+  - raw: 19
+    condition_num: 18
+    factors:
+      post: false06
+      comment: many_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "John Basham / Yesterday
+      at 17:09pm / REPORT: A Group Of Diesel Gas Generators Are Hidden From Public View Behind Screens
+      At The #COP26 Climate Conference. Why Didn''t They Use Wind & Solar To Power The Event? / YADX166
+      / aggreko / 161 / 20 Comments 6 Shares / Like / Share / View more 18 Comments / Claude Hodgkinson
+      There is something deeply deeply fishy about this / 184 / Like · Reply · 1h / Stephen Hughes They
+      are failing on multiple fronts to keep the charade going much longer / 7 / Like · Reply · 4h / Write
+      a comment..." <image>'
+    images:
+    - 4hjcf_false06_high
+  - raw: 20
+    condition_num: 19
+    factors:
+      post: false06
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "John Basham / Yesterday
+      at 17:09pm / REPORT: A Group Of Diesel Gas Generators Are Hidden From Public View Behind Screens
+      At The #COP26 Climate Conference. Why Didn''t They Use Wind & Solar To Power The Event? / YADX166
+      / aggreko / 161 / 20 Comments 6 Shares / Like / Share / View more 18 Comments / Claude Hodgkinson
+      There is something deeply deeply fishy about this / Fact Check-COP26 did not use diesel generators
+      to power event, organizers say / 184 / Like · Reply · 1h / Stephen Hughes They are failing on multiple
+      fronts to keep the charade going much longer / 7 / Like · Reply · 1h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false06_link
+  - raw: 21
+    condition_num: 20
+    factors:
+      post: false08
+      comment: none
+    text: 'You are shown a social media post: "Brittany Dickson / Yesterday at 11:54 / Dr. Michael Yeadon,
+      former Pfizer vice president, warns children are 50 times more likely to be killed by the covid
+      vaccines than the virus itself / 178 / 12 Comments 6 Shares / Like / Share / Write a comment..."
+      <image>'
+    images:
+    - 4hjcf_false08_control
+  - raw: 22
+    condition_num: 21
+    factors:
+      post: false08
+      comment: few_likes
+    text: 'You are shown a social media post: "Brittany Dickson / Yesterday at 11:54 / Dr. Michael Yeadon,
+      former Pfizer vice president, warns children are 50 times more likely to be killed by the covid
+      vaccines than the virus itself / 178 / 12 Comments 6 Shares / Like / Share / View more 10 Comments
+      / Anja Weimer There is not the slightest evidence. Seema Yeadon has an axe to grind with his former
+      employer. / 3 / Like · Reply · 8h / Doug Stanton Pushing these DANGEROUS JABS on children = WILFUL
+      CHILD ENDANGERMENT / 3 / Like · Reply · 8h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false08_low
+  - raw: 23
+    condition_num: 22
+    factors:
+      post: false08
+      comment: many_likes
+    text: 'You are shown a social media post: "Brittany Dickson / Yesterday at 11:54 / Dr. Michael Yeadon,
+      former Pfizer vice president, warns children are 50 times more likely to be killed by the covid
+      vaccines than the virus itself / 178 / 12 Comments 6 Shares / Like / Share / View more 10 Comments
+      / Anja Weimer There is not the slightest evidence. Seems Yeadon has an axe to grind with his former
+      employer. / 166 / Like · Reply · 5h / Doug Stanton Pushing these DANGEROUS JABS on children = WILFUL
+      CHILD ENDANGERMENT / 3 / Like · Reply · 5h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false08_high
+  - raw: 24
+    condition_num: 23
+    factors:
+      post: false08
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "Brittany Dickson
+      / Yesterday at 11:54 / Dr. Michael Yeadon, former Pfizer vice president, warns children are 50 times
+      more likely to be killed by the covid vaccines than the virus itself / 178 / 12 Comments 6 Shares
+      / Like / Share / View more 10 Comments / Anja Weimer There is not the slightest evidence. Seems
+      Yeadon has an axe to grind with his former employer. / Fact Check-No evidence to support claim by
+      ex-Pfizer scientist on COVID-19 vaccine safety in children / By Reuters Fact Check / 166 / Like
+      · Reply · 5h / Doug Stanton Pushing these DANGEROUS JABS on children = WILFUL CHILD ENDANGERMENT
+      / 3 / Like · Reply · 5h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false08_link
+  - raw: 25
+    condition_num: 24
+    factors:
+      post: false10
+      comment: none
+    text: 'You are shown a social media post: "Harry Abraham / Yesterday at 13:56 / Myriam Bourla – the
+      wife of Pfizer CEO Albert Bourla – has died from complications from the COVID-19 vaccine early Wednesday,
+      according to her doctor. She passed away in the emergency room at New York-Presbyterian Lawrence
+      Hospital after being brought in by paramedics. The cause of death has been listed as complications
+      from the Pfizer vaccine. / Pfizer / 155 / 21 Comments 10 Shares / Like / Share / View more 21 Comments
+      / Write a comment..." <image>'
+    images:
+    - 4hjcf_false10_control
+  - raw: 26
+    condition_num: 25
+    factors:
+      post: false10
+      comment: few_likes
+    text: 'You are shown a social media post: "Harry Abraham / Yesterday at 13:56 / Myriam Bourla – the
+      wife of Pfizer CEO Albert Bourla – has died from complications from the COVID-19 vaccine early Wednesday,
+      according to her doctor. She passed away in the emergency room at New York-Presbyterian Lawrence
+      Hospital after being brought in by paramedics. The cause of death has been listed as complications
+      from the Pfizer vaccine. / Pfizer / 155 / 21 Comments 10 Shares / Like / Share / View more 19 Comments
+      / Pauline Clay No. Just not. Never happened. / 10 / Like · Reply · 4h / Frederika Barclay Oops?
+      Could that be Karma or just bad luck? / 5 / Like · Reply · 7h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false10_low
+  - raw: 27
+    condition_num: 26
+    factors:
+      post: false10
+      comment: many_likes
+    text: 'You are shown a social media post: "Harry Abraham / Yesterday at 13:56 / Myriam Bourla – the
+      wife of Pfizer CEO Albert Bourla – has died from complications from the COVID-19 vaccine early Wednesday,
+      according to her doctor. She passed away in the emergency room at New York-Presbyterian Lawrence
+      Hospital after being brought in by paramedics. The cause of death has been listed as complications
+      from the Pfizer vaccine. / Pfizer / 155 / 21 Comments 10 Shares / Like / Share / View more 19 Comments
+      / Pauline Clay No. Just not. Never happened. / 109 / Like · Reply · 4h / Frederika Barclay Oops?
+      Could that be Karma or just bad luck? / 5 / Like · Reply · 7h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false10_high
+  - raw: 28
+    condition_num: 27
+    factors:
+      post: false10
+      comment: many_likes_link
+    text: 'You are shown a social media post: "Harry Abraham / Yesterday at 13:56 / Myriam Bourla – the
+      wife of Pfizer CEO Albert Bourla – has died from complications from the COVID-19 vaccine early Wednesday,
+      according to her doctor. She passed away in the emergency room at New York-Presbyterian Lawrence
+      Hospital after being brought in by paramedics. The cause of death has been listed as complications
+      from the Pfizer vaccine. / Pfizer / 155 / 21 Comments 10 Shares / Like / Share / View more 19 Comments
+      / Pauline Clay No. Just not. Never happened. / REUTERS.COM / Fact Check-False claim about Pfizer
+      CEO''s wife dying after complications from COVID-19 vaccine / 109 / Like · Reply · 4h / Frederika
+      Barclay Oops? Could that be Karma or just bad luck? / 5 / Like · Reply · 7h / Write a comment..."
+      <image>'
+    images:
+    - 4hjcf_false10_link
+  - raw: 29
+    condition_num: 28
+    factors:
+      post: false11
+      comment: none
+    text: 'You are shown a social media post: "Linda White / lindawhite / There are 400 private jets ferrying
+      delegations to the COP26 conference. It is estimated they will emit in 24 hours as much CO2 as Scotland
+      emits in a year! / 16:30 AM · Nov 2, 2021 / 29 Retweets 152 Likes" <image>'
+    images:
+    - 4hjcf_false11_control
+  - raw: 30
+    condition_num: 29
+    factors:
+      post: false11
+      comment: few_likes
+    text: 'You are shown a social media post: "Linda White / lindawhite / There are 400 private jets ferrying
+      delegations to the COP26 conference. It is estimated they will emit in 24 hours as much CO2 as Scotland
+      emits in a year! / 16:30 AM · Nov 2, 2021 / 29 Retweets 152 Likes / David Martin @davidmartin ·
+      8h / Replying to @ lindawhite / You know this isn''t true. Or even remotely close to the truth.
+      / 8 / Peter Turner @peterturner · 5h / Replying to @ lindawhite / This is embarrassing / 6" <image>'
+    images:
+    - 4hjcf_false11_low
+  - raw: 31
+    condition_num: 30
+    factors:
+      post: false11
+      comment: many_likes
+    text: 'You are shown a social media post: "Linda White / lindawhite / There are 400 private jets ferrying
+      delegations to the COP26 conference. It is estimated they will emit in 24 hours as much CO2 as Scotland
+      emits in a year! / 16:30 AM · Nov 2, 2021 / 29 Retweets 152 Likes / David Martin @davidmartin ·
+      8h / Replying to @ lindawhite / You know this isn''t true. Or even remotely close to the truth.
+      / 148 / Peter Turner @peterturner · 5h / Replying to @ lindawhite / This is embarrassing / 6" <image>'
+    images:
+    - 4hjcf_false11_high
+  - raw: 32
+    condition_num: 31
+    factors:
+      post: false11
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "Linda White / lindawhite
+      / There are 400 private jets ferrying delegations to the COP26 conference. It is estimated they
+      will emit in 24 hours as much CO2 as Scotland emits in a year! / 16:30 AM · Nov 2, 2021 / 29 Retweets
+      152 Likes / David Martin @davidmartin · 8h / Replying to @lindawhite / You know this isn''t true.
+      Or even remotely close to the truth. / FULLFACT.ORG / Emissions from COP26 private jets are far,
+      far lower than Scotland''s annual CO2 output - Full Fact / 148 / Peter Turner @peterturner · 5h
+      / Replying to @lindawhite / This is embarrassing / 6" <image>'
+    images:
+    - 4hjcf_false11_link
+  - raw: 33
+    condition_num: 32
+    factors:
+      post: false12
+      comment: none
+    text: 'You are shown a social media post (not every word in it is quoted here): "Mary Barrett / Yesterday
+      at 4:42pm / US BIOLABS IN UKRAINE / Exclusive US biolabs in Ukraine, and they are financed at the
+      expense of the US Department of Defense. / The laboratories are located in Odessa, Vinnytsia, Uzhgorod,
+      Lviv (three), Kiev (three), Kherson, Ternopil, and near Crimea and Luhansk. 2 other possible locations
+      Kharkiv and Mykolaiv / 128 / 21 Comments 10 Shares / Like / Share / View more 21 Comments / Write
+      a comment..." <image>'
+    images:
+    - 4hjcf_false12_control
+  - raw: 34
+    condition_num: 33
+    factors:
+      post: false12
+      comment: few_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Mary Barrett / Yesterday
+      at 4:42pm / US BIOLABS IN UKRAINE / Exclusive US biolabs in Ukraine, and they are financed at the
+      expense of the US Department of Defense. / The laboratories are located in Odessa, Vinnytsia, Uzhgorod,
+      Lviv (three), Kiev (three), Kherson, Ternopil, and near Crimea and Luhansk. 2 other possible locations
+      Kharkiv and Mykolaiv / 128 / 21 Comments 10 Shares / Like / Share / View more 19 Comments / Tom
+      Archer Baseless and unfounded. Crap! / 9 / Like · Reply · 5h / David Askew You are right / 7 / Like
+      · Reply · 4h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false12_low
+  - raw: 35
+    condition_num: 34
+    factors:
+      post: false12
+      comment: many_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Mary Barrett / Yesterday
+      at 4:42pm / US BIOLABS IN UKRAINE / Exclusive US biolabs in Ukraine, and they are financed at the
+      expense of the US Department of Defense. / The laboratories are located in Odessa, Vinnytsia, Uzhgorod,
+      Lviv (three), Kiev (three), Kherson, Ternopil, and near Crimea and Luhansk. 2 other possible locations
+      Kharkiv and Mykolaiv / 128 / 21 Comments 10 Shares / Like / Share / View more 19 Comments / Tom
+      Archer Baseless and unfounded. Crap! / 155 / Like · Reply · 5h / David Askew You are right / 7 /
+      Like · Reply · 4h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false12_high
+  - raw: 36
+    condition_num: 35
+    factors:
+      post: false12
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "Mary Barrett / Yesterday
+      at 4:42pm / US BIOLABS IN UKRAINE / Exclusive US biolabs in Ukraine, and they are financed at the
+      expense of the US Department of Defense. / The laboratories are located in Odessa, Vinnytsia, Uzhgorod,
+      Lviv (three), Kiev (three), Kherson, Ternopil, and near Crimea and Luhansk. 2 other possible locations
+      Kharkiv and Mykolaiv / 128 / 21 Comments 10 Shares / Like / Share / View more 19 Comments / Tom
+      Archer Baseless and unfounded. Crap! / FACT CHECK / Fact check: False claim of US biolabs in Ukraine
+      tied to Russian disinformation campaign / Ella Lee / USA TODAY / Published 6:39 p.m. ET Feb. 25,
+      2022 | Updated 2:59 p.m. ET Feb. 27, 2022 / 155 / Like · Reply · 5h / David Askew You are right
+      / 7 / Like · Reply · 4h / Write a comment..." <image>'
+    images:
+    - 4hjcf_false12_link
+  - raw: 37
+    condition_num: 36
+    factors:
+      post: false13
+      comment: none
+    text: 'You are shown a social media post (not every word in it is quoted here): "Garry Cave / @garryknows
+      / MFA Russia / @mfa_russia / Russia government organization / Classified documents (order by the
+      Commander National Guard of Ukraine) acquired by @mod_russia confirm without a shadow of a doubt:
+      the Kiev regime was covertly preparing an offensive operation against #Donbass, scheduled for March
+      2022. / In detail: bit.ly/3pKBYMf / 4:17 PM · March 9, 2022 · Twitter for Adroid / 25 Retweets 175
+      Likes" <image>'
+    images:
+    - 4hjcf_false13_control
+  - raw: 38
+    condition_num: 37
+    factors:
+      post: false13
+      comment: few_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Garry Cave / @garryknows
+      / MFA Russia / @mfa_russia / Russia government organization / Classified documents (order by the
+      Commander National Guard of Ukraine) acquired by @mod_russia confirm without a shadow of a doubt:
+      the Kiev regime was covertly preparing an offensive operation against #Donbass, scheduled for March
+      2022. / In detail: bit.ly/3pKBYMf / 4:17 PM · March 9, 2022 · Twitter for Adroid / 25 Retweets 175
+      Likes / Rory Fraser @roryontwitter · 6h / Replying to @garryknows / What utter hogwash. / 0 0 6
+      / Ann Ball @annball123 · 4h / Replying to @garryknows / Putin saved the Donbas people of another
+      massacre. / 0 0 5" <image>'
+    images:
+    - 4hjcf_false13_low
+  - raw: 39
+    condition_num: 38
+    factors:
+      post: false13
+      comment: many_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Garry Cave / @garryknows
+      / MFA Russia / @mfa_russia / Russia government organization / Classified documents (order by the
+      Commander National Guard of Ukraine) acquired by @mod_russia confirm without a shadow of a doubt:
+      the Kiev regime was covertly preparing an offensive operation against #Donbass, scheduled for March
+      2022. / In detail: bit.ly/3pKBYMf / 4:17 PM · March 9, 2022 · Twitter for Adroid / 25 Retweets 175
+      Likes / Rory Fraser @roryontwitter · 6h / Replying to @garryknows / What utter hogwash. / 0 0 155
+      / Ann Ball @annball123 · 4h / Replying to @garryknows / Putin saved the Donbas people of another
+      massacre. / 0 0 5" <image>'
+    images:
+    - 4hjcf_false13_high
+  - raw: 40
+    condition_num: 39
+    factors:
+      post: false13
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "Garry Cave / @garryknows
+      / MFA Russia / @mfa_russia / Russia government organization / Classified documents (order by the
+      Commander National Guard of Ukraine) acquired by @mod_russia confirm without a shadow of a doubt:
+      the Kiev regime was covertly preparing an offensive operation against #Donbass, scheduled for March
+      2022. / In detail: bit.ly/3pKBYMf / 4:17 PM · March 9, 2022 · Twitter for Adroid / 25 Retweets 175
+      Likes / Rory Fraser @roryontwitter · 6h / Replying to @garryknows / What utter hogwash. / MENU /
+      POLITIFACT / The Poynter Institute / By Samantha Putterman / March 14, 2022 / No, this document
+      doesn''t show classified Ukrainian military orders to attack the Donbas region / 0 0 155 / Ann Ball
+      @annball123 · 4h / Replying to @garryknows / Putin saved the Donbas people of another massacre.
+      / 0 0 5" <image>'
+    images:
+    - 4hjcf_false13_link
+  - raw: 41
+    condition_num: 40
+    factors:
+      post: true01
+      comment: none
+    text: 'You are shown a social media post (not every word in it is quoted here): "Victoria Moon / Yesterday
+      at 5:45pm / Two Pfizer and BioNTech Covid-19 vaccine booster updated to target the Omicron variant
+      show a substantially higher immune response than the current COVID-19 vaccine. / COVID-19 VACCINE
+      / 152 / 24 Comments 6 Shares / Like / Share / View more 18 Comments / Write a comment..." <image>'
+    images:
+    - 4hjcf_true01_control
+  - raw: 42
+    condition_num: 41
+    factors:
+      post: true01
+      comment: few_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Victoria Moon / Yesterday
+      at 5:45pm / Two Pfizer and BioNTech Covid-19 vaccine booster updated to target the Omicron variant
+      show a substantially higher immune response than the current COVID-19 vaccine. / COVID-19 VACCINE
+      / 152 / 24 Comments 6 Shares / Like / Share / View more 18 Comments / Jonathan Manley More lies
+      / 9 / Like · Reply · 8h / Laura McConnell Thank you all science / 8 / Like · Reply · 11h / Write
+      a comment..." <image>'
+    images:
+    - 4hjcf_true01_low
+  - raw: 43
+    condition_num: 42
+    factors:
+      post: true01
+      comment: many_likes
+    text: 'You are shown a social media post (not every word in it is quoted here): "Victoria Moon / Yesterday
+      at 5:45pm / Two Pfizer and BioNTech Covid-19 vaccine booster updated to target the Omicron variant
+      show a substantially higher immune response than the current COVID-19 vaccine. / COVID-19 VACCINE
+      / 152 / 24 Comments 6 Shares / Like / Share / View more 18 Comments / Jonathan Manley More lies
+      / 112 / Like · Reply · 8h / Laura McConnell Thank you all science / 8 / Like · Reply · 11h / Write
+      a comment..." <image>'
+    images:
+    - 4hjcf_true01_high
+  - raw: 44
+    condition_num: 43
+    factors:
+      post: true01
+      comment: many_likes_link
+    text: 'You are shown a social media post (not every word in it is quoted here): "Victoria Moon / Yesterday
+      at 5:45pm / Two Pfizer and BioNTech Covid-19 vaccine booster updated to target the Omicron variant
+      show a substantially higher immune response than the current COVID-19 vaccine. / COVID-19 VACCINE
+      / 152 / 24 Comments 6 Shares / Like / Share / View more 18 Comments / Jonathan Manley More lies
+      / INDEPENDENT.CO.UK / Mum, 36, most likely died from Covid Pfizer vaccine days after dose, inquest
+      told / 112 / Like · Reply · 8h / Laura McConnell Thank you all science / 8 / Like · Reply · 11h
+      / Write a comment..." <image>'
+    images:
+    - 4hjcf_true01_link
+  - raw: 45
+    condition_num: 44
+    factors:
+      post: true02
+      comment: none
+    text: 'You are shown a social media post: "Ian Levy / Yesterday at 4:45pm / BREAKING: 219 new cases
+      detected in UK / Monkeypox cases continue to rise in UK: 99 per cent of all infections are among
+      men, says UK Health Security Agency / 175 / 21 Comments 10 Shares / Like / Comment / Share / View
+      more 16 Comments / Write a comment..." <image>'
+    images:
+    - 4hjcf_true02_control
+  - raw: 46
+    condition_num: 45
+    factors:
+      post: true02
+      comment: few_likes
+    text: 'You are shown a social media post: "Ian Levy / Yesterday at 4:45pm / BREAKING: 219 new cases
+      detected in UK / Monkeypox cases continue to rise in UK: 99 per cent of all infections are among
+      men, says UK Health Security Agency / 175 / 21 Comments 10 Shares / Like / Comment / Share / View
+      more 19 Comments / Sandra Hart Judging by the comments I am not the only one to call BS on this
+      / 6 / Like · Reply · 1h / Karen Lees Every virus is coming to UK / 5 / Like · Reply · 2h / Write
+      a comment..." <image>'
+    images:
+    - 4hjcf_true02_low
+  - raw: 47
+    condition_num: 46
+    factors:
+      post: true02
+      comment: many_likes
+    text: 'You are shown a social media post: "Ian Levy / Yesterday at 4:45pm / BREAKING: 219 new cases
+      detected in UK / Monkeypox cases continue to rise in UK: 99 per cent of all infections are among
+      men, says UK Health Security Agency / 175 / 21 Comments 10 Shares / Like / Comment / Share / View
+      more 19 Comments / Sandra Hart Judging by the comments I am not the only one to call BS on this
+      / 176 / Like · Reply · 1h / Karen Lees Every virus is coming to UK / 5 / Like · Reply · 2h / Write
+      a comment..." <image>'
+    images:
+    - 4hjcf_true02_high
+  - raw: 48
+    condition_num: 47
+    factors:
+      post: true02
+      comment: many_likes_link
+    text: 'You are shown a social media post: "Ian Levy / Yesterday at 4:45pm / BREAKING: 219 new cases
+      detected in UK / Monkeypox cases continue to rise in UK: 99 per cent of all infections are among
+      men, says UK Health Security Agency / 175 / 21 Comments 10 Shares / Like / Comment / Share / View
+      more 19 Comments / Sandra Hart Judging by the comments I am not the only one to call BS on this
+      / Peter McCullough, MD MPH / @P_McCulloughMD / Follow / Planning for Monkeypox campaign was in the
+      planning for years WHO/WEF/CEPI/CDC/Jynneos. The CDC has a large "Monkeypox Response Team" and there
+      were planning exercises in Munich in March 2021. I explain to Childrens Health Defense Dr Tony O''Donnell.@ChildrensHD
+      / CHD.TV / Dr. Peter A. McCullough, MD, MPH / 176 / Like · Reply · 1h / Karen Lees Every virus is
+      coming to UK / 5 / Like · Reply · 2h / Write a comment..." <image>'
+    images:
+    - 4hjcf_true02_link
+  - raw: 49
+    condition_num: 48
+    factors:
+      post: true03
+      comment: none
+    text: 'You are shown a social media post: "Jonathan Lamb / Yesterday at 2:45pm / Jack Last died of
+      a blood clot days after Covid jab, inquest told / 188 / 24 Comments 11 Shares / Like / Comment /
+      Share / View more 24 Comments / Write a comment..." <image>'
+    images:
+    - 4hjcf_true03_control
+  - raw: 50
+    condition_num: 49
+    factors:
+      post: true03
+      comment: few_likes
+    text: 'You are shown a social media post: "Jonathan Lamb / Yesterday at 2:45pm / Jack Last died of
+      a blood clot days after Covid jab, inquest told / 188 / 24 Comments 11 Shares / Like / Comment /
+      Share / View more 22 Comments / John Dines What a load of bull shi££ / 8 / Like · Reply · 1h / Helen
+      Bowie Women take birth control daily and that too can cause blood clots, but guess what, they still
+      rather take the risk / 7 / Like · Reply · 1h / Write a comment..." <image>'
+    images:
+    - 4hjcf_true03_low
+  - raw: 51
+    condition_num: 50
+    factors:
+      post: true03
+      comment: many_likes
+    text: 'You are shown a social media post: "Jonathan Lamb / Yesterday at 2:45pm / Jack Last died of
+      a blood clot days after Covid jab, inquest told / 188 / 24 Comments 11 Shares / Like / Comment /
+      Share / View more 22 Comments / John Dines What a load of bull shi££ / 125 / Like · Reply · 1h /
+      Helen Bowie Women take birth control daily and that too can cause blood clots, but guess what, they
+      still rather take the risk / 7 / Like · Reply · 1h / Write a comment..." <image>'
+    images:
+    - 4hjcf_true03_high
+  - raw: 52
+    condition_num: 51
+    factors:
+      post: true03
+      comment: many_likes_link
+    text: 'You are shown a social media post: "Jonathan Lamb / Yesterday at 2:45pm / Jack Last died of
+      a blood clot days after Covid jab, inquest told / 188 / 24 Comments 11 Shares / Like / Comment /
+      Share / View more 22 Comments / John Dines What a load of bull shi££ / Public Health Communications
+      COLLABORATIVE / Post baselessly links COVID-19 vaccines to blood clots, miscarriage, and Bell''s
+      palsy / May 01, 2022 / 125 / Like · Reply · 1h / Helen Bowie Women take birth control daily and
+      that too can cause blood clots, but guess what, they still rather take the risk / 7 / Like · Reply
+      · 1h / Write a comment..." <image>'
+    images:
+    - 4hjcf_true03_link
+  considered_and_rejected:
+    FL_7_DO_*: Position (1-3) of each false post within the first flow randomiser; presentation order,
+      and used only to find double draws.
+    FL_51_DO_*: The same for the second flow randomiser.
+    '*_DO_*_acc / _like / _share': 'Display order of the three questions within each post block: the constants
+      2, 3, 4 (fixed order).'
+    att_check3_scr_*: An attention-check post shown before the task to the main sample (added after the
+      soft launch); not a manipulation.
+outcomes:
+- var: post_1_acc
+  task_num: 0
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_1_cond
+- var: post_1_like
+  task_num: 1
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_1_cond
+- var: post_1_share
+  task_num: 2
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_1_cond
+- var: post_2_acc
+  task_num: 3
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_2_cond
+- var: post_2_like
+  task_num: 4
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_2_cond
+- var: post_2_share
+  task_num: 5
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_2_cond
+- var: post_3_acc
+  task_num: 6
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_3_cond
+- var: post_3_like
+  task_num: 7
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_3_cond
+- var: post_3_share
+  task_num: 8
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_3_cond
+- var: post_5_acc
+  task_num: 9
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_5_cond
+- var: post_5_like
+  task_num: 10
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_5_cond
+- var: post_5_share
+  task_num: 11
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_5_cond
+- var: post_6_acc
+  task_num: 12
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_6_cond
+- var: post_6_like
+  task_num: 13
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_6_cond
+- var: post_6_share
+  task_num: 14
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_6_cond
+- var: post_8_acc
+  task_num: 15
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_8_cond
+- var: post_8_like
+  task_num: 16
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_8_cond
+- var: post_8_share
+  task_num: 17
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_8_cond
+- var: post_10_acc
+  task_num: 18
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_10_cond
+- var: post_10_like
+  task_num: 19
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_10_cond
+- var: post_10_share
+  task_num: 20
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_10_cond
+- var: post_11_acc
+  task_num: 21
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_11_cond
+- var: post_11_like
+  task_num: 22
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_11_cond
+- var: post_11_share
+  task_num: 23
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_11_cond
+- var: post_12_acc
+  task_num: 24
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_12_cond
+- var: post_12_like
+  task_num: 25
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_12_cond
+- var: post_12_share
+  task_num: 26
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_12_cond
+- var: post_13_acc
+  task_num: 27
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: post_13_cond
+- var: post_13_like
+  task_num: 28
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_13_cond
+- var: post_13_share
+  task_num: 29
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: post_13_cond
+- var: realpost_1_acc
+  task_num: 30
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: realpost_1_cond
+- var: realpost_1_like
+  task_num: 31
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: realpost_1_cond
+- var: realpost_1_share
+  task_num: 32
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: realpost_1_cond
+- var: realpost_2_acc
+  task_num: 33
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: realpost_2_cond
+- var: realpost_2_like
+  task_num: 34
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: realpost_2_cond
+- var: realpost_2_share
+  task_num: 35
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: realpost_2_cond
+- var: realpost_3_acc
+  task_num: 36
+  question: To the best of your knowledge, how accurate is the claim in the above headline?
+  scale:
+    min: 1
+    max: 4
+    min_label: not at all accurate
+    max_label: very accurate
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+  condition_var: realpost_3_cond
+- var: realpost_3_like
+  task_num: 37
+  question: How likely are you to "like" the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: realpost_3_cond
+- var: realpost_3_share
+  task_num: 38
+  question: How likely are you to share the article/post in the headline that you just read?
+  scale:
+    min: 1
+    max: 5
+    min_label: not at all likely
+    max_label: very likely
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  condition_var: realpost_3_cond
+response_recode: {}
+missing_codes: []
+persona_map:
+  age_band: age_scr
+  gender: gender_scr
+  education: edu_scr

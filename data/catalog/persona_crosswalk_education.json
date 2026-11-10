@@ -163,6 +163,18 @@
    "Bachelor's degree": "Bachelors to postgraduate",
    "Master's degree": "Bachelors to postgraduate",
    "Doctorate": "Bachelors to postgraduate"
+  },
+  "uk_4hjcf_osf": {
+   "Incomplete Secondary Education (Below GCSE / O Level), Secondary Education Completed (GCSE / O Level / CSE or equivalent), or Secondary Education Completed (A Level or equivalent)": "Below degree level (not further distinguished)",
+   "Some Vocational or Technical Qualifications or Vocational or Technical Qualifications Completed (e.g., HND, NVQ)": "Below degree level (not further distinguished)",
+   "University Education Completed (First Degree e.g., BA, BSc), Postgraduate Education Completed (e.g., Masters), Doctorate, or Post-doctorate or equivalent": "Bachelors to postgraduate"
+  },
+  "uk_yxc92_osf": {
+   "GCSE-level education": "High school",
+   "A-level education": "High school",
+   "Undergraduate education (eg University examinations but not completed degree)": "Some college to associate",
+   "Degree or Graduate education (eg BSc, BA)": "Bachelors to postgraduate",
+   "Post-graduate education (eg PhD, MSc, MA)": "Bachelors to postgraduate"
   }
  },
  "_about": [
@@ -239,6 +251,20 @@
   "\"no formal education\"; 1 person, and no one chose \"Primary school\", so that line is read, not exercised); GCSE to",
   "High school as uk_3krjz_osf and uk_gybnm_osf map GCSE (with only primary schooling below it, the same disclosed",
   "judgement, 71 people); A levels to High school; Bachelor's (already mapped by another scheme, identically), Master's",
-  "and Doctorate to Bachelors to postgraduate. No canonical value added; no other scheme changed."
+  "and Doctorate to Bachelors to postgraduate. No canonical value added; no other scheme changed.",
+  "",
+  "uk_4hjcf_osf (9 Nov 2026, IMG57): the Stoeckel et al. social-correction study's three education groups, as the paper's",
+  "Supplementary Table 11 note words them (the deposit has codes 1-3 only). Low spans incomplete secondary to A level (Less than",
+  "high school to High school) and mid spans all vocational qualifications, completed or not (NVQ levels below and above GCSE, HND),",
+  "so both go to \"Below degree level (not further distinguished)\", the k7tw5 rule; high (first degree to post-doctorate) to",
+  "Bachelors to postgraduate. No canonical value added; no other scheme changed.",
+  "",
+  "uk_yxc92_osf (10 Nov 2026, IMG75): the Join This Group UK survey's five levels (T0.qsf answer labels, read in the",
+  "deposit's text export). Jev (ordinal_span) read each as one rung: GCSE-level high school (0.89/0.91, runner-up less than",
+  "high school 0.08/0.08); A-level high school (0.91/0.95); the not-completed undergraduate level some college (0.99/1.0);",
+  "Degree bachelors (1.0/1.0); Post-graduate postgraduate (0.99/1.0). GCSE-level is the lowest option offered (there is",
+  "no \"no qualifications\" choice), so a respondent with none had to pick it or skip: mapped to High school by its label,",
+  "as uk_yougov_18 and uk_3krjz_osf map GCSE, a disclosed judgement (151 people). No canonical value added; no other",
+  "scheme changed."
  ]
 }

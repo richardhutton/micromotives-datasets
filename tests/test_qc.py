@@ -570,6 +570,35 @@ def test_rule17_is_quiet_on_legitimate_text(fixture_sav, fixture_recipe, text) -
     assert not _warns(rep, "refers to the experiment's own construction"), rep.warnings
 
 
+DEBRIEF = (
+    "In order to do this, we randomly assigned participants to either the training "
+    "condition or the control condition (a Tetris game)."
+)
+
+
+def test_rule17_declared_on_screen_phrase_is_noted_not_warned(fixture_recipe) -> None:
+    """yxc92: a debrief read before the follow-up said it, so the row may too."""
+    fixture_recipe.condition.on_screen_construction = {"randomly assigned": "the debrief"}
+    rep = check(_one_row(DEBRIEF), fixture_recipe)
+    assert not _warns(rep, "refers to the experiment's own construction"), rep.warnings
+    assert not _warns(rep, "on_screen_construction"), rep.warnings
+    assert any("'randomly assigned' on 1 rows, declared on screen" in n for n in rep.notes)
+
+
+def test_rule17_declaration_covers_only_its_own_phrase(fixture_recipe) -> None:
+    fixture_recipe.condition.on_screen_construction = {"randomly assigned": "the debrief"}
+    rep = check(_one_row(DEBRIEF + " In this condition the policy was permanent."), fixture_recipe)
+    assert _warns(rep, "refers to the experiment's own construction"), rep.warnings
+    assert "in this condition" in " ".join(rep.warnings)
+    assert "randomly assigned': " not in " ".join(rep.warnings)
+
+
+def test_rule17_declaration_that_matches_nothing_warns(fixture_recipe) -> None:
+    fixture_recipe.condition.on_screen_construction = {"randomly assigned": "the debrief"}
+    rep = check(_one_row("A plain stimulus."), fixture_recipe)
+    assert _warns(rep, "which no row contains"), rep.warnings
+
+
 # --------------------------------------------------------------------------
 # Rule 18 — a row must not render text that is cut off
 # --------------------------------------------------------------------------
