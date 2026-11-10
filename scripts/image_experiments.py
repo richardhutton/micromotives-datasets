@@ -24,7 +24,14 @@ CONTACTS = ROOT / "data" / "catalog" / "image_contacts.json"
 HTML = ROOT / "docs" / "trackers" / "image_experiments.html"
 TEMPLATE = ROOT / "scripts" / "image_experiments_template.html"
 
-STATUSES = {"Built", "Buildable", "Waiting for images", "Needs checking", "Unlikely"}
+STATUSES = {
+    "Built",
+    "Built (risky)",
+    "Buildable",
+    "Waiting for images",
+    "Needs checking",
+    "Unlikely",
+}
 PERMISSION = {
     "yes": "Yes",
     "sent": "Asked",
@@ -43,6 +50,9 @@ def main() -> None:
     for r in data["rows"]:
         if r["status"] not in STATUSES:
             raise SystemExit(f"{r['id']}: unknown status {r['status']!r}")
+        # A risky build must say what the risks are, and only a risky build lists them.
+        if (r["status"] == "Built (risky)") != bool(r.get("issues")):
+            raise SystemExit(f"{r['id']}: 'Built (risky)' and an issues list go together")
         c = who.get(r["id"])
         # A TESS deposit is a public archive with no one to ask, so it needs no permission.
         default = "Not needed" if r.get("sample") == "US · TESS" else "Not asked yet"

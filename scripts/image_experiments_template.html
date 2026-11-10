@@ -32,7 +32,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .defs{display:grid;gap:8px;margin:0;padding:0;list-style:none}
 .defs li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;align-items:baseline}
 .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid currentColor}
-.s-Built{color:var(--todo)} .s-Buildable{color:var(--yes)} .s-Waiting{color:var(--sent)} .s-Needs{color:var(--ready)} .s-Unlikely{color:var(--no)}
+.s-Built{color:var(--todo)} .s-Risky{color:var(--sent)} .issues{margin:6px 0 0;padding-left:16px;font-size:12.5px;color:var(--muted);max-width:40ch} .issues b{color:var(--sent);font-weight:600} .s-Buildable{color:var(--yes)} .s-Waiting{color:var(--sent)} .s-Needs{color:var(--ready)} .s-Unlikely{color:var(--no)}
 .us{color:var(--no);margin-left:6px;vertical-align:1px} .p-Yes{color:var(--yes)} .p-Asked{color:var(--sent)} .p-Not{color:var(--todo)} .p-No{color:var(--no)}
 .s-todo{color:var(--todo)} .s-ready{color:var(--ready)} .s-sent{color:var(--sent)} .s-chased{color:var(--sent)} .s-yes{color:var(--yes)} .s-no{color:var(--no)} .s-notneeded{color:var(--todo)}
 .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
@@ -96,6 +96,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
 <script>
 const STATUSES=[
   ["Built","Built","In the corpus: built, QC passed, checked against published numbers."],
+  ["Built (risky)","Risky","In the corpus and checked, but with known weaknesses; each is listed under the row."],
   ["Buildable","Buildable","Data and images in hand; ready to build."],
   ["Waiting for images","Waiting","Data public, images not; we have asked or need to ask."],
   ["Needs checking","Needs","Not reviewed yet."],
@@ -132,7 +133,7 @@ function render(){
   $("rows").innerHTML=vis.map(r=>`<tr>
     <td class="num">${esc(r.id)}${r.recipe?`<div class="cc">${esc(r.recipe)}</div>`:""}${r.added?`<div class="cc">added ${esc(r.added)}</div>`:""}</td>
     <td><b>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a>`:esc(r.title)}</b>${r.sample?`<span class="pill us" title="US sample, from TESS">${esc(r.sample)}</span>`:""}<div class="ask" style="max-width:80ch">${esc(r.description)}</div>${r.found_via?`<div class="cc">Found via: ${esc(r.found_via)}</div>`:""}</td>
-    <td><span class="pill ${scls(r.status)}">${esc(r.status)}</span>${r.reason?`<div class="notes">${esc(r.reason)}</div>`:""}</td>
+    <td><span class="pill ${scls(r.status)}">${esc(r.status)}</span>${r.reason?`<div class="notes">${esc(r.reason)}</div>`:""}${(r.issues||[]).length?`<ul class="issues"><b>Issues</b>${r.issues.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</td>
     <td><span class="pill ${pcls(r.permission)}">${esc(r.permission)}</span>${r.contact?`<div class="cc">${esc(r.contact)}</div>`:""}</td>
     <td class="num">${r.rows?r.rows.toLocaleString("en-GB"):""}</td>
   </tr>`).join("");

@@ -593,14 +593,22 @@
       "title": "Social correction of misinformation posts",
       "description": "Real fake and true news posts with no comment, a corrective comment, a liked corrective comment, or a fact-check link (within person); accuracy, like, share. UK online.",
       "link": "https://osf.io/4hjcf",
-      "status": "Built",
+      "status": "Built (risky)",
       "reason": "44,428 rows (2,094 people; 13 posts x 4 comment arms, accuracy/like/share). Per-arm effects match the paper's Table 1 (e.g. false-news accuracy -0.094 vs -0.097). 5,660 answers to posts drawn twice excluded (showing not identifiable). Independent checker: PASS after adding link-card and photo words. False post 2 (Delta pilot, comment names Biden) kept pending rich.",
       "permission": "Asked",
       "contact": "Florian Stoeckel",
       "rows": 44428,
       "recipe": "4hjcf",
       "added": "2026-11-02",
-      "found_via": "Earlier searches (Oct-Nov)"
+      "found_via": "Earlier searches (Oct-Nov)",
+      "issues": [
+        "No questionnaire in the deposit: question wording comes from the pre-registration's list of measures, and the task instructions people read are missing.",
+        "Thin persona: age band, gender and three education groups only. Region, party and attitudes were asked but have no value labels.",
+        "5,660 answers (13%) left out: some people were shown the same false post twice, and the data does not say which showing the answer belongs to.",
+        "Some small print in 23 of the 52 screenshots is too small to read reliably (a map legend, Russian documents, vial labels, one date); those rows say not every word is quoted.",
+        "Dated content: COVID vaccines and the start of the Ukraine war (2021-22).",
+        "False post 2 is a US story (a Delta pilot) with a comment naming Biden; kept for now, pending rich."
+      ]
     },
     {
       "id": "IMG59",
