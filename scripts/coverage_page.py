@@ -79,6 +79,17 @@ def main() -> None:
                 "rows": r.get("rows") if r["status"] in BUILT else None,
             }
         )
+    # Jev's category check and the title map (scripts/coverage_points.py), joined by
+    # key. An experiment added since the last run simply has neither yet.
+    points_file = ROOT / "data" / "catalog" / "coverage_points.json"
+    points = {}
+    if points_file.exists():
+        points = {p["key"]: p for p in json.loads(points_file.read_text())["points"]}
+    for i in items:
+        p = points.get(f"{i['set'].lower()}:{i['id']}")
+        if p and p.get("title") == i["title"]:
+            i["jev"], i["x"], i["y"] = p.get("jev"), p.get("x"), p.get("y")
+            i["jev_held"] = p.get("jev") is None
     stray = sorted({str(i["category"]) for i in items} - set(vocab))
     if stray:
         raise SystemExit(f"categories outside the manifest vocabulary: {stray}")

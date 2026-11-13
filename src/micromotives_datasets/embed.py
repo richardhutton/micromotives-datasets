@@ -62,6 +62,13 @@ CLEARED: dict[str, str] = {
         "documentation about a collection, not microdata from it. Verified by "
         "fetching, not assumed — see the note below. Decided by rich, 9 Oct 2026."
     ),
+    "own-wording": (
+        "A short title this project wrote itself to name an experiment on its own "
+        "lists (e.g. the image tracker's 'Alcohol warning labels'), sent alone for "
+        "the coverage map. Our words, not text copied from a deposit; never a "
+        "condition, outcome, value label or respondent row. Decided by rich, "
+        "13 Nov 2026, approving Voyage for the coverage map."
+    ),
     "synthetic-quote": (
         "A synthetic quote our writer model produced (docs/QUOTES_SPEC.md), sent alone "
         "for the variety measures: the sentence only, with no persona, condition, "

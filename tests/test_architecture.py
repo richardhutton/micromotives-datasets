@@ -309,6 +309,10 @@ def test_the_licence_gate_refuses_what_has_not_been_cleared() -> None:
     assert "UKDS safeguarded" not in embed.CLEARED
     # The TESS question is open, and open means refused until someone decides.
     assert "TESS deposit, none stated" not in embed.CLEARED
+    # Our own experiment labels may travel (rich, 13 Nov 2026), and the entry must
+    # say who decided and that it never covers instrument text.
+    assert "rich, 13 Nov 2026" in embed.CLEARED["own-wording"]
+    assert "never a condition" in embed.CLEARED["own-wording"]
 
     import pytest
 

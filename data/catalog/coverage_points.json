@@ -1,0 +1,4816 @@
+{
+ "points": [
+  {
+   "key": "text:ukds_6849_twitter_consent_w15",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Twitter consent",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "89e8e37df078647c",
+   "jev": null,
+   "x": -0.976,
+   "y": 19.06
+  },
+  {
+   "key": "text:9.29",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "LinkedIn consent",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "333acdda3cdd1b15",
+   "jev": null,
+   "x": -0.84,
+   "y": 19.055
+  },
+  {
+   "key": "text:ukds_6849_mpc_twopart_w15",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Marginal propensity to consume (two-part question)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "ca2d7022c5ca3d37",
+   "jev": null,
+   "x": -8.584,
+   "y": -2.373
+  },
+  {
+   "key": "text:ukds_6849_mpc_direct_w15",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Marginal propensity to consume (direct £ question)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "20b4a93b0d4dd292",
+   "jev": null,
+   "x": -8.596,
+   "y": -2.365
+  },
+  {
+   "key": "text:ukds_6849_hmrc_consent_w11",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "HMRC data linkage consent experiment (wave 11 face-to-face)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "0772a4dbb74f8512",
+   "jev": null,
+   "x": 4.346,
+   "y": 1.09
+  },
+  {
+   "key": "text:ukds_6849_hmrc_consent_w11_web",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "HMRC data linkage consent experiment (wave 11 web)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "2d84a69597405a67",
+   "jev": null,
+   "x": 3.949,
+   "y": 0.9
+  },
+  {
+   "key": "text:ukds_6849_hmrc_consent_w15",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "HMRC data linkage consent experiment (wave 15)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "f2d047974740bb78",
+   "jev": null,
+   "x": 3.959,
+   "y": 1.245
+  },
+  {
+   "key": "text:9.46",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Consent decision process",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "4778f8ed62e63600",
+   "jev": null,
+   "x": 3.23,
+   "y": 3.516
+  },
+  {
+   "key": "text:ukds_6849_immig_vignette_w11",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Does competition over public services decrease support for residency rights of immigrants? (vignette)",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "efeacaf11cb4eccd",
+   "jev": null,
+   "x": 9.584,
+   "y": -12.334
+  },
+  {
+   "key": "text:9.6",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Context of questions about consent to data linkage with administrative records",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "76fd7dbd3d343e6f",
+   "jev": null,
+   "x": 3.563,
+   "y": 2.109
+  },
+  {
+   "key": "text:ukds_6849_nrp_w10_fh",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Non-resident parents and reasons for separation (fertility history)",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "228dced5d8b13c99",
+   "jev": null,
+   "x": 9.699,
+   "y": 2.792
+  },
+  {
+   "key": "text:ukds_6849_nrp_w10_contact",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Non-resident parents and reasons for separation (contact with relatives)",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "cbd62f3a01bf2a66",
+   "jev": null,
+   "x": 9.537,
+   "y": 2.929
+  },
+  {
+   "key": "text:ukds_6849_envtax_w7",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Assessing how people think about environmental taxes",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "60ce76fa83a53a7a",
+   "jev": null,
+   "x": 7.436,
+   "y": -13.202
+  },
+  {
+   "key": "text:ukds_6849_sensor_consent_w17_ftf",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Indoor residential environment: consent for in-home sensor (face-to-face)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "d37332b6afad84d3",
+   "jev": null,
+   "x": 1.633,
+   "y": 2.393
+  },
+  {
+   "key": "text:ukds_6849_sensor_consent_w17_web",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Indoor residential environment: consent for in-home sensor (web)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "c532ae35a572f01f",
+   "jev": null,
+   "x": 1.602,
+   "y": 2.278
+  },
+  {
+   "key": "text:ukds_6849_automation_w14",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Vignettes: intentions to prepare for automation",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "e849b932fb51ac31",
+   "jev": null,
+   "x": 6.227,
+   "y": -2.249
+  },
+  {
+   "key": "text:9.21",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Improving consent to link to the electoral register",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "885ff06fb532314f",
+   "jev": null,
+   "x": 2.978,
+   "y": 0.635
+  },
+  {
+   "key": "text:ukds_6849_immigsdb_w8",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Social desirability bias in attitudes towards immigration (wave 8)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "d1e8ae0f56e03af0",
+   "jev": null,
+   "x": 7.601,
+   "y": -10.225
+  },
+  {
+   "key": "text:ukds_6849_immigsdb_w9",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Social desirability bias in attitudes towards immigration (wave 9)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "56ef949729da146b",
+   "jev": null,
+   "x": 7.601,
+   "y": -10.221
+  },
+  {
+   "key": "text:9.50",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Domestic energy use: consent for smart meter data linkage",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "19ccdce4896808d8",
+   "jev": null,
+   "x": 2.244,
+   "y": 1.473
+  },
+  {
+   "key": "text:8.14",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Don’t know/prefer not to answer response presentation",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "ac94f6a676367f37",
+   "jev": null,
+   "x": 0.591,
+   "y": -5.756
+  },
+  {
+   "key": "text:8.4",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Dependent interviewing wording",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "cc46568847e2c3ad",
+   "jev": null,
+   "x": 5.427,
+   "y": 3.819
+  },
+  {
+   "key": "text:9.41",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Robustness of climate change worries measurement",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "f8d166c4ddffc634",
+   "jev": null,
+   "x": 4.728,
+   "y": -8.016
+  },
+  {
+   "key": "text:9.40",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Cognitive reflection and politically motivated reasoning",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "ab065a6b6dd0842e",
+   "jev": null,
+   "x": 3.177,
+   "y": -18.03
+  },
+  {
+   "key": "text:8.8",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Methods of reducing item non-response in web surveys",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "67e367dd0e9ab754",
+   "jev": null,
+   "x": 2.454,
+   "y": -5.482
+  },
+  {
+   "key": "text:ukds_6849_national_identity_w15",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "National identity",
+   "category": "political identity/polarisation",
+   "status": "Built",
+   "digest": "e487be414e843002",
+   "jev": null,
+   "x": -0.882,
+   "y": 0.746
+  },
+  {
+   "key": "text:9.22",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Financial management within couples",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "15e279ddd48b4e7b",
+   "jev": null,
+   "x": 12.307,
+   "y": 0.895
+  },
+  {
+   "key": "text:8.10",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Replicating classic response order experiments across countries",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "19d1d14b17afc0f4",
+   "jev": null,
+   "x": 3.9,
+   "y": -9.677
+  },
+  {
+   "key": "text:9.35",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Informal care",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "8bf1cbc920a48d44",
+   "jev": null,
+   "x": 7.059,
+   "y": 5.164
+  },
+  {
+   "key": "text:8.3",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Impact of question wording and context on measuring change",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "8b7fafaab0ec4322",
+   "jev": null,
+   "x": 3.204,
+   "y": -8.494
+  },
+  {
+   "key": "text:8.5",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Branched vs. unbranched rating scales for measuring attitudes",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "3f28d7ac4186f24c",
+   "jev": null,
+   "x": 1.295,
+   "y": -8.611
+  },
+  {
+   "key": "text:8.11",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Impact of response scale direction on responses",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "39d0946614da872a",
+   "jev": null,
+   "x": 2.266,
+   "y": -8.974
+  },
+  {
+   "key": "text:8.12",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Enhancing respondent engagement with the survey through tailored interesting questions",
+   "category": "survey methodology",
+   "status": "Needs checking",
+   "digest": "34c924e78eb0aab1",
+   "jev": null,
+   "x": 2.076,
+   "y": -4.8
+  },
+  {
+   "key": "text:9.3",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Reference groups in measuring satisfaction",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "2d02d33142a21ef5",
+   "jev": null,
+   "x": -0.72,
+   "y": -7.745
+  },
+  {
+   "key": "text:del_sandbox_feb2023_wordfeminist",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Naming a development policy (sandbox)",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "72357a8ef97bc9ab",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.96,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.03
+   },
+   "x": 4.589,
+   "y": 7.865
+  },
+  {
+   "key": "text:del_panel_w4_extreme_weather",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Extreme weather news",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "ef9a164af00b3a05",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -1.421,
+   "y": 11.087
+  },
+  {
+   "key": "text:del_panel_w3_ngo_conjoint_donate",
+   "set": "Text",
+   "source": "DEL",
+   "title": "NGO conjoint (donate)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "02443d146a70a10d",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.61,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.26
+   },
+   "x": 4.753,
+   "y": 11.919
+  },
+  {
+   "key": "text:del_panel_w3_ngo_conjoint_petition",
+   "set": "Text",
+   "source": "DEL",
+   "title": "NGO conjoint (petition)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "86c432b3b20203d7",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.34,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.39
+   },
+   "x": 4.906,
+   "y": 12.044
+  },
+  {
+   "key": "text:del_panel_w4_climate_harm_stories",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Climate harm stories",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "55f1595947685161",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.89,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.03
+   },
+   "x": -1.082,
+   "y": 11.172
+  },
+  {
+   "key": "text:del_panel_w5_who_must_change",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Who must change for climate",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "e1783739363fb3e9",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.64,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.28
+   },
+   "x": 1.072,
+   "y": 12.192
+  },
+  {
+   "key": "text:W4_DonationSplit",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Ukraine donation follow-up",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "6bcb129ec9161e41",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.68,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.25
+   },
+   "x": 2.614,
+   "y": 10.567
+  },
+  {
+   "key": "text:del_sandbox_jun2022_ukraine_choice",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Why Ukraine matters, me or others",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "1ad73dd97c855b21",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.58,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.2
+   },
+   "x": 2.208,
+   "y": 10.998
+  },
+  {
+   "key": "text:del_sandbox_feb2023_aid_priorities",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Aid budget with priorities",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "1f0db2acdb2acada",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.98,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.02
+   },
+   "x": 4.019,
+   "y": 9.65
+  },
+  {
+   "key": "text:W5_wordfeministsplit",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Naming a development policy (panel)",
+   "category": "political preferences/policy",
+   "status": "Buildable",
+   "digest": "4c3922c55cf077b4",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.99,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.01
+   },
+   "x": 4.271,
+   "y": 8.319
+  },
+  {
+   "key": "text:del_sandbox_feb2023_abortion",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Abortion access, UK or abroad",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "035d024a72699dde",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.74,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.2
+   },
+   "x": 11.191,
+   "y": 4.803
+  },
+  {
+   "key": "text:del_sandbox_jul2020_global_goals",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Global goals messages",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "646dbfb7b774a9a5",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.88,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.08
+   },
+   "x": 1.465,
+   "y": 8.654
+  },
+  {
+   "key": "text:del_sandbox_feb2023_gender_aid",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Gender aid compared to others",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "3fcd463439a07e3e",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.93,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.03
+   },
+   "x": 10.065,
+   "y": 6.847
+  },
+  {
+   "key": "text:del_sandbox_feb2023_gender_equality",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Gender equality, UK or abroad",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "9971dcfa90a9e8f9",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.7,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.2
+   },
+   "x": 11.068,
+   "y": 5.7
+  },
+  {
+   "key": "text:del_sandbox_feb2023_gender_progress",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Gender gap progress",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "ac0979547548631d",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.63,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.31
+   },
+   "x": 10.716,
+   "y": 6.437
+  },
+  {
+   "key": "text:del_panel_w4_east_africa_drought",
+   "set": "Text",
+   "source": "DEL",
+   "title": "East Africa drought",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "011ffe05061ea1d5",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.8,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.18
+   },
+   "x": -1.517,
+   "y": 10.042
+  },
+  {
+   "key": "text:W4_split_sample",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Climate aid conjoint",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "a56a63ed817f1451",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.97,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.02
+   },
+   "x": 4.385,
+   "y": 10.927
+  },
+  {
+   "key": "text:Apr2020_orgrolessplitgroup",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Role of organisations",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "d2c290992832223d",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.37,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.29
+   },
+   "x": 2.172,
+   "y": 7.293
+  },
+  {
+   "key": "text:del_panel_w3_leadership",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Leadership messages",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "417687662200901d",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 1.669,
+   "y": 8.01
+  },
+  {
+   "key": "text:del_panel_w4_cost_of_living",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Cost of living",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "5a920caab5ccf5ac",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.63,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.33
+   },
+   "x": 8.343,
+   "y": 9.105
+  },
+  {
+   "key": "text:e5rfg_tk",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Who has Narrow Brackets? (Tversky-Kahneman pair)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "f3490d1f3102c0b3",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 18.767,
+   "y": 2.89
+  },
+  {
+   "key": "text:e5rfg_ce",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Who has Narrow Brackets? (certainty equivalents)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "85b3a437b245010e",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 19.025,
+   "y": 3.58
+  },
+  {
+   "key": "text:e5rfg_pair",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Who has Narrow Brackets? (Example 2 pair)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "1a8f0abfed1f43d8",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 19.107,
+   "y": 4.242
+  },
+  {
+   "key": "text:e5rfg_six",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Who has Narrow Brackets? (six-decision modules)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "e00b0ea716717bca",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 19.313,
+   "y": 3.808
+  },
+  {
+   "key": "text:pkt6f",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Politeness Theory and Conversational Refusals",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "d47bada523349103",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -5.98,
+   "y": -18.09
+  },
+  {
+   "key": "text:jxdu8",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Moral Luck, Loss of Chance, and Legal Liability",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "b7459d9c5c3f1472",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.98,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.01
+   },
+   "x": 19.015,
+   "y": -9.427
+  },
+  {
+   "key": "text:phbjd",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Do Collective Memory and Autobiographical Memory Refer to Different Developmental Stages?",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "2131b0f0417beeb2",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.87,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.1
+   },
+   "x": -0.049,
+   "y": -21.908
+  },
+  {
+   "key": "text:vwn96",
+   "set": "Text",
+   "source": "TESS",
+   "title": "What's the Best Way to Motivate Kids?",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "beb6d191e7d47b3b",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.93,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.04
+   },
+   "x": -3.87,
+   "y": -10.968
+  },
+  {
+   "key": "text:wrxnz",
+   "set": "Text",
+   "source": "TESS",
+   "title": "When is \"bad stronger than good\" in decision making",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "23b0c63a3f0aab93",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.67,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.29
+   },
+   "x": -1.603,
+   "y": -11.053
+  },
+  {
+   "key": "text:2tzmb",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Perceptions of Swearing: An Analysis of Perceived Face Threats and Communication Competence",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "a9ff182b5fe68dd5",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -5.686,
+   "y": -17.877
+  },
+  {
+   "key": "text:gh396",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Maintaining a Sense of Belonging among the Socially Isolated",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "b23f1425a1d8310c",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -2.913,
+   "y": -17.585
+  },
+  {
+   "key": "text:ca9ub",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Nature or Nurture?: Explanations for Observed Gender Differences and their Effect on Gender Ideology and Political Opinions",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "e2f4ac16385b53bf",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.78,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.15
+   },
+   "x": 12.511,
+   "y": -7.633
+  },
+  {
+   "key": "text:u2dbt",
+   "set": "Text",
+   "source": "TESS",
+   "title": "A randomized experiment on the determinants of generosity to the poor",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "5ee897d682ae6e9c",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.52,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.42
+   },
+   "x": -2.432,
+   "y": -9.375
+  },
+  {
+   "key": "text:h3pc9",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Moderating the Genetic Interpolation Effect",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "f080604782302b87",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.97,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.03
+   },
+   "x": 7.589,
+   "y": -7.699
+  },
+  {
+   "key": "text:gyrp9_send",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (sender)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "72135db8cc7ed404",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.81,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.09
+   },
+   "x": -3.438,
+   "y": -8.047
+  },
+  {
+   "key": "text:gyrp9_return",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Game Responses as Survey Instruments: Measuring the Constituents of Social Capital (second mover)",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "ca04e28664572ecc",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.7,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.18
+   },
+   "x": -3.378,
+   "y": -8.071
+  },
+  {
+   "key": "text:v52yu",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Discomfort in Disagreement with God",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "74f1d24f7d8ddfef",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.99,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.01
+   },
+   "x": 14.902,
+   "y": -14.052
+  },
+  {
+   "key": "text:b2srk",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Recall vs. Judgment: Open-Closed Question Differences in Studying Collective Memory",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "64f7faaed577b78e",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.97,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.03
+   },
+   "x": 0.024,
+   "y": -21.829
+  },
+  {
+   "key": "text:z2vmq",
+   "set": "Text",
+   "source": "TESS",
+   "title": "The Appropriateness of Retaliatory Violence: Effects of Gender and Relationship",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "7bb427024efd75af",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.98,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.02
+   },
+   "x": -3.701,
+   "y": -13.825
+  },
+  {
+   "key": "text:k2mw3",
+   "set": "Text",
+   "source": "TESS",
+   "title": "From the Eye of the Beholder:Attitudes about Physical Attractiveness and their Social and Demographic Correlates",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "0d350df296411045",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.53,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.41
+   },
+   "x": -7.881,
+   "y": -12.156
+  },
+  {
+   "key": "text:s6urt",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Understanding Effects of Communicating Different Types of Conflicting Information About Nutrition and Cancer Risk",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "3296bce0ab8c6223",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 2.373,
+   "y": -11.289
+  },
+  {
+   "key": "text:g6y8s",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Motivational Mechanisms and Hazing Behavior",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "2639d08f31720767",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.99,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.01
+   },
+   "x": -1.841,
+   "y": -15.33
+  },
+  {
+   "key": "text:w8ezk",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Examining How Message Characteristics Influence Support for Gasoline Tax Increases",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "2bee235c092cda7f",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 7.317,
+   "y": -13.818
+  },
+  {
+   "key": "text:gyscq",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Emotional Responses to Infidelity: Investigating Jealousy with a National Sample",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "aad32ddd82e03fb8",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.87,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.12
+   },
+   "x": -4.824,
+   "y": -14.656
+  },
+  {
+   "key": "text:q458t",
+   "set": "Text",
+   "source": "TESS",
+   "title": "The Age-Gender Interaction Effect on Status Expectations: Investigation and Career Implications",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "4a7350f67ef73798",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.75,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.22
+   },
+   "x": 12.239,
+   "y": -5.866
+  },
+  {
+   "key": "text:rf79p",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Trust and Risk",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "e492f1c14a15144e",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.61,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.35
+   },
+   "x": -1.528,
+   "y": -2.737
+  },
+  {
+   "key": "text:w2zm4",
+   "set": "Text",
+   "source": "TESS",
+   "title": "The Dynamics of System Justification",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "b5f633ecb38071d9",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.94,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.03
+   },
+   "x": 1.969,
+   "y": -15.804
+  },
+  {
+   "key": "text:mjt8r",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Status Effects of Gender",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "3e277018c3ad6ce1",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.7,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.27
+   },
+   "x": 12.113,
+   "y": -6.073
+  },
+  {
+   "key": "text:gy5kn",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Determinants of Trust: A Comparative Analysis",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "04ec6db4980d828e",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.87,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.08
+   },
+   "x": -1.193,
+   "y": -3.497
+  },
+  {
+   "key": "text:dwtue",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Addressing privacy online: A Factorial Vignette Survey to Assess Privacy Expectations of Behavioral Advertising",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "c31222e83b687b24",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.88,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.05
+   },
+   "x": 0.201,
+   "y": -10.06
+  },
+  {
+   "key": "text:n96j5",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Personality and Resistance to Persuasion",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "3e33cb71a8c51d5f",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.97,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.03
+   },
+   "x": 1.759,
+   "y": -14.091
+  },
+  {
+   "key": "text:gs6yz",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Statistical Discrimination, Stereotyping, and Evaluations of Worker Productivity",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "c5a3cd607af63c30",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.62,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.2
+   },
+   "x": 10.502,
+   "y": -5.989
+  },
+  {
+   "key": "text:m78xh",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Effects of Ostracism and Stigma on Self-Esteem",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "b69fb7fe4b6f7db0",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.97,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.03
+   },
+   "x": -2.638,
+   "y": -16.788
+  },
+  {
+   "key": "text:a7yw8",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Motivating Emergency Preparedness Behaviors: The Effects of Guilt Appeals and Guilty Feelings",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "1207f8ea54162675",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.64,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.27
+   },
+   "x": -0.062,
+   "y": -12.889
+  },
+  {
+   "key": "text:fykuz",
+   "set": "Text",
+   "source": "TESS",
+   "title": "An Investigation of Order Effects in the Measurement of Aggression and Aggressive Cognition",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "aa4a7c8b4c2f577f",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.98,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.02
+   },
+   "x": -2.813,
+   "y": -13.573
+  },
+  {
+   "key": "text:k5zqm",
+   "set": "Text",
+   "source": "TESS",
+   "title": "General Prejudice Versus Discrete Emotions: Understanding Patterns of Intergroup Emotions",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "b36772fe813f314a",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.99,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.01
+   },
+   "x": 0.194,
+   "y": -17.503
+  },
+  {
+   "key": "text:xk9ch_vignette1",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (person vignette 1)",
+   "category": "cross-national",
+   "status": "Built",
+   "digest": "90b9db06fa25c6db",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.98,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.01
+   },
+   "x": 13.102,
+   "y": -11.32
+  },
+  {
+   "key": "text:xk9ch_institution",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (institutions)",
+   "category": "cross-national",
+   "status": "Built",
+   "digest": "1103f263201ece08",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.99,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.01
+   },
+   "x": 13.819,
+   "y": -11.173
+  },
+  {
+   "key": "text:xk9ch_vignette2",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (person vignette 2)",
+   "category": "cross-national",
+   "status": "Built",
+   "digest": "be91e3c723085f14",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.98,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.01
+   },
+   "x": 13.319,
+   "y": -10.89
+  },
+  {
+   "key": "text:xk9ch_identity_threat",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (identity threat)",
+   "category": "cross-national",
+   "status": "Built",
+   "digest": "d0adc624254e9817",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.98,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.01
+   },
+   "x": 13.558,
+   "y": -11.79
+  },
+  {
+   "key": "text:6gq25",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Exploring the Generality of \"Naive Realism\": Perceptions of Bias in Others who Disagree with our Opinions",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "248681908fc72a08",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.74,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.23
+   },
+   "x": 1.79,
+   "y": -17.952
+  },
+  {
+   "key": "text:3uq9a",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Effects of Outgroup Friendship Salience on Outgroup Attitudes and Moderating Conditions",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "7b3885b5476a56c9",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.84,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.14
+   },
+   "x": -0.691,
+   "y": -17.574
+  },
+  {
+   "key": "text:7tzpe",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Body Size, Illness, and Blame: Causal Attributions and Social Consequences",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "5969c8b0d5564702",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 17.389,
+   "y": -7.574
+  },
+  {
+   "key": "text:r8u7c",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Generalization of the Valence Framing Effect",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "0ed2d84b6c49ea21",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.62,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.25
+   },
+   "x": 2.117,
+   "y": -12.446
+  },
+  {
+   "key": "text:wmfe6",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Perception of Synergistic Risk: Adjusted Anchoring Vignettes for Optimized Measurement",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "a6735e7d5eb8d5e7",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.91,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.04
+   },
+   "x": 3.498,
+   "y": -7.333
+  },
+  {
+   "key": "text:tu95h",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Clarifying the Ideal Worker Norm: Workplace Evaluations of Women by Motherhood Status, Level of Involvement, and Race",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "d3ac2fcc884129cb",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": 11.533,
+   "y": -4.587
+  },
+  {
+   "key": "text:yzjnd",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Question Order Effects on Political Interest Reports",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "09b11f25850a7ab0",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 4.038,
+   "y": -10.599
+  },
+  {
+   "key": "text:8snrf",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Regulatory Focus as a Determinant of Feelings of Ambivalence and Ambivalence Reduction",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "6844b65ceae65bb8",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.96,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.03
+   },
+   "x": 0.241,
+   "y": -14.252
+  },
+  {
+   "key": "text:fw5eq",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Measuring Teenage Pregnancy Norms and Their Effect on Resource Provision",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "68c4b844d490151b",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.58,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.34
+   },
+   "x": 10.081,
+   "y": -2.577
+  },
+  {
+   "key": "text:sm7qn",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Effects of a Randomized Experiment Portraying Mental Illness and Drug Abuse as Treatable Health Conditions",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "b59d8b0f5a20c252",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.47,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.46
+   },
+   "x": 16.524,
+   "y": -9.039
+  },
+  {
+   "key": "text:b5cny",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Priming to Improve Survey Measurement through Anchoring Vignettes",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "bac3ee394fbd6e48",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 2.882,
+   "y": -7.441
+  },
+  {
+   "key": "text:y78g2",
+   "set": "Text",
+   "source": "TESS",
+   "title": "An Experiment Testing Six Formats of 0 to 100 Rating Scales",
+   "category": "survey methodology",
+   "status": "Buildable",
+   "digest": "d4b72619938b9ae8",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 1.35,
+   "y": -7.85
+  },
+  {
+   "key": "text:2awmn",
+   "set": "Text",
+   "source": "TESS",
+   "title": "The Role of Gender Stereotypes in Mental Illness Stigma",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "cf4ae2820156ba11",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.96,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.02
+   },
+   "x": 15.224,
+   "y": -7.613
+  },
+  {
+   "key": "text:wrdm4",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Shame, Blame and Contamination: Mental Illness Stigma and the Family",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "6539920015bb4b38",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.98,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.01
+   },
+   "x": 16.116,
+   "y": -7.363
+  },
+  {
+   "key": "text:agbrd",
+   "set": "Text",
+   "source": "TESS",
+   "title": "The impact of genetic causation of mental illness on attitudes and beliefs toward the illness",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "815eee64144f82ec",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.64,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.32
+   },
+   "x": 15.715,
+   "y": -8.338
+  },
+  {
+   "key": "text:ctp8n",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Capitalization, self-esteem, and building social resources",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "9d0282102cd48cff",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.96,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.04
+   },
+   "x": -8.014,
+   "y": -10.512
+  },
+  {
+   "key": "text:7dc8s",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Testing the Generalizability of the Moral Mandate Effect Under Conditions of Personal Voice",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "5247f3eead0416a9",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.96,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.04
+   },
+   "x": -0.836,
+   "y": -12.917
+  },
+  {
+   "key": "text:36wjy",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Exploring the Social Bases of Attitude Strength",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "a84948cbbabec6d6",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.97,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.01
+   },
+   "x": 1.778,
+   "y": -14.385
+  },
+  {
+   "key": "text:5jua2",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Reducing Intergroup Bias: Does Dual Identification Help or Harm?",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "cfbae84303a7eeb7",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.76,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.2
+   },
+   "x": -0.418,
+   "y": -17.228
+  },
+  {
+   "key": "text:etqdx",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Estimating Number of Lifetime Sexual Partners: A Strategy Activation Study",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "086c8c2a905d2f49",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.84,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.13
+   },
+   "x": 5.642,
+   "y": -5.503
+  },
+  {
+   "key": "text:IU11FD",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "When they go low, we kick them”: The reciprocal nature of citizens’ support for democratic transgressions",
+   "category": "political identity/polarisation",
+   "status": "Needs checking",
+   "digest": "b33408981e801408",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.67,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.19
+   },
+   "x": 6.554,
+   "y": -20.237
+  },
+  {
+   "key": "text:10VFQX",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Crowd Cohesion and Protest Outcomes",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "c4932ec7c69d10f1",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.34,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.31
+   },
+   "x": 3.222,
+   "y": -16.368
+  },
+  {
+   "key": "text:6EJJJZ",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Which Promises Actually Matter?  Election Pledge Centrality and Promissory Representation",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "483c8fe1efc39ffd",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.92,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.03
+   },
+   "x": 5.829,
+   "y": -18.522
+  },
+  {
+   "key": "text:UM6KP5",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Elite Communication and the Popular Legitimacy of International Organizations",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "f2d218037ddb1dca",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.73,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.15
+   },
+   "x": 6.719,
+   "y": -16.572
+  },
+  {
+   "key": "text:3YCVOF",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Legislator dissent as a valence signal",
+   "category": "political identity/polarisation",
+   "status": "Needs checking",
+   "digest": "7bb0ba09cd433113",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.84,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.07
+   },
+   "x": 5.32,
+   "y": -17.233
+  },
+  {
+   "key": "text:XSOTDJ",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "The Activist’s Trade-off: Climate Disruption Buys Salience at a Cost",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "22d4e3cdb706d3a0",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.26,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.32
+   },
+   "x": 6.022,
+   "y": -13.993
+  },
+  {
+   "key": "text:CXHUNT",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Do citizens stereotype Muslims as an Illiberal Bogeyman? Evidence from a Double-List Experiment",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "5503ffd2370b5e78",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.72,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.23
+   },
+   "x": 11.446,
+   "y": -13.408
+  },
+  {
+   "key": "text:NYXQMG",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "British nationals’ preferences over who gets to be a citizen according to a choice-based conjoint experiment",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "b12cf0459893ef2c",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.88,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.07
+   },
+   "x": 9.794,
+   "y": -14.94
+  },
+  {
+   "key": "text:RUNQHV",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Energy Policy Preferences in Times of Crisis - Evidence from survey experiments in the UK",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "5024ddc945264cb5",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 7.421,
+   "y": -14.451
+  },
+  {
+   "key": "text:VBWUVG",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Anti-Muslim Bias in Foreign Policy Attitudes: Experimental Evidence from 13 European Countries",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "79060bdc10e339be",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.7,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.24
+   },
+   "x": 11.127,
+   "y": -13.724
+  },
+  {
+   "key": "text:M9XJRE",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Averaging Over Varieties of Variance; Evidence from Survey Experiments on Immigration",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "71c0dd8059711fc0",
+   "jev": {
+    "choice": "cross-national",
+    "confidence": 0.62,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.22
+   },
+   "x": 5.655,
+   "y": -10.484
+  },
+  {
+   "key": "text:RFAXEY",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Parliament, People, or Technocrats? Explaining Mass Public Preferences on Delegation of Policy Making Authority",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "018d2b78c1afdbef",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.97,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.02
+   },
+   "x": 6.935,
+   "y": -17.053
+  },
+  {
+   "key": "text:35M5CV_bbc",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (BBC conjoint)",
+   "category": "political identity/polarisation",
+   "status": "Built",
+   "digest": "505a3c971cabbdd2",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 8.956,
+   "y": -18.735
+  },
+  {
+   "key": "text:35M5CV_lodger",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (Lodger conjoint)",
+   "category": "political identity/polarisation",
+   "status": "Built",
+   "digest": "d9ad35828fb2305e",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 9.089,
+   "y": -19.228
+  },
+  {
+   "key": "text:35M5CV_sky",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Divided by the Vote: Affective Polarization in the Wake of the Brexit Referendum (Sky emotional attachment battery)",
+   "category": "political identity/polarisation",
+   "status": "Built",
+   "digest": "329bfde209b1356b",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.97,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.02
+   },
+   "x": 9.551,
+   "y": -18.832
+  },
+  {
+   "key": "text:5hqan",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Gender Identity and Diversity",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "110d8c7a1e447b58",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.94,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.04
+   },
+   "x": 11.618,
+   "y": 7.115
+  },
+  {
+   "key": "text:6MRVOM_brexit_scenario",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Pricing Immigration",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "c14d4b066e3d112e",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.97,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.02
+   },
+   "x": 8.555,
+   "y": 10.085
+  },
+  {
+   "key": "text:6MRVOM_eu_share",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Pricing Immigration",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "948d088d0a403135",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.9,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.05
+   },
+   "x": 8.555,
+   "y": 10.085
+  },
+  {
+   "key": "text:7jt2f",
+   "set": "Text",
+   "source": "TESS",
+   "title": "When Others' Disbelief Engenders Prejudice: Characterizing Anti-Atheist Prejudice",
+   "category": "cross-national",
+   "status": "Built",
+   "digest": "23053a158a00c926",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.96,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.04
+   },
+   "x": 14.091,
+   "y": -13.176
+  },
+  {
+   "key": "text:8ctbk",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Childbearing Preferences in the Face of Work, Family, and Financial Constraints",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "cd97749787f2603e",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 11.29,
+   "y": -1.889
+  },
+  {
+   "key": "text:9263n",
+   "set": "Text",
+   "source": "TESS",
+   "title": "To Do, to Have, or to Share? Valuing Experiences and Material Possessions by Involving Others",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "764672675ebe5f60",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.85,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.12
+   },
+   "x": -6.345,
+   "y": -9.035
+  },
+  {
+   "key": "text:9xw67_conjoint",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Blame and Bias in Trust in Public Policy Algorithms",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "aadf724bcab4677f",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.96,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.04
+   },
+   "x": 3.754,
+   "y": -20.178
+  },
+  {
+   "key": "text:9xw67_vignette",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Blame and Bias in Trust in Public Policy Algorithms",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "e1617b3c7d25aa8b",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.9,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.09
+   },
+   "x": 3.754,
+   "y": -20.178
+  },
+  {
+   "key": "text:EFXNLX",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Policy Preferences and Policy Legitimacy After Referendums: Evidence from the Brexit Negotiations",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "834ef824da867676",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 8.116,
+   "y": -17.828
+  },
+  {
+   "key": "text:LOGVPZ_brexit_satisfaction",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Mind the Gap: Why Wealthy Voters Support Brexit",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "6aaa201fc7501dd8",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.89,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.09
+   },
+   "x": 9.454,
+   "y": -20.652
+  },
+  {
+   "key": "text:LOGVPZ_risk_tolerance",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Mind the Gap: Why Wealthy Voters Support Brexit",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "de34f75f733e02f4",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.73,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.23
+   },
+   "x": 9.456,
+   "y": -20.651
+  },
+  {
+   "key": "text:PMV0TG",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Citizens from 13 countries share similar preferences for COVID-19 vaccine allocation priorities",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "bb732aeae29fadbf",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.49,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.32
+   },
+   "x": 10.521,
+   "y": -15.38
+  },
+  {
+   "key": "text:POMIFD",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Replication Data for: The Variable Persuasiveness of Political Rhetoric",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "c32393f05f1e8207",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.93,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.04
+   },
+   "x": 5.244,
+   "y": -16.055
+  },
+  {
+   "key": "text:PZB01G",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "For and Against Brexit: A Survey Experiment of the Impact of Campaign Effects on Public Attitudes toward EU Membership",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "a2500483a1ded6c7",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 9.214,
+   "y": -17.527
+  },
+  {
+   "key": "text:QQM5MC",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the Brexit Vote",
+   "category": "political identity/polarisation",
+   "status": "Built",
+   "digest": "0b94e7a0f7a8c699",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.55,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.37
+   },
+   "x": 8.221,
+   "y": -19.346
+  },
+  {
+   "key": "text:RJTVG8",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Support for digitising the ballot box: a systematic review of i-voting pilots and a conjoint experiment",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "1dd83d10be339ce0",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 3.1,
+   "y": -2.209
+  },
+  {
+   "key": "text:a2nbf",
+   "set": "Text",
+   "source": "TESS",
+   "title": "An Experiment Testing Possible Question-Wording Effects on Key General Social Survey Indicators of Attitudes toward Genetic Testing (Singer, TESS2 104)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "6bf6b095294e1808",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.92,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.04
+   },
+   "x": 6.495,
+   "y": -8.7
+  },
+  {
+   "key": "text:a42yg",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Conflict between curative and palliative goals among health care personnel: Elucidating psychological processes and resolving conflict through self-affirmation",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "272cfeb3873b331c",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.82,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.15
+   },
+   "x": -0.32,
+   "y": -14.882
+  },
+  {
+   "key": "text:a5v96_vignette1",
+   "set": "Text",
+   "source": "TESS",
+   "title": "What fosters patients' acceptance of Clinical Decision Support? (vignette 1: the twisted ankle)",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "e2d698d04fc3dca6",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.65,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.3
+   },
+   "x": 1.194,
+   "y": -2.905
+  },
+  {
+   "key": "text:b87sm",
+   "set": "Text",
+   "source": "TESS",
+   "title": "How to Increase the Acceptance of Mobile App and Sensor Data Collection?",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "b29f65b2dfd09e6c",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.4,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.28
+   },
+   "x": 1.872,
+   "y": -3.036
+  },
+  {
+   "key": "text:bf8p2",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Does Misery Love Company? Exploration of a Strategic Social Comparison",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "80b213c8b8771b3b",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.93,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.06
+   },
+   "x": -3.431,
+   "y": -15.727
+  },
+  {
+   "key": "text:c5r2f",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Do Policy Defaults Communicate Choice-Relevant Information?",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "6edffb84dd738c02",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.46,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.33
+   },
+   "x": 0.098,
+   "y": -10.514
+  },
+  {
+   "key": "text:cug34_B01_B09",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Public Perceptions of Money in Families",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "13c25a4d6d9a0787",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.62,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.32
+   },
+   "x": 12.341,
+   "y": 0.142
+  },
+  {
+   "key": "text:dh3nj",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Public Perceptions of Prenatal Alcohol Consumption",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "8f5ad823e8817b27",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.91,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.06
+   },
+   "x": -12.42,
+   "y": 5.897
+  },
+  {
+   "key": "text:evnyh_Q1a_and_validation",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Impact of Response Scale Direction on Survey Responses (Keusch, TESS3 150)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "61ff97f6844497a4",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 2.262,
+   "y": -8.372
+  },
+  {
+   "key": "text:py9q3_vignette1",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Attitudes toward the Employment of Mothers and Fathers",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "b615953400d20920",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": 13.318,
+   "y": -1.918
+  },
+  {
+   "key": "text:py9q3_vignette2",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Attitudes toward the Employment of Mothers and Fathers",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "7c2c703a6e9ce0f3",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": 12.917,
+   "y": -2.123
+  },
+  {
+   "key": "text:py9q3_vignette3",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Attitudes toward the Employment of Mothers and Fathers",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "f2cf7746f962b86b",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 12.918,
+   "y": -1.705
+  },
+  {
+   "key": "text:rpw4u_RO1",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Cross-National Replication of Question Design Experiments (RO1: oil supply)",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "b04936f3904b1a36",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.83,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.14
+   },
+   "x": 4.549,
+   "y": -9.308
+  },
+  {
+   "key": "text:sd7cf",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Framing in Noisy Informational Environments",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "31a46efd7ceac849",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.94,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.04
+   },
+   "x": 3.101,
+   "y": -12.795
+  },
+  {
+   "key": "text:sh4px",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Self-Affirmation and Affect: Effects on Implementation Intentions",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "117fac6bb5e3c565",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": -0.122,
+   "y": -13.743
+  },
+  {
+   "key": "text:ukds_6849_alcohol_w15",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Alcohol consumption",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "1ef3fd4906f4778c",
+   "jev": null,
+   "x": -13.436,
+   "y": 6.907
+  },
+  {
+   "key": "text:ukds_6849_caring_activity_w17",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Identification of informal caregiving",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "f72139c78ffeb70c",
+   "jev": null,
+   "x": 6.844,
+   "y": 4.483
+  },
+  {
+   "key": "text:ukds_6849_caring_existing_w17",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Identification of informal caregiving",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "99a70c524fc318f8",
+   "jev": null,
+   "x": 6.844,
+   "y": 4.483
+  },
+  {
+   "key": "text:ukds_6849_eq5d3l_w11",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Variations of the EQ-5D questions",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "7e5a808447be52a0",
+   "jev": null,
+   "x": -4.6,
+   "y": -3.858
+  },
+  {
+   "key": "text:ukds_6849_eq5d5l_w11",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Variations of the EQ-5D questions",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "bb6084a82ea524cb",
+   "jev": null,
+   "x": -4.62,
+   "y": -3.86
+  },
+  {
+   "key": "text:ukds_6849_fertility_w4",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Context effects in fertility decisions",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "bf67a333b7202dc4",
+   "jev": null,
+   "x": 10.421,
+   "y": -1.498
+  },
+  {
+   "key": "text:ukds_6849_fertility_w5",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Context effects in fertility decisions",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "5121ec584c94e7ee",
+   "jev": null,
+   "x": 10.421,
+   "y": -1.498
+  },
+  {
+   "key": "text:ukds_6849_ghq_w14",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Comparison of ReQoL-10 to other scales",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "c243f30beca32b47",
+   "jev": null,
+   "x": -4.421,
+   "y": -5.061
+  },
+  {
+   "key": "text:ukds_6849_identity_w2",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Measuring identity",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "38399c97560b7cfa",
+   "jev": null,
+   "x": -0.695,
+   "y": -0.168
+  },
+  {
+   "key": "text:ukds_6849_itemcount_w8",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Measuring sexual identity using direct and indirect questioning",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "68d1e7739f4c6883",
+   "jev": null,
+   "x": 4.899,
+   "y": -5.389
+  },
+  {
+   "key": "text:ukds_6849_itemcount_w9",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Measuring sexual identity using direct and indirect questioning",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "2fd307ab0fc28532",
+   "jev": null,
+   "x": 4.899,
+   "y": -5.39
+  },
+  {
+   "key": "text:ukds_6849_numeracy_env_w16",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Understanding of the long-term future",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "e387a272d4c690c9",
+   "jev": null,
+   "x": 7.621,
+   "y": 0.55
+  },
+  {
+   "key": "text:ukds_6849_numeracy_fin_w16",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Understanding of the long-term future",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "36fa19c705116728",
+   "jev": null,
+   "x": 7.621,
+   "y": 0.55
+  },
+  {
+   "key": "text:ukds_6849_reqol_w14",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Comparison of ReQoL-10 to other scales",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "8e356e8f86736318",
+   "jev": null,
+   "x": -4.421,
+   "y": -5.061
+  },
+  {
+   "key": "text:ukds_6849_satisfaction_w9",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Presentation of response options in satisfaction questions",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "936dcce560698917",
+   "jev": null,
+   "x": 0.862,
+   "y": -6.755
+  },
+  {
+   "key": "text:ukds_6849_timerisk_w6",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Associated Study: measuring time and risk preferences",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "63effd31fd4fd4fa",
+   "jev": null,
+   "x": -1.588,
+   "y": -6.177
+  },
+  {
+   "key": "text:ukds_6849_timerisk_w7",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Associated Study: measuring time and risk preferences",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "cf4e7367052a75db",
+   "jev": null,
+   "x": -1.588,
+   "y": -6.177
+  },
+  {
+   "key": "text:ukds_6849_vig_ageing_w17",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "What do the general population regard as “successful ageing”?",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "667597ea10b691a5",
+   "jev": null,
+   "x": -4.161,
+   "y": -21.393
+  },
+  {
+   "key": "text:ukds_6849_vig_ageing_w9",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "What do the general population regard as “successful ageing”?",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "88fd949b1c73b763",
+   "jev": null,
+   "x": -4.161,
+   "y": -21.393
+  },
+  {
+   "key": "text:ukds_6849_vig_flexstigma_w16",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Vignettes: measuring flexibility stigma - double whammy or femininity stigma",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "f58ccb8814ebba90",
+   "jev": null,
+   "x": 8.871,
+   "y": -4.572
+  },
+  {
+   "key": "text:ukds_6849_vig_housework_w5",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Vignettes: measuring partner satisfaction with division of household labour",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "4058cedcca87d359",
+   "jev": null,
+   "x": 7.212,
+   "y": -3.349
+  },
+  {
+   "key": "text:ukds_6849_vig_housework_w6",
+   "set": "Text",
+   "source": "Innovation Panel",
+   "title": "Vignettes: measuring partner satisfaction with division of household labour",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "ecc94324534e134e",
+   "jev": null,
+   "x": 7.212,
+   "y": -3.349
+  },
+  {
+   "key": "text:ye2ej",
+   "set": "Text",
+   "source": "TESS",
+   "title": "The Wages of Parenthood: At the Intersection of Sexual Orientation and Child Caregiving",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "a7d3d288f8b7782c",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 13.603,
+   "y": -3.296
+  },
+  {
+   "key": "text:yv2ta_flexible_scheduling",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "bd06989ab0dc11d4",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": 11.888,
+   "y": -3.43
+  },
+  {
+   "key": "text:yv2ta_parental_leave",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Opting into Work-Family Policies: Comparing the Effects of Material and Cultural Concerns",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "ad67fde18a0ea32e",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": 11.888,
+   "y": -3.43
+  },
+  {
+   "key": "text:z358z",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Randomized Drug Trials without Consent? The Public's Perspective",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "b2bd6d9c41991867",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.67,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.17
+   },
+   "x": 17.726,
+   "y": -10.68
+  },
+  {
+   "key": "text:zaqkm",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Causal Attributions, Treatability, and Mental Illness Stigma",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "79ec05717e5fabad",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.93,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.06
+   },
+   "x": 16.34,
+   "y": -8.135
+  },
+  {
+   "key": "text:zrwjp",
+   "set": "Text",
+   "source": "TESS",
+   "title": "The Barriers of Buying Happier Time",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "62e968bbda92dd19",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.99,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.01
+   },
+   "x": -6.699,
+   "y": -7.937
+  },
+  {
+   "key": "text:3muqx",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Whom Do You Believe? Credibility in Sexual Assault",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "894ca37b6541df67",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.97,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.02
+   },
+   "x": -4.487,
+   "y": -12.901
+  },
+  {
+   "key": "text:sdq2z",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Do liberals and conservatives differ in attitudes towards new housing?",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "8c3a45bdf5781da2",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.96,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.02
+   },
+   "x": 9.817,
+   "y": -11.646
+  },
+  {
+   "key": "text:xtvu5",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Effects of Misinformation News Coverage on Media Trust",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "4b83a346a3b0d934",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.57,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.35
+   },
+   "x": 4.474,
+   "y": -12.393
+  },
+  {
+   "key": "text:vemrp",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Accidental Environmentalists: Income and Evaluations of Eco-Friendly Lifestyles",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "8dea270dd2842d6c",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.94,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.03
+   },
+   "x": 6.887,
+   "y": -12.611
+  },
+  {
+   "key": "text:j6xgs",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Busyness, Idleness, and Happiness",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "180558089df8b7a8",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.28,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.23
+   },
+   "x": -7.274,
+   "y": -8.042
+  },
+  {
+   "key": "text:5mt6r",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Improving Measurement of Self-Reported Health: Question Context and Response Order",
+   "category": "survey methodology",
+   "status": "Built",
+   "digest": "24fb20b561aec618",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 2.134,
+   "y": -6.923
+  },
+  {
+   "key": "text:zx5b8",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Do the Benefits of Receiving Affectionate Touch Generalize Beyond Satisfied Couples?",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "a3613069a7191776",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.7,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.23
+   },
+   "x": -6.036,
+   "y": -14.777
+  },
+  {
+   "key": "text:k9ahx_ratings",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Assessing the Stability of Value Systems in the Mass Public",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "f2f8cfc7087a68a2",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.53,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.27
+   },
+   "x": 3.229,
+   "y": -14.746
+  },
+  {
+   "key": "text:de5hx",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Risk Orientations, Status Quo Frames, and Electoral Choice",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "58dab47eb90bfe93",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.28,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.34
+   },
+   "x": 4.694,
+   "y": -14.86
+  },
+  {
+   "key": "text:sffyb",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Saving for retirement vs. Saving for a retirement with others",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "digest": "310135cb6216a8d8",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.94,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.05
+   },
+   "x": 12.96,
+   "y": 1.578
+  },
+  {
+   "key": "image:IMG01",
+   "set": "Image",
+   "source": "",
+   "title": "Alcohol warning labels",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "fd6ad537c11e5562",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.98,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.02
+   },
+   "x": -14.021,
+   "y": 8.275
+  },
+  {
+   "key": "image:IMG02",
+   "set": "Image",
+   "source": "",
+   "title": "Snack warning labels",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "d6434a207f3b6ba1",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.99,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.01
+   },
+   "x": -15.747,
+   "y": 10.558
+  },
+  {
+   "key": "image:IMG03",
+   "set": "Image",
+   "source": "",
+   "title": "Vending machine",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "57eab75d5d82c5b3",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.92,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.07
+   },
+   "x": -16.467,
+   "y": 17.387
+  },
+  {
+   "key": "image:IMG06",
+   "set": "Image",
+   "source": "",
+   "title": "Charity appeal photos",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "483f80f35ec26eb6",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.44,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.48
+   },
+   "x": -4.118,
+   "y": 12.456
+  },
+  {
+   "key": "image:IMG07",
+   "set": "Image",
+   "source": "",
+   "title": "Paired photos",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "c5e060eed776bbba",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.76,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.19
+   },
+   "x": -5.745,
+   "y": 12.459
+  },
+  {
+   "key": "image:IMG08",
+   "set": "Image",
+   "source": "",
+   "title": "9 charity video appeals, plus 4 random image pairs rated on a donation slider",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "9d93f0f99bebb3ef",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.44,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.46
+   },
+   "x": -23.367,
+   "y": 9.455
+  },
+  {
+   "key": "image:IMG09",
+   "set": "Image",
+   "source": "",
+   "title": "Online political ads",
+   "category": "political preferences/policy",
+   "status": "Waiting for images",
+   "digest": "67ec528e28234c8f",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.19,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.25
+   },
+   "x": -3.921,
+   "y": 16.652
+  },
+  {
+   "key": "image:IMG13",
+   "set": "Image",
+   "source": "",
+   "title": "EU flag / symbol images vs none, YouGov 2011, n=8,599",
+   "category": "political identity/polarisation",
+   "status": "Needs checking",
+   "digest": "43c9dfaa7b13a05b",
+   "jev": null,
+   "x": 11.343,
+   "y": -17.761
+  },
+  {
+   "key": "image:IMG14",
+   "set": "Image",
+   "source": "",
+   "title": "Front-of-pack food labels on mock packs, 5 label types, n=4,504 GB",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "e815d6729129a066",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.93,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.03
+   },
+   "x": -20.121,
+   "y": 10.337
+  },
+  {
+   "key": "image:IMG15",
+   "set": "Image",
+   "source": "",
+   "title": "Migration charts",
+   "category": "political preferences/policy",
+   "status": "Waiting for images",
+   "digest": "8cf53811f9ac18a2",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.54,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.18
+   },
+   "x": -4.27,
+   "y": 6.406
+  },
+  {
+   "key": "image:IMG18",
+   "set": "Image",
+   "source": "",
+   "title": "Slot-game advert features",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "0623cac6e11d0dd9",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.7,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.18
+   },
+   "x": -11.389,
+   "y": 14.223
+  },
+  {
+   "key": "image:IMG20",
+   "set": "Image",
+   "source": "",
+   "title": "Salt warning labels",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "29c1f98bc33a9529",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.76,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.21
+   },
+   "x": -15.876,
+   "y": 9.604
+  },
+  {
+   "key": "image:IMG21",
+   "set": "Image",
+   "source": "",
+   "title": "Climate traffic-light labels on canteen meal photos",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "8196102aa8d3f43b",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.66,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.17
+   },
+   "x": -18.649,
+   "y": 11.365
+  },
+  {
+   "key": "image:IMG22",
+   "set": "Image",
+   "source": "",
+   "title": "Alcohol label acceptability",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "3a42cf0a3311e516",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.97,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": -13.365,
+   "y": 7.962
+  },
+  {
+   "key": "image:IMG23",
+   "set": "Image",
+   "source": "",
+   "title": "Calorie / PACE",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "c42ee58439058738",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.97,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.01
+   },
+   "x": -19.729,
+   "y": 7.874
+  },
+  {
+   "key": "image:IMG25",
+   "set": "Image",
+   "source": "",
+   "title": "Alcohol calorie labels on pub and Pizza Express menus, present vs absent; units and kcal ordered",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "48c34bba9dd6af2e",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.94,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.04
+   },
+   "x": -17.252,
+   "y": 8.362
+  },
+  {
+   "key": "image:IMG26",
+   "set": "Image",
+   "source": "",
+   "title": "Alcohol calorie labels on a restaurant menu; kcal ordered by course",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "15825a4e8bc8290f",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.91,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.07
+   },
+   "x": -17.479,
+   "y": 8.677
+  },
+  {
+   "key": "image:IMG27",
+   "set": "Image",
+   "source": "",
+   "title": "Portion choice from food photos",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "47a846410cb7575a",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.61,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.16
+   },
+   "x": -18.102,
+   "y": 9.914
+  },
+  {
+   "key": "image:IMG28",
+   "set": "Image",
+   "source": "",
+   "title": "Online supermarket",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "ed50a220844ef5d6",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.61,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.33
+   },
+   "x": -18.114,
+   "y": 18.023
+  },
+  {
+   "key": "image:IMG29",
+   "set": "Image",
+   "source": "",
+   "title": "Fast-food menu boards",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "6b843b09ab8129a1",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.91,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.07
+   },
+   "x": -15.871,
+   "y": 14.073
+  },
+  {
+   "key": "image:IMG30",
+   "set": "Image",
+   "source": "",
+   "title": "Mock delivery app",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "4c4e79a0100f4bc5",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.65,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.31
+   },
+   "x": -18.041,
+   "y": 15.805
+  },
+  {
+   "key": "image:IMG31",
+   "set": "Image",
+   "source": "",
+   "title": "Online supermarket",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "a607bbc969de84b1",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.88,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.08
+   },
+   "x": -18.114,
+   "y": 18.023
+  },
+  {
+   "key": "image:IMG32",
+   "set": "Image",
+   "source": "",
+   "title": "Ecolabels on canteen meal images, varying the range of labels; 5 themed meal choices",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "fc8dc61f7c830b12",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.55,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.27
+   },
+   "x": -19.875,
+   "y": 11.274
+  },
+  {
+   "key": "image:IMG33",
+   "set": "Image",
+   "source": "",
+   "title": "Nature vs urban photo",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "d36f6d55f5aebee2",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.8,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.08
+   },
+   "x": -6.637,
+   "y": 12.041
+  },
+  {
+   "key": "image:IMG34",
+   "set": "Image",
+   "source": "",
+   "title": "Restrain Food Database",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "c7c2c2fcebb488f4",
+   "jev": {
+    "choice": "NONE_OF_THESE",
+    "confidence": 0.24,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.27
+   },
+   "x": -19.344,
+   "y": 8.826
+  },
+  {
+   "key": "image:IMG35",
+   "set": "Image",
+   "source": "",
+   "title": "Bristol \"Know Your Limits\" alcohol labels",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "12fdbeb3fc7cceb4",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -14.814,
+   "y": 8.303
+  },
+  {
+   "key": "image:IMG36",
+   "set": "Image",
+   "source": "",
+   "title": "Eco-label vs social-nudge label vs none on a Deliveroo-style burrito menu; choose beef, chicken or veg; reactance, support",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "1def109e68805837",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.6,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.31
+   },
+   "x": -21.484,
+   "y": 11.113
+  },
+  {
+   "key": "image:IMG37",
+   "set": "Image",
+   "source": "",
+   "title": "Plant milk cartons labelled \"milk\" vs \"drink\"",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "digest": "06ac5ec039647a06",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.66,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.25
+   },
+   "x": -13.945,
+   "y": 11.547
+  },
+  {
+   "key": "image:IMG38",
+   "set": "Image",
+   "source": "",
+   "title": "Carbon traffic-light vs standard label on product images",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "b484b65dd66a2359",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.8,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.1
+   },
+   "x": -20.276,
+   "y": 12.683
+  },
+  {
+   "key": "image:IMG40",
+   "set": "Image",
+   "source": "",
+   "title": "Chocolate-bar images with health warnings vs irrelevant unpleasant labels vs none; liking and wanting before and after, snack choice",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "472400d0118b2f5e",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.99,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.01
+   },
+   "x": -22.133,
+   "y": 10.271
+  },
+  {
+   "key": "image:IMG41",
+   "set": "Image",
+   "source": "",
+   "title": "Pictorial warning labels on meal images",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "74b764c031478248",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.9,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.04
+   },
+   "x": -17.771,
+   "y": 10.712
+  },
+  {
+   "key": "image:IMG42",
+   "set": "Image",
+   "source": "",
+   "title": "Online supermarket",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "0b2e4fc7b908ee0c",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.85,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.07
+   },
+   "x": -18.848,
+   "y": 17.97
+  },
+  {
+   "key": "image:IMG43",
+   "set": "Image",
+   "source": "",
+   "title": "Online supermarket",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "f22eb9f94b54cec3",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.45,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.42
+   },
+   "x": -18.297,
+   "y": 17.44
+  },
+  {
+   "key": "image:IMG44",
+   "set": "Image",
+   "source": "",
+   "title": "Political ad disclaimers",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "b6a9b5167cca593a",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.53,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.21
+   },
+   "x": -3.777,
+   "y": 15.808
+  },
+  {
+   "key": "image:IMG45",
+   "set": "Image",
+   "source": "",
+   "title": "\"Worst of the bunch\" COVID deaths chart",
+   "category": "political preferences/policy",
+   "status": "Waiting for images",
+   "digest": "2e5752c3b951f654",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.81,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.15
+   },
+   "x": -6.948,
+   "y": 7.915
+  },
+  {
+   "key": "image:IMG46",
+   "set": "Image",
+   "source": "",
+   "title": "Heroes and villains visual conjoint",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "2d9c42312ff774b8",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.9,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.08
+   },
+   "x": -3.77,
+   "y": 2.874
+  },
+  {
+   "key": "image:IMG47",
+   "set": "Image",
+   "source": "",
+   "title": "COVID personal risk graphs",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "7590ad255ecd47d7",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.85,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.13
+   },
+   "x": -7.536,
+   "y": 6.232
+  },
+  {
+   "key": "image:IMG48",
+   "set": "Image",
+   "source": "",
+   "title": "Flood risk matrices",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "f08b4c60034f7e8d",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.49,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.43
+   },
+   "x": -7.271,
+   "y": 4.815
+  },
+  {
+   "key": "image:IMG51",
+   "set": "Image",
+   "source": "",
+   "title": "Celebrity conservation advert",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "11d13630556bcc25",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.89,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.06
+   },
+   "x": -3.414,
+   "y": 13.502
+  },
+  {
+   "key": "image:IMG54",
+   "set": "Image",
+   "source": "",
+   "title": "Digital imprints on campaign posts",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "dac7e500ef12b2e2",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.62,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.16
+   },
+   "x": -4.362,
+   "y": 16.914
+  },
+  {
+   "key": "image:IMG55",
+   "set": "Image",
+   "source": "",
+   "title": "Gambling adverts and stigma",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "d7a83b2ad10d8ab3",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.89,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.09
+   },
+   "x": -10.78,
+   "y": 12.109
+  },
+  {
+   "key": "image:IMG57",
+   "set": "Image",
+   "source": "",
+   "title": "Social correction of misinformation posts",
+   "category": "moral/social/cognition",
+   "status": "Built (risky)",
+   "digest": "5953b292825d4aea",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.92,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.06
+   },
+   "x": -4.974,
+   "y": 18.174
+  },
+  {
+   "key": "image:IMG59",
+   "set": "Image",
+   "source": "",
+   "title": "Sustainable choices in a delivery app",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "eb7e17b7b27da906",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.89,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.05
+   },
+   "x": -18.285,
+   "y": 14.047
+  },
+  {
+   "key": "image:IMG60",
+   "set": "Image",
+   "source": "",
+   "title": "Removing price promotions on a delivery menu",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "bc9d23d2d6aeaff3",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.9,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.07
+   },
+   "x": -19.339,
+   "y": 14.058
+  },
+  {
+   "key": "image:IMG62",
+   "set": "Image",
+   "source": "",
+   "title": "Nutri-Score on a delivery app",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "2941d849ce42506a",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.94,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.05
+   },
+   "x": -18.591,
+   "y": 12.426
+  },
+  {
+   "key": "image:IMG69",
+   "set": "Image",
+   "source": "",
+   "title": "AI labels on headline cards",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "ecad84ec4a3733c5",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.82,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.08
+   },
+   "x": -7.516,
+   "y": 16.039
+  },
+  {
+   "key": "image:IMG70",
+   "set": "Image",
+   "source": "",
+   "title": "Breaking the Ice: climate memes",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "5c89ed0daef0518b",
+   "jev": null,
+   "x": -8.115,
+   "y": 18.881
+  },
+  {
+   "key": "image:IMG71",
+   "set": "Image",
+   "source": "",
+   "title": "Ok Boomer: generational memes",
+   "category": "political identity/polarisation",
+   "status": "Needs checking",
+   "digest": "76198d2843d06933",
+   "jev": null,
+   "x": -8.096,
+   "y": 19.404
+  },
+  {
+   "key": "image:IMG72",
+   "set": "Image",
+   "source": "",
+   "title": "Online energy-label shop (CLASP)",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "a4585459ecfdcb01",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.87,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.08
+   },
+   "x": -20.721,
+   "y": 16.488
+  },
+  {
+   "key": "image:IMG73",
+   "set": "Image",
+   "source": "",
+   "title": "Wheelchair user in a restaurant ad",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "3ff1699f937312eb",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.99,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.01
+   },
+   "x": -14.165,
+   "y": 15.011
+  },
+  {
+   "key": "image:IMG75",
+   "set": "Image",
+   "source": "",
+   "title": "Join This Group: WhatsApp manipulation",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "4987a310fedd8fe7",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.83,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.09
+   },
+   "x": -3.115,
+   "y": 19.848
+  },
+  {
+   "key": "image:IMG77",
+   "set": "Image",
+   "source": "",
+   "title": "Mycelium novel food photos",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "d6cffa764ed3cc50",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.85,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.08
+   },
+   "x": -18.255,
+   "y": 6.665
+  },
+  {
+   "key": "image:IMG80",
+   "set": "Image",
+   "source": "",
+   "title": "Far-right dating conjoint",
+   "category": "political identity/polarisation",
+   "status": "Waiting for images",
+   "digest": "59387da5e2c4d61e",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 7.914,
+   "y": 14.404
+  },
+  {
+   "key": "image:IMG81",
+   "set": "Image",
+   "source": "",
+   "title": "Sleeping with the enemy dating conjoint",
+   "category": "political identity/polarisation",
+   "status": "Waiting for images",
+   "digest": "9f707010b2029ab3",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": 7.988,
+   "y": 14.404
+  },
+  {
+   "key": "image:IMG85",
+   "set": "Image",
+   "source": "",
+   "title": "Armed vs unarmed police photos",
+   "category": "political preferences/policy",
+   "status": "Waiting for images",
+   "digest": "27558f51a3cad77c",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.8,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.15
+   },
+   "x": -5.611,
+   "y": 11.327
+  },
+  {
+   "key": "image:IMG86",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Transgender label and face appearance",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "c0fe018967595b1f",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.94,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.04
+   },
+   "x": 12.258,
+   "y": 7.824
+  },
+  {
+   "key": "image:IMG87",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Management-team photos and diversity",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "308e95851a91ae9b",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.7,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.27
+   },
+   "x": -0.168,
+   "y": 15.145
+  },
+  {
+   "key": "image:IMG88",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Treatment-outcome charts and consent",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "f2e4ccb2f36720e9",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.8,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.17
+   },
+   "x": 2.522,
+   "y": 4.111
+  },
+  {
+   "key": "image:IMG89",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Sustainability labels on a fast-food menu",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "1759e28783f91a39",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.72,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.13
+   },
+   "x": -17.732,
+   "y": 12.982
+  },
+  {
+   "key": "image:IMG90",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "The Tesla effect: car photos",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "9c89eb4b226fd914",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.84,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.07
+   },
+   "x": -7.596,
+   "y": 14.179
+  },
+  {
+   "key": "image:IMG91",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Police headquarters photos",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "7a3137db794c5d97",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.96,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.02
+   },
+   "x": -5.311,
+   "y": 11.438
+  },
+  {
+   "key": "image:IMG92",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Attractiveness, gender and status",
+   "category": "work/family/gender",
+   "status": "Built",
+   "digest": "a1e45be4f75f46dc",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.62,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.33
+   },
+   "x": -8.171,
+   "y": -11.456
+  },
+  {
+   "key": "image:IMG95",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Light bulbs: product photos and cost information",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "ccfb7ce61ae057a3",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -21.595,
+   "y": 15.275
+  },
+  {
+   "key": "image:IMG96",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Cancer screening risk graphic",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "8779fb25d7909401",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -8.579,
+   "y": 6.514
+  },
+  {
+   "key": "image:IMG97",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "CV images and hiring (Amy Decker)",
+   "category": "work/family/gender",
+   "status": "Buildable",
+   "digest": "71652ba7b84f9a84",
+   "jev": {
+    "choice": "work/family/gender",
+    "confidence": 0.84,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.12
+   },
+   "x": -0.069,
+   "y": 15.412
+  },
+  {
+   "key": "image:IMG98",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Alcohol heart-health infographic",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "ad237dea5a8332b1",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -11.353,
+   "y": 7.738
+  },
+  {
+   "key": "image:IMG99",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Elite philanthropy chart",
+   "category": "political preferences/policy",
+   "status": "Buildable",
+   "digest": "25bf6142c8b5d430",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.88,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.04
+   },
+   "x": -4.585,
+   "y": 8.178
+  },
+  {
+   "key": "image:IMG100",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Petrol price forecast graph",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "digest": "602f2375e92cf659",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -6.031,
+   "y": 6.06
+  },
+  {
+   "key": "image:IMG101",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Inequality article with chart",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "8ad9c05b52102cbe",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.76,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.16
+   },
+   "x": -5.328,
+   "y": 7.851
+  },
+  {
+   "key": "image:IMG102",
+   "set": "Image",
+   "source": "US · TESS",
+   "title": "Humanitarian crisis news photo",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "08237b8ac58cdb71",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.93,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.05
+   },
+   "x": -2.736,
+   "y": 11.239
+  },
+  {
+   "key": "image:IMG105",
+   "set": "Image",
+   "source": "",
+   "title": "Gambling inducement adverts",
+   "category": "health communication",
+   "status": "Buildable",
+   "digest": "99c1fae68a4a355e",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.93,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.03
+   },
+   "x": -11.093,
+   "y": 13.616
+  },
+  {
+   "key": "image:IMG106",
+   "set": "Image",
+   "source": "",
+   "title": "Infographics on policy effectiveness",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "a22e1cc92e444fe5",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.74,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.22
+   },
+   "x": -5.831,
+   "y": 7.449
+  },
+  {
+   "key": "image:IMG107",
+   "set": "Image",
+   "source": "",
+   "title": "Cafeteria shelf photos and social norms",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "a6377921d04bf4cb",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.42,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.46
+   },
+   "x": -16.864,
+   "y": 11.093
+  },
+  {
+   "key": "image:IMG108",
+   "set": "Image",
+   "source": "",
+   "title": "Branded snack and meal preferences",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "5d17184e015be986",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.78,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.15
+   },
+   "x": -15.533,
+   "y": 12.298
+  },
+  {
+   "key": "image:IMG109",
+   "set": "Image",
+   "source": "",
+   "title": "Snack availability and choice",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "e86e69609462575f",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.82,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.09
+   },
+   "x": -15.774,
+   "y": 11.742
+  },
+  {
+   "key": "image:IMG110",
+   "set": "Image",
+   "source": "",
+   "title": "Alcohol vs alcohol-free adverts",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "8f23202ce26acc3c",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.57,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.31
+   },
+   "x": -12.69,
+   "y": 9.927
+  },
+  {
+   "key": "image:IMG111",
+   "set": "Image",
+   "source": "",
+   "title": "Nutri-Score on takeaway menus",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "864fd6a319625104",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.93,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.04
+   },
+   "x": -18.156,
+   "y": 11.935
+  },
+  {
+   "key": "image:IMG112",
+   "set": "Image",
+   "source": "",
+   "title": "Carbon ordering in an online supermarket",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "digest": "577ff9ccd19bce25",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.66,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.27
+   },
+   "x": -19.246,
+   "y": 17.042
+  },
+  {
+   "key": "image:IMG113",
+   "set": "Image",
+   "source": "",
+   "title": "Safer gambling banner messages",
+   "category": "health communication",
+   "status": "Needs checking",
+   "digest": "4b21764459e33a32",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.48,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.45
+   },
+   "x": -11.161,
+   "y": 13.151
+  },
+  {
+   "key": "image:IMG114",
+   "set": "Image",
+   "source": "",
+   "title": "Sugary drink warning labels for parents",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "2a9b8d363a952370",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -14.688,
+   "y": 9.966
+  },
+  {
+   "key": "image:IMG115",
+   "set": "Image",
+   "source": "",
+   "title": "Vodka bottle health labels",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "8218b210b2a5d390",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.99,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.01
+   },
+   "x": -14.075,
+   "y": 9.071
+  },
+  {
+   "key": "image:IMG118",
+   "set": "Image",
+   "source": "",
+   "title": "Climate action megastudy, UK samples",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "c601a0e3e4c6de91",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.96,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.02
+   },
+   "x": -0.571,
+   "y": 4.297
+  },
+  {
+   "key": "image:IMG119",
+   "set": "Image",
+   "source": "",
+   "title": "Content Credentials labels on news images",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "e827ece5e337508c",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.7,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.14
+   },
+   "x": -7.071,
+   "y": 16.078
+  },
+  {
+   "key": "image:IMG120",
+   "set": "Image",
+   "source": "",
+   "title": "NHS Predict tool display",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "1131426fdc0e4b59",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "x": -8.036,
+   "y": 6.013
+  },
+  {
+   "key": "image:IMG121",
+   "set": "Image",
+   "source": "",
+   "title": "Face masks and trust",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "6ec1c06dbc45b1a3",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.67,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.27
+   },
+   "x": -1.991,
+   "y": -1.958
+  },
+  {
+   "key": "image:IMG122",
+   "set": "Image",
+   "source": "",
+   "title": "Organisation chart and power (Many Labs 2)",
+   "category": "moral/social/cognition",
+   "status": "Buildable",
+   "digest": "7692d7864db4d0fc",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.92,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.03
+   },
+   "x": 1.534,
+   "y": 6.372
+  },
+  {
+   "key": "image:IMG123",
+   "set": "Image",
+   "source": "",
+   "title": "Social class from faces",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "5e7c40030acc1ebc",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.98,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.01
+   },
+   "x": -3.713,
+   "y": 1.124
+  },
+  {
+   "key": "image:IMG125",
+   "set": "Image",
+   "source": "",
+   "title": "Housing density photo simulations",
+   "category": "political preferences/policy",
+   "status": "Waiting for images",
+   "digest": "55c7f69354d7a3b6",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.65,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.22
+   },
+   "x": -7.093,
+   "y": 10.203
+  },
+  {
+   "key": "image:IMG126",
+   "set": "Image",
+   "source": "",
+   "title": "Climate warming stripes",
+   "category": "moral/social/cognition",
+   "status": "Waiting for images",
+   "digest": "f21ff0d9b4e54138",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.55,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.35
+   },
+   "x": -0.238,
+   "y": 11.926
+  },
+  {
+   "key": "image:IMG127",
+   "set": "Image",
+   "source": "",
+   "title": "Charity appeal photos (Friends of the Earth)",
+   "category": "economics/behavioural",
+   "status": "Buildable",
+   "digest": "3ebef4c7fe35406d",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.61,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.27
+   },
+   "x": -3.884,
+   "y": 12.741
+  },
+  {
+   "key": "image:IMG128",
+   "set": "Image",
+   "source": "",
+   "title": "Cigarette filters",
+   "category": "health communication",
+   "status": "Needs checking",
+   "digest": "b30a1a5541eb28dd",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.87,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.08
+   },
+   "x": -14.955,
+   "y": 6.067
+  },
+  {
+   "key": "image:IMG129",
+   "set": "Image",
+   "source": "",
+   "title": "AI-written vs human tweets",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "dac189eb6537e15c",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.82,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.13
+   },
+   "x": -5.758,
+   "y": 19.309
+  },
+  {
+   "key": "image:IMG130",
+   "set": "Image",
+   "source": "",
+   "title": "Snack packs with traffic lights and promotions",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "52767290f399ddf2",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.48,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.45
+   },
+   "x": -16.449,
+   "y": 12.637
+  },
+  {
+   "key": "image:IMG131",
+   "set": "Image",
+   "source": "",
+   "title": "Influencer posts, retouched or labelled",
+   "category": "moral/social/cognition",
+   "status": "Waiting for images",
+   "digest": "f5e8585c2e270534",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.89,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.06
+   },
+   "x": -5.991,
+   "y": 15.052
+  },
+  {
+   "key": "image:IMG132",
+   "set": "Image",
+   "source": "",
+   "title": "Billboard food logos",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "95ddcca6ec11a978",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 0.85,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.06
+   },
+   "x": -15.424,
+   "y": 13.982
+  },
+  {
+   "key": "image:IMG134",
+   "set": "Image",
+   "source": "",
+   "title": "Election leaflets: attack vs policy",
+   "category": "political preferences/policy",
+   "status": "Waiting for images",
+   "digest": "357d5ec24fc978e3",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.88,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.05
+   },
+   "x": -2.569,
+   "y": 16.591
+  },
+  {
+   "key": "image:IMG135",
+   "set": "Image",
+   "source": "",
+   "title": "Fake-news posts: source and popularity",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "51307284812a37b9",
+   "jev": null,
+   "x": -5.428,
+   "y": 18.37
+  },
+  {
+   "key": "image:IMG136",
+   "set": "Image",
+   "source": "",
+   "title": "COVID vaccine misinformation images",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "d0c3edbd3a9de6e4",
+   "jev": {
+    "choice": "health communication",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "x": -6.086,
+   "y": 17.198
+  },
+  {
+   "key": "image:IMG137",
+   "set": "Image",
+   "source": "",
+   "title": "Bottled water adverts: enjoyment vs health",
+   "category": "health communication",
+   "status": "Needs checking",
+   "digest": "f975661f86af3202",
+   "jev": null,
+   "x": -12.509,
+   "y": 10.22
+  },
+  {
+   "key": "image:IMG138",
+   "set": "Image",
+   "source": "",
+   "title": "Maps with personal stories",
+   "category": "political preferences/policy",
+   "status": "Waiting for images",
+   "digest": "232d18cdd24509ca",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.44,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.4
+   },
+   "x": -3.401,
+   "y": 6.303
+  },
+  {
+   "key": "image:IMG139",
+   "set": "Image",
+   "source": "",
+   "title": "Alcohol-free share in an online shop",
+   "category": "health communication",
+   "status": "Waiting for images",
+   "digest": "f477f61b350e43f9",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.71,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.18
+   },
+   "x": -18.767,
+   "y": 19.237
+  },
+  {
+   "key": "image:IMG140",
+   "set": "Image",
+   "source": "",
+   "title": "Edited 'prettier' species photos",
+   "category": "economics/behavioural",
+   "status": "Waiting for images",
+   "digest": "d637f7fa99b6df9e",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.49,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.42
+   },
+   "x": -6.11,
+   "y": 14.25
+  },
+  {
+   "key": "image:IMG142",
+   "set": "Image",
+   "source": "",
+   "title": "Source effects in political advertising",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "b69d46dddb8c27ee",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.25,
+    "runner_up": "political identity/polarisation",
+    "runner_up_confidence": 0.29
+   },
+   "x": 4.033,
+   "y": -13.299
+  }
+ ]
+}
