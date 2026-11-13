@@ -219,6 +219,27 @@ def report_persona(cli: object, ds: spss.Dataset) -> None:
 # and the old value of 20 sat just under a 22-level education ladder.
 MAX_LABELS = 60
 
+# How many columns section 3 asks about, and how many refused directives
+# section 4 explains. Both used to be bare slices, so the rest vanished in
+# silence: on `k9ahx` (13 Nov 2026) the 40-column cap cut every persona
+# variable out of the labels pass and nothing said so. A cap may stay, because
+# each extra column is paid calls; a SILENT cap may not.
+MAX_LABEL_COLUMNS = 40
+MAX_REFUSALS_EXPLAINED = 25
+
+
+def capped[T](items: list[T], cap: int, what: str) -> list[T]:
+    """The first `cap` items, saying out loud by name what was left out."""
+    if len(items) <= cap:
+        return items
+    left = items[cap:]
+    print(
+        f"  CAPPED: {what} — asked about {cap} of {len(items)}; NOT asked about "
+        f"{len(left)}: {', '.join(map(str, left))}\n"
+        "  Those were not judged: check them by hand."
+    )
+    return items[:cap]
+
 
 def report_labels(cli: object, ds: spss.Dataset, mapped: list[str]) -> None:
     section("3. WHICH VALUE LABELS ARE NON-ANSWERS?")
@@ -335,7 +356,7 @@ def report_refusals(cli: object, study_id: str, only: str | None = None) -> None
         f"  {len(refused)} distinct. Only the ones that gate STIMULUS TEXT need resolving\n"
         "  by hand; administration and routing can be ignored.\n"
     )
-    for cond in list(refused)[:25]:
+    for cond in capped(list(refused), MAX_REFUSALS_EXPLAINED, "refused directives"):
         print(f"    {jev.explain_condition(cli, cond).render()}")
 
 
@@ -429,7 +450,7 @@ def main() -> int:
         report_persona(cli, ds)
     if want == "labels" or (want is None and not args.skip_labels):
         cols = [c for c in ds.df.columns if plausible(str(c))]
-        report_labels(cli, ds, cols[:40])
+        report_labels(cli, ds, capped(cols, MAX_LABEL_COLUMNS, "columns for the labels pass"))
     if want in (None, "refusals"):
         report_refusals(cli, args.study_id, args.file)
 

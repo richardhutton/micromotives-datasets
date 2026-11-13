@@ -1,0 +1,563 @@
+study_id: zx5b8
+source: tess
+title: "Do the benefits of receiving affectionate touch generalize beyond satisfied couples?"
+data_file: "8041.047_Jakubiak_FinalData.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-12: node zx5b8
+  and its child components 487e5 "Proposal" and df8kx "Data and Materials" all
+  have node_license null and no license relationship). TESS archived its post-2009
+  projects through the Roper Center and its own site states no reuse terms; TESS
+  has since suspended operations. So there is no explicit grant of redistribution
+  rights for this deposit, and none should be assumed.
+
+# SocSci210 dropped every D5 answer of 7 (279 rows); the gap reconciles
+# exactly (see notes, CROSSCHECK).
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 047 (Jakubiak, Syracuse; TESS proposal 1098), "Do the benefits of
+  receiving affectionate touch generalize beyond satisfied couples?". NORC
+  AmeriSpeak, web only (SURV_MODE = 2 for all 1,140), English, married adults
+  18+ (Q 17; screener MARITAL2 at Q 360-372 terminates anyone not married, and
+  MARITAL is 1 "Married" for all 1,140). Fielded autumn 2019 (Q 353 draft date
+  09/17/19). N = 1,140, one row per CaseId.
+
+  Line citations are 1-based line numbers in
+    Q  = "TESS047_JAKUBIAK_v5clean.txt" (the fielded questionnaire; its .docx
+         has no tracked changes)
+    PR = "TESS-1098.R1 description.txt" (the PROPOSAL; never a wording
+         source, cited only where it disagrees with Q)
+  The deposit zip (Jakubiak1098.zip) holds the same six files as the folder.
+
+
+  NO PICTURES
+
+  The questionnaire .docx embeds two images, word/media/image1.png and
+  image2.png (rId8/rId9 in document.xml, on the cover page). Opened and read:
+  image1 is the "NORC at the UNIVERSITY of CHICAGO" logo, image2 the
+  "AmeriSpeak" logo. No [SHOW IF] block in Q is empty; every arm carries its
+  own words. This is a text study.
+
+
+  THE DESIGN (PR 12, 23-25; Q 191-198, 523-595)
+
+  2 x 2 between-subjects, preload P_COND (Q 191-198: 1 = C1 .. 4 = C4), held in
+  the .sav as COND, "Experimental condition assigned":
+    raw 1 "1 Conflict; touch"         n=293  -> condition_num 0
+    raw 2 "2 Conflict; no touch"      n=280  -> condition_num 1
+    raw 3 "3 No conflict; touch"      n=277  -> condition_num 2
+    raw 4 "4 No conflict; no touch"   n=290  -> condition_num 3
+  Sum 1,140. raw -> condition_num is raw - 1, in label order, no permutation.
+  The direction is fixed three ways that agree: the .sav labels; Q's
+  [SHOW IF P_COND = n] blocks (C1 conflict+touch at Q 523-539, C2 conflict+no
+  touch Q 542-557, C3 neutral+touch Q 560-576, C4 neutral+no touch Q 579-595);
+  and the data, where the free-text column Cn is non-empty for exactly the
+  respondents with COND = n and for no one else (293/280/277/290, 0 elsewhere).
+
+  Factors: `context` (conflict = discussing "an ongoing area of disagreement";
+  neutral = "talking casually about your day") and `touch` (touch = spouse
+  "reaches out and touches you on the arm ... puts his/her arm around you";
+  no_touch = spouse "leans back, crosses his/her legs, and listens quietly").
+  Minimal pairs: touch (0,1) and (2,3); context (0,2) and (1,3). Every pair
+  differs in text.
+
+  recipe_prep.py (Jev, 2026-11-12, full run, no --skip-labels) chose COND at
+  conf 1.00 (runner-up B1 0.00) after a run-off over all 78 candidates.
+  Accepted; the questionnaire and the free-text routing settle it on their own.
+
+
+  CONDITION TEXT
+
+  Each arm is two screens: a free-text prompt (Cn, [TEXTBOX][PROMPT]) and then
+  a display screen (Cn_TEXT). Both are transcribed word-for-word. The
+  respondent's typed answer is NEVER rendered: it is their output, not a fixed
+  stimulus (the same ruling as a42yg, sh4px, z358z). 14 respondents skipped the
+  textbox (code '98': 3/3/4/4 by arm); they were still asked it and still saw
+  Cn_TEXT, so they are kept.
+
+  shared_context = Q 389's first sentence word-for-word ("In this study, we
+  are interested in learning about individuals' interactions and feelings in
+  their marriage relationships."), then one sentence of ours (below). Q 389's
+  other two sentences are left out: the second describes the order of the
+  survey ("You will complete a few questions about yourself, imagine a
+  specific interaction ... and complete a brief series of questions..."), which
+  is instrument structure the row does not reproduce (CONVENTIONS, "Sequence
+  signposting"); the third ("Please start by answering the following
+  questions ... about your marriage/spouse") introduces the B1-B10 battery,
+  which no row carries.
+
+  Arm text = Cn word-for-word, then our three-word join, then Cn_TEXT's three
+  paragraphs word-for-word (Q 535-539, 553-557, 572-576, 591-595). Arm-level
+  differences kept as fielded: C4 reads "on the sofa talking casually" where
+  C3 reads "on the sofa and talking casually" (Q 564 vs 583); the conflict
+  arms read "interrupts you and says," and the neutral arms "interrupts and
+  says" with no comma. "his/her" and "he/she" are kept as fielded (the screen
+  did not adapt to the spouse's sex). HTML underline markup (<u>) is dropped,
+  the words inside kept; curly quotes and apostrophes straightened; double
+  spaces from the .docx collapse.
+
+  Where Q and PR differ, Q is used: PR 96/107 "then starts telling you" vs Q
+  574/593 "and then starts telling you"; PR's intro (PR 40) "complete
+  questionnaires about yourself" vs Q 389 "a few questions about yourself" (not
+  rendered either way).
+
+  WORDS WE ADDED (CONVENTIONS, "Narrating what the respondent did"), recorded
+  word-for-word:
+    1. "You were asked to type a short answer to this question:"
+       (end of shared_context, identical in all four arms)
+    2. "You then read:"
+       (inside every arm, between Cn and Cn_TEXT)
+  Both narrate what the respondent did, are true for every respondent in every
+  arm (all were asked; all then saw Cn_TEXT, including the 14 who left the box
+  blank — hence "asked to type", not "typed"), and contain no number and no
+  sequence position. Every other word of every condition is the instrument's.
+
+  "Before moving on, take a moment to visualize this interaction..." is kept:
+  it is the instruction that delivers the imagined-interaction manipulation,
+  not a pointer to a numbered position.
+
+
+  B1-B10 — NOT BUILT, AND WHY (the riskiest scope call in this recipe)
+
+  B1-B10 (Q 392-520), relationship happiness, warmth, reward, satisfaction,
+  "things are going well", "would marry the same person", "makes me happy",
+  "part of a team", "meets your needs", "met your original expectations", were
+  asked of EVERYONE BEFORE the manipulation. They are PR 12's "one measured
+  variable (relationship quality)", the study's moderator. They are neither
+  outcomes nor persona here:
+    - not outcomes of this recipe: they precede every stimulus, so attaching
+      any arm's condition to them would attach a stimulus to rows that had
+      none (CLAUDE.md, Never fabricate). The project's no-stimulus sentinel
+      (CONVENTIONS, "A source with no stimulus") is defined as ONE arm for a
+      whole source; a recipe here melts one condition variable, so it cannot
+      give 10 outcomes the sentinel and 20 outcomes the four arms. They could
+      be built as a separate recipe (`zx5b8_baseline`, one sentinel arm,
+      10 outcomes, about 11,350 rows) — out of this maker's scope, reported
+      for a decision.
+    - not persona: the domain rule (CONVENTIONS; PZB01G, gh396, s6urt). D3B
+      "happy in your relationship?" is the same construct as B1 and B7; D4D
+      "count on my spouse to be dependable" and D4C "to listen" sit on B9's
+      "meet your needs"; D3C "optimistic about the future of your
+      relationship" on B5/B6. A persona carrying them would restate the
+      respondent's own position on the outcome.
+  The cost, stated: the paper's moderator is absent, so rows cannot express
+  "generalize beyond satisfied couples".
+
+
+  OUTCOMES — 20, ALL ASKED OF EVERY RESPONDENT AFTER THE ARM (Q 598-745)
+
+    task 0      D1        genuine affection, 1-6 (Q 600-608)
+    task 1-8    D2A-D2H   emotions grid: Comforted, Secure, Anxious, Safe,
+                          Stressed out, Loved, Protected, Upset; 1-6
+                          (Q 613-631)
+    task 9-13   D3A-D3E   "would you be feeling..." grid, 1-10 (Q 636-655)
+    task 14-17  D4A-D4D   "Right now" statements, 0-100 slider (Q 659-717)
+    task 18     D5        getting closer to your spouse, 1-7 (Q 721-731)
+    task 19     D6        responding to your spouse's needs, 1-7 (Q 735-745)
+
+  Grid outcomes carry the stem word-for-word and then the item word-for-word,
+  separated by a space (D3's "feeling…" ellipsis normalised to "...", so D3A
+  reads "...to what extent would you be feeling... a sense of "oneness" or
+  connection with your spouse."). Each grid item's column is label-anchored
+  (the .sav label puts the item in brackets, e.g. D2C "[Anxious]"); grid row
+  order was not recorded and no row cites a position.
+
+  Scales are the questionnaire's: D1/D2 "1 Not at all" .. "6 Very much"
+  (2-5 unlabelled); D3 "1 Not at all" .. "10 Extremely"; D4 sliders 0-100,
+  "Not at all true" at 0 and "Extremely true" at 100 (Q 670-671, and the
+  instruction at Q 664); D5/D6 "1 Not at all actively", "4 Moderately
+  actively", "7 Extremely actively". PR differs and is not used: PR 32 asks
+  for 1-100 on D4 (fielded 0-100; 0 occurs in the data) and PR 138-141 lists
+  D4's anchors as "not at all true"/"extremely true" in lower case.
+
+  D4 question text: Q prints, per item, "Right now, how true is the following
+  statement for you?", then a slider instruction ("Please use the slider to
+  select a number between 0 and 100 where 0 indicates that the statement is
+  not at all true, and 100 indicates that the statement is extremely true"),
+  then the statement. The question carries the first sentence and the
+  statement word-for-word; the slider instruction is not rendered, because it
+  is the scale's operating instruction and the row's scale instruction does
+  that job with the same anchors (j6xgs drops its slider line the same way).
+  D5 value 7's .sav label lacks the "7" ("Extremely actively"); Q 731 has it;
+  immaterial to the row.
+
+
+  RESPONSES AND MISSING — THE SLIDER TRAP
+
+  `missing_codes` applies to every outcome BEFORE the recode, and the D4
+  sliders are 0-100, so 77/98/99 are real slider answers there: D4A 2/5/4,
+  D4B 2/4/5, D4C 13/45/46, D4D 10/61/65 (D4C/D4D are "count on my spouse",
+  where answers near 100 are expected). The sliders' own non-answers are
+  777/998/999 (their value labels); only 998 occurs (D4A 4, D4B 8, D4D 2).
+  So missing_codes = [777, 998, 999], and the other outcomes' 98 "SKIPPED ON
+  WEB" (77 and 99 never occur on them) is dropped by each outcome's own
+  response_recode, which lists only the scale's codes.
+
+  recipe_prep (Jev) called DON'T KNOW / SKIPPED ON WEB / REFUSED a non-answer
+  on every outcome at conf >= 0.97, D4A-D4D included. ACCEPTED for the codes
+  those labels name (777/998/999 on D4, 77/98/99 elsewhere). The judgement is
+  about labels and cannot see that 77/98/99 are also in the slider's range;
+  that is the mechanics (code's job, above). No disagreement with the regex
+  (0 of 323 labels).
+
+  ROW ARITHMETIC: 1,140 x 20 = 22,800 cells, minus 98s on the non-slider
+  items (D1 2; D2A-H 2+5+6+4+7+6+11+9 = 50; D3A-E 1+0+3+1+1 = 6; D5 2; D6 9;
+  69 in all) minus 998 on the sliders (14) = 22,717 rows.
+
+
+  PERSONA
+
+  The AmeriSpeak set, the same map as the sibling AmeriSpeak recipes (3muqx,
+  j6xgs): AGE, GENDER, EDUC, RACETHNICITY, INCOME, MARITAL, EMPLOY, REGION4,
+  HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE, PARTYID7, IDEO,
+  RELIG, ATTEND. MARITAL is "Married" for everyone (the screener), which is
+  true and kept. recipe_prep: every field at conf >= 0.97 except region, a
+  REVIEW between REGION4 (0.41) and REGION9 (0.44). OVERRULED to REGION4, as in
+  every other AmeriSpeak recipe and the crosswalk built for it. STATE/REGION9
+  are finer than the shared scheme and not mapped.
+
+  persona_missing: GENDER 0 "Unknown" (0 occurrences, declared as in the
+  siblings); PARTYID7, IDEO, RELIG, ATTEND 98 "SKIPPED ON WEB" (0 occurrences
+  in this file, read against each variable's own value label, which names it a
+  skip). Blanks (PARTYID7 6, IDEO 4, RELIG 8, ATTEND 7) leave the field empty.
+  IDEO 8 "Haven't thought much about it" is an offered answer and is kept.
+
+  RELIG code 1's label is severed by SPSS at "...Episcopalian, Reformed,
+  Church" in the .sav AND in this deposit's codebook .xlsx, and — unlike every
+  sibling — THIS deposit's questionnaire does not print the RELIG item (its
+  preload table, Q 185-307, lists only P_COND, P_PARTYID7, P_PA025, the HL/FI
+  items and P_LGBT). It is restored to the AmeriSpeak panel's own wording,
+  taken from the fielded questionnaires of sibling AmeriSpeak deposits built
+  here (3muqx Q 189, j6xgs Q 192, which print the same profile variable RELIG
+  with the same 14 codes in the same order and the same severed prefix):
+  "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian,
+  Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness,
+  etc.)". The words restored are the tail of a parenthetical list; the
+  category (Protestant) is already fixed by the surviving label. This is a
+  cross-deposit restoration and is flagged for the checker (ledger #111).
+
+  Not mapped: PA025 (religiosity), HL001/HL002/HL0022 (health), FI0011-FI0011C
+  and FINENEW2 (assets, credit), LGBT. They are study-requested profile items
+  (PR 16-21) asked AFTER the outcomes (Q 748-903; each re-asked only if the
+  panel preload was missing, "[SHOW IF P_x = MISSING]"), outside the standard
+  set the siblings map; HL002 (mental or emotional health) and LGBT are also
+  adjacent to the outcomes (loneliness, isolation; the spouse's sex).
+  recipe_prep section 4 flagged their ten [SHOW IF P_x = MISSING] directives
+  as REVIEW "unclear"/"routing_only" (conf 0.31-0.55); read by eye, all are
+  profile re-ask routing and none gates stimulus text. The screener directive
+  (Q 372) it called survey_administration at 0.97. Agreed.
+
+
+  UK CHECK
+
+  Nothing a respondent was shown or asked depends on the US: a married couple
+  on a sofa, a disagreement or a chat about the day, an arm around the
+  shoulders or a spouse sitting back, then feelings, loneliness and intentions
+  toward the spouse. No institution, place, money or law appears in a
+  condition or outcome. "visualize" is US spelling, kept word-for-word.
+  "AmeriSpeak"/"AmeriPoints" appear only on the welcome and closing screens,
+  not built. The persona is the usual US panel profile. The sample is married
+  people only, by design.
+
+
+  SocSci210 — NOT COMPARABLE, AND THE DIFFERENCE RECONCILES EXACTLY
+
+  `mmds crosscheck zx5b8` (2026-11-12): theirs 22,438 rows, 1,140
+  participants, 4 conditions, 7 tasks {0: 1,138, 1: 9,070, 2: 3,416,
+  3: 2,278, 4: 2,268, 5: 2,278, 6: 1,990}. Ours 22,717 rows, 1,140
+  participants, 4 conditions, 20 tasks. Decomposed, from their parquet:
+    - they merge items under one task_num: their 0 = our D1; 1 = D2A-D2H
+      (sum 9,070 exactly); 2 = D3A-D3C (3,416); 3 = D3D-D3E (2,278);
+      4 = D4A-D4B (2,268); 5 = D4C-D4D (2,278); 6 = D5 + D6. Their stimulus for
+      a merged task names one item only (task 1 "feeling anxious", task 4 "I
+      feel isolated from others"), ledger #45. We keep one task per item.
+    - their task 6 is 279 short (1,990 against our 1,138 + 1,131): they
+      dropped EVERY D5 answer of 7. The .sav labels D5's code 7 "Extremely
+      actively" with no leading number where every other point reads "1 Not
+      at all actively", "2", ...; that is the only thing distinguishing it,
+      and their response distribution is ours with exactly 279 fewer 7s
+      (966 against 1,245). Q 731 prints "7 Extremely actively" as an offered
+      answer; we keep the 279.
+  Projecting our build onto their scope (merge tasks as above, drop D5 = 7)
+  gives 22,438 rows and reproduces their count in ALL 821 (condition_num,
+  task_num, response) cells exactly. So the arm mapping (raw n ->
+  condition_num n-1; their condition 0 is the touch/conflict text), the
+  participants and every response agree; the slider trap (77/98/99 kept on
+  D4) agrees with them too.
+
+  Their text (informational): it omits the Cn writing prompt's question and
+  "Before moving on, take a moment to visualize...", and keeps only "Imagine
+  that you and your spouse are sitting ... in your relationship." before
+  C_TEXT; outcome wordings are paraphrased ("to what extent would you be
+  feeling anxious?", "how true is the following statement for you: 'I feel
+  isolated from others'?").
+
+  A mechanical check, run by the maker: each arm's rendered condition equals
+  Q 389's first sentence + join 1 + Cn (Q 527/546/564/583) + join 2 + Cn_TEXT
+  (Q 535-539 etc.) after only <u> removal, quote straightening and
+  whitespace collapse — 4 of 4 identical. Every one of the 22,717 rows'
+  condition_num and response re-derived from the raw .sav: 0 mismatches.
+
+condition:
+  source_var: COND
+  factors: [context, touch]
+  shared_context: >-
+    In this study, we are interested in learning about individuals'
+    interactions and feelings in their marriage relationships. You were asked
+    to type a short answer to this question:
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {context: conflict, touch: touch}
+      text: >-
+        Imagine that you and your spouse are sitting next to one another on the
+        sofa and discussing an ongoing area of disagreement in your
+        relationship. In a few words, what is something that you and your
+        spouse often disagree and argue about? You then read: Now, imagine that
+        as you are talking, your spouse reaches out and touches you on the arm,
+        strokes your arm gently, and then puts his/her arm around you. Your
+        spouse leaves his/her arm around you as you are describing your point
+        of view on this disagreement. After a few minutes, your spouse
+        interrupts you and says, "Yeah, I hear you. But I still don't really
+        know what you want from me. I'm really frustrated, and I'm not sure how
+        to resolve this." Before moving on, take a moment to visualize this
+        interaction, and imagine what it would be like to experience it at home
+        with your spouse.
+    - raw: 2
+      condition_num: 1
+      factors: {context: conflict, touch: no_touch}
+      text: >-
+        Imagine that you and your spouse are sitting next to one another on the
+        sofa and discussing an ongoing area of disagreement in your
+        relationship. In a few words, what is something that you and your
+        spouse often disagree and argue about? You then read: Now, imagine that
+        as you are talking, your spouse leans back, crosses his/her legs, and
+        listens quietly. Your spouse continues sitting quietly as you are
+        describing your point of view on this disagreement. After a few
+        minutes, your spouse interrupts you and says, "Yeah, I hear you. But I
+        still don't really know what you want from me. I'm really frustrated,
+        and I'm not sure how to resolve this." Before moving on, take a moment
+        to visualize this interaction, and imagine what it would be like to
+        experience it at home with your spouse.
+    - raw: 3
+      condition_num: 2
+      factors: {context: neutral, touch: touch}
+      text: >-
+        Imagine that you and your spouse are sitting next to one another on the
+        sofa and talking casually about your day. In a few words, what is
+        something you did or experienced today that you might share with your
+        spouse? You then read: Now, imagine that as you are talking, your spouse
+        reaches out and touches you on the arm, strokes your arm gently, and
+        then puts his/her arm around you. Your spouse leaves his/her arm around
+        you as you are describing your day. After a few minutes, your spouse
+        interrupts and says "That's nothing compared to what happened to me
+        today" and then starts telling you about a related experience that
+        he/she had that day. Before moving on, take a moment to visualize this
+        interaction, and imagine what it would be like to experience it at home
+        with your spouse.
+    - raw: 4
+      condition_num: 3
+      factors: {context: neutral, touch: no_touch}
+      text: >-
+        Imagine that you and your spouse are sitting next to one another on the
+        sofa talking casually about your day. In a few words, what is something
+        you did or experienced today that you might share with your spouse? You
+        then read: Now, imagine that as you are talking, your spouse leans back,
+        crosses his/her legs, and listens quietly. Your spouse continues sitting
+        quietly as you are describing your day. After a few minutes, your spouse
+        interrupts and says "That's nothing compared to what happened to me
+        today" and then starts telling you about a related experience that
+        he/she had that day. Before moving on, take a moment to visualize this
+        interaction, and imagine what it would be like to experience it at home
+        with your spouse.
+
+outcomes:
+  - var: D1
+    task_num: 0
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be thinking that your partner has genuine affection toward you (that
+      your partner truly cares for you)?
+    scale: &six {min: 1, max: 6, min_label: "Not at all", max_label: "Very much"}
+    response_recode: &six_r {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}
+  - var: D2A
+    task_num: 1
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Comforted
+    scale: *six
+    response_recode: *six_r
+  - var: D2B
+    task_num: 2
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Secure
+    scale: *six
+    response_recode: *six_r
+  - var: D2C
+    task_num: 3
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Anxious
+    scale: *six
+    response_recode: *six_r
+  - var: D2D
+    task_num: 4
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Safe
+    scale: *six
+    response_recode: *six_r
+  - var: D2E
+    task_num: 5
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Stressed out
+    scale: *six
+    response_recode: *six_r
+  - var: D2F
+    task_num: 6
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Loved
+    scale: *six
+    response_recode: *six_r
+  - var: D2G
+    task_num: 7
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Protected
+    scale: *six
+    response_recode: *six_r
+  - var: D2H
+    task_num: 8
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling each of the following emotions? Upset
+    scale: *six
+    response_recode: *six_r
+  - var: D3A
+    task_num: 9
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling... a sense of "oneness" or connection with your spouse.
+    scale: &ten {min: 1, max: 10, min_label: "Not at all", max_label: "Extremely"}
+    response_recode: &ten_r {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+  - var: D3B
+    task_num: 10
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling... happy in your relationship?
+    scale: *ten
+    response_recode: *ten_r
+  - var: D3C
+    task_num: 11
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling... optimistic about the future of your relationship?
+    scale: *ten
+    response_recode: *ten_r
+  - var: D3D
+    task_num: 12
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling... satisfied with your life?
+    scale: *ten
+    response_recode: *ten_r
+  - var: D3E
+    task_num: 13
+    question: >-
+      In thinking about the interaction you just imagined, to what extent would
+      you be feeling... that, in most ways, your life is close to your ideal?
+    scale: *ten
+    response_recode: *ten_r
+  - var: D4A
+    task_num: 14
+    question: >-
+      Right now, how true is the following statement for you? I feel lonely.
+    scale: &slider {min: 0, max: 100, min_label: "Not at all true", max_label: "Extremely true"}
+    response_recode: &slider_r {
+      0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12,
+      13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25,
+      26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38,
+      39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51,
+      52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64,
+      65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77,
+      78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90,
+      91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100
+    }
+  - var: D4B
+    task_num: 15
+    question: >-
+      Right now, how true is the following statement for you? I feel isolated
+      from others.
+    scale: *slider
+    response_recode: *slider_r
+  - var: D4C
+    task_num: 16
+    question: >-
+      Right now, how true is the following statement for you? I can count on my
+      spouse to listen to me when I need to talk.
+    scale: *slider
+    response_recode: *slider_r
+  - var: D4D
+    task_num: 17
+    question: >-
+      Right now, how true is the following statement for you? I can count on my
+      spouse to be dependable when I need help.
+    scale: *slider
+    response_recode: *slider_r
+  - var: D5
+    task_num: 18
+    question: >-
+      Over the next month, how actively will you pursue the goal of getting
+      closer to your spouse?
+    scale: &seven {min: 1, max: 7, min_label: "Not at all actively", mid_label: "Moderately actively", max_label: "Extremely actively"}
+    response_recode: &seven_r {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: D6
+    task_num: 19
+    question: >-
+      Over the next month, how actively will you pursue the goal of responding
+      to your spouse's needs?
+    scale: *seven
+    response_recode: *seven_r
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+# 777/998/999 only: 77/98/99 are real slider values on D4A-D4D (see notes,
+# THE SLIDER TRAP). The other outcomes' 98s drop through their own recodes.
+missing_codes: [777, 998, 999]
+
+persona_missing:
+  GENDER: [0]
+  PARTYID7: [98]
+  IDEO: [98]
+  RELIG: [98]
+  ATTEND: [98]
+
+persona_label_rewrite:
+  # Severed by SPSS in this .sav and codebook; this deposit's questionnaire does
+  # not print RELIG. Restored from the same AmeriSpeak profile item as printed
+  # in sibling deposits' fielded questionnaires (3muqx Q 189, j6xgs Q 192),
+  # apostrophe straightened. See notes, PERSONA.
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

@@ -2695,6 +2695,87 @@
    "status": "Unlikely",
    "reason": "Dropped by rich, 9 Nov 2026. The two main questions' wording (allowed to refuse / required to treat) was drawn at random and the draw is not in the deposit, so only one question (5,002 rows) is buildable; and the patient's name varies to cue US race categories.",
    "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "5mt6r",
+   "title": "Improving Measurement of Self-Reported Health: Question Context and Response Order",
+   "description": "Self-rated health asked first or after seven other health questions, with the options running from excellent or from poor (4 conditions). Answer: own health, 1-5 (1 rating).",
+   "details": "2,651 rows",
+   "category": "survey methodology",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "5mt6r"
+  },
+  {
+   "source": "TESS",
+   "id": "zx5b8",
+   "title": "Do the Benefits of Receiving Affectionate Touch Generalize Beyond Satisfied Couples?",
+   "description": "Factorial vignette: married people imagine their spouse putting an arm around them or leaning back, during an argument or a casual chat (4 conditions). Answer: how cared for, safe, upset and close they would feel (20 ratings).",
+   "details": "22,717 rows",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "zx5b8"
+  },
+  {
+   "source": "TESS",
+   "id": "k9ahx",
+   "title": "Assessing the Stability of Value Systems in the Mass Public",
+   "description": "A statement about equal opportunity or economic security, or none (3 conditions). Answer: how important five values are to daily life, 1-5, plus interest in politics (6 ratings). Ratings half only.",
+   "details": "3,821 rows",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "k9ahx_ratings"
+  },
+  {
+   "source": "TESS",
+   "id": "de5hx",
+   "title": "Risk Orientations, Status Quo Frames, and Electoral Choice",
+   "description": "A newspaper report on a local mayoral race frames electing the newcomer as risky, as a good bet, or neither (3 conditions). Answer: whom you would vote for and who seems risky (2 ratings), plus 7 risk-attitude questions asked beforehand.",
+   "details": "9,033 rows",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "de5hx"
+  },
+  {
+   "source": "TESS",
+   "id": "rs65g",
+   "title": "Do Better Labels Lead to Better Choices? Energy Efficient Labels",
+   "description": "",
+   "details": "",
+   "category": "economics/behavioural",
+   "status": "Unlikely",
+   "reason": "Picture experiment: the treatment is a state-specific US Energy Guide label shown only as an image (51 files, not in the deposit), for buying an air conditioner. Reviewed 12 Nov 2026.",
+   "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "vhycz",
+   "title": "Collective Memory and Autobiographical Memory: Bridging the Divide",
+   "description": "",
+   "details": "",
+   "category": "moral/social/cognition",
+   "status": "Unlikely",
+   "reason": "Almost every answer is free text (an important national event, a memory a word brings back) with the age at the time; nothing gives a single in-range response. Reviewed 12 Nov 2026.",
+   "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "sffyb",
+   "title": "Saving for retirement vs. Saving for a retirement with others",
+   "description": "",
+   "details": "",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "reason": "Text treatment is fine, but the sample is only people with a plan who are not paying in, the text says 'Americans', and the main outcome splits a $5,000 tax refund (a free number the schema cannot hold). About 3,000 rows usable: likelihood of raising the saving rate, and whether they did a week later. Not picked 12 Nov 2026.",
+   "novelty": null
   }
  ],
  "built": {

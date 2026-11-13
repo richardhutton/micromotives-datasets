@@ -1,0 +1,602 @@
+study_id: de5hx
+source: tess
+title: "Risk Orientations, Status Quo Frames, and Electoral Choice"
+data_file: "tess2_054_kam_simas_final_data.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-12: node de5hx,
+  node_license null, no license relationship, no child components). TESS archived
+  its post-2009 projects through the Roper Center and its own site states no reuse
+  terms; TESS has since suspended operations. So there is no explicit grant of
+  redistribution rights for this deposit, and none should be assumed.
+
+# SocSci210 built only Q8 and Q9; on those two our rows agree with theirs
+# exactly (see SOCSCI210 in notes).
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 054 (Cindy D. Kam and Elizabeth N. Simas, Vanderbilt), "Risk
+  Orientations, Status Quo Frames, and Electoral Choice". Knowledge Networks
+  panel, web, fielded 20 October to 3 November 2010: 1,631 fielded, 1,019
+  completed, completion rate 62.5% ("TESS2 054 - Kam & Simas Response Rate
+  Report.doc"). The .sav has exactly 1,019 rows, one per unique caseid.
+
+  PROVENANCE. OSF node de5hx, fetched 2026-11-12 into data/raw/de5hx/ from
+  https://osf.io/download/2tdfz/ (Kam006.zip: the questionnaire .doc, the .sav,
+  the response-rate report and the KN methodology note, the four extracted
+  beside it byte-for-byte) and https://osf.io/download/bnv9x/
+  (Kam_Simas006.pdf, the TESS proposal "TESS-0006.R1", never a wording source).
+
+  Line citations are 1-based line numbers in
+    Q   = "tess2_054_kam-simas2_FINAL.txt", the macOS textutil conversion of the
+          fielded questionnaire "tess2_054_kam-simas2_FINAL.doc" (the
+          pipeline's own .doc route, sources/osf.py). Re-converted from the .doc
+          on 2026-11-12 and diffed: byte-identical. `strings` finds no
+          revision marks in the .doc.
+    SAV = "tess2_054_kam_simas_final_data.sav", read with pyreadstat.
+
+
+  THE DESIGN (Q 46, 151-157)
+
+  "a between-subject post-test-only multiple treatment group experiment" (Q 46).
+  Everyone answers seven risk-orientation items first (Q1-Q7, Q 55-149), then is
+  randomly assigned (Q 151) to one of three versions of a mock newspaper article
+  about a mayoral race in "Patterson", then answers Q8 (vote) and Q9 (which
+  candidate is "Risky"). One factor, `status_quo_frame`:
+
+    XTESS054 = 1  TREATMENT 1: DEPARTURES FROM STATUS QUO A BAD THING  (Q 155, 163)
+    XTESS054 = 2  TREATMENT 2: DEPARTURES FROM STATUS QUO A GOOD THING (Q 156, 183)
+    XTESS054 = 3  CONTROL CONDITION                                     (Q 157, 202)
+
+  SAV `xtess054` ("Experimental Groups", labels just '1'/'2'/'3'): 332 / 334 /
+  353, no blanks. recipe_prep.py (Jev, 2026-11-12) chose xtess054 at conf 0.96
+  against NONE_OF_THESE 0.03; the questionnaire settles it independently.
+  Declared: raw 1 -> condition_num 0 (departure_bad), raw 2 -> 1
+  (departure_good), raw 3 -> 2 (control), the questionnaire's own order.
+
+
+  CONDITION TEXT
+
+  Each arm is the pre-article display (Q 161), the headline (Q 166 / 186 / 205),
+  the byline and the article paragraphs, all word-for-word: T1 Q 161-181, T2 Q
+  161-201, control Q 161-220. Typography normalised per CONVENTIONS (curly
+  quotes and apostrophes straightened, the en dash after "PATTERSON" made a
+  hyphen, double spaces after full stops made single); no word changed. Kept as
+  written: the display's capitals (Q 161 is in capitals in the questionnaire and
+  capitalisation is never normalised); the control's "Some citizens like what
+  Jack Tucker's new perspective" (Q 216, a source slip); T1's "She says," with a
+  comma against T2/control's "She says" without (Q 179, 199, 218).
+
+  Not rendered: the bracketed screen names ([DISPLAYT1] etc.) and the treatment
+  headings at Q 163/183/202, which are researcher labels.
+
+  NO shared_context, deliberately. The only text common to the start of all
+  three arms is the Q 161 display, and it was shown AFTER Q7 (Q 159, "SHOW
+  FOLLOWING DISPLAY BEFORE SHOWING EXPERIMENTAL CONDITION"). shared_context is
+  prepended to every row, including the item-level override that the seven
+  pre-treatment items carry (recipe.condition_text_for), so hoisting it would
+  tell the Q1-Q7 rows they were about to read an article they had not yet been
+  told about. It is repeated in each arm instead. The article paragraphs common
+  to all three versions (Q 169-173 and equivalents) sit after a differing
+  headline, so they are not a prefix and cannot be hoisted either.
+
+
+  OUTCOMES
+
+  Q1-Q7 (tasks 0-6) were asked of everyone BEFORE assignment (Q 151 comes after
+  Q7). Their condition is the project's no-stimulus sentinel, "No stimulus was
+  shown; the question was asked of everyone." (CONVENTIONS, "A source with no
+  stimulus"), declared as an item-level `condition_text` on all three arms (the
+  a2nbf mechanism, which QC rule 1 accepts only when every arm says so). The
+  rows keep their respondent's condition_num, as a2nbf's pre-variant items do,
+  but no row before Q8 carries any article text.
+
+    task 0  Q1  cautious (1) .. act boldly (7)          Q 56, 58-65
+    task 1  Q2  horses: continue playing .. take winnings, 1-5    Q 67-78
+    task 2  Q3  "I would like to explore strange places."         Q 81-93
+    task 3  Q4  "I like to do frightening things."                Q 96-108
+    task 4  Q5  "I like new and exciting experiences, even if I have to
+                 break the rules."                                Q 111-123
+    task 5  Q6  "I prefer friends who are exciting and unpredictable." Q 126-137
+    task 6  Q7  how easy or difficult to accept taking risks, 1-4 Q 140-149
+    task 7  Q8  vote choice, 1-4                                  Q 225-237
+    task 8  Q9  "Risky" fits which candidate, 1-4                 Q 240-257
+
+  Q3-Q6: the stem and the statement are joined as one sentence pair; the
+  programming note (Q 53) says the statement was centred on its own line, which
+  is layout. Q1's two endpoint labels are the table cells at Q 65. Every
+  endpoint label is the questionnaire's, and the SAV value labels agree.
+
+  Q2 "Not Sure" (code 3) is the middle of a five-point horizontal scale
+  (Q 69-78, Q 52 "PLEASE USE HORIZONTAL SCALES"), between "Probably Continue
+  Playing" and "Probably Take My Winnings". recipe_prep's Jev pass called it a
+  non-answer (conf 0.89, disagreeing with the regex). OVERRULED: it is a
+  labelled position on the scale the respondent was shown, not a don't-know
+  code offered outside it, and 136 respondents chose it. It is kept and named as
+  the scale's mid_label.
+
+
+  NAME ORDER IN Q8 AND Q9 (Q 222)
+
+  "SHOW "JACK TUCKER" IN POSITIONS 1 AND 2 FOR HALF OF RESPONDENTS AND "GARY
+  ROGERS" IN POSITIONS 1 AND 2 FOR OTHER HALF. RECORD WHETHER "JACK TUCKER" OR
+  "GARY ROGERS" WAS SHOWN IN POSITIONS 1 AND 2. PLEASE ALSO SHOW THE NAMES IN
+  THE SAME ORDER IN THE Q9 QUESTION TEXT."
+
+  Recorded as SAV `DOVQ81` ("DATA-ONLY: JACK TUCKER shown at 1 and 2
+  position", 1 Yes / 0 No) and `DOVQ82` (the same for GARY ROGERS). Every
+  respondent has exactly one of the two set: DOVQ81=1 506, DOVQ82=1 513, never
+  both or neither. Across arms: DOVQ81=1 155 / 173 / 178, DOVQ81=0 177 / 161 /
+  175.
+
+  HOW THE ANSWERS ARE CODED UNDER EACH ORDER. Q8 and Q9 are each ONE column with
+  ONE value-label set (Q8: 1 "Definitely vote for Jack Tucker" .. 4
+  "Definitely vote for Gary Rogers"; Q9: 1 "Fits Jack Tucker much better" .. 4
+  "Fits Gary Rogers much better") serving both orders, which is ledger #47's
+  signature of LABEL-anchored coding: the code names the candidate, not the
+  position. Confirmed four ways on the data, each of which a positional coding
+  would flip in the Gary-Rogers-first half:
+    - Q9: Jack Tucker, the candidate with no experience, is called the more
+      "Risky" in both orders. Codes 1-2 are 70% of Tucker-first answers
+      (342 / 487) and 77% of Rogers-first (375 / 488).
+    - Q8 by arm: departure-good (T2) has the lowest mean code, i.e. the most
+      Tucker votes, in BOTH orders (Tucker-first 2.344 / 2.174 / 2.276 for
+      T1 / T2 / control; Rogers-first 2.298 / 2.154 / 2.257).
+    - r(Q1, Q8), boldness against vote: -0.172 Tucker-first, -0.107
+      Rogers-first. Same sign: bolder respondents choose Tucker in both.
+    - r(Q7, Q8), difficulty accepting risk against vote: +0.085 / +0.172.
+  Crosstab of name order x response (blank = no answer):
+               Q8: 1    2    3   4  blank   Q9: 1    2    3   4  blank
+    Tucker 1st     59  261  156  16   14       59  283  124  21   19
+    Rogers 1st     57  272  155  10   19       55  320  100  13   25
+  The two rows are near-identical; a positional coding would mirror them.
+
+  So `response_recode` is the identity for both orders. A per-order reversal
+  would be the error ledger #47 warns of and would invert half the answers.
+
+  WHAT EACH ROW SAYS ABOUT THE ORDER. The order changes no word of the article,
+  so it is not a condition factor (QC rule 5 would rightly fail it). It changes
+  the question the respondent was shown, which is outcome text, so it is
+  resolved per respondent through `respondent_vars: [DOVQ81]` and quex inline
+  directives in the outcome question (the 3muqx / a2nbf mechanism):
+    - Q9's own wording: "fit Jack Tucker or Gary Rogers better?" (DOVQ81=1,
+      Q 240 word-for-word) or "fit Gary Rogers or Jack Tucker better?"
+      (DOVQ81=0, the order Q 222 prescribes).
+    - Q8's four options, listed in the order that respondent saw them, each
+      label word-for-word from Q 231-237. Q9's options are NOT listed (below).
+  ADDED WORDS, stated per CONVENTIONS (layout exception): "The options were
+  shown from left to right:" before Q8's list. The questionnaire gives no words
+  for the order; it is a layout fact, horizontal per Q 52 and Q 224/239
+  "[HORIZONTAL SP]", with positions 1-4 per Q 222. The clause is description,
+  not transcription.
+  The answer instruction stays the label-anchored one ("1 means Definitely vote
+  for Jack Tucker ... 4 means Definitely vote for Gary Rogers"), which is true
+  for every row whichever side that name was shown on. A Rogers-first row
+  therefore lists the options right-to-left relative to their codes; that is
+  what the screen and the file jointly say, and the instruction names each end
+  by its label so nothing has to be inferred from position.
+
+  Q9: ONLY THE QUESTION WORDING CARRIES THE ORDER (revised 2026-11-13, on the
+  checker's finding). Q 222 states two things: the names were swapped "IN
+  POSITIONS 1 AND 2" (written directly above Q8's options), and "PLEASE ALSO
+  SHOW THE NAMES IN THE SAME ORDER IN THE Q9 QUESTION TEXT". Nothing states
+  that Q9's OPTIONS were reversed; Q 246-257 write them once, Tucker first.
+  An earlier draft listed Q9's options in a per-respondent order, which the
+  instrument does not support, so the claim is withdrawn: Q9 rows give the
+  question with the names in that respondent's order (stated) and only the
+  label-anchored answer instruction, which names each end by its label and
+  claims no display order (as 5mt6r does). The data cannot settle the option
+  order either way, since the codes are label-anchored whichever it was.
+  Q8 keeps its listed order: the positions note sits on Q8's options and DOVQ81
+  records exactly that.
+
+
+  RESPONSES AND MISSING
+
+  Per-outcome identity recodes over each scale (1-7, 1-5, 1-4). The only
+  labelled non-answer, -1 "Refused", occurs 0 times on Q1-Q9; non-response is a
+  blank cell (Q1 12, Q2 8, Q3 12, Q4 11, Q5 7, Q6 8, Q7 3, Q8 33, Q9 44 = 138).
+  missing_codes [-1] is declared from the labels.
+  Rows: 1,019 x 9 = 9,171 cells - 138 blank = 9,033.
+
+
+  NOT BUILT
+
+  Q10 (investments held, 14 yes/no columns Q10_1..Q10_14 plus a text box) and
+  Q17 (investing strategy, 1-5): the "3 questions from the Knowledge Network
+  financial profile: ppfs0553 [stocks] and ppfs0554 [bonds]; ppfs0581
+  [investment strategy]" requested at Q 49, re-asked here after Q9 (Q 259-286).
+  NOT persona: they were asked after the stimulus, inside this survey, and the
+  persona schema has no financial field; the persona is the panel profile
+  recorded before the study. NOT outcomes: they are profile covariates the
+  authors requested from KN's profile (Q 49), not responses to the article,
+  and Q10 is a factual inventory of holdings. Cost: 1,019 - 27 = 992 Q17 rows
+  and up to 14 x 1,019 Q10 cells.
+
+  The standard TESS public-affairs re-asks (PARTY1-4, IDEO, REL1, REL2, Q
+  289-463) are not in the SAV; only the preloads xparty7/xideo/xrel1/xrel2 are.
+
+
+  PERSONA
+
+  The Knowledge Networks profile, mapped as every KN-era TESS recipe here does
+  (5hqan, 7tzpe, z358z): PPAGE, PPGENDER, PPEDUCAT, PPETHM, PPINCIMP, PPMARIT,
+  PPWORK, PPREG4, PPHHSIZE, PPHOUSE, PPRENT, PPMSACAT, PPNET, xparty7, xideo,
+  xrel2 (religion left out, below).
+
+  recipe_prep (Jev) agreed on age, gender, income, ethnicity, employment,
+  marital, religion, household size (conf 0.96-1.00). Two departures:
+    - education: Jev chose PPEDUC (14 levels, conf 0.96) over PPEDUCAT (0.03).
+      PPEDUCAT used, as in every sibling KN recipe and the education crosswalk
+      built for them; PPEDUC is finer and no other KN recipe here maps it.
+    - region: Jev REVIEW, PPREG4 0.59 vs ppreg9 0.31. PPREG4 used, as everywhere.
+  Not mapped: PPSTATEN, ppreg9 (finer than the shared scheme), PPHHHEAD and the
+  PPT* household-composition counts (not in the shared persona set), ppagecat/
+  ppagect4 (PPAGE is exact).
+
+  RELIGION (xrel1) IS LEFT OUT, as 7tzpe left it out for the same panel and
+  era: its labels ("Baptist-any denomination", "Catholic", "Eastern Orthodox",
+  ...) are not in the religion crosswalk (data/catalog/
+  persona_crosswalk_religion.json has no Knowledge Networks scheme), so QC rule
+  14 warns, and adding a scheme means writing data/catalog/, which this build
+  may not. Measured: mapping it made rule 14 warn on exactly those three labels.
+  To restore: add the scheme, then `religion: xrel1` with persona_missing
+  xrel1: [14] ("Missing", 35 respondents) and the label rewrite 12 "Other
+  non-Christian, please specify:" -> "Other non-Christian" (the questionnaire's
+  own option, Q 414; Jev: answer_with_boilerplate, conf 0.96; 36 respondents).
+  13 "None" is a real answer.
+
+  persona_missing, from the value labels: xparty7 8 "Dummy" and 9 "Missing" (0
+  occurrences); xideo 8 "Dummy" (0) and 9 "Missing" (43); xrel2 7/8 "Dummy"
+  (0) and 9 "Missing" (191; 153 of them are xrel1=13 "None", who were not
+  asked attendance, Q 441). Jev called the "Dummy" labels non-answers at
+  0.42-0.62 (REVIEW); agreed, they carry no answer. No PP* variable has a
+  -1/-2 value in this file. The questionnaire's in-survey re-asks for missing
+  preloads (DOV_XPARTY7 etc., Q 289-463) are not in the SAV, so 9 stays missing.
+
+
+  UK CHECK
+
+  The article is about a fictional town's mayoral race, with fictional
+  candidates and a local economy; it names no party, real place or US
+  institution. "Mayor", "city council", "school board" and "City Hall" read as
+  American but exist in or are intelligible in UK local government, and
+  nothing in the questions needs US knowledge. The date "November 2, 2010" and
+  US date order are as printed. Q1-Q7 are general risk items; Q2's horse-race
+  betting is as familiar in the UK as the US. The persona is the usual US panel
+  profile, as for every TESS source.
+
+
+  SOCSCI210 - NOT COMPARABLE IN SCOPE, AND THE DIFFERENCE RECONCILES EXACTLY
+
+  Their build (read 2026-11-12 through pipeline/crosscheck.py, shard 0004):
+  1,961 rows, 991 participants, 3 conditions {0: 641, 1: 641, 2: 679}, 2 tasks
+  {0: 986, 1: 975}, responses {1: 230, 2: 1,136, 3: 535, 4: 60}. Ours: 9,033
+  rows, 1,017 participants, 3 conditions, 9 tasks. Their task 0 is our Q8
+  (task 7, 986 rows) and their task 1 our Q9 (task 8, 975 rows); they did not
+  build Q1-Q7. Restricted to tasks 7-8, our build reproduces theirs in all 24
+  (condition, task, response) cells exactly, and 991 participants. So the
+  assignment (raw 1/2/3 -> 0/1/2), the participants and every Q8/Q9 response
+  agree, and the identity coding of Q8/Q9 under both name orders is the same
+  as theirs.
+
+  Their text (informational, per ledger #35/#44): every condition reads "On
+  Tuesday, Patterson citizens will go to the polls" and "The election will be
+  held on November 9, 2010", which is the PROPOSAL's wording (Kam_Simas006.pdf,
+  three times each); the fielded questionnaire says "In a few weeks" and
+  "November 2, 2010" (Q 169, 181) and has neither phrase. Their texts are also
+  attached to the wrong conditions: their condition 0 (raw 1, Treatment 1 by Q
+  155/163, n=332) carries no frame, their condition 1 (raw 2, Treatment 2)
+  carries Treatment 1's "A vote for Jack Tucker is too risky", and their
+  condition 2 (raw 3, the control, n=353, which their 679 rows confirm) carries
+  Treatment 2's "new ideas" line. The proposal orders the frames bad, good,
+  control, as Q does, so the shift is theirs. Our mapping follows Q 155-157 and
+  agrees with the authors' hypothesis in the data: the departure-good arm has
+  the most Tucker votes (Q8 codes 1-2: 225/323, 70%) and departure-bad the
+  fewest (197/322, 61%; control 227/341, 67%). They render no name order.
+
+condition:
+  source_var: xtess054
+  factors: [status_quo_frame]
+  considered_and_rejected:
+    DOVQ81: >-
+      Counterbalances the order of the two candidates' names in Q8/Q9's options
+      and Q9's wording (Q 222). It changes no word of the article, so it is not a
+      condition; it is resolved per respondent in the outcome text through
+      respondent_vars. See NAME ORDER in notes.
+    DOVQ82: >-
+      The complement of DOVQ81 (Gary Rogers shown first); exactly one of the two
+      is 1 for every respondent.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {status_quo_frame: departure_bad}
+      items: &pre_treatment
+        0: {condition_text: "No stimulus was shown; the question was asked of everyone."}
+        1: {condition_text: "No stimulus was shown; the question was asked of everyone."}
+        2: {condition_text: "No stimulus was shown; the question was asked of everyone."}
+        3: {condition_text: "No stimulus was shown; the question was asked of everyone."}
+        4: {condition_text: "No stimulus was shown; the question was asked of everyone."}
+        5: {condition_text: "No stimulus was shown; the question was asked of everyone."}
+        6: {condition_text: "No stimulus was shown; the question was asked of everyone."}
+      text: >-
+        NEXT YOU WILL SEE AN ARTICLE THAT DESCRIBES A POLITICAL RACE. PLEASE READ
+        THE ARTICLE AS IF YOU WERE A RESIDENT OF THE CITY AND COULD VOTE IN THE
+        ELECTION.
+
+        Tight Mayoral Race Focuses on Inexperience
+
+        By Anne Davis / The Morning Journal
+
+        PATTERSON - In a few weeks, Patterson citizens will go to the polls to
+        choose between two candidates, Gary Rogers and Jack Tucker, who are vying
+        for the seat of retiring Mayor Timothy Marsh. As Election Day draws near,
+        each candidate has turned his focus to what has become the biggest issue
+        in this race: the local economy.
+
+        Both candidates are long-time residents of Patterson but bring very
+        different credentials to the race. Gary Rogers, 52, is a familiar face in
+        local politics, serving two terms on both the local school board and
+        three terms on the city council. Jack Tucker, 53, is a businessman who has
+        never held elected office but has been active in several community
+        organizations.
+
+        Throughout his campaign, Jack Tucker has faced harsh questioning about his
+        lack of time in City Hall. Critics have lambasted him for having no
+        political experience, while supporters have made much of the fresh
+        perspective he brings.
+
+        By pointing out his opponent's shortcomings, Gary Rogers has emphasized
+        the risks associated with entrusting the job of Mayor to someone without
+        experience. "To grow our economy, you have to be able to navigate the
+        political system. This city needs a mayor who knows how local politics
+        works, who has been involved for a while, and who has shown he can get
+        things done. When it comes time for the big game, do you go with the
+        proven veteran or the rookie? A vote for Jack Tucker is too risky: he
+        hasn't been tested in office, you don't know what he stands for, or what
+        he'll be able to accomplish."
+
+        And what do local voters think? The sentiment appears to be mixed, with
+        recent polls showing the candidates in a dead heat. Cherie Gilbert, 34,
+        says "I plan on voting for Jack Tucker. His energy and new ideas are just
+        what we need to get back on our feet."
+
+        Rhonda Brady, 29, disagrees. She says, "Switching to Jack Tucker is too
+        risky. He's unpredictable and has no record. Gary Rogers has experience,
+        he's a known quantity, and I don't like the idea of trusting the city in
+        the hands of a newcomer."
+
+        The election will be held on November 2, 2010.
+    - raw: 2
+      condition_num: 1
+      factors: {status_quo_frame: departure_good}
+      items: *pre_treatment
+      text: >-
+        NEXT YOU WILL SEE AN ARTICLE THAT DESCRIBES A POLITICAL RACE. PLEASE READ
+        THE ARTICLE AS IF YOU WERE A RESIDENT OF THE CITY AND COULD VOTE IN THE
+        ELECTION.
+
+        Tight Mayoral Race Focuses on New Ideas
+
+        By Anne Davis / The Morning Journal
+
+        PATTERSON - In a few weeks, Patterson citizens will go to the polls to
+        choose between two candidates, Gary Rogers and Jack Tucker, who are vying
+        for the seat of retiring Mayor Timothy Marsh. As Election Day draws near,
+        each candidate has turned his focus to what has become the biggest issue
+        in this race: the local economy.
+
+        Both candidates are long-time residents of Patterson but bring very
+        different credentials to the race. Gary Rogers, 52, is a familiar face in
+        local politics, serving two terms on both the local school board and
+        three terms on the city council. Jack Tucker, 53, is a businessman who has
+        never held elected office but has been active in several community
+        organizations.
+
+        Throughout his campaign, Jack Tucker has faced harsh questioning about his
+        lack of time in City Hall. Critics have lambasted him for having no
+        political experience, while supporters have made much of the fresh
+        perspective he brings.
+
+        By touting his outsider status, Jack Tucker has emphasized the costs
+        associated with entrusting the job of Mayor to someone who has failed to
+        bring about change. "To grow our economy, you need a fresh perspective and
+        a willingness to make big changes and take risks that can pay off. We've
+        already had a chance to see what Gary Rogers would do in office, and
+        electing Gary Rogers would just promise the same old approach and the same
+        tired ideas that obviously aren't working. Staying with Gary Rogers is a
+        sure bet, but it's a bad one. You know what you're getting, but what
+        you're betting on has already proven to be unsuccessful."
+
+        And what do local voters think? The sentiment appears to be mixed, with
+        recent polls showing the candidates in a dead heat. Cherie Gilbert, 34,
+        says "I plan on voting for Gary Rogers. His experience and leadership
+        skills will get us back on our feet."
+
+        Rhonda Brady, 29, disagrees. She says "I'll take my chances with Jack
+        Tucker. His new ideas give us a good shot at changing things up. Gary
+        Rogers has been in office and has been ineffective. All he's proven is
+        that he can't get things done."
+
+        The election will be held on November 2, 2010.
+    - raw: 3
+      condition_num: 2
+      factors: {status_quo_frame: control}
+      items: *pre_treatment
+      text: >-
+        NEXT YOU WILL SEE AN ARTICLE THAT DESCRIBES A POLITICAL RACE. PLEASE READ
+        THE ARTICLE AS IF YOU WERE A RESIDENT OF THE CITY AND COULD VOTE IN THE
+        ELECTION.
+
+        Tight Mayoral Race Focuses on the Economy
+
+        By Anne Davis / The Morning Journal
+
+        PATTERSON - In a few weeks, Patterson citizens will go to the polls to
+        choose between two candidates, Gary Rogers and Jack Tucker, who are vying
+        for the seat of retiring Mayor Timothy Marsh. As Election Day draws near,
+        each candidate has turned his focus to what has become the biggest issue
+        in this race: the local economy.
+
+        Both candidates are long-time residents of Patterson but bring very
+        different credentials to the race. Gary Rogers, 52, is a familiar face in
+        local politics, serving two terms on both the local school board and
+        three terms on the city council. Jack Tucker, 53, is a businessman who has
+        never held elected office but has been active in several community
+        organizations.
+
+        Throughout his campaign, Jack Tucker has faced harsh questioning about his
+        lack of time in City Hall. Critics have lambasted him for having no
+        political experience, while supporters have made much of the fresh
+        perspective he brings.
+
+        The two candidates have their own takes on whether experience matters. By
+        pointing out his opponent's shortcomings, Gary Rogers has emphasized that
+        the job of Mayor should not be entrusted to someone without experience.
+        In contrast, Jack Tucker has touted his outsider status, emphasizing the
+        costs associated with entrusting the job of Mayor to someone who has
+        failed to bring about change.
+
+        And what do local voters think? Both campaigns have been hard at work
+        trying to gauge the pulse of the city. The sentiment appears to be mixed,
+        with recent polls showing the candidates in a dead heat. Some citizens
+        like what Jack Tucker's new perspective, while others appreciate Rogers'
+        experience, and still others remain undecided. Cherie Gilbert, 34, says
+        "I plan on voting for Gary Rogers. I have been watching the campaign, and
+        I like his ideas."
+
+        Rhonda Brady, 29, disagrees. She says "I'm all for Jack Tucker. I think he
+        will do a lot of good things for this city."
+
+        Both candidates have been holding town hall meetings, attending campaign
+        rallies, and working hard to court voters across the city. Their campaign
+        efforts are sure to pick up as Election Day nears. The election will be
+        held on November 2, 2010.
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: >-
+      Some people say you should be cautious about making major changes in life.
+      Suppose these people are located at 1. Others say that you will never
+      achieve much in life unless you act boldly. Suppose these people are
+      located at 7. And others have views in between. Where would you place
+      yourself on this scale?
+    scale:
+      min: 1
+      max: 7
+      min_label: You should be cautious about making major changes in life
+      max_label: You will never achieve much in life unless you act boldly
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q2
+    task_num: 1
+    question: >-
+      Suppose you were betting on horses and were a big winner in the third or
+      fourth race. Would you be more likely to continue playing or take your
+      winnings?
+    scale:
+      min: 1
+      max: 5
+      min_label: Definitely Continue Playing
+      mid_label: Not Sure
+      max_label: Definitely Take My Winnings
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q3
+    task_num: 2
+    question: >-
+      Please rate your level of agreement or disagreement with the following
+      statement: I would like to explore strange places.
+    scale: &agree5
+      min: 1
+      max: 5
+      min_label: Strongly Disagree
+      mid_label: Neither Disagree Nor Agree
+      max_label: Strongly Agree
+    response_recode: &id5 {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q4
+    task_num: 3
+    question: >-
+      Please rate your level of agreement or disagreement with the following
+      statement: I like to do frightening things.
+    scale: *agree5
+    response_recode: *id5
+  - var: Q5
+    task_num: 4
+    question: >-
+      Please rate your level of agreement or disagreement with the following
+      statement: I like new and exciting experiences, even if I have to break the
+      rules.
+    scale: *agree5
+    response_recode: *id5
+  - var: Q6
+    task_num: 5
+    question: >-
+      Please rate your level of agreement or disagreement with the following
+      statement: I prefer friends who are exciting and unpredictable.
+    scale: *agree5
+    response_recode: *id5
+  - var: Q7
+    task_num: 6
+    question: >-
+      In general, how easy or difficult is it for you to accept taking risks?
+    scale:
+      min: 1
+      max: 4
+      min_label: Very Easy
+      max_label: Very Difficult
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q8
+    task_num: 7
+    # Codes are label-anchored in both name orders (notes, NAME ORDER); only the
+    # display order of the options changes, resolved per respondent by DOVQ81.
+    question: >-
+      If you were a resident of this city, which candidate would you vote for?
+      The options were shown from left to right: [IF DOVQ81=1, SHOW "Definitely
+      vote for Jack Tucker", "Probably vote for Jack Tucker", "Probably vote for
+      Gary Rogers", "Definitely vote for Gary Rogers"; IF DOVQ81=0, SHOW
+      "Definitely vote for Gary Rogers", "Probably vote for Gary Rogers",
+      "Probably vote for Jack Tucker", "Definitely vote for Jack Tucker"].
+    scale:
+      min: 1
+      max: 4
+      min_label: Definitely vote for Jack Tucker
+      max_label: Definitely vote for Gary Rogers
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q9
+    task_num: 8
+    question: >-
+      Does the term, "Risky" fit [IF DOVQ81=1, SHOW Jack Tucker or Gary Rogers;
+      IF DOVQ81=0, SHOW Gary Rogers or Jack Tucker] better?
+    scale:
+      min: 1
+      max: 4
+      min_label: Fits Jack Tucker much better
+      max_label: Fits Gary Rogers much better
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+
+respondent_vars: [DOVQ81]
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [-1]
+
+persona_missing:
+  xparty7: [8, 9]
+  xideo: [8, 9]
+  xrel2: [7, 8, 9]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: xparty7
+  ideology: xideo
+  religious_attendance: xrel2

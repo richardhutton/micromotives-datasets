@@ -1,0 +1,445 @@
+study_id: k9ahx
+source: tess
+experiment: ratings
+title: "Assessing the Stability of Value Systems in the Mass Public"
+data_file: "TESS2_056_Ciuk_Client.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-12: node k9ahx,
+  node_license null, no license relationship, no child components; its storage holds
+  folders Data, Proposal and Wiki images). TESS archived its post-2009 projects through
+  the Roper Center and its own site states no reuse terms; TESS has since suspended
+  operations. So there is no explicit grant of redistribution rights for this deposit,
+  and none should be assumed.
+
+# Ratings half only (arms 1-3 of 6), by rich's ruling of 12 Nov 2026. SocSci210's
+# scope is compared in notes.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 056 (David Ciuk, Michigan State), "Assessing the Stability of Value
+  Systems in the Mass Public". Knowledge Networks KnowledgePanel, questionnaire
+  dated October 2010 (Q 2-3, 62-63), Great Plains project K2884, "1250 genpop who
+  completed Public Affairs Profile" (Q 22). The .sav has 1,268 rows.
+
+  PROVENANCE. OSF node k9ahx, archive Ciuk034.zip (https://osf.io/download/3wh2e/),
+  downloaded 2026-11-12 into data/raw/k9ahx/. It holds the fielded questionnaire
+  TESS2_056_CIUK_Vfinal.doc, the client data TESS2_056_Ciuk_Client.sav, a response
+  rate report and a Knowledge Networks methodology note.
+
+  Line citations are 1-based line numbers in
+    Q = data/raw/_converted/k9ahx__TESS2_056_CIUK_Vfinal.txt, the repo's text
+        conversion of the .doc. It is byte-identical (after CR stripping) to the
+        textutil conversion beside the .doc in data/raw/k9ahx/; checked by diff.
+  Q 1-200 is a study description written by the PI (it reprints the primes at
+  Q 105 and Q 129, with a line-break hyphen "ev- eryone" at Q 105). The fielded
+  item list starts at Q 206, and only that part is used for wording.
+
+
+  THE DESIGN, AND WHAT THIS RECIPE BUILDS
+
+  `xtess056` (Q 206-227; .sav labels agree word for word in substance):
+    1 RATINGS  control, no prime                       219
+    2 RATINGS  equality prime          (+ Qequal)      214
+    3 RATINGS  economic-security prime (+ Qecon)       207
+    4 RANKINGS control                                 213
+    5 RANKINGS equality prime                          216
+    6 RANKINGS economic-security prime                199   sum 1,268
+  recipe_prep.py (Jev, 2026-11-12) chose xtess056 at conf 0.99 (runner-up
+  NONE_OF_THESE 0.01). Accepted; the questionnaire's gates settle it
+  independently ("[ASK IF XTESS056=2,5]" Q 230, "[ASK IF XTESS056=3,6]" Q 255,
+  "[SHOW INTRORATE - Q5RATE IF XTESS056=1,2,3]" Q 294).
+
+  Only arms 1-3 are built (raw n -> condition_num n-1). Raw 4-6 are declared by
+  no arm, so the melt skips those 628 respondents.
+
+  WHY THE RANKINGS HALF IS NOT BUILT. Each rankings item (Q1rank-Q10rank, Q 404-
+  639) shows three values and is headed "[RANDOMIZE ORDER OF STATEMENTS 1-3]"
+  (e.g. Q 405), and the PI's description says so too (Q 174: "the order in which
+  the three values appear within each triad should be randomized"). Checked in the
+  .sav, all 83 columns: nothing records the within-triad order. The only order
+  columns are Q1rankQ10rank_Ord1-10 (which triad came 1st..10th, Q 401 "RECORD
+  ORDER IN DOVS") and Q1rateQ5rate_Ord1-5. Each Q*rank_Most/_Least column's value
+  labels give the three options in the questionnaire's listed order, not the
+  order shown. So any rankings row would state an option order that most
+  respondents did not see (ledger 114, 155). Not built, by rich's ruling.
+
+  THE CONDITION (ratings arms)
+
+  One factor, `prime`: none / equality / economic_security.
+  - Arm 2's screen is Qequal (Q 230-252): the prime sentence and, on the same
+    screen, its follow-up question with a 1-5 scale whose ends are labelled
+    "No Emphasis" and "Heavy Emphasis" (Q 238-252). Arm 3's is Qecon (Q 255-277).
+    Both are rendered word-for-word, including the instrument's "the how much"
+    and US spelling. "Use the mouse to click on the appropriate value." is response
+    mechanics and is dropped. Curly apostrophes none here.
+  - WORDS WE ADDED (docs/CONVENTIONS.md, "Narrating what the respondent did",
+    and the DEL climate-harm precedent): for arms 2 and 3, 'Before the questions
+    below, you were shown this screen and asked to answer it on a scale from 1 "No
+    Emphasis" to 5 "Heavy Emphasis":' and the quotation marks around the screen
+    text; for arm 1, the whole sentence "You were not shown any statement before
+    the questions below." Both are true for every row in the arm: the control arm
+    met no prime (Q 100, Q 212), and every treated respondent was ASKED the
+    follow-up, whether or not they answered it (Qequal refused 5 of 214, Qecon 2
+    of 207), which is why "asked" and not "answered". The "1 ... 5" and the two
+    end labels are the instrument's own (Q 238-251).
+  - The prime and its follow-up are one screen and one manipulation (Q 100: "given
+    the treatment and asked to answer a question on the degree to which recent
+    candidates for office emphasized the primed value"), so the follow-up stays in
+    the condition rather than being cut away from its prime.
+
+  QEQUAL AND QECON ARE NOT OUTCOMES. Decided, not overlooked:
+  (1) they are part of delivering the treatment (Q 100 above), asked inside it,
+      before it is complete;
+  (2) each is asked in one ratings arm only, so neither has any comparison arm;
+      as an outcome its condition would be its own stem;
+  (3) "recent political campaigns" in October 2010 means the US midterm
+      campaigns. The answer depends on that local context, which a row cannot
+      state (docs: UK-appropriate check).
+  Row cost: 209 + 205 = 414 answered rows not built.
+
+  THE OUTCOMES
+
+  task 0  Qintro (Q 279-288), asked of ALL respondents after the prime and before
+          the ratings. The PI calls it a distraction task (Q 151-152). It is
+          built anyway: a real question, asked after the manipulation in every arm,
+          not a recall or attention check (its answer is not recoverable from the
+          condition), and "government and public affairs" carries nothing American.
+          Codes as the source: 4 Most of the time .. 1 Hardly at all (Q 285-288).
+          The question keeps the source's capitals.
+  tasks 1-5  Q1rate .. Q5rate (Q 316-367), FREEDOM, EQUALITY, ECONOMIC SECURITY,
+          MORAL TRADITIONALISM, LAW & ORDER.
+
+  THE INTRORATE SCREEN goes in each rating OUTCOME, not in the condition. It was
+  shown to all three arms (Q 294-311), after Qintro and before the five ratings,
+  and it defines the five terms the ratings ask about in capitals. It is part of
+  the measuring instrument rather than the manipulation, and putting it in the
+  condition would also tell every Qintro row it had been shown before Qintro.
+  Rendered word-for-word from Q 298-309: the opening sentence and the five
+  definitions, then the item's own question. Note the instrument's own
+  inconsistency, kept: the opening lists "morality" (Q 298) while the definition
+  and the question say "MORAL TRADITIONALISM" (Q 307, 349); the rankings screen
+  says "moral traditionalism" (Q 381). Curly "We’d" straightened (CONVENTIONS).
+  DROPPED from INTRORATE: Q 311, "Over the next few screens, we will ask you to rate
+  the importance of each of these ideas. For each question, please use the mouse
+  ... If you absolutely cannot answer a question, please click the button at the
+  bottom of the screen ..." — sequence signposting and response mechanics
+  (CONVENTIONS, "Sequence signposting"). Also not rendered: "Instructions" (a
+  section heading, Q 291) and the scripting lines in capitals.
+
+  RATING SCALE, KEPT AS THE SOURCE CODES IT: 1 Very Important, 2 Somewhat
+  Important, 3 Moderately Important, 4 Somewhat Unimportant, 5 Very Unimportant
+  (Q 319-323, identical for all five; .sav labels agree). LOW = IMPORTANT. The
+  scale carries min/mid/max labels from the source; 2 and 4 are labelled in the
+  source but the scale field holds only three (the instruction names 1, 3, 5).
+
+  ORDER OF THE FIVE RATINGS. Randomised and recorded: "RANDOMIZE THE ORDER OF
+  Q1RATE - Q5RATE. RECORD ORDER IN DOVS." (Q 313), held in Q1rateQ5rate_Ord1-5
+  (non-null for all 640 ratings respondents, null for all rankings ones; every
+  row a permutation of 1-5; all 120 orders occur; 7 respondents saw the listed
+  order). NOT rendered and not needed: each row carries ONE rating question, and
+  no row's condition or outcome says anything about the other four ratings or
+  their order. So there is no stated order for the recorded one to contradict
+  (unlike EFXNLX, ledger 114, where the order was printed in every condition).
+  The CONVENTIONS rule on repeated measures (narrate earlier screens) does not
+  apply: these are five different outcome questions, not one question asked about
+  a sequence of stimuli, and outcomes answered earlier are not narrated anywhere
+  in this corpus's multi-outcome builds. A row cannot cite its own position
+  (CONVENTIONS) and this one does not. The columns are listed in
+  considered_and_rejected so the screen does not read them as a second
+  randomisation.
+
+  RESPONSES AND MISSING. response_recode is the identity on 1..5 (Qintro uses
+  1..4). missing_codes [-1] ("Refused", the only non-answer code on any outcome;
+  Jev non_answer conf 1.00 on every one). Counts per arm (raw 1 / 2 / 3), refused
+  in brackets:
+    Qintro   219 (0) / 214 (4) / 207 (1)  -> 635
+    Q1rate   219 (2) / 214 (0) / 207 (1)  -> 637
+    Q2rate   219 (2) / 214 (2) / 207 (2)  -> 634
+    Q3rate   219 (2) / 214 (1) / 207 (1)  -> 636
+    Q4rate   219 (0) / 214 (0) / 207 (0)  -> 640
+    Q5rate   219 (0) / 214 (0) / 207 (1)  -> 639
+  Expected: 3,821 rows, 640 participants, 3 conditions, 6 outcomes.
+
+
+  PERSONA
+
+  KnowledgePanel profile as the other KN/GfK TESS recipes (7tzpe, a2nbf, 9263n):
+  PPAGE, PPGENDER, PPEDUCAT, PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4,
+  PPHHSIZE, PPHOUSE, PPRENT, PPMSACAT, PPNET, plus the X* profile preloads
+  xparty7, xideo, xrel2 (Q 644-820 re-asks them for panelists missing them, and
+  the .sav holds the merged values). No PP* variable has a -1/-2 code in the 640
+  built respondents.
+  - Jev (recipe_prep, 2026-11-12) agreed on age, gender, income, ethnicity,
+    employment, marital status, household size (conf 0.98-1.00).
+  - OVERRULED education: Jev chose PPEDUC (0.97) over PPEDUCAT (0.02). PPEDUCAT
+    is used, as every KN/GfK recipe does, because the education crosswalk is
+    built on it (ledger 64; sh4px, 7tzpe).
+  - OVERRULED region: Jev REVIEW, ppreg9 at 0.33 against PPREG4 0.50 (the printed
+    pick was the lower score). PPREG4 used, as every TESS recipe.
+  - religion: xrel1 LEFT OUT, as in 7tzpe: its labels ("Baptist-any
+    denomination", ...) are not in the religion crosswalk, and adding them means
+    writing data/catalog/, outside this build's scope.
+  - party_id xparty7 IS mapped here (9263n left XPARTY7 out because 9% of its rows
+    were 9 "Missing"): in these 640 respondents codes 8 "Dummy" and 9 "Missing"
+    occur 0 times. Declared missing anyway, read rather than assumed: neither is
+    an option in the instrument (Q 684-691 lists 1-7 and Refused).
+  - xideo: 9 "Missing" occurs once; 8 "Dummy" 0 times. Both declared missing.
+  - xrel2 (religious attendance, into `extra`): 9 "Missing" occurs 99 times (REL2
+    is asked only of those whose religion is not "None", Q 798, and 89 of the 640
+    said None), 7/8 "Dummy" 0 times. All three declared missing, so the field is
+    empty for them.
+  Label pass. recipe_prep's own labels section asked about the first 40 columns
+  only (`cols[:40]` in scripts/recipe_prep.py main), which covers no persona
+  variable at all: Q9rank, Q10rank and every PP*/x* column were never asked about,
+  and the report does not say so. I ran its `report_labels` on those columns
+  separately (same function, same model, 148 labels): every "Not asked"/"REFUSED"
+  non_answer at 1.00; REVIEW on "Dummy" (xparty7 0.72, xideo 0.58, xrel2 0.40
+  against answer 0.38), all declared missing on the instrument's evidence above
+  (zero occurrences in any case); "Missing" non_answer 1.00; zero Jev/regex
+  disagreements. Shared code not changed; the cap is reported to the caller.
+  Not mapped: PPHHHEAD, PPT01-PPT18OV, PPSTATEN, ppreg9, ppagecat, ppagect4,
+  PPEDUC (finer duplicates or no schema field); pppa0005/0006/0018/0023/0024/
+  0027 (2008 presidential vote and Obama approval: US electoral politics).
+
+  Condition-names-persona check: the condition states what "some people believe"
+  about equal opportunity or economic security; no persona field (party, ideology
+  included) is named, and no group's view is stated. Not that failure.
+
+
+  UK CHECK
+
+  The outcomes (how important freedom, equality, economic security, moral
+  traditionalism and law & order are to your daily life; how closely you follow
+  public affairs) carry nothing American. The primes are general sentences about
+  equal opportunity and economic security; "home foreclosures" is US usage
+  (repossessions in the UK) but plainly understood, and the follow-up's "recent
+  political campaigns" points at the 2010 US midterms without naming them. LAW &
+  ORDER is defined as freedom "from the threat of foreign attack" (Q 309), which
+  is a 2010 US framing but readable anywhere. Persona is the usual US panel
+  profile, as for every TESS source.
+
+
+  JEV (scripts/recipe_prep.py k9ahx --source tess, 2026-11-12)
+
+    assignment: xtess056 0.99 (runner-up NONE_OF_THESE 0.01). Accepted.
+    persona: as above; education and region overruled.
+    labels: section 3 capped at 40 columns (above); persona labels asked
+      separately; Dummy REVIEWs resolved as missing.
+    directives: quex recognised 0 directives across 3 instruments while a loose
+      scan saw 8. Read by hand: this KN instrument writes "[ASK IF XTESS056=2,5]",
+      "[ASK IF XTESS056=3,6]", "[ASK ALL]", "[SHOW INTRORATE - Q5RATE IF
+      XTESS056=1,2,3]", "[SHOW INTRORANK - Q10RANK IF XTESS056=4,5,6]" and the
+      profile re-ask "SHOW ... IF X... = 9 (MISSING)" lines (Q 648, 724, 754, 798).
+      Each gate is resolved above; none puts a fill inside any built text. The
+      built text contains no directive.
+
+
+  SocSci210: NOT COMPARABLE AS A WHOLE; OUR SCOPE IS AN EXACT SUBSET
+
+  Their build (via crosscheck.fetch_socsci210, 2026-11-12): 15,622 rows, 1,268
+  participants, 6 conditions (raw-1), 26 tasks. Decomposed:
+    - task 0 (824) = Qequal + Qecon pooled under one task number, across both
+      halves (cond 1: 209, 2: 205, 4: 212, 5: 198). Not built here (see QEQUAL
+      AND QECON ARE NOT OUTCOMES).
+    - tasks 1-5 = Q1rate .. Q5rate, 637/634/636/640/639: our tasks 1-5 exactly.
+    - tasks 6-25 = the rankings Most/Least items, conditions 3-5 only. Not built
+      (rankings half).
+    - Qintro is not in their build at all; it is our task 0 (635 rows).
+  So `mmds crosscheck` is skipped (comparable_to_socsci210: false), and the
+  comparable part was checked by hand instead: their rows with task 1-5 against
+  our rows with task 1-5, joined on (participant = our row index, task_num).
+  3,186 rows on both sides, 0 unmatched in either direction, 0 condition_num
+  mismatches, 0 response mismatches; and all 72 (condition, task, response) cell
+  counts agree. Their task 1-5 rows occur only in conditions 0-2, as ours do. So
+  the assignment, the participants and every rating response agree.
+
+  Their text (informational): every rating row in all three ratings conditions
+  carries the SAME stimulus, "You were shown definitions of all five values and
+  then asked: ...", with no prime in it, so in their build the manipulation never
+  reaches a rating row's text. They paraphrase the follow-up as "Please indicate
+  how much ...". Their rankings stimuli list each triad in the questionnaire's
+  order, which is the order this recipe declines to assert.
+
+condition:
+  source_var: xtess056
+  factors: [prime]
+  considered_and_rejected:
+    Q1rateQ5rate_Ord1: >-
+      Records which rating question came 1st (Q 313, "RECORD ORDER IN DOVS").
+      Counterbalancing of the five outcome questions, not the manipulation; each
+      row carries one rating question and states nothing about order, so there is
+      nothing for it to contradict. See notes, ORDER OF THE FIVE RATINGS.
+    Q1rateQ5rate_Ord2: As Q1rateQ5rate_Ord1, for the 2nd position.
+    Q1rateQ5rate_Ord3: As Q1rateQ5rate_Ord1, for the 3rd position.
+    Q1rateQ5rate_Ord4: As Q1rateQ5rate_Ord1, for the 4th position.
+    Q1rateQ5rate_Ord5: As Q1rateQ5rate_Ord1, for the 5th position.
+    Q1rankQ10rank_Ord1: >-
+      Triad order for the RANKINGS half (xtess056 4-6), which this recipe does not
+      build: within-triad option order was randomised (Q 405 etc., Q 174) and is
+      recorded nowhere in the .sav, so a rankings row would state an option order
+      the respondent may not have seen. Null for every ratings respondent.
+    Q1rankQ10rank_Ord2: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord3: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord4: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord5: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord6: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord7: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord8: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord9: As Q1rankQ10rank_Ord1.
+    Q1rankQ10rank_Ord10: As Q1rankQ10rank_Ord1.
+    Qequal: >-
+      The equality prime's own follow-up question, on the prime's screen (Q
+      230-252). Part of the treatment (Q 100), asked in one ratings arm only, and
+      about "recent political campaigns" (the 2010 US midterms). Rendered in arm
+      2's condition, not built as an outcome. See notes.
+    Qecon: As Qequal, for the economic-security prime (Q 255-277), arm 3.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {prime: none}
+      text: >-
+        You were not shown any statement before the questions below.
+    - raw: 2
+      condition_num: 1
+      factors: {prime: equality}
+      text: >-
+        Before the questions below, you were shown this screen and asked to answer
+        it on a scale from 1 "No Emphasis" to 5 "Heavy Emphasis": "Some people
+        believe that we need to do a lot more to make sure everyone has an equal
+        opportunity to get ahead in life. Please use the following scale to
+        indicate the how much you think recent political campaigns have emphasized
+        equality."
+    - raw: 3
+      condition_num: 2
+      factors: {prime: economic_security}
+      text: >-
+        Before the questions below, you were shown this screen and asked to answer
+        it on a scale from 1 "No Emphasis" to 5 "Heavy Emphasis": "Some people
+        believe we should do as much as we can to provide economic security to
+        create jobs, improve incomes, and decrease home foreclosures. Please use
+        the following scale to indicate the how much you think recent political
+        campaigns have emphasized economic security."
+
+outcomes:
+  - var: Qintro
+    task_num: 0
+    question: >-
+      Some people seem to follow what's going on in government and public affairs
+      most of the time, whether there's an election going on or not. Others aren't
+      that interested. Would you say you follow what's going on in government and
+      public affairs MOST OF THE TIME, SOME OF THE TIME, ONLY NOW AND THEN, or
+      HARDLY AT ALL?
+    scale:
+      min: 1
+      max: 4
+      min_label: Hardly at all
+      max_label: Most of the time
+  - var: Q1rate
+    task_num: 1
+    question: >-
+      We'd like to ask you about some things that are important to our society,
+      such as freedom, equality, economic security, morality, and law & order.
+      First, here is what we mean by these terms: By FREEDOM, we mean a guarantee
+      that everyone may think and act as they consider appropriate. By EQUALITY,
+      we mean ensuring that both rich and poor have an equal opportunity to
+      succeed. By ECONOMIC SECURITY, we mean the guarantee of a steady job and
+      income. By MORAL TRADITIONALISM, we mean people living according to the
+      rules that constitute decent behavior. By LAW & ORDER, we mean being able to
+      live in an orderly, peaceful society free from the threat of foreign attack.
+      How important do you think FREEDOM is to your daily life?
+    scale: &rate
+      min: 1
+      max: 5
+      min_label: Very Important
+      mid_label: Moderately Important
+      max_label: Very Unimportant
+  - var: Q2rate
+    task_num: 2
+    question: >-
+      We'd like to ask you about some things that are important to our society,
+      such as freedom, equality, economic security, morality, and law & order.
+      First, here is what we mean by these terms: By FREEDOM, we mean a guarantee
+      that everyone may think and act as they consider appropriate. By EQUALITY,
+      we mean ensuring that both rich and poor have an equal opportunity to
+      succeed. By ECONOMIC SECURITY, we mean the guarantee of a steady job and
+      income. By MORAL TRADITIONALISM, we mean people living according to the
+      rules that constitute decent behavior. By LAW & ORDER, we mean being able to
+      live in an orderly, peaceful society free from the threat of foreign attack.
+      How important do you think EQUALITY is to your daily life?
+    scale: *rate
+  - var: Q3rate
+    task_num: 3
+    question: >-
+      We'd like to ask you about some things that are important to our society,
+      such as freedom, equality, economic security, morality, and law & order.
+      First, here is what we mean by these terms: By FREEDOM, we mean a guarantee
+      that everyone may think and act as they consider appropriate. By EQUALITY,
+      we mean ensuring that both rich and poor have an equal opportunity to
+      succeed. By ECONOMIC SECURITY, we mean the guarantee of a steady job and
+      income. By MORAL TRADITIONALISM, we mean people living according to the
+      rules that constitute decent behavior. By LAW & ORDER, we mean being able to
+      live in an orderly, peaceful society free from the threat of foreign attack.
+      How important do you think ECONOMIC SECURITY is to your daily life?
+    scale: *rate
+  - var: Q4rate
+    task_num: 4
+    question: >-
+      We'd like to ask you about some things that are important to our society,
+      such as freedom, equality, economic security, morality, and law & order.
+      First, here is what we mean by these terms: By FREEDOM, we mean a guarantee
+      that everyone may think and act as they consider appropriate. By EQUALITY,
+      we mean ensuring that both rich and poor have an equal opportunity to
+      succeed. By ECONOMIC SECURITY, we mean the guarantee of a steady job and
+      income. By MORAL TRADITIONALISM, we mean people living according to the
+      rules that constitute decent behavior. By LAW & ORDER, we mean being able to
+      live in an orderly, peaceful society free from the threat of foreign attack.
+      How important do you think MORAL TRADITIONALISM is to your daily life?
+    scale: *rate
+  - var: Q5rate
+    task_num: 5
+    question: >-
+      We'd like to ask you about some things that are important to our society,
+      such as freedom, equality, economic security, morality, and law & order.
+      First, here is what we mean by these terms: By FREEDOM, we mean a guarantee
+      that everyone may think and act as they consider appropriate. By EQUALITY,
+      we mean ensuring that both rich and poor have an equal opportunity to
+      succeed. By ECONOMIC SECURITY, we mean the guarantee of a steady job and
+      income. By MORAL TRADITIONALISM, we mean people living according to the
+      rules that constitute decent behavior. By LAW & ORDER, we mean being able to
+      live in an orderly, peaceful society free from the threat of foreign attack.
+      How important do you think LAW & ORDER is to your daily life?
+    scale: *rate
+
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+missing_codes: [-1]
+
+# "Dummy"/"Missing" are not options in the instrument (Q 684-691, 728-746, 802-818).
+# Occurrences among the 640 built respondents: xparty7 0, xideo 1 (code 9),
+# xrel2 99 (code 9). See notes, PERSONA.
+persona_missing:
+  xparty7: [8, 9]
+  xideo: [8, 9]
+  xrel2: [7, 8, 9]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: xparty7
+  ideology: xideo
+  religious_attendance: xrel2

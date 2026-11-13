@@ -554,6 +554,30 @@
       "description": "Two proposed residential buildings side by side, varying distance from home, neighbours' view, affordable share, height, what the land is used for now, own or rent and size. Respondents pick which they would rather see built where they live.",
       "design": "paired-profile conjoint, 7 attributes, 5 screens per respondent",
       "verified_against": "no reference build (SocSci210 left the conjoint out); all 14,630 rows rebuilt from the .sav levels by an independent checker, and choice directions agree with the study's reported effects"
+    },
+    "5mt6r": {
+      "category": "survey methodology",
+      "description": "Respondents rate their own health from poor to excellent. The question comes either first or after seven other health questions, and its answer options run either from excellent down or from poor up.",
+      "design": "2x2 between subjects (question position x option order); one outcome, self-rated health 1-5; the seven earlier health questions are condition text in the after arms, not outcomes",
+      "verified_against": "SocSci210 assignment and answers matched per arm (it puts the option-order factor on the wrong arms and never mentions position); an independent checker (Sonnet 5.5) rebuilt the design blind from the questionnaire and joined all 2,651 rows back to the .sav (0 mismatches)"
+    },
+    "zx5b8": {
+      "category": "work/family/gender",
+      "description": "Married people imagine sitting with their spouse on the sofa, either arguing about a sore point or chatting about the day, while the spouse either puts an arm around them or leans back and listens. They then say how cared for, safe, upset or close they would feel.",
+      "design": "2x2 vignette, between subjects (conflict or casual talk x touch or no touch); 20 outcomes; the ten marriage-quality questions asked beforehand are not built",
+      "verified_against": "SocSci210 reproduced on all 821 of its cells once its dropped answers (every D5 = 7) are set aside; an independent checker (Sonnet 5.5) rebuilt all four conditions blind from the questionnaire (exact match) and recomputed all 22,717 responses from the .sav (0 mismatches)"
+    },
+    "k9ahx_ratings": {
+      "category": "moral/social/cognition",
+      "description": "People are shown a short statement about equal opportunity or about economic security, or nothing, then rate how important freedom, equality, economic security, moral traditionalism and law and order are to their daily life.",
+      "design": "3 arms between subjects (no prime, equality prime, economic-security prime); 6 outcomes (interest in politics, then five value ratings); the rankings half of the study is not built because the order of options within each set of three was randomised and not recorded",
+      "verified_against": "SocSci210 ratings rows matched one for one (3,186 rows, every cell); an independent checker (Sonnet 5.5) recomputed all 3,821 rows from the .sav (0 mismatches, and a shifted id gives thousands, so the check can fail)"
+    },
+    "de5hx": {
+      "category": "political preferences/policy",
+      "description": "A local newspaper report on a close mayoral race between an experienced councillor and a businessman who has never held office. The report frames a change of mayor as risky, as a chance worth taking, or neither. Readers say whom they would vote for and which candidate seems risky.",
+      "design": "3 arms between subjects (change framed as bad, as good, or neutral); 2 outcomes after the article, candidate name order counterbalanced and shown as each respondent saw it (Q8 options; Q9 question text only); 7 risk-attitude questions asked of everyone beforehand, with no stimulus",
+      "verified_against": "SocSci210 vote and risk rows matched cell for cell (its article text uses the proposal's wording and is shifted one arm against its own conditions); an independent checker (Sonnet 5.5) matched all three articles word-for-word, confirmed label-anchored codes in both name orders and recomputed all 9,033 responses from the .sav (0 mismatches); Q9 states no option order, since the instrument swaps only its question text"
     }
   }
 }

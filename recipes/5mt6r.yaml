@@ -1,0 +1,315 @@
+study_id: 5mt6r
+source: tess
+title: "Improving Measurement of Self-Reported Health: Question Context and Response Order (Garbarski, TESS3 129)"
+data_file: "TESS3 129 - Garbarski Final Data.sav"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-12: node 5mt6r, node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# SocSci210 built Q1-Q8 as eight tasks (21,180 rows); this recipe builds only the
+# manipulated item, Q1. See "SocSci210" in notes.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS3 129 (Dana Garbarski, Univ. of Wisconsin-Madison), "Improving Measurement
+  of Self-Reported Health: Effects of Question Context and Response Order".
+  GfK KnowledgePanel, web, questionnaire dated January 2013 (file last saved
+  1/30/2013). The .sav has 2,696 rows, one per CaseID (unique).
+
+  Line citations are 1-based line numbers in
+    Q  = TESS3_129_Garbarski_FINAL.txt (the fielded questionnaire; the only
+         wording authority)
+    PR = Garbarski322.pdf (TESS manuscript TESS-0322.R1, the PROPOSAL; cited
+         only for factor names and which arm is the "control")
+
+
+  THE DESIGN: 2 x 2, ONE ASSIGNMENT COLUMN
+
+  Q 22: "XTESS129: 1-4". Q 55: "[IF XTESS129 = 1 OR 3, SHOW Q1 HERE; IF
+  XTESS129 = 2 OR 4, SHOW AFTER Q8]", and Q 119: "[IF XTESS129 = 2 OR 4, SHOW
+  Q1 HERE]" after Q8. Q 56: "[IF XTESS129 = 1-2 SHOW RESPONSE OPTIONS IN
+  REVERSE ORDER (5-EXCELLENT TO 1 – POOR)" (the bracket is never closed in the
+  source). Q 58-62 print the list Poor 1 / Fair 2 / Good 3 / Very good 4 /
+  Excellent 5. So:
+
+    XTESS129  position of Q1                   options shown
+    1         before Q2-Q8 (first question)    Excellent .. Poor  (reversed)
+    2         after Q8                         Excellent .. Poor  (reversed)
+    3         before Q2-Q8 (first question)    Poor .. Excellent  (as printed)
+    4         after Q8                         Poor .. Excellent  (as printed)
+
+  "Reverse" can only mean Excellent first, because the printed list starts at
+  Poor, and the parenthesis "(5-EXCELLENT TO 1 – POOR)" says the same in its
+  own words. "1-2" is a range (1 or 2): the instrument uses "1 OR 3" / "2 OR 4"
+  for the position factor two lines above, so 1-2 is the complementary split,
+  which is what a 2 x 2 needs. PR's design paragraph agrees: the "control"
+  orders the categories "excellent, very good, good, fair, or poor", the
+  "treatment" "poor, fair, good, very good, or excellent", and the other
+  factor puts SRH before or after the domain-specific questions.
+
+  Counts (.sav): XTESS129 {1: 678, 2: 667, 3: 682, 4: 669}, sum 2,696, no
+  blanks. recipe_prep.py (Jev, 2026-11-12) chose XTESS129 at conf 0.99 against
+  NONE_OF_THESE 0.01; the questionnaire settles it independently. raw n ->
+  condition_num n-1, no permutation. No other column is a candidate: the rest
+  are the eight items, their timers, and panel profile.
+
+
+  THE STORED CODES ARE LABEL-ANCHORED IN ALL FOUR ARMS (no per-arm recode)
+
+  The silent-inversion trap (ledger #7 vs #47). Q1 is ONE .sav column serving
+  all four arms, with ONE value-label set {1 Poor, 2 Fair, 3 Good, 4 Very good,
+  5 Excellent}; by ledger #47's discriminating test that is label-anchored.
+  Q 56's own parenthesis also keeps the code with the label ("5-EXCELLENT").
+  Checked against an independent measure the experiment cannot have touched:
+  the panel's health profile `pph10001` ("In general, would you say your
+  physical health is...", collected up to a year earlier per PR, coded the
+  OTHER way, 1 Excellent .. 5 Poor). Within each arm, r(Q1, pph10001):
+    arm 1 -0.807 (n 669), arm 2 -0.789 (648), arm 3 -0.745 (672),
+    arm 4 -0.751 (651).
+  Strongly negative in all four. A positional coding in the reversed arms would
+  have flipped the sign in arms 1 and 2. Q1's distribution per arm (codes 1..5;
+  -1 refused):
+    arm 1  {-1: 7,  1: 17, 2: 74,  3: 251, 4: 263, 5: 66}  mean 3.428
+    arm 2  {-1: 15, 1: 18, 2: 107, 3: 226, 4: 235, 5: 66}  mean 3.344
+    arm 3  {-1: 6,  1: 12, 2: 104, 3: 291, 4: 212, 5: 57}  mean 3.293
+    arm 4  {-1: 17, 1: 18, 2: 109, 3: 255, 4: 198, 5: 72}  mean 3.302
+  Excellent-first arms (1, 2) sit higher, the direction PR's hypothesis 2a
+  predicts from primacy; under positional coding they would sit near 6 - 3.4.
+  response_recode is the identity on 1..5 for every arm, and no Arm carries a
+  recode. Adding one would be the error.
+
+
+  CONDITION TEXT (all of it is narration; nothing here is a stimulus paragraph)
+
+  Neither manipulation has respondent-facing words of its own, so each arm's
+  condition is built under docs/CONVENTIONS.md "Narrating what the respondent
+  did" (position) and the layout exception in "Never invent stimulus text"
+  (option order), with every quoted string word-for-word from Q.
+
+  Position, arms 2 and 4. ADDED words: "Earlier in the survey you were asked:",
+  then Q2-Q8 each in double quotes, each followed by its options in double
+  quotes joined by " / " (the added punctuation follows
+  ukds_6849_numeracy_env_w16). Quoted from Q 66 (Q2), 71-77 (Q3), 80-84 (Q4),
+  87-90 (Q5), 93-96 (Q6), 99-102 (Q7), 111-117 (Q8). Q2 is a number box
+  ("______days", Q 68), so it has no options to quote. It narrates what was
+  ASKED, never what was answered: some respondents refused some of Q2-Q8
+  (12-70 per item) and were still asked them. The question numbers and codes
+  are not rendered (GfK web does not show them).
+  Position, arms 1 and 3. ADDED words: "No other questions had been asked
+  earlier in the survey." True for everyone in those arms: Q1 is the first
+  question after the welcome display (Q 40-49), and the panel items after Q8
+  (Q 121+) come later. It names no later screen and cites no position.
+  Option order, all arms. ADDED words: "The response options for the question
+  below were shown in this order:" then the five labels word-for-word from Q
+  58-62 in the arm's order, separated by "; ". This is DESCRIPTION of a
+  presentation order, not transcription. It does not say "vertically" or
+  "across", because Q does not say which.
+  The welcome display (Q 41-47: consent, the PI's phone number, "how Americans
+  answer questions about their health") is survey mechanics shared by every
+  arm and is not rendered, as 3muqx leaves out its omnibus preamble.
+
+  Minimal pairs: 1 vs 3 and 2 vs 4 differ only in the option order; 1 vs 2 and
+  3 vs 4 differ only in the position sentence(s).
+
+
+  OUTCOME
+
+  Task 0 is Q1, word-for-word from Q 57: "Would you say your health in general
+  is:". The scale renders 1 = "Poor", 3 = "Good", 5 = "Excellent" (the codes'
+  own labels, Q 58-62, identical in every arm because the coding is
+  label-anchored). The option list is NOT repeated in the outcome: it lives in
+  the condition, in the order each arm saw, so the outcome carries no order of
+  its own that would contradict the condition in half the arms (evnyh's
+  pattern).
+
+  NOT BUILT: Q2-Q8. They are context, not outcomes. None of them was
+  manipulated (same wording, same options, same position among themselves in
+  every arm); the only thing that differs is that arms 1 and 3 answered them
+  after Q1, which is a by-product of moving Q1, not a factor the study varied
+  for them (PR names only SRH as the item under test). As rows they would carry
+  either a "no stimulus" condition in arms 2/4 or a condition narrating Q1 with
+  a response-option order, i.e. a stimulus the design never meant as a
+  treatment for them. They are also the condition text of arms 2 and 4, so
+  building them would put the same questions on both sides of the row contract
+  within one experiment. Row cost: 18,529 valid answers (Q2 2,684, Q3 2,652, Q4
+  2,660, Q5 2,647, Q6 2,626, Q7 2,628, Q8 2,632). The per-item timers
+  (Q*_TimeRecord) are paradata, not answers.
+
+
+  RESPONSES AND MISSING
+
+  missing_codes [-1] ("Refused", the only non-answer label on Q1; Jev conf
+  1.00). Q1 refusals by arm 7/15/6/17 = 45.
+    rows = 2,696 - 45 = 2,651; per condition {0: 671, 1: 652, 2: 676, 3: 652}.
+
+
+  PERSONA
+
+  The GfK KnowledgePanel profile set as sh4px / 7tzpe map it, with this
+  deposit's merged political columns (PARTY, IDEO, REL1, REL2; Q 123-314 merge
+  the panel value with a re-ask). Jev (recipe_prep.py) agreed on every field
+  except two:
+    education  Jev PPEDUC (0.97) over PPEDUCAT (0.03). PPEDUCAT kept: it is the
+               field every GfK recipe here maps and the crosswalk is built on,
+               and harmonisation may only merge, so the finer ladder would be
+               collapsed to the same canonical categories anyway.
+    region     Jev PPREG4 (0.64, REVIEW) over ppreg9 (0.35). PPREG4 kept, as in
+               every TESS recipe.
+  Jev called PPSTATEN's "ID" a non-answer (0.42, close, disagreeing with the
+  regex): it is Idaho. PPSTATEN is not mapped, so it changes nothing here.
+  persona_missing: IDEO -1 (17 rows), REL1 -1 (4), REL2 -1 (3), each
+  "Refused". No PP* column has a negative code in this file, so none is
+  declared (an unexercised declaration is untested).
+  DOMAIN RULE: the outcome is self-rated health, so no health column is
+  mapped. The deposit carries the panel health profile (pph10001 prior
+  self-rated health, pph10002 chronic illness, pph10003 regular doctor,
+  pph10189 pain, pph10219 exercise, pph1bmi BMI); every one is excluded.
+  pph10001 in particular IS the outcome measured earlier, and is used above
+  only as the direction anchor. PPWORK keeps its "Not working - disabled"
+  category, as every GfK recipe does: it is an employment status.
+  OPEN, NOT THIS RECIPE'S TO FIX: QC rule 14 warns that the GfK REL1 labels
+  ("Baptist-any denomination", "Catholic", "Eastern Orthodox", ...) are outside
+  the religion crosswalk (data/catalog/persona_crosswalk_religion.json, shared).
+  A dry-run of sh4px today gives the same warning, and 5hqan's built rows carry
+  the same values, so it is corpus-wide. Religion is kept rather than dropped
+  to silence it (evnyh's comment on that trade).
+
+
+  UK CHECK
+
+  Self-rated health on a five-point Poor..Excellent scale, alcohol days,
+  exercise, smoking, work limitation, help with routine needs, serious illness,
+  feeling fretful. Nothing American in what the condition or the outcome says:
+  "liquor" (Q 66) is the one US-flavoured word and is plainly understood. The
+  "Americans" sentence is in the welcome display, which is not rendered. The
+  persona is the usual US panel profile, as for every TESS source.
+
+
+  SocSci210
+
+  Their build (queried from the SocSci210 parquet, 2026-11-12): 21,180 rows,
+  2,693 participants, 4 conditions, 8 tasks {0: 2,651, 1: 2,684, 2: 2,652,
+  3: 2,660, 4: 2,647, 5: 2,626, 6: 2,628, 7: 2,632}. That is exactly the valid
+  answers to Q1-Q8 (task 0 = our Q1, tasks 1-7 = the 18,529 above), so the
+  scope differs by decision and `mmds crosscheck` reports SKIPPED (not
+  comparable).
+  Their task 0 against ours, per condition: 671 / 652 / 676 / 652, identical,
+  and each condition's distribution is ours either as-is or mirrored (6 - x):
+    cond 0 {1: 66, 2: 263, 3: 251, 4: 74, 5: 17}  = our arm 1 mirrored
+    cond 1 {1: 18, 2: 107, 3: 226, 4: 235, 5: 66}  = our arm 2 as-is
+    cond 2 {1: 57, 2: 212, 3: 291, 4: 104, 5: 12}  = our arm 3 mirrored
+    cond 3 {1: 18, 2: 109, 3: 255, 4: 198, 5: 72}  = our arm 4 as-is
+  So assignment, participants and every Q1 answer agree. THEIR OPTION-ORDER
+  FACTOR IS ON THE WRONG SPLIT: their prompts say "excellent, very good, good,
+  fair, or poor ... 1 = excellent" for conditions 0 and 2 and "poor ... 1 =
+  poor" for 1 and 3, i.e. they put the order on XTESS129 1/3 vs 2/4, which is
+  the POSITION split (Q 55, "1 OR 3"). Q 56 puts the reversed order on "1-2".
+  Their mirroring keeps each answer's meaning (they recoded so 1 = excellent
+  where their prompt says so), but arms 2 and 3 are told the wrong option
+  order, and no prompt mentions the position factor at all. The published
+  paper (Garbarski, Schaeffer and Dykema 2015, Quality of Life Research 24:
+  1443-1453) reports SRH highest, and fair/poor lowest, in the
+  excellent-first, asked-first cell; that is arm 1 under either reading
+  (fair/poor share by arm 13.6% / 19.2% / 17.2% / 19.5%), so it agrees with
+  the build but does not discriminate the two readings. The questionnaire
+  does.
+
+condition:
+  source_var: XTESS129
+  factors: [question_position, option_order]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {question_position: "before the other health questions", option_order: "excellent first"}
+      text: >-
+        No other questions had been asked earlier in the survey. The response
+        options for the question below were shown in this order: "Excellent";
+        "Very good"; "Good"; "Fair"; "Poor".
+    - raw: 2
+      condition_num: 1
+      factors: {question_position: "after the other health questions", option_order: "excellent first"}
+      text: >-
+        Earlier in the survey you were asked: "During the last month, on how
+        many days did you drink one or more alcoholic beverages, such as beer,
+        wine, liquor, or mixed alcoholic drinks?" "During an average week, how
+        often do you exercise?" "Never" / "Less than once a week" / "1-2 times a
+        week" / "3-5 times a week" / "6 or more times a week" "How would you
+        describe your current smoking status?" "Never smoked" / "Former smoker"
+        / "Current smoker" "Are you limited in the kind or amount of work you do
+        because of a physical, mental, or emotional problem?" "Yes" / "No"
+        "Because of a physical, mental, or emotional problem, do you need the
+        help of other persons in handling routine needs, such as everyday
+        household chores, business, shopping, or getting around for other
+        purposes?" "Yes" / "No" "Have you had a serious or chronic illness,
+        injury, or disability that has required a lot of medical care in the
+        past 2 years?" "Yes" / "No" "During the past four weeks, how often did
+        you feel fretful, angry, irritable, anxious, or depressed?" "Never" /
+        "Rarely" / "Occasionally" / "Often" / "Almost always" The response
+        options for the question below were shown in this order: "Excellent";
+        "Very good"; "Good"; "Fair"; "Poor".
+    - raw: 3
+      condition_num: 2
+      factors: {question_position: "before the other health questions", option_order: "poor first"}
+      text: >-
+        No other questions had been asked earlier in the survey. The response
+        options for the question below were shown in this order: "Poor";
+        "Fair"; "Good"; "Very good"; "Excellent".
+    - raw: 4
+      condition_num: 3
+      factors: {question_position: "after the other health questions", option_order: "poor first"}
+      text: >-
+        Earlier in the survey you were asked: "During the last month, on how
+        many days did you drink one or more alcoholic beverages, such as beer,
+        wine, liquor, or mixed alcoholic drinks?" "During an average week, how
+        often do you exercise?" "Never" / "Less than once a week" / "1-2 times a
+        week" / "3-5 times a week" / "6 or more times a week" "How would you
+        describe your current smoking status?" "Never smoked" / "Former smoker"
+        / "Current smoker" "Are you limited in the kind or amount of work you do
+        because of a physical, mental, or emotional problem?" "Yes" / "No"
+        "Because of a physical, mental, or emotional problem, do you need the
+        help of other persons in handling routine needs, such as everyday
+        household chores, business, shopping, or getting around for other
+        purposes?" "Yes" / "No" "Have you had a serious or chronic illness,
+        injury, or disability that has required a lot of medical care in the
+        past 2 years?" "Yes" / "No" "During the past four weeks, how often did
+        you feel fretful, angry, irritable, anxious, or depressed?" "Never" /
+        "Rarely" / "Occasionally" / "Often" / "Almost always" The response
+        options for the question below were shown in this order: "Poor";
+        "Fair"; "Good"; "Very good"; "Excellent".
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: "Would you say your health in general is:"
+    scale:
+      min: 1
+      max: 5
+      min_label: Poor
+      mid_label: Good
+      max_label: Excellent
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [-1]
+
+persona_missing:
+  IDEO: [-1]
+  REL1: [-1]
+  REL2: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: PARTY
+  ideology: IDEO
+  religion: REL1
+  religious_attendance: REL2

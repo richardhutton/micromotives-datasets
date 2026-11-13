@@ -2,15 +2,15 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**74 studies (114 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 28 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 47 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**78 studies (118 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 28 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 14 | 28 | 273,233 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| US transfer — TESS | 36 | 47 | 413,140 | **no** — no licence stated |
-| **Total** | **74** | **114** | **1,072,472** | |
+| US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
+| **Total** | **78** | **118** | **1,110,694** | |
 
 ---
 
@@ -87,6 +87,7 @@
 | `ukds_6849_sensor_consent_w17_ftf` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 339 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `xtvu5` ⚠ | Effects of Misinformation News Coverage on Media Trust | TESS (OSF) | `—` | 23,017 |
+| `zx5b8` ⚠ | Do the benefits of receiving affectionate touch generalize beyond s… | TESS (OSF) | `osf.io/zx5b8` | 22,717 |
 | `9xw67_conjoint` ⚠ | Blame and Bias in Trust in Public Policy Algorithms | TESS (OSF) | `osf.io/9xw67` | 20,373 |
 | `7tzpe` ⚠ | Body Size, Illness, and Blame: Causal Attributions and Social Conse… | TESS (OSF) | `osf.io/7tzpe` | 20,308 |
 | `b87sm` ⚠ | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | TESS (OSF) | `osf.io/b87sm` | 19,282 |
@@ -102,6 +103,7 @@
 | `yv2ta_flexible_scheduling` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material… | TESS (OSF) | `osf.io/yv2ta` | 12,131 |
 | `sh4px` ⚠ | Self-Affirmation and Affect: Effects on Implementation Intentions | TESS (OSF) | `osf.io/sh4px` | 11,532 |
 | `zaqkm` ⚠ | Causal Attributions, Treatability, and Mental Illness Stigma | TESS (OSF) | `osf.io/zaqkm` | 9,528 |
+| `de5hx` ⚠ | Risk Orientations, Status Quo Frames, and Electoral Choice | TESS (OSF) | `—` | 9,033 |
 | `gh396` ⚠ | Maintaining a Sense of Belonging among the Socially Isolated | TESS (OSF) | `osf.io/gh396` | 8,959 |
 | `xk9ch_identity_threat` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,335 |
 | `xk9ch_vignette2` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,269 |
@@ -120,9 +122,11 @@
 | `vwn96` ⚠ | What's the Best Way to Motivate Kids? | TESS (OSF) | `osf.io/vwn96` | 4,019 |
 | `dh3nj` ⚠ | Public Perceptions of Prenatal Alcohol Consumption | TESS (OSF) | `osf.io/dh3nj` | 4,001 |
 | `3muqx` ⚠ | Whom Do You Believe? Assessing Credibility of the Accuser and Accus… | TESS (OSF) | `—` | 3,992 |
+| `k9ahx_ratings` ⚠ | Assessing the Stability of Value Systems in the Mass Public | TESS (OSF) | `—` | 3,821 |
 | `a5v96_vignette1` ⚠ | What fosters patients' acceptance of Clinical Decision Support? (vi… | TESS (OSF) | `osf.io/a5v96` | 3,621 |
 | `e5rfg_six` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 3,608 |
 | `7jt2f` ⚠ | When Others' Disbelief Engenders Prejudice: Characterizing Anti-Ath… | TESS (OSF) | `osf.io/7jt2f` | 3,053 |
+| `5mt6r` ⚠ | Improving Measurement of Self-Reported Health: Question Context and… | TESS (OSF) | `osf.io/5mt6r` | 2,651 |
 | `zrwjp` ⚠ | The Barriers of Buying Happier Time | TESS (OSF) | `osf.io/zrwjp` | 2,532 |
 | `bf8p2` ⚠ | Does Misery Love Company? Exploration of a Strategic Social Comparison | TESS (OSF) | `osf.io/bf8p2` | 1,998 |
 | `c5r2f` ⚠ | Do Policy Defaults Communicate Choice-Relevant Information? | TESS (OSF) | `osf.io/c5r2f` | 1,091 |
@@ -1057,6 +1061,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `gh396` | Maintaining a Sense of Belonging among the Socially Isolated | moral/social/cognition | 8,959 | 412 | osf.io/gh396 |
 | `j6xgs` | Busyness, Idleness, and Happiness | moral/social/cognition | 14,201 | 1,198 | osf.io/j6xgs |
 | `jxdu8` | Moral Luck, Loss of Chance, and Legal Liability | moral/social/cognition | 5,478 | 371 | osf.io/jxdu8 |
+| `k9ahx_ratings` | Assessing the Stability of Value Systems in the Mass Public | moral/social/cognition | 3,821 | 640 | — |
 | `vemrp` | Accidental Environmentalists: Income and Evaluations of Eco-Friendl… | moral/social/cognition | 15,391 | 2,595 | — |
 | `vwn96` | What's the Best Way to Motivate Kids? | moral/social/cognition | 4,019 | 2,013 | osf.io/vwn96 |
 | `xk9ch_identity_threat` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,335 | 2,783 | osf.io/xk9ch |
@@ -1065,8 +1070,10 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `xk9ch_vignette2` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,269 | 2,786 | osf.io/xk9ch |
 | `xtvu5` | Effects of Misinformation News Coverage on Media Trust | moral/social/cognition | 23,017 | 2,118 | — |
 | `zrwjp` | The Barriers of Buying Happier Time | moral/social/cognition | 2,532 | 1,271 | osf.io/zrwjp |
+| `de5hx` | Risk Orientations, Status Quo Frames, and Electoral Choice | political preferences/policy | 9,033 | 1,017 | — |
 | `sdq2z` | Do liberals and conservatives differ in attitudes towards new housi… | political preferences/policy | 14,630 | 2,995 | — |
 | `5hqan` | Gender Identity and Diversity | survey methodology | 6,411 | 2,139 | osf.io/5hqan |
+| `5mt6r` | Improving Measurement of Self-Reported Health: Question Context and… | survey methodology | 2,651 | 2,651 | osf.io/5mt6r |
 | `a2nbf` | An Experiment Testing Possible Question-Wording Effects on Key Gene… | survey methodology | 6,211 | 1,567 | osf.io/a2nbf |
 | `evnyh_Q1a_and_validation` | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | survey methodology | 33,932 | 1,724 | osf.io/evnyh |
 | `rpw4u_RO1` | Cross-National Replication of Question Design Experiments (RO1: oil… | survey methodology | 1,023 | 1,023 | osf.io/rpw4u |
@@ -1079,6 +1086,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `ye2ej` | The Wages of Parenthood: At the Intersection of Sexual Orientation … | work/family/gender | 12,971 | 1,008 | osf.io/ye2ej |
 | `yv2ta_flexible_scheduling` | Opting into Work-Family Policies: Comparing the Effects of Material… | work/family/gender | 12,131 | 2,036 | osf.io/yv2ta |
 | `yv2ta_parental_leave` | Opting into Work-Family Policies: Comparing the Effects of Material… | work/family/gender | 12,139 | 2,036 | osf.io/yv2ta |
+| `zx5b8` | Do the benefits of receiving affectionate touch generalize beyond s… | work/family/gender | 22,717 | 1,140 | osf.io/zx5b8 |
 
 ---
 
@@ -1091,9 +1099,9 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 11 | 7 | 201,009 |
 | health communication | 0 | 9 | 91,114 |
-| moral/social/cognition | 7 | 16 | 219,277 |
+| moral/social/cognition | 7 | 17 | 223,098 |
 | political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 17 | 1 | 161,491 |
-| survey methodology | 20 | 5 | 220,843 |
-| work/family/gender | 8 | 8 | 140,765 |
+| political preferences/policy | 17 | 2 | 170,524 |
+| survey methodology | 20 | 6 | 223,494 |
+| work/family/gender | 8 | 9 | 163,482 |
 
