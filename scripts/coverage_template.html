@@ -5,18 +5,18 @@
 :root{
   --bg:#fbfaf7; --panel:#ffffff; --ink:#1c1a17; --muted:#6f6a61; --rule:#e5e1d8; --soft:#f3f0e9;
   --built:#6f6a61; --buildable:#047857; --check:#c68f1e; --unlikely:#b23a3a; --focus:#047857; --accent:#047857;
-  --s-text:#2a78d6; --s-image:#eb6834; --s-cand:#b9b3a7;
+  --s-text:#047857; --s-image:#2563eb; --s-cand:#b9b3a7;
   --f-ui:system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --f-data:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
   --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399;
-  --s-text:#3987e5; --s-image:#d95926; --s-cand:#5d5850; color-scheme:dark}}
+  --s-text:#34d399; --s-image:#7aa7ff; --s-cand:#5d5850; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
   --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399;
-  --s-text:#3987e5; --s-image:#d95926; --s-cand:#5d5850; color-scheme:dark}
+  --s-text:#34d399; --s-image:#7aa7ff; --s-cand:#5d5850; color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:20px}
@@ -46,10 +46,10 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .seg button[aria-pressed="true"]{background:var(--soft);color:var(--ink);font-weight:600}
 .seg button:focus-visible,.bars .row:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
 .bars{display:grid;gap:6px}
-.bars .row{display:grid;grid-template-columns:minmax(120px,210px) minmax(0,1fr);gap:12px;align-items:center;padding:4px 6px;border-radius:6px;cursor:pointer}
+.bars .row{display:grid;grid-template-columns:210px minmax(0,1fr) 190px;gap:12px;align-items:center;padding:4px 6px;border-radius:6px;cursor:pointer}
 .bars .row:hover,.bars .row.on{background:var(--soft)}
 .bars .lab{font-size:13px;overflow-wrap:anywhere}
-.track{display:flex;align-items:center;gap:8px;min-width:0}
+.track{min-width:0}
 .stack{display:flex;gap:2px;height:16px;min-width:0}
 .stack span{display:block;height:100%;min-width:2px}
 .stack .t{background:var(--s-text);border-radius:4px 0 0 4px}
@@ -58,7 +58,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .stack span:last-child{border-top-right-radius:4px;border-bottom-right-radius:4px}
 .stack span:first-child{border-top-left-radius:4px;border-bottom-left-radius:4px}
 .val{font-family:var(--f-data);font-size:12px;color:var(--muted);white-space:nowrap}
-@media (max-width:560px){.bars .row{grid-template-columns:minmax(0,1fr)}.bars .row{gap:4px}}
+@media (max-width:700px){.bars .row{grid-template-columns:minmax(0,1fr) auto;gap:4px 10px}.bars .lab{grid-column:1/-1}}
 .tip{position:fixed;pointer-events:none;background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:6px 9px;font-size:12.5px;box-shadow:0 4px 14px rgba(0,0,0,.12);z-index:20;max-width:260px}
 .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
 .controls input,.controls select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:7px 9px}
@@ -71,13 +71,6 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .cross td.cat{font-weight:600}
 .cross .zero{color:var(--muted)}
 .note{color:var(--muted);font-size:12.5px;margin:10px 0 0}
-.map{width:100%;height:auto;display:block;background:var(--bg);border:1px solid var(--rule);border-radius:6px}
-.map circle{stroke-width:1.5}
-.map .pt-text{fill:var(--s-text);stroke:var(--s-text)}
-.map .pt-image{fill:var(--s-image);stroke:var(--s-image)}
-.map .cand{fill:var(--panel)}
-.map .dim{fill:var(--s-cand);stroke:var(--s-cand);opacity:.35}
-.map .dim.cand{fill:var(--panel)}
 .jev{font-size:12.5px}
 .jev .no{color:var(--check);font-weight:600}
 .jev .ok,.jev .held{color:var(--muted)}
@@ -100,7 +93,6 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
         <li>Every experiment uses the same eight categories, the six TESS uses for its own studies and two political ones added for the UK layer. Text experiments keep the category recorded in the experiment list. Image experiments were given theirs on 13 Nov 2026 from each title and description, so read those as a first pass.</li>
         <li>Candidates are experiments not built yet. For text that means Buildable or Needs checking; for images it also includes Waiting for images. Anything marked Unlikely is left out.</li>
         <li>Jev, our model judge, was asked separately which category fits each experiment from its title and description. Where it disagrees with the recorded category the list shows its suggestion and confidence; nothing changes until a person decides. Innovation Panel experiments are not sent to Jev, under the UK Data Service licence.</li>
-        <li>The map places each title by meaning, as the SocSci210 paper's Figure 2 does: titles that read alike sit close together. Select a category to light up its experiments.</li>
         <li>The SocSci210 paper (Kolluri et al., 2025, Figure 2) sorts its 210 studies into eight disciplines but does not say which study sits where, so this page cannot set our spread beside theirs.</li>
       </ul>
     </div>
@@ -119,14 +111,6 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
     <p class="note" id="barnote"></p>
   </section>
 
-  <section class="panel">
-    <div class="chead">
-      <h2 style="margin:0">Map of experiment titles</h2>
-      <div class="legend"><span><span class="key k-text"></span>Text</span><span><span class="key k-image"></span>Image</span><span>Solid dot built, ring candidate</span></div>
-    </div>
-    <div class="scroll"><svg class="map" id="map" viewBox="0 0 900 520" role="img" aria-label="Map of experiment titles"></svg></div>
-    <p class="note" id="mapnote"></p>
-  </section>
 
   <section class="panel">
     <h2>Category by set</h2>
@@ -196,11 +180,11 @@ function drawBars() {
     const label = measure === "exp" ? `${total} built` + (d.k ? ` · ${d.k} candidates` : "") : `${fmt(total)} rows`;
     return `<div class="row${catFilter === d.c ? " on" : ""}" tabindex="0" role="button" data-cat="${esc(d.c)}" aria-label="${esc(d.c)}: ${esc(label)}">
       <span class="lab">${esc(d.c)}</span>
-      <span class="track"><span class="stack" style="width:calc((100% - 150px) * ${frac(d.t + d.i + d.k)})">
+      <span class="track"><span class="stack" style="width:calc(100% * ${frac(d.t + d.i + d.k)})">
         ${d.t ? `<span class="t" style="flex:${d.t}" data-tip="Text built: ${fmt(d.t)}"></span>` : ""}
         ${d.i ? `<span class="i" style="flex:${d.i}" data-tip="Image built: ${fmt(d.i)}"></span>` : ""}
         ${d.k ? `<span class="c" style="flex:${d.k}" data-tip="Candidates: ${d.k}"></span>` : ""}
-      </span><span class="val">${esc(label)}</span></span></div>`;
+      </span></span><span class="val">${esc(label)}</span></div>`;
   }).join("");
   $("lg-c").hidden = measure !== "exp";
   $("barnote").textContent = measure === "exp"
@@ -229,33 +213,6 @@ function jevCell(i) {
   return `<span class="no">Suggests ${esc(sug)}</span> (${c}%)`;
 }
 
-function drawMap() {
-  const pts = items.filter(i => i.x != null);
-  if (!pts.length) { $("map").innerHTML = ""; $("mapnote").textContent = "No map yet: run scripts/coverage_points.py."; return; }
-  const W = 900, H = 520, pad = 18;
-  const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
-  const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
-  const sx = x => pad + (x - x0) / ((x1 - x0) || 1) * (W - 2 * pad), sy = y => pad + (y1 - y) / ((y1 - y0) || 1) * (H - 2 * pad);
-  const order = [...pts].sort((a, b) => ((catFilter && a.category === catFilter) ? 1 : 0) - ((catFilter && b.category === catFilter) ? 1 : 0));
-  $("map").innerHTML = order.map(p => {
-    const on = !catFilter || p.category === catFilter;
-    const cls = (on ? (p.set === "Text" ? "pt-text" : "pt-image") : "dim") + (p.kind === "candidate" ? " cand" : "");
-    return `<circle class="${cls}" cx="${sx(p.x).toFixed(1)}" cy="${sy(p.y).toFixed(1)}" r="${p.kind === "built" ? 4.5 : 4}" data-k="${esc(p.set + ":" + p.id)}"></circle>`;
-  }).join("");
-  const lit = catFilter ? pts.filter(p => p.category === catFilter).length : pts.length;
-  $("mapnote").textContent = (catFilter ? `${lit} experiments in ${catFilter} lit; the rest are grey. ` : "") +
-    `${pts.length} experiments, built and candidate, placed by the meaning of their titles. Hover a point for its title.`;
-}
-const byKey = Object.fromEntries(items.map(i => [i.set + ":" + i.id, i]));
-$("map").addEventListener("mousemove", e => {
-  const c = e.target.closest("circle"); if (!c) { tip.hidden = true; return; }
-  const i = byKey[c.dataset.k];
-  tip.innerHTML = `<b>${esc(i.title)}</b><br>${esc(i.set)} · ${esc(i.category)} · ${esc(i.status)}`;
-  tip.hidden = false;
-  tip.style.left = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8) + "px"; tip.style.top = (e.clientY + 14) + "px";
-});
-$("map").addEventListener("mouseleave", () => { tip.hidden = true; });
-$("map").addEventListener("click", e => { const c = e.target.closest("circle"); if (c) pickCat(byKey[c.dataset.k].category); });
 
 function statusPill(s) {
   const cls = s.startsWith("Built") ? "Built" : s.split(" ")[0];
@@ -274,12 +231,12 @@ function drawList() {
 
 $("fcat").insertAdjacentHTML("beforeend", cats.map(c => `<option>${esc(c)}</option>`).join(""));
 ["q", "fset", "fkind", "fjev"].forEach(id => $(id).addEventListener("input", drawList));
-$("fcat").addEventListener("input", () => { catFilter = $("fcat").value; drawBars(); drawMap(); drawList(); });
+$("fcat").addEventListener("input", () => { catFilter = $("fcat").value; drawBars(); drawList(); });
 
 function pickCat(c) {
   catFilter = catFilter === c ? "" : c;
   $("fcat").value = catFilter;
-  drawBars(); drawMap(); drawList();
+  drawBars(); drawList();
 }
 $("bars").addEventListener("click", e => { const r = e.target.closest(".row"); if (r) pickCat(r.dataset.cat); });
 $("bars").addEventListener("keydown", e => { const r = e.target.closest(".row"); if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pickCat(r.dataset.cat); } });
@@ -304,5 +261,5 @@ function setMeasure(m) {
 $("m-exp").addEventListener("click", () => setMeasure("exp"));
 $("m-rows").addEventListener("click", () => setMeasure("rows"));
 
-drawBars(); drawMap(); drawCross(); drawList();
+drawBars(); drawCross(); drawList();
 </script>
