@@ -1,0 +1,247 @@
+<title>Category Coverage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: the text tracker's working-list layout. Summary and notes on top, one bar chart by category, a crosstab, then the filterable list. */
+:root{
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1c1a17; --muted:#6f6a61; --rule:#e5e1d8; --soft:#f3f0e9;
+  --built:#6f6a61; --buildable:#047857; --check:#c68f1e; --unlikely:#b23a3a; --focus:#047857; --accent:#047857;
+  --s-text:#2a78d6; --s-image:#eb6834; --s-cand:#b9b3a7;
+  --f-ui:system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-data:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399;
+  --s-text:#3987e5; --s-image:#d95926; --s-cand:#5d5850; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399;
+  --s-text:#3987e5; --s-image:#d95926; --s-cand:#5d5850; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:20px}
+@media (min-width:700px){.wrap{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}}
+h1{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:700;letter-spacing:-0.01em;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--f-data);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0 0 10px}
+.lede{color:var(--muted);margin:4px 0 0;max-width:90ch}
+.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:1000px){.top{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px;min-width:0}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.num{font-family:var(--f-data);font-variant-numeric:tabular-nums}
+.sum tr.total td{font-weight:700;border-bottom:none}
+.notes{display:grid;gap:8px;margin:0;padding:0;list-style:none;color:var(--muted);font-size:13px;max-width:80ch}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid currentColor}
+.s-Built{color:var(--built)} .s-Buildable{color:var(--buildable)} .s-Needs,.s-Waiting{color:var(--check)} .s-Unlikely{color:var(--unlikely)}
+.key{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:6px}
+.k-text{background:var(--s-text)} .k-image{background:var(--s-image)} .k-cand{background:transparent;border:1.5px dashed var(--s-cand)}
+.chead{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:12.5px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;color:var(--muted);background:var(--bg);border:0;padding:6px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--soft);color:var(--ink);font-weight:600}
+.seg button:focus-visible,.bars .row:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.bars{display:grid;gap:6px}
+.bars .row{display:grid;grid-template-columns:minmax(120px,210px) minmax(0,1fr);gap:12px;align-items:center;padding:4px 6px;border-radius:6px;cursor:pointer}
+.bars .row:hover,.bars .row.on{background:var(--soft)}
+.bars .lab{font-size:13px;overflow-wrap:anywhere}
+.track{display:flex;align-items:center;gap:8px;min-width:0}
+.stack{display:flex;gap:2px;height:16px;min-width:0}
+.stack span{display:block;height:100%;min-width:2px}
+.stack .t{background:var(--s-text);border-radius:4px 0 0 4px}
+.stack .i{background:var(--s-image)}
+.stack .c{border:1.5px dashed var(--s-cand);background:transparent}
+.stack span:last-child{border-top-right-radius:4px;border-bottom-right-radius:4px}
+.stack span:first-child{border-top-left-radius:4px;border-bottom-left-radius:4px}
+.val{font-family:var(--f-data);font-size:12px;color:var(--muted);white-space:nowrap}
+@media (max-width:560px){.bars .row{grid-template-columns:minmax(0,1fr)}.bars .row{gap:4px}}
+.tip{position:fixed;pointer-events:none;background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:6px 9px;font-size:12.5px;box-shadow:0 4px 14px rgba(0,0,0,.12);z-index:20;max-width:260px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.controls input,.controls select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:7px 9px}
+.controls input{flex:1 1 260px;min-width:0}
+.controls :focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.count{color:var(--muted);margin-left:auto}
+.list{min-width:900px;table-layout:fixed}
+.list td.id{font-family:var(--f-data);font-size:12px;overflow-wrap:anywhere}
+.list .t{font-weight:600}
+.cross td.cat{font-weight:600}
+.cross .zero{color:var(--muted)}
+.note{color:var(--muted);font-size:12.5px;margin:10px 0 0}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Category Coverage</h1>
+    <p class="lede">Where the experiments we have built sit across eight categories, in the text set and the image set, and where the candidates still on our lists would add to them.</p>
+  </header>
+
+  <section class="top">
+    <div class="panel">
+      <h2>Built so far</h2>
+      <div class="scroll"><table class="sum" id="sum"></table></div>
+    </div>
+    <div class="panel">
+      <h2>How to read this</h2>
+      <ul class="notes">
+        <li>Every experiment uses the same eight categories, the six TESS uses for its own studies and two political ones added for the UK layer. Text experiments keep the category recorded in the experiment list. Image experiments were given theirs on 13 Nov 2026 from each title and description, so read those as a first pass.</li>
+        <li>Candidates are experiments not built yet. For text that means Buildable or Needs checking; for images it also includes Waiting for images. Anything marked Unlikely is left out.</li>
+        <li>The SocSci210 paper (Kolluri et al., 2025, Figure 2) sorts its 210 studies into eight disciplines but does not say which study sits where, so this page cannot set our spread beside theirs.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="chead">
+      <h2 style="margin:0">By category</h2>
+      <div class="legend" id="legend"></div>
+      <div class="seg" role="group" aria-label="Measure">
+        <button type="button" id="m-exp" aria-pressed="true">Experiments</button>
+        <button type="button" id="m-rows" aria-pressed="false">Rows</button>
+      </div>
+    </div>
+    <div class="bars" id="bars"></div>
+    <p class="note" id="barnote"></p>
+  </section>
+
+  <section class="panel">
+    <h2>Category by set</h2>
+    <div class="scroll"><table class="cross" id="cross"></table></div>
+  </section>
+
+  <section class="panel">
+    <h2>Experiments</h2>
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search titles or ids" aria-label="Search">
+      <select id="fset" aria-label="Set"><option value="">Text and image</option><option>Text</option><option>Image</option></select>
+      <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
+      <select id="fkind" aria-label="Built or candidate"><option value="">Built and candidates</option><option value="built">Built only</option><option value="candidate">Candidates only</option></select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="scroll">
+      <table class="list">
+        <colgroup><col style="width:70px"><col style="width:210px"><col><col style="width:150px"><col style="width:190px"><col style="width:150px"><col style="width:90px"></colgroup>
+        <thead><tr><th>Set</th><th>ID</th><th>Experiment</th><th>Source</th><th>Category</th><th>Status</th><th>Rows</th></tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const DATA = __DATA__;
+const $ = id => document.getElementById(id);
+const fmt = n => n == null ? "" : n.toLocaleString("en-GB");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const items = DATA.items.filter(i => i.kind !== "out");
+const cats = DATA.categories;
+let measure = "exp", catFilter = "";
+
+function tally(set, cat, kind) {
+  return items.filter(i => (!set || i.set === set) && (!cat || i.category === cat) && i.kind === kind);
+}
+const rowsOf = list => list.reduce((a, i) => a + (i.rows || 0), 0);
+
+// Summary
+(function () {
+  const line = (label, set, cls = "") => {
+    const b = tally(set, "", "built");
+    return `<tr class="${cls}"><td>${label}</td><td class="num">${fmt(b.length)}</td><td class="num">${fmt(rowsOf(b))}</td><td class="num">${fmt(tally(set, "", "candidate").length)}</td></tr>`;
+  };
+  $("sum").innerHTML = `<thead><tr><th>Set</th><th>Experiments</th><th>Rows</th><th>Candidates</th></tr></thead><tbody>` +
+    line('<span class="key k-text"></span>Text', "Text") + line('<span class="key k-image"></span>Image', "Image") +
+    line("Both", "", "total") + `</tbody>`;
+})();
+
+$("legend").innerHTML = '<span><span class="key k-text"></span>Text built</span><span><span class="key k-image"></span>Image built</span><span id="lg-c"><span class="key k-cand"></span>Candidates</span>';
+
+function drawBars() {
+  const data = cats.map(c => {
+    const t = tally("Text", c, "built"), im = tally("Image", c, "built");
+    const cand = tally("", c, "candidate");
+    return measure === "exp"
+      ? { c, t: t.length, i: im.length, k: cand.length }
+      : { c, t: rowsOf(t), i: rowsOf(im), k: 0 };
+  }).sort((a, b) => (b.t + b.i) - (a.t + a.i) || (b.k - a.k));
+  const max = Math.max(...data.map(d => d.t + d.i + d.k), 1);
+  const frac = v => (v / max).toFixed(4);
+  $("bars").innerHTML = data.map(d => {
+    const total = d.t + d.i;
+    const label = measure === "exp" ? `${total} built` + (d.k ? ` · ${d.k} candidates` : "") : `${fmt(total)} rows`;
+    return `<div class="row${catFilter === d.c ? " on" : ""}" tabindex="0" role="button" data-cat="${esc(d.c)}" aria-label="${esc(d.c)}: ${esc(label)}">
+      <span class="lab">${esc(d.c)}</span>
+      <span class="track"><span class="stack" style="width:calc((100% - 150px) * ${frac(d.t + d.i + d.k)})">
+        ${d.t ? `<span class="t" style="flex:${d.t}" data-tip="Text built: ${fmt(d.t)}"></span>` : ""}
+        ${d.i ? `<span class="i" style="flex:${d.i}" data-tip="Image built: ${fmt(d.i)}"></span>` : ""}
+        ${d.k ? `<span class="c" style="flex:${d.k}" data-tip="Candidates: ${d.k}"></span>` : ""}
+      </span><span class="val">${esc(label)}</span></span></div>`;
+  }).join("");
+  $("lg-c").hidden = measure !== "exp";
+  $("barnote").textContent = measure === "exp"
+    ? "Each bar counts experiments: built text, built image, then candidates not yet built. Select a category to filter the list below."
+    : "Each bar counts rows in built experiments. Candidates have no rows yet. Select a category to filter the list below.";
+}
+
+function drawCross() {
+  const all = rowsOf(items.filter(i => i.kind === "built"));
+  const cell = v => `<td class="num${v ? "" : " zero"}">${fmt(v) || "0"}</td>`;
+  let body = cats.map(c => {
+    const t = tally("Text", c, "built"), im = tally("Image", c, "built");
+    const share = all ? ((rowsOf(t) + rowsOf(im)) / all * 100).toFixed(1) + "%" : "";
+    return `<tr><td class="cat">${esc(c)}</td>${cell(t.length)}${cell(rowsOf(t))}${cell(im.length)}${cell(rowsOf(im))}<td class="num">${share}</td>${cell(tally("Text", c, "candidate").length)}${cell(tally("Image", c, "candidate").length)}</tr>`;
+  }).join("");
+  $("cross").innerHTML = `<thead><tr><th>Category</th><th>Text built</th><th>Text rows</th><th>Image built</th><th>Image rows</th><th>Share of rows</th><th>Text candidates</th><th>Image candidates</th></tr></thead><tbody>${body}</tbody>`;
+}
+
+function statusPill(s) {
+  const cls = s.startsWith("Built") ? "Built" : s.split(" ")[0];
+  return `<span class="pill s-${cls}">${esc(s)}</span>`;
+}
+
+function drawList() {
+  const q = $("q").value.trim().toLowerCase(), set = $("fset").value, cat = $("fcat").value, kind = $("fkind").value;
+  const rows = items.filter(i => (!set || i.set === set) && (!cat || i.category === cat) && (!kind || i.kind === kind) &&
+    (!q || (i.title + " " + i.id).toLowerCase().includes(q)))
+    .sort((a, b) => cats.indexOf(a.category) - cats.indexOf(b.category) || (a.kind === b.kind ? 0 : a.kind === "built" ? -1 : 1) || a.set.localeCompare(b.set) || (b.rows || 0) - (a.rows || 0));
+  $("tb").innerHTML = rows.map(i => `<tr><td>${i.set}</td><td class="id">${esc(i.id)}</td><td class="t">${esc(i.title)}</td><td>${esc(i.source)}</td><td>${esc(i.category)}</td><td>${statusPill(i.status)}</td><td class="num">${fmt(i.rows)}</td></tr>`).join("");
+  $("count").textContent = `${rows.length} shown`;
+}
+
+$("fcat").insertAdjacentHTML("beforeend", cats.map(c => `<option>${esc(c)}</option>`).join(""));
+["q", "fset", "fkind"].forEach(id => $(id).addEventListener("input", drawList));
+$("fcat").addEventListener("input", () => { catFilter = $("fcat").value; drawBars(); drawList(); });
+
+function pickCat(c) {
+  catFilter = catFilter === c ? "" : c;
+  $("fcat").value = catFilter;
+  drawBars(); drawList();
+}
+$("bars").addEventListener("click", e => { const r = e.target.closest(".row"); if (r) pickCat(r.dataset.cat); });
+$("bars").addEventListener("keydown", e => { const r = e.target.closest(".row"); if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pickCat(r.dataset.cat); } });
+
+const tip = $("tip");
+$("bars").addEventListener("mousemove", e => {
+  const s = e.target.closest("[data-tip]"); const r = e.target.closest(".row");
+  if (!s || !r) { tip.hidden = true; return; }
+  tip.innerHTML = `<b>${esc(r.dataset.cat)}</b><br>${esc(s.dataset.tip)}`;
+  tip.hidden = false;
+  const x = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+  tip.style.left = x + "px"; tip.style.top = (e.clientY + 14) + "px";
+});
+$("bars").addEventListener("mouseleave", () => { tip.hidden = true; });
+
+function setMeasure(m) {
+  measure = m;
+  $("m-exp").setAttribute("aria-pressed", m === "exp");
+  $("m-rows").setAttribute("aria-pressed", m === "rows");
+  drawBars();
+}
+$("m-exp").addEventListener("click", () => setMeasure("exp"));
+$("m-rows").addEventListener("click", () => setMeasure("rows"));
+
+drawBars(); drawCross(); drawList();
+</script>
