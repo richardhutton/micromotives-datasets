@@ -108,6 +108,20 @@
    "Not in paid work (e.g. homemaker, retired or disabled)": "Other",
    "Due to start a new job within the next month": "Other",
    "Other": "Other"
+  },
+  "uk_zenodo18547379": {
+   "Employed full time": "Employed full time",
+   "Employed part time": "Employed part time",
+   "Not working and looking for work": "Unemployed looking",
+   "Not working and not looking for work": "Unemployed not looking",
+   "Retired": "Retired",
+   "Student": "Full time student"
+  },
+  "ie_zenodo6572717": {
+   "Unemployed": "Unemployed looking",
+   "Working part-time": "Employed part time",
+   "Working full-time": "Employed full time",
+   "Stay at home parent": "Other"
   }
  },
  "_about": [
@@ -148,6 +162,11 @@
   "map directly. 'Not in paid work (e.g. homemaker, retired or disabled)' spans retired, disabled and homemaker,",
   "which no canonical value merges, so it goes to Other (as k369t's and UKHLS's homemaker options do); 'Due to",
   "start a new job within the next month' is not in work and says nothing about seeking it, so Other.",
-  "DATA_EXPIRED (49) is left absent by the recipe. No canonical value added; no other scheme changed."
+  "DATA_EXPIRED (49) is left absent by the recipe. No canonical value added; no other scheme changed.",
+  "ie_zenodo6572717 (16 Nov 2026, CUPID parents in IRELAND): four options (survey Q4.8). Jev (category_concept):",
+  "full-time and part-time 1.0; 'Stay at home parent' homemaker 0.99, which goes to Other as k369t's and",
+  "UKHLS's homemaker options do (the canonical has no homemaker value); bare 'Unemployed' unemployed_looking",
+  "0.74 (none_of_these 0.21), the label's existing mapping from uk_yougov_8, unchanged. No canonical value",
+  "added; no other scheme changed."
  ]
 }

@@ -233,6 +233,18 @@ respondent who answered Don't know did not rate anything — the first draft's
 "rated" was false for 1,593 rows. The order must be fixed by the assignment;
 an order randomised and not recorded cannot be narrated at all.
 
+**Choice sets whose on-screen order was randomised and not recorded** (ruled by
+rich, 16 Nov 2026). For MaxDiff and paired choice (pick from items shown together),
+the model must learn the FORMAT of the task, and training shuffles the item order
+and remaps the answer. So a source qualifies if the on-screen order is recorded per
+respondent, or was fixed (shown by the design), or was randomised per respondent.
+In the last case the row lists the items in the instrument's own order and adds one
+clause of ours, *"(the options were shown in a random order)"*, and the answer is
+coded to that list. The row never presents that list as the screen order. Each
+item's identity is kept as a structured factor so training can re-order and remap.
+This ruling covers choice sets only. It does not reopen screen sequences (the rule
+above) or attribute rows within a conjoint profile (ledger 114).
+
 ## A per-respondent fill the deposit does not hold
 
 Ruled by rich, 10 Oct 2026, on IP 9.26's own-place vignette. The screen named the

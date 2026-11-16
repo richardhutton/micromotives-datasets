@@ -323,6 +323,17 @@ class ConditionTemplate(BaseModel):
         "occurs, instead of every cell: a level that never appears is still a defect "
         "(a wrong code, a dead variable), while an empty cell is just arithmetic.",
     )
+    cells_drawn: list[list[int]] | None = Field(
+        default=None,
+        description="Sparse only: the cells that were actually drawn, each a list of codes "
+        "in dimension order, when the full product is too large to expand. DEL wave 4's "
+        "aid-project conjoint crosses 192,000 profiles with 192,000 (3.7e10 cells; "
+        "expanding it never finishes), and its 11,982 screens fill 11,982 of them. Each "
+        "listed cell becomes one arm whose `condition_num` is still its odometer index in "
+        "the full product, so the numbering means what it does without this field. A "
+        "drawn cell missing from the list matches no arm and its row is not built, so a "
+        "generator writing this list needs a row-count check against the deposit.",
+    )
     outcome_questions: dict[int, str] = Field(
         default_factory=dict,
         description="`task_num` -> the question for that item, when its wording varies "
@@ -385,6 +396,18 @@ class ConditionTemplate(BaseModel):
             raise ValueError(
                 f"outcome_questions placeholders {sorted(stray)} name no declared dimension"
             )
+        if self.cells_drawn is not None:
+            if not self.sparse:
+                raise ValueError("cells_drawn is for a sparse template only")
+            dims = list(self.dimensions.values())
+            for cell in self.cells_drawn:
+                if len(cell) != len(dims):
+                    raise ValueError(f"cells_drawn {cell}: {len(dims)} codes expected")
+                for code, d in zip(cell, dims, strict=True):
+                    if code not in d.levels:
+                        raise ValueError(f"cells_drawn {cell}: {code} is not a level of {d.var}")
+            if len({tuple(c) for c in self.cells_drawn}) != len(self.cells_drawn):
+                raise ValueError("cells_drawn lists a cell twice")
         return self
 
     def render(self, template: str, levels: dict[str, Level]) -> str:
@@ -407,17 +430,30 @@ class ConditionTemplate(BaseModel):
         return [d.var for d in self.dimensions.values()]
 
     def cells(self) -> list[dict[str, int]]:
-        """Every cell of the product, as {dimension: code}, in odometer order."""
+        """Every cell of the product (or only `cells_drawn`), as {dimension: code},
+        in odometer order."""
+        if self.cells_drawn is not None:
+            drawn = [dict(zip(self.names, c, strict=True)) for c in self.cells_drawn]
+            return sorted(drawn, key=self.odometer)
         out: list[dict[str, int]] = [{}]
         for name in self.names:
             codes = sorted(self.dimensions[name].levels)
             out = [cell | {name: code} for cell in out for code in codes]
         return out
 
+    def odometer(self, cell: dict[str, int]) -> int:
+        """This cell's index in the full product: the last dimension moves fastest."""
+        num = 0
+        for name in self.names:
+            codes = sorted(self.dimensions[name].levels)
+            num = num * len(codes) + codes.index(cell[name])
+        return num
+
     def expand(self) -> list[Arm]:
-        """The product, as arms. One arm per cell, `condition_num` its index."""
+        """The product, as arms. One arm per cell, `condition_num` its odometer index."""
         arms: list[Arm] = []
-        for num, cell in enumerate(self.cells()):
+        for cell in self.cells():
+            num = self.odometer(cell)
             levels = {name: self.dimensions[name].levels[cell[name]] for name in self.names}
             text = self.render(self.text, levels)
             questions = {t: self.render(q, levels) for t, q in self.outcome_questions.items()}

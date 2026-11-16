@@ -191,6 +191,25 @@
    "Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British background)": "Asian or Asian British",
    "Black/Black British (African/Caribbean/Other Black/Black British background)": "Black, Black British, Caribbean or African",
    "Other ethnic group": "Other ethnic group"
+  },
+  "uk_zenodo18547379": {
+   "White": "White",
+   "Asian (Indian, Pakistani, Bangladeshi, Chinese, any other Asian background)": "Asian or Asian British",
+   "Black/African/Caribbean": "Black, Black British, Caribbean or African",
+   "Mixed two or more ethnic groups": "Mixed or Multiple ethnic groups",
+   "Other (Arab or any others)": "Other ethnic group",
+   "White,Asian (Indian, Pakistani, Bangladeshi, Chinese, any other Asian background)": "Mixed or Multiple ethnic groups",
+   "White,Black/African/Caribbean": "Mixed or Multiple ethnic groups"
+  },
+  "ie_zenodo6572717": {
+   "Irish": "White",
+   "Irish Traveller": "White",
+   "Any other white background": "White",
+   "African": "Black, Black British, Caribbean or African",
+   "Any other Black background": "Black, Black British, Caribbean or African",
+   "Chinese": "Asian or Asian British",
+   "Any other Asian background": "Asian or Asian British",
+   "Other (Please specify)": "Other ethnic group"
   }
  },
  "_about": [
@@ -242,6 +261,16 @@
   "uk_xsfev_osf (2 Nov 2026, IMG40): the ONS five groups, each label listing its own members (\"White British /",
   "White Irish / Other White background\", \"Asian/Asian British (Indian/Pakistani/Bangladeshi/Chinese/Other Asian/Asian British",
   "background)\", ...), from the data dictionary. Each maps to its own ONS group; read, not asked of Jev. No canonical value",
-  "added; no other scheme changed."
+  "added; no other scheme changed.",
+  "",
+  "ie_zenodo6572717 (16 Nov 2026, CUPID parents in IRELAND): the Irish census-style eight options (survey",
+  "Q4.3), mapped onto the ONS five groups, the UK layer's canonical. Jev (category_concept): Irish 0.98,",
+  "Irish Traveller 0.84 (none_of_these 0.14) and Any other white background 0.89 white; African 0.99 and Any",
+  "other Black background 0.91 black; Chinese 1.0 and Any other Asian background 0.92 asian; 'Other (Please",
+  "specify)' residual 0.99. Irish Traveller goes to White as ONS's 'Gypsy or Irish Traveller' does; within-",
+  "group catch-alls go to their own group. Irish, Any other white background, African, Chinese and Any other",
+  "Asian background were already mapped identically by other schemes. The canonical names ('Asian or Asian",
+  "British', 'Black, Black British, ...') are the UK's; for these respondents read them as the group, not as",
+  "British. No canonical value added; no other scheme changed."
  ]
 }

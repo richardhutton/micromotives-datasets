@@ -2,6 +2,7 @@
   "35M5CV_bbc": "35M5CV",
   "35M5CV_lodger": "35M5CV",
   "35M5CV_sky": "35M5CV",
+  "3YCVOF": "3YCVOF",
   "3muqx": "3muqx",
   "5hqan": "5hqan",
   "5mt6r": "5mt6r",
@@ -32,6 +33,8 @@
   "del_panel_w3_leadership": "del:panel_w3",
   "del_panel_w3_ngo_conjoint_donate": "del:panel_w3",
   "del_panel_w3_ngo_conjoint_petition": "del:panel_w3",
+  "del_panel_w4_aid_conjoint_6attr": "del:panel_w4",
+  "del_panel_w4_aid_conjoint_8attr": "del:panel_w4",
   "del_panel_w4_climate_harm_stories": "del:panel_w4",
   "del_panel_w4_cost_of_living": "del:panel_w4",
   "del_panel_w4_east_africa_drought": "del:panel_w4",
@@ -115,6 +118,9 @@
   "yv2ta_parental_leave": "yv2ta",
   "z358z": "z358z",
   "zaqkm": "zaqkm",
+  "zenodo10641548": "zenodo10641548",
+  "zenodo18547379_maxdiff": "zenodo18547379",
+  "zenodo6572717": "zenodo6572717",
   "zrwjp": "zrwjp",
   "zx5b8": "zx5b8"
 }

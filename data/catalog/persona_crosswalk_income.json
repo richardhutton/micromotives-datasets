@@ -46,7 +46,14 @@
     "\u00a320,001 to \u00a340,000": "\u00a320,001 to \u00a340,000",
     "\u00a340,001 to \u00a360,000": "\u00a340,001 to \u00a360,000",
     "\u00a360,001 to \u00a380,000": "\u00a360,001 to \u00a380,000",
-    "\u00a380,001 to \u00a3100,000": "\u00a380,001 to \u00a3100,000"
+    "\u00a380,001 to \u00a3100,000": "\u00a380,001 to \u00a3100,000",
+    "under \u00a320,000 per year": "under \u00a320,000 per year",
+    "\u00a320,000 to \u00a339,999 per year": "\u00a320,000 to \u00a339,999 per year",
+    "\u00a340,000 to \u00a359,999 per year": "\u00a340,000 to \u00a359,999 per year",
+    "\u00a360,000 to \u00a399,999 per year": "\u00a360,000 to \u00a399,999 per year",
+    "Low income (band not specified)": "Low income (band not specified)",
+    "Medium income (band not specified)": "Medium income (band not specified)",
+    "High income (band not specified)": "High income (band not specified)"
   },
   "schemes": {
     "7jt2f+9": {
@@ -168,6 +175,18 @@
       "\u00a360,001 to \u00a380,000": "\u00a360,001 to \u00a380,000",
       "\u00a380,001 to \u00a3100,000": "\u00a380,001 to \u00a3100,000",
       "More than \u00a3100,000": "\u00a3100,000 and over (not further distinguished)"
+    },
+    "uk_zenodo18547379": {
+      "Less that \u00a320,000": "under \u00a320,000 per year",
+      "\u00a320,000-\u00a339,999": "\u00a320,000 to \u00a339,999 per year",
+      "\u00a340,000-\u00a359,999": "\u00a340,000 to \u00a359,999 per year",
+      "\u00a360,000-\u00a399,999": "\u00a360,000 to \u00a399,999 per year",
+      "More than \u00a3100,000": "\u00a3100,000 and over (not further distinguished)"
+    },
+    "uk_3ycvof_three": {
+      "Low income": "Low income (band not specified)",
+      "Medium income": "Medium income (band not specified)",
+      "High income": "High income (band not specified)"
     }
   },
   "_about": [
@@ -214,6 +233,15 @@
     "\u00a340,000\" ...), so every band below the top contains an existing canonical edge (\u00a320,000, \u00a325,000 ... \u00a3100,000) and keeps its",
     "own label as a canonical value, the k7tw5 ruling: \"\u00a380,001 to \u00a3100,000\" straddles only by its last pound, which is still a",
     "straddle. \"More than \u00a3100,000\" sits inside \"\u00a3100,000 and over (not further distinguished)\" and merges. No existing",
-    "scheme is coarsened."
+    "scheme is coarsened.",
+    "",
+    "zenodo18547379 (16 Nov 2026): household income in five bands, each spanning several",
+    "YouGov bands, so each keeps its own canonical value (CONVENTIONS, 'Persona bands that",
+    "straddle the canonical edges'). The source's own 'Less that \u00a320,000' typo stays in the",
+    "scheme key and is not carried into the canonical label. 'Prefer not to say' is blanked.",
+    "",
+    "3YCVOF (16 Nov 2026): the authors' own three income groups (Low, Medium, High), with no thresholds",
+    "and no statement of household or personal income in the deposit or paper. Carried as income_level, each group keeps",
+    "its own canonical value marked 'band not specified', as PMV0TG's two-way split does. No existing scheme is coarsened."
   ]
 }

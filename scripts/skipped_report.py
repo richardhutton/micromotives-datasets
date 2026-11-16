@@ -60,7 +60,12 @@ def main() -> int:
     with open(CATALOG) as fh:
         rows = list(csv.DictReader(fh))
     screen = json.loads(SCREEN.read_text()) if SCREEN.exists() else {}
-    built = {p.stem.split("_")[0] for p in RECIPES.glob("*.yaml")}
+    # A Figshare study id keeps its underscore (`figshare_32935409`), so cutting at the
+    # first one would name the archive rather than the study.
+    built = {
+        "_".join(p.stem.split("_")[:2]) if p.stem.startswith("figshare_") else p.stem.split("_")[0]
+        for p in RECIPES.glob("*.yaml")
+    }
 
     groups: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
     for r in rows:
@@ -103,10 +108,16 @@ def main() -> int:
         # sentence without anyone remembering to edit it (the same fix made to
         # scripts/experiments_table.py, for the same reason).
         provenance = json.loads(PROVENANCE.read_text()) if PROVENANCE.exists() else {}
+        # Zenodo deposits are not Dataverse studies and have no provenance entry, so
+        # they would otherwise be reported as Dataverse studies stating no licence.
+        # Each states its own licence on its record (recorded in its recipe).
+        # Figshare deposits (figshare_32935409 the first) likewise.
+        zenodo = sorted(c for c in elsewhere if c.startswith(("zenodo", "figshare")))
+        dataverse = [c for c in elsewhere if c not in zenodo]
         cc0 = sorted(
-            c for c in elsewhere if str(provenance.get(c, {}).get("licence", "")).startswith("CC0")
+            c for c in dataverse if str(provenance.get(c, {}).get("licence", "")).startswith("CC0")
         )
-        restricted = sorted(c for c in elsewhere if c not in cc0)
+        restricted = sorted(c for c in dataverse if c not in cc0)
 
         def _state(items: list[str]) -> str:
             return "states" if len(items) == 1 else "state"
@@ -129,6 +140,13 @@ def main() -> int:
                 "`use_basis`, never redistributed."
                 if restricted
                 else "."
+            )
+            + (
+                f" {len(zenodo)} ({', '.join(f'`{c}`' for c in zenodo)}) "
+                f"{'comes' if len(zenodo) == 1 else 'come'} from Zenodo or Figshare, under the licence "
+                "each record states and its recipe records."
+                if zenodo
+                else ""
             )
         )
         lines += [

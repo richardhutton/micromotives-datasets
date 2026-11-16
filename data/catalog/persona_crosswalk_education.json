@@ -175,6 +175,26 @@
    "Undergraduate education (eg University examinations but not completed degree)": "Some college to associate",
    "Degree or Graduate education (eg BSc, BA)": "Bachelors to postgraduate",
    "Post-graduate education (eg PhD, MSc, MA)": "Bachelors to postgraduate"
+  },
+  "uk_zenodo18547379": {
+   "No formal qualifications": "Less than high school",
+   "Nat 4/5, Standard Grades, GSCEs or equivalent": "High school",
+   "Higher, A levels or equivalent": "High school",
+   "HNC/HND or equivalent": "Some college to associate",
+   "Undergraduate degree": "Bachelors to postgraduate",
+   "Postgraduate degree (e.g., Masters, PhD)": "Bachelors to postgraduate"
+  },
+  "ie_zenodo6572717": {
+   "Lower secondary education": "Less than high school",
+   "Upper secondary education": "High school",
+   "Post-secondary certificate or vocational education": "Some college to associate",
+   "Third level or higher": "Bachelors to postgraduate"
+  },
+  "uk_zenodo10641548": {
+   "Primary or elementary school": "Less than high school",
+   "Secondary or high school": "High school",
+   "College or university degree": "Bachelors to postgraduate",
+   "Postgraduate degree": "Bachelors to postgraduate"
   }
  },
  "_about": [
@@ -265,6 +285,25 @@
   "Degree bachelors (1.0/1.0); Post-graduate postgraduate (0.99/1.0). GCSE-level is the lowest option offered (there is",
   "no \"no qualifications\" choice), so a respondent with none had to pick it or skip: mapped to High school by its label,",
   "as uk_yougov_18 and uk_3krjz_osf map GCSE, a disclosed judgement (151 people). No canonical value added; no other",
-  "scheme changed."
+  "scheme changed.",
+  "",
+  "ie_zenodo6572717 (16 Nov 2026, CUPID parents in IRELAND): four levels (survey Q4.7). Jev (ordinal_span):",
+  "Lower secondary less than high school (0.48/0.59, runner-up high school 0.40/0.32; the Irish Junior",
+  "Certificate, before the Leaving Certificate, so read as not completing upper secondary); Upper secondary",
+  "high school (1.0/1.0); Post-secondary certificate or vocational some college (0.65/0.49, runner-up",
+  "associate), inside Some college to associate. \"Third level or higher\" spans: Jev's lowest rung bachelors",
+  "0.45 (associate 0.31), highest postgraduate 0.93. Irish third level includes higher certificates below",
+  "degree, so it may reach associate; no merged value covers associate-to-postgraduate, and it is mapped by",
+  "its headline to Bachelors to postgraduate, as uk_k7tw5_osf's Bachelor's (incl. HNC/HND) was: a disclosed",
+  "judgement (267 of 458 people). No canonical value added; no other scheme changed.",
+  "",
+  "uk_zenodo10641548 (16 Nov 2026, Hare et al. trophy hunting, UK respondents): the deposit's four levels",
+  "(final.data.csv answer text, trailing space stripped; the ESM S4 English list words them \"Primary school\",",
+  "\"Secondary school\", \"College or university degree\", \"Postgraduate degree\"). Jev (ordinal_span): Primary or",
+  "elementary school less than high school (0.98/0.96); Secondary or high school high school (0.98/1.0); Postgraduate",
+  "degree postgraduate (1.0/1.0). \"College or university degree\": lowest rung bachelors 0.84 (REVIEW, runner-up",
+  "associate 0.13), highest bachelors 0.96. A US associate degree is a college degree; for UK respondents the label",
+  "reads as a degree. Mapped to Bachelors to postgraduate by its headline, as ie_zenodo6572717's \"Third level or",
+  "higher\" was: a disclosed judgement (168 of 388 UK people). No canonical value added; no other scheme changed."
  ]
 }

@@ -814,13 +814,26 @@
   {
    "source": "DEL",
    "id": "W4_split_sample",
-   "title": "Climate aid conjoint",
-   "description": "Conjoint: Climate aid profiles with 8 or 6 attributes, 3 screens. Answer: Pick one.",
-   "details": "Panel W4 2022; 2 conditions",
+   "title": "Aid project conjoint (8 attributes)",
+   "description": "Conjoint: two UK aid projects per screen, described by purpose, region, ties to Britain, delivery channel, recipient institutions and aid conditions, plus extreme poverty and typical effectiveness in this arm; 3 screens. Answer: Pick one project.",
+   "details": "11,982 rows; Panel W4 2022; the 8-attribute half of an 8/6-attribute split",
    "category": "political preferences/policy",
-   "status": "Needs checking",
-   "reason": "conjoint attributes sit in script code",
-   "novelty": 0.27
+   "status": "Built",
+   "reason": "",
+   "novelty": 0.27,
+   "recipe": "del_panel_w4_aid_conjoint_8attr"
+  },
+  {
+   "source": "DEL",
+   "id": "del_panel_w4_aid_conjoint_6attr",
+   "title": "Aid project conjoint (6 attributes)",
+   "description": "Conjoint: two UK aid projects per screen, described by purpose, region, ties to Britain, delivery channel, recipient institutions and aid conditions (no poverty or effectiveness rows in this arm); 3 screens. Answer: Pick one project.",
+   "details": "12,042 rows; Panel W4 2022; the 6-attribute half of an 8/6-attribute split",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "reason": "",
+   "novelty": 0.27,
+   "recipe": "del_panel_w4_aid_conjoint_6attr"
   },
   {
    "source": "DEL",
@@ -1720,12 +1733,13 @@
    "source": "Harvard Dataverse",
    "id": "3YCVOF",
    "title": "Legislator dissent as a valence signal",
-   "description": "Conjoint: Do voters reward MPs who rebel against their party?",
-   "details": "doi:10.7910/DVN/3YCVOF",
+   "description": "Conjoint: Forced choice between two hypothetical British MPs described by party, years as an MP, sex, time split between national policy and constituency work, and how often they speak out or vote against their party leadership. Do voters reward MPs who rebel against their party?",
+   "details": "9,495 rows",
    "category": "political identity/polarisation",
-   "status": "Needs checking",
-   "reason": "check the condition wording is available",
-   "novelty": 0.182
+   "status": "Built",
+   "reason": "",
+   "novelty": 0.182,
+   "recipe": "3YCVOF"
   },
   {
    "source": "Harvard Dataverse",
@@ -1757,7 +1771,7 @@
    "details": "doi:10.7910/DVN/NYXQMG",
    "category": "political preferences/policy",
    "status": "Needs checking",
-   "reason": "data and codebook present; check the condition wording",
+   "reason": "fielded wording not found (checked 16 Nov 2026): the deposit holds only data and an SPSS variable/value-label codebook, which gives each level fragment (e.g. \"and entered the country as a refugee\", \"a good\") and the answer labels but not the sentence they were slotted into, the per-profile question, or any intro. The paper (ESR 2022, jcab034, LSE eprint 111896, p.6), its supplement and the 2022 LSE thesis (eprint 135466, ch.4) quote the intro and one bracketed example vignette, but the example omits the refugee fragment for Somalia, a country that always carries one in the data, so the order of the refugee and British-ancestry fragments is unknown; no questionnaire or screenshot found",
    "novelty": 0.172
   },
   {
@@ -2776,19 +2790,213 @@
    "status": "Needs checking",
    "reason": "Text treatment is fine, but the sample is only people with a plan who are not paying in, the text says 'Americans', and the main outcome splits a $5,000 tax refund (a free number the schema cannot hold). About 3,000 rows usable: likelihood of raising the saving rate, and whether they did a week later. Not picked 12 Nov 2026.",
    "novelty": null
+  },
+  {
+   "source": "Zenodo",
+   "id": "18547379",
+   "title": "Scottish meat consumption survey (Feb–Jul 2023): perceived effectiveness of meat-reduction policies",
+   "description": "MaxDiff: from 4 of 25 meat-reduction policies per screen, pick the one most and the one least likely to make you eat less meat. 10 screens each.",
+   "details": "45,270 rows; Zenodo 18547379, CC-BY-4.0; 1,509 adults in Scotland with a design version (Qualtrics, 2023); 10 screens of 4 of 25 items; most, least and all/some/none per screen",
+   "category": "health communication",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "zenodo18547379_maxdiff"
+  },
+  {
+   "source": "Zenodo",
+   "id": "6572717",
+   "title": "CUPID: parental preferences for unscheduled paediatric healthcare",
+   "description": "Paired choice: parents choose between two health services for an unwell child (how soon, appointment system, phone advice, who they see, cost in euro). 12 pairs each.",
+   "details": "5,400 rows; Zenodo 6572717, CC-BY-4.0; 450 parents in Ireland (Qualtrics panels, Feb 2021; the paper's 8 exclusions applied); 24 fixed choice sets in 2 blocks of 12; Service A or B",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "zenodo6572717"
+  },
+  {
+   "source": "Zenodo",
+   "id": "18429769",
+   "title": "Preferences of the general public and working carers for policies to support working carers",
+   "description": "Conjoint: choose between two policy packages for working carers (paid leave, support and so on), then say whether you would take either. 12 pairs each.",
+   "details": "Zenodo 18429769, CC-BY-4.0. 754 people in the Netherlands",
+   "category": "work/family/gender",
+   "status": "Needs checking",
+   "reason": "Blocked 16 Nov 2026: the deposit holds only numeric level codes and no question text, and nothing published states them. The paper (Rotteveel et al., Preferences for policies to support working carers: a discrete choice experiment in the Netherlands) is listed as submitted in Vos 2025 PhD thesis (doi 10.5463/thesis.1045) and is not yet out. Survey fielded in Dutch via Dynata. Revisit when the paper and its appendix appear, or ask the authors (RIVM) for the questionnaire and code book.",
+   "novelty": null
+  },
+  {
+   "source": "Zenodo",
+   "id": "13889329",
+   "title": "Best Worst Scale under uncertainty",
+   "description": "MaxDiff: pick the most and least important of 6 wine-buying attributes per screen. 16 screens.",
+   "details": "Zenodo 13889329, CC-BY-4.0. About 345 people, Spanish language",
+   "category": "economics/behavioural",
+   "status": "Unlikely",
+   "reason": "sets of 6 and small sample; the control sheet has no item labels",
+   "novelty": null
+  },
+  {
+   "source": "Harvard Dataverse",
+   "id": "L6HYCL",
+   "title": "Why Is It So Hard to Counteract Wealth Inequality? Evidence from the United Kingdom",
+   "description": "Conjoint: two tax plans side by side, rates by band; pick one. Separate income-tax and inheritance-tax conjoints, 5 pairs each, after a 3-arm housing-price information treatment.",
+   "details": "doi:10.7910/DVN/L6HYCL, CC0. 3,186 UK adults",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "reason": "fielded wording not public (searched 16 Nov 2026). The deposit has no questionnaire. The only 'exact text' of the conjoint directions is in the pre-registration (OSF 10.17605/OSF.IO/PFN7Z), which says three inheritance comparisons where five were fielded, so it is not the fielded version. The per-pair question and plan layout appear nowhere, and the treatment is a per-local-authority image. Needs the YouGov questionnaire from the authors.",
+   "novelty": null
+  },
+  {
+   "source": "Harvard Dataverse",
+   "id": "SYDSIH",
+   "title": "Preferences for Pandemic Recovery Policies (Maredia et al. 2022)",
+   "description": "MaxDiff: pick the most and least important of 3 pandemic recovery policies per screen, from 7. 7 screens each.",
+   "details": "doi:10.7910/DVN/SYDSIH, CC0. 1,090 agri-food business owners in Myanmar",
+   "category": "political preferences/policy",
+   "status": "Unlikely",
+   "reason": "skipped by rich, 16 Nov 2026: English module for a phone survey probably fielded in another language, and the read-out order of each set was randomised and not recorded",
+   "novelty": null
+  },
+  {
+   "source": "Harvard Dataverse",
+   "id": "LUJC8I",
+   "title": "Can Policy-Packaging Increase Public Support for Costly Policies? Insights from a Choice Experiment",
+   "description": "Conjoint: choose between two packages of policies against vehicle emissions. 5 pairs each.",
+   "details": "doi:10.7910/DVN/LUJC8I, CC0. 2,034 people, probably Switzerland",
+   "category": "political preferences/policy",
+   "status": "Unlikely",
+   "reason": "country not stated in the files and no question text in the deposit",
+   "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "prf7d",
+   "title": "Educational Attainment and Stigmatization in Prisoner Reentry",
+   "description": "Conjoint: pick which of two ex-prisoners should get a place in a halfway house in your neighbourhood.",
+   "details": "SocSci210 study prf7d, about 3,900 rows",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "reason": "profiles use US terms (GED); check they read sensibly in the UK",
+   "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "4gczb",
+   "title": "Equal Representation Project",
+   "description": "Conjoint: two candidates described by age, job, years in politics and children; pick one.",
+   "details": "SocSci210 study 4gczb, about 6,200 rows",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "reason": "framed as a US congressional primary; check the rest of the instrument",
+   "novelty": null
+  },
+  {
+   "source": "Zenodo",
+   "id": "6337094",
+   "title": "Fostering safe food handling among consumers: online survey experiment, Norway and the UK",
+   "description": "Between subjects: control, a short information video, or the video plus an online game about safe food handling; then questions on food handling.",
+   "details": "Zenodo 6337094, CC-BY-4.0. 1,973 adults in the UK and Norway; questionnaire PDF in the deposit",
+   "category": "health communication",
+   "status": "Unlikely",
+   "reason": "treatments are a 2-minute video and a 30-minute online game; neither is in the deposit, so the condition cannot be written without inventing content; the two game arms cannot be told apart (maker stopped, 16 Nov 2026)",
+   "novelty": null
+  },
+  {
+   "source": "Zenodo",
+   "id": "10641548",
+   "title": "Public perceptions of trophy hunting are pragmatic, not dogmatic",
+   "description": "Vignette: how acceptable is a trophy hunt in sub-Saharan Africa, as the animal, the use of its meat and the use of the money vary.",
+   "details": "388 rows; Zenodo 10641548, CC0; 388 urban UK adults (Qualtrics panel), UK respondents only of a USA/UK/South Africa study; 2 x 2 x 3 vignettes, one 7-point acceptability rating each",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "zenodo10641548"
+  },
+  {
+   "source": "Zenodo",
+   "id": "15420092",
+   "title": "Choice experiments on consumers' and farmers' preferences for five underused crops in Europe (RADIANT)",
+   "description": "Conjoint: consumers choose between food products made from underused crops, described by attributes such as origin, health claim and price.",
+   "details": "Zenodo 15420092, CC-BY-4.0. Six online choice surveys of consumers and farmers in several European countries",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "reason": "COSCBB (Scottish consumers, Bere shortbread, English, Prolific, 299 people x 6 cards, 2 options + Neither, age and sex present) is buildable in shape, but the question shown on each choice card and the attribute explanation before the cards are not in the deposit, D5.3 (zenodo 15574862), MS14 or the preregistration; D5.3 gives only the level texts, a card image and a [country]/[crop] template of the information text, and MS12 (the protocol) is restricted. Ask the James Hutton Institute team for the fielded English Qualtrics questionnaire",
+   "novelty": null
+  },
+  {
+   "source": "Zenodo",
+   "id": "1166066",
+   "title": "Bottom-up ethics: neuroenhancement in education and employment (NERRI)",
+   "description": "Vignette: is it acceptable for a student or an employee to take a drug to boost performance, as the setting and the drug vary.",
+   "details": "Zenodo 1166066, CC-BY-4.0. Online survey across several European countries including the UK",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "reason": "fielded English wording not published: the paper and Bard's LSE thesis give only a template (four names per context, unmapped to arms; scale endpoints unstated); questionnaire \"available upon request\" from i.bard@lse.ac.uk. UK N=1,078, 2 x 16 vignettes, one stored outcome each",
+   "novelty": null
+  },
+  {
+   "source": "Zenodo",
+   "id": "17749439",
+   "title": "Choice experiments on places to live, ways to travel and local food in Scotland",
+   "description": "Conjoint: three choice experiments on where to live, how to travel and buying local food in rural Scotland.",
+   "details": "Zenodo 17749439, CC-BY-4.0. Scottish Government RESAS-funded surveys",
+   "category": "economics/behavioural",
+   "status": "Unlikely",
+   "reason": "files embargoed until 31 Mar 2028; revisit then",
+   "novelty": null
+  },
+  {
+   "source": "Other open archives",
+   "id": "eidc_0869d961",
+   "title": "Perception of environmental and other risks (UK, 2018)",
+   "description": "MaxDiff: from 4 of 16 hazards per screen, pick the most and least feared, then the most and least controllable. 12 screens each.",
+   "details": "EIDC (UK CEH) doi:10.5285/0869d961-99ca-4946-9192-f35afccdda38, Open Government Licence v3. 806 UK adults, Research Now panel",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "reason": "design had 300 versions (Sawtooth; supplement to Farkas et al. 2021 Sci Rep confirms) and the design file is not in the deposit, so only the best and worst items per screen are known, not all four shown; ask k.farkas@bangor.ac.uk for the design file (checked 16 Nov 2026)",
+   "novelty": null
+  },
+  {
+   "source": "Other open archives",
+   "id": "osf_ct8ae",
+   "title": "Best-worst scaling of personal values (Schwartz), test-retest",
+   "description": "MaxDiff: from 5 values per screen, pick the most and least important guiding principle in your life.",
+   "details": "OSF node ct8ae (preprint r5dyu, CC-BY 4.0). About 100 Prolific adults, mostly UK",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "reason": "data node states no licence; preprint CC-BY covers the paper, not the data. Checked 16 Nov 2026: node ct8ae is private, reachable only through the preprint's anonymised view-only link, has no node_license or licence relationship, no parent project, and no licence file. Emailed Guy Hawkins (guy.hawkins@newcastle.edu.au) 16 Nov 2026 asking to use the data or make the node public under CC-BY; waiting for a reply. 16 Nov 2026 (rich): build now, do not wait for the reply",
+   "novelty": null
+  },
+  {
+   "source": "Other open archives",
+   "id": "figshare_32935409",
+   "title": "Student perceptions of academic integrity in the age of Gen-AI: most and least serious breach",
+   "description": "MaxDiff: from 4 of 20 student behaviours per screen (copying, essay mills, ChatGPT use, impersonation and so on), pick the most and the least serious breach of academic integrity. 10 screens each.",
+   "details": "9,340 rows; University of Manchester Figshare doi:10.48420/32935409, CC-BY 4.0; 467 university students in the UK (232) and Australia (235), a specialist sample with no age asked; 50 design versions of 10 screens of 4 of 20 items; most and least serious per screen",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "reason": "being built 16 Nov 2026; ",
+   "novelty": null
   }
  ],
  "built": {
   "Innovation Panel": 22,
   "DEL": 0,
   "TESS": 32,
-  "Harvard Dataverse": 13
+  "Harvard Dataverse": 13,
+  "Zenodo": 0,
+  "Other open archives": 0
  },
  "meta": {
   "Innovation Panel": "UK · not publishable",
   "DEL": "UK · publishable (CC0)",
   "TESS": "US · not publishable",
-  "Harvard Dataverse": "UK · mostly publishable (CC0)"
+  "Harvard Dataverse": "UK · mostly publishable (CC0)",
+  "Zenodo": "Mixed countries · open licences (CC-BY)",
+  "Other open archives": "Mixed countries · open licences (OGL, CC-BY)"
  },
  "next_batch": {
   "size": 37,

@@ -531,6 +531,18 @@
       "design": "between-subjects, 4 arms (climatescenariosplit), no control; one 5-point outcome, each arm's item merged; everyone had answered the identical question (action) earlier in the survey before any news item, not narrated and kept out of the persona (rich, 18 Oct 2026; as climate harm stories)",
       "verified_against": "no published reference; an independent checker (Sonnet 5.5) rebuilt the four conditions blind from the questionnaire (word-for-word match), recounted every arm-by-answer cell from the .sav and joined all 7,276 rows back to raw by respondent id (0 mismatches); persona block identical to the East Africa drought build (18 Oct 2026)"
     },
+    "del_panel_w4_aid_conjoint_8attr": {
+      "category": "political preferences/policy",
+      "description": "Paired-profile conjoint: two aid projects the British government might fund, A and B, each described by eight attributes (purpose, region, extreme poverty, ties to Britain, typical effectiveness, delivery channel, recipient institutions, aid conditions), levels drawn per project and screen; which of the two aid projects do you support more. Three screens per person; the eight-attribute half of an 8/6-attribute split (split_sample). DEL panel wave 4 (2022).",
+      "design": "paired-profile conjoint, 8 attributes (10x5x5x4x4x4x3x4), 3 screens per respondent, forced choice; attribute row order shuffled per person and not recorded, so not rendered",
+      "verified_against": "no published reference found; internal check: every level of every attribute drawn in near-equal shares on both sides, no person shown the same profile twice, Project A/B chosen near 50/50, and every built row re-derived from the .sav (tests/test_gen_del_w4_aid_conjoint.py); independent checker pending"
+    },
+    "del_panel_w4_aid_conjoint_6attr": {
+      "category": "political preferences/policy",
+      "description": "Paired-profile conjoint: two aid projects the British government might fund, A and B, each described by six attributes (purpose, region, ties to Britain, delivery channel, recipient institutions, aid conditions; no poverty or effectiveness), levels drawn per project and screen; which of the two aid projects do you support more. Three screens per person; the six-attribute half of an 8/6-attribute split (split_sample). DEL panel wave 4 (2022).",
+      "design": "paired-profile conjoint, 6 attributes (10x5x4x4x3x4), 3 screens per respondent, forced choice; attribute row order shuffled per person and not recorded, so not rendered",
+      "verified_against": "no published reference found; internal check: every level of every attribute drawn in near-equal shares on both sides, no person shown the same profile twice, Project A/B chosen near 50/50, and every built row re-derived from the .sav (tests/test_gen_del_w4_aid_conjoint.py); independent checker pending"
+    },
     "3muqx": {
       "category": "moral/social/cognition",
       "description": "A woman accuses a man of sexual assault; eleven versions vary what is known about each of them. Respondents say whom they believe, and how much more.",
@@ -578,6 +590,30 @@
       "description": "A local newspaper report on a close mayoral race between an experienced councillor and a businessman who has never held office. The report frames a change of mayor as risky, as a chance worth taking, or neither. Readers say whom they would vote for and which candidate seems risky.",
       "design": "3 arms between subjects (change framed as bad, as good, or neutral); 2 outcomes after the article, candidate name order counterbalanced and shown as each respondent saw it (Q8 options; Q9 question text only); 7 risk-attitude questions asked of everyone beforehand, with no stimulus",
       "verified_against": "SocSci210 vote and risk rows matched cell for cell (its article text uses the proposal's wording and is shifted one arm against its own conditions); an independent checker (Sonnet 5.5) matched all three articles word-for-word, confirmed label-anchored codes in both name orders and recomputed all 9,033 responses from the .sav (0 mismatches); Q9 states no option order, since the instrument swaps only its question text"
+    },
+    "zenodo18547379_maxdiff": {
+      "category": "health communication",
+      "description": "Best-worst scaling (MaxDiff): from four of 25 policies and interventions on each screen, pick the one most likely and the one least likely to make you eat less meat, then say whether all, some or none of the four would. Ten screens per person, adults in Scotland.",
+      "design": "MaxDiff, 25 items in sets of 4 (balanced incomplete block design, 260 versions), 10 screens per respondent; best and worst pick plus an all/some/none follow-up per screen",
+      "verified_against": "the paper's Appendix 3 overall ranking of all 25 items (McBey et al., Food Quality and Preference 135, 2026): best-minus-worst from the built rows ranks them at Spearman 0.996, and no other pairing of pick columns with item slots exceeds 0.964 (tests/test_gen_zenodo18547379.py). No published counts or coefficients in a table to match numerically"
+    },
+    "zenodo6572717": {
+      "category": "economics/behavioural",
+      "description": "Parents of a child under 16 in Ireland imagine their youngest child has been unwell and they now need a health professional. Each screen shows two services, A and B, described by how soon the child is seen, the appointment system, phone advice before attending, who they will see and the cost in euro; they choose the one they would prefer to attend. Twelve screens per person.",
+      "design": "Paired-choice discrete choice experiment, 5 attributes (3x3x2x3x4 levels), 24 fixed choice sets from a Bayesian efficient design in 2 randomised blocks of 12; forced choice between Service A and Service B",
+      "verified_against": "the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)"
+    },
+    "zenodo10641548": {
+      "category": "moral/social/cognition",
+      "description": "Vignette: how acceptable is it for an American tourist to pay to hunt an elephant or a zebra in rural Africa, as the use of the meat (left for wildlife or given to local people) and of the revenue (conservation, development or hunting companies) vary. UK adults in urban areas.",
+      "design": "2 x 2 x 3 between subjects (animal x use of meat x use of revenue), one vignette and one 7-point acceptability question per respondent; UK respondents only",
+      "verified_against": "ESM S6 of Hare et al., Proc. R. Soc. B 291 (2024) 20231638: the top-supported ordinal logit refitted (MASS::polr) with the UK responses and factors taken from the built rows reproduces all 28 coefficients to two decimals, including Country UK -0.61, and the six thresholds within 0.01 (scripts/verify_zenodo10641548.py, tests/test_gen_zenodo10641548.py). UK cell counts equal ESM S8 exactly"
+    },
+    "3YCVOF": {
+      "category": "political identity/polarisation",
+      "description": "Forced choice between two hypothetical British MPs, described by party (Labour or Conservative), years as an MP, sex, how a five-day week is split between national policy work and constituency work, and how often the MP speaks out or votes against the party leadership. Tests whether voters reward legislators who dissent. The respondent judges a PERSON, their own representative.",
+      "design": "paired-profile conjoint, 5 attributes in a fixed order, 5 tasks per respondent (Study 2; Studies 1, 3 and Appendix A not built)",
+      "verified_against": "the paper's own AMCEs for dissent frequency (p.21: rarely 13, sometimes 30, often 32 points over never), reproduced from the built rows as 13.04, 30.15 and 31.99"
     }
   }
 }

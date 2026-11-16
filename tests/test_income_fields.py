@@ -36,6 +36,9 @@ FIELD_FOR = {
     **dict.fromkeys(PERSONAL, "income_personal"),
     **dict.fromkeys(HOUSEHOLD, "income"),
     "ind_inc": "income_level",
+    # 3YCVOF: the authors' own Low/Medium/High groups, neither personal nor
+    # household stated; renamed from `income` by scripts/gen_3YCVOF.py.
+    "income_group": "income_level",
 }
 
 

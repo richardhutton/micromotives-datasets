@@ -54,6 +54,8 @@ SOURCE_LABEL = {
     "dataverse": "Harvard Dataverse",
     "innovation_panel": "UK Data Service",
     "tess": "TESS (OSF)",
+    "zenodo": "Zenodo",
+    "figshare": "Figshare",
 }
 
 
@@ -222,6 +224,13 @@ def collect() -> list[Experiment]:
             reference = f"doi:{doi}" if doi else None
         elif source == "innovation_panel":
             reference = "UKDS SN 6849"
+        elif source == "zenodo":
+            reference = f"doi:10.5281/zenodo.{study_id.removeprefix('zenodo')}"
+        elif source == "figshare":
+            # Figshare DOIs carry each institution's own prefix (Manchester's is
+            # 10.48420), so read the DOI the recipe's licence line records.
+            m = re.search(r"doi:(10\.\d+/[^\s),;]+)", head.get("licence") or "")
+            reference = f"doi:{m.group(1)}" if m else None
         elif tess_row is not None and isinstance(tess_row.get("osf_code"), str):
             reference = f"osf.io/{tess_row['osf_code']}"
         else:
@@ -261,6 +270,10 @@ def render(experiments: list[Experiment]) -> str:
     # builds were filed here as TESS (OSF) because this used to read
     # `not e.is_uk`. A source this does not know now stops the render.
     tess = [e for e in experiments if e.source == "tess"]
+    # Zenodo deposits state their own licence on the record (CC BY 4.0 for the
+    # first), recorded in each recipe's `licence`; shown as stated, not judged here.
+    # Figshare deposits likewise (figshare_32935409 the first), so they share the layer.
+    zenodo = [e for e in experiments if e.source in ("zenodo", "figshare")]
     unknown = sorted({e.source for e in experiments} - set(SOURCE_LABEL))
     if unknown:
         raise ValueError(f"no layer for source(s) {unknown}; add them to SOURCE_LABEL and render()")
@@ -278,6 +291,7 @@ def render(experiments: list[Experiment]) -> str:
     uk_open_rows = sum(e.rows or 0 for e in uk_open)
     uk_restricted_rows = sum(e.rows or 0 for e in uk_restricted)
     ukds_rows = sum(e.rows or 0 for e in ukds)
+    zenodo_rows = sum(e.rows or 0 for e in zenodo)
 
     study_of: dict[str, str] = json.loads(STUDY_OF.read_text())
 
@@ -308,8 +322,13 @@ def render(experiments: list[Experiment]) -> str:
         "experiment number across its waves. An experiment is one randomised design within a "
         "study, one recipe here. By experiment: "
         f"{len(uk_open)} UK (CC0, redistributable){restricted_note}, {len(ukds)} UK Data Service "
-        "(End User Licence, **not** redistributable, never sent to any external service) "
-        f"and {len(tess)} US transfer "
+        "(End User Licence, **not** redistributable, never sent to any external service)"
+        + (
+            f", {len(zenodo)} Zenodo or Figshare (each under its record's own licence)"
+            if zenodo
+            else ""
+        )
+        + f" and {len(tess)} US transfer "
         f"layer (TESS, no licence stated — usable for research, **not** redistributable)."
     )
     add("")
@@ -339,13 +358,18 @@ def render(experiments: list[Experiment]) -> str:
             f"{ukds_rows:,} | "
             "**no** — UKDS End User Licence |"
         )
+    if zenodo:
+        add(
+            f"| Zenodo and Figshare | {studies(zenodo)} | {len(zenodo)} | {zenodo_rows:,} | "
+            "per record — see each experiment's licence |"
+        )
     add(
         f"| US transfer — TESS | {studies(tess)} | {len(tess)} | {tess_rows:,} | "
         "**no** — no licence stated |"
     )
     add(
         f"| **Total** | **{studies(experiments)}** | **{len(experiments)}** | "
-        f"**{uk_open_rows + uk_restricted_rows + ukds_rows + tess_rows:,}** | |"
+        f"**{uk_open_rows + uk_restricted_rows + ukds_rows + zenodo_rows + tess_rows:,}** | |"
     )
     add("")
     add("---")
@@ -367,13 +391,14 @@ def render(experiments: list[Experiment]) -> str:
         # parenthetical "(US)" it carried before, which told a reader the country
         # and left them to infer the archive and the licence from it.
         where = SOURCE_LABEL[e.source]
-        flag = "" if e.publishable else " ⚠"
+        flag = "" if e.publishable or e.source in ("zenodo", "figshare") else " ⚠"
         add(f"| `{e.recipe}`{flag} | {title} | {where} | `{e.reference or '—'}` | {_num(e.rows)} |")
     add("")
     add(
         "⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows "
         "without the mark are CC0 and may be published; the TESS layer is unmarked only "
-        "because none of it is redistributable, as the table above says."
+        "because none of it is redistributable, as the table above says. Zenodo and Figshare rows are "
+        "unmarked because each carries its own record's licence, shown in its entry."
     )
     add("")
     add("---")
@@ -465,6 +490,34 @@ def render(experiments: list[Experiment]) -> str:
             # The recipe's licence is several sentences of prose; slicing it at a
             # comma or a line end leaves half a sentence in a bullet.
             add("- **Licence** — UK Data Service End User Licence; full terms in the recipe")
+            if e.verified_against:
+                add(f"- **Verified against** — {e.verified_against}")
+            add("")
+
+        add("---")
+        add("")
+
+    if zenodo:
+        add("## Zenodo and Figshare")
+        add("")
+        add(
+            "Deposits on Zenodo and Figshare, each under the licence its record states; the recipe's "
+            "`licence` field says where and when it was read."
+        )
+        add("")
+        for e in sorted(zenodo, key=lambda x: -(x.rows or 0)):
+            add(f"### `{e.recipe}`")
+            add("")
+            add(f"**{e.title}**")
+            add("")
+            if e.description:
+                add(e.description)
+                add("")
+            add(f"- **Source** — {SOURCE_LABEL[e.source]}, `{e.reference or '—'}`")
+            add(f"- **Type** — {e.design or '—'}")
+            add(f"- **Category** — {e.category}")
+            add(f"- **Rows** — {_num(e.rows)} from {_num(e.participants)} respondents")
+            add(f"- **Licence** — {e.licence or '—'}")
             if e.verified_against:
                 add(f"- **Verified against** — {e.verified_against}")
             add("")

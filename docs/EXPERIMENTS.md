@@ -2,15 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**78 studies (118 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 28 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**82 studies (124 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 3 Zenodo or Figshare (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
-| UK — Harvard Dataverse (CC0) | 14 | 28 | 273,233 | **yes, CC0 1.0** |
+| UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
+| Zenodo and Figshare | 3 | 3 | 51,058 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **78** | **118** | **1,110,694** | |
+| **Total** | **82** | **124** | **1,195,271** | |
 
 ---
 
@@ -22,6 +23,7 @@
 | `EFXNLX` | Policy Preferences and Policy Legitimacy After Referendums: Evidenc… | Harvard Dataverse | `doi:10.7910/DVN/EFXNLX` | 49,395 |
 | `ukds_6849_reqol_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: ReQoL-10 a… | UK Data Service | `UKDS SN 6849` | 48,548 |
 | `ukds_6849_timerisk_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.13: time and r… | UK Data Service | `UKDS SN 6849` | 46,283 |
+| `zenodo18547379_maxdiff` | Scottish meat consumption survey (Feb-Jul 2023): which policies wou… | Zenodo | `doi:10.5281/zenodo.18547379` | 45,270 |
 | `ukds_6849_ghq_w14` ⚠ | Understanding Society Innovation Panel, experiment 9.31: GHQ-12, as… | UK Data Service | `UKDS SN 6849` | 36,447 |
 | `del_panel_w4_climate_harm_stories` | Development Engagement Lab, Panel Great Britain wave 4 (2022): clim… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 28,109 |
 | `del_panel_w4_cost_of_living` | Development Engagement Lab, Panel Great Britain wave 4 (2022): cost… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 24,024 |
@@ -36,7 +38,10 @@
 | `del_panel_w3_ngo_conjoint_petition` | Development Engagement Lab, Panel Great Britain wave 3 (2021): NGO … | Harvard Dataverse | `doi:10.7910/DVN/CCUZYI` | 12,405 |
 | `ukds_6849_itemcount_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.17: measuring … | UK Data Service | `UKDS SN 6849` | 12,320 |
 | `35M5CV_sky` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 12,055 |
+| `del_panel_w4_aid_conjoint_6attr` | Development Engagement Lab, Panel Great Britain wave 4 (2022): aid … | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 12,042 |
+| `del_panel_w4_aid_conjoint_8attr` | Development Engagement Lab, Panel Great Britain wave 4 (2022): aid … | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 11,982 |
 | `del_sandbox_jun2022_ukraine_choice` | Development Engagement Lab, Sandbox Great Britain June 2022: why th… | Harvard Dataverse | `doi:10.7910/DVN/ELT7M0` | 10,935 |
+| `3YCVOF` | Legislator dissent as a valence signal (Study 2, MP dissent conjoint) | Harvard Dataverse | `doi:10.7910/DVN/3YCVOF` | 9,495 |
 | `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
 | `ukds_6849_eq5d3l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 8,698 |
 | `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,345 |
@@ -55,6 +60,7 @@
 | `ukds_6849_vig_ageing_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 5,967 |
 | `del_panel_w4_east_africa_drought` | Development Engagement Lab, Panel Great Britain wave 4 (2022): East… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 5,796 |
 | `ukds_6849_nrp_w10_contact` ⚠ | Understanding Society Innovation Panel, experiment 9.23: how often … | UK Data Service | `UKDS SN 6849` | 5,690 |
+| `zenodo6572717` | CUPID (Ireland, Feb 2021): parents choose between two health servic… | Zenodo | `doi:10.5281/zenodo.6572717` | 5,400 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
 | `ukds_6849_vig_housework_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 5,081 |
 | `ukds_6849_caring_existing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 4,847 |
@@ -84,6 +90,7 @@
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
+| `zenodo10641548` | Public perceptions of trophy hunting are pragmatic, not dogmatic (U… | Zenodo | `doi:10.5281/zenodo.10641548` | 388 |
 | `ukds_6849_sensor_consent_w17_ftf` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 339 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `xtvu5` ⚠ | Effects of Misinformation News Coverage on Media Trust | TESS (OSF) | `—` | 23,017 |
@@ -137,7 +144,7 @@
 | `e5rfg_ce` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 281 |
 | `e5rfg_tk` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 264 |
 
-⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows without the mark are CC0 and may be published; the TESS layer is unmarked only because none of it is redistributable, as the table above says.
+⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows without the mark are CC0 and may be published; the TESS layer is unmarked only because none of it is redistributable, as the table above says. Zenodo and Figshare rows are unmarked because each carries its own record's licence, shown in its entry.
 
 ---
 
@@ -236,6 +243,32 @@ Five-item battery measuring strength of emotional attachment to one's own Brexit
 - **Licence** — CC0 1.0 Universal
 - **Verified against** — the paper's own Table 2 — all four identity-group scale means, weighted by the deposit's own `Weights` column, reproduced to the paper's printed 1dp precision; see scripts/verify_35M5CV_sky.py
 
+### `del_panel_w4_aid_conjoint_6attr`
+
+**Development Engagement Lab, Panel Great Britain wave 4 (2022): aid project conjoint, six attributes (no need, no effectiveness)**
+
+Paired-profile conjoint: two aid projects the British government might fund, A and B, each described by six attributes (purpose, region, ties to Britain, delivery channel, recipient institutions, aid conditions; no poverty or effectiveness), levels drawn per project and screen; which of the two aid projects do you support more. Three screens per person; the six-attribute half of an 8/6-attribute split (split_sample). DEL panel wave 4 (2022).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/WZPNNU`
+- **Type** — paired-profile conjoint, 6 attributes (10x5x4x4x3x4), 3 screens per respondent, forced choice; attribute row order shuffled per person and not recorded, so not rendered
+- **Category** — political preferences/policy
+- **Rows** — 12,042 from 4,014 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
+- **Verified against** — no published reference found; internal check: every level of every attribute drawn in near-equal shares on both sides, no person shown the same profile twice, Project A/B chosen near 50/50, and every built row re-derived from the .sav (tests/test_gen_del_w4_aid_conjoint.py); independent checker pending
+
+### `del_panel_w4_aid_conjoint_8attr`
+
+**Development Engagement Lab, Panel Great Britain wave 4 (2022): aid project conjoint, eight attributes**
+
+Paired-profile conjoint: two aid projects the British government might fund, A and B, each described by eight attributes (purpose, region, extreme poverty, ties to Britain, typical effectiveness, delivery channel, recipient institutions, aid conditions), levels drawn per project and screen; which of the two aid projects do you support more. Three screens per person; the eight-attribute half of an 8/6-attribute split (split_sample). DEL panel wave 4 (2022).
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/WZPNNU`
+- **Type** — paired-profile conjoint, 8 attributes (10x5x5x4x4x4x3x4), 3 screens per respondent, forced choice; attribute row order shuffled per person and not recorded, so not rendered
+- **Category** — political preferences/policy
+- **Rows** — 11,982 from 3,994 respondents
+- **Licence** — CC0 1.0 doi:10.7910/DVN/WZPNNU
+- **Verified against** — no published reference found; internal check: every level of every attribute drawn in near-equal shares on both sides, no person shown the same profile twice, Project A/B chosen near 50/50, and every built row re-derived from the .sav (tests/test_gen_del_w4_aid_conjoint.py); independent checker pending
+
 ### `del_sandbox_jun2022_ukraine_choice`
 
 **Development Engagement Lab, Sandbox Great Britain June 2022: why the war in Ukraine matters, me or others**
@@ -248,6 +281,19 @@ Why the war in Ukraine matters: asked why they personally, or why other people i
 - **Rows** — 10,935 from 2,187 respondents
 - **Licence** — CC0 1.0 doi:10.7910/DVN/ELT7M0
 - **Verified against** — no published reference; an independent checker re-derived all 10,935 rows from the .sav (0 missing, extra or wrong), confirmed each group's on-screen pair from the piped answer labels, and confirmed no COVID or NHS wording in the experiment (10 Oct 2026)
+
+### `3YCVOF`
+
+**Legislator dissent as a valence signal (Study 2, MP dissent conjoint)**
+
+Forced choice between two hypothetical British MPs, described by party (Labour or Conservative), years as an MP, sex, how a five-day week is split between national policy work and constituency work, and how often the MP speaks out or votes against the party leadership. Tests whether voters reward legislators who dissent. The respondent judges a PERSON, their own representative.
+
+- **Source** — Harvard Dataverse, `doi:10.7910/DVN/3YCVOF`
+- **Type** — paired-profile conjoint, 5 attributes in a fixed order, 5 tasks per respondent (Study 2; Studies 1, 3 and Appendix A not built)
+- **Category** — political identity/polarisation
+- **Rows** — 9,495 from 1,899 respondents
+- **Licence** — CC0 1.0
+- **Verified against** — the paper's own AMCEs for dissent frequency (p.21: rarely 13, sometimes 30, often 32 points over never), reproduced from the built rows as 13.04, 30.15 and 31.99
 
 ### `PMV0TG`
 
@@ -1030,6 +1076,51 @@ Respondents imagine themselves in a couple and rate how satisfied they would be 
 
 ---
 
+## Zenodo and Figshare
+
+Deposits on Zenodo and Figshare, each under the licence its record states; the recipe's `licence` field says where and when it was read.
+
+### `zenodo18547379_maxdiff`
+
+**Scottish meat consumption survey (Feb-Jul 2023): which policies would most and least make you eat less meat (best-worst scaling)**
+
+Best-worst scaling (MaxDiff): from four of 25 policies and interventions on each screen, pick the one most likely and the one least likely to make you eat less meat, then say whether all, some or none of the four would. Ten screens per person, adults in Scotland.
+
+- **Source** — Zenodo, `doi:10.5281/zenodo.18547379`
+- **Type** — MaxDiff, 25 items in sets of 4 (balanced incomplete block design, 260 versions), 10 screens per respondent; best and worst pick plus an all/some/none follow-up per screen
+- **Category** — health communication
+- **Rows** — 45,270 from 1,509 respondents
+- **Licence** — CC BY 4.0 (cc-by-4.0)
+- **Verified against** — the paper's Appendix 3 overall ranking of all 25 items (McBey et al., Food Quality and Preference 135, 2026): best-minus-worst from the built rows ranks them at Spearman 0.996, and no other pairing of pick columns with item slots exceeds 0.964 (tests/test_gen_zenodo18547379.py). No published counts or coefficients in a table to match numerically
+
+### `zenodo6572717`
+
+**CUPID (Ireland, Feb 2021): parents choose between two health services for an unwell child (paired-choice DCE)**
+
+Parents of a child under 16 in Ireland imagine their youngest child has been unwell and they now need a health professional. Each screen shows two services, A and B, described by how soon the child is seen, the appointment system, phone advice before attending, who they will see and the cost in euro; they choose the one they would prefer to attend. Twelve screens per person.
+
+- **Source** — Zenodo, `doi:10.5281/zenodo.6572717`
+- **Type** — Paired-choice discrete choice experiment, 5 attributes (3x3x2x3x4 levels), 24 fixed choice sets from a Bayesian efficient design in 2 randomised blocks of 12; forced choice between Service A and Service B
+- **Category** — economics/behavioural
+- **Rows** — 5,400 from 450 respondents
+- **Licence** — CC BY 4.0 (cc-by-4.0)
+- **Verified against** — the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)
+
+### `zenodo10641548`
+
+**Public perceptions of trophy hunting are pragmatic, not dogmatic (UK respondents): how acceptable is a hunt in Africa, as the animal, the use of its meat and the use of the revenue vary**
+
+Vignette: how acceptable is it for an American tourist to pay to hunt an elephant or a zebra in rural Africa, as the use of the meat (left for wildlife or given to local people) and of the revenue (conservation, development or hunting companies) vary. UK adults in urban areas.
+
+- **Source** — Zenodo, `doi:10.5281/zenodo.10641548`
+- **Type** — 2 x 2 x 3 between subjects (animal x use of meat x use of revenue), one vignette and one 7-point acceptability question per respondent; UK respondents only
+- **Category** — moral/social/cognition
+- **Rows** — 388 from 388 respondents
+- **Licence** — CC0 1.0 (cc-zero)
+- **Verified against** — ESM S6 of Hare et al., Proc. R. Soc. B 291 (2024) 20231638: the top-supported ordinal logit refitted (MASS::polr) with the UK responses and factors taken from the built rows reproduces all 28 coefficients to two decimals, including Country UK -0.61, and the six thresholds within 0.01 (scripts/verify_zenodo10641548.py, tests/test_gen_zenodo10641548.py). UK cell counts equal ESM S8 exactly
+
+---
+
 ## US transfer layer — TESS, no licence stated
 
 Fielded in the United States on topics judged universal enough to transfer. **None of this is redistributable**: all 202 deposits in the TESS catalogue were checked individually against the OSF API and 196 state no licence, 6 are unreachable. Usable for research here; not shippable, and not sent to any external service — `embed.py`'s licence gate refuses this text by name.
@@ -1097,11 +1188,11 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 11 | 7 | 201,009 |
-| health communication | 0 | 9 | 91,114 |
-| moral/social/cognition | 7 | 17 | 223,098 |
-| political identity/polarisation | 4 | 0 | 34,920 |
-| political preferences/policy | 17 | 2 | 170,524 |
+| economics/behavioural | 12 | 7 | 206,409 |
+| health communication | 1 | 9 | 136,384 |
+| moral/social/cognition | 8 | 17 | 223,486 |
+| political identity/polarisation | 5 | 0 | 44,415 |
+| political preferences/policy | 19 | 2 | 194,548 |
 | survey methodology | 20 | 6 | 223,494 |
 | work/family/gender | 8 | 9 | 163,482 |
 

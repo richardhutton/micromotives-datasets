@@ -60,7 +60,12 @@ def test_every_source_is_in_the_test_set_at_about_the_set_share() -> None:
         ids = [s for s, e in studies.items() if e["source"] == source]
         held = [s for s in ids if s in MAPPING["unseen"]]
         assert held, f"no {source} study is unseen"
-        assert abs(len(held) / len(ids) - make_splits.UNSEEN_SHARE) < 0.1, source
+        # A source with n studies can only hold back multiples of 1/n, so the
+        # tolerance is never tighter than that step. Zenodo arrived with 3 studies
+        # (16 Nov 2026), where the nearest possible share is 1/3, and a flat 0.1
+        # failed every split there could be.
+        tolerance = max(0.1, 1 / len(ids))
+        assert abs(len(held) / len(ids) - make_splits.UNSEEN_SHARE) < tolerance, source
 
 
 def test_excluding_a_study_moves_no_other_study() -> None:

@@ -158,6 +158,73 @@
     "status": "built",
     "title": "Divided by the Vote: Affective polarization in the Wake of the Brexit Referendum"
   },
+  "3YCVOF": {
+    "authors": "Campbell, Rosie; Cowley, Philip; Vivyan, Nick; Wagner, Markus",
+    "description": " Replication materials for \r\n# Campbell, R., Cowley, P., Vivyan, N & Wagner, M. \r\n\r\n# Replication materials for \r\n# Campbell, R., Cowley, P., Vivyan, N & Wagner, M. \r\n# 'Legislator dissent as a valence signal'.\r\n# British Journal of Political Science\r\n# Accepted for publication: 2016\r\n\r\n# Files\r\n\r\n## Data files\r\n\r\n* data/study1data.rds contains the data from Study 1, an observational survey reported in the main text.\r\n\r\n* data/study2data.rds contains the data from Study 2, a conjoint analysis survey experiment reported in the main text.\r\n\r\n* data/study3data.rds contains the data from Study 3, a conjoint analysis survey experiment reported in the main text\r\n\r\n* data/appendixAdata.rds contains the data from a spli-sample survey experiment reported in Appenix A of the Online Appendix\r\n\r\n\r\n## R code files\r\n\r\n* ccvw_replication_code_study1.R contains R code to replicate the figures and tables generated from the Study 1 data.\r\n\r\n* ccvw_replication_code_study2.R contains R code to replicate the figures and tables generated from the Study 2 data.\r\n\r\n* ccvw_replication_code_study3.R contains R code to replicate the figures and tables generated from the Study 3 data.\r\n\r\n* ccvw_replication_code_AppendixA.R contains R code to replicate the figures generated for the split sample study reported in Appendix A of the Online Appendix.\r\n\r\n\r\n## Other folders\r\n\r\n* figures is an (empty) folder for figures generated from the replication code\r\n\r\n* tables is an (empty) folder for tables generated from the replication code\r\n\r\n",
+    "doi": "10.7910/DVN/3YCVOF",
+    "files": [
+      {
+        "bytes": 18324,
+        "name": "appendixAdata.rds",
+        "original_format": null,
+        "served_as": "appendixAdata.rds"
+      },
+      {
+        "bytes": 2241,
+        "name": "ccvw_replication_code_AppendixA.R",
+        "original_format": null,
+        "served_as": "ccvw_replication_code_AppendixA.R"
+      },
+      {
+        "bytes": 25909,
+        "name": "ccvw_replication_code_study1.R",
+        "original_format": null,
+        "served_as": "ccvw_replication_code_study1.R"
+      },
+      {
+        "bytes": 25904,
+        "name": "ccvw_replication_code_study2.R",
+        "original_format": null,
+        "served_as": "ccvw_replication_code_study2.R"
+      },
+      {
+        "bytes": 16221,
+        "name": "ccvw_replication_code_study3.R",
+        "original_format": null,
+        "served_as": "ccvw_replication_code_study3.R"
+      },
+      {
+        "bytes": 1443,
+        "name": "readme.txt",
+        "original_format": null,
+        "served_as": "readme.txt"
+      },
+      {
+        "bytes": 24972,
+        "name": "study1data.rds",
+        "original_format": null,
+        "served_as": "study1data.rds"
+      },
+      {
+        "bytes": 226859,
+        "name": "study2data.rds",
+        "original_format": null,
+        "served_as": "study2data.rds"
+      },
+      {
+        "bytes": 83846,
+        "name": "study3data.rds",
+        "original_format": null,
+        "served_as": "study3data.rds"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": null,
+    "title": "Legislator dissent as a valence signal",
+    "status": "built",
+    "status_reason": "BUILT 2026-11-16, Study 2 only (recipes/3YCVOF.yaml, scripts/gen_3YCVOF.py). YouGov, 5-6 Dec 2012, 1,899 British adults (paper p.19), 5 forced choices between two hypothetical MPs, 9,495 rows. The deposit has R .rds files and no questionnaire; the wording is read off Figure 1's screenshots of the fielded screens in the open author-accepted manuscript (eprints.bbk.ac.uk/id/eprint/14786/3/14786.pdf, p.38), with unshown levels from the paper's own attribute lists (pp.19-20). Dissent AMCEs reproduced from the built rows: 13.04 / 30.15 / 31.99 vs the paper's 13 / 30 / 32. Which profile was shown as MP 1 is not recorded; the first in file order is used (flagged in the recipe). Study 3 not built: its level wording is only quoted in fragments. Appendix A not built: no persona in its file."
+  },
   "6MRVOM": {
     "authors": "Hix, Kaufmann, Leeper",
     "description": "This repository contains reproduction materials for a survey experiment on immigration attitudes. It consists of the following files:\r\n\r\n - analysis.R: R code for reproducing all results\r\n - data.sav: the raw, original data file and supporting material from YouGov\r\n - questionnaire.docx: the survey experimental questionnaire",
@@ -940,6 +1007,82 @@
     "status": "dropped",
     "status_reason": "DROPPED 5 Oct 2026 by rich, on a scope ruling: a word-for-word author-written SCRIPT of a produced TV-news segment does not count as condition text for this schema. The decision was close and the reasons are recorded because the SAME question will come back for the next audiovisual study. What was NOT wrong with it, so nobody re-litigates the easy parts: the deposit is CC0; the UK sample is separable and clean at n=597, balanced 120/119/118/120/120 across the five conditions and matching the paper's published Table 3 cell for cell; and a word-for-word script DOES exist, in the open-access Online Appendix B of Shandler, Gross, Backhaus & Canetti, BJPS 52(2):850-868, doi:10.1017/S0007123420000812, with the cyber/conventional and fatal/non-fatal variation points marked in the docx formatting. §5a's original objections ('2,028 is a three-country total', 'no transcript ships') were both wrong: the deposit holds the 1,848-person main experiment and 2,028 adds an undeposited 180-person pilot, and the transcript is in the paper rather than the deposit, which decides nothing. THE THREE REASONS IT WAS DROPPED ANYWAY. (1) The control arm saw NO video at all — 120 of 597 — so the contrast the design rests on is 'watched a dramatic news bulletin about a terror attack' versus nothing, and no text can represent that. Composing a no-stimulus arm is precedented (LOGVPZ), but there the treatment arm was also text the respondent READ. (2) The outcome is an absolute 1-6 support-for-retaliation rating, not a contrast. The cyber/conventional and fatal/non-fatal manipulations ARE purely linguistic and survive in text perfectly, but a produced, acted, scored segment moves an absolute rating differently from a paragraph, so a model would be asked to predict a number produced by an experience we cannot give it. (3) The UK substitute for the US city name 'Cambridge' is unrecoverable — checked against the appendix text, all seven embedded images at native resolution, the paper's own Table 1 screenshots, the codebook, every .sav label and the SPSS output file. It appears only in the FATAL script, so either two of four treatment arms assert that UK respondents saw a US city (false), or the sentence carrying the casualty detail is left incomplete, or both Fatal arms go and 359 respondents remain from a 2x2 with half its cells missing, which is no longer the experiment. ('Amtrak' -> 'National Rail' IS confirmed, from two independent sources.) THE PRECEDENT THIS SETS: a script is not the stimulus when the stimulus was audiovisual. Ruling the other way would have admitted video-stimulus studies generally, which is a standing change to what `condition` means here. IF IT IS EVER REVISITED, the middle option is to build only the four TREATMENT arms and drop the control, measuring within-treatment contrasts rather than treatment-versus-nothing. That answers reason (1) completely and reasons (2) and (3) not at all. Two findings worth keeping regardless: ManiCheck1/ManiCheck2 hold an undeclared 0 meaning 'Control, never shown a video' rather than a failed attention check (the authors' own filter has a third clause to pass Control through), and the authors' headline measure is MEAN(Retaliation_1,_3,_5,_6) which must never ship as a response because no respondent produced it. Published UK means per condition, had it been built: 2.55 / 2.40 / 2.80 / 2.53 / 2.61.",
     "title": "Replication Data for: Cyber Terrorism and Public Support for Retaliation - A Multi-Country Survey Experiment"
+  },
+  "SYDSIH": {
+    "authors": "Maredia, Mywish K",
+    "description": "This data repository contains replication data and material for Maredia, Goeb, Ortega, Synt, and Zu (2022)'s JAAEA paper, titled \"Preferences for Pandemic Recovery Policies: Perspectives of Myanmar Agri-food System Participants.\"",
+    "doi": "10.7910/DVN/SYDSIH",
+    "files": [
+      {
+        "bytes": 199484,
+        "name": "JAAEA_BWS_survey_data.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "JAAEA_BWS_survey_data.tab"
+      },
+      {
+        "bytes": 178900,
+        "name": "JAAEA_BWS_survey_module.pdf",
+        "original_format": null,
+        "served_as": "JAAEA_BWS_survey_module.pdf"
+      },
+      {
+        "bytes": 48897,
+        "name": "JAAEA_Covariates_cropTraders_with_SOP.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "JAAEA_Covariates_cropTraders_with_SOP.tab"
+      },
+      {
+        "bytes": 144619,
+        "name": "JAAEA_Covariates_farmers_with_SOP.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "JAAEA_Covariates_farmers_with_SOP.tab"
+      },
+      {
+        "bytes": 59149,
+        "name": "JAAEA_Covariates_inputRetailers_with_SOP.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "JAAEA_Covariates_inputRetailers_with_SOP.tab"
+      },
+      {
+        "bytes": 109430,
+        "name": "JAAEA_Covariates_riceMillers_with_SOP.dta",
+        "original_format": "application/x-stata-14",
+        "served_as": "JAAEA_Covariates_riceMillers_with_SOP.tab"
+      },
+      {
+        "bytes": 15757057,
+        "name": "JAAEA_Myanmar_BWS_data_for_analysis.lpj",
+        "original_format": null,
+        "served_as": "JAAEA_Myanmar_BWS_data_for_analysis.lpj"
+      },
+      {
+        "bytes": 125525,
+        "name": "JAAEA_Myanmar_BWS_syntax_for_Tables2_3_AppF&G.lim",
+        "original_format": null,
+        "served_as": "JAAEA_Myanmar_BWS_syntax_for_Tables2_3_AppF&G.lim"
+      },
+      {
+        "bytes": 19522,
+        "name": "JAAEA_paper_syntax_Fig1_Table4_AppC_D_E.do",
+        "original_format": null,
+        "served_as": "JAAEA_paper_syntax_Fig1_Table4_AppC_D_E.do"
+      },
+      {
+        "bytes": 171590,
+        "name": "Readme.pdf",
+        "original_format": null,
+        "served_as": "Readme.pdf"
+      }
+    ],
+    "licence": "CC0 1.0",
+    "licence_source": "Dataverse API, latestVersion.license",
+    "publication": {
+      "citation": "Maredia, M.K., Joey Goeb, David Ortega, Nang Lun Kham Synt, A. Myint Zu (2022), \"Preferences for Pandemic Recovery Policies: Perspectives of Myanmar Agri-food System Participants,\" Journal of the Agriculture and Applied Economics Association (forthcoming)",
+      "doi": null
+    },
+    "status": "prepared",
+    "status_reason": "Awaiting rich's ruling (16 Nov 2026). 2026-11-16, maker stopped before writing a recipe. (1) The only instrument is an English module (JAAEA_BWS_survey_module.pdf); the language the phone interviews were conducted in is stated nowhere in the deposit or the paper, and no convention covers a translated instrument. Its English disagrees with the paper Table 1 and the Stata value labels on items 2, 5 and 7. (2) Paper s.3.1: the seven sets and the three options within each set were randomized; the deposit records items by identity and a 4-level block with no order key, so the read-out order is unrecoverable (ledger 155). Licence CC0 1.0 read from the Dataverse API 2026-11-16.",
+    "title": "Replication data/material for Maredia et al. (2022)'s JAAEA, \"Preferences for Pandemic Recovery Policies: Perspectives of Myanmar Agri-food System Participants.\""
   },
   "TLT65Z": {
     "authors": "Blinder, Ford, Ivarsflaten",

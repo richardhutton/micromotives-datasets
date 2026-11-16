@@ -305,6 +305,31 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
         # "did the doctor heed the computer?" is undefined in the arms with no
         # computer. That is a legitimate augmented factorial, not a defect, so
         # say the test could not run rather than passing it silently.
+        template = recipe.condition.template
+        if template is not None and factor in template.dimensions:
+            # A template's text is a pure function of its cell, so minimal pairs
+            # need not be found among the drawn arms: they can be RENDERED. Take
+            # one drawn cell, move only this factor to each of its levels, and
+            # require ALL levels to render pairwise-distinct text. DEL wave 4's aid
+            # conjoint (16 factors, 11,982 screens, all distinct) has no drawn
+            # minimal pair for any factor. All pairs, not each level against the
+            # base cell's: the first version compared with the base only, so two
+            # NON-base levels rendering alike passed (found by the independent
+            # checker, 16 Nov 2026). Replaces the drawn-pair test for template
+            # factors, since rendering covers every pair the draw could contain.
+            rv = recipe.condition.arms[0].raw_values or {}
+            base = {n: d.levels[int(rv[d.var])] for n, d in template.dimensions.items()}
+            rendered = [
+                (lv.level, template.render(template.text, base | {factor: lv}).split())
+                for lv in template.dimensions[factor].levels.values()
+            ]
+            alike = [(a, b) for (a, ta), (b, tb) in itertools.combinations(rendered, 2) if ta == tb]
+            if alike:
+                rep.failures.append(
+                    f"factor {factor!r} renders the same template text for levels "
+                    f"{alike} — declared but not expressed"
+                )
+            continue
         if not pairs:
             rep.warnings.append(
                 f"factor {factor!r} is nested, not crossed — no minimal pair exists, "

@@ -51,7 +51,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 <div class="wrap">
   <header>
     <h1>Text Experiments</h1>
-    <p class="lede">Every experiment we have built and every candidate we could add, from four sources, in one list with one set of columns.</p>
+    <p class="lede">Every experiment we have built and every candidate we could add, from six sources, in one list with one set of columns.</p>
   </header>
 
   <section class="top">
@@ -94,7 +94,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 
 <script>
 const DATA = __DATA__;
-const SOURCES = ["Innovation Panel","DEL","TESS","Harvard Dataverse"];
+const SOURCES = ["Innovation Panel","DEL","TESS","Harvard Dataverse","Zenodo","Other open archives"];
 const STATUSES = ["Built","Buildable","Needs checking","Unlikely"];
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const cls = s => "s-" + s.split(" ")[0];

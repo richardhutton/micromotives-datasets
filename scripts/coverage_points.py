@@ -52,8 +52,16 @@ TITLE_LICENCE = {
     "Harvard Dataverse": "public-metadata",
     "DEL": "CC0 1.0",
     "Innovation Panel": "ukds-public-documentation",
+    "Zenodo": "public-metadata",
+    "Other open archives": "public-metadata",
 }
-JEV_SOURCE = {"TESS": "tess", "Harvard Dataverse": "dataverse", "DEL": "dataverse"}
+JEV_SOURCE = {
+    "TESS": "tess",
+    "Harvard Dataverse": "dataverse",
+    "DEL": "dataverse",
+    "Zenodo": "zenodo",
+    "Other open archives": "osf+figshare+eidc",
+}
 
 
 def items() -> list[dict]:
