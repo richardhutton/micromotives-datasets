@@ -782,6 +782,72 @@
       "description": "People read that a potato chips maker whose costs have increased, or whose supply of raw materials has fallen, raised the price or shrank the pack, and say whether this is fair.",
       "design": "2 (costs increased or raw materials decreased) x 2 (price increase or size decrease) between subjects; fair or unfair",
       "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, including the interaction, N 4,005 (tests/test_gen_researchbox1032.py)"
+    },
+    "researchbox2562_study1": {
+      "category": "economics/behavioural",
+      "description": "People read that a chocolate maker or a streaming platform, facing higher costs, raised the price, shrank the product or cut its quality, and say whether this is fair or unfair.",
+      "design": "3 (price, size or quality) x 2 (chocolate or streaming platform) between subjects; fair or unfair",
+      "verified_against": "the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, pooled and for each product, N 1,502 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study2a": {
+      "category": "economics/behavioural",
+      "description": "People read that an olive spread maker, facing higher costs, raised the price, shrank the pack or cut the share of olive oil, saying so on the packaging or not, and say whether this is fair.",
+      "design": "3 (price, size or quality) x 2 (change stated on the packaging or not) between subjects; fair or unfair",
+      "verified_against": "the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, in each transparency condition, N 3,006 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study2a_pilot": {
+      "category": "economics/behavioural",
+      "description": "People read that an olive spread maker, facing higher costs, cut the share of olive oil in its product, and rate how this changes the product's quality.",
+      "design": "single condition (pilot, 50 people); 1-9 from decreases significantly to increases significantly",
+      "verified_against": "the R script's one-sample t test against 5 recomputed from the BUILT rows equals base R's, t to 1e-9, N 50 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study2b": {
+      "category": "economics/behavioural",
+      "description": "People read that an orange juice maker, facing higher costs, raised the price, shrank the pack or diluted the juice, with the change stated by the maker on the pack, by the retailer on the shelf, or not at all, and say whether this is fair.",
+      "design": "3 (price, size or quality) x 3 (no communication, manufacturer, retailer) between subjects; fair or unfair",
+      "verified_against": "the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, in each communication condition, N 4,007 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study2b_pilot": {
+      "category": "economics/behavioural",
+      "description": "People read that an orange juice maker, facing higher costs, cut the concentration of juice in its product, and rate how this changes the product's quality.",
+      "design": "single condition (pilot, 50 people); 1-9 from decreases significantly to increases significantly",
+      "verified_against": "the R script's one-sample t test against 5 recomputed from the BUILT rows equals base R's, t to 1e-9, N 50 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study3": {
+      "category": "economics/behavioural",
+      "description": "People read that a toilet paper maker, facing higher costs, raised the price, shrank the pack, or cut the quality of the paper or of its packaging, and say whether this is fair.",
+      "design": "4 arms (price, package size, paper quality, packaging quality) between subjects; fair or unfair",
+      "verified_against": "the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, N 1,601 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study4": {
+      "category": "economics/behavioural",
+      "description": "People read that an orange juice maker whose costs rose by 10%, 5% or 15% raised the price, shrank the pack or diluted the juice by 10%, and say whether this is fair.",
+      "design": "3 (price, size or quality, each by 10%) x 3 (costs up 10%, 5% or 15%) between subjects; fair or unfair",
+      "verified_against": "the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, at each cost level, N 4,005 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study4_followup": {
+      "category": "economics/behavioural",
+      "description": "People read that an orange juice maker, facing higher costs, raised the price, shrank the pack or diluted the juice by 10%, and rate how big the change is.",
+      "design": "3 (price, size or quality, each by 10%) between subjects; 0-100 slider from very small to very big",
+      "verified_against": "the R script's three Welch t tests recomputed from the BUILT rows equal base R's, t to 1e-9 and df to 1e-7, N 300 (one of 301 moved no slider and has no arm, in R too) (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study5a_pilot": {
+      "category": "economics/behavioural",
+      "description": "People read that a chocolate maker, facing higher costs, cut the cocoa in its product, and rate how this changes the product's quality.",
+      "design": "single condition (pilot, 50 people); 1-9 from decreases significantly to increases significantly",
+      "verified_against": "the R script's one-sample t test against 5 recomputed from the BUILT rows equals base R's, t to 1e-9, N 50 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study6": {
+      "category": "economics/behavioural",
+      "description": "In a lab with real stakes, people choose between a price rise, a smaller bar and a lower-cocoa bar of chocolate, then between three such versions of an orange juice, rating after each choice what the quality cut does to the product.",
+      "design": "single condition, four screens in a fixed order: two picks among three fixed options and two 1-9 quality ratings, four rows per person",
+      "verified_against": "the R script's chi-squares against a uniform choice, one-sample t tests against 5 and logits of choosing the quality-cut option on the quality rating, recomputed from the BUILT rows, equal base R's to 1e-9, N 208 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox2562_study7": {
+      "category": "economics/behavioural",
+      "description": "People read that a British detergent maker, facing higher costs, raised the price, shrank the bottle, or weakened the formula in a way using more can or cannot make up, say whether they would buy it, and (weaker formula) rate its quality.",
+      "design": "4 arms between subjects; would you buy it (no or yes), then in the two quality arms a 1-9 quality rating on its own page",
+      "verified_against": "the R script's logit of buying, its one-sample t tests of the quality rating against 5 and its logit of buying on the rating, recomputed from the BUILT rows, equal base R's to 1e-9, N 1,005 (tests/test_gen_researchbox2562.py)"
     }
   }
 }

@@ -3999,11 +3999,11 @@
       "link": "https://researchbox.org/1673",
       "topic": "",
       "qsf": false,
-      "status": "Download needed",
+      "status": "Needs checking",
       "kind": "",
       "persona": "",
       "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "notes": "Downloaded from its Zenodo copy (CC BY 4.0), 19 Nov 2026. No .qsf; data and materials PDF only. Design not yet clear."
     },
     {
       "id": "RB1674",
@@ -4939,7 +4939,7 @@
       "kind": "",
       "persona": "",
       "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "notes": "Download tonight (rich, 19 Nov 2026): not archived on Zenodo, so it has to come from ResearchBox in the browser. Tick Select All, download the zip, put it in Downloads/research_box_downloads."
     },
     {
       "id": "RB2289",
@@ -5156,11 +5156,11 @@
       "link": "https://researchbox.org/2428",
       "topic": "",
       "qsf": false,
-      "status": "Download needed",
+      "status": "Needs checking",
       "kind": "",
       "persona": "",
       "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "notes": "Downloaded from its Zenodo copy (CC BY 4.0), 19 Nov 2026. No .qsf; data and materials PDF only. Design not yet clear."
     },
     {
       "id": "RB2429",
@@ -5338,11 +5338,11 @@
       "link": "https://researchbox.org/2562",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Download needed",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age (years), gender",
+      "uk": "Yes",
+      "notes": "Built 19 Nov 2026: 11 experiments (Studies 1, 2a, 2b, 3, 4, 4 follow-up, 6, 7 and the 2a, 2b and 5a pilots), 16,896 rows, 15,784 people, all from the .qsf and .sav. A maker facing higher costs raises the price, shrinks the product or cuts its quality (less cocoa, olive oil, juice; thinner paper; a weaker detergent); fair or unfair, how big the change, how its quality changes, or which to take. Factorials with transparency, communication and cost level. Study 6 is a real-stakes lab choice among three fixed options (shelf); the pilots are single-condition quality ratings. Not built: Studies 5a, 5b and 5c, whose product photographs carry printed words (a supermarket's name, \"500g\") the rows cannot hold. Every built study's R models reproduce from the built rows to 1e-9."
     },
     {
       "id": "RB2566",
@@ -5368,7 +5368,7 @@
       "kind": "",
       "persona": "",
       "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "notes": "Download tonight (rich, 19 Nov 2026): not archived on Zenodo, so it has to come from ResearchBox in the browser. Tick Select All, download the zip, put it in Downloads/research_box_downloads."
     },
     {
       "id": "RB2587",
@@ -6183,11 +6183,11 @@
       "link": "https://researchbox.org/3251",
       "topic": "work/family/gender",
       "qsf": true,
-      "status": "Download needed",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "status": "Buildable",
+      "kind": "version",
+      "persona": "Age, gender",
+      "uk": "Yes",
+      "notes": "Downloaded from its Zenodo copy (CC BY 4.0), 19 Nov 2026. Conditional promotions: no promotion vs loyalty-only vs eligibility-only; purchase intention at full price. 9 .qsf, data and codebooks; age and gender. Queued to build."
     },
     {
       "id": "RB3256",
