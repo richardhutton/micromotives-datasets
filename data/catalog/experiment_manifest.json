@@ -980,6 +980,12 @@
       "description": "People read two of six restaurant visits, each with something wrong, and rate each in stars Overall alone or beside Food, Service, Ambiance and Value.",
       "design": "rating rows between subjects x two of six scenarios within subjects, in a random recorded order (the second row narrates the first); 1-10 stars",
       "verified_against": "the authors' R script (Study S7.r): its six per-scenario pooled-variance t tests, and N and cell means slot by slot, recomputed from the BUILT rows equal the deposit's with the script's row exclusions, 3,111 ratings from 1,556 people (tests/test_gen_researchbox196.py)"
+    },
+    "researchbox348_study1": {
+      "category": "economics/behavioural",
+      "description": "People read about someone opening a checking account, with the bank's overdraft fee and daily cap and the person's money, spending and other ways to pay varied, and rate whether that person should get overdraft coverage.",
+      "design": "rating-based conjoint: six two-level attributes, ten profiles of a fractional design, all ten rated by everyone in an unrecorded random order; 0-100 slider, Definitely no to Definitely yes",
+      "verified_against": "the authors' R code (manuscript_cleaning.Rmd exclusions, manuscript_analysis.Rmd Table 3 model): its six fixed-effects coefficients and each profile's mean rating, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 869 people, 8,690 ratings (tests/test_gen_researchbox348.py); the paper itself is paywalled and was not read"
     }
   }
 }

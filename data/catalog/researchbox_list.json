@@ -1178,11 +1178,11 @@
       "link": "https://researchbox.org/348",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Buildable",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Topic screen 19 Nov 2026 (choice architecture): downloaded from Zenodo; 3 .qsf, 1 picture on a reachable screen to check."
+      "status": "Built",
+      "kind": "choice",
+      "persona": "Gender, year of birth",
+      "uk": "Mostly",
+      "notes": "Built 19 Nov 2026: 1 experiment (Study 1), 8,690 rows, 869 people, from the .qsf and the data, Chin, Zimmerman, Johnson & Shu (2022) JEP: Applied. Should this person get overdraft coverage? Ten profiles (fee $25 or $35, at most 3 or 6 fees a day, money left over or not, the debit card for important purchases or not, other ways to pay or not, bank or credit union), each rated 0-100 by everyone. A US banking product (the opt-in kind), defined on screen, so answerable from the text. The authors' fixed-effects model and profile means reproduce from the built rows. Image list: Studies 2 and 3 (the manipulation is the disclosure form, shown as a picture people click). Not built: the Study 1 and Study 3 pilots (no fielded questionnaire in the deposit; both show a form picture too)."
     },
     {
       "id": "RB354",
@@ -3687,11 +3687,11 @@
       "link": "https://researchbox.org/1432",
       "topic": "survey methodology",
       "qsf": true,
-      "status": "Buildable",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Topic screen 19 Nov 2026 (choice architecture): downloaded from Zenodo; 2 .qsf, no pictures on reachable screens."
+      "status": "Unlikely",
+      "kind": "version",
+      "persona": "Age (years), gender, household income (USD, typed)",
+      "uk": "Yes",
+      "notes": "Checked 19 Nov 2026, not built. The subscription studies behind Paley and van de Ven, \"Crowdsourcing as a tool for creating effective nudges: An example for financial oversubscription\", PNAS 120(44), 2023 (PMC10622905); the box holds Studies 2a and 2b (MTurk) and the pre-registration of the Dutch crowdsourcing pretests, whose data are not deposited. Study 2a (223 people) has no conditions: everyone estimates how many subscriptions they pay for, what they cost and how many they would cancel, then lists them across 17 categories, is told \"You have ${e://Field/sum} subscriptions!\" (their own count) and is asked again. Study 2b (1,255 people) randomises control (the same estimates, then a filler spending task) against debias (the 17-category listing, then that same screen with the person's own total, then the cancel question). The debias arm's stimulus is the person's own answers, so a row would have to narrate them (rich, 19 Nov 2026: never narrate a person's own earlier answer); leaving the screen out would misstate what was seen. The only outcome shared by both arms, \"How many of these subscriptions do you think you would like to cancel whenever it's possible?\", is an open count bounded by the person's own estimate or listed total, which no row carries. NUMBER and COST are estimates in control but totals computed from the listing in debias, so not one question. Deposit reproduces the reported direction: cancel 0.92 vs 1.18 (t(1253) = -3.14, p = .002); Study 2a 0.97 before vs 1.48 after listing (paired t(222) = -6.61). No pictures on any reachable screen."
     },
     {
       "id": "RB1438",

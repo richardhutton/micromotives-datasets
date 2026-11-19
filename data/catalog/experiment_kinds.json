@@ -1169,6 +1169,10 @@
    "kind": "version",
    "basis": "read"
   },
+  "text:researchbox348_study1": {
+   "kind": "choice",
+   "basis": "read"
+  },
   "text:researchbox402_study1a": {
    "kind": "mix",
    "basis": "read"

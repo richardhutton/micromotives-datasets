@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**94 studies (185 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 64 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**95 studies (186 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 65 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 15 | 64 | 173,874 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 16 | 65 | 182,564 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **94** | **185** | **1,318,087** | |
+| **Total** | **95** | **186** | **1,326,777** | |
 
 ---
 
@@ -45,6 +45,7 @@
 | `figshare_32935409_maxdiff` | Student perceptions of academic integrity in the age of Gen-AI: whi… | Figshare | `doi:10.48420/32935409` | 9,340 |
 | `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
 | `ukds_6849_eq5d3l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 8,698 |
+| `researchbox348_study1` | A person opening a checking account: the overdraft fee ($25 or $35)… | ResearchBox | `researchbox.org/348` | 8,690 |
 | `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,345 |
 | `35M5CV_bbc` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,175 |
 | `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
@@ -1167,6 +1168,19 @@ Best-worst scaling (MaxDiff): from four of 20 things a student might do (copying
 - **Licence** — CC BY 4.0
 - **Verified against** — no published reference: the paper (Rigby et al., an anchored best-worst scaling study) could not be found on 16 Nov 2026. Every built answer resolves to the item the deposit's wide pick columns record (all 9,340); the PDF's version 1 matches the data's item order on all ten screens; best-minus-worst ranks the 20 items at Spearman 0.95 against the deposit's own 'should result in disciplinary action' shares (tests/test_gen_figshare_32935409.py)
 
+### `researchbox348_study1`
+
+**A person opening a checking account: the overdraft fee ($25 or $35), the most fees a day (3 or 6), money left over or not, the debit card for important purchases or not, other ways to pay or not, a bank or a credit union; should they get overdraft coverage? (Study 1)**
+
+People read about someone opening a checking account, with the bank's overdraft fee and daily cap and the person's money, spending and other ways to pay varied, and rate whether that person should get overdraft coverage.
+
+- **Source** — ResearchBox, `researchbox.org/348`
+- **Type** — rating-based conjoint: six two-level attributes, ten profiles of a fractional design, all ten rated by everyone in an unrecorded random order; 0-100 slider, Definitely no to Definitely yes
+- **Category** — economics/behavioural
+- **Rows** — 8,690 from 869 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (manuscript_cleaning.Rmd exclusions, manuscript_analysis.Rmd Table 3 model): its six fixed-effects coefficients and each profile's mean rating, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 869 people, 8,690 ratings (tests/test_gen_researchbox348.py); the paper itself is paywalled and was not read
+
 ### `researchbox2170_study3_followup`
 
 **T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; how clear and fair the price seems, and the benefit and price appeal of the purchase (Study 3)**
@@ -2042,7 +2056,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 68 | 7 | 313,744 |
+| economics/behavioural | 69 | 7 | 322,434 |
 | health communication | 1 | 9 | 136,384 |
 | moral/social/cognition | 13 | 17 | 238,967 |
 | political identity/polarisation | 5 | 0 | 44,415 |
