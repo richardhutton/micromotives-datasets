@@ -1649,6 +1649,84 @@
       "added": "2026-11-19",
       "found_via": "ResearchBox sweep",
       "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG144",
+      "title": "Store recommendations and relative prices",
+      "description": "ResearchBox 2586 (Kim & Schrift, 'How the Interplay between Product Recommendations and Relative Prices Impact Consumers'): shoppers see 3-4 product cards (security camera, speaker, espresso machine, footrest, robot vacuum, headphones, massager), one marked as the store's recommendation, Bestseller or Top Deal; the arms vary the recommended option's price relative to the others. Price, brand and badge are on the cards. About 15 studies with Qualtrics files and data; age and gender. CC BY 4.0 box; the cards are Qualtrics graphics outside the box, still fetchable (one checked 19 Nov 2026). Version kind.",
+      "link": "https://researchbox.org/2586",
+      "reason": "Cards are Qualtrics graphics (ntusingapore): fetch every one and map it to each arm before calling it buildable. Studies 3 and C2 have no .qsf; A1, B4, B6, C4 have no usable outcome.",
+      "status": "Needs checking",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-19",
+      "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG145",
+      "title": "Price divisibility on multipacks",
+      "description": "ResearchBox 2281 (Park et al. 2023 replications): a multipack (body wash 4-pack, toothbrush 8-pack) priced so it divides evenly or not ($16 vs $15.30 etc.); purchase likelihood 1-7. Price is in the text; one fixed product photo per study carries the size and pack details. 3 studies, ~2,550 people; age and gender. Cashew study excluded: its photo (18 packs) contradicts the text (11 bags). CC BY 4.0. Version kind.",
+      "link": "https://researchbox.org/2281",
+      "reason": "Photos are Qualtrics graphics (copies in the printout PDFs): fetch the originals.",
+      "status": "Needs checking",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-19",
+      "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG146",
+      "title": "Choosing a dish from a menu with photos",
+      "description": "ResearchBox 755 Studies 1, 2 and 5 (choice set size): every dish option is shown with a photograph (6, 8 and 6 pictures). The text studies from this box are already built; these are the picture ones. Studies 1 and 2's 'self' arms pipe in the person's own choice and stay out. CC BY 4.0.",
+      "link": "https://researchbox.org/755",
+      "reason": "Fetch the dish photos and map them to each arm.",
+      "status": "Needs checking",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-19",
+      "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG147",
+      "title": "Rating formats and art galleries",
+      "description": "ResearchBox 196 Studies 1, 2, 4, 5-8 and S1: the scenario shows a screenshot of the rating question (one Overall row, or Overall plus attribute rows), which is the manipulation; Study 4 shows paintings. S2 and S6 are videos and stay out. CC BY 4.0.",
+      "link": "https://researchbox.org/196",
+      "reason": "Fetch the screenshots and paintings; confirm each arm's picture.",
+      "status": "Needs checking",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-19",
+      "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG148",
+      "title": "Overdraft disclosure forms",
+      "description": "ResearchBox 348 Studies 2 and 3 (Chin et al. 2022): the manipulation is the bank's overdraft disclosure form, shown as a picture the person clicks to opt in or out ($34 fee). US banking product. Study 1 is already built as text. CC BY 4.0.",
+      "link": "https://researchbox.org/348",
+      "reason": "Forms are Qualtrics HotSpot graphics: fetch and map them; check UK fit (US overdraft opt-in).",
+      "status": "Needs checking",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-19",
+      "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG149",
+      "title": "Product photo above a pricing scenario",
+      "description": "ResearchBox 2562 Studies 5a, 5b and 5c: the same product photograph above each scenario in every arm; what varies is in the text. Dropped from the text build because the photo carries information the text lacks. The rest of the box is built as text. CC BY 4.0.",
+      "link": "https://researchbox.org/2562",
+      "reason": "Fetch the photos; the text arms are already written.",
+      "status": "Needs checking",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-19",
+      "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
     }
   ]
 }

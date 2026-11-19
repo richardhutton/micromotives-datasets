@@ -4939,7 +4939,7 @@
       "kind": "version",
       "persona": "Age, gender",
       "uk": "Mostly",
-      "notes": "Checked 19 Nov 2026, not built (rich: drop). Park et al. price divisibility replications: price arms are text (e.g. $16 vs $15.30), but every arm also shows one fixed product photo whose print the text lacks (body wash '16 FL. OZ.'; toothbrush 'SOFT', '1 TOOTHBRUSH'). Buildable if a fixed photo is allowed: body wash Study 1 (719) and Appendix A (989), toothbrush Study 3 (859). Cashew study 2 (404) drops regardless: its photo says 18 packs, the text 11 bags. Authors' F tests reproduced from the deposit."
+      "notes": "Image experiment: moved to the image list as IMG145, 19 Nov 2026. Not a text build. Checked 19 Nov 2026, not built (rich: drop). Park et al. price divisibility replications: price arms are text (e.g. $16 vs $15.30), but every arm also shows one fixed product photo whose print the text lacks (body wash '16 FL. OZ.'; toothbrush 'SOFT', '1 TOOTHBRUSH'). Buildable if a fixed photo is allowed: body wash Study 1 (719) and Appendix A (989), toothbrush Study 3 (859). Cashew study 2 (404) drops regardless: its photo says 18 packs, the text 11 bags. Authors' F tests reproduced from the deposit."
     },
     {
       "id": "RB2289",
@@ -5368,7 +5368,7 @@
       "kind": "version",
       "persona": "Age (typed), gender",
       "uk": "Mostly",
-      "notes": "Checked 19 Nov 2026, not built. Kim & Schrift: the manipulation is the recommended option's price relative to the others, and in every study the options, their prices and the recommendation badge are Qualtrics image choices (e.g. 24_Rec.jpg, Espresso_130_V2_Rec.jpg); the text says only 'Below are the available options'. The pictures are not in the deposit, so not an image-list candidate either. Study 3 and Web C2 have no .qsf; Web A1 is a practitioner survey; Web B4, B6 and C4 have open-ended outcomes (B4's number is AI-coded)."
+      "notes": "Image experiment: moved to the image list as IMG144, 19 Nov 2026. Not a text build. Checked 19 Nov 2026, not built. Kim & Schrift: the manipulation is the recommended option's price relative to the others, and in every study the options, their prices and the recommendation badge are Qualtrics image choices (e.g. 24_Rec.jpg, Espresso_130_V2_Rec.jpg); the text says only 'Below are the available options'. The pictures are not in the deposit, so not an image-list candidate either. Study 3 and Web C2 have no .qsf; Web A1 is a practitioner survey; Web B4, B6 and C4 have open-ended outcomes (B4's number is AI-coded)."
     },
     {
       "id": "RB2587",
