@@ -185,6 +185,30 @@
    "kind": "head_to_head",
    "basis": "read"
   },
+  "image:IMG144": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG145": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG146": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG147": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG148": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG149": {
+   "kind": "version",
+   "basis": "read"
+  },
   "image:IMG15": {
    "kind": "mix",
    "basis": "read"
