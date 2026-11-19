@@ -294,7 +294,13 @@ would need. Rules for updating:
 - `src/` layout, Python 3.12+. Folder and repo hyphenated, package underscored.
   Gate before every commit:
   `uv run ruff check . && uv run ruff format . && uv run mypy src/ && uv run pytest -q`.
-  (2026-10-01)
+  Plain `pytest` runs the fast tests only (about 20 s). The tests that read built or
+  raw data are marked `slow` automatically (`tests/conftest.py`) and take about 12
+  minutes; run them too, with `uv run pytest -q -m slow`, before a commit that changes
+  a recipe, a generator (`scripts/gen_*`), shared code in `src/`, the splits or export,
+  or a persona crosswalk. A commit of docs, trackers or catalogue metadata alone needs
+  only the fast run. (2026-10-01; split 2026-11-19, rich: "i not spending half an hour
+  waiting".)
 - One YAML per sub-experiment in `recipes/`, named `<study_id>[_<experiment>]`.
   The recipe holds every judgement; the melt stays pure and deterministic, so a
   build can be re-derived from the recipe alone and reviewed as a text file.

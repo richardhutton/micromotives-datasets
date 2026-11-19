@@ -8,6 +8,7 @@ Deliberately small enough to reason about by hand:
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -15,6 +16,26 @@ import pyreadstat
 import pytest
 
 from micromotives_datasets.recipe import Arm, Condition, Outcome, Recipe, Scale
+
+# A test file that reads built or raw data is slow: together these take about 12 minutes
+# of a 12-minute suite (19 Nov 2026), the rest about 20 seconds. They are marked from
+# their own text, so a new generator test is slow without anyone listing it. Plain
+# `uv run pytest` skips them; `uv run pytest -m slow` runs them. When each must run is
+# in CLAUDE.md, "Gate before every commit".
+READS_DATA = re.compile(
+    r"read_parquet|data/processed|PROCESSED|rows_by_experiment|attach_row_counts"
+    r"|data/raw|\"raw\"|RAW\b|read_sav"
+)
+
+
+def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item]) -> None:
+    seen: dict[Path, bool] = {}
+    for item in items:
+        path = Path(str(item.path))
+        if path not in seen:
+            seen[path] = bool(READS_DATA.search(path.read_text()))
+        if seen[path]:
+            item.add_marker(pytest.mark.slow)
 
 
 @pytest.fixture
