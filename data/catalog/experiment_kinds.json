@@ -965,6 +965,50 @@
    "kind": "version",
    "basis": "read"
   },
+  "text:researchbox2170_ss2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2170_study3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2170_study3_followup": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox231_s1": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox231_s2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox231_study2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox231_study3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox231_study3_ease": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox231_study4": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox231_study4_ease": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox231_study5": {
+   "kind": "version",
+   "basis": "read"
+  },
   "text:researchbox3299_s3": {
    "kind": "version",
    "basis": "read"

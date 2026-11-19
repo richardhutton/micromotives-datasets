@@ -762,11 +762,11 @@
       "link": "https://researchbox.org/231",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Buildable",
-      "kind": "version",
-      "persona": "Age, gender, household income, education",
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age (years), gender, household income, education (where asked)",
       "uk": "Mostly",
-      "notes": "Payment frequency: in a life simulator people are paid daily vs weekly (or biweekly) and make spending choices; some studies cross pay with expense frequency (2x2). 9 studies, each with .qsf + data. US checking-account framing (overdraft). Outcome is a run of in-game choices, so the row design needs thought. Downloaded by rich 19 Nov 2026."
+      "notes": "Built 19 Nov 2026: 8 experiments (Studies 2, 3, 3 ease, 4, 4 ease, 5, S1, S2), 8,469 rows, 2,709 people. Payment frequency in a life simulator. Studies 3 and 4 (passive simulated month) built in full: subjective wealth and prediction uncertainty. Studies 2, 5, S1, S2 and S3: only the first spending decision, since every later screen shows a balance that follows from the person's own earlier choices. Study 6 not built: in the Instant Pay arm a cash-out choice precedes the first decision. S4 not built: its ratings pipe the person's own free-text list onto the screen. US checking-account framing (overdraft). S3 dropped (19 Nov 2026): its daily arm is told it is paid every two weeks. Slider items in Studies 3 and 4 mapped by Qualtrics export order; polarity, correlations and the paper's indices confirm it, order within near-identical pairs cannot be proven."
     },
     {
       "id": "RB234",
@@ -4753,11 +4753,11 @@
       "link": "https://researchbox.org/2170",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Download needed",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "status": "Built",
+      "kind": "version",
+      "persona": "Age (years), gender",
+      "uk": "Yes",
+      "notes": "Built 19 Nov 2026: 3 experiments (Study 3, Study 3 follow-up, Supplementary Study 2), 16,732 rows, 1,195 people. Buy now pay later: pay now, a deferred lump sum or instalments, for a $24 T-shirt and $27 mugs; financial constraint, price perception, benefits, perceived cost and budget control. Studies 2 and 4 and Supplementary Studies 1a, 1b and 3 not built: their products, prices or payment displays are shown in pictures (rich, 19 Nov 2026)."
     },
     {
       "id": "RB2175",

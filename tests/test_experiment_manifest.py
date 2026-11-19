@@ -192,7 +192,9 @@ def test_an_osf_experiment_is_filed_by_its_own_licence(
     assert osf, "no OSF experiments found; this test would pass vacuously"
 
     rendered = module.render(experiments)
-    open_section = rendered.split("## Zenodo, Figshare, ResearchBox and open OSF")[1].split("\n## ")[0]
+    open_section = rendered.split("## Zenodo, Figshare, ResearchBox and open OSF")[1].split(
+        "\n## "
+    )[0]
     for e in osf:
         assert e.licence and e.licence.startswith("CC BY"), e.licence
         assert e.reference == f"osf.io/{e.study_id.removeprefix('osf_')}"
@@ -206,7 +208,9 @@ def test_an_osf_experiment_is_filed_by_its_own_licence(
     others = [e for e in experiments if e.source != "osf"]
     rendered = module.render([*others, *unlicensed])
     osf_section = rendered.split("## OSF — no licence stated")[1].split("\n## ")[0]
-    open_section = rendered.split("## Zenodo, Figshare, ResearchBox and open OSF")[1].split("\n## ")[0]
+    open_section = rendered.split("## Zenodo, Figshare, ResearchBox and open OSF")[1].split(
+        "\n## "
+    )[0]
     for e in unlicensed:
         row = next(line for line in rendered.splitlines() if line.startswith(f"| `{e.recipe}`"))
         assert "⚠" in row, row

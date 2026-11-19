@@ -195,6 +195,17 @@
    "Secondary or high school": "High school",
    "College or university degree": "Bachelors to postgraduate",
    "Postgraduate degree": "Bachelors to postgraduate"
+  },
+  "us_researchbox231_qualtrics": {
+   "Less than high school": "Less than high school",
+   "High school graduate": "High school",
+   "Some college": "Some college to associate",
+   "2 year degree": "Some college to associate",
+   "4 year degree": "Bachelors to postgraduate",
+   "Professional degree / Master's Degree": "Bachelors to postgraduate",
+   "Professional/Master's degree": "Bachelors to postgraduate",
+   "Professional degree / Masters": "Bachelors to postgraduate",
+   "Doctorate": "Bachelors to postgraduate"
   }
  },
  "_about": [

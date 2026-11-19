@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**85 studies (134 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 13 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**87 studies (145 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 24 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 6 | 13 | 75,807 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 8 | 24 | 101,008 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **85** | **134** | **1,220,020** | |
+| **Total** | **87** | **145** | **1,245,221** | |
 
 ---
 
@@ -54,6 +54,8 @@
 | `ukds_6849_nrp_w10_fh` ⚠ | Understanding Society Innovation Panel, experiment 9.23: ever adopt… | UK Data Service | `UKDS SN 6849` | 7,392 |
 | `del_panel_w5_who_must_change` | Development Engagement Lab, Panel Great Britain wave 5 (2023): who … | Harvard Dataverse | `doi:10.7910/DVN/FTRXFO` | 7,356 |
 | `del_panel_w4_extreme_weather` | Development Engagement Lab, Panel Great Britain wave 4 (2022): extr… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 7,276 |
+| `researchbox2170_study3_followup` | T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; how cle… | ResearchBox | `researchbox.org/2170` | 7,176 |
+| `researchbox2170_ss2` | Four coffee mugs: pay $27 in 21 days or in 3 instalments of $9; fin… | ResearchBox | `researchbox.org/2170` | 7,164 |
 | `ukds_6849_vig_ageing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 6,600 |
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
@@ -70,15 +72,18 @@
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
 | `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
 | `del_sandbox_feb2023_gender_progress` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 3,274 |
+| `researchbox231_study4` | A simulated month, paid daily or weekly and spending daily or weekl… | ResearchBox | `researchbox.org/231` | 3,168 |
 | `ukds_6849_hmrc_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 2,553 |
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
+| `researchbox2170_study3` | T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; feeling… | ResearchBox | `researchbox.org/2170` | 2,392 |
 | `researchbox3299_study4` | A product at $11 or $311: 10% off (as % or $) or a 10% chance it is… | ResearchBox | `researchbox.org/3299` | 2,371 |
 | `ukds_6849_envtax_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.14: willingnes… | UK Data Service | `UKDS SN 6849` | 2,235 |
 | `researchbox3299_study3` | Gym membership: a sure $5 off training or a 10% chance it is free, … | ResearchBox | `researchbox.org/3299` | 2,221 |
 | `researchbox3299_study3_wealth` | Gym membership: how wealthy would you feel, after a small or large … | ResearchBox | `researchbox.org/3299` | 2,220 |
 | `osf_ct8ae_maxdiff` | Schwartz life values: which of five or six is the most and least im… | OSF | `osf.io/ct8ae` | 2,200 |
 | `ukds_6849_immigsdb_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,133 |
+| `researchbox231_study4_ease` | A simulated month, paid daily or weekly and spending daily or weekl… | ResearchBox | `researchbox.org/231` | 2,112 |
 | `ukds_6849_immigsdb_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,071 |
 | `researchbox3299_s4` | A $15 or $315 product, then an $11 one: a sure discount or a 10% ch… | ResearchBox | `researchbox.org/3299` | 1,968 |
 | `ukds_6849_immig_vignette_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.26: right to r… | UK Data Service | `UKDS SN 6849` | 1,917 |
@@ -95,13 +100,19 @@
 | `researchbox3299_s3` | Gym membership: a sure $5 off training or a 10% chance it is free, … | ResearchBox | `researchbox.org/3299` | 1,188 |
 | `researchbox3299_study5` | An $11 product: 10% off framed as % or $, or a 10% chance it is fre… | ResearchBox | `researchbox.org/3299` | 1,187 |
 | `researchbox3299_study5_size` | An $11 product: how large does 10% off feel, framed as % or $, afte… | ResearchBox | `researchbox.org/3299` | 1,187 |
+| `researchbox231_study5` | Life simulator: rent with or without a cleaning fee, paid daily or … | ResearchBox | `researchbox.org/231` | 1,120 |
 | `ukds_6849_sensor_consent_w17_web` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 946 |
 | `researchbox3299_study4_pretest` | How large does 10% off feel, as % or $, on a $11 or $311 product (S… | ResearchBox | `researchbox.org/3299` | 867 |
+| `researchbox231_study3` | A simulated month paid $100 daily or $700 weekly: how wealthy it fe… | ResearchBox | `researchbox.org/231` | 672 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
+| `researchbox231_study3_ease` | A simulated month paid $100 daily or $700 weekly: how predictable i… | ResearchBox | `researchbox.org/231` | 448 |
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
+| `researchbox231_s2` | Life simulator: a concert after being paid daily or weekly (Supplem… | ResearchBox | `researchbox.org/231` | 402 |
+| `researchbox231_study2` | Life simulator: drinks with a friend after being paid daily or week… | ResearchBox | `researchbox.org/231` | 401 |
 | `zenodo10641548` | Public perceptions of trophy hunting are pragmatic, not dogmatic (U… | Zenodo | `doi:10.5281/zenodo.10641548` | 388 |
 | `ukds_6849_sensor_consent_w17_ftf` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 339 |
+| `researchbox231_s1` | Life simulator: drinks with a friend after being paid daily or week… | ResearchBox | `researchbox.org/231` | 146 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `xtvu5` ⚠ | Effects of Misinformation News Coverage on Media Trust | TESS (OSF) | `—` | 23,017 |
 | `zx5b8` ⚠ | Do the benefits of receiving affectionate touch generalize beyond s… | TESS (OSF) | `osf.io/zx5b8` | 22,717 |
@@ -1116,6 +1127,32 @@ Best-worst scaling (MaxDiff): from four of 20 things a student might do (copying
 - **Licence** — CC BY 4.0
 - **Verified against** — no published reference: the paper (Rigby et al., an anchored best-worst scaling study) could not be found on 16 Nov 2026. Every built answer resolves to the item the deposit's wide pick columns record (all 9,340); the PDF's version 1 matches the data's item order on all ten screens; best-minus-worst ranks the 20 items at Spearman 0.95 against the deposit's own 'should result in disciplinary action' shares (tests/test_gen_figshare_32935409.py)
 
+### `researchbox2170_study3_followup`
+
+**T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; how clear and fair the price seems, and the benefit and price appeal of the purchase (Study 3)**
+
+After the Study 3 T-shirt question, people say how clear and fair the price seems, how much they would benefit from the purchase, and how attractive the price is.
+
+- **Source** — ResearchBox, `researchbox.org/2170`
+- **Type** — 3 (payment) between subjects, with the order of the two question blocks randomised and recorded; twelve 9-point agree-disagree statements
+- **Category** — economics/behavioural
+- **Rows** — 7,176 from 598 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm, the misled, perceived-benefit and price-attractiveness means by arm with their F tests (2.35, 1.50, 2.83), and the five misled items' means by arm
+
+### `researchbox2170_ss2`
+
+**Four coffee mugs: pay $27 in 21 days or in 3 instalments of $9; financial constraint, perceived cost and budget control (Supplementary Study 2)**
+
+People imagine buying four coffee mugs for $27, paid in 21 days or in 3 instalments of $9, and rate how the payment method affects their financial constraint, how small the cost feels and their control of a budget.
+
+- **Source** — ResearchBox, `researchbox.org/2170`
+- **Type** — 2 (payment: deferred lump sum or instalments) between subjects; three four-statement 9-point matrices on pages in a fixed order
+- **Category** — economics/behavioural
+- **Rows** — 7,164 from 597 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm (297 / 300), the three t tests (1.98, -3.69, -3.12) with their means and SDs, and Cronbach's alpha with each item dropped for all twelve items
+
 ### `zenodo6572717`
 
 **CUPID (Ireland, Feb 2021): parents choose between two health services for an unwell child (paired-choice DCE)**
@@ -1128,6 +1165,32 @@ Parents of a child under 16 in Ireland imagine their youngest child has been unw
 - **Rows** — 5,400 from 450 respondents
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)
+
+### `researchbox231_study4`
+
+**A simulated month, paid daily or weekly and spending daily or weekly: how wealthy it felt (Study 4)**
+
+People watch a simulated February, paid $100 every day or $700 every week and paying expenses every day or once a week (same totals), and rate how wealthy they felt.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (pay frequency) x 2 (expense frequency) between subjects, passive 28-day simulation; six 0-100 subjective-wealth sliders
+- **Category** — economics/behavioural
+- **Rows** — 3,168 from 528 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's Study 4 simple effects from the BUILT rows: daily minus weekly pay 19.32 under daily expenses and 2.94 under weekly expenses, N = 528, as published (tests/test_gen_researchbox231.py)
+
+### `researchbox2170_study3`
+
+**T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; feeling financially constrained (Study 3)**
+
+People imagine buying a $24 T-shirt today, paid $24 now, $24 in 30 days, or in 3 instalments of $8, and say how far the payment method makes them feel less financially constrained.
+
+- **Source** — ResearchBox, `researchbox.org/2170`
+- **Type** — 3 (payment: now, deferred lump sum, instalments) between subjects; four 9-point statements
+- **Category** — economics/behavioural
+- **Rows** — 2,392 from 598 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm (200 / 197 / 201), financial-constraint means and SDs by arm (6.51, 6.05, 5.48) and the one-way ANOVA F = 12.2
 
 ### `researchbox3299_study4`
 
@@ -1181,6 +1244,19 @@ Best-worst scaling (MaxDiff): from five or six of Schwartz's ten life values (be
 - **Licence** — CC BY 4.0
 - **Verified against** — the preprint's Exp. 1b numbers, from both occasions as it pools them: Benevolence 0.375 and Power -0.46 mean best-worst score, Table 1's top five in order, and test-retest Kendall's tau-b 0.82 (same labels) and 0.41 (changed labels), all reproduced; coding most and least the other way round breaks them. Every built answer resolves to the value the export's own button columns mark (all 2,200) (tests/test_gen_osf_ct8ae.py)
 
+### `researchbox231_study4_ease`
+
+**A simulated month, paid daily or weekly and spending daily or weekly: how predictable it felt (Study 4)**
+
+The same simulated February as Study 4; people rate how easy or hard their income and expenses made it to predict whether they would have enough money.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (pay frequency) x 2 (expense frequency) between subjects; four 0-100 agreement sliders asked after the wealth questions
+- **Category** — economics/behavioural
+- **Rows** — 2,112 from 528 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's Study 4 prediction-uncertainty simple effects from the BUILT rows: -16.87 under daily expenses and 4.24 under weekly expenses, as published (tests/test_gen_researchbox231.py)
+
 ### `researchbox3299_s4`
 
 **A $15 or $315 product, then an $11 one: a sure discount or a 10% chance it is free (Study S4)**
@@ -1233,6 +1309,19 @@ After the Study 5 choice, people say how small or large the sure discount feels,
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (1,187) (tests/test_gen_researchbox3299.py)
 
+### `researchbox231_study5`
+
+**Life simulator: rent with or without a cleaning fee, paid daily or every two weeks (Study 5)**
+
+In a four-week life simulator, people told they are paid $140 every weekday or $1,400 every two weeks move into an apartment and choose whether to pay $50 extra to have it professionally cleaned.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (paid daily or every two weeks) between subjects; the first of 28 spending choices, before any pay day; pay the fee or not
+- **Category** — economics/behavioural
+- **Rows** — 1,120 from 1,120 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's N (1,120, which the deposit gives once the 3 people who failed both exclusions are counted once) and, from the deposit, its high-cost decision means 17.00 v 15.21 and spending $2,919.58 v $2,816.52; every built answer equals the deposit's Decision 1 (tests/test_gen_researchbox231.py)
+
 ### `researchbox3299_study4_pretest`
 
 **How large does 10% off feel, as % or $, on a $11 or $311 product (Study 4 pretest)**
@@ -1246,6 +1335,58 @@ People imagine buying a product priced $11 or $311 with 10% off, written as a pe
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (867) (tests/test_gen_researchbox3299.py)
 
+### `researchbox231_study3`
+
+**A simulated month paid $100 daily or $700 weekly: how wealthy it felt (Study 3)**
+
+People watch a simulated February, paid $100 every day or $700 every week with the same daily spending, and rate how far they felt they had a lot of money, excess money, enough, or would run out.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (paid daily or weekly) between subjects, passive 28-day simulation; six 0-100 subjective-wealth sliders
+- **Category** — economics/behavioural
+- **Rows** — 672 from 112 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's Study 3 subjective-wealth index from the BUILT rows: 44.40 (SD 25.55) daily v 34.57 (24.17) weekly, N = 112, all as published; swapping the pay factor breaks it (tests/test_gen_researchbox231.py)
+
+### `researchbox231_study3_ease`
+
+**A simulated month paid $100 daily or $700 weekly: how predictable it felt (Study 3)**
+
+The same simulated February as Study 3; people rate how easy or hard their income and expenses made it to predict whether they would have enough money.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (paid daily or weekly) between subjects; four 0-100 agreement sliders asked after the wealth questions
+- **Category** — economics/behavioural
+- **Rows** — 448 from 112 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's Study 3 prediction-uncertainty index from the BUILT rows: 35.29 (SD 23.16) daily v 50.34 (28.63) weekly, as published (tests/test_gen_researchbox231.py)
+
+### `researchbox231_s2`
+
+**Life simulator: a concert after being paid daily or weekly (Supplemental Study 2)**
+
+In a five-week life simulator, people paid $140 each weekday or $700 each Friday, on the day rent is due, are asked to a $75 concert with a friend.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (paid daily or weekly) between subjects; the first of 15 spending choices; go or stay home
+- **Category** — economics/behavioural
+- **Rows** — 402 from 402 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no published reference and no pre-registration; N by the authors' usual exclusions (402), and every built answer and the share by arm equal the deposit's (tests/test_gen_researchbox231.py)
+
+### `researchbox231_study2`
+
+**Life simulator: drinks with a friend after being paid daily or weekly (Study 2)**
+
+In a five-week life simulator with a $35 overdraft fee, people start a warehouse job paid $140 each weekday or $700 each Friday; two days in, with less in the account if paid weekly, a friend invites them out for $35 of drinks.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (paid daily or weekly) between subjects; the first of 15 spending choices (the later ones depend on each person's own path); go or stay home
+- **Category** — economics/behavioural
+- **Rows** — 401 from 401 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's N (401) and, from the deposit under the same exclusions, its high-cost decision means 6.17 v 5.16 and spending $404.35 v $363.55; every built answer equals the deposit's Decision 1, and the go-out share by arm equals the deposit's (tests/test_gen_researchbox231.py)
+
 ### `zenodo10641548`
 
 **Public perceptions of trophy hunting are pragmatic, not dogmatic (UK respondents): how acceptable is a hunt in Africa, as the animal, the use of its meat and the use of the revenue vary**
@@ -1258,6 +1399,19 @@ Vignette: how acceptable is it for an American tourist to pay to hunt an elephan
 - **Rows** — 388 from 388 respondents
 - **Licence** — CC0 1.0 (cc-zero)
 - **Verified against** — ESM S6 of Hare et al., Proc. R. Soc. B 291 (2024) 20231638: the top-supported ordinal logit refitted (MASS::polr) with the UK responses and factors taken from the built rows reproduces all 28 coefficients to two decimals, including Country UK -0.61, and the six thresholds within 0.01 (scripts/verify_zenodo10641548.py, tests/test_gen_zenodo10641548.py). UK cell counts equal ESM S8 exactly
+
+### `researchbox231_s1`
+
+**Life simulator: drinks with a friend after being paid daily or weekly (Supplemental Study 1)**
+
+In a five-week life simulator where a negative balance is borrowing to be paid back, people paid $140 each weekday or $700 each Friday are invited, two days into the job, for $35 of drinks.
+
+- **Source** — ResearchBox, `researchbox.org/231`
+- **Type** — 2 (paid daily or weekly) between subjects; the first of 14 spending choices; go or stay home
+- **Category** — economics/behavioural
+- **Rows** — 146 from 146 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no published reference for this supplemental study; N follows the pre-registered exclusion (146), and every built answer and the share by arm equal the deposit's (tests/test_gen_researchbox231.py)
 
 ---
 
@@ -1328,7 +1482,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 20 | 7 | 219,618 |
+| economics/behavioural | 31 | 7 | 244,819 |
 | health communication | 1 | 9 | 136,384 |
 | moral/social/cognition | 10 | 17 | 235,026 |
 | political identity/polarisation | 5 | 0 | 44,415 |

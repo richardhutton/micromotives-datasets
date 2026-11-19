@@ -674,6 +674,72 @@
       "description": "People choose between a sure discount and a 10% chance the product is free, first for a $15 or $315 product and then for an $11 one.",
       "design": "2 (first product $15 or $315) between subjects, option order randomised and recorded; 6-point preference in each of two scenarios in fixed order",
       "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (984) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox231_study2": {
+      "category": "economics/behavioural",
+      "description": "In a five-week life simulator with a $35 overdraft fee, people start a warehouse job paid $140 each weekday or $700 each Friday; two days in, with less in the account if paid weekly, a friend invites them out for $35 of drinks.",
+      "design": "2 (paid daily or weekly) between subjects; the first of 15 spending choices (the later ones depend on each person's own path); go or stay home",
+      "verified_against": "the paper's N (401) and, from the deposit under the same exclusions, its high-cost decision means 6.17 v 5.16 and spending $404.35 v $363.55; every built answer equals the deposit's Decision 1, and the go-out share by arm equals the deposit's (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox231_study3": {
+      "category": "economics/behavioural",
+      "description": "People watch a simulated February, paid $100 every day or $700 every week with the same daily spending, and rate how far they felt they had a lot of money, excess money, enough, or would run out.",
+      "design": "2 (paid daily or weekly) between subjects, passive 28-day simulation; six 0-100 subjective-wealth sliders",
+      "verified_against": "the paper's Study 3 subjective-wealth index from the BUILT rows: 44.40 (SD 25.55) daily v 34.57 (24.17) weekly, N = 112, all as published; swapping the pay factor breaks it (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox231_study3_ease": {
+      "category": "economics/behavioural",
+      "description": "The same simulated February as Study 3; people rate how easy or hard their income and expenses made it to predict whether they would have enough money.",
+      "design": "2 (paid daily or weekly) between subjects; four 0-100 agreement sliders asked after the wealth questions",
+      "verified_against": "the paper's Study 3 prediction-uncertainty index from the BUILT rows: 35.29 (SD 23.16) daily v 50.34 (28.63) weekly, as published (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox231_study4": {
+      "category": "economics/behavioural",
+      "description": "People watch a simulated February, paid $100 every day or $700 every week and paying expenses every day or once a week (same totals), and rate how wealthy they felt.",
+      "design": "2 (pay frequency) x 2 (expense frequency) between subjects, passive 28-day simulation; six 0-100 subjective-wealth sliders",
+      "verified_against": "the paper's Study 4 simple effects from the BUILT rows: daily minus weekly pay 19.32 under daily expenses and 2.94 under weekly expenses, N = 528, as published (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox231_study4_ease": {
+      "category": "economics/behavioural",
+      "description": "The same simulated February as Study 4; people rate how easy or hard their income and expenses made it to predict whether they would have enough money.",
+      "design": "2 (pay frequency) x 2 (expense frequency) between subjects; four 0-100 agreement sliders asked after the wealth questions",
+      "verified_against": "the paper's Study 4 prediction-uncertainty simple effects from the BUILT rows: -16.87 under daily expenses and 4.24 under weekly expenses, as published (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox231_study5": {
+      "category": "economics/behavioural",
+      "description": "In a four-week life simulator, people told they are paid $140 every weekday or $1,400 every two weeks move into an apartment and choose whether to pay $50 extra to have it professionally cleaned.",
+      "design": "2 (paid daily or every two weeks) between subjects; the first of 28 spending choices, before any pay day; pay the fee or not",
+      "verified_against": "the paper's N (1,120, which the deposit gives once the 3 people who failed both exclusions are counted once) and, from the deposit, its high-cost decision means 17.00 v 15.21 and spending $2,919.58 v $2,816.52; every built answer equals the deposit's Decision 1 (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox231_s1": {
+      "category": "economics/behavioural",
+      "description": "In a five-week life simulator where a negative balance is borrowing to be paid back, people paid $140 each weekday or $700 each Friday are invited, two days into the job, for $35 of drinks.",
+      "design": "2 (paid daily or weekly) between subjects; the first of 14 spending choices; go or stay home",
+      "verified_against": "no published reference for this supplemental study; N follows the pre-registered exclusion (146), and every built answer and the share by arm equal the deposit's (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox231_s2": {
+      "category": "economics/behavioural",
+      "description": "In a five-week life simulator, people paid $140 each weekday or $700 each Friday, on the day rent is due, are asked to a $75 concert with a friend.",
+      "design": "2 (paid daily or weekly) between subjects; the first of 15 spending choices; go or stay home",
+      "verified_against": "no published reference and no pre-registration; N by the authors' usual exclusions (402), and every built answer and the share by arm equal the deposit's (tests/test_gen_researchbox231.py)"
+    },
+    "researchbox2170_study3": {
+      "category": "economics/behavioural",
+      "description": "People imagine buying a $24 T-shirt today, paid $24 now, $24 in 30 days, or in 3 instalments of $8, and say how far the payment method makes them feel less financially constrained.",
+      "design": "3 (payment: now, deferred lump sum, instalments) between subjects; four 9-point statements",
+      "verified_against": "the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm (200 / 197 / 201), financial-constraint means and SDs by arm (6.51, 6.05, 5.48) and the one-way ANOVA F = 12.2"
+    },
+    "researchbox2170_study3_followup": {
+      "category": "economics/behavioural",
+      "description": "After the Study 3 T-shirt question, people say how clear and fair the price seems, how much they would benefit from the purchase, and how attractive the price is.",
+      "design": "3 (payment) between subjects, with the order of the two question blocks randomised and recorded; twelve 9-point agree-disagree statements",
+      "verified_against": "the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm, the misled, perceived-benefit and price-attractiveness means by arm with their F tests (2.35, 1.50, 2.83), and the five misled items' means by arm"
+    },
+    "researchbox2170_ss2": {
+      "category": "economics/behavioural",
+      "description": "People imagine buying four coffee mugs for $27, paid in 21 days or in 3 instalments of $9, and rate how the payment method affects their financial constraint, how small the cost feels and their control of a budget.",
+      "design": "2 (payment: deferred lump sum or instalments) between subjects; three four-statement 9-point matrices on pages in a fixed order",
+      "verified_against": "the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm (297 / 300), the three t tests (1.98, -3.69, -3.12) with their means and SDs, and Cronbach's alpha with each item dropped for all twelve items"
     }
   }
 }
