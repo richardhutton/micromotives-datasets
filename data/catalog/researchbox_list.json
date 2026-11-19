@@ -3353,7 +3353,7 @@
       "kind": "version",
       "persona": "Age (4 bands), gender, education (5 levels), household income",
       "uk": "Mostly",
-      "notes": "Fee visuals: allocating money across investment funds with fees shown in different formats. Study 3 has .qsf + data. US-flavoured wording (mutual funds). Checked 19 Nov 2026."
+      "notes": "Fee visuals: allocating money across investment funds with fees shown in different formats. Study 3 has .qsf + data. US-flavoured wording (mutual funds). Checked 19 Nov 2026. 20 pictures in the survey (the fee visuals): check whether it belongs to the image set before building."
     },
     {
       "id": "RB1090",
@@ -4441,11 +4441,11 @@
       "link": "https://researchbox.org/1958",
       "topic": "moral/social/cognition",
       "qsf": true,
-      "status": "Download needed",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "ResearchBox asks for a human check after two downloads; rich downloads in his browser."
+      "status": "Unlikely",
+      "kind": "head_to_head",
+      "persona": "Age, sex, income (some studies)",
+      "uk": "Yes",
+      "notes": "Image experiment (532 pictures across its surveys): moved to the image list as IMG143, 19 Nov 2026. Not a text build."
     },
     {
       "id": "RB1978",
@@ -6222,11 +6222,11 @@
       "link": "https://researchbox.org/3299",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Buildable",
+      "status": "Built",
       "kind": "mix",
       "persona": "Age (years), gender",
       "uk": "Yes",
-      "notes": "Probabilistic vs sure price promotions on a hotel booking; price (low/high) x discount (1%/10%). 13 studies, each with .qsf, data and codebook. Checked 19 Nov 2026."
+      "notes": "Built 19 Nov 2026: 8 experiments (Studies 3, 3 wealth, 4, 4 pretest, 5, 5 size, S3, S4), 13,209 rows. Probabilistic vs sure price promotions. Studies 1, 2, S1a, S1b, S1c and S2 not built: their prices or hotels exist only in booking-site screenshots (rich, 19 Nov 2026). S5 not built: its slot-machine picture is part of the manipulation."
     },
     {
       "id": "RB3300",

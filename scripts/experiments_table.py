@@ -60,6 +60,8 @@ SOURCE_LABEL = {
     # their own licence: an openly licensed node sits with Zenodo and Figshare, a
     # node stating none in its own "no licence stated" layer.
     "osf": "OSF",
+    # ResearchBox boxes (researchbox3299 the first text one), CC BY 4.0 site-wide.
+    "researchbox": "ResearchBox",
 }
 
 
@@ -242,6 +244,8 @@ def collect() -> list[Experiment]:
             reference = f"doi:{m.group(1)}" if m else None
         elif source == "osf":
             reference = f"osf.io/{study_id.removeprefix('osf_')}"
+        elif source == "researchbox":
+            reference = f"researchbox.org/{study_id.removeprefix('researchbox')}"
         elif tess_row is not None and isinstance(tess_row.get("osf_code"), str):
             reference = f"osf.io/{tess_row['osf_code']}"
         else:
@@ -286,7 +290,10 @@ def render(experiments: list[Experiment]) -> str:
     # Figshare deposits likewise (figshare_32935409 the first), so they share the layer.
     # An OSF node outside TESS joins them when its record states an open licence
     # (osf_ct8ae: made public under CC BY 4.0 by its authors on 17 Nov 2026).
-    zenodo = [e for e in experiments if e.source in ("zenodo", "figshare") or _open_osf(e)]
+    # ResearchBox states CC BY 4.0 for everything it hosts, so it joins this layer.
+    zenodo = [
+        e for e in experiments if e.source in ("zenodo", "figshare", "researchbox") or _open_osf(e)
+    ]
     # OSF nodes that state no licence are used on an approval their recipe records,
     # and none is redistributable, so they are kept apart.
     osf = [e for e in experiments if e.source == "osf" and not _open_osf(e)]
@@ -341,7 +348,7 @@ def render(experiments: list[Experiment]) -> str:
         f"{len(uk_open)} UK (CC0, redistributable){restricted_note}, {len(ukds)} UK Data Service "
         "(End User Licence, **not** redistributable, never sent to any external service)"
         + (
-            f", {len(zenodo)} Zenodo, Figshare or openly licensed OSF (each under its record's own licence)"
+            f", {len(zenodo)} Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence)"
             if zenodo
             else ""
         )
@@ -383,7 +390,7 @@ def render(experiments: list[Experiment]) -> str:
         )
     if zenodo:
         add(
-            f"| Zenodo, Figshare and open OSF | {studies(zenodo)} | {len(zenodo)} | {zenodo_rows:,} | "
+            f"| Zenodo, Figshare, ResearchBox and open OSF | {studies(zenodo)} | {len(zenodo)} | {zenodo_rows:,} | "
             "per record — see each experiment's licence |"
         )
     if osf:
@@ -419,13 +426,17 @@ def render(experiments: list[Experiment]) -> str:
         # parenthetical "(US)" it carried before, which told a reader the country
         # and left them to infer the archive and the licence from it.
         where = SOURCE_LABEL[e.source]
-        flag = "" if e.publishable or e.source in ("zenodo", "figshare") or _open_osf(e) else " ⚠"
+        flag = (
+            ""
+            if e.publishable or e.source in ("zenodo", "figshare", "researchbox") or _open_osf(e)
+            else " ⚠"
+        )
         add(f"| `{e.recipe}`{flag} | {title} | {where} | `{e.reference or '—'}` | {_num(e.rows)} |")
     add("")
     add(
         "⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows "
         "without the mark are CC0 and may be published; the TESS layer is unmarked only "
-        "because none of it is redistributable, as the table above says. Zenodo and Figshare rows are "
+        "because none of it is redistributable, as the table above says. Zenodo, Figshare and ResearchBox rows are "
         "unmarked because each carries its own record's licence, shown in its entry."
     )
     add("")
@@ -526,10 +537,10 @@ def render(experiments: list[Experiment]) -> str:
         add("")
 
     if zenodo:
-        add("## Zenodo, Figshare and open OSF")
+        add("## Zenodo, Figshare, ResearchBox and open OSF")
         add("")
         add(
-            "Deposits on Zenodo, Figshare and OSF, each under the open licence its record states; the recipe's "
+            "Deposits on Zenodo, Figshare, ResearchBox and OSF, each under the open licence its record states; the recipe's "
             "`licence` field says where and when it was read."
         )
         add("")

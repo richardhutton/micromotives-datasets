@@ -181,6 +181,10 @@
    "kind": "version",
    "basis": "guess"
   },
+  "image:IMG143": {
+   "kind": "head_to_head",
+   "basis": "read"
+  },
   "image:IMG15": {
    "kind": "mix",
    "basis": "read"
@@ -958,6 +962,38 @@
    "basis": "read"
   },
   "text:r8u7c": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox3299_s3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox3299_s4": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox3299_study3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox3299_study3_wealth": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox3299_study4": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox3299_study4_pretest": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox3299_study5": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox3299_study5_size": {
    "kind": "version",
    "basis": "read"
   },

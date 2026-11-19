@@ -1636,6 +1636,19 @@
       "added": "2026-11-09",
       "found_via": "Search: UK university repositories",
       "category": "political preferences/policy"
+    },
+    {
+      "id": "IMG143",
+      "title": "Minimalist vs complex product design",
+      "description": "ResearchBox 1958 ('The Visual Complexity = Higher Production Cost Lay Belief'): otherwise identical products shown in a minimalist and a complex design, side by side with left/right counterbalanced; which costs more to make. About 17 studies, each with a Qualtrics file (532 pictures across them) and data; age and sex, income in some. CC BY 4.0 (ResearchBox). Head-to-head with pictures.",
+      "link": "https://researchbox.org/1958",
+      "status": "Needs checking",
+      "reason": "Pictures are Qualtrics graphics: confirm every one can be fetched and mapped to each row before calling it buildable.",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-19",
+      "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
     }
   ]
 }

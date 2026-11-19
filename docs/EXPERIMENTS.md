@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**84 studies (126 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 5 Zenodo, Figshare or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**85 studies (134 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 13 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare and open OSF | 5 | 5 | 62,598 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 6 | 13 | 75,807 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **84** | **126** | **1,206,811** | |
+| **Total** | **85** | **134** | **1,220,020** | |
 
 ---
 
@@ -73,10 +73,14 @@
 | `ukds_6849_hmrc_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 2,553 |
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
+| `researchbox3299_study4` | A product at $11 or $311: 10% off (as % or $) or a 10% chance it is… | ResearchBox | `researchbox.org/3299` | 2,371 |
 | `ukds_6849_envtax_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.14: willingnes… | UK Data Service | `UKDS SN 6849` | 2,235 |
+| `researchbox3299_study3` | Gym membership: a sure $5 off training or a 10% chance it is free, … | ResearchBox | `researchbox.org/3299` | 2,221 |
+| `researchbox3299_study3_wealth` | Gym membership: how wealthy would you feel, after a small or large … | ResearchBox | `researchbox.org/3299` | 2,220 |
 | `osf_ct8ae_maxdiff` | Schwartz life values: which of five or six is the most and least im… | OSF | `osf.io/ct8ae` | 2,200 |
 | `ukds_6849_immigsdb_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,133 |
 | `ukds_6849_immigsdb_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,071 |
+| `researchbox3299_s4` | A $15 or $315 product, then an $11 one: a sure discount or a 10% ch… | ResearchBox | `researchbox.org/3299` | 1,968 |
 | `ukds_6849_immig_vignette_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.26: right to r… | UK Data Service | `UKDS SN 6849` | 1,917 |
 | `del_sandbox_feb2023_abortion` | Development Engagement Lab, Sandbox Great Britain February 2023: ab… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,798 |
 | `del_sandbox_feb2023_wordfeminist` | Development Engagement Lab, Sandbox Great Britain February 2023: na… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,788 |
@@ -88,7 +92,11 @@
 | `ukds_6849_hmrc_consent_w11_web` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,281 |
 | `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
 | `ukds_6849_mpc_twopart_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,259 |
+| `researchbox3299_s3` | Gym membership: a sure $5 off training or a 10% chance it is free, … | ResearchBox | `researchbox.org/3299` | 1,188 |
+| `researchbox3299_study5` | An $11 product: 10% off framed as % or $, or a 10% chance it is fre… | ResearchBox | `researchbox.org/3299` | 1,187 |
+| `researchbox3299_study5_size` | An $11 product: how large does 10% off feel, framed as % or $, afte… | ResearchBox | `researchbox.org/3299` | 1,187 |
 | `ukds_6849_sensor_consent_w17_web` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 946 |
+| `researchbox3299_study4_pretest` | How large does 10% off feel, as % or $, on a $11 or $311 product (S… | ResearchBox | `researchbox.org/3299` | 867 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
@@ -146,7 +154,7 @@
 | `e5rfg_ce` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 281 |
 | `e5rfg_tk` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 264 |
 
-⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows without the mark are CC0 and may be published; the TESS layer is unmarked only because none of it is redistributable, as the table above says. Zenodo and Figshare rows are unmarked because each carries its own record's licence, shown in its entry.
+⚠ = usable for research but **not** redistributable. The Harvard Dataverse rows without the mark are CC0 and may be published; the TESS layer is unmarked only because none of it is redistributable, as the table above says. Zenodo, Figshare and ResearchBox rows are unmarked because each carries its own record's licence, shown in its entry.
 
 ---
 
@@ -1078,9 +1086,9 @@ Respondents imagine themselves in a couple and rate how satisfied they would be 
 
 ---
 
-## Zenodo, Figshare and open OSF
+## Zenodo, Figshare, ResearchBox and open OSF
 
-Deposits on Zenodo, Figshare and OSF, each under the open licence its record states; the recipe's `licence` field says where and when it was read.
+Deposits on Zenodo, Figshare, ResearchBox and OSF, each under the open licence its record states; the recipe's `licence` field says where and when it was read.
 
 ### `zenodo18547379_maxdiff`
 
@@ -1121,6 +1129,45 @@ Parents of a child under 16 in Ireland imagine their youngest child has been unw
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)
 
+### `researchbox3299_study4`
+
+**A product at $11 or $311: 10% off (as % or $) or a 10% chance it is free (Study 4)**
+
+People imagine buying a product priced $11 or $311 and say which they would rather have: 10% off, written as a percentage or in dollars, or a 10% chance the product is free.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (price) x 2 (sure discount in % or $) x 2 (option order, recorded) between subjects; 6-point preference
+- **Category** — economics/behavioural
+- **Rows** — 2,371 from 2,371 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (2,371) (tests/test_gen_researchbox3299.py)
+
+### `researchbox3299_study3`
+
+**Gym membership: a sure $5 off training or a 10% chance it is free, after a small or large membership discount (Study 3)**
+
+People imagine buying a gym membership, discounted $4 a month or $48 a year, plus $50 of personal training, and say which of two training promotions they would rather have: $5 off or a 10% chance it is free.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (size of the membership discount) between subjects, with option order and question order randomised and recorded; 6-point preference
+- **Category** — economics/behavioural
+- **Rows** — 2,221 from 2,221 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (2,221) (tests/test_gen_researchbox3299.py)
+
+### `researchbox3299_study3_wealth`
+
+**Gym membership: how wealthy would you feel, after a small or large membership discount (Study 3)**
+
+The same gym scenario as Study 3; people say how wealthy they would feel in it.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (size of the membership discount) between subjects, with option order and question order randomised and recorded; 7-point felt wealth
+- **Category** — economics/behavioural
+- **Rows** — 2,220 from 2,220 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (2,220) (tests/test_gen_researchbox3299.py)
+
 ### `osf_ct8ae_maxdiff`
 
 **Schwartz life values: which of five or six is the most and least important guiding principle in your life (best-worst scaling)**
@@ -1133,6 +1180,71 @@ Best-worst scaling (MaxDiff): from five or six of Schwartz's ten life values (be
 - **Rows** — 2,200 from 100 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the preprint's Exp. 1b numbers, from both occasions as it pools them: Benevolence 0.375 and Power -0.46 mean best-worst score, Table 1's top five in order, and test-retest Kendall's tau-b 0.82 (same labels) and 0.41 (changed labels), all reproduced; coding most and least the other way round breaks them. Every built answer resolves to the value the export's own button columns mark (all 2,200) (tests/test_gen_osf_ct8ae.py)
+
+### `researchbox3299_s4`
+
+**A $15 or $315 product, then an $11 one: a sure discount or a 10% chance it is free (Study S4)**
+
+People choose between a sure discount and a 10% chance the product is free, first for a $15 or $315 product and then for an $11 one.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (first product $15 or $315) between subjects, option order randomised and recorded; 6-point preference in each of two scenarios in fixed order
+- **Category** — economics/behavioural
+- **Rows** — 1,968 from 984 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (984) (tests/test_gen_researchbox3299.py)
+
+### `researchbox3299_s3`
+
+**Gym membership: a sure $5 off training or a 10% chance it is free, after a small or large membership discount (Study S3)**
+
+The Study 3 gym scenario without the wealth question: $5 off personal training or a 10% chance it is free, after a $4 monthly or $48 yearly membership discount.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (size of the membership discount) between subjects, option order randomised and recorded; 6-point preference
+- **Category** — economics/behavioural
+- **Rows** — 1,188 from 1,188 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (1,188) (tests/test_gen_researchbox3299.py)
+
+### `researchbox3299_study5`
+
+**An $11 product: 10% off framed as % or $, or a 10% chance it is free (Study 5)**
+
+People imagine buying an $11 product and say which they would rather have: 10% off, written as 10% or as $1.10, or a 10% chance the product is free.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (sure discount as 10% or $1.10) between subjects, option order randomised and recorded; 6-point preference
+- **Category** — economics/behavioural
+- **Rows** — 1,187 from 1,187 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (1,187) (tests/test_gen_researchbox3299.py)
+
+### `researchbox3299_study5_size`
+
+**An $11 product: how large does 10% off feel, framed as % or $, after the choice (Study 5)**
+
+After the Study 5 choice, people say how small or large the sure discount feels, written as 10% or $1.10.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (sure discount as 10% or $1.10) between subjects, option order randomised and recorded; 7-point perceived size
+- **Category** — economics/behavioural
+- **Rows** — 1,187 from 1,187 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (1,187) (tests/test_gen_researchbox3299.py)
+
+### `researchbox3299_study4_pretest`
+
+**How large does 10% off feel, as % or $, on a $11 or $311 product (Study 4 pretest)**
+
+People imagine buying a product priced $11 or $311 with 10% off, written as a percentage or in dollars, and say how small or large the discount feels.
+
+- **Source** — ResearchBox, `researchbox.org/3299`
+- **Type** — 2 (price) x 2 (discount in % or $) between subjects; 7-point perceived size
+- **Category** — economics/behavioural
+- **Rows** — 867 from 867 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (867) (tests/test_gen_researchbox3299.py)
 
 ### `zenodo10641548`
 
@@ -1216,7 +1328,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 12 | 7 | 206,409 |
+| economics/behavioural | 20 | 7 | 219,618 |
 | health communication | 1 | 9 | 136,384 |
 | moral/social/cognition | 10 | 17 | 235,026 |
 | political identity/polarisation | 5 | 0 | 44,415 |

@@ -129,7 +129,9 @@ def main() -> int:
         # An OSF node whose recipe records an open licence joins them (osf_ct8ae,
         # public under CC BY 4.0 since 17 Nov 2026).
         zenodo = sorted(
-            c for c in elsewhere if c.startswith(("zenodo", "figshare")) or _open_osf(c)
+            c
+            for c in elsewhere
+            if c.startswith(("zenodo", "figshare", "researchbox")) or _open_osf(c)
         )
         # OSF nodes outside the catalogue that state no licence are used on an approval
         # their recipe records; neither Dataverse nor licensed like Zenodo.
@@ -164,7 +166,7 @@ def main() -> int:
             )
             + (
                 f" {len(zenodo)} ({', '.join(f'`{c}`' for c in zenodo)}) "
-                f"{'comes' if len(zenodo) == 1 else 'come'} from Zenodo, Figshare or OSF, under the open licence "
+                f"{'comes' if len(zenodo) == 1 else 'come'} from Zenodo, Figshare, ResearchBox or OSF, under the open licence "
                 "each record states and its recipe records."
                 if zenodo
                 else ""

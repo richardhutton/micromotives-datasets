@@ -83,7 +83,9 @@ SEED = 20261012
 # they are drawn with Zenodo, the other open-archive source: five studies, one unseen.
 # The stratum keeps Zenodo's name, so it sorts where Zenodo did and no other source's
 # draw moves (rich, 19 Nov 2026: "then commit it", on this recommendation).
-STRATUM = {"figshare": "zenodo", "osf": "zenodo"}
+# ResearchBox (researchbox3299 its first text study, 19 Nov 2026) is another open archive,
+# mirrored on Zenodo, so it is drawn with them too; adding it moved no study's side.
+STRATUM = {"figshare": "zenodo", "osf": "zenodo", "researchbox": "zenodo"}
 
 # SocSci210 metadata/participant_mapping.json (huggingface.co/datasets/socratesft/
 # SocSci210), read 12 Oct 2026. Only the ids matter here, not their rows.

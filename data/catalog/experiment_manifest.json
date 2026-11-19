@@ -626,6 +626,54 @@
       "description": "Best-worst scaling (MaxDiff): from five or six of Schwartz's ten life values (benevolence, power, tradition and so on), pick the most and the least important guiding principle in your life. Values are labelled either by name or by example qualities ('Helpful, honest, forgiving'), randomised between people. Eleven sets per person, Prolific adults whose first language is English, 55 of 100 living in the UK.",
       "design": "MaxDiff, 10 values in 11 sets of 5 or 6 (Lee et al. 2008's design), label type (dimension names or item descriptions) between people; first of two occasions built; most and least important pick per set",
       "verified_against": "the preprint's Exp. 1b numbers, from both occasions as it pools them: Benevolence 0.375 and Power -0.46 mean best-worst score, Table 1's top five in order, and test-retest Kendall's tau-b 0.82 (same labels) and 0.41 (changed labels), all reproduced; coding most and least the other way round breaks them. Every built answer resolves to the value the export's own button columns mark (all 2,200) (tests/test_gen_osf_ct8ae.py)"
+    },
+    "researchbox3299_study3": {
+      "category": "economics/behavioural",
+      "description": "People imagine buying a gym membership, discounted $4 a month or $48 a year, plus $50 of personal training, and say which of two training promotions they would rather have: $5 off or a 10% chance it is free.",
+      "design": "2 (size of the membership discount) between subjects, with option order and question order randomised and recorded; 6-point preference",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (2,221) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox3299_study3_wealth": {
+      "category": "economics/behavioural",
+      "description": "The same gym scenario as Study 3; people say how wealthy they would feel in it.",
+      "design": "2 (size of the membership discount) between subjects, with option order and question order randomised and recorded; 7-point felt wealth",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (2,220) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox3299_study4": {
+      "category": "economics/behavioural",
+      "description": "People imagine buying a product priced $11 or $311 and say which they would rather have: 10% off, written as a percentage or in dollars, or a 10% chance the product is free.",
+      "design": "2 (price) x 2 (sure discount in % or $) x 2 (option order, recorded) between subjects; 6-point preference",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (2,371) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox3299_study4_pretest": {
+      "category": "economics/behavioural",
+      "description": "People imagine buying a product priced $11 or $311 with 10% off, written as a percentage or in dollars, and say how small or large the discount feels.",
+      "design": "2 (price) x 2 (discount in % or $) between subjects; 7-point perceived size",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (867) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox3299_study5": {
+      "category": "economics/behavioural",
+      "description": "People imagine buying an $11 product and say which they would rather have: 10% off, written as 10% or as $1.10, or a 10% chance the product is free.",
+      "design": "2 (sure discount as 10% or $1.10) between subjects, option order randomised and recorded; 6-point preference",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (1,187) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox3299_study5_size": {
+      "category": "economics/behavioural",
+      "description": "After the Study 5 choice, people say how small or large the sure discount feels, written as 10% or $1.10.",
+      "design": "2 (sure discount as 10% or $1.10) between subjects, option order randomised and recorded; 7-point perceived size",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (1,187) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox3299_s3": {
+      "category": "economics/behavioural",
+      "description": "The Study 3 gym scenario without the wealth question: $5 off personal training or a 10% chance it is free, after a $4 monthly or $48 yearly membership discount.",
+      "design": "2 (size of the membership discount) between subjects, option order randomised and recorded; 6-point preference",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (1,188) (tests/test_gen_researchbox3299.py)"
+    },
+    "researchbox3299_s4": {
+      "category": "economics/behavioural",
+      "description": "People choose between a sure discount and a 10% chance the product is free, first for a $15 or $315 product and then for an $11 one.",
+      "design": "2 (first product $15 or $315) between subjects, option order randomised and recorded; 6-point preference in each of two scenarios in fixed order",
+      "verified_against": "the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (984) (tests/test_gen_researchbox3299.py)"
     }
   }
 }
