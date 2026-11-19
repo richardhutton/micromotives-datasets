@@ -2982,6 +2982,17 @@
    "reason": "",
    "novelty": null,
    "recipe": "figshare_32935409_maxdiff"
+  },
+  {
+   "source": "Harvard Dataverse",
+   "id": "MOT6PN",
+   "title": "2019 EV infrastructure and purchase choice survey (Zou, Khaloei & MacKenzie)",
+   "description": "Conjoint: buy an EV or a petrol car across scenarios varying EV price, range, walking time to home/work charging, fast-charge time and fast-charger spacing in town and on highways. 983 US car owners, 6 choices each. Rich persona: gender, race, education, employment, household income, household size, housing.",
+   "details": "doi:10.7910/DVN/MOT6PN, CC0 1.0",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "reason": "The deposit has the data and a dictionary but not the fielded wording (the paper shows one choice task only as a screenshot). Emailed Don MacKenzie (dwhm@uw.edu) 19 Nov 2026 for the questionnaire or .qsf.",
+   "novelty": null
   }
  ],
  "built": {

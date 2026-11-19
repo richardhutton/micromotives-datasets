@@ -637,6 +637,10 @@
    "kind": "story",
    "basis": "guess"
   },
+  "text:MOT6PN": {
+   "kind": "choice",
+   "basis": "read"
+  },
   "text:NYXQMG": {
    "kind": "choice",
    "basis": "named+jev"

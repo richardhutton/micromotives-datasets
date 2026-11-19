@@ -11,10 +11,10 @@ Every experiment we have built and every candidate we could add, from six source
 | Innovation Panel | UK · not publishable | 38 | 16 | 2 | 8 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 18 | 2 | 1 | 10 | 13 | 167,785 |
 | TESS | US · not publishable | 51 | 40 | 8 | 18 | 66 | 451,362 |
-| Harvard Dataverse | UK · mostly publishable (CC0) | 14 | 0 | 12 | 5 | 17 | 152,235 |
+| Harvard Dataverse | UK · mostly publishable (CC0) | 14 | 0 | 13 | 5 | 18 | 152,235 |
 | Zenodo | Mixed countries · open licences (CC-BY) | 3 | 0 | 3 | 3 | 6 | 51,058 |
 | Other open archives | Mixed countries · open licences (OGL, CC-BY) | 2 | 0 | 1 | 0 | 1 | 11,540 |
-| **Total** | | **126** | **58** | **27** | **44** | **129** | **1,206,811** |
+| **Total** | | **126** | **58** | **28** | **44** | **130** | **1,206,811** |
 
 ## Next 34, in build order (31 built, 3 to go)
 
@@ -325,7 +325,7 @@ US · not publishable. 51 Built, 40 Buildable, 8 Needs checking, 18 Unlikely.
 
 ## Harvard Dataverse
 
-UK · mostly publishable (CC0). 14 Built, 0 Buildable, 12 Needs checking, 5 Unlikely.
+UK · mostly publishable (CC0). 14 Built, 0 Buildable, 13 Needs checking, 5 Unlikely.
 
 | Study ID | Split | Experiment ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -349,6 +349,7 @@ UK · mostly publishable (CC0). 14 Built, 0 Buildable, 12 Needs checking, 5 Unli
 | IU11FD |  | IU11FD | **When they go low, we kick them”: The reciprocal nature of citizens’ support for democratic transgressions**<br>Do people back rule-breaking by their own party after the other side breaks the rules?<br>*doi:10.7910/DVN/IU11FD* | political identity/polarisation | Needs checking: data is inside a zip; check the UK is one of the samples | 0.21 |  |  |
 | L6HYCL |  | L6HYCL | **Why Is It So Hard to Counteract Wealth Inequality? Evidence from the United Kingdom**<br>Conjoint: two tax plans side by side, rates by band; pick one. Separate income-tax and inheritance-tax conjoints, 5 pairs each, after a 3-arm housing-price information treatment.<br>*doi:10.7910/DVN/L6HYCL, CC0. 3,186 UK adults* | political preferences/policy | Needs checking: fielded wording not public (searched 16 Nov 2026). The deposit has no questionnaire. The only 'exact text' of the conjoint directions is in the pre-registration (OSF 10.17605/OSF.IO/PFN7Z), which says three inheritance comparisons where five were fielded, so it is not the fielded version. The per-pair question and plan layout appear nowhere, and the treatment is a per-local-authority image. Needs the YouGov questionnaire from the authors. |  |  |  |
 | M9XJRE |  | M9XJRE | **Averaging Over Varieties of Variance; Evidence from Survey Experiments on Immigration**<br>Re-analysis of cross-national immigration experiments.<br>*doi:10.7910/DVN/M9XJRE* | political preferences/policy | Needs checking: check for a UK sample | 0.15 |  |  |
+| MOT6PN |  | MOT6PN | **2019 EV infrastructure and purchase choice survey (Zou, Khaloei & MacKenzie)**<br>Conjoint: buy an EV or a petrol car across scenarios varying EV price, range, walking time to home/work charging, fast-charge time and fast-charger spacing in town and on highways. 983 US car owners, 6 choices each. Rich persona: gender, race, education, employment, household income, household size, housing.<br>*doi:10.7910/DVN/MOT6PN, CC0 1.0* | economics/behavioural | Needs checking: The deposit has the data and a dictionary but not the fielded wording (the paper shows one choice task only as a screenshot). Emailed Don MacKenzie (dwhm@uw.edu) 19 Nov 2026 for the questionnaire or .qsf. |  |  |  |
 | NYXQMG |  | NYXQMG | **British nationals’ preferences over who gets to be a citizen according to a choice-based conjoint experiment**<br>Conjoint: who should be granted British citizenship.<br>*doi:10.7910/DVN/NYXQMG* | political preferences/policy | Needs checking: fielded wording not found (checked 16 Nov 2026): the deposit holds only data and an SPSS variable/value-label codebook, which gives each level fragment (e.g. "and entered the country as a refugee", "a good") and the answer labels but not the sentence they were slotted into, the per-profile question, or any intro. The paper (ESR 2022, jcab034, LSE eprint 111896, p.6), its supplement and the 2022 LSE thesis (eprint 135466, ch.4) quote the intro and one bracketed example vignette, but the example omits the refugee fragment for Somalia, a country that always carries one in the data, so the order of the refugee and British-ancestry fragments is unknown; no questionnaire or screenshot found | 0.17 |  |  |
 | RFAXEY |  | RFAXEY | **Parliament, People, or Technocrats? Explaining Mass Public Preferences on Delegation of Policy Making Authority**<br>Who should make policy: parliament, citizens directly, or experts?<br>*doi:10.7910/DVN/RFAXEY* | political preferences/policy | Needs checking: data is inside a zip; check the UK is one of the samples | 0.15 |  |  |
 | RUNQHV |  | RUNQHV | **Energy Policy Preferences in Times of Crisis - Evidence from survey experiments in the UK**<br>Survey experiments in the UK on support for energy and net-zero policy during the energy crisis.<br>*doi:10.7910/DVN/RUNQHV* | political preferences/policy | Needs checking: data is inside a zip | 0.16 |  |  |
