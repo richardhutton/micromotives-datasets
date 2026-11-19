@@ -2738,11 +2738,11 @@
       "link": "https://researchbox.org/765",
       "topic": "health communication",
       "qsf": true,
-      "status": "Download needed",
+      "status": "Unlikely",
       "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Optional for tonight (19 Nov 2026 topic screen: health / trust in AI). Not on Zenodo: download the zip from ResearchBox into Downloads/research_box_downloads."
+      "persona": "Age, gender, education, ethnicity, income, diet, activity, BMI",
+      "uk": "Mostly",
+      "notes": "Checked 19 Nov 2026, not built: not an experiment. One-group descriptive survey (food priorities, 100-point allocation across paths to healthy eating, importance matrix). The .qsf flow has no Randomizer, no Branch and no display logic; the only randomisation is item order within the two matrices (Glanz_DO, OurHealthy_DO). The data has no condition column and the SPSS syntax only computes descriptives."
     },
     {
       "id": "RB767",
@@ -4181,11 +4181,11 @@
       "link": "https://researchbox.org/1801",
       "topic": "",
       "qsf": false,
-      "status": "Download needed",
+      "status": "Unlikely",
       "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Optional for tonight (19 Nov 2026 topic screen: health / trust in AI). Not on Zenodo: download the zip from ResearchBox into Downloads/research_box_downloads."
+      "persona": "Prolific: age, sex, ethnicity, employment, student, country of birth/residence, nationality",
+      "uk": "Mostly",
+      "notes": "Checked 19 Nov 2026, not built (rich). Danry et al.: AI feedback (honest or deceptive, with or without explanation) on trivia and news statements, then a re-rating whose slider started at the person's own first rating (preprint Methods), so every AI arm shows the person's own answer back. No .qsf or printout in the deposit; question wording only in the preprint. A pre-feedback first-rating baseline (811 rows) was built and discarded: a knowledge quiz, not the experiment, and its wording not from an instrument. 18 of 28 news headlines need US knowledge."
     },
     {
       "id": "RB1813",
@@ -4935,11 +4935,11 @@
       "link": "https://researchbox.org/2281",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Download needed",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Download tonight (rich, 19 Nov 2026): not archived on Zenodo, so it has to come from ResearchBox in the browser. Tick Select All, download the zip, put it in Downloads/research_box_downloads."
+      "status": "Needs checking",
+      "kind": "version",
+      "persona": "Age, gender",
+      "uk": "Mostly",
+      "notes": "Checked 19 Nov 2026, awaiting rich's ruling. Park et al. price divisibility replications: price arms are text (e.g. $16 vs $15.30), but every arm also shows one fixed product photo whose print the text lacks (body wash '16 FL. OZ.'; toothbrush 'SOFT', '1 TOOTHBRUSH'). Buildable if a fixed photo is allowed: body wash Study 1 (719) and Appendix A (989), toothbrush Study 3 (859). Cashew study 2 (404) drops regardless: its photo says 18 packs, the text 11 bags. Authors' F tests reproduced from the deposit. Generator scripts/gen_researchbox2281.py (NOT_BUILT all four, uncommitted)."
     },
     {
       "id": "RB2289",
@@ -5364,11 +5364,11 @@
       "link": "https://researchbox.org/2586",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Download needed",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Download tonight (rich, 19 Nov 2026): not archived on Zenodo, so it has to come from ResearchBox in the browser. Tick Select All, download the zip, put it in Downloads/research_box_downloads."
+      "status": "Unlikely",
+      "kind": "version",
+      "persona": "Age (typed), gender",
+      "uk": "Mostly",
+      "notes": "Checked 19 Nov 2026, not built. Kim & Schrift: the manipulation is the recommended option's price relative to the others, and in every study the options, their prices and the recommendation badge are Qualtrics image choices (e.g. 24_Rec.jpg, Espresso_130_V2_Rec.jpg); the text says only 'Below are the available options'. The pictures are not in the deposit, so not an image-list candidate either. Study 3 and Web C2 have no .qsf; Web A1 is a practitioner survey; Web B4, B6 and C4 have open-ended outcomes (B4's number is AI-coded)."
     },
     {
       "id": "RB2587",
