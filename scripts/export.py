@@ -146,6 +146,11 @@ def _git_commit() -> str:
     return head.stdout.strip() + ("-dirty" if dirty.stdout.strip() else "")
 
 
+def without_sources(rows: pd.DataFrame, sources: set[str]) -> pd.DataFrame:
+    """Rows from every source except those named; a source left out is left out whole."""
+    return rows[~rows["source"].isin(sources)]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("version")
@@ -155,6 +160,12 @@ def main() -> None:
         action="store_true",
         help="leave out Innovation Panel rows, only for a destination the UKDS permission "
         "does not cover (it covers rich's private HF repo and RunPod)",
+    )
+    parser.add_argument(
+        "--without-researchbox",
+        action="store_true",
+        help="leave out ResearchBox rows (source: researchbox), to train with or without "
+        "that source (rich, 19 Nov 2026)",
     )
     parser.add_argument(
         "--fraction",
@@ -172,6 +183,7 @@ def main() -> None:
     args = parser.parse_args()
 
     folder = args.split + ("_without_ukds" if args.without_ukds else "")
+    folder += "_without_researchbox" if args.without_researchbox else ""
     if args.fraction != 1.0:
         folder += f"_{round(args.fraction * 100):g}pct"
     if args.quotes:
@@ -183,8 +195,11 @@ def main() -> None:
     mapping_file = SPLITS / "studies_mapping.json"
     mapping = json.loads(mapping_file.read_text())
     rows = all_rows()
-    if args.without_ukds:
-        rows = rows[rows["source"] != "innovation_panel"]
+    rows = without_sources(
+        rows,
+        ({"innovation_panel"} if args.without_ukds else set())
+        | ({"researchbox"} if args.without_researchbox else set()),
+    )
     rows["side"] = side_of(rows["study"], mapping)
 
     excluded = rows["side"].isna()
@@ -242,6 +257,7 @@ def main() -> None:
         },
         "quotes": quotes_manifest,
         "includes_ukds": bool((rows.loc[~excluded, "source"] == "innovation_panel").any()),
+        "includes_researchbox": bool((rows.loc[~excluded, "source"] == "researchbox").any()),
         "train": summary(train) | {"sha256": _sha256(out / "train.parquet")},
         "eval": summary(held) | {"sha256": _sha256(out / "eval.parquet")},
     }

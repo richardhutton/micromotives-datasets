@@ -52,3 +52,13 @@ def test_fraction_one_keeps_everything() -> None:
 def test_refuses_a_fraction_outside_zero_to_one(bad: float) -> None:
     with pytest.raises(ValueError):
         export.sample_respondents(_rows(), bad)
+
+
+def test_a_left_out_source_is_dropped_whole_and_nothing_else() -> None:
+    """--without-researchbox and --without-ukds leave out exactly their own source."""
+    rows = pd.DataFrame({"source": ["tess", "researchbox", "innovation_panel", "researchbox"]})
+    kept = export.without_sources(rows, {"researchbox"})
+    assert list(kept["source"]) == ["tess", "innovation_panel"]
+    kept = export.without_sources(rows, {"researchbox", "innovation_panel"})
+    assert list(kept["source"]) == ["tess"]
+    assert len(export.without_sources(rows, set())) == 4
