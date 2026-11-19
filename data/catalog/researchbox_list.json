@@ -593,11 +593,11 @@
       "link": "https://researchbox.org/196",
       "topic": "survey methodology",
       "qsf": true,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Picked by rich 19 Nov 2026; downloaded from its Zenodo copy (CC BY 4.0). 19 .qsf, 39 data files, 277 pictures: check which studies carry their content in text before building; picture-heavy studies may belong on the image list."
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age (years), gender",
+      "uk": "Yes",
+      "notes": "Built 19 Nov 2026: 6 experiments (Studies 9, 10, S3, S4, S5, S7), 15,565 rows, 10,028 people, from the .qsf and the data, Mehr & Simmons (2024) JCR. Experiences rated in stars Overall alone or beside their features: a flight, a dentist or sneakers with all, good or bad features (Study 9, first domain only; people who saw the bookcase first dropped, since its data columns tie to the .qsf's blocks by position alone); two subpar restaurants with go-again and recommend (10); your own last food delivery (S3) and call-centre call (S4); the feature question below or above Overall (S5); two of six restaurants in a recorded order (S7). The authors' R scripts reproduce from the built rows. Image list: Studies 1, 2, 5, 6, 7, 8 and S1 (each scenario ends with a screenshot of the rating question, which shows the manipulation itself), Study 4 and its pretest (paintings). Not built: Study 3 (the person's own answer, which past experience they had, routes the screens), S2 and S6 (animated films, videos not in the deposit), the S7 pretest (no manipulation, no assignment column)."
     },
     {
       "id": "RB200",
@@ -2673,11 +2673,11 @@
       "link": "https://researchbox.org/755",
       "topic": "survey methodology",
       "qsf": true,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Picked by rich 19 Nov 2026; downloaded from its Zenodo copy (CC BY 4.0). 6 .qsf, 15 data files, 366 pictures in the surveys: check which studies carry their content in text before building; picture-heavy studies may belong on the image list."
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age (years), gender",
+      "uk": "Mostly",
+      "notes": "Built 19 Nov 2026: 3 experiments (Study 3, Study 4's side-dish and election scenarios), 3,941 rows, 2,165 people, from the .qsf and the data, Hu, Moon & VanEpps (2026) Psychological Science. Someone chose from 2 or 6 options: how much do they like it? Seen alone or beside the other set size; chosen or ranked. Study 4's election is a US District Attorney primary, kept because the judgement is answerable from the issue table shown. Image list: Studies 1, 2 and 5, which show every dish with its photograph (6, 8 and 6 pictures). Not built: Study 6, whose prediction half asks for donations in US cents to named US charities (needs US familiarity, not UK-appropriate) and whose self half names the respondent's own charity choice. The authors' .do-file analyses reproduce exactly from the built rows."
     },
     {
       "id": "RB756",

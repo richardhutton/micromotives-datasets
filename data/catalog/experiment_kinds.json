@@ -1005,6 +1005,30 @@
    "kind": "baseline",
    "basis": "read"
   },
+  "text:researchbox196_s3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox196_s4": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox196_s5": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox196_s7": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox196_study10": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox196_study9": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "text:researchbox2170_ss2": {
    "kind": "version",
    "basis": "read"
@@ -1162,6 +1186,18 @@
    "basis": "read"
   },
   "text:researchbox402_study4": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox755_study3": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox755_study4_election": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox755_study4_food": {
    "kind": "mix",
    "basis": "read"
   },

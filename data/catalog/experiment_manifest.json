@@ -926,6 +926,60 @@
       "description": "Students see twelve ways to get 30% off $179.99 headphones (be a student, a veteran, a senior citizen or a mother, join a loyalty club, buy a service plan, spend $200, buy two, refer two people, buy at a set time, in a flash sale or at a set store) and rate how hard each would be for them and how willing they are.",
       "design": "twelve promotions, every person rates all of them in a random, unrecorded order (line-up); difficulty and willingness, 1-7",
       "verified_against": "Web Appendix B4's Figure W1, all twelve means of the two items, recomputed from the BUILT rows to the printed precision, N 210 (tests/test_gen_researchbox3251.py)"
+    },
+    "researchbox755_study3": {
+      "category": "moral/social/cognition",
+      "description": "People read that Avery (and, side by side, Blake) chose a side dish from a set of 2 or of 6, the sets differing by main course, mealtime or day, and predict how much each likes the dish they chose.",
+      "design": "separate evaluation (one set size) or joint evaluation (both, 2-set first or second) x three reasons, between subjects; the dishes drawn per person; 1-7",
+      "verified_against": "the authors' Study 3 .do file, run on the deposit and recomputed from the BUILT rows: liking by evaluation mode x set size (N, mean, SD) and the OLS of liking on set size, evaluation mode, their interaction and reason, equal to 1e-10, N 587 (no paper table was reachable) (tests/test_gen_researchbox755.py)"
+    },
+    "researchbox755_study4_food": {
+      "category": "moral/social/cognition",
+      "description": "People read that Taylor picked a side dish from 2 or 6 options, by choosing or by first ranking them, and predict how much Taylor likes the chosen dish.",
+      "design": "2 (2 or 6 options) x 2 (choose or rank) between subjects; dishes, choice and ranks drawn per person; 1-7; the election scenario answered too, in an unrecorded order",
+      "verified_against": "the authors' Study 4 .do file, run on the deposit and recomputed from the BUILT rows: liking by condition (N, mean, SD) and the regression on set size, frame and their interaction, equal to 1e-10, N 1,578 (no paper table was reachable) (tests/test_gen_researchbox755.py)"
+    },
+    "researchbox755_study4_election": {
+      "category": "moral/social/cognition",
+      "description": "People read that Jordan voted for one of 2 or 6 District Attorney candidates, each shown with two issues, by choosing or by first ranking them, and predict how much Jordan likes that candidate.",
+      "design": "2 (2 or 6 candidates) x 2 (choose or rank) between subjects; candidate pair, choice and ranks drawn per person; 1-7; the side-dish scenario answered too, in an unrecorded order",
+      "verified_against": "the authors' Study 4 .do file, run on the deposit and recomputed from the BUILT rows: liking by condition (N, mean, SD) and the regression on set size, frame and their interaction, equal to 1e-10, N 1,578 (no paper table was reachable) (tests/test_gen_researchbox755.py)"
+    },
+    "researchbox196_study9": {
+      "category": "economics/behavioural",
+      "description": "A flight, a dentist visit or a pair of sneakers, each with something gone wrong, rated in stars Overall alone, or beside every feature, only the good features, or only the bad ones.",
+      "design": "4 rating screens (Overall only, + all, + positive, + negative attributes) x 12 scenarios in 3 domains (airplane, dentist, sneakers); the first domain each person saw (domain order random and recorded; bookcase-first people dropped, its data columns tie to blocks by position alone); 1-10 stars",
+      "verified_against": "the authors' R script (Study 9.r) re-run on the deposit with its exclusions: N and the mean Overall rating in all 48 first-domain cells outside the bookcase equal the BUILT rows', N 1,089 (337 bookcase-first people dropped by ruling; later domains not built) (tests/test_gen_researchbox196.py)"
+    },
+    "researchbox196_study10": {
+      "category": "economics/behavioural",
+      "description": "People read about a disappointing restaurant meal and rate it in stars Overall alone or beside Food, Service, Ambiance and Value, then say how likely they are to go again and to recommend it.",
+      "design": "2 (rating rows) x 2 (scenario) between subjects; 1-10 stars, then two 1-9 intentions",
+      "verified_against": "the authors' R script (Study 10.r): its two preregistered pooled-variance t tests (Overall rating, and the mean of the two intentions, by rating rows) recomputed from the BUILT rows equal the deposit's with the script's exclusions, N 1,991 (tests/test_gen_researchbox196.py)"
+    },
+    "researchbox196_s3": {
+      "category": "economics/behavioural",
+      "description": "People who had food delivered in the last two weeks rate that experience in stars Overall alone or beside food quality, delivery time, value, order accuracy and ease of ordering.",
+      "design": "rating rows (Overall only or Overall + five attributes) between subjects; 1-5 stars",
+      "verified_against": "the authors' R script (Study S3.r): its preregistered pooled-variance t test recomputed from the BUILT rows equals the deposit's with the script's exclusions, N 1,514 (tests/test_gen_researchbox196.py)"
+    },
+    "researchbox196_s4": {
+      "category": "economics/behavioural",
+      "description": "People who called a customer service centre in the last three weeks rate the call in stars Overall alone or beside ease of getting help, wait time, friendliness and usefulness.",
+      "design": "rating rows (Overall only or Overall + four attributes) between subjects; 1-5 stars",
+      "verified_against": "the authors' R script (Study S4.r): its preregistered pooled-variance t test recomputed from the BUILT rows equals the deposit's with the script's exclusions, N 1,537 (tests/test_gen_researchbox196.py)"
+    },
+    "researchbox196_s5": {
+      "category": "economics/behavioural",
+      "description": "People read about a disappointing restaurant meal and rate it Overall in stars, alone, with a question on Food, Service, Ambiance and Value below it, or with that question above it.",
+      "design": "3 (rating layout) x 2 (scenario) between subjects; 1-10 stars",
+      "verified_against": "the authors' R script (Study S5.r): N and the mean Overall rating in all six cells, and Overall-only against the two attribute layouts, recomputed from the BUILT rows equal the deposit's with the script's exclusions, N 2,341 (tests/test_gen_researchbox196.py)"
+    },
+    "researchbox196_s7": {
+      "category": "economics/behavioural",
+      "description": "People read two of six restaurant visits, each with something wrong, and rate each in stars Overall alone or beside Food, Service, Ambiance and Value.",
+      "design": "rating rows between subjects x two of six scenarios within subjects, in a random recorded order (the second row narrates the first); 1-10 stars",
+      "verified_against": "the authors' R script (Study S7.r): its six per-scenario pooled-variance t tests, and N and cell means slot by slot, recomputed from the BUILT rows equal the deposit's with the script's row exclusions, 3,111 ratings from 1,556 people (tests/test_gen_researchbox196.py)"
     }
   }
 }

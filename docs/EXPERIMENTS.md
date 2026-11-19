@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**92 studies (176 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 55 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**94 studies (185 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 64 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 13 | 55 | 154,368 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 15 | 64 | 173,874 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **92** | **176** | **1,298,581** | |
+| **Total** | **94** | **185** | **1,318,087** | |
 
 ---
 
@@ -60,6 +60,7 @@
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
 | `RJTVG8` | Support for digitising the ballot box: a systematic review of i-vot… | Harvard Dataverse | `doi:10.7910/DVN/RJTVG8` | 6,000 |
+| `researchbox196_study10` | A subpar restaurant rated Overall alone or beside Food, Service, Am… | ResearchBox | `researchbox.org/196` | 5,973 |
 | `ukds_6849_vig_ageing_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 5,967 |
 | `del_panel_w4_east_africa_drought` | Development Engagement Lab, Panel Great Britain wave 4 (2022): East… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 5,796 |
 | `ukds_6849_nrp_w10_contact` ⚠ | Understanding Society Innovation Panel, experiment 9.23: how often … | UK Data Service | `UKDS SN 6849` | 5,690 |
@@ -79,6 +80,7 @@
 | `researchbox1032_study3` | A facial tissues maker, facing higher production costs, raises the … | ResearchBox | `researchbox.org/1032` | 4,000 |
 | `del_sandbox_feb2023_gender_progress` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 3,274 |
 | `researchbox231_study4` | A simulated month, paid daily or weekly and spending daily or weekl… | ResearchBox | `researchbox.org/231` | 3,168 |
+| `researchbox196_s7` | Two of six restaurant visits, each rated Overall alone or beside Fo… | ResearchBox | `researchbox.org/196` | 3,111 |
 | `researchbox402_study3` | A Bluetooth speaker whose price fell or rose to $60, once, week by … | ResearchBox | `researchbox.org/402` | 3,012 |
 | `researchbox402_study4` | A tablet whose price fell or rose by $100 to $299, in the last week… | ResearchBox | `researchbox.org/402` | 3,012 |
 | `researchbox2562_study2a` | An olive spread maker, facing higher costs, raises the price, shrin… | ResearchBox | `researchbox.org/2562` | 3,006 |
@@ -89,6 +91,7 @@
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
 | `researchbox2170_study3` | T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; feeling… | ResearchBox | `researchbox.org/2170` | 2,392 |
 | `researchbox3299_study4` | A product at $11 or $311: 10% off (as % or $) or a 10% chance it is… | ResearchBox | `researchbox.org/3299` | 2,371 |
+| `researchbox196_s5` | A subpar restaurant rated Overall alone, Overall then its features … | ResearchBox | `researchbox.org/196` | 2,341 |
 | `ukds_6849_envtax_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.14: willingnes… | UK Data Service | `UKDS SN 6849` | 2,235 |
 | `researchbox3299_study3` | Gym membership: a sure $5 off training or a 10% chance it is free, … | ResearchBox | `researchbox.org/3299` | 2,221 |
 | `researchbox3299_study3_wealth` | Gym membership: how wealthy would you feel, after a small or large … | ResearchBox | `researchbox.org/3299` | 2,220 |
@@ -106,6 +109,10 @@
 | `del_sandbox_feb2023_gender_equality` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,636 |
 | `researchbox2562_study3` | A toilet paper maker, facing higher costs, raises the price, shrink… | ResearchBox | `researchbox.org/2562` | 1,601 |
 | `researchbox3251_wa_b3` | A gas station at $3.50/gallon, with a $2.50 cash price you cannot u… | ResearchBox | `researchbox.org/3251` | 1,600 |
+| `researchbox755_study4_election` | Jordan votes for a District Attorney candidate from 2 or 6, choosin… | ResearchBox | `researchbox.org/755` | 1,578 |
+| `researchbox755_study4_food` | Taylor orders a side dish from 2 or 6, choosing or first ranking th… | ResearchBox | `researchbox.org/755` | 1,578 |
+| `researchbox196_s4` | Your most recent call to a customer service centre, rated Overall a… | ResearchBox | `researchbox.org/196` | 1,537 |
+| `researchbox196_s3` | Your most recent food delivery, rated Overall alone or beside five … | ResearchBox | `researchbox.org/196` | 1,514 |
 | `researchbox2562_study1` | A chocolate maker or a streaming platform, facing higher costs, rai… | ResearchBox | `researchbox.org/2562` | 1,502 |
 | `researchbox2562_study7` | A British detergent maker, facing higher costs, raises the price, s… | ResearchBox | `researchbox.org/2562` | 1,493 |
 | `researchbox3251_study3` | Two $90 printers, the first $45 instore under a conditional promoti… | ResearchBox | `researchbox.org/3251` | 1,388 |
@@ -118,12 +125,14 @@
 | `researchbox3299_study5` | An $11 product: 10% off framed as % or $, or a 10% chance it is fre… | ResearchBox | `researchbox.org/3299` | 1,187 |
 | `researchbox3299_study5_size` | An $11 product: how large does 10% off feel, framed as % or $, afte… | ResearchBox | `researchbox.org/3299` | 1,187 |
 | `researchbox231_study5` | Life simulator: rent with or without a cleaning fee, paid daily or … | ResearchBox | `researchbox.org/231` | 1,120 |
+| `researchbox196_study9` | A flight, a dentist visit or sneakers gone partly wrong, rated Over… | ResearchBox | `researchbox.org/196` | 1,089 |
 | `researchbox1032_study1` | A chocolate maker and an orange juice maker, facing higher producti… | ResearchBox | `researchbox.org/1032` | 1,002 |
 | `ukds_6849_sensor_consent_w17_web` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 946 |
 | `researchbox3299_study4_pretest` | How large does 10% off feel, as % or $, on a $11 or $311 product (S… | ResearchBox | `researchbox.org/3299` | 867 |
 | `researchbox2562_study6` | Choosing for real between a price rise, a smaller size and less coc… | ResearchBox | `researchbox.org/2562` | 832 |
 | `researchbox402_study1a` | Flight tickets whose price fell or rose, once or week by week, to $… | ResearchBox | `researchbox.org/402` | 802 |
 | `researchbox3251_wa_b2` | Phone X, regular price $1000, for $300 or $900 if you add a phone l… | ResearchBox | `researchbox.org/3251` | 800 |
+| `researchbox755_study3` | Avery (and Blake) chose a side dish from 2 or from 6, seen alone or… | ResearchBox | `researchbox.org/755` | 785 |
 | `researchbox231_study3` | A simulated month paid $100 daily or $700 weekly: how wealthy it fe… | ResearchBox | `researchbox.org/231` | 672 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
@@ -1184,6 +1193,19 @@ People imagine buying four coffee mugs for $27, paid in 21 days or in 3 instalme
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm (297 / 300), the three t tests (1.98, -3.69, -3.12) with their means and SDs, and Cronbach's alpha with each item dropped for all twelve items
 
+### `researchbox196_study10`
+
+**A subpar restaurant rated Overall alone or beside Food, Service, Ambiance and Value; then go again, recommend (Study 10)**
+
+People read about a disappointing restaurant meal and rate it in stars Overall alone or beside Food, Service, Ambiance and Value, then say how likely they are to go again and to recommend it.
+
+- **Source** — ResearchBox, `researchbox.org/196`
+- **Type** — 2 (rating rows) x 2 (scenario) between subjects; 1-10 stars, then two 1-9 intentions
+- **Category** — economics/behavioural
+- **Rows** — 5,973 from 1,991 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R script (Study 10.r): its two preregistered pooled-variance t tests (Overall rating, and the mean of the two intentions, by rating rows) recomputed from the BUILT rows equal the deposit's with the script's exclusions, N 1,991 (tests/test_gen_researchbox196.py)
+
 ### `zenodo6572717`
 
 **CUPID (Ireland, Feb 2021): parents choose between two health services for an unwell child (paired-choice DCE)**
@@ -1288,6 +1310,19 @@ People watch a simulated February, paid $100 every day or $700 every week and pa
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's Study 4 simple effects from the BUILT rows: daily minus weekly pay 19.32 under daily expenses and 2.94 under weekly expenses, N = 528, as published (tests/test_gen_researchbox231.py)
 
+### `researchbox196_s7`
+
+**Two of six restaurant visits, each rated Overall alone or beside Food, Service, Ambiance and Value (Study S7)**
+
+People read two of six restaurant visits, each with something wrong, and rate each in stars Overall alone or beside Food, Service, Ambiance and Value.
+
+- **Source** — ResearchBox, `researchbox.org/196`
+- **Type** — rating rows between subjects x two of six scenarios within subjects, in a random recorded order (the second row narrates the first); 1-10 stars
+- **Category** — economics/behavioural
+- **Rows** — 3,111 from 1,556 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R script (Study S7.r): its six per-scenario pooled-variance t tests, and N and cell means slot by slot, recomputed from the BUILT rows equal the deposit's with the script's row exclusions, 3,111 ratings from 1,556 people (tests/test_gen_researchbox196.py)
+
 ### `researchbox402_study3`
 
 **A Bluetooth speaker whose price fell or rose to $60, once, week by week, or with a reversal four days ago: buy now or later, and what will it cost in a week? (Study 3)**
@@ -1379,6 +1414,19 @@ People imagine buying a product priced $11 or $311 and say which they would rath
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (2,371) (tests/test_gen_researchbox3299.py)
 
+### `researchbox196_s5`
+
+**A subpar restaurant rated Overall alone, Overall then its features on the same screen, or its features then Overall (Study S5)**
+
+People read about a disappointing restaurant meal and rate it Overall in stars, alone, with a question on Food, Service, Ambiance and Value below it, or with that question above it.
+
+- **Source** — ResearchBox, `researchbox.org/196`
+- **Type** — 3 (rating layout) x 2 (scenario) between subjects; 1-10 stars
+- **Category** — economics/behavioural
+- **Rows** — 2,341 from 2,341 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R script (Study S5.r): N and the mean Overall rating in all six cells, and Overall-only against the two attribute layouts, recomputed from the BUILT rows equal the deposit's with the script's exclusions, N 2,341 (tests/test_gen_researchbox196.py)
+
 ### `researchbox3299_study3`
 
 **Gym membership: a sure $5 off training or a 10% chance it is free, after a small or large membership discount (Study 3)**
@@ -1469,6 +1517,58 @@ Drivers low on fuel find a gas station at $3.50/gallon that offers $2.50/gallon 
 - **Rows** — 1,600 from 200 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — Web Appendix B3's means and SDs for purchase intention, gallons, transaction utility, regret, reactance and fairness, and three F(1, 198) tests, recomputed from the BUILT rows to the printed precision, N 200 (tests/test_gen_researchbox3251.py)
+
+### `researchbox755_study4_election`
+
+**Jordan votes for a District Attorney candidate from 2 or 6, choosing or first ranking them: how much does Jordan like the candidate? (Study 4)**
+
+People read that Jordan voted for one of 2 or 6 District Attorney candidates, each shown with two issues, by choosing or by first ranking them, and predict how much Jordan likes that candidate.
+
+- **Source** — ResearchBox, `researchbox.org/755`
+- **Type** — 2 (2 or 6 candidates) x 2 (choose or rank) between subjects; candidate pair, choice and ranks drawn per person; 1-7; the side-dish scenario answered too, in an unrecorded order
+- **Category** — moral/social/cognition
+- **Rows** — 1,578 from 1,578 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' Study 4 .do file, run on the deposit and recomputed from the BUILT rows: liking by condition (N, mean, SD) and the regression on set size, frame and their interaction, equal to 1e-10, N 1,578 (no paper table was reachable) (tests/test_gen_researchbox755.py)
+
+### `researchbox755_study4_food`
+
+**Taylor orders a side dish from 2 or 6, choosing or first ranking them: how much does Taylor like it? (Study 4)**
+
+People read that Taylor picked a side dish from 2 or 6 options, by choosing or by first ranking them, and predict how much Taylor likes the chosen dish.
+
+- **Source** — ResearchBox, `researchbox.org/755`
+- **Type** — 2 (2 or 6 options) x 2 (choose or rank) between subjects; dishes, choice and ranks drawn per person; 1-7; the election scenario answered too, in an unrecorded order
+- **Category** — moral/social/cognition
+- **Rows** — 1,578 from 1,578 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' Study 4 .do file, run on the deposit and recomputed from the BUILT rows: liking by condition (N, mean, SD) and the regression on set size, frame and their interaction, equal to 1e-10, N 1,578 (no paper table was reachable) (tests/test_gen_researchbox755.py)
+
+### `researchbox196_s4`
+
+**Your most recent call to a customer service centre, rated Overall alone or beside four of its features (Study S4)**
+
+People who called a customer service centre in the last three weeks rate the call in stars Overall alone or beside ease of getting help, wait time, friendliness and usefulness.
+
+- **Source** — ResearchBox, `researchbox.org/196`
+- **Type** — rating rows (Overall only or Overall + four attributes) between subjects; 1-5 stars
+- **Category** — economics/behavioural
+- **Rows** — 1,537 from 1,537 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R script (Study S4.r): its preregistered pooled-variance t test recomputed from the BUILT rows equals the deposit's with the script's exclusions, N 1,537 (tests/test_gen_researchbox196.py)
+
+### `researchbox196_s3`
+
+**Your most recent food delivery, rated Overall alone or beside five of its features (Study S3)**
+
+People who had food delivered in the last two weeks rate that experience in stars Overall alone or beside food quality, delivery time, value, order accuracy and ease of ordering.
+
+- **Source** — ResearchBox, `researchbox.org/196`
+- **Type** — rating rows (Overall only or Overall + five attributes) between subjects; 1-5 stars
+- **Category** — economics/behavioural
+- **Rows** — 1,514 from 1,514 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R script (Study S3.r): its preregistered pooled-variance t test recomputed from the BUILT rows equals the deposit's with the script's exclusions, N 1,514 (tests/test_gen_researchbox196.py)
 
 ### `researchbox2562_study1`
 
@@ -1574,6 +1674,19 @@ In a four-week life simulator, people told they are paid $140 every weekday or $
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's N (1,120, which the deposit gives once the 3 people who failed both exclusions are counted once) and, from the deposit, its high-cost decision means 17.00 v 15.21 and spending $2,919.58 v $2,816.52; every built answer equals the deposit's Decision 1 (tests/test_gen_researchbox231.py)
 
+### `researchbox196_study9`
+
+**A flight, a dentist visit or sneakers gone partly wrong, rated Overall alone or beside all, the good or the bad features (Study 9)**
+
+A flight, a dentist visit or a pair of sneakers, each with something gone wrong, rated in stars Overall alone, or beside every feature, only the good features, or only the bad ones.
+
+- **Source** — ResearchBox, `researchbox.org/196`
+- **Type** — 4 rating screens (Overall only, + all, + positive, + negative attributes) x 12 scenarios in 3 domains (airplane, dentist, sneakers); the first domain each person saw (domain order random and recorded; bookcase-first people dropped, its data columns tie to blocks by position alone); 1-10 stars
+- **Category** — economics/behavioural
+- **Rows** — 1,089 from 1,089 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R script (Study 9.r) re-run on the deposit with its exclusions: N and the mean Overall rating in all 48 first-domain cells outside the bookcase equal the BUILT rows', N 1,089 (337 bookcase-first people dropped by ruling; later domains not built) (tests/test_gen_researchbox196.py)
+
 ### `researchbox1032_study1`
 
 **A chocolate maker and an orange juice maker, facing higher production costs, raise the price or shrink the product: acceptable or unfair? (Study 1)**
@@ -1638,6 +1751,19 @@ People shopping for Phone X, regular price $1000, read that it is $300 or $900 i
 - **Rows** — 800 from 400 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — Web Appendix B2's internal reference price by discount, $731.93 (216.47) and $818.19 (195.30), recomputed from the BUILT rows with the authors' one 3 SD exclusion applied (kept in the rows), N 400 (399 in the paper) (tests/test_gen_researchbox3251.py)
+
+### `researchbox755_study3`
+
+**Avery (and Blake) chose a side dish from 2 or from 6, seen alone or side by side: how much do they like it? (Study 3)**
+
+People read that Avery (and, side by side, Blake) chose a side dish from a set of 2 or of 6, the sets differing by main course, mealtime or day, and predict how much each likes the dish they chose.
+
+- **Source** — ResearchBox, `researchbox.org/755`
+- **Type** — separate evaluation (one set size) or joint evaluation (both, 2-set first or second) x three reasons, between subjects; the dishes drawn per person; 1-7
+- **Category** — moral/social/cognition
+- **Rows** — 785 from 587 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' Study 3 .do file, run on the deposit and recomputed from the BUILT rows: liking by evaluation mode x set size (N, mean, SD) and the OLS of liking on set size, evaluation mode, their interaction and reason, equal to 1e-10, N 587 (no paper table was reachable) (tests/test_gen_researchbox755.py)
 
 ### `researchbox231_study3`
 
@@ -1916,9 +2042,9 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 62 | 7 | 298,179 |
+| economics/behavioural | 68 | 7 | 313,744 |
 | health communication | 1 | 9 | 136,384 |
-| moral/social/cognition | 10 | 17 | 235,026 |
+| moral/social/cognition | 13 | 17 | 238,967 |
 | political identity/polarisation | 5 | 0 | 44,415 |
 | political preferences/policy | 19 | 2 | 194,548 |
 | survey methodology | 20 | 6 | 223,494 |
