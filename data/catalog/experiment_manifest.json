@@ -740,6 +740,48 @@
       "description": "People imagine buying four coffee mugs for $27, paid in 21 days or in 3 instalments of $9, and rate how the payment method affects their financial constraint, how small the cost feels and their control of a budget.",
       "design": "2 (payment: deferred lump sum or instalments) between subjects; three four-statement 9-point matrices on pages in a fixed order",
       "verified_against": "the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm (297 / 300), the three t tests (1.98, -3.69, -3.12) with their means and SDs, and Cronbach's alpha with each item dropped for all twelve items"
+    },
+    "researchbox1032_study1": {
+      "category": "economics/behavioural",
+      "description": "People read that a chocolate maker and an orange juice maker, facing higher production costs, either raised the price or shrank the product by the same amount per unit, and say whether each change is acceptable or unfair.",
+      "design": "price increase or size decrease drawn separately for each of two products (2 x 2 arms, two rows per person); products in a random, unrecorded order; acceptable or unfair",
+      "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6 for both products, N 501 (tests/test_gen_researchbox1032.py)"
+    },
+    "researchbox1032_study2": {
+      "category": "economics/behavioural",
+      "description": "People read that a potato chips maker, facing higher production costs, raised the price from $3 to $4 or shrank the pack from 12 oz to 9 oz, and say whether this is fair or unfair.",
+      "design": "2 (price increase or size decrease) between subjects; fair or unfair",
+      "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, N 301 (tests/test_gen_researchbox1032.py)"
+    },
+    "researchbox1032_study3": {
+      "category": "economics/behavioural",
+      "description": "People read that a facial tissues maker, facing higher production costs, raised the price or cut the sheets per box, say whether this is fair, and rate whether the change is deceptive, forces people to buy more, or is too big.",
+      "design": "2 (price increase or size decrease) between subjects; fair or unfair, then three 7-point agreement statements, in a random unrecorded order",
+      "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, once the deposit's one blank row is added back as the R script codes it (our N 1,000, R's 1,001); the three mediators' means by arm equal the deposit's (tests/test_gen_researchbox1032.py)"
+    },
+    "researchbox1032_study4": {
+      "category": "economics/behavioural",
+      "description": "People read that a detergent maker, facing higher production costs, raised the price or cut the net weight, and in half the cases states the change on the packaging; they say whether this is fair.",
+      "design": "2 (price increase or size decrease) x 2 (change stated on the packaging or not) between subjects; fair or unfair",
+      "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, including the interaction, N 4,010 (tests/test_gen_researchbox1032.py)"
+    },
+    "researchbox1032_study5": {
+      "category": "economics/behavioural",
+      "description": "People read that a potato chips maker whose costs have, or have not, increased raised the price or shrank the pack, and say whether this is fair.",
+      "design": "2 (costs increased or not) x 2 (price increase or size decrease) between subjects; fair or unfair",
+      "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, including the interaction, N 1,202 (tests/test_gen_researchbox1032.py)"
+    },
+    "researchbox1032_s1": {
+      "category": "economics/behavioural",
+      "description": "People judge both a potato chips maker's price rise from $3 to $4 and its pack shrinking from 12 oz to 9 oz, saying whether each is fair or unfair.",
+      "design": "within subjects: both changes judged by everyone, in a random unrecorded order; two rows per person; fair or unfair",
+      "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6 (glm coefficients and SEs; the script's cluster-robust SEs not reproduced), N 200, 400 rows (tests/test_gen_researchbox1032.py)"
+    },
+    "researchbox1032_s2": {
+      "category": "economics/behavioural",
+      "description": "People read that a potato chips maker whose costs have increased, or whose supply of raw materials has fallen, raised the price or shrank the pack, and say whether this is fair.",
+      "design": "2 (costs increased or raw materials decreased) x 2 (price increase or size decrease) between subjects; fair or unfair",
+      "verified_against": "the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, including the interaction, N 4,005 (tests/test_gen_researchbox1032.py)"
     }
   }
 }

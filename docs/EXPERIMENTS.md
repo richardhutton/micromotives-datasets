@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**87 studies (145 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 24 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**88 studies (152 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 31 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 8 | 24 | 101,008 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 9 | 31 | 115,928 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **87** | **145** | **1,245,221** | |
+| **Total** | **88** | **152** | **1,260,141** | |
 
 ---
 
@@ -71,6 +71,9 @@
 | `ukds_6849_numeracy_fin_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,602 |
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
 | `ukds_6849_alcohol_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.36: alcohol co… | UK Data Service | `UKDS SN 6849` | 4,208 |
+| `researchbox1032_study4` | A detergent maker, facing higher production costs, raises the price… | ResearchBox | `researchbox.org/1032` | 4,010 |
+| `researchbox1032_s2` | A potato chips maker whose costs have increased, or whose raw-mater… | ResearchBox | `researchbox.org/1032` | 4,005 |
+| `researchbox1032_study3` | A facial tissues maker, facing higher production costs, raises the … | ResearchBox | `researchbox.org/1032` | 4,000 |
 | `del_sandbox_feb2023_gender_progress` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 3,274 |
 | `researchbox231_study4` | A simulated month, paid daily or weekly and spending daily or weekl… | ResearchBox | `researchbox.org/231` | 3,168 |
 | `ukds_6849_hmrc_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 2,553 |
@@ -97,10 +100,12 @@
 | `ukds_6849_hmrc_consent_w11_web` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,281 |
 | `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
 | `ukds_6849_mpc_twopart_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,259 |
+| `researchbox1032_study5` | A potato chips maker whose costs have or have not increased raises … | ResearchBox | `researchbox.org/1032` | 1,202 |
 | `researchbox3299_s3` | Gym membership: a sure $5 off training or a 10% chance it is free, … | ResearchBox | `researchbox.org/3299` | 1,188 |
 | `researchbox3299_study5` | An $11 product: 10% off framed as % or $, or a 10% chance it is fre… | ResearchBox | `researchbox.org/3299` | 1,187 |
 | `researchbox3299_study5_size` | An $11 product: how large does 10% off feel, framed as % or $, afte… | ResearchBox | `researchbox.org/3299` | 1,187 |
 | `researchbox231_study5` | Life simulator: rent with or without a cleaning fee, paid daily or … | ResearchBox | `researchbox.org/231` | 1,120 |
+| `researchbox1032_study1` | A chocolate maker and an orange juice maker, facing higher producti… | ResearchBox | `researchbox.org/1032` | 1,002 |
 | `ukds_6849_sensor_consent_w17_web` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 946 |
 | `researchbox3299_study4_pretest` | How large does 10% off feel, as % or $, on a $11 or $311 product (S… | ResearchBox | `researchbox.org/3299` | 867 |
 | `researchbox231_study3` | A simulated month paid $100 daily or $700 weekly: how wealthy it fe… | ResearchBox | `researchbox.org/231` | 672 |
@@ -110,8 +115,10 @@
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
 | `researchbox231_s2` | Life simulator: a concert after being paid daily or weekly (Supplem… | ResearchBox | `researchbox.org/231` | 402 |
 | `researchbox231_study2` | Life simulator: drinks with a friend after being paid daily or week… | ResearchBox | `researchbox.org/231` | 401 |
+| `researchbox1032_s1` | Joint evaluation: the same potato chips maker, facing higher produc… | ResearchBox | `researchbox.org/1032` | 400 |
 | `zenodo10641548` | Public perceptions of trophy hunting are pragmatic, not dogmatic (U… | Zenodo | `doi:10.5281/zenodo.10641548` | 388 |
 | `ukds_6849_sensor_consent_w17_ftf` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 339 |
+| `researchbox1032_study2` | A potato chips maker, facing higher production costs, raises the pr… | ResearchBox | `researchbox.org/1032` | 301 |
 | `researchbox231_s1` | Life simulator: drinks with a friend after being paid daily or week… | ResearchBox | `researchbox.org/231` | 146 |
 | `evnyh_Q1a_and_validation` ⚠ | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | TESS (OSF) | `osf.io/evnyh` | 33,932 |
 | `xtvu5` ⚠ | Effects of Misinformation News Coverage on Media Trust | TESS (OSF) | `—` | 23,017 |
@@ -1166,6 +1173,45 @@ Parents of a child under 16 in Ireland imagine their youngest child has been unw
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)
 
+### `researchbox1032_study4`
+
+**A detergent maker, facing higher production costs, raises the price or cuts the net weight, saying so on the pack or not: fair or unfair? (Study 4)**
+
+People read that a detergent maker, facing higher production costs, raised the price or cut the net weight, and in half the cases states the change on the packaging; they say whether this is fair.
+
+- **Source** — ResearchBox, `researchbox.org/1032`
+- **Type** — 2 (price increase or size decrease) x 2 (change stated on the packaging or not) between subjects; fair or unfair
+- **Category** — economics/behavioural
+- **Rows** — 4,010 from 4,010 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, including the interaction, N 4,010 (tests/test_gen_researchbox1032.py)
+
+### `researchbox1032_s2`
+
+**A potato chips maker whose costs have increased, or whose raw-material supply has fallen, raises the price or shrinks the pack: fair or unfair? (Study S2)**
+
+People read that a potato chips maker whose costs have increased, or whose supply of raw materials has fallen, raised the price or shrank the pack, and say whether this is fair.
+
+- **Source** — ResearchBox, `researchbox.org/1032`
+- **Type** — 2 (costs increased or raw materials decreased) x 2 (price increase or size decrease) between subjects; fair or unfair
+- **Category** — economics/behavioural
+- **Rows** — 4,005 from 4,005 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, including the interaction, N 4,005 (tests/test_gen_researchbox1032.py)
+
+### `researchbox1032_study3`
+
+**A facial tissues maker, facing higher production costs, raises the price or cuts the sheets: fair or unfair, and is the change deceptive, too big, or forcing people to buy more? (Study 3)**
+
+People read that a facial tissues maker, facing higher production costs, raised the price or cut the sheets per box, say whether this is fair, and rate whether the change is deceptive, forces people to buy more, or is too big.
+
+- **Source** — ResearchBox, `researchbox.org/1032`
+- **Type** — 2 (price increase or size decrease) between subjects; fair or unfair, then three 7-point agreement statements, in a random unrecorded order
+- **Category** — economics/behavioural
+- **Rows** — 4,000 from 1,000 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, once the deposit's one blank row is added back as the R script codes it (our N 1,000, R's 1,001); the three mediators' means by arm equal the deposit's (tests/test_gen_researchbox1032.py)
+
 ### `researchbox231_study4`
 
 **A simulated month, paid daily or weekly and spending daily or weekly: how wealthy it felt (Study 4)**
@@ -1270,6 +1316,19 @@ People choose between a sure discount and a 10% chance the product is free, firs
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (984) (tests/test_gen_researchbox3299.py)
 
+### `researchbox1032_study5`
+
+**A potato chips maker whose costs have or have not increased raises the price or shrinks the pack: fair or unfair? (Study 5)**
+
+People read that a potato chips maker whose costs have, or have not, increased raised the price or shrank the pack, and say whether this is fair.
+
+- **Source** — ResearchBox, `researchbox.org/1032`
+- **Type** — 2 (costs increased or not) x 2 (price increase or size decrease) between subjects; fair or unfair
+- **Category** — economics/behavioural
+- **Rows** — 1,202 from 1,202 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, including the interaction, N 1,202 (tests/test_gen_researchbox1032.py)
+
 ### `researchbox3299_s3`
 
 **Gym membership: a sure $5 off training or a 10% chance it is free, after a small or large membership discount (Study S3)**
@@ -1321,6 +1380,19 @@ In a four-week life simulator, people told they are paid $140 every weekday or $
 - **Rows** — 1,120 from 1,120 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's N (1,120, which the deposit gives once the 3 people who failed both exclusions are counted once) and, from the deposit, its high-cost decision means 17.00 v 15.21 and spending $2,919.58 v $2,816.52; every built answer equals the deposit's Decision 1 (tests/test_gen_researchbox231.py)
+
+### `researchbox1032_study1`
+
+**A chocolate maker and an orange juice maker, facing higher production costs, raise the price or shrink the product: acceptable or unfair? (Study 1)**
+
+People read that a chocolate maker and an orange juice maker, facing higher production costs, either raised the price or shrank the product by the same amount per unit, and say whether each change is acceptable or unfair.
+
+- **Source** — ResearchBox, `researchbox.org/1032`
+- **Type** — price increase or size decrease drawn separately for each of two products (2 x 2 arms, two rows per person); products in a random, unrecorded order; acceptable or unfair
+- **Category** — economics/behavioural
+- **Rows** — 1,002 from 501 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6 for both products, N 501 (tests/test_gen_researchbox1032.py)
 
 ### `researchbox3299_study4_pretest`
 
@@ -1387,6 +1459,19 @@ In a five-week life simulator with a $35 overdraft fee, people start a warehouse
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's N (401) and, from the deposit under the same exclusions, its high-cost decision means 6.17 v 5.16 and spending $404.35 v $363.55; every built answer equals the deposit's Decision 1, and the go-out share by arm equals the deposit's (tests/test_gen_researchbox231.py)
 
+### `researchbox1032_s1`
+
+**Joint evaluation: the same potato chips maker, facing higher production costs, raises the price, and shrinks the pack; is each fair or unfair? (Study S1)**
+
+People judge both a potato chips maker's price rise from $3 to $4 and its pack shrinking from 12 oz to 9 oz, saying whether each is fair or unfair.
+
+- **Source** — ResearchBox, `researchbox.org/1032`
+- **Type** — within subjects: both changes judged by everyone, in a random unrecorded order; two rows per person; fair or unfair
+- **Category** — economics/behavioural
+- **Rows** — 400 from 200 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6 (glm coefficients and SEs; the script's cluster-robust SEs not reproduced), N 200, 400 rows (tests/test_gen_researchbox1032.py)
+
 ### `zenodo10641548`
 
 **Public perceptions of trophy hunting are pragmatic, not dogmatic (UK respondents): how acceptable is a hunt in Africa, as the animal, the use of its meat and the use of the revenue vary**
@@ -1399,6 +1484,19 @@ Vignette: how acceptable is it for an American tourist to pay to hunt an elephan
 - **Rows** — 388 from 388 respondents
 - **Licence** — CC0 1.0 (cc-zero)
 - **Verified against** — ESM S6 of Hare et al., Proc. R. Soc. B 291 (2024) 20231638: the top-supported ordinal logit refitted (MASS::polr) with the UK responses and factors taken from the built rows reproduces all 28 coefficients to two decimals, including Country UK -0.61, and the six thresholds within 0.01 (scripts/verify_zenodo10641548.py, tests/test_gen_zenodo10641548.py). UK cell counts equal ESM S8 exactly
+
+### `researchbox1032_study2`
+
+**A potato chips maker, facing higher production costs, raises the price or shrinks the pack: fair or unfair? (Study 2)**
+
+People read that a potato chips maker, facing higher production costs, raised the price from $3 to $4 or shrank the pack from 12 oz to 9 oz, and say whether this is fair or unfair.
+
+- **Source** — ResearchBox, `researchbox.org/1032`
+- **Type** — 2 (price increase or size decrease) between subjects; fair or unfair
+- **Category** — economics/behavioural
+- **Rows** — 301 from 301 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6, N 301 (tests/test_gen_researchbox1032.py)
 
 ### `researchbox231_s1`
 
@@ -1482,7 +1580,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 31 | 7 | 244,819 |
+| economics/behavioural | 38 | 7 | 259,739 |
 | health communication | 1 | 9 | 136,384 |
 | moral/social/cognition | 10 | 17 | 235,026 |
 | political identity/polarisation | 5 | 0 | 44,415 |

@@ -128,3 +128,19 @@ def test_export_puts_each_study_on_its_split_side() -> None:
     sides = export.side_of(pd.Series(["a", "c", "b", "x"]), mapping).tolist()
     assert sides[:3] == ["train", "eval", "train"]
     assert pd.isna(sides[3])  # in neither list (excluded): in neither file
+
+
+def test_adding_a_study_moves_no_committed_study() -> None:
+    """rich (19 Nov 2026): each open-archive build reshuffled which studies were held out,
+    so CUPID went from test to train. A committed study keeps its side whatever is added."""
+    studies = make_splits.experiments_by_study()
+    before = make_splits.committed_sides()
+    assert before, "no committed mapping; this test would pass vacuously"
+    for source in ("zenodo", "researchbox", "tess"):
+        grown = dict(studies)
+        for i in range(7):
+            grown[f"zz_new_{source}_{i}"] = {"source": source, "recipes": []}
+        after = make_splits.split(grown)
+        sides = {s: side for side in ("seen", "unseen") for s in after[side]}
+        moved = sorted(s for s, side in before.items() if s in sides and sides[s] != side)
+        assert not moved, (source, moved)

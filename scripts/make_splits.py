@@ -57,6 +57,7 @@ The study split reads only recipe headers; the condition mapping reads the built
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import random
 import re
@@ -356,7 +357,31 @@ def experiments_by_study() -> dict[str, dict[str, object]]:
     return studies
 
 
-def split(studies: dict[str, dict[str, object]]) -> dict[str, list[str]]:
+def _rank(study: str) -> str:
+    """A study's fixed place in the draw order: depends on its own name and SEED only."""
+    return hashlib.sha256(f"{SEED}:{study}".encode()).hexdigest()
+
+
+def committed_sides() -> dict[str, str]:
+    """Each study's side in the committed studies_mapping.json, or {} on a fresh clone."""
+    path = OUT / "studies_mapping.json"
+    if not path.exists():
+        return {}
+    mapping = json.loads(path.read_text())
+    return {s: side for side in ("seen", "unseen") for s in mapping[side]}
+
+
+def split(
+    studies: dict[str, dict[str, object]], previous: dict[str, str] | None = None
+) -> dict[str, list[str]]:
+    """Seen/unseen by study. A study already on a side stays there (rich, 19 Nov 2026:
+    adding open-archive studies kept reshuffling which ones were held out, so a study
+    could move from test to train between exports). Only new studies are drawn, in a
+    fixed order by name, to bring each stratum's unseen count up to its share."""
+    if previous is None:
+        previous = committed_sides()
+    if previous:
+        return _sticky_split(studies, previous)
     rng = random.Random(SEED)
     by_source: dict[str, list[str]] = defaultdict(list)
     for study, entry in studies.items():
@@ -376,6 +401,36 @@ def split(studies: dict[str, dict[str, object]]) -> dict[str, list[str]]:
 
     # Draw over every study, then drop the excluded ones, so the draw is the same
     # with or without them.
+    all_ids = sorted(s for s in studies if s not in EXCLUDED)
+    return {
+        "seen": [s for s in all_ids if s not in unseen],
+        "unseen": [s for s in all_ids if s in unseen],
+    }
+
+
+def _sticky_split(
+    studies: dict[str, dict[str, object]], previous: dict[str, str]
+) -> dict[str, list[str]]:
+    by_source: dict[str, list[str]] = defaultdict(list)
+    for study, entry in studies.items():
+        source = str(entry["source"])
+        by_source[STRATUM.get(source, source)].append(study)
+    unseen: set[str] = set()
+    for source in sorted(by_source):
+        ids = sorted(by_source[source])
+        unseen.update(s for s in ids if previous.get(s) == "unseen" or s in SOCSCI210_UNSEEN)
+        new = sorted(
+            (
+                s
+                for s in ids
+                if s not in previous
+                and s not in EXCLUDED
+                and s not in SOCSCI210_SEEN | SOCSCI210_UNSEEN
+            ),
+            key=_rank,
+        )
+        need = round(UNSEEN_SHARE * len(ids)) - len(unseen & set(ids))
+        unseen.update(new[: max(0, need)])
     all_ids = sorted(s for s in studies if s not in EXCLUDED)
     return {
         "seen": [s for s in all_ids if s not in unseen],

@@ -965,6 +965,34 @@
    "kind": "version",
    "basis": "read"
   },
+  "text:researchbox1032_s1": {
+   "kind": "lineup",
+   "basis": "read"
+  },
+  "text:researchbox1032_s2": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox1032_study1": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox1032_study2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox1032_study3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox1032_study4": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox1032_study5": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "text:researchbox2170_ss2": {
    "kind": "version",
    "basis": "read"

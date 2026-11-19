@@ -3284,11 +3284,11 @@
       "link": "https://researchbox.org/1032",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Buildable",
-      "kind": "lineup",
-      "persona": "Age, gender",
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age (years), gender",
       "uk": "Yes",
-      "notes": "Shrinkflation aversion: a crisps maker raises the price or shrinks the pack (same price per unit); is each fair? Study 1 shows both scenarios to everyone (line-up); other studies vary. 7 studies, each with .qsf + data. Downloaded by rich 19 Nov 2026."
+      "notes": "Built 19 Nov 2026: 7 experiments (Studies 1-5, S1, S2), 14,920 rows, 11,219 people, all from the .qsf and .sav/.csv. A maker facing higher costs raises the price or shrinks the product (same price per unit); fair or unfair. Study 1: chocolate and orange juice, each person judging both products (price or size drawn per product). Study 3 adds three 7-point mediator statements. Studies 4, 5, S2: 2x2 with transparency, unchanged costs, or a raw-material shortfall. S1: joint evaluation, both changes judged by everyone (line-up). Every within-person order was randomised and not recorded, so no row narrates another. Study 2's free-text explanations not built. Every R script's logit reproduces from the built rows; Study 3 differs only by one blank row the R script counts."
     },
     {
       "id": "RB1043",
