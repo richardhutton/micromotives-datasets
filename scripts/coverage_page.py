@@ -25,6 +25,8 @@ import json
 import sys
 from pathlib import Path
 
+import pandas as pd
+
 ROOT = Path(__file__).resolve().parent.parent
 TEXT = ROOT / "data" / "catalog" / "experiment_list.json"
 IMAGE = ROOT / "data" / "catalog" / "image_experiment_list.json"
@@ -69,6 +71,34 @@ def main() -> None:
                 "rows": r.get("rows") if r["status"] in BUILT else None,
             }
         )
+    # ResearchBox builds (rich, 19 Nov 2026): consumer and pricing studies with their own
+    # tracker, shown here as a third set so they can be seen apart from the text list.
+    # Read from the committed recipes and their built rows; category from the manifest.
+    manifest = json.loads(MANIFEST.read_text())["experiments"]
+    for path in sorted((ROOT / "recipes").glob("researchbox*.yaml")):
+        name = path.stem
+        title = next(
+            (
+                ln.split(":", 1)[1].strip().strip("'\"")
+                for ln in path.read_text().splitlines()
+                if ln.startswith("title:")
+            ),
+            name,
+        )
+        built = ROOT / "data" / "processed" / f"{name}.parquet"
+        items.append(
+            {
+                "set": "ResearchBox",
+                "id": name,
+                "title": title,
+                "source": "ResearchBox " + name.removeprefix("researchbox").split("_")[0],
+                "category": manifest[name]["category"],
+                "status": "Built",
+                "rows": len(pd.read_parquet(built, columns=["participant_id"]))
+                if built.exists()
+                else None,
+            }
+        )
     for r in json.loads(IMAGE.read_text())["rows"]:
         items.append(
             {
@@ -96,7 +126,7 @@ def main() -> None:
     # reading (coverage_points.py) is shown beside it only where it disagrees.
     recorded = json.loads(RECORDED_KINDS.read_text())["kinds"]
     for i in items:
-        key = f"{i['set'].lower()}:{i['id']}"
+        key = f"{'text' if i['set'] == 'ResearchBox' else i['set'].lower()}:{i['id']}"
         if key in recorded:
             i["etype"] = recorded[key]["kind"]
             i["etype_basis"] = recorded[key]["basis"]

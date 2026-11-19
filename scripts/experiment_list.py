@@ -192,7 +192,7 @@ def rows_built(rows: list[dict], src: str | None) -> int:
 
 
 def text_recipes() -> set[str]:
-    """Committed recipes for TEXT experiments: every tracked recipe, less image ones.
+    """Committed recipes for TEXT experiments: every tracked recipe, less image and ResearchBox ones.
 
     Image experiments live in recipes/images/ and are listed on their own page
     (scripts/image_experiments.py), so they are neither rows here nor counted here.
@@ -201,7 +201,13 @@ def text_recipes() -> set[str]:
         ["git", "ls-files", "recipes/*.yaml"], cwd=ROOT, capture_output=True, text=True
     )
     # git's pathspec "*" crosses "/", so recipes/images/ would otherwise be included.
-    return {p for p in out.stdout.split() if not p.startswith("recipes/images/")}
+    # ResearchBox builds have their own list and page (scripts/researchbox_list.py; rich,
+    # 19 Nov 2026), so like image ones they are neither rows here nor counted here.
+    return {
+        p
+        for p in out.stdout.split()
+        if not p.startswith(("recipes/images/", "recipes/researchbox"))
+    }
 
 
 def attach_row_counts(data: dict) -> None:

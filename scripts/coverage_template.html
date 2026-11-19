@@ -5,18 +5,18 @@
 :root{
   --bg:#fbfaf7; --panel:#ffffff; --ink:#1c1a17; --muted:#6f6a61; --rule:#e5e1d8; --soft:#f3f0e9;
   --built:#6f6a61; --buildable:#047857; --check:#c68f1e; --unlikely:#b23a3a; --focus:#047857; --accent:#047857;
-  --s-text:#047857; --s-image:#2563eb; --s-cand:#b9b3a7;
+  --s-text:#047857; --s-image:#2563eb; --s-rb:#6f6a61; --s-cand:#b9b3a7;
   --f-ui:system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --f-data:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
   --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399;
-  --s-text:#34d399; --s-image:#7aa7ff; --s-cand:#5d5850; color-scheme:dark}}
+  --s-text:#34d399; --s-image:#7aa7ff; --s-rb:#a49d90; --s-cand:#5d5850; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
   --built:#a49d90; --buildable:#34d399; --check:#e7b654; --unlikely:#ec7a7a; --focus:#34d399; --accent:#34d399;
-  --s-text:#34d399; --s-image:#7aa7ff; --s-cand:#5d5850; color-scheme:dark}
+  --s-text:#34d399; --s-image:#7aa7ff; --s-rb:#a49d90; --s-cand:#5d5850; color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:20px}
@@ -37,7 +37,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid currentColor}
 .s-Built{color:var(--built)} .s-Buildable{color:var(--buildable)} .s-Needs,.s-Waiting{color:var(--check)} .s-Unlikely{color:var(--unlikely)}
 .key{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:6px}
-.k-text{background:var(--s-text)} .k-image{background:var(--s-image)} .k-cand{background:transparent;border:1.5px dashed var(--s-cand)}
+.k-text{background:var(--s-text)} .k-image{background:var(--s-image)} .k-rb{background:var(--s-rb)} .k-cand{background:transparent;border:1.5px dashed var(--s-cand)}
 .chead{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
 .legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:12.5px}
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
@@ -54,6 +54,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 .stack span{display:block;height:100%;min-width:2px}
 .stack .t{background:var(--s-text);border-radius:4px 0 0 4px}
 .stack .i{background:var(--s-image)}
+.stack .r{background:var(--s-rb)}
 .stack .c{border:1.5px dashed var(--s-cand);background:transparent}
 .stack span:last-child{border-top-right-radius:4px;border-bottom-right-radius:4px}
 .stack span:first-child{border-top-left-radius:4px;border-bottom-left-radius:4px}
@@ -79,7 +80,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 <div class="wrap">
   <header>
     <h1>Category Coverage</h1>
-    <p class="lede">Where the experiments we have built sit across eight categories, in the text set and the image set, and where the candidates still on our lists would add to them.</p>
+    <p class="lede">Where the experiments we have built sit across eight categories, in the text set, the ResearchBox set (consumer and pricing studies, kept apart so they can be left out of training) and the image set, and where the candidates still on our lists would add to them.</p>
   </header>
 
   <section class="top">
@@ -129,7 +130,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
     <h2>Experiments</h2>
     <div class="controls">
       <input id="q" type="search" placeholder="Search titles or ids" aria-label="Search">
-      <select id="fset" aria-label="Set"><option value="">Text and image</option><option>Text</option><option>Image</option></select>
+      <select id="fset" aria-label="Set"><option value="">All sets</option><option>Text</option><option>ResearchBox</option><option>Image</option></select>
       <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
       <select id="fkind" aria-label="Built or candidate"><option value="">Built and candidates</option><option value="built">Built only</option><option value="candidate">Candidates only</option></select>
       <select id="fetype" aria-label="Kind"><option value="">All kinds</option></select>
@@ -170,56 +171,58 @@ const rowsOf = list => list.reduce((a, i) => a + (i.rows || 0), 0);
     return `<tr class="${cls}"><td>${label}</td><td class="num">${fmt(b.length)}</td><td class="num">${fmt(rowsOf(b))}</td><td class="num">${fmt(tally(set, "", "candidate").length)}</td></tr>`;
   };
   $("sum").innerHTML = `<thead><tr><th>Set</th><th>Experiments</th><th>Rows</th><th>Candidates</th></tr></thead><tbody>` +
-    line('<span class="key k-text"></span>Text', "Text") + line('<span class="key k-image"></span>Image', "Image") +
+    line('<span class="key k-text"></span>Text', "Text") + line('<span class="key k-rb"></span>ResearchBox', "ResearchBox") + line('<span class="key k-image"></span>Image', "Image") +
     line("Both", "", "total") + `</tbody>`;
 })();
 
-$("legend").innerHTML = '<span><span class="key k-text"></span>Text built</span><span><span class="key k-image"></span>Image built</span><span id="lg-c"><span class="key k-cand"></span>Candidates</span>';
+$("legend").innerHTML = '<span><span class="key k-text"></span>Text built</span><span><span class="key k-rb"></span>ResearchBox built</span><span><span class="key k-image"></span>Image built</span><span id="lg-c"><span class="key k-cand"></span>Candidates</span>';
 
 function drawBars() {
   const data = cats.map(c => {
-    const t = tally("Text", c, "built"), im = tally("Image", c, "built");
+    const t = tally("Text", c, "built"), rb = tally("ResearchBox", c, "built"), im = tally("Image", c, "built");
     const cand = tally("", c, "candidate");
     return measure === "exp"
-      ? { c, t: t.length, i: im.length, k: cand.length }
-      : { c, t: rowsOf(t), i: rowsOf(im), k: 0 };
-  }).sort((a, b) => (b.t + b.i) - (a.t + a.i) || (b.k - a.k));
-  const max = Math.max(...data.map(d => d.t + d.i + d.k), 1);
+      ? { c, t: t.length, r: rb.length, i: im.length, k: cand.length }
+      : { c, t: rowsOf(t), r: rowsOf(rb), i: rowsOf(im), k: 0 };
+  }).sort((a, b) => (b.t + b.r + b.i) - (a.t + a.r + a.i) || (b.k - a.k));
+  const max = Math.max(...data.map(d => d.t + d.r + d.i + d.k), 1);
   const frac = v => (v / max).toFixed(4);
   $("bars").innerHTML = data.map(d => {
-    const total = d.t + d.i;
+    const total = d.t + d.r + d.i;
     const label = measure === "exp" ? `${total} built` + (d.k ? ` · ${d.k} candidates` : "") : `${fmt(total)} rows`;
     return `<div class="row${catFilter === d.c ? " on" : ""}" tabindex="0" role="button" data-cat="${esc(d.c)}" aria-label="${esc(d.c)}: ${esc(label)}">
       <span class="lab">${esc(d.c)}</span>
-      <span class="track"><span class="stack" style="width:calc(100% * ${frac(d.t + d.i + d.k)})">
+      <span class="track"><span class="stack" style="width:calc(100% * ${frac(d.t + d.r + d.i + d.k)})">
         ${d.t ? `<span class="t" style="flex:${d.t}" data-tip="Text built: ${fmt(d.t)}"></span>` : ""}
+        ${d.r ? `<span class="r" style="flex:${d.r}" data-tip="ResearchBox built: ${fmt(d.r)}"></span>` : ""}
         ${d.i ? `<span class="i" style="flex:${d.i}" data-tip="Image built: ${fmt(d.i)}"></span>` : ""}
         ${d.k ? `<span class="c" style="flex:${d.k}" data-tip="Candidates: ${d.k}"></span>` : ""}
       </span></span><span class="val">${esc(label)}</span></div>`;
   }).join("");
   $("lg-c").hidden = measure !== "exp";
   $("barnote").textContent = measure === "exp"
-    ? "Each bar counts experiments: built text, built image, then candidates not yet built. Select a category to filter the list below."
+    ? "Each bar counts experiments: built text, built ResearchBox, built image, then candidates not yet built. Select a category to filter the list below."
     : "Each bar counts rows in built experiments. Candidates have no rows yet. Select a category to filter the list below.";
 }
 
 function drawKindBars() {
   const by = (k, kind, set) => items.filter(i => i.etype === k && i.kind === kind && (!set || i.set === set));
   const data = kinds.map(k => {
-    const t = by(k.id, "built", "Text"), im = by(k.id, "built", "Image"), cand = by(k.id, "candidate");
+    const t = by(k.id, "built", "Text"), rb = by(k.id, "built", "ResearchBox"), im = by(k.id, "built", "Image"), cand = by(k.id, "candidate");
     return measure === "exp"
-      ? { k, t: t.length, i: im.length, c: cand.length }
-      : { k, t: rowsOf(t), i: rowsOf(im), c: 0 };
-  }).filter(d => d.t + d.i + d.c);
-  const max = Math.max(...data.map(d => d.t + d.i + d.c), 1);
+      ? { k, t: t.length, r: rb.length, i: im.length, c: cand.length }
+      : { k, t: rowsOf(t), r: rowsOf(rb), i: rowsOf(im), c: 0 };
+  }).filter(d => d.t + d.r + d.i + d.c);
+  const max = Math.max(...data.map(d => d.t + d.r + d.i + d.c), 1);
   const frac = v => (v / max).toFixed(4);
   $("kbars").innerHTML = data.map(d => {
-    const total = d.t + d.i;
+    const total = d.t + d.r + d.i;
     const label = measure === "exp" ? `${total} built` + (d.c ? ` · ${d.c} candidates` : "") : `${fmt(total)} rows`;
     return `<div class="row${etypeFilter === d.k.id ? " on" : ""}" tabindex="0" role="button" data-etype="${esc(d.k.id)}" data-cat="${esc(d.k.label)}" aria-label="${esc(d.k.label)}: ${esc(label)}">
       <span class="lab">${esc(d.k.label)}</span>
-      <span class="track"><span class="stack" style="width:calc(100% * ${frac(d.t + d.i + d.c)})">
+      <span class="track"><span class="stack" style="width:calc(100% * ${frac(d.t + d.r + d.i + d.c)})">
         ${d.t ? `<span class="t" style="flex:${d.t}" data-tip="Text built: ${fmt(d.t)}"></span>` : ""}
+        ${d.r ? `<span class="r" style="flex:${d.r}" data-tip="ResearchBox built: ${fmt(d.r)}"></span>` : ""}
         ${d.i ? `<span class="i" style="flex:${d.i}" data-tip="Image built: ${fmt(d.i)}"></span>` : ""}
         ${d.c ? `<span class="c" style="flex:${d.c}" data-tip="Candidates: ${d.c}"></span>` : ""}
       </span></span><span class="val">${esc(label)}</span></div>`;
@@ -232,11 +235,11 @@ function drawCross() {
   const all = rowsOf(items.filter(i => i.kind === "built"));
   const cell = v => `<td class="num${v ? "" : " zero"}">${fmt(v) || "0"}</td>`;
   let body = cats.map(c => {
-    const t = tally("Text", c, "built"), im = tally("Image", c, "built");
-    const share = all ? ((rowsOf(t) + rowsOf(im)) / all * 100).toFixed(1) + "%" : "";
-    return `<tr><td class="cat">${esc(c)}</td>${cell(t.length)}${cell(rowsOf(t))}${cell(im.length)}${cell(rowsOf(im))}<td class="num">${share}</td>${cell(tally("Text", c, "candidate").length)}${cell(tally("Image", c, "candidate").length)}</tr>`;
+    const t = tally("Text", c, "built"), rb = tally("ResearchBox", c, "built"), im = tally("Image", c, "built");
+    const share = all ? ((rowsOf(t) + rowsOf(rb) + rowsOf(im)) / all * 100).toFixed(1) + "%" : "";
+    return `<tr><td class="cat">${esc(c)}</td>${cell(t.length)}${cell(rowsOf(t))}${cell(rb.length)}${cell(rowsOf(rb))}${cell(im.length)}${cell(rowsOf(im))}<td class="num">${share}</td>${cell(tally("Text", c, "candidate").length)}${cell(tally("Image", c, "candidate").length)}</tr>`;
   }).join("");
-  $("cross").innerHTML = `<thead><tr><th>Category</th><th>Text built</th><th>Text rows</th><th>Image built</th><th>Image rows</th><th>Share of rows</th><th>Text candidates</th><th>Image candidates</th></tr></thead><tbody>${body}</tbody>`;
+  $("cross").innerHTML = `<thead><tr><th>Category</th><th>Text built</th><th>Text rows</th><th>ResearchBox built</th><th>ResearchBox rows</th><th>Image built</th><th>Image rows</th><th>Share of rows</th><th>Text candidates</th><th>Image candidates</th></tr></thead><tbody>${body}</tbody>`;
 }
 
 const jevDiffers = i => !!(i.jev && i.jev.choice !== i.category);
