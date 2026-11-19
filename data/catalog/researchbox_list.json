@@ -6183,11 +6183,11 @@
       "link": "https://researchbox.org/3251",
       "topic": "work/family/gender",
       "qsf": true,
-      "status": "Buildable",
-      "kind": "version",
-      "persona": "Age, gender",
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age (years), gender (one study: sex)",
       "uk": "Yes",
-      "notes": "Downloaded from its Zenodo copy (CC BY 4.0), 19 Nov 2026. Conditional promotions: no promotion vs loyalty-only vs eligibility-only; purchase intention at full price. 9 .qsf, data and codebooks; age and gender. Queued to build."
+      "notes": "Built 19 Nov 2026: 5 experiments (Studies 2 and 3, Web Appendix B2, B3, B4), 9,329 rows, 1,658 people, from the .qsf and the data, Cheng & Stadler Blank (2025) JMR. Conditional promotions a customer cannot or will not meet: pants at Saks with a spend-over promotion (2 x 2 + control); printers $45 instore 0-90 miles away; a phone discount needing a new line or 5G; a cash-only gas price; twelve promotion conditions rated by every student. Not built: the Pilot (scraped listings) and Study 1 (store sales), which have no respondents; Study 4 (hotels), whose arms are defined by the respondent's own first choice, piped into every later screen, so a row would have to narrate that answer; the Study 1 post-test (WA-A3), whose scenario picture prints the promotion; WA-B1 (no manipulation, and its two exported columns cannot be tied to one of two near-identical fielded questions). The paper's tables and text reproduce from the built rows, Table 4's 40 counts exactly."
     },
     {
       "id": "RB3256",

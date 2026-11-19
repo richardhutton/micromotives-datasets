@@ -896,6 +896,36 @@
       "description": "People see that a tablet's price fell from $399 or rose from $199 to $299, once in the last week, once three weeks ago, or week by week; they say whether they would buy now or later and what the price will be in a week.",
       "design": "2 (price fell or rose) x 3 (one late change, one early change, five changes) between subjects; buy now or later and the price in a week, in a random unrecorded order",
       "verified_against": "no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral from the BUILT rows equals the deposit's to 1e-12, and the prediction's cell means equal the deposit's, N 1,506 (tests/test_gen_researchbox402.py)"
+    },
+    "researchbox3251_study2": {
+      "category": "economics/behavioural",
+      "description": "People want $60 formal pants at Saks, which runs a promotion of 5% or 30% off a cart over $100 or over $500, or no promotion, and say whether they lean towards Saks's pair or an identical $60 pair at Nordstrom.",
+      "design": "2 (spend over $100 or $500) x 2 (5% or 30% off) + no-promotion control, between subjects; 1 Saks to 7 Nordstrom",
+      "verified_against": "the paper's Study 2 cell means and SDs (reverse-coded) and one-way F(4, 496) = 23.34, recomputed from the BUILT rows to the printed precision, N 501 (tests/test_gen_researchbox3251.py)"
+    },
+    "researchbox3251_study3": {
+      "category": "economics/behavioural",
+      "description": "People choose between two $90 printers, buying online or driving to a store 0, 30, 60 or 90 miles away, where under a conditional promotion the first printer costs $45 instore, or there is no promotion.",
+      "design": "promotion or none between subjects x four store distances within subjects in a random, unrecorded order; one of five options each (nominal)",
+      "verified_against": "the paper's Table 4, all 40 choice counts (2 arms x 4 distances x 5 options), recomputed from the BUILT rows exactly, N 347 (tests/test_gen_researchbox3251.py)"
+    },
+    "researchbox3251_wa_b2": {
+      "category": "economics/behavioural",
+      "description": "People shopping for Phone X, regular price $1000, read that it is $300 or $900 if they add a phone line (about $1200 over two years) or switch to 5G (about $120), and say what it is worth to them and what the average consumer spends on it.",
+      "design": "2 (precondition cost) x 2 (discount) between subjects; two open-ended dollar answers",
+      "verified_against": "Web Appendix B2's internal reference price by discount, $731.93 (216.47) and $818.19 (195.30), recomputed from the BUILT rows with the authors' one 3 SD exclusion applied (kept in the rows), N 400 (399 in the paper) (tests/test_gen_researchbox3251.py)"
+    },
+    "researchbox3251_wa_b3": {
+      "category": "economics/behavioural",
+      "description": "Drivers low on fuel find a gas station at $3.50/gallon that offers $2.50/gallon to cash payers when they have no cash, or no promotion, and rate whether they will fill up there, the deal, how many gallons, reactance, fairness and regret.",
+      "design": "promotion or none, between subjects; eight outcomes over two pages in a fixed order",
+      "verified_against": "Web Appendix B3's means and SDs for purchase intention, gallons, transaction utility, regret, reactance and fairness, and three F(1, 198) tests, recomputed from the BUILT rows to the printed precision, N 200 (tests/test_gen_researchbox3251.py)"
+    },
+    "researchbox3251_wa_b4": {
+      "category": "economics/behavioural",
+      "description": "Students see twelve ways to get 30% off $179.99 headphones (be a student, a veteran, a senior citizen or a mother, join a loyalty club, buy a service plan, spend $200, buy two, refer two people, buy at a set time, in a flash sale or at a set store) and rate how hard each would be for them and how willing they are.",
+      "design": "twelve promotions, every person rates all of them in a random, unrecorded order (line-up); difficulty and willingness, 1-7",
+      "verified_against": "Web Appendix B4's Figure W1, all twelve means of the two items, recomputed from the BUILT rows to the printed precision, N 210 (tests/test_gen_researchbox3251.py)"
     }
   }
 }

@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**91 studies (171 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 50 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**92 studies (176 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 55 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 12 | 50 | 145,039 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 13 | 55 | 154,368 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **91** | **171** | **1,289,252** | |
+| **Total** | **92** | **176** | **1,298,581** | |
 
 ---
 
@@ -66,6 +66,7 @@
 | `zenodo6572717` | CUPID (Ireland, Feb 2021): parents choose between two health servic… | Zenodo | `doi:10.5281/zenodo.6572717` | 5,400 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
 | `ukds_6849_vig_housework_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 5,081 |
+| `researchbox3251_wa_b4` | Headphones at $179.99, 30% off if you meet one of twelve conditions… | ResearchBox | `researchbox.org/3251` | 5,040 |
 | `ukds_6849_caring_existing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 4,847 |
 | `ukds_6849_numeracy_env_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,638 |
 | `ukds_6849_numeracy_fin_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,602 |
@@ -104,8 +105,10 @@
 | `del_sandbox_feb2023_gender_aid` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,655 |
 | `del_sandbox_feb2023_gender_equality` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,636 |
 | `researchbox2562_study3` | A toilet paper maker, facing higher costs, raises the price, shrink… | ResearchBox | `researchbox.org/2562` | 1,601 |
+| `researchbox3251_wa_b3` | A gas station at $3.50/gallon, with a $2.50 cash price you cannot u… | ResearchBox | `researchbox.org/3251` | 1,600 |
 | `researchbox2562_study1` | A chocolate maker or a streaming platform, facing higher costs, rai… | ResearchBox | `researchbox.org/2562` | 1,502 |
 | `researchbox2562_study7` | A British detergent maker, facing higher costs, raises the price, s… | ResearchBox | `researchbox.org/2562` | 1,493 |
+| `researchbox3251_study3` | Two $90 printers, the first $45 instore under a conditional promoti… | ResearchBox | `researchbox.org/3251` | 1,388 |
 | `ukds_6849_hmrc_consent_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,326 |
 | `ukds_6849_hmrc_consent_w11_web` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,281 |
 | `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
@@ -120,9 +123,11 @@
 | `researchbox3299_study4_pretest` | How large does 10% off feel, as % or $, on a $11 or $311 product (S… | ResearchBox | `researchbox.org/3299` | 867 |
 | `researchbox2562_study6` | Choosing for real between a price rise, a smaller size and less coc… | ResearchBox | `researchbox.org/2562` | 832 |
 | `researchbox402_study1a` | Flight tickets whose price fell or rose, once or week by week, to $… | ResearchBox | `researchbox.org/402` | 802 |
+| `researchbox3251_wa_b2` | Phone X, regular price $1000, for $300 or $900 if you add a phone l… | ResearchBox | `researchbox.org/3251` | 800 |
 | `researchbox231_study3` | A simulated month paid $100 daily or $700 weekly: how wealthy it fe… | ResearchBox | `researchbox.org/231` | 672 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
+| `researchbox3251_study2` | Pants at Saks for $60, with a spend-over-$100 or over-$500 promotio… | ResearchBox | `researchbox.org/3251` | 501 |
 | `researchbox231_study3_ease` | A simulated month paid $100 daily or $700 weekly: how predictable i… | ResearchBox | `researchbox.org/231` | 448 |
 | `ukds_6849_fertility_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 407 |
 | `researchbox231_s2` | Life simulator: a concert after being paid daily or weekly (Supplem… | ResearchBox | `researchbox.org/231` | 402 |
@@ -1192,6 +1197,19 @@ Parents of a child under 16 in Ireland imagine their youngest child has been unw
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)
 
+### `researchbox3251_wa_b4`
+
+**Headphones at $179.99, 30% off if you meet one of twelve conditions (be a student, a veteran, a senior citizen, spend $200, refer two people ...): how hard is it for you, and how willing are you? (Web Appendix B4)**
+
+Students see twelve ways to get 30% off $179.99 headphones (be a student, a veteran, a senior citizen or a mother, join a loyalty club, buy a service plan, spend $200, buy two, refer two people, buy at a set time, in a flash sale or at a set store) and rate how hard each would be for them and how willing they are.
+
+- **Source** — ResearchBox, `researchbox.org/3251`
+- **Type** — twelve promotions, every person rates all of them in a random, unrecorded order (line-up); difficulty and willingness, 1-7
+- **Category** — economics/behavioural
+- **Rows** — 5,040 from 210 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — Web Appendix B4's Figure W1, all twelve means of the two items, recomputed from the BUILT rows to the printed precision, N 210 (tests/test_gen_researchbox3251.py)
+
 ### `researchbox1032_study4`
 
 **A detergent maker, facing higher production costs, raises the price or cuts the net weight, saying so on the pack or not: fair or unfair? (Study 4)**
@@ -1439,6 +1457,19 @@ People read that a toilet paper maker, facing higher costs, raised the price, sh
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, N 1,601 (tests/test_gen_researchbox2562.py)
 
+### `researchbox3251_wa_b3`
+
+**A gas station at $3.50/gallon, with a $2.50 cash price you cannot use or no promotion: fill up here, a good deal, how many gallons, fair, regret? (Web Appendix B3)**
+
+Drivers low on fuel find a gas station at $3.50/gallon that offers $2.50/gallon to cash payers when they have no cash, or no promotion, and rate whether they will fill up there, the deal, how many gallons, reactance, fairness and regret.
+
+- **Source** — ResearchBox, `researchbox.org/3251`
+- **Type** — promotion or none, between subjects; eight outcomes over two pages in a fixed order
+- **Category** — economics/behavioural
+- **Rows** — 1,600 from 200 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — Web Appendix B3's means and SDs for purchase intention, gallons, transaction utility, regret, reactance and fairness, and three F(1, 198) tests, recomputed from the BUILT rows to the printed precision, N 200 (tests/test_gen_researchbox3251.py)
+
 ### `researchbox2562_study1`
 
 **A chocolate maker or a streaming platform, facing higher costs, raises the price, shrinks the product or cuts its quality: fair or unfair? (Study 1)**
@@ -1464,6 +1495,19 @@ People read that a British detergent maker, facing higher costs, raised the pric
 - **Rows** — 1,493 from 1,005 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's logit of buying, its one-sample t tests of the quality rating against 5 and its logit of buying on the rating, recomputed from the BUILT rows, equal base R's to 1e-9, N 1,005 (tests/test_gen_researchbox2562.py)
+
+### `researchbox3251_study3`
+
+**Two $90 printers, the first $45 instore under a conditional promotion or no promotion, the store 0, 30, 60 or 90 miles away: which option? (Study 3)**
+
+People choose between two $90 printers, buying online or driving to a store 0, 30, 60 or 90 miles away, where under a conditional promotion the first printer costs $45 instore, or there is no promotion.
+
+- **Source** — ResearchBox, `researchbox.org/3251`
+- **Type** — promotion or none between subjects x four store distances within subjects in a random, unrecorded order; one of five options each (nominal)
+- **Category** — economics/behavioural
+- **Rows** — 1,388 from 347 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's Table 4, all 40 choice counts (2 arms x 4 distances x 5 options), recomputed from the BUILT rows exactly, N 347 (tests/test_gen_researchbox3251.py)
 
 ### `researchbox1032_study5`
 
@@ -1582,6 +1626,19 @@ People see that flight tickets were $600 or $200 four weeks ago and cost $400 no
 - **Licence** — CC BY 4.0
 - **Verified against** — no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral (every cell's log-odds, so every coefficient of the pre-registered interaction model) from the BUILT rows equals the deposit's to 1e-12, N 802 (tests/test_gen_researchbox402.py)
 
+### `researchbox3251_wa_b2`
+
+**Phone X, regular price $1000, for $300 or $900 if you add a phone line (about $1200 over two years) or switch to 5G (about $120): what is it worth? (Web Appendix B2)**
+
+People shopping for Phone X, regular price $1000, read that it is $300 or $900 if they add a phone line (about $1200 over two years) or switch to 5G (about $120), and say what it is worth to them and what the average consumer spends on it.
+
+- **Source** — ResearchBox, `researchbox.org/3251`
+- **Type** — 2 (precondition cost) x 2 (discount) between subjects; two open-ended dollar answers
+- **Category** — economics/behavioural
+- **Rows** — 800 from 400 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — Web Appendix B2's internal reference price by discount, $731.93 (216.47) and $818.19 (195.30), recomputed from the BUILT rows with the authors' one 3 SD exclusion applied (kept in the rows), N 400 (399 in the paper) (tests/test_gen_researchbox3251.py)
+
 ### `researchbox231_study3`
 
 **A simulated month paid $100 daily or $700 weekly: how wealthy it felt (Study 3)**
@@ -1594,6 +1651,19 @@ People watch a simulated February, paid $100 every day or $700 every week with t
 - **Rows** — 672 from 112 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's Study 3 subjective-wealth index from the BUILT rows: 44.40 (SD 25.55) daily v 34.57 (24.17) weekly, N = 112, all as published; swapping the pay factor breaks it (tests/test_gen_researchbox231.py)
+
+### `researchbox3251_study2`
+
+**Pants at Saks for $60, with a spend-over-$100 or over-$500 promotion giving 5% or 30% off, or no promotion; Saks's pair or the same at Nordstrom? (Study 2)**
+
+People want $60 formal pants at Saks, which runs a promotion of 5% or 30% off a cart over $100 or over $500, or no promotion, and say whether they lean towards Saks's pair or an identical $60 pair at Nordstrom.
+
+- **Source** — ResearchBox, `researchbox.org/3251`
+- **Type** — 2 (spend over $100 or $500) x 2 (5% or 30% off) + no-promotion control, between subjects; 1 Saks to 7 Nordstrom
+- **Category** — economics/behavioural
+- **Rows** — 501 from 501 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the paper's Study 2 cell means and SDs (reverse-coded) and one-way F(4, 496) = 23.34, recomputed from the BUILT rows to the printed precision, N 501 (tests/test_gen_researchbox3251.py)
 
 ### `researchbox231_study3_ease`
 
@@ -1846,7 +1916,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 57 | 7 | 288,850 |
+| economics/behavioural | 62 | 7 | 298,179 |
 | health communication | 1 | 9 | 136,384 |
 | moral/social/cognition | 10 | 17 | 235,026 |
 | political identity/polarisation | 5 | 0 | 44,415 |
