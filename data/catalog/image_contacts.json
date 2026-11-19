@@ -732,9 +732,10 @@
     ],
     "ask": "The Sawtooth design file: which 4 hazards each version showed on each screen. The data is open (Open Government Licence); only the design is missing.",
     "subject": "Design file for your 2018 risk perception MaxDiff",
-    "body": "Hi Kamila,\n\nI'm an independent researcher in the UK, building a dataset of real survey and experiment responses to train a model that predicts how people answer. Your 2018 survey on how people perceive environmental and other risks, on the EIDC, would be really useful. It's one of very few open MaxDiff studies, and MaxDiff is the format the model struggles with most.\n\nThe deposit has each person's most and least feared hazard on every screen, but not which four hazards were shown on that screen. Your Scientific Reports supplement says the design had 300 versions from Sawtooth. Would you be able to share that design file, or the version each respondent was given?\n\nI'll credit your work, and nothing derived from the data will be redistributed.\n\nThanks very much,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "notes": "Drafted 19 Nov 2026. Text study, listed here so all outstanding requests are in one place. Address as recorded 16 Nov from the paper's corresponding author."
+    "body": "Hi Kamila,\n\nI'm an independent researcher in the UK. I'm building a dataset of real survey and experiment responses to train a model that predicts how people answer, and your 2018 survey on perceptions of environmental and other risks, deposited on the EIDC, would help a lot. It's one of very few open MaxDiff studies, and MaxDiff is the format the model finds hardest.\n\nThe deposit gives each person's most and least feared hazard on every screen, but not which four hazards were on that screen. Your Scientific Reports supplement says the Sawtooth design had 300 versions. Could you share that design file, or the version each respondent was given?\n\nI'll credit your work, and nothing derived from the data will be redistributed.\n\nThanks very much,\nRich Hutton\nrich.hutton@googlemail.com",
+    "status": "sent",
+    "notes": "Drafted 19 Nov 2026. Text study, listed here so all outstanding requests are in one place. Address as recorded 16 Nov from the paper's corresponding author. Sent by rich 19 Nov 2026.",
+    "sent": "2026-11-19"
   },
   {
     "id": "bjornsdottir",
@@ -752,8 +753,9 @@
     ],
     "ask": "Permission to use (no licence on OSF), the questionnaire wording, and the face pairs as shown (colour-manipulated Chicago Face Database images).",
     "subject": "Using your social class from faces data",
-    "body": "Hi Thora,\n\nI'm an independent researcher in the UK, building a dataset of real experiments where people were shown something and answered questions, which I use to train a model that predicts how people respond. Your study on judging social class from faces, with the colour-manipulated face pairs, would be a great fit: paired choices are one of the formats the model most needs to learn.\n\nThe data is on OSF (zcxtp), but there's no licence stated, and the questionnaire and face images aren't in the project. Would you be happy for me to use the data? And could you share the exact question wording and the face pairs as participants saw them? I understand the faces come from the Chicago Face Database, so if you can't pass those on, the list of face IDs and how each was manipulated would help.\n\nNothing derived from your data would be published or redistributed, and I'll credit your work.\n\nThanks very much,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "notes": "Drafted 19 Nov 2026. Stirling address from her 2024 QJEP paper; she is also at Royal Holloway."
+    "body": "Hi Thora,\n\nI'm an independent researcher in the UK. I'm building a dataset of real experiments where people were shown something and then answered questions, and I use it to train a model that predicts how people respond. Your study on judging social class from colour-manipulated face pairs would fit well, because paired choices are one of the formats the model most needs to learn.\n\nThe data is on OSF (zcxtp), but no licence is stated, and the questionnaire and face images aren't in the project. Would you be happy for me to use the data? Could you also share the exact question wording and the face pairs as participants saw them? I know the faces come from the Chicago Face Database, so if you can't pass those on, the face IDs and how each one was manipulated would do.\n\nNothing derived from your data would be published or redistributed, and I'll credit your work.\n\nThanks very much,\nRich Hutton\nrich.hutton@googlemail.com",
+    "status": "sent",
+    "notes": "Drafted 19 Nov 2026. Stirling address from her 2024 QJEP paper; she is also at Royal Holloway. Sent by rich 19 Nov 2026.",
+    "sent": "2026-11-19"
   }
 ]
