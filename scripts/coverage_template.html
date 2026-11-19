@@ -92,7 +92,7 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
       <ul class="notes">
         <li>Every experiment uses the same eight categories, the six TESS uses for its own studies and two political ones added for the UK layer. Text experiments keep the category recorded in the experiment list. Image experiments were given theirs on 13 Nov 2026 from each title and description, so read those as a first pass.</li>
         <li>Candidates are experiments not built yet. For text that means Buildable or Needs checking; for images it also includes Waiting for images. Anything marked Unlikely is left out.</li>
-        <li>Jev, our model judge, was asked separately which category fits each experiment from its title and description. Where it disagrees with the recorded category the list shows its suggestion and confidence; nothing changes until a person decides. Innovation Panel experiments are not sent to Jev, under the UK Data Service licence.</li>
+        <li>Jev, our model judge, was asked separately which category fits each experiment from its title and description. Where it disagrees with the recorded category the list shows its suggestion and confidence; nothing changes until a person decides. Innovation Panel experiments are not sent for the category check. They are sent for the kind check (titles from UKDS's public documentation and our own descriptions only, on rich's ruling of 19 Nov 2026).</li>
         <li>The SocSci210 paper (Kolluri et al., 2025, Figure 2) sorts its 210 studies into eight disciplines but does not say which study sits where, so this page cannot set our spread beside theirs.</li>
       </ul>
     </div>
@@ -113,6 +113,14 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
 
 
   <section class="panel">
+    <div class="chead">
+      <h2 style="margin:0">By kind of experiment</h2>
+    </div>
+    <div class="bars" id="kbars"></div>
+    <p class="note" id="kbarnote"></p>
+  </section>
+
+  <section class="panel">
     <h2>Category by set</h2>
     <div class="scroll"><table class="cross" id="cross"></table></div>
   </section>
@@ -124,13 +132,14 @@ th{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
       <select id="fset" aria-label="Set"><option value="">Text and image</option><option>Text</option><option>Image</option></select>
       <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
       <select id="fkind" aria-label="Built or candidate"><option value="">Built and candidates</option><option value="built">Built only</option><option value="candidate">Candidates only</option></select>
+      <select id="fetype" aria-label="Kind"><option value="">All kinds</option></select>
       <select id="fjev" aria-label="Jev check"><option value="">Any Jev answer</option><option value="no">Jev suggests another category</option></select>
       <span class="count" id="count"></span>
     </div>
     <div class="scroll">
       <table class="list">
-        <colgroup><col style="width:70px"><col style="width:190px"><col><col style="width:130px"><col style="width:180px"><col style="width:200px"><col style="width:140px"><col style="width:90px"></colgroup>
-        <thead><tr><th>Set</th><th>ID</th><th>Experiment</th><th>Source</th><th>Category</th><th>Jev check</th><th>Status</th><th>Rows</th></tr></thead>
+        <colgroup><col style="width:70px"><col style="width:190px"><col><col style="width:130px"><col style="width:180px"><col style="width:200px"><col style="width:190px"><col style="width:140px"><col style="width:90px"></colgroup>
+        <thead><tr><th>Set</th><th>ID</th><th>Experiment</th><th>Source</th><th>Category</th><th>Jev check</th><th>Kind</th><th>Status</th><th>Rows</th></tr></thead>
         <tbody id="tb"></tbody>
       </table>
     </div>
@@ -145,7 +154,9 @@ const fmt = n => n == null ? "" : n.toLocaleString("en-GB");
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const items = DATA.items.filter(i => i.kind !== "out");
 const cats = DATA.categories;
-let measure = "exp", catFilter = "";
+const kinds = DATA.kinds;
+const kindLabel = Object.fromEntries(kinds.map(k => [k.id, k.label]));
+let measure = "exp", catFilter = "", etypeFilter = "";
 
 function tally(set, cat, kind) {
   return items.filter(i => (!set || i.set === set) && (!cat || i.category === cat) && i.kind === kind);
@@ -192,6 +203,31 @@ function drawBars() {
     : "Each bar counts rows in built experiments. Candidates have no rows yet. Select a category to filter the list below.";
 }
 
+function drawKindBars() {
+  const by = (k, kind, set) => items.filter(i => i.etype === k && i.kind === kind && (!set || i.set === set));
+  const data = kinds.map(k => {
+    const t = by(k.id, "built", "Text"), im = by(k.id, "built", "Image"), cand = by(k.id, "candidate");
+    return measure === "exp"
+      ? { k, t: t.length, i: im.length, c: cand.length }
+      : { k, t: rowsOf(t), i: rowsOf(im), c: 0 };
+  }).filter(d => d.t + d.i + d.c);
+  const max = Math.max(...data.map(d => d.t + d.i + d.c), 1);
+  const frac = v => (v / max).toFixed(4);
+  $("kbars").innerHTML = data.map(d => {
+    const total = d.t + d.i;
+    const label = measure === "exp" ? `${total} built` + (d.c ? ` · ${d.c} candidates` : "") : `${fmt(total)} rows`;
+    return `<div class="row${etypeFilter === d.k.id ? " on" : ""}" tabindex="0" role="button" data-etype="${esc(d.k.id)}" data-cat="${esc(d.k.label)}" aria-label="${esc(d.k.label)}: ${esc(label)}">
+      <span class="lab">${esc(d.k.label)}</span>
+      <span class="track"><span class="stack" style="width:calc(100% * ${frac(d.t + d.i + d.c)})">
+        ${d.t ? `<span class="t" style="flex:${d.t}" data-tip="Text built: ${fmt(d.t)}"></span>` : ""}
+        ${d.i ? `<span class="i" style="flex:${d.i}" data-tip="Image built: ${fmt(d.i)}"></span>` : ""}
+        ${d.c ? `<span class="c" style="flex:${d.c}" data-tip="Candidates: ${d.c}"></span>` : ""}
+      </span></span><span class="val">${esc(label)}</span></div>`;
+  }).join("");
+  const guesses = items.filter(i => i.etype_basis === "guess").length;
+  $("kbarnote").textContent = `The eleven kinds are the experiment builder's own. Each experiment's kind is recorded once in data/catalog/experiment_kinds.json: where the description names its method and Jev agreed, from that; otherwise decided by reading the description and design notes. ${guesses} candidates described too thinly to be sure are marked (guess) in the list. Where Jev read it differently, its answer is shown under the kind. Select a kind to filter the list.`;
+}
+
 function drawCross() {
   const all = rowsOf(items.filter(i => i.kind === "built"));
   const cell = v => `<td class="num${v ? "" : " zero"}">${fmt(v) || "0"}</td>`;
@@ -214,23 +250,42 @@ function jevCell(i) {
 }
 
 
+function kindCell(i) {
+  if (!i.etype) return "";
+  const short = id => esc((kindLabel[id] || id).replace(/^\d+ · /, "").replace(/ \(.*\)$/, ""));
+  let out = short(i.etype);
+  if (i.etype_basis === "guess") out += ' <span class="no">(guess)</span>';
+  if (i.etype_jev) out += `<br><span class="held">Jev: ${short(i.etype_jev.choice)} (${Math.round(i.etype_jev.confidence * 100)}%)</span>`;
+  return out;
+}
+
 function statusPill(s) {
   const cls = s.startsWith("Built") ? "Built" : s.split(" ")[0];
   return `<span class="pill s-${cls}">${esc(s)}</span>`;
 }
 
 function drawList() {
-  const q = $("q").value.trim().toLowerCase(), set = $("fset").value, cat = $("fcat").value, kind = $("fkind").value, fj = $("fjev").value;
+  const q = $("q").value.trim().toLowerCase(), set = $("fset").value, cat = $("fcat").value, kind = $("fkind").value, fj = $("fjev").value, et = $("fetype").value;
   const rows = items.filter(i => (!set || i.set === set) && (!cat || i.category === cat) && (!kind || i.kind === kind) &&
+    (!et || i.etype === et) &&
     (!fj || jevDiffers(i)) &&
     (!q || (i.title + " " + i.id).toLowerCase().includes(q)))
     .sort((a, b) => cats.indexOf(a.category) - cats.indexOf(b.category) || (a.kind === b.kind ? 0 : a.kind === "built" ? -1 : 1) || a.set.localeCompare(b.set) || (b.rows || 0) - (a.rows || 0));
-  $("tb").innerHTML = rows.map(i => `<tr><td>${i.set}</td><td class="id">${esc(i.id)}</td><td class="t">${esc(i.title)}</td><td>${esc(i.source)}</td><td>${esc(i.category)}</td><td class="jev">${jevCell(i)}</td><td>${statusPill(i.status)}</td><td class="num">${fmt(i.rows)}</td></tr>`).join("");
+  $("tb").innerHTML = rows.map(i => `<tr><td>${i.set}</td><td class="id">${esc(i.id)}</td><td class="t">${esc(i.title)}</td><td>${esc(i.source)}</td><td>${esc(i.category)}</td><td class="jev">${jevCell(i)}</td><td class="jev">${kindCell(i)}</td><td>${statusPill(i.status)}</td><td class="num">${fmt(i.rows)}</td></tr>`).join("");
   $("count").textContent = `${rows.length} shown`;
 }
 
 $("fcat").insertAdjacentHTML("beforeend", cats.map(c => `<option>${esc(c)}</option>`).join(""));
 ["q", "fset", "fkind", "fjev"].forEach(id => $(id).addEventListener("input", drawList));
+$("fetype").insertAdjacentHTML("beforeend", kinds.map(k => `<option value="${esc(k.id)}">${esc(k.label)}</option>`).join(""));
+$("fetype").addEventListener("input", () => { etypeFilter = $("fetype").value; drawKindBars(); drawList(); });
+function pickKind(k) {
+  etypeFilter = etypeFilter === k ? "" : k;
+  $("fetype").value = etypeFilter;
+  drawKindBars(); drawList();
+}
+$("kbars").addEventListener("click", e => { const r = e.target.closest(".row"); if (r) pickKind(r.dataset.etype); });
+$("kbars").addEventListener("keydown", e => { const r = e.target.closest(".row"); if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pickKind(r.dataset.etype); } });
 $("fcat").addEventListener("input", () => { catFilter = $("fcat").value; drawBars(); drawList(); });
 
 function pickCat(c) {
@@ -251,15 +306,24 @@ $("bars").addEventListener("mousemove", e => {
   tip.style.left = x + "px"; tip.style.top = (e.clientY + 14) + "px";
 });
 $("bars").addEventListener("mouseleave", () => { tip.hidden = true; });
+$("kbars").addEventListener("mousemove", e => {
+  const s = e.target.closest("[data-tip]"); const r = e.target.closest(".row");
+  if (!s || !r) { tip.hidden = true; return; }
+  tip.innerHTML = `<b>${esc(r.dataset.cat)}</b><br>${esc(s.dataset.tip)}`;
+  tip.hidden = false;
+  const x = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+  tip.style.left = x + "px"; tip.style.top = (e.clientY + 14) + "px";
+});
+$("kbars").addEventListener("mouseleave", () => { tip.hidden = true; });
 
 function setMeasure(m) {
   measure = m;
   $("m-exp").setAttribute("aria-pressed", m === "exp");
   $("m-rows").setAttribute("aria-pressed", m === "rows");
-  drawBars();
+  drawBars(); drawKindBars();
 }
 $("m-exp").addEventListener("click", () => setMeasure("exp"));
 $("m-rows").addEventListener("click", () => setMeasure("rows"));
 
-drawBars(); drawCross(); drawList();
+drawBars(); drawKindBars(); drawCross(); drawList();
 </script>

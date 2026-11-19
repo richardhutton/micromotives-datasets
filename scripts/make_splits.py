@@ -77,6 +77,13 @@ ROW_ORDER = ["participant_id", "condition_num", "task_num"]
 TEXTS = ["condition", "outcome"]
 PROCESSED = ROOT / "data" / "processed"
 SEED = 20261012
+# Sources drawn together for the unseen share. A source with one study can hold back
+# none of it at 20% (round(0.2) is 0), and the test that every source reaches the test
+# set then fails. Figshare and OSF arrived with one MaxDiff study each (Nov 2026), so
+# they are drawn with Zenodo, the other open-archive source: five studies, one unseen.
+# The stratum keeps Zenodo's name, so it sorts where Zenodo did and no other source's
+# draw moves (rich, 19 Nov 2026: "then commit it", on this recommendation).
+STRATUM = {"figshare": "zenodo", "osf": "zenodo"}
 
 # SocSci210 metadata/participant_mapping.json (huggingface.co/datasets/socratesft/
 # SocSci210), read 12 Oct 2026. Only the ids matter here, not their rows.
@@ -351,7 +358,8 @@ def split(studies: dict[str, dict[str, object]]) -> dict[str, list[str]]:
     rng = random.Random(SEED)
     by_source: dict[str, list[str]] = defaultdict(list)
     for study, entry in studies.items():
-        by_source[str(entry["source"])].append(study)
+        source = str(entry["source"])
+        by_source[STRATUM.get(source, source)].append(study)
 
     unseen: set[str] = set()
     for source in sorted(by_source):

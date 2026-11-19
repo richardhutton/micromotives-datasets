@@ -56,8 +56,12 @@ def test_socsci210_sides_are_kept_for_shared_tess_studies() -> None:
 
 def test_every_source_is_in_the_test_set_at_about_the_set_share() -> None:
     studies = make_splits.experiments_by_study()
-    for source in {str(e["source"]) for e in studies.values()}:
-        ids = [s for s, e in studies.items() if e["source"] == source]
+
+    def stratum(e: dict) -> str:
+        return make_splits.STRATUM.get(str(e["source"]), str(e["source"]))
+
+    for source in {stratum(e) for e in studies.values()}:
+        ids = [s for s, e in studies.items() if stratum(e) == source]
         held = [s for s in ids if s in MAPPING["unseen"]]
         assert held, f"no {source} study is unseen"
         # A source with n studies can only hold back multiples of 1/n, so the

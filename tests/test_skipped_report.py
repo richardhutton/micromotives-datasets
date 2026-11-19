@@ -75,3 +75,19 @@ def test_sources_built_from_outside_the_catalogue_are_named() -> None:
         f"built but named nowhere in SKIPPED.md: {missing}. Re-run "
         "`uv run python scripts/skipped_report.py`."
     )
+
+
+def test_an_osf_study_is_named_whole_and_not_as_dataverse() -> None:
+    """`osf_ct8ae` cut at its first underscore would be named "osf", and filed with
+    the Dataverse studies it would be said to rest on a provenance entry it does not
+    have."""
+    text = SKIPPED.read_text()
+    osf = sorted("_".join(p.stem.split("_")[:2]) for p in RECIPES.glob("osf_*.yaml"))
+    assert osf, "no OSF recipes found; this test would pass vacuously"
+    for code in osf:
+        assert f"`{code}`" in text, code
+        sentence = next(s for s in text.split(". ") if f"`{code}`" in s and "OSF" in s)
+        # osf_ct8ae is public under CC BY 4.0 (17 Nov 2026), so it is reported with
+        # the openly licensed archives, not as stating no licence.
+        assert "open licence" in sentence and "no licence" not in sentence, sentence
+    assert "`osf`" not in text

@@ -9,8 +9,16 @@
    "status": "Built",
    "digest": "89e8e37df078647c",
    "jev": null,
-   "x": -0.976,
-   "y": 19.06
+   "kind_digest": "5d5e5e9eb70b20e3",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.98,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": null,
+   "x": -8.483,
+   "y": 16.486
   },
   {
    "key": "text:9.29",
@@ -21,8 +29,16 @@
    "status": "Buildable",
    "digest": "333acdda3cdd1b15",
    "jev": null,
-   "x": -0.84,
-   "y": 19.055
+   "kind_digest": "dfc8db0319c73d60",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.91,
+    "runner_up": "version",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": "mix",
+   "x": -8.597,
+   "y": 16.427
   },
   {
    "key": "text:ukds_6849_mpc_twopart_w15",
@@ -33,8 +49,16 @@
    "status": "Built",
    "digest": "ca2d7022c5ca3d37",
    "jev": null,
-   "x": -8.584,
-   "y": -2.373
+   "kind_digest": "ca580ecb1e920969",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.75,
+    "runner_up": "story",
+    "runner_up_confidence": 0.17
+   },
+   "keyword_kind": "mix",
+   "x": -19.929,
+   "y": 3.01
   },
   {
    "key": "text:ukds_6849_mpc_direct_w15",
@@ -45,8 +69,16 @@
    "status": "Built",
    "digest": "20b4a93b0d4dd292",
    "jev": null,
-   "x": -8.596,
-   "y": -2.365
+   "kind_digest": "069401aa4b9dcd87",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.88,
+    "runner_up": "story",
+    "runner_up_confidence": 0.07
+   },
+   "keyword_kind": "mix",
+   "x": -19.953,
+   "y": 3.034
   },
   {
    "key": "text:ukds_6849_hmrc_consent_w11",
@@ -57,8 +89,16 @@
    "status": "Built",
    "digest": "0772a4dbb74f8512",
    "jev": null,
-   "x": 4.346,
-   "y": 1.09
+   "kind_digest": "f52ab3e54dd3d0fc",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.97,
+    "runner_up": "version",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "mix",
+   "x": -21.755,
+   "y": -9.951
   },
   {
    "key": "text:ukds_6849_hmrc_consent_w11_web",
@@ -69,8 +109,16 @@
    "status": "Built",
    "digest": "2d84a69597405a67",
    "jev": null,
-   "x": 3.949,
-   "y": 0.9
+   "kind_digest": "2a6b30ea3e5651f1",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.96,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": -21.51,
+   "y": -10.555
   },
   {
    "key": "text:ukds_6849_hmrc_consent_w15",
@@ -81,8 +129,16 @@
    "status": "Built",
    "digest": "f2d047974740bb78",
    "jev": null,
-   "x": 3.959,
-   "y": 1.245
+   "kind_digest": "972deb9db50a4004",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.61,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.35
+   },
+   "keyword_kind": null,
+   "x": -21.177,
+   "y": -9.941
   },
   {
    "key": "text:9.46",
@@ -93,8 +149,16 @@
    "status": "Buildable",
    "digest": "4778f8ed62e63600",
    "jev": null,
-   "x": 3.23,
-   "y": 3.516
+   "kind_digest": "659064d76dda0f6c",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.53,
+    "runner_up": "version",
+    "runner_up_confidence": 0.28
+   },
+   "keyword_kind": null,
+   "x": -18.478,
+   "y": -9.066
   },
   {
    "key": "text:ukds_6849_immig_vignette_w11",
@@ -105,8 +169,16 @@
    "status": "Built",
    "digest": "efeacaf11cb4eccd",
    "jev": null,
-   "x": 9.584,
-   "y": -12.334
+   "kind_digest": "fc8a96b05e39fee7",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.74,
+    "runner_up": "version",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": "choice",
+   "x": 12.764,
+   "y": -10.859
   },
   {
    "key": "text:9.6",
@@ -117,8 +189,16 @@
    "status": "Buildable",
    "digest": "76fd7dbd3d343e6f",
    "jev": null,
-   "x": 3.563,
-   "y": 2.109
+   "kind_digest": "bdeec5928be32a67",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.65,
+    "runner_up": "context",
+    "runner_up_confidence": 0.31
+   },
+   "keyword_kind": "mix",
+   "x": -19.955,
+   "y": -9.811
   },
   {
    "key": "text:ukds_6849_nrp_w10_fh",
@@ -129,8 +209,16 @@
    "status": "Built",
    "digest": "228dced5d8b13c99",
    "jev": null,
-   "x": 9.699,
-   "y": 2.792
+   "kind_digest": "1aeb8018879b879d",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.83,
+    "runner_up": "version",
+    "runner_up_confidence": 0.14
+   },
+   "keyword_kind": null,
+   "x": -17.919,
+   "y": -1.736
   },
   {
    "key": "text:ukds_6849_nrp_w10_contact",
@@ -141,8 +229,16 @@
    "status": "Built",
    "digest": "cbd62f3a01bf2a66",
    "jev": null,
-   "x": 9.537,
-   "y": 2.929
+   "kind_digest": "ebf4a6403e605f0a",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.48,
+    "runner_up": "context",
+    "runner_up_confidence": 0.46
+   },
+   "keyword_kind": null,
+   "x": -18.088,
+   "y": -1.878
   },
   {
    "key": "text:ukds_6849_envtax_w7",
@@ -153,8 +249,16 @@
    "status": "Built",
    "digest": "60ce76fa83a53a7a",
    "jev": null,
-   "x": 7.436,
-   "y": -13.202
+   "kind_digest": "59b0c165094ff73c",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.73,
+    "runner_up": "version",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": 7.797,
+   "y": -2.061
   },
   {
    "key": "text:ukds_6849_sensor_consent_w17_ftf",
@@ -165,8 +269,16 @@
    "status": "Built",
    "digest": "d37332b6afad84d3",
    "jev": null,
-   "x": 1.633,
-   "y": 2.393
+   "kind_digest": "0c95a8d9958114a7",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.93,
+    "runner_up": "version",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": "mix",
+   "x": -17.942,
+   "y": -11.187
   },
   {
    "key": "text:ukds_6849_sensor_consent_w17_web",
@@ -177,8 +289,16 @@
    "status": "Built",
    "digest": "c532ae35a572f01f",
    "jev": null,
-   "x": 1.602,
-   "y": 2.278
+   "kind_digest": "7fda8bb6ace90528",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.95,
+    "runner_up": "story",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": "mix",
+   "x": -18.042,
+   "y": -11.369
   },
   {
    "key": "text:ukds_6849_automation_w14",
@@ -189,8 +309,16 @@
    "status": "Built",
    "digest": "e849b932fb51ac31",
    "jev": null,
-   "x": 6.227,
-   "y": -2.249
+   "kind_digest": "3babe60e2eadafdb",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.69,
+    "runner_up": "story",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": "story",
+   "x": -12.433,
+   "y": -8.958
   },
   {
    "key": "text:9.21",
@@ -201,8 +329,16 @@
    "status": "Buildable",
    "digest": "885ff06fb532314f",
    "jev": null,
-   "x": 2.978,
-   "y": 0.635
+   "kind_digest": "1938e460baa2b899",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.8,
+    "runner_up": "version",
+    "runner_up_confidence": 0.16
+   },
+   "keyword_kind": "mix",
+   "x": -20.402,
+   "y": -11.007
   },
   {
    "key": "text:ukds_6849_immigsdb_w8",
@@ -213,8 +349,16 @@
    "status": "Built",
    "digest": "d1e8ae0f56e03af0",
    "jev": null,
-   "x": 7.601,
-   "y": -10.225
+   "kind_digest": "c4eb443c15b9f984",
+   "jev_kind": {
+    "choice": "sensitive_count",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": "sensitive_count",
+   "x": 0.911,
+   "y": -9.708
   },
   {
    "key": "text:ukds_6849_immigsdb_w9",
@@ -225,8 +369,16 @@
    "status": "Built",
    "digest": "56ef949729da146b",
    "jev": null,
-   "x": 7.601,
-   "y": -10.221
+   "kind_digest": "27ecdf8f715dc898",
+   "jev_kind": {
+    "choice": "sensitive_count",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": "sensitive_count",
+   "x": 0.892,
+   "y": -9.713
   },
   {
    "key": "text:9.50",
@@ -237,8 +389,16 @@
    "status": "Buildable",
    "digest": "19ccdce4896808d8",
    "jev": null,
-   "x": 2.244,
-   "y": 1.473
+   "kind_digest": "a266d666d5096d0c",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.32,
+    "runner_up": "baseline",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": null,
+   "x": -19.311,
+   "y": -11.354
   },
   {
    "key": "text:8.14",
@@ -249,8 +409,16 @@
    "status": "Buildable",
    "digest": "ac94f6a676367f37",
    "jev": null,
-   "x": 0.591,
-   "y": -5.756
+   "kind_digest": "8d1d6ef1a8bed517",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.87,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": -8.124,
+   "y": -13.069
   },
   {
    "key": "text:8.4",
@@ -261,8 +429,16 @@
    "status": "Buildable",
    "digest": "cc46568847e2c3ad",
    "jev": null,
-   "x": 5.427,
-   "y": 3.819
+   "kind_digest": "bfcd4ba656d36d6b",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.81,
+    "runner_up": "context",
+    "runner_up_confidence": 0.14
+   },
+   "keyword_kind": null,
+   "x": -18.169,
+   "y": -6.463
   },
   {
    "key": "text:9.41",
@@ -273,8 +449,16 @@
    "status": "Buildable",
    "digest": "f8d166c4ddffc634",
    "jev": null,
-   "x": 4.728,
-   "y": -8.016
+   "kind_digest": "eba1ea75dc9b923a",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.98,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": null,
+   "x": 4.303,
+   "y": -1.801
   },
   {
    "key": "text:9.40",
@@ -285,8 +469,16 @@
    "status": "Buildable",
    "digest": "ab065a6b6dd0842e",
    "jev": null,
-   "x": 3.177,
-   "y": -18.03
+   "kind_digest": "6c21a7bcf1fd8c01",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.62,
+    "runner_up": "context",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": 7.702,
+   "y": -10.833
   },
   {
    "key": "text:8.8",
@@ -297,8 +489,16 @@
    "status": "Buildable",
    "digest": "67e367dd0e9ab754",
    "jev": null,
-   "x": 2.454,
-   "y": -5.482
+   "kind_digest": "8da2c53bd2f09e56",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.71,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": -6.483,
+   "y": -14.835
   },
   {
    "key": "text:ukds_6849_national_identity_w15",
@@ -309,8 +509,16 @@
    "status": "Built",
    "digest": "e487be414e843002",
    "jev": null,
-   "x": -0.882,
-   "y": 0.746
+   "kind_digest": "d06d1a3e3ca0309a",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -5.116,
+   "y": 2.738
   },
   {
    "key": "text:9.22",
@@ -321,8 +529,16 @@
    "status": "Buildable",
    "digest": "15e279ddd48b4e7b",
    "jev": null,
-   "x": 12.307,
-   "y": 0.895
+   "kind_digest": "23753caddcf65810",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.77,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.11
+   },
+   "keyword_kind": null,
+   "x": -15.028,
+   "y": -0.064
   },
   {
    "key": "text:8.10",
@@ -333,8 +549,16 @@
    "status": "Buildable",
    "digest": "19d1d14b17afc0f4",
    "jev": null,
-   "x": 3.9,
-   "y": -9.677
+   "kind_digest": "2f1b277bba454a0e",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.98,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -2.635,
+   "y": -10.813
   },
   {
    "key": "text:9.35",
@@ -345,8 +569,16 @@
    "status": "Buildable",
    "digest": "8bf1cbc920a48d44",
    "jev": null,
-   "x": 7.059,
-   "y": 5.164
+   "kind_digest": "e1e69e71f157e2bf",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.75,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.1
+   },
+   "keyword_kind": null,
+   "x": -19.527,
+   "y": -4.483
   },
   {
    "key": "text:8.3",
@@ -357,8 +589,16 @@
    "status": "Buildable",
    "digest": "8b7fafaab0ec4322",
    "jev": null,
-   "x": 3.204,
-   "y": -8.494
+   "kind_digest": "6cacc2b35d1ad4d1",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.39,
+    "runner_up": "version",
+    "runner_up_confidence": 0.31
+   },
+   "keyword_kind": null,
+   "x": -3.924,
+   "y": -13.266
   },
   {
    "key": "text:8.5",
@@ -369,8 +609,16 @@
    "status": "Buildable",
    "digest": "3f28d7ac4186f24c",
    "jev": null,
-   "x": 1.295,
-   "y": -8.611
+   "kind_digest": "905274d07f76c249",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.79,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.13
+   },
+   "keyword_kind": null,
+   "x": -4.927,
+   "y": -11.619
   },
   {
    "key": "text:8.11",
@@ -381,8 +629,16 @@
    "status": "Buildable",
    "digest": "39d0946614da872a",
    "jev": null,
-   "x": 2.266,
-   "y": -8.974
+   "kind_digest": "14cffb7e77d32f25",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.68,
+    "runner_up": "context",
+    "runner_up_confidence": 0.14
+   },
+   "keyword_kind": null,
+   "x": -3.402,
+   "y": -12.329
   },
   {
    "key": "text:8.12",
@@ -393,8 +649,16 @@
    "status": "Needs checking",
    "digest": "34c924e78eb0aab1",
    "jev": null,
-   "x": 2.076,
-   "y": -4.8
+   "kind_digest": "9cf81e3a9084b904",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.74,
+    "runner_up": "baseline",
+    "runner_up_confidence": 0.11
+   },
+   "keyword_kind": null,
+   "x": -7.658,
+   "y": -15.242
   },
   {
    "key": "text:9.3",
@@ -405,8 +669,16 @@
    "status": "Needs checking",
    "digest": "2d02d33142a21ef5",
    "jev": null,
-   "x": -0.72,
-   "y": -7.745
+   "kind_digest": "b3816c1b3b47c914",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.41,
+    "runner_up": "context",
+    "runner_up_confidence": 0.28
+   },
+   "keyword_kind": null,
+   "x": -4.803,
+   "y": -6.367
   },
   {
    "key": "text:del_sandbox_feb2023_wordfeminist",
@@ -422,8 +694,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.03
    },
-   "x": 4.589,
-   "y": 7.865
+   "kind_digest": "ce979cb302d3d9bf",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.92,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": null,
+   "x": -7.436,
+   "y": 6.836
   },
   {
    "key": "text:del_panel_w4_extreme_weather",
@@ -439,8 +719,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -1.421,
-   "y": 11.087
+   "kind_digest": "2c2b4aaf3c103106",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.41,
+    "runner_up": "version",
+    "runner_up_confidence": 0.37
+   },
+   "keyword_kind": null,
+   "x": -3.047,
+   "y": 11.633
   },
   {
    "key": "text:del_panel_w3_ngo_conjoint_donate",
@@ -456,8 +744,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.26
    },
-   "x": 4.753,
-   "y": 11.919
+   "kind_digest": "001349e8ce182009",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.95,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": "choice",
+   "x": -10.98,
+   "y": 10.418
   },
   {
    "key": "text:del_panel_w3_ngo_conjoint_petition",
@@ -473,8 +769,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.39
    },
-   "x": 4.906,
-   "y": 12.044
+   "kind_digest": "91aee7cba58f124a",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.91,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": "choice",
+   "x": -11.263,
+   "y": 10.246
   },
   {
    "key": "text:del_panel_w4_climate_harm_stories",
@@ -490,8 +794,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.03
    },
-   "x": -1.082,
-   "y": 11.172
+   "kind_digest": "cc04c109662dafba",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.85,
+    "runner_up": "version",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": null,
+   "x": -2.654,
+   "y": 11.219
   },
   {
    "key": "text:del_panel_w5_who_must_change",
@@ -507,8 +819,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.28
    },
-   "x": 1.072,
-   "y": 12.192
+   "kind_digest": "9f54fccb7e423197",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 1.0,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": null,
+   "x": -1.923,
+   "y": 8.875
   },
   {
    "key": "text:W4_DonationSplit",
@@ -524,8 +844,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.25
    },
-   "x": 2.614,
-   "y": 10.567
+   "kind_digest": "29313dd20d2f1a7d",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.71,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.11
+   },
+   "keyword_kind": null,
+   "x": -7.763,
+   "y": 11.164
   },
   {
    "key": "text:del_sandbox_jun2022_ukraine_choice",
@@ -541,8 +869,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.2
    },
-   "x": 2.208,
-   "y": 10.998
+   "kind_digest": "6c99e120bf39aa7d",
+   "jev_kind": {
+    "choice": "head_to_head",
+    "confidence": 0.41,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.31
+   },
+   "keyword_kind": "lineup",
+   "x": -7.905,
+   "y": 11.929
   },
   {
    "key": "text:del_sandbox_feb2023_aid_priorities",
@@ -558,8 +894,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.02
    },
-   "x": 4.019,
-   "y": 9.65
+   "kind_digest": "431eab3398dc2692",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.55,
+    "runner_up": "context",
+    "runner_up_confidence": 0.17
+   },
+   "keyword_kind": null,
+   "x": -8.148,
+   "y": 8.762
   },
   {
    "key": "text:W5_wordfeministsplit",
@@ -575,8 +919,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.01
    },
-   "x": 4.271,
-   "y": 8.319
+   "kind_digest": "af88d3540335a97e",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.56,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.3
+   },
+   "keyword_kind": null,
+   "x": -7.393,
+   "y": 7.331
   },
   {
    "key": "text:del_sandbox_feb2023_abortion",
@@ -592,8 +944,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.2
    },
-   "x": 11.191,
-   "y": 4.803
+   "kind_digest": "a73b4194f9b7b53f",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.99,
+    "runner_up": "story",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -12.282,
+   "y": 3.41
   },
   {
    "key": "text:del_sandbox_jul2020_global_goals",
@@ -609,8 +969,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.08
    },
-   "x": 1.465,
-   "y": 8.654
+   "kind_digest": "fcb02a7b0e86c880",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.62,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.2
+   },
+   "keyword_kind": "lineup",
+   "x": -4.466,
+   "y": 7.364
   },
   {
    "key": "text:del_sandbox_feb2023_gender_aid",
@@ -626,8 +994,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.03
    },
-   "x": 10.065,
-   "y": 6.847
+   "kind_digest": "fa9980478bf2b314",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.49,
+    "runner_up": "story",
+    "runner_up_confidence": 0.36
+   },
+   "keyword_kind": null,
+   "x": -9.785,
+   "y": 4.757
   },
   {
    "key": "text:del_sandbox_feb2023_gender_equality",
@@ -643,8 +1019,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.2
    },
-   "x": 11.068,
-   "y": 5.7
+   "kind_digest": "e89b8f3e3e42aed0",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.79,
+    "runner_up": "story",
+    "runner_up_confidence": 0.13
+   },
+   "keyword_kind": null,
+   "x": -11.218,
+   "y": 3.861
   },
   {
    "key": "text:del_sandbox_feb2023_gender_progress",
@@ -660,8 +1044,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.31
    },
-   "x": 10.716,
-   "y": 6.437
+   "kind_digest": "41f3017ab7193977",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.63,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.19
+   },
+   "keyword_kind": null,
+   "x": -10.276,
+   "y": 4.034
   },
   {
    "key": "text:del_panel_w4_east_africa_drought",
@@ -677,25 +1069,66 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.18
    },
-   "x": -1.517,
-   "y": 10.042
+   "kind_digest": "a3a0b2cab67caa81",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.51,
+    "runner_up": "version",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": -4.529,
+   "y": 11.814
   },
   {
-   "key": "text:W4_split_sample",
+   "key": "text:del_panel_w4_aid_conjoint_8attr",
    "set": "Text",
    "source": "DEL",
-   "title": "Climate aid conjoint",
+   "title": "Aid project conjoint (8 attributes)",
    "category": "political preferences/policy",
-   "status": "Needs checking",
-   "digest": "a56a63ed817f1451",
+   "status": "Built",
+   "digest": "125dc31e29a6c266",
    "jev": {
     "choice": "political preferences/policy",
-    "confidence": 0.97,
+    "confidence": 0.99,
     "runner_up": "survey methodology",
+    "runner_up_confidence": 0.01
+   },
+   "kind_digest": "6102df21d5777660",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.96,
+    "runner_up": "mix",
     "runner_up_confidence": 0.02
    },
-   "x": 4.385,
-   "y": 10.927
+   "keyword_kind": "choice",
+   "x": -9.841,
+   "y": 8.527
+  },
+  {
+   "key": "text:del_panel_w4_aid_conjoint_6attr",
+   "set": "Text",
+   "source": "DEL",
+   "title": "Aid project conjoint (6 attributes)",
+   "category": "political preferences/policy",
+   "status": "Built",
+   "digest": "e90c93b41ef142b4",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.99,
+    "runner_up": "survey methodology",
+    "runner_up_confidence": 0.01
+   },
+   "kind_digest": "f3e0947a772fe324",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.98,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "choice",
+   "x": -9.858,
+   "y": 8.551
   },
   {
    "key": "text:Apr2020_orgrolessplitgroup",
@@ -711,8 +1144,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.29
    },
-   "x": 2.172,
-   "y": 7.293
+   "kind_digest": "5d138123f4281ca4",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.71,
+    "runner_up": "story",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": -5.072,
+   "y": 5.773
   },
   {
    "key": "text:del_panel_w3_leadership",
@@ -728,8 +1169,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 1.669,
-   "y": 8.01
+   "kind_digest": "fa7624089a519faa",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.88,
+    "runner_up": "story",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": null,
+   "x": -4.603,
+   "y": 6.631
   },
   {
    "key": "text:del_panel_w4_cost_of_living",
@@ -745,8 +1194,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.33
    },
-   "x": 8.343,
-   "y": 9.105
+   "kind_digest": "6a6edfe536fc55cd",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.68,
+    "runner_up": "version",
+    "runner_up_confidence": 0.13
+   },
+   "keyword_kind": null,
+   "x": -16.853,
+   "y": 4.417
   },
   {
    "key": "text:e5rfg_tk",
@@ -762,8 +1219,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 18.767,
-   "y": 2.89
+   "kind_digest": "8d8947324fbb9e3d",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.48,
+    "runner_up": "context",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": -12.319,
+   "y": -22.773
   },
   {
    "key": "text:e5rfg_ce",
@@ -779,8 +1244,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 19.025,
-   "y": 3.58
+   "kind_digest": "291f2dda658f0fc7",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.44,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.13
+   },
+   "keyword_kind": null,
+   "x": -13.139,
+   "y": -22.721
   },
   {
    "key": "text:e5rfg_pair",
@@ -796,8 +1269,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 19.107,
-   "y": 4.242
+   "kind_digest": "ffae281148a03a18",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.43,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": -13.912,
+   "y": -22.836
   },
   {
    "key": "text:e5rfg_six",
@@ -813,8 +1294,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 19.313,
-   "y": 3.808
+   "kind_digest": "75025f8aec81a2ae",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.31,
+    "runner_up": "version",
+    "runner_up_confidence": 0.19
+   },
+   "keyword_kind": null,
+   "x": -13.482,
+   "y": -22.299
   },
   {
    "key": "text:pkt6f",
@@ -830,8 +1319,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -5.98,
-   "y": -18.09
+   "kind_digest": "01b3c2c4cb3f638b",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.35,
+    "runner_up": "story",
+    "runner_up_confidence": 0.2
+   },
+   "keyword_kind": null,
+   "x": 4.54,
+   "y": -21.998
   },
   {
    "key": "text:jxdu8",
@@ -847,8 +1344,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.01
    },
-   "x": 19.015,
-   "y": -9.427
+   "kind_digest": "c915fd7a33f32915",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.61,
+    "runner_up": "story",
+    "runner_up_confidence": 0.35
+   },
+   "keyword_kind": "story",
+   "x": 1.288,
+   "y": -2.278
   },
   {
    "key": "text:phbjd",
@@ -864,8 +1369,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.1
    },
-   "x": -0.049,
-   "y": -21.908
+   "kind_digest": "5de38a0642483cbf",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.32,
+    "runner_up": "baseline",
+    "runner_up_confidence": 0.36
+   },
+   "keyword_kind": null,
+   "x": -3.993,
+   "y": -22.241
   },
   {
    "key": "text:vwn96",
@@ -881,8 +1394,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.04
    },
-   "x": -3.87,
-   "y": -10.968
+   "kind_digest": "4b07e47ffead7f0d",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.33,
+    "runner_up": "context",
+    "runner_up_confidence": 0.32
+   },
+   "keyword_kind": "story",
+   "x": -10.19,
+   "y": -17.698
   },
   {
    "key": "text:wrxnz",
@@ -898,8 +1419,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.29
    },
-   "x": -1.603,
-   "y": -11.053
+   "kind_digest": "f8f05252d400f56c",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.52,
+    "runner_up": "story",
+    "runner_up_confidence": 0.17
+   },
+   "keyword_kind": null,
+   "x": -9.094,
+   "y": -19.379
   },
   {
    "key": "text:2tzmb",
@@ -915,8 +1444,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -5.686,
-   "y": -17.877
+   "kind_digest": "39f9ed758a283cbc",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.65,
+    "runner_up": "version",
+    "runner_up_confidence": 0.14
+   },
+   "keyword_kind": null,
+   "x": 4.466,
+   "y": -21.53
   },
   {
    "key": "text:gh396",
@@ -932,8 +1469,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -2.913,
-   "y": -17.585
+   "kind_digest": "bc7da35bef7aa105",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.9,
+    "runner_up": "context",
+    "runner_up_confidence": 0.07
+   },
+   "keyword_kind": "mix",
+   "x": 1.25,
+   "y": -12.092
   },
   {
    "key": "text:ca9ub",
@@ -949,8 +1494,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.15
    },
-   "x": 12.511,
-   "y": -7.633
+   "kind_digest": "8b1cac65aa972d51",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.33,
+    "runner_up": "story",
+    "runner_up_confidence": 0.23
+   },
+   "keyword_kind": null,
+   "x": -8.941,
+   "y": -0.34
   },
   {
    "key": "text:u2dbt",
@@ -966,8 +1519,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.42
    },
-   "x": -2.432,
-   "y": -9.375
+   "kind_digest": "63fe2260dc0985bb",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.28,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.28
+   },
+   "keyword_kind": null,
+   "x": -0.001,
+   "y": -15.578
   },
   {
    "key": "text:h3pc9",
@@ -983,8 +1544,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.03
    },
-   "x": 7.589,
-   "y": -7.699
+   "kind_digest": "2540fb22b0a67fdf",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.54,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.18
+   },
+   "keyword_kind": null,
+   "x": -0.564,
+   "y": -8.101
   },
   {
    "key": "text:gyrp9_send",
@@ -1000,8 +1569,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.09
    },
-   "x": -3.438,
-   "y": -8.047
+   "kind_digest": "eb157483ad9eabdb",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.95,
+    "runner_up": "version",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "lineup",
+   "x": -2.147,
+   "y": -15.572
   },
   {
    "key": "text:gyrp9_return",
@@ -1017,8 +1594,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.18
    },
-   "x": -3.378,
-   "y": -8.071
+   "kind_digest": "ba4602417e51ce26",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.4,
+    "runner_up": "context",
+    "runner_up_confidence": 0.37
+   },
+   "keyword_kind": "lineup",
+   "x": -2.094,
+   "y": -15.476
   },
   {
    "key": "text:v52yu",
@@ -1034,8 +1619,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.01
    },
-   "x": 14.902,
-   "y": -14.052
+   "kind_digest": "a2610c6bcc565943",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.33,
+    "runner_up": "version",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": null,
+   "x": 9.19,
+   "y": -15.583
   },
   {
    "key": "text:b2srk",
@@ -1051,8 +1644,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.03
    },
-   "x": 0.024,
-   "y": -21.829
+   "kind_digest": "608ace0f63d821cb",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.68,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": -3.994,
+   "y": -22.028
   },
   {
    "key": "text:z2vmq",
@@ -1068,8 +1669,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.02
    },
-   "x": -3.701,
-   "y": -13.825
+   "kind_digest": "dbd5a4172fab5ec1",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.91,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": "story",
+   "x": 0.573,
+   "y": -17.857
   },
   {
    "key": "text:k2mw3",
@@ -1085,8 +1694,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.41
    },
-   "x": -7.881,
-   "y": -12.156
+   "kind_digest": "19778adb4d2cf532",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.43,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.31
+   },
+   "keyword_kind": null,
+   "x": -5.617,
+   "y": -1.776
   },
   {
    "key": "text:s6urt",
@@ -1102,8 +1719,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 2.373,
-   "y": -11.289
+   "kind_digest": "6bcb57aac474c477",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.84,
+    "runner_up": "story",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": "mix",
+   "x": 2.846,
+   "y": -6.126
   },
   {
    "key": "text:g6y8s",
@@ -1119,8 +1744,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.01
    },
-   "x": -1.841,
-   "y": -15.33
+   "kind_digest": "3b53767c219beee9",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.45,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": 3.047,
+   "y": -12.446
   },
   {
    "key": "text:w8ezk",
@@ -1136,8 +1769,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 7.317,
-   "y": -13.818
+   "kind_digest": "cb6076af478efd2b",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.37,
+    "runner_up": "version",
+    "runner_up_confidence": 0.29
+   },
+   "keyword_kind": null,
+   "x": 7.638,
+   "y": -2.883
   },
   {
    "key": "text:gyscq",
@@ -1153,8 +1794,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.12
    },
-   "x": -4.824,
-   "y": -14.656
+   "kind_digest": "9523ae7d60cdf407",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.26,
+    "runner_up": "story",
+    "runner_up_confidence": 0.2
+   },
+   "keyword_kind": null,
+   "x": -0.575,
+   "y": -18.483
   },
   {
    "key": "text:q458t",
@@ -1170,8 +1819,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.22
    },
-   "x": 12.239,
-   "y": -5.866
+   "kind_digest": "543560edf25e6402",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.43,
+    "runner_up": "story",
+    "runner_up_confidence": 0.47
+   },
+   "keyword_kind": null,
+   "x": -8.698,
+   "y": -1.969
   },
   {
    "key": "text:rf79p",
@@ -1187,8 +1844,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.35
    },
-   "x": -1.528,
-   "y": -2.737
+   "kind_digest": "e31b3a544d5260e3",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.25,
+    "runner_up": "NONE_OF_THESE",
+    "runner_up_confidence": 0.17
+   },
+   "keyword_kind": null,
+   "x": -1.745,
+   "y": -0.411
   },
   {
    "key": "text:w2zm4",
@@ -1204,8 +1869,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.03
    },
-   "x": 1.969,
-   "y": -15.804
+   "kind_digest": "165058770ffd0e3a",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.24,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": 5.341,
+   "y": -11.076
   },
   {
    "key": "text:mjt8r",
@@ -1221,8 +1894,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.27
    },
-   "x": 12.113,
-   "y": -6.073
+   "kind_digest": "50e70b65c226947b",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.38,
+    "runner_up": "story",
+    "runner_up_confidence": 0.35
+   },
+   "keyword_kind": null,
+   "x": -8.442,
+   "y": -1.421
   },
   {
    "key": "text:gy5kn",
@@ -1238,8 +1919,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.08
    },
-   "x": -1.193,
-   "y": -3.497
+   "kind_digest": "9044440920520667",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.5,
+    "runner_up": "version",
+    "runner_up_confidence": 0.23
+   },
+   "keyword_kind": null,
+   "x": -1.672,
+   "y": -1.24
   },
   {
    "key": "text:dwtue",
@@ -1255,8 +1944,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.05
    },
-   "x": 0.201,
-   "y": -10.06
+   "kind_digest": "004e0a68c043952d",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.57,
+    "runner_up": "story",
+    "runner_up_confidence": 0.39
+   },
+   "keyword_kind": "story",
+   "x": -4.838,
+   "y": -16.655
   },
   {
    "key": "text:n96j5",
@@ -1272,8 +1969,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.03
    },
-   "x": 1.759,
-   "y": -14.091
+   "kind_digest": "f91106fbe45b3233",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.31,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": null,
+   "x": 3.895,
+   "y": -11.219
   },
   {
    "key": "text:gs6yz",
@@ -1289,8 +1994,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.2
    },
-   "x": 10.502,
-   "y": -5.989
+   "kind_digest": "8b37df004f9699e9",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.79,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.11
+   },
+   "keyword_kind": null,
+   "x": -8.64,
+   "y": -3.739
   },
   {
    "key": "text:m78xh",
@@ -1306,8 +2019,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.03
    },
-   "x": -2.638,
-   "y": -16.788
+   "kind_digest": "c4aa856c2e014ed8",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.74,
+    "runner_up": "story",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": 1.711,
+   "y": -12.743
   },
   {
    "key": "text:a7yw8",
@@ -1323,8 +2044,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.27
    },
-   "x": -0.062,
-   "y": -12.889
+   "kind_digest": "1ca76a63695f9154",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.44,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.39
+   },
+   "keyword_kind": null,
+   "x": 2.727,
+   "y": -15.65
   },
   {
    "key": "text:fykuz",
@@ -1340,8 +2069,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.02
    },
-   "x": -2.813,
-   "y": -13.573
+   "kind_digest": "24a20a5b08acdcaa",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -1.406,
+   "y": -13.478
   },
   {
    "key": "text:k5zqm",
@@ -1357,8 +2094,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.01
    },
-   "x": 0.194,
-   "y": -17.503
+   "kind_digest": "eeb2e5222ccf570b",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.25,
+    "runner_up": "story",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": 6.864,
+   "y": -13.665
   },
   {
    "key": "text:xk9ch_vignette1",
@@ -1374,8 +2119,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.01
    },
-   "x": 13.102,
-   "y": -11.32
+   "kind_digest": "9744e0b9e86e66c2",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.61,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.34
+   },
+   "keyword_kind": "story",
+   "x": 12.505,
+   "y": -16.29
   },
   {
    "key": "text:xk9ch_institution",
@@ -1391,8 +2144,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.01
    },
-   "x": 13.819,
-   "y": -11.173
+   "kind_digest": "2bcd37158e04db43",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.41,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": 11.783,
+   "y": -16.244
   },
   {
    "key": "text:xk9ch_vignette2",
@@ -1408,8 +2169,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.01
    },
-   "x": 13.319,
-   "y": -10.89
+   "kind_digest": "32603c3f60841719",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.6,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.36
+   },
+   "keyword_kind": "story",
+   "x": 12.516,
+   "y": -15.575
   },
   {
    "key": "text:xk9ch_identity_threat",
@@ -1425,8 +2194,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.01
    },
-   "x": 13.558,
-   "y": -11.79
+   "kind_digest": "01f93c72e283d082",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.55,
+    "runner_up": "version",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": 11.677,
+   "y": -15.433
   },
   {
    "key": "text:6gq25",
@@ -1442,8 +2219,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.23
    },
-   "x": 1.79,
-   "y": -17.952
+   "kind_digest": "7ac114f5c42f3e9a",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.57,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.14
+   },
+   "keyword_kind": null,
+   "x": 8.241,
+   "y": -12.781
   },
   {
    "key": "text:3uq9a",
@@ -1459,8 +2244,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.14
    },
-   "x": -0.691,
-   "y": -17.574
+   "kind_digest": "fffd63707273b950",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.24,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.26
+   },
+   "keyword_kind": null,
+   "x": 5.917,
+   "y": -13.45
   },
   {
    "key": "text:7tzpe",
@@ -1476,8 +2269,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 17.389,
-   "y": -7.574
+   "kind_digest": "2b218749f015f4d0",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.72,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.26
+   },
+   "keyword_kind": "story",
+   "x": 0.378,
+   "y": -3.728
   },
   {
    "key": "text:r8u7c",
@@ -1493,8 +2294,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.25
    },
-   "x": 2.117,
-   "y": -12.446
+   "kind_digest": "423cc79a4daea595",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.89,
+    "runner_up": "story",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": 2.944,
+   "y": -8.184
   },
   {
    "key": "text:wmfe6",
@@ -1510,8 +2319,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.04
    },
-   "x": 3.498,
-   "y": -7.333
+   "kind_digest": "a7c6339166ca4f09",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.81,
+    "runner_up": "context",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": "story",
+   "x": -4.73,
+   "y": -10.619
   },
   {
    "key": "text:tu95h",
@@ -1527,8 +2344,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": 11.533,
-   "y": -4.587
+   "kind_digest": "102fe176e4f3f41d",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.62,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.32
+   },
+   "keyword_kind": null,
+   "x": -10.172,
+   "y": -3.644
   },
   {
    "key": "text:yzjnd",
@@ -1544,8 +2369,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 4.038,
-   "y": -10.599
+   "kind_digest": "b916cf5f6966e855",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": "context",
+   "x": -1.869,
+   "y": -11.644
   },
   {
    "key": "text:8snrf",
@@ -1561,8 +2394,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.03
    },
-   "x": 0.241,
-   "y": -14.252
+   "kind_digest": "d06441aa6f5a427a",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.25,
+    "runner_up": "story",
+    "runner_up_confidence": 0.29
+   },
+   "keyword_kind": null,
+   "x": 3.864,
+   "y": -14.205
   },
   {
    "key": "text:fw5eq",
@@ -1578,8 +2419,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.34
    },
-   "x": 10.081,
-   "y": -2.577
+   "kind_digest": "9094e968dc0b0d60",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.93,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": "story",
+   "x": -11.143,
+   "y": -1.233
   },
   {
    "key": "text:sm7qn",
@@ -1595,8 +2444,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.46
    },
-   "x": 16.524,
-   "y": -9.039
+   "kind_digest": "bb808a96701fe9dd",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.87,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": "story",
+   "x": 0.742,
+   "y": -5.577
   },
   {
    "key": "text:b5cny",
@@ -1612,8 +2469,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 2.882,
-   "y": -7.441
+   "kind_digest": "3149b2a8ee2250c5",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.49,
+    "runner_up": "story",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": "story",
+   "x": -4.799,
+   "y": -12.651
   },
   {
    "key": "text:y78g2",
@@ -1629,8 +2494,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 1.35,
-   "y": -7.85
+   "kind_digest": "3a9f2602692b1a61",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.69,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": -5.776,
+   "y": -11.868
   },
   {
    "key": "text:2awmn",
@@ -1646,8 +2519,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.02
    },
-   "x": 15.224,
-   "y": -7.613
+   "kind_digest": "3b649a1819c4467d",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.96,
+    "runner_up": "version",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "story",
+   "x": -1.211,
+   "y": -5.083
   },
   {
    "key": "text:wrdm4",
@@ -1663,8 +2544,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.01
    },
-   "x": 16.116,
-   "y": -7.363
+   "kind_digest": "2251be157700c9fe",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.62,
+    "runner_up": "priority",
+    "runner_up_confidence": 0.18
+   },
+   "keyword_kind": null,
+   "x": -0.694,
+   "y": -4.449
   },
   {
    "key": "text:agbrd",
@@ -1680,8 +2569,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.32
    },
-   "x": 15.715,
-   "y": -8.338
+   "kind_digest": "a25961b4ac4bdcb8",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.68,
+    "runner_up": "version",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": null,
+   "x": -0.371,
+   "y": -5.736
   },
   {
    "key": "text:ctp8n",
@@ -1697,8 +2594,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.04
    },
-   "x": -8.014,
-   "y": -10.512
+   "kind_digest": "389c43ab9dee2ab8",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.35,
+    "runner_up": "version",
+    "runner_up_confidence": 0.38
+   },
+   "keyword_kind": null,
+   "x": -5.318,
+   "y": -3.519
   },
   {
    "key": "text:7dc8s",
@@ -1714,8 +2619,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.04
    },
-   "x": -0.836,
-   "y": -12.917
+   "kind_digest": "f52f4d2ce923a052",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.35,
+    "runner_up": "story",
+    "runner_up_confidence": 0.31
+   },
+   "keyword_kind": null,
+   "x": 1.788,
+   "y": -15.508
   },
   {
    "key": "text:36wjy",
@@ -1731,8 +2644,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.01
    },
-   "x": 1.778,
-   "y": -14.385
+   "kind_digest": "78684b2ed920bee3",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.48,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.31
+   },
+   "keyword_kind": null,
+   "x": 3.716,
+   "y": -10.719
   },
   {
    "key": "text:5jua2",
@@ -1748,8 +2669,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.2
    },
-   "x": -0.418,
-   "y": -17.228
+   "kind_digest": "929b33512ea12df0",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.55,
+    "runner_up": "story",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": null,
+   "x": 5.918,
+   "y": -13.109
   },
   {
    "key": "text:etqdx",
@@ -1765,8 +2694,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.13
    },
-   "x": 5.642,
-   "y": -5.503
+   "kind_digest": "fb3c4e070bf69c7a",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.6,
+    "runner_up": "version",
+    "runner_up_confidence": 0.28
+   },
+   "keyword_kind": null,
+   "x": -8.268,
+   "y": -9.334
   },
   {
    "key": "text:IU11FD",
@@ -1782,8 +2719,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.19
    },
-   "x": 6.554,
-   "y": -20.237
+   "kind_digest": "1b870f590716f071",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.38,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.38
+   },
+   "keyword_kind": null,
+   "x": 13.907,
+   "y": -8.445
   },
   {
    "key": "text:10VFQX",
@@ -1799,8 +2744,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.31
    },
-   "x": 3.222,
-   "y": -16.368
+   "kind_digest": "f612c040f8889a56",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.69,
+    "runner_up": "version",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": 6.101,
+   "y": -9.538
   },
   {
    "key": "text:6EJJJZ",
@@ -1816,8 +2769,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.03
    },
-   "x": 5.829,
-   "y": -18.522
+   "kind_digest": "95d4d05cdf43aeea",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.57,
+    "runner_up": "baseline",
+    "runner_up_confidence": 0.19
+   },
+   "keyword_kind": null,
+   "x": 8.861,
+   "y": -5.728
   },
   {
    "key": "text:UM6KP5",
@@ -1833,8 +2794,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.15
    },
-   "x": 6.719,
-   "y": -16.572
+   "kind_digest": "a73854acd8b3c713",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.31,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.29
+   },
+   "keyword_kind": null,
+   "x": 8.678,
+   "y": -8.634
   },
   {
    "key": "text:3YCVOF",
@@ -1842,16 +2811,24 @@
    "source": "Harvard Dataverse",
    "title": "Legislator dissent as a valence signal",
    "category": "political identity/polarisation",
-   "status": "Needs checking",
-   "digest": "7bb0ba09cd433113",
+   "status": "Built",
+   "digest": "c5d28dafebdd0456",
    "jev": {
     "choice": "political identity/polarisation",
-    "confidence": 0.84,
-    "runner_up": "political preferences/policy",
+    "confidence": 0.89,
+    "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.07
    },
-   "x": 5.32,
-   "y": -17.233
+   "kind_digest": "14e1d8875165dfc4",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.92,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": "choice",
+   "x": 8.024,
+   "y": -7.29
   },
   {
    "key": "text:XSOTDJ",
@@ -1867,8 +2844,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.32
    },
-   "x": 6.022,
-   "y": -13.993
+   "kind_digest": "5544c151211e98ec",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.52,
+    "runner_up": "version",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": 5.968,
+   "y": -3.406
   },
   {
    "key": "text:CXHUNT",
@@ -1884,8 +2869,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.23
    },
-   "x": 11.446,
-   "y": -13.408
+   "kind_digest": "1a683c3a3e75f91e",
+   "jev_kind": {
+    "choice": "sensitive_count",
+    "confidence": 0.99,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "sensitive_count",
+   "x": 10.936,
+   "y": -12.483
   },
   {
    "key": "text:NYXQMG",
@@ -1901,8 +2894,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.07
    },
-   "x": 9.794,
-   "y": -14.94
+   "kind_digest": "075c779bf36e12fb",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.98,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": 11.495,
+   "y": -9.628
   },
   {
    "key": "text:RUNQHV",
@@ -1918,8 +2919,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 7.421,
-   "y": -14.451
+   "kind_digest": "829393124148f5d2",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.36,
+    "runner_up": "story",
+    "runner_up_confidence": 0.2
+   },
+   "keyword_kind": null,
+   "x": 6.608,
+   "y": -2.318
   },
   {
    "key": "text:VBWUVG",
@@ -1935,8 +2944,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.24
    },
-   "x": 11.127,
-   "y": -13.724
+   "kind_digest": "9c5a78fe2868eb44",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.54,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.22
+   },
+   "keyword_kind": null,
+   "x": 10.68,
+   "y": -12.001
   },
   {
    "key": "text:M9XJRE",
@@ -1952,8 +2969,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.22
    },
-   "x": 5.655,
-   "y": -10.484
+   "kind_digest": "59910a98a2900801",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.39,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.4
+   },
+   "keyword_kind": null,
+   "x": -0.614,
+   "y": -10.637
   },
   {
    "key": "text:RFAXEY",
@@ -1969,8 +2994,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.02
    },
-   "x": 6.935,
-   "y": -17.053
+   "kind_digest": "f3728c12953f0d9a",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.11,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.17
+   },
+   "keyword_kind": null,
+   "x": 9.312,
+   "y": -8.245
   },
   {
    "key": "text:35M5CV_bbc",
@@ -1986,8 +3019,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 8.956,
-   "y": -18.735
+   "kind_digest": "1865f5b6eb70f17d",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.97,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": 12.339,
+   "y": -6.76
   },
   {
    "key": "text:35M5CV_lodger",
@@ -2003,8 +3044,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 9.089,
-   "y": -19.228
+   "kind_digest": "4ff95ce712819b7f",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.95,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": 12.615,
+   "y": -6.077
   },
   {
    "key": "text:35M5CV_sky",
@@ -2020,8 +3069,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.02
    },
-   "x": 9.551,
-   "y": -18.832
+   "kind_digest": "6f58b6704e1abe2d",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.81,
+    "runner_up": "context",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": 13.039,
+   "y": -6.663
   },
   {
    "key": "text:5hqan",
@@ -2037,8 +3094,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.04
    },
-   "x": 11.618,
-   "y": 7.115
+   "kind_digest": "ff818d1d6c0adf98",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -9.293,
+   "y": 3.245
   },
   {
    "key": "text:6MRVOM_brexit_scenario",
@@ -2054,8 +3119,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.02
    },
-   "x": 8.555,
-   "y": 10.085
+   "kind_digest": "09add0f31e75155d",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.5,
+    "runner_up": "story",
+    "runner_up_confidence": 0.43
+   },
+   "keyword_kind": null,
+   "x": -16.497,
+   "y": 5.597
   },
   {
    "key": "text:6MRVOM_eu_share",
@@ -2071,8 +3144,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.05
    },
-   "x": 8.555,
-   "y": 10.085
+   "kind_digest": "d9b7e98c845bd7ad",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.77,
+    "runner_up": "version",
+    "runner_up_confidence": 0.16
+   },
+   "keyword_kind": null,
+   "x": -16.497,
+   "y": 5.597
   },
   {
    "key": "text:7jt2f",
@@ -2088,8 +3169,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.04
    },
-   "x": 14.091,
-   "y": -13.176
+   "kind_digest": "f6bf387653df7819",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.56,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.37
+   },
+   "keyword_kind": null,
+   "x": 9.96,
+   "y": -14.855
   },
   {
    "key": "text:8ctbk",
@@ -2105,8 +3194,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 11.29,
-   "y": -1.889
+   "kind_digest": "a45d39f2b6480b3a",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.31,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.32
+   },
+   "keyword_kind": "choice",
+   "x": -12.491,
+   "y": -1.73
   },
   {
    "key": "text:9263n",
@@ -2122,8 +3219,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.12
    },
-   "x": -6.345,
-   "y": -9.035
+   "kind_digest": "fe6c2daefae2c43e",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.55,
+    "runner_up": "story",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": -6.055,
+   "y": -5.575
   },
   {
    "key": "text:9xw67_conjoint",
@@ -2139,8 +3244,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.04
    },
-   "x": 3.754,
-   "y": -20.178
+   "kind_digest": "76b040e7f78260ff",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.89,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": "choice",
+   "x": 6.969,
+   "y": -17.365
   },
   {
    "key": "text:9xw67_vignette",
@@ -2156,8 +3269,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.09
    },
-   "x": 3.754,
-   "y": -20.178
+   "kind_digest": "a9d59e1f84b9c8f7",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.49,
+    "runner_up": "story",
+    "runner_up_confidence": 0.44
+   },
+   "keyword_kind": null,
+   "x": 6.97,
+   "y": -17.366
   },
   {
    "key": "text:EFXNLX",
@@ -2173,8 +3294,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 8.116,
-   "y": -17.828
+   "kind_digest": "3ec5bdbc0d254bce",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.93,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": "choice",
+   "x": 10.661,
+   "y": -7.133
   },
   {
    "key": "text:LOGVPZ_brexit_satisfaction",
@@ -2190,8 +3319,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.09
    },
-   "x": 9.454,
-   "y": -20.652
+   "kind_digest": "824c7f539f16e749",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.83,
+    "runner_up": "version",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": 12.691,
+   "y": -4.279
   },
   {
    "key": "text:LOGVPZ_risk_tolerance",
@@ -2207,8 +3344,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.23
    },
-   "x": 9.456,
-   "y": -20.651
+   "kind_digest": "a2d1423c0f75e68b",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.48,
+    "runner_up": "story",
+    "runner_up_confidence": 0.36
+   },
+   "keyword_kind": null,
+   "x": 12.309,
+   "y": -4.29
   },
   {
    "key": "text:PMV0TG",
@@ -2224,8 +3369,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.32
    },
-   "x": 10.521,
-   "y": -15.38
+   "kind_digest": "51a0aa63a97f375b",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.97,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": 2.759,
+   "y": 1.486
   },
   {
    "key": "text:POMIFD",
@@ -2241,8 +3394,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.04
    },
-   "x": 5.244,
-   "y": -16.055
+   "kind_digest": "a0a697c2b88a13e2",
+   "jev_kind": {
+    "choice": "head_to_head",
+    "confidence": 0.95,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": 7.17,
+   "y": -6.087
   },
   {
    "key": "text:PZB01G",
@@ -2258,8 +3419,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 9.214,
-   "y": -17.527
+   "kind_digest": "196fa59463cbe953",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.85,
+    "runner_up": "story",
+    "runner_up_confidence": 0.13
+   },
+   "keyword_kind": "story",
+   "x": 11.627,
+   "y": -7.55
   },
   {
    "key": "text:QQM5MC",
@@ -2275,8 +3444,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.37
    },
-   "x": 8.221,
-   "y": -19.346
+   "kind_digest": "2c94c44b353af90d",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.9,
+    "runner_up": "context",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": "mix",
+   "x": 11.552,
+   "y": -6.133
   },
   {
    "key": "text:RJTVG8",
@@ -2292,8 +3469,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 3.1,
-   "y": -2.209
+   "kind_digest": "5caafc67bbf2bcdc",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.96,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": -5.536,
+   "y": -18.998
   },
   {
    "key": "text:a2nbf",
@@ -2309,8 +3494,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.04
    },
-   "x": 6.495,
-   "y": -8.7
+   "kind_digest": "34672943be5b9720",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.79,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.07
+   },
+   "keyword_kind": null,
+   "x": -1.236,
+   "y": -9.374
   },
   {
    "key": "text:a42yg",
@@ -2326,8 +3519,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.15
    },
-   "x": -0.32,
-   "y": -14.882
+   "kind_digest": "18dc1ae83175f70e",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.93,
+    "runner_up": "story",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": null,
+   "x": 4.298,
+   "y": -15.342
   },
   {
    "key": "text:a5v96_vignette1",
@@ -2343,8 +3544,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.3
    },
-   "x": 1.194,
-   "y": -2.905
+   "kind_digest": "0def870a65072139",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.72,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.23
+   },
+   "keyword_kind": "story",
+   "x": -7.289,
+   "y": -17.693
   },
   {
    "key": "text:b87sm",
@@ -2360,8 +3569,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.28
    },
-   "x": 1.872,
-   "y": -3.036
+   "kind_digest": "4b1206b9f29399b5",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.6,
+    "runner_up": "story",
+    "runner_up_confidence": 0.35
+   },
+   "keyword_kind": "story",
+   "x": -6.56,
+   "y": -17.002
   },
   {
    "key": "text:bf8p2",
@@ -2377,8 +3594,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.06
    },
-   "x": -3.431,
-   "y": -15.727
+   "kind_digest": "a7e3e8588cfc8002",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.61,
+    "runner_up": "story",
+    "runner_up_confidence": 0.35
+   },
+   "keyword_kind": "story",
+   "x": 0.822,
+   "y": -13.594
   },
   {
    "key": "text:c5r2f",
@@ -2394,8 +3619,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.33
    },
-   "x": 0.098,
-   "y": -10.514
+   "kind_digest": "683d3f86df1cf74e",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.68,
+    "runner_up": "story",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": "story",
+   "x": -4.538,
+   "y": -17.19
   },
   {
    "key": "text:cug34_B01_B09",
@@ -2411,8 +3644,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.32
    },
-   "x": 12.341,
-   "y": 0.142
+   "kind_digest": "2d0d78213fe4fb8c",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.52,
+    "runner_up": "story",
+    "runner_up_confidence": 0.43
+   },
+   "keyword_kind": "story",
+   "x": -14.585,
+   "y": -0.766
   },
   {
    "key": "text:dh3nj",
@@ -2428,8 +3669,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.06
    },
-   "x": -12.42,
-   "y": 5.897
+   "kind_digest": "a2cfc2970e20c666",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.56,
+    "runner_up": "story",
+    "runner_up_confidence": 0.4
+   },
+   "keyword_kind": "story",
+   "x": 11.477,
+   "y": 13.069
   },
   {
    "key": "text:evnyh_Q1a_and_validation",
@@ -2445,8 +3694,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 2.262,
-   "y": -8.372
+   "kind_digest": "3d2d4efa8ef6c7b0",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.86,
+    "runner_up": "version",
+    "runner_up_confidence": 0.11
+   },
+   "keyword_kind": null,
+   "x": -3.931,
+   "y": -11.95
   },
   {
    "key": "text:py9q3_vignette1",
@@ -2462,8 +3719,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": 13.318,
-   "y": -1.918
+   "kind_digest": "14b07d3a47bc66e0",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.54,
+    "runner_up": "story",
+    "runner_up_confidence": 0.42
+   },
+   "keyword_kind": "story",
+   "x": -13.453,
+   "y": -2.924
   },
   {
    "key": "text:py9q3_vignette2",
@@ -2479,8 +3744,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": 12.917,
-   "y": -2.123
+   "kind_digest": "742ac0b31da1da76",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.5,
+    "runner_up": "story",
+    "runner_up_confidence": 0.46
+   },
+   "keyword_kind": "story",
+   "x": -14.052,
+   "y": -2.992
   },
   {
    "key": "text:py9q3_vignette3",
@@ -2496,8 +3769,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 12.918,
-   "y": -1.705
+   "kind_digest": "ad6eb3bff975c1b0",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.5,
+    "runner_up": "story",
+    "runner_up_confidence": 0.45
+   },
+   "keyword_kind": "story",
+   "x": -13.555,
+   "y": -3.471
   },
   {
    "key": "text:rpw4u_RO1",
@@ -2513,8 +3794,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.14
    },
-   "x": 4.549,
-   "y": -9.308
+   "kind_digest": "9b68efd150ad02e6",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.64,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.29
+   },
+   "keyword_kind": null,
+   "x": -2.957,
+   "y": -9.89
   },
   {
    "key": "text:sd7cf",
@@ -2530,8 +3819,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.04
    },
-   "x": 3.101,
-   "y": -12.795
+   "kind_digest": "1ac1023f786c9fbb",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.67,
+    "runner_up": "context",
+    "runner_up_confidence": 0.29
+   },
+   "keyword_kind": null,
+   "x": 4.131,
+   "y": -7.154
   },
   {
    "key": "text:sh4px",
@@ -2547,8 +3844,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": -0.122,
-   "y": -13.743
+   "kind_digest": "7d165f28c2e2e7d4",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.92,
+    "runner_up": "version",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": 3.174,
+   "y": -14.763
   },
   {
    "key": "text:ukds_6849_alcohol_w15",
@@ -2559,8 +3864,16 @@
    "status": "Built",
    "digest": "1ef3fd4906f4778c",
    "jev": null,
-   "x": -13.436,
-   "y": 6.907
+   "kind_digest": "8c14148ab4cabdfa",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.95,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": 9.72,
+   "y": 14.136
   },
   {
    "key": "text:ukds_6849_caring_activity_w17",
@@ -2571,8 +3884,16 @@
    "status": "Built",
    "digest": "f72139c78ffeb70c",
    "jev": null,
-   "x": 6.844,
-   "y": 4.483
+   "kind_digest": "7728c98a798b32a0",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -18.721,
+   "y": -4.852
   },
   {
    "key": "text:ukds_6849_caring_existing_w17",
@@ -2583,8 +3904,16 @@
    "status": "Built",
    "digest": "99a70c524fc318f8",
    "jev": null,
-   "x": 6.844,
-   "y": 4.483
+   "kind_digest": "eafa4046f7627f49",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -18.719,
+   "y": -4.849
   },
   {
    "key": "text:ukds_6849_eq5d3l_w11",
@@ -2595,8 +3924,16 @@
    "status": "Built",
    "digest": "7e5a808447be52a0",
    "jev": null,
-   "x": -4.6,
-   "y": -3.858
+   "kind_digest": "529e83bddeab176f",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -12.125,
+   "y": -12.895
   },
   {
    "key": "text:ukds_6849_eq5d5l_w11",
@@ -2607,8 +3944,16 @@
    "status": "Built",
    "digest": "bb6084a82ea524cb",
    "jev": null,
-   "x": -4.62,
-   "y": -3.86
+   "kind_digest": "8adc7479cf4c00fe",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": -11.893,
+   "y": -12.588
   },
   {
    "key": "text:ukds_6849_fertility_w4",
@@ -2619,8 +3964,16 @@
    "status": "Built",
    "digest": "bf67a333b7202dc4",
    "jev": null,
-   "x": 10.421,
-   "y": -1.498
+   "kind_digest": "dc76cfadaf4e0dd6",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "context",
+   "x": -12.217,
+   "y": -0.69
   },
   {
    "key": "text:ukds_6849_fertility_w5",
@@ -2631,8 +3984,16 @@
    "status": "Built",
    "digest": "5121ec584c94e7ee",
    "jev": null,
-   "x": 10.421,
-   "y": -1.498
+   "kind_digest": "2ff9cdbadc9f4e35",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "context",
+   "x": -12.215,
+   "y": -0.689
   },
   {
    "key": "text:ukds_6849_ghq_w14",
@@ -2643,8 +4004,16 @@
    "status": "Built",
    "digest": "c243f30beca32b47",
    "jev": null,
-   "x": -4.421,
-   "y": -5.061
+   "kind_digest": "b0f36f98cdfa4338",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": null,
+   "x": -10.89,
+   "y": -13.523
   },
   {
    "key": "text:ukds_6849_identity_w2",
@@ -2655,8 +4024,16 @@
    "status": "Built",
    "digest": "38399c97560b7cfa",
    "jev": null,
-   "x": -0.695,
-   "y": -0.168
+   "kind_digest": "64199eebf71278a9",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 1.0,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": null,
+   "x": -4.912,
+   "y": 1.626
   },
   {
    "key": "text:ukds_6849_itemcount_w8",
@@ -2667,8 +4044,16 @@
    "status": "Built",
    "digest": "68d1e7739f4c6883",
    "jev": null,
-   "x": 4.899,
-   "y": -5.389
+   "kind_digest": "571d615d6ea104e5",
+   "jev_kind": {
+    "choice": "sensitive_count",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": null,
+   "x": -8.662,
+   "y": -10.157
   },
   {
    "key": "text:ukds_6849_itemcount_w9",
@@ -2679,8 +4064,16 @@
    "status": "Built",
    "digest": "2fd307ab0fc28532",
    "jev": null,
-   "x": 4.899,
-   "y": -5.39
+   "kind_digest": "aeb60caa455aa9b1",
+   "jev_kind": {
+    "choice": "sensitive_count",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": null,
+   "x": -8.662,
+   "y": -10.157
   },
   {
    "key": "text:ukds_6849_numeracy_env_w16",
@@ -2691,8 +4084,16 @@
    "status": "Built",
    "digest": "e387a272d4c690c9",
    "jev": null,
-   "x": 7.621,
-   "y": 0.55
+   "kind_digest": "bb8edfab0735614b",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.93,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": -0.851,
+   "y": 3.653
   },
   {
    "key": "text:ukds_6849_numeracy_fin_w16",
@@ -2703,8 +4104,16 @@
    "status": "Built",
    "digest": "36fa19c705116728",
    "jev": null,
-   "x": 7.621,
-   "y": 0.55
+   "kind_digest": "98ddfb8a398bf69c",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.92,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": null,
+   "x": -0.851,
+   "y": 3.653
   },
   {
    "key": "text:ukds_6849_reqol_w14",
@@ -2715,8 +4124,16 @@
    "status": "Built",
    "digest": "8e356e8f86736318",
    "jev": null,
-   "x": -4.421,
-   "y": -5.061
+   "kind_digest": "92417920f4d6e5af",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": null,
+   "x": -10.89,
+   "y": -13.523
   },
   {
    "key": "text:ukds_6849_satisfaction_w9",
@@ -2727,8 +4144,16 @@
    "status": "Built",
    "digest": "936dcce560698917",
    "jev": null,
-   "x": 0.862,
-   "y": -6.755
+   "kind_digest": "d605e7a26d07b3fa",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.89,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": -6.951,
+   "y": -13.007
   },
   {
    "key": "text:ukds_6849_timerisk_w6",
@@ -2739,8 +4164,16 @@
    "status": "Built",
    "digest": "63effd31fd4fd4fa",
    "jev": null,
-   "x": -1.588,
-   "y": -6.177
+   "kind_digest": "0e49b30fd62019fb",
+   "jev_kind": {
+    "choice": "baseline",
+    "confidence": 0.79,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": "baseline",
+   "x": -5.508,
+   "y": -8.465
   },
   {
    "key": "text:ukds_6849_timerisk_w7",
@@ -2751,8 +4184,16 @@
    "status": "Built",
    "digest": "cf4e7367052a75db",
    "jev": null,
-   "x": -1.588,
-   "y": -6.177
+   "kind_digest": "602a1232eaccf01f",
+   "jev_kind": {
+    "choice": "baseline",
+    "confidence": 0.77,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.18
+   },
+   "keyword_kind": "baseline",
+   "x": -5.508,
+   "y": -8.465
   },
   {
    "key": "text:ukds_6849_vig_ageing_w17",
@@ -2763,8 +4204,16 @@
    "status": "Built",
    "digest": "667597ea10b691a5",
    "jev": null,
-   "x": -4.161,
-   "y": -21.393
+   "kind_digest": "eea282561bdbd894",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.43,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.4
+   },
+   "keyword_kind": "story",
+   "x": -12.717,
+   "y": -16.069
   },
   {
    "key": "text:ukds_6849_vig_ageing_w9",
@@ -2775,8 +4224,16 @@
    "status": "Built",
    "digest": "88fd949b1c73b763",
    "jev": null,
-   "x": -4.161,
-   "y": -21.393
+   "kind_digest": "9f6258070c14a8d3",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.47,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.37
+   },
+   "keyword_kind": "story",
+   "x": -12.718,
+   "y": -16.068
   },
   {
    "key": "text:ukds_6849_vig_flexstigma_w16",
@@ -2787,8 +4244,16 @@
    "status": "Built",
    "digest": "f58ccb8814ebba90",
    "jev": null,
-   "x": 8.871,
-   "y": -4.572
+   "kind_digest": "115e5fcc726b8ab2",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.55,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.3
+   },
+   "keyword_kind": "story",
+   "x": -10.252,
+   "y": -6.584
   },
   {
    "key": "text:ukds_6849_vig_housework_w5",
@@ -2799,8 +4264,16 @@
    "status": "Built",
    "digest": "4058cedcca87d359",
    "jev": null,
-   "x": 7.212,
-   "y": -3.349
+   "kind_digest": "7643322ded64b19a",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.54,
+    "runner_up": "story",
+    "runner_up_confidence": 0.41
+   },
+   "keyword_kind": "story",
+   "x": -11.654,
+   "y": -7.708
   },
   {
    "key": "text:ukds_6849_vig_housework_w6",
@@ -2811,8 +4284,16 @@
    "status": "Built",
    "digest": "ecc94324534e134e",
    "jev": null,
-   "x": 7.212,
-   "y": -3.349
+   "kind_digest": "f572199dc653e1cd",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.51,
+    "runner_up": "story",
+    "runner_up_confidence": 0.44
+   },
+   "keyword_kind": "story",
+   "x": -11.654,
+   "y": -7.708
   },
   {
    "key": "text:ye2ej",
@@ -2828,8 +4309,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 13.603,
-   "y": -3.296
+   "kind_digest": "27886673cd9744c0",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.69,
+    "runner_up": "story",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": "story",
+   "x": -12.528,
+   "y": -4.517
   },
   {
    "key": "text:yv2ta_flexible_scheduling",
@@ -2845,8 +4334,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": 11.888,
-   "y": -3.43
+   "kind_digest": "f18912ab6f4efd4e",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.57,
+    "runner_up": "story",
+    "runner_up_confidence": 0.38
+   },
+   "keyword_kind": "story",
+   "x": -11.535,
+   "y": -3.253
   },
   {
    "key": "text:yv2ta_parental_leave",
@@ -2862,8 +4359,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": 11.888,
-   "y": -3.43
+   "kind_digest": "fc55bbe9e77adfe0",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.71,
+    "runner_up": "story",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": "story",
+   "x": -11.539,
+   "y": -3.396
   },
   {
    "key": "text:z358z",
@@ -2879,8 +4384,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.17
    },
-   "x": 17.726,
-   "y": -10.68
+   "kind_digest": "6d626d3c67cf9a57",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.54,
+    "runner_up": "story",
+    "runner_up_confidence": 0.41
+   },
+   "keyword_kind": "story",
+   "x": 2.909,
+   "y": -18.405
   },
   {
    "key": "text:zaqkm",
@@ -2896,8 +4409,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.06
    },
-   "x": 16.34,
-   "y": -8.135
+   "kind_digest": "6a9b1684363663e1",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.65,
+    "runner_up": "story",
+    "runner_up_confidence": 0.31
+   },
+   "keyword_kind": "story",
+   "x": -0.005,
+   "y": -4.944
   },
   {
    "key": "text:zrwjp",
@@ -2913,8 +4434,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.01
    },
-   "x": -6.699,
-   "y": -7.937
+   "kind_digest": "a56a2a8ca908cb95",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.41,
+    "runner_up": "context",
+    "runner_up_confidence": 0.37
+   },
+   "keyword_kind": null,
+   "x": -7.125,
+   "y": -6.222
   },
   {
    "key": "text:3muqx",
@@ -2930,8 +4459,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.02
    },
-   "x": -4.487,
-   "y": -12.901
+   "kind_digest": "d1fb3831c5713691",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.97,
+    "runner_up": "version",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": "story",
+   "x": 1.315,
+   "y": -19.023
   },
   {
    "key": "text:sdq2z",
@@ -2947,8 +4484,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.02
    },
-   "x": 9.817,
-   "y": -11.646
+   "kind_digest": "8413c899699265ff",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.97,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": 13.512,
+   "y": -11.494
   },
   {
    "key": "text:xtvu5",
@@ -2964,8 +4509,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.35
    },
-   "x": 4.474,
-   "y": -12.393
+   "kind_digest": "693affbc907d4c1e",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.91,
+    "runner_up": "context",
+    "runner_up_confidence": 0.07
+   },
+   "keyword_kind": "mix",
+   "x": 4.47,
+   "y": -5.46
   },
   {
    "key": "text:vemrp",
@@ -2981,8 +4534,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.03
    },
-   "x": 6.887,
-   "y": -12.611
+   "kind_digest": "014a1f64a705b856",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.63,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": "story",
+   "x": 8.203,
+   "y": -1.211
   },
   {
    "key": "text:j6xgs",
@@ -2998,8 +4559,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.23
    },
-   "x": -7.274,
-   "y": -8.042
+   "kind_digest": "93fe7624db73617b",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.48,
+    "runner_up": "story",
+    "runner_up_confidence": 0.41
+   },
+   "keyword_kind": null,
+   "x": -7.442,
+   "y": -5.689
   },
   {
    "key": "text:5mt6r",
@@ -3015,8 +4584,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 2.134,
-   "y": -6.923
+   "kind_digest": "f9bc3b6a32878ed3",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.55,
+    "runner_up": "context",
+    "runner_up_confidence": 0.4
+   },
+   "keyword_kind": "mix",
+   "x": -5.566,
+   "y": -13.47
   },
   {
    "key": "text:zx5b8",
@@ -3032,8 +4609,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.23
    },
-   "x": -6.036,
-   "y": -14.777
+   "kind_digest": "e4fc7650f6451022",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.64,
+    "runner_up": "story",
+    "runner_up_confidence": 0.32
+   },
+   "keyword_kind": "story",
+   "x": -1.494,
+   "y": -19.332
   },
   {
    "key": "text:k9ahx_ratings",
@@ -3049,8 +4634,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.27
    },
-   "x": 3.229,
-   "y": -14.746
+   "kind_digest": "f1b56d7838f13299",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.86,
+    "runner_up": "version",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": 4.301,
+   "y": -9.54
   },
   {
    "key": "text:de5hx",
@@ -3066,8 +4659,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.34
    },
-   "x": 4.694,
-   "y": -14.86
+   "kind_digest": "5606577ba3fd0df3",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.78,
+    "runner_up": "version",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": 6.202,
+   "y": -7.928
   },
   {
    "key": "text:sffyb",
@@ -3083,8 +4684,316 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.05
    },
-   "x": 12.96,
-   "y": 1.578
+   "kind_digest": "716ba43feb5a62a2",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.79,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": null,
+   "x": -15.51,
+   "y": 0.847
+  },
+  {
+   "key": "text:zenodo18547379_maxdiff",
+   "set": "Text",
+   "source": "Zenodo",
+   "title": "Scottish meat consumption survey (Feb–Jul 2023): perceived effectiveness of meat-reduction policies",
+   "category": "health communication",
+   "status": "Built",
+   "digest": "05818a0a8b3969ff",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.97,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.01
+   },
+   "kind_digest": "de4392f137383b9b",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.99,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "priority",
+   "x": 5.971,
+   "y": 0.568
+  },
+  {
+   "key": "text:zenodo6572717",
+   "set": "Text",
+   "source": "Zenodo",
+   "title": "CUPID: parental preferences for unscheduled paediatric healthcare",
+   "category": "economics/behavioural",
+   "status": "Built",
+   "digest": "9f992b9405a571cc",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.97,
+    "runner_up": "health communication",
+    "runner_up_confidence": 0.02
+   },
+   "kind_digest": "8c6a2dc301b881f6",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.99,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "choice",
+   "x": -14.448,
+   "y": -6.893
+  },
+  {
+   "key": "text:18429769",
+   "set": "Text",
+   "source": "Zenodo",
+   "title": "Preferences of the general public and working carers for policies to support working carers",
+   "category": "work/family/gender",
+   "status": "Needs checking",
+   "digest": "17534e9cbf85327e",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.63,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.33
+   },
+   "kind_digest": "7cdb7563d4ab0d95",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.98,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "choice",
+   "x": -14.366,
+   "y": -4.707
+  },
+  {
+   "key": "text:L6HYCL",
+   "set": "Text",
+   "source": "Harvard Dataverse",
+   "title": "Why Is It So Hard to Counteract Wealth Inequality? Evidence from the United Kingdom",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "88b26a2aeec56029",
+   "jev": {
+    "choice": "political preferences/policy",
+    "confidence": 0.99,
+    "runner_up": "economics/behavioural",
+    "runner_up_confidence": 0.01
+   },
+   "kind_digest": "a3d21cab0454c649",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.98,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "choice",
+   "x": 12.836,
+   "y": -2.834
+  },
+  {
+   "key": "text:prf7d",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Educational Attainment and Stigmatization in Prisoner Reentry",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "46cc5eef2f99b1cd",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.89,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.06
+   },
+   "kind_digest": "300f4c0af745dd4f",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.97,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "choice",
+   "x": -2.515,
+   "y": -4.414
+  },
+  {
+   "key": "text:4gczb",
+   "set": "Text",
+   "source": "TESS",
+   "title": "Equal Representation Project",
+   "category": "political preferences/policy",
+   "status": "Needs checking",
+   "digest": "b7f2d4491c4e0541",
+   "jev": {
+    "choice": "political identity/polarisation",
+    "confidence": 0.36,
+    "runner_up": "work/family/gender",
+    "runner_up_confidence": 0.23
+   },
+   "kind_digest": "8e828c9469dcc5d1",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.98,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "choice",
+   "x": -11.519,
+   "y": 5.849
+  },
+  {
+   "key": "text:zenodo10641548",
+   "set": "Text",
+   "source": "Zenodo",
+   "title": "Public perceptions of trophy hunting are pragmatic, not dogmatic",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "5cb7050de898bb82",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 0.97,
+    "runner_up": "political preferences/policy",
+    "runner_up_confidence": 0.03
+   },
+   "kind_digest": "0bf69bf9c9bcdfd0",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.47,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.48
+   },
+   "keyword_kind": "story",
+   "x": 8.31,
+   "y": 1.565
+  },
+  {
+   "key": "text:15420092",
+   "set": "Text",
+   "source": "Zenodo",
+   "title": "Choice experiments on consumers' and farmers' preferences for five underused crops in Europe (RADIANT)",
+   "category": "economics/behavioural",
+   "status": "Needs checking",
+   "digest": "779ba055b6198492",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.98,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.01
+   },
+   "kind_digest": "565f26ffaea5f16b",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 1.0,
+    "runner_up": "version",
+    "runner_up_confidence": 0.0
+   },
+   "keyword_kind": "choice",
+   "x": -3.523,
+   "y": -7.997
+  },
+  {
+   "key": "text:1166066",
+   "set": "Text",
+   "source": "Zenodo",
+   "title": "Bottom-up ethics: neuroenhancement in education and employment (NERRI)",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "5af05559502c0e15",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "kind_digest": "32c7926ccd01d5e5",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.86,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": "story",
+   "x": 4.574,
+   "y": -17.881
+  },
+  {
+   "key": "text:eidc_0869d961",
+   "set": "Text",
+   "source": "Other open archives",
+   "title": "Perception of environmental and other risks (UK, 2018)",
+   "category": "moral/social/cognition",
+   "status": "Needs checking",
+   "digest": "3de9220ea99bb198",
+   "jev": {
+    "choice": "economics/behavioural",
+    "confidence": 0.76,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.18
+   },
+   "kind_digest": "9bb027e214a41ce9",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.99,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "priority",
+   "x": 5.397,
+   "y": -1.066
+  },
+  {
+   "key": "text:osf_ct8ae_maxdiff",
+   "set": "Text",
+   "source": "Other open archives",
+   "title": "Time after time, the best-worst scaling method is more reliable than ranking (Exp. 1b)",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "c7b0c392cc14b07c",
+   "jev": {
+    "choice": "survey methodology",
+    "confidence": 0.99,
+    "runner_up": "moral/social/cognition",
+    "runner_up_confidence": 0.01
+   },
+   "kind_digest": "3d10fcf531604d05",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.97,
+    "runner_up": "version",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": "priority",
+   "x": -6.464,
+   "y": -10.969
+  },
+  {
+   "key": "text:figshare_32935409_maxdiff",
+   "set": "Text",
+   "source": "Other open archives",
+   "title": "Student perceptions of academic integrity in the age of Gen-AI: most and least serious breach",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "digest": "37710729a973bca5",
+   "jev": {
+    "choice": "moral/social/cognition",
+    "confidence": 1.0,
+    "runner_up": "cross-national",
+    "runner_up_confidence": 0.0
+   },
+   "kind_digest": "ebe20958358d5485",
+   "jev_kind": {
+    "choice": "priority",
+    "confidence": 0.99,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": "priority",
+   "x": 6.392,
+   "y": -18.784
   },
   {
    "key": "image:IMG01",
@@ -3100,8 +5009,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.02
    },
-   "x": -14.021,
-   "y": 8.275
+   "kind_digest": "4396df4512d91d12",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.81,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.16
+   },
+   "keyword_kind": "lineup",
+   "x": 10.394,
+   "y": 15.461
   },
   {
    "key": "image:IMG02",
@@ -3117,8 +5034,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.01
    },
-   "x": -15.747,
-   "y": 10.558
+   "kind_digest": "ccfe4f8f3730318c",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.65,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.22
+   },
+   "keyword_kind": null,
+   "x": 11.133,
+   "y": 18.829
   },
   {
    "key": "image:IMG03",
@@ -3134,8 +5059,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.07
    },
-   "x": -16.467,
-   "y": 17.387
+   "kind_digest": "cbc04d7f6b7fdeb9",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.86,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": "shelf",
+   "x": 10.456,
+   "y": 26.861
   },
   {
    "key": "image:IMG06",
@@ -3151,8 +5084,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.48
    },
-   "x": -4.118,
-   "y": 12.456
+   "kind_digest": "8c459ae1d7a6b04f",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.9,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": null,
+   "x": 1.254,
+   "y": 20.563
   },
   {
    "key": "image:IMG07",
@@ -3168,8 +5109,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.19
    },
-   "x": -5.745,
-   "y": 12.459
+   "kind_digest": "bd5ca464ed5cb9a3",
+   "jev_kind": {
+    "choice": "head_to_head",
+    "confidence": 0.57,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": null,
+   "x": -0.455,
+   "y": 21.154
   },
   {
    "key": "image:IMG08",
@@ -3185,8 +5134,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.46
    },
-   "x": -23.367,
-   "y": 9.455
+   "kind_digest": "aa0820bd80fbb725",
+   "jev_kind": {
+    "choice": "lineup",
+    "confidence": 0.74,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": 17.493,
+   "y": 14.626
   },
   {
    "key": "image:IMG09",
@@ -3202,8 +5159,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.25
    },
-   "x": -3.921,
-   "y": 16.652
+   "kind_digest": "889637ea26c5eddf",
+   "jev_kind": {
+    "choice": "baseline",
+    "confidence": 0.36,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": null,
+   "x": 1.449,
+   "y": 16.341
   },
   {
    "key": "image:IMG13",
@@ -3214,8 +5179,16 @@
    "status": "Needs checking",
    "digest": "43c9dfaa7b13a05b",
    "jev": null,
-   "x": 11.343,
-   "y": -17.761
+   "kind_digest": "31cd0444dd3df9a4",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.91,
+    "runner_up": "context",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": null,
+   "x": 15.687,
+   "y": -6.365
   },
   {
    "key": "image:IMG14",
@@ -3231,8 +5204,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.03
    },
-   "x": -20.121,
-   "y": 10.337
+   "kind_digest": "41e589ee90fb0a72",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.44,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.35
+   },
+   "keyword_kind": null,
+   "x": 15.544,
+   "y": 18.833
   },
   {
    "key": "image:IMG15",
@@ -3248,8 +5229,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.18
    },
-   "x": -4.27,
-   "y": 6.406
+   "kind_digest": "8855c2ca5f128bed",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.84,
+    "runner_up": "version",
+    "runner_up_confidence": 0.13
+   },
+   "keyword_kind": null,
+   "x": 2.427,
+   "y": 8.19
   },
   {
    "key": "image:IMG18",
@@ -3265,8 +5254,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.18
    },
-   "x": -11.389,
-   "y": 14.223
+   "kind_digest": "f477ead4107f4b89",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.39,
+    "runner_up": "version",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": null,
+   "x": 5.211,
+   "y": 18.343
   },
   {
    "key": "image:IMG20",
@@ -3282,8 +5279,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.21
    },
-   "x": -15.876,
-   "y": 9.604
+   "kind_digest": "b2f0313bb71c997d",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.51,
+    "runner_up": "version",
+    "runner_up_confidence": 0.3
+   },
+   "keyword_kind": null,
+   "x": 11.859,
+   "y": 17.987
   },
   {
    "key": "image:IMG21",
@@ -3299,8 +5304,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.17
    },
-   "x": -18.649,
-   "y": 11.365
+   "kind_digest": "1bba5f578497051f",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.31,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": null,
+   "x": 13.336,
+   "y": 19.914
   },
   {
    "key": "image:IMG22",
@@ -3316,8 +5329,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": -13.365,
-   "y": 7.962
+   "kind_digest": "698a004443d7faca",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.93,
+    "runner_up": "version",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": null,
+   "x": 11.08,
+   "y": 14.636
   },
   {
    "key": "image:IMG23",
@@ -3333,8 +5354,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.01
    },
-   "x": -19.729,
-   "y": 7.874
+   "kind_digest": "1fa5b509df335613",
+   "jev_kind": {
+    "choice": "lineup",
+    "confidence": 0.33,
+    "runner_up": "version",
+    "runner_up_confidence": 0.35
+   },
+   "keyword_kind": null,
+   "x": 17.314,
+   "y": 21.16
   },
   {
    "key": "image:IMG25",
@@ -3350,8 +5379,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.04
    },
-   "x": -17.252,
-   "y": 8.362
+   "kind_digest": "cfdb547c803f92cb",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.5,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.38
+   },
+   "keyword_kind": null,
+   "x": 13.974,
+   "y": 16.84
   },
   {
    "key": "image:IMG26",
@@ -3367,8 +5404,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.07
    },
-   "x": -17.479,
-   "y": 8.677
+   "kind_digest": "baa9356c195542f8",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.62,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.17
+   },
+   "keyword_kind": null,
+   "x": 13.638,
+   "y": 17.303
   },
   {
    "key": "image:IMG27",
@@ -3384,8 +5429,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.16
    },
-   "x": -18.102,
-   "y": 9.914
+   "kind_digest": "444a5c0b94c91a75",
+   "jev_kind": {
+    "choice": "lineup",
+    "confidence": 0.3,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": 10.694,
+   "y": 22.608
   },
   {
    "key": "image:IMG28",
@@ -3401,8 +5454,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.33
    },
-   "x": -18.114,
-   "y": 18.023
+   "kind_digest": "e94f175e0869fed8",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.72,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": 13.272,
+   "y": 27.44
   },
   {
    "key": "image:IMG29",
@@ -3418,8 +5479,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.07
    },
-   "x": -15.871,
-   "y": 14.073
+   "kind_digest": "d275eb8a7f4e84a6",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.65,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.26
+   },
+   "keyword_kind": null,
+   "x": 8.352,
+   "y": 21.404
   },
   {
    "key": "image:IMG30",
@@ -3435,8 +5504,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.31
    },
-   "x": -18.041,
-   "y": 15.805
+   "kind_digest": "e8077f63991ad9e8",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.42,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.39
+   },
+   "keyword_kind": null,
+   "x": 12.54,
+   "y": 24.758
   },
   {
    "key": "image:IMG31",
@@ -3444,7 +5521,7 @@
    "source": "",
    "title": "Online supermarket",
    "category": "economics/behavioural",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "a607bbc969de84b1",
    "jev": {
     "choice": "economics/behavioural",
@@ -3452,8 +5529,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.08
    },
-   "x": -18.114,
-   "y": 18.023
+   "kind_digest": "a75a5c6b8c92ea9d",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.38,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.4
+   },
+   "keyword_kind": null,
+   "x": 12.404,
+   "y": 27.116
   },
   {
    "key": "image:IMG32",
@@ -3461,7 +5546,7 @@
    "source": "",
    "title": "Ecolabels on canteen meal images, varying the range of labels; 5 themed meal choices",
    "category": "economics/behavioural",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "fc8dc61f7c830b12",
    "jev": {
     "choice": "economics/behavioural",
@@ -3469,8 +5554,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.27
    },
-   "x": -19.875,
-   "y": 11.274
+   "kind_digest": "d58d6a3c4cbf6a07",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.63,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": 14.417,
+   "y": 19.124
   },
   {
    "key": "image:IMG33",
@@ -3486,8 +5579,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.08
    },
-   "x": -6.637,
-   "y": 12.041
+   "kind_digest": "11a9c16569d76183",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.48,
+    "runner_up": "version",
+    "runner_up_confidence": 0.42
+   },
+   "keyword_kind": null,
+   "x": -1.245,
+   "y": 21.922
   },
   {
    "key": "image:IMG34",
@@ -3503,8 +5604,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.27
    },
-   "x": -19.344,
-   "y": 8.826
+   "kind_digest": "b71553200be16784",
+   "jev_kind": {
+    "choice": "baseline",
+    "confidence": 0.54,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": 16.173,
+   "y": 21.695
   },
   {
    "key": "image:IMG35",
@@ -3520,8 +5629,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -14.814,
-   "y": 8.303
+   "kind_digest": "9da6dddc215a0bd1",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.79,
+    "runner_up": "version",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": 11.585,
+   "y": 15.836
   },
   {
    "key": "image:IMG36",
@@ -3537,8 +5654,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.31
    },
-   "x": -21.484,
-   "y": 11.113
+   "kind_digest": "0b48a4dfd3f41610",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.45,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.41
+   },
+   "keyword_kind": null,
+   "x": 16.184,
+   "y": 17.352
   },
   {
    "key": "image:IMG37",
@@ -3554,8 +5679,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.25
    },
-   "x": -13.945,
-   "y": 11.547
+   "kind_digest": "620885da1cfd66c2",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.43,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": null,
+   "x": 9.381,
+   "y": 18.665
   },
   {
    "key": "image:IMG38",
@@ -3571,8 +5704,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.1
    },
-   "x": -20.276,
-   "y": 12.683
+   "kind_digest": "cb35a39dc2b1bb82",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.23,
+    "runner_up": "version",
+    "runner_up_confidence": 0.29
+   },
+   "keyword_kind": null,
+   "x": 14.816,
+   "y": 20.316
   },
   {
    "key": "image:IMG40",
@@ -3588,8 +5729,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.01
    },
-   "x": -22.133,
-   "y": 10.271
+   "kind_digest": "a9ae26a57b9eb364",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.78,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": 16.602,
+   "y": 16.366
   },
   {
    "key": "image:IMG41",
@@ -3605,8 +5754,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.04
    },
-   "x": -17.771,
-   "y": 10.712
+   "kind_digest": "12b9a4cac7a8a315",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.54,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": null,
+   "x": 12.703,
+   "y": 19.08
   },
   {
    "key": "image:IMG42",
@@ -3614,7 +5771,7 @@
    "source": "",
    "title": "Online supermarket",
    "category": "economics/behavioural",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "0b2e4fc7b908ee0c",
    "jev": {
     "choice": "economics/behavioural",
@@ -3622,8 +5779,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.07
    },
-   "x": -18.848,
-   "y": 17.97
+   "kind_digest": "adb35388d1b3264c",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.51,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.3
+   },
+   "keyword_kind": null,
+   "x": 12.404,
+   "y": 27.116
   },
   {
    "key": "image:IMG43",
@@ -3631,7 +5796,7 @@
    "source": "",
    "title": "Online supermarket",
    "category": "economics/behavioural",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "f22eb9f94b54cec3",
    "jev": {
     "choice": "health communication",
@@ -3639,8 +5804,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.42
    },
-   "x": -18.297,
-   "y": 17.44
+   "kind_digest": "b664a0985dee6f63",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.53,
+    "runner_up": "version",
+    "runner_up_confidence": 0.43
+   },
+   "keyword_kind": null,
+   "x": 12.404,
+   "y": 27.116
   },
   {
    "key": "image:IMG44",
@@ -3656,8 +5829,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.21
    },
-   "x": -3.777,
-   "y": 15.808
+   "kind_digest": "818353dee55d225f",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.56,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": null,
+   "x": 2.479,
+   "y": 16.58
   },
   {
    "key": "image:IMG45",
@@ -3673,8 +5854,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.15
    },
-   "x": -6.948,
-   "y": 7.915
+   "kind_digest": "8b3ae2d48a0de059",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.77,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": 3.999,
+   "y": 11.308
   },
   {
    "key": "image:IMG46",
@@ -3690,8 +5879,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.08
    },
-   "x": -3.77,
-   "y": 2.874
+   "kind_digest": "f8fa54ffe1d0faf0",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.54,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.26
+   },
+   "keyword_kind": "choice",
+   "x": -5.638,
+   "y": 9.48
   },
   {
    "key": "image:IMG47",
@@ -3707,8 +5904,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.13
    },
-   "x": -7.536,
-   "y": 6.232
+   "kind_digest": "6e7491d63c882f4b",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.64,
+    "runner_up": "version",
+    "runner_up_confidence": 0.32
+   },
+   "keyword_kind": null,
+   "x": 5.769,
+   "y": 9.575
   },
   {
    "key": "image:IMG48",
@@ -3724,8 +5929,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.43
    },
-   "x": -7.271,
-   "y": 4.815
+   "kind_digest": "bdee37816bf4ecff",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.72,
+    "runner_up": "version",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": 6.299,
+   "y": 7.761
   },
   {
    "key": "image:IMG51",
@@ -3741,8 +5954,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.06
    },
-   "x": -3.414,
-   "y": 13.502
+   "kind_digest": "bf6eb71a31e74001",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.84,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": null,
+   "x": 2.758,
+   "y": 20.087
   },
   {
    "key": "image:IMG54",
@@ -3758,8 +5979,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.16
    },
-   "x": -4.362,
-   "y": 16.914
+   "kind_digest": "20588ec49029945a",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.55,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.37
+   },
+   "keyword_kind": null,
+   "x": 0.529,
+   "y": 16.497
   },
   {
    "key": "image:IMG55",
@@ -3775,8 +6004,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.09
    },
-   "x": -10.78,
-   "y": 12.109
+   "kind_digest": "bba446a1bc39d30e",
+   "jev_kind": {
+    "choice": "lineup",
+    "confidence": 0.99,
+    "runner_up": "version",
+    "runner_up_confidence": 0.01
+   },
+   "keyword_kind": null,
+   "x": 5.853,
+   "y": 15.84
   },
   {
    "key": "image:IMG57",
@@ -3792,8 +6029,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.06
    },
-   "x": -4.974,
-   "y": 18.174
+   "kind_digest": "c2dec891a57cf9f8",
+   "jev_kind": {
+    "choice": "lineup",
+    "confidence": 0.64,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": -0.912,
+   "y": 15.13
   },
   {
    "key": "image:IMG59",
@@ -3809,8 +6054,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.05
    },
-   "x": -18.285,
-   "y": 14.047
+   "kind_digest": "2aaf5f62d4670e91",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.66,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.27
+   },
+   "keyword_kind": null,
+   "x": 12.858,
+   "y": 22.834
   },
   {
    "key": "image:IMG60",
@@ -3826,8 +6079,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.07
    },
-   "x": -19.339,
-   "y": 14.058
+   "kind_digest": "f797aabb4d4f1b2f",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.51,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.36
+   },
+   "keyword_kind": null,
+   "x": 14.202,
+   "y": 22.985
   },
   {
    "key": "image:IMG62",
@@ -3843,8 +6104,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.05
    },
-   "x": -18.591,
-   "y": 12.426
+   "kind_digest": "725790018b3457cc",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.47,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.25
+   },
+   "keyword_kind": null,
+   "x": 13.681,
+   "y": 21.476
   },
   {
    "key": "image:IMG69",
@@ -3860,8 +6129,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.08
    },
-   "x": -7.516,
-   "y": 16.039
+   "kind_digest": "0d74d2730b6c4c82",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.59,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": null,
+   "x": -1.988,
+   "y": 17.423
   },
   {
    "key": "image:IMG70",
@@ -3872,8 +6149,16 @@
    "status": "Needs checking",
    "digest": "5c89ed0daef0518b",
    "jev": null,
-   "x": -8.115,
-   "y": 18.881
+   "kind_digest": "6e3ce67b4a9dc76a",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.76,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.11
+   },
+   "keyword_kind": null,
+   "x": -0.401,
+   "y": 11.93
   },
   {
    "key": "image:IMG71",
@@ -3884,8 +6169,16 @@
    "status": "Needs checking",
    "digest": "76198d2843d06933",
    "jev": null,
-   "x": -8.096,
-   "y": 19.404
+   "kind_digest": "dce7d96a47f6a728",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.4,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.39
+   },
+   "keyword_kind": null,
+   "x": -0.035,
+   "y": 12.702
   },
   {
    "key": "image:IMG72",
@@ -3901,8 +6194,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.08
    },
-   "x": -20.721,
-   "y": 16.488
+   "kind_digest": "62530bc518d5dce9",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.49,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.4
+   },
+   "keyword_kind": null,
+   "x": 15.155,
+   "y": 26.541
   },
   {
    "key": "image:IMG73",
@@ -3918,8 +6219,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.01
    },
-   "x": -14.165,
-   "y": 15.011
+   "kind_digest": "0610096ee3df0b9c",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.79,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": null,
+   "x": 6.423,
+   "y": 21.909
   },
   {
    "key": "image:IMG75",
@@ -3935,8 +6244,16 @@
     "runner_up": "survey methodology",
     "runner_up_confidence": 0.09
    },
-   "x": -3.115,
-   "y": 19.848
+   "kind_digest": "7899bdc935e6f785",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.47,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.16
+   },
+   "keyword_kind": null,
+   "x": -6.209,
+   "y": 16.0
   },
   {
    "key": "image:IMG77",
@@ -3952,8 +6269,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.08
    },
-   "x": -18.255,
-   "y": 6.665
+   "kind_digest": "878082fd140306bb",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.89,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": "mix",
+   "x": 9.569,
+   "y": 23.829
   },
   {
    "key": "image:IMG80",
@@ -3969,8 +6294,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 7.914,
-   "y": 14.404
+   "kind_digest": "371190146be52fde",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.84,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": "choice",
+   "x": -14.648,
+   "y": 10.815
   },
   {
    "key": "image:IMG81",
@@ -3986,8 +6319,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": 7.988,
-   "y": 14.404
+   "kind_digest": "65fbe909b59cb3a5",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.89,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.06
+   },
+   "keyword_kind": "choice",
+   "x": -14.814,
+   "y": 10.733
   },
   {
    "key": "image:IMG85",
@@ -4003,8 +6344,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.15
    },
-   "x": -5.611,
-   "y": 11.327
+   "kind_digest": "58a1bdb5c46aa53c",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.41,
+    "runner_up": "version",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": 0.051,
+   "y": 22.625
   },
   {
    "key": "image:IMG86",
@@ -4020,8 +6369,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.04
    },
-   "x": 12.258,
-   "y": 7.824
+   "kind_digest": "2da41fdd0d371be5",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.79,
+    "runner_up": "story",
+    "runner_up_confidence": 0.14
+   },
+   "keyword_kind": null,
+   "x": -8.335,
+   "y": 2.694
   },
   {
    "key": "image:IMG87",
@@ -4037,8 +6394,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.27
    },
-   "x": -0.168,
-   "y": 15.145
+   "kind_digest": "8496fc4764d52c82",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.52,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.2
+   },
+   "keyword_kind": null,
+   "x": -4.767,
+   "y": 19.72
   },
   {
    "key": "image:IMG88",
@@ -4054,8 +6419,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.17
    },
-   "x": 2.522,
-   "y": 4.111
+   "kind_digest": "77f3714e51e58a23",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.76,
+    "runner_up": "version",
+    "runner_up_confidence": 0.1
+   },
+   "keyword_kind": null,
+   "x": -17.361,
+   "y": -8.949
   },
   {
    "key": "image:IMG89",
@@ -4071,8 +6444,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.13
    },
-   "x": -17.732,
-   "y": 12.982
+   "kind_digest": "5ba7f163943e3525",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.67,
+    "runner_up": "version",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": 12.295,
+   "y": 21.054
   },
   {
    "key": "image:IMG90",
@@ -4088,8 +6469,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.07
    },
-   "x": -7.596,
-   "y": 14.179
+   "kind_digest": "20614489657c63d6",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.84,
+    "runner_up": "story",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": -2.051,
+   "y": 19.373
   },
   {
    "key": "image:IMG91",
@@ -4105,8 +6494,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.02
    },
-   "x": -5.311,
-   "y": 11.438
+   "kind_digest": "8a60cfddbb2c6541",
+   "jev_kind": {
+    "choice": "lineup",
+    "confidence": 0.38,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.2
+   },
+   "keyword_kind": null,
+   "x": 0.345,
+   "y": 22.298
   },
   {
    "key": "image:IMG92",
@@ -4122,8 +6519,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.33
    },
-   "x": -8.171,
-   "y": -11.456
+   "kind_digest": "fdaaff3db3cf5bb6",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.44,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.47
+   },
+   "keyword_kind": null,
+   "x": -5.625,
+   "y": -2.352
   },
   {
    "key": "image:IMG95",
@@ -4139,8 +6544,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -21.595,
-   "y": 15.275
+   "kind_digest": "79e863c9b5e69afd",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.77,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.07
+   },
+   "keyword_kind": null,
+   "x": 16.347,
+   "y": 25.531
   },
   {
    "key": "image:IMG96",
@@ -4156,8 +6569,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -8.579,
-   "y": 6.514
+   "kind_digest": "d7e0d4543feacc66",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.85,
+    "runner_up": "version",
+    "runner_up_confidence": 0.11
+   },
+   "keyword_kind": null,
+   "x": 6.591,
+   "y": 10.423
   },
   {
    "key": "image:IMG97",
@@ -4173,8 +6594,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.12
    },
-   "x": -0.069,
-   "y": 15.412
+   "kind_digest": "fb00b688975b04fb",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.43,
+    "runner_up": "story",
+    "runner_up_confidence": 0.43
+   },
+   "keyword_kind": null,
+   "x": -5.086,
+   "y": 19.692
   },
   {
    "key": "image:IMG98",
@@ -4190,8 +6619,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -11.353,
-   "y": 7.738
+   "kind_digest": "2bb9e9e552ff3594",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.5,
+    "runner_up": "context",
+    "runner_up_confidence": 0.32
+   },
+   "keyword_kind": null,
+   "x": 9.064,
+   "y": 12.298
   },
   {
    "key": "image:IMG99",
@@ -4207,8 +6644,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.04
    },
-   "x": -4.585,
-   "y": 8.178
+   "kind_digest": "866061ec7683f389",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.89,
+    "runner_up": "story",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": null,
+   "x": 2.186,
+   "y": 10.259
   },
   {
    "key": "image:IMG100",
@@ -4224,8 +6669,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -6.031,
-   "y": 6.06
+   "kind_digest": "d32cbffa70336646",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.88,
+    "runner_up": "story",
+    "runner_up_confidence": 0.07
+   },
+   "keyword_kind": null,
+   "x": 4.422,
+   "y": 8.47
   },
   {
    "key": "image:IMG101",
@@ -4241,8 +6694,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.16
    },
-   "x": -5.328,
-   "y": 7.851
+   "kind_digest": "fa2cb6081421d9bc",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.77,
+    "runner_up": "story",
+    "runner_up_confidence": 0.1
+   },
+   "keyword_kind": null,
+   "x": 3.0,
+   "y": 10.2
   },
   {
    "key": "image:IMG102",
@@ -4258,8 +6719,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.05
    },
-   "x": -2.736,
-   "y": 11.239
+   "kind_digest": "f26a1475dcc7988c",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.48,
+    "runner_up": "version",
+    "runner_up_confidence": 0.3
+   },
+   "keyword_kind": null,
+   "x": -4.392,
+   "y": 13.011
   },
   {
    "key": "image:IMG105",
@@ -4275,8 +6744,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.03
    },
-   "x": -11.093,
-   "y": 13.616
+   "kind_digest": "b37f3a90e02b246e",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.92,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": null,
+   "x": 5.159,
+   "y": 17.543
   },
   {
    "key": "image:IMG106",
@@ -4292,8 +6769,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.22
    },
-   "x": -5.831,
-   "y": 7.449
+   "kind_digest": "6c7afe2b64698635",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.62,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": null,
+   "x": 3.795,
+   "y": 9.838
   },
   {
    "key": "image:IMG107",
@@ -4301,7 +6786,7 @@
    "source": "",
    "title": "Cafeteria shelf photos and social norms",
    "category": "health communication",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "a6377921d04bf4cb",
    "jev": {
     "choice": "moral/social/cognition",
@@ -4309,8 +6794,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.46
    },
-   "x": -16.864,
-   "y": 11.093
+   "kind_digest": "60dd7857e44051b1",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.89,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": "shelf",
+   "x": 9.844,
+   "y": 21.998
   },
   {
    "key": "image:IMG108",
@@ -4318,7 +6811,7 @@
    "source": "",
    "title": "Branded snack and meal preferences",
    "category": "health communication",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "5d17184e015be986",
    "jev": {
     "choice": "health communication",
@@ -4326,8 +6819,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.15
    },
-   "x": -15.533,
-   "y": 12.298
+   "kind_digest": "c5cc70baa2c4cc03",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.29,
+    "runner_up": "head_to_head",
+    "runner_up_confidence": 0.33
+   },
+   "keyword_kind": "head_to_head",
+   "x": 9.981,
+   "y": 20.401
   },
   {
    "key": "image:IMG109",
@@ -4335,7 +6836,7 @@
    "source": "",
    "title": "Snack availability and choice",
    "category": "health communication",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "e86e69609462575f",
    "jev": {
     "choice": "health communication",
@@ -4343,8 +6844,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.09
    },
-   "x": -15.774,
-   "y": 11.742
+   "kind_digest": "04b58f9911e4cb74",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.54,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.39
+   },
+   "keyword_kind": null,
+   "x": 10.25,
+   "y": 20.937
   },
   {
    "key": "image:IMG110",
@@ -4352,7 +6861,7 @@
    "source": "",
    "title": "Alcohol vs alcohol-free adverts",
    "category": "health communication",
-   "status": "Waiting for images",
+   "status": "Needs checking",
    "digest": "8f23202ce26acc3c",
    "jev": {
     "choice": "political preferences/policy",
@@ -4360,8 +6869,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.31
    },
-   "x": -12.69,
-   "y": 9.927
+   "kind_digest": "6cc21ef3bced990b",
+   "jev_kind": {
+    "choice": "context",
+    "confidence": 0.36,
+    "runner_up": "version",
+    "runner_up_confidence": 0.39
+   },
+   "keyword_kind": null,
+   "x": 8.724,
+   "y": 16.727
   },
   {
    "key": "image:IMG111",
@@ -4377,8 +6894,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.04
    },
-   "x": -18.156,
-   "y": 11.935
+   "kind_digest": "caa1e57cfb8d9667",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.69,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.13
+   },
+   "keyword_kind": null,
+   "x": 13.344,
+   "y": 20.813
   },
   {
    "key": "image:IMG112",
@@ -4394,8 +6919,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.27
    },
-   "x": -19.246,
-   "y": 17.042
+   "kind_digest": "93d7ffb3741a8f32",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.61,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.18
+   },
+   "keyword_kind": null,
+   "x": 13.43,
+   "y": 26.143
   },
   {
    "key": "image:IMG113",
@@ -4411,8 +6944,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.45
    },
-   "x": -11.161,
-   "y": 13.151
+   "kind_digest": "56123a963261e6bd",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.9,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": null,
+   "x": 5.505,
+   "y": 17.079
   },
   {
    "key": "image:IMG114",
@@ -4428,8 +6969,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -14.688,
-   "y": 9.966
+   "kind_digest": "fb182027e8040374",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.88,
+    "runner_up": "shelf",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": "mix",
+   "x": 10.774,
+   "y": 17.472
   },
   {
    "key": "image:IMG115",
@@ -4445,8 +6994,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.01
    },
-   "x": -14.075,
-   "y": 9.071
+   "kind_digest": "7287aa02b4a76abb",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.86,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.1
+   },
+   "keyword_kind": null,
+   "x": 10.397,
+   "y": 16.334
   },
   {
    "key": "image:IMG118",
@@ -4462,8 +7019,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.02
    },
-   "x": -0.571,
-   "y": 4.297
+   "kind_digest": "50dcbbb7784e75f7",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.95,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.03
+   },
+   "keyword_kind": null,
+   "x": 5.104,
+   "y": -0.05
   },
   {
    "key": "image:IMG119",
@@ -4479,8 +7044,16 @@
     "runner_up": "NONE_OF_THESE",
     "runner_up_confidence": 0.14
    },
-   "x": -7.071,
-   "y": 16.078
+   "kind_digest": "68eca3d2b3cfd2b7",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.41,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.4
+   },
+   "keyword_kind": null,
+   "x": -1.548,
+   "y": 17.392
   },
   {
    "key": "image:IMG120",
@@ -4496,8 +7069,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.01
    },
-   "x": -8.036,
-   "y": 6.013
+   "kind_digest": "1c52272e59c1dd98",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.85,
+    "runner_up": "version",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": null,
+   "x": 6.484,
+   "y": 9.54
   },
   {
    "key": "image:IMG121",
@@ -4513,8 +7094,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.27
    },
-   "x": -1.991,
-   "y": -1.958
+   "kind_digest": "4e9bcf6f884b2f36",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.78,
+    "runner_up": "story",
+    "runner_up_confidence": 0.12
+   },
+   "keyword_kind": null,
+   "x": -1.858,
+   "y": 0.494
   },
   {
    "key": "image:IMG122",
@@ -4530,8 +7119,16 @@
     "runner_up": "work/family/gender",
     "runner_up_confidence": 0.03
    },
-   "x": 1.534,
-   "y": 6.372
+   "kind_digest": "749e33fc49e321ed",
+   "jev_kind": {
+    "choice": "story",
+    "confidence": 0.5,
+    "runner_up": "version",
+    "runner_up_confidence": 0.3
+   },
+   "keyword_kind": null,
+   "x": -4.237,
+   "y": 4.973
   },
   {
    "key": "image:IMG123",
@@ -4547,8 +7144,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.01
    },
-   "x": -3.713,
-   "y": 1.124
+   "kind_digest": "00976db0fa96c20a",
+   "jev_kind": {
+    "choice": "head_to_head",
+    "confidence": 0.83,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.05
+   },
+   "keyword_kind": null,
+   "x": -6.65,
+   "y": -0.435
   },
   {
    "key": "image:IMG125",
@@ -4564,8 +7169,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.22
    },
-   "x": -7.093,
-   "y": 10.203
+   "kind_digest": "2e5b674cee18a711",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.88,
+    "runner_up": "version",
+    "runner_up_confidence": 0.07
+   },
+   "keyword_kind": null,
+   "x": -2.089,
+   "y": 23.205
   },
   {
    "key": "image:IMG126",
@@ -4581,8 +7194,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.35
    },
-   "x": -0.238,
-   "y": 11.926
+   "kind_digest": "ea4a74c09e1ed42a",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.86,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": -1.249,
+   "y": 10.26
   },
   {
    "key": "image:IMG127",
@@ -4598,8 +7219,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.27
    },
-   "x": -3.884,
-   "y": 12.741
+   "kind_digest": "b4d8b28a0d831582",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.97,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.02
+   },
+   "keyword_kind": null,
+   "x": 1.686,
+   "y": 20.407
   },
   {
    "key": "image:IMG128",
@@ -4615,8 +7244,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.08
    },
-   "x": -14.955,
-   "y": 6.067
+   "kind_digest": "c8a218c17457de3f",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.68,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.15
+   },
+   "keyword_kind": null,
+   "x": 8.324,
+   "y": 14.623
   },
   {
    "key": "image:IMG129",
@@ -4632,8 +7269,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.13
    },
-   "x": -5.758,
-   "y": 19.309
+   "kind_digest": "0bc4c8a995d4b1e6",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.86,
+    "runner_up": "version",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": -2.691,
+   "y": 15.739
   },
   {
    "key": "image:IMG130",
@@ -4649,8 +7294,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.45
    },
-   "x": -16.449,
-   "y": 12.637
+   "kind_digest": "dd8daa7fa056d80e",
+   "jev_kind": {
+    "choice": "choice",
+    "confidence": 0.57,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.29
+   },
+   "keyword_kind": null,
+   "x": 11.185,
+   "y": 20.097
   },
   {
    "key": "image:IMG131",
@@ -4666,8 +7319,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.06
    },
-   "x": -5.991,
-   "y": 15.052
+   "kind_digest": "5b3166b476f8c0e4",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.85,
+    "runner_up": "version",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": null,
+   "x": -0.358,
+   "y": 18.506
   },
   {
    "key": "image:IMG132",
@@ -4683,8 +7344,16 @@
     "runner_up": "moral/social/cognition",
     "runner_up_confidence": 0.06
    },
-   "x": -15.424,
-   "y": 13.982
+   "kind_digest": "7f6393234f7ef017",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.49,
+    "runner_up": "lineup",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": 7.963,
+   "y": 21.037
   },
   {
    "key": "image:IMG134",
@@ -4700,8 +7369,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.05
    },
-   "x": -2.569,
-   "y": 16.591
+   "kind_digest": "0483e40c59bbddfa",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.78,
+    "runner_up": "version",
+    "runner_up_confidence": 0.09
+   },
+   "keyword_kind": null,
+   "x": 2.458,
+   "y": 14.898
   },
   {
    "key": "image:IMG135",
@@ -4712,8 +7389,16 @@
    "status": "Needs checking",
    "digest": "51307284812a37b9",
    "jev": null,
-   "x": -5.428,
-   "y": 18.37
+   "kind_digest": "cabdcdc289a1e538",
+   "jev_kind": {
+    "choice": "mix",
+    "confidence": 0.85,
+    "runner_up": "story",
+    "runner_up_confidence": 0.08
+   },
+   "keyword_kind": null,
+   "x": -1.506,
+   "y": 15.277
   },
   {
    "key": "image:IMG136",
@@ -4729,8 +7414,16 @@
     "runner_up": "cross-national",
     "runner_up_confidence": 0.0
    },
-   "x": -6.086,
-   "y": 17.198
+   "kind_digest": "51a3704c9721d9c1",
+   "jev_kind": {
+    "choice": "lineup",
+    "confidence": 0.57,
+    "runner_up": "version",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": null,
+   "x": 0.152,
+   "y": 14.572
   },
   {
    "key": "image:IMG137",
@@ -4741,8 +7434,16 @@
    "status": "Needs checking",
    "digest": "f975661f86af3202",
    "jev": null,
-   "x": -12.509,
-   "y": 10.22
+   "kind_digest": "b9c696fcc7442ead",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.88,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.04
+   },
+   "keyword_kind": null,
+   "x": 8.406,
+   "y": 17.164
   },
   {
    "key": "image:IMG138",
@@ -4758,8 +7459,16 @@
     "runner_up": "political preferences/policy",
     "runner_up_confidence": 0.4
    },
-   "x": -3.401,
-   "y": 6.303
+   "kind_digest": "c2879c41a6f79608",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.38,
+    "runner_up": "mix",
+    "runner_up_confidence": 0.21
+   },
+   "keyword_kind": null,
+   "x": 1.55,
+   "y": 7.67
   },
   {
    "key": "image:IMG139",
@@ -4775,8 +7484,16 @@
     "runner_up": "health communication",
     "runner_up_confidence": 0.18
    },
-   "x": -18.767,
-   "y": 19.237
+   "kind_digest": "35450f18e7d61c52",
+   "jev_kind": {
+    "choice": "shelf",
+    "confidence": 0.74,
+    "runner_up": "version",
+    "runner_up_confidence": 0.23
+   },
+   "keyword_kind": null,
+   "x": 12.579,
+   "y": 28.764
   },
   {
    "key": "image:IMG140",
@@ -4792,8 +7509,16 @@
     "runner_up": "economics/behavioural",
     "runner_up_confidence": 0.42
    },
-   "x": -6.11,
-   "y": 14.25
+   "kind_digest": "293fc0a695d76437",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.2,
+    "runner_up": "choice",
+    "runner_up_confidence": 0.24
+   },
+   "keyword_kind": null,
+   "x": -0.389,
+   "y": 19.396
   },
   {
    "key": "image:IMG142",
@@ -4809,8 +7534,16 @@
     "runner_up": "political identity/polarisation",
     "runner_up_confidence": 0.29
    },
-   "x": 4.033,
-   "y": -13.299
+   "kind_digest": "a229f7393b12106e",
+   "jev_kind": {
+    "choice": "version",
+    "confidence": 0.49,
+    "runner_up": "story",
+    "runner_up_confidence": 0.34
+   },
+   "keyword_kind": null,
+   "x": 5.433,
+   "y": -6.332
   }
  ]
 }

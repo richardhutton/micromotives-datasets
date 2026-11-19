@@ -56,14 +56,28 @@ REASONS = {
 }
 
 
+def _open_osf(code: str) -> bool:
+    """An OSF study whose recipe's `licence` records a Creative Commons licence."""
+    if not code.startswith("osf_"):
+        return False
+    for path in RECIPES.glob(f"{code}*.yaml"):
+        for line in path.read_text().splitlines()[:40]:
+            if line.startswith("licence:"):
+                return line.split(":", 1)[1].strip().strip("'\"").upper().startswith("CC")
+    return False
+
+
 def main() -> int:
     with open(CATALOG) as fh:
         rows = list(csv.DictReader(fh))
     screen = json.loads(SCREEN.read_text()) if SCREEN.exists() else {}
     # A Figshare study id keeps its underscore (`figshare_32935409`), so cutting at the
     # first one would name the archive rather than the study.
+    # An OSF node outside the catalogue (`osf_ct8ae`) likewise.
     built = {
-        "_".join(p.stem.split("_")[:2]) if p.stem.startswith("figshare_") else p.stem.split("_")[0]
+        "_".join(p.stem.split("_")[:2])
+        if p.stem.startswith(("figshare_", "osf_"))
+        else p.stem.split("_")[0]
         for p in RECIPES.glob("*.yaml")
     }
 
@@ -112,8 +126,15 @@ def main() -> int:
         # they would otherwise be reported as Dataverse studies stating no licence.
         # Each states its own licence on its record (recorded in its recipe).
         # Figshare deposits (figshare_32935409 the first) likewise.
-        zenodo = sorted(c for c in elsewhere if c.startswith(("zenodo", "figshare")))
-        dataverse = [c for c in elsewhere if c not in zenodo]
+        # An OSF node whose recipe records an open licence joins them (osf_ct8ae,
+        # public under CC BY 4.0 since 17 Nov 2026).
+        zenodo = sorted(
+            c for c in elsewhere if c.startswith(("zenodo", "figshare")) or _open_osf(c)
+        )
+        # OSF nodes outside the catalogue that state no licence are used on an approval
+        # their recipe records; neither Dataverse nor licensed like Zenodo.
+        osf = sorted(c for c in elsewhere if c.startswith("osf_") and not _open_osf(c))
+        dataverse = [c for c in elsewhere if c not in zenodo and c not in osf]
         cc0 = sorted(
             c for c in dataverse if str(provenance.get(c, {}).get("licence", "")).startswith("CC0")
         )
@@ -143,9 +164,18 @@ def main() -> int:
             )
             + (
                 f" {len(zenodo)} ({', '.join(f'`{c}`' for c in zenodo)}) "
-                f"{'comes' if len(zenodo) == 1 else 'come'} from Zenodo or Figshare, under the licence "
+                f"{'comes' if len(zenodo) == 1 else 'come'} from Zenodo, Figshare or OSF, under the open licence "
                 "each record states and its recipe records."
                 if zenodo
+                else ""
+            )
+            + (
+                f" {len(osf)} ({', '.join(f'`{c}`' for c in osf)}) "
+                f"{'comes' if len(osf) == 1 else 'come'} from OSF, {_state(osf)} no licence, "
+                "and {} used on an approval recorded in {} recipe, never redistributed.".format(
+                    "is" if len(osf) == 1 else "are", "its" if len(osf) == 1 else "each"
+                )
+                if osf
                 else ""
             )
         )

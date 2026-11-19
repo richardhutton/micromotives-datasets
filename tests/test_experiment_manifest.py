@@ -21,6 +21,7 @@ clone where `data/processed/` is empty.
 
 from __future__ import annotations
 
+import dataclasses
 import importlib.util
 import json
 import sys
@@ -171,3 +172,42 @@ def test_a_source_with_no_layer_stops_the_render(experiments: list) -> None:
     stray = dataclasses.replace(experiments[0], source="somewhere_new")
     with pytest.raises(ValueError, match="no layer for source"):
         _module().render([*experiments, stray])
+
+
+def test_an_osf_experiment_is_filed_by_its_own_licence(
+    experiments: list, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """An OSF node outside TESS is filed by the licence its recipe records. Openly
+    licensed (osf_ct8ae, CC BY 4.0 since 17 Nov 2026) it sits with Zenodo and
+    Figshare; stating none, it sits in its own "no licence stated" layer, flagged,
+    because there it is used only on an approval its recipe records. Both directions
+    are rendered: the real recipe, and the same experiment with its licence removed.
+    Rendered with a study map covering every recipe, so the check does not depend on
+    the splits being current."""
+    module = _module()
+    study_of = tmp_path / "study_of_recipe.json"
+    study_of.write_text(json.dumps({e.recipe: e.recipe for e in experiments}))
+    monkeypatch.setattr(module, "STUDY_OF", study_of)
+    osf = [e for e in experiments if e.source == "osf"]
+    assert osf, "no OSF experiments found; this test would pass vacuously"
+
+    rendered = module.render(experiments)
+    open_section = rendered.split("## Zenodo, Figshare and open OSF")[1].split("\n## ")[0]
+    for e in osf:
+        assert e.licence and e.licence.startswith("CC BY"), e.licence
+        assert e.reference == f"osf.io/{e.study_id.removeprefix('osf_')}"
+        row = next(line for line in rendered.splitlines() if line.startswith(f"| `{e.recipe}`"))
+        assert "⚠" not in row and "| OSF |" in row, row
+        assert f"`{e.recipe}`" in open_section
+    assert "## OSF — no licence stated" not in rendered
+
+    no_licence = "None stated; used on rich's approval"
+    unlicensed = [dataclasses.replace(e, licence=no_licence) for e in osf]
+    others = [e for e in experiments if e.source != "osf"]
+    rendered = module.render([*others, *unlicensed])
+    osf_section = rendered.split("## OSF — no licence stated")[1].split("\n## ")[0]
+    open_section = rendered.split("## Zenodo, Figshare and open OSF")[1].split("\n## ")[0]
+    for e in unlicensed:
+        row = next(line for line in rendered.splitlines() if line.startswith(f"| `{e.recipe}`"))
+        assert "⚠" in row, row
+        assert f"`{e.recipe}`" in osf_section and f"`{e.recipe}`" not in open_section

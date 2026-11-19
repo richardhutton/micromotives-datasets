@@ -245,6 +245,13 @@ item's identity is kept as a structured factor so training can re-order and rema
 This ruling covers choice sets only. It does not reopen screen sequences (the rule
 above) or attribute rows within a conjoint profile (ledger 114).
 
+When it cannot be established whether the order was fixed or randomised (ruled by
+rich, 16 Nov 2026, on the OSF values best-worst study `osf_ct8ae`, where neither the
+export nor the paper says and a screenshot disagrees with the export), the row lists
+the items in the data file's order and adds instead *"(the options are listed in
+the data file's order; the order on screen was not recorded)"*. That clause is true
+whichever was the case, and training shuffles the order regardless.
+
 ## A per-respondent fill the deposit does not hold
 
 Ruled by rich, 10 Oct 2026, on IP 9.26's own-place vignette. The screen named the

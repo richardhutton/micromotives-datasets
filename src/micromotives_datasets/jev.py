@@ -1132,3 +1132,35 @@ def categorise_experiment(
         },
     )
     return _verdict(r.answers["category"])
+
+
+def kind_of_experiment(
+    cli: Any,
+    title: str,
+    description: str,
+    kinds: tuple[str, ...],
+    meanings: tuple[str, ...],
+) -> Verdict:
+    """Pick which kind of experiment this is, from micromotives-service's eleven kinds.
+
+    `kinds` and `meanings` come from `data/catalog/design_kinds.json`, a snapshot of
+    the service's `GET /v1/design/kinds`, paired by position. NONE_OF_THESE is offered
+    so a design none of the kinds describes says so instead of taking the nearest.
+    """
+    from typesafe_sdk import Choice
+
+    criteria = dict(zip(kinds, meanings, strict=True))
+    criteria[NONE_OF_THESE] = "none of these kinds of experiment fits"
+    r = cli.system_one(
+        state=f'Survey experiment: "{title}"\n\n{description}',
+        questions={
+            "kind": Choice(
+                criteria=criteria,
+                instructions=(
+                    "Which kind of experiment is this, judged by how it was designed: what "
+                    "was varied, and what each person was shown and asked to do?"
+                ),
+            )
+        },
+    )
+    return _verdict(r.answers["kind"])

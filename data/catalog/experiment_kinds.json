@@ -1,0 +1,1261 @@
+{
+ "_about": "The kind of experiment each tracked experiment is, from micromotives-service's eleven kinds (data/catalog/design_kinds.json). This file is the record: the coverage page and any count of kinds read it, so the answer does not change between askings. Decided 19 Nov 2026. basis: 'named+jev' = the description names the method and Jev agreed; 'read' = decided by reading the description and design notes, with Jev's answer as a check; 'guess' = the description is too thin to be sure (mostly TESS candidates described from the title only); settle it when the instrument is read. Change a kind here, never on the page.",
+ "kinds": {
+  "image:IMG01": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG02": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG03": {
+   "kind": "shelf",
+   "basis": "named+jev"
+  },
+  "image:IMG06": {
+   "kind": "lineup",
+   "basis": "read"
+  },
+  "image:IMG07": {
+   "kind": "head_to_head",
+   "basis": "read"
+  },
+  "image:IMG08": {
+   "kind": "lineup",
+   "basis": "read"
+  },
+  "image:IMG09": {
+   "kind": "lineup",
+   "basis": "read"
+  },
+  "image:IMG100": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG101": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG102": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "image:IMG105": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG106": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG107": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG108": {
+   "kind": "head_to_head",
+   "basis": "read"
+  },
+  "image:IMG109": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG110": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "image:IMG111": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG112": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG113": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG114": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "image:IMG115": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG118": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG119": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG120": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG121": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG122": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG123": {
+   "kind": "head_to_head",
+   "basis": "read"
+  },
+  "image:IMG125": {
+   "kind": "choice",
+   "basis": "read"
+  },
+  "image:IMG126": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG127": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG128": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG129": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG13": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG130": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG131": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG132": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG134": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG135": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG136": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG137": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG138": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG139": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG14": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG140": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG142": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "image:IMG15": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG18": {
+   "kind": "mix",
+   "basis": "guess"
+  },
+  "image:IMG20": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG21": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG22": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG23": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG25": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG26": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG27": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG28": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG29": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG30": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG31": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG32": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG33": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "image:IMG34": {
+   "kind": "baseline",
+   "basis": "read"
+  },
+  "image:IMG35": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG36": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG37": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG38": {
+   "kind": "head_to_head",
+   "basis": "read"
+  },
+  "image:IMG40": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG41": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG42": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG43": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG44": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG45": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG46": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "image:IMG47": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG48": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG51": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG54": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG55": {
+   "kind": "lineup",
+   "basis": "read"
+  },
+  "image:IMG57": {
+   "kind": "lineup",
+   "basis": "read"
+  },
+  "image:IMG59": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG60": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG62": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG69": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG70": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG71": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG72": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG73": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG75": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "image:IMG77": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "image:IMG80": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "image:IMG81": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "image:IMG85": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG86": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "image:IMG87": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG88": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "image:IMG89": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG90": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG91": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG92": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "image:IMG95": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG96": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG97": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "image:IMG98": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG99": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:10VFQX": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:1166066": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:15420092": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:18429769": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:2awmn": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:2tzmb": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:35M5CV_bbc": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:35M5CV_lodger": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:35M5CV_sky": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:36wjy": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:3YCVOF": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:3muqx": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:3uq9a": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:4gczb": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:5hqan": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:5jua2": {
+   "kind": "mix",
+   "basis": "guess"
+  },
+  "text:5mt6r": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:6EJJJZ": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:6MRVOM_brexit_scenario": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:6MRVOM_eu_share": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:6gq25": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:7dc8s": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:7jt2f": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:7tzpe": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:8.10": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:8.11": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:8.12": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:8.14": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:8.3": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:8.4": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:8.5": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:8.8": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:8ctbk": {
+   "kind": "choice",
+   "basis": "read"
+  },
+  "text:8snrf": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.21": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:9.22": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.29": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:9.3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.35": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.40": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.41": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.46": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.50": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:9.6": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:9263n": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:9xw67_conjoint": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:9xw67_vignette": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:Apr2020_orgrolessplitgroup": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:CXHUNT": {
+   "kind": "sensitive_count",
+   "basis": "named+jev"
+  },
+  "text:EFXNLX": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:IU11FD": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:L6HYCL": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:LOGVPZ_brexit_satisfaction": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:LOGVPZ_risk_tolerance": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:M9XJRE": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:NYXQMG": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:PMV0TG": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:POMIFD": {
+   "kind": "head_to_head",
+   "basis": "read"
+  },
+  "text:PZB01G": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:QQM5MC": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:RFAXEY": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:RJTVG8": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:RUNQHV": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:UM6KP5": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:VBWUVG": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:W4_DonationSplit": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:W5_wordfeministsplit": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:XSOTDJ": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:a2nbf": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:a42yg": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:a5v96_vignette1": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:a7yw8": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:agbrd": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:b2srk": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:b5cny": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:b87sm": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:bf8p2": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:c5r2f": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:ca9ub": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ctp8n": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:cug34_B01_B09": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:de5hx": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_panel_w3_leadership": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_panel_w3_ngo_conjoint_donate": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:del_panel_w3_ngo_conjoint_petition": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:del_panel_w4_aid_conjoint_6attr": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:del_panel_w4_aid_conjoint_8attr": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:del_panel_w4_climate_harm_stories": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_panel_w4_cost_of_living": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_panel_w4_east_africa_drought": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_panel_w4_extreme_weather": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_panel_w5_who_must_change": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_sandbox_feb2023_abortion": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_sandbox_feb2023_aid_priorities": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_sandbox_feb2023_gender_aid": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_sandbox_feb2023_gender_equality": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_sandbox_feb2023_gender_progress": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_sandbox_feb2023_wordfeminist": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:del_sandbox_jul2020_global_goals": {
+   "kind": "lineup",
+   "basis": "read"
+  },
+  "text:del_sandbox_jun2022_ukraine_choice": {
+   "kind": "head_to_head",
+   "basis": "read"
+  },
+  "text:dh3nj": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:dwtue": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:e5rfg_ce": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:e5rfg_pair": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:e5rfg_six": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:e5rfg_tk": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:eidc_0869d961": {
+   "kind": "priority",
+   "basis": "named+jev"
+  },
+  "text:etqdx": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:evnyh_Q1a_and_validation": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:figshare_32935409_maxdiff": {
+   "kind": "priority",
+   "basis": "named+jev"
+  },
+  "text:fw5eq": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:fykuz": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:g6y8s": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:gh396": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:gs6yz": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:gy5kn": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:gyrp9_return": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:gyrp9_send": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:gyscq": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:h3pc9": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:j6xgs": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:jxdu8": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:k2mw3": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:k5zqm": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:k9ahx_ratings": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:m78xh": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:mjt8r": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:n96j5": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:osf_ct8ae_maxdiff": {
+   "kind": "priority",
+   "basis": "named+jev"
+  },
+  "text:phbjd": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:pkt6f": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:prf7d": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:py9q3_vignette1": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:py9q3_vignette2": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:py9q3_vignette3": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:q458t": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:r8u7c": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:rf79p": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:rpw4u_RO1": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:s6urt": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:sd7cf": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:sdq2z": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:sffyb": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:sh4px": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:sm7qn": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:tu95h": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:u2dbt": {
+   "kind": "story",
+   "basis": "guess"
+  },
+  "text:ukds_6849_alcohol_w15": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ukds_6849_automation_w14": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:ukds_6849_caring_activity_w17": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_caring_existing_w17": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_envtax_w7": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:ukds_6849_eq5d3l_w11": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_eq5d5l_w11": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_fertility_w4": {
+   "kind": "context",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_fertility_w5": {
+   "kind": "context",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_ghq_w14": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_hmrc_consent_w11": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_hmrc_consent_w11_web": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ukds_6849_hmrc_consent_w15": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ukds_6849_identity_w2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ukds_6849_immig_vignette_w11": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:ukds_6849_immigsdb_w8": {
+   "kind": "sensitive_count",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_immigsdb_w9": {
+   "kind": "sensitive_count",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_itemcount_w8": {
+   "kind": "sensitive_count",
+   "basis": "read"
+  },
+  "text:ukds_6849_itemcount_w9": {
+   "kind": "sensitive_count",
+   "basis": "read"
+  },
+  "text:ukds_6849_mpc_direct_w15": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_mpc_twopart_w15": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_national_identity_w15": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_nrp_w10_contact": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_nrp_w10_fh": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_numeracy_env_w16": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_numeracy_fin_w16": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_reqol_w14": {
+   "kind": "context",
+   "basis": "read"
+  },
+  "text:ukds_6849_satisfaction_w9": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ukds_6849_sensor_consent_w17_ftf": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_sensor_consent_w17_web": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_timerisk_w6": {
+   "kind": "baseline",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_timerisk_w7": {
+   "kind": "baseline",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_twitter_consent_w15": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ukds_6849_vig_ageing_w17": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_vig_ageing_w9": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_vig_flexstigma_w16": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:ukds_6849_vig_housework_w5": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:ukds_6849_vig_housework_w6": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:v52yu": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:vemrp": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:vwn96": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:w2zm4": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:w8ezk": {
+   "kind": "mix",
+   "basis": "guess"
+  },
+  "text:wmfe6": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:wrdm4": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:wrxnz": {
+   "kind": "version",
+   "basis": "guess"
+  },
+  "text:xk9ch_identity_threat": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:xk9ch_institution": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:xk9ch_vignette1": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:xk9ch_vignette2": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:xtvu5": {
+   "kind": "mix",
+   "basis": "named+jev"
+  },
+  "text:y78g2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ye2ej": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:yv2ta_flexible_scheduling": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:yv2ta_parental_leave": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:yzjnd": {
+   "kind": "context",
+   "basis": "named+jev"
+  },
+  "text:z2vmq": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:z358z": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:zaqkm": {
+   "kind": "story",
+   "basis": "read"
+  },
+  "text:zenodo10641548": {
+   "kind": "story",
+   "basis": "named+jev"
+  },
+  "text:zenodo18547379_maxdiff": {
+   "kind": "priority",
+   "basis": "named+jev"
+  },
+  "text:zenodo6572717": {
+   "kind": "choice",
+   "basis": "named+jev"
+  },
+  "text:zrwjp": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:zx5b8": {
+   "kind": "story",
+   "basis": "read"
+  }
+ }
+}

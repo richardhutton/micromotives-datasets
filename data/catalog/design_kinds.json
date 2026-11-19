@@ -1,0 +1,93 @@
+{
+ "_source": "micromotives-service GET /v1/design/kinds, version 8e84d4b9807e570f, fetched 19 Nov 2026",
+ "kinds": [
+  {
+   "id": "version",
+   "type": 1,
+   "name": "Version test",
+   "also_called": "A/B test, monadic test",
+   "answers": "which version works better",
+   "familiarity": "Known"
+  },
+  {
+   "id": "mix",
+   "type": 2,
+   "name": "Mix test",
+   "also_called": "factorial",
+   "answers": "what each change does on its own, and whether they work better together",
+   "familiarity": "Known"
+  },
+  {
+   "id": "story",
+   "type": 3,
+   "name": "Story test",
+   "also_called": "vignette",
+   "answers": "whether details about a person or situation change how people judge it",
+   "familiarity": "Known"
+  },
+  {
+   "id": "choice",
+   "type": 4,
+   "name": "Choice test",
+   "also_called": "conjoint",
+   "answers": "which features make people choose one option over another, and what they'll trade for what; with price as a feature, what they'll pay",
+   "familiarity": "Thin"
+  },
+  {
+   "id": "lineup",
+   "type": 5,
+   "name": "Line-up test",
+   "also_called": "within-subject, sequential monadic",
+   "answers": "how several versions compare when each person sees all of them",
+   "familiarity": "Thin"
+  },
+  {
+   "id": "head_to_head",
+   "type": 6,
+   "name": "Head-to-head",
+   "also_called": "paired comparison",
+   "answers": "which items in a long list are strongest, ranked from best to worst",
+   "familiarity": "Thin"
+  },
+  {
+   "id": "priority",
+   "type": 7,
+   "name": "Priority test",
+   "also_called": "MaxDiff",
+   "answers": "which items in a long list matter most, and by how much",
+   "familiarity": "Beta"
+  },
+  {
+   "id": "shelf",
+   "type": 8,
+   "name": "Shelf test",
+   "also_called": "choice set",
+   "answers": "what people pick when they face many options at once, as they would in a shop, and how a change shifts that",
+   "familiarity": "Thin"
+  },
+  {
+   "id": "context",
+   "type": 9,
+   "name": "Context test",
+   "also_called": "order and priming",
+   "answers": "whether what people see or hear first changes their answer",
+   "familiarity": "Known"
+  },
+  {
+   "id": "sensitive_count",
+   "type": 10,
+   "name": "Sensitive count",
+   "also_called": "list experiment",
+   "answers": "how common something is when people won't admit to it directly",
+   "familiarity": "Thin"
+  },
+  {
+   "id": "baseline",
+   "type": 11,
+   "name": "Baseline",
+   "also_called": "single condition",
+   "answers": "where people stand now, with nothing compared",
+   "familiarity": "Thin"
+  }
+ ]
+}

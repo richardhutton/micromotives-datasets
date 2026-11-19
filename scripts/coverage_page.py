@@ -29,6 +29,8 @@ ROOT = Path(__file__).resolve().parent.parent
 TEXT = ROOT / "data" / "catalog" / "experiment_list.json"
 IMAGE = ROOT / "data" / "catalog" / "image_experiment_list.json"
 MANIFEST = ROOT / "data" / "catalog" / "experiment_manifest.json"
+KINDS = ROOT / "data" / "catalog" / "design_kinds.json"
+RECORDED_KINDS = ROOT / "data" / "catalog" / "experiment_kinds.json"
 HTML = ROOT / "docs" / "trackers" / "coverage.html"
 TEMPLATE = ROOT / "scripts" / "coverage_template.html"
 
@@ -90,6 +92,18 @@ def main() -> None:
         if p and p.get("title") == i["title"]:
             i["jev"], i["x"], i["y"] = p.get("jev"), p.get("x"), p.get("y")
             i["jev_held"] = p.get("jev") is None
+    # Kind of experiment: the recorded kind (experiment_kinds.json) is the answer; Jev's
+    # reading (coverage_points.py) is shown beside it only where it disagrees.
+    recorded = json.loads(RECORDED_KINDS.read_text())["kinds"]
+    for i in items:
+        key = f"{i['set'].lower()}:{i['id']}"
+        if key in recorded:
+            i["etype"] = recorded[key]["kind"]
+            i["etype_basis"] = recorded[key]["basis"]
+        jk = (points.get(key) or {}).get("jev_kind")
+        if jk and i.get("etype") and jk["choice"] != i["etype"]:
+            choice = "unclear" if jk["choice"] == "NONE_OF_THESE" else jk["choice"]
+            i["etype_jev"] = {"choice": choice, "confidence": jk["confidence"]}
     stray = sorted({str(i["category"]) for i in items} - set(vocab))
     if stray:
         raise SystemExit(f"categories outside the manifest vocabulary: {stray}")
@@ -99,9 +113,15 @@ def main() -> None:
         )
         if i["kind"] == "built" and not i["rows"]:
             raise SystemExit(f"{i['set']} {i['id']}: built but no row count")
-    payload = json.dumps({"categories": vocab, "items": items}, ensure_ascii=False).replace(
-        "</", "<\\/"
-    )
+        if i["kind"] == "built" and not i.get("etype"):
+            raise SystemExit(f"{i['set']} {i['id']}: built but no kind in {RECORDED_KINDS.name}")
+    kinds = [
+        {"id": k["id"], "label": f"{k['type']} · {k['name']} ({k['also_called']})"}
+        for k in json.loads(KINDS.read_text())["kinds"]
+    ] + [{"id": "unclear", "label": "None of the eleven"}]
+    payload = json.dumps(
+        {"categories": vocab, "kinds": kinds, "items": items}, ensure_ascii=False
+    ).replace("</", "<\\/")
     HTML.write_text(TEMPLATE.read_text().replace("__DATA__", payload))
     built = [i for i in items if i["kind"] == "built"]
     print(

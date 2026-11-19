@@ -614,6 +614,18 @@
       "description": "Forced choice between two hypothetical British MPs, described by party (Labour or Conservative), years as an MP, sex, how a five-day week is split between national policy work and constituency work, and how often the MP speaks out or votes against the party leadership. Tests whether voters reward legislators who dissent. The respondent judges a PERSON, their own representative.",
       "design": "paired-profile conjoint, 5 attributes in a fixed order, 5 tasks per respondent (Study 2; Studies 1, 3 and Appendix A not built)",
       "verified_against": "the paper's own AMCEs for dissent frequency (p.21: rarely 13, sometimes 30, often 32 points over never), reproduced from the built rows as 13.04, 30.15 and 31.99"
+    },
+    "figshare_32935409_maxdiff": {
+      "category": "moral/social/cognition",
+      "description": "Best-worst scaling (MaxDiff): from four of 20 things a student might do (copying without referencing, buying an essay, submitting ChatGPT's work, taking an exam for someone else and so on), pick the most serious and the least serious breach of academic integrity. Ten screens per person, university students in the UK and Australia.",
+      "design": "MaxDiff, 20 items in sets of 4 (50 design versions, each item twice per respondent), 10 screens per respondent; most and least serious pick per screen",
+      "verified_against": "no published reference: the paper (Rigby et al., an anchored best-worst scaling study) could not be found on 16 Nov 2026. Every built answer resolves to the item the deposit's wide pick columns record (all 9,340); the PDF's version 1 matches the data's item order on all ten screens; best-minus-worst ranks the 20 items at Spearman 0.95 against the deposit's own 'should result in disciplinary action' shares (tests/test_gen_figshare_32935409.py)"
+    },
+    "osf_ct8ae_maxdiff": {
+      "category": "moral/social/cognition",
+      "description": "Best-worst scaling (MaxDiff): from five or six of Schwartz's ten life values (benevolence, power, tradition and so on), pick the most and the least important guiding principle in your life. Values are labelled either by name or by example qualities ('Helpful, honest, forgiving'), randomised between people. Eleven sets per person, Prolific adults whose first language is English, 55 of 100 living in the UK.",
+      "design": "MaxDiff, 10 values in 11 sets of 5 or 6 (Lee et al. 2008's design), label type (dimension names or item descriptions) between people; first of two occasions built; most and least important pick per set",
+      "verified_against": "the preprint's Exp. 1b numbers, from both occasions as it pools them: Benevolence 0.375 and Power -0.46 mean best-worst score, Table 1's top five in order, and test-retest Kendall's tau-b 0.82 (same labels) and 0.41 (changed labels), all reproduced; coding most and least the other way round breaks them. Every built answer resolves to the value the export's own button columns mark (all 2,200) (tests/test_gen_osf_ct8ae.py)"
     }
   }
 }

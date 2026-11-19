@@ -2962,13 +2962,14 @@
   {
    "source": "Other open archives",
    "id": "osf_ct8ae",
-   "title": "Best-worst scaling of personal values (Schwartz), test-retest",
-   "description": "MaxDiff: from 5 values per screen, pick the most and least important guiding principle in your life.",
-   "details": "OSF node ct8ae (preprint r5dyu, CC-BY 4.0). About 100 Prolific adults, mostly UK",
+   "title": "Time after time, the best-worst scaling method is more reliable than ranking (Exp. 1b)",
+   "description": "MaxDiff: from 5 or 6 of Schwartz's 10 life values per screen, pick the most and least important guiding principle in your life. 11 screens each; values named or described, between people.",
+   "details": "OSF ct8ae, CC BY 4.0 (made public by the authors 17 Nov 2026). Behavior Research Methods 58(10), 2026, doi:10.3758/s13428-026-03167-x. 100 Prolific adults, English first language, Oct 2023",
    "category": "moral/social/cognition",
-   "status": "Needs checking",
-   "reason": "data node states no licence; preprint CC-BY covers the paper, not the data. Checked 16 Nov 2026: node ct8ae is private, reachable only through the preprint's anonymised view-only link, has no node_license or licence relationship, no parent project, and no licence file. Emailed Guy Hawkins (guy.hawkins@newcastle.edu.au) 16 Nov 2026 asking to use the data or make the node public under CC-BY; waiting for a reply. 16 Nov 2026 (rich): build now, do not wait for the reply",
-   "novelty": null
+   "status": "Built",
+   "reason": "Garston Liang made the node public under CC BY 4.0 on 17 Nov 2026 after rich emailed. Options within each set were not randomised (published paper), but the fixed order shown is not recorded, so rows carry the data-file-order clause",
+   "novelty": null,
+   "recipe": "osf_ct8ae_maxdiff"
   },
   {
    "source": "Other open archives",
@@ -2977,9 +2978,10 @@
    "description": "MaxDiff: from 4 of 20 student behaviours per screen (copying, essay mills, ChatGPT use, impersonation and so on), pick the most and the least serious breach of academic integrity. 10 screens each.",
    "details": "9,340 rows; University of Manchester Figshare doi:10.48420/32935409, CC-BY 4.0; 467 university students in the UK (232) and Australia (235), a specialist sample with no age asked; 50 design versions of 10 screens of 4 of 20 items; most and least serious per screen",
    "category": "moral/social/cognition",
-   "status": "Needs checking",
-   "reason": "being built 16 Nov 2026; ",
-   "novelty": null
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "figshare_32935409_maxdiff"
   }
  ],
  "built": {

@@ -422,6 +422,7 @@ def test_no_prompt_here_can_be_handed_a_dataframe() -> None:
         "score_uk_priority",
         "screen_deposit",
         "categorise_experiment",
+        "kind_of_experiment",
     ):
         params = list(inspect.signature(getattr(jev, name)).parameters.values())
         for p in params[1:]:  # the client itself is exempt
@@ -484,3 +485,20 @@ def test_a_category_can_always_be_none_of_these() -> None:
 def test_categories_and_meanings_must_pair_up() -> None:
     with pytest.raises(ValueError):
         jev.categorise_experiment(PromptStub({}), "t", "d", ("a", "b"), ("only one",))
+
+
+def test_a_kind_can_always_be_none_of_these() -> None:
+    """A design none of the service's kinds describes must be able to say so."""
+    stub = PromptStub({"kind": _Answer(jev.NONE_OF_THESE, 0.8, {})})
+    v = jev.kind_of_experiment(
+        stub, "Panel wave", "Repeated measures", ("version",), ("which version works better",)
+    )
+    criteria = stub.questions[0]["kind"].criteria
+    assert jev.NONE_OF_THESE in criteria and criteria["version"] == "which version works better"
+    assert '"Panel wave"' in stub.states[0] and "Repeated measures" in stub.states[0]
+    assert v.value == jev.NONE_OF_THESE and v.needs_review
+
+
+def test_kinds_and_meanings_must_pair_up() -> None:
+    with pytest.raises(ValueError):
+        jev.kind_of_experiment(PromptStub({}), "t", "d", ("a", "b"), ("only one",))

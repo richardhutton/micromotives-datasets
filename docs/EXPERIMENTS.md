@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**82 studies (124 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 3 Zenodo or Figshare (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**84 studies (126 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 5 Zenodo, Figshare or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo and Figshare | 3 | 3 | 51,058 | per record — see each experiment's licence |
+| Zenodo, Figshare and open OSF | 5 | 5 | 62,598 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **82** | **124** | **1,195,271** | |
+| **Total** | **84** | **126** | **1,206,811** | |
 
 ---
 
@@ -42,6 +42,7 @@
 | `del_panel_w4_aid_conjoint_8attr` | Development Engagement Lab, Panel Great Britain wave 4 (2022): aid … | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 11,982 |
 | `del_sandbox_jun2022_ukraine_choice` | Development Engagement Lab, Sandbox Great Britain June 2022: why th… | Harvard Dataverse | `doi:10.7910/DVN/ELT7M0` | 10,935 |
 | `3YCVOF` | Legislator dissent as a valence signal (Study 2, MP dissent conjoint) | Harvard Dataverse | `doi:10.7910/DVN/3YCVOF` | 9,495 |
+| `figshare_32935409_maxdiff` | Student perceptions of academic integrity in the age of Gen-AI: whi… | Figshare | `doi:10.48420/32935409` | 9,340 |
 | `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
 | `ukds_6849_eq5d3l_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.24: the EQ-5D-… | UK Data Service | `UKDS SN 6849` | 8,698 |
 | `35M5CV_lodger` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,345 |
@@ -73,6 +74,7 @@
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
 | `ukds_6849_envtax_w7` ⚠ | Understanding Society Innovation Panel, experiment 9.14: willingnes… | UK Data Service | `UKDS SN 6849` | 2,235 |
+| `osf_ct8ae_maxdiff` | Schwartz life values: which of five or six is the most and least im… | OSF | `osf.io/ct8ae` | 2,200 |
 | `ukds_6849_immigsdb_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,133 |
 | `ukds_6849_immigsdb_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,071 |
 | `ukds_6849_immig_vignette_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.26: right to r… | UK Data Service | `UKDS SN 6849` | 1,917 |
@@ -1076,9 +1078,9 @@ Respondents imagine themselves in a couple and rate how satisfied they would be 
 
 ---
 
-## Zenodo and Figshare
+## Zenodo, Figshare and open OSF
 
-Deposits on Zenodo and Figshare, each under the licence its record states; the recipe's `licence` field says where and when it was read.
+Deposits on Zenodo, Figshare and OSF, each under the open licence its record states; the recipe's `licence` field says where and when it was read.
 
 ### `zenodo18547379_maxdiff`
 
@@ -1093,6 +1095,19 @@ Best-worst scaling (MaxDiff): from four of 25 policies and interventions on each
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Appendix 3 overall ranking of all 25 items (McBey et al., Food Quality and Preference 135, 2026): best-minus-worst from the built rows ranks them at Spearman 0.996, and no other pairing of pick columns with item slots exceeds 0.964 (tests/test_gen_zenodo18547379.py). No published counts or coefficients in a table to match numerically
 
+### `figshare_32935409_maxdiff`
+
+**Student perceptions of academic integrity in the age of Gen-AI: which of four behaviours is the most and least serious breach (best-worst scaling)**
+
+Best-worst scaling (MaxDiff): from four of 20 things a student might do (copying without referencing, buying an essay, submitting ChatGPT's work, taking an exam for someone else and so on), pick the most serious and the least serious breach of academic integrity. Ten screens per person, university students in the UK and Australia.
+
+- **Source** — Figshare, `doi:10.48420/32935409`
+- **Type** — MaxDiff, 20 items in sets of 4 (50 design versions, each item twice per respondent), 10 screens per respondent; most and least serious pick per screen
+- **Category** — moral/social/cognition
+- **Rows** — 9,340 from 467 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no published reference: the paper (Rigby et al., an anchored best-worst scaling study) could not be found on 16 Nov 2026. Every built answer resolves to the item the deposit's wide pick columns record (all 9,340); the PDF's version 1 matches the data's item order on all ten screens; best-minus-worst ranks the 20 items at Spearman 0.95 against the deposit's own 'should result in disciplinary action' shares (tests/test_gen_figshare_32935409.py)
+
 ### `zenodo6572717`
 
 **CUPID (Ireland, Feb 2021): parents choose between two health services for an unwell child (paired-choice DCE)**
@@ -1105,6 +1120,19 @@ Parents of a child under 16 in Ireland imagine their youngest child has been unw
 - **Rows** — 5,400 from 450 respondents
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)
+
+### `osf_ct8ae_maxdiff`
+
+**Schwartz life values: which of five or six is the most and least important guiding principle in your life (best-worst scaling)**
+
+Best-worst scaling (MaxDiff): from five or six of Schwartz's ten life values (benevolence, power, tradition and so on), pick the most and the least important guiding principle in your life. Values are labelled either by name or by example qualities ('Helpful, honest, forgiving'), randomised between people. Eleven sets per person, Prolific adults whose first language is English, 55 of 100 living in the UK.
+
+- **Source** — OSF, `osf.io/ct8ae`
+- **Type** — MaxDiff, 10 values in 11 sets of 5 or 6 (Lee et al. 2008's design), label type (dimension names or item descriptions) between people; first of two occasions built; most and least important pick per set
+- **Category** — moral/social/cognition
+- **Rows** — 2,200 from 100 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the preprint's Exp. 1b numbers, from both occasions as it pools them: Benevolence 0.375 and Power -0.46 mean best-worst score, Table 1's top five in order, and test-retest Kendall's tau-b 0.82 (same labels) and 0.41 (changed labels), all reproduced; coding most and least the other way round breaks them. Every built answer resolves to the value the export's own button columns mark (all 2,200) (tests/test_gen_osf_ct8ae.py)
 
 ### `zenodo10641548`
 
@@ -1190,7 +1218,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 12 | 7 | 206,409 |
 | health communication | 1 | 9 | 136,384 |
-| moral/social/cognition | 8 | 17 | 223,486 |
+| moral/social/cognition | 10 | 17 | 235,026 |
 | political identity/polarisation | 5 | 0 | 44,415 |
 | political preferences/policy | 19 | 2 | 194,548 |
 | survey methodology | 20 | 6 | 223,494 |
