@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**89 studies (163 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 42 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**91 studies (171 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 50 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 10 | 42 | 132,824 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 12 | 50 | 145,039 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **89** | **163** | **1,277,037** | |
+| **Total** | **91** | **171** | **1,289,252** | |
 
 ---
 
@@ -78,9 +78,13 @@
 | `researchbox1032_study3` | A facial tissues maker, facing higher production costs, raises the … | ResearchBox | `researchbox.org/1032` | 4,000 |
 | `del_sandbox_feb2023_gender_progress` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 3,274 |
 | `researchbox231_study4` | A simulated month, paid daily or weekly and spending daily or weekl… | ResearchBox | `researchbox.org/231` | 3,168 |
+| `researchbox402_study3` | A Bluetooth speaker whose price fell or rose to $60, once, week by … | ResearchBox | `researchbox.org/402` | 3,012 |
+| `researchbox402_study4` | A tablet whose price fell or rose by $100 to $299, in the last week… | ResearchBox | `researchbox.org/402` | 3,012 |
 | `researchbox2562_study2a` | An olive spread maker, facing higher costs, raises the price, shrin… | ResearchBox | `researchbox.org/2562` | 3,006 |
 | `ukds_6849_hmrc_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 2,553 |
+| `researchbox402_study1b` | A TV whose price falls or rises, once or day by day, from $1200: bu… | ResearchBox | `researchbox.org/402` | 2,487 |
 | `ukds_6849_national_identity_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.38: importance… | UK Data Service | `UKDS SN 6849` | 2,472 |
+| `researchbox402_study2` | A Bluetooth speaker whose price fell or rose, once or week by week,… | ResearchBox | `researchbox.org/402` | 2,406 |
 | `6MRVOM_eu_share` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 2,397 |
 | `researchbox2170_study3` | T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; feeling… | ResearchBox | `researchbox.org/2170` | 2,392 |
 | `researchbox3299_study4` | A product at $11 or $311: 10% off (as % or $) or a 10% chance it is… | ResearchBox | `researchbox.org/3299` | 2,371 |
@@ -115,6 +119,7 @@
 | `ukds_6849_sensor_consent_w17_web` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 946 |
 | `researchbox3299_study4_pretest` | How large does 10% off feel, as % or $, on a $11 or $311 product (S… | ResearchBox | `researchbox.org/3299` | 867 |
 | `researchbox2562_study6` | Choosing for real between a price rise, a smaller size and less coc… | ResearchBox | `researchbox.org/2562` | 832 |
+| `researchbox402_study1a` | Flight tickets whose price fell or rose, once or week by week, to $… | ResearchBox | `researchbox.org/402` | 802 |
 | `researchbox231_study3` | A simulated month paid $100 daily or $700 weekly: how wealthy it fe… | ResearchBox | `researchbox.org/231` | 672 |
 | `ukds_6849_fertility_w4` ⚠ | Understanding Society Innovation Panel, experiment 9.9: expected fe… | UK Data Service | `UKDS SN 6849` | 532 |
 | `ukds_6849_twitter_consent_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.33: consent to… | UK Data Service | `UKDS SN 6849` | 527 |
@@ -127,7 +132,10 @@
 | `ukds_6849_sensor_consent_w17_ftf` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 339 |
 | `researchbox1032_study2` | A potato chips maker, facing higher production costs, raises the pr… | ResearchBox | `researchbox.org/1032` | 301 |
 | `researchbox2562_study4_followup` | An orange juice maker, facing higher costs, raises the price, shrin… | ResearchBox | `researchbox.org/2562` | 300 |
+| `researchbox108_study4` | Shopping online for headphones, some labelled "Top Rated" and some … | ResearchBox | `researchbox.org/108` | 296 |
 | `researchbox231_s1` | Life simulator: drinks with a friend after being paid daily or week… | ResearchBox | `researchbox.org/231` | 146 |
+| `researchbox108_study1_us` | A new tablet that doubles as a laptop: 85% of consumers in the U.S.… | ResearchBox | `researchbox.org/108` | 101 |
+| `researchbox108_study1_india` | A new tablet that doubles as a laptop: 85% of consumers in the Indi… | ResearchBox | `researchbox.org/108` | 99 |
 | `researchbox2562_study2a_pilot` | An olive spread maker, facing higher costs, cuts the olive oil in i… | ResearchBox | `researchbox.org/2562` | 50 |
 | `researchbox2562_study2b_pilot` | An orange juice maker, facing higher costs, cuts the orange juice i… | ResearchBox | `researchbox.org/2562` | 50 |
 | `researchbox2562_study5a_pilot` | A chocolate maker, facing higher costs, cuts the cocoa in its produ… | ResearchBox | `researchbox.org/2562` | 50 |
@@ -1262,6 +1270,32 @@ People watch a simulated February, paid $100 every day or $700 every week and pa
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's Study 4 simple effects from the BUILT rows: daily minus weekly pay 19.32 under daily expenses and 2.94 under weekly expenses, N = 528, as published (tests/test_gen_researchbox231.py)
 
+### `researchbox402_study3`
+
+**A Bluetooth speaker whose price fell or rose to $60, once, week by week, or with a reversal four days ago: buy now or later, and what will it cost in a week? (Study 3)**
+
+People see that a Bluetooth speaker's price fell from $100 or rose from $20 to $60, once, week by week, or week by week with a step back four days ago; they say whether they would buy now or later and what the price will be in a week.
+
+- **Source** — ResearchBox, `researchbox.org/402`
+- **Type** — 2 (price fell or rose) x 3 (one change, steady changes, changes with a reversal) between subjects; buy now or later, then the price in a week
+- **Category** — economics/behavioural
+- **Rows** — 3,012 from 1,506 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral (the pre-registered dummy-coded interaction model) from the BUILT rows equals the deposit's to 1e-12, and the prediction's cell means (the mediator) equal the deposit's, N 1,506 (tests/test_gen_researchbox402.py)
+
+### `researchbox402_study4`
+
+**A tablet whose price fell or rose by $100 to $299, in the last week, three weeks ago, or week by week: buy now or later, and what will it cost in a week? (Study 4)**
+
+People see that a tablet's price fell from $399 or rose from $199 to $299, once in the last week, once three weeks ago, or week by week; they say whether they would buy now or later and what the price will be in a week.
+
+- **Source** — ResearchBox, `researchbox.org/402`
+- **Type** — 2 (price fell or rose) x 3 (one late change, one early change, five changes) between subjects; buy now or later and the price in a week, in a random unrecorded order
+- **Category** — economics/behavioural
+- **Rows** — 3,012 from 1,506 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral from the BUILT rows equals the deposit's to 1e-12, and the prediction's cell means equal the deposit's, N 1,506 (tests/test_gen_researchbox402.py)
+
 ### `researchbox2562_study2a`
 
 **An olive spread maker, facing higher costs, raises the price, shrinks the pack or cuts the olive oil, saying so on the packaging or not: fair or unfair? (Study 2a)**
@@ -1274,6 +1308,32 @@ People read that an olive spread maker, facing higher costs, raised the price, s
 - **Rows** — 3,006 from 3,006 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, in each transparency condition, N 3,006 (tests/test_gen_researchbox2562.py)
+
+### `researchbox402_study1b`
+
+**A TV whose price falls or rises, once or day by day, from $1200: buy it now or wait a day, up to four days (Study 1b)**
+
+People shopping for a TV at $1200 decide day by day whether to buy now or wait, and each day they wait they see a new price that falls or rises, once or every day, up to four days.
+
+- **Source** — ResearchBox, `researchbox.org/402`
+- **Type** — 2 (price falls or rises) x 2 (once or every day) between subjects, shown over up to four daily screens, each reached only by choosing to wait; buy now or later on each
+- **Category** — economics/behavioural
+- **Rows** — 2,487 from 800 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no analysis script or published table in the deposit, so the reference is the deposit read column by column: each person's number of deferrals (the pre-registered DV, 0-4) from the BUILT rows equals the deposit's for all 800, so the cell means and the saturated OLS interaction agree to 1e-12 (tests/test_gen_researchbox402.py)
+
+### `researchbox402_study2`
+
+**A Bluetooth speaker whose price fell or rose, once or week by week, to $60 now: buy now or later, what will it cost in a week, and will the price keep moving? (Study 2)**
+
+People see that a Bluetooth speaker was $100 or $20 four weeks ago and is $60 now, having changed once or every week; they say whether they would buy now or later, what the price will be in a week, and whether it will keep moving the same way.
+
+- **Source** — ResearchBox, `researchbox.org/402`
+- **Type** — 2 (price fell or rose) x 2 (one change or four) between subjects; buy now or later, then the price in a week and a 7-point agreement item in a random unrecorded order
+- **Category** — economics/behavioural
+- **Rows** — 2,406 from 802 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral from the BUILT rows equals the deposit's to 1e-12, and the cell means of the price prediction and the agreement item (the pre-registered ANOVAs) equal the deposit's, N 802 (tests/test_gen_researchbox402.py)
 
 ### `researchbox2170_study3`
 
@@ -1509,6 +1569,19 @@ In a lab with real stakes, people choose between a price rise, a smaller bar and
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's chi-squares against a uniform choice, one-sample t tests against 5 and logits of choosing the quality-cut option on the quality rating, recomputed from the BUILT rows, equal base R's to 1e-9, N 208 (tests/test_gen_researchbox2562.py)
 
+### `researchbox402_study1a`
+
+**Flight tickets whose price fell or rose, once or week by week, to $400 now: buy them now or later? (Study 1a)**
+
+People see that flight tickets were $600 or $200 four weeks ago and cost $400 now, having changed once or every week, and say whether they would buy the tickets now or later.
+
+- **Source** — ResearchBox, `researchbox.org/402`
+- **Type** — 2 (price fell or rose) x 2 (one change or four) between subjects; buy now or later
+- **Category** — economics/behavioural
+- **Rows** — 802 from 802 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral (every cell's log-odds, so every coefficient of the pre-registered interaction model) from the BUILT rows equals the deposit's to 1e-12, N 802 (tests/test_gen_researchbox402.py)
+
 ### `researchbox231_study3`
 
 **A simulated month paid $100 daily or $700 weekly: how wealthy it felt (Study 3)**
@@ -1613,6 +1686,19 @@ People read that an orange juice maker, facing higher costs, raised the price, s
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's three Welch t tests recomputed from the BUILT rows equal base R's, t to 1e-9 and df to 1e-7, N 300 (one of 301 moved no slider and has no arm, in R too) (tests/test_gen_researchbox2562.py)
 
+### `researchbox108_study4`
+
+**Shopping online for headphones, some labelled "Top Rated" and some "Best Seller": which label matters more? (Study 4)**
+
+People imagine shopping online for headphones, some labelled "Top Rated" and some "Best Seller", and say which label is more important and which more relevant.
+
+- **Source** — ResearchBox, `researchbox.org/108`
+- **Type** — single condition, two questions in a fixed order; 1 Definitely "Top Rated" to 6 Definitely "Best Seller"
+- **Category** — economics/behavioural
+- **Rows** — 296 from 148 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — Table A1 of the box's item means and SDs, relative cue diagnosticity (mean of the two items) 2.88 (1.75), recomputed from the BUILT rows to the printed precision, N 148 (tests/test_gen_researchbox108.py)
+
 ### `researchbox231_s1`
 
 **Life simulator: drinks with a friend after being paid daily or weekly (Supplemental Study 1)**
@@ -1625,6 +1711,32 @@ In a five-week life simulator where a negative balance is borrowing to be paid b
 - **Rows** — 146 from 146 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — no published reference for this supplemental study; N follows the pre-registered exclusion (146), and every built answer and the share by arm equal the deposit's (tests/test_gen_researchbox231.py)
+
+### `researchbox108_study1_us`
+
+**A new tablet that doubles as a laptop: 85% of consumers in the U.S. market who learn about it love it, or buy it; how much would you pay? (Study 1, US sample)**
+
+US consumers read that 85% of consumers who learn about Laplet, a new tablet that doubles as a laptop, love the brand or buy it, and say how much they would pay for one.
+
+- **Source** — ResearchBox, `researchbox.org/108`
+- **Type** — attitudinal (love) or behavioural (buy) consensus cue, between subjects; willingness to pay, 0 to 1000 USD slider
+- **Category** — economics/behavioural
+- **Rows** — 101 from 101 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — Table A1 of the box's item means and SDs, WTP 320.67 (162.45) USD, recomputed from the BUILT rows to the printed precision, and each cue's mean equal to the deposit's, N 101 (tests/test_gen_researchbox108.py)
+
+### `researchbox108_study1_india`
+
+**A new tablet that doubles as a laptop: 85% of consumers in the India market who learn about it love it, or buy it; how much would you pay? (Study 1, India sample)**
+
+Indian consumers, in English, read that 85% of consumers in the India market who learn about Laplet, a new tablet that doubles as a laptop, love the brand or buy it, and say how much they would pay for one.
+
+- **Source** — ResearchBox, `researchbox.org/108`
+- **Type** — attitudinal (love) or behavioural (buy) consensus cue, between subjects; willingness to pay, 0 to 50000 rupee slider
+- **Category** — economics/behavioural
+- **Rows** — 99 from 99 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — Table A1 of the box's item means and SDs, WTP 20106.39 (12252.44) INR, recomputed from the BUILT rows to the printed precision, and each cue's mean equal to the deposit's, N 99 (tests/test_gen_researchbox108.py)
 
 ### `researchbox2562_study2a_pilot`
 
@@ -1734,7 +1846,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 49 | 7 | 276,635 |
+| economics/behavioural | 57 | 7 | 288,850 |
 | health communication | 1 | 9 | 136,384 |
 | moral/social/cognition | 10 | 17 | 235,026 |
 | political identity/polarisation | 5 | 0 | 44,415 |

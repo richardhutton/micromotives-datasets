@@ -216,11 +216,11 @@
       "link": "https://researchbox.org/108",
       "topic": "cross-national",
       "qsf": true,
-      "status": "Buildable",
-      "kind": "mix",
-      "persona": "Age, gender (Study 1: age only)",
+      "status": "Built",
+      "kind": "version",
+      "persona": "Age (years), gender",
       "uk": "Yes",
-      "notes": "'Top rated' vs 'best seller': 81% of consumers preferred vs signed up with a service, crossed with a self-construal prime; rate the service. 8 studies with .qsf + data; Study 1 has a US and an India sample. Downloaded by rich 19 Nov 2026."
+      "notes": "Built 19 Nov 2026: 3 experiments (Study 1's US and India samples, Study 4), 496 rows, 348 people, from the .qsf and the data. Study 1: 85% of consumers who learn about a new tablet love it or buy it; how much would you pay (USD or rupees; the India survey is in English). Study 4: is \"Top Rated\" or \"Best Seller\" the more important label when shopping for headphones (single condition). Not built: Studies 2, 3 and 5 and the Starbucks follow-up (WA F), whose cue screens show pictures carrying the \"TOP RATED\" / \"BEST SELLER\" banner itself; the spontaneous-inference study (free text only); Study 6 (Amazon listings, no respondents). Table A1's means and SDs reproduce from the built rows."
     },
     {
       "id": "RB111",
@@ -597,7 +597,7 @@
       "kind": "",
       "persona": "",
       "uk": "",
-      "notes": ""
+      "notes": "Picked by rich 19 Nov 2026; downloaded from its Zenodo copy (CC BY 4.0). 19 .qsf, 39 data files, 277 pictures: check which studies carry their content in text before building; picture-heavy studies may belong on the image list."
     },
     {
       "id": "RB200",
@@ -1321,11 +1321,11 @@
       "link": "https://researchbox.org/402",
       "topic": "",
       "qsf": false,
-      "status": "Buildable",
+      "status": "Built",
       "kind": "mix",
-      "persona": "Age, gender",
+      "persona": "Age (years), gender",
       "uk": "Yes",
-      "notes": "Historical price information and purchase deferral: a Bluetooth speaker's past prices rose or fell, often or rarely (2x2); buy now or later. 6 studies, data + codebook + survey materials PDF (no .qsf). Downloaded by rich 19 Nov 2026."
+      "notes": "Built 19 Nov 2026: 5 experiments (Studies 1a, 1b, 2, 3, 4), 11,719 rows, 5,416 people, worded from the data files' fielded question labels (typos kept), with the page structure from the survey materials PDF (no .qsf). A product's past prices fell or rose, once or often, to the same price now: flight tickets (1a), a TV over up to four days of waiting (1b), a Bluetooth speaker (2, 3, with a reversal in 3), a tablet (4, early or late change); buy now or later, and in 2-4 the price expected in a week. Not built: Study 5 (ESADE store), whose price histories are only in pictures of the product pages. No analysis script or published table in the box; the pre-registered analyses reproduce from the built rows against the deposit."
     },
     {
       "id": "RB403",
@@ -2677,7 +2677,7 @@
       "kind": "",
       "persona": "",
       "uk": "",
-      "notes": ""
+      "notes": "Picked by rich 19 Nov 2026; downloaded from its Zenodo copy (CC BY 4.0). 6 .qsf, 15 data files, 366 pictures in the surveys: check which studies carry their content in text before building; picture-heavy studies may belong on the image list."
     },
     {
       "id": "RB756",
@@ -5147,7 +5147,7 @@
       "kind": "",
       "persona": "",
       "uk": "",
-      "notes": ""
+      "notes": "Picked by rich 19 Nov 2026; downloaded from its Zenodo copy (CC BY 4.0). 4 .qsf, 9 data files, 20 pictures: check which studies carry their content in text before building; picture-heavy studies may belong on the image list."
     },
     {
       "id": "RB2428",

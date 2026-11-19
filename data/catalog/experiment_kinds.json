@@ -993,6 +993,18 @@
    "kind": "mix",
    "basis": "read"
   },
+  "text:researchbox108_study1_india": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox108_study1_us": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox108_study4": {
+   "kind": "baseline",
+   "basis": "read"
+  },
   "text:researchbox2170_ss2": {
    "kind": "version",
    "basis": "read"
@@ -1111,6 +1123,26 @@
   },
   "text:researchbox3299_study5_size": {
    "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox402_study1a": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox402_study1b": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox402_study2": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox402_study3": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox402_study4": {
+   "kind": "mix",
    "basis": "read"
   },
   "text:rf79p": {

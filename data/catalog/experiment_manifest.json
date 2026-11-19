@@ -848,6 +848,54 @@
       "description": "People read that a British detergent maker, facing higher costs, raised the price, shrank the bottle, or weakened the formula in a way using more can or cannot make up, say whether they would buy it, and (weaker formula) rate its quality.",
       "design": "4 arms between subjects; would you buy it (no or yes), then in the two quality arms a 1-9 quality rating on its own page",
       "verified_against": "the R script's logit of buying, its one-sample t tests of the quality rating against 5 and its logit of buying on the rating, recomputed from the BUILT rows, equal base R's to 1e-9, N 1,005 (tests/test_gen_researchbox2562.py)"
+    },
+    "researchbox108_study1_us": {
+      "category": "economics/behavioural",
+      "description": "US consumers read that 85% of consumers who learn about Laplet, a new tablet that doubles as a laptop, love the brand or buy it, and say how much they would pay for one.",
+      "design": "attitudinal (love) or behavioural (buy) consensus cue, between subjects; willingness to pay, 0 to 1000 USD slider",
+      "verified_against": "Table A1 of the box's item means and SDs, WTP 320.67 (162.45) USD, recomputed from the BUILT rows to the printed precision, and each cue's mean equal to the deposit's, N 101 (tests/test_gen_researchbox108.py)"
+    },
+    "researchbox108_study1_india": {
+      "category": "economics/behavioural",
+      "description": "Indian consumers, in English, read that 85% of consumers in the India market who learn about Laplet, a new tablet that doubles as a laptop, love the brand or buy it, and say how much they would pay for one.",
+      "design": "attitudinal (love) or behavioural (buy) consensus cue, between subjects; willingness to pay, 0 to 50000 rupee slider",
+      "verified_against": "Table A1 of the box's item means and SDs, WTP 20106.39 (12252.44) INR, recomputed from the BUILT rows to the printed precision, and each cue's mean equal to the deposit's, N 99 (tests/test_gen_researchbox108.py)"
+    },
+    "researchbox108_study4": {
+      "category": "economics/behavioural",
+      "description": "People imagine shopping online for headphones, some labelled \"Top Rated\" and some \"Best Seller\", and say which label is more important and which more relevant.",
+      "design": "single condition, two questions in a fixed order; 1 Definitely \"Top Rated\" to 6 Definitely \"Best Seller\"",
+      "verified_against": "Table A1 of the box's item means and SDs, relative cue diagnosticity (mean of the two items) 2.88 (1.75), recomputed from the BUILT rows to the printed precision, N 148 (tests/test_gen_researchbox108.py)"
+    },
+    "researchbox402_study1a": {
+      "category": "economics/behavioural",
+      "description": "People see that flight tickets were $600 or $200 four weeks ago and cost $400 now, having changed once or every week, and say whether they would buy the tickets now or later.",
+      "design": "2 (price fell or rose) x 2 (one change or four) between subjects; buy now or later",
+      "verified_against": "no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral (every cell's log-odds, so every coefficient of the pre-registered interaction model) from the BUILT rows equals the deposit's to 1e-12, N 802 (tests/test_gen_researchbox402.py)"
+    },
+    "researchbox402_study1b": {
+      "category": "economics/behavioural",
+      "description": "People shopping for a TV at $1200 decide day by day whether to buy now or wait, and each day they wait they see a new price that falls or rises, once or every day, up to four days.",
+      "design": "2 (price falls or rises) x 2 (once or every day) between subjects, shown over up to four daily screens, each reached only by choosing to wait; buy now or later on each",
+      "verified_against": "no analysis script or published table in the deposit, so the reference is the deposit read column by column: each person's number of deferrals (the pre-registered DV, 0-4) from the BUILT rows equals the deposit's for all 800, so the cell means and the saturated OLS interaction agree to 1e-12 (tests/test_gen_researchbox402.py)"
+    },
+    "researchbox402_study2": {
+      "category": "economics/behavioural",
+      "description": "People see that a Bluetooth speaker was $100 or $20 four weeks ago and is $60 now, having changed once or every week; they say whether they would buy now or later, what the price will be in a week, and whether it will keep moving the same way.",
+      "design": "2 (price fell or rose) x 2 (one change or four) between subjects; buy now or later, then the price in a week and a 7-point agreement item in a random unrecorded order",
+      "verified_against": "no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral from the BUILT rows equals the deposit's to 1e-12, and the cell means of the price prediction and the agreement item (the pre-registered ANOVAs) equal the deposit's, N 802 (tests/test_gen_researchbox402.py)"
+    },
+    "researchbox402_study3": {
+      "category": "economics/behavioural",
+      "description": "People see that a Bluetooth speaker's price fell from $100 or rose from $20 to $60, once, week by week, or week by week with a step back four days ago; they say whether they would buy now or later and what the price will be in a week.",
+      "design": "2 (price fell or rose) x 3 (one change, steady changes, changes with a reversal) between subjects; buy now or later, then the price in a week",
+      "verified_against": "no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral (the pre-registered dummy-coded interaction model) from the BUILT rows equals the deposit's to 1e-12, and the prediction's cell means (the mediator) equal the deposit's, N 1,506 (tests/test_gen_researchbox402.py)"
+    },
+    "researchbox402_study4": {
+      "category": "economics/behavioural",
+      "description": "People see that a tablet's price fell from $399 or rose from $199 to $299, once in the last week, once three weeks ago, or week by week; they say whether they would buy now or later and what the price will be in a week.",
+      "design": "2 (price fell or rose) x 3 (one late change, one early change, five changes) between subjects; buy now or later and the price in a week, in a random unrecorded order",
+      "verified_against": "no analysis script or published table in the deposit, so the reference is the deposit read column by column: the saturated logit of deferral from the BUILT rows equals the deposit's to 1e-12, and the prediction's cell means equal the deposit's, N 1,506 (tests/test_gen_researchbox402.py)"
     }
   }
 }
