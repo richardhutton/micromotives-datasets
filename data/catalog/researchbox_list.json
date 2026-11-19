@@ -5143,11 +5143,11 @@
       "link": "https://researchbox.org/2422",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Picked by rich 19 Nov 2026; downloaded from its Zenodo copy (CC BY 4.0). 4 .qsf, 9 data files, 20 pictures: check which studies carry their content in text before building; picture-heavy studies may belong on the image list."
+      "status": "Unlikely",
+      "kind": "version",
+      "persona": "Age (years), gender, how often they host or watch live streams",
+      "uk": "Yes",
+      "notes": "Checked 19 Nov 2026, not built. Four studies of a live-streaming platform, 'Platform L' (Zeng, Clyde, Dai and co-authors, published as \"The Impact of Customer Information on Service Supply and Demand: Evidence from a Large Live-Streaming Experiment\", Manufacturing & Service Operations Management 28(1), 2026, doi:10.1287/msom.2022.0224). The 'Online Experiment 1-3' printouts are the 'Lab Experiment 1-3' .qsf (same question tags; the box's table of contents files them under those studies; MTurk samples). Hosts (Experiments 1, 3 and the Prolific study) or viewers (Experiment 2) read that a newcomer's arrival brings no notification, a bare notification, or one with the viewer's username and where they came from, and then every arm plays its own animation of the show screen, which is how the manipulation is delivered (Lab 1, 2 and Prolific: Qualtrics video files; Lab 3: two YouTube videos). Neither the animations nor the shared interface screenshot shown beforehand are in the deposit (the printouts omit them), so no row could carry what was seen; rich's ruling (19 Nov 2026) skips a study whose picture carries the manipulation. The 20 pictures: 4 fielded, one interface screenshot per survey shown to every arm (not judged decorative: it is the screen the arms differ on, with viewer counts, profile pictures and comments the text describes, and it cannot be inspected), and 16 in Trash blocks no flow reaches. Further reasons, each enough on its own: Experiment 2 pipes the viewer's own typed username and own choice of show type into the scenario and randomises an unrecorded host greeting; Experiment 3 shows randomised viewer comments, unrecorded and gated on the host's own answer about greeting, before its last outcomes."
     },
     {
       "id": "RB2428",
