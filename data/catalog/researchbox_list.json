@@ -4935,11 +4935,11 @@
       "link": "https://researchbox.org/2281",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Needs checking",
+      "status": "Unlikely",
       "kind": "version",
       "persona": "Age, gender",
       "uk": "Mostly",
-      "notes": "Checked 19 Nov 2026, awaiting rich's ruling. Park et al. price divisibility replications: price arms are text (e.g. $16 vs $15.30), but every arm also shows one fixed product photo whose print the text lacks (body wash '16 FL. OZ.'; toothbrush 'SOFT', '1 TOOTHBRUSH'). Buildable if a fixed photo is allowed: body wash Study 1 (719) and Appendix A (989), toothbrush Study 3 (859). Cashew study 2 (404) drops regardless: its photo says 18 packs, the text 11 bags. Authors' F tests reproduced from the deposit. Generator scripts/gen_researchbox2281.py (NOT_BUILT all four, uncommitted)."
+      "notes": "Checked 19 Nov 2026, not built (rich: drop). Park et al. price divisibility replications: price arms are text (e.g. $16 vs $15.30), but every arm also shows one fixed product photo whose print the text lacks (body wash '16 FL. OZ.'; toothbrush 'SOFT', '1 TOOTHBRUSH'). Buildable if a fixed photo is allowed: body wash Study 1 (719) and Appendix A (989), toothbrush Study 3 (859). Cashew study 2 (404) drops regardless: its photo says 18 packs, the text 11 bags. Authors' F tests reproduced from the deposit."
     },
     {
       "id": "RB2289",
