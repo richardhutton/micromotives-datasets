@@ -986,6 +986,138 @@
       "description": "People read about someone opening a checking account, with the bank's overdraft fee and daily cap and the person's money, spending and other ways to pay varied, and rate whether that person should get overdraft coverage.",
       "design": "rating-based conjoint: six two-level attributes, ten profiles of a fractional design, all ten rated by everyone in an unrecorded random order; 0-100 slider, Definitely no to Definitely yes",
       "verified_against": "the authors' R code (manuscript_cleaning.Rmd exclusions, manuscript_analysis.Rmd Table 3 model): its six fixed-effects coefficients and each profile's mean rating, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 869 people, 8,690 ratings (tests/test_gen_researchbox348.py); the paper itself is paywalled and was not read"
+    },
+    "researchbox482_s3": {
+      "category": "economics/behavioural",
+      "description": "People imagine using a navigation app or a food delivery app that estimates 43 minutes or 33-53 minutes, and say for each of eleven time bins, from under 21 to over 65 minutes, whether that time would be consistent with the estimate.",
+      "design": "2 x 2 between people (app domain x point or range estimate); eleven yes/no items in a fixed-order matrix on one page, Yes, consistent or No, inconsistent",
+      "verified_against": "the authors' Stata code (Study S3.do exclusions and its pre-registered OLS of the count of 'Yes, consistent' on the range contrast with an app fixed effect): the coefficients, standard errors and each person's count, recomputed from the BUILT rows, equal the deposit's to 1e-9, and match Online Supplement 6 (point M 3.39, range M 5.11, b 1.88, SE 0.22), N 188 people, 2,068 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox2057_study1a": {
+      "category": "economics/behavioural",
+      "description": "Students see four choices (a camcorder, a laptop, a Bluetooth speaker, a restaurant), each a table of an all-average option and a mixed one, and pick one; half may instead look for other options.",
+      "design": "2 groups between subjects (forced choice or a no-choice option offered), four problems each in an unrecorded random order; nominal choice",
+      "verified_against": "the authors' R code (Study 1a - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 204 people, 816 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_study1b": {
+      "category": "economics/behavioural",
+      "description": "People see four choices (a camera, a laptop, a Bluetooth speaker, a restaurant), each a table of an all-average option and a mixed one, and pick one; half may instead decline to buy.",
+      "design": "2 groups between subjects (forced choice or a no-choice option offered), four problems each in an unrecorded random order; nominal choice",
+      "verified_against": "the authors' R code (Study 1b - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 307 people, 1,228 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_study2a": {
+      "category": "economics/behavioural",
+      "description": "People choose among two or three priced products in six problems (a third option being a compromise or a dominated decoy), some made to choose and some free to look for other options.",
+      "design": "2 (forced or no-choice option) x 2 (two options or a third) between subjects, six problems each in an unrecorded random order; nominal choice",
+      "verified_against": "the authors' R code (Study 2a - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9; the Table 3 shares printed in Additional Files' R comments come out of the built rows exactly to the printed decimal, N 801 people, 4,806 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_study2b": {
+      "category": "economics/behavioural",
+      "description": "People choose an apartment, camera, speaker and hard drive from two options, or three with a decoy or a compromise, some made to choose and some told they may reject them all and go elsewhere.",
+      "design": "2 (forced or no-choice option, listed first and named in the lead) x 3 (two options, decoy, compromise) between subjects, four problems each in an unrecorded random order; nominal choice; conflict ratings not built",
+      "verified_against": "the authors' R code (Study 2b - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9; the Table 4 shares printed (with ≈) in Additional Files' R comments match the built rows within 0.1, one of them off its own rounding (35.2 printed, 35.15 in deposit and rows), N 1,202 people, 4,808 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_study3a": {
+      "category": "economics/behavioural",
+      "description": "People choose between two options in five problems (camera, laptop, university applicant, wine, restaurant) with one attribute given as a single expert value or as a range, or look for other alternatives.",
+      "design": "2 groups between subjects (point values or ranges), everyone offered a no-choice option, five problems each in an unrecorded random order; nominal choice",
+      "verified_against": "the authors' R code (Study 3a - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on choosing no option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 301 people, 1,505 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_study3b": {
+      "category": "economics/behavioural",
+      "description": "People choose between two options in five problems (camera, laptop, university applicant, wine, restaurant) where two experts' ratings agree or differ, or look for other alternatives.",
+      "design": "2 groups between subjects (experts agree or give a range), everyone offered a no-choice option, five problems each in an unrecorded random order; nominal choice",
+      "verified_against": "the authors' R code (Study 3b - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on choosing no option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 404 people, 2,020 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_study4a": {
+      "category": "economics/behavioural",
+      "description": "People choose a camera, laptop and restaurant from an all-average and a mixed option, either with the option to go elsewhere or made to choose first.",
+      "design": "2 groups between subjects (single stage with a go-elsewhere option, or the two-stage group's forced first choice), three problems each in an unrecorded random order; nominal choice; the second stage and fillers not built",
+      "verified_against": "the authors' R code (Study 4a - R Code.R): their deferral model needs the unbuilt second stage, so only what the rows carry is checked: the single-stage deferral share and the two-stage first-choice share per problem, from the BUILT rows, equal the deposit's, N 301 people, 903 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_study4b": {
+      "category": "economics/behavioural",
+      "description": "People choose a camera, speaker and hard drive from three options in a price-quality line, either with the option to go to another store or made to choose first.",
+      "design": "2 groups between subjects (single stage with a go-elsewhere option, or the two-stage group's forced first choice), three problems each in an unrecorded random order; nominal choice; the second stage and fillers not built",
+      "verified_against": "the authors' R code (Study 4b - R Code.R): their deferral model needs the unbuilt second stage, so only what the rows carry is checked: the single-stage deferral share and the two-stage first-choice share per problem, from the BUILT rows, equal the deposit's, N 500 people, 1,500 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox2057_studys1": {
+      "category": "economics/behavioural",
+      "description": "People choose an apartment, camera, speaker and hard drive from two options, or three with a decoy or a compromise, some made to choose and some free not to buy.",
+      "design": "2 (forced or no-choice option) x 3 (two options, decoy, compromise) between subjects, four problems each in an unrecorded random order; nominal choice",
+      "verified_against": "the authors' R code (Study S1 - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 1,204 people, 4,816 choices (tests/test_gen_researchbox2057.py); no paper named in the box"
+    },
+    "researchbox809_study2": {
+      "category": "economics/behavioural",
+      "description": "People read that a fashion retailer with a store near them has pledged a sum to one of six causes, either as one total for 2024 or as the same amount spread over every month, at one of six sizes, and say how likely they would be to buy from it the next time they need clothes.",
+      "design": "2 (one total vs every month) x 6 (amount) x 6 (cause) between subjects, 72 arms (stimulus sampling); 1-7, Not at all likely to Very likely",
+      "verified_against": "the authors' R code (2. Stimulus sampling.rmd: Status/Finished and recall-check exclusions, lm(purchase ~ condition + amount + scenario)): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (periodic vs total +0.171), N 1,540 (tests/test_gen_researchbox809.py); the paper is not named in the box and was not read"
+    },
+    "researchbox809_study3": {
+      "category": "moral/social/cognition",
+      "description": "People read that a fashion retailer has pledged to support wildlife and environmental conservation with either a total of $6 million in 2024 or $500,000 every month in 2024, and say how much they would admire it and how favourably and positively they would view it.",
+      "design": "2 (one total vs every month) between subjects; three 1-7 items on one page, Not at all to Very much",
+      "verified_against": "the authors' R code (3. Serial mediation.rmd: exclusions, positivity = mean of admire, favor, positive; aov(positivity ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.400), N 556, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_study4": {
+      "category": "moral/social/cognition",
+      "description": "People read that a financial services company is running a donation campaign, either $6 million once or $500,000 every month in 2025, and in half the cases that it started only after its main competitor announced a similar one, and say how much they would admire it and how favourably and positively they would view it.",
+      "design": "2 (one total vs every month) x 2 (follower vs not) between subjects; three 1-7 items on one page, Not at all to Very much",
+      "verified_against": "the authors' R code (4. Prosocial Motivation Moderator.rmd: exclusions, lm(positivity ~ conditionC * cond2C) with +/-.5 contrasts): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (schedule +0.282, schedule x follower -0.369), N 1,778 (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_study5a": {
+      "category": "moral/social/cognition",
+      "description": "People read that a business owner donated to disaster relief, either $100 or $520,000 this year or $2 or $10,000 every week, and say how much they admire the business, how favourably and positively they view it, and how morally praiseworthy the donation is.",
+      "design": "2 (one total vs every week) x 2 (small vs large) between subjects; four 1-7 items on two pages shown in an unrecorded random order",
+      "verified_against": "the authors' R code (5a. Total donation size.rmd: exclusions, lm(positivity ~ conditionC * moneyC) and the same for praiseworthy): both models, recomputed from the BUILT rows, equal the deposit's to 1e-9 (positivity: schedule +0.031, schedule x money +0.473), N 1,181 (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_study5b": {
+      "category": "moral/social/cognition",
+      "description": "People read that a business owner donated to disaster relief, either $100, $2,500 or $500,000 this year or $2, $50 or $10,000 every week, and say how much they would admire the business, how favourably and positively they would view it, and how likely they would be to like a social media post about the donation.",
+      "design": "2 (one total vs every week) x 3 (low, modest, high) between subjects; four 1-7 items on one page",
+      "verified_against": "the authors' R code (5b new study. Modest amount.rmd: screener and recall exclusions, lm(positivity ~ condition * amount) and lm(engage ~ condition * amount), amount levels low/modest/high): both models, recomputed from the BUILT rows, equal the deposit's to 1e-9 (positivity: periodic at low amount -0.143, x high +0.235), N 2,418 (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_w1": {
+      "category": "moral/social/cognition",
+      "description": "People read about one of nine companies pledging to its own cause, either one sum in 2023 or a monthly sum through 2023, and say how much they admire it and how favourably and positively they view it.",
+      "design": "2 (one total vs every month) x 9 (company and cause) between subjects, 18 arms (stimulus sampling); three 1-7 items on one page",
+      "verified_against": "the authors' R code (W1. Company eval stimulus sampling.rmd: exclusions, lm(positivity ~ condition + scenario)): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (periodic vs total +0.313), N 1,665 (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_w2": {
+      "category": "economics/behavioural",
+      "description": "People read that a fashion retailer with a store near them has pledged to hunger relief either $6 million in 2024, $500,000 every month, or $500,000 every month with the $6 million total stated, and say how likely they would be to buy from it the next time they need clothes.",
+      "design": "3 arms between subjects (total, monthly, monthly with total stated); 1-11, Not at all likely to Extremely likely",
+      "verified_against": "the authors' R code (W2. Inference Control.rmd: Status/Finished exclusion, aov(purchase ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic +0.382, periodic with total +0.339 vs total), N 1,203 (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_w3": {
+      "category": "moral/social/cognition",
+      "description": "People read that a business owner donated to disaster relief, either $100 this year or $2 every week, and say how reasonable that donation amount is in the situation.",
+      "design": "2 (one total vs every week) between subjects; 1-7, Not at all reasonable to Very reasonable",
+      "verified_against": "the authors' R code (W3. Donation size post-test.rmd: Status/Finished exclusion, lm(reasonable ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.272), N 100 (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_w4": {
+      "category": "moral/social/cognition",
+      "description": "People read that a fashion retailer has pledged to help end world hunger with either a one-time $720,000 in 2024 or $60,000 every month through 2024, and say how much they would admire it and how favourably and positively they would view it.",
+      "design": "2 (one total vs every month) between subjects; three 1-7 items on one page, Not at all to Very much",
+      "verified_against": "the authors' R code (W4. Addressing alternatives.rmd: exclusions, t.test/aov(positivity ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.414), N 429, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox809_w5": {
+      "category": "moral/social/cognition",
+      "description": "People read that a fashion retailer has pledged to conservation with either $6 million in 2024 or $500,000 every month, and in half the cases that it is also widely known for severe environmental damage, and say how much they would admire it and how favourably and positively they would view it.",
+      "design": "2 (one total vs every month) x 2 (bad environmental reputation vs none) between subjects; three 1-7 items on one page",
+      "verified_against": "the authors' R code (W5. Another moderator.rmd: exclusions, lm(positivity ~ conditionC * cond2C) with +/-.5 contrasts): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (schedule +0.299, schedule x reputation -0.242), N 1,643, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)"
+    },
+    "researchbox124_study6d": {
+      "category": "economics/behavioural",
+      "description": "People choose between small gambles described in words (a dollar amount won by flipping coins, rolling a die or drawing a card), where one option can let them pick either of two ways to win, to see whether an option offering a choice of Y or Z is valued less than Y alone.",
+      "design": "within-person choice sets: per set, a recorded draw picks which versions of its trials each person meets (X vs Y-or-Z, X vs Y), plus closing Y vs Z choices; 34-35 trials and 1-2 Y vs Z per person, trials in an unrecorded random order, options in an unrecorded random order; 2-option nominal choice",
+      "verified_against": "the authors' R code (UVExp6dcleaning.Rmd, UVExp6d.Rmd): their cleaning rules applied to the raw export AND to the BUILT rows reproduce their long file Data/UVExp6d.csv (7,760 rows) row for row; the pre-registered test (share of X on X vs Y-or-Z minus on X vs Y) gives 0.06365979, t = 4.284, df 193, N 194, the values their code records (tests/test_gen_researchbox124.py); no paper named in the deposit"
+    },
+    "researchbox124_study6e": {
+      "category": "economics/behavioural",
+      "description": "People choose between small gambles described in words (a dollar amount won by flipping coins, rolling a die or drawing a card), where one option can let them pick either of two ways to win, compared with Y alone, Z alone and all three side by side.",
+      "design": "within-person choice sets: sets 1-5 or 6-10 by a recorded draw, and per set a recorded draw picks which versions each person meets (X vs Y-or-Z or Z-or-Y, X vs Y vs Z, X vs Y, X vs Z, Y vs Z); trials and options in unrecorded random orders; 2- or 3-option nominal choice; 12 first-day people before a mid-day change to the instructions screen not built",
+      "verified_against": "the authors' R code (UVExp6ecleaning.Rmd, UVExp6e.Rmd): their cleaning rules applied to the raw export reproduce Data/UVExp6e.csv (6,160 rows) row for row, and applied to the BUILT rows reproduce the same file restricted to the 164 built people; the pre-registered test gives 0.05568182, t = 3.375, df 175 on the authors' 176 (their recorded values) and 0.0582317 on the built 164, equal to their file for the same people (tests/test_gen_researchbox124.py); no paper named in the deposit"
     }
   }
 }

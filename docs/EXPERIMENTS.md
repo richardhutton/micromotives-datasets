@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**95 studies (186 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 65 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**99 studies (208 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 87 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 16 | 65 | 182,564 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 20 | 87 | 254,873 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **95** | **186** | **1,326,777** | |
+| **Total** | **99** | **208** | **1,399,086** | |
 
 ---
 
@@ -41,6 +41,7 @@
 | `del_panel_w4_aid_conjoint_6attr` | Development Engagement Lab, Panel Great Britain wave 4 (2022): aid … | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 12,042 |
 | `del_panel_w4_aid_conjoint_8attr` | Development Engagement Lab, Panel Great Britain wave 4 (2022): aid … | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 11,982 |
 | `del_sandbox_jun2022_ukraine_choice` | Development Engagement Lab, Sandbox Great Britain June 2022: why th… | Harvard Dataverse | `doi:10.7910/DVN/ELT7M0` | 10,935 |
+| `researchbox809_study5b` | A business owner donates to disaster relief, $100, $2,500 or $500,0… | ResearchBox | `researchbox.org/809` | 9,672 |
 | `3YCVOF` | Legislator dissent as a valence signal (Study 2, MP dissent conjoint) | Harvard Dataverse | `doi:10.7910/DVN/3YCVOF` | 9,495 |
 | `figshare_32935409_maxdiff` | Student perceptions of academic integrity in the age of Gen-AI: whi… | Figshare | `doi:10.48420/32935409` | 9,340 |
 | `PMV0TG` | Citizens from 13 countries share similar preferences for COVID-19 v… | Harvard Dataverse | `doi:10.7910/DVN/PMV0TG` | 9,320 |
@@ -57,6 +58,7 @@
 | `del_panel_w4_extreme_weather` | Development Engagement Lab, Panel Great Britain wave 4 (2022): extr… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 7,276 |
 | `researchbox2170_study3_followup` | T-shirt: pay $24 now, in 30 days or in 3 instalments of $8; how cle… | ResearchBox | `researchbox.org/2170` | 7,176 |
 | `researchbox2170_ss2` | Four coffee mugs: pay $27 in 21 days or in 3 instalments of $9; fin… | ResearchBox | `researchbox.org/2170` | 7,164 |
+| `researchbox124_study6d` | Choices between gambles (coins, dice, cards): X against an option t… | ResearchBox | `researchbox.org/124` | 7,090 |
 | `ukds_6849_vig_ageing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.18: what do th… | UK Data Service | `UKDS SN 6849` | 6,600 |
 | `6MRVOM_brexit_scenario` | Pricing Immigration | Harvard Dataverse | `doi:10.7910/DVN/6MRVOM` | 6,526 |
 | `QQM5MC` | A Tale of Two Peoples: Motivated Reasoning in the Aftermath of the … | Harvard Dataverse | `doi:10.7910/DVN/QQM5MC` | 6,345 |
@@ -66,10 +68,18 @@
 | `del_panel_w4_east_africa_drought` | Development Engagement Lab, Panel Great Britain wave 4 (2022): East… | Harvard Dataverse | `doi:10.7910/DVN/WZPNNU` | 5,796 |
 | `ukds_6849_nrp_w10_contact` ⚠ | Understanding Society Innovation Panel, experiment 9.23: how often … | UK Data Service | `UKDS SN 6849` | 5,690 |
 | `zenodo6572717` | CUPID (Ireland, Feb 2021): parents choose between two health servic… | Zenodo | `doi:10.5281/zenodo.6572717` | 5,400 |
+| `researchbox809_study4` | A financial services company's donation campaign, $6 million once o… | ResearchBox | `researchbox.org/809` | 5,334 |
 | `PZB01G` | For and Against Brexit: A Survey Experiment of the Impact of Campai… | Harvard Dataverse | `doi:10.7910/DVN/PZB01G` | 5,333 |
+| `researchbox124_study6e` | Choices between gambles (coins, dice, cards): X against an option t… | ResearchBox | `researchbox.org/124` | 5,297 |
 | `ukds_6849_vig_housework_w6` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 5,081 |
 | `researchbox3251_wa_b4` | Headphones at $179.99, 30% off if you meet one of twelve conditions… | ResearchBox | `researchbox.org/3251` | 5,040 |
+| `researchbox809_w1` | Nine companies, each pledging to its own cause one sum in 2023 or a… | ResearchBox | `researchbox.org/809` | 4,995 |
+| `researchbox809_w5` | A fashion retailer pledges $6 million in 2024 or $500,000 every mon… | ResearchBox | `researchbox.org/809` | 4,929 |
 | `ukds_6849_caring_existing_w17` ⚠ | Understanding Society Innovation Panel, experiment 9.47: informal c… | UK Data Service | `UKDS SN 6849` | 4,847 |
+| `researchbox2057_studys1` | Apartment, camera, speaker, hard drive: two options, a decoy or a c… | ResearchBox | `researchbox.org/2057` | 4,816 |
+| `researchbox2057_study2b` | Apartment, camera, speaker, hard drive: two options, a decoy or a c… | ResearchBox | `researchbox.org/2057` | 4,808 |
+| `researchbox2057_study2a` | Six products, two options or a third (a compromise or a decoy), mad… | ResearchBox | `researchbox.org/2057` | 4,806 |
+| `researchbox809_study5a` | A business owner donates to disaster relief, $100 or $520,000 this … | ResearchBox | `researchbox.org/809` | 4,724 |
 | `ukds_6849_numeracy_env_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,638 |
 | `ukds_6849_numeracy_fin_w16` ⚠ | Understanding Society Innovation Panel, experiment 9.42: compound g… | UK Data Service | `UKDS SN 6849` | 4,602 |
 | `ukds_6849_vig_housework_w5` ⚠ | Understanding Society Innovation Panel, experiment 9.10: measuring … | UK Data Service | `UKDS SN 6849` | 4,550 |
@@ -100,27 +110,36 @@
 | `ukds_6849_immigsdb_w8` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,133 |
 | `researchbox231_study4_ease` | A simulated month, paid daily or weekly and spending daily or weekl… | ResearchBox | `researchbox.org/231` | 2,112 |
 | `ukds_6849_immigsdb_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.16: social des… | UK Data Service | `UKDS SN 6849` | 2,071 |
+| `researchbox482_s3` | A navigation app or a food delivery app estimates 43 minutes or 33-… | ResearchBox | `researchbox.org/482` | 2,068 |
+| `researchbox2057_study3b` | Camera, laptop, applicant, wine, restaurant: two experts agreeing o… | ResearchBox | `researchbox.org/2057` | 2,020 |
 | `researchbox3299_s4` | A $15 or $315 product, then an $11 one: a sure discount or a 10% ch… | ResearchBox | `researchbox.org/3299` | 1,968 |
 | `ukds_6849_immig_vignette_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.26: right to r… | UK Data Service | `UKDS SN 6849` | 1,917 |
 | `del_sandbox_feb2023_abortion` | Development Engagement Lab, Sandbox Great Britain February 2023: ab… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,798 |
 | `del_sandbox_feb2023_wordfeminist` | Development Engagement Lab, Sandbox Great Britain February 2023: na… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,788 |
 | `ukds_6849_identity_w2` ⚠ | Understanding Society Innovation Panel, experiment 9.4: measuring i… | UK Data Service | `UKDS SN 6849` | 1,746 |
 | `del_sandbox_feb2023_aid_priorities` | Development Engagement Lab, Sandbox Great Britain February 2023: ai… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,706 |
+| `researchbox809_study3` | A fashion retailer pledges $6 million in 2024 or $500,000 every mon… | ResearchBox | `researchbox.org/809` | 1,668 |
 | `del_sandbox_feb2023_gender_aid` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,655 |
 | `del_sandbox_feb2023_gender_equality` | Development Engagement Lab, Sandbox Great Britain February 2023: ge… | Harvard Dataverse | `doi:10.7910/DVN/XZ1XUZ` | 1,636 |
 | `researchbox2562_study3` | A toilet paper maker, facing higher costs, raises the price, shrink… | ResearchBox | `researchbox.org/2562` | 1,601 |
 | `researchbox3251_wa_b3` | A gas station at $3.50/gallon, with a $2.50 cash price you cannot u… | ResearchBox | `researchbox.org/3251` | 1,600 |
 | `researchbox755_study4_election` | Jordan votes for a District Attorney candidate from 2 or 6, choosin… | ResearchBox | `researchbox.org/755` | 1,578 |
 | `researchbox755_study4_food` | Taylor orders a side dish from 2 or 6, choosing or first ranking th… | ResearchBox | `researchbox.org/755` | 1,578 |
+| `researchbox809_study2` | A fashion retailer with a store near you pledges to one of six caus… | ResearchBox | `researchbox.org/809` | 1,540 |
 | `researchbox196_s4` | Your most recent call to a customer service centre, rated Overall a… | ResearchBox | `researchbox.org/196` | 1,537 |
 | `researchbox196_s3` | Your most recent food delivery, rated Overall alone or beside five … | ResearchBox | `researchbox.org/196` | 1,514 |
+| `researchbox2057_study3a` | Camera, laptop, applicant, wine, restaurant: quality as one expert … | ResearchBox | `researchbox.org/2057` | 1,505 |
 | `researchbox2562_study1` | A chocolate maker or a streaming platform, facing higher costs, rai… | ResearchBox | `researchbox.org/2562` | 1,502 |
+| `researchbox2057_study4b` | Camera, speaker, hard drive: three options in a line, with a go-els… | ResearchBox | `researchbox.org/2057` | 1,500 |
 | `researchbox2562_study7` | A British detergent maker, facing higher costs, raises the price, s… | ResearchBox | `researchbox.org/2562` | 1,493 |
 | `researchbox3251_study3` | Two $90 printers, the first $45 instore under a conditional promoti… | ResearchBox | `researchbox.org/3251` | 1,388 |
 | `ukds_6849_hmrc_consent_w11` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,326 |
+| `researchbox809_w4` | A fashion retailer pledges $720,000 in 2024 or $60,000 every month … | ResearchBox | `researchbox.org/809` | 1,287 |
 | `ukds_6849_hmrc_consent_w11_web` ⚠ | Understanding Society Innovation Panel, experiment 9.25: consent to… | UK Data Service | `UKDS SN 6849` | 1,281 |
 | `ukds_6849_mpc_direct_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,278 |
 | `ukds_6849_mpc_twopart_w15` ⚠ | Understanding Society Innovation Panel, experiment 9.34: marginal p… | UK Data Service | `UKDS SN 6849` | 1,259 |
+| `researchbox2057_study1b` | Camera, laptop, Bluetooth speaker, restaurant: an all-average or a … | ResearchBox | `researchbox.org/2057` | 1,228 |
+| `researchbox809_w2` | A fashion retailer pledges $6 million in 2024, $500,000 every month… | ResearchBox | `researchbox.org/809` | 1,203 |
 | `researchbox1032_study5` | A potato chips maker whose costs have or have not increased raises … | ResearchBox | `researchbox.org/1032` | 1,202 |
 | `researchbox3299_s3` | Gym membership: a sure $5 off training or a 10% chance it is free, … | ResearchBox | `researchbox.org/3299` | 1,188 |
 | `researchbox3299_study5` | An $11 product: 10% off framed as % or $, or a 10% chance it is fre… | ResearchBox | `researchbox.org/3299` | 1,187 |
@@ -129,8 +148,10 @@
 | `researchbox196_study9` | A flight, a dentist visit or sneakers gone partly wrong, rated Over… | ResearchBox | `researchbox.org/196` | 1,089 |
 | `researchbox1032_study1` | A chocolate maker and an orange juice maker, facing higher producti… | ResearchBox | `researchbox.org/1032` | 1,002 |
 | `ukds_6849_sensor_consent_w17_web` ⚠ | Understanding Society Innovation Panel, experiment 9.49: consent to… | UK Data Service | `UKDS SN 6849` | 946 |
+| `researchbox2057_study4a` | Camera, laptop, restaurant: an all-average or a mixed option, with … | ResearchBox | `researchbox.org/2057` | 903 |
 | `researchbox3299_study4_pretest` | How large does 10% off feel, as % or $, on a $11 or $311 product (S… | ResearchBox | `researchbox.org/3299` | 867 |
 | `researchbox2562_study6` | Choosing for real between a price rise, a smaller size and less coc… | ResearchBox | `researchbox.org/2562` | 832 |
+| `researchbox2057_study1a` | Camcorder, laptop, Bluetooth speaker, restaurant: an all-average or… | ResearchBox | `researchbox.org/2057` | 816 |
 | `researchbox402_study1a` | Flight tickets whose price fell or rose, once or week by week, to $… | ResearchBox | `researchbox.org/402` | 802 |
 | `researchbox3251_wa_b2` | Phone X, regular price $1000, for $300 or $900 if you add a phone l… | ResearchBox | `researchbox.org/3251` | 800 |
 | `researchbox755_study3` | Avery (and Blake) chose a side dish from 2 or from 6, seen alone or… | ResearchBox | `researchbox.org/755` | 785 |
@@ -150,6 +171,7 @@
 | `researchbox108_study4` | Shopping online for headphones, some labelled "Top Rated" and some … | ResearchBox | `researchbox.org/108` | 296 |
 | `researchbox231_s1` | Life simulator: drinks with a friend after being paid daily or week… | ResearchBox | `researchbox.org/231` | 146 |
 | `researchbox108_study1_us` | A new tablet that doubles as a laptop: 85% of consumers in the U.S.… | ResearchBox | `researchbox.org/108` | 101 |
+| `researchbox809_w3` | A business owner donates $100 this year or $2 every week to disaste… | ResearchBox | `researchbox.org/809` | 100 |
 | `researchbox108_study1_india` | A new tablet that doubles as a laptop: 85% of consumers in the Indi… | ResearchBox | `researchbox.org/108` | 99 |
 | `researchbox2562_study2a_pilot` | An olive spread maker, facing higher costs, cuts the olive oil in i… | ResearchBox | `researchbox.org/2562` | 50 |
 | `researchbox2562_study2b_pilot` | An orange juice maker, facing higher costs, cuts the orange juice i… | ResearchBox | `researchbox.org/2562` | 50 |
@@ -1155,6 +1177,19 @@ Best-worst scaling (MaxDiff): from four of 25 policies and interventions on each
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Appendix 3 overall ranking of all 25 items (McBey et al., Food Quality and Preference 135, 2026): best-minus-worst from the built rows ranks them at Spearman 0.996, and no other pairing of pick columns with item slots exceeds 0.964 (tests/test_gen_zenodo18547379.py). No published counts or coefficients in a table to match numerically
 
+### `researchbox809_study5b`
+
+**A business owner donates to disaster relief, $100, $2,500 or $500,000 this year, or $2, $50 or $10,000 every week: how much would you admire the business, and would you like a social media post about it? (Study 5b)**
+
+People read that a business owner donated to disaster relief, either $100, $2,500 or $500,000 this year or $2, $50 or $10,000 every week, and say how much they would admire the business, how favourably and positively they would view it, and how likely they would be to like a social media post about the donation.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every week) x 3 (low, modest, high) between subjects; four 1-7 items on one page
+- **Category** — moral/social/cognition
+- **Rows** — 9,672 from 2,418 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (5b new study. Modest amount.rmd: screener and recall exclusions, lm(positivity ~ condition * amount) and lm(engage ~ condition * amount), amount levels low/modest/high): both models, recomputed from the BUILT rows, equal the deposit's to 1e-9 (positivity: periodic at low amount -0.143, x high +0.235), N 2,418 (tests/test_gen_researchbox809.py)
+
 ### `figshare_32935409_maxdiff`
 
 **Student perceptions of academic integrity in the age of Gen-AI: which of four behaviours is the most and least serious breach (best-worst scaling)**
@@ -1207,6 +1242,19 @@ People imagine buying four coffee mugs for $27, paid in 21 days or in 3 instalme
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' jamovi outputs recomputed from the BUILT rows (tests/test_gen_researchbox2170.py): N by arm (297 / 300), the three t tests (1.98, -3.69, -3.12) with their means and SDs, and Cronbach's alpha with each item dropped for all twelve items
 
+### `researchbox124_study6d`
+
+**Choices between gambles (coins, dice, cards): X against an option that lets you pick Y or Z, X against Y alone, and Y against Z; which do you prefer? (Study 6d)**
+
+People choose between small gambles described in words (a dollar amount won by flipping coins, rolling a die or drawing a card), where one option can let them pick either of two ways to win, to see whether an option offering a choice of Y or Z is valued less than Y alone.
+
+- **Source** — ResearchBox, `researchbox.org/124`
+- **Type** — within-person choice sets: per set, a recorded draw picks which versions of its trials each person meets (X vs Y-or-Z, X vs Y), plus closing Y vs Z choices; 34-35 trials and 1-2 Y vs Z per person, trials in an unrecorded random order, options in an unrecorded random order; 2-option nominal choice
+- **Category** — economics/behavioural
+- **Rows** — 7,090 from 194 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (UVExp6dcleaning.Rmd, UVExp6d.Rmd): their cleaning rules applied to the raw export AND to the BUILT rows reproduce their long file Data/UVExp6d.csv (7,760 rows) row for row; the pre-registered test (share of X on X vs Y-or-Z minus on X vs Y) gives 0.06365979, t = 4.284, df 193, N 194, the values their code records (tests/test_gen_researchbox124.py); no paper named in the deposit
+
 ### `researchbox196_study10`
 
 **A subpar restaurant rated Overall alone or beside Food, Service, Ambiance and Value; then go again, recommend (Study 10)**
@@ -1233,6 +1281,32 @@ Parents of a child under 16 in Ireland imagine their youngest child has been unw
 - **Licence** — CC BY 4.0 (cc-by-4.0)
 - **Verified against** — the paper's Table 3 conditional logit (Nicholson et al., Health Expectations 26(5), 2023): all nine coefficients and odds ratios, the log likelihood (-3537) and N (10,800) reproduced from the built rows, and task 1 matches the paper's Figure 1 screenshot exactly (tests/test_gen_zenodo6572717.py)
 
+### `researchbox809_study4`
+
+**A financial services company's donation campaign, $6 million once or $500,000 every month in 2025, started or not only after its main competitor announced one: how much would you admire it? (Study 4)**
+
+People read that a financial services company is running a donation campaign, either $6 million once or $500,000 every month in 2025, and in half the cases that it started only after its main competitor announced a similar one, and say how much they would admire it and how favourably and positively they would view it.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every month) x 2 (follower vs not) between subjects; three 1-7 items on one page, Not at all to Very much
+- **Category** — moral/social/cognition
+- **Rows** — 5,334 from 1,778 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (4. Prosocial Motivation Moderator.rmd: exclusions, lm(positivity ~ conditionC * cond2C) with +/-.5 contrasts): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (schedule +0.282, schedule x follower -0.369), N 1,778 (tests/test_gen_researchbox809.py)
+
+### `researchbox124_study6e`
+
+**Choices between gambles (coins, dice, cards): X against an option that lets you pick Y or Z, against Y or Z alone, all three side by side, and Y against Z; which do you prefer? (Study 6e)**
+
+People choose between small gambles described in words (a dollar amount won by flipping coins, rolling a die or drawing a card), where one option can let them pick either of two ways to win, compared with Y alone, Z alone and all three side by side.
+
+- **Source** — ResearchBox, `researchbox.org/124`
+- **Type** — within-person choice sets: sets 1-5 or 6-10 by a recorded draw, and per set a recorded draw picks which versions each person meets (X vs Y-or-Z or Z-or-Y, X vs Y vs Z, X vs Y, X vs Z, Y vs Z); trials and options in unrecorded random orders; 2- or 3-option nominal choice; 12 first-day people before a mid-day change to the instructions screen not built
+- **Category** — economics/behavioural
+- **Rows** — 5,297 from 164 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (UVExp6ecleaning.Rmd, UVExp6e.Rmd): their cleaning rules applied to the raw export reproduce Data/UVExp6e.csv (6,160 rows) row for row, and applied to the BUILT rows reproduce the same file restricted to the 164 built people; the pre-registered test gives 0.05568182, t = 3.375, df 175 on the authors' 176 (their recorded values) and 0.0582317 on the built 164, equal to their file for the same people (tests/test_gen_researchbox124.py); no paper named in the deposit
+
 ### `researchbox3251_wa_b4`
 
 **Headphones at $179.99, 30% off if you meet one of twelve conditions (be a student, a veteran, a senior citizen, spend $200, refer two people ...): how hard is it for you, and how willing are you? (Web Appendix B4)**
@@ -1245,6 +1319,84 @@ Students see twelve ways to get 30% off $179.99 headphones (be a student, a vete
 - **Rows** — 5,040 from 210 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — Web Appendix B4's Figure W1, all twelve means of the two items, recomputed from the BUILT rows to the printed precision, N 210 (tests/test_gen_researchbox3251.py)
+
+### `researchbox809_w1`
+
+**Nine companies, each pledging to its own cause one sum in 2023 or a monthly sum through 2023: how much do you admire it? (Study W1)**
+
+People read about one of nine companies pledging to its own cause, either one sum in 2023 or a monthly sum through 2023, and say how much they admire it and how favourably and positively they view it.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every month) x 9 (company and cause) between subjects, 18 arms (stimulus sampling); three 1-7 items on one page
+- **Category** — moral/social/cognition
+- **Rows** — 4,995 from 1,665 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (W1. Company eval stimulus sampling.rmd: exclusions, lm(positivity ~ condition + scenario)): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (periodic vs total +0.313), N 1,665 (tests/test_gen_researchbox809.py)
+
+### `researchbox809_w5`
+
+**A fashion retailer pledges $6 million in 2024 or $500,000 every month to conservation, and is or is not also known for severe environmental damage: how much would you admire it? (Study W5)**
+
+People read that a fashion retailer has pledged to conservation with either $6 million in 2024 or $500,000 every month, and in half the cases that it is also widely known for severe environmental damage, and say how much they would admire it and how favourably and positively they would view it.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every month) x 2 (bad environmental reputation vs none) between subjects; three 1-7 items on one page
+- **Category** — moral/social/cognition
+- **Rows** — 4,929 from 1,643 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (W5. Another moderator.rmd: exclusions, lm(positivity ~ conditionC * cond2C) with +/-.5 contrasts): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (schedule +0.299, schedule x reputation -0.242), N 1,643, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)
+
+### `researchbox2057_studys1`
+
+**Apartment, camera, speaker, hard drive: two options, a decoy or a compromise, made to choose or free not to buy (Study S1)**
+
+People choose an apartment, camera, speaker and hard drive from two options, or three with a decoy or a compromise, some made to choose and some free not to buy.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 (forced or no-choice option) x 3 (two options, decoy, compromise) between subjects, four problems each in an unrecorded random order; nominal choice
+- **Category** — economics/behavioural
+- **Rows** — 4,816 from 1,204 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study S1 - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 1,204 people, 4,816 choices (tests/test_gen_researchbox2057.py); no paper named in the box
+
+### `researchbox2057_study2b`
+
+**Apartment, camera, speaker, hard drive: two options, a decoy or a compromise, made to choose or free to go elsewhere (Study 2b)**
+
+People choose an apartment, camera, speaker and hard drive from two options, or three with a decoy or a compromise, some made to choose and some told they may reject them all and go elsewhere.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 (forced or no-choice option, listed first and named in the lead) x 3 (two options, decoy, compromise) between subjects, four problems each in an unrecorded random order; nominal choice; conflict ratings not built
+- **Category** — economics/behavioural
+- **Rows** — 4,808 from 1,202 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 2b - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9; the Table 4 shares printed (with ≈) in Additional Files' R comments match the built rows within 0.1, one of them off its own rounding (35.2 printed, 35.15 in deposit and rows), N 1,202 people, 4,808 choices (tests/test_gen_researchbox2057.py); no paper named in the box
+
+### `researchbox2057_study2a`
+
+**Six products, two options or a third (a compromise or a decoy), made to choose or free to look for other options (Study 2a)**
+
+People choose among two or three priced products in six problems (a third option being a compromise or a dominated decoy), some made to choose and some free to look for other options.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 (forced or no-choice option) x 2 (two options or a third) between subjects, six problems each in an unrecorded random order; nominal choice
+- **Category** — economics/behavioural
+- **Rows** — 4,806 from 801 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 2a - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9; the Table 3 shares printed in Additional Files' R comments come out of the built rows exactly to the printed decimal, N 801 people, 4,806 choices (tests/test_gen_researchbox2057.py); no paper named in the box
+
+### `researchbox809_study5a`
+
+**A business owner donates to disaster relief, $100 or $520,000 this year, or $2 or $10,000 every week: how much do you admire the business, and how praiseworthy is it? (Study 5a)**
+
+People read that a business owner donated to disaster relief, either $100 or $520,000 this year or $2 or $10,000 every week, and say how much they admire the business, how favourably and positively they view it, and how morally praiseworthy the donation is.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every week) x 2 (small vs large) between subjects; four 1-7 items on two pages shown in an unrecorded random order
+- **Category** — moral/social/cognition
+- **Rows** — 4,724 from 1,181 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (5a. Total donation size.rmd: exclusions, lm(positivity ~ conditionC * moneyC) and the same for praiseworthy): both models, recomputed from the BUILT rows, equal the deposit's to 1e-9 (positivity: schedule +0.031, schedule x money +0.473), N 1,181 (tests/test_gen_researchbox809.py)
 
 ### `researchbox1032_study4`
 
@@ -1493,6 +1645,32 @@ The same simulated February as Study 4; people rate how easy or hard their incom
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's Study 4 prediction-uncertainty simple effects from the BUILT rows: -16.87 under daily expenses and 4.24 under weekly expenses, as published (tests/test_gen_researchbox231.py)
 
+### `researchbox482_s3`
+
+**A navigation app or a food delivery app estimates 43 minutes or 33-53 minutes: which arrival times, from under 21 to over 65 minutes, are consistent with the estimate? (Study S3)**
+
+People imagine using a navigation app or a food delivery app that estimates 43 minutes or 33-53 minutes, and say for each of eleven time bins, from under 21 to over 65 minutes, whether that time would be consistent with the estimate.
+
+- **Source** — ResearchBox, `researchbox.org/482`
+- **Type** — 2 x 2 between people (app domain x point or range estimate); eleven yes/no items in a fixed-order matrix on one page, Yes, consistent or No, inconsistent
+- **Category** — economics/behavioural
+- **Rows** — 2,068 from 188 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' Stata code (Study S3.do exclusions and its pre-registered OLS of the count of 'Yes, consistent' on the range contrast with an app fixed effect): the coefficients, standard errors and each person's count, recomputed from the BUILT rows, equal the deposit's to 1e-9, and match Online Supplement 6 (point M 3.39, range M 5.11, b 1.88, SE 0.22), N 188 people, 2,068 answers (tests/test_gen_researchbox482.py); the paper itself was not read
+
+### `researchbox2057_study3b`
+
+**Camera, laptop, applicant, wine, restaurant: two experts agreeing or giving a range; choose one or look for other alternatives (Study 3b)**
+
+People choose between two options in five problems (camera, laptop, university applicant, wine, restaurant) where two experts' ratings agree or differ, or look for other alternatives.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 groups between subjects (experts agree or give a range), everyone offered a no-choice option, five problems each in an unrecorded random order; nominal choice
+- **Category** — economics/behavioural
+- **Rows** — 2,020 from 404 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 3b - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on choosing no option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 404 people, 2,020 choices (tests/test_gen_researchbox2057.py); no paper named in the box
+
 ### `researchbox3299_s4`
 
 **A $15 or $315 product, then an $11 one: a sure discount or a 10% chance it is free (Study S4)**
@@ -1505,6 +1683,19 @@ People choose between a sure discount and a 10% chance the product is free, firs
 - **Rows** — 1,968 from 984 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' do files re-run in Python on the BUILT rows: every per-condition statistic the do file tabulates equals the same statistic computed from the deposit, and N equals the do file's stated N (984) (tests/test_gen_researchbox3299.py)
+
+### `researchbox809_study3`
+
+**A fashion retailer pledges $6 million in 2024 or $500,000 every month in 2024 to wildlife and environmental conservation: how much would you admire it? (Study 3)**
+
+People read that a fashion retailer has pledged to support wildlife and environmental conservation with either a total of $6 million in 2024 or $500,000 every month in 2024, and say how much they would admire it and how favourably and positively they would view it.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every month) between subjects; three 1-7 items on one page, Not at all to Very much
+- **Category** — moral/social/cognition
+- **Rows** — 1,668 from 556 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (3. Serial mediation.rmd: exclusions, positivity = mean of admire, favor, positive; aov(positivity ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.400), N 556, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)
 
 ### `researchbox2562_study3`
 
@@ -1558,6 +1749,19 @@ People read that Taylor picked a side dish from 2 or 6 options, by choosing or b
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' Study 4 .do file, run on the deposit and recomputed from the BUILT rows: liking by condition (N, mean, SD) and the regression on set size, frame and their interaction, equal to 1e-10, N 1,578 (no paper table was reachable) (tests/test_gen_researchbox755.py)
 
+### `researchbox809_study2`
+
+**A fashion retailer with a store near you pledges to one of six causes, one sum in 2024 or the same sum every month, at six sizes: how likely are you to buy from it? (Study 2)**
+
+People read that a fashion retailer with a store near them has pledged a sum to one of six causes, either as one total for 2024 or as the same amount spread over every month, at one of six sizes, and say how likely they would be to buy from it the next time they need clothes.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every month) x 6 (amount) x 6 (cause) between subjects, 72 arms (stimulus sampling); 1-7, Not at all likely to Very likely
+- **Category** — economics/behavioural
+- **Rows** — 1,540 from 1,540 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (2. Stimulus sampling.rmd: Status/Finished and recall-check exclusions, lm(purchase ~ condition + amount + scenario)): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (periodic vs total +0.171), N 1,540 (tests/test_gen_researchbox809.py); the paper is not named in the box and was not read
+
 ### `researchbox196_s4`
 
 **Your most recent call to a customer service centre, rated Overall alone or beside four of its features (Study S4)**
@@ -1584,6 +1788,19 @@ People who had food delivered in the last two weeks rate that experience in star
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' R script (Study S3.r): its preregistered pooled-variance t test recomputed from the BUILT rows equals the deposit's with the script's exclusions, N 1,514 (tests/test_gen_researchbox196.py)
 
+### `researchbox2057_study3a`
+
+**Camera, laptop, applicant, wine, restaurant: quality as one expert value or as a range; choose one or look for other alternatives (Study 3a)**
+
+People choose between two options in five problems (camera, laptop, university applicant, wine, restaurant) with one attribute given as a single expert value or as a range, or look for other alternatives.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 groups between subjects (point values or ranges), everyone offered a no-choice option, five problems each in an unrecorded random order; nominal choice
+- **Category** — economics/behavioural
+- **Rows** — 1,505 from 301 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 3a - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on choosing no option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 301 people, 1,505 choices (tests/test_gen_researchbox2057.py); no paper named in the box
+
 ### `researchbox2562_study1`
 
 **A chocolate maker or a streaming platform, facing higher costs, raises the price, shrinks the product or cuts its quality: fair or unfair? (Study 1)**
@@ -1596,6 +1813,19 @@ People read that a chocolate maker or a streaming platform, facing higher costs,
 - **Rows** — 1,502 from 1,502 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's logits of unfair on the change dummies recomputed from the BUILT rows by glm's own fitting procedure equal base R's output for the authors' code on the deposit, every estimate and SE to 1e-9, pooled and for each product, N 1,502 (tests/test_gen_researchbox2562.py)
+
+### `researchbox2057_study4b`
+
+**Camera, speaker, hard drive: three options in a line, with a go-elsewhere option or made to choose first (Study 4b)**
+
+People choose a camera, speaker and hard drive from three options in a price-quality line, either with the option to go to another store or made to choose first.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 groups between subjects (single stage with a go-elsewhere option, or the two-stage group's forced first choice), three problems each in an unrecorded random order; nominal choice; the second stage and fillers not built
+- **Category** — economics/behavioural
+- **Rows** — 1,500 from 500 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 4b - R Code.R): their deferral model needs the unbuilt second stage, so only what the rows carry is checked: the single-stage deferral share and the two-stage first-choice share per problem, from the BUILT rows, equal the deposit's, N 500 people, 1,500 choices (tests/test_gen_researchbox2057.py); no paper named in the box
 
 ### `researchbox2562_study7`
 
@@ -1622,6 +1852,45 @@ People choose between two $90 printers, buying online or driving to a store 0, 3
 - **Rows** — 1,388 from 347 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the paper's Table 4, all 40 choice counts (2 arms x 4 distances x 5 options), recomputed from the BUILT rows exactly, N 347 (tests/test_gen_researchbox3251.py)
+
+### `researchbox809_w4`
+
+**A fashion retailer pledges $720,000 in 2024 or $60,000 every month to end world hunger: how much would you admire it? (Study W4)**
+
+People read that a fashion retailer has pledged to help end world hunger with either a one-time $720,000 in 2024 or $60,000 every month through 2024, and say how much they would admire it and how favourably and positively they would view it.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every month) between subjects; three 1-7 items on one page, Not at all to Very much
+- **Category** — moral/social/cognition
+- **Rows** — 1,287 from 429 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (W4. Addressing alternatives.rmd: exclusions, t.test/aov(positivity ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.414), N 429, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)
+
+### `researchbox2057_study1b`
+
+**Camera, laptop, Bluetooth speaker, restaurant: an all-average or a mixed option, made to choose or free not to buy (Study 1b)**
+
+People see four choices (a camera, a laptop, a Bluetooth speaker, a restaurant), each a table of an all-average option and a mixed one, and pick one; half may instead decline to buy.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 groups between subjects (forced choice or a no-choice option offered), four problems each in an unrecorded random order; nominal choice
+- **Category** — economics/behavioural
+- **Rows** — 1,228 from 307 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 1b - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 307 people, 1,228 choices (tests/test_gen_researchbox2057.py); no paper named in the box
+
+### `researchbox809_w2`
+
+**A fashion retailer pledges $6 million in 2024, $500,000 every month, or $500,000 every month with the $6 million total stated: how likely are you to buy from it? (Study W2)**
+
+People read that a fashion retailer with a store near them has pledged to hunger relief either $6 million in 2024, $500,000 every month, or $500,000 every month with the $6 million total stated, and say how likely they would be to buy from it the next time they need clothes.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 3 arms between subjects (total, monthly, monthly with total stated); 1-11, Not at all likely to Extremely likely
+- **Category** — economics/behavioural
+- **Rows** — 1,203 from 1,203 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (W2. Inference Control.rmd: Status/Finished exclusion, aov(purchase ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic +0.382, periodic with total +0.339 vs total), N 1,203 (tests/test_gen_researchbox809.py)
 
 ### `researchbox1032_study5`
 
@@ -1714,6 +1983,19 @@ People read that a chocolate maker and an orange juice maker, facing higher prod
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's Model1 (logit of unfair on the study's dummies) recomputed from the BUILT rows equals base R's output for the authors' code on the deposit, every coefficient to 1e-9 and SE to 1e-6 for both products, N 501 (tests/test_gen_researchbox1032.py)
 
+### `researchbox2057_study4a`
+
+**Camera, laptop, restaurant: an all-average or a mixed option, with a go-elsewhere option or made to choose first (Study 4a)**
+
+People choose a camera, laptop and restaurant from an all-average and a mixed option, either with the option to go elsewhere or made to choose first.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 groups between subjects (single stage with a go-elsewhere option, or the two-stage group's forced first choice), three problems each in an unrecorded random order; nominal choice; the second stage and fillers not built
+- **Category** — economics/behavioural
+- **Rows** — 903 from 301 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 4a - R Code.R): their deferral model needs the unbuilt second stage, so only what the rows carry is checked: the single-stage deferral share and the two-stage first-choice share per problem, from the BUILT rows, equal the deposit's, N 301 people, 903 choices (tests/test_gen_researchbox2057.py); no paper named in the box
+
 ### `researchbox3299_study4_pretest`
 
 **How large does 10% off feel, as % or $, on a $11 or $311 product (Study 4 pretest)**
@@ -1739,6 +2021,19 @@ In a lab with real stakes, people choose between a price rise, a smaller bar and
 - **Rows** — 832 from 208 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the R script's chi-squares against a uniform choice, one-sample t tests against 5 and logits of choosing the quality-cut option on the quality rating, recomputed from the BUILT rows, equal base R's to 1e-9, N 208 (tests/test_gen_researchbox2562.py)
+
+### `researchbox2057_study1a`
+
+**Camcorder, laptop, Bluetooth speaker, restaurant: an all-average or a mixed option, made to choose or free to look for other options (Study 1a, students)**
+
+Students see four choices (a camcorder, a laptop, a Bluetooth speaker, a restaurant), each a table of an all-average option and a mixed one, and pick one; half may instead look for other options.
+
+- **Source** — ResearchBox, `researchbox.org/2057`
+- **Type** — 2 groups between subjects (forced choice or a no-choice option offered), four problems each in an unrecorded random order; nominal choice
+- **Category** — economics/behavioural
+- **Rows** — 816 from 204 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (Study 1a - R Code.R): the pooled logit with problem dummies (model1) and every per-problem logit on the relative choice of the target option, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 204 people, 816 choices (tests/test_gen_researchbox2057.py); no paper named in the box
 
 ### `researchbox402_study1a`
 
@@ -1935,6 +2230,19 @@ US consumers read that 85% of consumers who learn about Laplet, a new tablet tha
 - **Licence** — CC BY 4.0
 - **Verified against** — Table A1 of the box's item means and SDs, WTP 320.67 (162.45) USD, recomputed from the BUILT rows to the printed precision, and each cue's mean equal to the deposit's, N 101 (tests/test_gen_researchbox108.py)
 
+### `researchbox809_w3`
+
+**A business owner donates $100 this year or $2 every week to disaster relief: how reasonable is that amount? (Study W3)**
+
+People read that a business owner donated to disaster relief, either $100 this year or $2 every week, and say how reasonable that donation amount is in the situation.
+
+- **Source** — ResearchBox, `researchbox.org/809`
+- **Type** — 2 (one total vs every week) between subjects; 1-7, Not at all reasonable to Very reasonable
+- **Category** — moral/social/cognition
+- **Rows** — 100 from 100 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' R code (W3. Donation size post-test.rmd: Status/Finished exclusion, lm(reasonable ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.272), N 100 (tests/test_gen_researchbox809.py)
+
 ### `researchbox108_study1_india`
 
 **A new tablet that doubles as a laptop: 85% of consumers in the India market who learn about it love it, or buy it; how much would you pay? (Study 1, India sample)**
@@ -2056,9 +2364,9 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 69 | 7 | 322,434 |
+| economics/behavioural | 83 | 7 | 362,034 |
 | health communication | 1 | 9 | 136,384 |
-| moral/social/cognition | 13 | 17 | 238,967 |
+| moral/social/cognition | 21 | 17 | 271,676 |
 | political identity/polarisation | 5 | 0 | 44,415 |
 | political preferences/policy | 19 | 2 | 194,548 |
 | survey methodology | 20 | 6 | 223,494 |

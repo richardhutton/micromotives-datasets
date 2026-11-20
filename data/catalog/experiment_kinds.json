@@ -1033,6 +1033,14 @@
    "kind": "baseline",
    "basis": "read"
   },
+  "text:researchbox124_study6d": {
+   "kind": "choice",
+   "basis": "read"
+  },
+  "text:researchbox124_study6e": {
+   "kind": "choice",
+   "basis": "read"
+  },
   "text:researchbox196_s3": {
    "kind": "version",
    "basis": "read"
@@ -1054,6 +1062,42 @@
    "basis": "read"
   },
   "text:researchbox196_study9": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox2057_study1a": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2057_study1b": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2057_study2a": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox2057_study2b": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox2057_study3a": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2057_study3b": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2057_study4a": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2057_study4b": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox2057_studys1": {
    "kind": "mix",
    "basis": "read"
   },
@@ -1221,6 +1265,10 @@
    "kind": "mix",
    "basis": "read"
   },
+  "text:researchbox482_s3": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "text:researchbox755_study3": {
    "kind": "mix",
    "basis": "read"
@@ -1230,6 +1278,46 @@
    "basis": "read"
   },
   "text:researchbox755_study4_food": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox809_study2": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox809_study3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox809_study4": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox809_study5a": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox809_study5b": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox809_w1": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox809_w2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox809_w3": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox809_w4": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox809_w5": {
    "kind": "mix",
    "basis": "read"
   },

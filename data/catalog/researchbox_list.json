@@ -268,11 +268,11 @@
       "link": "https://researchbox.org/124",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": ""
+      "status": "Built",
+      "kind": "choice",
+      "persona": "Age, gender",
+      "uk": "Yes",
+      "notes": "Built 19 Nov 2026: Studies 6d and 6e (incentivised gamble choices: X vs an option letting you pick Y or Z, vs X vs Y), 358 people. Not built: film and cruise studies (options chosen from the person's own ratings via JavaScript), 5 (pictures/video), 6 and 6b (timing / mouseover JavaScript); 6c may be buildable from recorded option text, left for rich's ruling. Read from its Zenodo copy (record 21301841)."
     },
     {
       "id": "RB142",
@@ -567,11 +567,11 @@
       "link": "https://researchbox.org/190",
       "topic": "moral/social/cognition",
       "qsf": true,
-      "status": "Needs checking",
+      "status": "Unlikely",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": ""
+      "uk": "Yes",
+      "notes": "Checked 19 Nov 2026, not built: every outcome is free text or rates options the person generated themselves (piped back); the randomised arms act only through free-text generation or the person's own learning history. Read from its Zenodo copy (record 15032583)."
     },
     {
       "id": "RB194",
@@ -1633,11 +1633,11 @@
       "link": "https://researchbox.org/482",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": ""
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age, gender",
+      "uk": "Yes",
+      "notes": "Built 19 Nov 2026: Study S3 (navigation or food-delivery app, estimate '43 minutes' vs '33-53 minutes'; which actual times are consistent), 188 people. Studies 1-3, 5-8, S1 (each person sees 20 past times in a random, unrecorded order) and 4, S2 not built; the 20-time studies await rich's ruling. Read from its Zenodo copy (record 15033033)."
     },
     {
       "id": "RB488",
@@ -2920,11 +2920,11 @@
       "link": "https://researchbox.org/809",
       "topic": "moral/social/cognition",
       "qsf": true,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": ""
+      "status": "Built",
+      "kind": "mix",
+      "persona": "Age, gender",
+      "uk": "Mostly",
+      "notes": "Built 19 Nov 2026: 10 studies (a company's donation given as one total vs the same amount every month or week; causes, sizes, competitor and reputation moderators), 12,513 people. Not built: field studies 1a/1b (aggregate click counts, no person rows), 5b_2024 (withdrawn by the authors; names a real retailer). Later outcome blocks in study3/W4/W5 look buildable, left for rich's ruling. Read from its Zenodo copy (record 21934081)."
     },
     {
       "id": "RB811",
@@ -4597,11 +4597,11 @@
       "link": "https://researchbox.org/2057",
       "topic": "survey methodology",
       "qsf": true,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": ""
+      "status": "Built",
+      "kind": "version",
+      "persona": "Age, gender",
+      "uk": "Mostly",
+      "notes": "Built 19 Nov 2026: all 9 studies (forced choice vs an option to choose neither / look elsewhere, with decoy, compromise and range variants), 5,224 people. 4a/4b second stage and 2b conflict ratings not built (they refer to the person's own choice). Read from its Zenodo copy (record 21935325)."
     },
     {
       "id": "RB2061",
