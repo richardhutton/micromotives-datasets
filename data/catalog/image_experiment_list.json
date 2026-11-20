@@ -1655,10 +1655,10 @@
       "title": "Store recommendations and relative prices",
       "description": "ResearchBox 2586 (Kim & Schrift, 'How the Interplay between Product Recommendations and Relative Prices Impact Consumers'): shoppers see 3-4 product cards (security camera, speaker, espresso machine, footrest, robot vacuum, headphones, massager), one marked as the store's recommendation, Bestseller or Top Deal; the arms vary the recommended option's price relative to the others. Price, brand and badge are on the cards. About 15 studies with Qualtrics files and data; age and gender. CC BY 4.0 box; the cards are Qualtrics graphics outside the box, still fetchable (one checked 19 Nov 2026). Version kind.",
       "link": "https://researchbox.org/2586",
-      "reason": "Cards are Qualtrics graphics (ntusingapore): fetch every one and map it to each arm before calling it buildable. Studies 3 and C2 have no .qsf; A1, B4, B6, C4 have no usable outcome.",
+      "reason": "221 of 246 Qualtrics graphics fetched (data/raw/researchbox2586/Materials/graphics, index with sha256); 25 return 404, mostly Study 2, 6A, 7, Web C4. Complete sets: Studies 1, 4, 6B, A1, A2, B1, B6, C1, C3, C5. Permission email drafted 20 Nov 2026.",
       "status": "Needs checking",
       "permission": "Not asked yet",
-      "contact": "",
+      "contact": "Kyu Ree Kim",
       "added": "2026-11-19",
       "found_via": "ResearchBox sweep",
       "category": "economics/behavioural"

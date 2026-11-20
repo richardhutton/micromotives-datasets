@@ -245,6 +245,13 @@ item's identity is kept as a structured factor so training can re-order and rema
 This ruling covers choice sets only. It does not reopen screen sequences (the rule
 above) or attribute rows within a conjoint profile (ledger 114).
 
+**Extended to feedback sequences** (ruled by rich, 20 Nov 2026, on ResearchBox 482). Where
+every outcome follows a run of pages, each showing one random draw (an estimate and how
+long an order actually took), and the deposit records which pages a person saw but not in
+what order, the row lists those pages word-for-word in the data file's order, without any
+position the pages printed, after the clause *"(shown one per page, in a random order; the
+order was not recorded)"*, and carries the drawn values as structured metadata as well.
+
 When it cannot be established whether the order was fixed or randomised (ruled by
 rich, 16 Nov 2026, on the OSF values best-worst study `osf_ct8ae`, where neither the
 export nor the paper says and a screenshot disagrees with the export), the row lists

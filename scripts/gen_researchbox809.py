@@ -42,7 +42,8 @@ WHAT IS BUILT (one recipe each; see SPECS). All between-person; everyone read on
   as one total in 2024 or the same sum spread monthly, at six sizes; how likely are you to buy
   from it next time you need clothes (1-7). 72 arms. Kind "mix".
 - study3 (serial mediation): $6 million in 2024 or $500,000 every month in 2024, to wildlife
-  and environmental conservation; admire / view favourably / view positively (1-7). "version".
+  and environmental conservation; admire / view favourably / view positively (1-7), then
+  genuine commitment (3 rows) and impact (3 rows) (1-7). "version".
 - study4 (prosocial motivation moderator): a financial services company; total or monthly x
   whether it did this only after its main competitor announced a similar campaign. "mix".
 - study5a (total donation size): a business owner donates to disaster relief, $100 or $520,000
@@ -57,7 +58,8 @@ WHAT IS BUILT (one recipe each; see SPECS). All between-person; everyone read on
 - w3 (donation size post-test): $100 this year or $2 every week; how reasonable is that
   amount (1-7). "version".
 - w4 (addressing alternatives): $720,000 in 2024 or $60,000 every month; admire / favour /
-  positive. "version".
+  positive, then sacrifice (3), commitment (3 rows), future donation likelihood (0-100
+  slider), skepticism (3 rows) and impact (3 rows). "version".
 - w5 (another moderator): total or monthly x whether the company is also "widely known for
   their intentional overproduction, unethical sourcing of materials, and severe environmental
   damage". "mix".
@@ -67,15 +69,21 @@ Neither has person-level rows or a persona: 1a's data are ad-level aggregate cou
 and link clicks per campaign), and 1b's are website-link clicks, clickers only, with no row
 for anyone who did not click. There is no .qsf for either.
 
-OUTCOMES NOT BUILT, per study (recorded in each recipe's notes). Only the questions on the
-first page of measures are built. Studies 3, W4 and W5 then show further blocks
-(commitment, impact, sacrifice, skepticism, future donation likelihood) in a block order the
-.qsf randomises and the deposit does not record (no _DO or FL_ column), all of them after the
-admire/favour/positive page. Their rows would follow earlier questions that cannot be
-narrated in order (CONVENTIONS, "an order randomised and not recorded cannot be narrated at
-all"). By the treatment given to 5a below (each row carries only its own page, no position
-narrated) these later blocks look buildable; they are left for rich's ruling. The recall check "How did the company make its donation?" is an
-attention check (CONVENTIONS: not an outcome), used only for the authors' exclusion.
+LATER MEASURE BLOCKS. After the admire/favour/positive page, Studies 3, W4 and W5 show further
+blocks (commitment, impact, sacrifice, skepticism, future donation likelihood) in a block
+order the .qsf randomises and the deposit does not record (no _DO or FL_ column). Ruled by
+rich (20 Nov 2026) for the A/B studies, 3 and W4: built, the way 5a's two pages are. Each row
+carries the scenario, then that block's own reminder (the same words on every page,
+asserted) and its own question only; nothing about the other blocks is narrated. Matrix
+questions give one outcome per row, the row's label appended to the stem in double quotes
+(layout, ours, as xk9ch); each data column <tag>_<k> is tied to the k-th row in ChoiceOrder
+by the authors' codebook, which names that row's words and no other's (`check_codebook`).
+W4's future-likelihood slider (0-100, whole numbers, no end labels) keeps its fielded range;
+one sentence of OURS after the question names its only label:
+    'The answer was a slider from 0 to 100, labelled "Percent (%) likelihood".'
+W5's later blocks (commitment, impact, skepticism) are NOT built, pending rich's ruling (he
+ruled for the A/B studies only). The recall check "How did the company make its donation?"
+is an attention check (CONVENTIONS: not an outcome), used only for the authors' exclusion.
 
 STUDY 5a's TWO MEASURE BLOCKS. Its admire/favour/positive page and its praiseworthy page are
 the two blocks of one randomiser (SubSet 2), so each person saw both in a random order the
@@ -117,8 +125,11 @@ assignment fields are named by the .qsf's randomisers, which are the authority.
 ANSWER KEY. Each study's pre-registered model from its .rmd (positivity = mean of admire,
 favor, positive; lm/aov with the authors' coding), fitted twice: on the deposit after the
 authors' exclusions, and on the BUILT rows. They agree to 1e-9 (tests/test_gen_researchbox809.py,
-which also records the values). The authors' PROCESS outputs (Other/*.pdf) give the analysed
-N for Studies 3 (556), W4 (429), W5 (1,643) and 5b_2024 (759), all reproduced.
+which also records the values); for 3 and W4 that includes every later composite (commit,
+impact; sacrifice, commitment, future_95, skepticism, impact). The authors' PROCESS outputs
+(Other/*.pdf) give the analysed N for Studies 3 (556), W4 (429), W5 (1,643) and 5b_2024
+(759), all reproduced, and for 3 and W4 each mediator's a-path (constant and condition
+effect, SPSS, independent of the .rmd): all seven equal the built rows' to 4 decimals.
 
     uv run python scripts/gen_researchbox809.py --prep   # code the data
     uv run python scripts/gen_researchbox809.py          # write the recipes
@@ -401,6 +412,23 @@ LATER = (
     "(attention, used only for the exclusion)."
 )
 RECALL = "Not built: the recall check (attention, used only for the exclusion)."
+SLIDER_SENTENCE = 'The answer was a slider from 0 to 100, labelled "{label}".'  # ours
+LATER_BUILT = (
+    "The {blocks} blocks after the admire/favor/positive page are built (rich, 20 Nov 2026), "
+    "shown in a block order the .qsf randomises and the deposit does not record: each row "
+    "carries the scenario, that block's own reminder and its own question only, with nothing "
+    "narrated about the other blocks, as 5a's two pages are. Matrix rows are one outcome each, "
+    "the row's label appended to the stem in double quotes (layout, ours), each column tied "
+    "to its row by the authors' codebook."
+    " A slider question is followed by one sentence of ours naming its only label, written "
+    "word-for-word in these notes."
+)
+COMPOSITES_COLS = {
+    "commit": ["commit_1", "commit_2", "commit_3"],
+    "impact": ["impact_1", "impact_2", "impact_3"],
+    "sacrifice": ["sac1", "sac2", "sac3"],
+    "skepticism": ["skept_1", "skept_2", "skept_3"],
+}
 
 ALL_SPECS = [
     Spec(
@@ -427,16 +455,17 @@ ALL_SPECS = [
         qsf=_m("3. Serial mediation.qsf"),
         data=_d("3. Serial mediation.csv"),
         assign={"condition": "schedule"},
-        outcomes=POSITIVITY,
+        outcomes=[*POSITIVITY, *COMPOSITES_COLS["commit"], *COMPOSITES_COLS["impact"]],
         attn={"aggregate": 1, "periodic": 2},
         kind="version",
         title="A fashion retailer pledges $6 million in 2024 or $500,000 every month in 2024 "
-        "to wildlife and environmental conservation: how much would you admire it? (Study 3)",
+        "to wildlife and environmental conservation: how much would you admire it, and how "
+        "committed and impactful is it? (Study 3)",
         n_kept=556,
         prereg="AsPredicted #188881",
         sample="Prolific, September 2024",
-        not_built=LATER.format(blocks="commitment and impact"),
-        key=["positivity ~ schedule"],
+        not_built=LATER_BUILT.format(blocks="commitment and impact") + " " + RECALL,
+        key=["positivity ~ schedule", "commit ~ schedule", "impact ~ schedule"],
     ),
     Spec(
         name="study4",
@@ -576,18 +605,38 @@ ALL_SPECS = [
         qsf=_m("W4. Addressing alternatives.qsf"),
         data=_d("W4. Addressing alternatives.csv"),
         assign={"condition": "schedule"},
-        outcomes=POSITIVITY,
+        outcomes=[
+            *POSITIVITY,
+            *COMPOSITES_COLS["sacrifice"],
+            *COMPOSITES_COLS["commit"],
+            "future_95",
+            *COMPOSITES_COLS["skepticism"],
+            *COMPOSITES_COLS["impact"],
+        ],
         attn={"aggregate": 1, "periodic": 2},
         kind="version",
         title="A fashion retailer pledges $720,000 in 2024 or $60,000 every month to end world "
-        "hunger: how much would you admire it? (Study W4)",
+        "hunger: how much would you admire it, and how costly, committed, lasting, self-serving "
+        "and impactful is it? (Study W4)",
         n_kept=429,
         prereg="AsPredicted #158321",
         sample="Prolific, January 2024",
-        not_built=LATER.format(
+        not_built=LATER_BUILT.format(
             blocks="sacrifice, commitment, future donation likelihood, skepticism and impact"
-        ),
-        key=["positivity ~ schedule"],
+        )
+        + " The future-likelihood slider keeps its fielded range (0-100, whole numbers, no end "
+        "labels); added words (ours), after its question: '"
+        + SLIDER_SENTENCE.format(label="Percent (%) likelihood")
+        + "' "
+        + RECALL,
+        key=[
+            "positivity ~ schedule",
+            "sacrifice ~ schedule",
+            "commitment ~ schedule",
+            "future_95 ~ schedule",
+            "skepticism ~ schedule",
+            "impact ~ schedule",
+        ],
     ),
     Spec(
         name="w5",
@@ -604,7 +653,9 @@ ALL_SPECS = [
         n_kept=1643,
         prereg="AsPredicted #186611",
         sample="Prolific, August 2024",
-        not_built=LATER.format(blocks="commitment, impact and skepticism"),
+        not_built=LATER.format(blocks="commitment, impact and skepticism")
+        + " Pending rich's ruling (20 Nov 2026: the later blocks are built for the A/B studies, "
+        "3 and W4, only).",
         key=["positivity ~ schedule * reputation"],
         contrast={"schedule": "periodic", "reputation": "low"},
     ),
@@ -674,11 +725,72 @@ def outcome_scale(q: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+@dataclass
+class Item:
+    """What one data column answers: a question, and for a matrix or slider its row."""
+
+    qid: str
+    tag: str
+    row: str | None  # the matrix row / slider choice id, else None
+
+
+def resolve(sv: Survey, col: str) -> Item:
+    """The fielded question a data column answers. Single questions are their export tag;
+    a matrix column <tag>_<k> is the k-th row in ChoiceOrder (as the codebook states, see
+    `check_codebook`); a slider column <tag>_<choice id> is that choice."""
+    by_tag = {p["DataExportTag"]: q for q, p in sv.by_id.items()}
+    if col in by_tag:
+        return Item(by_tag[col], col, None)
+    m = re.fullmatch(r"(\w+?)_(\d+)", col)
+    assert m and m.group(1) in by_tag, col
+    qid = by_tag[m.group(1)]
+    p = sv.by_id[qid]
+    k = m.group(2)
+    if p["QuestionType"] == "Matrix":
+        assert p["Selector"] == "Likert" and p["SubSelector"] == "SingleAnswer", col
+        assert p["ChoiceDataExportTags"] is False, col
+        return Item(qid, m.group(1), str(p["ChoiceOrder"][int(k) - 1]))
+    assert p["QuestionType"] == "Slider" and k in p["Choices"], col
+    return Item(qid, m.group(1), k)
+
+
+def item_scale(p: dict[str, Any]) -> dict[str, Any]:
+    if p["QuestionType"] == "MC":
+        return outcome_scale(p)
+    if p["QuestionType"] == "Slider":
+        c = p["Configuration"]
+        assert p["Selector"] == "HSLIDER" and c["NumDecimals"] == "0" and not p.get("Labels")
+        return {"min": int(c["CSSliderMin"]), "max": int(c["CSSliderMax"])}
+    # a Likert matrix: the answers are the scale, recoded 1..k
+    rv = p["RecodeValues"]
+    order = [str(a) for a in p["AnswerOrder"]]
+    assert [int(rv[a]) for a in order] == list(range(1, len(order) + 1)), rv
+    disp = [plain(p["Answers"][a]["Display"]) for a in order]
+    n = len(order)
+    for i, d in enumerate(disp[1:-1], 2):
+        assert d == str(i), disp
+    lo, hi = re.fullmatch(r"(.+?) 1", disp[0]), re.fullmatch(rf"(.+?) {n}", disp[-1])
+    assert lo and hi, disp
+    return {"min": 1, "max": n, "min_label": lo.group(1), "max_label": hi.group(1)}
+
+
+def item_question(p: dict[str, Any], it: Item, ed: dict[str, str], known: set[str]) -> str:
+    """The question as fielded; a matrix row is appended in double quotes (layout, ours),
+    a slider gets SLIDER_SENTENCE naming its own label."""
+    stem = plain(pipe(p["QuestionText"], ed, known))
+    if it.row is None:
+        return stem
+    label = plain(pipe(p["Choices"][it.row]["Display"], ed, known))
+    if p["QuestionType"] == "Matrix":
+        return f'{stem} "{label}"'
+    return f"{stem} {SLIDER_SENTENCE.format(label=label)}"
+
+
 def build_arm(sv: Survey, spec: Spec, values: dict[str, str]) -> Arm:
     ed, seq = sv.walk(values)
     for f, v in values.items():
         assert ed.get(f) == v, (f, ed.get(f), v)
-    flat: list[tuple[str, str]] = []  # (block id, qid) in flow order; groups flagged
+    flat: list[tuple[str, str]] = []  # (block id, qid) in flow order
     group_of: dict[str, list[str]] = {}
     for item in seq:
         ids = item if isinstance(item, list) else [item]
@@ -686,12 +798,14 @@ def build_arm(sv: Survey, spec: Spec, values: dict[str, str]) -> Arm:
             if isinstance(item, list):
                 group_of[b] = item
             flat.extend((b, q) for q in sv.qids(b))
-    tag_at = {sv.tag(q): i for i, (_, q) in enumerate(flat)}
-    assert all(t in tag_at for t in spec.outcomes), (spec.name, spec.outcomes)
-    first = min(tag_at[t] for t in spec.outcomes)
-    first_block = flat[first][0]
-    # The measure page(s): the block holding the first outcome, or every block of its group.
-    measure_blocks = group_of.get(first_block, [first_block])
+    block_of = {q: b for b, q in flat}
+    items = {c: resolve(sv, c) for c in spec.outcomes}
+    assert all(it.qid in block_of for it in items.values()), spec.name
+    # The measure blocks: each outcome's own block, and every block of its randomiser.
+    measure_blocks: set[str] = set()
+    for it in items.values():
+        b = block_of[it.qid]
+        measure_blocks |= set(group_of.get(b, [b]))
     start = min(i for i, (b, _) in enumerate(flat) if b in measure_blocks)
     before: list[str] = []
     for _, q in flat[:start]:
@@ -709,20 +823,21 @@ def build_arm(sv: Survey, spec: Spec, values: dict[str, str]) -> Arm:
     reminders: dict[str, str] = {}
     questions: dict[str, str] = {}
     scales: dict[str, dict[str, Any]] = {}
-    for tag in spec.outcomes:
-        b = flat[tag_at[tag]][0]
-        assert b in measure_blocks, (spec.name, tag)
+    for col, it in items.items():
+        b = block_of[it.qid]
         shown = []
         for q in sv.qids(b):
             p = sv.by_id[q]
             if p["QuestionType"] == "DB" and sv.shown(q, ed):
                 shown.append(screen_text(pipe(p["QuestionText"], ed, sv.fields)))
-        (reminders[tag],) = shown  # one reminder at the top of the page
-        assert sv.qids(b)[0] in {q for q in sv.qids(b) if sv.by_id[q]["QuestionType"] == "DB"}
-        q = next(sv.by_id[x] for x in sv.qids(b) if sv.tag(x) == tag)
-        assert not q.get("DisplayLogic"), tag
-        questions[tag] = plain(pipe(q["QuestionText"], ed, sv.fields))
-        scales[tag] = outcome_scale(q)
+        # one reminder, at the top of the outcome's own page: the only screen it adds
+        (reminders[col],) = shown
+        assert sv.by_id[sv.qids(b)[0]]["QuestionType"] == "DB", b
+        assert "Page Break" not in json.dumps(sv.blocks[b]), b
+        p = sv.by_id[it.qid]
+        assert not p.get("DisplayLogic"), col
+        questions[col] = item_question(p, it, ed, sv.fields)
+        scales[col] = item_scale(p)
     assert len(set(reminders.values())) == 1, reminders  # every measure page's reminder
     text = "\n\n".join([*before, next(iter(reminders.values()))])
     return Arm(values, ed, text, questions, scales)
@@ -779,12 +894,34 @@ def check_data_matches_qsf(spec: Spec, df: pd.DataFrame | None = None) -> None:
     by_values = {tuple(a.values[f] for f in spec.assign): a for a in arms(spec)}
     sv = Survey(spec.qsf)
     flow_tags = {sv.tag(q) for b in sv.blocks for q in sv.qids(b)}
-    assert set(spec.outcomes) <= set(df.columns) and set(spec.outcomes) <= flow_tags
+    assert set(spec.outcomes) <= set(df.columns)
+    assert {resolve(sv, c).tag for c in spec.outcomes} <= flow_tags
     for _, r in df.iterrows():
         a = by_values[tuple(r[f] for f in spec.assign)]
         for c in FILLS:
             if c in df.columns:
                 assert _norm(r[c]) == _norm(a.ed.get(c)), (spec.name, c, r[c], a.ed.get(c))
+
+
+def check_codebook(spec: Spec) -> None:
+    """Each matrix column <tag>_<k> is the k-th row: the authors' codebook says so, naming
+    the row's own words, and no other row's."""
+    sv = Survey(spec.qsf)
+    book = pd.read_csv(RAW / "Codebook" / f"{spec.data.name}___CODEBOOK.csv")
+    desc = dict(zip(book["varname"], book["description"], strict=True))
+
+    def norm(t: str) -> str:
+        return re.sub(r"[^a-z]+", " ", t.lower()).strip()
+
+    for col in spec.outcomes:
+        it = resolve(sv, col)
+        p = sv.by_id[it.qid]
+        if p["QuestionType"] != "Matrix":
+            continue
+        rows = {k: norm(plain(p["Choices"][k]["Display"])) for k in p["ChoiceOrder"]}
+        rows = {k: r.replace("yna corp s", "").strip() for k, r in rows.items()}
+        hits = [k for k, r in rows.items() if r in norm(desc[col])]
+        assert hits == [it.row], (spec.name, col, hits, it.row)
 
 
 def gender_labels(sv: Survey) -> dict[int, str]:
@@ -809,15 +946,16 @@ def prep(spec: Spec) -> pd.DataFrame:
     check_data_matches_qsf(spec, df)
     check_pictures(spec)
     check_order_unrecorded(spec)
+    check_codebook(spec)
     sv = Survey(spec.qsf)
     out = pd.DataFrame({"pid": [f"{spec.name}_{i}" for i in df.index]})
     for f, cmap in codes(spec).items():
         out[f] = df[f].map(cmap).astype(int).values
     for t in spec.outcomes:
         v = pd.to_numeric(df[t], errors="raise")
-        top = outcome_scale(next(p for p in sv.by_id.values() if p["DataExportTag"] == t))
+        top = item_scale(sv.by_id[resolve(sv, t).qid])
         ok = v.dropna()
-        assert (ok % 1 == 0).all() and ok.between(1, top["max"]).all(), t
+        assert (ok % 1 == 0).all() and ok.between(top["min"], top["max"]).all(), t
         out[t] = v.astype("Int64").values
     age = pd.to_numeric(df["age"], errors="coerce")
     out["age"] = age.where(age.between(*AGE_RANGE)).round().astype("Int64").values
@@ -834,9 +972,14 @@ def prep(spec: Spec) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 
+# The .rmd composites: the mean of three items, NA if any is missing.
+COMPOSITES = {"positivity": POSITIVITY, "commitment": COMPOSITES_COLS["commit"]}
+COMPOSITES |= COMPOSITES_COLS
+
+
 def composite(frame: pd.DataFrame, dv: str) -> pd.Series:
-    if dv == "positivity":
-        return frame[POSITIVITY].sum(axis=1, min_count=3) / 3
+    if dv in COMPOSITES:
+        return frame[COMPOSITES[dv]].sum(axis=1, min_count=3) / 3
     return frame[dv]
 
 
@@ -919,6 +1062,7 @@ def recipe(spec: Spec) -> dict[str, Any]:
         {"var": t, "task_num": i, "question": first.questions[t], "scale": first.scales[t]}
         for i, t in enumerate(spec.outcomes)
     ]
+    lo = min(s["min"] for s in first.scales.values())
     hi = max(s["max"] for s in first.scales.values())
     per = (
         " The question names the arm's own "
@@ -963,7 +1107,7 @@ def recipe(spec: Spec) -> dict[str, Any]:
             "arms": out_arms,
         },
         "outcomes": outcomes,
-        "response_recode": {k: k for k in range(1, hi + 1)},
+        "response_recode": {k: k for k in range(lo, hi + 1)},
         "missing_codes": [],
         "persona_map": {"age": "age", "gender": "gender"},
     }

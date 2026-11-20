@@ -2,7 +2,7 @@ study_id: researchbox809
 source: researchbox
 experiment: w4
 title: 'A fashion retailer pledges $720,000 in 2024 or $60,000 every month to end world hunger: how much
-  would you admire it? (Study W4)'
+  would you admire it, and how costly, committed, lasting, self-serving and impactful is it? (Study W4)'
 data_file: researchbox809_w4.csv
 licence: CC BY 4.0, stated on the box page https://researchbox.org/809 ("All content posted to ResearchBox
   is under a CC By 4.0 License"); read from its Zenodo copy, record 21934081 (https://zenodo.org/records/21934081).
@@ -19,10 +19,16 @@ notes: 'ResearchBox 809, "Periodic Corporate Donations" (https://researchbox.org
   by the .qsf''s randomisers (condition; every recorded fill checked against the .qsf for every kept row).
   The row is every text screen from the scenario''s first screen to the reminder at the top of the measure
   page, word-for-word with its piped fields filled; the welcome screen, consent and id are dropped; bullets
-  are written as lines starting ''- ''. Not built: the sacrifice, commitment, future donation likelihood,
-  skepticism and impact blocks that follow the admire/favor/positive page, shown in a block order the
-  .qsf randomises and the deposit does not record, so their rows would follow earlier questions that cannot
-  be narrated in order; and the recall check (attention, used only for the exclusion).
+  are written as lines starting ''- ''. The sacrifice, commitment, future donation likelihood, skepticism
+  and impact blocks after the admire/favor/positive page are built (rich, 20 Nov 2026), shown in a block
+  order the .qsf randomises and the deposit does not record: each row carries the scenario, that block''s
+  own reminder and its own question only, with nothing narrated about the other blocks, as 5a''s two pages
+  are. Matrix rows are one outcome each, the row''s label appended to the stem in double quotes (layout,
+  ours), each column tied to its row by the authors'' codebook. A slider question is followed by one sentence
+  of ours naming its only label, written word-for-word in these notes. The future-likelihood slider keeps
+  its fielded range (0-100, whole numbers, no end labels); added words (ours), after its question: ''The
+  answer was a slider from 0 to 100, labelled "Percent (%) likelihood".'' Not built: the recall check
+  (attention, used only for the exclusion).
 
 
   Wording from W4. Addressing alternatives.qsf (the blocks the survey flow reaches). Typography normalised
@@ -106,7 +112,117 @@ outcomes:
     max: 7
     min_label: Not at all
     max_label: Very much
+- var: sac1
+  task_num: 3
+  question: How large would YNA Corp's sacrifice be when making this donation?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all large
+    max_label: Very large
+- var: sac2
+  task_num: 4
+  question: How costly would it be for YNA Corp to make this donation?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all costly
+    max_label: Very costly
+- var: sac3
+  task_num: 5
+  question: How much would this donation weigh on YNA Corp's finances?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: commit_1
+  task_num: 6
+  question: Regarding ending world hunger efforts, how much would YNA Corp's actions show genuine _________?
+    "commitment"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: commit_2
+  task_num: 7
+  question: Regarding ending world hunger efforts, how much would YNA Corp's actions show genuine _________?
+    "dedication"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: commit_3
+  task_num: 8
+  question: Regarding ending world hunger efforts, how much would YNA Corp's actions show genuine _________?
+    "devotion"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: future_95
+  task_num: 9
+  question: After YNA Corp completes their pledge, how likely would they be to donate to charitable causes
+    in the future? The answer was a slider from 0 to 100, labelled "Percent (%) likelihood".
+  scale:
+    min: 0
+    max: 100
+- var: skept_1
+  task_num: 10
+  question: To what extent would you agree or disagree with the following statements? "YNA Corp's motives
+    to donate to world hunger issues are self-serving."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+- var: skept_2
+  task_num: 11
+  question: To what extent would you agree or disagree with the following statements? "YNA Corp has an
+    ulterior motive for donating to world hunger issues."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+- var: skept_3
+  task_num: 12
+  question: To what extent would you agree or disagree with the following statements? "YNA Corp is donating
+    to world hunger issues mainly to look good to customers."
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly disagree
+    max_label: Strongly agree
+- var: impact_1
+  task_num: 13
+  question: YNA Corp's donation would _________. "make a positive difference"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: impact_2
+  task_num: 14
+  question: YNA Corp's donation would _________. "make a meaningful difference"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: impact_3
+  task_num: 15
+  question: YNA Corp's donation would _________. "have great impact"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
 response_recode:
+  0: 0
   1: 1
   2: 2
   3: 3
@@ -114,6 +230,99 @@ response_recode:
   5: 5
   6: 6
   7: 7
+  8: 8
+  9: 9
+  10: 10
+  11: 11
+  12: 12
+  13: 13
+  14: 14
+  15: 15
+  16: 16
+  17: 17
+  18: 18
+  19: 19
+  20: 20
+  21: 21
+  22: 22
+  23: 23
+  24: 24
+  25: 25
+  26: 26
+  27: 27
+  28: 28
+  29: 29
+  30: 30
+  31: 31
+  32: 32
+  33: 33
+  34: 34
+  35: 35
+  36: 36
+  37: 37
+  38: 38
+  39: 39
+  40: 40
+  41: 41
+  42: 42
+  43: 43
+  44: 44
+  45: 45
+  46: 46
+  47: 47
+  48: 48
+  49: 49
+  50: 50
+  51: 51
+  52: 52
+  53: 53
+  54: 54
+  55: 55
+  56: 56
+  57: 57
+  58: 58
+  59: 59
+  60: 60
+  61: 61
+  62: 62
+  63: 63
+  64: 64
+  65: 65
+  66: 66
+  67: 67
+  68: 68
+  69: 69
+  70: 70
+  71: 71
+  72: 72
+  73: 73
+  74: 74
+  75: 75
+  76: 76
+  77: 77
+  78: 78
+  79: 79
+  80: 80
+  81: 81
+  82: 82
+  83: 83
+  84: 84
+  85: 85
+  86: 86
+  87: 87
+  88: 88
+  89: 89
+  90: 90
+  91: 91
+  92: 92
+  93: 93
+  94: 94
+  95: 95
+  96: 96
+  97: 97
+  98: 98
+  99: 99
+  100: 100
 missing_codes: []
 persona_map:
   age: age

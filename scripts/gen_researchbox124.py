@@ -197,12 +197,19 @@ NOT_BUILT = {
     "it (onmouseenter / onmouseleave; the words are string literals in each question's "
     "QuestionJS), so what a person read depends on where they moved the mouse. rich's "
     "JavaScript rule; 6d and 6e field the same trials as plain text.",
-    "study6c": "Study 6c (UV_S6c.qsf): every gamble is drawn at random per person by "
-    "JavaScript (Math.random over amounts, coins, dice and cards in QuestionJS) and piped "
-    "in (${e://Field/t1.1.x} ...). The raw export records each person's generated option "
-    "text in its t*.*.* fields, so the options are not unreproducible: it may be buildable, "
-    "the options as recorded attributes, if each person's trial membership and order can be "
-    "proved from the export. Left for rich's ruling (JavaScript-generated condition text).",
+    "study6c": "Study 6c (UV_S6c.qsf; investigated 20 Nov 2026 on rich's go-ahead): NO "
+    "PERSONA. The survey asks no demographic question and the export holds none (consent, "
+    "comprehension, trials, the Y vs Z choice and the draws only), so every row would "
+    "describe nobody; CONVENTIONS (X08IVC) drops a study left with no persona. The rest was "
+    "provable: each person's options are generated once by JavaScript on the consent page "
+    "(QID117; its copy QID112 is shown only when newinstructions = false), recorded in the "
+    "t*.*.* fields and piped unchanged into the trial choices (no later JavaScript, no back "
+    "button); which trials a person met follows from the recorded draws (type, endnumber2); "
+    "the answer columns carry the trials' unique export tags (the export has one header "
+    "row, no ImportId row); option order was randomised and not recorded (the ruled clause "
+    "would apply). It would also lose the 19 of the authors' 241 who started on 1 Oct 2020 "
+    "before newinstructions was set. Buildable only if rich rules that rows with an empty "
+    "persona are acceptable here.",
 }
 
 # Pictures per .qsf: (<img> tags, distinct IM_ graphic ids). Only Study 5 has any.

@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -65,12 +66,12 @@ def test_recipe_is_what_the_generator_writes() -> None:
     assert len(r.condition.arms) == 4 and len(r.outcomes) == 11
 
 
-def test_only_s3_has_a_recipe() -> None:
-    assert sorted(p.stem for p in (REPO / "recipes").glob("researchbox482_*.yaml")) == [
-        "researchbox482_s3"
+def test_the_recipes_and_what_is_not_built() -> None:
+    want = ["researchbox482_s3"] + [
+        f"researchbox482_{st.name}_{b}" for st in gen.SEQ_STUDIES for b in st.blocks
     ]
-    want = {f"study{k}" for k in range(1, 9)} | {"s1", "s2"}
-    assert set(gen.NOT_BUILT) == want
+    assert sorted(p.stem for p in (REPO / "recipes").glob("researchbox482_*.yaml")) == sorted(want)
+    assert set(gen.NOT_BUILT) == {"study4", "s1", "s2"}
 
 
 @needs_raw
@@ -223,3 +224,167 @@ def test_rows_carry_only_the_instruments_words() -> None:
     assert set(q.str.rsplit('?" ', n=1).str[1]) == set(gen.BINS)
     assert d["condition"].nunique() == 4
     assert not d["condition"].str.contains("apple|consent|Prolific", case=False).any()
+
+
+# ---------------------------------------------------------------------------
+# The sequence studies (rich, 20 Nov 2026: listed in the data file's order, with a clause)
+# ---------------------------------------------------------------------------
+
+SEQ_KEYS = [st.key for st in gen.SEQ_STUDIES]
+
+
+@needs_raw
+def test_sequence_recipes_and_coded_files_are_the_generators() -> None:
+    for st in gen.SEQ_STUDIES:
+        coded = gen.RAW / gen.seq_data_file(st)
+        assert coded.read_text() == gen.seq_prep(st).to_csv(index=False), st.key
+        for b in st.blocks:
+            assert gen.seq_recipe_path(st, b).read_text() == gen.seq_render(st, b), (st.key, b)
+
+
+def test_a_reordered_or_foreign_draw_is_not_a_subsequence() -> None:
+    values = ["59", "38", "49", "60", "49"]
+    assert gen.subsequence([59, 49, 49], values) == ["59", "49", "49"]
+    with pytest.raises(AssertionError):  # out of loop order
+        gen.subsequence([49, 59], values)
+    with pytest.raises(AssertionError):  # a time the loop never held
+        gen.subsequence([59, 41], values)
+    assert gen.minutes("2 hours and 12 minutes") == 132 and gen.minutes("48 minutes") == 48
+
+
+def seq_built(st: Any, block: str) -> pd.DataFrame:
+    path = PROCESSED / f"researchbox482_{st.name}_{block}.parquet"
+    if not path.exists():
+        pytest.skip(f"{path.name} not built")
+    return pd.read_parquet(path)
+
+
+def _factors(d: pd.DataFrame) -> pd.Series:
+    return d["factors"].map(lambda x: x if isinstance(x, dict) else json.loads(x))
+
+
+def _design(key: str, length: np.ndarray, cond: np.ndarray) -> np.ndarray:
+    """The do file's main model for each study (Study N.do, 2.2 Main Analyses)."""
+    one = np.ones(len(cond))
+    if key in ("1", "2"):
+        return np.column_stack([one, cond == 2, cond == 3]).astype(float)
+    if key in ("3", "5"):
+        return np.column_stack([one, np.where(cond == 2, 0.5, -0.5)])
+    if key == "6":
+        return np.column_stack([one, cond == 2, cond == 3, cond == 4]).astype(float)
+    if key == "7":
+        pt = np.where(np.isin(cond, [1, 2]), 0.5, -0.5)
+        acr = np.where(np.isin(cond, [1, 3]), 0.5, -0.5)
+        return np.column_stack([one, pt, acr, pt * acr])
+    assert key == "8"
+    return np.column_stack([one, length == 2, cond == 2, cond == 3]).astype(float)
+
+
+def _ols(x: np.ndarray, y: np.ndarray) -> np.ndarray:
+    b, *_ = np.linalg.lstsq(x, y, rcond=None)
+    return np.asarray(b)
+
+
+DVS = {"satisfaction": ["sb"], "accuracy": gen.OB, "lateness": ["late"]}
+
+
+def _deposit_seq(st: Any, block: str) -> pd.DataFrame:
+    df = gen.seq_kept(st)
+    out = pd.DataFrame({"who": [f"{st.name}_{i}" for i in df["Id"]]})
+    out["length"] = df["Length"].values if "Length" in df else 0
+    out["cond"] = df["Condition"].values
+    if block == "satisfaction":
+        out["sb"] = df[gen.SB].mean(axis=1).values  # egen sb = rowmean(...)
+    for v in DVS[block]:
+        if v != "sb":
+            out[v] = df[v].astype(float).values
+    return out.sort_values("who", ignore_index=True)
+
+
+def _built_seq(st: Any, block: str, swap: bool = False) -> pd.DataFrame:
+    d = seq_built(st, block)
+    f = _factors(d)
+    back = {tuple(lv[k] for k in st.factors): key for key, (_, lv) in st.cells.items()}
+    keys = f.map(lambda x: back[tuple(x[k] for k in st.factors)])
+    d = d.assign(length=keys.map(lambda k: k[0]), cond=keys.map(lambda k: k[1]))
+    if swap:  # move every row of the first arm to the second
+        first, second = sorted(st.cells)[:2]
+        d.loc[keys == first, "cond"] = second[1]
+    items = gen.SB if block == "satisfaction" else DVS[block]
+    var = d["outcome"].str.split(" Only return").str[0]
+    qs = {it.question: it.var for it in gen.seq_design(st).dvs[block].items}
+    d["var"] = var.map(qs)
+    assert d["var"].notna().all() and set(d["var"]) == set(items)
+    y = d["response_num"].astype(float)
+    y = y.where(~d["var"].isin(["ob_accurate", "ob_inaccurate"]), y * 10)  # back to percent
+    d = d.assign(y=y)
+    wide = d.pivot_table(index="participant_id", columns="var", values="y", aggfunc="first")
+    meta = d.groupby("participant_id")[["length", "cond"]].first()
+    out = meta.join(wide).reset_index()
+    out["who"] = out["participant_id"].str.replace(r"^.*?(study\d_)", r"\1", regex=True)
+    if block == "satisfaction":
+        out["sb"] = out[gen.SB].mean(axis=1)
+    return out.sort_values("who", ignore_index=True)
+
+
+@needs_raw
+@pytest.mark.parametrize("key", SEQ_KEYS)
+def test_built_rows_reproduce_the_authors_models(key: str) -> None:
+    st = gen.SEQ[key]
+    for block in st.blocks:
+        dep, ours = _deposit_seq(st, block), _built_seq(st, block)
+        assert len(dep) == st.n and dep["who"].tolist() == ours["who"].tolist()
+        assert (dep["cond"].to_numpy() == ours["cond"].to_numpy()).all()
+        assert (dep["length"].to_numpy() == ours["length"].to_numpy()).all()
+        x = _design(key, dep["length"].to_numpy(), dep["cond"].to_numpy())
+        for v in DVS[block]:
+            bd = _ols(x, dep[v].to_numpy(float))
+            bo = _ols(x, ours[v].to_numpy(float))
+            assert np.allclose(bd, bo, atol=1e-9, rtol=0), (key, block, v)
+        sw = _built_seq(st, block, swap=True)
+        xs = _design(key, sw["length"].to_numpy(), sw["cond"].to_numpy())
+        v = DVS[block][0]
+        assert not np.allclose(_ols(x, dep[v].to_numpy(float)), _ols(xs, sw[v].to_numpy(float)))
+
+
+@needs_raw
+@pytest.mark.parametrize("key", SEQ_KEYS)
+def test_each_row_lists_the_twenty_pages_it_carries(key: str) -> None:
+    st = gen.SEQ[key]
+    df = gen.seq_kept(st)
+    if key == "3":
+        drawn = df[[f"draw{k}" for k in range(36, 56)]].astype(int).values.tolist()
+    else:
+        drawn = [[int(t) for t in str(o).split(",")] for o in df["outcomes"]]
+    want = dict(zip([f"{st.name}_{i}" for i in df["Id"]], drawn, strict=True))
+    for block in st.blocks:
+        d = seq_built(st, block)
+        f = _factors(d)
+        for pid, fx, cond in zip(d["participant_id"], f, d["condition"], strict=True):
+            who = pid[pid.index(st.name) :]
+            times = [int(fx[f"time_{j:02d}"]) for j in range(1, 21)]
+            assert times == want[who], (key, who)
+            body = cond.split(gen.UNORDERED + "\n", 1)[1].split("\n\n", 1)[0]
+            lines = body.split("\n")
+            assert len(lines) == 20 and all(ln.startswith("- The app presented") for ln in lines)
+            pat = r"took the driver (.+)\.$" if key == "8" else r"took (\d+) minutes\.$"
+            took = [gen.minutes(m.group(1)) for m in (re.search(pat, ln) for ln in lines) if m]
+            assert took == times, (key, who)
+            assert "Order " not in cond and "Please click >> to view the next" not in cond
+            assert cond.count(gen.UNORDERED) == 1
+
+
+@needs_raw
+@pytest.mark.parametrize("key", SEQ_KEYS)
+def test_the_second_block_narrates_the_first(key: str) -> None:
+    st = gen.SEQ[key]
+    for block in st.blocks:
+        d = seq_built(st, block)
+        f = _factors(d)
+        asked = d["condition"].str.contains("\nYou were asked", regex=False)
+        if st.counterbalanced:
+            first = f.map(lambda x: x["dv_order"]) == f"{block}_first"
+        else:
+            first = pd.Series(block == "satisfaction", index=d.index)
+        assert (asked == ~first).all(), (key, block)
+        assert d["condition"].str.contains("You will now be asked to evaluate").all()

@@ -2,7 +2,8 @@ study_id: researchbox809
 source: researchbox
 experiment: study3
 title: 'A fashion retailer pledges $6 million in 2024 or $500,000 every month in 2024 to wildlife and
-  environmental conservation: how much would you admire it? (Study 3)'
+  environmental conservation: how much would you admire it, and how committed and impactful is it? (Study
+  3)'
 data_file: researchbox809_study3.csv
 licence: CC BY 4.0, stated on the box page https://researchbox.org/809 ("All content posted to ResearchBox
   is under a CC By 4.0 License"); read from its Zenodo copy, record 21934081 (https://zenodo.org/records/21934081).
@@ -19,10 +20,13 @@ notes: 'ResearchBox 809, "Periodic Corporate Donations" (https://researchbox.org
   by the .qsf''s randomisers (condition; every recorded fill checked against the .qsf for every kept row).
   The row is every text screen from the scenario''s first screen to the reminder at the top of the measure
   page, word-for-word with its piped fields filled; the welcome screen, consent and id are dropped; bullets
-  are written as lines starting ''- ''. Not built: the commitment and impact blocks that follow the admire/favor/positive
-  page, shown in a block order the .qsf randomises and the deposit does not record, so their rows would
-  follow earlier questions that cannot be narrated in order; and the recall check (attention, used only
-  for the exclusion).
+  are written as lines starting ''- ''. The commitment and impact blocks after the admire/favor/positive
+  page are built (rich, 20 Nov 2026), shown in a block order the .qsf randomises and the deposit does
+  not record: each row carries the scenario, that block''s own reminder and its own question only, with
+  nothing narrated about the other blocks, as 5a''s two pages are. Matrix rows are one outcome each, the
+  row''s label appended to the stem in double quotes (layout, ours), each column tied to its row by the
+  authors'' codebook. A slider question is followed by one sentence of ours naming its only label, written
+  word-for-word in these notes. Not built: the recall check (attention, used only for the exclusion).
 
 
   Wording from 3. Serial mediation.qsf (the blocks the survey flow reaches). Typography normalised (HTML,
@@ -95,6 +99,57 @@ outcomes:
 - var: positive
   task_num: 2
   question: How positively would you view YNA Corporation?
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: commit_1
+  task_num: 3
+  question: Regarding efforts to support wildlife and environmental conservation, how much would YNA Corporation's
+    actions show genuine _________? "commitment"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: commit_2
+  task_num: 4
+  question: Regarding efforts to support wildlife and environmental conservation, how much would YNA Corporation's
+    actions show genuine _________? "dedication"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: commit_3
+  task_num: 5
+  question: Regarding efforts to support wildlife and environmental conservation, how much would YNA Corporation's
+    actions show genuine _________? "devotion"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: impact_1
+  task_num: 6
+  question: YNA Corporation's donation would _________. "make a positive difference"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: impact_2
+  task_num: 7
+  question: YNA Corporation's donation would _________. "make a meaningful difference"
+  scale:
+    min: 1
+    max: 7
+    min_label: Not at all
+    max_label: Very much
+- var: impact_3
+  task_num: 8
+  question: YNA Corporation's donation would _________. "have great impact"
   scale:
     min: 1
     max: 7

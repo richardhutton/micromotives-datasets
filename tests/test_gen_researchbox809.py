@@ -165,6 +165,64 @@ KEY = {  # the schedule effect each .rmd's model gives on this deposit, for the 
 }
 
 
+# The authors' SPSS PROCESS outputs (Other/*.pdf), independent of the .rmd: each mediator's
+# a-path, (constant, condition effect), condition coded 0 total / 1 periodic.
+PROCESS = {
+    "study3": {"commit": (5.1074, 0.6400), "impact": (5.4632, 0.4942)},
+    "w4": {
+        "commitment": (4.3976, 0.9276),
+        "impact": (5.0314, 0.5350),
+        "skepticism": (4.3558, -0.3169),
+        "sacrifice": (3.1570, 0.2961),
+        "future_95": (56.2780, 9.7899),
+    },
+}
+
+
+@needs_raw
+@pytest.mark.parametrize("name", ["study3", "w4"])
+def test_later_blocks_match_the_process_outputs(name: str) -> None:
+    spec = gen.BY_NAME[name]
+    ours = built_frame(name)
+    for dv, (const, effect) in PROCESS[name].items():
+        k = gen.key_terms(spec, f"{dv} ~ schedule", ours)
+        assert round(k["(Intercept)"], 4) == const and round(k["scheduleperiodic"], 4) == effect
+        assert k["n"] == spec.n_kept
+
+
+@needs_raw
+def test_matrix_columns_follow_the_codebook(monkeypatch: pytest.MonkeyPatch) -> None:
+    for name in ("study3", "w4"):
+        gen.check_codebook(gen.BY_NAME[name])
+    # read the rows in reverse and the codebook disagrees
+    real = gen.resolve
+
+    def reversed_rows(sv: Any, col: str) -> Any:
+        it = real(sv, col)
+        p = sv.by_id[it.qid]
+        if p["QuestionType"] == "Matrix":
+            order = list(reversed(p["ChoiceOrder"]))
+            return gen.Item(it.qid, it.tag, str(order[int(col.rsplit("_", 1)[1]) - 1]))
+        return it
+
+    monkeypatch.setattr(gen, "resolve", reversed_rows)
+    with pytest.raises(AssertionError):
+        gen.check_codebook(gen.BY_NAME["study3"])
+
+
+@needs_raw
+def test_later_block_rows_carry_their_own_question_only() -> None:
+    d = built("w4")
+    spec = gen.BY_NAME["w4"]
+    assert d["task_num"].nunique() == len(spec.outcomes) == 16
+    # every outcome's rows share the arm's one text: no other block is narrated
+    assert d.groupby("condition_num")["condition"].nunique().eq(1).all()
+    assert not d["condition"].str.contains("You were asked", regex=False).any()
+    slider = d[d["task_num"] == spec.outcomes.index("future_95")]
+    assert (slider["scale_min"] == 0).all() and (slider["scale_max"] == 100).all()
+    assert slider["outcome"].str.contains('labelled "Percent (%) likelihood"', regex=False).all()
+
+
 @needs_raw
 @pytest.mark.parametrize("name", NAMES)
 def test_built_rows_reproduce_the_authors_model(name: str) -> None:

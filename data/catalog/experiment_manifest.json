@@ -1055,9 +1055,9 @@
     },
     "researchbox809_study3": {
       "category": "moral/social/cognition",
-      "description": "People read that a fashion retailer has pledged to support wildlife and environmental conservation with either a total of $6 million in 2024 or $500,000 every month in 2024, and say how much they would admire it and how favourably and positively they would view it.",
-      "design": "2 (one total vs every month) between subjects; three 1-7 items on one page, Not at all to Very much",
-      "verified_against": "the authors' R code (3. Serial mediation.rmd: exclusions, positivity = mean of admire, favor, positive; aov(positivity ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.400), N 556, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)"
+      "description": "People read that a fashion retailer has pledged to support wildlife and environmental conservation with either a total of $6 million in 2024 or $500,000 every month in 2024, and say how much they would admire it, how favourably and positively they would view it, how far its actions show genuine commitment, dedication and devotion, and how much difference its donation would make.",
+      "design": "2 (one total vs every month) between subjects; three 1-7 items on one page, then two 1-7 matrix blocks (commitment, impact; one row per outcome) in an unrecorded random order, each row carrying only its own page",
+      "verified_against": "the authors' R code (3. Serial mediation.rmd: exclusions, positivity/commit/impact composites, aov(~ condition)): all three models, recomputed from the BUILT rows, equal the deposit's to 1e-9 (positivity periodic vs total +0.400), and the commit and impact a-paths equal the authors' SPSS PROCESS outputs (5.1074/+0.6400, 5.4632/+0.4942), N 556 (tests/test_gen_researchbox809.py)"
     },
     "researchbox809_study4": {
       "category": "moral/social/cognition",
@@ -1097,9 +1097,9 @@
     },
     "researchbox809_w4": {
       "category": "moral/social/cognition",
-      "description": "People read that a fashion retailer has pledged to help end world hunger with either a one-time $720,000 in 2024 or $60,000 every month through 2024, and say how much they would admire it and how favourably and positively they would view it.",
-      "design": "2 (one total vs every month) between subjects; three 1-7 items on one page, Not at all to Very much",
-      "verified_against": "the authors' R code (W4. Addressing alternatives.rmd: exclusions, t.test/aov(positivity ~ condition)): the model, recomputed from the BUILT rows, equals the deposit's to 1e-9 (periodic vs total +0.414), N 429, matching the authors' PROCESS output (tests/test_gen_researchbox809.py)"
+      "description": "People read that a fashion retailer has pledged to help end world hunger with either a one-time $720,000 in 2024 or $60,000 every month through 2024, and say how much they would admire it and view it favourably and positively, how large a sacrifice the donation is, how much genuine commitment it shows, how likely the company is to keep donating, how self-serving its motives seem, and how much difference the donation would make.",
+      "design": "2 (one total vs every month) between subjects; three 1-7 items on one page, then five blocks in an unrecorded random order (sacrifice, commitment matrix, a 0-100 future-likelihood slider, skepticism matrix, impact matrix), each row carrying only its own page",
+      "verified_against": "the authors' R code (W4. Addressing alternatives.rmd: exclusions, the six composites, t.test/aov(~ condition)): all six models, recomputed from the BUILT rows, equal the deposit's to 1e-9 (positivity periodic vs total +0.414), and the five mediator a-paths equal the authors' SPSS PROCESS output (commitment +0.9276, impact +0.5350, skepticism -0.3169, sacrifice +0.2961, future +9.7899), N 429 (tests/test_gen_researchbox809.py)"
     },
     "researchbox809_w5": {
       "category": "moral/social/cognition",
@@ -1118,6 +1118,108 @@
       "description": "People choose between small gambles described in words (a dollar amount won by flipping coins, rolling a die or drawing a card), where one option can let them pick either of two ways to win, compared with Y alone, Z alone and all three side by side.",
       "design": "within-person choice sets: sets 1-5 or 6-10 by a recorded draw, and per set a recorded draw picks which versions each person meets (X vs Y-or-Z or Z-or-Y, X vs Y vs Z, X vs Y, X vs Z, Y vs Z); trials and options in unrecorded random orders; 2- or 3-option nominal choice; 12 first-day people before a mid-day change to the instructions screen not built",
       "verified_against": "the authors' R code (UVExp6ecleaning.Rmd, UVExp6e.Rmd): their cleaning rules applied to the raw export reproduce Data/UVExp6e.csv (6,160 rows) row for row, and applied to the BUILT rows reproduce the same file restricted to the 164 built people; the pre-registered test gives 0.05568182, t = 3.375, df 175 on the authors' 176 (their recorded values) and 0.0582317 on the built 164, equal to their file for the same people (tests/test_gen_researchbox124.py); no paper named in the deposit"
+    },
+    "researchbox482_study1_satisfaction": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 minutes, 40-50 minutes or 35-55 minutes) and how long each actually took, listed in the data file's order, and answer five 1-7 questions on how much they like, find informative and useful, judge accurate and trust the app's estimates.",
+      "design": "between people, three estimates (point, 10- or 20-minute range); twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 1.do exclusions and its 2.2 main models, satisfaction index on the two range dummies): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 698 people as the do file and Supplement 1 state, 3,490 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study1_accuracy": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 minutes, 40-50 minutes or 35-55 minutes) and how long each actually took, listed in the data file's order, and answer what percentage of the app's estimates are very accurate and very inaccurate, and how many minutes it is off on average.",
+      "design": "between people, three estimates (point, 10- or 20-minute range); twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 1.do exclusions and its 2.2 main models, each of the three accuracy items (percentages back to 0-100) on the two range dummies): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 698 people as the do file and Supplement 1 state, 2,094 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study2_satisfaction": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 minutes, 35-55 minutes or 15-75 minutes) and how long each actually took, listed in the data file's order, and answer five 1-7 questions on how much they like, find informative and useful, judge accurate and trust the app's estimates.",
+      "design": "between people, three estimates (point, moderate or extremely wide range); twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 2.do exclusions and its 2.2 main models, satisfaction index on the two range dummies): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 599 people as the do file and Supplement 1 state, 2,995 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study2_accuracy": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 minutes, 35-55 minutes or 15-75 minutes) and how long each actually took, listed in the data file's order, and answer what percentage of the app's estimates are very accurate and very inaccurate, and how many minutes it is off on average.",
+      "design": "between people, three estimates (point, moderate or extremely wide range); twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 2.do exclusions and its 2.2 main models, each of the three accuracy items (percentages back to 0-100) on the two range dummies): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 599 people as the do file and Supplement 1 state, 1,797 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study3_satisfaction": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (a point (36 to 55 minutes, different per order) or the 20-minute range around it) and how long each actually took, listed in the data file's order, and answer five 1-7 questions on how much they like, find informative and useful, judge accurate and trust the app's estimates.",
+      "design": "between people, point or range estimate per order; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; satisfaction block first, the accuracy rows narrating it",
+      "verified_against": "the authors' Stata code (Study 3.do exclusions and its 2.2 main models, satisfaction index on the range contrast): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 479 people as the do file and Supplement 1 state, 2,395 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study3_accuracy": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (a point (36 to 55 minutes, different per order) or the 20-minute range around it) and how long each actually took, listed in the data file's order, and answer what percentage of the app's estimates are very accurate and very inaccurate, and how many minutes it is off on average.",
+      "design": "between people, point or range estimate per order; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; satisfaction block first, the accuracy rows narrating it",
+      "verified_against": "the authors' Stata code (Study 3.do exclusions and its 2.2 main models, each of the three accuracy items (percentages back to 0-100) on the range contrast): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 479 people as the do file and Supplement 1 state, 1,437 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study5_satisfaction": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 minutes or 35-55 minutes) and how long each actually took, listed in the data file's order, and answer five 1-7 questions on how much they like, find informative and useful, judge accurate and trust the app's estimates.",
+      "design": "between people, point or range estimate; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 5.do exclusions and its 2.2 main models, satisfaction index on the range contrast): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 468 people as the do file and Supplement 1 state, 2,340 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study5_lateness": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 minutes or 35-55 minutes) and how long each actually took, listed in the data file's order, and answer how often the app's deliveries are unexpectedly late, 1-7.",
+      "design": "between people, point or range estimate; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 5.do exclusions and its 2.2 main models, lateness on the range contrast): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 468 people as the do file and Supplement 1 state, 468 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study6_satisfaction": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (35, 45 or 55 minutes or 35-55 minutes) and how long each actually took, listed in the data file's order, and answer five 1-7 questions on how much they like, find informative and useful, judge accurate and trust the app's estimates.",
+      "design": "between people, optimistic, accurate or conservative point, or a range; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 6.do exclusions and its 2.2 main models, satisfaction index on the three dummies against the optimistic point): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 801 people as the do file and Supplement 1 state, 4,005 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study6_accuracy": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (35, 45 or 55 minutes or 35-55 minutes) and how long each actually took, listed in the data file's order, and answer what percentage of the app's estimates are very accurate and very inaccurate, and how many minutes it is off on average.",
+      "design": "between people, optimistic, accurate or conservative point, or a range; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 6.do exclusions and its 2.2 main models, each of the three accuracy items (percentages back to 0-100) on the three dummies against the optimistic point): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 801 people as the do file and Supplement 1 state, 2,403 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study7_satisfaction": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 or 55 minutes or 35-55 or 45-65 minutes) and how long each actually took, listed in the data file's order, and answer five 1-7 questions on how much they like, find informative and useful, judge accurate and trust the app's estimates.",
+      "design": "2 x 2 between people: point or range x accurate or conservative; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 7.do exclusions and its 2.2 main models, satisfaction index on point, accurate and their interaction (+-0.5 contrasts)): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 998 people as the do file and Supplement 1 state, 4,990 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study7_accuracy": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past food delivery orders, the app's estimate (45 or 55 minutes or 35-55 or 45-65 minutes) and how long each actually took, listed in the data file's order, and answer what percentage of the app's estimates are very accurate and very inaccurate, and how many minutes it is off on average.",
+      "design": "2 x 2 between people: point or range x accurate or conservative; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 7.do exclusions and its 2.2 main models, each of the three accuracy items (percentages back to 0-100) on point, accurate and their interaction (+-0.5 contrasts)): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 998 people as the do file and Supplement 1 state, 2,994 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study8_satisfaction": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past drives with a navigation app, short or long, all with the same accurate point, conservative point or range estimate and each with how long it actually took, and answer five 1-7 questions on how much they like, find informative and useful, judge accurate and trust the app's estimates.",
+      "design": "2 x 3 between people: short or long drive x accurate point, conservative point or range; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 8.do exclusions and its 2.2 main models, satisfaction index on Length and the conservative-point and range dummies): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 888 people as the do file and Supplement 1 state, 4,440 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox482_study8_accuracy": {
+      "category": "economics/behavioural",
+      "description": "People see twenty past drives with a navigation app, short or long, all with the same accurate point, conservative point or range estimate and each with how long it actually took, and answer what percentage of the app's estimates are very accurate and very inaccurate, and how many minutes it is off on average.",
+      "design": "2 x 3 between people: short or long drive x accurate point, conservative point or range; twenty randomly drawn pages in an unrecorded order, listed with the clause '(shown one per page, in a random order; the order was not recorded)', times also as metadata; question blocks counterbalanced and recorded, the second narrating the first",
+      "verified_against": "the authors' Stata code (Study 8.do exclusions and its 2.2 main models, each of the three accuracy items (percentages back to 0-100) on Length and the conservative-point and range dummies): every coefficient, recomputed from the BUILT rows, equals the deposit's to 1e-9, N 888 people as the do file and Supplement 1 state, 2,664 answers (tests/test_gen_researchbox482.py); the paper itself was not read"
+    },
+    "researchbox547_study2": {
+      "category": "work/family/gender",
+      "description": "Parents go through the order page of an invented meal-planning service that will send them and their child trial meals to eat together; after choosing the child's meal, they are told they can or cannot share their own, and pick one of eight grown-up's meals, four healthy and four not.",
+      "design": "2 (can share vs cannot) between subjects, crossed with a counterbalanced menu order (healthy or unhealthy meals listed first); one 8-option choice, coded by position on screen",
+      "verified_against": "the authors' SPSS syntax (Study 2 #80516 syntax.sps: FullSampleFilter, LOGISTIC REGRESSION CFS_1Unh0Hthy on share1_not0): its coefficients, recomputed from the BUILT rows (unhealthy read from the chosen option's words), equal the deposit's to 1e-9 (share +0.444 on the 791 built people; +0.439 on the authors' 792), and every arm's count of unhealthy choices agrees (tests/test_gen_researchbox547.py); the paper was not read"
+    },
+    "researchbox547_study3": {
+      "category": "work/family/gender",
+      "description": "Mothers are told to make choices that best meet their child's needs in the moment, or that best prepare the child for success as an adult, then order the child's lunch at an invented cafe and choose one of eight entrees for themselves, knowing they will or will not share it.",
+      "design": "2 (present vs future focus) x 2 (will share vs not) between subjects, crossed with a counterbalanced menu order; one 8-option choice, coded by position on screen",
+      "verified_against": "the authors' SPSS syntax (Study 3 #102770 syntax.sps: FullSampleFilter, LOGISTIC REGRESSION CFS_1unh_0hthy on present1future0, share1not0 and their product): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (interaction +0.852 on the 547 built people; +0.865 on the authors' 548), and every arm's count of unhealthy choices agrees (tests/test_gen_researchbox547.py); the paper was not read"
+    },
+    "researchbox547_study4": {
+      "category": "work/family/gender",
+      "description": "At an invented cafe, the two kids' meals that stand out for a parent's child are both healthy or both indulgent; the parent orders one, then chooses one of eight entrees for themselves, knowing they will or will not share it.",
+      "design": "2 (healthy vs indulgent options for the child) x 2 (will share vs not) between subjects, crossed with a counterbalanced menu order; one 8-option choice, coded by position on screen",
+      "verified_against": "the authors' SPSS syntax (Study 4 #73198 syntax.sps: FullSampleFilter, LOGISTIC REGRESSION CFS_1unh0hthy on CFO_1hthy0unh, Share_1y0n and their product): its coefficients, recomputed from the BUILT rows, equal the deposit's to 1e-9 (interaction +0.580, N 830), and every arm's count of unhealthy choices agrees (tests/test_gen_researchbox547.py); the paper was not read"
     }
   }
 }

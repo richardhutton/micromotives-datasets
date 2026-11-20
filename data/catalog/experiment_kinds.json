@@ -1269,6 +1269,74 @@
    "kind": "mix",
    "basis": "read"
   },
+  "text:researchbox482_study1_accuracy": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study1_satisfaction": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study2_accuracy": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study2_satisfaction": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study3_accuracy": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study3_satisfaction": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study5_lateness": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study5_satisfaction": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study6_accuracy": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study6_satisfaction": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox482_study7_accuracy": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox482_study7_satisfaction": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox482_study8_accuracy": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox482_study8_satisfaction": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox547_study2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:researchbox547_study3": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:researchbox547_study4": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "text:researchbox755_study3": {
    "kind": "mix",
    "basis": "read"
