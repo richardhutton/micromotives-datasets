@@ -151,6 +151,16 @@ def without_sources(rows: pd.DataFrame, sources: set[str]) -> pd.DataFrame:
     return rows[~rows["source"].isin(sources)]
 
 
+def has_persona(rows: pd.DataFrame) -> pd.Series:
+    """True where a row says something about who answered: a non-blank persona_text.
+
+    rich, 20 Nov 2026: a training row with no persona at all (a respondent who left
+    every persona question blank, e.g. age outside 18-100 and no gender) teaches nothing
+    about who answers, so exports leave it out and count it. The built rows keep it: the
+    response is real, and the export decides what is fit to train or score on."""
+    return rows["persona_text"].fillna("").str.strip() != ""
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("version")
@@ -200,6 +210,9 @@ def main() -> None:
         ({"innovation_panel"} if args.without_ukds else set())
         | ({"researchbox"} if args.without_researchbox else set()),
     )
+    persona = has_persona(rows)
+    no_persona = rows.loc[~persona, "recipe"].value_counts().sort_index().to_dict()
+    rows = rows[persona].copy()
     rows["side"] = side_of(rows["study"], mapping)
 
     excluded = rows["side"].isna()
@@ -247,6 +260,7 @@ def main() -> None:
         },
         "excluded_studies": sorted(make_splits.EXCLUDED),
         "excluded_rows": int(excluded.sum()),
+        "no_persona_rows": {"rows": sum(no_persona.values()), "by_recipe": no_persona},
         "participants_in_both": {
             "count": len(shared_people),
             "eval_rows": int(held["participant_id"].isin(shared_people).sum()),

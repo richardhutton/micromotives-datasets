@@ -62,3 +62,11 @@ def test_a_left_out_source_is_dropped_whole_and_nothing_else() -> None:
     kept = export.without_sources(rows, {"researchbox", "innovation_panel"})
     assert list(kept["source"]) == ["tess"]
     assert len(export.without_sources(rows, set())) == 4
+
+
+def test_rows_with_no_persona_are_left_out():
+    """A blank, whitespace-only or missing persona_text is no persona; any text is one."""
+    import pandas as pd
+
+    rows = pd.DataFrame({"persona_text": ["Age: 34", "", "  \n", None, "Gender: Female"]})
+    assert list(export.has_persona(rows)) == [True, False, False, False, True]
