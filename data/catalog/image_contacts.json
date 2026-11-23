@@ -775,8 +775,9 @@
     "ask": "Permission to use the product-card images (outside the CC BY box, in Qualtrics), and the ~25 that no longer load.",
     "subject": "Using the product cards from your ResearchBox 2586",
     "body": "Hi Dr Kim,\n\nI'm an independent researcher in the UK. I'm building a model of human behaviour that can give an early read on how different groups of people in the UK might respond to something like a price, a label or a recommendation, before anyone tests it for real. It learns from real randomised experiments where we know exactly what people saw and what they did.\n\nYour ResearchBox (2586) would be a great fit. Almost nothing I've found tests how people react when a shop tells them what to buy, and your studies look at it from every angle: the price of the recommended option, who recommends it, and whether the seller gains.\n\nThe data and questionnaires are on ResearchBox, but the product cards people saw (the options with their prices and badges) are in Qualtrics, outside the box. I could view most of them through the survey links, but about 25 no longer load, mainly in Study 2, Studies 6A and 7, and Web C4. Would you be happy for me to use the product images, and if it's easy, could you send the full set as participants saw them?\n\nI realise the paper may still be under review. Nothing derived from your data or images would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "ready",
-    "notes": "Drafted 20 Nov 2026. Names and emails from the study consent forms in the box; the paper is in blind review (AsPredicted anonymous). 221 of 246 graphics fetched."
+    "status": "yes",
+    "notes": "Drafted 20 Nov 2026. Names and emails from the study consent forms in the box; the paper is in blind review (AsPredicted anonymous). 221 of 246 graphics fetched. 23 Nov reply (Kim, for both): use the materials in the paper web appendix / ResearchBox files; will not share option order because it was randomised per person in some studies. Read as OK to use public stimuli; no extra images sent, so the ~25 missing must come from the web appendix.",
+    "sent": "2026-11-20"
   },
   {
     "id": "kersbergen",
@@ -817,5 +818,46 @@
     "status": "sent",
     "sent": "2026-11-23",
     "notes": "UK pricing search, 23 Nov 2026. No published email for Jesper; sent to the firm's info@ address. Registry says data not public. IF YES: the biggest UK pricing experiment we'd have: 8,000 UK adults (Dynata, nationally representative, 1,000+ financially insecure, 1,000+ poor mental health), 4 arms (control, was/now prices, + sensory, + countdown timers), 3 marketplaces each = up to 24,000 choices; built as an image experiment (marketplace screenshots), Shelf kind. IF NO: ask Citizens Advice's policy team directly."
+  },
+  {
+    "id": "utgard_gaustad",
+    "order": 33,
+    "name": "Jakob Utgård",
+    "email": "jakob.utgard@kristiania.no",
+    "cc": "tarje.b.gaustad@bi.no",
+    "org": "Kristiania University College (Utgård); BI Norwegian Business School (Gaustad)",
+    "experiments": [
+      {
+        "id": "RB1010",
+        "link": "https://researchbox.org/1010",
+        "title": "Carbon emission reductions and perceived sustainability (3 studies)"
+      }
+    ],
+    "ask": "Age and gender per participant from the Prolific demographic export (bands fine), matched to the anonymised responses in the box.",
+    "subject": "Your carbon reduction and offset studies (ResearchBox 1010)",
+    "body": "Hi Dr Utgård,\n\nI'm an independent researcher in the UK. I'm building a model of human behaviour that can give an early read on how different groups of people in the UK might respond to something like a price, a label or a recommendation, before anyone tests it for real. It learns from real randomised experiments where we know exactly what people saw and what they did.\n\nYour three studies on carbon reductions and offsets would be a great fit. They ran with UK participants on Prolific and test something firms are working out right now: whether cutting emissions or offsetting them makes a company look more sustainable.\n\nThe one thing missing from the ResearchBox files is who took part. Would you be able to share each participant's age and gender from the Prolific demographic export, matched to the anonymised responses already in the box? Age bands would be fine.\n\nNothing derived from your data would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
+    "status": "sent",
+    "sent": "2026-11-23",
+    "notes": "Consumer search, 23 Nov 2026. IF YES: 3 UK text experiments (800, 650, 300 UK Prolific), a firm's carbon cut vs offset claims (2x2 make/buy x reduce/offset; 6 arms of % reduced with/without offset; 3 arms incl. high-effort offset), rated on social responsibility, motive and impression; kind version. Blocked only on persona (data has no age or gender). IF NO: stays unbuilt (no persona)."
+  },
+  {
+    "id": "gasiorowska",
+    "order": 34,
+    "name": "Agata Gąsiorowska",
+    "email": "agasiorowska@swps.edu.pl",
+    "org": "SWPS University (with Rimple Manchanda, Maciej Kościelniak)",
+    "experiments": [
+      {
+        "id": "RB1523",
+        "link": "https://researchbox.org/1523",
+        "title": "Gratitude and money (Studies 2 and 3)"
+      }
+    ],
+    "ask": "Confirm where Studies 2 and 3 were recruited (UK participants on Prolific?).",
+    "subject": "Your gratitude and money studies (ResearchBox 1523)",
+    "body": "Hi Professor Gąsiorowska,\n\nI'm an independent researcher in the UK. I'm building a model of human behaviour that can give an early read on how different groups of people in the UK might respond to something like a price, a label or a recommendation, before anyone tests it for real. It learns from real randomised experiments where we know exactly what people saw and what they did.\n\nYour gratitude studies would be a great fit, especially Study 3, where people chose how much of a donation to UNICEF to keep for themselves. It's a clean test of how a feeling changes what people do with real money.\n\nCould you tell me where the participants in Studies 2 and 3 were recruited from? The payments are in pounds, and Study 1 included a UK sample, so I wondered whether those studies used UK participants on Prolific.\n\nNothing derived from your data would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
+    "status": "sent",
+    "sent": "2026-11-23",
+    "notes": "Consumer search, 23 Nov 2026. IF UK: Study 3 (885 people, 3 arms: control / social gratitude / abstract gratitude writing task, then how much of a GBP 0.50 UNICEF donation to keep, gender+age) and Study 2 (330, 2 arms, money-importance ratings) built as text; kind context. IF NOT UK: drop both (not UK-appropriate as a sample)."
   }
 ]
