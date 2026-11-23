@@ -3997,13 +3997,13 @@
       "box": 1673,
       "title": "Psychological Effects of communicating Temporal Best Prices",
       "link": "https://researchbox.org/1673",
-      "topic": "",
+      "topic": "pricing",
       "qsf": false,
-      "status": "Needs checking",
+      "status": "Unlikely",
       "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": "Downloaded from its Zenodo copy (CC BY 4.0), 19 Nov 2026. No .qsf; data and materials PDF only. Design not yet clear."
+      "persona": "Age (years), gender",
+      "uk": "Unknown",
+      "notes": "Screened 23 Nov 2026: 'best price in the past 30 days' on a discounted hoodie and T-shirt, 4 arms, 447 people, Tilburg student project (anonymous link, sample country not stated). The price is inside the product picture, and the materials disagree on currency: the flow text says £49,99/£29,99 but the hoodie picture shows €49,99/€29,99, so what people saw cannot be proved."
     },
     {
       "id": "RB1674",
@@ -6545,13 +6545,13 @@
       "box": 3520,
       "title": "Unravelling theory in choice analysis",
       "link": "https://researchbox.org/3520",
-      "topic": "",
+      "topic": "food/pricing",
       "qsf": false,
-      "status": "Needs checking",
-      "kind": "",
-      "persona": "",
-      "uk": "",
-      "notes": ""
+      "status": "Buildable",
+      "kind": "choice",
+      "persona": "Age (years), gender",
+      "uk": "Yes",
+      "notes": "Screened 23 Nov 2026 (UK pricing search): beef mince choice experiment, UK adults who buy food (\"must be 18+ and live in the UK\"), British beef priced in £. 1,987 people x 8 choices between two products (RSPCA Assured, Fair to Nature, Low Climate Impact, Premium Quality Angus, fat %, price £2.50-£6.00) plus 'buy neither'; 3 blocks from an Ngene design (design file in box). 4 arms: labels shown as text (TC: every label, present or 'Not'; TL: only labels present; ~1,000 people) or as logos (VC, VL; ~990 people). Text arms buildable as a Choice test from the survey PDF and design file; logo arms -> image list (320 pictures embedded in the survey PDF)."
     },
     {
       "id": "RB3522",
