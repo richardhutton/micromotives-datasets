@@ -2,16 +2,16 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**100 studies (225 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 104 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**101 studies (226 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 105 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
 | UK — Harvard Dataverse (CC0) | 15 | 31 | 306,752 | **yes, CC0 1.0** |
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
-| Zenodo, Figshare, ResearchBox and open OSF | 21 | 104 | 304,466 | per record — see each experiment's licence |
+| Zenodo, Figshare, ResearchBox and open OSF | 22 | 105 | 312,466 | per record — see each experiment's licence |
 | US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **100** | **225** | **1,448,679** | |
+| **Total** | **101** | **226** | **1,456,679** | |
 
 ---
 
@@ -51,6 +51,7 @@
 | `35M5CV_bbc` | Divided by the Vote: Affective Polarization in the Wake of the Brex… | Harvard Dataverse | `doi:10.7910/DVN/35M5CV` | 8,175 |
 | `LOGVPZ_risk_tolerance` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 8,075 |
 | `ukds_6849_satisfaction_w9` ⚠ | Understanding Society Innovation Panel, experiment 9.20: presentati… | UK Data Service | `UKDS SN 6849` | 8,025 |
+| `researchbox3520_text` | Which of two packs of beef mince would you buy, or neither? Welfare… | ResearchBox | `researchbox.org/3520` | 8,000 |
 | `del_panel_w3_leadership` | Development Engagement Lab, Panel Great Britain wave 3 (2021): clim… | Harvard Dataverse | `doi:10.7910/DVN/CCUZYI` | 7,677 |
 | `LOGVPZ_brexit_satisfaction` | Mind the Gap: Why Wealthy Voters Support Brexit | Harvard Dataverse | `doi:10.7910/DVN/LOGVPZ` | 7,506 |
 | `ukds_6849_nrp_w10_fh` ⚠ | Understanding Society Innovation Panel, experiment 9.23: ever adopt… | UK Data Service | `UKDS SN 6849` | 7,392 |
@@ -1232,6 +1233,19 @@ People read about someone opening a checking account, with the bank's overdraft 
 - **Rows** — 8,690 from 869 respondents
 - **Licence** — CC BY 4.0
 - **Verified against** — the authors' R code (manuscript_cleaning.Rmd exclusions, manuscript_analysis.Rmd Table 3 model): its six fixed-effects coefficients and each profile's mean rating, recomputed from the BUILT rows, equal the deposit's to 1e-9, N 869 people, 8,690 ratings (tests/test_gen_researchbox348.py); the paper itself is paywalled and was not read
+
+### `researchbox3520_text`
+
+**Which of two packs of beef mince would you buy, or neither? Welfare, nature, climate and quality labels shown as text, every label stated or only those present (UK)**
+
+UK adults who buy food choose which of two 500 g packs of British beef mince they would buy, or neither, where each pack is described by its fat content, price and four labels (RSPCA Assured, Fair to Nature, Low Climate Impact, Premium Quality Angus) written as text, either stating every label as certified or not, or naming only the labels a pack has.
+
+- **Source** — ResearchBox, `researchbox.org/3520`
+- **Type** — 2 (every label stated vs only labels present) between subjects, crossed with a 24-set Ngene design in 3 blocks of 8 (one block per person); 8 choices per person, each row carrying only its own screen; options listed in the data file's order (on-screen order not recorded); 3-option nominal choice (product 1, product 2, neither)
+- **Category** — economics/behavioural
+- **Rows** — 8,000 from 1,000 respondents
+- **Licence** — CC BY 4.0
+- **Verified against** — the authors' do-file (Beef Lamb Data structuring.do) applied to the raw export reproduces their analysis file person by person (1,987; 497 T-C, 503 T-A); their MNL in WTP space (wMNL_TC.R, wMNL_TA.R), re-estimated on the BUILT rows, equals the same model on Beef_CE_Survey.txt to 3e-7 (T-C: RSPCA 1.18, fat -0.12, Fair to Nature 0.74, Angus 0.75, Low Climate 0.28), with the signs and T-C > T-A ordering of every label's published mixed-logit mean WTP (wMLec_b_estimates_short.xlsx); opt-outs per person by arm equal the do-file's all_SQ (tests/test_gen_researchbox3520.py)
 
 ### `researchbox2170_study3_followup`
 
@@ -2602,7 +2616,7 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | Category | UK | US (TESS) | Rows |
 |---|---|---|---|
 | cross-national | 0 | 1 | 3,053 |
-| economics/behavioural | 97 | 7 | 400,546 |
+| economics/behavioural | 98 | 7 | 408,546 |
 | health communication | 1 | 9 | 136,384 |
 | moral/social/cognition | 21 | 17 | 280,589 |
 | political identity/polarisation | 5 | 0 | 44,415 |

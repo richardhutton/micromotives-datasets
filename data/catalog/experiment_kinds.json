@@ -213,6 +213,10 @@
    "kind": "mix",
    "basis": "read"
   },
+  "image:IMG150": {
+   "kind": "choice",
+   "basis": "read"
+  },
   "image:IMG18": {
    "kind": "mix",
    "basis": "guess"
@@ -1242,6 +1246,10 @@
    "basis": "read"
   },
   "text:researchbox348_study1": {
+   "kind": "choice",
+   "basis": "read"
+  },
+  "text:researchbox3520_text": {
    "kind": "choice",
    "basis": "read"
   },

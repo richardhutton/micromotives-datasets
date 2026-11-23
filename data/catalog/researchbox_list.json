@@ -2387,11 +2387,11 @@
       "link": "https://researchbox.org/686",
       "topic": "economics/behavioural",
       "qsf": true,
-      "status": "Needs checking",
+      "status": "Unlikely",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": ""
+      "uk": "No",
+      "notes": "Screened 23 Nov 2026: US/Canada and MTurk samples (preregs), Amazon.com US listings, manipulation is font/background rendering. Study 4's UK 600 was a pretest prereg; not UK."
     },
     {
       "id": "RB688",
@@ -3235,8 +3235,8 @@
       "status": "Needs checking",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": ""
+      "uk": "Yes",
+      "notes": "Screened 23 Nov 2026: 3 UK studies (AsPredicted: 800/650/300 'Prolific participants based in the UK'), carbon reduce vs offset claims for fictional firms, text arms in .docx (FL_11_DO). No age or gender in the data: email the authors for Prolific demographics before building."
     },
     {
       "id": "RB1014",
@@ -3807,8 +3807,8 @@
       "status": "Needs checking",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": ""
+      "uk": "Unclear",
+      "notes": "Screened 23 Nov 2026: S3 (3 arms: control/social/abstract gratitude, money taken from a GBP 0.50 UNICEF pot, gender+age, 885) and S2 (2 arms, 330) are clean text but UK unproven (GBP pay only); S1 correlational (UK/Mexico/South Africa); S4 US. Email to confirm UK sample."
     },
     {
       "id": "RB1539",
@@ -4015,8 +4015,8 @@
       "status": "Needs checking",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": "Topic screen 19 Nov 2026: downloaded from Zenodo; no .qsf, materials files present; read them to see whether every condition's wording is recoverable."
+      "uk": "Unclear",
+      "notes": "Screened 23 Nov 2026: nature vs urban window photo then lunch choice; manipulation is a photograph (image list candidate) but UK unproven (GBP pay only) and US foods; Sex only in Studies 2-5."
     },
     {
       "id": "RB1680",
@@ -4805,11 +4805,11 @@
       "link": "https://researchbox.org/2206",
       "topic": "moral/social/cognition",
       "qsf": true,
-      "status": "Needs checking",
+      "status": "Unlikely",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": ""
+      "uk": "No",
+      "notes": "Screened 23 Nov 2026: US samples (US business school SONA, Prolific/CloudResearch with no country), $ and oz in stimuli."
     },
     {
       "id": "RB2209",
@@ -6001,11 +6001,11 @@
       "link": "https://researchbox.org/3087",
       "topic": "",
       "qsf": false,
-      "status": "Needs checking",
+      "status": "Unlikely",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": ""
+      "uk": "No",
+      "notes": "Screened 23 Nov 2026: Singapore undergraduates, MTurk and US Pinterest/Instagram users; not UK."
     },
     {
       "id": "RB3097",
@@ -6160,8 +6160,8 @@
       "status": "Needs checking",
       "kind": "",
       "persona": "",
-      "uk": "",
-      "notes": ""
+      "uk": "Unclear",
+      "notes": "Screened 23 Nov 2026: Study 8 (2x2 survey-duration framing, 795, gender+age, text) is the only one with GBP in the stimulus, UK unconfirmed; all other studies US or no UK proof (Study 2 country column US). Email to confirm Study 8's sample."
     },
     {
       "id": "RB3235",
@@ -6547,11 +6547,11 @@
       "link": "https://researchbox.org/3520",
       "topic": "food/pricing",
       "qsf": false,
-      "status": "Buildable",
+      "status": "Built",
       "kind": "choice",
       "persona": "Age (years), gender",
       "uk": "Yes",
-      "notes": "Screened 23 Nov 2026 (UK pricing search): beef mince choice experiment, UK adults who buy food (\"must be 18+ and live in the UK\"), British beef priced in £. 1,987 people x 8 choices between two products (RSPCA Assured, Fair to Nature, Low Climate Impact, Premium Quality Angus, fat %, price £2.50-£6.00) plus 'buy neither'; 3 blocks from an Ngene design (design file in box). 4 arms: labels shown as text (TC: every label, present or 'Not'; TL: only labels present; ~1,000 people) or as logos (VC, VL; ~990 people). Text arms buildable as a Choice test from the survey PDF and design file; logo arms -> image list (320 pictures embedded in the survey PDF)."
+      "notes": "Built 23 Nov 2026: the two text arms (labels written as text: T-C states every label as certified or 'Not', T-A/TL names only the labels present), 1,000 people x 8 choices between two packs of beef mince or neither, 8,000 rows; the authors' cleaned sample (1,987), re-derived from the raw export. Each card word-for-word from the survey PDF, its typo 'RSPCA Assued' kept; options in the data file's order (the PDF's card order varies screen to screen and the on-screen order was not recorded). Not built: the logo arms VC, VL (pictures, image list) and the lamb experiment."
     },
     {
       "id": "RB3522",

@@ -1657,7 +1657,7 @@
       "link": "https://researchbox.org/2586",
       "reason": "221 of 246 Qualtrics graphics fetched (data/raw/researchbox2586/Materials/graphics, index with sha256); 25 return 404, mostly Study 2, 6A, 7, Web C4. Complete sets: Studies 1, 4, 6B, A1, A2, B1, B6, C1, C3, C5. Permission email drafted 20 Nov 2026.",
       "status": "Needs checking",
-      "permission": "Not asked yet",
+      "permission": "Yes",
       "contact": "Kyu Ree Kim",
       "added": "2026-11-19",
       "found_via": "ResearchBox sweep",
@@ -1726,6 +1726,19 @@
       "contact": "",
       "added": "2026-11-19",
       "found_via": "ResearchBox sweep",
+      "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG150",
+      "title": "Beef mince labels shown as logos",
+      "description": "ResearchBox 3520 (Edenbrandt & Häsler, ERAE 2025): UK adults who buy food choose between two packs of British beef mince, 8 choices each plus 'buy neither'; price £2.50-£6.00, fat %, and four labels (RSPCA Assured, Fair to Nature, Low Climate Impact, Premium Quality Angus). The two logo arms (VC: every label shown or marked absent; VL: only labels present; ~990 people) show the labels as logos. The two text arms are built as text. CC BY 4.0.",
+      "link": "https://researchbox.org/3520",
+      "reason": "The 320 pictures are embedded in the box's survey PDF (Materials/Survey beef mince.pdf); extract them and map each to its choice card.",
+      "status": "Buildable",
+      "permission": "Not asked yet",
+      "contact": "",
+      "added": "2026-11-23",
+      "found_via": "ResearchBox UK pricing search",
       "category": "economics/behavioural"
     }
   ]
