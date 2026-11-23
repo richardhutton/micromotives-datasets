@@ -777,5 +777,45 @@
     "body": "Hi Dr Kim,\n\nI'm an independent researcher in the UK. I'm building a model of human behaviour that can give an early read on how different groups of people in the UK might respond to something like a price, a label or a recommendation, before anyone tests it for real. It learns from real randomised experiments where we know exactly what people saw and what they did.\n\nYour ResearchBox (2586) would be a great fit. Almost nothing I've found tests how people react when a shop tells them what to buy, and your studies look at it from every angle: the price of the recommended option, who recommends it, and whether the seller gains.\n\nThe data and questionnaires are on ResearchBox, but the product cards people saw (the options with their prices and badges) are in Qualtrics, outside the box. I could view most of them through the survey links, but about 25 no longer load, mainly in Study 2, Studies 6A and 7, and Web C4. Would you be happy for me to use the product images, and if it's easy, could you send the full set as participants saw them?\n\nI realise the paper may still be under review. Nothing derived from your data or images would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
     "status": "ready",
     "notes": "Drafted 20 Nov 2026. Names and emails from the study consent forms in the box; the paper is in blind review (AsPredicted anonymous). 221 of 246 graphics fetched."
+  },
+  {
+    "id": "kersbergen",
+    "order": 31,
+    "name": "Inge Kersbergen",
+    "email": "ik712@bath.ac.uk",
+    "org": "University of Bath (was Sheffield, where the data are held: ORDA 10.15131/shef.data.22502977)",
+    "experiments": [
+      {
+        "id": "UKP1",
+        "link": "https://orda.shef.ac.uk/articles/dataset/Data_associated_with_project_The_effect_of_proportional_pricing_on_hypothetical_alcohol_purchasing_in_two_online_experiments_/22502977",
+        "title": "Alcohol priced by strength (proportional pricing), 2 online experiments, UK drinkers"
+      }
+    ],
+    "ask": "The anonymised data (on request per ORDA), the product images and the survey as participants saw it.",
+    "subject": "Data from your proportional pricing experiments",
+    "body": "Hi Dr Kersbergen,\n\nI'm an independent researcher in the UK. I'm building a model of human behaviour that can give an early read on how different groups of people in the UK might respond to something like a price, a label or a recommendation, before anyone tests it for real. It learns from real randomised experiments where we know exactly what people saw and what they did.\n\nYour two proportional pricing experiments would be a great fit. Most of the pricing experiments I've found were run in the US, whereas yours tested UK drinkers on real UK products at real prices. They would teach the model how people here respond when a price follows the amount of alcohol.\n\nThe ORDA record says the anonymised data are available on request. Would you be happy to share them, along with the product images and the survey as participants saw it?\n\nNothing derived from your data would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
+    "status": "sent",
+    "sent": "2026-11-23",
+    "notes": "UK pricing search, 23 Nov 2026. First sent to i.kersbergen@sheffield.ac.uk; auto-reply gave the Bath address, resent there. IF YES: a UK pricing study, 300 UK drinkers on Prolific (Study 1 n=210, Study 2 n=90), real UK alcohol products at real prices, standard vs proportional pricing; built as an image experiment (product pictures), Version/Shelf kind; age is in brackets only. IF NO: nothing lost, no other source has it."
+  },
+  {
+    "id": "behaviouralist",
+    "order": 32,
+    "name": "Jesper Akesson (The Behaviouralist)",
+    "email": "info@thebehaviouralist.com",
+    "org": "The Behaviouralist, for Citizens Advice (AEA RCT Registry 16094)",
+    "experiments": [
+      {
+        "id": "UKP2",
+        "link": "https://www.citizensadvice.org.uk/policy/publications/online-choice-architecture-and-vulnerability-understanding-the-impact-of/",
+        "title": "Reference (was/now) pricing in mock broadband, gym and hotel marketplaces, Citizens Advice 2025"
+      }
+    ],
+    "ask": "Anonymised respondent-level data and screenshots of the marketplaces in each arm.",
+    "subject": "Data from the reference pricing study for Citizens Advice (for Jesper Akesson)",
+    "body": "Hi Jesper,\n\nI'm an independent researcher in the UK. I'm building a model of human behaviour that can give an early read on how different groups of people in the UK might respond to something like a price, a label or a recommendation, before anyone tests it for real. It learns from real randomised experiments where we know exactly what people saw and what they did.\n\nYour reference pricing study for Citizens Advice would be a great fit. It's the largest UK pricing experiment I've found, and its oversamples of people facing financial insecurity or poor mental health cover groups the model rarely gets to learn from.\n\nWould you and Citizens Advice be willing to share the anonymised respondent-level data, with screenshots of the marketplaces in each arm? I'd only need what each person saw, what they chose, and the demographics you collected.\n\nNothing derived from your data would be published or shared with anyone, and I'll credit your work.\n\nThanks,\nRich Hutton\nrich.hutton@googlemail.com",
+    "status": "sent",
+    "sent": "2026-11-23",
+    "notes": "UK pricing search, 23 Nov 2026. No published email for Jesper; sent to the firm's info@ address. Registry says data not public. IF YES: the biggest UK pricing experiment we'd have: 8,000 UK adults (Dynata, nationally representative, 1,000+ financially insecure, 1,000+ poor mental health), 4 arms (control, was/now prices, + sensory, + countdown timers), 3 marketplaces each = up to 24,000 choices; built as an image experiment (marketplace screenshots), Shelf kind. IF NO: ask Citizens Advice's policy team directly."
   }
 ]
