@@ -754,8 +754,8 @@
     "ask": "Permission to use (no licence on OSF), the questionnaire wording, and the face pairs as shown (colour-manipulated Chicago Face Database images).",
     "subject": "Using your social class from faces data",
     "body": "Hi Thora,\n\nI'm an independent researcher in the UK. I'm building a dataset of real experiments where people were shown something and then answered questions, and I use it to train a model that predicts how people respond. Your study on judging social class from colour-manipulated face pairs would fit well, because paired choices are one of the formats the model most needs to learn.\n\nThe data is on OSF (zcxtp), but no licence is stated, and the questionnaire and face images aren't in the project. Would you be happy for me to use the data? Could you also share the exact question wording and the face pairs as participants saw them? I know the faces come from the Chicago Face Database, so if you can't pass those on, the face IDs and how each one was manipulated would do.\n\nNothing derived from your data would be published or redistributed, and I'll credit your work.\n\nThanks very much,\nRich Hutton\nrich.hutton@googlemail.com",
-    "status": "sent",
-    "notes": "Drafted 19 Nov 2026. Stirling address from her 2024 QJEP paper; she is also at Royal Holloway. Sent by rich 19 Nov 2026.",
+    "status": "no",
+    "notes": "Drafted 19 Nov 2026. Stirling address from her 2024 QJEP paper; she is also at Royal Holloway. Sent by rich 19 Nov 2026. 24 Nov 2026, Thora replied NO: \"Apologies, but I am not comfortable with these research data being used to train any kind of model.\" Do not ask again.",
     "sent": "2026-11-19"
   },
   {
