@@ -65,6 +65,17 @@ be hoisted, and is therefore repeated per arm (`cug34` repeats one sentence 24
 times). That is correct: keeping the paragraph as the respondent read it beats
 de-duplication.
 
+## A prompt shown twice by chance: keep the first showing
+
+QC rule 24 fails a person who answers the same condition (words and pictures) and outcome
+twice, because a row cannot say which answer came first. Where the design itself redraws at
+random, as a conjoint that re-draws every profile slot does, the repeat is chance, not a
+build error: the recipe declares `repeated_prompts` (keep: first, `dropped`: the exact count,
+and the reason), and the melt keeps the showing with the lowest task number. A count other
+than the declared one fails the build. First used on `8ctbk` (33) and `9xw67_conjoint` (4),
+24 Nov 2026. A repeat the design did NOT intend (xsfev's two identical screens) is still
+fixed in the recipe, not declared away.
+
 ## Background: who ran the survey, where and when
 
 Ruled 24 Nov 2026 (rich). The condition holds only words the respondent was shown.

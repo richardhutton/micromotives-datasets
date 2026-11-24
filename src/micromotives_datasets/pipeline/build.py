@@ -117,6 +117,37 @@ def _persona(ds: Dataset, row: Any, recipe: Recipe, cw: Crosswalk | None = None)
 
 
 def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
+    """Melt one study into canonical rows, then apply the declared repeat policy."""
+    rows = _melt(ds, recipe)
+    if not recipe.repeated_prompts:
+        yield from rows
+        return
+    # A randomly redrawn design (a conjoint re-drawing every task slot) can show one
+    # person the IDENTICAL condition and question twice by chance. The row format
+    # cannot say which answer came first, so QC rule 24 fails it. The recipe may
+    # declare that the FIRST showing is kept, by task order, with the exact number of
+    # later repeats dropped; a different number stops the build rather than letting
+    # the discard grow unread (the ambiguous_routing pattern).
+    kept: list[Row] = []
+    seen: set[tuple[object, ...]] = set()
+    dropped = 0
+    for r in sorted(rows, key=lambda r: (str(r.participant_id), r.task_num or 0)):
+        key = (r.participant_id, r.condition, tuple(r.condition_images), r.outcome)
+        if key in seen:
+            dropped += 1
+            continue
+        seen.add(key)
+        kept.append(r)
+    declared = recipe.repeated_prompts.dropped
+    if dropped != declared:
+        raise ValueError(
+            f"{recipe.study_id}: {dropped} repeated prompt(s) found, but the recipe declares "
+            f"repeated_prompts.dropped={declared}. Read them before changing the number."
+        )
+    yield from kept
+
+
+def _melt(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
     """Melt one study into canonical rows."""
     # Loaded once per study: the crosswalk is small and identical for every row.
     cw = Crosswalk.load()

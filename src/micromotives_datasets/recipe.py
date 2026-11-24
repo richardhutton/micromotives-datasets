@@ -23,7 +23,7 @@ import functools
 import json
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import yaml
 from pydantic import BaseModel, Field, model_validator
@@ -477,6 +477,18 @@ class ConditionTemplate(BaseModel):
         return arms
 
 
+class RepeatedPrompts(BaseModel):
+    """Keep the first showing of a prompt a person saw twice by chance; drop the rest."""
+
+    keep: Literal["first"] = "first"
+    dropped: int = Field(
+        ge=1,
+        description="Exactly how many later repeats the melt drops. Declared so the drop "
+        "is never silent: a different count fails the build.",
+    )
+    reason: str = Field(min_length=1, description="Why the design repeats a prompt.")
+
+
 class Background(BaseModel):
     """Who ran the survey, where and when: facts respondents knew, kept apart from the stimulus.
 
@@ -805,6 +817,12 @@ class Recipe(BaseModel):
         "fact about the deposit and a useful one, a guessed licence is neither.",
     )
     notes: str | None = None
+    repeated_prompts: RepeatedPrompts | None = Field(
+        default=None,
+        description="Only for a design that redraws at random and so can show one person "
+        "the identical condition and outcome twice (QC rule 24). Keeps the first by task "
+        "order and drops exactly `dropped` later repeats.",
+    )
     background: Background | None = Field(
         default=None,
         description="Who ran the survey, where and when, rendered into Row.background. "

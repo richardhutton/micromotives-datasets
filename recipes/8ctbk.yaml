@@ -603,6 +603,14 @@ notes: |
       is to pass the raw label THROUGH UNCHANGED rather than blank it, so no
       row is corrupted, only left pre-crosswalk.
 
+repeated_prompts:
+  keep: first
+  dropped: 33
+  reason: 'Each of the 10 profile slots is redrawn independently at random from 1,146 profiles (see notes),
+    so by chance a respondent can be shown the identical life-situation pair and asked the identical question
+    in two different slots: 33 respondents were. The row format cannot say which answer came first, so
+    the first showing (lowest task number) is kept and the later one dropped (QC rule 24; ruled 24 Nov
+    2026).'
 condition:
   source_vars: [LS1A1, LS1A2, LS1A3, LS1A4, LS1A5, LS1A6]
   factors: [childbearing, career, division_of_care, family_policy, financial_stability, marital_status]
