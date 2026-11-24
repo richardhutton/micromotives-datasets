@@ -1807,11 +1807,11 @@
    "origin": "SocSci210",
    "socsci210_split": "train",
    "uk_fit": "fit",
-   "set": "UK",
+   "set": "Base",
    "status": "To build",
    "in_our_eval": false,
    "link": "https://osf.io/mp3dr/",
-   "notes": "UK fit checked against the fielded questionnaire 24 Nov 2026: Yes. Rationale (overcome discrimination / diversity / none) x focus (race / gender) for workplace policies; the 'African Americans' battery and Obama items sit outside the experiment and are not built. Not on the experiment list rich reviewed: listed UK-fit only by the 9 Nov AI screen (socsci210_uk_rescan.json). A candidate for rich to approve, not a missed build. Materials scan 24 Nov 2026: questionnaire (TESS2 118 - Bielby Survey.docx) and data found on OSF.",
+   "notes": "Removed from the UK set by rich, 24 Nov 2026: not UK (US workplace race and gender policy; title 'Americans' Support…'). UK fit checked against the fielded questionnaire 24 Nov 2026: Yes. Rationale (overcome discrimination / diversity / none) x focus (race / gender) for workplace policies; the 'African Americans' battery and Obama items sit outside the experiment and are not built. Not on the experiment list rich reviewed: listed UK-fit only by the 9 Nov AI screen (socsci210_uk_rescan.json). A candidate for rich to approve, not a missed build. Materials scan 24 Nov 2026: questionnaire (TESS2 118 - Bielby Survey.docx) and data found on OSF.",
    "build_order": null,
    "value": null,
    "domain": ""
