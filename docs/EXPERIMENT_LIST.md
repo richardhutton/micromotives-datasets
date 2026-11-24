@@ -10,11 +10,11 @@ Every experiment we have built and every candidate we could add, from six source
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Innovation Panel | UK · not publishable | 38 | 16 | 2 | 8 | 26 | 372,831 |
 | DEL | UK · publishable (CC0) | 18 | 2 | 1 | 10 | 13 | 167,785 |
-| TESS | US · not publishable | 56 | 40 | 8 | 18 | 66 | 499,770 |
+| TESS | US · not publishable | 59 | 40 | 8 | 18 | 66 | 521,607 |
 | Harvard Dataverse | UK · mostly publishable (CC0) | 14 | 0 | 13 | 5 | 18 | 152,235 |
 | Zenodo | Mixed countries · open licences (CC-BY) | 3 | 0 | 3 | 3 | 6 | 51,058 |
 | Other open archives | Mixed countries · open licences (OGL, CC-BY) | 2 | 0 | 1 | 0 | 1 | 11,540 |
-| **Total** | | **131** | **58** | **28** | **44** | **130** | **1,255,219** |
+| **Total** | | **134** | **58** | **28** | **44** | **130** | **1,277,056** |
 
 ## Next 34, in build order (31 built, 3 to go)
 
@@ -201,11 +201,12 @@ UK · publishable (CC0). 18 Built, 2 Buildable, 1 Needs checking, 10 Unlikely.
 
 ## TESS
 
-US · not publishable. 56 Built, 40 Buildable, 8 Needs checking, 18 Unlikely.
+US · not publishable. 59 Built, 40 Buildable, 8 Needs checking, 18 Unlikely.
 
 | Study ID | Split | Experiment ID | Experiment | Category | Status | Novelty | Next | Rows |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 3muqx | unseen | 3muqx | **Whom Do You Believe? Credibility in Sexual Assault**<br>A woman accuses a man of sexual assault, in eleven versions that vary what is known about each of them (11 conditions). Answer: whom you believe, then how much more, 1-5 (3 ratings).<br>*3,992 rows* | moral/social/cognition | Built |  |  | 3,992 |
+| 4zscf | seen | 4zscf | **Precarious Sexuality and Categorization of Sexual Orientation**<br>Story: Michael or Emily, whose past relationships were all with women or all with men, has a casual encounter with someone of the other sex (4 conditions). Answer: how likely the person is heterosexual, gay (gay/lesbian for Emily) and bisexual, each 0 to 100 (3 numbers).<br>*5,946 rows; 2015* | work/family/gender | Built |  |  | 5,946 |
 | 5hqan | unseen | 5hqan | **Gender Identity and Diversity**<br>Whether you were asked your sex assigned at birth or your current gender first (2 conditions). Answer: sex assigned at birth (3 options), current gender (4 options), and whether you would be considered transgender (yes or no).<br>*6,411 rows* | survey methodology | Built |  |  | 6,411 |
 | 5mt6r | seen | 5mt6r | **Improving Measurement of Self-Reported Health: Question Context and Response Order**<br>Self-rated health asked first or after seven other health questions, with the options running from excellent or from poor (4 conditions). Answer: own health, 1-5 (1 rating).<br>*2,651 rows* | survey methodology | Built |  |  | 2,651 |
 | 7jt2f | unseen | 7jt2f | **When Others' Disbelief Engenders Prejudice: Characterizing Anti-Atheist Prejudice**<br>Jordan, a real person judged on very little information, is labelled Atheist, Believe in God: No, Religious or Marital Status: Single, with or without a friendly self-introduction (8 conditions). Answer: where Jordan falls between pairs such as bad/good, foolish/wise and cold/warm, -3 to +3 (5 ratings).<br>*3,053 rows* | cross-national | Built |  |  | 3,053 |
@@ -246,6 +247,8 @@ US · not publishable. 56 Built, 40 Buildable, 8 Needs checking, 18 Unlikely.
 | sd7cf | seen | sd7cf | **Framing in Noisy Informational Environments**<br>A Patriot Act news article is neutral, stresses security benefits or civil-liberties costs, and is shown alone or first, in the middle or last among six unrelated stories (12 conditions). Answer: support for the Patriot Act, 1-7, and certainty about it, 1-5.<br>*4,124 rows* | survey methodology | Built |  |  | 4,124 |
 | sdq2z | seen | sdq2z | **Do liberals and conservatives differ in attitudes towards new housing?**<br>Conjoint: two proposed residential buildings vary in distance from home, neighbours' view, affordable share, height, current land use, own or rent and size. Answer: which of the two you would rather see built where you live (5 choices).<br>*14,630 rows* | political preferences/policy | Built |  |  | 14,630 |
 | sh4px | seen | sh4px | **Self-Affirmation and Affect: Effects on Implementation Intentions**<br>Women who drink first write about a happy, sad, angry, hopeful or neutral time, then do a values self-affirmation task or a control task (10 conditions). Answer: intention to cut drinking, worry about drinking and breast cancer, feelings, and risk, mostly 1-7 (10 questions).<br>*11,532 rows* | health communication | Built |  |  | 11,532 |
+| t936a | seen | t936a_feeding | **Differential Parental Investment: infant feeding**<br>Story: a mother breast-fed one child and formula-fed the other, varied by birth order and the children's sexes (8 conditions). Answer: favourable, fair, fair to others (-5 to +5) and which feeding method is better.<br>*7,957 rows; 2010* | work/family/gender | Built |  |  | 7,957 |
+| t936a | seen | t936a_time | **Differential Parental Investment: parents' time**<br>Story: working parents give equal time to two children, one born with low birth weight, varied by birth order and the children's sexes (8 conditions). Answer: favourable, fair, fair to others (-5 to +5) and how much parents' time matters (0 to 10).<br>*7,934 rows; 2010* | work/family/gender | Built |  |  | 7,934 |
 | vemrp | seen | vemrp | **Accidental Environmentalists: Income and Evaluations of Eco-Friendly Lifestyles**<br>A neighbouring family lives a green or not-green lifestyle with very little or a lot of money (4 conditions). Answer: how much you approve of the family and how ethical and knowledgeable they seem, 0-10, plus your own environmental concern (6 ratings).<br>*15,391 rows* | moral/social/cognition | Built |  |  | 15,391 |
 | vwn96 | seen | vwn96 | **What's the Best Way to Motivate Kids?**<br>Whether a teacher first imagines motivating a student from a poor inner-city family or a wealthy suburban one, then the other (2 conditions). Answer: which of four motivating statements you would use first, for each student (4 options).<br>*4,019 rows; 2013; 2 vignettes, recorded statement order* | moral/social/cognition | Built | 0.23 | 26 | 4,019 |
 | xk9ch | seen | xk9ch_identity_threat | **Are Religions Gender-Typed? The Perceived Femininity and Masculinity of Christians, Jews, Muslims, and Atheists (identity threat)**<br>Are religions, and the people in them, seen as masculine or feminine?<br>*8,335 rows; 2018* | cross-national | Built | 0.15 | 11 | 8,335 |
