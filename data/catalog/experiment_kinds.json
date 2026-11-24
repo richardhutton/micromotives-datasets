@@ -2,11 +2,11 @@
  "_about": "The kind of experiment each tracked experiment is, from micromotives-service's eleven kinds (data/catalog/design_kinds.json). This file is the record: the coverage page and any count of kinds read it, so the answer does not change between askings. Decided 19 Nov 2026. basis: 'named+jev' = the description names the method and Jev agreed; 'read' = decided by reading the description and design notes, with Jev's answer as a check; 'guess' = the description is too thin to be sure (mostly TESS candidates described from the title only); settle it when the instrument is read. Change a kind here, never on the page.",
  "kinds": {
   "image:IMG01": {
-   "kind": "version",
+   "kind": "mix",
    "basis": "read"
   },
   "image:IMG02": {
-   "kind": "version",
+   "kind": "mix",
    "basis": "read"
   },
   "image:IMG03": {
@@ -38,7 +38,15 @@
    "basis": "read"
   },
   "image:IMG102": {
-   "kind": "story",
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG103": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "image:IMG104": {
+   "kind": "version",
    "basis": "read"
   },
   "image:IMG105": {
@@ -85,6 +93,14 @@
    "kind": "version",
    "basis": "read"
   },
+  "image:IMG116": {
+   "kind": "shelf",
+   "basis": "read"
+  },
+  "image:IMG117": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "image:IMG118": {
    "kind": "version",
    "basis": "read"
@@ -107,6 +123,10 @@
   },
   "image:IMG123": {
    "kind": "head_to_head",
+   "basis": "read"
+  },
+  "image:IMG124": {
+   "kind": "choice",
    "basis": "read"
   },
   "image:IMG125": {
@@ -145,6 +165,10 @@
    "kind": "version",
    "basis": "read"
   },
+  "image:IMG133": {
+   "kind": "version",
+   "basis": "read"
+  },
   "image:IMG134": {
    "kind": "mix",
    "basis": "read"
@@ -177,12 +201,16 @@
    "kind": "version",
    "basis": "read"
   },
+  "image:IMG141": {
+   "kind": "shelf",
+   "basis": "read"
+  },
   "image:IMG142": {
    "kind": "version",
    "basis": "guess"
   },
   "image:IMG143": {
-   "kind": "head_to_head",
+   "kind": "lineup",
    "basis": "read"
   },
   "image:IMG144": {
@@ -218,7 +246,7 @@
    "basis": "read"
   },
   "image:IMG151": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "image:IMG18": {
@@ -239,6 +267,10 @@
   },
   "image:IMG23": {
    "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG24": {
+   "kind": "shelf",
    "basis": "read"
   },
   "image:IMG25": {
@@ -294,7 +326,7 @@
    "basis": "read"
   },
   "image:IMG38": {
-   "kind": "head_to_head",
+   "kind": "shelf",
    "basis": "read"
   },
   "image:IMG40": {
@@ -397,6 +429,10 @@
    "kind": "choice",
    "basis": "named+jev"
   },
+  "image:IMG84": {
+   "kind": "shelf",
+   "basis": "read"
+  },
   "image:IMG85": {
    "kind": "mix",
    "basis": "read"
@@ -427,6 +463,14 @@
   },
   "image:IMG92": {
    "kind": "story",
+   "basis": "read"
+  },
+  "image:IMG93": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "image:IMG94": {
+   "kind": "version",
    "basis": "read"
   },
   "image:IMG95": {
@@ -514,8 +558,8 @@
    "basis": "guess"
   },
   "text:5mt6r": {
-   "kind": "mix",
-   "basis": "named+jev"
+   "kind": "context",
+   "basis": "read"
   },
   "text:6EJJJZ": {
    "kind": "version",
@@ -814,7 +858,7 @@
    "basis": "read"
   },
   "text:del_panel_w4_cost_of_living": {
-   "kind": "version",
+   "kind": "context",
    "basis": "read"
   },
   "text:del_panel_w4_east_africa_drought": {
@@ -1022,7 +1066,7 @@
    "basis": "read"
   },
   "text:researchbox1032_s2": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox1032_study1": {
@@ -1038,11 +1082,11 @@
    "basis": "read"
   },
   "text:researchbox1032_study4": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox1032_study5": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox108_study1_india": {
@@ -1074,19 +1118,19 @@
    "basis": "read"
   },
   "text:researchbox196_s5": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox196_s7": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox196_study10": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox196_study9": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox2057_study1a": {
@@ -1170,11 +1214,11 @@
    "basis": "read"
   },
   "text:researchbox2562_study1": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox2562_study2a": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox2562_study2a_pilot": {
@@ -1182,7 +1226,7 @@
    "basis": "read"
   },
   "text:researchbox2562_study2b": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox2562_study2b_pilot": {
@@ -1194,7 +1238,7 @@
    "basis": "read"
   },
   "text:researchbox2562_study4": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox2562_study4_followup": {
@@ -1206,7 +1250,7 @@
    "basis": "read"
   },
   "text:researchbox2562_study6": {
-   "kind": "shelf",
+   "kind": "baseline",
    "basis": "read"
   },
   "text:researchbox2562_study7": {
@@ -1266,7 +1310,7 @@
    "basis": "read"
   },
   "text:researchbox348_study1": {
-   "kind": "choice",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox3520_text": {
@@ -1294,7 +1338,7 @@
    "basis": "read"
   },
   "text:researchbox482_s3": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox482_study1_accuracy": {
@@ -1366,19 +1410,19 @@
    "basis": "read"
   },
   "text:researchbox755_study3": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox755_study4_election": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox755_study4_food": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox809_study2": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox809_study3": {
@@ -1386,19 +1430,19 @@
    "basis": "read"
   },
   "text:researchbox809_study4": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox809_study5a": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox809_study5b": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:researchbox809_w1": {
-   "kind": "mix",
+   "kind": "version",
    "basis": "read"
   },
   "text:researchbox809_w2": {
@@ -1414,7 +1458,7 @@
    "basis": "read"
   },
   "text:researchbox809_w5": {
-   "kind": "mix",
+   "kind": "story",
    "basis": "read"
   },
   "text:rf79p": {
@@ -1462,7 +1506,7 @@
    "basis": "read"
   },
   "text:ukds_6849_automation_w14": {
-   "kind": "story",
+   "kind": "mix",
    "basis": "read"
   },
   "text:ukds_6849_caring_activity_w17": {
@@ -1514,7 +1558,7 @@
    "basis": "read"
   },
   "text:ukds_6849_immig_vignette_w11": {
-   "kind": "story",
+   "kind": "version",
    "basis": "read"
   },
   "text:ukds_6849_immigsdb_w8": {
@@ -1534,12 +1578,12 @@
    "basis": "read"
   },
   "text:ukds_6849_mpc_direct_w15": {
-   "kind": "mix",
-   "basis": "named+jev"
+   "kind": "story",
+   "basis": "read"
   },
   "text:ukds_6849_mpc_twopart_w15": {
-   "kind": "mix",
-   "basis": "named+jev"
+   "kind": "story",
+   "basis": "read"
   },
   "text:ukds_6849_national_identity_w15": {
    "kind": "context",
@@ -1618,8 +1662,8 @@
    "basis": "named+jev"
   },
   "text:vwn96": {
-   "kind": "story",
-   "basis": "named+jev"
+   "kind": "lineup",
+   "basis": "read"
   },
   "text:w2zm4": {
    "kind": "version",

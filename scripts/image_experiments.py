@@ -59,7 +59,10 @@ def main() -> None:
         r["permission"] = PERMISSION[c["status"]] if c else default
         r["contact"] = c["name"] if c else ""
     DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-    payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    import kind_labels
+
+    page = dict(data, kinds={r["id"]: kind_labels.label(f"image:{r['id']}") for r in data["rows"]})
+    payload = json.dumps(page, ensure_ascii=False).replace("</", "<\\/")
     HTML.write_text(TEMPLATE.read_text().replace("__DATA__", payload))
     print(f"wrote {HTML.relative_to(ROOT)}: {len(data['rows'])} image experiments")
 

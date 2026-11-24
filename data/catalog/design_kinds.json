@@ -1,5 +1,5 @@
 {
- "_source": "micromotives-service GET /v1/design/kinds, version 8e84d4b9807e570f, fetched 19 Nov 2026",
+ "_source": "GET /v1/design/kinds on micromotives-service, version 980936a281b0ad6f, refreshed 24 Nov 2026",
  "kinds": [
   {
    "id": "version",

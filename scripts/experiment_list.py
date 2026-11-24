@@ -28,6 +28,8 @@ from pathlib import Path
 
 import yaml
 
+import kind_labels
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "catalog" / "experiment_list.json"
 MD = ROOT / "docs" / "EXPERIMENT_LIST.md"
@@ -288,6 +290,10 @@ def add_areas(data: dict) -> None:
                 v["area"] for k, v in areas.items() if k.startswith(f"text:{_experiment_id(r)}")
             ]
         r["area"] = " / ".join(dict.fromkeys(found))
+        if r["status"] == "Built" and stems:
+            r["kind"] = kind_labels.labels_for([f"text:{s}" for s in stems])
+        else:
+            r["kind"] = kind_labels.labels_for([f"text:{_experiment_id(r)}"])
 
 
 def render_html(data: dict) -> str:

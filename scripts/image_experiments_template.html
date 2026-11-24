@@ -87,7 +87,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
     </div>
     <p id="msg" class="note" hidden></p>
     <div class="scroll">
-      <table class="list"><thead><tr><th>ID</th><th>Experiment</th><th>Status</th><th>Permission</th><th>Rows</th></tr></thead><tbody id="rows"></tbody></table>
+      <table class="list"><thead><tr><th>ID</th><th>Experiment</th><th>Kind</th><th>Status</th><th>Permission</th><th>Rows</th></tr></thead><tbody id="rows"></tbody></table>
     </div>
   </section>
 </div>
@@ -104,7 +104,7 @@ const STATUSES=[
 ];
 const PERMS=["Yes","Asked","Not asked yet","Not needed","No"];
 const $=id=>document.getElementById(id);
-const rows=JSON.parse($("data").textContent).rows;
+const D=JSON.parse($("data").textContent), rows=D.rows;
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const scls=s=>"s-"+(STATUSES.find(x=>x[0]===s)||[0,s])[1].split(" ")[0];
 const pcls=p=>"p-"+String(p).split(" ")[0];
@@ -133,6 +133,7 @@ function render(){
   $("rows").innerHTML=vis.map(r=>`<tr>
     <td class="num">${esc(r.id)}${r.recipe?`<div class="cc">${esc(r.recipe)}</div>`:""}${r.added?`<div class="cc">added ${esc(r.added)}</div>`:""}</td>
     <td><b>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a>`:esc(r.title)}</b>${r.sample?`<span class="pill us" title="US sample, from TESS">${esc(r.sample)}</span>`:""}<div class="ask" style="max-width:80ch">${esc(r.description)}</div>${r.found_via?`<div class="cc">Found via: ${esc(r.found_via)}</div>`:""}</td>
+    <td class="cc">${esc((D.kinds||{})[r.id]||"Not labelled")}</td>
     <td><span class="pill ${scls(r.status)}">${esc(r.status)}</span>${r.reason?`<div class="notes">${esc(r.reason)}</div>`:""}${(r.issues||[]).length?`<ul class="issues"><b>Issues</b>${r.issues.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</td>
     <td><span class="pill ${pcls(r.permission)}">${esc(r.permission)}</span>${r.contact?`<div class="cc">${esc(r.contact)}</div>`:""}</td>
     <td class="num">${r.rows?r.rows.toLocaleString("en-GB"):""}</td>

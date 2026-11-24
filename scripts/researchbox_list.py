@@ -16,6 +16,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import kind_labels
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "catalog" / "researchbox_list.json"
 KINDS = ROOT / "data" / "catalog" / "design_kinds.json"
@@ -63,6 +65,7 @@ def main() -> None:
                 "name": path.stem,
                 "title": title,
                 "kind": recorded.get(f"text:{path.stem}", {}).get("kind", ""),
+                "kind_label": kind_labels.label(f"text:{path.stem}"),
                 "area": areas.get(f"text:{path.stem}", {}).get("area", ""),
                 "rows": n,
             }
