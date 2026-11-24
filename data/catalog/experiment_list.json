@@ -3053,6 +3053,42 @@
    "status": "Needs checking",
    "reason": "The deposit has the data and a dictionary but not the fielded wording (the paper shows one choice task only as a screenshot). Emailed Don MacKenzie (dwhm@uw.edu) 19 Nov 2026 for the questionnaire or .qsf.",
    "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "4zscf",
+   "title": "Precarious Sexuality and Categorization of Sexual Orientation",
+   "description": "Story: Michael or Emily, whose past relationships were all with women or all with men, has a casual encounter with someone of the other sex (4 conditions). Answer: how likely the person is heterosexual, gay (gay/lesbian for Emily) and bisexual, each 0 to 100 (3 numbers).",
+   "details": "5,946 rows; 2015",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "4zscf"
+  },
+  {
+   "source": "TESS",
+   "id": "t936a_feeding",
+   "title": "Differential Parental Investment: infant feeding",
+   "description": "Story: a mother breast-fed one child and formula-fed the other, varied by birth order and the children's sexes (8 conditions). Answer: favourable, fair, fair to others (-5 to +5) and which feeding method is better.",
+   "details": "7,957 rows; 2010",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "t936a_feeding"
+  },
+  {
+   "source": "TESS",
+   "id": "t936a_time",
+   "title": "Differential Parental Investment: parents' time",
+   "description": "Story: working parents give equal time to two children, one born with low birth weight, varied by birth order and the children's sexes (8 conditions). Answer: favourable, fair, fair to others (-5 to +5) and how much parents' time matters (0 to 10).",
+   "details": "7,934 rows; 2010",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "t936a_time"
   }
  ],
  "built": {

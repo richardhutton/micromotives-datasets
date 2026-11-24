@@ -1,0 +1,402 @@
+study_id: t936a
+experiment: feeding
+source: tess
+title: "Fairness and Favorability Assessments of Differential Parental Investment (Schnettler, TESS2 053): Vignette 1, infant feeding"
+data_file: TESS2_053_Schnettler_Client.sav
+licence: >-
+  none stated on the OSF deposit (node t936a; the same terms as every TESS2 deposit built here, e.g. c5r2f and 9263n, checked via the OSF API: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# SocSci210 built this study as ONE experiment with two "conditions" that are
+# the two vignettes, each merging its eight randomised arms. We build the two
+# vignettes as two experiments with eight arms each, so `mmds crosscheck`
+# (which compares a whole study) cannot match on conditions or rows. The
+# comparable part is checked by hand in tests/test_t936a_answer_key.py: every
+# SocSci210 task's row count and full response distribution, exactly.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 053 (Sebastian Schnettler), "Fairness and Favorability Assessments of
+  Differential Parental Investment in the U.S." Knowledge Networks, web,
+  fielded 15 October - 4 November 2010; N fielded 3,035, N completed 2,016
+  (response rate report). The .sav has 2,016 rows, one per CaseID.
+
+  Line citations are 1-based line numbers in
+    Q  = "TESS2 053 Schnettler_FINAL.txt" (textutil from the fielded .doc,
+         "K2883_TESS2 053 Schnettler_v1", last saved 10/14/2010, the day before
+         fieldwork; the only wording authority). quex.txt is byte-identical.
+    PD = the "Project Design" / "Description of Study" pages at Q 87-280, which
+         the questionnaire carries in front of the programmed sections. They are
+         the PI's specification, NOT what was fielded, and are never used for
+         wording (see "Specification versus fielded text" below).
+    PR = Schnettler040.pdf, the proposal; not used for wording.
+
+
+  THE DESIGN: TWO VIGNETTES, EACH ITS OWN 2 x 2 x 2, SHOWN IN A RANDOM ORDER
+
+  Every respondent read BOTH vignettes, each followed by five questions on
+  separate pages (Q 487-651): V1 (Sarah breast-feeds one child and formula-feeds
+  the other) and V2 (Susan and John's equal time for a low and a normal
+  birth-weight child). Q 485 "[ROTATE AND RECORD ORDER OF V1_SEC AND V2_SEC
+  SECTIONS]". Each vignette has its own eight-cell assignment, held in its own
+  column: XVIGN1 for V1, XVIGN2 for V2 (Q 24 "Samvar ... XVIGN1; XVIGN2"; the
+  insert tables Q 286-384 and 385-483). They are independent: XVIGN1 x XVIGN2 is
+  a full 8 x 8 crosstab with every cell filled (19-44 each). So the deposit
+  holds two experiments, and this recipe is V1. t936a_time.yaml is V2.
+
+  ASSIGNMENT: XVIGN1 {1: 260, 2: 248, 3: 234, 4: 237, 5: 255, 6: 245, 7: 283,
+  8: 254}, sum 2,016, no blanks; raw k -> condition_num k-1. Value labels are
+  just "1".."8"; the meaning of each code is the insert table Q 286-384, and the
+  deposit carries the inserts each respondent actually received (Insertv1b1 ..
+  Insertv1s2_3, "Programming purpose only"). Those ten columns are constant
+  within every XVIGN1 code and equal the table's entries for it, all 2,016 rows
+  (asserted in tests/test_t936a_answer_key.py). recipe_prep.py (Jev,
+  2026-11-24) chose XVIGN1 at conf 0.97 (XVIGN2 0.01, NONE_OF_THESE 0.01).
+
+    XVIGN1  nursed child           formula-fed child
+    1       first child, son Andy        daughter Caroline (two years later)
+    2       first child, daughter Jennifer  son Bob
+    3       first child, son Andy        son Bob
+    4       first child, daughter Jennifer  daughter Caroline
+    5-8     as 1-4, but the nursed child is the SECOND child and the
+            formula-fed one the first ("two years earlier", "back then")
+
+  Factors (names ours, from the PD's own description at Q 105: "birth order of
+  children mentioned in the text, sex of the first child mentioned, and sex of
+  the second child mentioned"): nursed_child_birth_order, nursed_child,
+  formula_fed_child. Fully crossed, every minimal pair differs in text.
+
+
+  CONDITION TEXT
+
+  Q 491, the V1 DISPLAY screen, with each arm's inserts from Q 286-384 (curly
+  quotes and apostrophes straightened, en dashes to hyphens, CONVENTIONS). The
+  screen heading "V1." (Q 490) is a section label, not stimulus, and is dropped.
+  The double quotes around the paragraph are on the screen text and kept. The
+  source's own spacing is kept: "her [insertv1s1_1]- she" has no space before
+  the dash where the second child's "her [insertv1s2_1] - she" has one (Q 491;
+  PD Q 109 the same), so the rows read "her son Andy- she". Typography only,
+  never words: kept as written.
+
+  SPECIFICATION VERSUS FIELDED TEXT. For V1 the PD paragraph (Q 109) and the
+  DISPLAY (Q 491) agree word for word. For V2 they do not (see t936a_time.yaml).
+
+  SocSci210's condition text for this vignette follows the PD wording and is
+  correct in its words for the arms sampled, but its condition index is the
+  vignette, not the arm: all eight cells are one "condition", so the three
+  factors are absent from their structure. Their task 0 prompt also carries a
+  question about voting for Sarah to preside over a pre-school parent-teacher
+  association, which appears nowhere in Q; their task 0 numbers are QV11's
+  exactly, so only their wording is wrong.
+
+
+  OUTCOMES (each on its own page, in this fixed order, after the vignette)
+
+  task 0  QV11  Q 495  "How favorable are you to Sarah's decision to formula-feed
+                [if xvign1=1,4,5,8: Caroline |if xvign1=2,3,6,7: Bob]?"
+                ends Q 497-498 "Very unfavorable" / "Very Favorable" (capital F
+                as written), points Q 499-509 -5 .. +5
+  task 1  QV12  Q 512  "How fair is Sarah's decision to formula-feed [...]?"
+                ends Q 514-515 "Very unfair" / "Very fair"
+  task 2  QV13  Q 529  "How fair will other people find Sarah's decision to
+                formula-feed [...]?"  ends Q 531-532 as QV12
+  task 3  QV15  Q 554  "Which infant-feeding method do you think is better for a
+                child?"  ends Q 555-556 "Breastfeeding is better" / "Formula
+                feeding is better"
+  The child's name in QV11-QV13 is resolved per arm (`items`), and matches the
+  formula-fed child of that arm's vignette: Caroline in 1, 4, 5, 8 and Bob in
+  2, 3, 6, 7, exactly the Insertv1s2_2 column. The outcome's own `question`
+  keeps the questionnaire's bracket, so a missing override fails QC rule 21
+  rather than shipping a wrong name.
+  The .sav labels of QV12 and QV13 end ", do you think?" (and SocSci210's
+  prompts copy that); Q does not, and Q is the wording authority. Recorded, not
+  followed.
+
+  Codes: 1..11 with labels "-5".."+5" (QV12/QV13 "Very unfair-5" .. "Very
+  fair+5"), recoded to -5..+5 (code minus 6). -1 "Refused" is dropped: QV11 22,
+  QV12 31, QV13 29, QV15 25. recipe_prep.py's Jev pass called the bare labels
+  "-1", "0" and "-2" on these items possible non-answers (conf 0.28-0.52, the
+  regex disagreeing): overruled, they are points of the printed -5..+5 scale
+  (Q 499-509), and the real non-answer is code -1 "Refused".
+
+  NOT BUILT: QV14 (Q 545-551), "Please mark everything that applies to the
+  scenario that has just been presented to you: Sarah breastfed her... son /
+  daughter / first-born child / second-born child", is a recall check whose
+  answer is in the condition (CONVENTIONS, "Attention and recall checks are not
+  outcomes"); it is also mark-all-that-apply (five 0/1 columns). Row cost:
+  2,016 respondents x 4 boxes. SocSci210 did not build it either.
+
+
+  THE SECTION ORDER IS NOT NARRATED (judgement, flagged)
+
+  Order_V1V2_1st (1 = V1 first: 1,014; 2 = V2 first: 1,002) records Q 485's
+  rotation. It is not built as a factor, and the other section is not narrated
+  into the condition of the rows that met it first. Reasons: the PD (Q 88)
+  states the rotation as counterbalancing ("so that 50% of respondents see V1
+  and the respective questions first"), the words of this section are identical
+  in either order, and the condition this recipe renders (this section's own
+  vignette) is true for every row and cites no position. Narrating would put
+  the other family's whole vignette and its five questions, recall check
+  included, ahead of half the rows. The order does move the answers a little,
+  which is why this is flagged rather than settled: mean QV11 is +0.65 when V1
+  came first and +0.96 when it came second (QV12 +0.80 / +1.02, QV13 +0.24 /
+  +0.35, QV15 -2.57 / -2.40), computed locally from the .sav.
+
+
+  PERSONA
+
+  The Knowledge Networks set mapped in 9263n (same panel, same year): PPAGE,
+  PPGENDER, PPEDUCAT, PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE,
+  PPHOUSE, PPRENT, PPMSACAT, PPNET, XIDEO, XREL1, plus xparty7 and XREL2 as other
+  KN recipes map them. Jev (recipe_prep.py) agreed on every field it was asked
+  about; it preferred PPEDUC (0.95) for education, and PPEDUCAT is kept, as in
+  every KN recipe and the crosswalk built for it; region PPREG4 0.55 (REVIEW)
+  against ppreg9 0.34, PPREG4 kept likewise.
+  persona_missing (each exercised): XIDEO -1 "Refused" (10 respondents), XREL1
+  -1 "Refused" (6). XREL2 is blank for the 279 whose religion is None (Q 809,
+  not asked), which leaves the field empty. xparty7 holds no 8/9 codes here and
+  none are declared. XREL1 code 12 is labelled "Other non-Christian, please
+  specify" (from the sample-variable spec, Q 24); rewritten to the fielded
+  option "Other non-Christian" (Q 782), 57 respondents. Code 1's em dash
+  ("Baptist—any denomination") is normalised to a hyphen, the typography
+  ruling, which is also how 9263n renders it.
+  QC warns that religion labels ('Baptist-any denomination', 'Catholic',
+  'Eastern Orthodox') are outside the canonical vocabulary. That is the KN
+  XREL1 scheme having no crosswalk yet: 9263n's build gives the identical
+  warning today. Fixing it is a shared crosswalk change, outside this build.
+  Not mapped: core_par (parent of a child under 18), ppkids, PPT01..PPT18OV
+  (children in the household by age). Parenthood is close to what the outcomes
+  are about, the schema has no field for it, and the PD asked for core_par as an
+  analysis variable, not as something the vignette refers to. Also not mapped:
+  PPEDUC, ppagecat, ppagect4, ppreg9, PPSTATEN, FIPS (finer or coarser
+  duplicates, or a location identifier), PPHHHEAD, core_emp.
+
+
+  UK CHECK
+
+  What respondents read is a mother who breast-fed one child for twelve months
+  and formula-fed the other, and how favourable and fair her decision is, how
+  fair others would find it, and which feeding method is better. No institution,
+  law, place, party, programme or money. American spelling ("favorable") is the
+  source's and is kept. The "in the U.S." of the project title is not on any
+  respondent's screen. The persona is the usual US panel profile.
+
+
+  ANSWER KEY
+
+  SocSci210 (parquet shard 0003, queried 2026-11-24) has 15,891 rows, 2,006
+  participants and 8 tasks; its tasks 0-3 are QV11, QV12, QV13, QV15 and their
+  rows (1,994 / 1,985 / 1,987 / 1,991; all under their condition 0) and full
+  response distributions equal ours exactly. Rows here: 1,994 + 1,985 + 1,987 +
+  1,991 = 7,957, 2,003 participants. tests/test_t936a_answer_key.py also
+  recomputes every (person, condition, task, response) from the .sav with
+  pyreadstat and compares the built parquet with it.
+
+condition:
+  source_var: XVIGN1
+  factors: [nursed_child_birth_order, nursed_child, formula_fed_child]
+  considered_and_rejected:
+    XVIGN2: >-
+      The assignment of the OTHER vignette (V2, Susan and John), independent of
+      XVIGN1 (full 8 x 8 crosstab); built as its own experiment, t936a_time.yaml.
+    Order_V1V2_1st: >-
+      Q 485 rotates which vignette section came first, as counterbalancing (PD, Q
+      88). This section's words are the same in either order and the rendered
+      condition cites no position; not narrated. Its small effect on the means is
+      recorded in notes.
+    Order_V1V2_2nd: "The complement of Order_V1V2_1st (crosstab: always the other section)."
+    Insertv2b1: "V2's birth-order insert, a function of XVIGN2 (the other experiment), not of this one."
+    Insertv2b2: "V2's birth-order insert, a function of XVIGN2 (the other experiment), not of this one."
+    Insertv2b3: "V2's birth-order insert, a function of XVIGN2 (the other experiment), not of this one."
+    Insertv2b4: "V2's birth-order insert, a function of XVIGN2 (the other experiment), not of this one."
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {nursed_child_birth_order: first, nursed_child: son, formula_fed_child: daughter}
+      text: >-
+        "When Sarah had her first child - her son Andy- she nursed him for the first
+        12 months. It wasn't always easy to manage the demands of nursing given the
+        strains of her busy work schedule - but she was more than happy to go through
+        these difficulties given the assumed benefits of nursing for her son's
+        development. But at the time when Sarah had her second child two years later
+        - her daughter Caroline - she felt that she didn't have the energy to go
+        through the efforts and exhaustion that go along with breastfeeding. Thinking
+        that it couldn't be so bad if she didn't breastfeed Caroline, this time she
+        decided that it would be equally fine to formula feed her instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Caroline?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Caroline?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Caroline?"}
+    - raw: 2
+      condition_num: 1
+      factors: {nursed_child_birth_order: first, nursed_child: daughter, formula_fed_child: son}
+      text: >-
+        "When Sarah had her first child - her daughter Jennifer- she nursed her for
+        the first 12 months. It wasn't always easy to manage the demands of nursing
+        given the strains of her busy work schedule - but she was more than happy to
+        go through these difficulties given the assumed benefits of nursing for her
+        daughter's development. But at the time when Sarah had her second child two
+        years later - her son Bob - she felt that she didn't have the energy to go
+        through the efforts and exhaustion that go along with breastfeeding. Thinking
+        that it couldn't be so bad if she didn't breastfeed Bob, this time she
+        decided that it would be equally fine to formula feed him instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Bob?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Bob?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Bob?"}
+    - raw: 3
+      condition_num: 2
+      factors: {nursed_child_birth_order: first, nursed_child: son, formula_fed_child: son}
+      text: >-
+        "When Sarah had her first child - her son Andy- she nursed him for the first
+        12 months. It wasn't always easy to manage the demands of nursing given the
+        strains of her busy work schedule - but she was more than happy to go through
+        these difficulties given the assumed benefits of nursing for her son's
+        development. But at the time when Sarah had her second child two years later
+        - her son Bob - she felt that she didn't have the energy to go through the
+        efforts and exhaustion that go along with breastfeeding. Thinking that it
+        couldn't be so bad if she didn't breastfeed Bob, this time she decided that
+        it would be equally fine to formula feed him instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Bob?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Bob?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Bob?"}
+    - raw: 4
+      condition_num: 3
+      factors: {nursed_child_birth_order: first, nursed_child: daughter, formula_fed_child: daughter}
+      text: >-
+        "When Sarah had her first child - her daughter Jennifer- she nursed her for
+        the first 12 months. It wasn't always easy to manage the demands of nursing
+        given the strains of her busy work schedule - but she was more than happy to
+        go through these difficulties given the assumed benefits of nursing for her
+        daughter's development. But at the time when Sarah had her second child two
+        years later - her daughter Caroline - she felt that she didn't have the
+        energy to go through the efforts and exhaustion that go along with
+        breastfeeding. Thinking that it couldn't be so bad if she didn't breastfeed
+        Caroline, this time she decided that it would be equally fine to formula feed
+        her instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Caroline?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Caroline?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Caroline?"}
+    - raw: 5
+      condition_num: 4
+      factors: {nursed_child_birth_order: second, nursed_child: son, formula_fed_child: daughter}
+      text: >-
+        "When Sarah had her second child - her son Andy- she nursed him for the first
+        12 months. It wasn't always easy to manage the demands of nursing given the
+        strains of her busy work schedule - but she was more than happy to go through
+        these difficulties given the assumed benefits of nursing for her son's
+        development. But at the time when Sarah had her first child two years earlier
+        - her daughter Caroline - she felt that she didn't have the energy to go
+        through the efforts and exhaustion that go along with breastfeeding. Thinking
+        that it couldn't be so bad if she didn't breastfeed Caroline, back then she
+        decided that it would be equally fine to formula feed her instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Caroline?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Caroline?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Caroline?"}
+    - raw: 6
+      condition_num: 5
+      factors: {nursed_child_birth_order: second, nursed_child: daughter, formula_fed_child: son}
+      text: >-
+        "When Sarah had her second child - her daughter Jennifer- she nursed her for
+        the first 12 months. It wasn't always easy to manage the demands of nursing
+        given the strains of her busy work schedule - but she was more than happy to
+        go through these difficulties given the assumed benefits of nursing for her
+        daughter's development. But at the time when Sarah had her first child two
+        years earlier - her son Bob - she felt that she didn't have the energy to go
+        through the efforts and exhaustion that go along with breastfeeding. Thinking
+        that it couldn't be so bad if she didn't breastfeed Bob, back then she
+        decided that it would be equally fine to formula feed him instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Bob?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Bob?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Bob?"}
+    - raw: 7
+      condition_num: 6
+      factors: {nursed_child_birth_order: second, nursed_child: son, formula_fed_child: son}
+      text: >-
+        "When Sarah had her second child - her son Andy- she nursed him for the first
+        12 months. It wasn't always easy to manage the demands of nursing given the
+        strains of her busy work schedule - but she was more than happy to go through
+        these difficulties given the assumed benefits of nursing for her son's
+        development. But at the time when Sarah had her first child two years earlier
+        - her son Bob - she felt that she didn't have the energy to go through the
+        efforts and exhaustion that go along with breastfeeding. Thinking that it
+        couldn't be so bad if she didn't breastfeed Bob, back then she decided that
+        it would be equally fine to formula feed him instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Bob?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Bob?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Bob?"}
+    - raw: 8
+      condition_num: 7
+      factors: {nursed_child_birth_order: second, nursed_child: daughter, formula_fed_child: daughter}
+      text: >-
+        "When Sarah had her second child - her daughter Jennifer- she nursed her for
+        the first 12 months. It wasn't always easy to manage the demands of nursing
+        given the strains of her busy work schedule - but she was more than happy to
+        go through these difficulties given the assumed benefits of nursing for her
+        daughter's development. But at the time when Sarah had her first child two
+        years earlier - her daughter Caroline - she felt that she didn't have the
+        energy to go through the efforts and exhaustion that go along with
+        breastfeeding. Thinking that it couldn't be so bad if she didn't breastfeed
+        Caroline, back then she decided that it would be equally fine to formula feed
+        her instead."
+      items:
+        0: {outcome_question: "How favorable are you to Sarah's decision to formula-feed Caroline?"}
+        1: {outcome_question: "How fair is Sarah's decision to formula-feed Caroline?"}
+        2: {outcome_question: "How fair will other people find Sarah's decision to formula-feed Caroline?"}
+
+outcomes:
+  - var: QV11
+    task_num: 0
+    question: "How favorable are you to Sarah's decision to formula-feed [Caroline/Bob]?"
+    scale: {min: -5, max: 5, min_label: "Very unfavorable", max_label: "Very Favorable"}
+  - var: QV12
+    task_num: 1
+    question: "How fair is Sarah's decision to formula-feed [Caroline/Bob]?"
+    scale: {min: -5, max: 5, min_label: "Very unfair", max_label: "Very fair"}
+  - var: QV13
+    task_num: 2
+    question: "How fair will other people find Sarah's decision to formula-feed [Caroline/Bob]?"
+    scale: {min: -5, max: 5, min_label: "Very unfair", max_label: "Very fair"}
+  - var: QV15
+    task_num: 3
+    question: "Which infant-feeding method do you think is better for a child?"
+    scale: {min: -5, max: 5, min_label: "Breastfeeding is better", max_label: "Formula feeding is better"}
+
+response_recode: {1: -5, 2: -4, 3: -3, 4: -2, 5: -1, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4, 11: 5}
+missing_codes: [-1]
+
+persona_missing:
+  XIDEO: [-1]
+  XREL1: [-1]
+
+persona_label_rewrite:
+  # Code 1's label carries an em dash ("Baptist—any denomination"); typography
+  # normalises (CONVENTIONS), giving the string the other KN builds render.
+  # The sample-variable spec (Q 24) labels code 12 "Other non-Christian, please
+  # specify"; the fielded option is "Other non-Christian" (Q 782).
+  XREL1:
+    1: "Baptist-any denomination"
+    12: "Other non-Christian"
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: xparty7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2

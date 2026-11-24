@@ -626,6 +626,10 @@
       "basis": "jev",
       "confidence": 1.0
     },
+    "text:4zscf": {
+      "area": "social",
+      "basis": "read"
+    },
     "text:5hqan": {
       "area": "social",
       "basis": "read (title; not in the manifest)"
@@ -1428,6 +1432,14 @@
     "text:sh4px": {
       "area": "social",
       "basis": "read (title; not in the manifest)"
+    },
+    "text:t936a_feeding": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:t936a_time": {
+      "area": "social",
+      "basis": "read"
     },
     "text:ukds_6849_alcohol_w15": {
       "area": "social",

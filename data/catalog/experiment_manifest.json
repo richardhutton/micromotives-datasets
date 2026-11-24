@@ -1256,6 +1256,24 @@
       "description": "US adults rate political candidates described as atheist, as not sure there is a God, or as not currently identifying with a religion: a 0-100 feeling thermometer, whether such candidates pose problems for or go against the values of \"people like me\", how much moral disgust, anxiety and anger they feel, how supportive the candidates are of religion in the public sphere, where they sit from extremely liberal to extremely conservative, and how trustworthy they are.",
       "design": "3-arm question wording (the group named in every question), between subjects; 11 outcomes asked of everyone in a fixed order. Built: Q1-Q6 only; the Sawtooth candidate conjoint (Democrat/Republican, US President, mayor) and the respondent's own belief in God and rationalism items are not built",
       "verified_against": "No SocSci210 build or published table for these items. Every built (person, condition, outcome, response) tuple equals an independent pyreadstat reading of the .dta (the build reads the .sav), each of the 33 cells' count and mean matches (thermometer 342/49.146, 312/49.907, 289/57.138), and every outcome's whole-sample distribution equals NORC's unweighted frequency tables code by code; every wording resolved identically from the programmed and simple questionnaires and checked against the codebook's grid items (tests/test_gen_ysqex.py)"
+    },
+    "4zscf": {
+      "category": "work/family/gender",
+      "description": "Story: Michael or Emily, whose past relationships were all with women or all with men, has a casual encounter with someone of the other sex. Respondents say how likely the person is heterosexual, gay (gay/lesbian for Emily) and bisexual, each 0 to 100.",
+      "design": "2x2 vignette (target gender x sexual history), between subjects; one screen of three 0-100 number boxes, one outcome per box",
+      "verified_against": "SocSci210 crosscheck PASS on all six fields; every tuple equals an independent pyreadstat read of the .sav; 12 cell counts and means pinned (tests/test_4zscf_answer_key.py, tests/test_4zscf_recipe.py); independent checker PASS 24 Nov 2026"
+    },
+    "t936a_feeding": {
+      "category": "work/family/gender",
+      "description": "A mother breast-fed one child for 12 months and formula-fed the other. Respondents rate how favourable and how fair this is, how fair others would find it, and which feeding method is better.",
+      "design": "2x2x2 vignette between subjects (8 arms), 4 outcomes; both vignettes seen by everyone, section order rotated and not narrated",
+      "verified_against": "SocSci210 per-task row counts and full response distributions exact; pyreadstat tuple recompute; per-respondent Insert* screen check (tests/test_t936a_answer_key.py)"
+    },
+    "t936a_time": {
+      "category": "work/family/gender",
+      "description": "Working parents give equal time to two children, one born with low birth weight. Respondents rate how favourable and how fair this is, how fair others would find it, and how much parents' time affects development.",
+      "design": "2x2x2 vignette between subjects (8 arms), 4 outcomes; both vignettes seen by everyone, section order rotated and not narrated",
+      "verified_against": "SocSci210 per-task row counts and full response distributions exact; pyreadstat tuple recompute; per-respondent Insert* screen check (tests/test_t936a_answer_key.py)"
     }
   }
 }

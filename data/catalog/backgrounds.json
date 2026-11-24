@@ -50,6 +50,16 @@
     "the United States: the NORC report, 'A general population sample of U.S. adults'"
    ]
   },
+  "4zscf": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "June–July 2015",
+   "sources": [
+    "data/raw/4zscf/TESS3 192 - Mize Response Rate Report.doc: 'Field Start Date' 6/25/2015, 'Field End Date' 07/09/15",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: data/raw/4zscf/GfK Methodology - July 2015.pdf, 'representative of the entire U.S. population'"
+   ]
+  },
   "5hqan": {
    "run_by": "GfK",
    "where": "the United States",
@@ -713,6 +723,26 @@
     "data/raw/sh4px/TESS2 115 - Ferrer Response Rate Report.txt: 'Field Start Date' 8/3/2012, 'Field End Date' 8/24/2012",
     "Knowledge Networks: the same report (TESS2 response-rate report)",
     "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "t936a_feeding": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2010",
+   "sources": [
+    "data/raw/t936a/TESS2 053 - Schnettler Response Rate Report.doc: 'Field Start Date' 10/15/10, 'Field End Date' 11/04/10",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: data/raw/t936a/Knowledge Networks Methodology.pdf, 'representative of the entire U.S. population'"
+   ]
+  },
+  "t936a_time": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2010",
+   "sources": [
+    "data/raw/t936a/TESS2 053 - Schnettler Response Rate Report.doc: 'Field Start Date' 10/15/10, 'Field End Date' 11/04/10",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: data/raw/t936a/Knowledge Networks Methodology.pdf, 'representative of the entire U.S. population'"
    ]
   },
   "ukds_6849_alcohol_w15": {

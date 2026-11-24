@@ -1,0 +1,377 @@
+study_id: 4zscf
+source: tess
+title: "Precarious Sexuality and Categorization of Sexual Orientation (Mize, TESS3 192)"
+data_file: Tess192_Mize_Client.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its post-2009 projects through the Roper Center and its own site
+  states no reuse terms; TESS has since suspended operations). Not re-checked
+  against the OSF API for this node in this build. So there is no explicit grant
+  of redistribution rights for this deposit, and none should be assumed.
+
+# In SocSci210 (5,946 rows, 2,013 participants, 4 conditions x 3 tasks), so its
+# numbers are the answer key: `mmds build --crosscheck`.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS3 192 (Trenton D. Mize, Northwestern University; GfK KnowledgePanel),
+  "Precarious Sexuality and Categorization of Sexual Orientation". Fielded
+  25 June - 9 July 2015: 3,333 fielded, 2,035 completed (response rate report,
+  "TESS3 192 - Mize Response Rate Report"). The .sav has exactly 2,035 rows,
+  CaseID unique. Deposit OSF 4zscf, MizeB49.zip: the .sav, the questionnaire
+  .docx, the response rate report and GfK's methodology PDF; MizeB49.pdf is the
+  PROPOSAL.
+
+  Line citations are 1-based line numbers in
+    Q  = "TESS185Johnston_TESS189Giner-Sorolla_TESS192Mize_v2clean.txt", the
+         FIELDED GfK programming questionnaire (SNO S19858, "June, 2015";
+         textutil from the .docx beside it, which is the only wording
+         authority; quex.txt in the same folder is a byte-identical copy). No
+         separate simple/prog pair exists in this deposit.
+    PR = MizeB49.pdf, the proposal (authority on factor names and arm order
+         only, never on wording).
+
+
+  A COMBINED THREE-STUDY INSTRUMENT; ONLY MIZE'S BLOCK IS USED
+
+  Q is the omnibus questionnaire for TESS185 (Johnston, Q 62-242), TESS189
+  (Giner-Sorolla, Q 243-1800) and TESS192 (Mize, Q 1802-2049). DOV_ORDER
+  (Q 43-55) randomises the order of the three blocks; the .sav carries it as
+  three dummies DOV_Order1/2/3 (668/696/671), which put Mize's block third,
+  second or first. That is the omnibus's counterbalancing of unrelated studies,
+  not this design (recorded in `considered_and_rejected`, as 8972k does with
+  RND_02 and 3muqx with BLOCKORDER). Mize's own screens are word-for-word the
+  same in every order. The transition screen "Now we have some questions for
+  you on a different topic." (Q 57-60), shown between blocks, is survey
+  mechanics and not rendered. Crosstab of DOV_TESS192 by block order is
+  balanced (every cell 154-190). The .sav holds only Mize's variables and the
+  panel profile; the other two studies' items are not in it.
+
+
+  ASSIGNMENT
+
+  DOV_TESS192 (Q 1804-1810): "Randomly assign, with equal probability, a value
+  of 1 to 4." 1 = DisplayA/Q1, 2 = DisplayB/Q1, 3 = DisplayC/Q2, 4 =
+  DisplayD/Q2. Counts 545 / 477 / 482 / 531, sum 2,035, no blanks. Raw n ->
+  condition_num n-1, which is also SocSci210's numbering (their condition 0
+  stimulus is Display A, 1 is B, 2 is C, 3 is D, read from their parquet).
+  recipe_prep.py (Jev, 2026-11-24): DOV_TESS192 at conf 0.86, NONE_OF_THESE
+  0.13 behind it; accepted, and the questionnaire settles it independently.
+  The data agree with the routing: Q1_A..Q1_C are non-null for exactly the
+  1,022 respondents with DOV_TESS192 in {1, 2}, Q2_A..Q2_C for exactly the
+  1,013 in {3, 4}.
+
+  Factors, named from PR Table 1 ("2 (Sexual History) x 2 (Gender)"):
+    target_gender: man (Michael, arms A/B) | woman (Emily, arms C/D)
+    sexual_history: heterosexual (A: Michael, past relationships with women;
+      C: Emily, past relationships with men) | same-sex (B: Michael, with men;
+      D: Emily, with women)
+  In every arm the recent casual encounter is with someone of the OTHER kind
+  from the history (A and D with Matt, B and C with Jennifer). Fully crossed
+  2 x 2, every cell non-empty; minimal pairs A-B, C-D (history) and A-C, B-D
+  (gender) all render different text.
+
+
+  CONDITION TEXT
+
+  shared_context: the [DISPAA] screen, Q 1813-1814, word-for-word ("Please read
+  the following story and form an impression ..."). It is shown to every arm
+  before the story.
+  Arm text: the story, word-for-word: A = Q 1817-1819 [DISPLAYA], B = Q
+  1822-1824 [DISPLAYB] (trailing space dropped), C = Q 1827-1829 [DISPLAYC],
+  D = Q 1833-1835 [DISPLAYD]. Q 1837-1838: the story is on the same screen as
+  its question ("Show display A or B on same screen as Q1"; "C or D ... as Q2").
+  PR's vignettes (PR p. "Vignettes") carry the same words; Q is the source used.
+  The names (Michael, Emily, Matt, Jennifer) are as printed; Emily is both the
+  target of C/D and Michael's ex-partner in A, as Q has it.
+  Typography: none in the arm text. Q2's lines carry non-breaking spaces and
+  a line separator (U+2028) after "Emily is:" (Q 1855-1856); normalised to plain
+  spaces, per docs/CONVENTIONS.md.
+
+
+  OUTCOMES - one screen, three number boxes, one outcome per box
+
+  Q1 (arms A/B, Q 1840-1849) and Q2 (arms C/D, Q 1853-1861) are each ONE screen
+  with three number boxes, each "[NUMBER BOX 0-100]", answered as a whole
+  number ("respondents allowed to enter a whole number for each sexual
+  orientation", PR). Built per docs/CONVENTIONS.md "One stem, several labelled
+  answer fields", exactly as 7tzpe's Q11: one outcome per box, the question is
+  the stem, its parenthesised instruction and the three box labels
+  word-for-word, then ONE ADDED SENTENCE, not sourced:
+    'Report only the percentage for "<box label>".'
+  with the box label quoted from Q (7tzpe's wording, kept identical for the
+  corpus). The "A=", "B=", "C=" prefixes and "[NUMBER BOX 0-100]" are
+  programming notation, not screen text, and are dropped; the .sav's own
+  variable labels ("[Heterosexual / Straight] How likely to do you think
+  Michael is:") confirm the box label is the text after "=".
+    task 0  Heterosexual / Straight   Q1_A (Michael)  Q2_A (Emily)
+    task 1  Gay | Gay/Lesbian         Q1_B (Michael)  Q2_B (Emily)
+    task 2  Bisexual                  Q1_C (Michael)  Q2_C (Emily)
+  The task numbering is SocSci210's (their task 0/1/2 = heterosexual / gay /
+  bisexual, read from their prompts), and the same three tasks are asked in
+  every arm, so the arm's own variable and wording are set per (arm, task) in
+  `items`: Michael's wording is the Outcome default, Emily's the override.
+  Words kept as printed, including the source typo "How likely to do you think"
+  in both stems and "between 0 to 100%". The middle box is "Gay" for Michael
+  (Q 1848) and "Gay/Lesbian" for Emily (Q 1860); the .sav labels Q2_B "[Gay]",
+  but the questionnaire is the authority on wording, so Emily's rows say
+  "Gay/Lesbian". The boxes did not have to sum to 100 (no such check in Q, and
+  18% of complete Q1 answers do not), so nothing is said about a total.
+  Scale 0-100, no endpoint labels: the parenthesised instruction in the
+  question already says what 0 and 100 mean, word-for-word. response_recode is
+  the identity 0..100 (all answers are whole numbers 0-100, checked).
+
+  Missing: -1 "Refused" is the only non-answer code (Jev non_answer conf 1.00 on
+  all six variables) -> missing_codes. A refusal is per box: Q1 refused
+  38 / 37 / 18 boxes (A/B/C), Q2 26 / 25 / 15. 22 respondents refused all three
+  boxes (13 Q1, 9 Q2) and so have no rows; participants 2,035 - 22 = 2,013.
+  Nothing is imputed: a refused box is dropped even where the other two sum to
+  100.
+
+    rows: arm A 521 / 521 / 532, B 463 / 464 / 472, C 474 / 471 / 474,
+          D 513 / 517 / 524 (tasks 0/1/2); total 5,946.
+
+  Nothing else in Mize's block is an outcome: after Q2 come PARTY1-4, IDEO,
+  REL1, REL2 (Q 1864-2045), the panel's missing-profile re-asks, merged into
+  PartyID7 / IDEO / REL1 / REL2 (persona, below). They are US party and
+  ideology items and never outcomes (UK scope).
+
+
+  PERSONA
+
+  GfK KnowledgePanel standard profile, as 5hqan (TESS3 176) and 7tzpe: PPAGE,
+  PPGENDER, PPEDUCAT, PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE,
+  PPHOUSE, PPRENT, PPMSACAT, PPNET, plus the study's merged profile re-asks
+  PartyID7 (party_id), IDEO (ideology), REL1 (religion), REL2
+  (religious_attendance). In this file they carry the plain names (REL1, not
+  XREL1 or DOV_REL1) and are already merged: IDEO and REL1 are non-null for all
+  2,035 (Q 1944-1972 and 1975-2019 describe the merge); REL2 is blank for 19,
+  all routed past the re-ask (Q 2022-2023, "DOV_REL1=1-12"): 14 with REL1 =
+  None, 5 with REL1 refused. No "missing" code (XIDEO 9, XREL1 14)
+  survives in the file.
+  QC WARNS, KNOWINGLY, on religion (rule 14: 'Baptist-any denomination',
+  'Catholic', 'Eastern Orthodox' outside the canonical vocabulary). The
+  KnowledgePanel religion list is not yet a scheme in
+  data/catalog/persona_crosswalk_religion.json, which this build may not edit.
+  5hqan and ye2ej (same panel, same list) already ship these exact labels, so
+  keeping REL1 describes these respondents the same way as theirs; 7tzpe chose
+  instead to drop religion. The fix is one crosswalk scheme covering all three
+  studies, after which this warning clears with no recipe change.
+  persona_missing (each exercised): IDEO -1 Refused (11
+  respondents), REL1 -1 (8), REL2 -1 (3). No PP* variable has a negative code
+  in this file, so none is declared (an unexercised declaration is untested).
+  Jev (recipe_prep.py): agreed on every field it was asked about (conf 0.99-
+  1.00) except education, where it preferred PPEDUC (0.99) over PPEDUCAT, and
+  region, where PPREG4 (0.52-0.56) narrowly beat ppreg9 (REVIEW). PPEDUCAT and
+  PPREG4 are kept, as in every KnowledgePanel recipe and the crosswalk built
+  for them.
+
+  EXTRA FIELD: sexual_orientation <- ppp20063 ("Q23: Do you consider yourself
+  to be. . ." Heterosexual or straight / Gay / Lesbian / Bisexual), a
+  KnowledgePanel profile item, the respondent's own orientation. Same field
+  name and label set as ye2ej (TESS 190, same panel and year). It is a fact
+  about the respondent, not the thing being judged (the vignette character's
+  orientation), and the condition says nothing about what any orientation
+  group thinks, so nothing is derivable by substitution (CONVENTIONS, "The
+  condition must not name the respondent's own persona category"). Blank for
+  75 respondents (not in their profile); no negative code occurs.
+  NOT MAPPED, judgement: ppp20064 ("Do you have any friends or relatives who
+  you know to be gay, lesbian, bisexual, or transgender?") and ppp10212
+  ("Do you actively participate in ... [LGBT Rights Movement]"). They are
+  contact with and activism about the very categories the outcome asks the
+  respondent to assign, so they sit in the outcome's own domain (as 8972k
+  leaves out own-children counts for a family-size outcome). Recorded so a
+  reviewer can overrule. Not mapped either: ppagecat, ppagect4, PPEDUC,
+  ppreg9, PPSTATEN (coarser or finer duplicates), PPHHHEAD, PPT01-PPT18OV
+  (household composition detail), weight, timing.
+
+
+  UK CHECK
+
+  What respondents were shown: a short story about Michael or Emily, their past
+  relationships (all with women, or all with men) and a casual encounter with
+  someone of the other sex; then how likely the character is to be
+  heterosexual / straight, gay (or gay/lesbian) and bisexual, 0 to 100. Nothing
+  American is in the condition or the outcome: no institution, law, place,
+  party, money or US-only idiom. All four names are common in Britain, and
+  "Heterosexual / Straight", "Gay", "Gay/Lesbian", "Bisexual" are the words a
+  British respondent would use. The party and ideology re-asks (US) sit only in
+  the persona, as for every TESS source.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck): 5,946 rows, 2,013 participants, 4 conditions, 3
+  tasks. Their per-(condition, task) counts and means, read from their parquet
+  before this recipe was written, equal an independent pyreadstat reading of
+  the .sav to three decimals in all 12 cells (e.g. A heterosexual n 521 mean
+  31.455; B heterosexual 463, 8.641; D bisexual 524, 53.567).
+  tests/test_4zscf_answer_key.py recomputes every (person, condition, task,
+  response) tuple from the .sav and compares it with the BUILT parquet, and
+  pins the 12 cell counts and means.
+
+  SocSci210's TEXT, informational only: their stimulus is the story word-for-
+  word but drops the [DISPAA] instructions; their question is a paraphrase
+  ("How likely do you think Michael is bisexual?") and says "gay/lesbian" for
+  Michael too, which Q does not.
+
+condition:
+  source_var: DOV_TESS192
+  factors: [target_gender, sexual_history]
+  considered_and_rejected:
+    DOV_Order1: >-
+      Omnibus block order (Q 43-55, DOV_ORDER: TESS185/TESS189/TESS192), a
+      counterbalancing of three unrelated TESS studies, not this design. Mize's
+      screens are word-for-word the same in every block order.
+    DOV_Order2: >-
+      Omnibus block order (Q 43-55, DOV_ORDER: TESS189/TESS192/TESS185); see
+      DOV_Order1.
+    DOV_Order3: >-
+      Omnibus block order (Q 43-55, DOV_ORDER: TESS192/TESS185/TESS189); see
+      DOV_Order1.
+  # Q 1813-1814 [DISPAA], shown to every arm.
+  shared_context: >-
+    Please read the following story and form an impression of the individuals
+    described in the story. After reading the story, please answer the
+    questions with your first uncensored impressions. Some of the questions may
+    feel vague or you might feel like you do not have enough information to
+    answer them, but please answer as truthfully and honestly as possible.
+  arms:
+    # Q 1817-1819 [DISPLAYA]
+    - raw: 1
+      condition_num: 0
+      factors: {target_gender: man, sexual_history: heterosexual}
+      text: >-
+        Michael is currently single but has had multiple happy relationships
+        with women in the past. Michael has only dated women and one of his
+        relationships with a woman named Emily lasted for over two years. The
+        other night, Michael met Matt and felt attracted to him. At the end of
+        the night, Michael and Matt went home together and had a casual sexual
+        encounter.
+    # Q 1822-1824 [DISPLAYB]
+    - raw: 2
+      condition_num: 1
+      factors: {target_gender: man, sexual_history: same-sex}
+      text: >-
+        Michael is currently single but has had multiple happy relationships
+        with men in the past. Michael has only dated men and one of his
+        relationships with a man named Matt lasted for over two years. The
+        other night, Michael met Jennifer and felt attracted to her. At the end
+        of the night, Michael and Jennifer went home together and had a casual
+        sexual encounter.
+    # Q 1827-1829 [DISPLAYC]
+    - raw: 3
+      condition_num: 2
+      factors: {target_gender: woman, sexual_history: heterosexual}
+      text: >-
+        Emily is currently single but has had multiple happy relationships with
+        men in the past. Emily has only dated men and one of her relationships
+        with a man named Matt lasted for over two years. The other night, Emily
+        met Jennifer and felt attracted to her. At the end of the night, Emily
+        and Jennifer went home together and had a casual sexual encounter.
+      items:
+        0:
+          outcome_var: Q2_A
+          outcome_question: &emily_het |-
+            How likely to do you think Emily is:
+            (Please indicate a level of certainty between 0 to 100%. 100 would indicate you are completely certain Emily is that orientation, while 0 would indicate you are completely certain Emily is not that orientation. Please specify an answer for each of the three choices).
+            Heterosexual / Straight
+            Gay/Lesbian
+            Bisexual
+            Report only the percentage for "Heterosexual / Straight".
+        1:
+          outcome_var: Q2_B
+          outcome_question: &emily_gay |-
+            How likely to do you think Emily is:
+            (Please indicate a level of certainty between 0 to 100%. 100 would indicate you are completely certain Emily is that orientation, while 0 would indicate you are completely certain Emily is not that orientation. Please specify an answer for each of the three choices).
+            Heterosexual / Straight
+            Gay/Lesbian
+            Bisexual
+            Report only the percentage for "Gay/Lesbian".
+        2:
+          outcome_var: Q2_C
+          outcome_question: &emily_bi |-
+            How likely to do you think Emily is:
+            (Please indicate a level of certainty between 0 to 100%. 100 would indicate you are completely certain Emily is that orientation, while 0 would indicate you are completely certain Emily is not that orientation. Please specify an answer for each of the three choices).
+            Heterosexual / Straight
+            Gay/Lesbian
+            Bisexual
+            Report only the percentage for "Bisexual".
+    # Q 1833-1835 [DISPLAYD]
+    - raw: 4
+      condition_num: 3
+      factors: {target_gender: woman, sexual_history: same-sex}
+      text: >-
+        Emily is currently single but has had multiple happy relationships with
+        women in the past. Emily has only dated women and one of her
+        relationships with a woman named Jennifer lasted for over two years. The
+        other night, Emily met Matt and felt attracted to him. At the end of the
+        night, Emily and Matt went home together and had a casual sexual
+        encounter.
+      items:
+        0: {outcome_var: Q2_A, outcome_question: *emily_het}
+        1: {outcome_var: Q2_B, outcome_question: *emily_gay}
+        2: {outcome_var: Q2_C, outcome_question: *emily_bi}
+
+# Michael's wording (Q 1840-1849) is the default; arms C and D override it with
+# Emily's (Q 1853-1861) in `items`.
+outcomes:
+  - var: Q1_A
+    task_num: 0
+    question: |-
+      How likely to do you think Michael is:
+      (Please indicate a level of certainty between 0 to 100%. 100 would indicate you are completely certain Michael is that orientation, while 0 would indicate you are completely certain Michael is not that orientation. Please specify an answer for each of the three choices).
+      Heterosexual / Straight
+      Gay
+      Bisexual
+      Report only the percentage for "Heterosexual / Straight".
+    scale: {min: 0, max: 100}
+  - var: Q1_B
+    task_num: 1
+    question: |-
+      How likely to do you think Michael is:
+      (Please indicate a level of certainty between 0 to 100%. 100 would indicate you are completely certain Michael is that orientation, while 0 would indicate you are completely certain Michael is not that orientation. Please specify an answer for each of the three choices).
+      Heterosexual / Straight
+      Gay
+      Bisexual
+      Report only the percentage for "Gay".
+    scale: {min: 0, max: 100}
+  - var: Q1_C
+    task_num: 2
+    question: |-
+      How likely to do you think Michael is:
+      (Please indicate a level of certainty between 0 to 100%. 100 would indicate you are completely certain Michael is that orientation, while 0 would indicate you are completely certain Michael is not that orientation. Please specify an answer for each of the three choices).
+      Heterosexual / Straight
+      Gay
+      Bisexual
+      Report only the percentage for "Bisexual".
+    scale: {min: 0, max: 100}
+
+# Whole-number boxes 0-100, stored as the number entered (identity).
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+missing_codes: [-1]
+
+persona_missing:
+  IDEO: [-1]
+  REL1: [-1]
+  REL2: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: PartyID7
+  ideology: IDEO
+  religion: REL1
+  religious_attendance: REL2
+  sexual_orientation: ppp20063

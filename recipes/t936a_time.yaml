@@ -1,0 +1,360 @@
+study_id: t936a
+experiment: time
+source: tess
+title: "Fairness and Favorability Assessments of Differential Parental Investment (Schnettler, TESS2 053): Vignette 2, parents' time"
+data_file: TESS2_053_Schnettler_Client.sav
+licence: >-
+  none stated on the OSF deposit (node t936a; the same terms as every TESS2 deposit built here, e.g. c5r2f and 9263n, checked via the OSF API: node_license null, no license relationship). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# As t936a_feeding.yaml: SocSci210's two "conditions" are the two vignettes,
+# so the comparable part (tasks 4-7 of theirs) is checked by hand in
+# tests/test_t936a_answer_key.py rather than by `mmds crosscheck`.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 053 (Sebastian Schnettler). Vignette 2 of the deposit's two
+  experiments. The study background, the two-vignette design, the section
+  rotation, the persona and the licence are as in t936a_feeding.yaml's notes,
+  which are not repeated except where V2 differs. Q = "TESS2 053
+  Schnettler_FINAL.txt", line numbers 1-based; PD = its "Project Design" pages
+  (Q 87-280), the PI's specification and never a wording authority.
+
+
+  ASSIGNMENT
+
+  XVIGN2 {1: 259, 2: 277, 3: 226, 4: 265, 5: 272, 6: 253, 7: 219, 8: 245}, sum
+  2,016, no blanks; raw k -> condition_num k-1. Code meanings from the insert
+  table Q 385-483; the deposit's Insertv2b1 .. Insertv2s2_3 columns (what each
+  respondent's screen was filled with) are constant within every XVIGN2 code
+  and equal the table, all 2,016 rows (asserted in the answer-key test).
+
+    XVIGN2  low birth-weight child        normal birth-weight child
+    1       first-born son David          second-born son Paul
+    2       first-born daughter Allison   second-born daughter Lisa
+    3       first-born son David          second-born daughter Lisa
+    4       first-born daughter Allison   second-born son Paul
+    5-8     as 1-4 with the birth orders swapped (the low birth-weight child
+            is the second-born)
+
+  Factors (names ours, from the PD, Q 165: "sex of child with low birth weight
+  (LBW) (w/m); sex of child with normal birth weight (NBW) (w/m); and birth
+  order of LBW child / NBW child"): low_weight_child_birth_order,
+  low_weight_child, normal_weight_child. Fully crossed, every minimal pair
+  differs in text.
+
+
+  CONDITION TEXT: THE FIELDED SCREEN, NOT THE SPECIFICATION
+
+  Q 574, the V2 DISPLAY screen, with each arm's inserts (curly quotes and
+  apostrophes straightened). The heading "V2." (Q 573) is a section label and
+  is dropped; the paragraph's own double quotes are kept. The insert table
+  writes three of the name inserts with a leading space ("Insertv2s1_3=
+  David", Q 397); the deposit's own Insertv2s1_3 column holds "David", and the
+  screen text puts a space before the bracket anyway, so one space is
+  rendered.
+
+  The PD's version of this vignette (Q 168) is NOT what was fielded, and
+  differs in five places, each one checked against Q 574:
+    PD "in an optimal way"                  fielded "in the best way"
+    PD (no weight given)                    fielded "low birth weight (less than 5.5 lb)"
+    PD "reduce the different developmental potential"
+                                            fielded "reduce the difference in potential"
+    PD "the child with the highest developmental potential"
+                                            fielded "the child with more potential"
+    PD "decided for the second recommendation, that is, to spend the same
+       amount of time"                      fielded "decided for the first recommendation"
+  The last matters most: in the fielded text the parents follow the FIRST
+  advice given (the same time for each child), and "first" is the
+  recommendation that says so. SocSci210's text for this vignette is the PD's
+  wording, so it carries "optimal way", "second recommendation" and no birth
+  weight, and in the row sampled it also names both children Allison ("first-
+  born daughter Allison ... second-born daughter Allison ... first-born
+  daughter Lisa ... second-born daughter Lisa"). In every V2 arm the decision
+  is the same: equal time. What varies is which child, first- or second-born,
+  son or daughter, was born light.
+
+
+  OUTCOMES (each on its own page, fixed order, after the vignette)
+
+  task 0  QV21  Q 577  "How favorable are you to the way Susan and John decided
+                to divide up their time spent with their children?"
+                ends Q 579-580 "Very unfavorable" / "Very favorable", -5 .. +5
+  task 1  QV22  Q 594  "How fair is Susan and John's decision to divide up their
+                time spent with their children?"  ends Q 596-597 "Very unfair" /
+                "Very fair"
+  task 2  QV23  Q 611  "How fair will other people find Susan and John's
+                decision to divide up their time spent with their children?"
+                ends Q 613-614 as QV22
+  task 3  QV25  Q 637  "How strongly can differences in the amount of time
+                parents spent with their children affect a child's development,
+                do you think?"  ends Q 639-640 "Not at all" / "Very strongly",
+                points Q 641-651 0 .. 10
+  No child's name appears in any of them, so no per-arm wording.
+  The .sav labels differ from Q: QV21's reads "How favorable are you to Susan
+  and John's decision to divide up ...", and QV22's and QV23's add ", do you
+  think?". Q is the authority; recorded, not followed. QV25's label and Q agree.
+
+  Codes: QV21-QV23 are 1..11 labelled "-5".."+5", recoded to -5..+5 (code minus
+  6); QV25 is 1..11 labelled "0".."10", recoded to 0..10 (code minus 1). -1
+  "Refused" is dropped: QV21 27, QV22 40, QV23 32, QV25 31. recipe_prep.py's Jev
+  pass called the bare labels "-2", "-1" and "0" possible non-answers (conf
+  0.30-0.52); overruled, they are printed scale points (Q 581-591, 615-625).
+
+  NOT BUILT: QV24 (Q 627-634), "Please mark everything that applies to the
+  scenario that has just been presented to you: the child born with the low
+  birth weight is the... son / daughter / first-born child / second-born
+  child", a recall check (CONVENTIONS) and mark-all-that-apply. SocSci210 did
+  not build it either.
+
+  SECTION ORDER: not narrated, as in t936a_feeding.yaml (flagged there). Mean
+  QV21 is +3.28 when V2 came second (Order_V1V2_1st = 1) and +3.36 when it came
+  first; QV22 +3.01 / +3.30, QV23 +1.77 / +2.06, QV25 (0-10) 6.18 / 6.37.
+
+
+  UK CHECK
+
+  Parents of two children, both working full-time, who give each child the same
+  time although one was born with low birth weight, and whether that is
+  favourable, fair, fair to others, and how much parents' time affects a
+  child's development. No institution, law, place, party or money. The one
+  unit is "(less than 5.5 lb)": pounds are how birth weight is commonly given
+  in Britain too (alongside kilograms), so a British reader takes the same
+  meaning from it; noted rather than treated as US-specific.
+
+
+  ANSWER KEY
+
+  SocSci210's tasks 4-7 are QV21, QV22, QV23, QV25, all under their condition 1:
+  rows 1,989 / 1,976 / 1,984 / 1,985 and full response distributions equal
+  ours exactly (QV25 on 0..10 in theirs too). Rows here: 7,934, 1,999
+  participants. Both experiments together: 15,891 rows and 2,006 participants,
+  SocSci210's own totals.
+
+condition:
+  source_var: XVIGN2
+  factors: [low_weight_child_birth_order, low_weight_child, normal_weight_child]
+  considered_and_rejected:
+    XVIGN1: >-
+      The assignment of the OTHER vignette (V1, Sarah), independent of XVIGN2
+      (full 8 x 8 crosstab); built as its own experiment, t936a_feeding.yaml.
+    Order_V1V2_1st: >-
+      Q 485 rotates which vignette section came first, as counterbalancing (PD, Q
+      88). This section's words are the same in either order and the rendered
+      condition cites no position; not narrated. Its small effect on the means is
+      recorded in notes.
+    Order_V1V2_2nd: "The complement of Order_V1V2_1st (crosstab: always the other section)."
+    Insertv1b1: "V1's birth-order insert, a function of XVIGN1 (the other experiment), not of this one."
+    Insertv1b2: "V1's birth-order insert, a function of XVIGN1 (the other experiment), not of this one."
+    Insertv1b3: "V1's birth-order insert, a function of XVIGN1 (the other experiment), not of this one."
+    Insertv1b4: "V1's birth-order insert, a function of XVIGN1 (the other experiment), not of this one."
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {low_weight_child_birth_order: first-born, low_weight_child: son, normal_weight_child: son}
+      text: >-
+        "Susan and John have two children. Their first-born son David was born with low
+        birth weight (less than 5.5 lb), whereas their second-born son Paul was born with
+        normal birth weight. Because Susan and John both work full-time, time is a scarce
+        resource for them. Therefore, they want to make sure to use the little time they
+        have with their children in the best way. But when they asked friends, relatives,
+        and acquaintances for advice, everyone seemed to have a different opinion of what is
+        best: Some told the two parents to spend the same amount of time with each of their
+        children so that everything could turn out in a natural way. Others told them to
+        spend more time with their first-born son David, the child born with lower birth
+        weight, in order to reduce the difference in potential between the two children. And
+        yet others told them to spend more time with their second-born son Paul, the child
+        born with normal birth weight, because this is the child with more potential and
+        therefore Susan and John's time investment would have a larger effect. To the two
+        parents, all arguments sounded reasonable, but in the end they decided for the first
+        recommendation, that is, to spend the same amount of time with David and Paul."
+    - raw: 2
+      condition_num: 1
+      factors: {low_weight_child_birth_order: first-born, low_weight_child: daughter, normal_weight_child: daughter}
+      text: >-
+        "Susan and John have two children. Their first-born daughter Allison was born with
+        low birth weight (less than 5.5 lb), whereas their second-born daughter Lisa was
+        born with normal birth weight. Because Susan and John both work full-time, time is a
+        scarce resource for them. Therefore, they want to make sure to use the little time
+        they have with their children in the best way. But when they asked friends,
+        relatives, and acquaintances for advice, everyone seemed to have a different opinion
+        of what is best: Some told the two parents to spend the same amount of time with
+        each of their children so that everything could turn out in a natural way. Others
+        told them to spend more time with their first-born daughter Allison, the child born
+        with lower birth weight, in order to reduce the difference in potential between the
+        two children. And yet others told them to spend more time with their second-born
+        daughter Lisa, the child born with normal birth weight, because this is the child
+        with more potential and therefore Susan and John's time investment would have a
+        larger effect. To the two parents, all arguments sounded reasonable, but in the end
+        they decided for the first recommendation, that is, to spend the same amount of time
+        with Allison and Lisa."
+    - raw: 3
+      condition_num: 2
+      factors: {low_weight_child_birth_order: first-born, low_weight_child: son, normal_weight_child: daughter}
+      text: >-
+        "Susan and John have two children. Their first-born son David was born with low
+        birth weight (less than 5.5 lb), whereas their second-born daughter Lisa was born
+        with normal birth weight. Because Susan and John both work full-time, time is a
+        scarce resource for them. Therefore, they want to make sure to use the little time
+        they have with their children in the best way. But when they asked friends,
+        relatives, and acquaintances for advice, everyone seemed to have a different opinion
+        of what is best: Some told the two parents to spend the same amount of time with
+        each of their children so that everything could turn out in a natural way. Others
+        told them to spend more time with their first-born son David, the child born with
+        lower birth weight, in order to reduce the difference in potential between the two
+        children. And yet others told them to spend more time with their second-born
+        daughter Lisa, the child born with normal birth weight, because this is the child
+        with more potential and therefore Susan and John's time investment would have a
+        larger effect. To the two parents, all arguments sounded reasonable, but in the end
+        they decided for the first recommendation, that is, to spend the same amount of time
+        with David and Lisa."
+    - raw: 4
+      condition_num: 3
+      factors: {low_weight_child_birth_order: first-born, low_weight_child: daughter, normal_weight_child: son}
+      text: >-
+        "Susan and John have two children. Their first-born daughter Allison was born with
+        low birth weight (less than 5.5 lb), whereas their second-born son Paul was born
+        with normal birth weight. Because Susan and John both work full-time, time is a
+        scarce resource for them. Therefore, they want to make sure to use the little time
+        they have with their children in the best way. But when they asked friends,
+        relatives, and acquaintances for advice, everyone seemed to have a different opinion
+        of what is best: Some told the two parents to spend the same amount of time with
+        each of their children so that everything could turn out in a natural way. Others
+        told them to spend more time with their first-born daughter Allison, the child born
+        with lower birth weight, in order to reduce the difference in potential between the
+        two children. And yet others told them to spend more time with their second-born son
+        Paul, the child born with normal birth weight, because this is the child with more
+        potential and therefore Susan and John's time investment would have a larger effect.
+        To the two parents, all arguments sounded reasonable, but in the end they decided
+        for the first recommendation, that is, to spend the same amount of time with Allison
+        and Paul."
+    - raw: 5
+      condition_num: 4
+      factors: {low_weight_child_birth_order: second-born, low_weight_child: son, normal_weight_child: son}
+      text: >-
+        "Susan and John have two children. Their second-born son David was born with low
+        birth weight (less than 5.5 lb), whereas their first-born son Paul was born with
+        normal birth weight. Because Susan and John both work full-time, time is a scarce
+        resource for them. Therefore, they want to make sure to use the little time they
+        have with their children in the best way. But when they asked friends, relatives,
+        and acquaintances for advice, everyone seemed to have a different opinion of what is
+        best: Some told the two parents to spend the same amount of time with each of their
+        children so that everything could turn out in a natural way. Others told them to
+        spend more time with their second-born son David, the child born with lower birth
+        weight, in order to reduce the difference in potential between the two children. And
+        yet others told them to spend more time with their first-born son Paul, the child
+        born with normal birth weight, because this is the child with more potential and
+        therefore Susan and John's time investment would have a larger effect. To the two
+        parents, all arguments sounded reasonable, but in the end they decided for the first
+        recommendation, that is, to spend the same amount of time with David and Paul."
+    - raw: 6
+      condition_num: 5
+      factors: {low_weight_child_birth_order: second-born, low_weight_child: daughter, normal_weight_child: daughter}
+      text: >-
+        "Susan and John have two children. Their second-born daughter Allison was born with
+        low birth weight (less than 5.5 lb), whereas their first-born daughter Lisa was born
+        with normal birth weight. Because Susan and John both work full-time, time is a
+        scarce resource for them. Therefore, they want to make sure to use the little time
+        they have with their children in the best way. But when they asked friends,
+        relatives, and acquaintances for advice, everyone seemed to have a different opinion
+        of what is best: Some told the two parents to spend the same amount of time with
+        each of their children so that everything could turn out in a natural way. Others
+        told them to spend more time with their second-born daughter Allison, the child born
+        with lower birth weight, in order to reduce the difference in potential between the
+        two children. And yet others told them to spend more time with their first-born
+        daughter Lisa, the child born with normal birth weight, because this is the child
+        with more potential and therefore Susan and John's time investment would have a
+        larger effect. To the two parents, all arguments sounded reasonable, but in the end
+        they decided for the first recommendation, that is, to spend the same amount of time
+        with Allison and Lisa."
+    - raw: 7
+      condition_num: 6
+      factors: {low_weight_child_birth_order: second-born, low_weight_child: son, normal_weight_child: daughter}
+      text: >-
+        "Susan and John have two children. Their second-born son David was born with low
+        birth weight (less than 5.5 lb), whereas their first-born daughter Lisa was born
+        with normal birth weight. Because Susan and John both work full-time, time is a
+        scarce resource for them. Therefore, they want to make sure to use the little time
+        they have with their children in the best way. But when they asked friends,
+        relatives, and acquaintances for advice, everyone seemed to have a different opinion
+        of what is best: Some told the two parents to spend the same amount of time with
+        each of their children so that everything could turn out in a natural way. Others
+        told them to spend more time with their second-born son David, the child born with
+        lower birth weight, in order to reduce the difference in potential between the two
+        children. And yet others told them to spend more time with their first-born daughter
+        Lisa, the child born with normal birth weight, because this is the child with more
+        potential and therefore Susan and John's time investment would have a larger effect.
+        To the two parents, all arguments sounded reasonable, but in the end they decided
+        for the first recommendation, that is, to spend the same amount of time with David
+        and Lisa."
+    - raw: 8
+      condition_num: 7
+      factors: {low_weight_child_birth_order: second-born, low_weight_child: daughter, normal_weight_child: son}
+      text: >-
+        "Susan and John have two children. Their second-born daughter Allison was born with
+        low birth weight (less than 5.5 lb), whereas their first-born son Paul was born with
+        normal birth weight. Because Susan and John both work full-time, time is a scarce
+        resource for them. Therefore, they want to make sure to use the little time they
+        have with their children in the best way. But when they asked friends, relatives,
+        and acquaintances for advice, everyone seemed to have a different opinion of what is
+        best: Some told the two parents to spend the same amount of time with each of their
+        children so that everything could turn out in a natural way. Others told them to
+        spend more time with their second-born daughter Allison, the child born with lower
+        birth weight, in order to reduce the difference in potential between the two
+        children. And yet others told them to spend more time with their first-born son
+        Paul, the child born with normal birth weight, because this is the child with more
+        potential and therefore Susan and John's time investment would have a larger effect.
+        To the two parents, all arguments sounded reasonable, but in the end they decided
+        for the first recommendation, that is, to spend the same amount of time with Allison
+        and Paul."
+
+outcomes:
+  - var: QV21
+    task_num: 0
+    question: "How favorable are you to the way Susan and John decided to divide up their time spent with their children?"
+    scale: {min: -5, max: 5, min_label: "Very unfavorable", max_label: "Very favorable"}
+  - var: QV22
+    task_num: 1
+    question: "How fair is Susan and John's decision to divide up their time spent with their children?"
+    scale: {min: -5, max: 5, min_label: "Very unfair", max_label: "Very fair"}
+  - var: QV23
+    task_num: 2
+    question: "How fair will other people find Susan and John's decision to divide up their time spent with their children?"
+    scale: {min: -5, max: 5, min_label: "Very unfair", max_label: "Very fair"}
+  - var: QV25
+    task_num: 3
+    question: "How strongly can differences in the amount of time parents spent with their children affect a child's development, do you think?"
+    scale: {min: 0, max: 10, min_label: "Not at all", max_label: "Very strongly"}
+    response_recode: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 10: 9, 11: 10}
+
+response_recode: {1: -5, 2: -4, 3: -3, 4: -2, 5: -1, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4, 11: 5}
+missing_codes: [-1]
+
+persona_missing:
+  XIDEO: [-1]
+  XREL1: [-1]
+
+persona_label_rewrite:
+  # As t936a_feeding.yaml: code 1's em dash normalised; code 12 to the fielded
+  # option "Other non-Christian" (Q 782) from the spec label "..., please specify".
+  XREL1:
+    1: "Baptist-any denomination"
+    12: "Other non-Christian"
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: xparty7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2
