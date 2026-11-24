@@ -2167,11 +2167,11 @@
    "origin": "SocSci210",
    "socsci210_split": "train",
    "uk_fit": "fit",
-   "set": "UK",
+   "set": "Base",
    "status": "To build",
    "in_our_eval": false,
    "link": "https://osf.io/qmfy4/",
-   "notes": "UK fit checked against the fielded questionnaire 24 Nov 2026: Yes. Carol Sherman / Sherman-Cook / Cook, late caring for her mother-in-law or working for a promotion; married-name choice transfers. Not on the experiment list rich reviewed: listed UK-fit only by the 9 Nov AI screen (socsci210_uk_rescan.json). A candidate for rich to approve, not a missed build. Materials scan 24 Nov 2026: questionnaire (TESS2_032_Shafer_FINAL.doc) and data found on OSF.",
+   "notes": "Removed from the UK set by rich, 24 Nov 2026: US-based (title and framing refer to Hillary Rodham Clinton). UK fit checked against the fielded questionnaire 24 Nov 2026: Yes. Carol Sherman / Sherman-Cook / Cook, late caring for her mother-in-law or working for a promotion; married-name choice transfers. Not on the experiment list rich reviewed: listed UK-fit only by the 9 Nov AI screen (socsci210_uk_rescan.json). A candidate for rich to approve, not a missed build. Materials scan 24 Nov 2026: questionnaire (TESS2_032_Shafer_FINAL.doc) and data found on OSF.",
    "build_order": null,
    "value": null,
    "domain": ""
