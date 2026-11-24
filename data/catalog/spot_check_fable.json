@@ -1,0 +1,272 @@
+[
+ {
+  "n": 1,
+  "verdict": "correct",
+  "words": "Display, vignette and 'Imagine you were this student's teacher...' word-for-word; four statements word-for-word. ADDED by us: 'The statements were listed in this order:' and the bullets. The bullet order is per respondent (RANDOMIZE AND RECORD ORDER) and I did not load rows, so the order shown in this row is not verified.",
+  "version": "XTESS137=1 -> Q1a (poor, inner-city) shown first; recipe raw 1 -> condition_num 0.",
+  "question": "Q1a stem word-for-word; options 1-4 match the questionnaire's codes.",
+  "evidence": "data/raw/_converted/vwn96__TESS3 134 Johnston_TESS3 137 Yeager Survey.txt lines 99-115 (display, [SP; SHOW IF XTESS137 = 1], Q1a)",
+  "problem": ""
+ },
+ {
+  "n": 2,
+  "verdict": "correct",
+  "words": "Statement word-for-word (incl. 'and women's empowerment', and no 'in developing countries' in the statement). ADDED: 'Before the question, you were shown this text:'.",
+  "version": "[oda_bottom if odasplit==5]; recipe raw 5 -> condition_num 4.",
+  "question": "Question word-for-word for this arm (with 'and women's empowerment'); options 1-5, 6 Don't know dropped.",
+  "evidence": "data/raw/_converted/del__DEL_Sandbox_GreatBritain_Feb2023_Survey.txt lines 317-323",
+  "problem": ""
+ },
+ {
+  "n": 3,
+  "verdict": "correct",
+  "words": "Assembled fill for techworkw14=3 reads exactly the condition text.",
+  "version": "Fills: 'Experts predict' {1|2|3|4}, 'in the next 20 years' {1|3}, '10% of all' {3|4}; recipe raw 3 -> condition_num 2. (The script has a typo 'ff_techworkw14w14' on the first fill.)",
+  "question": "Stem + 'I am worried that new technology will make my skills outdated.' with 1 Totally disagree .. 5 Totally agree.",
+  "evidence": "data/raw/ukds_6849/.triage_text/6849_ip_wave_14_questionnaire.txt lines 54669-54682 (Techreplace text/fills), 54838-54856 (Techoutdate)",
+  "problem": ""
+ },
+ {
+  "n": 4,
+  "verdict": "correct",
+  "words": "Intro and every attribute level word-for-word from the script lists. ADDED, never shown to the respondent: 'You are taking part in an online survey run by YouGov UK on 30-31 October 2017.' (composed from the data file's response dates). 'Pair 3' header dropped. Attribute row order is per respondent (list_table = random_shuffle, recorded in the .sav); I did not load rows, so this row's order is not verified.",
+  "version": "Text is consistent with the row's factors (names, six attributes each). Pair 3 uses the same template and the same list_table (re-shuffle is commented out for pairs 2-5).",
+  "question": "Stem word-for-word (QPAIR3). The on-screen options were the two NAMES; '1 means the applicant listed first above; 2 means ... second' is our re-coding.",
+  "evidence": "data/raw/_converted/35M5CV__bbc-script.txt lines 39-84 (lists), 162-163 (list_table), 665 (Pair 3 intro), 723 (QPAIR3); .sav metadata has list_table/row*_* columns",
+  "problem": ""
+ },
+ {
+  "n": 5,
+  "verdict": "correct",
+  "words": "Quoted question and options word-for-word (underline on 'personally' dropped). ADDED: 'Earlier in the survey you were asked:'.",
+  "version": "[IF RND_00=1: show BEHRMAN_AB1 first and then BEHRMAN_AA1 second]; the 'We would like to ask you...' intro is inserted on AB1 only when RND_00=1. Recipe raw 1 -> condition_num 1.",
+  "question": "BEHRMAN_AA1 without the intro (correct for RND_00=1); 0..7 or more.",
+  "evidence": "data/raw/_converted/8972k__TESS 136 Behrman 141 Eareckson 142 Elliott_vFINALprog.txt lines 413-447",
+  "problem": ""
+ },
+ {
+  "n": 6,
+  "verdict": "cannot check",
+  "words": "Intro sentences and every level wording are in the survey docx (intro line 254, 281; cell wordings in the Q6/Q7 tables). The full stop after 'health service' is ours.",
+  "version": "CANNOT DETERMINE FROM INSTRUMENT. The docx prints only 12 choice tables (Q6.1-6.6, Q7.1-7.6) and none is this pair (A: same day / evening-weekend / telephone advice / own GP / EUR45; B: next day / walk-in / no advice / any doctor or nurse / EUR0). The Ngene design file in the deposit has no such row either (no alt1 = 1,1,1,1,45) and has only a two-level appointment attribute, so it is not the fielded design. The pair exists only in the .dta's attribute dummies, which I did not load.",
+  "question": "The choice screen has no stem; the outcome sentence is taken from the example-screen instruction (docx line 281). 'Service A (1) / Service B (2)' matches.",
+  "evidence": "data/raw/_converted/zenodo6572717__Parent_Decision_Making_DCE_Survey.txt lines 254-281, 292-626; data/raw/zenodo6572717/Final Parent DCE design.ngd rows 1-24; Syntax Final Feb 2021.ngs",
+  "problem": "No fielded screen for this choice set exists in the deposit; the combination of levels rests on the data file alone."
+ },
+ {
+  "n": 7,
+  "verdict": "correct",
+  "words": "Consent text word-for-word for the ff_everint=1 fill; eight help-link labels word-for-word ('HELP SCREEN:' prefix dropped). ADDED: 'You were asked \"Do you have a personal Twitter account?\" and answered \"Yes\". You were then shown this text:' and 'Between this text and the question, the same page showed eight help links, each opening further information:'. Which everint fill a given row gets was not checked (rows not loaded).",
+  "version": "Twitlinka universe 'If (Ff_twithelpw15 = 1 And Twithave = 1)'; help note 'USE EIGHT SEPARATELY LABELLED HELP LINKS'. Recipe {version: 1, indmode: 3} -> condition_num 0; 'version' is a derived column with no label, taken as ff_twithelpw15.",
+  "question": "Twitlinka question word-for-word, Yes/No (version B's differs: '...or would you like more information?').",
+  "evidence": "data/raw/ukds_6849/.triage_text/6849_ip_wave_15_questionnaire.txt lines 18142-18182 (A), 18245-18275 (B)",
+  "problem": ""
+ },
+ {
+  "n": 8,
+  "verdict": "correct",
+  "words": "3L instruction, five headings and all fifteen options word-for-word, incl. the source's 'Usual Acticities'. ADDED: 'Earlier in the interview you were asked:', colons and ' / '.",
+  "version": "Eq5dcond 2 = 'ASK EQ-5D-3L Early module and ASK EQ-5D-5L Late module'; 3L early universe EQ5DCOND = 2; 5L late universe EQ5DCOND = 2 | 3. Recipe prior5=2 ('other form asked earlier') -> condition_num 1; prior5 is derived by scripts/gen_ip_eq5d.py.",
+  "question": "Eq5lpainlat: 'Pain/Discomfort' with the five 5L options word-for-word; the 'Please click the ONE box...' instruction sits on the first item of the module and is repeated here.",
+  "evidence": "data/raw/ukds_6849/.triage_text/6849_ip_wave_11_questionnaires.txt lines 12942-12955, 31826-31990, 42809-42990",
+  "problem": ""
+ },
+ {
+  "n": 9,
+  "verdict": "correct",
+  "words": "Six headings and all twelve levels word-for-word; intro word-for-word minus 'On the next few pages,'; 'British'/'Britain' are the script's own fills (qcountry.set(2)). ADDED: 'You were then shown two projects.' The table's attribute ROW ORDER was shuffled per respondent (attr_order_conj2 = random_shuffle([1..6])) and is not in the data, so the order in the row is the script's list order, not the order seen.",
+  "version": "{module m_CONJOINT_WITHOUT_NEED_A1ND_EFFETIVE_OPTIONS if split_sample == 2}: six attributes (1,2,4,6,7,8), no poverty, no effectiveness. Text consistent with the row's factors.",
+  "question": "'Which of the two aid projects do you support more?' <1> Project A <2> Project B (Q1_conj2_3).",
+  "evidence": "data/raw/_converted/del__DEL_Panel_GreatBritain_Wave_4_2022_Survey.txt lines 4-16, 820, 829-903, 1206, 1270, 1420-1440",
+  "problem": ""
+ },
+ {
+  "n": 10,
+  "verdict": "correct",
+  "words": "All four pages word-for-word with pipes filled (spinner image on the 'Taylor decides...' page dropped). The ' | ' table rendering is layout.",
+  "version": "Flow: Choice=6 and Frame=2 (Rank) -> '[FOOD] 6 options - first page' (QID421), rank randomisation (QID446), info page; QID410 is the table shown when other_choice1 = dish1 (Spring mix salad): '#1' on dish1 and dish2..6ranknum on the rest, matching ranks 3-5-4-2-6.",
+  "question": "QID558 like1_4 'How much do you think Taylor likes ${other_choice1}?' 1 Not at all .. 7 Very much.",
+  "evidence": "data/raw/researchbox755/Materials/Study 4.qsf QID421, QID446, QID416/QID550, QID410/QID551, QID558; survey flow",
+  "problem": ""
+ },
+ {
+  "n": 11,
+  "verdict": "correct",
+  "words": "QID327 word-for-word.",
+  "version": "Flow block 'referral' (QID327, QID331, QID344 ...) inside BlockRandomizer SubSet 12 of 12: every respondent saw all twelve promotions, order not recorded. A different 20% version (QID238) sits in Trash and is not used.",
+  "question": "QID344 ref2 word-for-word, 1 very unwilling .. 7 very willing. ref1 (difficulty) was asked on the same block before it and is not narrated.",
+  "evidence": "data/raw/researchbox3251/ Materials/WA-B4_Qualtrics survey.qsf QID327, QID344; survey flow",
+  "problem": ""
+ },
+ {
+  "n": 12,
+  "verdict": "correct",
+  "words": "QID77 word-for-word.",
+  "version": "QID77 display logic Condition = 4 (Price High, Framing USD); recipe condition_num 3.",
+  "question": "QID74 'How small or large does this discount feel to you?' Very small .. Very large, 7 points.",
+  "evidence": "data/raw/researchbox3299/Materials/Qualtrics_Study_4_Pretest.qsf QID77, QID74; survey flow (byte-identical to Uncertain_Promotions_Paper_Study_4_Pretest.qsf)",
+  "problem": ""
+ },
+ {
+  "n": 13,
+  "verdict": "correct",
+  "words": "Statement word-for-word. ADDED: 'You were shown this statement:'.",
+  "version": "[change_2 if changesplit==2]; recipe raw 2 -> condition_num 1.",
+  "question": "Stem word-for-word; 1 Strongly agree .. 5 Strongly disagree, 6 Don't know dropped.",
+  "evidence": "data/raw/_converted/del__DEL_Panel_GreatBritain_Wave_5_2023_Survey.txt lines 691-711",
+  "problem": ""
+ },
+ {
+  "n": 14,
+  "verdict": "correct",
+  "words": "Fertility intro word-for-word, and correctly WITHOUT the 'We realise that we might be asking you to repeat...' sentence that only the other group saw. ADDED: 'You had not been asked the questions that begin \"...\" earlier in the interview. The question that follows was part of a section introduced with:'.",
+  "version": "Fertility History A universe 'If (Ff_NONRESW10 = 2) // Group B' comes before Family Networks B; Family Networks A is Group A only. Recipe fn_earlier=1 -> condition_num 0, and scripts/gen_ip_nrp.py line 417 sets fn_earlier=1 where alloc == 2.",
+  "question": "Lstep2 word-for-word, Yes/No.",
+  "evidence": "data/raw/ukds_6849/mrdoc/pdf/6849_ip_wave_10_questionnaires.pdf (pdftotext -layout: lines 18670-18707, 20176-20203, 20387-20402, 39786, 41252-41275)",
+  "problem": ""
+ },
+ {
+  "n": 15,
+  "verdict": "correct",
+  "words": "Scenario word-for-word.",
+  "version": "One condition only; flow is Intro -> Quality Change -> Demographics, no randomiser. This is the pilot's own fielded .qsf.",
+  "question": "QID797 closing question and the three labelled points (1, 5, 9) word-for-word.",
+  "evidence": "data/raw/researchbox2562/Materials/Study 5a (Pilot) - Materials.qsf QID797; survey flow",
+  "problem": ""
+ },
+ {
+  "n": 16,
+  "verdict": "correct",
+  "words": "Scenario word-for-word.",
+  "version": "One condition only; no randomiser in the flow.",
+  "question": "QID797 closing question and the three labelled points word-for-word.",
+  "evidence": "data/raw/researchbox2562/Materials/Study 2b (Pilot) - Materials.qsf QID797; survey flow",
+  "problem": ""
+ },
+ {
+  "n": 17,
+  "verdict": "correct",
+  "words": "NO RESPONDENT SAW THESE WORDS. The condition is our one-sentence description of a screen layout, recast from the programmer's scripting note ('Where ff_satisw9 = 2, each question should appear on its own screen, with response options vertically aligned.'). It is accurate to that note, and the recipe declares it as the layout exception.",
+  "version": "Scripting note: ff_satisw9 = 2 -> own screen, vertical; recipe raw 2 -> condition_num 1.",
+  "question": "Sclfsat1 stem, 'Your health.' and the seven options word-for-word (web/self-completion wording, not the telephone alternative).",
+  "evidence": "data/raw/ukds_6849/.triage_text/6849_ip_wave_9_questionnaires.txt lines 30915-30945",
+  "problem": "Not an error of fact, but the whole condition is description, not stimulus; flagged because the brief asks for conditions that describe a display in words."
+ },
+ {
+  "n": 18,
+  "verdict": "correct",
+  "words": "Instruction screens, each trial line and the DV intro word-for-word ('Order N:' and 'Please click >> to view the next order.' dropped). All twenty times are values of the 50-row loop and are listed in loop order. ADDED: '(shown one per page, in a random order; the order was not recorded)' and 'You were asked:'. Not narrated: the two check questions asked between the trials and the DVs (chk1 'How many orders...', chk2 'What was the estimated delivery time...').",
+  "version": "Condition 2 PredictionText '45 minutes'; dv_subfirst=0 -> objective block (QID24 intro, QID25, QID36, QID27) before the subjective block, as narrated.",
+  "question": "QID5 sb_like word-for-word, 1 Not at all .. 7 Extremely. The five subjective items shared a page in random order, not recorded.",
+  "evidence": "data/raw/researchbox482/ResearchBox 482/ Materials/Study 6.qsf QID32, QID33, QID2, QID23, QID24, QID25, QID36, QID27, QID5; block '20 trials' loop (Subset 20 of 50); survey flow",
+  "problem": ""
+ },
+ {
+  "n": 19,
+  "verdict": "correct",
+  "words": "Whole story word-for-word for this cell, including the source's own 'He and Sue' (the other stroke arm says 'Dana') and 'carpet glue'.",
+  "version": "MANIPULATION 3: INNOCENT + 'STROKE - MORE THAN 50%' (11% -> 55%); .sav labels MANI1 3 = Innocent, MANI2 2 = Stroke - More than 50%; recipe {MANI1: 3, MANI2: 2} -> condition_num 9.",
+  "question": "SS11 with its grid text. CUT from the source: 'You set the punitive damages before.  Now' (the row reads 'Decide on how they should be divided'). ADDED: 'Report only the percentage for ...'. The source typo 'vicitims' is kept.",
+  "evidence": "tess45_darley_FinalQuex.doc, NOT in data/raw/jxdu8 (only the .sav is there). I downloaded it from https://osf.io/download/565bbed38c5e4a3875d741b3/ (sha256 568ad916..., matching the recipe's record) to the scratchpad dl_jxdu8/quex.txt: lines 26-39, 60, 65, 94-105, 443-451",
+  "problem": ""
+ },
+ {
+  "n": 20,
+  "verdict": "correct",
+  "words": "Policy title, description, prompt ('two arguments against'), both titles and both arguments word-for-word (bold tags stripped).",
+  "version": "Draw file row pair_id 297 of policy 3: Cost/benefit Con + Public Opinion Con; recipe raw 3297 -> condition_num 1145. The deposit has no programmed YouGov script; the pre-randomised draw file and a screenshot are the instrument.",
+  "question": "'Which of these arguments do you find more persuasive?' and the three buttons match the screenshot; codes follow the .sav value labels (1 one, 2 two, 3 same), while the screen order was one / same / two.",
+  "evidence": "data/raw/POMIFD/3_Extending_the_Right_to_Buy.csv row pair_id=297; data/raw/POMIFD/for_against_screen.png; experiment_one.sav metadata sc3",
+  "problem": ""
+ },
+ {
+  "n": 21,
+  "verdict": "correct",
+  "words": "Intro and vignette word-for-word from the Vignette 3 template (the intro carries hard line breaks copied from the PDF, cosmetic).",
+  "version": "VIGN3IP17 template: Anne {VIGNAMEIP17 = 2|5}, She/her, and the six fills match the row's factors. vname3 etc. are derived columns; the mapping from VIGNAMEIP17 was not re-derived.",
+  "question": "'How successfully is Anne ageing?' 0 Not successfully .. 10 Very successfully.",
+  "evidence": "data/raw/ukds_6849/.triage_text/6849_innovation_panel_wave_17_questionnaire.txt lines 27300-27302, 27432-27476",
+  "problem": ""
+ },
+ {
+  "n": 22,
+  "verdict": "correct",
+  "words": "Vignette word-for-word, except the script's fill is printed 'GLASGOW' and the row has 'Glasgow' (the Cjitown option label is 'Glasgow'; what the screen printed is not knowable). ADDED: 'After being asked to compare pairs of applicants for permanent residency in the United Kingdom, you were shown this text:' (true: Cjimmig1-3 precede Cjivig).",
+  "version": "'GLASGOW {if cjitown = 2}'; recipe town_shown=2 -> condition_num 1.",
+  "question": "Cjivig question and end labels word-for-word, 1-10.",
+  "evidence": "data/raw/ukds_6849/.triage_text/6849_ip_wave_11_questionnaires.txt lines 14171-14186, 43453-43477, 43852-43880",
+  "problem": ""
+ },
+ {
+  "n": 23,
+  "verdict": "cannot check",
+  "words": "The stem and the four item wordings appear in the deposit's codebook (Qualtrics question-text row and the 25 MAXDIFF category labels); '(t/10)' dropped.",
+  "version": "CANNOT DETERMINE FROM INSTRUMENT. The deposit has no questionnaire, .qsf or design file. Which four items made up this screen, and in what order they were displayed, comes only from the data file; the recipe itself says display position is inferred.",
+  "question": "'Considering only the options above...' and its three options are in the codebook; the 1/2/3 coding (None / Some / All) is ours.",
+  "evidence": "data/raw/zenodo18547379/Scottish_meat_survey_codebook_public.tsv lines 61-65, 112-115; README_open_access_Scottish_meat_survey_v3.txt",
+  "problem": "No fielded instrument in the deposit; item set and display order unverifiable."
+ },
+ {
+  "n": 24,
+  "verdict": "correct",
+  "words": "Instruction screens, trial lines and DV intro word-for-word; the twenty durations are all rows of the 'long - 20 trials' loop, in loop order. ADDED: '(shown one per page, in a random order; the order was not recorded)' and 'You were asked:'. Three check questions before the DVs are not narrated.",
+  "version": "Length=2 (Long), Condition 1 PredictionText '2 hours and 15 minutes'; dv_subfirst=0 -> objective block first, as narrated.",
+  "question": "QID7 sb_useful word-for-word, 1 Not at all useful .. 7 Extremely useful.",
+  "evidence": "data/raw/researchbox482/ResearchBox 482/ Materials/Study 8.qsf QID32, QID33, QID39, QID40, QID24, QID25, QID36, QID27, QID7; survey flow; loop rows 2,4,7,14,15,19,20,22,25,26,27,29,30,32,34,38,39,41,44,45",
+  "problem": ""
+ },
+ {
+  "n": 25,
+  "verdict": "correct",
+  "words": "Instruction screens, trial lines and DV intro word-for-word, incl. the singular 'Please answer the question below.' that only this order shows; all twenty times are loop values. ADDED: the '(shown one per page...)' clause and 'You were asked:'. Two check questions not narrated.",
+  "version": "Condition 1 '45 minutes'; dv_subfirst=0 -> Mediator block (QID24, QID43 'UNEXPECTEDLY LATE') before the subjective block.",
+  "question": "QID5 sb_like word-for-word, 1 Not at all .. 7 Extremely.",
+  "evidence": "data/raw/researchbox482/ResearchBox 482/ Materials/Study 5.qsf QID32, QID33, QID2, QID23, QID24, QID43, QID5; survey flow",
+  "problem": ""
+ },
+ {
+  "n": 26,
+  "verdict": "correct",
+  "words": "P_EXP2 vignette word-for-word (four paragraphs joined).",
+  "version": "[SHOW IF P_EXP=2]; recipe raw 2 -> condition_num 1.",
+  "question": "Q2 word-for-word, (1) Extremely unlikely .. (10) Extremely likely. The Q1 blame grid asked before it is not narrated.",
+  "evidence": "data/raw/9xw67/TESS 091A Ozer/[8041.091] TESS Ozer SurveyA_vFINALprog.txt lines 426-436, 533-547",
+  "problem": ""
+ },
+ {
+  "n": 27,
+  "verdict": "correct",
+  "words": "Eight headings and all sixteen levels word-for-word; intro minus 'On the next few pages,'. ADDED: 'You were then shown two projects.' Attribute ROW ORDER was shuffled per respondent (attr_order = random_shuffle([1..8])) and not recorded; the row uses the script's list order.",
+  "version": "{module m_CONJOINT_ALL_OPTOINS if split_sample == 1}: all eight attributes. Text consistent with the row's factors.",
+  "question": "'Which of the two aid projects do you support more?' Project A / Project B (Q1_3).",
+  "evidence": "data/raw/_converted/del__DEL_Panel_GreatBritain_Wave_4_2022_Survey.txt lines 820, 829-903, 905, 988, 1173-1194",
+  "problem": ""
+ },
+ {
+  "n": 28,
+  "verdict": "correct",
+  "words": "QID1073, QID1083 and the DV-page reminder QID1176 word-for-word with price '$2 every week', frequency 'every week'.",
+  "version": "QID1083 display logic condition = periodic (the aggregate arm gets QID1178, without 'every week'); recipe condition_num 1.",
+  "question": "QID1121 with the price piped, 1 Not at all reasonable .. 7 Very reasonable.",
+  "evidence": "data/raw/researchbox809/Materials/W3. Donation size post-test.qsf QID1073, QID1083, QID1176, QID1121; survey flow",
+  "problem": ""
+ },
+ {
+  "n": 29,
+  "verdict": "correct",
+  "words": "QID123 + QID332 word-for-word.",
+  "version": "QID332 display logic qty = cg AND pct = cg; flow randomiser's fifth cell qp = 'cg'; recipe qp 5 -> condition_num 4 (the generator numbers the five cells in flow order).",
+  "question": "QID339 word-for-word, 1 The pair from Saks .. 7 The pair from Nordstrom. QID331 ('how likely are you to buy this pair of pants at Saks?') sits before it in the block and is neither in the data codebook nor narrated.",
+  "evidence": "data/raw/researchbox3251/ Materials/Study 2_Qualtrics survey.qsf QID123, QID332, QID339; survey flow",
+  "problem": ""
+ },
+ {
+  "n": 30,
+  "verdict": "correct",
+  "words": "QID14 word-for-word.",
+  "version": "Flow randomiser picks block 'love' (QID1) or 'buy' (QID14); this is 'buy'; recipe arm 2 -> condition_num 1 (arm is derived).",
+  "question": "QID5 slider 'How much would be willing to pay for a Laplet?' (source's own wording), one bar labelled USD, CSSliderMin 0, CSSliderMax 1000. 'Answer on the slider labelled \"USD\".' is ours.",
+  "evidence": "data/raw/researchbox108/Materials/Study 1 - US.qsf QID14, QID5 (Configuration); survey flow",
+  "problem": ""
+ }
+]

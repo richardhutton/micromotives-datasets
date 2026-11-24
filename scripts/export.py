@@ -161,6 +161,23 @@ def has_persona(rows: pd.DataFrame) -> pd.Series:
     return rows["persona_text"].fillna("").str.strip() != ""
 
 
+def background_everywhere_or_nowhere(rows: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+    """Keep the `background` column only when every row has one; otherwise drop it.
+
+    Ruled 24 Nov 2026 (rich): one line of who ran the survey, where and when, for every
+    study or for none. A line on some rows and not others would let a model learn from
+    its presence alone, so a partly filled corpus exports with no background at all.
+    """
+    if "background" not in rows:
+        return rows, {"included": False, "recipes_with": 0, "recipes": rows["recipe"].nunique()}
+    filled = rows["background"].fillna("").str.strip() != ""
+    with_bg = rows.loc[filled, "recipe"].nunique()
+    report = {"recipes_with": int(with_bg), "recipes": int(rows["recipe"].nunique())}
+    if bool(filled.all()):
+        return rows, {"included": True, **report}
+    return rows.drop(columns="background"), {"included": False, **report}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("version")
@@ -213,6 +230,7 @@ def main() -> None:
     persona = has_persona(rows)
     no_persona = rows.loc[~persona, "recipe"].value_counts().sort_index().to_dict()
     rows = rows[persona].copy()
+    rows, background = background_everywhere_or_nowhere(rows)
     rows["side"] = side_of(rows["study"], mapping)
 
     excluded = rows["side"].isna()
@@ -261,6 +279,7 @@ def main() -> None:
         "excluded_studies": sorted(make_splits.EXCLUDED),
         "excluded_rows": int(excluded.sum()),
         "no_persona_rows": {"rows": sum(no_persona.values()), "by_recipe": no_persona},
+        "background": background,
         "participants_in_both": {
             "count": len(shared_people),
             "eval_rows": int(held["participant_id"].isin(shared_people).sum()),

@@ -260,10 +260,12 @@ brief's blanket claim, same correction as the Lodger recipe.
 
 WORDS WE ADDED, AND WHY
 
-`shared_context` ("You are taking part in an online survey run by YouGov UK
-on 30-31 October 2017.") is composed from this file's own `respdate` (min
-2017-10-30, max 2017-10-31) -- a different fielding window from the Lodger
-study, confirmed independently rather than copied.
+BACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a
+sentence of ours, "You are taking part in an online survey run by YouGov UK
+on 30-31 October 2017.", composed from this file's own `respdate` (min 2017-10-30, max
+2017-10-31) and not shown to respondents. Who ran the survey, where and when now
+live in data/catalog/backgrounds.json, one fixed sentence kept apart from the condition, so
+the condition holds only what respondents saw.
 
 Each outcome's `question` keeps the fielded stem verbatim ("Which of the two
 applicants would you prefer as the next Director General of the BBC?") and
@@ -300,8 +302,6 @@ def build_recipe() -> dict[str, Any]:
             "source_vars": KEY_VARS,
             "factors": [f"{a}_A" for a in ATTRS] + [f"{a}_B" for a in ATTRS],
             "considered_and_rejected": {},
-            "shared_context": "You are taking part in an online survey run by YouGov UK "
-            "on 30-31 October 2017.",
             "arms": build_arms(),
         },
         "outcomes": build_outcomes(),

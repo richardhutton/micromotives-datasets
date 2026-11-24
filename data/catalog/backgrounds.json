@@ -1,0 +1,1265 @@
+{
+ "_about": "Who ran each survey, where and when: one fixed sentence per recipe (Background.render), kept apart from the condition, which holds only what respondents saw. Ruled 24 Nov 2026 (rich). Keyed by recipe file name; recipe.load() attaches the entry. Every fact carries its source; a recipe whose facts cannot all be found has no entry, never a guess. The export includes the field only when every exported row has one (CONVENTIONS, 'Background'). Ruled 24 Nov 2026 (rich): most ResearchBox and several other deposits never state the country or month of fielding, so 'every study' cannot be met without guessing. This file is therefore a sourced RECORD, kept for a later test of whether background helps; the export carries no background (rule A: only words respondents saw).",
+ "recipes": {
+  "35M5CV_bbc": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "October 2017",
+   "sources": [
+    "the .sav's own respdate, min 2017-10-30, max 2017-10-31",
+    "YouGov: the deposit's own description of the fielding (see notes)",
+    "Great Britain: Region_2GOR populates 11 GB regions; code 12 Northern Ireland has zero respondents (see notes)"
+   ]
+  },
+  "35M5CV_lodger": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "October 2017",
+   "sources": [
+    "the .sav's own respdate, min 2017-10-24, max 2017-10-25",
+    "YouGov: the deposit's own description of the fielding (see notes)",
+    "Great Britain: Region_2GOR populates 11 GB regions; code 12 Northern Ireland has zero respondents (see notes)"
+   ]
+  },
+  "35M5CV_sky": {
+   "run_by": "Sky Polling",
+   "where": "Great Britain",
+   "when": "October–November 2017",
+   "sources": [
+    "Sky Polling, October and November 2017: the paper's Table 1 and the .sav's own ID.date (see notes)",
+    "Great Britain: Govt_region holds 11 GB regions and no Northern Ireland (see notes)"
+   ]
+  },
+  "3YCVOF": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "December 2012",
+   "sources": [
+    "recipes/3YCVOF.yaml notes (secondhand; the paper is not in data/raw/3YCVOF): 'Study 2 was fielded by YouGov on 5-6 December 2012 to 1,899 British adults (paper p.19)'; paper at eprints.bbk.ac.uk/id/eprint/14786 not re-read here",
+    "data/raw/3YCVOF/study2data.dta and study2_wide.csv hold no date or platform column (checked column names only)"
+   ]
+  },
+  "3muqx": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "April 2019",
+   "sources": [
+    "data/raw/3muqx/HamiltonS31/8041.033 TESS Hamilton Field Report.pdf: 'field from Tuesday, April 9th through Tuesday, April 23rd'",
+    "year: recipe notes, 'fielded 9-23 April 2019'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "5hqan": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "December 2014",
+   "sources": [
+    "data/raw/5hqan/TESS3 176 - Saperstein Response Rate Report.txt: 'Field Start Date' 12/12/14, 'Field End Date' 12/29/14",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "5mt6r": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "January–February 2013",
+   "sources": [
+    "data/raw/5mt6r/TESS3 129 - Garbarski Response Rate Report.doc: 'Field Start Date' 1/31/2013, 'Field End Date' 2/8/2013",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "6MRVOM_brexit_scenario": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "April–May 2017",
+   "sources": [
+    "YouGov Omnibus, adults in Great Britain, late April to early May 2017: the deposit's fielding note (see notes, shared with 6MRVOM_eu_share)"
+   ]
+  },
+  "6MRVOM_eu_share": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "April–May 2017",
+   "sources": [
+    "YouGov Omnibus, adults in Great Britain, late April to early May 2017: the deposit's fielding note (see notes)"
+   ]
+  },
+  "7jt2f": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "November 2010",
+   "sources": [
+    "data/raw/7jt2f/TESS2 062 - Swan Response Rate Report.doc: 'Field Start Date' 11/30/2010, 'Field End Date' 11/15/2010 [sic: the two are reversed in the report; both fall in November 2010]",
+    "Knowledge Networks: the same report (TESS2 response-rate report); both files fetched 24 Nov 2026 from OSF 7jt2f, Data/Swan095.zip (https://osf.io/download/nv3um/), which the earlier local copy lacked",
+    "the United States: data/raw/7jt2f/Knowledge Networks Methodology.pdf, 'representative of the entire U.S. population'"
+   ]
+  },
+  "7tzpe": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "February 2014",
+   "sources": [
+    "recipe notes: 'fielded by GfK KnowledgePanel 4-24 Feb 2014'",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "8972k": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "January–February 2024",
+   "sources": [
+    "data/raw/8972k/TESS 136 Behrman 141 Eareckson 142 Elliott_Project Methods and Transparency Report.pdf: 'Field Period: January 16 – February 5, 2024'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "8ctbk": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "September–October 2023",
+   "sources": [
+    "data/raw/8ctbk/9089.127 TESS Behrman Project Methods & Transparency Report.pdf: 'Field Period: September 14, 2023 – October 13, 2023'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "9263n": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "August–September 2011",
+   "sources": [
+    "data/raw/9263n/TESS2 086 - Caprariello - Response Rate Report.doc: 'Field Start Date' 08/31/11, 'Field End Date' 09/11/11",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "9xw67_conjoint": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "August–October 2021",
+   "sources": [
+    "data/raw/9xw67/8041.091 TESS Ozer Project Report 20211029.pdf: 'Survey B: in field between August 24th, 2021 through October 7th, 2021'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "9xw67_vignette": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "August–September 2021",
+   "sources": [
+    "data/raw/9xw67/8041.091 TESS Ozer Project Report 20211029.pdf: 'Survey A: field from August 24th, 2021 through September 27th, 2021'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "EFXNLX": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "April 2017",
+   "sources": [
+    "YouGov UK online Omnibus panel, 26-27 April 2017: analysis.Rmd line 834 (see notes)",
+    "Great Britain: a YouGov UK omnibus of British adults; no Northern Ireland respondents (see notes)"
+   ]
+  },
+  "LOGVPZ_brexit_satisfaction": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "December 2019",
+   "sources": [
+    "British Election Study internet panel, wave 19, the December 2019 post-election wave, fielded by YouGov (see notes)",
+    "Great Britain: the BES internet panel samples England, Scotland and Wales"
+   ]
+  },
+  "LOGVPZ_risk_tolerance": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "December 2019",
+   "sources": [
+    "British Election Study internet panel, wave 19, the December 2019 post-election wave, fielded by YouGov (see notes)",
+    "Great Britain: the BES internet panel samples England, Scotland and Wales"
+   ]
+  },
+  "POMIFD": {
+   "run_by": "YouGov",
+   "where": "the United Kingdom",
+   "when": "June 2019",
+   "sources": [
+    "data/raw/POMIFD/paper/manuscript.txt line 299-300: 'experiment that was fielded by YouGov to their UK online panel in June 2019'",
+    "data/raw/POMIFD/paper/manuscript.txt line 291: 'Prompt fielded to 3,317 respondents in June 2019' (Figure 1, Experiment 1, which experiment_one_wide.csv is)"
+   ]
+  },
+  "PZB01G": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "October–November 2015",
+   "sources": [
+    "Wave 2 fielded by YouGov 16 October - 9 November 2015 (notes, lines 21 and 439)",
+    "Great Britain: profile_GOR region codes observed 1-11 only, no Northern Ireland (notes, 'Great Britain, not UK')"
+   ]
+  },
+  "QQM5MC": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "July 2018",
+   "sources": [
+    "fielded by YouGov 24-26 July 2018: the paper, p. 23 (see notes)",
+    "adults in Great Britain: the paper's sample description, as quoted in notes"
+   ]
+  },
+  "RJTVG8": {
+   "run_by": "Qualtrics",
+   "where": "the United Kingdom",
+   "when": "May 2022",
+   "sources": [
+    "data/raw/RJTVG8/paper/Evoting_accepted.pdf (pdftotext line 378-379, section 3, p.12): 'fielded an original pre-registered conjoint experiment among a representative sample of online surveys respondents in the UK in May 2022'",
+    "same file, line 422-424: 'respondents were sourced from an online panel of survey respondents (Qualtrics) via quota-based sampling ... of the adult British population'"
+   ]
+  },
+  "a2nbf": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "March–April 2012",
+   "sources": [
+    "data/raw/a2nbf/TESS2 104 - Singer Response Rate Report.txt: 'Field Start Date' 3/22/2012, 'Field End Date' 4/2/2012",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "a42yg": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "July–August 2016",
+   "sources": [
+    "data/raw/a42yg/TESS3 220 -Orehek & Ferrer Response Rate Report.doc: 'Field Start Date' 7/20/2016, 'Field End Date' 8/12/2016",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "a5v96_vignette1": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "July–August 2015",
+   "sources": [
+    "data/raw/a5v96/TESS3 193 - McLaughlin Response Rate Report.doc: 'Field Start Date' 7/21/2015, 'Field End Date' 8/03/2015",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "b87sm": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "July–August 2021",
+   "sources": [
+    "data/raw/b87sm/8041.087 TESS WENZ Project Report.docx: 'field from July 26, 2021 through August 9, 2021'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "bf8p2": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "April–May 2017",
+   "sources": [
+    "data/raw/bf8p2/FarrowS6/005 FARROW TESS_Field Report_v1.pdf: 'field from Tuesday, April 18th through Friday, May 26th'",
+    "year: the report is dated May 31, 2017; the data file is TESS005_FARROW_27June17",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "c5r2f": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October 2011",
+   "sources": [
+    "data/raw/c5r2f/TESS2 084 - Tannenbaum Response Rate Report.doc: 'Field Start Date' 10/14/2011, 'Field End Date' 10/24/2011",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "cug34_B01_B09": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "July–August 2016",
+   "sources": [
+    "data/raw/cug34/TESS3 217 - Pepin Response Rate Report.txt: 'Field Start Date' 7/18/2016, 'Field End Date' 8/10/2016",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "d4zua": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "February–March 2021",
+   "sources": [
+    "data/raw/d4zua/8041.076 TESS Munsch Project Report.pdf: 'field from Tuesday, February 16th through Tuesday, March 2nd'",
+    "year: recipe notes, 'fielded 16 February to 2 March 2021'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "de5hx": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2010",
+   "sources": [
+    "data/raw/de5hx/TESS2 054 - Kam & Simas Response Rate Report.doc: 'Field Start Date' 10/20/2010, 'Field End Date' 11/3/2010",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "del_panel_w3_leadership": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2021",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Fieldwork & sample: 23 September 2021 to 25 October 2021'"
+   ]
+  },
+  "del_panel_w3_ngo_conjoint_donate": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2021",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Fieldwork & sample: 23 September 2021 to 25 October 2021'"
+   ]
+  },
+  "del_panel_w3_ngo_conjoint_petition": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2021",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_3_2021_Readme.pdf: 'Fieldwork & sample: 23 September 2021 to 25 October 2021'"
+   ]
+  },
+  "del_panel_w4_aid_conjoint_6attr": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2022",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Fieldwork & sample: 30 September 2022 to 28 October 2022'"
+   ]
+  },
+  "del_panel_w4_aid_conjoint_8attr": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2022",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Fieldwork & sample: 30 September 2022 to 28 October 2022'"
+   ]
+  },
+  "del_panel_w4_climate_harm_stories": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2022",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Fieldwork & sample: 30 September 2022 to 28 October 2022'"
+   ]
+  },
+  "del_panel_w4_cost_of_living": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2022",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Fieldwork & sample: 30 September 2022 to 28 October 2022'"
+   ]
+  },
+  "del_panel_w4_east_africa_drought": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2022",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Fieldwork & sample: 30 September 2022 to 28 October 2022'"
+   ]
+  },
+  "del_panel_w4_extreme_weather": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2022",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_4_2022_Readme.pdf: 'Fieldwork & sample: 30 September 2022 to 28 October 2022'"
+   ]
+  },
+  "del_panel_w5_who_must_change": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "September–October 2023",
+   "sources": [
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_5_2023_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_5_2023_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Panel_GreatBritain_Wave_5_2023_Readme.pdf: 'Fieldwork & sample: 15 September 2023 to 18 October 2023'"
+   ]
+  },
+  "del_sandbox_feb2023_abortion": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "February 2023",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Fieldwork & sample: 20 February 2023 to 28 February 2023'"
+   ]
+  },
+  "del_sandbox_feb2023_aid_priorities": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "February 2023",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Fieldwork & sample: 20 February 2023 to 28 February 2023'"
+   ]
+  },
+  "del_sandbox_feb2023_gender_aid": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "February 2023",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Fieldwork & sample: 20 February 2023 to 28 February 2023'"
+   ]
+  },
+  "del_sandbox_feb2023_gender_equality": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "February 2023",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Fieldwork & sample: 20 February 2023 to 28 February 2023'"
+   ]
+  },
+  "del_sandbox_feb2023_gender_progress": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "February 2023",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Fieldwork & sample: 20 February 2023 to 28 February 2023'"
+   ]
+  },
+  "del_sandbox_feb2023_wordfeminist": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "February 2023",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Feb2023_Readme.pdf: 'Fieldwork & sample: 20 February 2023 to 28 February 2023'"
+   ]
+  },
+  "del_sandbox_jul2020_global_goals": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "July 2020",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Jul2020_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Jul2020_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Jul2020_Readme.pdf: 'Fieldwork & sample: 7 July 2020 to 13 July 2020'"
+   ]
+  },
+  "del_sandbox_jun2022_ukraine_choice": {
+   "run_by": "YouGov",
+   "where": "Great Britain",
+   "when": "June 2022",
+   "sources": [
+    "data/raw/del/DEL_Sandbox_GreatBritain_Jun2022_Readme.pdf: 'Survey company: YouGov Plc.'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Jun2022_Readme.pdf: 'Country: Great Britain'",
+    "data/raw/del/DEL_Sandbox_GreatBritain_Jun2022_Readme.pdf: 'Fieldwork & sample: 23 June 2022 to 28 June 2022'"
+   ]
+  },
+  "dh3nj": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "April 2019",
+   "sources": [
+    "data/raw/dh3nj/CalarcoS38/8041.036 TESS Calarco Field Report.pdf: 'field from Tuesday, April 9th through Tuesday, April 23rd'",
+    "year: the report is dated May 10, 2019",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "e5rfg_ce": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2005",
+   "sources": [
+    "recipe notes: 'fielded by Knowledge Networks 31 Oct - 9 Nov 2005, 1,910 fielded, 1,322 completes (completion report)'",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "e5rfg_pair": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2005",
+   "sources": [
+    "recipe notes: 'fielded by Knowledge Networks 31 Oct - 9 Nov 2005, 1,910 fielded, 1,322 completes (completion report)'",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "e5rfg_six": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2005",
+   "sources": [
+    "recipe notes: 'fielded by Knowledge Networks 31 Oct - 9 Nov 2005, 1,910 fielded, 1,322 completes (completion report)'",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "e5rfg_tk": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2005",
+   "sources": [
+    "recipe notes: 'fielded by Knowledge Networks 31 Oct - 9 Nov 2005, 1,910 fielded, 1,322 completes (completion report)'",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "evnyh_Q1a_and_validation": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "November 2013",
+   "sources": [
+    "data/raw/evnyh/TESS3 150 - Keusch Response Rate Report.txt: 'Field Start Date' 11/15/2013, 'Field End Date' 11/27/2013",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "g2jcy": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "January–February 2024",
+   "sources": [
+    "data/raw/g2jcy/TESS 136 Behrman 141 Eareckson 142 Elliott_Project Methods and Transparency Report.pdf: 'Field Period: January 16 – February 5, 2024'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "gh396": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "May–June 2005",
+   "sources": [
+    "recipe notes: 'Knowledge Networks, project K0835' and 'fielded 26 May - 1 Jun 2005 (SVY_DATE)'",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "gyrp9_return": {
+   "run_by": "the Indiana University Center for Survey Research",
+   "where": "the United States",
+   "when": "August–November 2003",
+   "sources": [
+    "recipe notes: the TESS 2003 telephone omnibus, 'a national RDD sample interviewed by the Indiana University Center for Survey Research'; 'this module's interviews ran 21 Aug - 4 Nov 2003'",
+    "the United States: recipe notes, 'a national RDD sample' (TESS 2003 telephone omnibus)"
+   ]
+  },
+  "gyrp9_send": {
+   "run_by": "the Indiana University Center for Survey Research",
+   "where": "the United States",
+   "when": "August–November 2003",
+   "sources": [
+    "recipe notes: the TESS 2003 telephone omnibus, 'a national RDD sample interviewed by the Indiana University Center for Survey Research'; 'this module's interviews ran 21 Aug - 4 Nov 2003'",
+    "the United States: recipe notes, 'a national RDD sample' (TESS 2003 telephone omnibus)"
+   ]
+  },
+  "h4k2t": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "November 2023",
+   "sources": [
+    "data/raw/h4k2t/Project Methods and Transparency Report.pdf: 'Field Period: November 2, 2023 – November 12, 2023'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "j6xgs": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "April 2019",
+   "sources": [
+    "data/raw/j6xgs/8041.037 TESS Rifkin Field Report.pdf: 'field from Friday, April 5th through Monday, April 29th'",
+    "year: recipe notes, 'fielded April 2019'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "jxdu8": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "August 2005",
+   "sources": [
+    "recipe notes: 'Knowledge Networks 17-24 Aug 2005'; the fielded Knowledge Networks questionnaire, data/raw/jxdu8/tess45_darley_FinalQuex.doc",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "k9ahx_ratings": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "October–November 2010",
+   "sources": [
+    "data/raw/k9ahx/TESS2 056 - Ciuk Response Rate Report.doc: 'Field Start Date' 10/15/2010, 'Field End Date' 11/04/2010",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "py9q3_vignette1": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "January–February 2012",
+   "sources": [
+    "data/raw/py9q3/TESS2 094 - Jacobs Response Rate Report.doc: 'Field Start Date' 1/26/2012, 'Field End Date' 2/2/2012",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "py9q3_vignette2": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "January–February 2012",
+   "sources": [
+    "data/raw/py9q3/TESS2 094 - Jacobs Response Rate Report.doc: 'Field Start Date' 1/26/2012, 'Field End Date' 2/2/2012",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "py9q3_vignette3": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "January–February 2012",
+   "sources": [
+    "data/raw/py9q3/TESS2 094 - Jacobs Response Rate Report.doc: 'Field Start Date' 1/26/2012, 'Field End Date' 2/2/2012",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "researchbox482_s3": {
+   "run_by": "Prolific",
+   "where": "the United States",
+   "when": "November 2023",
+   "sources": [
+    "data/raw/researchbox482/ResearchBox 482/ Other/Online Supplement.docx (Study S3, Methods, Participants): 'We conducted Study S3 using U.S. participants from Prolific Academic. We decided in advance to recruit 200 participants.'",
+    "data/raw/researchbox482/ResearchBox 482/ Pre-Registration/Study S3 - AsPredicted 150577.pdf item 7: '200 Prolific participants'",
+    "data/raw/researchbox482/ResearchBox 482/ Data/Study S3.xlsx: StartDate min 2023-11-11, max 2023-11-11 (198 rows, all Status 0, no preview/test rows)"
+   ]
+  },
+  "rpw4u_RO1": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "April 2015",
+   "sources": [
+    "data/raw/rpw4u/TESS3 183 - Krosnick Response Rate Report.doc: 'Field Start Date' 4/07/2015, 'Field End Date' 4/15/2015",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "s6urt": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "April–May 2021",
+   "sources": [
+    "data/raw/s6urt/8041.078 TESS Iles_Project Report.pdf: 'field from Thursday, April 15th through Monday, May 3rd'",
+    "year: recipe notes, 'fielded by NORC on AmeriSpeak, 15 Apr - 3 May 2021'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "sd7cf": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "July–August 2012",
+   "sources": [
+    "data/raw/sd7cf/TESS2 114 - Coronel Response Rate Report.txt: 'Field Start Date' 7/17/2012, 'Field End Date' 8/2/2012",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "sdq2z": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "July 2016",
+   "sources": [
+    "data/raw/sdq2z/TESS3 209 - Hankinson Response Rate Report.doc: 'Field Start Date' 7/07/2016, 'Field End Date' 7/17/2016",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "sh4px": {
+   "run_by": "Knowledge Networks",
+   "where": "the United States",
+   "when": "August 2012",
+   "sources": [
+    "data/raw/sh4px/TESS2 115 - Ferrer Response Rate Report.txt: 'Field Start Date' 8/3/2012, 'Field End Date' 8/24/2012",
+    "Knowledge Networks: the same report (TESS2 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "ukds_6849_alcohol_w15": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–November 2022",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP15: 'Fieldwork took place between 15 June and 25 November 2022.'"
+   ]
+  },
+  "ukds_6849_automation_w14": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2021",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP14: 'Fieldwork took place between 19 May and 29 September 2021'; refreshment sample to 3 October 2021"
+   ]
+  },
+  "ukds_6849_caring_activity_w17": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "July–December 2024",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP17: 'Fieldwork took place from 17 July 2024 to 31 December 2024.'"
+   ]
+  },
+  "ukds_6849_caring_existing_w17": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "July–December 2024",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP17: 'Fieldwork took place from 17 July 2024 to 31 December 2024.'"
+   ]
+  },
+  "ukds_6849_envtax_w7": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2014",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP7: 'Fieldwork was conducted in 2014. The web-only period ran from 21 May' ... face-to-face 'from 10 July to 19 October'"
+   ]
+  },
+  "ukds_6849_eq5d3l_w11": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2018",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP11: soft launch '24 May 2018' ... 'Fieldwork ended on 21 October 2018.'"
+   ]
+  },
+  "ukds_6849_eq5d5l_w11": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2018",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP11: soft launch '24 May 2018' ... 'Fieldwork ended on 21 October 2018.'"
+   ]
+  },
+  "ukds_6849_fertility_w4": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "February–July 2011",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP4 'conducted in 2011': appointments from 22 February, principal fieldwork 8 March to 18 April, second re-issue 22 June until 12 July"
+   ]
+  },
+  "ukds_6849_fertility_w5": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–August 2012",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP5 'conducted in 2012': web 11-22 May 2012, face-to-face from 24 May, web non-responders 19 July to 23 August"
+   ]
+  },
+  "ukds_6849_ghq_w14": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2021",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP14: 'Fieldwork took place between 19 May and 29 September 2021'; refreshment sample to 3 October 2021"
+   ]
+  },
+  "ukds_6849_hmrc_consent_w11": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2018",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP11: soft launch '24 May 2018' ... 'Fieldwork ended on 21 October 2018.'"
+   ]
+  },
+  "ukds_6849_hmrc_consent_w11_web": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2018",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP11: soft launch '24 May 2018' ... 'Fieldwork ended on 21 October 2018.'"
+   ]
+  },
+  "ukds_6849_hmrc_consent_w15": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–November 2022",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP15: 'Fieldwork took place between 15 June and 25 November 2022.'"
+   ]
+  },
+  "ukds_6849_identity_w2": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "March–June 2009",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): 'The fieldwork period for IP2 was from 18 March to 12 June 2009.'"
+   ]
+  },
+  "ukds_6849_immig_vignette_w11": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2018",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP11: soft launch '24 May 2018' ... 'Fieldwork ended on 21 October 2018.'"
+   ]
+  },
+  "ukds_6849_immigsdb_w8": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–November 2015",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP8 'conducted in 2015': web from 6 May, final phase to 2 November"
+   ]
+  },
+  "ukds_6849_immigsdb_w9": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–September 2016",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP9: 'The Web-only period ran from 4 May to 7 June 2016' ... 'final phase ran from 16 September to 30 September'"
+   ]
+  },
+  "ukds_6849_itemcount_w8": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–November 2015",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP8 'conducted in 2015': web from 6 May, final phase to 2 November"
+   ]
+  },
+  "ukds_6849_itemcount_w9": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–September 2016",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP9: 'The Web-only period ran from 4 May to 7 June 2016' ... 'final phase ran from 16 September to 30 September'"
+   ]
+  },
+  "ukds_6849_mpc_direct_w15": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–November 2022",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP15: 'Fieldwork took place between 15 June and 25 November 2022.'"
+   ]
+  },
+  "ukds_6849_mpc_twopart_w15": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–November 2022",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP15: 'Fieldwork took place between 15 June and 25 November 2022.'"
+   ]
+  },
+  "ukds_6849_national_identity_w15": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–November 2022",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP15: 'Fieldwork took place between 15 June and 25 November 2022.'"
+   ]
+  },
+  "ukds_6849_nrp_w10_contact": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–September 2017",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP10: soft launch '9 May 2017' ... 'The main fieldwork period for all samples and modes ended on 26 September 2017.'"
+   ]
+  },
+  "ukds_6849_nrp_w10_fh": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–September 2017",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP10: soft launch '9 May 2017' ... 'The main fieldwork period for all samples and modes ended on 26 September 2017.'"
+   ]
+  },
+  "ukds_6849_numeracy_env_w16": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–December 2023",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP16: 'Fieldwork took place between 21 June and 8 December 2023.'"
+   ]
+  },
+  "ukds_6849_numeracy_fin_w16": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–December 2023",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP16: 'Fieldwork took place between 21 June and 8 December 2023.'"
+   ]
+  },
+  "ukds_6849_reqol_w14": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2021",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP14: 'Fieldwork took place between 19 May and 29 September 2021'; refreshment sample to 3 October 2021"
+   ]
+  },
+  "ukds_6849_satisfaction_w9": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–September 2016",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP9: 'The Web-only period ran from 4 May to 7 June 2016' ... 'final phase ran from 16 September to 30 September'"
+   ]
+  },
+  "ukds_6849_sensor_consent_w17_ftf": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "July–December 2024",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP17: 'Fieldwork took place from 17 July 2024 to 31 December 2024.'"
+   ]
+  },
+  "ukds_6849_sensor_consent_w17_web": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "July–December 2024",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP17: 'Fieldwork took place from 17 July 2024 to 31 December 2024.'"
+   ]
+  },
+  "ukds_6849_timerisk_w6": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "February–July 2013",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP6: 'Tranche 1 web fieldwork started on 22 February 2013' ... 'Fieldwork on IP6 finished on 29 July.'"
+   ]
+  },
+  "ukds_6849_timerisk_w7": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–October 2014",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP7: 'Fieldwork was conducted in 2014. The web-only period ran from 21 May' ... face-to-face 'from 10 July to 19 October'"
+   ]
+  },
+  "ukds_6849_twitter_consent_w15": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–November 2022",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP15: 'Fieldwork took place between 15 June and 25 November 2022.'"
+   ]
+  },
+  "ukds_6849_vig_ageing_w17": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "July–December 2024",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP17: 'Fieldwork took place from 17 July 2024 to 31 December 2024.'"
+   ]
+  },
+  "ukds_6849_vig_ageing_w9": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–September 2016",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP9: 'The Web-only period ran from 4 May to 7 June 2016' ... 'final phase ran from 16 September to 30 September'"
+   ]
+  },
+  "ukds_6849_vig_flexstigma_w16": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "June–December 2023",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP16: 'Fieldwork took place between 21 June and 8 December 2023.'"
+   ]
+  },
+  "ukds_6849_vig_housework_w5": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "May–August 2012",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP5 'conducted in 2012': web 11-22 May 2012, face-to-face from 24 May, web non-responders 19 July to 23 August"
+   ]
+  },
+  "ukds_6849_vig_housework_w6": {
+   "run_by": "Understanding Society at the University of Essex",
+   "where": "Great Britain",
+   "when": "February–July 2013",
+   "sources": [
+    "run by: Understanding Society Innovation Panel, University of Essex (data/raw/ukds_6849/user_guide.txt lines 491-493: 'Institute for Social and Economic Research ... Innovation Panel ... Colchester: University of Essex')",
+    "Great Britain: data/raw/ukds_6849/user_guide.txt lines 578-580, 'The sample covers England, Scotland and Wales'",
+    "when: data/raw/ukds_6849/mrdoc/pdf/6849_innovation_panel_fieldwork_procedures.pdf (UKDS SN 6849 documentation, Version 1, August 2025): IP6: 'Tranche 1 web fieldwork started on 22 February 2013' ... 'Fieldwork on IP6 finished on 29 July.'"
+   ]
+  },
+  "vemrp": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "May 2018",
+   "sources": [
+    "data/raw/vemrp/Kennedy1017/8041.023 TESS Kennedy Field Report.pdf: 'field from Thursday, May 17th through Friday, May 25th'",
+    "year: recipe notes, 'Fielded 17-25 May 2018'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "vwn96": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "May 2013",
+   "sources": [
+    "data/raw/vwn96/quex/TESS3 137 Yeager - Response Rate Report.txt: 'Field Start Date' 5/02/13, 'Field End Date' 5/14/13",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "xk9ch_identity_threat": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "March–April 2018",
+   "sources": [
+    "data/raw/xk9ch/Schnabel903/8041.14 TESS Schnabel Field Report.pdf: 'field from Thursday, March 8th through Wednesday April 11th'",
+    "year: recipe notes, 'fielded 8 Mar - 11 Apr 2018'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "xk9ch_institution": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "March–April 2018",
+   "sources": [
+    "data/raw/xk9ch/Schnabel903/8041.14 TESS Schnabel Field Report.pdf: 'field from Thursday, March 8th through Wednesday April 11th'",
+    "year: recipe notes, 'fielded 8 Mar - 11 Apr 2018'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "xk9ch_vignette1": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "March–April 2018",
+   "sources": [
+    "data/raw/xk9ch/Schnabel903/8041.14 TESS Schnabel Field Report.pdf: 'field from Thursday, March 8th through Wednesday April 11th'",
+    "year: recipe notes, 'fielded 8 Mar - 11 Apr 2018'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "xk9ch_vignette2": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "March–April 2018",
+   "sources": [
+    "data/raw/xk9ch/Schnabel903/8041.14 TESS Schnabel Field Report.pdf: 'field from Thursday, March 8th through Wednesday April 11th'",
+    "year: recipe notes, 'fielded 8 Mar - 11 Apr 2018'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "xtvu5": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "December 2019",
+   "sources": [
+    "data/raw/xtvu5/8041.040 TESS 040 Thorson Field Report.pdf: 'field from Thursday, December 12th through Monday, December 23rd'",
+    "year: recipe notes, 'NORC AmeriSpeak, web only, in field 12-23 Dec 2019'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "ye2ej": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "June–July 2015",
+   "sources": [
+    "data/raw/ye2ej/TESS3 190 - Demerjian Response Rate Report.doc: 'Field Start Date' 6/17/2015, 'Field End Date' 7/6/2014 [sic; the report's end year is a typo, the field opened 6/17/2015]",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "ysqex": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "March–April 2024",
+   "sources": [
+    "data/raw/ysqex/9089.146 TESS Golebiowska Project Methods & Transparency Report.pdf: 'Field Period: March 29, 2024 – April 18, 2024'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "yv2ta_flexible_scheduling": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "June–July 2016",
+   "sources": [
+    "data/raw/yv2ta/TESS3 215 - Pedulla Response Rate Report.txt: 'Field Start Date' 6/29/2016, 'Field End Date' 7/13/2016",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "yv2ta_parental_leave": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "June–July 2016",
+   "sources": [
+    "data/raw/yv2ta/TESS3 215 - Pedulla Response Rate Report.txt: 'Field Start Date' 6/29/2016, 'Field End Date' 7/13/2016",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "z358z": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "December 2014",
+   "sources": [
+    "data/raw/z358z/TESS3 175 - Nayak Response Rate Report.doc: 'Field Start Date' 12/12/14, 'Field End Date' 12/29/14",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "zaqkm": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "October–November 2022",
+   "sources": [
+    "data/raw/zaqkm/TESS 115 Elliott/9089.115.TESS ELLIOTT _Project Methods and Transparency Report.pdf: 'Field Period: October 13, 2022 - November 9, 2022'",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  },
+  "zenodo18547379_maxdiff": {
+   "run_by": "Qualtrics",
+   "where": "Scotland",
+   "when": "February–July 2023",
+   "sources": [
+    "data/raw/zenodo18547379/zenodo_record.json, description: 'online survey of adults (>=18 years) living in Scotland, collected February to July 2023. Participants were recruited via Qualtrics to approximate a nationally representative sample'",
+    "the public .csv has timestamps removed (README: 'Removed ... timestamps'), so the record description is the only source for dates"
+   ]
+  },
+  "zrwjp": {
+   "run_by": "GfK",
+   "where": "the United States",
+   "when": "January 2015",
+   "sources": [
+    "data/raw/zrwjp/TESS3 180 - Whillans Response Rate Report.txt: 'Field Start Date' 1/13/2015, 'Field End Date' 1/23/2015",
+    "GfK: the same report (TESS3 response-rate report)",
+    "the United States: the deposit's Knowledge Networks/GfK methodology document, 'representative of the entire U.S. population'"
+   ]
+  },
+  "zx5b8": {
+   "run_by": "NORC",
+   "where": "the United States",
+   "when": "October–November 2019",
+   "sources": [
+    "data/raw/zx5b8/8041.047 TESS Jakubiak Field Report.pdf: 'field from Thursday, October 31st through Friday, November 15th'",
+    "year: recipe notes, 'Fielded autumn 2019'; 31 October 2019 was a Thursday",
+    "NORC (AmeriSpeak panel): the same report",
+    "the United States: the NORC report, 'A general population sample of U.S. adults'"
+   ]
+  }
+ }
+}

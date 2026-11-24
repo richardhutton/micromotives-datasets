@@ -35,13 +35,15 @@ notes: "Hobolt, Leeper & Tilley, \"Divided by the Vote: Affective Polarization i
   \ Same ruling as\nthe Lodger recipe and as EFXNLX's `eu_referendum_vote` removal\n(2026-10-02).\n\n\
   No ethnicity, marital status, religion or household size exists in this\nfile (grepped all 167 column\
   \ names). Income DOES exist, contrary to the\nbrief's blanket claim, same correction as the Lodger recipe.\n\
-  \nWORDS WE ADDED, AND WHY\n\n`shared_context` (\"You are taking part in an online survey run by YouGov\
-  \ UK\non 30-31 October 2017.\") is composed from this file's own `respdate` (min\n2017-10-30, max 2017-10-31)\
-  \ -- a different fielding window from the Lodger\nstudy, confirmed independently rather than copied.\n\
-  \nEach outcome's `question` keeps the fielded stem verbatim (\"Which of the two\napplicants would you\
-  \ prefer as the next Director General of the BBC?\") and\nadds the same first/second-listed disambiguation\
-  \ clause as the Lodger\nrecipe, for the same reason (a nominal Scale cannot carry per-arm-varying\n\
-  option labels; the two names differ by arm, screen position does not).\n\nJUDGEMENT CALLS AND OPEN UNCERTAINTIES\n\
+  \nWORDS WE ADDED, AND WHY\n\nBACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a\n\
+  sentence of ours, \"You are taking part in an online survey run by YouGov UK\non 30-31 October 2017.\"\
+  , composed from this file's own `respdate` (min 2017-10-30, max\n2017-10-31) and not shown to respondents.\
+  \ Who ran the survey, where and when now\nlive in data/catalog/backgrounds.json, one fixed sentence\
+  \ kept apart from the condition, so\nthe condition holds only what respondents saw.\n\nEach outcome's\
+  \ `question` keeps the fielded stem verbatim (\"Which of the two\napplicants would you prefer as the\
+  \ next Director General of the BBC?\") and\nadds the same first/second-listed disambiguation clause\
+  \ as the Lodger\nrecipe, for the same reason (a nominal Scale cannot carry per-arm-varying\noption labels;\
+  \ the two names differ by arm, screen position does not).\n\nJUDGEMENT CALLS AND OPEN UNCERTAINTIES\n\
   \n  1. Attribute-row order (list_table) reproduced per (respondent, pair) from\n     the start. Checked,\
   \ not assumed: non-null for all 1,635 respondents,\n     only 3 draw the canonical order.\n  2. Row\
   \ shape is pair-level only, same argument as the Lodger recipe.\n  3. QC rule 5 is expected to WARN\
@@ -80,7 +82,6 @@ condition:
   - eu_B
   - occupation_B
   considered_and_rejected: {}
-  shared_context: You are taking part in an online survey run by YouGov UK on 30-31 October 2017.
   arms:
   - raw_values:
       name_seen1_t1: 3

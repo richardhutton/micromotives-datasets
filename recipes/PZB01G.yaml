@@ -467,6 +467,15 @@ notes: |-
      2.8+16.0 = 18.8% — all three match the paper's printed figures exactly to
      one decimal place.
 
+  BACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a sentence of ours,
+  not shown to respondents: "You are taking part in the second part of an online survey
+  about the United Kingdom's membership of the European Union (EU), run by YouGov. This
+  part was conducted between 16 October and 9 November 2015, about two weeks after you
+  completed the first part of the survey." Who ran the survey, where and when now live in
+  data/catalog/backgrounds.json, one fixed sentence kept apart from the condition, so the condition holds
+  only what respondents saw. Anything else that sentence said is kept here and nowhere in
+  the rows: the date carries it.
+
 condition:
   source_var: split
   factors: [cultural_frame, economic_frame, political_frame]
@@ -486,11 +495,6 @@ condition:
       Binary dummy (1 = control, 0 = any treatment), a strict function of
       `split == 1`. Not used as the assignment variable because it cannot
       distinguish the eight treatment cells from each other.
-  shared_context: >-
-    You are taking part in the second part of an online survey about the United
-    Kingdom's membership of the European Union (EU), run by YouGov. This part
-    was conducted between 16 October and 9 November 2015, about two weeks after
-    you completed the first part of the survey.
   arms:
     - raw: 1
       condition_num: 0

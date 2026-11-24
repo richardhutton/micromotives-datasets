@@ -440,6 +440,11 @@ built, verified". Timestamps are evidence; sequence is an assumption.
   `data/processed/images/`, so every text tool (splits, export, coverage) keeps
   reading only the text corpus: training set 1 stays text-only by construction.
   (2026-10-26, rich: two training sets, text-only and text+image.)
+- **Background is its own field, for every study or none.** Who ran the survey, where
+  and when go in `data/catalog/backgrounds.json` (one fixed, sourced sentence per recipe), never in the
+  condition, which holds only what respondents saw; the export leaves the field out
+  until every study has one, which most ResearchBox deposits cannot support, so for now
+  it is a sourced record only. See CONVENTIONS, "Background". (2026-11-24, rich.)
 - **Word-for-word for what varies, compressed for what is shared.** Context identical
   across arms is stated once; each arm carries only its varying remainder,
   word-for-word. A declared factor that does not change the text between arms is a

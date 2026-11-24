@@ -65,6 +65,36 @@ be hoisted, and is therefore repeated per arm (`cug34` repeats one sentence 24
 times). That is correct: keeping the paragraph as the respondent read it beats
 de-duplication.
 
+## Background: who ran the survey, where and when
+
+Ruled 24 Nov 2026 (rich). The condition holds only words the respondent was shown.
+Who ran the survey, where the sample lived and when it ran are facts respondents
+knew, not stimulus, so they live in `data/catalog/backgrounds.json` (keyed by recipe name; `recipe.load()`
+attaches the entry, and a recipe that declares its own is refused) and reach the row as
+`Row.background`, never inside `condition` or `shared_context`.
+
+- **One fixed sentence**, rendered by `Background.render()`: "This survey was run by
+  YouGov in Great Britain in October 2017." Who, where, month and year, nothing more.
+  "About ten months after the referendum" is left to the date, which carries it; any
+  wider context an old condition carried is kept in the recipe's `notes`.
+- **Every fact sourced** in the entry's `sources` (a file and line, a page, a methods
+  report). A fact that cannot be found leaves the whole block out, never guessed.
+- **Identical for every version** of a study, so it can never pass for a manipulation.
+- **Everywhere or nowhere.** `scripts/export.py` exports the column only when every row
+  has one; a partly filled corpus exports none, so a model cannot learn from a line's
+  presence. The manifest records how many recipes have one.
+- QC rule 25 fails a row whose background differs from the recipe's sentence, and a
+  condition that narrates survey background ("You are taking part in an online survey
+  run by YouGov ..."). Before the ruling ten Brexit recipes did exactly that.
+
+**Outcome, same day (rich):** the facts could be sourced for the panels (Innovation
+Panel, DEL, TESS, the Brexit studies) but most ResearchBox and several other deposits never
+state the country or the month, so "every study" cannot be met without guessing. The
+export therefore carries no background (rule A: only words respondents saw), and
+`backgrounds.json` stays as a sourced record (127 of 231 recipes on 24 Nov 2026), ready
+for a later test of whether background helps. Do not export a partial background, and
+do not fill a gap from a sibling study or a guess.
+
 ## Sequence signposting: a row cannot say where it sat
 
 **Drop any text that cites the row's own position in a sequence** — "Please read

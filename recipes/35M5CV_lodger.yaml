@@ -47,33 +47,32 @@ notes: "Hobolt, Leeper & Tilley, \"Divided by the Vote: Affective Polarization i
   \ not just EU-negotiation terms.\n\nNo ethnicity, marital status, religion or household size exists\
   \ in this\nfile (grepped all 170 column names for every synonym: zero hits). Income\nDOES exist, contrary\
   \ to the brief's blanket claim -- corrected above rather\nthan silently matching the brief.\n\nWORDS\
-  \ WE ADDED, AND WHY\n\n`shared_context` below (\"You are taking part in an online survey run by\nYouGov\
-  \ UK on 24-25 October 2017.\") is composed from the .sav's own\n`respdate` field (min 2017-10-24, max\
-  \ 2017-10-25), not transcribed from the\ninstrument, which has no top-level welcome text before the\
-  \ conjoint block.\nIt is true for every respondent regardless of arm, carries no sequence\nposition,\
-  \ and is deliberately minimal -- we do not know from this deposit\nalone whether this was an \"Omnibus\"\
-  \ panel wave or something else, so the\nsentence does not claim it.\n\nEach outcome's `question` keeps\
-  \ the fielded stem verbatim (\"Which of the two\nlodgers would you prefer?\") and adds one clause --\
-  \ \"1 means the lodger listed\nfirst above; 2 means the lodger listed second above.\" -- because a `nominal`\n\
-  Scale must not carry endpoint labels (`recipe.py`'s own validator), and the\ntwo option labels the respondent\
-  \ actually saw were the two candidates' own\nNAMES, which differ by arm and so cannot sit in one fixed\
-  \ Outcome.question.\nDescribing them by screen POSITION (first/second) is accurate for every arm\nalike:\
-  \ the table always renders `name_seen1_tN` first (left) and\n`name_seen2_tN` second (right), by construction\
-  \ (`row_1`/`row_2` wiring, not\nby any declared order), and the per-arm `response_recode` maps response\
-  \ 1 to\nwhichever name sat in `name_seen1_tN` for that specific arm.\n\nJUDGEMENT CALLS AND OPEN UNCERTAINTIES\n\
-  \n  1. Attribute-row order (list_table) is reproduced per (respondent, pair)\n     from the start, having\
-  \ read the EFXNLX post-mortem before writing a\n     line of this generator. Checked, not assumed: `list_table`\
-  \ exists in\n     this .sav, is non-null for all 1,669 respondents, and only 4 of them\n     drew the\
-  \ canonical order.\n  2. Row shape is pair-level only (see above) -- the profile-level number\n    \
-  \ the brief quotes (16,690) is the depositors' cj()-feeding reshape, not\n     a row this project builds,\
-  \ because there is no second, genuinely\n     per-profile question.\n  3. QC rule 5 (minimal pairs)\
-  \ is expected to WARN \"nested, not crossed\" on\n     most or all of the 14 declared factors, same\
-  \ shape as EFXNLX and for\n     the same reason: the attribute space (11x7x4x5x3x3x5 per side) is far\n\
-  \     larger than the 8,345 pairs actually drawn, so two pairs agreeing on 13\n     of 14 dimensions\
-  \ by chance is not expected. Reported, not suppressed.\n  4. The persona-vocabulary crosswalk does not\
-  \ yet exist for this UK corpus\n     (per the brief), so QC rule 14 is expected to warn that persona\
-  \ labels\n     (e.g. \"Working full time (30 or more hours per week)\") are unmapped --\n     expected,\
-  \ not a defect in this recipe.\n"
+  \ WE ADDED, AND WHY\n\nBACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a\nsentence\
+  \ of ours, \"You are taking part in an online survey run by YouGov UK\non 24-25 October 2017.\", composed\
+  \ from this file's own `respdate` (min 2017-10-24, max\n2017-10-25) and not shown to respondents. Who\
+  \ ran the survey, where and when now\nlive in data/catalog/backgrounds.json, one fixed sentence kept\
+  \ apart from the condition, so\nthe condition holds only what respondents saw.\n\nEach outcome's `question`\
+  \ keeps the fielded stem verbatim (\"Which of the two\nlodgers would you prefer?\") and adds one clause\
+  \ -- \"1 means the lodger listed\nfirst above; 2 means the lodger listed second above.\" -- because\
+  \ a `nominal`\nScale must not carry endpoint labels (`recipe.py`'s own validator), and the\ntwo option\
+  \ labels the respondent actually saw were the two candidates' own\nNAMES, which differ by arm and so\
+  \ cannot sit in one fixed Outcome.question.\nDescribing them by screen POSITION (first/second) is accurate\
+  \ for every arm\nalike: the table always renders `name_seen1_tN` first (left) and\n`name_seen2_tN` second\
+  \ (right), by construction (`row_1`/`row_2` wiring, not\nby any declared order), and the per-arm `response_recode`\
+  \ maps response 1 to\nwhichever name sat in `name_seen1_tN` for that specific arm.\n\nJUDGEMENT CALLS\
+  \ AND OPEN UNCERTAINTIES\n\n  1. Attribute-row order (list_table) is reproduced per (respondent, pair)\n\
+  \     from the start, having read the EFXNLX post-mortem before writing a\n     line of this generator.\
+  \ Checked, not assumed: `list_table` exists in\n     this .sav, is non-null for all 1,669 respondents,\
+  \ and only 4 of them\n     drew the canonical order.\n  2. Row shape is pair-level only (see above)\
+  \ -- the profile-level number\n     the brief quotes (16,690) is the depositors' cj()-feeding reshape,\
+  \ not\n     a row this project builds, because there is no second, genuinely\n     per-profile question.\n\
+  \  3. QC rule 5 (minimal pairs) is expected to WARN \"nested, not crossed\" on\n     most or all of\
+  \ the 14 declared factors, same shape as EFXNLX and for\n     the same reason: the attribute space (11x7x4x5x3x3x5\
+  \ per side) is far\n     larger than the 8,345 pairs actually drawn, so two pairs agreeing on 13\n \
+  \    of 14 dimensions by chance is not expected. Reported, not suppressed.\n  4. The persona-vocabulary\
+  \ crosswalk does not yet exist for this UK corpus\n     (per the brief), so QC rule 14 is expected to\
+  \ warn that persona labels\n     (e.g. \"Working full time (30 or more hours per week)\") are unmapped\
+  \ --\n     expected, not a defect in this recipe.\n"
 condition:
   source_vars:
   - name_seen1_t1
@@ -106,7 +105,6 @@ condition:
   - eu_B
   - hobby_B
   considered_and_rejected: {}
-  shared_context: You are taking part in an online survey run by YouGov UK on 24-25 October 2017.
   arms:
   - raw_values:
       name_seen1_t1: 6

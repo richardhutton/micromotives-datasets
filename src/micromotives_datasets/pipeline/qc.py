@@ -716,7 +716,48 @@ def check(rows: list[Row], recipe: Recipe) -> QCReport:
             "first; drop the repeat or make the outcome say what differed"
         )
 
+    # --- Rule 25: background lives in its own field, one fixed sentence ------
+    # Ruled 24 Nov 2026: who ran the survey, where and when are facts respondents
+    # knew, not words they were shown, so they never sit in the condition. Ten
+    # Brexit recipes had carried them in `shared_context` ("You are taking part in
+    # an online survey run by YouGov UK on 30-31 October 2017."), which a
+    # spot-check then had to treat as a special case. Two checks: the background
+    # is the recipe's one rendered sentence on every row (so it can never differ
+    # between versions), and no condition carries a sentence that reads as one.
+    expected = recipe.background.render() if recipe.background else ""
+    off = sum(1 for r in rows if r.background != expected)
+    if off:
+        rep.failures.append(
+            f"rule 25: {off} row(s) carry a background other than the recipe's own "
+            f"{expected!r}; it must be one sentence, identical for every version"
+        )
+    if expected and not _BACKGROUND_FORM.fullmatch(expected):
+        rep.failures.append(f"rule 25: background {expected!r} is not the fixed form")
+    framed = sorted(
+        {m.group(0) for r in rows for m in [_BACKGROUND_IN_CONDITION.search(r.condition)] if m}
+    )
+    if framed:
+        rep.failures.append(
+            f"rule 25: condition text carries survey background ({framed[0]!r}); move who "
+            "ran it, where and when into `background`"
+        )
+
     return rep
+
+
+# The one form Background.render() produces. Checked so a hand edit to a row or a
+# second renderer cannot drift from it.
+_BACKGROUND_FORM = re.compile(r"This survey was run by [^.]+ in [^.]+ in [^.]+\.")
+
+# Survey background narrated as if shown: the ten Brexit recipes' own phrasings,
+# matched on words. Deliberately narrow: "Imagine you are taking part in a
+# trial" or "a survey found that 40% ..." are stimuli and must pass.
+_BACKGROUND_IN_CONDITION = re.compile(
+    r"\byou\s+are\s+taking\s+part\s+in\s+(?:an?\s+(?:online\s+)?survey|the\s+[^.]{0,60}"
+    r"\b(?:wave|panel|part)\b)"
+    r"|\bthis\s+survey\s+was\s+run\s+by\b",
+    re.I,
+)
 
 
 # Text about the experiment's own apparatus: its variants, its arms, its sections.

@@ -128,13 +128,17 @@ notes: |-
      is the single judgement call most worth a second look in this recipe.
   3. Same divergence-from-published-N judgement as the companion recipe.
 
+  BACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a sentence of ours,
+  not shown to respondents: "You are taking part in the December 2019 post-election wave
+  of the British Election Study internet panel, run by YouGov." Who ran the survey, where
+  and when now live in data/catalog/backgrounds.json, one fixed sentence kept apart from the condition, so
+  the condition holds only what respondents saw. Anything else that sentence said is kept
+  here and nowhere in the rows: the date carries it.
+
 condition:
   source_var: randgroup
   factors: [wealth_treatment]
   # [composed] — see companion recipe's notes for the source of these dates.
-  shared_context: >-
-    You are taking part in the December 2019 post-election wave of the British
-    Election Study internet panel, run by YouGov.
   arms:
     - raw: 6
       condition_num: 0

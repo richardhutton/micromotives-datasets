@@ -157,7 +157,13 @@ notes: "Hobolt, Tilley & Leeper, \"Policy Preferences and Policy Legitimacy Afte
   \ is astronomically larger (~1.87e11 possible\n     pairs) than the 16,465 actually drawn, so no two\
   \ pairs are expected to\n     agree on 15 of 16 dimensions by chance. This is the SAME shape as any\n\
   \     large conjoint sampled this sparsely (`9xw67`'s 9-attribute profiles\n     are a denser single-sided\
-  \ case); it is expected and reported, not\n     suppressed."
+  \ case); it is expected and reported, not\n     suppressed.\n\nBACKGROUND (ruled 24 Nov 2026). Until\
+  \ then the condition opened with a sentence of ours, not shown to respondents: \"You are taking part\
+  \ in an online survey of British adults, run by YouGov UK over 26-27 April 2017, during the negotiations\
+  \ between the United Kingdom and the European Union over the terms of Britain's withdrawal from the\
+  \ EU.\" Who ran the survey, where and when now live in data/catalog/backgrounds.json, one fixed sentence kept apart from\
+  \ the condition, so the condition holds only what respondents saw. Anything else that sentence said\
+  \ is kept here and nowhere in the rows: the date carries it.\n"
 condition:
   source_vars:
   - imigration_seen1_t1
@@ -199,9 +205,6 @@ condition:
       from the paper and from the depositors' own `analysis-conjoint-cleaning.R` (which reshapes only
       `_PAIR1`.._PAIR5`), so excluded here too. Not part of this experiment's assignment — it assigns
       a DIFFERENT, unbuilt pair, not one of the 5 built here.
-  shared_context: You are taking part in an online survey of British adults, run by YouGov UK over 26-27
-    April 2017, during the negotiations between the United Kingdom and the European Union over the terms
-    of Britain's withdrawal from the EU.
   arms:
   - raw_values:
       imigration_seen1_t1: 6

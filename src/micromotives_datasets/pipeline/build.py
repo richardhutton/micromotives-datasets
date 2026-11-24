@@ -374,6 +374,7 @@ def build_rows(ds: Dataset, recipe: Recipe) -> Iterator[Row]:
                 persona=persona,
                 condition=condition_text,
                 condition_images=list(arm.images),
+                background=recipe.background.render() if recipe.background else "",
                 outcome=_for_respondent(recipe.outcome_text_for(outcome, arm), who),
                 response=str(response),
                 response_num=float(response),

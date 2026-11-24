@@ -327,14 +327,12 @@ than silently matching the brief.
 
 WORDS WE ADDED, AND WHY
 
-`shared_context` below ("You are taking part in an online survey run by
-YouGov UK on 24-25 October 2017.") is composed from the .sav's own
-`respdate` field (min 2017-10-24, max 2017-10-25), not transcribed from the
-instrument, which has no top-level welcome text before the conjoint block.
-It is true for every respondent regardless of arm, carries no sequence
-position, and is deliberately minimal -- we do not know from this deposit
-alone whether this was an "Omnibus" panel wave or something else, so the
-sentence does not claim it.
+BACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a
+sentence of ours, "You are taking part in an online survey run by YouGov UK
+on 24-25 October 2017.", composed from this file's own `respdate` (min 2017-10-24, max
+2017-10-25) and not shown to respondents. Who ran the survey, where and when now
+live in data/catalog/backgrounds.json, one fixed sentence kept apart from the condition, so
+the condition holds only what respondents saw.
 
 Each outcome's `question` keeps the fielded stem verbatim ("Which of the two
 lodgers would you prefer?") and adds one clause -- "1 means the lodger listed
@@ -387,8 +385,6 @@ def build_recipe() -> dict[str, Any]:
             "source_vars": KEY_VARS,
             "factors": [f"{a}_A" for a in ATTRS] + [f"{a}_B" for a in ATTRS],
             "considered_and_rejected": {},
-            "shared_context": "You are taking part in an online survey run by YouGov UK "
-            "on 24-25 October 2017.",
             "arms": build_arms(),
         },
         "outcomes": build_outcomes(),

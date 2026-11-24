@@ -213,6 +213,14 @@ notes: |-
   label sets suggest — this deposit uses 9999 throughout (234 on income, 287 on
   education_age, 594 on Vote2017, 2 on work_stat, 1 on VoteEURef).
 
+  BACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a sentence of ours,
+  not shown to respondents: "You are taking part in an online survey of adults in Great
+  Britain, run by YouGov in late July 2018, a little over two years after the referendum
+  on the United Kingdom's membership of the European Union." Who ran the survey, where and
+  when now live in data/catalog/backgrounds.json, one fixed sentence kept apart from the condition, so the
+  condition holds only what respondents saw. Anything else that sentence said is kept here
+  and nowhere in the rows: the date carries it.
+
 condition:
   not_asked_code: 9999
   ambiguous_routing: 1
@@ -223,10 +231,6 @@ condition:
     dropped rather than written twice. The authors' own reshape keeps them in both
     groups, so the paper's N of 2,762 counts this person twice.
   factors: [identity_prime, economic_information]
-  shared_context: >-
-    You are taking part in an online survey of adults in Great Britain, run by YouGov
-    in late July 2018, a little over two years after the referendum on the United
-    Kingdom's membership of the European Union.
 
   arms:
     - witness_var: Q3D

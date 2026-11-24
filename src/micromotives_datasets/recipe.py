@@ -19,6 +19,8 @@ Three design rules, each learned from auditing SocSci210's own reconstruction
 
 from __future__ import annotations
 
+import functools
+import json
 import re
 from pathlib import Path
 from typing import Any
@@ -475,6 +477,33 @@ class ConditionTemplate(BaseModel):
         return arms
 
 
+class Background(BaseModel):
+    """Who ran the survey, where and when: facts respondents knew, kept apart from the stimulus.
+
+    Ruled 24 Nov 2026 (rich): a condition holds only words the respondent was shown;
+    true background goes here, rendered as ONE fixed sentence for every study, so that
+    a spot-check of the condition compares like with like and no background line can
+    pass for a difference between versions. No other detail: "about ten months after
+    the referendum" is left to the date, which already carries it, and any wider
+    context a study's old wording carried is kept in its `notes`, not here.
+    "Everywhere or nowhere": the export leaves the field out unless every study has
+    one (scripts/export.py), so a dated row never becomes a signal by its presence.
+    """
+
+    run_by: str = Field(description="Who fielded it, e.g. 'YouGov', 'Ipsos KnowledgePanel'.")
+    where: str = Field(description="Where the sample lived, e.g. 'Great Britain'.")
+    when: str = Field(description="Month and year, or a span: 'October 2017', 'April-May 2017'.")
+    sources: list[str] = Field(
+        min_length=1,
+        description="Where each fact was read: a file and line, a page, a methods report. "
+        "Every fact is sourced; one that cannot be found leaves the whole block out.",
+    )
+
+    def render(self) -> str:
+        who, where, when = self.run_by.strip(), self.where.strip(), self.when.strip()
+        return f"This survey was run by {who} in {where} in {when}."
+
+
 class Condition(BaseModel):
     """The experimental manipulation."""
 
@@ -776,6 +805,11 @@ class Recipe(BaseModel):
         "fact about the deposit and a useful one, a guessed licence is neither.",
     )
     notes: str | None = None
+    background: Background | None = Field(
+        default=None,
+        description="Who ran the survey, where and when, rendered into Row.background. "
+        "Never inside the condition (CONVENTIONS, 'Background').",
+    )
     experiment: str | None = Field(
         default=None,
         description="Names the sub-experiment when one deposit contains several "
@@ -1178,7 +1212,31 @@ class Recipe(BaseModel):
         return f"{question} {self.scale_for(outcome, arm).instruction()}"
 
 
+BACKGROUNDS = Path(__file__).resolve().parents[2] / "data" / "catalog" / "backgrounds.json"
+
+
+@functools.cache
+def _backgrounds() -> dict[str, Background]:
+    if not BACKGROUNDS.exists():
+        return {}
+    entries = json.loads(BACKGROUNDS.read_text())["recipes"]
+    return {name: Background.model_validate(v) for name, v in entries.items()}
+
+
 def load(path: str | Path) -> Recipe:
-    """Load and validate a recipe YAML."""
+    """Load and validate a recipe YAML, attaching its background from the catalogue.
+
+    Background lives in ONE place, data/catalog/backgrounds.json keyed by recipe file
+    name, not in the recipe: 86 generators write recipes here, and a fact about who ran
+    a survey is study metadata like a title or a crosswalk. A recipe that declares one
+    itself is refused, so the two can never disagree.
+    """
     data: dict[str, Any] = yaml.safe_load(Path(path).read_text())
-    return Recipe.model_validate(data)
+    if "background" in data:
+        raise ValueError(
+            f"{path}: background belongs in {BACKGROUNDS.name}, keyed by recipe name, "
+            "not in the recipe"
+        )
+    recipe = Recipe.model_validate(data)
+    recipe.background = _backgrounds().get(Path(path).stem)
+    return recipe

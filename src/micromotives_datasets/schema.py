@@ -62,6 +62,12 @@ class Row(BaseModel):
         "resolves it and checks the file's hash.",
     )
     outcome: str = Field(description="The outcome question wording.")
+    background: str = Field(
+        default="",
+        description="One fixed sentence saying who ran the survey, where and when "
+        "(Recipe.background.render()); empty when the study has none yet. Kept apart "
+        "from `condition`, which holds only what the respondent was shown.",
+    )
     response: str = Field(description="The respondent's answer (as text).")
 
     # --- structure / grouping ---------------------------------------------

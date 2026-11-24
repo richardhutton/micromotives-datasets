@@ -292,6 +292,14 @@ notes: |-
   falls, since neither depends on the text, so this judgement is NOT covered
   by either verification and needs an independent read.
 
+  BACKGROUND (ruled 24 Nov 2026). Until then the condition opened with a sentence of ours,
+  not shown to respondents: "You are taking part in an online survey of adults in Great
+  Britain, run by YouGov's Omnibus panel in late April/early May 2017, about ten months
+  after the referendum on the United Kingdom's membership of the European Union." Who ran
+  the survey, where and when now live in data/catalog/backgrounds.json, one fixed sentence kept apart from
+  the condition, so the condition holds only what respondents saw. Anything else that
+  sentence said is kept here and nowhere in the rows: the date carries it.
+
 condition:
   source_var: ExpSplitQ5
   factors: [eu_share_information]
@@ -320,10 +328,6 @@ condition:
       Item-order randomisation (which of Q6_2/q72l a respondent saw first)
       inside the SIBLING `ExpSplitQ67` randomisation, built as
       `6MRVOM_brexit_scenario.yaml`. Not part of this experiment's assignment.
-  shared_context: >-
-    You are taking part in an online survey of adults in Great Britain, run by
-    YouGov's Omnibus panel in late April/early May 2017, about ten months after
-    the referendum on the United Kingdom's membership of the European Union.
   arms:
     - raw: 2
       condition_num: 0

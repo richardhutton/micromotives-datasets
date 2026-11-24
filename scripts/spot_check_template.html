@@ -1,0 +1,181 @@
+<title>Condition Spot-Check</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a proofreading desk. Each item puts what we wrote beside the source passage, verdict buttons underneath. Same palette as the other trackers. */
+:root{
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1c1a17; --muted:#6f6a61; --rule:#e5e1d8; --soft:#f3f0e9;
+  --todo:#6f6a61; --ready:#2563eb; --yes:#047857; --no:#b23a3a; --accent:#047857;
+  --f-ui:system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-data:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --todo:#a49d90; --ready:#7aa7ff; --yes:#34d399; --no:#ec7a7a; --accent:#34d399; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141310; --panel:#1e1c18; --ink:#ece7dd; --muted:#a49d90; --rule:#302d27; --soft:#26231e;
+  --todo:#a49d90; --ready:#7aa7ff; --yes:#34d399; --no:#ec7a7a; --accent:#34d399; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:20px;max-width:1400px;margin:0 auto}
+h1{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:700;letter-spacing:-0.01em;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-size:1.05rem;margin:0;text-wrap:balance}
+.label{font-family:var(--f-data);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0 0 6px}
+.lede{color:var(--muted);margin:6px 0 0;max-width:80ch}
+.tally{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;font-variant-numeric:tabular-nums}
+.tally b{font-size:1.3rem}
+.tally .yes{color:var(--yes)} .tally .no{color:var(--no)} .tally .cc{color:var(--todo)}
+.status{color:var(--muted);font-size:12px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);font-weight:600}
+.item{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px;display:grid;gap:14px;min-width:0;border-left:4px solid var(--rule)}
+.item.v-correct{border-left-color:var(--yes)} .item.v-wrong{border-left-color:var(--no)} .item.v-cannot{border-left-color:var(--todo)}
+.head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.n{font-family:var(--f-data);color:var(--muted);font-variant-numeric:tabular-nums}
+.meta{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12px;color:var(--muted)}
+.meta code{font-family:var(--f-data);font-size:12px;color:var(--ink)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:900px){.cols{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--soft);border-radius:6px;padding:12px;min-width:0}
+.text{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;max-height:420px;overflow:auto}
+.src{font-family:var(--f-data);font-size:12px;line-height:1.55}
+.q{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--rule)}
+.factors{margin:0 0 10px;font-size:13px}
+.factors span{display:inline-block;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:1px 6px;margin:0 4px 4px 0}
+.file{font-family:var(--f-data);font-size:11px;color:var(--muted);overflow-wrap:anywhere;margin:0 0 6px}
+.missing{color:var(--no);margin:0}
+.others{font-size:12px;color:var(--muted);margin:8px 0 0}
+.verdict{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.verdict button{font:inherit;font-weight:600;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:6px;padding:6px 14px;cursor:pointer}
+.verdict button:focus-visible,.filters button:focus-visible,textarea:focus-visible{outline:2px solid var(--ready);outline-offset:2px}
+.verdict button[data-v="correct"][aria-pressed="true"]{background:var(--yes);border-color:var(--yes);color:var(--panel)}
+.verdict button[data-v="wrong"][aria-pressed="true"]{background:var(--no);border-color:var(--no);color:var(--panel)}
+.verdict button[data-v="cannot"][aria-pressed="true"]{background:var(--todo);border-color:var(--todo);color:var(--panel)}
+.verdict button:disabled{opacity:.5;cursor:not-allowed}
+textarea{font:inherit;width:100%;min-height:2.6em;border:1px solid var(--rule);border-radius:6px;padding:6px 8px;background:var(--panel);color:var(--ink);resize:vertical}
+.saved{font-size:12px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.item{transition:border-color .2s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="label">Proof of build quality</p>
+    <h1>Condition spot-check</h1>
+    <p class="lede">Thirty conditions drawn at random from the built text corpus, one from each of thirty studies. For each, read what we wrote against the passage from the original questionnaire and decide whether a respondent in this version really saw these words before answering this question. The passage shown is the one that sets this version apart from the others, taken from the file named for this study where there is one. It was found by matching text, so check that it belongs to the right version, not only that the words appear somewhere.</p>
+  </header>
+  <div class="tally" id="tally" aria-live="polite"></div>
+  <div class="filters" role="group" aria-label="Show">
+    <button type="button" data-f="all" aria-pressed="true">All</button>
+    <button type="button" data-f="open" aria-pressed="false">Not checked yet</button>
+    <button type="button" data-f="wrong" aria-pressed="false">Wrong</button>
+    <button type="button" data-f="cannot" aria-pressed="false">Can't check</button>
+  </div>
+  <main id="list" style="display:grid;gap:16px"></main>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function(){
+  const DATA = JSON.parse(document.getElementById("data").textContent);
+  const items = DATA.items;
+  const verdicts = {};
+  let db = null, filter = "all";
+  const list = document.getElementById("list");
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const LABEL = {correct: "Correct", wrong: "Wrong", cannot: "Can't check"};
+
+  function tally(){
+    const t = document.getElementById("tally"); t.replaceChildren();
+    const c = {correct:0, wrong:0, cannot:0};
+    items.forEach(i => { const v = verdicts[i.n]?.verdict; if (c[v] != null) c[v]++; });
+    const done = c.correct + c.wrong + c.cannot;
+    const add = (cls, num, word) => { const s = el("span", cls); s.append(el("b", null, String(num)), " " + word); t.append(s); };
+    add("", done + " / " + items.length, "checked");
+    add("yes", c.correct, "correct"); add("no", c.wrong, "wrong"); add("cc", c.cannot, "can't check");
+    t.append(el("span", "status", db ? "Verdicts save as you go." : "Connecting to the verdict store. Until it answers, choices cannot be saved."));
+  }
+
+  function card(i){
+    const v = verdicts[i.n] || {};
+    const art = el("article", "item" + (v.verdict ? " v-" + v.verdict : ""));
+    art.dataset.n = i.n;
+    const head = el("div", "head");
+    head.append(el("span", "n", "#" + i.n), el("h2", null, i.title || i.study_id));
+    const meta = el("div", "meta");
+    const m = (k, val) => { const s = el("span"); s.append(k + " "); s.append(el("code", null, String(val))); meta.append(s); };
+    m("recipe", i.recipe); m("source", i.source); m("version", i.condition_num); m("question", i.task_num);
+    if (i.raw_folder) m("folder", i.raw_folder);
+    const cols = el("div", "cols");
+    const ours = el("div", "box");
+    ours.append(el("p", "label", "What we wrote"));
+    const f = i.factors && Object.keys(i.factors).length ? i.factors : null;
+    if (f){ const fp = el("p", "factors"); fp.append("This version: "); Object.entries(f).forEach(([k, val]) => fp.append(el("span", null, k + " = " + val))); ours.append(fp); }
+    ours.append(el("p", "text", i.condition || "(no condition text: the sentinel for no stimulus)"));
+    const q = el("p", "text q"); q.append(el("strong", null, "Question: "), i.outcome + "  [scale " + i.scale[0] + " to " + i.scale[1] + "]"); ours.append(q);
+    const src = el("div", "box");
+    src.append(el("p", "label", "Original questionnaire"));
+    if (i.located.length){
+      const h = i.located[0];
+      src.append(el("p", "file", h.file + "  (" + h.matched + " found)"));
+      src.append(el("pre", "text src", h.excerpt));
+      if (h.context){ src.append(el("p", "others", "Shared text, from elsewhere in the same file:")); src.append(el("pre", "text src", h.context)); }
+      if (h.question){ src.append(el("p", "others", "The question, from elsewhere in the same file:")); src.append(el("pre", "text src", h.question)); }
+      if (i.located.length > 1) src.append(el("p", "others", "Also found in: " + i.located.slice(1).map(x => x.file.split("/").pop()).join(", ")));
+    } else {
+      src.append(el("p", "missing", "No passage found automatically. Open the questionnaire in the folder above and find it by hand, or mark it Can't check."));
+    }
+    cols.append(ours, src);
+    const vd = el("div", "verdict");
+    ["correct", "wrong", "cannot"].forEach(k => {
+      const b = el("button", null, LABEL[k]); b.type = "button"; b.dataset.v = k; b.id = "v" + i.n + "-" + k;
+      b.setAttribute("aria-pressed", v.verdict === k ? "true" : "false"); b.disabled = !db;
+      b.addEventListener("click", () => save(i.n, {verdict: v.verdict === k ? null : k}));
+      vd.append(b);
+    });
+    const saved = el("span", "saved", v.verdict ? "Saved" : "");
+    vd.append(saved);
+    const note = el("textarea"); note.id = "note" + i.n; note.placeholder = "Note (what is wrong, or why it can't be checked)"; note.value = v.note || ""; note.disabled = !db;
+    note.setAttribute("aria-label", "Note for item " + i.n);
+    note.addEventListener("change", () => save(i.n, {note: note.value}));
+    art.append(head, meta, cols, vd, note);
+    return art;
+  }
+
+  function render(){
+    tally();
+    const active = document.activeElement?.id;
+    list.replaceChildren(...items.filter(i => {
+      const v = verdicts[i.n]?.verdict;
+      return filter === "all" || (filter === "open" ? !v : v === filter);
+    }).map(card));
+    if (active) document.getElementById(active)?.focus();
+  }
+
+  async function save(n, patch){
+    if (!db) return;
+    const next = Object.assign({}, verdicts[n] || {}, patch, {n});
+    verdicts[n] = next; render();
+    try { await db.collection("verdicts").doc("n" + n).set(next); }
+    catch (e) { const s = list.querySelector('[data-n="' + n + '"] .saved'); if (s) s.textContent = "Not saved: " + (e?.message || "the store refused the write"); }
+  }
+
+  document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+    filter = b.dataset.f;
+    document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+    render();
+  }));
+
+  render();
+  const timer = setTimeout(() => { const s = document.querySelector(".tally .status"); if (s && !db) s.textContent = "The verdict store did not answer, so choices cannot be saved here. Sign in to claude.ai and reload."; }, 10000);
+  (async () => {
+    const api = window.claude?.use ? await window.claude.use("db") : null;
+    if (!api) return;
+    db = api; clearTimeout(timer);
+    db.collection("verdicts").onSnapshot(snap => {
+      snap.docs.forEach(d => { const x = d.data(); if (x && x.n != null) verdicts[x.n] = x; });
+      render();
+    }, () => {});
+    render();
+  })();
+})();
+</script>
