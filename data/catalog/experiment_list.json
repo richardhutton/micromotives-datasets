@@ -2736,6 +2736,18 @@
   },
   {
    "source": "TESS",
+   "id": "g2jcy",
+   "title": "Public Support for Remote Work Arrangements: An Experimental Study of the Effects of Occupational Status, Mental Health Status, and Gender",
+   "description": "Factorial vignette: Michael or Michelle, a data entry clerk or a lawyer at a law firm, asks to work from home three days a week, and in half the versions mentions having bipolar disorder (8 conditions). Answer: the motive, how the work would go, and whether the request is reasonable and should be approved (10 ratings).",
+   "details": "16,549 rows; 2024",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "g2jcy"
+  },
+  {
+   "source": "TESS",
    "id": "k9ahx",
    "title": "Assessing the Stability of Value Systems in the Mass Public",
    "description": "A statement about equal opportunity or economic security, or none (3 conditions). Answer: how important five values are to daily life, 1-5, plus interest in politics (6 ratings). Ratings half only.",
@@ -2891,6 +2903,54 @@
    "status": "Needs checking",
    "reason": "framed as a US congressional primary; check the rest of the instrument",
    "novelty": null
+  },
+  {
+   "source": "TESS",
+   "id": "8972k",
+   "title": "Measuring Fertility Preferences",
+   "description": "Question order: everyone is asked the ideal number of children for a family and the ideal number for themselves, with the order randomised (2 conditions). Answer: each ideal as a count, 0 to 7 or more (2 counts).",
+   "details": "3,316 rows; 2024",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "8972k"
+  },
+  {
+   "source": "TESS",
+   "id": "h4k2t",
+   "title": "The Femin[ist] Mystique: How Group Perceptions Shape Affect and Identity",
+   "description": "Factorial vignette: a man or a woman who calls themselves a feminist, talks about feminist issues frequently or rarely, and is very active for gender equality or not (8 conditions). Answer: warmth toward the person and toward feminists, whether they would call themselves a feminist, and whether they would be more or less likely to if most feminists were like that person (4 outcomes).",
+   "details": "6,642 rows; 2023",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "h4k2t"
+  },
+  {
+   "source": "TESS",
+   "id": "d4zua",
+   "title": "Gender and the Disparate Payoffs of Overwork",
+   "description": "Factorial vignette: an e-mailed job reference for Amy or Jason Morgan, a project manager who worked standard hours or 50 to 60 hours a week and performed in the top 1% to 60% of comparable staff (32 conditions). Answer: how committed, competent, likeable and reliable Morgan seems (4 ratings).",
+   "details": "8,408 rows; 2021",
+   "category": "work/family/gender",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "d4zua"
+  },
+  {
+   "source": "TESS",
+   "id": "ysqex",
+   "title": "Membership in a stigmatized religious minority and political support",
+   "description": "Question wording: every question names political candidates who are atheist, who are not sure there is a God, or who do not currently identify with a religion (3 conditions). Answer: a 0-100 feeling thermometer, threat to \"people like me\", disgust, anxiety and anger, support for religion in public life, liberal-conservative placement and trustworthiness (11 ratings). The US candidate conjoint is not built.",
+   "details": "13,530 rows; 2024",
+   "category": "moral/social/cognition",
+   "status": "Built",
+   "reason": "",
+   "novelty": null,
+   "recipe": "ysqex"
   },
   {
    "source": "Zenodo",

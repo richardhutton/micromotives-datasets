@@ -573,6 +573,12 @@
       "design": "2x2 between subjects (question position x option order); one outcome, self-rated health 1-5; the seven earlier health questions are condition text in the after arms, not outcomes",
       "verified_against": "SocSci210 assignment and answers matched per arm (it puts the option-order factor on the wrong arms and never mentions position); an independent checker (Sonnet 5.5) rebuilt the design blind from the questionnaire and joined all 2,651 rows back to the .sav (0 mismatches)"
     },
+    "g2jcy": {
+      "category": "work/family/gender",
+      "description": "Michael or Michelle, a data entry clerk or a lawyer at a law firm, asks to work from home three days a week because it is quieter, and in half the versions mentions having bipolar disorder. People then judge the motive, how the work would go, and whether the request is reasonable and should be approved.",
+      "design": "2x2x2 vignette, between subjects (man or woman x clerk or lawyer x bipolar disorder disclosed or not); 10 outcomes",
+      "verified_against": "every (arm, outcome) count and mean reproduces the deposit's CSV export, a file the build does not read; the persona reproduces the unweighted age, ethnicity, education and sex percentages in NORC's methods report to the 0.1 printed (tests/test_gen_g2jcy.py); not in SocSci210"
+    },
     "zx5b8": {
       "category": "work/family/gender",
       "description": "Married people imagine sitting with their spouse on the sofa, either arguing about a sore point or chatting about the day, while the spouse either puts an arm around them or leans back and listens. They then say how cared for, safe, upset or close they would feel.",
@@ -1226,6 +1232,30 @@
       "description": "UK adults who buy food choose which of two 500 g packs of British beef mince they would buy, or neither, where each pack is described by its fat content, price and four labels (RSPCA Assured, Fair to Nature, Low Climate Impact, Premium Quality Angus) written as text, either stating every label as certified or not, or naming only the labels a pack has.",
       "design": "2 (every label stated vs only labels present) between subjects, crossed with a 24-set Ngene design in 3 blocks of 8 (one block per person); 8 choices per person, each row carrying only its own screen; options listed in the data file's order (on-screen order not recorded); 3-option nominal choice (product 1, product 2, neither)",
       "verified_against": "the authors' do-file (Beef Lamb Data structuring.do) applied to the raw export reproduces their analysis file person by person (1,987; 497 T-C, 503 T-A); their MNL in WTP space (wMNL_TC.R, wMNL_TA.R), re-estimated on the BUILT rows, equals the same model on Beef_CE_Survey.txt to 3e-7 (T-C: RSPCA 1.18, fat -0.12, Fair to Nature 0.74, Angus 0.75, Low Climate 0.28), with the signs and T-C > T-A ordering of every label's published mixed-logit mean WTP (wMLec_b_estimates_short.xlsx); opt-outs per person by arm equal the do-file's all_SQ (tests/test_gen_researchbox3520.py)"
+    },
+    "8972k": {
+      "category": "work/family/gender",
+      "description": "Respondents say what they think is the ideal number of children for a family to have, and what would be the ideal number for them personally (or would have been). Everyone answers both; which comes first is randomised.",
+      "design": "2-arm question order (general ideal first vs personal ideal first), between subjects; 2 outcomes, counts 0 to '7 or more'; each row carries only the screens shown up to its own, so the second-asked question narrates the first as asked. The proposal's three-arm design (one question, the other, or both) was not what was fielded",
+      "verified_against": "No SocSci210 build or published table. Every built (person, condition, outcome, response) tuple equals an independent pyreadstat reading of the .dta, and each cell's count and mean match (818/2.502, 818/2.191, 839/2.544, 841/2.303); assignment direction confirmed by the screen timers (the first-shown item takes longer: medians 9 vs 6 s and 10 vs 6 s); every rendered string found in both the programmed and simple questionnaires (tests/test_8972k_answer_key.py, tests/test_8972k_recipe.py)"
+    },
+    "d4zua": {
+      "category": "work/family/gender",
+      "description": "People read an e-mailed job reference for Amy or Jason Morgan, a project manager who either worked standard business hours or often came in early and stayed late for 50 or 60 hours a week, and who performed in the top 1% to 60% of comparable staff. They then rate how committed, competent, likeable and reliable Morgan seems.",
+      "design": "2x2x8 vignette, between subjects (standard hours or overwork x woman or man x performance top 1, 5, 10, 20, 30, 40, 50 or 60%), 32 cells; 4 outcomes, 1-7. The hiring and salary question (US dollars) is not built",
+      "verified_against": "Not in SocSci210 and no published table in the deposit. Every (cell, outcome) count and mean, 128 cells, and every per-factor mean reproduces the deposit's STATA copy, a file the build does not read, and the same check fails with the gender codes swapped; all 32 rendered conditions and their questions equal an independent evaluation of the questionnaire's display rules, in both copies of it (tests/test_gen_d4zua.py)"
+    },
+    "h4k2t": {
+      "category": "work/family/gender",
+      "description": "People read about a man or a woman who calls themselves a feminist, who talks about feminist issues frequently or rarely, and who either works actively with groups for gender equality or never does. They then rate that person and feminists as a group, say whether they would call themselves a feminist, and whether they would be more or less likely to if most feminists were like the person described.",
+      "design": "2x2x2 vignette, between subjects (man or woman x talks frequently or rarely x very active or not); 4 outcomes: two 0-100 feeling thermometers, feminist identity (3 options), and a counterfactual whose wording is filled by arm (nominal, 3 options). The partisanship guess (CONNORS6) is left out for the UK set (rich, 23 Nov 2026)",
+      "verified_against": "No SocSci210 build or published table. Every built (person, condition, outcome, response) tuple equals an independent pyreadstat reading of the .dta, and all 32 (arm, outcome) counts and means match; every arm's text equals its questionnaire block in both the simple and programmed questionnaires, and each arm's counterfactual wording equals the instrument's fills resolved for that arm (tests/test_h4k2t_answer_key.py, tests/test_h4k2t_recipe.py)"
+    },
+    "ysqex": {
+      "category": "moral/social/cognition",
+      "description": "US adults rate political candidates described as atheist, as not sure there is a God, or as not currently identifying with a religion: a 0-100 feeling thermometer, whether such candidates pose problems for or go against the values of \"people like me\", how much moral disgust, anxiety and anger they feel, how supportive the candidates are of religion in the public sphere, where they sit from extremely liberal to extremely conservative, and how trustworthy they are.",
+      "design": "3-arm question wording (the group named in every question), between subjects; 11 outcomes asked of everyone in a fixed order. Built: Q1-Q6 only; the Sawtooth candidate conjoint (Democrat/Republican, US President, mayor) and the respondent's own belief in God and rationalism items are not built",
+      "verified_against": "No SocSci210 build or published table for these items. Every built (person, condition, outcome, response) tuple equals an independent pyreadstat reading of the .dta (the build reads the .sav), each of the 33 cells' count and mean matches (thermometer 342/49.146, 312/49.907, 289/57.138), and every outcome's whole-sample distribution equals NORC's unweighted frequency tables code by code; every wording resolved identically from the programmed and simple questionnaires and checked against the codebook's grid items (tests/test_gen_ysqex.py)"
     }
   }
 }

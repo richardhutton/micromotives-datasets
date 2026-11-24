@@ -1,0 +1,431 @@
+study_id: h4k2t
+source: tess
+title: "The Femin[ist] Mystique: How Group Perceptions Shape Affect and Identity (Connors, TESS 125)"
+data_file: "s3223_client_CONNORS.dta"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-10-02: https://api.osf.io/v2/guids/h4k2t/ -> attributes.node_license null, relationships.license null; recorded in data/catalog/tess_uk_foundation_sources.csv). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# Not in SocSci210 (fielded November 2023), so there is nothing to crosscheck against.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 125 (Elizabeth C. Connors, Katelyn Stauffer; University of South
+  Carolina), "The Femin[ist] Mystique: How Group Perceptions Shape Affect and
+  Identity". NORC AmeriSpeak, web only (SURV_MODE = 2 and SURV_LANG = 1
+  "English" for all 1,683), US adults 18+, fielded 2-12 November 2023;
+  "In total, NORC collected 1,683 of final interviews" (Project Methods and
+  Transparency Report). The .dta has exactly 1,683 rows, one per CaseId
+  (unique). Deposit: OSF h4k2t, ConnorsM26.zip (its nine files are the ones
+  in data/raw/h4k2t/).
+
+  The fielded questionnaire is COMBINED with two other TESS studies (124 Vora,
+  133 Ollerenshaw). Only the CONNORS section is used here. Line citations are
+  1-based line numbers in the converted text files in data/raw/_converted/:
+    Q  = "h4k2t__TESS 124 Vora 125 Connors 133 Ollerenshaw Final Programmed
+         Questionnaire.txt" (prog)
+    QS = "h4k2t__TESS 124 Vora 125 Connors 133 Ollerenshaw Final Simple
+         Questionnaire.txt" (simple)
+    PR = "h4k2t__M26-Connors description.txt" (the PROPOSAL; never a wording
+         source)
+  The copy of the combined questionnaire in data/raw/qbd8p/ (the Vora deposit)
+  is a different file (different hash); it is not used.
+
+  Survey order is fixed: HL001, the Vora block, the Ollerenshaw block, then
+  Connors (P_ORDER, "The position of this block", is 3 for all 1,683). The
+  other two studies' screens are not part of this design and are not
+  rendered, as for every TESS omnibus build.
+
+
+  NO PICTURES
+
+  The questionnaire .docx embeds two images (word/media/image1.jpeg,
+  image2.png). Opened and read: the NORC logo and the AmeriSpeak logo, on the
+  cover. Every [SHOW IF P_CONNORS] block carries its own words. Text study.
+
+
+  THE DESIGN (PR; Q 296-304, 707-722; QS 252-267)
+
+  2 x 2 x 2 between subjects, preload P_CONNORS ("DATA ONLY VARIABLE: Vignette
+  assignment", labels "Vignette 1".."Vignette 8" only). raw -> condition_num
+  is raw - 1. Arm sizes 212/230/205/206/209/223/196/202 (sum 1,683).
+  Factors, as the questionnaire keys them to P_CONNORS (Q 708-722, QS
+  253-267, and again in CONNORS5's fills, Q 753, QS 288):
+    person:    man (1,3,5,7) / woman (2,4,6,8)
+    talks:     frequently (1,2,5,6) / rarely (3,4,7,8)
+    activity:  very active (1,2,3,4) / not very active (5,6,7,8)
+  Minimal pairs: person (0,1) (2,3) (4,5) (6,7); talks (0,2) (1,3) (4,6)
+  (5,7); activity (0,4) (1,5) (2,6) (3,7). Every pair differs in text.
+
+  ARM ORDER — THE PROPOSAL DISAGREES (the riskiest judgement in this
+  recipe). PR numbers the eight cells "1) a vocal, active man; 2) a vocal,
+  active woman; 3) a vocal, inactive man; 4) a vocal, inactive woman; 5) a
+  quiet, active man ..." That swaps codes 3/4 with 5/6 relative to the
+  questionnaire, which puts "rarely ... but is very active" on 3/4 and
+  "frequently ... but is not very active" on 5/6. The questionnaire is
+  followed: it is the programming specification for P_CONNORS, it is
+  internally consistent in two independent places (the vignette blocks and
+  the CONNORS5 fills), and prog and simple agree on both. The PR's cell
+  numbering is a planning list written before programming. Nothing in the
+  deposit names the cells by code (codebook and .dta labels are only
+  "Vignette n"), so this cannot be settled from the data alone. Aggregate
+  evidence, recorded for the checker: under the questionnaire's mapping the
+  individual thermometer is lower in every "not very active" cell than in
+  its "very active" pair (by 6.3 to 15.5 points); under the proposal's
+  mapping that gap would instead fall on talking rarely, and activity would
+  show none. Either is a possible finding, so this agrees with the build
+  without proving it.
+
+  recipe_prep.py (Jev, 2026-11-23, full run) chose P_CONNORS at conf 1.00
+  (runner-up CONNORS2 0.00). Accepted.
+
+
+  CONDITION TEXT
+
+  shared_context = the vignette's first sentence, identical in all eight arms
+  ("We are going to tell you about an individual and then ask your feelings
+  about that individual."). Each arm carries the rest of its block
+  word-for-word from QS. Prog and simple agree on all eight after markup
+  (<u>, <i>) is removed, except arm 1, where prog reads "<i>frequently</i>talks"
+  with no space (Q 708) and simple "frequently talks" (QS 253); simple is
+  followed (CONVENTIONS, Source authority 4). Prog's arm 1 block also lacks
+  its closing bracket; no words are affected.
+
+  Left out, all identical for every respondent and all instrument mechanics:
+  DISPLAY2 (Q 698-701) "Moving on to the next topic." and "In order to make
+  the section a valid one you will not be made fully aware of the nature or
+  purpose of the section." (a transition and a general deception notice
+  about the section, not part of the manipulation); and "Please note: We are
+  hiding the Continue button for 10 seconds so you can have time to read
+  through this page." (Q 724). No words of ours are added to any condition.
+
+
+  OUTCOMES (Q 728-760; QS 270-295), all asked of everyone after the vignette
+
+    task 0  CONNORS2  thermometer toward the individual, 0-100
+    task 1  CONNORS3  thermometer toward feminists as a group, 0-100
+    task 2  CONNORS4  "Would you identify yourself as feminist?" 1 "Yes,
+                      definitely", 2 "Maybe", 3 "No" (kept as coded)
+    task 3  CONNORS5  counterfactual identification, wording filled by arm
+
+  The thermometer questions are transcribed whole: the instrument's own
+  explanation of 0, 50 and 100 is part of the question, and the scale carries
+  no endpoint labels because the instrument gives none beyond that text.
+  "<u>individual</u>" and "<u>feminists</u>" lose their underline only.
+
+  CONNORS5's fills (Q 753, QS 288) are rendered word-for-word per arm as an
+  item-level outcome_question:
+    arms 1,2  "frequently talked about feminist issues and were very active"
+    arms 3,4  "rarely talked about feminist issues but were very active"
+    arms 5,6  "frequently talked about feminist issues but were not very active"
+    arms 7,8  "rarely talked about feminist issues and were not very active"
+  The outcome-level `question` for task 3 is the .dta's own variable label
+  (with its bracketed alternatives); every arm overrides it, so it is never
+  rendered (tests/test_h4k2t_recipe.py asserts that).
+  CONNORS5's options are coded 1 "More likely", 2 "Less likely", 3 "The same"
+  (screen order, Q 755-757). That coding is not an order, so the scale is
+  declared nominal and the codes are kept. Reordering them (less, same, more)
+  was tried and QC refuses a recode that changes direction, rightly: it
+  would be our ordering, not the screen's. WORDS WE ADDED: each arm's CONNORS5
+  question ends with " (1) More likely; (2) Less likely; (3) The same.", the
+  instrument's own option labels and codes in screen order, so the answer
+  instruction "Only return one of 1, 2 or 3" has something to refer to (the
+  cug34 B01/B09 pattern for nominal outcomes).
+
+  DROPPED BY RULING: CONNORS6, "If you had to guess the partisanship of the
+  individual described previously, what would it be?" (Democrat / Republican
+  / Independent / Not enough information to say; Q 762-768). rich, 23 Nov
+  2026: this study goes to the UK dataset, and a guess at a US party label is
+  not a UK question. 1,664 answers (19 web skips) are not built.
+
+  Missing codes: 777/998/999 on the thermometers (only 998 occurs: CONNORS2
+  34, CONNORS3 37); 77/98/99 on CONNORS4/5 (only 98 occurs: 5 and 14). 77, 98
+  and 99 are REAL thermometer values, so `missing_codes` holds only
+  777/998/999 and the 77/98/99 of the three-option items drop through those
+  items' own recodes. Rows: 1,649 + 1,646 + 1,678 + 1,669 = 6,642.
+
+
+  PERSONA
+
+  The AmeriSpeak set this project already maps (8972k, 8ctbk, b87sm: same
+  file layout), with IDEO (5-level) in place of IDEO20, which this file does
+  not have. Jev (recipe_prep.py) agreed on every field it was asked about
+  (conf 0.95-1.00) except region, where it chose REGION4 at 0.66 (REVIEW;
+  REGION9 0.32); REGION4 kept, as in every AmeriSpeak recipe and the
+  crosswalk built for it. RELIG code 1's label is severed in the .dta ("...
+  Presbyterian, Pent") and restored from this deposit's own P_RELIG preload
+  list (Q 243). HHSIZE codes 1-5 rewritten to their own digits; code 6 "Six
+  or more persons" left unrendered (157 respondents), because "6" would claim
+  exactly six.
+  persona_missing (each exercised): PartyID7 -1 "Unknown" (5 respondents),
+  IDEO -1 "Unknown" (28), RELIG 98 "SKIPPED ON WEB" (4), ATTEND 98 "SKIPPED ON
+  WEB" (1). Jev called ATTEND's "SKIPPED ON WEB" an answer (0.43, against
+  non-answer 0.37, disagreeing with the regex): overruled, it is the web skip
+  code (Q 332 "98 IMPLICIT REFUSAL, WEB SKIP"). GENDER 0 "Unknown" and the
+  77/99 codes on RELIG and ATTEND have no occurrences and are not declared.
+  Not mapped: PartyID5, AGE4, AGE7, INCOME4, INCOME9, REGION9, STATE (coarser
+  or finer duplicates), RELIG_OE (free text), Device, HH01-HH18OV.
+  Party and ideology are kept as for every TESS build: they correlate with
+  feminist identity but measure a different thing, and no condition states
+  what any persona group thinks (CONVENTIONS, the condition must not name the
+  respondent's own persona category). The vignette names a man or a woman;
+  that is the person described, not the respondent.
+
+
+  UK CHECK
+
+  The vignette names no American institution, place, party or law: it says
+  the person works with groups "that push forward legislation to decrease
+  gender pay and hiring gaps", which reads the same in the UK. It already
+  uses "towards". The outcomes are two feeling thermometers (a US survey
+  convention, "degree mark", but self-explaining in its own words) and two
+  feminist-identity questions. The one US-specific item, CONNORS6 (Democrat /
+  Republican), is dropped by ruling, above. Nothing in the kept text was
+  edited. The persona is the usual US panel profile, as for every TESS source.
+
+
+  ANSWER KEY
+
+  No SocSci210 build and no published table known. The answer key is an
+  independent recomputation from the .dta in tests/test_h4k2t_answer_key.py
+  (pyreadstat, not the pipeline), compared with the BUILT parquet: every
+  (person, condition, task, response) tuple, and each (arm, task) count and
+  mean. From the .dta (means on the built scale):
+    arm  CONNORS2 n/mean   CONNORS3 n/mean   CONNORS4 n/mean   CONNORS5 n
+    1    207  59.333       206  58.083       211  2.256        211
+    2    223  61.740       226  57.912       229  2.367        229
+    3    204  60.093       205  58.371       205  2.229        203
+    4    200  63.660       202  58.391       205  2.283        204
+    5    207  47.019       202  54.089       209  2.325        209
+    6    215  46.195       214  51.290       223  2.359        219
+    7    193  47.000       193  55.611       195  2.303        195
+    8    200  57.400       198  54.167       201  2.378        199
+
+condition:
+  source_var: P_CONNORS
+  shared_context: >-
+    We are going to tell you about an individual and then ask your feelings
+    about that individual.
+  factors: [person, talks, activity]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {person: man, talks: frequently, activity: very active}
+      text: >-
+        This person is a man who considers himself to be a feminist. He
+        frequently talks about feminist issues and is very active in working
+        towards gender equality, often working with groups (e.g., donating,
+        signing petitions, attending meetings) that push forward legislation to
+        decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists frequently talked about feminist issues and were
+            very active in working towards gender equality (like the individual
+            described previously), would you be more or less likely to identify
+            as a feminist? (1) More likely; (2) Less likely; (3) The same.
+    - raw: 2
+      condition_num: 1
+      factors: {person: woman, talks: frequently, activity: very active}
+      text: >-
+        This person is a woman who considers herself to be a feminist. She
+        frequently talks about feminist issues and is very active in working
+        towards gender equality, often working with groups (e.g., donating,
+        signing petitions, attending meetings) that push forward legislation to
+        decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists frequently talked about feminist issues and were
+            very active in working towards gender equality (like the individual
+            described previously), would you be more or less likely to identify
+            as a feminist? (1) More likely; (2) Less likely; (3) The same.
+    - raw: 3
+      condition_num: 2
+      factors: {person: man, talks: rarely, activity: very active}
+      text: >-
+        This person is a man who considers himself to be a feminist. He rarely
+        talks about feminist issues, but is very active in working towards
+        gender equality, often working with groups (e.g., donating, signing
+        petitions, attending meetings) that push forward legislation to
+        decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists rarely talked about feminist issues but were very
+            active in working towards gender equality (like the individual
+            described previously), would you be more or less likely to identify
+            as a feminist? (1) More likely; (2) Less likely; (3) The same.
+    - raw: 4
+      condition_num: 3
+      factors: {person: woman, talks: rarely, activity: very active}
+      text: >-
+        This person is a woman who considers herself to be a feminist. She
+        rarely talks about feminist issues, but is very active in working
+        towards gender equality, often working with groups (e.g., donating,
+        signing petitions, attending meetings) that push forward legislation to
+        decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists rarely talked about feminist issues but were very
+            active in working towards gender equality (like the individual
+            described previously), would you be more or less likely to identify
+            as a feminist? (1) More likely; (2) Less likely; (3) The same.
+    - raw: 5
+      condition_num: 4
+      factors: {person: man, talks: frequently, activity: not very active}
+      text: >-
+        This person is a man who considers himself to be a feminist. He
+        frequently talks about feminist issues, but is not very active in
+        working towards gender equality, never working with groups (e.g.,
+        donating, signing petitions, attending meetings) that push forward
+        legislation to decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists frequently talked about feminist issues but were
+            not very active in working towards gender equality (like the
+            individual described previously), would you be more or less likely
+            to identify as a feminist? (1) More likely; (2) Less likely; (3) The same.
+    - raw: 6
+      condition_num: 5
+      factors: {person: woman, talks: frequently, activity: not very active}
+      text: >-
+        This person is a woman who considers herself to be a feminist. She
+        frequently talks about feminist issues, but is not very active in
+        working towards gender equality, never working with groups (e.g.,
+        donating, signing petitions, attending meetings) that push forward
+        legislation to decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists frequently talked about feminist issues but were
+            not very active in working towards gender equality (like the
+            individual described previously), would you be more or less likely
+            to identify as a feminist? (1) More likely; (2) Less likely; (3) The same.
+    - raw: 7
+      condition_num: 6
+      factors: {person: man, talks: rarely, activity: not very active}
+      text: >-
+        This person is a man who considers himself to be a feminist. However,
+        he rarely talks about feminist issues and is not very active in working
+        towards gender equality, never working with groups (e.g., donating,
+        signing petitions, attending meetings) that push forward legislation to
+        decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists rarely talked about feminist issues and were not
+            very active in working towards gender equality (like the individual
+            described previously), would you be more or less likely to identify
+            as a feminist? (1) More likely; (2) Less likely; (3) The same.
+    - raw: 8
+      condition_num: 7
+      factors: {person: woman, talks: rarely, activity: not very active}
+      text: >-
+        This person is a woman who considers herself to be a feminist. However,
+        she rarely talks about feminist issues and is not very active in
+        working towards gender equality, never working with groups (e.g.,
+        donating, signing petitions, attending meetings) that push forward
+        legislation to decrease gender pay and hiring gaps, for example.
+      items:
+        3:
+          outcome_question: >-
+            If most feminists rarely talked about feminist issues and were not
+            very active in working towards gender equality (like the individual
+            described previously), would you be more or less likely to identify
+            as a feminist? (1) More likely; (2) Less likely; (3) The same.
+
+outcomes:
+  - var: CONNORS2
+    task_num: 0
+    question: >-
+      How do you feel toward the individual in the previous story? Ratings
+      between 50 and 100 degrees mean that you feel favorable and warm toward
+      them. Ratings between 0 and 50 mean that you don't feel favorable and
+      warm toward them. You would rate them at the 50 degree mark if you don't
+      feel particularly warm or cold toward them.
+    scale: {min: 0, max: 100}
+    response_recode: &therm {
+      0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12,
+      13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25,
+      26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38,
+      39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51,
+      52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64,
+      65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77,
+      78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90,
+      91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100
+    }
+  - var: CONNORS3
+    task_num: 1
+    question: >-
+      How do you feel toward feminists as a group? Ratings between 50 and 100
+      degrees mean that you feel favorable and warm toward them. Ratings
+      between 0 and 50 mean that you don't feel favorable and warm toward them.
+      You would rate them at the 50 degree mark if you don't feel particularly
+      warm or cold toward them.
+    scale: {min: 0, max: 100}
+    response_recode: *therm
+  - var: CONNORS4
+    task_num: 2
+    question: "Would you identify yourself as feminist?"
+    scale: {min: 1, max: 3, min_label: "Yes, definitely", mid_label: "Maybe", max_label: "No"}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  - var: CONNORS5
+    # Never rendered: every arm supplies its own filled wording (items[3]).
+    task_num: 3
+    question: >-
+      If most feminists [frequently/rarely] talked about feminist issues
+      [and/but] were [not] very active in working towards gender equality
+      (like the individual described previously), would you be more or less
+      likely to identify as a feminist?
+    # NOMINAL as coded: 1 More likely, 2 Less likely, 3 The same, in screen
+    # order. Endpoint labels would put "The same" at a pole. The three options
+    # are enumerated in each arm's question, as cug34 B01/B09.
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+
+response_recode: {1: 1, 2: 2, 3: 3}
+# 777/998/999 only: 77/98/99 are real thermometer values. CONNORS4/5's 77/98/99
+# drop through their own recodes.
+missing_codes: [777, 998, 999]
+
+persona_label_rewrite:
+  # The .dta severed this value label; restored word-for-word from this
+  # deposit's own questionnaire, the P_RELIG preload list (Q 243).
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+  # Words ("Two persons") cannot fill the integer field. Code 6 "Six or more
+  # persons" is NOT rewritten: "6" would claim exactly six.
+  HHSIZE:
+    1: "1"
+    2: "2"
+    3: "3"
+    4: "4"
+    5: "5"
+
+persona_missing:
+  PartyID7: [-1]
+  IDEO: [-1]
+  RELIG: [98]
+  ATTEND: [98]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

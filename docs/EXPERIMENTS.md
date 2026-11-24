@@ -2,7 +2,7 @@
 
 **This file is generated.** Run `uv run python scripts/experiments_table.py --write` after adding a recipe; `--check` fails if it is stale. Do not edit it by hand — see the module docstring for why.
 
-**101 studies (226 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 105 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 51 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
+**106 studies (231 experiments).** A study is the unit the seen/unseen split holds out whole, and SocSci210's unit (its 210 are studies): a TESS or Dataverse deposit, one DEL survey, or one Innovation Panel experiment number across its waves. An experiment is one randomised design within a study, one recipe here. By experiment: 31 UK (CC0, redistributable), 1 UK licence-restricted (usable for research under each one's own recorded basis, **not** redistributable), 38 UK Data Service (End User Licence, **not** redistributable, never sent to any external service), 105 Zenodo, Figshare, ResearchBox or openly licensed OSF (each under its record's own licence) and 56 US transfer layer (TESS, no licence stated — usable for research, **not** redistributable).
 
 | Layer | Studies | Experiments | Rows | Redistributable |
 |---|---|---|---|---|
@@ -10,8 +10,8 @@
 | UK — Harvard Dataverse (licence-restricted) | 1 | 1 | 13,268 | **no** — see each experiment's own licence note |
 | UK — UK Data Service (End User Licence) | 23 | 38 | 372,831 | **no** — UKDS End User Licence |
 | Zenodo, Figshare, ResearchBox and open OSF | 22 | 105 | 312,466 | per record — see each experiment's licence |
-| US transfer — TESS | 40 | 51 | 451,362 | **no** — no licence stated |
-| **Total** | **101** | **226** | **1,456,679** | |
+| US transfer — TESS | 45 | 56 | 499,807 | **no** — no licence stated |
+| **Total** | **106** | **231** | **1,505,124** | |
 
 ---
 
@@ -202,11 +202,13 @@
 | `b87sm` ⚠ | How to Increase the Acceptance of Mobile App and Sensor Data Collec… | TESS (OSF) | `osf.io/b87sm` | 19,282 |
 | `8ctbk` ⚠ | Childbearing Preferences in the Face of Work, Family, and Financial… | TESS (OSF) | `osf.io/8ctbk` | 17,464 |
 | `s6urt` ⚠ | Understanding Effects of Communicating Different Types of Conflicti… | TESS (OSF) | `osf.io/s6urt` | 17,402 |
+| `g2jcy` ⚠ | Public Support for Remote Work Arrangements: An Experimental Study … | TESS (OSF) | `osf.io/g2jcy` | 16,549 |
 | `vemrp` ⚠ | Accidental Environmentalists: Income and Evaluations of Eco-Friendl… | TESS (OSF) | `—` | 15,391 |
 | `cug34_B01_B09` ⚠ | Public Perceptions of Money in Families | TESS (OSF) | `osf.io/cug34` | 15,091 |
 | `z358z` ⚠ | Randomized Drug Trials without Consent? The Public's Perspective | TESS (OSF) | `osf.io/z358z` | 14,702 |
 | `sdq2z` ⚠ | Do liberals and conservatives differ in attitudes towards new housi… | TESS (OSF) | `—` | 14,630 |
 | `j6xgs` ⚠ | Busyness, Idleness, and Happiness | TESS (OSF) | `osf.io/j6xgs` | 14,201 |
+| `ysqex` ⚠ | Membership in a stigmatized religious minority and political support | TESS (OSF) | `osf.io/ysqex` | 13,530 |
 | `ye2ej` ⚠ | The Wages of Parenthood: At the Intersection of Sexual Orientation … | TESS (OSF) | `osf.io/ye2ej` | 12,971 |
 | `yv2ta_parental_leave` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material… | TESS (OSF) | `osf.io/yv2ta` | 12,139 |
 | `yv2ta_flexible_scheduling` ⚠ | Opting into Work-Family Policies: Comparing the Effects of Material… | TESS (OSF) | `osf.io/yv2ta` | 12,131 |
@@ -214,11 +216,13 @@
 | `zaqkm` ⚠ | Causal Attributions, Treatability, and Mental Illness Stigma | TESS (OSF) | `osf.io/zaqkm` | 9,528 |
 | `de5hx` ⚠ | Risk Orientations, Status Quo Frames, and Electoral Choice | TESS (OSF) | `—` | 9,033 |
 | `gh396` ⚠ | Maintaining a Sense of Belonging among the Socially Isolated | TESS (OSF) | `osf.io/gh396` | 8,959 |
+| `d4zua` ⚠ | Gender and the Disparate Payoffs of Overwork | TESS (OSF) | `osf.io/d4zua` | 8,408 |
 | `xk9ch_identity_threat` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,335 |
 | `xk9ch_vignette2` ⚠ | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | TESS (OSF) | `osf.io/xk9ch` | 8,269 |
 | `a42yg` ⚠ | Conflict between curative and palliative goals among health care pe… | TESS (OSF) | `osf.io/a42yg` | 8,022 |
 | `py9q3_vignette1` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 6,667 |
 | `py9q3_vignette3` ⚠ | Attitudes toward the Employment of Mothers and Fathers | TESS (OSF) | `osf.io/py9q3` | 6,659 |
+| `h4k2t` ⚠ | The Femin[ist] Mystique: How Group Perceptions Shape Affect and Ide… | TESS (OSF) | `osf.io/h4k2t` | 6,642 |
 | `5hqan` ⚠ | Gender Identity and Diversity | TESS (OSF) | `osf.io/5hqan` | 6,411 |
 | `9263n` ⚠ | To Do, to Have, or to Share? Valuing Experiences and Material Posse… | TESS (OSF) | `osf.io/9263n` | 6,328 |
 | `a2nbf` ⚠ | An Experiment Testing Possible Question-Wording Effects on Key Gene… | TESS (OSF) | `osf.io/a2nbf` | 6,211 |
@@ -234,6 +238,7 @@
 | `k9ahx_ratings` ⚠ | Assessing the Stability of Value Systems in the Mass Public | TESS (OSF) | `—` | 3,821 |
 | `a5v96_vignette1` ⚠ | What fosters patients' acceptance of Clinical Decision Support? (vi… | TESS (OSF) | `osf.io/a5v96` | 3,621 |
 | `e5rfg_six` ⚠ | Who has Narrow Brackets? | TESS (OSF) | `osf.io/e5rfg` | 3,608 |
+| `8972k` ⚠ | Measuring Fertility Preferences (Behrman, TESS 136) | TESS (OSF) | `osf.io/8972k` | 3,316 |
 | `7jt2f` ⚠ | When Others' Disbelief Engenders Prejudice: Characterizing Anti-Ath… | TESS (OSF) | `osf.io/7jt2f` | 3,053 |
 | `5mt6r` ⚠ | Improving Measurement of Self-Reported Health: Question Context and… | TESS (OSF) | `osf.io/5mt6r` | 2,651 |
 | `zrwjp` ⚠ | The Barriers of Buying Happier Time | TESS (OSF) | `osf.io/zrwjp` | 2,532 |
@@ -2588,6 +2593,7 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `xk9ch_vignette1` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 5,499 | 2,786 | osf.io/xk9ch |
 | `xk9ch_vignette2` | Are Religions Gender-Typed? The Perceived Femininity and Masculinit… | moral/social/cognition | 8,269 | 2,786 | osf.io/xk9ch |
 | `xtvu5` | Effects of Misinformation News Coverage on Media Trust | moral/social/cognition | 23,017 | 2,118 | — |
+| `ysqex` | Membership in a stigmatized religious minority and political support | moral/social/cognition | 13,530 | 1,274 | osf.io/ysqex |
 | `zrwjp` | The Barriers of Buying Happier Time | moral/social/cognition | 2,532 | 1,271 | osf.io/zrwjp |
 | `de5hx` | Risk Orientations, Status Quo Frames, and Electoral Choice | political preferences/policy | 9,033 | 1,017 | — |
 | `sdq2z` | Do liberals and conservatives differ in attitudes towards new housi… | political preferences/policy | 14,630 | 2,995 | — |
@@ -2597,8 +2603,12 @@ Fielded in the United States on topics judged universal enough to transfer. **No
 | `evnyh_Q1a_and_validation` | Impact of Response Scale Direction on Survey Responses (Keusch, TES… | survey methodology | 33,932 | 1,724 | osf.io/evnyh |
 | `rpw4u_RO1` | Cross-National Replication of Question Design Experiments (RO1: oil… | survey methodology | 1,023 | 1,023 | osf.io/rpw4u |
 | `sd7cf` | Framing in Noisy Informational Environments | survey methodology | 4,124 | 2,069 | osf.io/sd7cf |
+| `8972k` | Measuring Fertility Preferences (Behrman, TESS 136) | work/family/gender | 3,316 | 1,665 | osf.io/8972k |
 | `8ctbk` | Childbearing Preferences in the Face of Work, Family, and Financial… | work/family/gender | 17,464 | 1,794 | osf.io/8ctbk |
 | `cug34_B01_B09` | Public Perceptions of Money in Families | work/family/gender | 15,091 | 4,004 | osf.io/cug34 |
+| `d4zua` | Gender and the Disparate Payoffs of Overwork | work/family/gender | 8,408 | 2,114 | osf.io/d4zua |
+| `g2jcy` | Public Support for Remote Work Arrangements: An Experimental Study … | work/family/gender | 16,549 | 1,667 | osf.io/g2jcy |
+| `h4k2t` | The Femin[ist] Mystique: How Group Perceptions Shape Affect and Ide… | work/family/gender | 6,642 | 1,681 | osf.io/h4k2t |
 | `py9q3_vignette1` | Attitudes toward the Employment of Mothers and Fathers | work/family/gender | 6,667 | 1,682 | osf.io/py9q3 |
 | `py9q3_vignette2` | Attitudes toward the Employment of Mothers and Fathers | work/family/gender | 5,005 | 1,682 | osf.io/py9q3 |
 | `py9q3_vignette3` | Attitudes toward the Employment of Mothers and Fathers | work/family/gender | 6,659 | 1,682 | osf.io/py9q3 |
@@ -2618,9 +2628,9 @@ Categories are TESS's own six, reused verbatim so the two layers can be compared
 | cross-national | 0 | 1 | 3,053 |
 | economics/behavioural | 98 | 7 | 408,546 |
 | health communication | 1 | 9 | 136,384 |
-| moral/social/cognition | 21 | 17 | 280,589 |
+| moral/social/cognition | 21 | 18 | 294,119 |
 | political identity/polarisation | 5 | 0 | 44,415 |
 | political preferences/policy | 19 | 2 | 194,548 |
 | survey methodology | 20 | 6 | 223,494 |
-| work/family/gender | 11 | 9 | 165,650 |
+| work/family/gender | 11 | 13 | 200,565 |
 

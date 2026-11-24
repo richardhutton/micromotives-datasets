@@ -1,0 +1,280 @@
+study_id: 8972k
+source: tess
+title: "Measuring Fertility Preferences (Behrman, TESS 136)"
+data_file: "TESS 136 Behrman_Final Data.dta"
+licence: >-
+  none stated on the OSF deposit (checked via the OSF API, 2026-11-23: node 8972k, node_license null, no license relationship; its "Data and Materials" component 8r7xj likewise). TESS archived its post-2009 projects through the Roper Center and its own site states no reuse terms; TESS has since suspended operations. So there is no explicit grant of redistribution rights for this deposit, and none should be assumed.
+
+# Not in SocSci210 (fielded 2024), so there is nothing to crosscheck against.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 136 (Julia Behrman, Emily A. Marshall, Heather Rackin), "Measuring
+  Fertility Preferences". NORC AmeriSpeak, web only, fielded 16 January -
+  5 February 2024; "In total, NORC collected 1,668 of final interviews"
+  (Project Methods and Transparency Report). The .dta has exactly 1,668 rows,
+  one per CaseId (unique). Fetched from OSF 8972k -> component 8r7xj ("Data and
+  Materials") -> BehrmanM32.zip, 2026-11-23.
+
+  Line citations are 1-based line numbers in
+    Q  = "TESS 136 Behrman 141 Eareckson 142 Elliott_vFINALprog.txt", the
+         fielded PROGRAMMED questionnaire (textutil from the .docx; the only
+         wording authority)
+    QS = "..._vFINALsimple.txt", the simple version of the same instrument
+    PR = "M32-Behrman description.docx" and BehrmanM32.pdf, the PROPOSAL
+
+
+  A COMBINED THREE-STUDY INSTRUMENT; ONLY BEHRMAN'S BLOCK IS USED
+
+  Q is the omnibus questionnaire for TESS 136 (Behrman), 141 (Eareckson: job
+  advertisement pictures) and 142 (Elliott: a mental-health vignette). Q 385-396
+  randomises the order of their three blocks with RND_02; Block 1 (Q 399-510)
+  is Behrman's and is the only part read here. RND_02 is the omnibus's
+  counterbalancing of unrelated studies, not this design (recorded in
+  `considered_and_rejected`, as 3muqx does with BLOCKORDER). The transition
+  screen DISPLAY1 (Q 405-408, "Now we'd like to get your thoughts on a
+  different topic.", shown when Block 1 is not first) is survey mechanics and
+  not rendered. The .docx embeds two pictures (word/media), both in the page
+  header before "Client"; neither is in Behrman's block, so this is a text
+  study (ledger 158 check).
+
+
+  THE FIELDED DESIGN IS NOT THE PROPOSED ONE
+
+  PR proposes three between-subjects arms: the general question alone, the
+  personal question alone, or both. Q fields something else: EVERY respondent
+  answers both, and RND_00 randomises their order (Q 413-414):
+    "[IF RND_00=0: show BEHRMAN_AA1 first and then BEHRMAN_AB1 second]"
+    "[IF RND_00=1: show BEHRMAN_AB1 first and then BEHRMAN_AA1 second]"
+  The data agree with Q, not PR: both items are answered by all 1,668 (no blank
+  cells; only 11 and 9 "SKIPPED ON WEB"), and RND_00's own label is
+  "RANDOMIZATION VARIABLE: Used to record order of BEHRMAN_AA1, BEHRMAN_AB1".
+  Per docs/CONVENTIONS.md (Source authority), Q wins.
+
+  The opening sentence "We would like to ask you your opinions about family
+  size." is inserted into whichever item comes first (Q 421 "[INSERT IF
+  RND_00=0: ...]", Q 438 "[INSERT IF RND_00=1: ...]"). Each item is its own
+  screen (its own "#[RECORD TIME ON SCREEN]" and its own timer column).
+
+  ASSIGNMENT: RND_00 {0: 823, 1: 845}, sum 1,668, no blanks; raw 0 ->
+  condition_num 0, raw 1 -> condition_num 1. recipe_prep.py (Jev, 2026-11-23)
+  answered NONE_OF_THESE (conf 0.80) with RND_02 0.11 and RND_00 0.07 behind
+  it: overruled, the questionnaire settles it (Q 320-329 lists RND_00 against
+  BEHRMAN_AA1, BEHRMAN_AB1 and RND_02 against "BLOCK RANDOMIZATION"). An
+  independent check in the data, aggregates only: the screen a respondent met
+  FIRST takes longer (it carries the opening sentence and starts the topic).
+  Median seconds on BEHRMAN_AA1 are 9 when RND_00 = 0 and 6 when 1; on
+  BEHRMAN_AB1, 6 and 10. AA1 took longer than AB1 for 71.0% of RND_00 = 0 and
+  12.9% of RND_00 = 1. A reversed reading of RND_00 would invert both.
+
+
+  CONDITION TEXT (repeated measures within one block, CONVENTIONS.md)
+
+  Each row's condition is what the block had shown up to and including its own
+  screen, in that respondent's order; the later screen is never named. So each
+  (arm, task) cell sets its own `condition_text`:
+    first-asked item (arm 0 task 0, arm 1 task 1): the opening sentence,
+      word-for-word, which sat on the same screen above the question.
+    second-asked item (arm 0 task 1, arm 1 task 0): "Earlier in the survey you
+      were asked:" (ADDED, 5mt6r's wording), then the first screen's whole
+      text in double quotes, opening sentence included, then its options in
+      double quotes joined by " / " (ADDED punctuation, as 5mt6r). It narrates
+      what was ASKED, never what was answered (11 + 9 skipped the first item
+      and were still asked it).
+  The two first-asked cells are identical across arms because the two screens
+  WERE identical up to that point. `Arm.text` is the arm's last cell, which is
+  what QC rule 5 compares; it differs between the arms by which question was
+  narrated. No sequence position is cited.
+  "personally" is underlined on screen (Q 438 "<u>personally</u>"); the word
+  is kept and the underline dropped, as j6xgs does. Typography: the curly
+  apostrophe in DISPLAY1 is not rendered at all; the rendered strings contain
+  none.
+
+  QS (the simple questionnaire) gives the same words at QS 54-75, with the
+  opening sentence in square brackets on both items and the same RND_00
+  directive. No disagreement.
+
+
+  OUTCOMES
+
+  Task 0 is BEHRMAN_AA1, Q 421 minus the inserted sentence: "What do you think
+  is the ideal number of children for a family to have?" (the GSS item, PR).
+  Task 1 is BEHRMAN_AB1, Q 438 likewise: "What would be the ideal number of
+  children for you personally to have (or to have had)?" (the adapted
+  Eurobarometer item, PR). Options Q 424-431 and 441-448: 0, 1, 2, 3, 4, 5, 6,
+  "7 or more", stored 1..8 (value labels "0".."7 or more"), recoded to the
+  count 0..7. The scale's top code 7 means "7 or more", its own label.
+  missing_codes 77 DON'T KNOW, 98 SKIPPED ON WEB, 99 REFUSED (Jev conf 0.98-1.00
+  non-answer on both items); only 98 occurs: AA1 5 + 6, AB1 5 + 4.
+    rows = 1,668 x 2 - 20 = 3,316; participants 1,665 (3 skipped both).
+
+  NOT BUILT: Part B, BEHRMAN_B1-B4 (Q 451-507), asked of everyone after both
+  items in the same form. PR calls them "background questions". B2 ("How many
+  children do you have?") and B4 (importance of religion) are facts about the
+  respondent, not responses to the design; B1 (expected children) and B3
+  (thought about it) are background measures whose only variation is the order
+  of the two items before them, which the design did not set out to vary for
+  them. Row cost: B1 1,652, B2 1,653, B3 1,656, B4 1,660 valid answers (6,621).
+  B2 is also NOT a persona field: it is in the outcome's own domain (fertility),
+  so it would carry the answer, and the same holds for HH01-HH1317 (children in
+  the household by age), which are not mapped either.
+
+
+  PERSONA
+
+  The AmeriSpeak set this project already maps (8ctbk, b87sm: same file
+  layout): AGE, GENDER, EDUC5, RACETHNICITY, INCOME, MARITAL, EMPLOY, REGION4,
+  HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE, PartyID7, IDEO20,
+  RELIG, ATTEND. Jev (recipe_prep.py) agreed on every field it was asked about
+  (conf 0.96-1.00) except region, where it preferred REGION9 (0.53, REVIEW)
+  over REGION4 (0.45); REGION4 kept, as in every AmeriSpeak recipe and the
+  crosswalk built for it. RELIG code 1's label is severed in the .dta ("...
+  Presbyterian, Pent") and restored from this deposit's own Q, the P_RELIG
+  preload list (Q 239-256). HHSIZE ("Household size (including children)") is
+  kept, as the Innovation Panel fertility build keeps its household children
+  count: it is the standard household field, not a fertility answer. Its value
+  labels are words ("One person, I live by myself", "Two persons" .. "Six or
+  more persons"), and the persona field is an integer, so the build dropped it
+  from every row without a warning (found by reading the built persona keys).
+  Codes 1-5 are rewritten to their own numbers as digits; code 6 "Six or more
+  persons" is left unrendered (168 respondents, 334 rows), because "6" would
+  claim exactly six.
+  persona_missing (each exercised): PartyID7 -1 "Unknown" (2 rows), IDEO20 -1
+  "Unknown" (26), RELIG 98 "SKIPPED ON WEB" (2), ATTEND 98 "SKIPPED ON WEB" (1).
+  Jev called ATTEND's "SKIPPED ON WEB" an answer (0.46, against non-answer
+  0.35, disagreeing with the regex): overruled, it is the web skip code (Q 347
+  "98 IMPLICIT REFUSAL, WEB SKIP"). GENDER 0 "Unknown" and the 77/99 codes on
+  RELIG and ATTEND have no occurrences and are not declared (an unexercised
+  declaration is untested). Not mapped: PartyID5, AGE4, AGE7, INCOME4, INCOME9,
+  REGION9, STATE (coarser or finer duplicates), RELIG_OE (free text), Device.
+
+
+  UK CHECK
+
+  What respondents were shown and asked is two questions about the ideal
+  number of children, for a family and for oneself, with counts 0 to "7 or
+  more". Nothing American is in the condition or the outcome: no institution,
+  law, place, party or money. The "American respondents" framing is PR's, not
+  the screen's. The persona is the usual US panel profile, as for every TESS
+  source.
+
+
+  ANSWER KEY
+
+  No SocSci210 build and no published table known. The answer key is an
+  independent recomputation from the .dta in tests/test_8972k_answer_key.py (pyreadstat,
+  not the pipeline), compared cell by cell with the BUILT parquet: per (arm,
+  task) count and mean. From the .dta (count 0..7, aggregates):
+    arm 0 (general first)   task 0 general  n 818  mean 2.502
+                            task 1 personal n 818  mean 2.191
+    arm 1 (personal first)  task 0 general  n 839  mean 2.544
+                            task 1 personal n 841  mean 2.303
+
+condition:
+  source_var: RND_00
+  factors: [question_order]
+  considered_and_rejected:
+    RND_02: >-
+      Omnibus counterbalancing of three unrelated TESS studies (Q 385-396, "BLOCK
+      1 = START OF BLOCK 1 THRU END OF BLOCK 1 - RANDOMIZE USING RND_02"), not part of this design; Behrman's own
+      screens are word-for-word the same in every block order, apart from the
+      DISPLAY1 transition, which is survey mechanics.
+  arms:
+    - raw: 0
+      condition_num: 0
+      factors: {question_order: "general ideal first"}
+      text: >-
+        Earlier in the survey you were asked: "We would like to ask you your
+        opinions about family size. What do you think is the ideal number of
+        children for a family to have?" "0" / "1" / "2" / "3" / "4" / "5" / "6"
+        / "7 or more"
+      items:
+        0:
+          condition_text: "We would like to ask you your opinions about family size."
+        1:
+          condition_text: >-
+            Earlier in the survey you were asked: "We would like to ask you your
+            opinions about family size. What do you think is the ideal number of
+            children for a family to have?" "0" / "1" / "2" / "3" / "4" / "5" /
+            "6" / "7 or more"
+    - raw: 1
+      condition_num: 1
+      factors: {question_order: "personal ideal first"}
+      text: >-
+        Earlier in the survey you were asked: "We would like to ask you your
+        opinions about family size. What would be the ideal number of children
+        for you personally to have (or to have had)?" "0" / "1" / "2" / "3" /
+        "4" / "5" / "6" / "7 or more"
+      items:
+        0:
+          condition_text: >-
+            Earlier in the survey you were asked: "We would like to ask you your
+            opinions about family size. What would be the ideal number of
+            children for you personally to have (or to have had)?" "0" / "1" /
+            "2" / "3" / "4" / "5" / "6" / "7 or more"
+        1:
+          condition_text: "We would like to ask you your opinions about family size."
+
+outcomes:
+  - var: BEHRMAN_AA1
+    task_num: 0
+    question: "What do you think is the ideal number of children for a family to have?"
+    scale:
+      min: 0
+      max: 7
+      min_label: "0"
+      max_label: "7 or more"
+  - var: BEHRMAN_AB1
+    task_num: 1
+    question: "What would be the ideal number of children for you personally to have (or to have had)?"
+    scale:
+      min: 0
+      max: 7
+      min_label: "0"
+      max_label: "7 or more"
+
+response_recode: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7}
+missing_codes: [77, 98, 99]
+
+persona_label_rewrite:
+  # The .dta severed this value label; restored word-for-word from this
+  # deposit's own questionnaire, the P_RELIG preload list (Q 239-256).
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+  # HHSIZE's labels are words ("Two persons"), which the integer field cannot
+  # hold, so without this every row lost household size silently. Each label is
+  # its own number written as a digit. Code 6 "Six or more persons" is NOT
+  # rewritten: "6" would claim exactly six, so those respondents (168) carry no
+  # household size.
+  HHSIZE:
+    1: "1"
+    2: "2"
+    3: "3"
+    4: "4"
+    5: "5"
+
+persona_missing:
+  PartyID7: [-1]
+  IDEO20: [-1]
+  RELIG: [98]
+  ATTEND: [98]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO20
+  religion: RELIG
+  religious_attendance: ATTEND

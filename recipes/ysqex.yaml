@@ -1,0 +1,671 @@
+study_id: ysqex
+source: tess
+title: Membership in a stigmatized religious minority and political support
+data_file: TESS 146 Golebiowska_Final Data24Apr30.sav
+licence: 'None stated: the TESS deposit on OSF (ysqex) states no licence, and TESS has since suspended
+  operations. No explicit grant of redistribution rights should be assumed.'
+comparable_to_socsci210: false
+participant_id_var: CaseId
+notes: "Write recipes/ysqex.yaml: feelings about political candidates who are atheist,\nnot sure there\
+  \ is a God, or do not identify with a religion.\n\nTESS 146 (Ewa Golebiowska), \"Membership in a stigmatized\
+  \ religious minority and political\nsupport\". NORC AmeriSpeak, web (CAWI), general population 18+,\
+  \ fielded 29 March to 18\nApril 2024; \"In total, NORC collected 1,274 final interviews\", after NORC\
+  \ removed 18\ncases (1 speeder, 13 high refusal, 4 not answering all conjoint items) (Project Methods\n\
+  and Transparency Report). The .sav has exactly 1,274 rows, one per CaseId (unique).\n\nTHE DEPOSIT\n\
+  \nOSF ysqex, Golebiowska1700.zip, extracted beside it byte-for-byte: the fielded\nquestionnaire in a\
+  \ programming copy (\"9089.146 TESS 146 Golebiowska_vFINALprog.docx\",\n\"PG\") and a simple copy (\"\
+  ..._vFINALsimple.docx\", \"Q\"), the data (.sav and .dta), the\ncodebook and NORC's frequency tables\
+  \ (.xlsx), the methods report, the proposal\n(\"Golebiowska-1700.R1 description.docx\", \"PR\") and\
+  \ the IRB form. The build reads the\n.sav; the answer key (tests/test_gen_ysqex.py) reads the .dta and\
+  \ NORC's frequency\ntables, which the build never reads.\n\nSCOPE: Q1-Q6 ONLY (ruled by rich, 23 Nov\
+  \ 2026, for the UK dataset)\n\nThe instrument has two parts. A split-ballot block, Q1-Q8, fielded on\
+  \ AmeriSpeak, and\nthen a Sawtooth-hosted candidate conjoint, Q9-Q16 (PG \"BEGINNING OF CONJOINT PROGRAMMED\n\
+  BY SAWTOOTH\"). Only the split-ballot outcomes are built.\n\nNOT BUILT, the conjoint (Q9-Q16, 8 choices\
+  \ per respondent, at most 10,192 rows): every\nprofile carries \"Party affiliation\" Democrat / Republican\
+  \ and US race/ethnicity levels,\nand four of the eight choices are \"to be United States President\"\
+  , the other four \"the\nmayor of your town or city\". A US two-party label is an attribute a UK respondent\
+  \ has no\nequivalent for, so the conjoint is dropped as needing US politics, per the ruling. Its\nreligious-identity\
+  \ attribute is the same three groups as the split ballot plus \"Attends\nreligious services weekly\"\
+  \ and \"Christian\".\n\nNOT BUILT, Q7 and Q8 (1,274 + 4 x 1,274 cells), and NOT persona either. Q7 (\"\
+  On a\ndifferent subject, which of the following statements comes closest to expressing what you\nbelieve\
+  \ about God?\", six statements from \"I don't believe in God.\" to \"I know God really\nexists and I\
+  \ have no doubts about it.\") and Q8 (four statements on reason, science and\ntradition, 1 Strongly\
+  \ agree .. 7 Strongly disagree) are about the RESPONDENT, not the\ncandidates: PG opens them \"On a\
+  \ different subject\" and \"Switching gears once again\", and\nPR lists them as the respondent's own\
+  \ religiosity and rationalism. They are not outcomes\nof the manipulation, which is the group named\
+  \ in the questions about candidates, so a row\npairing them with an arm would teach that the arm moved\
+  \ them. Nor are they mapped to the\npersona: they were asked AFTER the manipulation (post-treatment,\
+  \ so not a clean\nbackground attribute), the persona schema has no field for belief in God or rationalism,\n\
+  and the respondent's religion is already carried by the AmeriSpeak profile variables\nRELIG and ATTEND,\
+  \ which were collected before this survey (PG preloads P_RELIG,\nP_ATTEND). Recorded here as the study's\
+  \ own moderators that the rows do not carry.\n\nTHE DESIGN\n\nOne factor, `target_group`, three arms,\
+  \ assigned by RND_01 (PG's table of RND_xx\nvariables: \"RND_01 (randomly assign 1,2,3 only. Do not\
+  \ assign a value of 0)\", associated\nwith \"Q1, Q2, Q3, Q4, Q5, Q6\"). Every one of Q1-Q6 names the\
+  \ group through the same fill:\n  [IF RND_01=1:political candidates who are atheist,\n   IF RND_01=2:political\
+  \ candidates who are not sure there is a God,\n   IF RND_01=3:political candidates who do not currently\
+  \ identify with a religion]\nRND_01 = 451 / 423 / 400, no blanks. raw -> condition_num is raw - 1.\n\
+  \nRND_01's label in the data and the codebook is \"RANDOMIZATION VARIABLE: Used to record\norder of\
+  \ response options at Q1, Q2, Q3, Q4, Q5, Q6\", which is wrong: no question in\nthe block randomises\
+  \ its options, and the only RND_01 directive anywhere in PG or Q is\nthe group fill above. That label\
+  \ is NORC's template text. recipe_prep.py (Jev, 23 Nov\n2026) answered NONE_OF_THESE (conf 0.62, REVIEW)\
+  \ with MayorPresidentRandom_1 (the\nconjoint block order) 0.29 behind it, misled by the same label.\
+  \ OVERRULED: the\nquestionnaire settles it. The data cannot tell arm 1 from arm 2 independently (their\n\
+  thermometer means differ by under 1 point), so the direction rests on the fill, which\nPG and Q print\
+  \ identically.\n\nPR's split ballot is the same three groups, in capitals (\"CANDIDATES WHO ARE ATHEISTS\"\
+  \n...) and with several wordings that were not fielded (\"Now, I'd like to get your\nfeelings\", \"\
+  Thinking more about ...\"); PG and Q are used (docs/CONVENTIONS.md, Source\nauthority).\n\nCONDITION\
+  \ TEXT\n\nThe manipulation has no screen of its own: it is the group the questions name. So, as\na2nbf\
+  \ does for its baby/fetus wording, each arm's text is one sentence saying which\ngroup the questions\
+  \ were about, with the group's words in double quotes, word-for-word\nfrom the fill, and each outcome\
+  \ carries that arm's own question wording (Arm.items).\nADDED WORDS, stated per CONVENTIONS: \"This\
+  \ set of survey questions was about\" and the\nclosing full stop. They are true for every row: all eleven\
+  \ outcomes name the group.\n\n  arm 0 (RND_01 = 1): This set of survey questions was about \"political\
+  \ candidates who\n                      are atheist\".\n  arm 1 (RND_01 = 2): ... \"political candidates\
+  \ who are not sure there is a God\".\n  arm 2 (RND_01 = 3): ... \"political candidates who do not currently\
+  \ identify with a\n                      religion\".\n\nNot rendered: the welcome screen WINTRO_1 (\"\
+  Thank you for agreeing to participate ...\",\n\"This survey is about political concepts.\", the incentive),\
+  \ which is survey mechanics.\nNo shared_context.\n\nOUTCOMES: 11, ALL ASKED OF EVERY RESPONDENT, IN\
+  \ A FIXED ORDER\n\n  task 0      Q1   feeling thermometer, slider 0-100 (PG \"#[SLIDER [RANGE 0 TO 100]]\"\
+  )\n  task 1-4    Q2A-D  four statements, 1 Strongly agree .. 7 Strongly disagree\n  task 5-7    Q3A-C\
+  \  Moral disgust, Anxiety, Anger, 0 Not at all .. 10 Very frequently\n  task 8      Q4A  support for\
+  \ religion in the public sphere, 0-10\n  task 9      Q5   liberal-conservative placement, 1 Extremely\
+  \ liberal .. 7 Extremely\n                   conservative (4 Moderate)\n  task 10     Q6A  trustworthiness,\
+  \ 0-10\n\nEach wording is Q's, with the fill resolved for that arm, after asserting PG resolves to\n\
+  the same words for every arm. Q1's two paragraphs are joined with a space. Grid outcomes\nare the stem,\
+  \ a space, then the item. The Q2 stem ends with a full stop, as fielded. PG\nunderlines the group in\
+  \ most places (\"<u>...</u>\", typed into the text); the words are\nkept and the underline dropped,\
+  \ as j6xgs does. Typography normalised per CONVENTIONS\n(curly quotes straightened, en dashes in option\
+  \ labels made hyphens, the double space in\nQ5 made single). \"GRID ITEMS, RANDOMIZE\" is the order\
+  \ of a grid's rows on screen; no row\ncites a position. The codebook labels each grid column with its\
+  \ item in brackets; the\ngenerator asserts each is Q's item for that column.\n\nScales: endpoint labels\
+  \ are the screen's own (option text without its number, or Q4A's\nand Q6A's labels under the 0 and 10\
+  \ buttons). Q1 is a slider with no labelled ends, so\nits instruction names the range only; the question\
+  \ itself says what 0, 50 and 100 mean.\nQ5 names its midpoint, \"Moderate\", which is code 4 of 7.\n\
+  \nRESPONSES AND MISSING\n\nIdentity recodes over each scale (0-100, 1-7, 0-10). Q1's non-answer codes\
+  \ are 777 /\n998 / 999 (DON'T KNOW / SKIPPED ON WEB / REFUSED); every other item's are 77 / 98 / 99,\n\
+  which on Q1 are real thermometer ratings (77, 98 and 99 degrees: 27 respondents).\nSo missing_codes\
+  \ is [777, 998, 999] only, and on Q2-Q6 the 77/98/99 codes are dropped\nbecause they lie outside each\
+  \ outcome's declared recode (the build drops any value not in\nthe recode). Jev (recipe_prep) called\
+  \ every one of those labels a non-answer at conf >=\n0.98, agreeing with the regex. Only the web skip\
+  \ code occurs: Q1 998 331, Q2A-D 15 / 10 /\n10 / 16, Q3A-C 22 / 20 / 26, Q4A 11, Q5 16, Q6A 7. No blank\
+  \ cells.\n\nQ1's skip rate (26.0%) is far above every other item's (at most 2.0%). It is the\nthermometer\
+  \ slider: a respondent who never moved it was recorded as skipped. Those rows\nare dropped, not imputed\
+  \ (there is no answer to keep).\n\nROW ARITHMETIC: 1,274 x 11 = 14,014 cells minus 484 skips = 13,530\
+  \ rows.\n\nPERSONA\n\nThe AmeriSpeak set (ledger 149), as the sibling 2024 deposits: AGE, GENDER, EDUC5,\n\
+  RACETHNICITY, INCOME, MARITAL, EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO,\nINTERNET, PHONESERVICE,\
+  \ PartyID7, RELIG, ATTEND, and ideology from IDEO (\"DATA-ONLY:\nComputed 5-level political ideology\"\
+  ; this file has no IDEO20). recipe_prep agreed on\nevery field it judged at conf >= 0.89 except region,\
+  \ REVIEW between REGION4 (0.60) and\nREGION9 (0.34); REGION4 is used, as in every AmeriSpeak recipe\
+  \ and the crosswalk built\nfor it. recipe_prep's labels pass was capped at 40 of 196 columns and the\
+  \ persona columns\nfell past the cap, so their labels were read by hand: plain answers apart from those\n\
+  declared below.\n\npersona_missing (each exercised): PartyID7 -1 \"Unknown\" (2 respondents), IDEO -1\n\
+  \"Unknown\" (15), RELIG 98 \"SKIPPED ON WEB\" (2). GENDER 0 \"Unknown\" and the 77/99 codes on\nRELIG,\
+  \ and all three on ATTEND, have no occurrences and are not declared.\n\nRELIG code 1's label in this\
+  \ file is \"Protestant (Baptist, Methodist, etc.)\", a shorter\nform of the label this deposit's own\
+  \ PG prints for the same preload code (P_RELIG 1,\n\"Protestant (Baptist, Methodist, Non-denominational,\
+  \ Lutheran, Presbyterian,\nPentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness,\
+  \ etc.)\"),\nwhich is the label the AmeriSpeak crosswalk maps. Rewritten to PG's words. HHSIZE's\nlabels\
+  \ are words (\"Two persons\"), which the integer field cannot hold (8972k found this\ndropped household\
+  \ size from every row silently); codes 1-5 are rewritten to their own\nnumbers, and code 6 \"Six or\
+  \ more persons\" is left unrendered (133 respondents), because\n\"6\" would claim exactly six.\n\nKept\
+  \ although they sit near the topic: RELIG and ATTEND. The condition names a group a\npersona value can\
+  \ also name (RELIG 9 \"Atheist (do not believe in God)\", 10 \"Agnostic (not\nsure if there is a God)\"\
+  ), but it states nothing about what any group thinks, so nothing\nfollows by substitution (CONVENTIONS,\
+  \ the condition must not name the respondent's own\npersona category: \"naming ... is not enough\",\
+  \ rich, 10 Oct 2026). The respondent's\nreligion is an ordinary predictor of how they feel about irreligious\
+  \ candidates, as age\nis.\n\nNot mapped: PartyID5, AGE4, AGE7, INCOME4, INCOME9, REGION9, STATE (coarser\
+  \ or finer\nduplicates), RELIG_OE (free text), HH01-HH18OV, Device, the conjoint's attribute and\norder\
+  \ columns, MayorPresidentRandom_1.\n\nUK CHECK\n\nThe block asks how the respondent feels about political\
+  \ candidates who are atheist, not\nsure there is a God, or of no religion: warmth, whether they threaten\
+  \ \"people like me\",\ndisgust, anxiety and anger, how supportive they are of religion in public life,\
+  \ where they\nsit politically and how trustworthy they are. Nothing in Q1-Q6 names an American party,\n\
+  office, institution or place, and candidates' religion is a question a UK respondent can\nanswer. \"\
+  favorable\" is American spelling, kept word-for-word.\n\nQ5's \"extremely liberal\" to \"extremely conservative\"\
+  \ scale is the American ideology\nscale. Judged ANSWERABLE by a UK respondent and kept: both words are\
+  \ in ordinary British\npolitical use, the scale is fully labelled, and the question asks where a group\
+  \ of\ncandidates sits rather than about any US party. The caveat, for a reader of the UK rows:\nin Britain\
+  \ \"liberal\" more often means the economic or civil-liberties sense than the\nAmerican \"left\", and\
+  \ \"conservative\" carries the name of a party, so a UK answer to Q5 may\nnot mean what the same code\
+  \ meant to this sample. No word was changed.\n\nVERIFICATION\n\nNot in SocSci210 (fielded 2024; comparable_to_socsci210:\
+  \ false), and no paper with this\nstudy's numbers is in the deposit. tests/test_gen_ysqex.py holds the\
+  \ answer keys: the\nbuilt rows reproduce every (arm, outcome) count and mean computed independently\
+  \ from the\n.dta (not the .sav the build reads), and every outcome's whole-sample distribution in\n\
+  NORC's unweighted frequency tables, code by code."
+condition:
+  source_var: RND_01
+  factors:
+  - target_group
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      target_group: atheist
+    text: This set of survey questions was about "political candidates who are atheist".
+    items:
+      0:
+        outcome_question: We'd like to get your feelings toward political candidates who are atheist.
+          Please rate political candidates who are atheist using something we call the feeling thermometer.
+          Ratings between 51 degrees and 100 degrees mean that you feel favorable and warm toward political
+          candidates who are atheist. Ratings between 0 degrees and 49 degrees mean that you don't feel
+          favorable toward them and that you don't care too much for them. You would rate political candidates
+          who are atheist at the 50 degree mark if you don't feel particularly warm or cold toward them.
+          Please click on the rating that best matches your feelings.
+      1:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are atheist. Political candidates who are atheist pose challenges
+          to people like me.
+      2:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are atheist. Political candidates who are atheist pose problems
+          for people like me.
+      3:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are atheist. Political candidates who are atheist promote values
+          that are seen as immoral by people like me.
+      4:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are atheist. Political candidates who are atheist promote values
+          that go against the values of people like me.
+      5:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who are atheist? Moral disgust
+      6:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who are atheist? Anxiety
+      7:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who are atheist? Anger
+      8:
+        outcome_question: On a scale from 0 to 10 where 0 means "not at all supportive" and 10 means "very
+          supportive," how supportive or unsupportive do you think political candidates who are atheist
+          are toward religion in the public sphere?
+      9:
+        outcome_question: The following scale represents different political views, from "extremely liberal"
+          to "extremely conservative." Where you would place political candidates who are atheist on this
+          scale?
+      10:
+        outcome_question: On a scale from 0 ("not at all trustworthy") to 10 ("very trustworthy"), how
+          trustworthy or untrustworthy would you say political candidates who are atheist are?
+  - raw: 2
+    condition_num: 1
+    factors:
+      target_group: not_sure_god
+    text: This set of survey questions was about "political candidates who are not sure there is a God".
+    items:
+      0:
+        outcome_question: We'd like to get your feelings toward political candidates who are not sure
+          there is a God. Please rate political candidates who are not sure there is a God using something
+          we call the feeling thermometer. Ratings between 51 degrees and 100 degrees mean that you feel
+          favorable and warm toward political candidates who are not sure there is a God. Ratings between
+          0 degrees and 49 degrees mean that you don't feel favorable toward them and that you don't care
+          too much for them. You would rate political candidates who are not sure there is a God at the
+          50 degree mark if you don't feel particularly warm or cold toward them. Please click on the
+          rating that best matches your feelings.
+      1:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are not sure there is a God. Political candidates who are not
+          sure there is a God pose challenges to people like me.
+      2:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are not sure there is a God. Political candidates who are not
+          sure there is a God pose problems for people like me.
+      3:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are not sure there is a God. Political candidates who are not
+          sure there is a God promote values that are seen as immoral by people like me.
+      4:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who are not sure there is a God. Political candidates who are not
+          sure there is a God promote values that go against the values of people like me.
+      5:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who are not sure there is a God? Moral disgust
+      6:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who are not sure there is a God? Anxiety
+      7:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who are not sure there is a God? Anger
+      8:
+        outcome_question: On a scale from 0 to 10 where 0 means "not at all supportive" and 10 means "very
+          supportive," how supportive or unsupportive do you think political candidates who are not sure
+          there is a God are toward religion in the public sphere?
+      9:
+        outcome_question: The following scale represents different political views, from "extremely liberal"
+          to "extremely conservative." Where you would place political candidates who are not sure there
+          is a God on this scale?
+      10:
+        outcome_question: On a scale from 0 ("not at all trustworthy") to 10 ("very trustworthy"), how
+          trustworthy or untrustworthy would you say political candidates who are not sure there is a
+          God are?
+  - raw: 3
+    condition_num: 2
+    factors:
+      target_group: no_religion
+    text: This set of survey questions was about "political candidates who do not currently identify with
+      a religion".
+    items:
+      0:
+        outcome_question: We'd like to get your feelings toward political candidates who do not currently
+          identify with a religion. Please rate political candidates who do not currently identify with
+          a religion using something we call the feeling thermometer. Ratings between 51 degrees and 100
+          degrees mean that you feel favorable and warm toward political candidates who do not currently
+          identify with a religion. Ratings between 0 degrees and 49 degrees mean that you don't feel
+          favorable toward them and that you don't care too much for them. You would rate political candidates
+          who do not currently identify with a religion at the 50 degree mark if you don't feel particularly
+          warm or cold toward them. Please click on the rating that best matches your feelings.
+      1:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who do not currently identify with a religion. Political candidates
+          who do not currently identify with a religion pose challenges to people like me.
+      2:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who do not currently identify with a religion. Political candidates
+          who do not currently identify with a religion pose problems for people like me.
+      3:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who do not currently identify with a religion. Political candidates
+          who do not currently identify with a religion promote values that are seen as immoral by people
+          like me.
+      4:
+        outcome_question: How strongly do you agree or disagree with each of the following statements
+          about political candidates who do not currently identify with a religion. Political candidates
+          who do not currently identify with a religion promote values that go against the values of people
+          like me.
+      5:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who do not currently identify with a religion? Moral disgust
+      6:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who do not currently identify with a religion? Anxiety
+      7:
+        outcome_question: To what extent do you experience each of the following feelings when thinking
+          about political candidates who do not currently identify with a religion? Anger
+      8:
+        outcome_question: On a scale from 0 to 10 where 0 means "not at all supportive" and 10 means "very
+          supportive," how supportive or unsupportive do you think political candidates who do not currently
+          identify with a religion are toward religion in the public sphere?
+      9:
+        outcome_question: The following scale represents different political views, from "extremely liberal"
+          to "extremely conservative." Where you would place political candidates who do not currently
+          identify with a religion on this scale?
+      10:
+        outcome_question: On a scale from 0 ("not at all trustworthy") to 10 ("very trustworthy"), how
+          trustworthy or untrustworthy would you say political candidates who do not currently identify
+          with a religion are?
+  considered_and_rejected:
+    MayorPresidentRandom_1: Order of the conjoint's mayor and president blocks (Q9-Q16), which are not
+      built. Assigned after Q1-Q6 were answered.
+    AttributeOrder_1: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+    AttributeOrder_2: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+    AttributeOrder_3: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+    AttributeOrder_4: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+    AttributeOrder_5: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+    AttributeOrder_6: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+    AttributeOrder_7: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+    AttributeOrder_8: Row order of the conjoint's eight candidate attributes (fixed per respondent, PG),
+      for Q9-Q16, which are not built. Set after Q1-Q6 were answered and changes no word of them.
+outcomes:
+- var: Q1
+  task_num: 0
+  question: We'd like to get your feelings toward political candidates who are atheist. Please rate political
+    candidates who are atheist using something we call the feeling thermometer. Ratings between 51 degrees
+    and 100 degrees mean that you feel favorable and warm toward political candidates who are atheist.
+    Ratings between 0 degrees and 49 degrees mean that you don't feel favorable toward them and that you
+    don't care too much for them. You would rate political candidates who are atheist at the 50 degree
+    mark if you don't feel particularly warm or cold toward them. Please click on the rating that best
+    matches your feelings.
+  scale:
+    min: 0
+    max: 100
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+    11: 11
+    12: 12
+    13: 13
+    14: 14
+    15: 15
+    16: 16
+    17: 17
+    18: 18
+    19: 19
+    20: 20
+    21: 21
+    22: 22
+    23: 23
+    24: 24
+    25: 25
+    26: 26
+    27: 27
+    28: 28
+    29: 29
+    30: 30
+    31: 31
+    32: 32
+    33: 33
+    34: 34
+    35: 35
+    36: 36
+    37: 37
+    38: 38
+    39: 39
+    40: 40
+    41: 41
+    42: 42
+    43: 43
+    44: 44
+    45: 45
+    46: 46
+    47: 47
+    48: 48
+    49: 49
+    50: 50
+    51: 51
+    52: 52
+    53: 53
+    54: 54
+    55: 55
+    56: 56
+    57: 57
+    58: 58
+    59: 59
+    60: 60
+    61: 61
+    62: 62
+    63: 63
+    64: 64
+    65: 65
+    66: 66
+    67: 67
+    68: 68
+    69: 69
+    70: 70
+    71: 71
+    72: 72
+    73: 73
+    74: 74
+    75: 75
+    76: 76
+    77: 77
+    78: 78
+    79: 79
+    80: 80
+    81: 81
+    82: 82
+    83: 83
+    84: 84
+    85: 85
+    86: 86
+    87: 87
+    88: 88
+    89: 89
+    90: 90
+    91: 91
+    92: 92
+    93: 93
+    94: 94
+    95: 95
+    96: 96
+    97: 97
+    98: 98
+    99: 99
+    100: 100
+- var: Q2A
+  task_num: 1
+  question: How strongly do you agree or disagree with each of the following statements about political
+    candidates who are atheist. Political candidates who are atheist pose challenges to people like me.
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q2B
+  task_num: 2
+  question: How strongly do you agree or disagree with each of the following statements about political
+    candidates who are atheist. Political candidates who are atheist pose problems for people like me.
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q2C
+  task_num: 3
+  question: How strongly do you agree or disagree with each of the following statements about political
+    candidates who are atheist. Political candidates who are atheist promote values that are seen as immoral
+    by people like me.
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q2D
+  task_num: 4
+  question: How strongly do you agree or disagree with each of the following statements about political
+    candidates who are atheist. Political candidates who are atheist promote values that go against the
+    values of people like me.
+  scale:
+    min: 1
+    max: 7
+    min_label: Strongly agree
+    max_label: Strongly disagree
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q3A
+  task_num: 5
+  question: To what extent do you experience each of the following feelings when thinking about political
+    candidates who are atheist? Moral disgust
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very frequently
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+- var: Q3B
+  task_num: 6
+  question: To what extent do you experience each of the following feelings when thinking about political
+    candidates who are atheist? Anxiety
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very frequently
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+- var: Q3C
+  task_num: 7
+  question: To what extent do you experience each of the following feelings when thinking about political
+    candidates who are atheist? Anger
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all
+    max_label: Very frequently
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+- var: Q4A
+  task_num: 8
+  question: On a scale from 0 to 10 where 0 means "not at all supportive" and 10 means "very supportive,"
+    how supportive or unsupportive do you think political candidates who are atheist are toward religion
+    in the public sphere?
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all supportive
+    max_label: Very supportive
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+- var: Q5
+  task_num: 9
+  question: The following scale represents different political views, from "extremely liberal" to "extremely
+    conservative." Where you would place political candidates who are atheist on this scale?
+  scale:
+    min: 1
+    max: 7
+    min_label: Extremely liberal
+    mid_label: Moderate
+    max_label: Extremely conservative
+  response_recode:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+- var: Q6A
+  task_num: 10
+  question: On a scale from 0 ("not at all trustworthy") to 10 ("very trustworthy"), how trustworthy or
+    untrustworthy would you say political candidates who are atheist are?
+  scale:
+    min: 0
+    max: 10
+    min_label: Not at all trustworthy
+    max_label: Very trustworthy
+  response_recode:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+missing_codes:
+- 777
+- 998
+- 999
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND
+persona_label_rewrite:
+  RELIG:
+    1: Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian,
+      Reformed, Church of Christ, Jehovah's Witness, etc.)
+  HHSIZE:
+    1: '1'
+    2: '2'
+    3: '3'
+    4: '4'
+    5: '5'
+persona_missing:
+  PartyID7:
+  - -1
+  IDEO:
+  - -1
+  RELIG:
+  - 98

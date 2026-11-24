@@ -1,0 +1,324 @@
+study_id: d4zua
+source: tess
+title: Gender and the Disparate Payoffs of Overwork
+data_file: TESS076_Munsch_client.sav
+licence: 'None stated: the TESS deposit on OSF (d4zua, and its components pvfgn Proposal and j547w Data
+  and Materials, checked via the OSF API 23 Nov 2026) has node_license null and no license relationship,
+  and TESS has since suspended operations. No explicit grant of redistribution rights should be assumed.'
+comparable_to_socsci210: false
+participant_id_var: CaseId
+notes: |-
+  Write recipes/d4zua.yaml: an e-mailed job reference for Amy or Jason Morgan, who
+  worked standard hours or 50 to 60 hours a week, and performed in the top 1% to 60%.
+
+  TESS 076 (Christin L. Munsch, University of Connecticut, and Lindsey T. O'Connor, CSU
+  Channel Islands), "Gender and the Disparate Payoffs of Overwork" (TESS S68). NORC
+  AmeriSpeak, web only (SURV_MODE 2 for all), English only (SURV_LANG 1), general
+  population 18+, fielded 16 February to 2 March 2021 (the questionnaire's cover; the
+  .sav's STARTDT). N = 2,116, one row per CaseId (unique).
+
+  THE DEPOSIT
+
+  OSF d4zua, one zip MunschS68.zip, unpacked in data/raw/d4zua/: the data
+  (TESS076_Munsch_client.sav, read here; the same data as TESS076_Munsch_STATA.dta, which
+  the answer-key test reads instead), the codebook (.xlsx), the proposal ("S68
+  description.docx", "PR"), the IRB letter, NORC's project report, and ONE questionnaire
+  for FOUR TESS studies fielded together (Jardina 067, Schaad 072, Munsch 076, Saha 077),
+  in a final copy (..._vFINAL.docx, "Q") and a programming copy (..._v6clean.docx, "PG").
+  Only Q's "MUNSCH 076 experiment's BLOCK" is read; the data file holds only Munsch's
+  variables plus the profile. The other three studies are not part of this source. No
+  picture is shown on any Munsch screen: this is a text study.
+
+  THE DESIGN
+
+  2 x 2 x 8 between subjects, 32 cells (PR: "a 2 x 2 x 8 ... 32 different possible
+  conditions"), held in three preloads, each with its own value labels in the .sav and the
+  codebook:
+    P_MUNSCHEXP1 hours: 1 "40 hours/week salaried worker" (1,089), 2 "50+ hours/week
+      salaried overworker" (1,027);
+    P_MUNSCHEXP2 gender: 1 "woman applicant" (1,044), 2 "man applicant" (1,072);
+    P_MUNSCHEXP3 performance: 1-8 = "1%", "5%", "10%", "20%", "30%", "40%", "50%", "60%"
+      (244-298 each).
+  Every cell is filled (52-81 people). condition_num is the template's odometer, hours
+  slowest and performance fastest: (hours-1)*16 + (gender-1)*8 + (performance-1). Q's
+  [SHOW] directives name these three variables and these codes; the direction of each is
+  fixed by the value labels, by PR's operationalisation table, and by the words the
+  directives show (Amy/Ms./her for EXP2 = 1; "standard business hours" for EXP1 = 1). The
+  P_MUNSCHEXP3 fill prints the value label itself ("top [P_MUNSCHEXP3] of employees").
+
+  recipe_prep (Jev, 23 Nov 2026, full run): assignment REVIEW, NONE_OF_THESE 0.37 against
+  P_MUNSCHEXP1 0.42. The question is single-answer and cannot return a design held in three
+  variables; the three preloads are declared from Q and the labels. Section 4 found no
+  instrument (the .docx is not in its converted folder); every directive in the Munsch
+  block is instead parsed by `resolve` below, which stops on any clause it does not
+  understand, so none can gate text unread.
+
+  CONDITION
+
+  Two screens, both word-for-word. MUNSCH_DISPLAY1, the cover story, which every cell
+  shares ("Professional reference inquires (or "reference checks") ... answer the
+  questions that follow."; "inquires" is the source's own word), then MUNSCH_DISPLAY2, the
+  e-mail exchange, which PG says was displayed to "look like a screenshot of an email
+  exchange. Use same font types and sizes, indentations, and symbols". So its lines are
+  kept as Q lays them out: the reply, signed "Taylor", then the header "On Wed, Nov 25,
+  2020 at 10:33 AM Turner, Adam <aj.turner@diversified.com> wrote:", then A.J. Turner's
+  quoted inquiry with its ">" marks, including the hard break after "a professional".
+  Blank lines are collapsed to one and spaces within a line to one; nothing else is
+  changed. The two screens are joined by a blank line, no words added. "Dear Mr. Welch"
+  answered by "Taylor" is the source's own inconsistency, kept.
+
+  The template's fixed words are Q's; the placeholders carry the directives:
+  {gender} = "Amy"/"Jason" (once, in the inquiry), {gender.title} = "Ms."/"Mr.",
+  {gender.possessive} = "her"/"his", {gender.subject} = "she"/"he"; the hours run of six
+  directives becomes "{hours.conj} {gender.title} {hours}", where conj is "and"/"although"
+  and {hours} is the directive's own sentence, "Morgan worked standard business hours
+  (M-F, 9am-5pm)." or "Morgan often came in early and stayed late, putting in 50 or 60
+  hours/week."; {performance} is the label ("1%" .. "60%"). This generator checks all 32
+  rendered cells, condition and four questions, against an independent evaluation of every
+  [SHOW ... IF ...] clause in Q, and checks that PG shows the same words in every cell (PG
+  differs from Q only in bracketed programming notes). Every factor changes the text in
+  every minimal pair.
+
+  OUTCOMES. Q1-Q4, each on its own horizontal 1-7 grid, asked of everyone after the
+  e-mail: commitment ("how committed do you think Ms. Morgan is to her work?"),
+  competence, likeability, reliability. Wording per cell from the same directives, so each
+  question names that cell's Ms./Mr. and her/his. Scale ends are the screen's own labels
+  without the leading "1- " / "7- ", checked against the .sav's ("1 - not at all
+  committed" .. "7 - extremely committed"). 98 "SKIPPED ON WEB" is the only non-answer that
+  occurs (16 / 14 / 11 / 15); 77 and 99 are declared too (recipe_prep: all non_answer,
+  conf >= 0.98). PG says Q1-Q4 were shown in a randomised order, recorded; the deposit holds
+  no order variable, and no row says where its question sat.
+
+  NOT BUILT: Q5_MUNSCH, the hiring decision, "Suppose you are the hiring manager ... what
+  salary (between $90,000 and $140,000/year) to offer", options "I would not hire" and
+  "I would hire ... and offer $90,000 .. $140,000 as a starting salary" in $5,000 steps.
+  DROPPED (US dollar salary): ruled by rich, 23 Nov 2026, because this source goes to the
+  UK dataset. Cost: 2,103 rows.
+
+  ROW ARITHMETIC: 2,116 x 4 = 8,464 cells, minus 56 skips = 8,408 rows; 2,114 people (two
+  skipped all four).
+
+  PERSONA
+
+  The AmeriSpeak set the siblings map (g2jcy, 9xw67, xk9ch): AGE, GENDER, EDUC5,
+  RACETHNICITY, INCOME, MARITAL, EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO,
+  INTERNET, PHONESERVICE, PartyID7, IDEO, and the preloads P_RELIG and P_ATTEND (this
+  deposit has no RELIG/ATTEND; xtvu5 maps the same preloads). recipe_prep: every field at
+  conf >= 0.88 except region, REVIEW between REGION4 (0.45) and REGION9 (0.41); REGION4
+  kept, as every AmeriSpeak recipe and the crosswalk (scripts/persona_amerispeak.py). Its
+  labels pass skipped HOME_TYPE, PHONESERVICE and HHSIZE (cap); read by hand, none has a
+  non-answer label. persona_missing: GENDER 0 "Unknown", PartyID7 and IDEO -1 "Unknown"
+  (2 and 11 occur), P_RELIG and P_ATTEND 77/98/99 (none occurs; their missing are blank,
+  57 and 50, and leave the field empty). recipe_prep called P_ATTEND's "SKIPPED ON WEB" a
+  close call (non_answer 0.37, answer 0.41); it names a skip and is declared missing.
+  P_RELIG code 1 is severed by SPSS at "...Reformed, Church" in this .sav and codebook, and
+  this deposit's questionnaire does not print the preload; restored from the same
+  AmeriSpeak preload printed in full in xtvu5's questionnaire (Q 233) and g2jcy's
+  (cross-deposit restoration, as zx5b8; ledger 111). Not mapped: AGE4/AGE7, INCOME4/9,
+  STATE, REGION9 (coarser or finer than the shared scheme), the HH* age counts, the weight,
+  the timings, SURV_MODE/SURV_LANG (constant).
+
+  No persona field sits in the outcomes' domain (judging a stranger's commitment and
+  competence from a reference). The condition names the applicant's gender, and the persona
+  carries the respondent's; the condition states nothing any persona group thinks or does,
+  so nothing follows by substitution (CONVENTIONS, "The condition must not name the
+  respondent's own persona category").
+
+  UK CHECK
+
+  A reference e-mail between two managers about a project manager at a fictional firm,
+  "Highland Strategies", asked by "Diversified Project Management". No American place, law,
+  institution or money remains once Q5 is dropped. Three American conventions remain, kept
+  word-for-word and reported rather than edited: the Gmail-style header "On Wed, Nov 25,
+  2020 at 10:33 AM" (month-first date, AM), "(M-F, 9am-5pm)" for office hours, and "40
+  hour/week" as the standard full-time week (a little above the usual British 37.5). The
+  sample is American.
+
+  ANSWER KEY
+
+  Not in SocSci210, and NORC's project report prints no study results (only fieldwork).
+  The proposal's pilot is a different sample. So the key is the deposit itself, read
+  independently: tests/test_gen_d4zua.py recomputes the count and mean of every (cell,
+  outcome) pair, 128 of them, from the STATA copy (.dta, which the build never reads), and
+  per-factor means, and requires the built rows to match exactly.
+condition:
+  considered_and_rejected:
+    ORDER1: 'Position of this study''s block among the four TESS studies fielded in one omnibus (Jardina
+      067, Schaad 072, Munsch 076, Saha 077). Not part of this experiment''s assignment: the other blocks
+      are other studies, and a row cannot say what came before it.'
+    ORDER2: 'Position of this study''s block among the four TESS studies fielded in one omnibus (Jardina
+      067, Schaad 072, Munsch 076, Saha 077). Not part of this experiment''s assignment: the other blocks
+      are other studies, and a row cannot say what came before it.'
+    ORDER3: 'Position of this study''s block among the four TESS studies fielded in one omnibus (Jardina
+      067, Schaad 072, Munsch 076, Saha 077). Not part of this experiment''s assignment: the other blocks
+      are other studies, and a row cannot say what came before it.'
+    ORDER4: 'Position of this study''s block among the four TESS studies fielded in one omnibus (Jardina
+      067, Schaad 072, Munsch 076, Saha 077). Not part of this experiment''s assignment: the other blocks
+      are other studies, and a row cannot say what came before it.'
+  template:
+    text: |-
+      Professional reference inquires (or "reference checks") are a standard component of most hiring processes. The amount and quality of information obtained during these checks, however, widely varies. This study examines how information gleaned through this process is perceived by potential employers, co-workers, and clients. Review the email exchange on the following screen concerning a job applicant for a project manager position and answer the questions that follow.
+
+      Hi A.J.,
+
+      Sure. {gender.title} Morgan was employed by Highland Strategies as an Associate Project Manager from 2016 to 2019. From 2017 to 2019, I was {gender.possessive} direct supervisor. In this role, {gender.subject} was the primary contact between vendors and staff and oversaw project costs and schedule. This is a salaried, full-time, 40 hour/week position {hours.conj} {gender.title} {hours} Highland keeps monthly performance data (e.g., budget and schedule variance, stakeholder acceptance and feedback) and conducts quarterly performance reviews for all employees. In looking at the data, {gender.title} Morgan consistently performed in the top {performance} of employees in similar positions. Let me know if you have any additional questions.
+
+      Taylor
+
+      On Wed, Nov 25, 2020 at 10:33 AM Turner, Adam <aj.turner@diversified.com> wrote:
+
+      > Dear Mr. Welch,
+
+      > We are considering {gender} Morgan for a project manager position and {gender.subject} listed you as a professional
+      > reference. Any information you can provide would be greatly appreciated. Thanks, in advance.
+
+      > Sincerely,
+      > A.J. Turner
+      > Diversified Project Management
+    outcome_questions:
+      0: On the following scale, how committed do you think {gender.title} Morgan is to {gender.possessive}
+        work?
+      1: On the following scale, how competent do you think {gender.title} Morgan is?
+      2: On the following scale, how likeable do you find {gender.title} Morgan?
+      3: On the following scale, how reliable do you think {gender.title} Morgan is?
+    dimensions:
+      hours:
+        var: P_MUNSCHEXP1
+        levels:
+          1:
+            level: standard_hours
+            text: Morgan worked standard business hours (M-F, 9am-5pm).
+            parts:
+              conj: and
+          2:
+            level: overwork
+            text: Morgan often came in early and stayed late, putting in 50 or 60 hours/week.
+            parts:
+              conj: although
+      gender:
+        var: P_MUNSCHEXP2
+        levels:
+          1:
+            level: woman
+            text: Amy
+            parts:
+              title: Ms.
+              possessive: her
+              subject: she
+          2:
+            level: man
+            text: Jason
+            parts:
+              title: Mr.
+              possessive: his
+              subject: he
+      performance:
+        var: P_MUNSCHEXP3
+        levels:
+          1:
+            level: top_1pct
+            text: 1%
+          2:
+            level: top_5pct
+            text: 5%
+          3:
+            level: top_10pct
+            text: 10%
+          4:
+            level: top_20pct
+            text: 20%
+          5:
+            level: top_30pct
+            text: 30%
+          6:
+            level: top_40pct
+            text: 40%
+          7:
+            level: top_50pct
+            text: 50%
+          8:
+            level: top_60pct
+            text: 60%
+outcomes:
+- var: Q1_MUNSCH
+  task_num: 0
+  question: On the following scale, how committed do you think Ms./Mr. Morgan is to her/his work?
+  scale:
+    min: 1
+    max: 7
+    min_label: not at all committed
+    max_label: extremely committed
+- var: Q2_MUNSCH
+  task_num: 1
+  question: On the following scale, how competent do you think Ms./Mr. Morgan is?
+  scale:
+    min: 1
+    max: 7
+    min_label: not at all competent
+    max_label: extremely competent
+- var: Q3_MUNSCH
+  task_num: 2
+  question: On the following scale, how likeable do you find Ms./Mr. Morgan?
+  scale:
+    min: 1
+    max: 7
+    min_label: not at all likeable
+    max_label: extremely likeable
+- var: Q4_MUNSCH
+  task_num: 3
+  question: On the following scale, how reliable do you think Ms./Mr. Morgan is?
+  scale:
+    min: 1
+    max: 7
+    min_label: not at all reliable
+    max_label: extremely reliable
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+missing_codes:
+- 77
+- 98
+- 99
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: P_RELIG
+  religious_attendance: P_ATTEND
+persona_label_rewrite:
+  P_RELIG:
+    1: Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian,
+      Reformed, Church of Christ, Jehovah's Witness, etc.)
+persona_missing:
+  GENDER:
+  - 0
+  PartyID7:
+  - -1
+  IDEO:
+  - -1
+  P_RELIG:
+  - 77
+  - 98
+  - 99
+  P_ATTEND:
+  - 77
+  - 98
+  - 99

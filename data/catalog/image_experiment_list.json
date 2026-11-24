@@ -1740,6 +1740,20 @@
       "added": "2026-11-23",
       "found_via": "ResearchBox UK pricing search",
       "category": "economics/behavioural"
+    },
+    {
+      "id": "IMG151",
+      "title": "Job gender ratio and status",
+      "description": "A mock O*NET web page for one job (Insurance Sales Agents or Purchasing Managers): two work values, activities, skills and abilities that are either communal or agentic, and a gender pie chart showing 79% women or 79% men (plus a fixed US race chart). Prestige (0-100), estimated typical annual income in dollars, and how masculine and how feminine the job seemed (0-100). TESS 141 (Eareckson), AmeriSpeak, US, n=1,668; 8 arms (gender ratio x work type x job title).",
+      "link": "https://osf.io/xjtaz",
+      "status": "Buildable",
+      "reason": "Not buildable as text (23 Nov): the gender-ratio factor exists only in the pie chart, where 79% is tied to men or women by slice colour alone, so stating it would be our description of a picture (ledger 158). The fielded EARECKSON_STIMULI_1-8.JPG are not in the deposit; all 8 pages are in the researcher's description document in code order (the IMG86 precedent), and pages 1, 3, 5 and 8 were checked against P_EXP_EARECKSON's labels. Assignment P_EXP_EARECKSON (202-223 per arm); masculinity/femininity order RND_01. The slider columns hold codes above 100 that must be read against the codebook. UK fit: the instructions name the US Department of Labor and the income example is in dollars (as IMG92).",
+      "permission": "Not needed",
+      "contact": "",
+      "sample": "US · TESS",
+      "added": "2026-11-23",
+      "found_via": "TESS text build (picture found)",
+      "category": "work/family/gender"
     }
   ]
 }

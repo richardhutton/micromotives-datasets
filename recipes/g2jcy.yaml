@@ -1,0 +1,633 @@
+study_id: g2jcy
+source: tess
+title: 'Public Support for Remote Work Arrangements: An Experimental Study of the Effects of Occupational
+  Status, Mental Health Status, and Gender'
+data_file: TESS 142 Elliott_Final Data.dta
+licence: 'None stated: the TESS deposit on OSF (g2jcy, and its components 9d37u Proposal and e5uqg Data
+  and Materials, checked via the OSF API 23 Nov 2026) has node_license null, and TESS has since suspended
+  operations. No explicit grant of redistribution rights should be assumed.'
+comparable_to_socsci210: false
+participant_id_var: CaseId
+notes: "Write recipes/g2jcy.yaml: Michael or Michelle, a clerk or a lawyer, asks to work from home.\n\n\
+  TESS 142 (Marta Elliott and James M. Ragsdale, University of Nevada, Reno), \"Public\nSupport for Remote\
+  \ Work Arrangements: An Experimental Study of the Effects of\nOccupational Status, Mental Health Status,\
+  \ and Gender\". NORC AmeriSpeak, web only,\ngeneral population 18+, fielded 16 January to 5 February\
+  \ 2024 (methods report). N =\n1,668, one row per CaseId; NORC had already removed 57 cases for speeding,\
+  \ high refusal\nor straight-lining both ELLIOTT_Q1 and ELLIOTT_Q2 (methods report, \"Data Processing\"\
+  ).\n\nTHE DEPOSIT\n\nOSF g2jcy, component e5uqg \"Data and Materials\", one file ElliottM40.zip. The\
+  \ zip holds\nONE questionnaire for THREE TESS studies fielded together (Behrman 136, Eareckson 141,\n\
+  Elliott 142), in a programming copy (..._vFINALprog.docx, \"PG\") and a simple copy\n(..._vFINALsimple.docx,\
+  \ \"Q\"), plus Elliott's own data (TESS 142 Elliott_Final\nData.dta/.csv), codebook (.xlsx), the description\
+  \ document (M40-Elliott\ndescription.docx, \"PR\") and NORC's methods report. Only \"Block 3: TESS 142\
+  \ Elliott\" is\nread here; the data file holds only Elliott's variables. Both .docx files embed two\n\
+  images, word/media/image1.jpeg and image2.png, both on the cover page before any\nquestion (the NORC\
+  \ and AmeriSpeak logos); no Elliott block is empty, every arm carries\nits own words. This is a text\
+  \ study.\n\nUK CHECK\n\nA data entry clerk or a lawyer in a law firm asks their supervisor for a hybrid\n\
+  schedule, two days in the office and three at home, because a quieter place helps them\nwork, and in\
+  \ half the arms says they have bipolar disorder. Respondents then judge the\nmotive, the likely effect\
+  \ on the work, and whether the request is reasonable and should\nbe approved. Law firms, clerks, lawyers,\
+  \ supervisors, salaries and hybrid working are\nall ordinary in Britain, and no American law, institution,\
+  \ place or money appears in any\ncondition or outcome (the request is not framed as a legal accommodation).\
+  \ \"Law office\"\nis American usage, kept word-for-word. The persona is the usual AmeriSpeak profile.\n\
+  \nTHE DESIGN\n\n2 x 2 x 2 between subjects, one preload P_EXP_ELLIOTT (PG's preload table; in the .dta\n\
+  as P_EXP_ELLIOTT, \"PRELOAD: P_EXP_ELLIOTT\"), codes 1-8 labelled in both PG and the .dta:\ncharacter\
+  \ (Michael 1-4, Michelle 5-8) x occupation (data entry clerk 1, 2, 5, 6; lawyer\n3, 4, 7, 8) x disclosure\
+  \ (bipolar disorder on odd codes; nothing about mental health on\neven codes). raw -> condition_num\
+  \ is raw - 1, no permutation. The direction is fixed\nthree ways that agree, and the generator asserts\
+  \ all three: the value labels (\"Man,\nLower status, & Bipolar\" ...), each [SHOW IF P_EXP_ELLIOTT=n]\
+  \ block's own words in PG\nand Q, and the fills in every outcome ([IF P_EXP_ELLIOTT=1,2,3,4: Michael,\
+  \ IF\nP_EXP_ELLIOTT=5,6,7,8: Michelle]). Every respondent has a code (197/214/213/201/235/224/\n195/189).\
+  \ recipe_prep.py (Jev, 23 Nov 2026, full run) chose P_EXP_ELLIOTT at conf 0.96\nafter a run-off over\
+  \ 51 candidates (runner-up NONE_OF_THESE 0.02, RND_02 0.01).\nAccepted; the questionnaire settles it\
+  \ on its own.\n\nPR calls the higher-status job \"an attorney\"; every fielded vignette says \"a lawyer\"\
+  . Q\nand PG are used (docs/CONVENTIONS.md, Source authority). PR's template also omits the\nfielded\
+  \ \"Bipolar disorder\" capital and reads \"perform better at his job\" for both\ncharacters; neither\
+  \ reaches the rows.\n\nCONDITION TEXT\n\nEach arm is its ELLIOTT_VIGNETTE_n paragraph, word-for-word,\
+  \ from Q, after asserting PG\nprints the same words. The paragraph opens with the character's name,\
+  \ so no prefix is\nshared and there is no shared_context. Minimal pairs differ in text on every factor.\n\
+  \nTwo display screens before the vignette are left out. DISPLAY3 (\"Now we'd like to get\nyour thoughts\
+  \ on a different topic.\") was shown only when the block did not come first\nand is a link between studies.\
+  \ DISPLAY_VIGNETTE (\"You will see a paragraph in the next\nscreen. Please read it carefully before\
+  \ continuing because there will be follow-up\nquestions about it.\") describes the instrument's screens,\
+  \ which the row does not\nreproduce (CONVENTIONS, Sequence signposting). Neither says anything about\
+  \ the\ncharacter or the request. No words are added: every word of every condition is the\ninstrument's.\n\
+  \nThe three studies' blocks were shown in a random order (RND_02, values 0-5, \"Used to\nrecord order\
+  \ of Block1, Block2, Block3\"; PG: \"RANDOMIZE USING RND_02\"). So some\nrespondents read this vignette\
+  \ after Behrman's block or Eareckson's (Eareckson's is\nabout male- and female-dominated occupations).\
+  \ No document maps RND_02's six codes to\norders, the other blocks are other studies with their own\
+  \ deposits, and a row cannot\nsay what came before it; RND_02 is declared in considered_and_rejected.\n\
+  \nOUTCOMES: 10, ALL ASKED OF EVERY RESPONDENT AFTER THE VIGNETTE\n\n  task 0-3  ELLIOTT_Q1A-D  attributions\
+  \ grid, 1 Strongly disagree .. 6 Strongly agree\n  task 4-7  ELLIOTT_Q2A-D  competency grid, 1 Very\
+  \ unlikely .. 6 Very likely\n  task 8    ELLIOTT_Q3     how reasonable, 1 Very unreasonable .. 6 Very\
+  \ reasonable\n  task 9    ELLIOTT_Q4     should the supervisor approve, 1 Definitely yes .. 6\n    \
+  \                       Definitely not (the scale runs from yes to no, as fielded;\n               \
+  \            codes are kept, and the instruction names both ends)\n\nEvery outcome names the character,\
+  \ so each arm carries its own wording of all ten\n(Arm.items), with the fills resolved the way that\
+  \ arm's screen resolved them: Michael's,\nhis, he for codes 1-4 and Michelle's, her, she for 5-8. Outcome.question\
+  \ holds the\nMichael wording only because the field is required; no row reads it, because every arm\n\
+  overrides every task. Grid outcomes are the stem, a space, then the item, word-for-word.\nThe competency\
+  \ stem ends \"it is that…\" and each of its items begins \"…Michael\", the\nscreen's way of showing\
+  \ that the item completes the stem; once joined into one sentence\nthe item's leading ellipsis is dropped\
+  \ (typography: the stem's is kept, normalised to\n\"...\"). The grid items are labelled to their columns\
+  \ by the codebook, which prints each\nitem in brackets before the stem; the generator asserts each matches\
+  \ Q's item. No\nrandomisation of grid items or of options is programmed ([GRID; SP], no RND_xx), and\
+  \ no\nrow cites a position.\n\nThe data's value labels equal Q's options for every outcome (asserted).\
+  \ Only 98\n\"SKIPPED ON WEB\" occurs among the non-answers (77 and 99 are labelled, never used);\nrecipe_prep\
+  \ called DON'T KNOW / SKIPPED ON WEB / REFUSED non-answers on all ten at conf\n>= 0.98 and agreed with\
+  \ the regex. missing_codes [77, 98, 99]; no outcome's range reaches\nthem.\n\nROW ARITHMETIC: 1,668\
+  \ x 10 = 16,680 cells minus 131 skips (Q1A-D 11+12+16+11, Q2A-D\n12+20+17+19, Q3 4, Q4 9) = 16,549 rows.\n\
+  \nPERSONA\n\nThe AmeriSpeak set, mapped as the sibling deposits fielded in the same AmeriSpeak format\n\
+  (yjvpn, 8ctbk, s6urt): AGE, GENDER, EDUC5, RACETHNICITY, INCOME, MARITAL, EMPLOY,\nREGION4, HHSIZE,\
+  \ HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE, PartyID7, RELIG,\nATTEND. This file has no IDEO;\
+  \ ideology is IDEO20, \"DATA-ONLY: Computed 5-level political\nideology\", as in b87sm. recipe_prep:\
+  \ every field at conf >= 0.89 except region, a REVIEW\nbetween REGION4 (0.36) and REGION9 (0.48); REGION4\
+  \ is used, as in every other AmeriSpeak\nrecipe and the crosswalk built for it (ledger 149). Columns\
+  \ past recipe_prep's labels cap\n(METRO, INTERNET, HOUSING, HOME_TYPE, PHONESERVICE, HHSIZE) were read\
+  \ by hand: plain\nanswers, no non-answer codes.\n\npersona_missing: PartyID7 and IDEO20 -1 \"Unknown\"\
+  \ (2 and 26 respondents; Jev non_answer\n0.94, 0.98); RELIG and ATTEND 77/98/99 (98 occurs 2 and 1 times).\
+  \ recipe_prep flagged\nATTEND's \"SKIPPED ON WEB\" as REVIEW (answer 0.37 against non_answer 0.40, disagreeing\n\
+  with the regex). OVERRULED: it is the panel's web-skip code, the same label Jev called a\nnon-answer\
+  \ at conf 1.00 on RELIG and on every outcome. GENDER 0 \"Unknown\" (Jev 0.83,\n0 occurrences, declared\
+  \ as in the siblings). RELIG code 1 is cut at 80 characters in the\n.dta (\"... Presbyterian, Pent\"\
+  ); restored from Q's own demographic profile, apostrophe\nstraightened.\n\nNot mapped: Q2 (own mental\
+  \ or emotional health), Q3NEW_8 (ever told of an emotional,\nnervous or psychiatric problem) and Q52\
+  \ (seen a mental health professional in the past\n12 months). PR asked for them as moderators; the persona\
+  \ schema has no field for them.\nThey are recorded here as the study's own moderators that the rows\
+  \ do not carry.\nrecipe_prep section 4's REVIEW items (BLOCK n DOES NOT APPEAR FIRST; P_HL002,\nP_HL003NEWH,\
+  \ P_HL052 = missing) were read by eye: block-transition routing and profile\nre-asks, none gating stimulus\
+  \ text.\n\nVERIFICATION\n\nNot in SocSci210 (comparable_to_socsci210: false), and no paper with this\
+  \ study's\nnumbers is in the deposit. tests/test_gen_g2jcy.py holds the answer keys: the built\nrows\
+  \ reproduce every (arm, outcome) count and mean computed independently from the\ndeposit's CSV export\
+  \ (not the .dta the build reads), and the persona of the 1,668\npeople reproduces the unweighted percentages\
+  \ in NORC's methods report (Benchmark\nComparisons: age bands, race and ethnicity, education, sex) to\
+  \ the 0.1 printed."
+condition:
+  source_var: P_EXP_ELLIOTT
+  factors:
+  - character
+  - occupation
+  - disclosure
+  arms:
+  - raw: 1
+    condition_num: 0
+    factors:
+      character: michael
+      occupation: data_entry_clerk
+      disclosure: bipolar
+    text: Michael is a data entry clerk who works in-person in a law firm. He recently met with his supervisor
+      to ask for a flexible work arrangement where he would come into the law office for two days per
+      week and work remotely from home three days per week. Michael disclosed that he has Bipolar disorder
+      and explained that this hybrid schedule would help him perform better because it would allow him
+      to work in a quieter environment, free from office distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is genuinely interested in
+          being more effective at his job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael will be able to do his job
+          better if he works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is more committed to his personal
+          life than to his job.
+      4:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform better at his job?
+      5:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform worse than his peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will get more work done when he is working from home?
+      7:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will waste time indulging his personal interests rather than
+          doing his job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michael's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michael's supervisor approve his request?
+  - raw: 2
+    condition_num: 1
+    factors:
+      character: michael
+      occupation: data_entry_clerk
+      disclosure: none
+    text: Michael is a data entry clerk who works in-person in a law firm. He recently met with his supervisor
+      to ask for a flexible work arrangement where he would come into the law office for two days per
+      week and work remotely from home three days per week. Michael explained that this hybrid schedule
+      would help him perform better because it would allow him to work in a quieter environment, free
+      from office distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is genuinely interested in
+          being more effective at his job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael will be able to do his job
+          better if he works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is more committed to his personal
+          life than to his job.
+      4:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform better at his job?
+      5:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform worse than his peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will get more work done when he is working from home?
+      7:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will waste time indulging his personal interests rather than
+          doing his job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michael's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michael's supervisor approve his request?
+  - raw: 3
+    condition_num: 2
+    factors:
+      character: michael
+      occupation: lawyer
+      disclosure: bipolar
+    text: Michael is a lawyer who works in-person in a law firm. He recently met with his supervisor to
+      ask for a flexible work arrangement where he would come into the law office for two days per week
+      and work remotely from home three days per week. Michael disclosed that he has Bipolar disorder
+      and explained that this hybrid schedule would help him perform better because it would allow him
+      to work in a quieter environment, free from office distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is genuinely interested in
+          being more effective at his job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael will be able to do his job
+          better if he works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is more committed to his personal
+          life than to his job.
+      4:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform better at his job?
+      5:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform worse than his peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will get more work done when he is working from home?
+      7:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will waste time indulging his personal interests rather than
+          doing his job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michael's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michael's supervisor approve his request?
+  - raw: 4
+    condition_num: 3
+    factors:
+      character: michael
+      occupation: lawyer
+      disclosure: none
+    text: Michael is a lawyer who works in-person in a law firm. He recently met with his supervisor to
+      ask for a flexible work arrangement where he would come into the law office for two days per week
+      and work remotely from home three days per week. Michael explained that this hybrid schedule would
+      help him perform better because it would allow him to work in a quieter environment, free from office
+      distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is genuinely interested in
+          being more effective at his job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael will be able to do his job
+          better if he works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michael's decision to request a hybrid work arrangement? Michael is more committed to his personal
+          life than to his job.
+      4:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform better at his job?
+      5:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will perform worse than his peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will get more work done when he is working from home?
+      7:
+        outcome_question: If Michael starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michael will waste time indulging his personal interests rather than
+          doing his job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michael's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michael's supervisor approve his request?
+  - raw: 5
+    condition_num: 4
+    factors:
+      character: michelle
+      occupation: data_entry_clerk
+      disclosure: bipolar
+    text: Michelle is a data entry clerk who works in-person in a law firm. She recently met with her
+      supervisor to ask for a flexible work arrangement where she would come into the law office for two
+      days per week and work remotely from home three days per week. Michelle disclosed that she has Bipolar
+      disorder and explained that this hybrid schedule would help her perform better because it would
+      allow her to work in a quieter environment, free from office distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is genuinely interested in
+          being more effective at her job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle will be able to do her job
+          better if she works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is more committed to her
+          personal life than to her job.
+      4:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform better at her job?
+      5:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform worse than her peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will get more work done when she is working from home?
+      7:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will waste time indulging her personal interests rather
+          than doing her job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michelle's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michelle's supervisor approve her request?
+  - raw: 6
+    condition_num: 5
+    factors:
+      character: michelle
+      occupation: data_entry_clerk
+      disclosure: none
+    text: Michelle is a data entry clerk who works in-person in a law firm. She recently met with her
+      supervisor to ask for a flexible work arrangement where she would come into the law office for two
+      days per week and work remotely from home three days per week. Michelle explained that this hybrid
+      schedule would help her perform better because it would allow her to work in a quieter environment,
+      free from office distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is genuinely interested in
+          being more effective at her job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle will be able to do her job
+          better if she works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is more committed to her
+          personal life than to her job.
+      4:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform better at her job?
+      5:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform worse than her peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will get more work done when she is working from home?
+      7:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will waste time indulging her personal interests rather
+          than doing her job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michelle's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michelle's supervisor approve her request?
+  - raw: 7
+    condition_num: 6
+    factors:
+      character: michelle
+      occupation: lawyer
+      disclosure: bipolar
+    text: Michelle is a lawyer who works in-person in a law firm. She recently met with her supervisor
+      to ask for a flexible work arrangement where she would come into the law office for two days per
+      week and work remotely from home three days per week. Michelle disclosed that she has Bipolar disorder
+      and explained that this hybrid schedule would help her perform better because it would allow her
+      to work in a quieter environment, free from office distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is genuinely interested in
+          being more effective at her job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle will be able to do her job
+          better if she works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is more committed to her
+          personal life than to her job.
+      4:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform better at her job?
+      5:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform worse than her peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will get more work done when she is working from home?
+      7:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will waste time indulging her personal interests rather
+          than doing her job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michelle's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michelle's supervisor approve her request?
+  - raw: 8
+    condition_num: 7
+    factors:
+      character: michelle
+      occupation: lawyer
+      disclosure: none
+    text: Michelle is a lawyer who works in-person in a law firm. She recently met with her supervisor
+      to ask for a flexible work arrangement where she would come into the law office for two days per
+      week and work remotely from home three days per week. Michelle explained that this hybrid schedule
+      would help her perform better because it would allow her to work in a quieter environment, free
+      from office distractions.
+    items:
+      0:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is genuinely interested in
+          being more effective at her job.
+      1:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is looking for a way to work
+          less but still make the same salary.
+      2:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle will be able to do her job
+          better if she works remotely 3 days per week.
+      3:
+        outcome_question: To what extent do you agree or disagree that each of the following factors affected
+          Michelle's decision to request a hybrid work arrangement? Michelle is more committed to her
+          personal life than to her job.
+      4:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform better at her job?
+      5:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will perform worse than her peers who come into the office
+          every day?
+      6:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will get more work done when she is working from home?
+      7:
+        outcome_question: If Michelle starts working from home 3 days per week, how likely or unlikely
+          do you think it is that... Michelle will waste time indulging her personal interests rather
+          than doing her job?
+      8:
+        outcome_question: In your opinion, how reasonable or unreasonable is Michelle's request to work
+          remotely 3 days per week?
+      9:
+        outcome_question: In your opinion, should Michelle's supervisor approve her request?
+  considered_and_rejected:
+    RND_02: 'Order of the three studies'' blocks in this omnibus (Behrman 136, Eareckson 141, this one).
+      Not part of this experiment''s assignment: no document maps its six codes to orders, the other blocks
+      are other studies, and a row cannot say what came before it.'
+outcomes:
+- var: ELLIOTT_Q1A
+  task_num: 0
+  question: To what extent do you agree or disagree that each of the following factors affected Michael's
+    decision to request a hybrid work arrangement? Michael is genuinely interested in being more effective
+    at his job.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly disagree
+    max_label: Strongly agree
+- var: ELLIOTT_Q1B
+  task_num: 1
+  question: To what extent do you agree or disagree that each of the following factors affected Michael's
+    decision to request a hybrid work arrangement? Michael is looking for a way to work less but still
+    make the same salary.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly disagree
+    max_label: Strongly agree
+- var: ELLIOTT_Q1C
+  task_num: 2
+  question: To what extent do you agree or disagree that each of the following factors affected Michael's
+    decision to request a hybrid work arrangement? Michael will be able to do his job better if he works
+    remotely 3 days per week.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly disagree
+    max_label: Strongly agree
+- var: ELLIOTT_Q1D
+  task_num: 3
+  question: To what extent do you agree or disagree that each of the following factors affected Michael's
+    decision to request a hybrid work arrangement? Michael is more committed to his personal life than
+    to his job.
+  scale:
+    min: 1
+    max: 6
+    min_label: Strongly disagree
+    max_label: Strongly agree
+- var: ELLIOTT_Q2A
+  task_num: 4
+  question: If Michael starts working from home 3 days per week, how likely or unlikely do you think it
+    is that... Michael will perform better at his job?
+  scale:
+    min: 1
+    max: 6
+    min_label: Very unlikely
+    max_label: Very likely
+- var: ELLIOTT_Q2B
+  task_num: 5
+  question: If Michael starts working from home 3 days per week, how likely or unlikely do you think it
+    is that... Michael will perform worse than his peers who come into the office every day?
+  scale:
+    min: 1
+    max: 6
+    min_label: Very unlikely
+    max_label: Very likely
+- var: ELLIOTT_Q2C
+  task_num: 6
+  question: If Michael starts working from home 3 days per week, how likely or unlikely do you think it
+    is that... Michael will get more work done when he is working from home?
+  scale:
+    min: 1
+    max: 6
+    min_label: Very unlikely
+    max_label: Very likely
+- var: ELLIOTT_Q2D
+  task_num: 7
+  question: If Michael starts working from home 3 days per week, how likely or unlikely do you think it
+    is that... Michael will waste time indulging his personal interests rather than doing his job?
+  scale:
+    min: 1
+    max: 6
+    min_label: Very unlikely
+    max_label: Very likely
+- var: ELLIOTT_Q3
+  task_num: 8
+  question: In your opinion, how reasonable or unreasonable is Michael's request to work remotely 3 days
+    per week?
+  scale:
+    min: 1
+    max: 6
+    min_label: Very unreasonable
+    max_label: Very reasonable
+- var: ELLIOTT_Q4
+  task_num: 9
+  question: In your opinion, should Michael's supervisor approve his request?
+  scale:
+    min: 1
+    max: 6
+    min_label: Definitely yes
+    max_label: Definitely not
+response_recode:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+missing_codes:
+- 77
+- 98
+- 99
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO20
+  religion: RELIG
+  religious_attendance: ATTEND
+persona_label_rewrite:
+  RELIG:
+    1: Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian,
+      Reformed, Church of Christ, Jehovah's Witness, etc.)
+persona_missing:
+  PartyID7:
+  - -1
+  IDEO20:
+  - -1
+  RELIG:
+  - 77
+  - 98
+  - 99
+  ATTEND:
+  - 77
+  - 98
+  - 99
+  GENDER:
+  - 0

@@ -217,6 +217,10 @@
    "kind": "choice",
    "basis": "read"
   },
+  "image:IMG151": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "image:IMG18": {
    "kind": "mix",
    "basis": "guess"
@@ -573,6 +577,10 @@
    "kind": "version",
    "basis": "read"
   },
+  "text:8972k": {
+   "kind": "context",
+   "basis": "read"
+  },
   "text:8ctbk": {
    "kind": "choice",
    "basis": "read"
@@ -773,6 +781,10 @@
    "kind": "story",
    "basis": "read"
   },
+  "text:d4zua": {
+   "kind": "story",
+   "basis": "read"
+  },
   "text:de5hx": {
    "kind": "version",
    "basis": "read"
@@ -897,6 +909,10 @@
    "kind": "context",
    "basis": "read"
   },
+  "text:g2jcy": {
+   "kind": "story",
+   "basis": "read"
+  },
   "text:g6y8s": {
    "kind": "version",
    "basis": "guess"
@@ -927,6 +943,10 @@
   },
   "text:h3pc9": {
    "kind": "version",
+   "basis": "read"
+  },
+  "text:h4k2t": {
+   "kind": "story",
    "basis": "read"
   },
   "text:j6xgs": {
@@ -1647,6 +1667,10 @@
   },
   "text:ye2ej": {
    "kind": "story",
+   "basis": "read"
+  },
+  "text:ysqex": {
+   "kind": "version",
    "basis": "read"
   },
   "text:yv2ta_flexible_scheduling": {
