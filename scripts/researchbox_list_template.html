@@ -71,6 +71,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
     <section class="panel">
       <h2>Summary</h2>
       <div class="scroll"><table class="sum" id="sum"></table></div>
+      <p class="cc" id="areas"></p>
     </section>
     <section class="panel">
       <h2>Statuses</h2>
@@ -128,7 +129,7 @@ function render(){
   $("msg").hidden=vis.length>0; $("msg").textContent="No boxes match.";
   $("rows").innerHTML=vis.map(r=>`<tr>
     <td class="num">${esc(r.box)}</td>
-    <td><b><a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a></b>${r.notes?`<div class="ask" style="max-width:80ch">${esc(r.notes)}</div>`:""}${(r.experiments||[]).length?`<ul class="xl">${r.experiments.map(x=>`<li><span class="nm">${esc(x.name.replace(/^researchbox\d+_/,""))}</span> · ${esc(x.title)} · ${esc((KINDS[x.kind]||x.kind).replace(/^\d+ · /,""))} · ${x.rows!=null?x.rows.toLocaleString("en-GB")+" rows":""}</li>`).join("")}</ul>`:""}</td>
+    <td><b><a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.title)}</a></b>${r.notes?`<div class="ask" style="max-width:80ch">${esc(r.notes)}</div>`:""}${(r.experiments||[]).length?`<ul class="xl">${r.experiments.map(x=>`<li><span class="nm">${esc(x.name.replace(/^researchbox\d+_/,""))}</span> · ${esc(x.title)} · ${x.area?`<b>${esc(x.area)}</b> · `:""}${esc((KINDS[x.kind]||x.kind).replace(/^\d+ · /,""))} · ${x.rows!=null?x.rows.toLocaleString("en-GB")+" rows":""}</li>`).join("")}</ul>`:""}</td>
     <td class="cc">${esc(r.topic)}</td>
     <td><span class="${r.qsf?"q-yes":"q-no"}">${r.qsf?"Yes":"No"}</span></td>
     <td class="cc">${esc(KINDS[r.kind]||"")}</td>
@@ -138,4 +139,5 @@ function render(){
   </tr>`).join("");
 }
 summary(); render();
+{const ex=rows.flatMap(r=>r.experiments||[]);const c={};ex.forEach(x=>{if(x.area)c[x.area]=(c[x.area]||0)+1});$("areas").textContent="Built experiments by area: "+Object.entries(c).map(([a,n])=>`${a} ${n}`).join(", ")+".";}
 </script>

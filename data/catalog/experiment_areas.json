@@ -1,0 +1,1669 @@
+{
+  "_about": "Area of every built or listed experiment: social, pricing or consumer (rich, 24 Nov 2026). pricing = what is varied is a price, fee, discount, promotion, payment method or schedule, or how a price is shown (a conjoint with a price attribute counts); consumer = people as shoppers or customers when price is not varied (product, menu and pack labels, badges, ratings, recommendations, adverts, shops, delivery, a company's conduct); social = everything else, including public campaigns not attached to a product. Basis: jev (one Choice over title+description, with confidence), or read (a rule applied by hand where Jev was low-confidence or inconsistent across a study's experiments; UKDS experiments are labelled by hand because the licence keeps them off Jev).",
+  "areas": {
+    "image:IMG01": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG02": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.44
+    },
+    "image:IMG03": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.8
+    },
+    "image:IMG06": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG07": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG08": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG09": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG100": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG101": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG102": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG103": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG104": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG105": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.42
+    },
+    "image:IMG106": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG107": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.37
+    },
+    "image:IMG108": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.76
+    },
+    "image:IMG109": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.76
+    },
+    "image:IMG110": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG111": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.88
+    },
+    "image:IMG112": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG113": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.67
+    },
+    "image:IMG114": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.68
+    },
+    "image:IMG115": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.31
+    },
+    "image:IMG116": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.3
+    },
+    "image:IMG117": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG118": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG119": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "image:IMG120": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "image:IMG121": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG122": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG123": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG124": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG125": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG126": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG127": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG128": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG129": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG13": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG130": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.44
+    },
+    "image:IMG131": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.82
+    },
+    "image:IMG132": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG133": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "image:IMG134": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG135": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG136": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG137": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.7
+    },
+    "image:IMG138": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG139": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "image:IMG14": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "image:IMG140": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.88
+    },
+    "image:IMG141": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "image:IMG142": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG143": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.55
+    },
+    "image:IMG144": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.83
+    },
+    "image:IMG145": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG146": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "image:IMG147": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.96
+    },
+    "image:IMG148": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "image:IMG149": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.82
+    },
+    "image:IMG15": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG150": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "image:IMG151": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG18": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG20": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG21": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.6
+    },
+    "image:IMG22": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG23": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG24": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "image:IMG25": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.72
+    },
+    "image:IMG26": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.72
+    },
+    "image:IMG27": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG28": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.96
+    },
+    "image:IMG29": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.8
+    },
+    "image:IMG30": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.31
+    },
+    "image:IMG31": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG32": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "image:IMG33": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.91
+    },
+    "image:IMG34": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.79
+    },
+    "image:IMG35": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG36": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "image:IMG37": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG38": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG40": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "image:IMG41": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.31
+    },
+    "image:IMG42": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG43": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.4
+    },
+    "image:IMG44": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG45": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG46": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG47": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG48": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "image:IMG51": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "image:IMG54": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG55": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG57": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG59": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.91
+    },
+    "image:IMG60": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "image:IMG62": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.85
+    },
+    "image:IMG69": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG70": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG71": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG72": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG73": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.58
+    },
+    "image:IMG75": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG77": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.6
+    },
+    "image:IMG80": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG81": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG84": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.61
+    },
+    "image:IMG85": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG86": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG87": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG88": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG89": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG90": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.55
+    },
+    "image:IMG91": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG92": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG93": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG94": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG95": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.88
+    },
+    "image:IMG96": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG97": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "image:IMG98": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "image:IMG99": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:35M5CV_bbc": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:35M5CV_lodger": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:35M5CV_sky": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:3YCVOF": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:3muqx": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:5hqan": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:5mt6r": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:6MRVOM_brexit_scenario": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:6MRVOM_eu_share": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:7jt2f": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:7tzpe": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:8972k": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:8ctbk": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:9263n": {
+      "area": "consumer",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:9xw67_conjoint": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:9xw67_vignette": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:EFXNLX": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:LOGVPZ_brexit_satisfaction": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:LOGVPZ_risk_tolerance": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:PMV0TG": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:POMIFD": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:PZB01G": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:QQM5MC": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:RJTVG8": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:a2nbf": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:a42yg": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:a5v96_vignette1": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:b87sm": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:bf8p2": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:c5r2f": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:cug34_B01_B09": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:d4zua": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:de5hx": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w3_leadership": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w3_ngo_conjoint_donate": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "text:del_panel_w3_ngo_conjoint_petition": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:del_panel_w4_aid_conjoint_6attr": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w4_aid_conjoint_8attr": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w4_climate_harm_stories": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w4_cost_of_living": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w4_east_africa_drought": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w4_extreme_weather": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_panel_w5_who_must_change": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_feb2023_abortion": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_feb2023_aid_priorities": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_feb2023_gender_aid": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_feb2023_gender_equality": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_feb2023_gender_progress": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_feb2023_wordfeminist": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_jul2020_global_goals": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:del_sandbox_jun2022_ukraine_choice": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:dh3nj": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:e5rfg_ce": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.48
+    },
+    "text:e5rfg_pair": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.91
+    },
+    "text:e5rfg_six": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.88
+    },
+    "text:e5rfg_tk": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.96
+    },
+    "text:evnyh_Q1a_and_validation": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:figshare_32935409_maxdiff": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:g2jcy": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:gh396": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:gyrp9_return": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:gyrp9_send": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:h4k2t": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:j6xgs": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:jxdu8": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:k9ahx_ratings": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:osf_ct8ae_maxdiff": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:py9q3_vignette1": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:py9q3_vignette2": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:py9q3_vignette3": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:researchbox1032_s1": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.76
+    },
+    "text:researchbox1032_s2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.34
+    },
+    "text:researchbox1032_study1": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.49
+    },
+    "text:researchbox1032_study2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.53
+    },
+    "text:researchbox1032_study3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.44
+    },
+    "text:researchbox1032_study4": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.24
+    },
+    "text:researchbox1032_study5": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.44
+    },
+    "text:researchbox108_study1_india": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.68
+    },
+    "text:researchbox108_study1_us": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.7
+    },
+    "text:researchbox108_study4": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox124_study6d": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.56
+    },
+    "text:researchbox124_study6e": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.8
+    },
+    "text:researchbox196_s3": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox196_s4": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox196_s5": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox196_s7": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:researchbox196_study10": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:researchbox196_study9": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:researchbox2057_study1a": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox2057_study1b": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.88
+    },
+    "text:researchbox2057_study2a": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.6
+    },
+    "text:researchbox2057_study2b": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:researchbox2057_study3a": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.83
+    },
+    "text:researchbox2057_study3b": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.79
+    },
+    "text:researchbox2057_study4a": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.91
+    },
+    "text:researchbox2057_study4b": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox2057_studys1": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.96
+    },
+    "text:researchbox2170_ss2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox2170_study3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox2170_study3_followup": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "text:researchbox231_s1": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.72
+    },
+    "text:researchbox231_s2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.68
+    },
+    "text:researchbox231_study2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.74
+    },
+    "text:researchbox231_study3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.86
+    },
+    "text:researchbox231_study3_ease": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox231_study4": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.72
+    },
+    "text:researchbox231_study4_ease": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox231_study5": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.96
+    },
+    "text:researchbox2562_study1": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox2562_study2a": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox2562_study2a_pilot": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox2562_study2b": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox2562_study2b_pilot": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox2562_study3": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox2562_study4": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.28
+    },
+    "text:researchbox2562_study4_followup": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox2562_study5a_pilot": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox2562_study6": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.33
+    },
+    "text:researchbox2562_study7": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev consumer)"
+    },
+    "text:researchbox3251_study2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "text:researchbox3251_study3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "text:researchbox3251_wa_b2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox3251_wa_b3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox3251_wa_b4": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "text:researchbox3299_s3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox3299_s4": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:researchbox3299_study3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:researchbox3299_study3_wealth": {
+      "area": "pricing",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox3299_study4": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox3299_study4_pretest": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox3299_study5": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox3299_study5_size": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "text:researchbox348_study1": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.43
+    },
+    "text:researchbox3520_text": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.42
+    },
+    "text:researchbox402_study1a": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:researchbox402_study1b": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "text:researchbox402_study2": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.97
+    },
+    "text:researchbox402_study3": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox402_study4": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox482_s3": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.62
+    },
+    "text:researchbox482_study1_accuracy": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "text:researchbox482_study1_satisfaction": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox482_study2_accuracy": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.91
+    },
+    "text:researchbox482_study2_satisfaction": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.91
+    },
+    "text:researchbox482_study3_accuracy": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox482_study3_satisfaction": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox482_study5_lateness": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.96
+    },
+    "text:researchbox482_study5_satisfaction": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.91
+    },
+    "text:researchbox482_study6_accuracy": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.94
+    },
+    "text:researchbox482_study6_satisfaction": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox482_study7_accuracy": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox482_study7_satisfaction": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.92
+    },
+    "text:researchbox482_study8_accuracy": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox482_study8_satisfaction": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.38
+    },
+    "text:researchbox547_study2": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox547_study3": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox547_study4": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox755_study3": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox755_study4_election": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:researchbox755_study4_food": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.31
+    },
+    "text:researchbox809_study2": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.55
+    },
+    "text:researchbox809_study3": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox809_study4": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox809_study5a": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox809_study5b": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox809_w1": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox809_w2": {
+      "area": "consumer",
+      "basis": "jev",
+      "confidence": 0.64
+    },
+    "text:researchbox809_w3": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox809_w4": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:researchbox809_w5": {
+      "area": "consumer",
+      "basis": "read (rule override of Jev social)"
+    },
+    "text:rpw4u_RO1": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:s6urt": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:sd7cf": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:sdq2z": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:sh4px": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:ukds_6849_alcohol_w15": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_automation_w14": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_caring_activity_w17": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_caring_existing_w17": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_envtax_w7": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_eq5d3l_w11": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_eq5d5l_w11": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_fertility_w4": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_fertility_w5": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_ghq_w14": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_hmrc_consent_w11": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_hmrc_consent_w11_web": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_hmrc_consent_w15": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_identity_w2": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_immig_vignette_w11": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_immigsdb_w8": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_immigsdb_w9": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_itemcount_w8": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_itemcount_w9": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_mpc_direct_w15": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_mpc_twopart_w15": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_national_identity_w15": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_nrp_w10_contact": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_nrp_w10_fh": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_numeracy_env_w16": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_numeracy_fin_w16": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_reqol_w14": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_satisfaction_w9": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_sensor_consent_w17_ftf": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_sensor_consent_w17_web": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_timerisk_w6": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_timerisk_w7": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_twitter_consent_w15": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_vig_ageing_w17": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_vig_ageing_w9": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_vig_flexstigma_w16": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_vig_housework_w5": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:ukds_6849_vig_housework_w6": {
+      "area": "social",
+      "basis": "read (UKDS: not sent to Jev)"
+    },
+    "text:vemrp": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:vwn96": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:xk9ch_identity_threat": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:xk9ch_institution": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:xk9ch_vignette1": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:xk9ch_vignette2": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:xtvu5": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:ye2ej": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:ysqex": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:yv2ta_flexible_scheduling": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:yv2ta_parental_leave": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:z358z": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:zaqkm": {
+      "area": "social",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:zenodo10641548": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    },
+    "text:zenodo18547379_maxdiff": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 0.98
+    },
+    "text:zenodo6572717": {
+      "area": "pricing",
+      "basis": "jev",
+      "confidence": 0.14
+    },
+    "text:zrwjp": {
+      "area": "consumer",
+      "basis": "read (title; not in the manifest)"
+    },
+    "text:zx5b8": {
+      "area": "social",
+      "basis": "jev",
+      "confidence": 1.0
+    }
+  }
+}

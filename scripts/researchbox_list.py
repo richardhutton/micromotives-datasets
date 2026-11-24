@@ -39,6 +39,8 @@ def main() -> None:
     # Each built box lists the experiments built from it (rich, 19 Nov 2026), read from the
     # recipes, the recorded kinds and the built rows, so the page cannot drift from them.
     recorded = json.loads(RECORDED.read_text())["kinds"]
+    areas_file = ROOT / "data" / "catalog" / "experiment_areas.json"
+    areas = json.loads(areas_file.read_text())["areas"] if areas_file.exists() else {}
     built: dict[int, list[dict[str, object]]] = {}
     for path in sorted(RECIPES.glob("researchbox*.yaml")):
         box = int(path.stem.removeprefix("researchbox").split("_")[0])
@@ -61,6 +63,7 @@ def main() -> None:
                 "name": path.stem,
                 "title": title,
                 "kind": recorded.get(f"text:{path.stem}", {}).get("kind", ""),
+                "area": areas.get(f"text:{path.stem}", {}).get("area", ""),
                 "rows": n,
             }
         )

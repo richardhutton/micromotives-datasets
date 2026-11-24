@@ -272,7 +272,26 @@ def corpus_experiments() -> int:
     return len(text_recipes())
 
 
+AREAS = Path(__file__).resolve().parent.parent / "data" / "catalog" / "experiment_areas.json"
+
+
+def add_areas(data: dict) -> None:
+    """Social, pricing or consumer per built row, from experiment_areas.json (rich, 24 Nov 2026).
+
+    A row built as several recipes takes each distinct area, joined."""
+    areas = json.loads(AREAS.read_text())["areas"] if AREAS.exists() else {}
+    for r in data["rows"]:
+        stems = [s.strip() for s in str(r.get("recipe") or "").split(",") if s.strip()]
+        found = [areas[f"text:{s}"]["area"] for s in stems if f"text:{s}" in areas]
+        if not found:
+            found = [
+                v["area"] for k, v in areas.items() if k.startswith(f"text:{_experiment_id(r)}")
+            ]
+        r["area"] = " / ".join(dict.fromkeys(found))
+
+
 def render_html(data: dict) -> str:
+    add_areas(data)
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return TEMPLATE.read_text().replace("__DATA__", payload)
 
