@@ -1552,11 +1552,11 @@
    "origin": "SocSci210",
    "socsci210_split": "train",
    "uk_fit": "fit",
-   "set": "UK",
+   "set": "Base",
    "status": "To build",
    "in_our_eval": false,
    "link": "https://osf.io/j38gd/",
-   "notes": "UK fit checked against the fielded questionnaire 24 Nov 2026: Yes for Q1 ONLY (trade with other nations). Q2-Q4 are about US policy (US military force, foreign purchase of US companies, US federal budget $33.3bn on aid) and are not built. Not on the experiment list rich reviewed: listed UK-fit only by the 9 Nov AI screen (socsci210_uk_rescan.json). A candidate for rich to approve, not a missed build. Materials scan 24 Nov 2026: questionnaire (TESS2 119 Kleinberg Survey.docx) and data found on OSF.",
+   "notes": "Removed from the UK set by rich, 24 Nov 2026: US respondents' views on US trade policy (c. 2011) do not carry to UK views, where trade sits in the EU/Brexit context; only the method transfers. UK fit checked against the fielded questionnaire 24 Nov 2026: Yes for Q1 ONLY (trade with other nations). Q2-Q4 are about US policy (US military force, foreign purchase of US companies, US federal budget $33.3bn on aid) and are not built. Not on the experiment list rich reviewed: listed UK-fit only by the 9 Nov AI screen (socsci210_uk_rescan.json). A candidate for rich to approve, not a missed build. Materials scan 24 Nov 2026: questionnaire (TESS2 119 Kleinberg Survey.docx) and data found on OSF.",
    "build_order": null,
    "value": null,
    "domain": ""
