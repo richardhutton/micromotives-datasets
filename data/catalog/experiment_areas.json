@@ -1676,6 +1676,86 @@
       "area": "social",
       "basis": "jev",
       "confidence": 1.0
+    },
+    "text:a693y": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:yp736": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:xym9d": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:ztwqy": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:zsekp": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:3rvgz": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:ervm8": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:ux8qt": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:9nphm": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:53kjy": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:a7uk3": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:y9nb7": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:tcg8p_owners": {
+      "area": "pricing",
+      "basis": "read"
+    },
+    "text:tcg8p_nonowners": {
+      "area": "pricing",
+      "basis": "read"
+    },
+    "text:jkspw": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:5vm8g": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:kwfs3": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:nhgxf": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:wn3y9": {
+      "area": "social",
+      "basis": "read"
+    },
+    "text:3pcdm": {
+      "area": "social",
+      "basis": "read"
     }
   }
 }

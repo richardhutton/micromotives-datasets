@@ -541,6 +541,14 @@
    "kind": "story",
    "basis": "named+jev"
   },
+  "text:3pcdm": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:3rvgz": {
+   "kind": "version",
+   "basis": "read"
+  },
   "text:3uq9a": {
    "kind": "context",
    "basis": "read"
@@ -553,6 +561,10 @@
    "kind": "story",
    "basis": "read"
   },
+  "text:53kjy": {
+   "kind": "sensitive_count",
+   "basis": "read"
+  },
   "text:5hqan": {
    "kind": "context",
    "basis": "read"
@@ -563,6 +575,10 @@
   },
   "text:5mt6r": {
    "kind": "context",
+   "basis": "read"
+  },
+  "text:5vm8g": {
+   "kind": "version",
    "basis": "read"
   },
   "text:6EJJJZ": {
@@ -681,6 +697,10 @@
    "kind": "mix",
    "basis": "read"
   },
+  "text:9nphm": {
+   "kind": "story",
+   "basis": "read"
+  },
   "text:9xw67_conjoint": {
    "kind": "choice",
    "basis": "named+jev"
@@ -788,6 +808,14 @@
   "text:a5v96_vignette1": {
    "kind": "story",
    "basis": "named+jev"
+  },
+  "text:a693y": {
+   "kind": "mix",
+   "basis": "read"
+  },
+  "text:a7uk3": {
+   "kind": "version",
+   "basis": "read"
   },
   "text:a7yw8": {
    "kind": "version",
@@ -937,6 +965,10 @@
    "kind": "priority",
    "basis": "named+jev"
   },
+  "text:ervm8": {
+   "kind": "context",
+   "basis": "read"
+  },
   "text:etqdx": {
    "kind": "context",
    "basis": "read"
@@ -1001,6 +1033,10 @@
    "kind": "version",
    "basis": "read"
   },
+  "text:jkspw": {
+   "kind": "story",
+   "basis": "read"
+  },
   "text:jxdu8": {
    "kind": "story",
    "basis": "read"
@@ -1017,6 +1053,10 @@
    "kind": "context",
    "basis": "read"
   },
+  "text:kwfs3": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "text:m78xh": {
    "kind": "mix",
    "basis": "read"
@@ -1027,6 +1067,10 @@
   },
   "text:n96j5": {
    "kind": "version",
+   "basis": "read"
+  },
+  "text:nhgxf": {
+   "kind": "context",
    "basis": "read"
   },
   "text:osf_ct8ae_maxdiff": {
@@ -1505,6 +1549,14 @@
    "kind": "story",
    "basis": "read"
   },
+  "text:tcg8p_nonowners": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:tcg8p_owners": {
+   "kind": "version",
+   "basis": "read"
+  },
   "text:tu95h": {
    "kind": "story",
    "basis": "read"
@@ -1665,6 +1717,10 @@
    "kind": "story",
    "basis": "read"
   },
+  "text:ux8qt": {
+   "kind": "version",
+   "basis": "read"
+  },
   "text:v52yu": {
    "kind": "version",
    "basis": "read"
@@ -1688,6 +1744,10 @@
   "text:wmfe6": {
    "kind": "story",
    "basis": "named+jev"
+  },
+  "text:wn3y9": {
+   "kind": "version",
+   "basis": "read"
   },
   "text:wrdm4": {
    "kind": "story",
@@ -1717,12 +1777,24 @@
    "kind": "mix",
    "basis": "named+jev"
   },
+  "text:xym9d": {
+   "kind": "mix",
+   "basis": "read"
+  },
   "text:y78g2": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:y9nb7": {
    "kind": "version",
    "basis": "read"
   },
   "text:ye2ej": {
    "kind": "story",
+   "basis": "read"
+  },
+  "text:yp736": {
+   "kind": "version",
    "basis": "read"
   },
   "text:ysqex": {
@@ -1767,6 +1839,14 @@
   },
   "text:zrwjp": {
    "kind": "version",
+   "basis": "read"
+  },
+  "text:zsekp": {
+   "kind": "version",
+   "basis": "read"
+  },
+  "text:ztwqy": {
+   "kind": "mix",
    "basis": "read"
   },
   "text:zx5b8": {
