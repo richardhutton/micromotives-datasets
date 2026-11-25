@@ -1,0 +1,231 @@
+study_id: 53kjy
+source: tess
+title: "Unmasking Expressive Responses to Political Rumor Questions (Berinsky, TESS2 098)"
+data_file: Tess_098_Berinsky_Final_Data.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set), but their list
+# statements are not this study's (see ANSWER KEY), so numbers are not compared.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 098 (Adam Berinsky; Knowledge Networks), "Unmasking Expressive
+  Responses to Political Rumor Questions", questionnaire dated December 2011.
+  The .sav has 6,335 rows (5,550 initial sample, 785 supplemental, Sample_Flag),
+  CaseID unique. Deposit OSF 53kjy, Berinsky228.zip: the .sav, the fielded
+  questionnaire ("TESS2 098- Berinsky Survey.doc"), the response rate report;
+  Berinsky228.pdf is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "TESS2 098- Berinsky Survey.txt" (textutil from the .doc, the wording
+        authority).
+
+
+  DESIGN AND ASSIGNMENT
+
+  XTESS098 (Q 43-44; assignment 1/3, 1/3, 1/6, 1/6): 1 base list, 2 treatment
+  list, 3 direct question with "Not sure", 4 direct question without. Counts
+  1,799 / 1,759 / 1,417 / 1,360. raw n -> condition_num n-1. One question per
+  respondent: Q1 / Q2 / Q3A / Q3B. A list experiment: the treatment list adds
+  "I believe Barack Obama is a Muslim." to the four base statements, so the
+  difference in mean counts estimates who holds the belief without anyone
+  saying so; the direct arms ask it outright. Factor `question_format`:
+  list_base | list_treatment | direct_with_not_sure | direct_forced.
+
+
+  CONDITION AND OUTCOME TEXT
+
+  Built as the Innovation Panel item-count recipes are
+  (ukds_6849_itemcount_w8): the condition is the list, the outcome the count.
+  List arms: condition "We are now going to give you a list of 4 (5)
+  statements." and the statements as bullets; outcome Q's own "Please tell us
+  HOW MANY of them are true for you. We don't want to know which ones, just
+  HOW MANY." (Q 52, 66). The statement order was randomised AND recorded
+  (Order_Q1_Statement_1-4, Order_Q2_Statement_1-5, the position of each
+  statement), so each row lists the statements in the order that respondent
+  saw (`line_order_vars`). Scales 0-4 and 0-5, no labels (none in Q).
+  Direct arms: the screen is "We now want to know if the following statement
+  is true for you:", the quoted statement, and the options (Q 82-86, 94-97).
+  The condition is the quoted statement; the outcome is the screen's own lead
+  line, then the options with our numbering and the order clause: True/False were randomised and recorded
+  (Order_Q3A_Response_*, Order_Q3B_Response_*); "Not sure" stayed last in arm 3
+  (Q 81), hence "(the first two options were shown in a random order)" there.
+  Each arm's `text` is the whole screen (what the arm saw, options included);
+  the item override gives the condition its stimulus part only.
+  Missing: -1 Refused. Arm 3's 3 "Not sure" (386) is dropped as a non-answer,
+  as everywhere in this corpus, though it is the option that arm adds; its
+  presence is still in the outcome text, so the rows say it was offered.
+
+  NOT BUILT: Q4 and Q5 (sources of news, up to two choices / multi-select).
+
+
+  PERSONA
+
+  Knowledge Networks profile, as 4zscf, plus the merged DOV_XPARTY7, DOV_IDEO,
+  DOV_REL1, DOV_REL2. persona_missing, each exercised: DOV_IDEO -1 (24),
+  DOV_REL1 -1 (12), DOV_REL2 -1 (2). DOV_REL2 is blank for 1,053.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. A US rumour about a US
+  president.
+
+
+  ANSWER KEY
+
+  SocSci210 (read 25 Nov 2026): 4 conditions, 2 tasks, but their list arms
+  carry DIFFERENT statements ("I have sometimes been unable to pay my bills",
+  "... Individual Retirement Account", "... Europe for a vacation", "I usually
+  shop at Wal-Mart"), which are in neither Q nor the .sav: the .sav's order
+  variables are labelled with Q's four statements (music, two men marrying,
+  school prayer, telemarketers). Their direct-question prompt codes "1 =
+  False, 2 = Not sure, 3 = True" against the .sav's 1 True, 2 False, 3 Not sure,
+  and keeps Not sure. So comparable_to_socsci210 is false. Their arm sizes
+  (1,794 / 1,757 / 1,413 / 1,350) equal the .sav's less refusals.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 4 screens word-for-word against Q; all 3,551 list rows carry the
+  statements in that respondent's recorded order (0 mismatches); rows per arm
+  (1,794 / 1,757 / 1,027 / 1,350) and responses match the .sav; persona codes
+  exercised; ANSWER KEY confirmed. Its one point, kept as a judgement: the
+  True/False order is recorded per respondent, so it could be narrated per row
+  instead of the order clause; the clause is true and matches a693y.
+condition:
+  source_var: XTESS098
+  factors: [question_format]
+  considered_and_rejected:
+    Sample_Flag: Initial versus supplemental sample; not an assignment.
+    Order_Q4_Response_A: Order of Q4's options (news sources); Q4 is not built.
+    Order_Q4_Response_B: Order of Q4's options (news sources); Q4 is not built.
+    Order_Q4_Response_C: Order of Q4's options (news sources); Q4 is not built.
+    Order_Q4_Response_D: Order of Q4's options (news sources); Q4 is not built.
+    Order_Q4_Response_E: Order of Q4's options (news sources); Q4 is not built.
+    Order_Q5_Response_A: Order of Q5's options; Q5 is not built.
+    Order_Q5_Response_B: Order of Q5's options; Q5 is not built.
+    Order_Q5_Response_C: Order of Q5's options; Q5 is not built.
+    Order_Q5_Response_D: Order of Q5's options; Q5 is not built.
+  arms:
+    # Q 46-57
+    - raw: 1
+      condition_num: 0
+      factors: {question_format: list_base}
+      text: |-
+        We are now going to give you a list of 4 statements.
+        • I enjoy listening to music
+        • I think it should be legal for two men to marry
+        • I support allowing prayer in public schools
+        • I like getting phone calls from telemarketers
+        Please tell us HOW MANY of them are true for you. We don't want to know which ones, just HOW MANY.
+      items:
+        0:
+          outcome_var: Q1
+          condition_text: |-
+            We are now going to give you a list of 4 statements.
+            • I enjoy listening to music
+            • I think it should be legal for two men to marry
+            • I support allowing prayer in public schools
+            • I like getting phone calls from telemarketers
+          outcome_question: "Please tell us HOW MANY of them are true for you. We don't want to know which ones, just HOW MANY."
+          line_order_vars: [Order_Q1_Statement_1, Order_Q1_Statement_2, Order_Q1_Statement_3, Order_Q1_Statement_4]
+          scale: {min: 0, max: 4}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4}
+    # Q 60-72
+    - raw: 2
+      condition_num: 1
+      factors: {question_format: list_treatment}
+      text: |-
+        We are now going to give you a list of 5 statements.
+        • I enjoy listening to music
+        • I think it should be legal for two men to marry
+        • I support allowing prayer in public schools
+        • I like getting phone calls from telemarketers
+        • I believe Barack Obama is a Muslim.
+        Please tell us HOW MANY of them are true for you. We don't want to know which ones, just HOW MANY.
+      items:
+        0:
+          outcome_var: Q2
+          condition_text: |-
+            We are now going to give you a list of 5 statements.
+            • I enjoy listening to music
+            • I think it should be legal for two men to marry
+            • I support allowing prayer in public schools
+            • I like getting phone calls from telemarketers
+            • I believe Barack Obama is a Muslim.
+          outcome_question: "Please tell us HOW MANY of them are true for you. We don't want to know which ones, just HOW MANY."
+          line_order_vars: [Order_Q2_Statement_1, Order_Q2_Statement_2, Order_Q2_Statement_3, Order_Q2_Statement_4, Order_Q2_Statement_5]
+          scale: {min: 0, max: 5}
+          response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+    # Q 78-86
+    - raw: 3
+      condition_num: 2
+      factors: {question_format: direct_with_not_sure}
+      text: |-
+        We now want to know if the following statement is true for you:
+        "I believe Barack Obama is a Muslim."
+        (1) True; (2) False; (3) Not sure (the first two options were shown in a random order)
+      items:
+        0:
+          outcome_var: Q3A
+          condition_text: '"I believe Barack Obama is a Muslim."'
+          outcome_question: |-
+            We now want to know if the following statement is true for you:
+            (1) True; (2) False; (3) Not sure (the first two options were shown in a random order)
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+    # Q 90-97
+    - raw: 4
+      condition_num: 3
+      factors: {question_format: direct_forced}
+      text: |-
+        We now want to know if the following statement is true for you:
+        "I believe Barack Obama is a Muslim."
+        (1) True; (2) False (the options were shown in a random order)
+      items:
+        0:
+          outcome_var: Q3B
+          condition_text: '"I believe Barack Obama is a Muslim."'
+          outcome_question: |-
+            We now want to know if the following statement is true for you:
+            (1) True; (2) False (the options were shown in a random order)
+          scale: {min: 1, max: 2, nominal: true}
+          response_recode: {1: 1, 2: 2}
+
+outcomes:
+  # Each arm supplies its own variable, condition, question and scale in `items`.
+  - task_num: 0
+    question: "Please tell us HOW MANY of them are true for you. We don't want to know which ones, just HOW MANY."
+    scale: {min: 0, max: 5}
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [-1]
+
+persona_missing:
+  DOV_IDEO: [-1]
+  DOV_REL1: [-1]
+  DOV_REL2: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: DOV_XPARTY7
+  ideology: DOV_IDEO
+  religion: DOV_REL1
+  religious_attendance: DOV_REL2

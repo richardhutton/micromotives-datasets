@@ -1,0 +1,309 @@
+study_id: wn3y9
+source: tess
+title: "Untangling a Dislike for the Opposing Party (Klar, TESS3 221)"
+data_file: TESS3_221_Klar_Client.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). See ANSWER KEY.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS3 221 (Samara Klar; GfK KnowledgePanel), "Untangling a Dislike for the
+  Opposing Party". The .sav has 2,136 rows (708 fresh, 1,428 recontacted from
+  TESS 197; X20271), CaseID unique. Deposit OSF wn3y9, KlarBRIEF70.zip: the
+  .sav, the fielded questionnaire
+  "310.209.00988.1_TESS3221_Klar_Northwestern_University _v1.00.docx", the
+  response rate report; "Klar BR70.pdf" is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "310.209.00988.1_TESS3221_Klar_Northwestern_University _v1.00.txt".
+
+
+  DESIGN AND ASSIGNMENT
+
+  A QUESTION-WORDING experiment: there is no stimulus screen; each arm asks
+  two questions, how the respondent would feel if a son or daughter married
+  someone who votes Democratic, and someone who votes Republican, worded six
+  ways (XTESS197, Q 18, 47-200):
+    1 "votes for the Democratic/Republican Party" (K01/K02);
+    2 "voted for local Democratic/Republican candidates" (K03/K04);
+    3 as 1 "but who RARELY talks about politics" (K05/K06);
+    4 as 2 "but who RARELY talks about politics" (K07/K08);
+    5 as 1 "and who FREQUENTLY talks about politics" (K09/K10);
+    6 as 2 "and who FREQUENTLY talks about politics" (K11/K12).
+  XFIRST (Q 19) randomised and recorded which of the pair came first (1 the
+  Democratic question, 2 the Republican). So the conditions are wording x
+  order, 12 cells, condition_num = 2 x (XTESS197 - 1) + (XFIRST - 1).
+  Factors: reference (party | local_candidates), talk (unspecified | rarely |
+  frequently), asked_first (democratic | republican).
+
+
+  CONDITION AND OUTCOME TEXT
+
+  As rpw4u, the wording experiment's question is the condition: 'You were
+  asked: "<question>"', word-for-word (capitals of RARELY / FREQUENTLY kept;
+  K11's double space normalised). The question asked second carries both, in
+  the order shown: 'You were asked: "<first>" You were then asked:
+  "<second>"' (CONVENTIONS, "Repeated measures within one block"; the order is
+  recorded). Added words: "You were asked:" and "You were then asked:".
+  Outcome: the question's own closing sentence, "Would you feel unhappy or
+  happy?", 1 Very unhappy .. 3 Neither unhappy nor happy .. 5 Very happy.
+  task 0 = the Democratic question, task 1 = the Republican.
+  Missing: -1 Refused.
+
+
+  PERSONA
+
+  Knowledge Networks profile, as 4zscf: PPAGE, PPGENDER, PPEDUCAT, PPETHM,
+  PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE, PPHOUSE, PPRENT, PPMSACAT, PPNET
+  (no missing or negative code in any), plus the study's own merged XPARTYY
+  (party), IDEO, REL1, REL2: -1 Refused declared for IDEO (14), REL1 (11), REL2
+  (7); XPARTYY has no -1 here. (The first draft mapped only the four merged
+  items, having missed the PP* columns; the checker, 25 Nov 2026, caught it.)
+  Party is in the persona and the questions name the parties, but nothing says
+  what either party's voters feel, so the answer is not derivable by
+  substitution. REL1 uses the second US religion list; its code 2 label is
+  severed and restored (as ztwqy), codes 11/12 drop "please specify"; no
+  crosswalk scheme yet (pending).
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. US parties.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 6 conditions (no order), one task
+  pooling the Democratic and Republican questions, 4,204 rows = ours. Their
+  response counts are OURS REVERSED (their 1: 428, 2: 353, 3: 2,508, 4: 534,
+  5: 381; ours 1: 381, 2: 534, 3: 2,508, 4: 353, 5: 428): they code the scale
+  the other way round, so their 1 is "Very happy" where the .sav's 1 is "Very
+  unhappy". Worth checking against their prompt before comparing scores.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it. All
+  24 cells match a rebuild from Q (incl. the cumulative second question);
+  counts and distribution match the .sav; the reversed SocSci210 coding
+  confirmed (their prompt reads "1 (Very happy) to 5 (Very unhappy)"; they also
+  word the stimuli differently). It FAILED the persona (PP* demographics left
+  out); fixed above.
+condition:
+  source_vars: [XTESS197, XFIRST]
+  factors: [reference, talk, asked_first]
+  arms:
+    - raw_values: {XTESS197: 1, XFIRST: 1}
+      condition_num: 0
+      factors: {reference: party, talk: unspecified, asked_first: democratic}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K01
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K02
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 1, XFIRST: 2}
+      condition_num: 1
+      factors: {reference: party, talk: unspecified, asked_first: republican}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K01
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K02
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 2, XFIRST: 1}
+      condition_num: 2
+      factors: {reference: local_candidates, talk: unspecified, asked_first: democratic}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K03
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K04
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 2, XFIRST: 2}
+      condition_num: 3
+      factors: {reference: local_candidates, talk: unspecified, asked_first: republican}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K03
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K04
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 3, XFIRST: 1}
+      condition_num: 4
+      factors: {reference: party, talk: rarely, asked_first: democratic}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party but who RARELY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K05
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party but who RARELY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K06
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party but who RARELY talks about politics? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 3, XFIRST: 2}
+      condition_num: 5
+      factors: {reference: party, talk: rarely, asked_first: republican}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party but who RARELY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K05
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party but who RARELY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K06
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party but who RARELY talks about politics? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 4, XFIRST: 1}
+      condition_num: 6
+      factors: {reference: local_candidates, talk: rarely, asked_first: democratic}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates but who RARELY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K07
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates but who RARELY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K08
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates but who RARELY talks about politics? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 4, XFIRST: 2}
+      condition_num: 7
+      factors: {reference: local_candidates, talk: rarely, asked_first: republican}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates but who RARELY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K07
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates but who RARELY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates but who RARELY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K08
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates but who RARELY talks about politics? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 5, XFIRST: 1}
+      condition_num: 8
+      factors: {reference: party, talk: frequently, asked_first: democratic}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K09
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K10
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 5, XFIRST: 2}
+      condition_num: 9
+      factors: {reference: party, talk: frequently, asked_first: republican}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K09
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who votes for the Democratic Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K10
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who votes for the Republican Party and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 6, XFIRST: 1}
+      condition_num: 10
+      factors: {reference: local_candidates, talk: frequently, asked_first: democratic}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K11
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K12
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+    - raw_values: {XTESS197: 6, XFIRST: 2}
+      condition_num: 11
+      factors: {reference: local_candidates, talk: frequently, asked_first: republican}
+      text: |-
+        You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+      items:
+        0:
+          outcome_var: K11
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?" You were then asked: "How would you feel if you had a son or daughter who married someone who voted for local Democratic candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+        1:
+          outcome_var: K12
+          condition_text: |-
+            You were asked: "How would you feel if you had a son or daughter who married someone who voted for local Republican candidates and who FREQUENTLY talks about politics? Would you feel unhappy or happy?"
+
+outcomes:
+  # Each arm supplies its own variable and condition per item.
+  - task_num: 0
+    question: "Would you feel unhappy or happy?"
+    scale: {min: 1, max: 5, min_label: "Very unhappy", mid_label: "Neither unhappy nor happy", max_label: "Very happy"}
+  - task_num: 1
+    question: "Would you feel unhappy or happy?"
+    scale: {min: 1, max: 5, min_label: "Very unhappy", mid_label: "Neither unhappy nor happy", max_label: "Very happy"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [-1]
+
+persona_label_rewrite:
+  REL1:
+    2: "Evangelical or Protestant Christian (Baptist, Lutheran, Methodist, Presbyterian, Episcopalian, Pentecostal, Church of Christ, etc.)"
+    11: "Other Christian religion"
+    12: "Other non-Christian religion"
+
+persona_missing:
+  IDEO: [-1]
+  REL1: [-1]
+  REL2: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTYY
+  ideology: IDEO
+  religion: REL1
+  religious_attendance: REL2

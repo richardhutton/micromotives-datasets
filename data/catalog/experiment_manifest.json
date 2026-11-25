@@ -1274,6 +1274,126 @@
       "description": "Working parents give equal time to two children, one born with low birth weight. Respondents rate how favourable and how fair this is, how fair others would find it, and how much parents' time affects development.",
       "design": "2x2x2 vignette between subjects (8 arms), 4 outcomes; both vignettes seen by everyone, section order rotated and not narrated",
       "verified_against": "SocSci210 per-task row counts and full response distributions exact; pyreadstat tuple recompute; per-respondent Insert* screen check (tests/test_t936a_answer_key.py)"
+    },
+    "a693y": {
+      "category": "political preferences/policy",
+      "description": "Two Social Security reforms (raising the payroll tax cap, raising the retirement age to 68), each shown alone or with what a citizens' deliberative forum and a bipartisan Congressional panel concluded. Respondents say whether they agree with the reform, then choose between reforms.",
+      "design": "2x4 between subjects (policy x deliberation report); 5 outcomes",
+      "verified_against": "SocSci210 assignment and every shared response code identical; it keeps 'Not sure' as an answer and drops 'indifferent' and 'none of these', and quotes a $113,700 cap where the questionnaire says $117,000; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "yp736": {
+      "category": "political identity/polarisation",
+      "description": "A news article about a new superbacteria, alone or with US Democratic or Republican leaders expressing concern while the other party dismisses it. Respondents rate the threat, their worry, support for spending, and the article's credibility.",
+      "design": "single factor, 3 arms (no cue, Democrats concerned, Republicans concerned); 8 outcomes",
+      "verified_against": "SocSci210 counts match once its merge of the 'serious threat' and 'worried' items and its recall-check task are accounted for; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "xym9d": {
+      "category": "political preferences/policy",
+      "description": "Three immigration items in a fixed order: a restrictive quote from Bill Clinton or a welcoming one from Ronald Reagan, then a tuition and a fingerprint-deportation vignette with a Republican, Democratic or bipartisan cue. Each row carries what was shown up to its own question.",
+      "design": "2x3 between subjects (frame x party cue), fixed order, cumulative conditions; 3 outcomes",
+      "verified_against": "SocSci210 numbers identical; its text uses a prenatal-care vignette that was not fielded and swaps the Obama/Trump cue; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "ztwqy": {
+      "category": "economics/behavioural",
+      "description": "Estimating next week's and last week's expenses, after nothing or after writing reasons why next week will be different from, or similar to, other weeks; the order of the two estimates is randomised. Then spare money, dinner spend, a loan fee, repayment confidence and how a $1,000 windfall would be split.",
+      "design": "3 arms x 2 block orders, cumulative conditions; 11 outcomes",
+      "verified_against": "SocSci210 counts match on every shared item; it misstates several scales; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "zsekp": {
+      "category": "political preferences/policy",
+      "description": "School report cards for three high schools in one of four formats (performance index, letter grade, percent meeting standards, achievement level); respondents rate satisfaction, expectations and closeness to their ideal for each school, schools in a recorded random order.",
+      "design": "4 formats x 6 school orders, cumulative conditions; 9 outcomes",
+      "verified_against": "SocSci210 pools the schools and dropped every code-7 answer on the 'ideal' items; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "3rvgz": {
+      "category": "political identity/polarisation",
+      "description": "A consulting firm advises 'the state's oldest Historically Black College' or 'the state's oldest college' on departments to cut, programmes, donations, honours, DEI training, hiring, pay, a student centre, course priorities and journals.",
+      "design": "single factor, 2 arms, the college type also filled into ten question wordings; 26 outcomes",
+      "verified_against": "SocSci210's build of this study is a fragment and not comparable; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "ervm8": {
+      "category": "survey methodology",
+      "description": "How people report voting after the 2010 election: the plain question, or with a warning that public records will be checked, or that people often over-report. Then whether they are registered.",
+      "design": "single factor, 3 arms; 2 outcomes",
+      "verified_against": "SocSci210 identical on the turnout question; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "ux8qt": {
+      "category": "political preferences/policy",
+      "description": "An unemployment statistic framed as uncertain, as Obama's responsibility, or as not his responsibility, or no frame at all; then how responsible Obama is, favourability, a thermometer, overall and issue approval.",
+      "design": "single factor, 4 arms (control sees nothing); 9 outcomes",
+      "verified_against": "SocSci210 identical on the shared items; its text says 9.6 percent where the questionnaire says 9.8; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "9nphm": {
+      "category": "work/family/gender",
+      "description": "Jaime, 20, is transgender or non-binary, assigned male or female at birth, with a childhood that fitted or did not fit that identity. Respondents judge whether Jaime will still identify that way in five years and whether they would sign a petition to let Jaime change their birth certificate.",
+      "design": "2x2x2 vignette, between subjects; 2 outcomes",
+      "verified_against": "SocSci210 identical on every answer code (it keeps 'skipped' as a response); every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "53kjy": {
+      "category": "survey methodology",
+      "description": "A list experiment on the rumour that Barack Obama is a Muslim: count how many of four or five statements are true for you, or answer the statement directly with or without 'Not sure'. Statements shown in each person's recorded order.",
+      "design": "single factor, 4 arms (base list, treatment list, two direct forms); 1 outcome",
+      "verified_against": "SocSci210's list statements are from another study, so not comparable; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "a7uk3": {
+      "category": "political preferences/policy",
+      "description": "An article on rising fear of terrorism, alone or followed by data showing how rarely Americans die in attacks, unendorsed or endorsed by a Democratic or Republican congressman or an Army general. Then worry, likelihood of attack, threat ratings and foreign-policy priorities.",
+      "design": "single factor, 5 arms; 12 outcomes",
+      "verified_against": "SocSci210 identical on every answer code once its pooling of grid items is accounted for; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "y9nb7": {
+      "category": "work/family/gender",
+      "description": "A news story on the surge of women candidates in 2020: from both parties, Democratic, or Republican, or no story. Then future political engagement, attitudes to democracy, to women in office and gender roles, and whether men or women leaders are better at four traits.",
+      "design": "single factor, 4 arms (control sees nothing); 19 outcomes",
+      "verified_against": "SocSci210 identical on rows and every answer code (it pools grid items); every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "tcg8p_owners": {
+      "category": "economics/behavioural",
+      "description": "Californians who own a generator or solar battery are told their utility will cut power for two 40-hour periods next year, with no notice, 24 hours' notice or a week's notice, and say how much a month they would pay to avoid it.",
+      "design": "single factor, 3 arms (notice), within generator owners; 1 outcome; English-language respondents only",
+      "verified_against": "SocSci210 applies one randomisation to everyone, against the questionnaire's routing; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "tcg8p_nonowners": {
+      "category": "economics/behavioural",
+      "description": "Californians without a generator or solar battery are told their utility will cut power for two 40-hour periods next year, with no notice, 24 hours' notice or a week's notice, and say how much a month they would pay to avoid it.",
+      "design": "single factor, 3 arms (notice), within non-owners; 1 outcome; English-language respondents only",
+      "verified_against": "SocSci210 applies one randomisation to everyone, against the questionnaire's routing; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "jkspw": {
+      "category": "health communication",
+      "description": "A painful skin sore that is draining pus or firm and not draining; half then read a CDC message about MRSA. Respondents judge seriousness, access to a doctor, self-treatment, whether it is MRSA and whether they would seek care.",
+      "design": "2x2 between subjects (sore x message), the message only before the last three questions; 7 outcomes",
+      "verified_against": "SocSci210 reconstructs a different sore ('two inches') and only one version, so not comparable; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "5vm8g": {
+      "category": "political identity/polarisation",
+      "description": "After guessing how many times resumes with black-sounding names had to be sent out to get a callback, half are told the real figure (15 against 10). Then views on discrimination, affirmative action, name-blind hiring, and a guess about Airbnb acceptance rates.",
+      "design": "single factor, 2 arms; 5 outcomes",
+      "verified_against": "SocSci210 identical on every shared item; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "kwfs3": {
+      "category": "political identity/polarisation",
+      "description": "Take a $3 bonus, or $6 (or $9) with the researchers donating $4 to a group on the other side from you: the opposing party's national committee, a religious group opposed to yours, or the association of the other side of the Mississippi.",
+      "design": "4 arms (recipient x payment), the group filled per respondent; 1 outcome",
+      "verified_against": "SocSci210 identical on its three arms; it omits the region arm; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "nhgxf": {
+      "category": "political preferences/policy",
+      "description": "An emotion-induction writing task (what makes you angry, or afraid, about last year's terrorist attacks, or what makes you relaxed), then ratings of Clinton and Trump, foreign-policy views, thermometers and vote intention in 2016.",
+      "design": "single factor, 3 arms; 20 outcomes",
+      "verified_against": "SocSci210 identical on the items it builds one to one; it pools each Clinton/Trump pair; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "wn3y9": {
+      "category": "political identity/polarisation",
+      "description": "How would you feel if your son or daughter married someone who votes Democratic, or Republican, worded six ways (party or local candidates; talks about politics rarely, frequently or unspecified), with the order of the two questions recorded.",
+      "design": "question-wording experiment, 6 wordings x 2 orders, cumulative condition for the second question; 2 outcomes",
+      "verified_against": "SocSci210 has the same rows with the answer scale reversed; every row checked against the questionnaire and the data file by an independent checker"
+    },
+    "3pcdm": {
+      "category": "health communication",
+      "description": "A surprise medical bill, from an insurer that would not pay or a provider that charged more than expected, with or without a line that people want both parties to address health costs, or nothing; then who deserves the blame (ranked) and whom you would contact.",
+      "design": "2x2 plus a control (nothing shown); 12 outcomes",
+      "verified_against": "SocSci210 pools the rankings and the contact grid and builds the experience question; every row checked against the questionnaire and the data file by an independent checker"
     }
   }
 }

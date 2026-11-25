@@ -1,0 +1,639 @@
+study_id: xym9d
+source: tess
+title: "Does Harsh Language Referring to Immigrants Translate into Harsher Preferences? (Shannon, TESS 028)"
+data_file: TESS028_Shannon.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). The crosscheck
+# compares numbers only; SocSci210's TEXT for this study is wrong in two of its
+# three tasks (see ANSWER KEY in notes).
+comparable_to_socsci210: true
+
+notes: |-
+  TESS 028 (Shannon), NORC AmeriSpeak project 8041.028, US adults. The .sav has
+  2,253 rows, CaseId unique. Deposit OSF xym9d, ShannonS28.zip: the data (.sav,
+  .sas7bdat), codebook, field report, "S28 description-revised" (proposal), and
+  the programmed questionnaire "[8041.028] TESS 028 Shannon_v4clean.docx" beside
+  the zip.
+
+  Line citations are 1-based line numbers in
+    Q = "[8041.028] TESS 028 Shannon_v4clean.txt" (textutil from the .docx,
+        which is the wording authority).
+
+
+  DESIGN AND ASSIGNMENT
+
+  P_GROUP1 (Q 210-217, no value labels in the .sav): six groups, "randomly
+  assigned to one of six treatment groups ... and locked in the groups for the
+  duration of the study" (Q 273). Counts 379 / 354 / 380 / 381 / 379 / 380, sum
+  2,253. raw n -> condition_num n-1 (SocSci210's numbering too: their condition
+  1 has 351-352 rows per task, group 2's size). recipe_prep.py (Jev, 25 Nov
+  2026): P_GROUP1 at conf 0.97, NONE_OF_THESE 0.03.
+  Each person answers THREE experiments in a fixed order (Q 277: "The order of
+  the vignettes will not be randomized to determine whether the impact of the
+  restrictive / welcoming frames persists"):
+    1. frame: restrictive_clinton (groups 1-3; DISPLAY_1, Q 326-332, then Q1)
+              | welcoming_reagan (groups 4-6; DISPLAY_2, Q 350-356, then Q2);
+    2. tuition vignette with a party cue (Q3 / Q4 / Q5, Q 374-431);
+    3. fingerprint / denaturalisation vignette with a party cue (Q6 / Q7 / Q8,
+       Q 434-492).
+  cue: republican (groups 1, 4: Rick Perry; the Trump administration) |
+       democrat (2, 5: Grey Davis; the Obama administration) |
+       bipartisan (3, 6: both).
+  The routing in the data agrees exactly (answered counts by group): Q1 only
+  groups 1-3, Q2 only 4-6, Q3 only 1 and 4, Q4 2 and 5, Q5 3 and 6, Q6 1 and 4,
+  Q7 2 and 5, Q8 3 and 6.
+
+
+  CONDITION TEXT: ONE BLOCK IN A FIXED ORDER
+
+  Because the order is fixed and the design asks whether the frame persists,
+  each row's condition is everything shown in the block up to and including its
+  own screen (CONVENTIONS, "Repeated measures within one block": the order is
+  fixed by the assignment, later screens are never named, earlier questions are
+  narrated as asked, never as answered). Per item, every arm declares its own
+  `condition_text`:
+    task 0: screen 1 (the frame).
+    task 1: screen 1, then the narration, then screen 2 (tuition).
+    task 2: screen 1, narration, screen 2, narration, screen 3 (fingerprints).
+  ADDED WORDS, ours, not sourced, true for everyone in every arm:
+    'You were asked: "<the previous screen's question>" You then read:'
+  with the question quoted word-for-word from Q ("Do you think the number of
+  immigrants to America should be...." after screen 1; "How strongly do you
+  agree or disagree with the above statement?" after screen 2).
+  So at task 0 the three cue arms of each frame render the same text (the cue
+  has not been shown yet), and at tasks 1-2 all six arms differ. Each arm's
+  `text` is the whole block (task 2's condition), which is what the arm saw;
+  the item overrides cut it at the row's own screen.
+  Screen text word-for-word: the lead "Please take a moment to read the
+  argument carefully and then tell us what you think." (each screen has it),
+  the quote or vignette, and on screens 2-3 the statement to be rated. The
+  frame's attribution line, italic in Q ("President Bill Clinton - Democrat",
+  "President Ronald Reagan - Republican"), is kept. Words as printed, including
+  "allowing these students pay" (no "to", Q 399 and 420) and "immigrants who
+  mislead the government" (Q 441, 461, 481). Typography: curly quotes and the en
+  dash in Reagan's attribution normalised.
+  The welcome screen (Q 320-321) is survey administration and not rendered.
+
+
+  OUTCOMES
+
+  task 0  Q1 (groups 1-3) / Q2 (groups 4-6), Q 337-345 / 360-368: "Do you think
+          the number of immigrants to America should be...." 1 Increased a lot,
+          2 Increased a little, 3 Remain the same as it is, 4 Reduced a little,
+          5 Reduced a lot. Stored as coded.
+  task 1  Q3 / Q4 / Q5: "How strongly do you agree or disagree with the above
+          statement?" 1 Strongly Disagree .. 3 Neither Agree nor Disagree .. 5
+          Strongly Agree.
+  task 2  Q6 / Q7 / Q8: the same question and scale.
+  Missing: 77, 98, 99 (Jev non_answer conf 0.98-1.00); only 98 occurs.
+  NOT BUILT: Q9 and Q10, political knowledge items with open text, asked of
+  everyone after the experiments.
+
+
+  PERSONA
+
+  NORC AmeriSpeak standard profile, as 3muqx: AGE, GENDER, EDUC, RACETHNICITY,
+  INCOME, MARITAL, EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET,
+  PHONESERVICE, PARTYID7, IDEO, RELIG, ATTEND. No negative or 77/98/99 code
+  occurs in any of them, so no persona_missing is declared; blanks: IDEO 5,
+  RELIG 8, ATTEND 10. IDEO 8 "Haven't thought much about it" is an offered
+  answer and is kept (Jev called it a non-answer at 0.72; overruled, as 3muqx).
+  RELIG code 1's label is severed in the .sav ("... Reformed, Church"),
+  restored from the AmeriSpeak P_RELIG list as 3muqx and 8972k have it.
+  Jev agreed on every field; region REGION4 (0.54) is REVIEW, kept as in every
+  AmeriSpeak recipe.
+  GENDER IS NOT MAPPED. In this deposit GENDER ("Respondent gender") carries
+  codes 1 (870) and 2 (1,383) and NO value labels: not in the .sav, the .dta,
+  the codebook (searched for "gender" and "male"), Q's preload table (S_GENDER,
+  "String"), or the field report. Other AmeriSpeak deposits label 1 Male, 2
+  Female, but nothing here says so, and mapping it would put a meaning on the
+  codes this source does not state. Left out (found by the checker, 25 Nov
+  2026, as bare "1"/"2" in the persona); a ruling from rich could restore it.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): PASS on every number: 6,726 rows, 6
+  conditions, 3 tasks, rows per condition and task, and the response
+  distribution are identical. So assignment and responses agree.
+  Their TEXT is wrong in two of three tasks (informational, but it matters for
+  the Eval comparison):
+    task 1: their stimulus is a PRENATAL CARE vignette ("Prenatal care lowers
+      the risks of birth defects ... In some states Republicans have worked to
+      expand prenatal care for unauthorized ..."). What was fielded is the
+      in-state tuition vignette: Q 374-431, and the .sav labels Q3-Q5 "We
+      should make sure that illegal immigrant students in all states can access
+      an affordable college education." "Prenatal Care" survives only in Q's
+      design table (Q 284), a leftover from the proposal.
+    task 2: their party cue is SWAPPED. They show group 1 (condition 0) "The
+      Obama administration" and group 2 "The Trump administration"; Q routes
+      group 1 to Q6 (Trump, Q 434-441) and group 2 to Q7 (Obama, Q 454-461), and
+      the data agree (Q6 answered only by groups 1 and 4, Q7 only by 2 and 5).
+    Their rows also show each vignette alone, without the frame read earlier,
+      which the study fixed in order to test.
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 18 cells rebuilt from Q alone match word-for-word, no row names a later
+  screen; group routing, counts and full response distributions match the .sav
+  in every cell; the narration is true for everyone and quotes Q; both ANSWER
+  KEY findings confirmed. It flagged gender as bare codes, now unmapped (above).
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study, built to compare with SocSci210.
+  US presidents, governors and immigration policy throughout.
+
+condition:
+  source_var: P_GROUP1
+  factors: [frame, cue]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {frame: restrictive_clinton, cue: republican}
+      text: |-
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+        President Bill Clinton - Democrat
+
+        You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry was the first governor to support this legislation and now these students can pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+        We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+        You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Trump administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+        We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+      items:
+        0:
+          outcome_var: Q1
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+        1:
+          outcome_var: Q3
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry was the first governor to support this legislation and now these students can pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+        2:
+          outcome_var: Q6
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry was the first governor to support this legislation and now these students can pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+            You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Trump administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+            We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+    - raw: 2
+      condition_num: 1
+      factors: {frame: restrictive_clinton, cue: democrat}
+      text: |-
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+        President Bill Clinton - Democrat
+
+        You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Democrat Grey Davis was one of the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+        We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+        You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Obama administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+        We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+      items:
+        0:
+          outcome_var: Q1
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+        1:
+          outcome_var: Q4
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Democrat Grey Davis was one of the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+        2:
+          outcome_var: Q7
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Democrat Grey Davis was one of the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+            You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Obama administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+            We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+    - raw: 3
+      condition_num: 2
+      factors: {frame: restrictive_clinton, cue: bipartisan}
+      text: |-
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+        President Bill Clinton - Democrat
+
+        You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry and Democrat Grey Davis were the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+        We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+        You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. Both the Obama and Trump administrations began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+        We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+      items:
+        0:
+          outcome_var: Q1
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+        1:
+          outcome_var: Q5
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry and Democrat Grey Davis were the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+        2:
+          outcome_var: Q8
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "All Americans, not only in the states most heavily affected but in every place in this country, are rightly disturbed by the large numbers of illegal aliens entering our country. The jobs they hold might otherwise be held by citizens or legal immigrants. The public services they use impose burdens on our taxpayers. We are a nation of immigrants. But we are also a nation of laws. It is wrong and ultimately self-defeating for a nation of immigrants to permit the kind of abuse of our immigration laws we have seen in recent years, and we must do more to stop it."
+
+            President Bill Clinton - Democrat
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry and Democrat Grey Davis were the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+            You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. Both the Obama and Trump administrations began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+            We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+    - raw: 4
+      condition_num: 3
+      factors: {frame: welcoming_reagan, cue: republican}
+      text: |-
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+        President Ronald Reagan - Republican
+
+        You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry was the first governor to support this legislation and now these students can pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+        We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+        You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Trump administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+        We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+      items:
+        0:
+          outcome_var: Q2
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+        1:
+          outcome_var: Q3
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry was the first governor to support this legislation and now these students can pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+        2:
+          outcome_var: Q6
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry was the first governor to support this legislation and now these students can pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+            You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Trump administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+            We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+    - raw: 5
+      condition_num: 4
+      factors: {frame: welcoming_reagan, cue: democrat}
+      text: |-
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+        President Ronald Reagan - Republican
+
+        You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Democrat Grey Davis was one of the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+        We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+        You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Obama administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+        We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+      items:
+        0:
+          outcome_var: Q2
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+        1:
+          outcome_var: Q4
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Democrat Grey Davis was one of the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+        2:
+          outcome_var: Q7
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Democrat Grey Davis was one of the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+            You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. The Obama administration began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+            We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+    - raw: 6
+      condition_num: 5
+      factors: {frame: welcoming_reagan, cue: bipartisan}
+      text: |-
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+        President Ronald Reagan - Republican
+
+        You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry and Democrat Grey Davis were the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+        We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+        You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+        Please take a moment to read the argument carefully and then tell us what you think.
+
+        Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. Both the Obama and Trump administrations began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+        We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+      items:
+        0:
+          outcome_var: Q2
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+        1:
+          outcome_var: Q5
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry and Democrat Grey Davis were the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+        2:
+          outcome_var: Q8
+          condition_text: |-
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            "Through this 'Golden Door' have come millions of men and women, who first stepped foot on American soil right there, on Ellis Island. These families came here to work. They came to build. Others came in different ways, from other lands, under different, often harrowing conditions. They didn't ask what this country could do for them but what they could do to make this refuge the greatest home of freedom in history. They brought with them courage, ambition and the values of family, neighborhood, work, peace and freedom. They came from different lands but they shared the same values, the same dream."
+
+            President Ronald Reagan - Republican
+
+            You were asked: "Do you think the number of immigrants to America should be...." You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Twenty states have expanded access to in-state college tuition rates to include students who are in the United States illegally. Republican Rick Perry and Democrat Grey Davis were the first governors to support this legislation allowing these students pay about $5,000 per year instead of $20,000 per year if they meet certain criteria like living in the state for several years and having a diploma from a high school in the state.
+
+            We should make sure that illegal immigrant students in all states can access an affordable college education.
+
+            You were asked: "How strongly do you agree or disagree with the above statement?" You then read:
+
+            Please take a moment to read the argument carefully and then tell us what you think.
+
+            Old fingerprint records can be used to identify immigrants who mislead the government by using a different name on their visa application to stay in the country and then get citizenship. Both the Obama and Trump administrations began checking old records to identify immigrants who may have fraudulently obtained citizenship.
+
+            We should revoke the citizenship and deport any immigrant who used a different name to get a visa.
+
+outcomes:
+  # No `var`: each arm names its own per item.
+  - task_num: 0
+    question: "Do you think the number of immigrants to America should be...."
+    scale: {min: 1, max: 5, min_label: "Increased a lot", mid_label: "Remain the same as it is", max_label: "Reduced a lot"}
+  - task_num: 1
+    question: "How strongly do you agree or disagree with the above statement?"
+    scale: {min: 1, max: 5, min_label: "Strongly Disagree", mid_label: "Neither Agree nor Disagree", max_label: "Strongly Agree"}
+  - task_num: 2
+    question: "How strongly do you agree or disagree with the above statement?"
+    scale: {min: 1, max: 5, min_label: "Strongly Disagree", mid_label: "Neither Agree nor Disagree", max_label: "Strongly Agree"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [77, 98, 99]
+
+persona_label_rewrite:
+  # SPSS severed this value label; restored from the AmeriSpeak P_RELIG list,
+  # as 3muqx and 8972k.
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+
+persona_map:
+  age: AGE
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

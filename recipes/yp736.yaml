@@ -1,0 +1,339 @@
+study_id: yp736
+source: tess
+title: "Politics and Purity: Elite Partisan Cues on Pathogen Perceptions (Relihan, TESS 8041.0102)"
+data_file: "[8041.0102] TESS Relihan_Data.dta"
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). The crosscheck
+# FAILS by design (SocSci210 merges two questions into one task and keeps a
+# recall check); see ANSWER KEY in notes. Build without --crosscheck.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS (Daniel P. Relihan, University of California, Irvine), NORC AmeriSpeak
+  project 8041.0102, fielded 2021 to US adults who identify as Republicans or
+  Democrats (Q 16-24: "Gen pop 18+ who identify as Republicans or Democrats",
+  900 per group). The .dta has 1,947 rows, CaseId unique. Deposit OSF yp736,
+  relihan1399.zip: the data (.dta and .csv), the Programming and Simple
+  questionnaires (.docx), codebook, project report; Relihan1399.pdf and
+  "TESS-1399.R1 description" are the proposal and are not used for wording.
+
+  Line citations are 1-based line numbers in
+    Q = "[8041.0102] TESS Relihan_Programming Questionnaire.txt" (textutil from
+        the .docx beside it, which is the wording authority).
+
+
+  ASSIGNMENT
+
+  P_STIM (Q 275-281, 459: "Each participant only sees one of these three
+  stimuli"): 1 Control (641), 2 Democrats (648), 3 Republicans (658), sum
+  1,947, no blanks. raw n -> condition_num n-1. recipe_prep.py (Jev, 25 Nov
+  2026): P_STIM at conf 1.00, runner-up 0.00.
+  Factor `concerned_party`: none | democrats | republicans, the party whose
+  leaders the article says expressed concern (the other party's leaders and
+  Trump dismiss it).
+
+
+  CONDITION TEXT
+
+  shared_context: the article common to all three screens, word-for-word
+  (headline Q 470, body Q 474; identical at Q 489/493 and 510/514, asserted).
+  Arm text: nothing for Control (STIM_1 is the article alone); STIM_2's added
+  paragraph (Q 495) and STIM_3's (Q 516), word-for-word. Typography: curly
+  quotes and the en dash after "(AP)" normalised; STIM_3 opens Schumer's quote
+  with a curly mark and closes it straight, as printed, so only the characters
+  change. Trailing spaces dropped.
+  The screens before the article (welcome, CLIENT_INTRO, consent; Q 397-456)
+  are survey administration shown to everyone and not rendered, as 4zscf does
+  with its transition screens. They describe the article as a real Associated
+  Press story "released within the last few hours"; the article's own dateline
+  "WASHINGTON (AP)" carries the same claim in the condition.
+
+  THE PICTURES. Q 461: "Image embedded in article should be wrapped by text in
+  top left corner of text", and the body says "Perinia Accetis (pictured
+  left)". Each of the three stimulus screens in the questionnaire .docx embeds
+  the same four images (same relationship ids on all three, so nothing in them
+  varies by arm):
+    image6.jpeg  a micrograph of rod-shaped bacteria (the "pictured left");
+    image4.png   an AP News page header (navigation: "Top Stories", "Topics",
+                 "Video", "Listen");
+    image5.png   a byline, "By MICHAEL BALSAMO" and "an hour ago";
+    image7.png   share icons and topic tags: "Government And Politics", "Donald
+                 Trump", "Joe Biden", "World News", "AP Top News", "Politics",
+                 "China", "G-7 Summit", "Europe", "Summits".
+  image1-3 are NORC and AmeriSpeak branding outside the stimulus. So the
+  article was shown as a mocked-up AP web page. Built as a text study, with the
+  article's own words only, "(pictured left)" included and nothing added: the
+  byline, timestamp, header and tags were seen by every respondent and are NOT
+  in the condition. That is a recorded cost, not an oversight (found by the
+  checker, 25 Nov 2026). Since they are constant across arms they carry none
+  of the manipulation, though "an hour ago" and the AP page dress strengthen
+  the story's claim to be real news. An image build of the same rows is
+  possible from the .docx, quoting the picture words word-for-word.
+
+
+  OUTCOMES
+
+  tasks 0-2  Q1A-Q1C (Q 524-538): "How serious of a threat do you find each of
+             the following?", one grid screen, items Perinia Accetis
+             superbacteria / Influenza (seasonal flu) / SARS-CoV-2 (COVID-19),
+             item order randomised (not recorded, not narrated).
+  tasks 3-5  Q2A-Q2C (Q 540-554): "How worried are you about the spread of each
+             of the following?", same items, same order as Q1.
+             Grids are built per docs/CONVENTIONS.md "One stem, several
+             labelled answer fields", as 7tzpe: the stem, the three item labels
+             word-for-word, then ONE ADDED SENTENCE, not sourced:
+               'Report only the answer for "<item label>".'
+  task 6     Q3 (Q 557-567): support for U.S. spending to prepare for the
+             superbacteria.
+  task 7     Q8 (Q 657-666): how believable the article was.
+  All four use the same five labels, 0 Not at all .. 4 A great deal (Q3 says
+  "Very much" at 3; the end labels are the same), stored as coded 0-4.
+  Missing: 77 DON'T KNOW, 98 SKIPPED ON WEB, 99 REFUSED (Jev non_answer conf
+  0.98-1.00 on every outcome). Only 98 occurs in these items.
+
+  NOT BUILT:
+    Q4 (Q 571-584): "In the Associated Press article you just read, which U.S.
+      political party leaders (if any) seemed more worried ...". A recall
+      check on the manipulation: its answer is recoverable from the condition
+      (CONVENTIONS, "Attention and recall checks are not outcomes"). Cost:
+      1,924 rows (1,947 less 23 skips).
+    Q5 (moral foundations items), Q6 (disgust sensitivity), Q7 (daily news
+      hours), FT_PEOP (Biden and Trump thermometers), SPIRIT: individual
+      difference and media measures the study collects as moderators, asked of
+      everyone after the outcomes. Not built, by judgement; SocSci210 leaves
+      them out too.
+    RELIG, D4: re-asks merged into the persona (below).
+
+  Rows (from the build): 15,475 from 3 conditions; by task 1,941 / 1,946 /
+  1,944 / 1,919 / 1,920 / 1,919 / 1,944 / 1,942. Skips (98) are the only drops.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 3 conditions, 6 tasks, 16,847 rows. It
+  FAILS by design, and every cell is accounted for:
+    their tasks 0-2 each MERGE two different questions, Q1 ("How serious of a
+      threat") and Q2 ("How worried are you about the spread") for the same
+      item, under Q1's wording: 3,860 = our 1,941 (Q1A) + 1,919 (Q2A); 3,866 =
+      1,946 + 1,920; 3,863 = 1,944 + 1,919. Their task-0 response counts equal
+      the sums of Q1A and Q2A code by code (e.g. 0: 224 + 336 = 560).
+    their task 3 = our Q3 (1,944, identical);
+    their task 4 = Q4, the recall check we leave out, with code 8 "No
+      information was given about political party leaders' responses" dropped
+      (552), leaving 1,372 and codes 1-7;
+    their task 5 = our Q8 (1,942, identical).
+  So assignment and responses agree; the differences are their merge of two
+  questions into one and their inclusion of a recall check whose answer is in
+  the condition. For the Eval comparison: their task 4 rewards reading the
+  stimulus back, and their tasks 0-2 mix two questions under one wording.
+  SocSci210's TEXT, informational only: their stimulus paraphrases the article
+  and summarises the party statements, and adds words not in Q ("though
+  estimates vary").
+
+
+  PERSONA
+
+  NORC AmeriSpeak standard profile, as 3muqx: AGE, GENDER, EDUC5 (this file
+  has no EDUC; EDUC5 as 8972k), RACETHNICITY, INCOME, MARITAL, EMPLOY, REGION4,
+  HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE, PARTYID7, IDEO,
+  plus RELIG (religion) and D4 (religious_attendance). RELIG and D4 hold the
+  preload P_RELIG / P_ATTEND with the re-ask merged in: neither is blank for
+  anyone. persona_missing, each exercised: RELIG 98, D4 98. IDEO is blank for
+  55 (no code). PARTYID7 has no 4 ("Don't Lean/Independent/None"): the sample
+  was drawn from partisans (Q 17), so the field covers six of seven levels.
+  GENDER has no 0 "Unknown" in this file, so none is declared. RELIG code 1's
+  label is severed in the .dta ("... Presbyterian, Pent") and restored from Q
+  243 (persona_label_rewrite), as 3muqx and 8972k.
+  Jev (recipe_prep.py): agreed on every field it was asked; region REGION4
+  (0.47) over REGION9 (0.40) is REVIEW, kept as in every AmeriSpeak recipe.
+  Not mapped: CANDID (2020 vote; party_id carries party), AGE4, AGE7, INCOME4,
+  INCOME9, REGION9, STATE, HH01-HH18OV, SPIRIT (an outcome-domain item asked
+  after treatment), WEIGHT, timers, mode, language, device.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study, built to compare with SocSci210.
+  US party leaders and Trump throughout.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it. The
+  data build was clean: condition and outcome text word-for-word in all 24
+  cells, counts and responses match the .dta in every cell, persona codes all
+  exercised, every ANSWER KEY number confirmed. It FAILED the first version of
+  this note, which called the six non-bacteria images "logos and icons"; three
+  of them are the AP page dress listed under THE PICTURES. Note corrected; no
+  row changed. It also flagged FT_PEOP (Biden and Trump thermometers) as the
+  one arguable exclusion: a judgement call, kept out.
+condition:
+  source_var: P_STIM
+  factors: [concerned_party]
+  considered_and_rejected:
+    RND_01: >-
+      Order of Q4's response options (forward or reversed); Q4 is a recall
+      check and is not built.
+    Q5_ORDER1: Order of the Q5 moral-foundations items (position 1); Q5 is not built.
+    Q5_ORDER2: Order of the Q5 moral-foundations items (position 2); Q5 is not built.
+    Q5_ORDER3: Order of the Q5 moral-foundations items (position 3); Q5 is not built.
+    Q5_ORDER4: Order of the Q5 moral-foundations items (position 4); Q5 is not built.
+    Q5_ORDER5: Order of the Q5 moral-foundations items (position 5); Q5 is not built.
+    Q5_ORDER6: Order of the Q5 moral-foundations items (position 6); Q5 is not built.
+    Q5_ORDER7: Order of the Q5 moral-foundations items (position 7); Q5 is not built.
+    Q5_ORDER8: Order of the Q5 moral-foundations items (position 8); Q5 is not built.
+  # Q 470 + Q 474, identical on all three stimulus screens.
+  shared_context: |-
+    Superbacteria infections on the rise in South America
+
+    WASHINGTON (AP) - A new superbacteria, Perinia Accetis (pictured left), known for the intense fever and large black boils it causes, has been found throughout villages of Brazil's Amazon rainforest. Officials report that the superbacteria is spreading, with over 25 new cases in nearby Bolivia, 8 new cases in Peru, and one unconfirmed case in Guatemala. Visitors to the region who recently returned to Europe may have been infected. Superbacteria receive their name from their unusually strong resistance to antibiotics. Scientists know very little about how Perinia Accetis spreads and there is no known cure for the disease it causes.
+  arms:
+    # STIM_1: the article alone.
+    - raw: 1
+      condition_num: 0
+      factors: {concerned_party: none}
+      text: ""
+    # Q 495
+    - raw: 2
+      condition_num: 1
+      factors: {concerned_party: democrats}
+      text: >-
+        Statements were released today by U.S. Democrats expressing concern
+        about the new pathogen. Senator Chuck Schumer (D-NY) stated, "I'm deeply
+        concerned about this new threat. Republicans are too focused on revenge
+        politics and blocking our proposed economic policies. This new
+        superbacteria must be taken seriously." Republicans responded with less
+        concern. Senator Mitch McConnell (R-KY) released a statement saying,
+        "Democrats are just exaggerating this new disease because they want to
+        distract people from their failed immigration policies. They are just
+        trying to scare people." Former President Donald Trump also released a
+        statement, saying that "the Democrats will do anything to ruin this
+        country... they just made up this germ because they want to spend more
+        money, impose more lockdowns, take away your freedom!"
+    # Q 516
+    - raw: 3
+      condition_num: 2
+      factors: {concerned_party: republicans}
+      text: >-
+        Statements were released today by U.S. Republicans expressing concern
+        about the new pathogen. Senator Mitch McConnell (R-KY) stated, "I'm
+        deeply concerned about this new threat. The Biden administration is too
+        focused on identity politics and passing their left-wing economic
+        policies. This new superbacteria must be taken seriously." Democrats
+        responded with less concern. Senator Chuck Schumer (D-NY) released a
+        statement saying, "Republicans are just exaggerating this disease
+        because they want to ban Hispanics and Latinos from coming to the U.S.
+        They are just trying to scare people." Former President Donald Trump
+        also released a statement, saying that "the Democrats will do anything
+        to ruin this country... they just don't want to admit they can't handle
+        the situation. Bad leadership!"
+
+outcomes:
+  # Q 524-538
+  - var: Q1A
+    task_num: 0
+    question: |-
+      How serious of a threat do you find each of the following?
+      Perinia Accetis superbacteria
+      Influenza (seasonal flu)
+      SARS-CoV-2 (COVID-19)
+      Report only the answer for "Perinia Accetis superbacteria".
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+  # Q 524-538
+  - var: Q1B
+    task_num: 1
+    question: |-
+      How serious of a threat do you find each of the following?
+      Perinia Accetis superbacteria
+      Influenza (seasonal flu)
+      SARS-CoV-2 (COVID-19)
+      Report only the answer for "Influenza (seasonal flu)".
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+  # Q 524-538
+  - var: Q1C
+    task_num: 2
+    question: |-
+      How serious of a threat do you find each of the following?
+      Perinia Accetis superbacteria
+      Influenza (seasonal flu)
+      SARS-CoV-2 (COVID-19)
+      Report only the answer for "SARS-CoV-2 (COVID-19)".
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+  # Q 540-554
+  - var: Q2A
+    task_num: 3
+    question: |-
+      How worried are you about the spread of each of the following?
+      Perinia Accetis superbacteria
+      Influenza (seasonal flu)
+      SARS-CoV-2 (COVID-19)
+      Report only the answer for "Perinia Accetis superbacteria".
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+  # Q 540-554
+  - var: Q2B
+    task_num: 4
+    question: |-
+      How worried are you about the spread of each of the following?
+      Perinia Accetis superbacteria
+      Influenza (seasonal flu)
+      SARS-CoV-2 (COVID-19)
+      Report only the answer for "Influenza (seasonal flu)".
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+  # Q 540-554
+  - var: Q2C
+    task_num: 5
+    question: |-
+      How worried are you about the spread of each of the following?
+      Perinia Accetis superbacteria
+      Influenza (seasonal flu)
+      SARS-CoV-2 (COVID-19)
+      Report only the answer for "SARS-CoV-2 (COVID-19)".
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+  # Q 557-567
+  - var: Q3
+    task_num: 6
+    question: "To what extent do you support the U.S. spending resources to prepare for the spread of the new Perinia Accetis superbacteria?"
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+  # Q 657-666
+  - var: Q8
+    task_num: 7
+    question: "To what extent do you find the Associated Press article you just read believable?"
+    scale: {min: 0, max: 4, min_label: "Not at all", max_label: "A great deal"}
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4}
+missing_codes: [77, 98, 99]
+
+# RELIG code 1's label is severed in the .dta ("... Presbyterian, Pent");
+# restored from this deposit's own Q, the P_RELIG preload list (Q 243), as 3muqx
+# and 8972k do.
+persona_label_rewrite:
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+
+persona_missing:
+  RELIG: [98]
+  D4: [98]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: D4

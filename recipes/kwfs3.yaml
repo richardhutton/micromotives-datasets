@@ -1,0 +1,205 @@
+study_id: kwfs3
+source: tess
+title: "Economic Spillovers of Political Polarization (Malhotra, TESS3 182)"
+data_file: TESS3_182_Malhotra_Client.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). See ANSWER KEY.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS3 182 (Neil Malhotra; GfK KnowledgePanel), "Economic Spillovers of
+  Political Polarization", questionnaire dated April 2015. The .sav has 3,366
+  rows, CaseID unique. Deposit OSF kwfs3, Malhotra634.zip: the .sav, the
+  fielded questionnaire (.doc), timing data, response rate report;
+  Malhotra634.pdf is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "TESS3_182_Malhotra_Questionnaire_final.txt" (textutil from the .doc).
+
+
+  DESIGN AND ASSIGNMENT
+
+  XTESS182 (Q 28): which bonus-payment screen the respondent saw. Each offers
+  Option A, $3, or Option B, more money AND a $4 donation by the researchers to
+  a group on the OTHER side from the respondent:
+    1 Q8a: $6 + $4 to the opposing party's National Committee (1,190);
+    2 Q8b: $9 + $4 to the opposing party's National Committee (1,008);
+    3 Q8c: $6 + $4 to the opposing religious group (964);
+    4 Q8d: $6 + $4 to the association of the other side of the Mississippi
+      (204).
+  raw n -> condition_num n-1. Factors: recipient (opposing_party |
+  opposing_religion | opposing_region), payment_b (dollars_6 | dollars_9).
+  Which group is "opposing" was computed from the respondent's own earlier
+  answers (Q 129-131, 176-178, 206-208): DOV_OPP_PARTY from Q1/Q1c (Democrats
+  and Democratic leaners see the Republican National Committee, and vice
+  versa), DOV_OPP_RELIGION from Q2 (every religion and "other" see American
+  Atheists; atheists and agnostics see the Christian Legal Society),
+  DOV_OPP_COAST from Q3 (east of the Mississippi sees the Association of
+  Western States, and vice versa). All three are in the .sav, and every
+  respondent who answered Q8 has the one their screen needed (checked: 0
+  answered with the value missing).
+
+
+  CONDITION TEXT
+
+  Each arm's screen word-for-word, with the group resolved per respondent from
+  its DOV variable (respondent_vars; quex inline fills). Q writes the inserts
+  in capitals as programming ("INSERT \"REPUBLICANS\""); they are rendered in
+  ordinary case ("Republicans", "atheists", "west"), typography only. The
+  payment table on each screen is rendered as lines "Option | Payment to You |
+  Payment to <group>" etc. (ours: the " | " layout and the "Option" header
+  cell, which Q leaves blank); Q's "National Commitee" spelling in the table
+  header is kept. Q8c prints its table between Option A and Option B, and that
+  order is kept.
+  The condition names a group the respondent is NOT in; it says nothing about
+  what any group thinks or does, so the answer is not derivable by
+  substitution (CONVENTIONS, "The condition must not name the respondent's own
+  persona category", and its 10 Oct 2026 limit).
+
+
+  OUTCOME
+
+  task 0  Q8a-Q8d: "Which of these two options would you prefer?" (1) Option A;
+          (2) Option B (our numbering). Nominal. Missing: -1 Refused.
+  NOT BUILT: Q1-Q3 (party, religion, region: the inputs to the fills, asked
+  before), Q4-Q5 (attitude items, asked of everyone before the payment
+  screen), Q6-Q7 (open text).
+
+
+  PERSONA
+
+  Knowledge Networks profile, as 4zscf, plus XPARTY7, IDEO_New, XREL1,
+  REL2_New. Declared missing: XPARTY7 9, IDEO_New -1, XREL1 14, REL2_New -1.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. US parties and US regions.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 3 conditions, 3,070 rows. They omit arm
+  4 (the Mississippi groups, 196 rows here); on arms 1-3 every count is
+  identical (1,152 / 972 / 946 rows; Option A 2,263, Option B 807 over the
+  three). The run FAILS on the missing arm only.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 3,266 rows rebuilt from Q8a-Q8d with each respondent's own DOV label:
+  0 mismatches; counts per arm and responses match the .sav; party_id in the
+  persona judged acceptable (the named group is the assignment, not a stand-in
+  for the answer); ANSWER KEY confirmed.
+condition:
+  source_var: XTESS182
+  factors: [recipient, payment_b]
+  considered_and_rejected:
+    DOV_OPP_PARTY: The opposing party, computed from Q1; filled into arms 1-2's text per respondent (respondent_vars).
+    DOV_OPP_RELIGION: The opposing religious group, computed from Q2; filled into arm 3's text per respondent.
+    DOV_OPP_COAST: The other side of the Mississippi, computed from Q3; filled into arm 4's text per respondent.
+  arms:
+    # Q 134-152
+    - raw: 1
+      condition_num: 0
+      outcome_var: Q8A
+      factors: {recipient: opposing_party, payment_b: dollars_6}
+      text: |-
+        As an additional thank you for filling out this questionnaire, we would like to give you a bonus cash payment. You can choose one of the two options below.
+
+        Option A: A $3 payment as a thank you.
+
+        Option B: A $6 payment as a thank you, and the researchers will make a separate $4 donation to the [IF DOV_OPP_PARTY=1, SHOW Republican; IF DOV_OPP_PARTY=2, SHOW Democratic] National Committee, an organization that helps [IF DOV_OPP_PARTY=1, SHOW Republicans; IF DOV_OPP_PARTY=2, SHOW Democrats] get elected to office.
+
+        Option | Payment to You | Payment to [IF DOV_OPP_PARTY=1, SHOW Republican; IF DOV_OPP_PARTY=2, SHOW Democratic] National Commitee
+        Option A | $3 | None
+        Option B | $6 | $4
+    # Q 156-173
+    - raw: 2
+      condition_num: 1
+      outcome_var: Q8B
+      factors: {recipient: opposing_party, payment_b: dollars_9}
+      text: |-
+        As an additional thank you for filling out this questionnaire, we would like to give you a bonus cash payment. You can choose one of the two options below.
+
+        Option A: A $3 payment as a thank you.
+
+        Option B: A $9 payment as a thank you, and the researchers will make a separate $4 donation to the [IF DOV_OPP_PARTY=1, SHOW Republican; IF DOV_OPP_PARTY=2, SHOW Democratic] National Committee, an organization that helps [IF DOV_OPP_PARTY=1, SHOW Republicans; IF DOV_OPP_PARTY=2, SHOW Democrats] get elected to office.
+
+        Option | Payment to You | Payment to [IF DOV_OPP_PARTY=1, SHOW Republican; IF DOV_OPP_PARTY=2, SHOW Democratic] National Commitee
+        Option A | $3 | None
+        Option B | $9 | $4
+    # Q 181-203
+    - raw: 3
+      condition_num: 2
+      outcome_var: Q8C
+      factors: {recipient: opposing_religion, payment_b: dollars_6}
+      text: |-
+        As an additional thank you for filling out this questionnaire, we would like to give you a bonus cash payment. You can choose one of the two options below.
+
+        Option A: A $3 payment as a thank you.
+
+        Option | Payment to You | Payment to [IF DOV_OPP_RELIGION=1, SHOW American Atheists (AA); IF DOV_OPP_RELIGION=2, SHOW Christian Legal Society (CLS)]
+        Option A | $3 | None
+        Option B | $6 | $4
+
+        Option B: A $6 payment as a thank you, and the researchers will make a separate $4 donation to [IF DOV_OPP_RELIGION=1, SHOW American Atheists (AA); IF DOV_OPP_RELIGION=2, SHOW Christian Legal Society (CLS)], an organization that promotes the interests of [IF DOV_OPP_RELIGION=1, SHOW atheists; IF DOV_OPP_RELIGION=2, SHOW Christians] in the United States.
+    # Q 211-229
+    - raw: 4
+      condition_num: 3
+      outcome_var: Q8D
+      factors: {recipient: opposing_region, payment_b: dollars_6}
+      text: |-
+        As an additional thank you for filling out this questionnaire, we would like to give you a bonus cash payment. You can choose one of the two options below.
+
+        Option A: A $3 payment as a thank you.
+
+        Option B: A $6 payment as a thank you, and the researchers will make a separate $4 donation to the [IF DOV_OPP_COAST=1, SHOW Association of Western States (AWS); IF DOV_OPP_COAST=2, SHOW Association of Eastern States (AES)], a group that promotes projects in the states [IF DOV_OPP_COAST=1, SHOW west; IF DOV_OPP_COAST=2, SHOW east] of the Mississippi River.
+
+        Option | Payment to You | Payment to [IF DOV_OPP_COAST=1, SHOW Association of Western States (AWS); IF DOV_OPP_COAST=2, SHOW Association of Eastern States (AES)]
+        Option A | $3 | None
+        Option B | $6 | $4
+
+outcomes:
+  # No `var`: each arm names its own (Q8A-Q8D).
+  - task_num: 0
+    question: |-
+      Which of these two options would you prefer?
+      (1) Option A; (2) Option B
+    scale: {min: 1, max: 2, nominal: true}
+
+respondent_vars: [DOV_OPP_PARTY, DOV_OPP_RELIGION, DOV_OPP_COAST]
+
+response_recode: {1: 1, 2: 2}
+missing_codes: [-1]
+
+
+persona_missing:
+  XPARTY7: [9]
+  IDEO_New: [-1]
+  XREL1: [14]
+  REL2_New: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: IDEO_New
+  religion: XREL1
+  religious_attendance: REL2_New

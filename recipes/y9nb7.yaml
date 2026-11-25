@@ -1,0 +1,403 @@
+study_id: y9nb7
+source: tess
+title: "The Effects of Exposure to Women Candidates on Political Attitudes (Campbell & Wolbrecht, TESS 074)"
+data_file: 8041.074_TESS 074_Wolbrecht.dta
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). They pool grid
+# items (see ANSWER KEY); build without --crosscheck.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS 074 (David Campbell and Christina Wolbrecht), NORC AmeriSpeak project
+  8041.074, adult sample, fielded after the 2020 US elections. The .dta has
+  1,000 rows, CaseId unique. Deposit OSF y9nb7, Campbell1308.zip: the .dta,
+  codebook, project report, the Programming and Simple questionnaires;
+  Campbell1308.pdf and the "project specification" are the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "8041.0074_TESS Wol_vFINALprog.txt" (textutil from the .docx, the
+        wording authority).
+
+
+  ASSIGNMENT
+
+  P_TREAT65 (preload): 1 Control, no story (263); 2 Non-Partisan story (231);
+  3 Democratic story (270); 4 Republican story (236). raw n -> condition_num
+  n-1. Factor `story`: none | both_parties | democratic | republican.
+
+
+  CONDITION TEXT
+
+  Arms 2-4: DISPLAY_T65_PRE ("Please read the following news story closely
+  ...", Q 308) and DISPLAY_TREAT65 (Q 314-352), word-for-word with the
+  arm's fills resolved from Q's [INSERT IF P_TREAT65=n: ...] directives; where
+  an arm has no fill the words around it close up ("a newly-elected member of
+  the House", "Amy Johnson, who won"). Q prints the story paragraph and the
+  pull quote twice (Q 317-318, 320-330), the programmer's desktop and mobile
+  copies of one screen element; each is rendered once. Order: headline,
+  paragraph, pull quote with its name and title lines, photo caption.
+  THE PHOTOS: the screen carried three photos of women candidates (Q 348,
+  "[INSERT PHOTOS BELOW ...]"; the .docx holds them, word/media/image3-5, stock
+  photographs of women at press events), the same in every story arm, so they
+  carry none of the manipulation. Built as a text study, as yp736: the caption
+  is rendered word-for-word and nothing is added to describe the photos.
+  Arm 1 (Control) saw no story: its rows carry the fixed sentinel (CONVENTIONS,
+  "A source with no stimulus"), true for every question it answered.
+
+
+  OUTCOMES (19 tasks, every one a 0-10 slider, ends labelled as Q)
+
+  tasks 0-5    T65_1A-F likelihood of six political acts in future (Volunteer
+               .. Run for political office), 0 Not likely at all .. 10 Very
+               likely.
+  tasks 6-9    T65_2A-D agreement with four statements on democracy, 0
+               Disagree .. 10 Agree.
+  task 10      T65_3 "If we had more women in elected office, America would
+               be..." 0 Worse, 5 The same, 10 Better.
+  tasks 11-14  T65_4A-D agreement with four gender-attitude statements.
+  tasks 15-18  T65_5A-D whether men or women in high office are better at four
+               traits, 0 Men are better, 5 No difference, 10 Women are better.
+  Grids per CONVENTIONS "One stem, several labelled answer fields", ONE ADDED
+  SENTENCE: 'Report only the answer for "<item>".'
+  T65_5's stem says "men or women" or "women or men" by RND_01 (Q 430),
+  resolved per respondent (respondent_vars).
+  THE .dta MISLABELS T65_4: its variable labels give T65_4A-D the trait items
+  of T65_5 ("[Working out compromises] ...In general, do you think [men or
+  women ..."), but their value labels are "0 - Disagree" .. "10 - Agree", Q's
+  T65_4 scale, and the answers fit Q (T65_4A, "the man is the achiever outside
+  the home", is mostly 0-1, 381 of 932; T65_5A centres on 5 "No difference",
+  384). T65_4 is built with Q's statements.
+  Missing: 77, 98, 99 (only 98 occurs).
+  NOT BUILT: T65_M1 ("Based on the story you just read, which party had a
+  surge ...?"), a recall check, story arms only; T65_M2, control only, a
+  perception item with no contrast.
+
+
+  PERSONA
+
+  The file carries a reduced AmeriSpeak profile: AGE, GENDER, RACETHNICITY,
+  INCOME, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE,
+  and PID1 (party identification, first question: Democrat, Republican,
+  Independent, Something else). No education, marital status, employment,
+  ideology or religion is in the deposit. PIDAB/PIDi (strength and lean) are
+  follow-ups and not merged here. PID1 98 (4) declared missing.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. US 2020 elections.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): PASS on rows (18,280), conditions, rows
+  per condition and the response distribution. Their 4 tasks POOL our grids:
+  5,557 = T65_1A-F, 3,928 = T65_2A-D, 991 = T65_3, and 7,804 = T65_4A-D AND
+  T65_5A-D together (a gender-attitude agree scale and a men/women trait scale
+  under one task).
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  Fills resolved independently for arms 2-4 and matched word-for-word, incl.
+  the no-fill joins; doubled paragraph and pull quote rendered once, photos
+  constant across arms; all 19 outcomes match Q, RND_01 resolved per
+  respondent (503 / 494, 0 cross-cells); counts and distributions match on all
+  19 tasks; the T65_4 mislabel claim confirmed; PID1 maps cleanly.
+condition:
+  source_var: P_TREAT65
+  factors: [story]
+  considered_and_rejected:
+    RND_01: >-
+      Order of "men or women" / "women or men" in T65_5's stem; resolved per
+      respondent in the outcome text (respondent_vars), not a condition.
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {story: none}
+      text: "No stimulus was shown; the question was asked of everyone."
+    # Q 306-352, fills for P_TREAT65=2
+    - raw: 2
+      condition_num: 1
+      factors: {story: both_parties}
+      text: |-
+        Please read the following news story closely. When you are done, we will ask you about it.
+
+        A Big Year For Both Democratic and Republican Women in the 2020 Elections
+
+        The 2020 elections saw a surge of Democratic and Republican women who ran for offices at all levels, whether in Washington, state capitols, or city halls. Across the country, many of these women candidates ran to bring new voices to politics. For example, Charlene Washington, a newly-elected member of the House of Representatives in Georgia, ran TV ads in which her tagline was "As a woman, I will bring a fresh perspective to Washington." Amy Johnson, who won a House race in Michigan, said in her acceptance speech that "Women like me will get to work and make a difference for our communities and the rest of the nation." 2020 was a banner year for women candidates of both parties. Maria Gonzalez, a scholar who has written extensively about American politics notes that "this is a new era for women in government. Over the last few years, we have seen historic numbers of women running for office—and winning."
+
+        "Women like me will get to work and make a difference for our communities and the rest of the nation."
+        Charlene Washington
+        Newly-elected member of Congress
+
+        Three candidates running for seats in Congress, joining a national surge of women candidates across the country.
+    # Q 306-352, fills for P_TREAT65=3
+    - raw: 3
+      condition_num: 2
+      factors: {story: democratic}
+      text: |-
+        Please read the following news story closely. When you are done, we will ask you about it.
+
+        A Big Year For Democratic Women in the 2020 Elections
+
+        The 2020 elections saw a surge of Democratic women who ran for offices at all levels, whether in Washington, state capitols, or city halls. Across the country, many of these women candidates ran to bring new voices to politics. For example, Charlene Washington, a newly-elected Democratic member of the House of Representatives in Georgia, ran TV ads in which her tagline was "As a woman, I will bring a fresh perspective to Washington." Amy Johnson, a Democrat who won a House race in Michigan, said in her acceptance speech that "Women like me will get to work and make a difference for our communities and the rest of the nation." 2020 was a banner year for Democratic women candidates. Maria Gonzalez, a scholar who has written extensively about American politics notes that "this is a new era for women in government. Over the last few years, we have seen historic numbers of women running for office—and winning."
+
+        "Women like me will get to work and make a difference for our communities and the rest of the nation."
+        Charlene Washington
+        Newly-elected Democratic member of Congress
+
+        Three Democratic candidates running for seats in Congress, joining a national surge of women candidates across the country.
+    # Q 306-352, fills for P_TREAT65=4
+    - raw: 4
+      condition_num: 3
+      factors: {story: republican}
+      text: |-
+        Please read the following news story closely. When you are done, we will ask you about it.
+
+        A Big Year For Republican Women in the 2020 Elections
+
+        The 2020 elections saw a surge of Republican women who ran for offices at all levels, whether in Washington, state capitols, or city halls. Across the country, many of these women candidates ran to bring new voices to politics. For example, Charlene Washington, a newly-elected Republican member of the House of Representatives in Georgia, ran TV ads in which her tagline was "As a woman, I will bring a fresh perspective to Washington." Amy Johnson, a Republican who won a House race in Michigan, said in her acceptance speech that "Women like me will get to work and make a difference for our communities and the rest of the nation." 2020 was a banner year for Republican women candidates. Maria Gonzalez, a scholar who has written extensively about American politics notes that "this is a new era for women in government. Over the last few years, we have seen historic numbers of women running for office—and winning."
+
+        "Women like me will get to work and make a difference for our communities and the rest of the nation."
+        Charlene Washington
+        Newly-elected Republican member of Congress
+
+        Three Republican candidates running for seats in Congress, joining a national surge of women candidates across the country.
+
+outcomes:
+  - var: T65_1A
+    task_num: 0
+    question: |-
+      Even if you've never thought about it, could you see yourself doing any of the following things in the future?
+      Please rate how likely you are to do any of the following in the future using a scale of 0 to 10 where 0 is not likely at all and 10 is very likely.
+      Volunteer in my community
+      Vote in a public election
+      Work in a political campaign
+      Participate in a lawful demonstration
+      Write to public officials
+      Run for political office
+      Report only the answer for "Volunteer in my community".
+    scale: {min: 0, max: 10, min_label: "Not likely at all", max_label: "Very likely"}
+  - var: T65_1B
+    task_num: 1
+    question: |-
+      Even if you've never thought about it, could you see yourself doing any of the following things in the future?
+      Please rate how likely you are to do any of the following in the future using a scale of 0 to 10 where 0 is not likely at all and 10 is very likely.
+      Volunteer in my community
+      Vote in a public election
+      Work in a political campaign
+      Participate in a lawful demonstration
+      Write to public officials
+      Run for political office
+      Report only the answer for "Vote in a public election".
+    scale: {min: 0, max: 10, min_label: "Not likely at all", max_label: "Very likely"}
+  - var: T65_1C
+    task_num: 2
+    question: |-
+      Even if you've never thought about it, could you see yourself doing any of the following things in the future?
+      Please rate how likely you are to do any of the following in the future using a scale of 0 to 10 where 0 is not likely at all and 10 is very likely.
+      Volunteer in my community
+      Vote in a public election
+      Work in a political campaign
+      Participate in a lawful demonstration
+      Write to public officials
+      Run for political office
+      Report only the answer for "Work in a political campaign".
+    scale: {min: 0, max: 10, min_label: "Not likely at all", max_label: "Very likely"}
+  - var: T65_1D
+    task_num: 3
+    question: |-
+      Even if you've never thought about it, could you see yourself doing any of the following things in the future?
+      Please rate how likely you are to do any of the following in the future using a scale of 0 to 10 where 0 is not likely at all and 10 is very likely.
+      Volunteer in my community
+      Vote in a public election
+      Work in a political campaign
+      Participate in a lawful demonstration
+      Write to public officials
+      Run for political office
+      Report only the answer for "Participate in a lawful demonstration".
+    scale: {min: 0, max: 10, min_label: "Not likely at all", max_label: "Very likely"}
+  - var: T65_1E
+    task_num: 4
+    question: |-
+      Even if you've never thought about it, could you see yourself doing any of the following things in the future?
+      Please rate how likely you are to do any of the following in the future using a scale of 0 to 10 where 0 is not likely at all and 10 is very likely.
+      Volunteer in my community
+      Vote in a public election
+      Work in a political campaign
+      Participate in a lawful demonstration
+      Write to public officials
+      Run for political office
+      Report only the answer for "Write to public officials".
+    scale: {min: 0, max: 10, min_label: "Not likely at all", max_label: "Very likely"}
+  - var: T65_1F
+    task_num: 5
+    question: |-
+      Even if you've never thought about it, could you see yourself doing any of the following things in the future?
+      Please rate how likely you are to do any of the following in the future using a scale of 0 to 10 where 0 is not likely at all and 10 is very likely.
+      Volunteer in my community
+      Vote in a public election
+      Work in a political campaign
+      Participate in a lawful demonstration
+      Write to public officials
+      Run for political office
+      Report only the answer for "Run for political office".
+    scale: {min: 0, max: 10, min_label: "Not likely at all", max_label: "Very likely"}
+  - var: T65_2A
+    task_num: 6
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      The political system helps people with their genuine needs
+      Politicians do not listen to people like me
+      I can make a difference solving problems in my community
+      Democracy is the best way to run this country
+      Report only the answer for "The political system helps people with their genuine needs".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_2B
+    task_num: 7
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      The political system helps people with their genuine needs
+      Politicians do not listen to people like me
+      I can make a difference solving problems in my community
+      Democracy is the best way to run this country
+      Report only the answer for "Politicians do not listen to people like me".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_2C
+    task_num: 8
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      The political system helps people with their genuine needs
+      Politicians do not listen to people like me
+      I can make a difference solving problems in my community
+      Democracy is the best way to run this country
+      Report only the answer for "I can make a difference solving problems in my community".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_2D
+    task_num: 9
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      The political system helps people with their genuine needs
+      Politicians do not listen to people like me
+      I can make a difference solving problems in my community
+      Democracy is the best way to run this country
+      Report only the answer for "Democracy is the best way to run this country".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_3
+    task_num: 10
+    question: |-
+      Please use the slider to finish the statement below using a 0-10 scale where 0 is worse, 5 is the same, and 10 is better.
+      If we had more women in elected office, America would be...
+    scale: {min: 0, max: 10, min_label: "Worse", mid_label: "The same", max_label: "Better"}
+  - var: T65_4A
+    task_num: 11
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      It is usually better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family
+      Discrimination against women is no longer a problem in the United States
+      Women should be cherished and protected by men
+      Most women interpret innocent remarks or acts as sexist
+      Report only the answer for "It is usually better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_4B
+    task_num: 12
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      It is usually better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family
+      Discrimination against women is no longer a problem in the United States
+      Women should be cherished and protected by men
+      Most women interpret innocent remarks or acts as sexist
+      Report only the answer for "Discrimination against women is no longer a problem in the United States".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_4C
+    task_num: 13
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      It is usually better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family
+      Discrimination against women is no longer a problem in the United States
+      Women should be cherished and protected by men
+      Most women interpret innocent remarks or acts as sexist
+      Report only the answer for "Women should be cherished and protected by men".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_4D
+    task_num: 14
+    question: |-
+      Using the slider, please rate how much you agree or disagree with the following statement using a scale of 0 to 10 where 0 is disagree and 10 is agree.
+      It is usually better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family
+      Discrimination against women is no longer a problem in the United States
+      Women should be cherished and protected by men
+      Most women interpret innocent remarks or acts as sexist
+      Report only the answer for "Most women interpret innocent remarks or acts as sexist".
+    scale: {min: 0, max: 10, min_label: "Disagree", max_label: "Agree"}
+  - var: T65_5A
+    task_num: 15
+    question: |-
+      Many people think men and women political leaders have different strengths. Others think that there are no gender differences among our elected officials. What do you think?
+      In general, do you think [IF RND_01=0, SHOW men or women; IF RND_01=1, SHOW women or men] in high political office are better at each of the following, or is there no difference? Please use the slider below, using a 0-10 scale where 0 is men are generally better, 5 is no difference, and 10 is women are generally better.
+      Working out compromises
+      Being a strong leader
+      Being honest and ethical
+      Working well under pressure
+      Report only the answer for "Working out compromises".
+    scale: {min: 0, max: 10, min_label: "Men are better", mid_label: "No difference", max_label: "Women are better"}
+  - var: T65_5B
+    task_num: 16
+    question: |-
+      Many people think men and women political leaders have different strengths. Others think that there are no gender differences among our elected officials. What do you think?
+      In general, do you think [IF RND_01=0, SHOW men or women; IF RND_01=1, SHOW women or men] in high political office are better at each of the following, or is there no difference? Please use the slider below, using a 0-10 scale where 0 is men are generally better, 5 is no difference, and 10 is women are generally better.
+      Working out compromises
+      Being a strong leader
+      Being honest and ethical
+      Working well under pressure
+      Report only the answer for "Being a strong leader".
+    scale: {min: 0, max: 10, min_label: "Men are better", mid_label: "No difference", max_label: "Women are better"}
+  - var: T65_5C
+    task_num: 17
+    question: |-
+      Many people think men and women political leaders have different strengths. Others think that there are no gender differences among our elected officials. What do you think?
+      In general, do you think [IF RND_01=0, SHOW men or women; IF RND_01=1, SHOW women or men] in high political office are better at each of the following, or is there no difference? Please use the slider below, using a 0-10 scale where 0 is men are generally better, 5 is no difference, and 10 is women are generally better.
+      Working out compromises
+      Being a strong leader
+      Being honest and ethical
+      Working well under pressure
+      Report only the answer for "Being honest and ethical".
+    scale: {min: 0, max: 10, min_label: "Men are better", mid_label: "No difference", max_label: "Women are better"}
+  - var: T65_5D
+    task_num: 18
+    question: |-
+      Many people think men and women political leaders have different strengths. Others think that there are no gender differences among our elected officials. What do you think?
+      In general, do you think [IF RND_01=0, SHOW men or women; IF RND_01=1, SHOW women or men] in high political office are better at each of the following, or is there no difference? Please use the slider below, using a 0-10 scale where 0 is men are generally better, 5 is no difference, and 10 is women are generally better.
+      Working out compromises
+      Being a strong leader
+      Being honest and ethical
+      Working well under pressure
+      Report only the answer for "Working well under pressure".
+    scale: {min: 0, max: 10, min_label: "Men are better", mid_label: "No difference", max_label: "Women are better"}
+
+respondent_vars: [RND_01]
+
+response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+missing_codes: [77, 98, 99]
+
+persona_missing:
+  PID1: [98]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  ethnicity: RACETHNICITY
+  income: INCOME
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PID1

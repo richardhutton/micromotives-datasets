@@ -1,0 +1,170 @@
+study_id: ervm8
+source: tess
+title: "Experiments to Reduce the Overreporting of Voting (Hanmer, TESS2 057)"
+data_file: TESS2 057_Hanmer_Client.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). Task 0 matches
+# exactly; the crosscheck fails only on our extra task (see ANSWER KEY).
+comparable_to_socsci210: true
+
+notes: |-
+  TESS2 057 (Michael Hanmer; Knowledge Networks), "Experiments to Reduce the
+  Overreporting of Voting", questionnaire dated September 2010, fielded after
+  the November 2010 US election. The .sav has 2,517 rows, CaseID unique.
+  Deposit OSF ervm8, Hanmer076.zip: the .sav, the fielded questionnaire
+  (TESS2_057_Hanmer_FINAL.doc), the response rate report; Hanmer076.pdf is the
+  proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "TESS2_057_Hanmer_FINAL.txt" (textutil from the .doc, the wording
+        authority).
+
+
+  ASSIGNMENT
+
+  XTESS057 (Q 47: "randomly assign with equal probability (1/3 each)"): 1
+  Control (842), 2 Treatment1 (845), 3 Treatment2 (830). raw n -> condition_num
+  n-1, SocSci210's numbering (their condition 1 is the public-records text).
+  Factor `wording`: control | records_check | overreport_norm.
+  Routing in the data agrees: Q1a answered only by arm 1, Q1b by 2, Q1c by 3.
+
+
+  CONDITION TEXT
+
+  shared_context: the sentence every version opens with, word-for-word ("In
+  talking to people about elections ... didn't have time.", Q 54 / 66 / 82).
+  Arm text: what each version adds before its question, word-for-word: nothing
+  for Control (Q 54); the public-records paragraph for Treatment 1 (Q 66); "We
+  also sometimes find that people who say they voted actually did not vote."
+  for Treatment 2 (Q 82). Typography: curly apostrophes normalised.
+
+
+  OUTCOMES
+
+  task 0  Q1a / Q1b / Q1c, each version's own variable (Arm.outcome_var), the
+          closing question "Which of the following statements best describes
+          you?" with its four options listed and our "(1) ... (4)" numbering:
+          1 I did not vote (in the election this November), 2 I thought about
+          voting this time but didn't, 3 I usually vote but didn't this time, 4
+          I am sure I voted. Nominal (the options are not one scale).
+  task 1  Q3 (Q 90-96), asked of everyone straight after: "Are you currently
+          registered to vote?" 1 Yes, at my present address; 2 Yes, at a
+          different address; 3 No; nominal. 4 "Not sure" (58) dropped as a
+          non-answer. The treatments warn about checking public records, so
+          the registration report that follows is in their reach.
+  Missing: -1 Refused.
+  NOT BUILT: Q4-Q6 (asked only of those who said they voted), Q7-Q14
+  (interest, past vote, political knowledge quiz, linked fate) and Q2 (most
+  important issue): general items after the experiment; SocSci210 builds only
+  task 0 too.
+
+
+  PERSONA
+
+  Knowledge Networks profile, as 4zscf: PPAGE, PPGENDER, PPEDUCAT, PPETHM,
+  PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE, PPHOUSE, PPRENT, PPMSACAT, PPNET,
+  plus the panel's xparty7, xideo, xrel1, xrel2, NOT merged with a re-ask in
+  this file, so their "Missing" codes survive and are declared: xparty7 9 (16),
+  xideo 9 (56), xrel1 14 (26), xrel2 9 (392). Their "Dummy" codes (8, 7) do
+  not occur.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. US November 2010 election.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): one task, Q1; 841 / 844 / 830 rows,
+  response counts 1: 570, 2: 95, 3: 189, 4: 1,661. Our task 0 is identical
+  (2,515 rows; the same counts); the run FAILS only because we also build Q3
+  (task 1, 2,457 rows), and our totals by code are theirs plus Q3's (1: 570 +
+  2,035; 2: 95 + 152; 3: 189 + 270). Built without --crosscheck.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 6 cells word-for-word against Q; counts and responses per arm match the
+  .sav (Q1 841 / 844 / 830; Q3 827 / 828 / 802); persona_missing codes
+  exercised and labelled Missing; ANSWER KEY reproduced.
+condition:
+  source_var: XTESS057
+  factors: [wording]
+  shared_context: >-
+    In talking to people about elections, we often find that a lot of people
+    were not able to vote because they weren't registered, they were sick, or
+    they just didn't have time.
+  arms:
+    # Q 53-54
+    - raw: 1
+      condition_num: 0
+      outcome_var: Q1a
+      factors: {wording: control}
+      text: ""
+    # Q 65-66
+    - raw: 2
+      condition_num: 1
+      outcome_var: Q1b
+      factors: {wording: records_check}
+      text: >-
+        By looking at public records kept by election officials we can get an
+        accurate report of who actually voted in November, and in previous
+        elections. Of course, these public records do not say who you voted
+        for. Part of our study will involve checking these records against the
+        survey reports.
+    # Q 81-82
+    - raw: 3
+      condition_num: 2
+      outcome_var: Q1c
+      factors: {wording: overreport_norm}
+      text: >-
+        We also sometimes find that people who say they voted actually did not
+        vote.
+
+outcomes:
+  - task_num: 0
+    question: |-
+      Which of the following statements best describes you?
+      (1) I did not vote (in the election this November); (2) I thought about voting this time but didn't; (3) I usually vote but didn't this time; (4) I am sure I voted
+    scale: {min: 1, max: 4, nominal: true}
+  - var: Q3
+    task_num: 1
+    question: |-
+      Are you currently registered to vote?
+      (1) Yes, I am registered to vote at my present address; (2) Yes, I am registered to vote at a different address; (3) No, I am not registered to vote
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+missing_codes: [-1]
+
+persona_missing:
+  xparty7: [9]
+  xideo: [9]
+  xrel1: [14]
+  xrel2: [9]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: xparty7
+  ideology: xideo
+  religion: xrel1
+  religious_attendance: xrel2

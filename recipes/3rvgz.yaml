@@ -1,0 +1,327 @@
+study_id: 3rvgz
+source: tess
+title: "Racialized Organizations: Whiteness as a Credential (Kmec, TESS 118)"
+data_file: 9089.118.TESS Kmec.dta
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set), but its build of
+# this study is a fragment (see ANSWER KEY), so the numbers cannot be compared.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS 118 (Julie Kmec), NORC AmeriSpeak project 9089.118, "Racialized
+  Organizations". The .dta has 901 rows, CaseId unique. Deposit OSF 3rvgz,
+  kmec1478.zip, folder "TESS 118 Kmec": the .dta, codebook, the Programming and
+  Simple questionnaires, methods report; Kmec1478.pdf and "Kmec-1478.R1
+  description" are the proposal; "TESS survey oct12" is an earlier draft.
+  The outcome block of this recipe was written by a one-off script (not kept;
+  this file is the source of truth); every string in it is from Q.
+
+  Line citations are 1-based line numbers in
+    Q = "9089.118.TESS_Kmec_vFINALprog.txt" (textutil from the .docx, the
+        wording authority).
+
+
+  ASSIGNMENT
+
+  DOV_EXP_KMEC (Q 462-469, two quota buckets filled at random): 1 Historically
+  Black College (450), 2 College (451). raw n -> condition_num n-1. Factor
+  `college`: hbcu | college. It is the only randomised variable; the data has
+  no other condition column.
+
+
+  CONDITION TEXT
+
+  DISPLAY1 (Q 473-480), word-for-word except its timing note ("Please note the
+  continue button will appear after some time ...", survey mechanics, dropped):
+  two shared paragraphs, then "Avantex ... was recently asked by a nearby
+  college, the state's oldest [Historically Black College | college], for advice
+  ...", then "Please share your reaction ...". shared_context holds the first
+  paragraph; each arm carries the rest with its own fill.
+  THE MANIPULATION ALSO SITS IN THE QUESTIONS. Q fills the college type into ten
+  question wordings, and not always with the same words: "this Historically
+  Black College" (Q3, Q11), "This mainly Black college" (Q5), "this / The /
+  the mostly Black college" (Q7, Q10, Q12, Q13); the College arm reads
+  "college" in each. Arm 1 overrides those ten outcome questions (`items`); the
+  outcome default is the College arm's wording. Q12's "college]has" lacks a
+  space in Q and is rendered "college has".
+  Earlier questions are not narrated (each item stands with the display screen,
+  as a693y and c5r2f do).
+
+
+  OUTCOMES (26 tasks, task = position in the list below)
+
+  Q1 department to cut (nominal 1-5, options randomised, not recorded); Q2A-C
+  add each programme (grid, 1 Definitely Add .. 4 Definitely Not Add); Q3
+  donation to the lecture series (7 bands, listed); Q4 course sequence to remove
+  (nominal 1-4); Q5 minimum honours GPA (nominal 1-6, the last being "should not
+  have an honors program"); Q7 DEI training as a requirement (1 Yes .. 4 No); Q8
+  number of $1,000 scholarships (0-10); Q9 hiring theme (nominal 1-4,
+  randomised); Q10 suitability of a book on White racial privilege (1 Very
+  suitable .. 5 Not at all suitable); Q11 assistant-professor pay (6 bands,
+  listed); Q12 type of student centre (nominal 1-3); Q13A-D rank of each summer
+  course (drag-and-drop ranking, 1 highest .. 4 lowest); Q14A-D eliminate or keep
+  each journal (1 Eliminate, 2 Keep); Q16 four guesses of student-body make-up
+  (0-100%); Q17 confidence explaining Critical Race Theory (1 Very confident ..
+  5 Not at all confident).
+  ADDED WORDS, ours: the "(1) ... (n)" numbering where options are listed;
+  "(the options were shown in a random order)" on Q1 and Q9 (CONVENTIONS, choice
+  sets; the order was not recorded); 'Report only the answer / rank /
+  percentage for "<label>".' on the grids Q2, Q13, Q14, Q16 (CONVENTIONS, "One
+  stem, several labelled answer fields"). Q16's field labels ("Mainly Black
+  College: % White Students") join Q's row and box labels with ": ".
+  Underline markup (<u>) is dropped; words kept, including Q2's "should
+  Avantex's suggest" and Q4's "equips students with ways to a range of".
+  Missing: 77, 98, 99 on every item except Q16, dropped by leaving them out
+  of each item's recode; 777, 998, 999 on Q16 (missing_codes), where 77, 98
+  and 99 are real percentages and are kept.
+
+  NOT BUILT:
+    Q6: "Please select all that apply" (multi-select), four yes/no flags; no
+      convention here yet for multi-select.
+    Q15: "Think about the college you just answered questions about. Please tell
+      me what you thought the racial composition of the college's student body
+      was": a recall check on the manipulation (CONVENTIONS, "Attention and
+      recall checks are not outcomes").
+
+
+  PERSONA
+
+  NORC AmeriSpeak, as 3muqx: AGE, GENDER, EDUC5, RACETHNICITY, INCOME, MARITAL,
+  EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE,
+  PartyID7, IDEO, RELIG, ATTEND. RELIG code 1's label is severed in the .dta
+  ("... Presbyterian, Pent") and restored from Q's P_RELIG list, as 3muqx.
+  persona_missing, each exercised: ATTEND 98 (skipped), IDEO -1 "Unknown" (10),
+  PartyID7 -1 "Unknown" (3). OCCUPATION and SUPERVISE are
+  not mapped (Q asks them for the panel profile; not standard fields).
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it. Text
+  of all 52 cells matched Q with every fill right for its arm; counts matched.
+  It FAILED the first draft on Q16: 77/98/99 were dropped as non-answers where
+  they are real percentages (44 rows). Fixed (missing_codes above), and the
+  welcome line it found missing was added to shared_context.
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. US colleges and racial
+  categories throughout.
+
+
+  ANSWER KEY
+
+  SocSci210 has 7 tasks for this study and they are fragments: Q5 with 37 rows
+  per arm, all coded 4; Q13A-D with only codes 2 and 3; Q16_1A/B. Their counts
+  cannot be matched to a complete build, so comparable_to_socsci210 is false and
+  the numbers here are checked against the .dta directly.
+
+condition:
+  source_var: DOV_EXP_KMEC
+  factors: [college]
+  # Q 454 (welcome screen, "[ALL]") and Q 476, shown to both arms.
+  shared_context: |-
+    This survey is about college administration.
+
+    Colleges and universities are increasingly seeking advice from private companies about ways to prepare students for success in today's economy. The advice they receive from companies helps them design academic programming, class requirements, and where to channel monetary support.
+  arms:
+    # Q 478-480, fill DOV_EXP_KMEC=1
+    - raw: 1
+      condition_num: 0
+      factors: {college: hbcu}
+      text: |-
+        Avantex, a large consulting firm, was recently asked by a nearby college, the state's oldest Historically Black College, for advice on best practices regarding student postgraduate readiness.
+
+        Please share your reaction to Avantex's advisory role and involvement in the college's plans.
+      items:
+        4: {outcome_question: "The college will launch a lecture series costing roughly $12,000 to honor the college's Nobel Prize winner in Economics, the first ever in this Historically Black College. Avantex plans to donate a portion of its $20,000 charitable giving fund to support the series. How much, if anything, should Avantex donate to this lecture series?\n(1) $0; (2) $1 - $2,000; (3) $2,001 - $4,000; (4) $4,001 - $6,000; (5) $6,001 - $8,000; (6) $8,001 - $10,000; (7) $10,001 - $12,000"}
+        6: {outcome_question: "Avantex notices that students who are part of a college honors program bring \"polished\" social skills to the workplace and so encourages colleges to have honors programs. This mainly Black college will develop such a program. What should the college set as the minimum GPA for entry into the program?\n(1) 4.0; (2) 3.00-3.99; (3) 2.00-2.99; (4) 1.00-1.99; (5) 1.98 or lower; (6) The college should not have an honors program"}
+        7: {outcome_question: "This mostly Black college wants to offer graduating seniors a free 5-hour diversity, equity, and inclusion (DEI) training. Should this training be a graduation requirement?"}
+        10: {outcome_question: "Most colleges have a Common Reading program in which all students read and discuss the same book with the intent to foster a common, educationally purposeful experience. To what extent is it suitable or not suitable for this mostly Black college to select a book whose goal is to teach patterns of White racial privilege?"}
+        11: {outcome_question: "How much should this Historically Black College pay per year to assistant professors? The typical annual salary for assistant professors is roughly $89,000.\n(1) $30,000 (slightly more than minimum wage for a full time, year-round job); (2) $30,001 - $60,000; (3) $60,001 - $90,000; (4) $90,001 - $120,000; (5) $120,001 - $150,000; (6) $150,000+"}
+        12: {outcome_question: "The mostly Black college has plans to turn an unused building into a general student center or multicultural student center. Which type of student center, if any, would be the best use of this building?\n(1) A general student center; (2) A multicultural student center; (3) The college should not build any student center"}
+        13: {outcome_question: "To encourage students to remain on campus during the summer, the mostly Black college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the mostly Black college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"Contemporary American Art Appreciation\"."}
+        14: {outcome_question: "To encourage students to remain on campus during the summer, the mostly Black college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the mostly Black college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"Race and the Nation in the U.S.-Mexican Borderland\"."}
+        15: {outcome_question: "To encourage students to remain on campus during the summer, the mostly Black college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the mostly Black college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"Studies in American Literature\"."}
+        16: {outcome_question: "To encourage students to remain on campus during the summer, the mostly Black college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the mostly Black college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"The History of American Music\"."}
+    # Q 478-480, fill DOV_EXP_KMEC=2
+    - raw: 2
+      condition_num: 1
+      factors: {college: college}
+      text: |-
+        Avantex, a large consulting firm, was recently asked by a nearby college, the state's oldest college, for advice on best practices regarding student postgraduate readiness.
+
+        Please share your reaction to Avantex's advisory role and involvement in the college's plans.
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: "Budget concerns have forced the college to cut one academic department. All the departments have roughly the same enrollment. Which one department should Avantex advise them to cut?\n(1) Theatre; (2) Black Studies; (3) English Literature; (4) Earth Science; (5) Rural Sociology (the options were shown in a random order)"
+    scale: {min: 1, max: 5, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q2A
+    task_num: 1
+    question: "The college is considering adding out-of-classroom opportunities to enhance student career readiness. With this goal in mind, which, if any, of the following programs should Avantex's suggest the college add?\nSelf-Marketing Program: Teaches students interview skills, professional social media use, and resume writing.\nMcNair Program: Designed to prepare first-generation and underrepresented minorities for graduate education.\nVisual Arts Placemaking Program: Designed to promote student art in public spaces.\nReport only the answer for \"Self-Marketing Program\"."
+    scale: {min: 1, max: 4, min_label: "Definitely Add", max_label: "Definitely Not Add"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q2B
+    task_num: 2
+    question: "The college is considering adding out-of-classroom opportunities to enhance student career readiness. With this goal in mind, which, if any, of the following programs should Avantex's suggest the college add?\nSelf-Marketing Program: Teaches students interview skills, professional social media use, and resume writing.\nMcNair Program: Designed to prepare first-generation and underrepresented minorities for graduate education.\nVisual Arts Placemaking Program: Designed to promote student art in public spaces.\nReport only the answer for \"McNair Program\"."
+    scale: {min: 1, max: 4, min_label: "Definitely Add", max_label: "Definitely Not Add"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q2C
+    task_num: 3
+    question: "The college is considering adding out-of-classroom opportunities to enhance student career readiness. With this goal in mind, which, if any, of the following programs should Avantex's suggest the college add?\nSelf-Marketing Program: Teaches students interview skills, professional social media use, and resume writing.\nMcNair Program: Designed to prepare first-generation and underrepresented minorities for graduate education.\nVisual Arts Placemaking Program: Designed to promote student art in public spaces.\nReport only the answer for \"Visual Arts Placemaking Program\"."
+    scale: {min: 1, max: 4, min_label: "Definitely Add", max_label: "Definitely Not Add"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q3
+    task_num: 4
+    question: "The college will launch a lecture series costing roughly $12,000 to honor the college's Nobel Prize winner in Economics, the first ever in this college. Avantex plans to donate a portion of its $20,000 charitable giving fund to support the series. How much, if anything, should Avantex donate to this lecture series?\n(1) $0; (2) $1 - $2,000; (3) $2,001 - $4,000; (4) $4,001 - $6,000; (5) $6,001 - $8,000; (6) $8,001 - $10,000; (7) $10,001 - $12,000"
+    scale: {min: 1, max: 7, min_label: "$0", max_label: "$10,001 - $12,000"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q4
+    task_num: 5
+    question: "The college requires students to complete a 12-credit-hour course sequence designed to help them acquire broad world knowledge. Educational accreditors require that the college remove one course sequence to minimize student time to degree. What course sequence should the company suggest that the college remove?\n(1) QUALITATIVE: course sequence informs students how to develop and clearly express written ideas.; (2) BIOSCIENCE: course sequence exposes students to topics about the natural world.; (3) JUSTICE: course sequence equips students with ways to a range of diversity, equity, and inclusion initiatives; (4) HUMANITIES: course sequence instills in students an ability to engage in artistic, literary, or philosophical interpretations"
+    scale: {min: 1, max: 4, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q5
+    task_num: 6
+    question: "Avantex notices that students who are part of a college honors program bring \"polished\" social skills to the workplace and so encourages colleges to have honors programs. This college will develop such a program. What should the college set as the minimum GPA for entry into the program?\n(1) 4.0; (2) 3.00-3.99; (3) 2.00-2.99; (4) 1.00-1.99; (5) 1.98 or lower; (6) The college should not have an honors program"
+    scale: {min: 1, max: 6, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}
+  - var: Q7
+    task_num: 7
+    question: "This college wants to offer graduating seniors a free 5-hour diversity, equity, and inclusion (DEI) training. Should this training be a graduation requirement?"
+    scale: {min: 1, max: 4, min_label: "Yes", max_label: "No"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q8
+    task_num: 8
+    question: "Avantex wants to offer $1,000 scholarships to defray the living costs of students on the Dean's list (i.e., those with a GPA of 3.5 or higher). How many, if any, $1,000 scholarships should Avantex fund with its $10,000 annual donor fund?"
+    scale: {min: 0, max: 10, min_label: "0 (do not fund any scholarships)", max_label: "10 (for a total cost of $10,000, the entire charitable giving fund)"}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10}
+  - var: Q9
+    task_num: 9
+    question: "Each year the college reserves 20% of its faculty hiring lines to hire researchers whose scholarly work relates to a broad common theme, a practice that builds a connected intellectual community. Avantex agrees with the principles of community building and will recommend the next broad hiring theme. What theme should the company recommend?\n(1) Environmental Studies; (2) Criminal Justice Reform; (3) Modern Global Change; (4) Race and Health (the options were shown in a random order)"
+    scale: {min: 1, max: 4, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q10
+    task_num: 10
+    question: "Most colleges have a Common Reading program in which all students read and discuss the same book with the intent to foster a common, educationally purposeful experience. To what extent is it suitable or not suitable for this college to select a book whose goal is to teach patterns of White racial privilege?"
+    scale: {min: 1, max: 5, min_label: "Very suitable", max_label: "Not at all suitable"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q11
+    task_num: 11
+    question: "How much should this college pay per year to assistant professors? The typical annual salary for assistant professors is roughly $89,000.\n(1) $30,000 (slightly more than minimum wage for a full time, year-round job); (2) $30,001 - $60,000; (3) $60,001 - $90,000; (4) $90,001 - $120,000; (5) $120,001 - $150,000; (6) $150,000+"
+    scale: {min: 1, max: 6, min_label: "$30,000 (slightly more than minimum wage for a full time, year-round job)", max_label: "$150,000+"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}
+  - var: Q12
+    task_num: 12
+    question: "The college has plans to turn an unused building into a general student center or multicultural student center. Which type of student center, if any, would be the best use of this building?\n(1) A general student center; (2) A multicultural student center; (3) The college should not build any student center"
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  - var: Q13A
+    task_num: 13
+    question: "To encourage students to remain on campus during the summer, the college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"Contemporary American Art Appreciation\"."
+    scale: {min: 1, max: 4, min_label: "1 - highest priority", max_label: "4 - lowest priority"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q13B
+    task_num: 14
+    question: "To encourage students to remain on campus during the summer, the college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"Race and the Nation in the U.S.-Mexican Borderland\"."
+    scale: {min: 1, max: 4, min_label: "1 - highest priority", max_label: "4 - lowest priority"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q13C
+    task_num: 15
+    question: "To encourage students to remain on campus during the summer, the college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"Studies in American Literature\"."
+    scale: {min: 1, max: 4, min_label: "1 - highest priority", max_label: "4 - lowest priority"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q13D
+    task_num: 16
+    question: "To encourage students to remain on campus during the summer, the college has devised a \"You Stay, We Pay\" program that gives enrollees in a 4-week Humanities course a $1,000 tuition waiver. Please rank the courses the college should prioritize for this program where: 1= highest priority and 4=lowest priority.\nContemporary American Art Appreciation\nRace and the Nation in the U.S.-Mexican Borderland\nStudies in American Literature\nThe History of American Music\nReport only the rank for \"The History of American Music\"."
+    scale: {min: 1, max: 4, min_label: "1 - highest priority", max_label: "4 - lowest priority"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q14A
+    task_num: 17
+    question: "Avantex strongly encourages college libraries to subscribe to the top academic business journals. The cost of these business journals is more than this college can afford, but they agree with Avantex and so will eliminate other academic journals to free up their budget. Should the college eliminate or keep each of the following academic journals?\nJournal of Race and Ethnicity\nJournal of Low Temperature Physics\nJournal of Victorian Culture\nJournal of Modern Political Dynamics\nReport only the answer for \"Journal of Race and Ethnicity\"."
+    scale: {min: 1, max: 2, min_label: "Eliminate", max_label: "Keep"}
+    response_recode: {1: 1, 2: 2}
+  - var: Q14B
+    task_num: 18
+    question: "Avantex strongly encourages college libraries to subscribe to the top academic business journals. The cost of these business journals is more than this college can afford, but they agree with Avantex and so will eliminate other academic journals to free up their budget. Should the college eliminate or keep each of the following academic journals?\nJournal of Race and Ethnicity\nJournal of Low Temperature Physics\nJournal of Victorian Culture\nJournal of Modern Political Dynamics\nReport only the answer for \"Journal of Low Temperature Physics\"."
+    scale: {min: 1, max: 2, min_label: "Eliminate", max_label: "Keep"}
+    response_recode: {1: 1, 2: 2}
+  - var: Q14C
+    task_num: 19
+    question: "Avantex strongly encourages college libraries to subscribe to the top academic business journals. The cost of these business journals is more than this college can afford, but they agree with Avantex and so will eliminate other academic journals to free up their budget. Should the college eliminate or keep each of the following academic journals?\nJournal of Race and Ethnicity\nJournal of Low Temperature Physics\nJournal of Victorian Culture\nJournal of Modern Political Dynamics\nReport only the answer for \"Journal of Victorian Culture\"."
+    scale: {min: 1, max: 2, min_label: "Eliminate", max_label: "Keep"}
+    response_recode: {1: 1, 2: 2}
+  - var: Q14D
+    task_num: 20
+    question: "Avantex strongly encourages college libraries to subscribe to the top academic business journals. The cost of these business journals is more than this college can afford, but they agree with Avantex and so will eliminate other academic journals to free up their budget. Should the college eliminate or keep each of the following academic journals?\nJournal of Race and Ethnicity\nJournal of Low Temperature Physics\nJournal of Victorian Culture\nJournal of Modern Political Dynamics\nReport only the answer for \"Journal of Modern Political Dynamics\"."
+    scale: {min: 1, max: 2, min_label: "Eliminate", max_label: "Keep"}
+    response_recode: {1: 1, 2: 2}
+  - var: Q16_1A
+    task_num: 21
+    question: "If you had to guess, roughly what is the make-up of the student body in the following?\nMainly Black College: % White Students, % Black Students\nMainly White College: % White Students, % Black Students\nReport only the percentage for \"Mainly Black College: % White Students\"."
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q16_1B
+    task_num: 22
+    question: "If you had to guess, roughly what is the make-up of the student body in the following?\nMainly Black College: % White Students, % Black Students\nMainly White College: % White Students, % Black Students\nReport only the percentage for \"Mainly Black College: % Black Students\"."
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q16_2A
+    task_num: 23
+    question: "If you had to guess, roughly what is the make-up of the student body in the following?\nMainly Black College: % White Students, % Black Students\nMainly White College: % White Students, % Black Students\nReport only the percentage for \"Mainly White College: % White Students\"."
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q16_2B
+    task_num: 24
+    question: "If you had to guess, roughly what is the make-up of the student body in the following?\nMainly Black College: % White Students, % Black Students\nMainly White College: % White Students, % Black Students\nReport only the percentage for \"Mainly White College: % Black Students\"."
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q17
+    task_num: 25
+    question: "How confident are you in your ability to explain to a friend the meaning of Critical Race Theory (CRT)?"
+    scale: {min: 1, max: 5, min_label: "Very confident", max_label: "Not at all confident"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+# Only Q16's non-answer codes are listed here, because on Q16 77, 98 and 99 are
+# REAL percentages (first draft dropped 44 of them; checker, 25 Nov 2026).
+# Every other outcome's 77/98/99 (DON'T KNOW / SKIPPED / REFUSED) is dropped by
+# its own recode, which lists only the answer codes.
+missing_codes: [777, 998, 999]
+# Every outcome declares its own recode; this default is never reached.
+response_recode: {1: 1}
+
+persona_label_rewrite:
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+
+persona_missing:
+  ATTEND: [98]
+  IDEO: [-1]
+  PartyID7: [-1]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

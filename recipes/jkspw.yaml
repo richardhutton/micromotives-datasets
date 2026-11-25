@@ -1,0 +1,424 @@
+study_id: jkspw
+source: tess
+title: "Behavioral Reactions to Skin Infections (Wegener, TESS2 081)"
+data_file: TESS2 081 - Wegener_Wave1_client.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set), but their build
+# is not this design (see ANSWER KEY), so numbers are not compared.
+comparable_to_socsci210: false
+
+notes: |-
+  TESS2 081 (Duane Wegener, Ohio State University; Knowledge Networks),
+  "Behavioral Reactions to Skin Infections: Informing Agent-Based Modeling of the
+  MRSA Epidemic", questionnaire dated July 2011. Wave 1 is built: the .sav
+  "TESS2 081 - Wegener_Wave1_client.sav", 1,980 rows, CaseID unique. A wave-2
+  follow-up exists ("Wave1&2" file, Wave2 questionnaire) and is not built here.
+  Deposit OSF jkspw, Wegener185.zip; Wegener185.pdf is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "TESS2_081_Wegener_FINAL_Wave1.txt" (textutil from the .doc, the wording
+        authority).
+
+
+  DESIGN AND ASSIGNMENT
+
+  XTESS081 (Q 25, 96, 170, 206, 291), a 2 x 2 (Q 81): 1 draining sore, no
+  message; 2 draining sore, CDC message; 3 non-draining sore, no message; 4
+  non-draining sore, CDC message. Counts 484 / 507 / 504 / 485. raw n ->
+  condition_num n-1. The .sav labels the codes only "1".."4"; the mapping is
+  Q's routing, and the data agree (the A-suffixed items are answered only by
+  arms 1-2, the B items only by 3-4).
+  Factors: sore (draining | non_draining), cdc_message (not_shown | shown).
+
+
+  CONDITION TEXT
+
+  The sore description, word-for-word (Q 113 draining; Q 223 non-draining). The
+  CDC message (Q 170-184 / 291-305), shown to arms 2 and 4 AFTER Q1-Q9 and
+  BEFORE Q10-Q12, so it is in the condition of the three questions after it and
+  of no question before it (per-item condition_text). Its six symptoms are
+  rendered as bullets.
+  NOT RENDERED: the opening consent screen (Q 99 / 209: purpose, contacts, phone
+  numbers, sponsor; it differs between versions only by a "Hello." at the start
+  of the non-draining one). THE PICTURE: Q leaves blank lines on the
+  description screen and the proposal asks for "the image of a red circle
+  (labeled with the size of the sore in the description)"; the .doc's picture
+  is not recoverable as a file here, and the circle shows the 1.5-inch size the
+  text already states in every arm, so it carries none of the manipulation.
+  Built as text, as yp736.
+
+
+  OUTCOMES (1-9 scales, ends labelled as Q; A or B variable by arm)
+
+  task 0  Q2 consequences of a sore like this (Not at all serious .. Very
+          serious).
+  task 1  Q3 ease of getting a doctor within 48 hours (Very easy .. Very
+          difficult).
+  task 2  Q4 likelihood of treating it yourself.
+  task 3  Q8 likelihood the sore is MRSA (asked only of those who had heard of
+          MRSA, Q7 = 2 or 3).
+  tasks 4-6  Q10 seek medical care, Q11 consequences if untreated, Q12
+          likelihood it is MRSA: asked after the message; each restates the
+          arm's sore in its own words (A and B wordings differ), set per arm.
+  Missing: -1 Refused.
+  NOT BUILT: Q1 (past sores), Q6 (past antibiotic use), Q7 (heard of MRSA), Q9
+  (people known with MRSA), Q41 (health beliefs): reports about the
+  respondent's past or knowledge, not reactions to the sore. Q5 (what you would
+  do to care for the sore yourself) IS a reaction to it, but a multi-select
+  (four flags), for which there is no convention here yet.
+
+
+  PERSONA
+
+  Knowledge Networks profile, as 4zscf: PPAGE, PPGENDER, PPEDUCAT, PPETHM,
+  PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE, PPHOUSE, PPRENT, PPMSACAT, PPNET,
+  plus the panel's XPARTY7, XIDEO, XREL1, XREL2 (not merged here): declared
+  missing XIDEO 9 (13), XREL2 9 (313), XREL1 14 where it occurs. The profile
+  health items requested (pph10001, pph10003) sit in the outcome's domain
+  (health care seeking) and are not mapped.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study.
+
+
+  ANSWER KEY
+
+  SocSci210 (read 25 Nov 2026): 2 conditions, not 4, and every row carries the
+  DRAINING sore, described as "about two inches across" (Q, the fielded text,
+  says 1.5 inches in both versions; the two-inch wording matches neither
+  version in Q). Their second condition adds "a public health" message. So the
+  non-draining arms are folded into the draining text, and their counts
+  (15,899 / 3,887 by condition) do not follow the design. Their task 2 (1,955)
+  and task 4 (1,046) have our Q4 and Q8 counts; their other tasks pool items
+  and include nominal items we leave out. comparable_to_socsci210 is false.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 28 cells word-for-word against Q; the CDC message only in arms 2 and 4 at
+  tasks 4-6; per-arm Q10-Q12 wording right; all 28 cells' counts and
+  distributions match the .sav (12,782 rows, 1,973 participants); persona codes
+  declared and labelled Missing; ANSWER KEY confirmed. Its one flag (Q5's
+  reason) corrected above.
+condition:
+  source_var: XTESS081
+  factors: [sore, cdc_message]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {sore: draining, cdc_message: not_shown}
+      text: |-
+        Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+      items:
+        0:
+          outcome_var: Q2A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        1:
+          outcome_var: Q3A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        2:
+          outcome_var: Q4A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        3:
+          outcome_var: Q8A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        4:
+          outcome_var: Q10A
+          outcome_question: "How likely would you be to seek medical care if you had a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus (white liquid)?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        5:
+          outcome_var: Q11A
+          outcome_question: "If left untreated, the consequences of a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus are probably:"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        6:
+          outcome_var: Q12A
+          outcome_question: "If you had a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus, how likely is it that the sore would be MRSA (antibiotic-resistant staph infection)?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+    - raw: 2
+      condition_num: 1
+      factors: {sore: draining, cdc_message: shown}
+      text: |-
+        Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+
+        The Centers for Disease Control provide the following information about MRSA:
+
+        MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+        What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+        • Red
+        • Swollen
+        • Painful
+        • Warm to the touch
+        • Full of pus or other drainage
+        • Accompanied by a fever
+
+        If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+      items:
+        0:
+          outcome_var: Q2A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        1:
+          outcome_var: Q3A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        2:
+          outcome_var: Q4A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        3:
+          outcome_var: Q8A
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+        4:
+          outcome_var: Q10A
+          outcome_question: "How likely would you be to seek medical care if you had a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus (white liquid)?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+
+            The Centers for Disease Control provide the following information about MRSA:
+
+            MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+            What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+            • Red
+            • Swollen
+            • Painful
+            • Warm to the touch
+            • Full of pus or other drainage
+            • Accompanied by a fever
+
+            If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+        5:
+          outcome_var: Q11A
+          outcome_question: "If left untreated, the consequences of a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus are probably:"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+
+            The Centers for Disease Control provide the following information about MRSA:
+
+            MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+            What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+            • Red
+            • Swollen
+            • Painful
+            • Warm to the touch
+            • Full of pus or other drainage
+            • Accompanied by a fever
+
+            If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+        6:
+          outcome_var: Q12A
+          outcome_question: "If you had a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus, how likely is it that the sore would be MRSA (antibiotic-resistant staph infection)?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore hurts more when you touch it and is starting to ooze thick pus (white liquid). You have had the sore for a few days, and it seems to be getting worse not better.
+
+            The Centers for Disease Control provide the following information about MRSA:
+
+            MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+            What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+            • Red
+            • Swollen
+            • Painful
+            • Warm to the touch
+            • Full of pus or other drainage
+            • Accompanied by a fever
+
+            If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+    - raw: 3
+      condition_num: 2
+      factors: {sore: non_draining, cdc_message: not_shown}
+      text: |-
+        Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+      items:
+        0:
+          outcome_var: Q2B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        1:
+          outcome_var: Q3B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        2:
+          outcome_var: Q4B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        3:
+          outcome_var: Q8B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        4:
+          outcome_var: Q10B
+          outcome_question: "How likely would you be to seek medical care if you had a red, painful, sore on your skin that is about 1.5 inches across and is firm and hurts more when you touch it?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        5:
+          outcome_var: Q11B
+          outcome_question: "If left untreated, the consequences of a red, painful, sore on your skin that is about 1.5 inches across and is firm and hurts more when you touch it are probably:"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        6:
+          outcome_var: Q12B
+          outcome_question: "If you had a red, painful, sore on your skin that is about 1.5 inches across and is firm and hurts more when you touch it, how likely is it that the sore would be MRSA (antibiotic-resistant staph infection)?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+    - raw: 4
+      condition_num: 3
+      factors: {sore: non_draining, cdc_message: shown}
+      text: |-
+        Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+
+        The Centers for Disease Control provide the following information about MRSA:
+
+        MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+        What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+        • Red
+        • Swollen
+        • Painful
+        • Warm to the touch
+        • Full of pus or other drainage
+        • Accompanied by a fever
+
+        If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+      items:
+        0:
+          outcome_var: Q2B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        1:
+          outcome_var: Q3B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        2:
+          outcome_var: Q4B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        3:
+          outcome_var: Q8B
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+        4:
+          outcome_var: Q10B
+          outcome_question: "How likely would you be to seek medical care if you had a red, painful, sore on your skin that is about 1.5 inches across and is firm and hurts more when you touch it?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+
+            The Centers for Disease Control provide the following information about MRSA:
+
+            MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+            What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+            • Red
+            • Swollen
+            • Painful
+            • Warm to the touch
+            • Full of pus or other drainage
+            • Accompanied by a fever
+
+            If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+        5:
+          outcome_var: Q11B
+          outcome_question: "If left untreated, the consequences of a red, painful, sore on your skin that is about 1.5 inches across and is firm and hurts more when you touch it are probably:"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+
+            The Centers for Disease Control provide the following information about MRSA:
+
+            MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+            What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+            • Red
+            • Swollen
+            • Painful
+            • Warm to the touch
+            • Full of pus or other drainage
+            • Accompanied by a fever
+
+            If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+        6:
+          outcome_var: Q12B
+          outcome_question: "If you had a red, painful, sore on your skin that is about 1.5 inches across and is firm and hurts more when you touch it, how likely is it that the sore would be MRSA (antibiotic-resistant staph infection)?"
+          condition_text: |-
+            Imagine that you have a red, painful, warm sore on your skin that is about 1.5 inches across. The sore is firm to the touch, hurts more when you touch it, and feels like there might be pus under the skin. You have had the sore for a few days, and it seems to be getting worse not better.
+
+            The Centers for Disease Control provide the following information about MRSA:
+
+            MRSA is methicillin-resistant Staphylococcus aureus, a potentially dangerous type of staph bacteria that is resistant to certain antibiotics and may cause skin and other infections. You can get MRSA through direct contact with an infected person or by sharing personal items, such as towels or razors that have touched infected skin.
+
+            What are the signs and symptoms of MRSA skin infections? Most staph skin infections, including MRSA, appear as a bump or infected area on the skin that may be:
+            • Red
+            • Swollen
+            • Painful
+            • Warm to the touch
+            • Full of pus or other drainage
+            • Accompanied by a fever
+
+            If you or someone in your family experiences these signs and symptoms, cover the area with a bandage and contact your healthcare professional. It is especially important to contact your healthcare professional if signs and symptoms of a MRSA skin infection are accompanied by a fever.
+
+outcomes:
+  # No `var`: every arm names its own in `items` (A for arms 1-2, B for 3-4).
+  - task_num: 0
+    question: "The consequences of a sore like this are probably:"
+    scale: {min: 1, max: 9, min_label: "Not at all serious", max_label: "Very serious"}
+  - task_num: 1
+    question: "How easy would it be for you to get a doctor or other medical professional to evaluate (and, if necessary, treat) this type of sore within 48 hours?"
+    scale: {min: 1, max: 9, min_label: "Very easy", max_label: "Very difficult"}
+  - task_num: 2
+    question: "How likely would you be to treat a sore like that yourself? That is, how likely would you be to deal with the sore without going to get professional care?"
+    scale: {min: 1, max: 9, min_label: "Not at all likely", max_label: "Very likely"}
+  - task_num: 3
+    question: "If you have a painful skin sore of the type described earlier, how likely is it that the sore is MRSA (antibiotic-resistant staph infection)?"
+    scale: {min: 1, max: 9, min_label: "Not at all likely", max_label: "Very likely"}
+  - task_num: 4
+    question: "How likely would you be to seek medical care if you had a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus (white liquid)?"
+    scale: {min: 1, max: 9, min_label: "Not at all likely", max_label: "Very likely"}
+  - task_num: 5
+    question: "If left untreated, the consequences of a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus are probably:"
+    scale: {min: 1, max: 9, min_label: "Not at all serious", max_label: "Very serious"}
+  - task_num: 6
+    question: "If you had a red, painful, sore on your skin that is about 1.5 inches across and is starting to ooze thick pus, how likely is it that the sore would be MRSA (antibiotic-resistant staph infection)?"
+    scale: {min: 1, max: 9, min_label: "Not at all likely", max_label: "Very likely"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9}
+missing_codes: [-1]
+
+persona_missing:
+  XIDEO: [9]
+  XREL1: [14]
+  XREL2: [9]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2

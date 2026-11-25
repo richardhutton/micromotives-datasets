@@ -1,0 +1,355 @@
+study_id: a693y
+source: tess
+title: "Effects of Deliberative Minipublics on Public Opinion (Ingham & Levin, TESS3 155)"
+data_file: TESS3_155_Ingham_Levin_Client_File.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its post-2009 projects through the Roper Center and its own site
+  states no reuse terms; TESS has since suspended operations). Not re-checked
+  against the OSF API for this node in this build. So there is no explicit grant
+  of redistribution rights for this deposit, and none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). The crosscheck
+# FAILS by design (SocSci210 keeps "Not sure" and drops real answers); see
+# ANSWER KEY in notes. Build without --crosscheck.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS3 155 (Sean Ingham and Ines Levin, University of Georgia; GfK
+  KnowledgePanel), "Effects of Deliberative Minipublics on Public Opinion".
+  Questionnaire dated January 2014. The .sav has 5,758 rows, CaseID unique,
+  QFLAG = 1 (Qualified) for all. Deposit OSF a693y, Ingham423.zip: the .sav,
+  the fielded questionnaire (.docx), the response rate report and GfK's
+  methodology PDF. Ingham423.pdf beside the zip is the proposal and is not used
+  for wording.
+
+  Line citations are 1-based line numbers in
+    Q = "TESS3_155_Ingham_&_Levin_Final_Questionnaire.txt" (textutil from the
+        .docx beside it, which is the only wording authority).
+
+
+  ASSIGNMENT
+
+  XTESS155 (Q 43-71): eight conditions, "randomly assign respondents to one of
+  the eight conditions". 1-4 = A0-A3, 5-8 = B0-B3 (Q 48-71 and the .sav's value
+  labels "CONDITION A0" .. "CONDITION B3"). Counts 759 / 703 / 717 / 717 / 714 /
+  705 / 737 / 706, sum 5,758, no blanks. raw n -> condition_num n-1, which is
+  SocSci210's numbering (their condition 6 stimulus is B2's text, read from
+  their parquet). recipe_prep.py (Jev, 25 Nov 2026): XTESS155 at conf 1.00,
+  runner-up 0.00. The data agree with the routing: Q3A0 is answered by exactly
+  the 759 respondents with XTESS155 = 1, and likewise for each Q3 variable.
+
+  Factors, from Q's eight screens:
+    policy: payroll_tax_cap (A arms: raise the cap on payroll taxes) |
+            retirement_age (B arms: raise the retirement age to 68)
+    deliberation:
+      none (A0, B0): the policy statement alone;
+      citizens_for_panel_against (A1, B1): a citizens' forum supported it, a
+        bipartisan Congressional panel opposed it;
+      panel_for_citizens_against (A2, B2): the panel supported it, the citizens
+        opposed it;
+      citizens_for (A3, B3): only the citizens' forum, which supported it.
+  Fully crossed 2 x 4; every minimal pair renders different text.
+
+
+  CONDITION TEXT
+
+  No shared_context: the A and B arms open with different policy statements,
+  so nothing is common to all eight as a prefix.
+  Arm text, word-for-word: the Q3 screen up to, not including, its closing
+  question, which is the outcome. A0 = Q 101 (first three sentences); A1 = Q 112
+  + Q 114; A2 = Q 125 + Q 127; A3 = Q 138 + Q 140; B0 = Q 151; B1 = Q 162 + Q 164;
+  B2 = Q 175 + Q 177; B3 = Q 188 + Q 190. The two paragraphs are joined by a
+  blank line as Q shows them. Words kept as printed, including B2's "gathering
+  evidence and deliberating" where B1 and A2 say "weighing evidence and
+  deliberating together" (Q 177 against Q 164 and Q 127), and the double hyphen
+  in "up to a cap -- $117,000 in 2014". Typography: none to normalise.
+
+
+  OUTCOMES
+
+  task 0  Q3 (the arm's own variable, Q3A0 .. Q3B3; Arm.outcome_var). The
+          question is the closing sentence of the arm's Q3 screen: "Do you
+          agree or disagree that we should raise the cap on payroll taxes?" for
+          A arms (Outcome default), "... raise the retirement age to 68?" for B
+          arms (per-arm items override). Scale 1 Agree strongly .. 4 Disagree
+          strongly (Q 103-106), stored as coded. 5 "Not sure" is a non-answer
+          (Jev non_answer conf 0.88-0.94 on all eight variables) and is dropped
+          by leaving it out of the recode; -1 Refused is in missing_codes.
+  tasks 1-3  Q4, Q5, Q6 (Q 199-237): three paired choices among the reforms,
+          asked of every arm after Q3. Each question is the battery's lead-in
+          paragraph (Q 201, "always display paragraph below above first question
+          in battery", so every respondent saw it over the battery), then the
+          question's two paragraphs word-for-word, then its three options with
+          our "(1) ... (2) ... (3)" numbering, as cug34 does for its nominal
+          items. Option order: Q 205/217/229 randomise options 1 and 2 and the
+          .sav records it (Q4_Order etc., "a,b" / "b,a"); the third option is
+          fixed. Per CONVENTIONS (choice sets, 16 Nov 2026), the row lists them
+          in the instrument's order and ADDS ONE CLAUSE OF OURS, written
+          narrower than the stock one because only two of the three moved:
+            "(the first two options were shown in a random order)"
+          The order of Q4-Q6 within the battery was also randomised (Q4_6_Order)
+          and is not narrated (a row cannot say where it sat).
+          Nominal, codes 1-3; 4 "Not sure" (Jev non_answer conf 0.97-0.98)
+          dropped by the recode. "I'm indifferent between both options" is a
+          real answer and kept.
+  task 4  Q7 (Q 240-249): first choice among the three reforms or none. Same
+          treatment; options 1-3 randomised (Q7_Order), so the added clause is
+          "(the first three options were shown in a random order)". Nominal,
+          codes 1-5; 6 "Not sure" dropped. "I'm indifferent between all three
+          options" and "I would not choose any of these options" are real
+          answers and kept.
+  Task numbering is SocSci210's (task 0 = Q3, 1-4 = Q4-Q7, read from their
+  parquet's means and counts).
+
+  NOT BUILT: Q1 (the Social Security tax rate as a number) and Q2 (familiarity
+  with reform proposals, bullet order randomised) come BEFORE assignment shows
+  anything and are the same screens for every arm, so they carry no contrast;
+  SocSci210 leaves them out too. PARTY1-4, IDEO, REL1, REL2 are the panel's
+  missing-profile re-asks, merged into the X* persona variables.
+
+  Rows (from the build): 23,759 from 5,349 participants; by task 4,590 /
+  4,821 / 4,755 / 4,700 / 4,893. Refusals and "Not sure" are the only drops;
+  409 respondents have no row (refused or Not sure on everything).
+
+
+  PERSONA
+
+  GfK KnowledgePanel standard profile, as 4zscf and 7tzpe: PPAGE, PPGENDER,
+  PPEDUCAT, PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE, PPHOUSE, PPRENT,
+  PPMSACAT, PPNET, plus the merged profile re-asks, which in this file carry
+  the X names: XPARTY7 (party_id), XIDEO (ideology), XREL1 (religion), XREL2
+  (religious_attendance). They are already merged (Q 291-441): no 9 / 14
+  "Missing" code survives, and -1 Refused occurs for XIDEO (52), XREL1 (33) and
+  XREL2 (46), declared in persona_missing. XPARTY7 and every PP* variable have
+  no negative code in this file, so none is declared.
+  Jev (recipe_prep.py): agreed on every field except education, where it
+  preferred PPEDUC (0.96) over PPEDUCAT (0.03), and region, where PPREG4 (0.53)
+  narrowly beat ppreg9 (0.35, REVIEW). PPEDUCAT and PPREG4 are kept, as in every
+  KnowledgePanel recipe and the crosswalk built for them. Not mapped: ppagecat,
+  ppagect4, PPEDUC, ppreg9, PPSTATEN (coarser or finer duplicates), PPHHHEAD,
+  PPT01-PPT18OV, weight, timing, the order variables.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: this is a SocSci210 held-out (Eval) study, built
+  to compare against SocSci210 on its own terms. It is US Social Security
+  policy throughout (payroll tax cap of $117,000, Congressional panel).
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 8 conditions x 5 tasks, same task order
+  (0 = Q3, 1-3 = Q4-Q6, 4 = Q7), and it FAILS by design: SocSci210 keeps and
+  drops the wrong codes. Their response tables against the .sav:
+    task 0 (Q3): they keep 5 "Not sure" as an answer (1,121 rows); we drop it.
+    tasks 1-3 (Q4-Q6): they DROP code 3 "I'm indifferent between both
+      options", a real answer (842 / 1,048 / 903 rows), and KEEP 4 "Not sure"
+      as an answer (847 / 929 / 980).
+    task 4 (Q7): they drop 4 "indifferent between all three" (315) and 5 "I
+      would not choose any of these" (727), both real answers, and keep 6 "Not
+      sure" (793).
+  On every code both builds keep, the counts are identical: Q3 1-4 = 708 /
+  1,580 / 1,418 / 884 summed over arms; Q4 1-2 = 816 / 3,163; Q5 1-2 = 1,366 /
+  2,341; Q6 1-2 = 882 / 2,915; Q7 1-3 = 2,402 / 801 / 648. So the assignment and
+  responses agree, and the whole difference is which codes count as answers.
+  Totals: ours 23,759 rows, theirs 24,594. Built without --crosscheck, as
+  5hqan with its documented DIFF.
+  For the Eval comparison this matters: SocSci210's scores on this study
+  reward predicting "Not sure" and never see an indifferent or "none" answer.
+
+  SocSci210's TEXT, informational only: their stimulus quotes the arm and the
+  question together and adds commas ("gathering evidence, and deliberating")
+  that Q does not have. Their Q4-Q6 are paraphrases, and Q4's says the cap is
+  "currently $113,700", where the fielded Q 206 says $117,000.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  Every condition and outcome paragraph is an exact substring of Q; counts match
+  the .sav in all 40 (condition, task) cells; the two order clauses hold for every
+  row (Q4_Order..Q7_Order non-null for all 5,758); every persona_missing code is
+  exercised; every SocSci210 number above confirmed. Judgement call it flagged,
+  kept: the battery lead-in sits on every Q4-Q6 row though it was shown above
+  whichever question came first.
+condition:
+  source_var: XTESS155
+  factors: [policy, deliberation]
+  considered_and_rejected:
+    Q2_Order: >-
+      Order of Q2's three reform bullets, shown before assignment to every arm;
+      Q2 is not built.
+    Q4_6_Order: >-
+      Order of Q4, Q5 and Q6 within the paired-choice battery; a row cannot say
+      where it sat (CONVENTIONS, Sequence signposting).
+    Q4_Order: >-
+      Order of Q4's first two options; listed in the instrument's order with an
+      added clause saying they were randomised (CONVENTIONS, choice sets).
+    Q5_Order: Order of Q5's first two options; as Q4_Order.
+    Q6_Order: Order of Q6's first two options; as Q4_Order.
+    Q7_Order: Order of Q7's first three options; as Q4_Order.
+  arms:
+    # Q 101 (A0)
+    - raw: 1
+      condition_num: 0
+      outcome_var: Q3A0
+      factors: {policy: payroll_tax_cap, deliberation: none}
+      text: >-
+        People currently pay Social Security taxes on annual earnings up to a
+        cap -- $117,000 in 2014. Some people propose raising this cap on payroll
+        taxes, so that workers who earn more than $117,000 per year would pay
+        more in payroll taxes.
+    # Q 112 + Q 114 (A1)
+    - raw: 2
+      condition_num: 1
+      outcome_var: Q3A1
+      factors: {policy: payroll_tax_cap, deliberation: citizens_for_panel_against}
+      text: |-
+        People currently pay Social Security taxes on annual earnings up to a cap -- $117,000 in 2014. Some people propose raising this cap on payroll taxes, so that workers who earn more than $117,000 per year would pay more in payroll taxes.
+
+        A non-profit organization recently recruited a random collection of ordinary citizens to participate in a deliberative forum on how to fund the Social Security program in the future. After hearing expert testimony, weighing evidence and deliberating together, a majority supported raising the cap on payroll taxes. But when a bipartisan panel of Congressional leaders and business and labor representatives recently heard expert testimony, weighed evidence and deliberated about the same issue, a majority opposed raising the cap on payroll taxes.
+    # Q 125 + Q 127 (A2)
+    - raw: 3
+      condition_num: 2
+      outcome_var: Q3A2
+      factors: {policy: payroll_tax_cap, deliberation: panel_for_citizens_against}
+      text: |-
+        People currently pay Social Security taxes on annual earnings up to a cap -- $117,000 in 2014. Some people propose raising this cap on payroll taxes, so that workers who earn more than $117,000 per year would pay more in payroll taxes.
+
+        A bipartisan panel of Congressional leaders and business and labor representatives recently assembled and deliberated about how to fund the Social Security program in the future. After hearing expert testimony, weighing evidence and deliberating together, a majority supported raising the cap on payroll taxes. But when a non-profit organization recruited a random collection of ordinary citizens and had them hear expert testimony, weigh evidence and deliberate together about the same issue, a majority opposed raising the cap on payroll taxes.
+    # Q 138 + Q 140 (A3)
+    - raw: 4
+      condition_num: 3
+      outcome_var: Q3A3
+      factors: {policy: payroll_tax_cap, deliberation: citizens_for}
+      text: |-
+        People currently pay Social Security taxes on annual earnings up to a cap -- $117,000 in 2014. Some people propose raising this cap on payroll taxes, so that workers who earn more than $117,000 per year would pay more in payroll taxes.
+
+        A non-profit organization recently recruited a random collection of ordinary citizens to participate in a deliberative forum on how to fund the Social Security program in the future. After hearing expert testimony, weighing evidence and deliberating together, a majority supported raising the cap on payroll taxes.
+    # Q 151 (B0)
+    - raw: 5
+      condition_num: 4
+      outcome_var: Q3B0
+      factors: {policy: retirement_age, deliberation: none}
+      text: >-
+        Currently, the normal age at which one becomes eligible to collect
+        Social Security benefits is 65 and is rising to 67 for people born after
+        1960. Some people propose further raising this age to 68.
+      items:
+        0: {outcome_question: &q3b "Do you agree or disagree that we should raise the retirement age to 68?"}
+    # Q 162 + Q 164 (B1)
+    - raw: 6
+      condition_num: 5
+      outcome_var: Q3B1
+      factors: {policy: retirement_age, deliberation: citizens_for_panel_against}
+      text: |-
+        Currently, the normal age at which one becomes eligible to collect Social Security benefits is 65 and is rising to 67 for people born after 1960. Some people propose further raising this age to 68.
+
+        A non-profit organization recently recruited a random collection of ordinary citizens to participate in a deliberative forum on how to fund the Social Security program in the future. After hearing expert testimony, weighing evidence and deliberating together, a majority supported raising the retirement age to 68. But when a bipartisan panel of Congressional leaders and business and labor representatives recently heard expert testimony, weighed evidence and deliberated about the same issue, a majority opposed raising the retirement age to 68.
+      items:
+        0: {outcome_question: *q3b}
+    # Q 175 + Q 177 (B2)
+    - raw: 7
+      condition_num: 6
+      outcome_var: Q3B2
+      factors: {policy: retirement_age, deliberation: panel_for_citizens_against}
+      text: |-
+        Currently, the normal age at which one becomes eligible to collect Social Security benefits is 65 and is rising to 67 for people born after 1960. Some people propose further raising this age to 68.
+
+        A bipartisan panel of Congressional leaders and business and labor representatives recently assembled and deliberated about how to fund the Social Security program in the future. After hearing expert testimony, gathering evidence and deliberating, a majority supported raising the retirement age to 68. But when a non-profit organization recruited a random collection of ordinary citizens and had them hear expert testimony, weigh evidence and deliberate together about the same issue, a majority opposed raising the retirement age to 68.
+      items:
+        0: {outcome_question: *q3b}
+    # Q 188 + Q 190 (B3)
+    - raw: 8
+      condition_num: 7
+      outcome_var: Q3B3
+      factors: {policy: retirement_age, deliberation: citizens_for}
+      text: |-
+        Currently, the normal age at which one becomes eligible to collect Social Security benefits is 65 and is rising to 67 for people born after 1960. Some people propose further raising this age to 68.
+
+        A non-profit organization recently recruited a random collection of ordinary citizens to participate in a deliberative forum on how to fund the Social Security program in the future. After hearing expert testimony, weighing evidence and deliberating together, a majority supported raising the retirement age to 68.
+      items:
+        0: {outcome_question: *q3b}
+
+outcomes:
+  # Q3: the A arms' closing question is the default; B arms override in `items`.
+  # Each A arm names its own variable through Arm.outcome_var.
+  - task_num: 0
+    question: "Do you agree or disagree that we should raise the cap on payroll taxes?"
+    scale:
+      min: 1
+      max: 4
+      min_label: "Agree strongly"
+      max_label: "Disagree strongly"
+  # Q 201 + Q 206-213
+  - var: Q4
+    task_num: 1
+    question: |-
+      We would like to have you make a series of one-on-one comparisons between the possible changes to Social Security. Please tell us which change you would prefer in the following pairs.
+
+      Some people propose raising the retirement age to 68 (currently, the normal age at which one becomes eligible to collect Social Security benefits is 65 and is rising to 67 for people born after 1960). Another proposal is to raise the cap on payroll taxes, so that workers who earn more than $117,000 per year would pay more in payroll taxes (currently workers earning more than $117,000 per year do not pay payroll taxes on the earnings above this cap).
+
+      Given a choice between raising the retirement age to 68 and raising the cap on payroll taxes, which do you prefer? If you had to choose one of these two changes to Social Security, which would you choose?
+      (1) Raise the retirement age to 68; (2) Raise the cap on payroll taxes; (3) I'm indifferent between both options (the first two options were shown in a random order)
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  # Q 201 + Q 218-225
+  - var: Q5
+    task_num: 2
+    question: |-
+      We would like to have you make a series of one-on-one comparisons between the possible changes to Social Security. Please tell us which change you would prefer in the following pairs.
+
+      Some people propose raising the retirement age to 68 (currently, the normal age at which one becomes eligible to collect Social Security benefits is 65 and is rising to 67 for people born after 1960). Another proposal is to raise the payroll tax rate to 6.5% (currently workers pay 6.2% of their paycheck to Social Security).
+
+      Given a choice between raising the retirement age to 68 and raising the payroll tax rate, which do you prefer? If you had to choose one of these two changes to Social Security, which would you choose?
+      (1) Raise the retirement age to 68; (2) Raise the payroll tax rate to 6.5%; (3) I'm indifferent between both options (the first two options were shown in a random order)
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  # Q 201 + Q 230-237
+  - var: Q6
+    task_num: 3
+    question: |-
+      We would like to have you make a series of one-on-one comparisons between the possible changes to Social Security. Please tell us which change you would prefer in the following pairs.
+
+      Some people propose raising the payroll tax rate to 6.5% (currently workers pay 6.2% of their paycheck to Social Security). Another proposal is to raise the cap on payroll taxes, so that workers who earn more than $117,000 per year would pay more in payroll taxes (currently workers earning more than $117,000 per year do not pay payroll taxes on the earnings above this cap.)
+
+      Given a choice between increasing the payroll tax rate and raising the cap on payroll taxes, which do you prefer? If you had to choose one of these two changes to Social Security, which would you choose?
+      (1) Raise the payroll tax rate to 6.5%; (2) Raise the cap on payroll taxes; (3) I'm indifferent between both options (the first two options were shown in a random order)
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  # Q 242-248
+  - var: Q7
+    task_num: 4
+    question: |-
+      If it were up to you, would you choose one of these reforms in order to ensure the long-run sustainability of Social Security, or would you leave the program as it is? If you would choose one of the reforms, which would be your first choice?
+      (1) Raise the cap on payroll taxes; (2) Raise the payroll tax rate to 6.5%; (3) Raise the retirement age to 68; (4) I'm indifferent between all three options; (5) I would not choose any of these options (the first three options were shown in a random order)
+    scale: {min: 1, max: 5, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+
+# Q3's four agreement codes, stored as coded; 5 "Not sure" is left out, so dropped.
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+missing_codes: [-1]
+
+persona_missing:
+  XIDEO: [-1]
+  XREL1: [-1]
+  XREL2: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2

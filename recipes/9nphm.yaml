@@ -1,0 +1,266 @@
+study_id: 9nphm
+source: tess
+title: "Telling the Story Right: Transgender and Non-Binary Rights (Schaad, TESS 072)"
+data_file: TESS072_Schaad_client.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). Their rows keep
+# the 98 "skipped" code as a response; see ANSWER KEY. Build without
+# --crosscheck.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS 072 (Schaad), NORC AmeriSpeak, fielded in an omnibus with Jardina 067,
+  Munsch 076 (built here as d4zua) and Saha 077. The .sav has 2,116 rows, CaseId
+  unique, and holds only Schaad's variables and the profile. Deposit OSF 9nphm,
+  SchaadS62.zip: the .sav/.dta, codebook, project report, the omnibus
+  questionnaire (vFINAL and v6clean); SchaadS62.pdf is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "8041.067_072_076_077_TESS067 072 076 077_vFINAL.txt" (textutil from
+        the .docx, the wording authority). Only "SCHAAD 072 experiment's BLOCK"
+        (Q 187-317) is used.
+
+
+  ASSIGNMENT
+
+  P_SCHAADEXP1 (preload): eight vignettes, labelled in the .sav "v1 Narrative
+  Conforming Transgender Woman" .. "v8 Narrative Nonconforming AFAB Non-Binary
+  Person", counts 274 / 268 / 276 / 235 / 272 / 255 / 269 / 267, sum 2,116.
+  raw n -> condition_num n-1, SocSci210's numbering. Factors, from Q's eight
+  screens and the labels: sex_assigned_at_birth (male: 1-4, female: 5-8),
+  identity (woman 1-2, non_binary 3-4 and 7-8, man 5-6), childhood (consistent
+  with the identity: 1, 3, 5, 7; inconsistent, the screen adding "However,":
+  2, 4, 6, 8).
+  ORDER1-ORDER4 record the order of the four omnibus blocks (Q 49-53), a
+  counterbalancing of unrelated studies, not this design (as 4zscf and d4zua).
+
+
+  CONDITION TEXT
+
+  shared_context: SCHAAD_DISPLAY1 (Q 191), word-for-word, shown to everyone
+  before the vignette ("... Please read the scenario carefully as you will
+  later be asked to remember some of the details ...").
+  Arm text: SCHAAD_DISPLAY2, the arm's three paragraphs word-for-word (Q 197-201
+  .. 254-258). Curly quotes and apostrophes normalised.
+
+
+  OUTCOMES
+
+  task 0  Q1_SCHAAD (Q 260-278): "How likely do you think it is that Jaime will
+          still identify as a woman / a man / non-binary in 5 years?" (the
+          identity of the arm, set per arm in `items`), 1 Extremely unlikely ..
+          7 Extremely likely.
+  task 1  Q2_SCHAAD (Q 281-303): "Currently, state law does not allow for Jaime
+          to change the gender listed on their birth certificate from <male |
+          female> to <female | male | X>. If given the opportunity, how willing
+          would you be to sign a petition ...?", per arm; 1 Extremely willing ..
+          7 Extremely unwilling. The .sav's INS_Q2_SCHAAD records the inserted
+          sentence and agrees with the arm for every respondent (1 for arms
+          1-2, 2 for 5-6, 3 for 3-4, 4 for 7-8).
+  Missing: 77, 98, 99 (only 98 occurs: 6 on each item).
+  NOT BUILT: Q3_SCHAAD, "Which of the following apply to you?" (I am
+  transgender / non-binary / have a transgender or non-binary friend or family
+  member): a multi-select about the respondent, not a reaction to the
+  vignette, and in the outcome's own domain (as 4zscf leaves out LGBT friends
+  and relatives); not mapped to the persona either.
+
+
+  PERSONA
+
+  NORC AmeriSpeak, as 3muqx, with this file's names: AGE, GENDER, EDUC5,
+  RACETHNICITY, INCOME, MARITAL, EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING,
+  METRO, INTERNET, PHONESERVICE, PartyID7, IDEO, and the preloads P_RELIG
+  (religion) and P_ATTEND (religious_attendance), blank for 57 and 50 (no
+  re-ask in this block). P_RELIG code 1's label is severed ("... Church");
+  restored from the P_RELIG list in this
+  deposit's other copy of the questionnaire (v6clean; vFINAL omits the
+  preload table). IDEO -1 (11) and PartyID7 -1 (2) "Unknown"
+  declared missing.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. (US state birth-certificate law.)
+
+
+  ANSWER KEY
+
+  SocSci210: 8 conditions x 2 tasks; their cell counts equal the full arm sizes
+  (274 / 268 / ... per task) because they KEEP code 98 "SKIPPED ON WEB" as a
+  response (a "98" column in their response table). Ours drop the 6 skips per
+  task. Crosscheck 25 Nov 2026: every answer code 1-7 is identical in count
+  (1: 450, 2: 228, 3: 316, 4: 787, 5: 585, 6: 496, 7: 1,358 over both tasks);
+  their extra 12 rows are the 98s. It FAILS on those only.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 16 cells word-for-word against Q; P_SCHAADEXP1 -> condition_num and the
+  three factors agree with the labels and the screens; counts and responses
+  match the .sav in all 16 cells; the RELIG rewrite matches the P_RELIG list;
+  no non-answer in any persona; the ANSWER KEY's only extra is the 98s.
+condition:
+  source_var: P_SCHAADEXP1
+  factors: [sex_assigned_at_birth, identity, childhood]
+  considered_and_rejected:
+    ORDER1: Omnibus block order (Q 49-53), counterbalancing four unrelated studies.
+    ORDER2: Omnibus block order; see ORDER1.
+    ORDER3: Omnibus block order; see ORDER1.
+    ORDER4: Omnibus block order; see ORDER1.
+    INS_Q2_SCHAAD: >-
+      The sentence inserted into Q2, a function of P_SCHAADEXP1 (checked: it
+      agrees with the arm for every respondent); rendered per arm in `items`.
+  # Q 191
+  shared_context: >-
+    We are interested in studying opinions about a variety of LGBT issues and topics. On the following screen, you will read a description of a scenario. Please read the scenario carefully as you will later be asked to remember some of the details. After reading the scenario, you will then be asked some questions about your impressions and opinions. Please answer the questions with your first uncensored impressions. The questions may feel vague or you might feel you do not have enough information to answer them, but please answer as truthfully and honestly as possible.
+  arms:
+    # Q 197-201
+    - raw: 1
+      condition_num: 0
+      factors: {sex_assigned_at_birth: male, identity: woman, childhood: consistent}
+      text: |-
+        Jaime is 20 years old and was born a boy, and now identifies as a woman.
+
+        When Jaime was little, Jaime felt like a girl. As a child, Jaime liked to wear dresses and play with dolls.
+
+        Jaime now lives as a transgender woman and is working to change their birth certificate gender from "male" to "female".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as a woman in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from male to female. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+    # Q 205-209
+    - raw: 2
+      condition_num: 1
+      factors: {sex_assigned_at_birth: male, identity: woman, childhood: inconsistent}
+      text: |-
+        Jaime is 20 years old and was born a boy, and now identifies as a woman.
+
+        When Jaime was little, Jaime felt like a boy. As a child, Jaime liked to wear pants and play with trucks.
+
+        However, Jaime now lives as a transgender woman and is working to change their birth certificate gender from "male" to "female".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as a woman in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from male to female. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+    # Q 213-217
+    - raw: 3
+      condition_num: 2
+      factors: {sex_assigned_at_birth: male, identity: non_binary, childhood: consistent}
+      text: |-
+        Jaime is 20 years old and was born a boy, and now identifies as non-binary. Non-binary means someone whose gender is not male or female.
+
+        When Jaime was little, Jaime felt like neither a boy nor a girl. As a child, Jaime liked to wear both girls' and boys' clothes and play with dolls and trucks.
+
+        Jaime now lives as a non-binary person and is working to change their birth certificate gender from "male" to "X".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as non-binary in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from male to X. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+    # Q 221-225
+    - raw: 4
+      condition_num: 3
+      factors: {sex_assigned_at_birth: male, identity: non_binary, childhood: inconsistent}
+      text: |-
+        Jaime is 20 years old and was born a boy, and now identifies as non-binary. Non-binary means someone whose gender is not male or female.
+
+        When Jaime was little, Jaime felt like a boy. As a child, Jaime liked to wear pants and play with trucks.
+
+        However, Jaime now lives as a non-binary person and is working to change their birth certificate gender from "male" to "X".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as non-binary in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from male to X. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+    # Q 229-233
+    - raw: 5
+      condition_num: 4
+      factors: {sex_assigned_at_birth: female, identity: man, childhood: consistent}
+      text: |-
+        Jaime is 20 years old and was born a girl, and now identifies as a man.
+
+        When Jaime was little, Jaime felt like a boy. As a child, Jaime liked to wear pants and play with trucks.
+
+        Jaime now lives as a transgender man and is working to change their birth certificate gender from "female" to "male".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as a man in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from female to male. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+    # Q 237-241
+    - raw: 6
+      condition_num: 5
+      factors: {sex_assigned_at_birth: female, identity: man, childhood: inconsistent}
+      text: |-
+        Jaime is 20 years old and was born a girl, and now identifies as a man.
+
+        When Jaime was little, Jaime felt like a girl. As a child, Jaime liked to wear dresses and play with dolls.
+
+        However, Jaime now lives as a transgender man and is working to change their birth certificate gender from "female" to "male".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as a man in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from female to male. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+    # Q 246-250
+    - raw: 7
+      condition_num: 6
+      factors: {sex_assigned_at_birth: female, identity: non_binary, childhood: consistent}
+      text: |-
+        Jaime is 20 years old and was born a girl, and now identifies as non-binary. Non-binary means someone whose gender is not male or female.
+
+        When Jaime was little, Jaime felt like neither a girl nor a boy. As a child, Jaime liked to wear both boys' and girls' clothes and play with trucks and dolls.
+
+        Jaime now lives as a non-binary person and is working to change their birth certificate gender from "female" to "X".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as non-binary in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from female to X. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+    # Q 254-258
+    - raw: 8
+      condition_num: 7
+      factors: {sex_assigned_at_birth: female, identity: non_binary, childhood: inconsistent}
+      text: |-
+        Jaime is 20 years old and was born a girl, and now identifies as non-binary. Non-binary means someone whose gender is not male or female.
+
+        When Jaime was little, Jaime felt like a girl. As a child, Jaime liked to wear dresses and play with dolls.
+
+        However, Jaime now lives as a non-binary person and is working to change their birth certificate gender from "female" to "X".
+      items:
+        0: {outcome_question: "How likely do you think it is that Jaime will still identify as non-binary in 5 years?"}
+        1: {outcome_question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from female to X. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"}
+
+outcomes:
+  - var: Q1_SCHAAD
+    task_num: 0
+    question: "How likely do you think it is that Jaime will still identify as a woman in 5 years?"
+    scale: {min: 1, max: 7, min_label: "Extremely unlikely", max_label: "Extremely likely"}
+  - var: Q2_SCHAAD
+    task_num: 1
+    question: "Currently, state law does not allow for Jaime to change the gender listed on their birth certificate from male to female. If given the opportunity, how willing would you be to sign a petition urging legislatures to change the law so that Jaime's birth certificate could be amended?"
+    scale: {min: 1, max: 7, min_label: "Extremely willing", max_label: "Extremely unwilling"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+missing_codes: [77, 98, 99]
+
+persona_label_rewrite:
+  P_RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+
+persona_missing:
+  IDEO: [-1]
+  PartyID7: [-1]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC5
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: IDEO
+  religion: P_RELIG
+  religious_attendance: P_ATTEND

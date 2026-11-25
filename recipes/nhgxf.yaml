@@ -1,0 +1,319 @@
+study_id: nhgxf
+source: tess
+title: "Emotional Reactions to Terrorism and Candidate Evaluations (Merolla, TESS3 218)"
+data_file: TESS216_Merolla_Client.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). See ANSWER KEY.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS3 218 (Jennifer Merolla; GfK KnowledgePanel), fielded 24 June - 13 July
+  2016 (Q 7-8). The .sav ("TESS216_Merolla_Client.sav", named 216 though the
+  study is 218) has 611 rows, CaseID unique. Deposit OSF nhgxf, Merolla843.zip:
+  the .sav/.dta, the fielded questionnaire
+  "310.00209.0999.1_TESS3 218_Merolla_Final.docx", response rate report;
+  Merolla843.pdf is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "310.00209.0999.1_TESS3 218_Merolla_Final.txt" (textutil from the .docx).
+
+
+  ASSIGNMENT
+
+  XTESS218: 1 Anger (198), 2 Fear/Anxiety (214), 3 Relaxation (199). raw n ->
+  condition_num n-1. Factor `emotion_induced`: anger | fear | relaxation.
+
+
+  CONDITION TEXT: AN EMOTION-INDUCTION WRITING TASK
+
+  Each arm's screen is a writing prompt with a large text box (Q 41, 48, 55):
+  describe what makes you angry / afraid about the terrorist attacks of the
+  last year, or what makes you relaxed. The prompt is quoted word-for-word,
+  after ONE ADDED SENTENCE of ours (CONVENTIONS, "Narrating what the respondent
+  did", the a42yg precedent), true for everyone in the arm, including the 110
+  who wrote nothing (Qcondition1-3_Refused):
+    'You were given this writing task, with a large text box to write in:'
+  What anyone wrote is not used (open text; it is the respondent's own words,
+  not a stimulus).
+
+
+  OUTCOMES (20 tasks)
+
+  tasks 0-7   Q1-Q8: Display1's lead ("We'd like to ask you some questions
+              about candidates in the current U.S. presidential election ...",
+              Q 62) and one statement each (Clinton / Trump: strong
+              leadership, honest, competent, assertive), 1 Strongly disagree ..
+              4 Neutral .. 7 Strongly agree. Each statement is its own screen;
+              the block order and Clinton/Trump order were randomised and are
+              not narrated.
+  tasks 8-9   Q9, Q10: how well Clinton / Trump would handle foreign policy and
+              national defense, 1 Extremely well .. 4 Not well at all.
+  task 10     Q11: diplomacy (1) to readiness to use military force (7); 8
+              "Haven't thought much about this" dropped by the recipe's codes.
+  task 11     Q12: banning admittance of all refugees from Syria, 1 Strongly
+              favor .. 5 Strongly oppose.
+  task 12     Q13: US military action against ISIS (air strikes only / air
+              strikes and ground troops / no action), nominal.
+  tasks 13-14 Q14: feeling thermometer for Clinton and for Trump, 0-100, one
+              stem two sliders (ADDED SENTENCE 'Report only the rating for
+              "<name>".').
+  task 15     Q15: 2016 vote choice (Clinton / Trump / Neither or would not
+              vote), nominal; the first two options' order was randomised.
+  tasks 16-17 Q18_1, Q18_2: men in politics stronger leaders / better at
+              foreign affairs than women, 1 Strongly disagree .. 4 Strongly
+              agree (ADDED SENTENCE 'Report only the answer for ...').
+  tasks 18-19 Q19, Q20: worry / anger about a terrorist attack in the US in
+              the next 12 months, 1 Not ... at all .. 4 Very; 5 "Haven't thought
+              much about it" dropped.
+  Missing: -1 Refused.
+  NOT BUILT: Q15a (forced vote, only for those who chose Neither), Q16-Q17
+  (which positions Clinton / Trump have held: knowledge multi-selects).
+
+
+  PERSONA
+
+  Knowledge Networks profile, as 4zscf, plus the merged DOV_XPARTY7, DOV_IDEO,
+  DOV_REL1, DOV_REL2; -1 Refused declared for DOV_IDEO (11), DOV_REL1 (11),
+  DOV_REL2 (11). DOV_REL1 uses the second US religion list (1 Catholic, 2
+  Evangelical or Protestant ...), which has no crosswalk scheme yet, so QC
+  warns on it as on a42yg and ztwqy (pending fix).
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. The 2016 US election.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 10 tasks, 9,344 rows; ours 20, 11,700.
+  Their first five tasks POOL each Clinton/Trump pair into one task (1,204 =
+  603 + 601 etc.); their later tasks match ours one to one (Q11 497, Q12 596,
+  Q19 545, Q20 521, identical). The run FAILS on pooling and scope (they leave
+  out Q9-Q10's pair split, Q13-Q15, Q18). They also reverse Q9/Q10, coding 1 as
+  "Not well at all" (their 424 ones are our 174 + 250 fours).
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 3 arms and every outcome word-for-word in Q (only the declared added
+  words); all 60 cells match the .sav (11,700 rows); the narration sentence true
+  for all, including the 110 who wrote nothing; persona clean.
+condition:
+  source_var: XTESS218
+  factors: [emotion_induced]
+  considered_and_rejected:
+    Q1_Q8_order: Order of the four candidate-pair blocks; a row cannot say where it sat.
+    ClintonTrump_order: Whether Clinton or Trump came first in each pair; each statement is its own screen.
+    Q18_Order: Order of Q18's two statements.
+    Q19Q20order: Order of Q19 and Q20.
+  arms:
+    # Qcondition1 (Q 41)
+    - raw: 1
+      condition_num: 0
+      factors: {emotion_induced: anger}
+      text: |-
+        You were given this writing task, with a large text box to write in:
+
+        "The terrorist attacks that have occurred over the last year have evoked a lot of emotion in Americans. We are particularly interested in what makes you most angry, hostile, or disgusted about the attacks. Please write down in detail what makes you feel angry, hostile, or disgusted about the attacks. Write as detailed a description as possible. If you can, write your description so that someone reading it might even feel angry, hostile, or disgusted."
+    # Qcondition2 (Q 48)
+    - raw: 2
+      condition_num: 1
+      factors: {emotion_induced: fear}
+      text: |-
+        You were given this writing task, with a large text box to write in:
+
+        "The terrorist attacks that have occurred over the last year have evoked a lot of emotion in Americans. We are particularly interested in what makes you most afraid, worried, or scared about the attacks. Please write down in detail what makes you feel afraid, worried, or scared about the attacks. Write as detailed a description as possible. If you can, write your description so that someone reading it might even feel afraid, worried, or scared."
+    # Qcondition3 (Q 55)
+    - raw: 3
+      condition_num: 2
+      factors: {emotion_induced: relaxation}
+      text: |-
+        You were given this writing task, with a large text box to write in:
+
+        "Now we would like you to describe in general things that make you feel relaxed. It is okay if you don't remember all the details, just be specific about what exactly it is that makes you relaxed and what it feels like to be relaxed. Please describe the events that make you feel the most relaxed, these experiences could have occurred in the past or will happen in the future. If you can, write your description so that someone reading it might even feel relaxed."
+
+outcomes:
+  - var: Q1
+    task_num: 0
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Hillary Clinton will provide strong leadership for the nation.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q2
+    task_num: 1
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Donald Trump will provide strong leadership for the nation.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q3
+    task_num: 2
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Hillary Clinton is honest.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q4
+    task_num: 3
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Donald Trump is honest.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q5
+    task_num: 4
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Hillary Clinton is competent.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q6
+    task_num: 5
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Donald Trump is competent.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q7
+    task_num: 6
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Hillary Clinton is assertive.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q8
+    task_num: 7
+    question: |-
+      We'd like to ask you some questions about candidates in the current U.S. presidential election. For each of the following statements, please tell us how much you agree or disagree.
+      Donald Trump is assertive.
+    scale: {min: 1, max: 7, min_label: "Strongly disagree", mid_label: "Neutral", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q9
+    task_num: 8
+    question: |-
+      If elected president of the U.S., how well do you think Hillary Clinton would handle issues of foreign policy and national defense?
+    scale: {min: 1, max: 4, min_label: "Extremely well", max_label: "Not well at all"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q10
+    task_num: 9
+    question: |-
+      If elected president of the U.S., how well do you think Donald Trump would handle issues of foreign policy and national defense?
+    scale: {min: 1, max: 4, min_label: "Extremely well", max_label: "Not well at all"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q11
+    task_num: 10
+    question: |-
+      Some people believe the United States should solve international problems by using diplomacy and other forms of international pressure and use military force only if absolutely necessary. Others believe diplomacy and pressure often fail and the U.S. must be ready to use military force. On a scale of 1 to 7, where a 1 indicates that we should exhaust diplomacy and a 7 indicates that we should be ready to use military force, where would you place yourself, or haven't you thought much about this?
+    scale: {min: 1, max: 7, min_label: "Exhaust Diplomacy", max_label: "Should be ready to use military force"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+  - var: Q12
+    task_num: 11
+    question: |-
+      To what extent do you favor or oppose banning the admittance of all refugees from Syria at this time?
+    scale: {min: 1, max: 5, min_label: "Strongly favor", mid_label: "Neither favor nor oppose", max_label: "Strongly oppose"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q13
+    task_num: 12
+    question: |-
+      Now, as you may know, a terrorist group called ISIS is operating in Syria and Iraq. ISIS militants have made significant territorial gains in these countries and have declared an independent Islamic state. Should US military action against ISIS be limited to only air strikes, should it include both air strikes and American combat troops on the ground, or should US military action not be taken at all?
+      (1) Limited to only air strikes; (2) Both air strikes and combat troops; (3) No action
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  - var: Q14_Clinton
+    task_num: 13
+    question: |-
+      We'd like to get your feelings toward the candidates on a 'feeling thermometer'. A rating of zero degrees means you feel as cold and negative as possible. A rating of 100 degrees means you feel as warm and positive as possible. You would rate the individual at 50 degrees if you don't feel particularly positive or negative toward the individual. How do you feel toward…
+      Hillary Clinton?
+      Donald Trump?
+      Report only the rating for "Hillary Clinton?".
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q14_Trump
+    task_num: 14
+    question: |-
+      We'd like to get your feelings toward the candidates on a 'feeling thermometer'. A rating of zero degrees means you feel as cold and negative as possible. A rating of 100 degrees means you feel as warm and positive as possible. You would rate the individual at 50 degrees if you don't feel particularly positive or negative toward the individual. How do you feel toward…
+      Hillary Clinton?
+      Donald Trump?
+      Report only the rating for "Donald Trump?".
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q15
+    task_num: 15
+    question: |-
+      If the 2016 presidential election were being held today and the candidates were Hillary Clinton and Donald Trump, who would you vote for?
+      (1) Hillary Clinton; (2) Donald Trump; (3) Neither or would not vote (the first two options were shown in a random order)
+    scale: {min: 1, max: 3, nominal: true}
+    response_recode: {1: 1, 2: 2, 3: 3}
+  - var: Q18_1
+    task_num: 16
+    question: |-
+      To what extent do you agree or disagree with the following statements
+      Most men in politics are stronger leaders than are most women
+      Most men in politics are better at foreign affairs than are most women
+      Report only the answer for "Most men in politics are stronger leaders than are most women".
+    scale: {min: 1, max: 4, min_label: "Strongly disagree", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q18_2
+    task_num: 17
+    question: |-
+      To what extent do you agree or disagree with the following statements
+      Most men in politics are stronger leaders than are most women
+      Most men in politics are better at foreign affairs than are most women
+      Report only the answer for "Most men in politics are better at foreign affairs than are most women".
+    scale: {min: 1, max: 4, min_label: "Strongly disagree", max_label: "Strongly agree"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q19
+    task_num: 18
+    question: |-
+      How worried are you that there could be a violent attack by terrorists in the United States in the next 12 months? Are you very, somewhat, a little, or not at all worried, or would you say that you have not thought much about this?
+    scale: {min: 1, max: 4, min_label: "Not worried at all", max_label: "Very worried"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+  - var: Q20
+    task_num: 19
+    question: |-
+      How angry are you that there could be a violent attack by terrorists in the United States in the next 12 months? Are you very, somewhat, a little, or not at all angry, or would you say that you have not thought much about this?
+    scale: {min: 1, max: 4, min_label: "Not angry at all", max_label: "Very angry"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+
+missing_codes: [-1]
+# Every outcome declares its own recode; this default is never reached.
+response_recode: {1: 1}
+
+# DOV_REL1 code 2's label is severed ("... Church of Ch"); restored from Q's own
+# list (Q's REL1 / DOV_REL1, code 2). Codes 11/12 drop "please specify".
+persona_label_rewrite:
+  DOV_REL1:
+    2: "Evangelical or Protestant Christian (Baptist, Lutheran, Methodist, Presbyterian, Episcopalian, Pentecostal, Church of Christ, etc.)"
+    11: "Other Christian religion"
+    12: "Other non-Christian religion"
+
+persona_missing:
+  DOV_IDEO: [-1]
+  DOV_REL1: [-1]
+  DOV_REL2: [-1]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: DOV_XPARTY7
+  ideology: DOV_IDEO
+  religion: DOV_REL1
+  religious_attendance: DOV_REL2

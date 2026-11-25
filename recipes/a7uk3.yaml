@@ -1,0 +1,398 @@
+study_id: a7uk3
+source: tess
+title: "Can Factual Misperceptions be Corrected? Fears of Terrorism (Silverman, TESS 031)"
+data_file: PN8041.031_T031_Silverman_Main.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). The crosscheck
+# fails on scope only (see ANSWER KEY); build without --crosscheck.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS 031 (Silverman), NORC AmeriSpeak project 8041.031, questionnaire v2 dated
+  6 December 2018. The .sav has 1,340 rows, CaseId unique. Deposit OSF a7uk3,
+  Silverman1035.zip: the .sav/.dta/.sas7bdat, codebook, field report, the
+  programmed questionnaire "[8041.031] TESS_031_Silverman_v2clean.docx";
+  Silverman1035.pdf and "TESS-1035.R1 description" are the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "[8041.031] TESS_031_Silverman_v2clean.txt" (textutil from the .docx,
+        the wording authority; its only embedded images are NORC and AmeriSpeak
+        logos, and the risk "figure" is a Word table, read as text).
+
+
+  ASSIGNMENT
+
+  P_TESS031: 1 Control, no corrective information (262); 2 corrective
+  information, no endorsement (263); 3 Democratic endorsement (278); 4
+  Republican endorsement (277); 5 military endorsement (260). raw n ->
+  condition_num n-1. Factors: correction (none | risk_context), endorser
+  (none | democratic_congressman | republican_congressman | army_general).
+  The screen timers in the .sav (TREAT1 .. TREAT5A) agree: each respondent has
+  times only for their own arm's screens.
+
+
+  CONDITION TEXT
+
+  shared_context: INTRO_TREAT (Q 389-390, "The next screens contain some
+  important information ...") and the alarm article every arm reads first,
+  headline and paragraph word-for-word (TREAT1 Q 399-401; identical in TREAT2-5).
+  Control: nothing more. Arms 2-5: the second screen (TREATnA), word-for-word:
+  headline "Taking a Closer Look at the Terror Threat", its paragraph, the risk
+  table, its source line and the closing paragraph; arms 3-5 add the endorsement
+  paragraph, which differs only in who "John Baker" is ("Democratic
+  Congressman", "Republican Congressman", "four-star Army General").
+  TABLE LAYOUT, ours: one line per row, cells joined by " | ", header first
+  (Threat | Period | Annual Deaths | Annual Risk); every value Q's.
+  Underline markup and curly quotes normalised.
+
+
+  OUTCOMES (12 tasks, all 1-4, ends labelled as Q)
+
+  task 0  Q4 worry about becoming a victim of terrorism (1 Very .. 4 Not
+          worried at all); 77 "Don't know" dropped.
+  task 1  Q5 likelihood of a mass-casualty attack (1 Very .. 4 Not likely at
+          all); 77 dropped.
+  tasks 2-5   Q6A-D threats to the country's national security (China, North
+          Korea, Terrorism, Climate change), 1 Very serious .. 4 Not a threat
+          at all.
+  tasks 6-9   Q7A-D threats to own personal safety (Car accidents, Plane
+          crashes, Terrorist attacks, Cancer), same scale.
+  tasks 10-11 Q8A-B importance of two foreign-policy goals, 1 Very .. 4 Not
+          important at all.
+  Grids per CONVENTIONS "One stem, several labelled answer fields", ONE ADDED
+  SENTENCE: 'Report only the answer for "<item>".'
+  Missing: 77, 98, 99.
+  NOT BUILT: Q3 ("About how many Americans are killed each year by terrorism on
+  U.S. soil?" 87 / 8,700 / 87,000): a recall check, its answer is in the
+  treated arms' table (CONVENTIONS, "Attention and recall checks are not
+  outcomes"); Q1 and Q2 (national threats and child qualities), asked BEFORE
+  the treatment.
+
+
+  PERSONA
+
+  NORC AmeriSpeak, as 3muqx: AGE, GENDER, EDUC, RACETHNICITY, INCOME, MARITAL,
+  EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE,
+  PARTYID7, IDEO, RELIG, ATTEND. Every value label of PARTYID7, IDEO, RELIG
+  and ATTEND is wrapped in stray quote marks in this .sav ('"Liberal”'), which
+  would reach the persona as part of the words; persona_label_rewrite gives the
+  bare labels, and restores RELIG 1, severed at "... Reformed, Church", from
+  Q's P_RELIG list (Q 192). IDEO 8 "Haven't thought much about it" is a real
+  answer and kept (as 3muqx). No missing code occurs in any persona variable
+  (GENDER 0 "Unknown" has no cases).
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. US terrorism and officials.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 7 tasks, 17,250 rows; ours 12, 15,917.
+  Their task 0 is Q3, the recall check we leave out (1,333 rows; codes 87 /
+  8,700 / 87,000). Their 1, 2 = our Q4, Q5 (1,321, 1,295, identical); their 3
+  and 4 POOL the four Q6 and four Q7 items (5,325 = 1,331 + 1,331 + 1,329 +
+  1,334; 5,310 likewise); their 5, 6 = our Q8A, Q8B (1,334, 1,332). Every
+  response code 1-4 has the identical count in both builds (1: 5,585; 2:
+  5,554; 3: 3,836; 4: 942). The run FAILS on scope and pooling only; built
+  without --crosscheck.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it. All
+  5 conditions and 12 outcomes word-for-word against Q (every table value);
+  all 60 cells match the .sav; exclusions right; persona labels clean; ANSWER
+  KEY confirmed. Its one finding is LAYOUT, not words: the pipeline joins
+  shared_context to the arm text with a single space (recipe.py), so the
+  second screen's headline follows the article on the same line. True of
+  every recipe with a shared_context; raised with rich as a shared-code
+  change, not patched here.
+condition:
+  source_var: P_TESS031
+  factors: [correction, endorser]
+  # INTRO_TREAT (Q 389-390) and TREAT1-5's identical article (Q 399-401 etc.)
+  shared_context: |-
+    The next screens contain some important information for this survey. We appreciate your careful attention to the details in the passage on the next screens. There will be a slight delay in moving past the next screens. Additionally, you will not be able to go back to the previous screen, so please read the entire passage carefully. Thank you.
+
+    New Poll Finds Rising Fears of Terrorism Nationwide
+
+    The number of people who say that acts of terrorism against Americans are imminent is up 3% from last year, according to a new poll released this week. In the wake of attacks in San Bernardino, Orlando, Paris, and London, the Pew Research Center found that 63% of Americans think major terrorist attacks are likely to occur soon on American soil. Government officials have echoed these concerns. "We are issuing a new advisory that the terror threat is now elevated across the country," said Undersecretary for Homeland Security Stephen Krause. "We have to remain vigilant and we have to stay alert. Terrorists can strike anytime, anywhere."
+  arms:
+    # TREAT1 (Q 398-401): the article alone.
+    - raw: 1
+      condition_num: 0
+      factors: {correction: none, endorser: none}
+      text: ""
+    # TREAT2A (Q 420-463)
+    - raw: 2
+      condition_num: 1
+      factors: {correction: risk_context, endorser: none}
+      text: |-
+        Taking a Closer Look at the Terror Threat
+
+        Does terrorism really pose a critical threat to us? Below is a figure showing the average American's risk of death from different sources. Please take a minute to study it closely.
+
+        Threat | Period | Annual Deaths | Annual Risk
+        Cancer | 2009 | 560,000 | 1 in 540
+        Traffic Accidents | 2008 | 34,017 | 1 in 8,000
+        Homicide | 2006 | 14,180 | 1 in 22,000
+        Natural Disasters | 1999-2008 | 629 | 1 in 480,000
+        Home Appliances | Yearly Average | 200 | 1 in 1,500,000
+        Commercial Aviation | 1989-2007 | 103 | 1 in 2,900,000
+        Terrorism | 1970-2007 | 87 | 1 in 3,500,000
+        Lightning | 2008 | 42 | 1 in 7,000,000
+        Source: Mueller and Stewart 2015
+
+        As can be seen, around 90 Americans are killed each year by terrorism on U.S. soil. This means the risk of being a victim of terrorism in a given year is about 1 in 3.5 million. In comparison, the risk of being killed by cancer is 1 in 540, the risk of being killed in a car accident is 1 in 8,000, and the chance of being killed by your own home appliances is 1 in 1.5 million. These numbers provide some essential context when thinking about the different threats to our public safety.
+    # TREAT3A (Q 482-527)
+    - raw: 3
+      condition_num: 2
+      factors: {correction: risk_context, endorser: democratic_congressman}
+      text: |-
+        Taking a Closer Look at the Terror Threat
+
+        Does terrorism really pose a critical threat to us? Below is a figure showing the average American's risk of death from different sources. Please take a minute to study it closely.
+
+        Threat | Period | Annual Deaths | Annual Risk
+        Cancer | 2009 | 560,000 | 1 in 540
+        Traffic Accidents | 2008 | 34,017 | 1 in 8,000
+        Homicide | 2006 | 14,180 | 1 in 22,000
+        Natural Disasters | 1999-2008 | 629 | 1 in 480,000
+        Home Appliances | Yearly Average | 200 | 1 in 1,500,000
+        Commercial Aviation | 1989-2007 | 103 | 1 in 2,900,000
+        Terrorism | 1970-2007 | 87 | 1 in 3,500,000
+        Lightning | 2008 | 42 | 1 in 7,000,000
+        Source: Mueller and Stewart 2015
+
+        As can be seen, around 90 Americans are killed each year by terrorism on U.S. soil. This means the risk of being a victim of terrorism in a given year is about 1 in 3.5 million. In comparison, the risk of being killed by cancer is 1 in 540, the risk of being killed in a car accident is 1 in 8,000, and the chance of being killed by your own home appliances is 1 in 1.5 million. These numbers provide some essential context when thinking about the different threats to our public safety.
+
+        Indeed, these facts have been noted by officials. For example, Democratic Congressman John Baker stated recently: "The truth is that you are far more likely to be killed by routine, mundane dangers than you are by a terrorist attack. We as Americans need to take a closer look at the risks and choices we face."
+    # TREAT4A (Q 546-591)
+    - raw: 4
+      condition_num: 3
+      factors: {correction: risk_context, endorser: republican_congressman}
+      text: |-
+        Taking a Closer Look at the Terror Threat
+
+        Does terrorism really pose a critical threat to us? Below is a figure showing the average American's risk of death from different sources. Please take a minute to study it closely.
+
+        Threat | Period | Annual Deaths | Annual Risk
+        Cancer | 2009 | 560,000 | 1 in 540
+        Traffic Accidents | 2008 | 34,017 | 1 in 8,000
+        Homicide | 2006 | 14,180 | 1 in 22,000
+        Natural Disasters | 1999-2008 | 629 | 1 in 480,000
+        Home Appliances | Yearly Average | 200 | 1 in 1,500,000
+        Commercial Aviation | 1989-2007 | 103 | 1 in 2,900,000
+        Terrorism | 1970-2007 | 87 | 1 in 3,500,000
+        Lightning | 2008 | 42 | 1 in 7,000,000
+        Source: Mueller and Stewart 2015
+
+        As can be seen, around 90 Americans are killed each year by terrorism on U.S. soil. This means the risk of being a victim of terrorism in a given year is about 1 in 3.5 million. In comparison, the risk of being killed by cancer is 1 in 540, the risk of being killed in a car accident is 1 in 8,000, and the chance of being killed by your own home appliances is 1 in 1.5 million. These numbers provide some essential context when thinking about the different threats to our public safety.
+
+        Indeed, these facts have been noted by officials. For example, Republican Congressman John Baker stated recently: "The truth is that you are far more likely to be killed by routine, mundane dangers than you are by a terrorist attack. We as Americans need to take a closer look at the risks and choices we face."
+    # TREAT5A (Q 610-655)
+    - raw: 5
+      condition_num: 4
+      factors: {correction: risk_context, endorser: army_general}
+      text: |-
+        Taking a Closer Look at the Terror Threat
+
+        Does terrorism really pose a critical threat to us? Below is a figure showing the average American's risk of death from different sources. Please take a minute to study it closely.
+
+        Threat | Period | Annual Deaths | Annual Risk
+        Cancer | 2009 | 560,000 | 1 in 540
+        Traffic Accidents | 2008 | 34,017 | 1 in 8,000
+        Homicide | 2006 | 14,180 | 1 in 22,000
+        Natural Disasters | 1999-2008 | 629 | 1 in 480,000
+        Home Appliances | Yearly Average | 200 | 1 in 1,500,000
+        Commercial Aviation | 1989-2007 | 103 | 1 in 2,900,000
+        Terrorism | 1970-2007 | 87 | 1 in 3,500,000
+        Lightning | 2008 | 42 | 1 in 7,000,000
+        Source: Mueller and Stewart 2015
+
+        As can be seen, around 90 Americans are killed each year by terrorism on U.S. soil. This means the risk of being a victim of terrorism in a given year is about 1 in 3.5 million. In comparison, the risk of being killed by cancer is 1 in 540, the risk of being killed in a car accident is 1 in 8,000, and the chance of being killed by your own home appliances is 1 in 1.5 million. These numbers provide some essential context when thinking about the different threats to our public safety.
+
+        Indeed, these facts have been noted by officials. For example, four-star Army General John Baker stated recently: "The truth is that you are far more likely to be killed by routine, mundane dangers than you are by a terrorist attack. We as Americans need to take a closer look at the risks and choices we face."
+
+outcomes:
+  - var: Q4
+    task_num: 0
+    question: |-
+      How worried are you that you will become a victim of terrorism?
+    scale: {min: 1, max: 4, min_label: "Very worried", max_label: "Not worried at all"}
+  - var: Q5
+    task_num: 1
+    question: |-
+      How likely do you think it is that another terrorist attack causing large numbers of American lives to be lost will happen in the near future?
+    scale: {min: 1, max: 4, min_label: "Very likely", max_label: "Not likely at all"}
+  - var: Q6A
+    task_num: 2
+    question: |-
+      Here is a list of potential threats to our country's national security over the next 10 years. In your view, how serious is each of these potential threats?
+      China
+      North Korea
+      Terrorism
+      Climate change
+      Report only the answer for "China".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q6B
+    task_num: 3
+    question: |-
+      Here is a list of potential threats to our country's national security over the next 10 years. In your view, how serious is each of these potential threats?
+      China
+      North Korea
+      Terrorism
+      Climate change
+      Report only the answer for "North Korea".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q6C
+    task_num: 4
+    question: |-
+      Here is a list of potential threats to our country's national security over the next 10 years. In your view, how serious is each of these potential threats?
+      China
+      North Korea
+      Terrorism
+      Climate change
+      Report only the answer for "Terrorism".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q6D
+    task_num: 5
+    question: |-
+      Here is a list of potential threats to our country's national security over the next 10 years. In your view, how serious is each of these potential threats?
+      China
+      North Korea
+      Terrorism
+      Climate change
+      Report only the answer for "Climate change".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q7A
+    task_num: 6
+    question: |-
+      Here is a list of potential threats to your own personal safety over the next 10 years. In your view, how serious is each of these potential threats?
+      Car accidents
+      Plane crashes
+      Terrorist attacks
+      Cancer
+      Report only the answer for "Car accidents".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q7B
+    task_num: 7
+    question: |-
+      Here is a list of potential threats to your own personal safety over the next 10 years. In your view, how serious is each of these potential threats?
+      Car accidents
+      Plane crashes
+      Terrorist attacks
+      Cancer
+      Report only the answer for "Plane crashes".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q7C
+    task_num: 8
+    question: |-
+      Here is a list of potential threats to your own personal safety over the next 10 years. In your view, how serious is each of these potential threats?
+      Car accidents
+      Plane crashes
+      Terrorist attacks
+      Cancer
+      Report only the answer for "Terrorist attacks".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q7D
+    task_num: 9
+    question: |-
+      Here is a list of potential threats to your own personal safety over the next 10 years. In your view, how serious is each of these potential threats?
+      Car accidents
+      Plane crashes
+      Terrorist attacks
+      Cancer
+      Report only the answer for "Cancer".
+    scale: {min: 1, max: 4, min_label: "Very serious", max_label: "Not a threat at all"}
+  - var: Q8A
+    task_num: 10
+    question: |-
+      Here is a pair of potential goals that the U.S. can pursue in its foreign policy. In your view, how important is each of these potential goals?
+      Preventing future acts of terrorism on U.S. soil
+      Dealing with great power rivals like China
+      Report only the answer for "Preventing future acts of terrorism on U.S. soil".
+    scale: {min: 1, max: 4, min_label: "Very important", max_label: "Not important at all"}
+  - var: Q8B
+    task_num: 11
+    question: |-
+      Here is a pair of potential goals that the U.S. can pursue in its foreign policy. In your view, how important is each of these potential goals?
+      Preventing future acts of terrorism on U.S. soil
+      Dealing with great power rivals like China
+      Report only the answer for "Dealing with great power rivals like China".
+    scale: {min: 1, max: 4, min_label: "Very important", max_label: "Not important at all"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4}
+missing_codes: [77, 98, 99]
+
+persona_label_rewrite:
+  # Every label in these four variables is wrapped in stray quote marks in the
+  # .sav ('"Liberal”'); rewritten to the bare words. RELIG 1 is also severed
+  # ("... Reformed, Church") and restored from Q's P_RELIG preload list.
+  PARTYID7:
+    1: "Strong Democrat"
+    2: "Moderate Democrat"
+    3: "Lean Democrat"
+    4: "Don't Lean/Independent/None"
+    5: "Lean Republican"
+    6: "Moderate Republican"
+    7: "Strong Republican"
+  IDEO:
+    1: "Extremely Liberal"
+    2: "Liberal"
+    3: "Slightly Liberal"
+    4: "Moderate"
+    5: "Slightly Conservative"
+    6: "Conservative"
+    7: "Extremely Conservative"
+    8: "Haven't thought much about it"
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)"
+    2: "Roman Catholic (Catholic)"
+    3: "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)"
+    4: "Orthodox (Greek, Russian, or some other orthodox church)"
+    5: "Jewish (Judaism)"
+    6: "Muslim (Islam)"
+    7: "Buddhist"
+    8: "Hindu"
+    9: "Atheist (do not believe in God)"
+    10: "Agnostic (not sure if there is a God)"
+    11: "Nothing in particular"
+    12: "Just Christian"
+    13: "Unitarian (Universalist)"
+  ATTEND:
+    1: "Never"
+    2: "Less than once a year"
+    3: "About once or twice a year"
+    4: "Several times a year"
+    5: "About once a month"
+    6: "2-3 times a month"
+    7: "Nearly every week"
+    8: "Every week"
+    9: "Several times a week"
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PARTYID7
+  ideology: IDEO
+  religion: RELIG
+  religious_attendance: ATTEND

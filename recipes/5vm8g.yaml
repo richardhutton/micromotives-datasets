@@ -1,0 +1,204 @@
+study_id: 5vm8g
+source: tess
+title: "Beliefs about Racial Discrimination (Haaland, TESS 007)"
+data_file: T007_HAALAND_11JULY17.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). See ANSWER KEY.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS 007 (Ingar Haaland), NORC AmeriSpeak project 8041.007, 2017. The .sav has
+  1,542 rows, CaseId unique. Deposit OSF 5vm8g, Haaland874.zip: the .sav,
+  .sas7bdat, codebook, field report, the programmed questionnaire
+  "[8041.007] TESS Haaland_v2clean.docx"; Haaland874.pdf is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "[8041.007] TESS Haaland_v2clean.txt" (textutil from the .docx, the
+        wording authority).
+
+
+  DESIGN AND ASSIGNMENT
+
+  GROUP (DATA-ONLY): 1 TREATMENT (783), 2 CONTROL (759). Everyone first answers
+  Q1, an incentivised guess of how many times resumes with black-sounding
+  names had to be sent out to get one callback (white-sounding: 10). The
+  treatment group then reads the researchers' finding (15 times; "50 percent
+  more likely") (Q 248-254). Control: condition_num 0; treatment: 1. Factor
+  `information`: none | true_callback_rates.
+
+
+  CONDITION TEXT
+
+  shared_context: Q1's screen word-for-word up to and including its question
+  and the bonus sentence (Q 226-238), WITHOUT the answer-box sentence ("I think
+  resumes ... had to be sent out [NUMBOX] times ..."), which is the response
+  field. Every respondent saw and answered it before the assignment showed
+  anything. Treatment arm: DISPLAY - RESUME, both paragraphs word-for-word.
+  Underline, bold and italic tags dropped; curly quotes normalised.
+
+
+  OUTCOMES
+
+  task 0  Q2 is labour-market discrimination against blacks a serious problem,
+          1 A very serious problem .. 3 A problem .. 5 Not a problem at all.
+  task 1  Q3 support for programmes giving qualified black candidates
+          preference, 1 Strongly support .. 5 Strongly oppose.
+  task 2  Q4 the same for assistance.
+  task 3  Q6 mandatory name-blind recruitment.
+  task 4  Q7_1 (Q 352-363; the second Q7 in Q): incentivised guess, in percent,
+          of how often Airbnb requests from black-sounding names were accepted
+          (white-sounding: 49 percent), 0-100. The screen's bonus sentence
+          carries a per-respondent fill ([INCENTWCOMMA], 2,000 or 4,000
+          AmeriPoints by Q1's answer) that the deposit does not hold, so that
+          sentence is left out of the question (CONVENTIONS, "A per-respondent
+          fill the deposit does not hold"); the answer-box sentence is left out
+          as on Q1. Values above 100 (9998, 67 rows; not a labelled code) and
+          777/998/999 are dropped.
+  Missing: 77, 98, 99 on Q2-Q6 (dropped by their recodes); 777, 998, 999 on
+  Q7_1 (missing_codes), where 98 and 99 are real percentages and kept.
+  NOT BUILT: Q7A-F, six real-money choices between $5 for the Lawyers'
+  Committee for Civil Rights and $0-$5 for oneself: the .sav stores them as
+  string codes ('Q7_Org1', 'Q7_Me2' ..) with 282-537 skips per row, which the
+  pipeline's numeric reader does not take; recorded as a cost, a candidate for
+  a later build. Q8 (agreement with the researchers' interpretation): treatment
+  group only, no contrast. Q1: before the assignment.
+
+
+  PERSONA
+
+  NORC AmeriSpeak, as 3muqx: AGE, GENDER, EDUC, RACETHNICITY, INCOME, MARITAL,
+  EMPLOY, REGION4, HHSIZE, HOME_TYPE, HOUSING, METRO, INTERNET, PHONESERVICE,
+  PartyID7, RELIG, ATTEND, and ideology from D3 ("Generally speaking, do you
+  consider yourself a liberal, moderate, conservative ..."; D4/D5 are its
+  strength follow-ups and not merged). Declared missing: PartyID7 -1, D3 98,
+  RELIG 98, ATTEND 98. RELIG code 1's label is severed; restored from the
+  AmeriSpeak P_RELIG list as 3muqx; code 14 drops "- Please Specify:".
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 8 tasks, 16,278 rows. Their tasks 2-5
+  are our Q2, Q3, Q4, Q6 (1,538 / 1,535 / 1,533 / 1,537, identical counts);
+  their task 1 is Q7_1 (1,475, as ours); their task 0 is Q1, the prior guess
+  asked before the assignment (1,382); task 6 is Q8, treatment only (777); task
+  7 pools the six donation choices (6,501). The run FAILS on that scope only.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All 10 cells word-for-word against Q; GROUP mapping right; every cell's count
+  and distribution matches the .sav (Q7_1 keeps 99, drops 9998); exclusions
+  sound; persona labels clean; ANSWER KEY confirmed.
+condition:
+  source_var: GROUP
+  factors: [information]
+  # Q1's screen (Q 226-238), shown to everyone before the assignment.
+  shared_context: |-
+    Researchers from Harvard University and the University of Chicago conducted an experiment to study racial discrimination in the labor market. They did so by sending out fictitious resumes to help-wanted ads in Boston and Chicago newspapers.
+
+    The resumes were exactly the same except for one thing: the name of the job applicant. Half of the resumes had typically white-sounding names like "Carrie" and "Todd". The other half of the resumes had typically black-sounding names like "Tanisha" and "Kareem". The idea was to make sure that the applicants were seen as having identical qualifications, but that the employers would use the applicants' names to infer whether they were white or black.
+
+    Resumes with white-sounding names had to be sent out on average 10 times to get one callback for an interview.
+
+    What do you think?
+
+    How many times do you think resumes with black-sounding names on average had to be sent out to get one callback for an interview?
+
+    If your answer is the same as what the researchers found, you will be rewarded a bonus of $2 (2,000 AmeriPoints) in addition to your current incentive of 2,000 AmeriPoints.
+  arms:
+    # Control: no further screen.
+    - raw: 2
+      condition_num: 0
+      factors: {information: none}
+      text: ""
+    # DISPLAY - RESUME (Q 250-254)
+    - raw: 1
+      condition_num: 1
+      factors: {information: true_callback_rates}
+      text: |-
+        The researchers found that resumes with black-sounding names on average had to be sent out 15 times to get one callback for an interview.
+
+        Since resumes with white-sounding names on average only had to be sent out 10 times to get one callback for an interview, this means that employers were 50 percent more likely to give callbacks to applicants with white-sounding names compared to applicants with black-sounding names.
+
+outcomes:
+  - var: Q2
+    task_num: 0
+    question: "In the United States today, do you think that racial discrimination against blacks in the labor market is a serious problem?"
+    scale: {min: 1, max: 5, min_label: "A very serious problem", mid_label: "A problem", max_label: "Not a problem at all"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q3
+    task_num: 1
+    question: "Do you support or oppose government and private programs that give qualified black candidates preference over equally qualified white candidates in getting a job?"
+    scale: {min: 1, max: 5, min_label: "Strongly support", mid_label: "Neither support nor oppose", max_label: "Strongly oppose"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q4
+    task_num: 2
+    question: "Do you support or oppose government and private programs that give qualified black candidates assistance in getting a job?"
+    scale: {min: 1, max: 5, min_label: "Strongly support", mid_label: "Neither support nor oppose", max_label: "Strongly oppose"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q6
+    task_num: 3
+    question: "Name-blind recruitment has been suggested as a way to reduce racial discrimination in the labor market by hiding the names of the job applicants from their resumes. Do you support or oppose mandatory name-blind recruitment for hiring in public and private jobs?"
+    scale: {min: 1, max: 5, min_label: "Strongly support", mid_label: "Neither support nor oppose", max_label: "Strongly oppose"}
+    response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+  - var: Q7_1
+    task_num: 4
+    question: |-
+      Researchers from Harvard Business School conducted an experiment to study racial discrimination in the rental market by sending out reservation requests from invented accounts to hosts on Airbnb, a website for private rental accommodations.
+
+      The requests were exactly the same except for one thing: the name of the person who sent the request. Half of the requests came from typically white-sounding names, while the other half came from typically black-sounding names. The idea was that the hosts would use the applicants' name to infer whether the reservation requests came from white or black requesters.
+
+      The researchers found that reservation requests from white-sounding names were accepted 49 percent of the time.
+
+      What do you think?
+
+      How many percent of the time do you think reservation requests from black-sounding names were accepted?
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+
+# Only Q7_1's non-answer codes: on Q7_1 98 and 99 are REAL percentages. The 1-5
+# items drop their own 77/98/99 by leaving them out of their recodes.
+missing_codes: [777, 998, 999]
+# Every outcome declares its own recode; this default is never reached.
+response_recode: {1: 1}
+
+persona_label_rewrite:
+  RELIG:
+    1: "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah’s Witness, etc.)"
+    14: "Something else"
+
+persona_missing:
+  PartyID7: [-1]
+  D3: [98]
+  RELIG: [98]
+  ATTEND: [98]
+
+persona_map:
+  age: AGE
+  gender: GENDER
+  education: EDUC
+  ethnicity: RACETHNICITY
+  income: INCOME
+  marital_status: MARITAL
+  employment: EMPLOY
+  region: REGION4
+  household_size: HHSIZE
+  housing_type: HOME_TYPE
+  housing_ownership: HOUSING
+  urban_rural: METRO
+  internet_access: INTERNET
+  phone_service: PHONESERVICE
+  party_id: PartyID7
+  ideology: D3
+  religion: RELIG
+  religious_attendance: ATTEND

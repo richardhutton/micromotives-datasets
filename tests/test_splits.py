@@ -49,7 +49,10 @@ def test_socsci210_sides_are_kept_for_shared_tess_studies() -> None:
     unseen = set(MAPPING["unseen"])
     shared_unseen = ours & make_splits.SOCSCI210_UNSEEN
     shared_seen = ours & make_splits.SOCSCI210_SEEN
-    assert shared_unseen == {"3muqx", "5hqan", "7jt2f", "8ctbk", "a5v96", "c5r2f", "rpw4u", "xtvu5"}
+    # The eight shared held-out studies built before the Eval build-out (25 Nov
+    # 2026) must stay; every one built since joins them. Pinning only the old
+    # eight keeps the regression guard without failing each new Eval build.
+    assert {"3muqx", "5hqan", "7jt2f", "8ctbk", "a5v96", "c5r2f", "rpw4u", "xtvu5"} <= shared_unseen
     assert shared_unseen <= unseen
     assert not shared_seen & unseen
 
@@ -69,6 +72,19 @@ def test_every_source_is_in_the_test_set_at_about_the_set_share() -> None:
         # (16 Nov 2026), where the nearest possible share is 1/3, and a flat 0.1
         # failed every split there could be.
         tolerance = max(0.1, 1 / len(ids))
+        # SocSci210's held-out studies are unseen whatever the share (they keep
+        # SocSci210's side), and the script then draws no more from that source
+        # once they fill its target. With the Eval set built (25 Nov 2026) TESS
+        # sits above the share for that reason alone. The split is sticky (a
+        # study drawn unseen earlier stays unseen, never redrawn), so beyond the
+        # forced studies only earlier draws may be held out: the forced ones must
+        # all be there, and the held-out count may exceed the share only by them.
+        forced = [s for s in ids if s in make_splits.SOCSCI210_UNSEEN]
+        target = round(make_splits.UNSEEN_SHARE * len(ids))
+        if len(forced) >= target:
+            assert set(forced) <= set(held), source
+            assert len(set(held) - set(forced)) <= target, source
+            continue
         assert abs(len(held) / len(ids) - make_splits.UNSEEN_SHARE) < tolerance, source
 
 

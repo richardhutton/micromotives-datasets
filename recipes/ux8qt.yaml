@@ -1,0 +1,241 @@
+study_id: ux8qt
+source: tess
+title: "Can an Attribution Frame Decrease the Impact of a Consideration on Presidential Approval? (Newman, TESS2 064)"
+data_file: tess2_064_newman_final_data.sav
+licence: >-
+  none stated on the OSF deposit, as for every TESS deposit built here (TESS
+  archived its projects without reuse terms and has since suspended
+  operations). Not re-checked against the OSF API for this node in this build.
+  So there is no explicit grant of redistribution rights for this deposit, and
+  none should be assumed.
+
+# In SocSci210 (one of its 40 held-out studies: our Eval set). Scope differs
+# (see ANSWER KEY); build without --crosscheck.
+comparable_to_socsci210: true
+
+notes: |-
+  TESS2 064 (Brian Newman, Pepperdine University; Knowledge Networks), "Can an
+  Attribution Frame Decrease the Impact of a Consideration on Presidential
+  Approval?". Fielded 16-27 December 2010 (response rate report). The .sav has
+  2,365 rows, caseid unique. Deposit OSF ux8qt, Newman062.zip: the .sav, the
+  fielded questionnaire (tess2_064_newman_FINAL.doc), the response rate report;
+  Newman062.pdf is the proposal.
+
+  Line citations are 1-based line numbers in
+    Q = "tess2_064_newman_FINAL.txt" (textutil from the .doc, the wording
+        authority).
+
+
+  ASSIGNMENT
+
+  XTESS064 (Q 95-101): 1 Control (619), 2 Uncertain responsibility (576), 3
+  President responsible (580), 4 President not responsible (590). raw n ->
+  condition_num n-1, SocSci210's numbering. Factor `attribution`: control |
+  uncertain | president_responsible | president_not_responsible.
+  Routing in the data agrees: Q1 and Q2 are blank for every Control respondent
+  ("SHOW Q1/Q2 IF XTESS064 = 2, 3 OR 4", Q 122, 132).
+
+
+  CONDITION TEXT
+
+  Arms 2-4: the paragraph that opens their Q2 screen, word-for-word (Q 136, 140,
+  144), without the screen's closing question (the outcome). Each paragraph
+  carries a programming note, "[WHATEVER THE SPECIFIC RATE IS AT THE TIME THE
+  SURVEY IS IN THE FIELD]", after "9.8 percent"; the note is not screen text
+  and is dropped. The rate rendered is Q's own "9.8 percent"; the deposit holds
+  no record of a different fill. Double spaces and curly quotes normalised.
+  Arm 1 (Control) saw no stimulus and no Q1/Q2: its rows carry the fixed
+  sentinel (CONVENTIONS, "A source with no stimulus"), "No stimulus was shown; the question was asked of everyone.", which is true
+  for every question it answered (Q12PUB, Q4, Q13PUB, Q14PUB were asked of all
+  four arms).
+
+
+  OUTCOMES
+
+  task 0  Q2 (arms 2-4): "To what extent do you think the Barack Obama administration is responsible for current economic conditions?" For arms 3 and 4 the screen reads "What about
+          you? To what extent ..." (Q 142, 146), set per arm in `items`. 0-10
+          slider, 0 Not at all responsible .. 10 Entirely responsible; the
+          .sav codes it 1-11 ("0 - Not at all responsible" = 1 .. "10 -
+          Entirely responsible" = 11), recoded to the 0-10 shown.
+  task 1  Q12PUB (Q 150-156): overall impression of Obama, 1 Favorable .. 3
+          Neither favorable nor unfavorable .. 5 Unfavorable.
+  task 2  Q4 (Q 158-161): Obama feeling thermometer, 0-100 (whole numbers).
+  task 3  Q13PUB (Q 163-170): approval of Obama's handling of his job, 1
+          Strongly approve .. 5 Strongly disapprove.
+  tasks 4-8  Q14PUB1-5 (Q 172-186): approve (1) or disapprove (2) of his
+          handling of Foreign policy, Economy, Healthcare, Education, Energy
+          (items randomised, not recorded), per CONVENTIONS "One stem, several
+          labelled answer fields" with ONE ADDED SENTENCE:
+            'Report only the answer for "<issue>".'
+          The item order Q lists (Foreign policy .. Energy) matches the .sav's
+          Q14PUB1-5 order (checked against the .sav's item labels).
+  Missing: -1 Refused.
+  NOT BUILT: Q1 ("How would you rate the condition of the national economy
+  these days?"), asked of arms 2-4 BEFORE their stimulus paragraph, so it
+  measures nothing the treatment could move; Q8-Q13, open-text political
+  knowledge questions.
+
+
+  PERSONA
+
+  Knowledge Networks profile, as 4zscf, plus the merged XPARTY7, XIDEO, XREL1,
+  XREL2. persona_missing, each exercised: XIDEO 9 "9 Missing" (12), XREL1 -1
+  Refused (7), XREL2 9 "9 Missing" (7). XPARTY7 has no negative or 9 code here.
+
+
+  UK CHECK
+
+  Not applicable as a fit test: an Eval study. US president and economy.
+
+
+  ANSWER KEY
+
+  SocSci210 (crosscheck, 25 Nov 2026): 5 tasks. Their task 0 is Q1, which we do
+  not build (pre-treatment; 1,738 rows); their 1-4 are our tasks 0-3 (Q2,
+  Q12PUB, Q4, Q13PUB) with identical row counts: 1,736 / 2,355 / 2,090 /
+  2,351. They do not build Q14PUB. The run FAILS on that scope difference only.
+  Their Q1 rows carry the stimulus paragraph although Q1 was asked before it
+  (checked in their parquet), and their paragraphs say "9.6 percent" where
+  the fielded Q says 9.8.
+
+
+  CHECKED 25 Nov 2026 by a separate checker (Sonnet), briefed to break it: PASS.
+  All cells word-for-word against Q (Q2's "What about you?" in arms 3-4 only);
+  counts and distributions match the .sav in all 36 cells; the dropped
+  programming note and the control sentinel judged right; persona codes
+  exercised; ANSWER KEY (incl. 9.6 vs 9.8 percent) confirmed.
+condition:
+  source_var: XTESS064
+  factors: [attribution]
+  arms:
+    - raw: 1
+      condition_num: 0
+      factors: {attribution: control}
+      text: "No stimulus was shown; the question was asked of everyone."
+    # Q 136
+    - raw: 2
+      condition_num: 1
+      factors: {attribution: uncertain}
+      text: |-
+        In 2009, at the beginning of Barack Obama's presidency, the unemployment rate was 8 percent. According to the latest official figures, the unemployment rate is 9.8 percent.
+    # Q 140
+    - raw: 3
+      condition_num: 2
+      factors: {attribution: president_responsible}
+      text: |-
+        Many economists have argued that the Obama administration's efforts to boost the economy, like the $787 billion economic stimulus package, have not produced many new jobs, but may have created a drag on recovery by spending roughly $2.6 trillion more than the government has during his presidency. In 2009, at the beginning of Obama's presidency, the unemployment rate was 8 percent. According to the latest official figures, the unemployment rate is 9.8 percent.
+      items:
+        0: {outcome_question: "What about you? To what extent do you think the Barack Obama administration is responsible for current economic conditions?"}
+    # Q 144
+    - raw: 4
+      condition_num: 3
+      factors: {attribution: president_not_responsible}
+      text: |-
+        The unemployment rate has been rising since the last year and a half of George W. Bush's presidency. In 2009, at the beginning of Barack Obama's presidency, the unemployment rate was 8 percent. According to the latest official figures, the unemployment rate is 9.8 percent. Many economists argue that presidents have virtually no control over the economy. Before Obama took office, economists predicted that the unemployment rate would be around 10 percent for the first two years of his presidency no matter what Obama did in office.
+      items:
+        0: {outcome_question: "What about you? To what extent do you think the Barack Obama administration is responsible for current economic conditions?"}
+
+outcomes:
+  - var: Q2
+    task_num: 0
+    question: "To what extent do you think the Barack Obama administration is responsible for current economic conditions?"
+    scale: {min: 0, max: 10, min_label: "Not at all responsible", max_label: "Entirely responsible"}
+    response_recode: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 10: 9, 11: 10}
+  - var: Q12PUB
+    task_num: 1
+    question: "Please rate your feelings towards Barack Obama. Is your overall impression of him..."
+    scale: {min: 1, max: 5, min_label: "Favorable", mid_label: "Neither favorable nor unfavorable", max_label: "Unfavorable"}
+  - var: Q4
+    task_num: 2
+    question: |-
+      We'd like you to rate Barack Obama using something we call the feeling thermometer. Ratings between 50 and 100 degrees mean that you feel favorably and warm toward Obama; ratings between 0 and 50 degrees mean that you don't feel favorably toward Obama and that you don't care too much for him. You would rate him at the 50 degree mark if you don't feel particularly warm or cold toward Obama.
+
+      How do you rate Barack Obama on this thermometer?
+    scale: {min: 0, max: 100}
+    response_recode: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 17: 17, 18: 18, 19: 19, 20: 20, 21: 21, 22: 22, 23: 23, 24: 24, 25: 25, 26: 26, 27: 27, 28: 28, 29: 29, 30: 30, 31: 31, 32: 32, 33: 33, 34: 34, 35: 35, 36: 36, 37: 37, 38: 38, 39: 39, 40: 40, 41: 41, 42: 42, 43: 43, 44: 44, 45: 45, 46: 46, 47: 47, 48: 48, 49: 49, 50: 50, 51: 51, 52: 52, 53: 53, 54: 54, 55: 55, 56: 56, 57: 57, 58: 58, 59: 59, 60: 60, 61: 61, 62: 62, 63: 63, 64: 64, 65: 65, 66: 66, 67: 67, 68: 68, 69: 69, 70: 70, 71: 71, 72: 72, 73: 73, 74: 74, 75: 75, 76: 76, 77: 77, 78: 78, 79: 79, 80: 80, 81: 81, 82: 82, 83: 83, 84: 84, 85: 85, 86: 86, 87: 87, 88: 88, 89: 89, 90: 90, 91: 91, 92: 92, 93: 93, 94: 94, 95: 95, 96: 96, 97: 97, 98: 98, 99: 99, 100: 100}
+  - var: Q13PUB
+    task_num: 3
+    question: "Do you approve or disapprove of the way Barack Obama is handling his job as President?"
+    scale: {min: 1, max: 5, min_label: "Strongly approve", mid_label: "Neither approve nor disapprove", max_label: "Strongly disapprove"}
+  - var: Q14PUB1
+    task_num: 4
+    question: |-
+      Do you approve or disapprove of the way Barack Obama is handling each of these issues?
+      Foreign policy
+      Economy
+      Healthcare
+      Education
+      Energy
+      Report only the answer for "Foreign policy".
+    scale: {min: 1, max: 2, min_label: "Approve", max_label: "Disapprove"}
+  - var: Q14PUB2
+    task_num: 5
+    question: |-
+      Do you approve or disapprove of the way Barack Obama is handling each of these issues?
+      Foreign policy
+      Economy
+      Healthcare
+      Education
+      Energy
+      Report only the answer for "Economy".
+    scale: {min: 1, max: 2, min_label: "Approve", max_label: "Disapprove"}
+  - var: Q14PUB3
+    task_num: 6
+    question: |-
+      Do you approve or disapprove of the way Barack Obama is handling each of these issues?
+      Foreign policy
+      Economy
+      Healthcare
+      Education
+      Energy
+      Report only the answer for "Healthcare".
+    scale: {min: 1, max: 2, min_label: "Approve", max_label: "Disapprove"}
+  - var: Q14PUB4
+    task_num: 7
+    question: |-
+      Do you approve or disapprove of the way Barack Obama is handling each of these issues?
+      Foreign policy
+      Economy
+      Healthcare
+      Education
+      Energy
+      Report only the answer for "Education".
+    scale: {min: 1, max: 2, min_label: "Approve", max_label: "Disapprove"}
+  - var: Q14PUB5
+    task_num: 8
+    question: |-
+      Do you approve or disapprove of the way Barack Obama is handling each of these issues?
+      Foreign policy
+      Economy
+      Healthcare
+      Education
+      Energy
+      Report only the answer for "Energy".
+    scale: {min: 1, max: 2, min_label: "Approve", max_label: "Disapprove"}
+
+response_recode: {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+missing_codes: [-1]
+
+persona_missing:
+  XIDEO: [9]
+  XREL1: [-1]
+  XREL2: [9]
+
+persona_map:
+  age: PPAGE
+  gender: PPGENDER
+  education: PPEDUCAT
+  ethnicity: PPETHM
+  income: PPINCIMP
+  marital_status: PPMARIT
+  employment: PPWORK
+  region: PPREG4
+  household_size: PPHHSIZE
+  housing_type: PPHOUSE
+  housing_ownership: PPRENT
+  urban_rural: PPMSACAT
+  internet_access: PPNET
+  party_id: XPARTY7
+  ideology: XIDEO
+  religion: XREL1
+  religious_attendance: XREL2

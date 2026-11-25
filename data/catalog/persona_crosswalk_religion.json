@@ -102,7 +102,8 @@
       "Nothing in particular": "Nothing in particular",
       "Just Christian": "Just Christian",
       "Unitarian (Universalist)": "Unitarian (Universalist)",
-      "Something else": "Something else"
+      "Something else": "Something else",
+      "Other": "Something else"
     },
     "us_amerispeak_quoted": {
       "\"Roman Catholic (Catholic)\u201d": "Roman Catholic",
@@ -120,6 +121,7 @@
     "us_knowledgepanel": {
       "Baptist-any denomination": "Baptist",
       "Baptist\u2014any denomination": "Baptist",
+      "Baptist - any denomination": "Baptist",
       "Protestant (e.g., Methodist, Lutheran, Presbyterian, Episcopal)": "Protestant (e.g., Methodist, Lutheran, Presbyterian, Episcopal)",
       "Catholic": "Catholic",
       "Mormon": "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)",
