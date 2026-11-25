@@ -345,9 +345,9 @@ PERSONA
   PPRENT, PPMSACAT, PPNET, plus the study's profile pulls PARTY7, IDEO, REL2
   (named without the X of Q's samvar block; the corrected file adds PARTY7,
   which the client file lacked). -1 Refused occurs on IDEO 7 and REL2 5 and is
-  dropped from the persona. REL1 (religion) LEFT OUT: its labels
-  ("Baptist-any denomination", ...) are not in the religion crosswalk's
-  us_amerispeak scheme, so QC rule 14 warns (the same finding as 7tzpe).
+  dropped from the persona. REL1 (religion) is mapped (-1 Refused, 5 rows,
+  dropped): its KnowledgePanel labels are the crosswalk's us_knowledgepanel
+  scheme, added 25 Nov 2026 (it was left out before that scheme existed).
   The thing judged is a hypothetical STUDENT (family income, school
   location); it is not part of the persona. PPINCIMP (household income) and
   PPMSACAT (metro / non-metro) sit near the manipulated student attributes
@@ -366,7 +366,7 @@ JEV (scripts/recipe_prep.py vwn96 --source tess --file Yeager)
   persona: all ok at conf 1.00 except region PPREG4 REVIEW (0.71, runner-up
     ppreg9 0.22), accepted as every TESS recipe does. Jev picked PPEDUC; PPEDUCAT
     is used, as every KN/GfK recipe does, since the crosswalk harmonises it.
-    Jev picked REL1 for religion; left out (rule 14, above).
+    Jev picked REL1 for religion; mapped (see above).
   labels: 309 asked, 0 disagreements with the regex; -1 Refused / -2 Not asked
     are non-answers.
   directives: all 40 found parse (the run with `--file Yeager` so that the
@@ -468,7 +468,7 @@ def build() -> dict:
         ],
         "response_recode": {1: 1, 2: 2, 3: 3, 4: 4},
         "missing_codes": [-1, -2],
-        "persona_missing": {"IDEO": [-1], "REL2": [-1]},
+        "persona_missing": {"IDEO": [-1], "REL1": [-1], "REL2": [-1]},
         "persona_map": {
             "age": "PPAGE",
             "gender": "PPGENDER",
@@ -485,6 +485,7 @@ def build() -> dict:
             "internet_access": "PPNET",
             "party_id": "PARTY7",
             "ideology": "IDEO",
+            "religion": "REL1",
             "religious_attendance": "REL2",
         },
     }

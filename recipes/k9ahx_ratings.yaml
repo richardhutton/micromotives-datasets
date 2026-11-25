@@ -176,9 +176,9 @@ notes: |-
     built on it (ledger 64; sh4px, 7tzpe).
   - OVERRULED region: Jev REVIEW, ppreg9 at 0.33 against PPREG4 0.50 (the printed
     pick was the lower score). PPREG4 used, as every TESS recipe.
-  - religion: xrel1 LEFT OUT, as in 7tzpe: its labels ("Baptist-any
-    denomination", ...) are not in the religion crosswalk, and adding them means
-    writing data/catalog/, outside this build's scope.
+  - religion: xrel1 was left out at first build (its KnowledgePanel labels had
+    no crosswalk scheme); RESTORED 25 Nov 2026 once us_knowledgepanel was added,
+    with persona_missing xrel1: [14] ("Missing", 1 respondent).
   - party_id xparty7 IS mapped here (9263n left XPARTY7 out because 9% of its rows
     were 9 "Missing"): in these 640 respondents codes 8 "Dummy" and 9 "Missing"
     occur 0 times. Declared missing anyway, read rather than assumed: neither is
@@ -424,6 +424,7 @@ missing_codes: [-1]
 persona_missing:
   xparty7: [8, 9]
   xideo: [8, 9]
+  xrel1: [14]
   xrel2: [7, 8, 9]
 
 persona_map:
@@ -442,4 +443,5 @@ persona_map:
   internet_access: PPNET
   party_id: xparty7
   ideology: xideo
+  religion: xrel1
   religious_attendance: xrel2

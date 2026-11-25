@@ -149,14 +149,10 @@ notes: |-
   all routed past the re-ask (Q 2022-2023, "DOV_REL1=1-12"): 14 with REL1 =
   None, 5 with REL1 refused. No "missing" code (XIDEO 9, XREL1 14)
   survives in the file.
-  QC WARNS, KNOWINGLY, on religion (rule 14: 'Baptist-any denomination',
-  'Catholic', 'Eastern Orthodox' outside the canonical vocabulary). The
-  KnowledgePanel religion list is not yet a scheme in
-  data/catalog/persona_crosswalk_religion.json, which this build may not edit.
-  5hqan and ye2ej (same panel, same list) already ship these exact labels, so
-  keeping REL1 describes these respondents the same way as theirs; 7tzpe chose
-  instead to drop religion. The fix is one crosswalk scheme covering all three
-  studies, after which this warning clears with no recipe change.
+  Religion (REL1): at first build QC warned (rule 14) because the
+  KnowledgePanel religion list had no scheme in
+  data/catalog/persona_crosswalk_religion.json. Cleared 25 Nov 2026 by the
+  us_knowledgepanel scheme, with no recipe change.
   persona_missing (each exercised): IDEO -1 Refused (11
   respondents), REL1 -1 (8), REL2 -1 (3). No PP* variable has a negative code
   in this file, so none is declared (an unexercised declaration is untested).

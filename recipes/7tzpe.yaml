@@ -183,11 +183,9 @@ notes: |-
   GfK KnowledgePanel standard profile, as 5hqan (TESS3 176, same panel and year):
   PPAGE, PPGENDER, PPEDUCAT, PPETHM, PPINCIMP, PPMARIT, PPWORK, PPREG4, PPHHSIZE,
   PPHOUSE, PPRENT, PPMSACAT, PPNET, plus the study's profile pulls XPARTY7,
-  XIDEO, XREL2. XREL1 (religion) is LEFT OUT: its labels ("Baptist-any
-  denomination", "Catholic", "Eastern Orthodox", ...) are not in the religion
-  crosswalk's us_amerispeak scheme, so QC rule 14 warns; adding them means
-  writing data/catalog/, which this build may not. Restore religion: XREL1 (with
-  persona_missing XREL1: [-1, 14]) once the crosswalk covers this list.
+  XIDEO, XREL2, XREL1. XREL1 (religion) was left out until 25 Nov 2026, when the
+  crosswalk gained the KnowledgePanel scheme (us_knowledgepanel); restored then,
+  with persona_missing XREL1: [-1, 14] (-1 Refused 3 rows; 14 Missing 0).
   Q's samvar block (Q 20-30) says these X* variables are profile preloads with a "missing" code (XPARTY7 9, XIDEO 9, XREL1 14, XREL2 9),
   re-asked in-survey AFTER the outcomes for panelists whose profile lacked them
   (Q 439-629) and merged (DOV_*); no missing code survives in the .sav, so the
@@ -673,6 +671,7 @@ missing_codes: [-1]
 persona_missing:
   XPARTY7: [8, 9]
   XIDEO: [-1]
+  XREL1: [-1, 14]
   XREL2: [-1, 7, 8, 9]
 
 persona_map:
@@ -691,4 +690,5 @@ persona_map:
   internet_access: PPNET
   party_id: XPARTY7
   ideology: XIDEO
+  religion: XREL1
   religious_attendance: XREL2

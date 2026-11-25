@@ -159,10 +159,8 @@ notes: |-
   option "Other non-Christian" (Q 782), 57 respondents. Code 1's em dash
   ("Baptist—any denomination") is normalised to a hyphen, the typography
   ruling, which is also how 9263n renders it.
-  QC warns that religion labels ('Baptist-any denomination', 'Catholic',
-  'Eastern Orthodox') are outside the canonical vocabulary. That is the KN
-  XREL1 scheme having no crosswalk yet: 9263n's build gives the identical
-  warning today. Fixing it is a shared crosswalk change, outside this build.
+  Religion (XREL1): at first build QC warned (rule 14) because the KN religion
+  list had no crosswalk scheme; cleared 25 Nov 2026 by us_knowledgepanel.
   Not mapped: core_par (parent of a child under 18), ppkids, PPT01..PPT18OV
   (children in the household by age). Parenthood is close to what the outcomes
   are about, the schema has no field for it, and the PD asked for core_par as an

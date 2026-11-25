@@ -23,7 +23,17 @@
     "\u2014 and it will, SN 6849 carries both \u2014 that is the moment to decide the canonical,",
     "with both schemes in view. Designing it now from one scheme risks exactly the",
     "one-way-street problem in persona/categories.py: a canonical fixed too early",
-    "cannot be made finer later."
+    "cannot be made finer later.",
+    "",
+    "us_knowledgepanel (added 25 Nov 2026, rich approved): the GfK / Knowledge Networks",
+    "KnowledgePanel profile item REL1/XREL1/DOV_REL1, used by 4zscf, ye2ej, 5hqan, 9263n and",
+    "t936a. Only exact equivalents are merged: 'Baptist-any denomination' -> Baptist,",
+    "'Mormon' -> the AmeriSpeak Mormon label, 'Eastern Orthodox' -> Orthodox Christian,",
+    "'None' -> No religion. Kept as their own labels because they mean something different:",
+    "this panel's Protestant EXCLUDES Baptist and Pentecostal (separate options), unlike",
+    "AmeriSpeak's; 'Catholic' is not stated to be Roman Catholic; 'Other Christian' and",
+    "'Other non-Christian' are narrower than 'Other religion'. The '...please specify' in",
+    "t936a's label is the question's shape, not a fact, and is stripped."
   ],
   "canonical": {
     "Baptist": "Baptist",
@@ -51,7 +61,11 @@
     "Nothing in particular": "Nothing in particular",
     "Just Christian": "Just Christian",
     "Unitarian (Universalist)": "Unitarian (Universalist)",
-    "Something else": "Something else"
+    "Something else": "Something else",
+    "Protestant (e.g., Methodist, Lutheran, Presbyterian, Episcopal)": "Protestant (e.g., Methodist, Lutheran, Presbyterian, Episcopal)",
+    "Other non-Christian": "Other non-Christian",
+    "Other Christian": "Other Christian",
+    "Catholic": "Catholic"
   },
   "schemes": {
     "uk_yougov_religion": {
@@ -102,6 +116,24 @@
     },
     "us_amerispeak_straight_apostrophe": {
       "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah's Witness, etc.)": "Protestant (Baptist, Methodist, Non-denominational, Lutheran, Presbyterian, Pentecostal, Episcopalian, Reformed, Church of Christ, Jehovah\u2019s Witness, etc.)"
+    },
+    "us_knowledgepanel": {
+      "Baptist-any denomination": "Baptist",
+      "Baptist\u2014any denomination": "Baptist",
+      "Protestant (e.g., Methodist, Lutheran, Presbyterian, Episcopal)": "Protestant (e.g., Methodist, Lutheran, Presbyterian, Episcopal)",
+      "Catholic": "Catholic",
+      "Mormon": "Mormon (Church of Jesus Christ of Latter-day Saints/LDS)",
+      "Jewish": "Jewish",
+      "Muslim": "Muslim",
+      "Hindu": "Hindu",
+      "Buddhist": "Buddhist",
+      "Pentecostal": "Pentecostal",
+      "Eastern Orthodox": "Orthodox Christian",
+      "Other Christian": "Other Christian",
+      "Other non-Christian": "Other non-Christian",
+      "Other non-Christian, please specify": "Other non-Christian",
+      "None": "No religion",
+      "Other non-Christian, please specify:": "Other non-Christian"
     }
   }
 }

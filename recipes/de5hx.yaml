@@ -233,17 +233,14 @@ notes: |-
   PPT* household-composition counts (not in the shared persona set), ppagecat/
   ppagect4 (PPAGE is exact).
 
-  RELIGION (xrel1) IS LEFT OUT, as 7tzpe left it out for the same panel and
-  era: its labels ("Baptist-any denomination", "Catholic", "Eastern Orthodox",
-  ...) are not in the religion crosswalk (data/catalog/
-  persona_crosswalk_religion.json has no Knowledge Networks scheme), so QC rule
-  14 warns, and adding a scheme means writing data/catalog/, which this build
-  may not. Measured: mapping it made rule 14 warn on exactly those three labels.
-  To restore: add the scheme, then `religion: xrel1` with persona_missing
-  xrel1: [14] ("Missing", 35 respondents) and the label rewrite 12 "Other
-  non-Christian, please specify:" -> "Other non-Christian" (the questionnaire's
-  own option, Q 414; Jev: answer_with_boilerplate, conf 0.96; 36 respondents).
-  13 "None" is a real answer.
+  RELIGION (xrel1) was left out at first build (no KnowledgePanel scheme in
+  data/catalog/persona_crosswalk_religion.json, so QC rule 14 warned). RESTORED
+  25 Nov 2026 once the crosswalk gained that scheme (us_knowledgepanel):
+  `religion: xrel1` with persona_missing xrel1: [14] ("Missing", 35
+  respondents). 12 "Other non-Christian, please specify:" becomes "Other
+  non-Christian" in the crosswalk (the questionnaire's own option, Q 414; Jev:
+  answer_with_boilerplate, conf 0.96; 36 respondents). 13 "None" is a real
+  answer ("No religion").
 
   persona_missing, from the value labels: xparty7 8 "Dummy" and 9 "Missing" (0
   occurrences); xideo 8 "Dummy" (0) and 9 "Missing" (43); xrel2 7/8 "Dummy"
@@ -581,6 +578,7 @@ missing_codes: [-1]
 persona_missing:
   xparty7: [8, 9]
   xideo: [8, 9]
+  xrel1: [14]
   xrel2: [7, 8, 9]
 
 persona_map:
@@ -599,4 +597,5 @@ persona_map:
   internet_access: PPNET
   party_id: xparty7
   ideology: xideo
+  religion: xrel1
   religious_attendance: xrel2
